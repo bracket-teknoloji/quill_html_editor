@@ -12,10 +12,10 @@ part of 'transfer_mal_talebi_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-TransferMalTalebiListesiModel _$TransferMalTalebiListesiModelFromJson(
-    Map<String, dynamic> json) {
+TransferMalTalebiListesiModel _$TransferMalTalebiListesiModelFromJson(Map<String, dynamic> json) {
   return _TransferMalTalebiListesiModel.fromJson(json);
 }
 
@@ -96,41 +96,40 @@ mixin _$TransferMalTalebiListesiModel {
   /// Create a copy of TransferMalTalebiListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TransferMalTalebiListesiModelCopyWith<TransferMalTalebiListesiModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $TransferMalTalebiListesiModelCopyWith<TransferMalTalebiListesiModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TransferMalTalebiListesiModelCopyWith<$Res> {
   factory $TransferMalTalebiListesiModelCopyWith(
-          TransferMalTalebiListesiModel value,
-          $Res Function(TransferMalTalebiListesiModel) then) =
-      _$TransferMalTalebiListesiModelCopyWithImpl<$Res,
-          TransferMalTalebiListesiModel>;
+    TransferMalTalebiListesiModel value,
+    $Res Function(TransferMalTalebiListesiModel) then,
+  ) = _$TransferMalTalebiListesiModelCopyWithImpl<$Res, TransferMalTalebiListesiModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "ID") int id,
-      @JsonKey(name: "TARIH") DateTime? tarih,
-      @JsonKey(name: "DEPO_KODU") int? depoKodu,
-      @JsonKey(name: "DURUM_ADI") String? durumAdi,
-      @JsonKey(name: "KALEM_SAYISI") int? kalemSayisi,
-      @JsonKey(name: "MIKTAR") double? miktar,
-      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-      @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-      @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-      @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-      @JsonKey(name: "ACIKLAMA") String? aciklama,
-      @JsonKey(name: "BELGE_NO") String? belgeNo,
-      @JsonKey(name: "KAPALI") bool? kapali,
-      @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-      @JsonKey(name: "HEDEF_SUBE") int? hedefSube,
-      @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-      @JsonKey(name: "KALEM_LIST") List<KalemModel>? kalemList});
+  $Res call({
+    @JsonKey(name: "ID") int id,
+    @JsonKey(name: "TARIH") DateTime? tarih,
+    @JsonKey(name: "DEPO_KODU") int? depoKodu,
+    @JsonKey(name: "DURUM_ADI") String? durumAdi,
+    @JsonKey(name: "KALEM_SAYISI") int? kalemSayisi,
+    @JsonKey(name: "MIKTAR") double? miktar,
+    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
+    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
+    @JsonKey(name: "ACIKLAMA") String? aciklama,
+    @JsonKey(name: "BELGE_NO") String? belgeNo,
+    @JsonKey(name: "KAPALI") bool? kapali,
+    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
+    @JsonKey(name: "HEDEF_SUBE") int? hedefSube,
+    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+    @JsonKey(name: "KALEM_LIST") List<KalemModel>? kalemList,
+  });
 }
 
 /// @nodoc
-class _$TransferMalTalebiListesiModelCopyWithImpl<$Res,
-        $Val extends TransferMalTalebiListesiModel>
+class _$TransferMalTalebiListesiModelCopyWithImpl<$Res, $Val extends TransferMalTalebiListesiModel>
     implements $TransferMalTalebiListesiModelCopyWith<$Res> {
   _$TransferMalTalebiListesiModelCopyWithImpl(this._value, this._then);
 
@@ -162,76 +161,79 @@ class _$TransferMalTalebiListesiModelCopyWithImpl<$Res,
     Object? islemKodu = freezed,
     Object? kalemList = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      durumAdi: freezed == durumAdi
-          ? _value.durumAdi
-          : durumAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemSayisi: freezed == kalemSayisi
-          ? _value.kalemSayisi
-          : kalemSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kalanMiktar: freezed == kalanMiktar
-          ? _value.kalanMiktar
-          : kalanMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tamamlananMiktar: freezed == tamamlananMiktar
-          ? _value.tamamlananMiktar
-          : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kapali: freezed == kapali
-          ? _value.kapali
-          : kapali // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hedefSube: freezed == hedefSube
-          ? _value.hedefSube
-          : hedefSube // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kalemList: freezed == kalemList
-          ? _value.kalemList
-          : kalemList // ignore: cast_nullable_to_non_nullable
-              as List<KalemModel>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            durumAdi: freezed == durumAdi
+                ? _value.durumAdi
+                : durumAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kalemSayisi: freezed == kalemSayisi
+                ? _value.kalemSayisi
+                : kalemSayisi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            kalanMiktar: freezed == kalanMiktar
+                ? _value.kalanMiktar
+                : kalanMiktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            kayittarihi: freezed == kayittarihi
+                ? _value.kayittarihi
+                : kayittarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            kayityapankul: freezed == kayityapankul
+                ? _value.kayityapankul
+                : kayityapankul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tamamlananMiktar: freezed == tamamlananMiktar
+                ? _value.tamamlananMiktar
+                : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kapali: freezed == kapali
+                ? _value.kapali
+                : kapali // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hedefSube: freezed == hedefSube
+                ? _value.hedefSube
+                : hedefSube // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kalemList: freezed == kalemList
+                ? _value.kalemList
+                : kalemList // ignore: cast_nullable_to_non_nullable
+                      as List<KalemModel>?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -239,40 +241,40 @@ class _$TransferMalTalebiListesiModelCopyWithImpl<$Res,
 abstract class _$$TransferMalTalebiListesiModelImplCopyWith<$Res>
     implements $TransferMalTalebiListesiModelCopyWith<$Res> {
   factory _$$TransferMalTalebiListesiModelImplCopyWith(
-          _$TransferMalTalebiListesiModelImpl value,
-          $Res Function(_$TransferMalTalebiListesiModelImpl) then) =
-      __$$TransferMalTalebiListesiModelImplCopyWithImpl<$Res>;
+    _$TransferMalTalebiListesiModelImpl value,
+    $Res Function(_$TransferMalTalebiListesiModelImpl) then,
+  ) = __$$TransferMalTalebiListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "ID") int id,
-      @JsonKey(name: "TARIH") DateTime? tarih,
-      @JsonKey(name: "DEPO_KODU") int? depoKodu,
-      @JsonKey(name: "DURUM_ADI") String? durumAdi,
-      @JsonKey(name: "KALEM_SAYISI") int? kalemSayisi,
-      @JsonKey(name: "MIKTAR") double? miktar,
-      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-      @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-      @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-      @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-      @JsonKey(name: "ACIKLAMA") String? aciklama,
-      @JsonKey(name: "BELGE_NO") String? belgeNo,
-      @JsonKey(name: "KAPALI") bool? kapali,
-      @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-      @JsonKey(name: "HEDEF_SUBE") int? hedefSube,
-      @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-      @JsonKey(name: "KALEM_LIST") List<KalemModel>? kalemList});
+  $Res call({
+    @JsonKey(name: "ID") int id,
+    @JsonKey(name: "TARIH") DateTime? tarih,
+    @JsonKey(name: "DEPO_KODU") int? depoKodu,
+    @JsonKey(name: "DURUM_ADI") String? durumAdi,
+    @JsonKey(name: "KALEM_SAYISI") int? kalemSayisi,
+    @JsonKey(name: "MIKTAR") double? miktar,
+    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
+    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
+    @JsonKey(name: "ACIKLAMA") String? aciklama,
+    @JsonKey(name: "BELGE_NO") String? belgeNo,
+    @JsonKey(name: "KAPALI") bool? kapali,
+    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
+    @JsonKey(name: "HEDEF_SUBE") int? hedefSube,
+    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+    @JsonKey(name: "KALEM_LIST") List<KalemModel>? kalemList,
+  });
 }
 
 /// @nodoc
 class __$$TransferMalTalebiListesiModelImplCopyWithImpl<$Res>
-    extends _$TransferMalTalebiListesiModelCopyWithImpl<$Res,
-        _$TransferMalTalebiListesiModelImpl>
+    extends _$TransferMalTalebiListesiModelCopyWithImpl<$Res, _$TransferMalTalebiListesiModelImpl>
     implements _$$TransferMalTalebiListesiModelImplCopyWith<$Res> {
   __$$TransferMalTalebiListesiModelImplCopyWithImpl(
-      _$TransferMalTalebiListesiModelImpl _value,
-      $Res Function(_$TransferMalTalebiListesiModelImpl) _then)
-      : super(_value, _then);
+    _$TransferMalTalebiListesiModelImpl _value,
+    $Res Function(_$TransferMalTalebiListesiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TransferMalTalebiListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -297,105 +299,105 @@ class __$$TransferMalTalebiListesiModelImplCopyWithImpl<$Res>
     Object? islemKodu = freezed,
     Object? kalemList = freezed,
   }) {
-    return _then(_$TransferMalTalebiListesiModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      durumAdi: freezed == durumAdi
-          ? _value.durumAdi
-          : durumAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemSayisi: freezed == kalemSayisi
-          ? _value.kalemSayisi
-          : kalemSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kalanMiktar: freezed == kalanMiktar
-          ? _value.kalanMiktar
-          : kalanMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tamamlananMiktar: freezed == tamamlananMiktar
-          ? _value.tamamlananMiktar
-          : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kapali: freezed == kapali
-          ? _value.kapali
-          : kapali // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hedefSube: freezed == hedefSube
-          ? _value.hedefSube
-          : hedefSube // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kalemList: freezed == kalemList
-          ? _value.kalemList
-          : kalemList // ignore: cast_nullable_to_non_nullable
-              as List<KalemModel>?,
-    ));
+    return _then(
+      _$TransferMalTalebiListesiModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        durumAdi: freezed == durumAdi
+            ? _value.durumAdi
+            : durumAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kalemSayisi: freezed == kalemSayisi
+            ? _value.kalemSayisi
+            : kalemSayisi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        kalanMiktar: freezed == kalanMiktar
+            ? _value.kalanMiktar
+            : kalanMiktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        kayittarihi: freezed == kayittarihi
+            ? _value.kayittarihi
+            : kayittarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        kayityapankul: freezed == kayityapankul
+            ? _value.kayityapankul
+            : kayityapankul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tamamlananMiktar: freezed == tamamlananMiktar
+            ? _value.tamamlananMiktar
+            : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kapali: freezed == kapali
+            ? _value.kapali
+            : kapali // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hedefSube: freezed == hedefSube
+            ? _value.hedefSube
+            : hedefSube // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kalemList: freezed == kalemList
+            ? _value.kalemList
+            : kalemList // ignore: cast_nullable_to_non_nullable
+                  as List<KalemModel>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TransferMalTalebiListesiModelImpl
-    extends _TransferMalTalebiListesiModel {
-  _$TransferMalTalebiListesiModelImpl(
-      {@JsonKey(name: "ID") this.id = -1,
-      @JsonKey(name: "TARIH") this.tarih,
-      @JsonKey(name: "DEPO_KODU") this.depoKodu,
-      @JsonKey(name: "DURUM_ADI") this.durumAdi,
-      @JsonKey(name: "KALEM_SAYISI") this.kalemSayisi,
-      @JsonKey(name: "MIKTAR") this.miktar,
-      @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar,
-      @JsonKey(name: "KAYITTARIHI") this.kayittarihi,
-      @JsonKey(name: "KAYITYAPANKUL") this.kayityapankul,
-      @JsonKey(name: "TAMAMLANAN_MIKTAR") this.tamamlananMiktar,
-      @JsonKey(name: "ACIKLAMA") this.aciklama,
-      @JsonKey(name: "BELGE_NO") this.belgeNo,
-      @JsonKey(name: "KAPALI") this.kapali,
-      @JsonKey(name: "BELGE_TIPI") this.belgeTipi,
-      @JsonKey(name: "HEDEF_SUBE") this.hedefSube,
-      @JsonKey(name: "ISLEM_KODU") this.islemKodu,
-      @JsonKey(name: "KALEM_LIST") this.kalemList})
-      : super._();
+class _$TransferMalTalebiListesiModelImpl extends _TransferMalTalebiListesiModel {
+  _$TransferMalTalebiListesiModelImpl({
+    @JsonKey(name: "ID") this.id = -1,
+    @JsonKey(name: "TARIH") this.tarih,
+    @JsonKey(name: "DEPO_KODU") this.depoKodu,
+    @JsonKey(name: "DURUM_ADI") this.durumAdi,
+    @JsonKey(name: "KALEM_SAYISI") this.kalemSayisi,
+    @JsonKey(name: "MIKTAR") this.miktar,
+    @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar,
+    @JsonKey(name: "KAYITTARIHI") this.kayittarihi,
+    @JsonKey(name: "KAYITYAPANKUL") this.kayityapankul,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") this.tamamlananMiktar,
+    @JsonKey(name: "ACIKLAMA") this.aciklama,
+    @JsonKey(name: "BELGE_NO") this.belgeNo,
+    @JsonKey(name: "KAPALI") this.kapali,
+    @JsonKey(name: "BELGE_TIPI") this.belgeTipi,
+    @JsonKey(name: "HEDEF_SUBE") this.hedefSube,
+    @JsonKey(name: "ISLEM_KODU") this.islemKodu,
+    @JsonKey(name: "KALEM_LIST") this.kalemList,
+  }) : super._();
 
-  factory _$TransferMalTalebiListesiModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$TransferMalTalebiListesiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TransferMalTalebiListesiModelImplFromJson(json);
 
   @override
@@ -455,40 +457,35 @@ class _$TransferMalTalebiListesiModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TransferMalTalebiListesiModelImplCopyWith<
-          _$TransferMalTalebiListesiModelImpl>
-      get copyWith => __$$TransferMalTalebiListesiModelImplCopyWithImpl<
-          _$TransferMalTalebiListesiModelImpl>(this, _$identity);
+  _$$TransferMalTalebiListesiModelImplCopyWith<_$TransferMalTalebiListesiModelImpl> get copyWith =>
+      __$$TransferMalTalebiListesiModelImplCopyWithImpl<_$TransferMalTalebiListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TransferMalTalebiListesiModelImplToJson(
-      this,
-    );
+    return _$$TransferMalTalebiListesiModelImplToJson(this);
   }
 }
 
-abstract class _TransferMalTalebiListesiModel
-    extends TransferMalTalebiListesiModel {
-  factory _TransferMalTalebiListesiModel(
-          {@JsonKey(name: "ID") int id,
-          @JsonKey(name: "TARIH") DateTime? tarih,
-          @JsonKey(name: "DEPO_KODU") int? depoKodu,
-          @JsonKey(name: "DURUM_ADI") String? durumAdi,
-          @JsonKey(name: "KALEM_SAYISI") int? kalemSayisi,
-          @JsonKey(name: "MIKTAR") double? miktar,
-          @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-          @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-          @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-          @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-          @JsonKey(name: "ACIKLAMA") String? aciklama,
-          @JsonKey(name: "BELGE_NO") String? belgeNo,
-          @JsonKey(name: "KAPALI") bool? kapali,
-          @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-          @JsonKey(name: "HEDEF_SUBE") int? hedefSube,
-          @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-          @JsonKey(name: "KALEM_LIST") List<KalemModel>? kalemList}) =
-      _$TransferMalTalebiListesiModelImpl;
+abstract class _TransferMalTalebiListesiModel extends TransferMalTalebiListesiModel {
+  factory _TransferMalTalebiListesiModel({
+    @JsonKey(name: "ID") int id,
+    @JsonKey(name: "TARIH") DateTime? tarih,
+    @JsonKey(name: "DEPO_KODU") int? depoKodu,
+    @JsonKey(name: "DURUM_ADI") String? durumAdi,
+    @JsonKey(name: "KALEM_SAYISI") int? kalemSayisi,
+    @JsonKey(name: "MIKTAR") double? miktar,
+    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
+    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
+    @JsonKey(name: "ACIKLAMA") String? aciklama,
+    @JsonKey(name: "BELGE_NO") String? belgeNo,
+    @JsonKey(name: "KAPALI") bool? kapali,
+    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
+    @JsonKey(name: "HEDEF_SUBE") int? hedefSube,
+    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+    @JsonKey(name: "KALEM_LIST") List<KalemModel>? kalemList,
+  }) = _$TransferMalTalebiListesiModelImpl;
   _TransferMalTalebiListesiModel._() : super._();
 
   factory _TransferMalTalebiListesiModel.fromJson(Map<String, dynamic> json) =
@@ -584,7 +581,6 @@ abstract class _TransferMalTalebiListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TransferMalTalebiListesiModelImplCopyWith<
-          _$TransferMalTalebiListesiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TransferMalTalebiListesiModelImplCopyWith<_$TransferMalTalebiListesiModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

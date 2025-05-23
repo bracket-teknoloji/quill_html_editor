@@ -12,19 +12,17 @@ part of 'urun_grubuna_gore_satis_grafigi_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-UrunGrubunaGoreSatisGrafigiRequestModel
-    _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(
-        Map<String, dynamic> json) {
+UrunGrubunaGoreSatisGrafigiRequestModel _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(Map<String, dynamic> json) {
   return _UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(json);
 }
 
 /// @nodoc
 mixin _$UrunGrubunaGoreSatisGrafigiRequestModel {
   List<String>? get arrPlasiyerKodu => throw _privateConstructorUsedError;
-  set arrPlasiyerKodu(List<String>? value) =>
-      throw _privateConstructorUsedError;
+  set arrPlasiyerKodu(List<String>? value) => throw _privateConstructorUsedError;
   String? get baslamaTarihi => throw _privateConstructorUsedError;
   set baslamaTarihi(String? value) => throw _privateConstructorUsedError;
   String? get bitisTarihi => throw _privateConstructorUsedError;
@@ -50,38 +48,35 @@ mixin _$UrunGrubunaGoreSatisGrafigiRequestModel {
   /// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<
-          UrunGrubunaGoreSatisGrafigiRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<UrunGrubunaGoreSatisGrafigiRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
   factory $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith(
-          UrunGrubunaGoreSatisGrafigiRequestModel value,
-          $Res Function(UrunGrubunaGoreSatisGrafigiRequestModel) then) =
-      _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res,
-          UrunGrubunaGoreSatisGrafigiRequestModel>;
+    UrunGrubunaGoreSatisGrafigiRequestModel value,
+    $Res Function(UrunGrubunaGoreSatisGrafigiRequestModel) then,
+  ) = _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res, UrunGrubunaGoreSatisGrafigiRequestModel>;
   @useResult
-  $Res call(
-      {List<String>? arrPlasiyerKodu,
-      String? baslamaTarihi,
-      String? bitisTarihi,
-      String? cariKodu,
-      String? donemTipi,
-      int? grupNo,
-      String? irsDahil,
-      String? grupla,
-      String? projeKodu,
-      String? tipi});
+  $Res call({
+    List<String>? arrPlasiyerKodu,
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? cariKodu,
+    String? donemTipi,
+    int? grupNo,
+    String? irsDahil,
+    String? grupla,
+    String? projeKodu,
+    String? tipi,
+  });
 }
 
 /// @nodoc
-class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res,
-        $Val extends UrunGrubunaGoreSatisGrafigiRequestModel>
+class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res, $Val extends UrunGrubunaGoreSatisGrafigiRequestModel>
     implements $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
-  _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl(
-      this._value, this._then);
+  _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -104,48 +99,51 @@ class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res,
     Object? projeKodu = freezed,
     Object? tipi = freezed,
   }) {
-    return _then(_value.copyWith(
-      arrPlasiyerKodu: freezed == arrPlasiyerKodu
-          ? _value.arrPlasiyerKodu
-          : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      donemTipi: freezed == donemTipi
-          ? _value.donemTipi
-          : donemTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupNo: freezed == grupNo
-          ? _value.grupNo
-          : grupNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      irsDahil: freezed == irsDahil
-          ? _value.irsDahil
-          : irsDahil // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupla: freezed == grupla
-          ? _value.grupla
-          : grupla // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            arrPlasiyerKodu: freezed == arrPlasiyerKodu
+                ? _value.arrPlasiyerKodu
+                : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+                      as List<String>?,
+            baslamaTarihi: freezed == baslamaTarihi
+                ? _value.baslamaTarihi
+                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bitisTarihi: freezed == bitisTarihi
+                ? _value.bitisTarihi
+                : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            donemTipi: freezed == donemTipi
+                ? _value.donemTipi
+                : donemTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            grupNo: freezed == grupNo
+                ? _value.grupNo
+                : grupNo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            irsDahil: freezed == irsDahil
+                ? _value.irsDahil
+                : irsDahil // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            grupla: freezed == grupla
+                ? _value.grupla
+                : grupla // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            projeKodu: freezed == projeKodu
+                ? _value.projeKodu
+                : projeKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tipi: freezed == tipi
+                ? _value.tipi
+                : tipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -153,33 +151,33 @@ class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res,
 abstract class _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<$Res>
     implements $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
   factory _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith(
-          _$UrunGrubunaGoreSatisGrafigiRequestModelImpl value,
-          $Res Function(_$UrunGrubunaGoreSatisGrafigiRequestModelImpl) then) =
-      __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>;
+    _$UrunGrubunaGoreSatisGrafigiRequestModelImpl value,
+    $Res Function(_$UrunGrubunaGoreSatisGrafigiRequestModelImpl) then,
+  ) = __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<String>? arrPlasiyerKodu,
-      String? baslamaTarihi,
-      String? bitisTarihi,
-      String? cariKodu,
-      String? donemTipi,
-      int? grupNo,
-      String? irsDahil,
-      String? grupla,
-      String? projeKodu,
-      String? tipi});
+  $Res call({
+    List<String>? arrPlasiyerKodu,
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? cariKodu,
+    String? donemTipi,
+    int? grupNo,
+    String? irsDahil,
+    String? grupla,
+    String? projeKodu,
+    String? tipi,
+  });
 }
 
 /// @nodoc
 class __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>
-    extends _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res,
-        _$UrunGrubunaGoreSatisGrafigiRequestModelImpl>
+    extends _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res, _$UrunGrubunaGoreSatisGrafigiRequestModelImpl>
     implements _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<$Res> {
   __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl(
-      _$UrunGrubunaGoreSatisGrafigiRequestModelImpl _value,
-      $Res Function(_$UrunGrubunaGoreSatisGrafigiRequestModelImpl) _then)
-      : super(_value, _then);
+    _$UrunGrubunaGoreSatisGrafigiRequestModelImpl _value,
+    $Res Function(_$UrunGrubunaGoreSatisGrafigiRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -197,71 +195,71 @@ class __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>
     Object? projeKodu = freezed,
     Object? tipi = freezed,
   }) {
-    return _then(_$UrunGrubunaGoreSatisGrafigiRequestModelImpl(
-      arrPlasiyerKodu: freezed == arrPlasiyerKodu
-          ? _value.arrPlasiyerKodu
-          : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      donemTipi: freezed == donemTipi
-          ? _value.donemTipi
-          : donemTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupNo: freezed == grupNo
-          ? _value.grupNo
-          : grupNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      irsDahil: freezed == irsDahil
-          ? _value.irsDahil
-          : irsDahil // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupla: freezed == grupla
-          ? _value.grupla
-          : grupla // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$UrunGrubunaGoreSatisGrafigiRequestModelImpl(
+        arrPlasiyerKodu: freezed == arrPlasiyerKodu
+            ? _value.arrPlasiyerKodu
+            : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
+        baslamaTarihi: freezed == baslamaTarihi
+            ? _value.baslamaTarihi
+            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bitisTarihi: freezed == bitisTarihi
+            ? _value.bitisTarihi
+            : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        donemTipi: freezed == donemTipi
+            ? _value.donemTipi
+            : donemTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        grupNo: freezed == grupNo
+            ? _value.grupNo
+            : grupNo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        irsDahil: freezed == irsDahil
+            ? _value.irsDahil
+            : irsDahil // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        grupla: freezed == grupla
+            ? _value.grupla
+            : grupla // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        projeKodu: freezed == projeKodu
+            ? _value.projeKodu
+            : projeKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tipi: freezed == tipi
+            ? _value.tipi
+            : tipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$UrunGrubunaGoreSatisGrafigiRequestModelImpl
-    extends _UrunGrubunaGoreSatisGrafigiRequestModel {
-  _$UrunGrubunaGoreSatisGrafigiRequestModelImpl(
-      {this.arrPlasiyerKodu,
-      this.baslamaTarihi,
-      this.bitisTarihi,
-      this.cariKodu,
-      this.donemTipi,
-      this.grupNo,
-      this.irsDahil,
-      this.grupla,
-      this.projeKodu,
-      this.tipi})
-      : super._();
+class _$UrunGrubunaGoreSatisGrafigiRequestModelImpl extends _UrunGrubunaGoreSatisGrafigiRequestModel {
+  _$UrunGrubunaGoreSatisGrafigiRequestModelImpl({
+    this.arrPlasiyerKodu,
+    this.baslamaTarihi,
+    this.bitisTarihi,
+    this.cariKodu,
+    this.donemTipi,
+    this.grupNo,
+    this.irsDahil,
+    this.grupla,
+    this.projeKodu,
+    this.tipi,
+  }) : super._();
 
-  factory _$UrunGrubunaGoreSatisGrafigiRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$UrunGrubunaGoreSatisGrafigiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UrunGrubunaGoreSatisGrafigiRequestModelImplFromJson(json);
 
   @override
@@ -290,37 +288,34 @@ class _$UrunGrubunaGoreSatisGrafigiRequestModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<
-          _$UrunGrubunaGoreSatisGrafigiRequestModelImpl>
-      get copyWith =>
-          __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<
-              _$UrunGrubunaGoreSatisGrafigiRequestModelImpl>(this, _$identity);
+  _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<_$UrunGrubunaGoreSatisGrafigiRequestModelImpl> get copyWith =>
+      __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<_$UrunGrubunaGoreSatisGrafigiRequestModelImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UrunGrubunaGoreSatisGrafigiRequestModelImplToJson(
-      this,
-    );
+    return _$$UrunGrubunaGoreSatisGrafigiRequestModelImplToJson(this);
   }
 }
 
-abstract class _UrunGrubunaGoreSatisGrafigiRequestModel
-    extends UrunGrubunaGoreSatisGrafigiRequestModel {
-  factory _UrunGrubunaGoreSatisGrafigiRequestModel(
-      {List<String>? arrPlasiyerKodu,
-      String? baslamaTarihi,
-      String? bitisTarihi,
-      String? cariKodu,
-      String? donemTipi,
-      int? grupNo,
-      String? irsDahil,
-      String? grupla,
-      String? projeKodu,
-      String? tipi}) = _$UrunGrubunaGoreSatisGrafigiRequestModelImpl;
+abstract class _UrunGrubunaGoreSatisGrafigiRequestModel extends UrunGrubunaGoreSatisGrafigiRequestModel {
+  factory _UrunGrubunaGoreSatisGrafigiRequestModel({
+    List<String>? arrPlasiyerKodu,
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? cariKodu,
+    String? donemTipi,
+    int? grupNo,
+    String? irsDahil,
+    String? grupla,
+    String? projeKodu,
+    String? tipi,
+  }) = _$UrunGrubunaGoreSatisGrafigiRequestModelImpl;
   _UrunGrubunaGoreSatisGrafigiRequestModel._() : super._();
 
-  factory _UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(
-          Map<String, dynamic> json) =
+  factory _UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(Map<String, dynamic> json) =
       _$UrunGrubunaGoreSatisGrafigiRequestModelImpl.fromJson;
 
   @override
@@ -358,7 +353,6 @@ abstract class _UrunGrubunaGoreSatisGrafigiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<
-          _$UrunGrubunaGoreSatisGrafigiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<_$UrunGrubunaGoreSatisGrafigiRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

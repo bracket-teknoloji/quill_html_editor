@@ -26,22 +26,20 @@ final class _DekontlarCardState extends BaseState<DekontlarCard> {
       onTap: () async => dekontBottomSheet(model),
       title: Row(children: [Text(model.title), const Spacer(), Text(model.tarih.toDateString)]),
       subtitle: LayoutBuilder(
-        builder:
-            (context, constraints) => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        builder: (context, constraints) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(model.seriAdi ?? ""),
+            Wrap(
               children: [
-                Text(model.seriAdi ?? ""),
-                Wrap(
-                  children:
-                      [
-                        Text(
-                          "Tutar:\n${(model.borcToplami ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        ),
-                        Text("Kalem Sayısı:\n${model.kalemSayisi ?? "0"}"),
-                      ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
+                Text(
+                  "Tutar:\n${(model.borcToplami ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                 ),
-              ],
+                Text("Kalem Sayısı:\n${model.kalemSayisi ?? "0"}"),
+              ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
             ),
+          ],
+        ),
       ),
     ),
   );

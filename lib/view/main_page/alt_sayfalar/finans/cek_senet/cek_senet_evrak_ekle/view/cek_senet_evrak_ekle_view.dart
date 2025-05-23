@@ -83,10 +83,9 @@ final class _CekSenetEvrakEkleViewState extends BaseState<CekSenetEvrakEkleView>
         ),
         Center(
           child: Observer(
-            builder:
-                (_) => Text(
-                  "Boyut: ${((viewModel.model.boyutByte ?? 0) / 1024).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} kb",
-                ),
+            builder: (_) => Text(
+              "Boyut: ${((viewModel.model.boyutByte ?? 0) / 1024).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} kb",
+            ),
           ),
         ),
         CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),

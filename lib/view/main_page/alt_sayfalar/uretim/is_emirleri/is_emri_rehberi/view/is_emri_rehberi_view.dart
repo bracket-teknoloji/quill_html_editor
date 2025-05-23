@@ -111,116 +111,103 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   );
 
   Observer fab() => Observer(
-    builder:
-        (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async {
-            Get.toNamed(
-              "/mainPage/isEmriEdit",
-              arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.ekle),
-            );
-          },
-        ),
+    builder: (_) => CustomFloatingActionButton(
+      isScrolledDown: viewModel.isScrollDown,
+      onPressed: () async {
+        Get.toNamed("/mainPage/isEmriEdit", arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.ekle));
+      },
+    ),
   );
 
   Widget body() => Observer(
-    builder:
-        (_) => RefreshableListView.pageable(
-          scrollController: _scrollController,
-          dahaVarMi: viewModel.dahaVarMi,
-          onRefresh: viewModel.resetList,
-          items: viewModel.observableList,
-          itemBuilder:
-              (item) => Card(
-                color: item.cardColor?.withValues(alpha: 0.3),
-                child: ListTile(
+    builder: (_) => RefreshableListView.pageable(
+      scrollController: _scrollController,
+      dahaVarMi: viewModel.dahaVarMi,
+      onRefresh: viewModel.resetList,
+      items: viewModel.observableList,
+      itemBuilder: (item) => Card(
+        color: item.cardColor?.withValues(alpha: 0.3),
+        child: ListTile(
+          onTap: () {
+            if (widget.isGetData ?? false) {
+              Get.back(result: item);
+              return;
+            }
+            bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: item.isemriNo ?? "",
+              children: [
+                BottomSheetModel(
+                  title: loc.generalStrings.view,
+                  iconWidget: Icons.preview_outlined,
                   onTap: () {
-                    if (widget.isGetData ?? false) {
-                      Get.back(result: item);
-                      return;
-                    }
-                    bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: item.isemriNo ?? "",
-                      children: [
-                        BottomSheetModel(
-                          title: loc.generalStrings.view,
-                          iconWidget: Icons.preview_outlined,
-                          onTap: () {
-                            Get.back();
-                            return Get.toNamed(
-                              "/mainPage/isEmriEdit",
-                              arguments: BaseEditModel<IsEmirleriModel>(
-                                baseEditEnum: BaseEditEnum.goruntule,
-                                model: item,
-                              ),
-                            );
-                          },
-                        ),
-                        BottomSheetModel(
-                          title: loc.generalStrings.edit,
-                          iconWidget: Icons.edit_outlined,
-                          onTap: () async {
-                            Get
-                              ..back()
-                              ..toNamed(
-                                "/mainPage/isEmriEdit",
-                                arguments: BaseEditModel<IsEmirleriModel>(
-                                  baseEditEnum: BaseEditEnum.duzenle,
-                                  model: item,
-                                ),
-                              );
-                          },
-                        ),
-                        BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete_outline_outlined),
-                        BottomSheetModel(
-                          title: "Stok İşlemleri",
-                          iconWidget: Icons.list_alt_outlined,
-                          onTap: () async {
-                            Get.back();
-                            dialogManager.showStokGridViewDialog(
-                              await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
-                            );
-                          },
-                        ),
-                      ],
+                    Get.back();
+                    return Get.toNamed(
+                      "/mainPage/isEmriEdit",
+                      arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: item),
                     );
                   },
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text(item.isemriNo ?? ""), Text(item.tarih.toDateString)],
-                  ),
-                  subtitle: Column(
-                    children: [
-                      Row(
-                        children:
-                            [
-                              if (item.kapali == "E")
-                                const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
-                              if (item.rework == "E")
-                                const ColorfulBadge(label: Text("Rework"), badgeColorEnum: BadgeColorEnum.rework),
-                            ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
-                      ),
-                      CustomLayoutBuilder(
-                        splitCount: 2,
-                        children: [
-                          Text("Stok Kodu: ${item.stokKodu ?? ""}"),
-                          Text("YapKod: ${item.yapkod ?? ""}"),
-                          Text(
-                            "Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.stokOlcuBirimi ?? ""}",
-                          ),
-                          Text("Üretilen: ${item.tamamlanan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                          Text("Kalan Miktar: ${item.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                          Text("Proje Kodu: ${item.projeKodu ?? ""}"),
-                          Text("Teslim Tarihi: ${item.teslimTarihi.toDateString}"),
-                          if (item.girisDepo != null) Text("Giriş Depo: ${item.girisDepo} - ${item.girisDepoAdi}"),
-                          if (item.cikisDepo != null) Text("Çıkış Depo: ${item.cikisDepo} - ${item.cikisDepoAdi}"),
-                        ],
-                      ),
-                    ],
-                  ),
                 ),
+                BottomSheetModel(
+                  title: loc.generalStrings.edit,
+                  iconWidget: Icons.edit_outlined,
+                  onTap: () async {
+                    Get
+                      ..back()
+                      ..toNamed(
+                        "/mainPage/isEmriEdit",
+                        arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
+                      );
+                  },
+                ),
+                BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete_outline_outlined),
+                BottomSheetModel(
+                  title: "Stok İşlemleri",
+                  iconWidget: Icons.list_alt_outlined,
+                  onTap: () async {
+                    Get.back();
+                    dialogManager.showStokGridViewDialog(
+                      await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [Text(item.isemriNo ?? ""), Text(item.tarih.toDateString)],
+          ),
+          subtitle: Column(
+            children: [
+              Row(
+                children: [
+                  if (item.kapali == "E")
+                    const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
+                  if (item.rework == "E")
+                    const ColorfulBadge(label: Text("Rework"), badgeColorEnum: BadgeColorEnum.rework),
+                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
               ),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  Text("Stok Kodu: ${item.stokKodu ?? ""}"),
+                  Text("YapKod: ${item.yapkod ?? ""}"),
+                  Text(
+                    "Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.stokOlcuBirimi ?? ""}",
+                  ),
+                  Text("Üretilen: ${item.tamamlanan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  Text("Kalan Miktar: ${item.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  Text("Proje Kodu: ${item.projeKodu ?? ""}"),
+                  Text("Teslim Tarihi: ${item.teslimTarihi.toDateString}"),
+                  if (item.girisDepo != null) Text("Giriş Depo: ${item.girisDepo} - ${item.girisDepoAdi}"),
+                  if (item.cikisDepo != null) Text("Çıkış Depo: ${item.cikisDepo} - ${item.cikisDepoAdi}"),
+                ],
+              ),
+            ],
+          ),
         ),
+      ),
+    ),
   );
 }

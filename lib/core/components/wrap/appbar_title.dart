@@ -41,17 +41,15 @@ final class AppBarTitle extends StatelessWidget {
       ),
       if (subtitle != null)
         SizedBox(
-          width:
-              context.device.isLargeScreen
-                  ? MediaQuery.sizeOf(context).width * 0.35
-                  : MediaQuery.sizeOf(context).width * 0.65,
+          width: context.device.isLargeScreen
+              ? MediaQuery.sizeOf(context).width * 0.35
+              : MediaQuery.sizeOf(context).width * 0.65,
           child: Text(
             subtitle ?? "",
             overflow: TextOverflow.ellipsis,
-            style:
-                (isSubTitleSmall != null && (isSubTitleSmall ?? false))
-                    ? Theme.of(context).textTheme.labelSmall
-                    : Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 14),
+            style: (isSubTitleSmall != null && (isSubTitleSmall ?? false))
+                ? Theme.of(context).textTheme.labelSmall
+                : Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 14),
           ),
         ),
     ],

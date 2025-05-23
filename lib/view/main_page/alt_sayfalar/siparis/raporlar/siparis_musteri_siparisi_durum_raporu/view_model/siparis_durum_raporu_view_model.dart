@@ -69,11 +69,10 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   ObservableList<KalemModel?>? kalemList;
 
   @computed
-  ObservableList<KalemModel?>? get kalemListComputed =>
-      kalemList
-          ?.where((element) => element?.stokAdi?.toUpperCase().contains(searchKey?.toUpperCase() ?? "") ?? false)
-          .toList()
-          .asObservable();
+  ObservableList<KalemModel?>? get kalemListComputed => kalemList
+      ?.where((element) => element?.stokAdi?.toUpperCase().contains(searchKey?.toUpperCase() ?? "") ?? false)
+      .toList()
+      .asObservable();
 
   @action
   void setKalemList(List<KalemModel?>? value) => kalemList = value?.asObservable();

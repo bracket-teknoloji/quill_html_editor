@@ -12,7 +12,8 @@ part of 'stok_fiyati_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 StokFiyatiModel _$StokFiyatiModelFromJson(Map<String, dynamic> json) {
   return _StokFiyatiModel.fromJson(json);
@@ -33,28 +34,19 @@ mixin _$StokFiyatiModel {
   /// Create a copy of StokFiyatiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $StokFiyatiModelCopyWith<StokFiyatiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StokFiyatiModelCopyWith<StokFiyatiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StokFiyatiModelCopyWith<$Res> {
-  factory $StokFiyatiModelCopyWith(
-          StokFiyatiModel value, $Res Function(StokFiyatiModel) then) =
+  factory $StokFiyatiModelCopyWith(StokFiyatiModel value, $Res Function(StokFiyatiModel) then) =
       _$StokFiyatiModelCopyWithImpl<$Res, StokFiyatiModel>;
   @useResult
-  $Res call(
-      {double? fiyat,
-      String? yer,
-      int? fiyatSirasi,
-      String? stokKodu,
-      String? cariKodu,
-      DateTime? tarih});
+  $Res call({double? fiyat, String? yer, int? fiyatSirasi, String? stokKodu, String? cariKodu, DateTime? tarih});
 }
 
 /// @nodoc
-class _$StokFiyatiModelCopyWithImpl<$Res, $Val extends StokFiyatiModel>
-    implements $StokFiyatiModelCopyWith<$Res> {
+class _$StokFiyatiModelCopyWithImpl<$Res, $Val extends StokFiyatiModel> implements $StokFiyatiModelCopyWith<$Res> {
   _$StokFiyatiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -74,59 +66,52 @@ class _$StokFiyatiModelCopyWithImpl<$Res, $Val extends StokFiyatiModel>
     Object? cariKodu = freezed,
     Object? tarih = freezed,
   }) {
-    return _then(_value.copyWith(
-      fiyat: freezed == fiyat
-          ? _value.fiyat
-          : fiyat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      yer: freezed == yer
-          ? _value.yer
-          : yer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fiyatSirasi: freezed == fiyatSirasi
-          ? _value.fiyatSirasi
-          : fiyatSirasi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            fiyat: freezed == fiyat
+                ? _value.fiyat
+                : fiyat // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            yer: freezed == yer
+                ? _value.yer
+                : yer // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            fiyatSirasi: freezed == fiyatSirasi
+                ? _value.fiyatSirasi
+                : fiyatSirasi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$StokFiyatiModelImplCopyWith<$Res>
-    implements $StokFiyatiModelCopyWith<$Res> {
-  factory _$$StokFiyatiModelImplCopyWith(_$StokFiyatiModelImpl value,
-          $Res Function(_$StokFiyatiModelImpl) then) =
+abstract class _$$StokFiyatiModelImplCopyWith<$Res> implements $StokFiyatiModelCopyWith<$Res> {
+  factory _$$StokFiyatiModelImplCopyWith(_$StokFiyatiModelImpl value, $Res Function(_$StokFiyatiModelImpl) then) =
       __$$StokFiyatiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {double? fiyat,
-      String? yer,
-      int? fiyatSirasi,
-      String? stokKodu,
-      String? cariKodu,
-      DateTime? tarih});
+  $Res call({double? fiyat, String? yer, int? fiyatSirasi, String? stokKodu, String? cariKodu, DateTime? tarih});
 }
 
 /// @nodoc
-class __$$StokFiyatiModelImplCopyWithImpl<$Res>
-    extends _$StokFiyatiModelCopyWithImpl<$Res, _$StokFiyatiModelImpl>
+class __$$StokFiyatiModelImplCopyWithImpl<$Res> extends _$StokFiyatiModelCopyWithImpl<$Res, _$StokFiyatiModelImpl>
     implements _$$StokFiyatiModelImplCopyWith<$Res> {
-  __$$StokFiyatiModelImplCopyWithImpl(
-      _$StokFiyatiModelImpl _value, $Res Function(_$StokFiyatiModelImpl) _then)
-      : super(_value, _then);
+  __$$StokFiyatiModelImplCopyWithImpl(_$StokFiyatiModelImpl _value, $Res Function(_$StokFiyatiModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of StokFiyatiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -140,49 +125,43 @@ class __$$StokFiyatiModelImplCopyWithImpl<$Res>
     Object? cariKodu = freezed,
     Object? tarih = freezed,
   }) {
-    return _then(_$StokFiyatiModelImpl(
-      fiyat: freezed == fiyat
-          ? _value.fiyat
-          : fiyat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      yer: freezed == yer
-          ? _value.yer
-          : yer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fiyatSirasi: freezed == fiyatSirasi
-          ? _value.fiyatSirasi
-          : fiyatSirasi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ));
+    return _then(
+      _$StokFiyatiModelImpl(
+        fiyat: freezed == fiyat
+            ? _value.fiyat
+            : fiyat // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        yer: freezed == yer
+            ? _value.yer
+            : yer // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        fiyatSirasi: freezed == fiyatSirasi
+            ? _value.fiyatSirasi
+            : fiyatSirasi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$StokFiyatiModelImpl extends _StokFiyatiModel {
-  _$StokFiyatiModelImpl(
-      {this.fiyat,
-      this.yer,
-      this.fiyatSirasi,
-      this.stokKodu,
-      this.cariKodu,
-      this.tarih})
-      : super._();
+  _$StokFiyatiModelImpl({this.fiyat, this.yer, this.fiyatSirasi, this.stokKodu, this.cariKodu, this.tarih}) : super._();
 
-  factory _$StokFiyatiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StokFiyatiModelImplFromJson(json);
+  factory _$StokFiyatiModelImpl.fromJson(Map<String, dynamic> json) => _$$StokFiyatiModelImplFromJson(json);
 
   @override
   final double? fiyat;
@@ -203,29 +182,26 @@ class _$StokFiyatiModelImpl extends _StokFiyatiModel {
   @override
   @pragma('vm:prefer-inline')
   _$$StokFiyatiModelImplCopyWith<_$StokFiyatiModelImpl> get copyWith =>
-      __$$StokFiyatiModelImplCopyWithImpl<_$StokFiyatiModelImpl>(
-          this, _$identity);
+      __$$StokFiyatiModelImplCopyWithImpl<_$StokFiyatiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StokFiyatiModelImplToJson(
-      this,
-    );
+    return _$$StokFiyatiModelImplToJson(this);
   }
 }
 
 abstract class _StokFiyatiModel extends StokFiyatiModel {
-  factory _StokFiyatiModel(
-      {final double? fiyat,
-      final String? yer,
-      final int? fiyatSirasi,
-      final String? stokKodu,
-      final String? cariKodu,
-      final DateTime? tarih}) = _$StokFiyatiModelImpl;
+  factory _StokFiyatiModel({
+    final double? fiyat,
+    final String? yer,
+    final int? fiyatSirasi,
+    final String? stokKodu,
+    final String? cariKodu,
+    final DateTime? tarih,
+  }) = _$StokFiyatiModelImpl;
   _StokFiyatiModel._() : super._();
 
-  factory _StokFiyatiModel.fromJson(Map<String, dynamic> json) =
-      _$StokFiyatiModelImpl.fromJson;
+  factory _StokFiyatiModel.fromJson(Map<String, dynamic> json) = _$StokFiyatiModelImpl.fromJson;
 
   @override
   double? get fiyat;
@@ -244,6 +220,5 @@ abstract class _StokFiyatiModel extends StokFiyatiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StokFiyatiModelImplCopyWith<_$StokFiyatiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StokFiyatiModelImplCopyWith<_$StokFiyatiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

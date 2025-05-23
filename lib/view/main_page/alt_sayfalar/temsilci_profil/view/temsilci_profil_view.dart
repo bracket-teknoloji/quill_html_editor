@@ -72,28 +72,26 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Observer(
-                  builder:
-                      (_) => SlideControllerWidget(
-                        title: "İade Durumu",
-                        childrenTitleList: const <String>["Hariç", "Dahil", "Sadece İadeler"],
-                        filterOnChanged: (value) => viewModel.setIadeDurumuValueList(value ?? 0),
-                        childrenValueList: viewModel.iadeDurumuValueList,
-                        groupValue: viewModel.iadeDurumuValueList.firstWhereOrNull((element) => element),
-                      ),
+                  builder: (_) => SlideControllerWidget(
+                    title: "İade Durumu",
+                    childrenTitleList: const <String>["Hariç", "Dahil", "Sadece İadeler"],
+                    filterOnChanged: (value) => viewModel.setIadeDurumuValueList(value ?? 0),
+                    childrenValueList: viewModel.iadeDurumuValueList,
+                    groupValue: viewModel.iadeDurumuValueList.firstWhereOrNull((element) => element),
+                  ),
                 ),
                 Observer(
-                  builder:
-                      (_) => SlideControllerWidget(
-                        title: "Dönem",
-                        childrenTitleList: <String>[
-                          "Şirket Yılı (${CacheManager.getAnaVeri?.sirketModel?.yil ?? ""})",
-                          "Bu Yıl (${DateTime.now().year})",
-                          "Geçen Yıl (${DateTime.now().year - 1})",
-                        ],
-                        filterOnChanged: (value) => viewModel.setDonemValueList(value ?? 0),
-                        childrenValueList: viewModel.donemValueList,
-                        groupValue: viewModel.donemValueList.firstWhereOrNull((element) => element),
-                      ),
+                  builder: (_) => SlideControllerWidget(
+                    title: "Dönem",
+                    childrenTitleList: <String>[
+                      "Şirket Yılı (${CacheManager.getAnaVeri?.sirketModel?.yil ?? ""})",
+                      "Bu Yıl (${DateTime.now().year})",
+                      "Geçen Yıl (${DateTime.now().year - 1})",
+                    ],
+                    filterOnChanged: (value) => viewModel.setDonemValueList(value ?? 0),
+                    childrenValueList: viewModel.donemValueList,
+                    groupValue: viewModel.donemValueList.firstWhereOrNull((element) => element),
+                  ),
                 ),
                 CustomTextField(
                   labelText: "Cari VKN",
@@ -158,11 +156,10 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                           isVertical: true,
                           text: "KDV Dahil",
                           child: Observer(
-                            builder:
-                                (_) => Switch.adaptive(
-                                  value: viewModel.kdvDahil,
-                                  onChanged: (value) => viewModel.setKDVDahil(value),
-                                ),
+                            builder: (_) => Switch.adaptive(
+                              value: viewModel.kdvDahil,
+                              onChanged: (value) => viewModel.setKDVDahil(value),
+                            ),
                           ),
                         ).paddingAll(UIHelper.lowSize),
                       ),
@@ -171,11 +168,10 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         isVertical: true,
                         text: "İrsaliyeler Dahil",
                         child: Observer(
-                          builder:
-                              (_) => Switch.adaptive(
-                                value: viewModel.irsaliyelerDahil,
-                                onChanged: (value) => viewModel.setIrsaliyelerDahil(value),
-                              ),
+                          builder: (_) => Switch.adaptive(
+                            value: viewModel.irsaliyelerDahil,
+                            onChanged: (value) => viewModel.setIrsaliyelerDahil(value),
+                          ),
                         ),
                       ).paddingAll(UIHelper.lowSize),
                     ),
@@ -198,50 +194,48 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
   );
 
   Observer body(BuildContext context) => Observer(
-    builder:
-        (_) =>
-            viewModel.temsilciProfilList == null
-                ? const Center(child: CircularProgressIndicator.adaptive())
-                : viewModel.temsilciProfilList!.isEmpty
-                ? const Center(child: Text("Kayıt Bulunamadı"))
-                : Column(
-                  children: [
-                    Card(
-                      child: Column(
-                        children: <Widget>[
-                          ListTile(
-                            leading: const Icon(Icons.info_outline),
-                            title: Observer(builder: (_) => Text(" ${viewModel.aciklama ?? ""}")),
-                          ),
-                        ],
-                      ),
-                    ).paddingAll(UIHelper.lowSize),
-                    if (kIsWeb && context.isLandscape)
-                      Container(
-                        constraints: BoxConstraints(maxHeight: height * 0.8),
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          itemExtent: context.isPortrait ? width / 1.3 : height / 1.3,
-                          // shrinkExtent: width / 4,
-                          // elevation: 0.9,
-                          padding: const EdgeInsets.only(
-                            top: UIHelper.lowSize,
-                            bottom: UIHelper.lowSize,
-                            right: UIHelper.lowSize,
-                          ),
-                          // itemSnapping: true,
-                          // shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius)),
-                          children: [satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
-                        ),
-                      )
-                    else
-                      Expanded(
-                        child: ListView(
-                          children: <Widget>[satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
-                        ).paddingAll(UIHelper.lowSize),
-                      ),
+    builder: (_) => viewModel.temsilciProfilList == null
+        ? const Center(child: CircularProgressIndicator.adaptive())
+        : viewModel.temsilciProfilList!.isEmpty
+        ? const Center(child: Text("Kayıt Bulunamadı"))
+        : Column(
+            children: [
+              Card(
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: const Icon(Icons.info_outline),
+                      title: Observer(builder: (_) => Text(" ${viewModel.aciklama ?? ""}")),
+                    ),
                   ],
                 ),
+              ).paddingAll(UIHelper.lowSize),
+              if (kIsWeb && context.isLandscape)
+                Container(
+                  constraints: BoxConstraints(maxHeight: height * 0.8),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    itemExtent: context.isPortrait ? width / 1.3 : height / 1.3,
+                    // shrinkExtent: width / 4,
+                    // elevation: 0.9,
+                    padding: const EdgeInsets.only(
+                      top: UIHelper.lowSize,
+                      bottom: UIHelper.lowSize,
+                      right: UIHelper.lowSize,
+                    ),
+                    // itemSnapping: true,
+                    // shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius)),
+                    children: [satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
+                  ),
+                )
+              else
+                Expanded(
+                  child: ListView(
+                    children: <Widget>[satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
+                  ).paddingAll(UIHelper.lowSize),
+                ),
+            ],
+          ),
   );
 
   Card tahsilatlarChart() => Card(
@@ -256,10 +250,9 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                   context,
                   groupValue: viewModel.tahsilatDonemKodu,
                   title: "Dönem",
-                  children:
-                      viewModel.aylar
-                          .map((e) => BottomSheetModel(title: e.name, value: e, groupValue: e.value))
-                          .toList(),
+                  children: viewModel.aylar
+                      .map((e) => BottomSheetModel(title: e.name, value: e, groupValue: e.value))
+                      .toList(),
                 );
                 if (result != null) {
                   viewModel.setTahsilatDonemKodu(result.value);
@@ -271,58 +264,52 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
           ],
         ).paddingAll(UIHelper.lowSize),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Nakit"),
-                trailing: Text(
-                  "${viewModel.getNakitTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Nakit"),
+            trailing: Text(
+              "${viewModel.getNakitTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Kredi Kartı"),
-                trailing: Text(
-                  "${viewModel.getKrediKartiTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Kredi Kartı"),
+            trailing: Text(
+              "${viewModel.getKrediKartiTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Çek"),
-                trailing: Text(
-                  "${viewModel.getCekTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Çek"),
+            trailing: Text(
+              "${viewModel.getCekTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Senet"),
-                trailing: Text(
-                  "${viewModel.getSenetTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Senet"),
+            trailing: Text(
+              "${viewModel.getSenetTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Dekont"),
-                trailing: Text(
-                  "${viewModel.getDekontTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Dekont"),
+            trailing: Text(
+              "${viewModel.getDekontTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Toplam"),
-                trailing: Text(
-                  "${viewModel.getToplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Toplam"),
+            trailing: Text(
+              "${viewModel.getToplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         if (!yetkiController.temsilciProfilSatisPerformansiniGizle)
           Observer(
@@ -342,40 +329,36 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
       children: <Widget>[
         const Text("Müşteri Siparişleri", style: TextStyleHelper.title),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bugün"),
-                trailing: Text(
-                  "${viewModel.getBugunSiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bugün"),
+            trailing: Text(
+              "${viewModel.getBugunSiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bu Ay"),
-                trailing: Text(
-                  "${viewModel.getBuAySiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bu Ay"),
+            trailing: Text(
+              "${viewModel.getBuAySiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Geçen Ay"),
-                trailing: Text(
-                  "${viewModel.getGecenAySiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Geçen Ay"),
+            trailing: Text(
+              "${viewModel.getGecenAySiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bu Yıl"),
-                trailing: Text(
-                  "${viewModel.getBuYilSiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bu Yıl"),
+            trailing: Text(
+              "${viewModel.getBuYilSiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         if (!yetkiController.temsilciProfilAylaraGoreSatisiGizle)
           Observer(
@@ -394,47 +377,38 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
     child: Column(
       children: <Widget>[
         Observer(
-          builder:
-              (_) => Text(
-                "Alışlar (Fatura${viewModel.irsaliyelerDahil ? " + İrsaliye" : ""})",
-                style: TextStyleHelper.title,
-              ),
+          builder: (_) =>
+              Text("Alışlar (Fatura${viewModel.irsaliyelerDahil ? " + İrsaliye" : ""})", style: TextStyleHelper.title),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bugün"),
-                trailing: Text(
-                  "${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bugün"),
+            trailing: Text(
+              "${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bu Ay"),
-                trailing: Text(
-                  "${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bu Ay"),
+            trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Geçen Ay"),
-                trailing: Text(
-                  "${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Geçen Ay"),
+            trailing: Text(
+              "${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bu Yıl"),
-                trailing: Text(
-                  "${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bu Yıl"),
+            trailing: Text(
+              "${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
           builder: (_) {
@@ -452,51 +426,44 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
     child: Column(
       children: <Widget>[
         Observer(
-          builder:
-              (_) => Text(
-                "Satışlar (Fatura${viewModel.irsaliyelerDahil ? " + İrsaliye" : ""})",
-                style: TextStyleHelper.title,
-              ),
+          builder: (_) =>
+              Text("Satışlar (Fatura${viewModel.irsaliyelerDahil ? " + İrsaliye" : ""})", style: TextStyleHelper.title),
         ),
         // Observer(builder: (_) => Row(children: [const Text("Bugün"), Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
         // Observer(builder: (_) => Row(children: [const Text("Bu Ay"), Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
         // Observer(builder: (_) => Row(children: [const Text("Geçen Ay"), Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
         // Observer(builder: (_) => Row(children: [const Text("Bu Yıl"), Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bugün"),
-                trailing: Text(
-                  "${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bugün"),
+            trailing: Text(
+              "${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bu Ay"),
-                trailing: Text(
-                  "${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bu Ay"),
+            trailing: Text(
+              "${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Geçen Ay"),
-                trailing: Text(
-                  "${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Geçen Ay"),
+            trailing: Text(
+              "${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Observer(
-          builder:
-              (_) => ListTile(
-                title: const Text("Bu Yıl"),
-                trailing: Text(
-                  "${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-              ),
+          builder: (_) => ListTile(
+            title: const Text("Bu Yıl"),
+            trailing: Text(
+              "${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -508,10 +475,9 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                   context,
                   groupValue: viewModel.donemKodu,
                   title: "Dönem",
-                  children:
-                      viewModel.aylar
-                          .map((e) => BottomSheetModel(title: e.name, value: e, groupValue: e.value))
-                          .toList(),
+                  children: viewModel.aylar
+                      .map((e) => BottomSheetModel(title: e.name, value: e, groupValue: e.value))
+                      .toList(),
                 );
                 if (result != null) {
                   viewModel.setDonemKodu(result.value);

@@ -55,11 +55,9 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
 
   AppBar _appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) =>
-              viewModel.isSearchBarOpen
-                  ? CustomAppBarTextField(onChanged: viewModel.setSearchText)
-                  : AppBarTitle(title: "Belge Kontrol", subtitle: "${viewModel.filteredList?.length ?? 0}"),
+      builder: (_) => viewModel.isSearchBarOpen
+          ? CustomAppBarTextField(onChanged: viewModel.setSearchText)
+          : AppBarTitle(title: "Belge Kontrol", subtitle: "${viewModel.filteredList?.length ?? 0}"),
     ),
     actions: [
       IconButton(
@@ -95,109 +93,103 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
       CustomWidgetWithLabel(
         text: "Tamamlanma Durumu",
         child: Observer(
-          builder:
-              (_) => SlideControllerWidget(
-                childrenTitleList: ["Tümü", "Kalan", "Tamamlanan"],
-                filterOnChanged: (index) {
-                  viewModel
-                    ..setFilterValue(["T", "K", "B"][index ?? 0])
-                    ..resetList();
-                },
-                childrenValueList: ["T", "K", "B"],
-                groupValue: viewModel.requestModel.durum,
-              ),
+          builder: (_) => SlideControllerWidget(
+            childrenTitleList: ["Tümü", "Kalan", "Tamamlanan"],
+            filterOnChanged: (index) {
+              viewModel
+                ..setFilterValue(["T", "K", "B"][index ?? 0])
+                ..resetList();
+            },
+            childrenValueList: ["T", "K", "B"],
+            groupValue: viewModel.requestModel.durum,
+          ),
         ),
       ),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: () async => viewModel.resetList(),
-                items: viewModel.filteredList,
-                itemBuilder:
-                    (item) => Card(
-                      color: (item.isTamamlandi
-                              ? ColorPalette.mantis
-                              : item.isDevamEdiyor
-                              ? ColorPalette.gamboge
-                              : null)
-                          ?.withValues(alpha: 0.3),
-                      child: ListTile(
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(item.belgeNo ?? ""),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          builder: (_) => RefreshableListView(
+            onRefresh: () async => viewModel.resetList(),
+            items: viewModel.filteredList,
+            itemBuilder: (item) => Card(
+              color:
+                  (item.isTamamlandi
+                          ? ColorPalette.mantis
+                          : item.isDevamEdiyor
+                          ? ColorPalette.gamboge
+                          : null)
+                      ?.withValues(alpha: 0.3),
+              child: ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(item.belgeNo ?? ""),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(item.belgeTarihi?.toDateString ?? ""),
+                        IconButton(
+                          icon: const Icon(Icons.more_vert_outlined),
+                          onPressed: () async {
+                            bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: loc.generalStrings.options,
                               children: [
-                                Text(item.belgeTarihi?.toDateString ?? ""),
-                                IconButton(
-                                  icon: const Icon(Icons.more_vert_outlined),
-                                  onPressed: () async {
-                                    bottomSheetDialogManager.showBottomSheetDialog(
-                                      context,
-                                      title: loc.generalStrings.options,
-                                      children: [
-                                        if (yetkiController.genelBelgeKontrolSil)
-                                          BottomSheetModel(
-                                            title: loc.generalStrings.delete,
-                                            iconWidget: Icons.delete_outline_outlined,
-                                            onTap: () {
-                                              if (item.id case final id?) {
-                                                Get.back();
-                                                dialogManager.showAreYouSureDialog(
-                                                  onYes: () async {
-                                                    final result = await viewModel.deletekontrol(id);
-                                                    if (result.isSuccess) {
-                                                      dialogManager.showSuccessSnackBar(
-                                                        result.message ?? "Başarıyla silindi",
-                                                      );
-                                                      await viewModel.resetList();
-                                                    }
-                                                  },
-                                                );
-                                              }
-                                            },
-                                          ),
-                                      ],
-                                    );
-                                  },
-                                ),
+                                if (yetkiController.genelBelgeKontrolSil)
+                                  BottomSheetModel(
+                                    title: loc.generalStrings.delete,
+                                    iconWidget: Icons.delete_outline_outlined,
+                                    onTap: () {
+                                      if (item.id case final id?) {
+                                        Get.back();
+                                        dialogManager.showAreYouSureDialog(
+                                          onYes: () async {
+                                            final result = await viewModel.deletekontrol(id);
+                                            if (result.isSuccess) {
+                                              dialogManager.showSuccessSnackBar(result.message ?? "Başarıyla silindi");
+                                              await viewModel.resetList();
+                                            }
+                                          },
+                                        );
+                                      }
+                                    },
+                                  ),
                               ],
-                            ),
-                          ],
+                            );
+                          },
                         ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(item.belgeTipiAciklama ?? ""),
-                            if (item.cariAdi case final value?)
-                              Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
-                            CustomLayoutBuilder.divideInHalf(
-                              children: [
-                                Text("Kullanıcı: ${item.kayityapankul ?? ""}"),
-                                Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                                Text(
-                                  "Kont. Miktar: ${item.tamamlananMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                ),
-                                Text(
-                                  "Kalan Miktar: ${item.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                ),
-                              ],
-                            ),
-                            LinearProgressIndicator(
-                              value: (item.tamamlananMiktar ?? 0) / (item.miktar ?? 1),
-                            ).paddingOnly(top: UIHelper.lowSize),
-                            // Text(item.tedarikciKodu ?? ""),
-                          ],
-                        ),
-                        onTap: () async {
-                          await Get.toNamed("/mainPage/belgeKalemler", arguments: item);
-                          viewModel.resetList();
-                        },
-                      ),
+                      ],
                     ),
+                  ],
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item.belgeTipiAciklama ?? ""),
+                    if (item.cariAdi case final value?)
+                      Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
+                    CustomLayoutBuilder.divideInHalf(
+                      children: [
+                        Text("Kullanıcı: ${item.kayityapankul ?? ""}"),
+                        Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text(
+                          "Kont. Miktar: ${item.tamamlananMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                        ),
+                        Text("Kalan Miktar: ${item.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                      ],
+                    ),
+                    LinearProgressIndicator(
+                      value: (item.tamamlananMiktar ?? 0) / (item.miktar ?? 1),
+                    ).paddingOnly(top: UIHelper.lowSize),
+                    // Text(item.tedarikciKodu ?? ""),
+                  ],
+                ),
+                onTap: () async {
+                  await Get.toNamed("/mainPage/belgeKalemler", arguments: item);
+                  viewModel.resetList();
+                },
               ),
+            ),
+          ),
         ),
       ),
     ],

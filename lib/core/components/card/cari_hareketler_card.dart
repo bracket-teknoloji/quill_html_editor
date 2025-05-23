@@ -78,15 +78,14 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
     ];
     return InkWell(
       onTap: widget.onTap ?? () {},
-      onLongPress:
-          () async => await dialogManager.showCariHareketleriGridViewDialog(
-            CariListesiModel.fromCariHareketleriModel(widget.cariHareketleriModel),
-            onSelected: (value) async {
-              // if (value == true) {
-              //   await widget.
-              // }
-            },
-          ),
+      onLongPress: () async => await dialogManager.showCariHareketleriGridViewDialog(
+        CariListesiModel.fromCariHareketleriModel(widget.cariHareketleriModel),
+        onSelected: (value) async {
+          // if (value == true) {
+          //   await widget.
+          // }
+        },
+      ),
       child: IntrinsicHeight(
         child: Card(
           child: Slidable(
@@ -140,16 +139,14 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
                 style: TextStyle(color: theme.colorScheme.primary),
               ),
               Row(
-                children:
-                    [
-                      if (widget.cariHareketleriModel.alacakMi)
-                        const ColorfulBadge(label: Text("Alacak"), badgeColorEnum: BadgeColorEnum.basarili),
-                      if (!widget.cariHareketleriModel.alacakMi)
-                        const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata),
-                      if (widget.cariHareketleriModel.dovizAlacak != null ||
-                          widget.cariHareketleriModel.dovizBorc != null)
-                        const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
-                    ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
+                children: [
+                  if (widget.cariHareketleriModel.alacakMi)
+                    const ColorfulBadge(label: Text("Alacak"), badgeColorEnum: BadgeColorEnum.basarili),
+                  if (!widget.cariHareketleriModel.alacakMi)
+                    const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata),
+                  if (widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
+                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
               ),
             ],
           ),

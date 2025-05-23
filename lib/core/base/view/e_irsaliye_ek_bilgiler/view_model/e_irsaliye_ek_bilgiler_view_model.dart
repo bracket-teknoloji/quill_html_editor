@@ -22,19 +22,19 @@ abstract class _EIrsaliyeEkBilgilerViewModelBase with Store {
   void setSevkTarihi(DateTime? sevkTarihi) => model = model.copyWith(sevktar: sevkTarihi);
 
   @action
-  void setSevkSaati(TimeOfDay? sevkSaati) =>
-      model = model.copyWith(sevktar: model.sevktar?.copyWith(hour: sevkSaati!.hour, minute: sevkSaati.minute));
+  void setSevkSaati(TimeOfDay? sevkSaati) => model = model.copyWith(
+    sevktar: model.sevktar?.copyWith(hour: sevkSaati!.hour, minute: sevkSaati.minute),
+  );
 
   @action
-  void setUnvan(CariListesiModel? model) =>
-      this.model = this.model.copyWith(
-        tasiyiciUnvan: model?.cariAdi,
-        tasiyiciIl: model?.cariIl,
-        tasiyiciIlce: model?.cariIlce,
-        tasiyiciUlke: model?.ulkeAdi,
-        tasiyiciPostakodu: model?.postakodu,
-        tasiyiciVkn: model?.vergiNumarasi,
-      );
+  void setUnvan(CariListesiModel? model) => this.model = this.model.copyWith(
+    tasiyiciUnvan: model?.cariAdi,
+    tasiyiciIl: model?.cariIl,
+    tasiyiciIlce: model?.cariIlce,
+    tasiyiciUlke: model?.ulkeAdi,
+    tasiyiciPostakodu: model?.postakodu,
+    tasiyiciVkn: model?.vergiNumarasi,
+  );
 
   @action
   void setVergiNo(String? vergiNo) => model = model.copyWith(tasiyiciVkn: vergiNo);

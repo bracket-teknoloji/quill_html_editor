@@ -12,7 +12,8 @@ part of 'belge_kontrol_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 BelgeKontrolModel _$BelgeKontrolModelFromJson(Map<String, dynamic> json) {
   return _BelgeKontrolModel.fromJson(json);
@@ -83,31 +84,30 @@ mixin _$BelgeKontrolModel {
   /// Create a copy of BelgeKontrolModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BelgeKontrolModelCopyWith<BelgeKontrolModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BelgeKontrolModelCopyWith<BelgeKontrolModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BelgeKontrolModelCopyWith<$Res> {
-  factory $BelgeKontrolModelCopyWith(
-          BelgeKontrolModel value, $Res Function(BelgeKontrolModel) then) =
+  factory $BelgeKontrolModelCopyWith(BelgeKontrolModel value, $Res Function(BelgeKontrolModel) then) =
       _$BelgeKontrolModelCopyWithImpl<$Res, BelgeKontrolModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "ID") int? id,
-      @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-      @JsonKey(name: "BELGE_NO") String? belgeNo,
-      @JsonKey(name: "CARI_KODU") String? cariKodu,
-      @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-      @JsonKey(name: "SIRA") int? sira,
-      @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
-      @JsonKey(name: "MIKTAR") double? miktar,
-      @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-      @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-      @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-      @JsonKey(name: "CARI_ADI") String? cariAdi,
-      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-      @JsonKey(name: "STOK_KODU") String? stokKodu});
+  $Res call({
+    @JsonKey(name: "ID") int? id,
+    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
+    @JsonKey(name: "BELGE_NO") String? belgeNo,
+    @JsonKey(name: "CARI_KODU") String? cariKodu,
+    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+    @JsonKey(name: "SIRA") int? sira,
+    @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
+    @JsonKey(name: "MIKTAR") double? miktar,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
+    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
+    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
+    @JsonKey(name: "CARI_ADI") String? cariAdi,
+    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+    @JsonKey(name: "STOK_KODU") String? stokKodu,
+  });
 }
 
 /// @nodoc
@@ -140,99 +140,99 @@ class _$BelgeKontrolModelCopyWithImpl<$Res, $Val extends BelgeKontrolModel>
     Object? kalanMiktar = freezed,
     Object? stokKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tamamlananMiktar: freezed == tamamlananMiktar
-          ? _value.tamamlananMiktar
-          : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalanMiktar: freezed == kalanMiktar
-          ? _value.kalanMiktar
-          : kalanMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            sira: freezed == sira
+                ? _value.sira
+                : sira // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            belgeTarihi: freezed == belgeTarihi
+                ? _value.belgeTarihi
+                : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            tamamlananMiktar: freezed == tamamlananMiktar
+                ? _value.tamamlananMiktar
+                : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            kayityapankul: freezed == kayityapankul
+                ? _value.kayityapankul
+                : kayityapankul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayittarihi: freezed == kayittarihi
+                ? _value.kayittarihi
+                : kayittarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            cariAdi: freezed == cariAdi
+                ? _value.cariAdi
+                : cariAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kalanMiktar: freezed == kalanMiktar
+                ? _value.kalanMiktar
+                : kalanMiktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$BelgeKontrolModelImplCopyWith<$Res>
-    implements $BelgeKontrolModelCopyWith<$Res> {
-  factory _$$BelgeKontrolModelImplCopyWith(_$BelgeKontrolModelImpl value,
-          $Res Function(_$BelgeKontrolModelImpl) then) =
+abstract class _$$BelgeKontrolModelImplCopyWith<$Res> implements $BelgeKontrolModelCopyWith<$Res> {
+  factory _$$BelgeKontrolModelImplCopyWith(_$BelgeKontrolModelImpl value, $Res Function(_$BelgeKontrolModelImpl) then) =
       __$$BelgeKontrolModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "ID") int? id,
-      @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-      @JsonKey(name: "BELGE_NO") String? belgeNo,
-      @JsonKey(name: "CARI_KODU") String? cariKodu,
-      @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-      @JsonKey(name: "SIRA") int? sira,
-      @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
-      @JsonKey(name: "MIKTAR") double? miktar,
-      @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-      @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-      @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-      @JsonKey(name: "CARI_ADI") String? cariAdi,
-      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-      @JsonKey(name: "STOK_KODU") String? stokKodu});
+  $Res call({
+    @JsonKey(name: "ID") int? id,
+    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
+    @JsonKey(name: "BELGE_NO") String? belgeNo,
+    @JsonKey(name: "CARI_KODU") String? cariKodu,
+    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+    @JsonKey(name: "SIRA") int? sira,
+    @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
+    @JsonKey(name: "MIKTAR") double? miktar,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
+    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
+    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
+    @JsonKey(name: "CARI_ADI") String? cariAdi,
+    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+    @JsonKey(name: "STOK_KODU") String? stokKodu,
+  });
 }
 
 /// @nodoc
-class __$$BelgeKontrolModelImplCopyWithImpl<$Res>
-    extends _$BelgeKontrolModelCopyWithImpl<$Res, _$BelgeKontrolModelImpl>
+class __$$BelgeKontrolModelImplCopyWithImpl<$Res> extends _$BelgeKontrolModelCopyWithImpl<$Res, _$BelgeKontrolModelImpl>
     implements _$$BelgeKontrolModelImplCopyWith<$Res> {
-  __$$BelgeKontrolModelImplCopyWithImpl(_$BelgeKontrolModelImpl _value,
-      $Res Function(_$BelgeKontrolModelImpl) _then)
-      : super(_value, _then);
+  __$$BelgeKontrolModelImplCopyWithImpl(_$BelgeKontrolModelImpl _value, $Res Function(_$BelgeKontrolModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of BelgeKontrolModel
   /// with the given fields replaced by the non-null parameter values.
@@ -254,89 +254,90 @@ class __$$BelgeKontrolModelImplCopyWithImpl<$Res>
     Object? kalanMiktar = freezed,
     Object? stokKodu = freezed,
   }) {
-    return _then(_$BelgeKontrolModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tamamlananMiktar: freezed == tamamlananMiktar
-          ? _value.tamamlananMiktar
-          : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalanMiktar: freezed == kalanMiktar
-          ? _value.kalanMiktar
-          : kalanMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$BelgeKontrolModelImpl(
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        sira: freezed == sira
+            ? _value.sira
+            : sira // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        belgeTarihi: freezed == belgeTarihi
+            ? _value.belgeTarihi
+            : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        tamamlananMiktar: freezed == tamamlananMiktar
+            ? _value.tamamlananMiktar
+            : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        kayityapankul: freezed == kayityapankul
+            ? _value.kayityapankul
+            : kayityapankul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayittarihi: freezed == kayittarihi
+            ? _value.kayittarihi
+            : kayittarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        cariAdi: freezed == cariAdi
+            ? _value.cariAdi
+            : cariAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kalanMiktar: freezed == kalanMiktar
+            ? _value.kalanMiktar
+            : kalanMiktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BelgeKontrolModelImpl extends _BelgeKontrolModel {
-  _$BelgeKontrolModelImpl(
-      {@JsonKey(name: "ID") this.id,
-      @JsonKey(name: "BELGE_TIPI") this.belgeTipi,
-      @JsonKey(name: "BELGE_NO") this.belgeNo,
-      @JsonKey(name: "CARI_KODU") this.cariKodu,
-      @JsonKey(name: "ISLEM_KODU") this.islemKodu,
-      @JsonKey(name: "SIRA") this.sira,
-      @JsonKey(name: "BELGE_TARIHI") this.belgeTarihi,
-      @JsonKey(name: "MIKTAR") this.miktar,
-      @JsonKey(name: "TAMAMLANAN_MIKTAR") this.tamamlananMiktar,
-      @JsonKey(name: "KAYITYAPANKUL") this.kayityapankul,
-      @JsonKey(name: "KAYITTARIHI") this.kayittarihi,
-      @JsonKey(name: "CARI_ADI") this.cariAdi,
-      @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar,
-      @JsonKey(name: "STOK_KODU") this.stokKodu})
-      : super._();
+  _$BelgeKontrolModelImpl({
+    @JsonKey(name: "ID") this.id,
+    @JsonKey(name: "BELGE_TIPI") this.belgeTipi,
+    @JsonKey(name: "BELGE_NO") this.belgeNo,
+    @JsonKey(name: "CARI_KODU") this.cariKodu,
+    @JsonKey(name: "ISLEM_KODU") this.islemKodu,
+    @JsonKey(name: "SIRA") this.sira,
+    @JsonKey(name: "BELGE_TARIHI") this.belgeTarihi,
+    @JsonKey(name: "MIKTAR") this.miktar,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") this.tamamlananMiktar,
+    @JsonKey(name: "KAYITYAPANKUL") this.kayityapankul,
+    @JsonKey(name: "KAYITTARIHI") this.kayittarihi,
+    @JsonKey(name: "CARI_ADI") this.cariAdi,
+    @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar,
+    @JsonKey(name: "STOK_KODU") this.stokKodu,
+  }) : super._();
 
-  factory _$BelgeKontrolModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BelgeKontrolModelImplFromJson(json);
+  factory _$BelgeKontrolModelImpl.fromJson(Map<String, dynamic> json) => _$$BelgeKontrolModelImplFromJson(json);
 
   @override
   @JsonKey(name: "ID")
@@ -387,37 +388,34 @@ class _$BelgeKontrolModelImpl extends _BelgeKontrolModel {
   @override
   @pragma('vm:prefer-inline')
   _$$BelgeKontrolModelImplCopyWith<_$BelgeKontrolModelImpl> get copyWith =>
-      __$$BelgeKontrolModelImplCopyWithImpl<_$BelgeKontrolModelImpl>(
-          this, _$identity);
+      __$$BelgeKontrolModelImplCopyWithImpl<_$BelgeKontrolModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BelgeKontrolModelImplToJson(
-      this,
-    );
+    return _$$BelgeKontrolModelImplToJson(this);
   }
 }
 
 abstract class _BelgeKontrolModel extends BelgeKontrolModel {
-  factory _BelgeKontrolModel(
-      {@JsonKey(name: "ID") int? id,
-      @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-      @JsonKey(name: "BELGE_NO") String? belgeNo,
-      @JsonKey(name: "CARI_KODU") String? cariKodu,
-      @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-      @JsonKey(name: "SIRA") int? sira,
-      @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
-      @JsonKey(name: "MIKTAR") double? miktar,
-      @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-      @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-      @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-      @JsonKey(name: "CARI_ADI") String? cariAdi,
-      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-      @JsonKey(name: "STOK_KODU") String? stokKodu}) = _$BelgeKontrolModelImpl;
+  factory _BelgeKontrolModel({
+    @JsonKey(name: "ID") int? id,
+    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
+    @JsonKey(name: "BELGE_NO") String? belgeNo,
+    @JsonKey(name: "CARI_KODU") String? cariKodu,
+    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+    @JsonKey(name: "SIRA") int? sira,
+    @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
+    @JsonKey(name: "MIKTAR") double? miktar,
+    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
+    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
+    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
+    @JsonKey(name: "CARI_ADI") String? cariAdi,
+    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+    @JsonKey(name: "STOK_KODU") String? stokKodu,
+  }) = _$BelgeKontrolModelImpl;
   _BelgeKontrolModel._() : super._();
 
-  factory _BelgeKontrolModel.fromJson(Map<String, dynamic> json) =
-      _$BelgeKontrolModelImpl.fromJson;
+  factory _BelgeKontrolModel.fromJson(Map<String, dynamic> json) = _$BelgeKontrolModelImpl.fromJson;
 
   @override
   @JsonKey(name: "ID")
@@ -494,6 +492,5 @@ abstract class _BelgeKontrolModel extends BelgeKontrolModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BelgeKontrolModelImplCopyWith<_$BelgeKontrolModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BelgeKontrolModelImplCopyWith<_$BelgeKontrolModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

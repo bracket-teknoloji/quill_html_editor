@@ -92,34 +92,33 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            children:
-                [
-                  if (widget.model.remoteTempBelgeEtiketi != null)
-                    ColorfulBadge(
-                      label: Text(widget.model.remoteTempBelgeEtiketi ?? ""),
-                      badgeColorEnum: BadgeColorEnum.seri,
-                    ),
-                  if (widget.model.dovizAdi != null)
-                    ColorfulBadge(
-                      label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"),
-                      badgeColorEnum: BadgeColorEnum.dovizli,
-                    ),
-                  if (widget.model.isNew == true)
-                    const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
-                  if (widget.model.faturalasanSayi != null)
-                    ColorfulBadge(
-                      label: Text("Fatura (${widget.model.faturalasanSayi})"),
-                      badgeColorEnum: BadgeColorEnum.fatura,
-                    ),
-                  if (widget.model.tipi == 1)
-                    const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
-                  if (widget.model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
-                  if (widget.model.irsaliyelestiMi)
-                    ColorfulBadge(
-                      label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})"),
-                      badgeColorEnum: BadgeColorEnum.irsaliye,
-                    ),
-                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
+            children: [
+              if (widget.model.remoteTempBelgeEtiketi != null)
+                ColorfulBadge(
+                  label: Text(widget.model.remoteTempBelgeEtiketi ?? ""),
+                  badgeColorEnum: BadgeColorEnum.seri,
+                ),
+              if (widget.model.dovizAdi != null)
+                ColorfulBadge(
+                  label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"),
+                  badgeColorEnum: BadgeColorEnum.dovizli,
+                ),
+              if (widget.model.isNew == true)
+                const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
+              if (widget.model.faturalasanSayi != null)
+                ColorfulBadge(
+                  label: Text("Fatura (${widget.model.faturalasanSayi})"),
+                  badgeColorEnum: BadgeColorEnum.fatura,
+                ),
+              if (widget.model.tipi == 1)
+                const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
+              if (widget.model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
+              if (widget.model.irsaliyelestiMi)
+                ColorfulBadge(
+                  label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})"),
+                  badgeColorEnum: BadgeColorEnum.irsaliye,
+                ),
+            ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
           ),
           Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
           CustomLayoutBuilder.divideInHalf(

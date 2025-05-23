@@ -63,23 +63,21 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
 
   AppBar appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) => AppBarTitle(
-            title: "Kasa Hareketleri (${viewModel.observableList?.length ?? 0})",
-            subtitle: widget.model?.kasaKodu,
-          ),
+      builder: (_) => AppBarTitle(
+        title: "Kasa Hareketleri (${viewModel.observableList?.length ?? 0})",
+        subtitle: widget.model?.kasaKodu,
+      ),
     ),
   );
 
   Widget body() => Observer(
-    builder:
-        (_) => RefreshableListView.pageable(
-          scrollController: _scrollController,
-          onRefresh: viewModel.getData,
-          dahaVarMi: viewModel.dahaVarMi,
-          items: viewModel.observableList,
-          itemBuilder: kasaHareketleriCard,
-        ),
+    builder: (_) => RefreshableListView.pageable(
+      scrollController: _scrollController,
+      onRefresh: viewModel.getData,
+      dahaVarMi: viewModel.dahaVarMi,
+      items: viewModel.observableList,
+      itemBuilder: kasaHareketleriCard,
+    ),
   );
 
   Card kasaHareketleriCard(KasaIslemleriModel? item) => Card(
@@ -142,70 +140,68 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
   );
 
   Observer bottomBar() => Observer(
-    builder:
-        (_) => BottomBarWidget(
-          isScrolledDown: viewModel.isScrollDown,
+    builder: (_) => BottomBarWidget(
+      isScrolledDown: viewModel.isScrollDown,
+      children: [
+        FooterButton(
           children: [
-            FooterButton(
-              children: [
-                const Text("Gelir"),
-                Observer(
-                  builder: (_) {
-                    if (widget.model?.dovizliMi ?? false) {
-                      return Text(
-                        "${((viewModel.paramData?["TOPLAM_GELIR_DOVIZ"] as double? ?? 0) + (widget.model?.dovizDevirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
-                        style: const TextStyle(color: ColorPalette.mantis),
-                      );
-                    } else {
-                      return Text(
-                        "${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.mantis),
-                      );
-                    }
-                  },
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Gider"),
-                Observer(
-                  builder: (_) {
-                    if (widget.model?.dovizliMi ?? false) {
-                      return Text(
-                        "${(viewModel.paramData?["TOPLAM_GIDER_DOVIZ"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
-                        style: const TextStyle(color: ColorPalette.persianRed),
-                      );
-                    } else {
-                      return Text(
-                        "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.persianRed),
-                      );
-                    }
-                  },
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Bakiye"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        "${(widget.model?.dovizliMi ?? false ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
-                        style: TextStyle(
-                          color: UIHelper.getColorWithValue(
-                            (widget.model?.dovizliMi ?? false
-                                    ? widget.model?.devirliDovizBakiye
-                                    : widget.model?.devirliBakiye) ??
-                                0,
-                          ),
-                        ),
-                      ),
-                ),
-              ],
+            const Text("Gelir"),
+            Observer(
+              builder: (_) {
+                if (widget.model?.dovizliMi ?? false) {
+                  return Text(
+                    "${((viewModel.paramData?["TOPLAM_GELIR_DOVIZ"] as double? ?? 0) + (widget.model?.dovizDevirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                    style: const TextStyle(color: ColorPalette.mantis),
+                  );
+                } else {
+                  return Text(
+                    "${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    style: const TextStyle(color: ColorPalette.mantis),
+                  );
+                }
+              },
             ),
           ],
         ),
+        FooterButton(
+          children: [
+            const Text("Gider"),
+            Observer(
+              builder: (_) {
+                if (widget.model?.dovizliMi ?? false) {
+                  return Text(
+                    "${(viewModel.paramData?["TOPLAM_GIDER_DOVIZ"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                    style: const TextStyle(color: ColorPalette.persianRed),
+                  );
+                } else {
+                  return Text(
+                    "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    style: const TextStyle(color: ColorPalette.persianRed),
+                  );
+                }
+              },
+            ),
+          ],
+        ),
+        FooterButton(
+          children: [
+            const Text("Bakiye"),
+            Observer(
+              builder: (_) => Text(
+                "${(widget.model?.dovizliMi ?? false ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                style: TextStyle(
+                  color: UIHelper.getColorWithValue(
+                    (widget.model?.dovizliMi ?? false
+                            ? widget.model?.devirliDovizBakiye
+                            : widget.model?.devirliBakiye) ??
+                        0,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
   );
 }

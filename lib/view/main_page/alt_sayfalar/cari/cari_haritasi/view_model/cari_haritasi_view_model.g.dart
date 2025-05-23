@@ -9,8 +9,7 @@ part of 'cari_haritasi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
-  late final _$cariListAtom =
-      Atom(name: '_CariHaritasiViewModelBase.cariList', context: context);
+  late final _$cariListAtom = Atom(name: '_CariHaritasiViewModelBase.cariList', context: context);
 
   @override
   ObservableList<CariListesiModel>? get cariList {
@@ -25,8 +24,7 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
-  late final _$isLocationEnabledAtom = Atom(
-      name: '_CariHaritasiViewModelBase.isLocationEnabled', context: context);
+  late final _$isLocationEnabledAtom = Atom(name: '_CariHaritasiViewModelBase.isLocationEnabled', context: context);
 
   @override
   bool get isLocationEnabled {
@@ -41,8 +39,7 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
-  late final _$currentPositionAtom = Atom(
-      name: '_CariHaritasiViewModelBase.currentPosition', context: context);
+  late final _$currentPositionAtom = Atom(name: '_CariHaritasiViewModelBase.currentPosition', context: context);
 
   @override
   LatLng? get currentPosition {
@@ -57,8 +54,7 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
-  late final _$markerIconAtom =
-      Atom(name: '_CariHaritasiViewModelBase.markerIcon', context: context);
+  late final _$markerIconAtom = Atom(name: '_CariHaritasiViewModelBase.markerIcon', context: context);
 
   @override
   BitmapDescriptor get markerIcon {
@@ -73,8 +69,7 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
-  late final _$markerSetAtom =
-      Atom(name: '_CariHaritasiViewModelBase.markerSet', context: context);
+  late final _$markerSetAtom = Atom(name: '_CariHaritasiViewModelBase.markerSet', context: context);
 
   @override
   ObservableSet<Marker> get markerSet {
@@ -89,8 +84,7 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_CariHaritasiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_CariHaritasiViewModelBase.requestModel', context: context);
 
   @override
   CariListesiRequestModel get requestModel {
@@ -105,21 +99,23 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_CariHaritasiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_CariHaritasiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_CariHaritasiViewModelBaseActionController =
-      ActionController(name: '_CariHaritasiViewModelBase', context: context);
+  late final _$_CariHaritasiViewModelBaseActionController = ActionController(
+    name: '_CariHaritasiViewModelBase',
+    context: context,
+  );
 
   @override
   void setIsLocationEnabled(bool? value) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.setIsLocationEnabled');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.setIsLocationEnabled',
+    );
     try {
       return super.setIsLocationEnabled(value);
     } finally {
@@ -129,8 +125,9 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 
   @override
   void setCurrentPosition(LatLng? position) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.setCurrentPosition');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.setCurrentPosition',
+    );
     try {
       return super.setCurrentPosition(position);
     } finally {
@@ -140,8 +137,9 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 
   @override
   void addMarker(Marker marker) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.addMarker');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.addMarker',
+    );
     try {
       return super.addMarker(marker);
     } finally {
@@ -151,8 +149,9 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 
   @override
   void setCariList(List<CariListesiModel>? list) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.setCariList');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.setCariList',
+    );
     try {
       return super.setCariList(list);
     } finally {

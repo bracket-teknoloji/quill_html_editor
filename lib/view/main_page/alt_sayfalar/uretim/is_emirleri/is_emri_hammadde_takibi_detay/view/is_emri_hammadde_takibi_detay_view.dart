@@ -50,20 +50,18 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
     body: Column(
       children: [
         LayoutBuilder(
-          builder:
-              (context, constraints) => Observer(
-                builder:
-                    (_) => ToggleButtons(
-                      constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 3),
-                      isSelected: viewModel.valueList,
-                      // isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
-                      onPressed: (index) => viewModel.setSelectedTipi(viewModel.tipiMap.values.toList()[index]),
-                      children: List.generate(
-                        viewModel.tipiMap.length,
-                        (index) => Text(viewModel.tipiMap.keys.toList()[index]),
-                      ),
-                    ),
+          builder: (context, constraints) => Observer(
+            builder: (_) => ToggleButtons(
+              constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 3),
+              isSelected: viewModel.valueList,
+              // isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
+              onPressed: (index) => viewModel.setSelectedTipi(viewModel.tipiMap.values.toList()[index]),
+              children: List.generate(
+                viewModel.tipiMap.length,
+                (index) => Text(viewModel.tipiMap.keys.toList()[index]),
               ),
+            ),
+          ),
         ).paddingSymmetric(vertical: UIHelper.lowSize),
         if (yetkiController.stokListesi)
           CustomTextField(
@@ -81,54 +79,51 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
           ),
         Expanded(
           child: Observer(
-            builder:
-                (_) => RefreshableListView(
-                  onRefresh: viewModel.getData,
-                  items: viewModel.observableList,
-                  itemBuilder:
-                      (item) => Card(
-                        color: item.referanslar.ext.isNotNullOrEmpty ? ColorPalette.mantisWithOpacity : null,
-                        child: ListTile(
-                          title: Text(item.referanslar?.firstOrNull?.referansStokKodu ?? item.hamKodu ?? ""),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(item.referanslar?.firstOrNull?.referansStokAdi ?? item.hamAdi ?? ""),
-                              Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              CustomLayoutBuilder.divideInHalf(
-                                children: [
-                                  ...List.generate(
-                                    item.referanslar?.where((element) => element.hammaddeNo != null).length ?? 0,
-                                    (index) => Text("Hammadde No: ${item.referanslar?[index].hammaddeNo}"),
-                                  ),
-                                  if (item.referanslar?.any((element) => element.referansStokKodu != null) ?? false)
-                                    Text(
-                                      "Alternatif: ${item.referanslar?.firstOrNull?.stokKodu} | ${item.referanslar?.firstOrNull?.stokAdi}",
-                                    ),
-                                ],
-                              ),
-                            ],
+            builder: (_) => RefreshableListView(
+              onRefresh: viewModel.getData,
+              items: viewModel.observableList,
+              itemBuilder: (item) => Card(
+                color: item.referanslar.ext.isNotNullOrEmpty ? ColorPalette.mantisWithOpacity : null,
+                child: ListTile(
+                  title: Text(item.referanslar?.firstOrNull?.referansStokKodu ?? item.hamKodu ?? ""),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(item.referanslar?.firstOrNull?.referansStokAdi ?? item.hamAdi ?? ""),
+                      Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                      CustomLayoutBuilder.divideInHalf(
+                        children: [
+                          ...List.generate(
+                            item.referanslar?.where((element) => element.hammaddeNo != null).length ?? 0,
+                            (index) => Text("Hammadde No: ${item.referanslar?[index].hammaddeNo}"),
                           ),
-                          trailing:
-                              item.referanslar.ext.isNotNullOrEmpty
-                                  ? IconButton(
-                                    icon: const Icon(Icons.delete_outline_outlined),
-                                    onPressed: () async {
-                                      dialogManager.showAreYouSureDialog(
-                                        onYes: () async {
-                                          final result = await viewModel.deleteItem(item);
-                                          if (result) {
-                                            dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                                            viewModel.getData();
-                                          }
-                                        },
-                                      );
-                                    },
-                                  )
-                                  : null,
-                        ),
+                          if (item.referanslar?.any((element) => element.referansStokKodu != null) ?? false)
+                            Text(
+                              "Alternatif: ${item.referanslar?.firstOrNull?.stokKodu} | ${item.referanslar?.firstOrNull?.stokAdi}",
+                            ),
+                        ],
                       ),
+                    ],
+                  ),
+                  trailing: item.referanslar.ext.isNotNullOrEmpty
+                      ? IconButton(
+                          icon: const Icon(Icons.delete_outline_outlined),
+                          onPressed: () async {
+                            dialogManager.showAreYouSureDialog(
+                              onYes: () async {
+                                final result = await viewModel.deleteItem(item);
+                                if (result) {
+                                  dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+                                  viewModel.getData();
+                                }
+                              },
+                            );
+                          },
+                        )
+                      : null,
                 ),
+              ),
+            ),
           ),
         ),
       ],

@@ -6,8 +6,7 @@ part of 'urun_grubuna_gore_satis_grafigi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(
-        Map<String, dynamic> json) =>
+UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(Map<String, dynamic> json) =>
     UrunGrubunaGoreSatisGrafigiModel()
       ..grupKodu = json['GRUP_KODU'] as String?
       ..grupAdi = json['GRUP_ADI'] as String?
@@ -19,8 +18,7 @@ UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(
       ..oranMiktar = (json['ORAN_MIKTAR'] as num?)?.toDouble()
       ..oranTutar = (json['ORAN_TUTAR'] as num?)?.toDouble();
 
-Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(
-        UrunGrubunaGoreSatisGrafigiModel instance) =>
+Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(UrunGrubunaGoreSatisGrafigiModel instance) =>
     <String, dynamic>{
       if (instance.grupKodu case final value?) 'GRUP_KODU': value,
       if (instance.grupAdi case final value?) 'GRUP_ADI': value,

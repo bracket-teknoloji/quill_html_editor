@@ -58,8 +58,14 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
     floatingActionButton: Text.rich(
       TextSpan(
         children: [
-          TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withValues(alpha: 0.8))),
-          const TextSpan(text: "Bracket Teknoloji", style: TextStyle(fontWeight: FontWeight.bold)),
+          TextSpan(
+            text: "Powered by ",
+            style: TextStyle(color: theme.colorScheme.primary.withValues(alpha: 0.8)),
+          ),
+          const TextSpan(
+            text: "Bracket Teknoloji",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     ),
@@ -71,8 +77,9 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
         systemNavigationBarDividerColor: theme.colorScheme.surfaceContainer,
       ),
     ),
-    floatingActionButtonLocation:
-        context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
+    floatingActionButtonLocation: context.isLandscape
+        ? FloatingActionButtonLocation.endFloat
+        : FloatingActionButtonLocation.centerFloat,
     body: Stack(
       children: [
         const LoginWaveWidget(),
@@ -84,51 +91,44 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
             direction: Axis.vertical,
             children: [
               Observer(
-                builder:
-                    (_) => Visibility(
-                      visible: !viewModel.isError,
-                      child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize),
-                    ),
+                builder: (_) => Visibility(
+                  visible: !viewModel.isError,
+                  child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize),
+                ),
               ),
               SizedBox(
-                width:
-                    kIsWeb
-                        ? context.isLandscape
-                            ? MediaQuery.sizeOf(context).width * 0.4
-                            : MediaQuery.sizeOf(context).width * 0.6
-                        : Platform.isLinux || Platform.isWindows || Platform.isMacOS
-                        ? context.isLandscape
-                            ? MediaQuery.sizeOf(context).width * 0.4
-                            : MediaQuery.sizeOf(context).width * 0.6
-                        : null,
+                width: kIsWeb
+                    ? context.isLandscape
+                          ? MediaQuery.sizeOf(context).width * 0.4
+                          : MediaQuery.sizeOf(context).width * 0.6
+                    : Platform.isLinux || Platform.isWindows || Platform.isMacOS
+                    ? context.isLandscape
+                          ? MediaQuery.sizeOf(context).width * 0.4
+                          : MediaQuery.sizeOf(context).width * 0.6
+                    : null,
                 child: Observer(
-                  builder:
-                      (_) => Visibility(
-                        visible: !viewModel.isError,
-                        child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center),
-                      ),
+                  builder: (_) => Visibility(
+                    visible: !viewModel.isError,
+                    child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center),
+                  ),
                 ),
               ),
               Observer(
-                builder:
-                    (_) => Visibility(
-                      visible: viewModel.isError,
-                      child: Row(
-                        children: [
-                          OutlinedButton(
-                            onPressed: login,
-                            child: const Text("Tekrar Dene"),
-                          ).paddingAll(UIHelper.lowSize),
-                          OutlinedButton(
-                            onPressed: () {
-                              CacheManager.setLogout(false);
-                              Get.offAllNamed("/login");
-                            },
-                            child: const Text("Ana Ekrana Dön"),
-                          ).paddingAll(UIHelper.lowSize),
-                        ],
-                      ),
-                    ),
+                builder: (_) => Visibility(
+                  visible: viewModel.isError,
+                  child: Row(
+                    children: [
+                      OutlinedButton(onPressed: login, child: const Text("Tekrar Dene")).paddingAll(UIHelper.lowSize),
+                      OutlinedButton(
+                        onPressed: () {
+                          CacheManager.setLogout(false);
+                          Get.offAllNamed("/login");
+                        },
+                        child: const Text("Ana Ekrana Dön"),
+                      ).paddingAll(UIHelper.lowSize),
+                    ],
+                  ),
+                ),
               ),
             ],
           ).paddingOnly(bottom: UIHelper.highSize * 7).paddingOnly(bottom: UIHelper.midSize),
@@ -138,32 +138,29 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Observer(
-                builder:
-                    (_) =>
-                        viewModel.accountResponseModel?.karsilamaMesaji != null
-                            ? SizedBox(
-                              width: width * 0.7,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.network(
-                                    viewModel.accountResponseModel?.karsilamaResimUrl ?? "",
+                builder: (_) => viewModel.accountResponseModel?.karsilamaMesaji != null
+                    ? SizedBox(
+                        width: width * 0.7,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.network(
+                              viewModel.accountResponseModel?.karsilamaResimUrl ?? "",
 
-                                    errorBuilder:
-                                        (context, error, stackTrace) => const Icon(Icons.error_outline_outlined),
-                                  ),
-                                  Text(
-                                    viewModel.accountResponseModel?.karsilamaMesaji ?? "",
-                                    textAlign: TextAlign.justify,
-                                    textHeightBehavior: const TextHeightBehavior(
-                                      applyHeightToFirstAscent: false,
-                                      applyHeightToLastDescent: false,
-                                    ),
-                                  ).paddingAll(20),
-                                ],
+                              errorBuilder: (context, error, stackTrace) => const Icon(Icons.error_outline_outlined),
+                            ),
+                            Text(
+                              viewModel.accountResponseModel?.karsilamaMesaji ?? "",
+                              textAlign: TextAlign.justify,
+                              textHeightBehavior: const TextHeightBehavior(
+                                applyHeightToFirstAscent: false,
+                                applyHeightToLastDescent: false,
                               ),
-                            )
-                            : const SizedBox.shrink(),
+                            ).paddingAll(20),
+                          ],
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -179,19 +176,18 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
                 ],
               ),
               Observer(
-                builder:
-                    (_) => Visibility(
-                      visible: viewModel.isError,
-                      child: SizedBox(
-                        width: width * 0.6,
-                        child: Text(
-                          viewModel.title,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 10,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                builder: (_) => Visibility(
+                  visible: viewModel.isError,
+                  child: SizedBox(
+                    width: width * 0.6,
+                    child: Text(
+                      viewModel.title,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 10,
+                      textAlign: TextAlign.center,
                     ),
+                  ),
+                ),
               ),
             ],
           ),

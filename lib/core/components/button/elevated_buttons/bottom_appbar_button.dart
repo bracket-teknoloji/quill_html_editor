@@ -28,18 +28,12 @@ final class AppBarButton extends StatelessWidget {
       alignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
       direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
-      children:
-          [
-            if (icon != null)
-              Icon(
-                icon,
-                size: UIHelper.midSize * 2,
-                fill: 1,
-                color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
-              ),
-            iconWidget ?? const SizedBox.shrink(),
-            child,
-          ].nullCheckWithGeneric,
+      children: [
+        if (icon != null)
+          Icon(icon, size: UIHelper.midSize * 2, fill: 1, color: (hasFilter ?? false) ? UIHelper.primaryColor : null),
+        iconWidget ?? const SizedBox.shrink(),
+        child,
+      ].nullCheckWithGeneric,
     ),
   );
 }

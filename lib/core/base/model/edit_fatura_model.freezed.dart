@@ -12,7 +12,8 @@ part of 'edit_fatura_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EditFaturaModel _$EditFaturaModelFromJson(Map<String, dynamic> json) {
   return _EditFaturaModel.fromJson(json);
@@ -49,42 +50,40 @@ mixin _$EditFaturaModel {
   /// Create a copy of EditFaturaModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EditFaturaModelCopyWith<EditFaturaModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EditFaturaModelCopyWith<EditFaturaModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EditFaturaModelCopyWith<$Res> {
-  factory $EditFaturaModelCopyWith(
-          EditFaturaModel value, $Res Function(EditFaturaModel) then) =
+  factory $EditFaturaModelCopyWith(EditFaturaModel value, $Res Function(EditFaturaModel) then) =
       _$EditFaturaModelCopyWithImpl<$Res, EditFaturaModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "BelgeTipi") int? belgeTipi,
-      @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
-      bool? remoteTempBelge,
-      int? tempBelgeId,
-      int? tipi,
-      String? belgeNo,
-      String? belgeTuru,
-      String? cariKodu,
-      String? islemId,
-      String? mevcutBelgeNo,
-      String? yeniBelgeNo,
-      String? yeniCariKodu,
-      String? mevcutCariKodu,
-      Map<dynamic, dynamic>? paramMap,
-      String? tag,
-      int? islemKodu,
-      List<KalemModel>? kalemler,
-      bool? irsaliyedenFatura,
-      String? resmiBelgeNo,
-      DateTime? tarih});
+  $Res call({
+    @JsonKey(name: "BelgeTipi") int? belgeTipi,
+    @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
+    bool? remoteTempBelge,
+    int? tempBelgeId,
+    int? tipi,
+    String? belgeNo,
+    String? belgeTuru,
+    String? cariKodu,
+    String? islemId,
+    String? mevcutBelgeNo,
+    String? yeniBelgeNo,
+    String? yeniCariKodu,
+    String? mevcutCariKodu,
+    Map<dynamic, dynamic>? paramMap,
+    String? tag,
+    int? islemKodu,
+    List<KalemModel>? kalemler,
+    bool? irsaliyedenFatura,
+    String? resmiBelgeNo,
+    DateTime? tarih,
+  });
 }
 
 /// @nodoc
-class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
-    implements $EditFaturaModelCopyWith<$Res> {
+class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel> implements $EditFaturaModelCopyWith<$Res> {
   _$EditFaturaModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -118,129 +117,129 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
     Object? resmiBelgeNo = freezed,
     Object? tarih = freezed,
   }) {
-    return _then(_value.copyWith(
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      pickerBelgeTuru: freezed == pickerBelgeTuru
-          ? _value.pickerBelgeTuru
-          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      remoteTempBelge: freezed == remoteTempBelge
-          ? _value.remoteTempBelge
-          : remoteTempBelge // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      tempBelgeId: freezed == tempBelgeId
-          ? _value.tempBelgeId
-          : tempBelgeId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemId: freezed == islemId
-          ? _value.islemId
-          : islemId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mevcutBelgeNo: freezed == mevcutBelgeNo
-          ? _value.mevcutBelgeNo
-          : mevcutBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeniBelgeNo: freezed == yeniBelgeNo
-          ? _value.yeniBelgeNo
-          : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeniCariKodu: freezed == yeniCariKodu
-          ? _value.yeniCariKodu
-          : yeniCariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mevcutCariKodu: freezed == mevcutCariKodu
-          ? _value.mevcutCariKodu
-          : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paramMap: freezed == paramMap
-          ? _value.paramMap
-          : paramMap // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
-      tag: freezed == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kalemler: freezed == kalemler
-          ? _value.kalemler
-          : kalemler // ignore: cast_nullable_to_non_nullable
-              as List<KalemModel>?,
-      irsaliyedenFatura: freezed == irsaliyedenFatura
-          ? _value.irsaliyedenFatura
-          : irsaliyedenFatura // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      resmiBelgeNo: freezed == resmiBelgeNo
-          ? _value.resmiBelgeNo
-          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            pickerBelgeTuru: freezed == pickerBelgeTuru
+                ? _value.pickerBelgeTuru
+                : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            remoteTempBelge: freezed == remoteTempBelge
+                ? _value.remoteTempBelge
+                : remoteTempBelge // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            tempBelgeId: freezed == tempBelgeId
+                ? _value.tempBelgeId
+                : tempBelgeId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tipi: freezed == tipi
+                ? _value.tipi
+                : tipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTuru: freezed == belgeTuru
+                ? _value.belgeTuru
+                : belgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemId: freezed == islemId
+                ? _value.islemId
+                : islemId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            mevcutBelgeNo: freezed == mevcutBelgeNo
+                ? _value.mevcutBelgeNo
+                : mevcutBelgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yeniBelgeNo: freezed == yeniBelgeNo
+                ? _value.yeniBelgeNo
+                : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yeniCariKodu: freezed == yeniCariKodu
+                ? _value.yeniCariKodu
+                : yeniCariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            mevcutCariKodu: freezed == mevcutCariKodu
+                ? _value.mevcutCariKodu
+                : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            paramMap: freezed == paramMap
+                ? _value.paramMap
+                : paramMap // ignore: cast_nullable_to_non_nullable
+                      as Map<dynamic, dynamic>?,
+            tag: freezed == tag
+                ? _value.tag
+                : tag // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kalemler: freezed == kalemler
+                ? _value.kalemler
+                : kalemler // ignore: cast_nullable_to_non_nullable
+                      as List<KalemModel>?,
+            irsaliyedenFatura: freezed == irsaliyedenFatura
+                ? _value.irsaliyedenFatura
+                : irsaliyedenFatura // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            resmiBelgeNo: freezed == resmiBelgeNo
+                ? _value.resmiBelgeNo
+                : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$EditFaturaModelImplCopyWith<$Res>
-    implements $EditFaturaModelCopyWith<$Res> {
-  factory _$$EditFaturaModelImplCopyWith(_$EditFaturaModelImpl value,
-          $Res Function(_$EditFaturaModelImpl) then) =
+abstract class _$$EditFaturaModelImplCopyWith<$Res> implements $EditFaturaModelCopyWith<$Res> {
+  factory _$$EditFaturaModelImplCopyWith(_$EditFaturaModelImpl value, $Res Function(_$EditFaturaModelImpl) then) =
       __$$EditFaturaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "BelgeTipi") int? belgeTipi,
-      @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
-      bool? remoteTempBelge,
-      int? tempBelgeId,
-      int? tipi,
-      String? belgeNo,
-      String? belgeTuru,
-      String? cariKodu,
-      String? islemId,
-      String? mevcutBelgeNo,
-      String? yeniBelgeNo,
-      String? yeniCariKodu,
-      String? mevcutCariKodu,
-      Map<dynamic, dynamic>? paramMap,
-      String? tag,
-      int? islemKodu,
-      List<KalemModel>? kalemler,
-      bool? irsaliyedenFatura,
-      String? resmiBelgeNo,
-      DateTime? tarih});
+  $Res call({
+    @JsonKey(name: "BelgeTipi") int? belgeTipi,
+    @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
+    bool? remoteTempBelge,
+    int? tempBelgeId,
+    int? tipi,
+    String? belgeNo,
+    String? belgeTuru,
+    String? cariKodu,
+    String? islemId,
+    String? mevcutBelgeNo,
+    String? yeniBelgeNo,
+    String? yeniCariKodu,
+    String? mevcutCariKodu,
+    Map<dynamic, dynamic>? paramMap,
+    String? tag,
+    int? islemKodu,
+    List<KalemModel>? kalemler,
+    bool? irsaliyedenFatura,
+    String? resmiBelgeNo,
+    DateTime? tarih,
+  });
 }
 
 /// @nodoc
-class __$$EditFaturaModelImplCopyWithImpl<$Res>
-    extends _$EditFaturaModelCopyWithImpl<$Res, _$EditFaturaModelImpl>
+class __$$EditFaturaModelImplCopyWithImpl<$Res> extends _$EditFaturaModelCopyWithImpl<$Res, _$EditFaturaModelImpl>
     implements _$$EditFaturaModelImplCopyWith<$Res> {
-  __$$EditFaturaModelImplCopyWithImpl(
-      _$EditFaturaModelImpl _value, $Res Function(_$EditFaturaModelImpl) _then)
-      : super(_value, _then);
+  __$$EditFaturaModelImplCopyWithImpl(_$EditFaturaModelImpl _value, $Res Function(_$EditFaturaModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of EditFaturaModel
   /// with the given fields replaced by the non-null parameter values.
@@ -268,121 +267,122 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
     Object? resmiBelgeNo = freezed,
     Object? tarih = freezed,
   }) {
-    return _then(_$EditFaturaModelImpl(
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      pickerBelgeTuru: freezed == pickerBelgeTuru
-          ? _value.pickerBelgeTuru
-          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      remoteTempBelge: freezed == remoteTempBelge
-          ? _value.remoteTempBelge
-          : remoteTempBelge // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      tempBelgeId: freezed == tempBelgeId
-          ? _value.tempBelgeId
-          : tempBelgeId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemId: freezed == islemId
-          ? _value.islemId
-          : islemId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mevcutBelgeNo: freezed == mevcutBelgeNo
-          ? _value.mevcutBelgeNo
-          : mevcutBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeniBelgeNo: freezed == yeniBelgeNo
-          ? _value.yeniBelgeNo
-          : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeniCariKodu: freezed == yeniCariKodu
-          ? _value.yeniCariKodu
-          : yeniCariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mevcutCariKodu: freezed == mevcutCariKodu
-          ? _value.mevcutCariKodu
-          : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paramMap: freezed == paramMap
-          ? _value._paramMap
-          : paramMap // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
-      tag: freezed == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kalemler: freezed == kalemler
-          ? _value._kalemler
-          : kalemler // ignore: cast_nullable_to_non_nullable
-              as List<KalemModel>?,
-      irsaliyedenFatura: freezed == irsaliyedenFatura
-          ? _value.irsaliyedenFatura
-          : irsaliyedenFatura // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      resmiBelgeNo: freezed == resmiBelgeNo
-          ? _value.resmiBelgeNo
-          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ));
+    return _then(
+      _$EditFaturaModelImpl(
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        pickerBelgeTuru: freezed == pickerBelgeTuru
+            ? _value.pickerBelgeTuru
+            : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        remoteTempBelge: freezed == remoteTempBelge
+            ? _value.remoteTempBelge
+            : remoteTempBelge // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        tempBelgeId: freezed == tempBelgeId
+            ? _value.tempBelgeId
+            : tempBelgeId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tipi: freezed == tipi
+            ? _value.tipi
+            : tipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTuru: freezed == belgeTuru
+            ? _value.belgeTuru
+            : belgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemId: freezed == islemId
+            ? _value.islemId
+            : islemId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        mevcutBelgeNo: freezed == mevcutBelgeNo
+            ? _value.mevcutBelgeNo
+            : mevcutBelgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yeniBelgeNo: freezed == yeniBelgeNo
+            ? _value.yeniBelgeNo
+            : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yeniCariKodu: freezed == yeniCariKodu
+            ? _value.yeniCariKodu
+            : yeniCariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        mevcutCariKodu: freezed == mevcutCariKodu
+            ? _value.mevcutCariKodu
+            : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        paramMap: freezed == paramMap
+            ? _value._paramMap
+            : paramMap // ignore: cast_nullable_to_non_nullable
+                  as Map<dynamic, dynamic>?,
+        tag: freezed == tag
+            ? _value.tag
+            : tag // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kalemler: freezed == kalemler
+            ? _value._kalemler
+            : kalemler // ignore: cast_nullable_to_non_nullable
+                  as List<KalemModel>?,
+        irsaliyedenFatura: freezed == irsaliyedenFatura
+            ? _value.irsaliyedenFatura
+            : irsaliyedenFatura // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        resmiBelgeNo: freezed == resmiBelgeNo
+            ? _value.resmiBelgeNo
+            : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EditFaturaModelImpl extends _EditFaturaModel {
-  _$EditFaturaModelImpl(
-      {@JsonKey(name: "BelgeTipi") this.belgeTipi,
-      @JsonKey(name: "PickerBelgeTuru") this.pickerBelgeTuru,
-      this.remoteTempBelge,
-      this.tempBelgeId,
-      this.tipi,
-      this.belgeNo,
-      this.belgeTuru,
-      this.cariKodu,
-      this.islemId,
-      this.mevcutBelgeNo,
-      this.yeniBelgeNo,
-      this.yeniCariKodu,
-      this.mevcutCariKodu,
-      final Map<dynamic, dynamic>? paramMap = const {},
-      this.tag = "FaturaModel",
-      this.islemKodu,
-      final List<KalemModel>? kalemler,
-      this.irsaliyedenFatura,
-      this.resmiBelgeNo,
-      this.tarih})
-      : _paramMap = paramMap,
-        _kalemler = kalemler,
-        super._();
+  _$EditFaturaModelImpl({
+    @JsonKey(name: "BelgeTipi") this.belgeTipi,
+    @JsonKey(name: "PickerBelgeTuru") this.pickerBelgeTuru,
+    this.remoteTempBelge,
+    this.tempBelgeId,
+    this.tipi,
+    this.belgeNo,
+    this.belgeTuru,
+    this.cariKodu,
+    this.islemId,
+    this.mevcutBelgeNo,
+    this.yeniBelgeNo,
+    this.yeniCariKodu,
+    this.mevcutCariKodu,
+    final Map<dynamic, dynamic>? paramMap = const {},
+    this.tag = "FaturaModel",
+    this.islemKodu,
+    final List<KalemModel>? kalemler,
+    this.irsaliyedenFatura,
+    this.resmiBelgeNo,
+    this.tarih,
+  }) : _paramMap = paramMap,
+       _kalemler = kalemler,
+       super._();
 
-  factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EditFaturaModelImplFromJson(json);
+  factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) => _$$EditFaturaModelImplFromJson(json);
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -451,43 +451,40 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
-      __$$EditFaturaModelImplCopyWithImpl<_$EditFaturaModelImpl>(
-          this, _$identity);
+      __$$EditFaturaModelImplCopyWithImpl<_$EditFaturaModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EditFaturaModelImplToJson(
-      this,
-    );
+    return _$$EditFaturaModelImplToJson(this);
   }
 }
 
 abstract class _EditFaturaModel extends EditFaturaModel {
-  factory _EditFaturaModel(
-      {@JsonKey(name: "BelgeTipi") final int? belgeTipi,
-      @JsonKey(name: "PickerBelgeTuru") final String? pickerBelgeTuru,
-      final bool? remoteTempBelge,
-      final int? tempBelgeId,
-      final int? tipi,
-      final String? belgeNo,
-      final String? belgeTuru,
-      final String? cariKodu,
-      final String? islemId,
-      final String? mevcutBelgeNo,
-      final String? yeniBelgeNo,
-      final String? yeniCariKodu,
-      final String? mevcutCariKodu,
-      final Map<dynamic, dynamic>? paramMap,
-      final String? tag,
-      final int? islemKodu,
-      final List<KalemModel>? kalemler,
-      final bool? irsaliyedenFatura,
-      final String? resmiBelgeNo,
-      final DateTime? tarih}) = _$EditFaturaModelImpl;
+  factory _EditFaturaModel({
+    @JsonKey(name: "BelgeTipi") final int? belgeTipi,
+    @JsonKey(name: "PickerBelgeTuru") final String? pickerBelgeTuru,
+    final bool? remoteTempBelge,
+    final int? tempBelgeId,
+    final int? tipi,
+    final String? belgeNo,
+    final String? belgeTuru,
+    final String? cariKodu,
+    final String? islemId,
+    final String? mevcutBelgeNo,
+    final String? yeniBelgeNo,
+    final String? yeniCariKodu,
+    final String? mevcutCariKodu,
+    final Map<dynamic, dynamic>? paramMap,
+    final String? tag,
+    final int? islemKodu,
+    final List<KalemModel>? kalemler,
+    final bool? irsaliyedenFatura,
+    final String? resmiBelgeNo,
+    final DateTime? tarih,
+  }) = _$EditFaturaModelImpl;
   _EditFaturaModel._() : super._();
 
-  factory _EditFaturaModel.fromJson(Map<String, dynamic> json) =
-      _$EditFaturaModelImpl.fromJson;
+  factory _EditFaturaModel.fromJson(Map<String, dynamic> json) = _$EditFaturaModelImpl.fromJson;
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -536,6 +533,5 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

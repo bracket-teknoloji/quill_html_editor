@@ -65,12 +65,11 @@ abstract class _FaturalarViewModelBase
   late EditTipiEnum editTipiEnum;
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap =
-      {
-        "EK": CacheManager.getProfilParametre.siparisEkAlan,
-        "MİK": CacheManager.getProfilParametre.siparisMiktar,
-        "VADE": CacheManager.getProfilParametre.siparisVade,
-      }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap = {
+    "EK": CacheManager.getProfilParametre.siparisEkAlan,
+    "MİK": CacheManager.getProfilParametre.siparisMiktar,
+    "VADE": CacheManager.getProfilParametre.siparisVade,
+  }.asObservable();
 
   @observable
   SiparislerRequestModel faturaRequestModel = SiparislerRequestModel(
@@ -203,11 +202,9 @@ abstract class _FaturalarViewModelBase
   }
 
   @action
-  void setParamData(Map<String, dynamic> value) =>
-      paramData =
-          value
-              .map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
-              .asObservable();
+  void setParamData(Map<String, dynamic> value) => paramData = value
+      .map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+      .asObservable();
 
   @action
   void changeGrupKodlariGoster() => grupKodlariGoster = !grupKodlariGoster;
@@ -282,24 +279,23 @@ abstract class _FaturalarViewModelBase
   }
 
   @action
-  void resetFilter() =>
-      faturaRequestModel = faturaRequestModel.copyWith(
-        searchText: null,
-        ozelKod1: null,
-        ozelKod2: null,
-        arrGrupKodu: null,
-        cariKodu: "",
-        cariTipi: null,
-        arrPlasiyerKodu: null,
-        projeKodu: null,
-        arrKod1: null,
-        arrKod2: null,
-        arrKod3: null,
-        arrKod4: null,
-        arrKod5: null,
-        baslamaTarihi: null,
-        bitisTarihi: null,
-      );
+  void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(
+    searchText: null,
+    ozelKod1: null,
+    ozelKod2: null,
+    arrGrupKodu: null,
+    cariKodu: "",
+    cariTipi: null,
+    arrPlasiyerKodu: null,
+    projeKodu: null,
+    arrKod1: null,
+    arrKod2: null,
+    arrKod3: null,
+    arrKod4: null,
+    arrKod5: null,
+    baslamaTarihi: null,
+    bitisTarihi: null,
+  );
   @override
   @action
   Future<void> resetList() async {

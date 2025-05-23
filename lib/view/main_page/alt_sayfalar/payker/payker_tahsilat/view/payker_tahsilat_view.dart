@@ -70,8 +70,8 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
     ExpansionPanelRadio(
       value: "bilgilendirme",
       canTapOnHeader: true,
-      headerBuilder:
-          (context, isExpanded) => const ListTile(leading: Icon(Icons.info_outlined), title: Text("Bilgilendirme")),
+      headerBuilder: (context, isExpanded) =>
+          const ListTile(leading: Icon(Icons.info_outlined), title: Text("Bilgilendirme")),
       body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -95,9 +95,8 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
     ExpansionPanelRadio(
       value: "kullanim_sartlari",
       canTapOnHeader: true,
-      headerBuilder:
-          (context, isExpanded) =>
-              const ListTile(leading: Icon(Icons.credit_card_outlined), title: Text("Kullanım Şartları")),
+      headerBuilder: (context, isExpanded) =>
+          const ListTile(leading: Icon(Icons.credit_card_outlined), title: Text("Kullanım Şartları")),
       body: const Padding(
         padding: EdgeInsets.all(8.0),
         child: Card(
@@ -118,24 +117,23 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
   AppBar _appBar() => AppBar(title: const AppBarTitle(title: "Payker Tahsilat"));
 
   Widget _fab(BuildContext context) => Observer(
-    builder:
-        (_) => FloatingActionButton.extended(
-          onPressed: () {
-            if (_viewModel.cardNumber.isEmpty ||
-                _viewModel.expiryDate.isEmpty ||
-                _viewModel.cardHolderName.isEmpty ||
-                _viewModel.cvvCode.isEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Lütfen tüm alanları doldurun")));
-              return;
-            }
-          },
-          label: AnimatedSize(
-            duration: const Duration(milliseconds: 200),
-            child: !_viewModel.isScrollDown ? const Text("Tahsilat Yap") : const SizedBox.shrink(),
-          ),
-          icon: const Icon(Icons.payment_outlined),
-          extendedIconLabelSpacing: _viewModel.isScrollDown ? 0 : 8,
-        ),
+    builder: (_) => FloatingActionButton.extended(
+      onPressed: () {
+        if (_viewModel.cardNumber.isEmpty ||
+            _viewModel.expiryDate.isEmpty ||
+            _viewModel.cardHolderName.isEmpty ||
+            _viewModel.cvvCode.isEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Lütfen tüm alanları doldurun")));
+          return;
+        }
+      },
+      label: AnimatedSize(
+        duration: const Duration(milliseconds: 200),
+        child: !_viewModel.isScrollDown ? const Text("Tahsilat Yap") : const SizedBox.shrink(),
+      ),
+      icon: const Icon(Icons.payment_outlined),
+      extendedIconLabelSpacing: _viewModel.isScrollDown ? 0 : 8,
+    ),
   );
 
   SingleChildScrollView _body() => SingleChildScrollView(
@@ -147,26 +145,25 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
         spacing: UIHelper.midSize,
         children: [
           Observer(
-            builder:
-                (_) => CreditCardWidget(
-                  padding: 25,
-                  cardNumber: _viewModel.cardNumber,
-                  expiryDate: _viewModel.expiryDate,
-                  backgroundImage: Assets.background.paykerCard2Background.path,
-                  cardHolderName: _viewModel.cardHolderName,
-                  cvvCode: _viewModel.cvvCode,
-                  cardBgColor: ColorPalette.mantis,
-                  showBackView: _viewModel.showBackView,
-                  enableFloatingCard: true,
-                  labelCardHolder: "Kart Sahibi",
-                  labelExpiredDate:
-                      "${DateTime.now().month.toString().padLeft(2, '0')}/${DateTime.now().year.toString().substring(2)}",
-                  labelValidThru: "SKT",
-                  isHolderNameVisible: true,
-                  onCreditCardWidgetChange: (p0) {},
-                  obscureCardCvv: false,
-                  obscureCardNumber: false,
-                ),
+            builder: (_) => CreditCardWidget(
+              padding: 25,
+              cardNumber: _viewModel.cardNumber,
+              expiryDate: _viewModel.expiryDate,
+              backgroundImage: Assets.background.paykerCard2Background.path,
+              cardHolderName: _viewModel.cardHolderName,
+              cvvCode: _viewModel.cvvCode,
+              cardBgColor: ColorPalette.mantis,
+              showBackView: _viewModel.showBackView,
+              enableFloatingCard: true,
+              labelCardHolder: "Kart Sahibi",
+              labelExpiredDate:
+                  "${DateTime.now().month.toString().padLeft(2, '0')}/${DateTime.now().year.toString().substring(2)}",
+              labelValidThru: "SKT",
+              isHolderNameVisible: true,
+              onCreditCardWidgetChange: (p0) {},
+              obscureCardCvv: false,
+              obscureCardNumber: false,
+            ),
           ),
 
           AutofillGroup(

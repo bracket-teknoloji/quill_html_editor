@@ -79,9 +79,17 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
       bottomNavigationBar: BottomBarWidget(
         isScrolledDown: true,
         children: [
-          FooterButton(children: [const Text("Toplam Miktar"), Observer(builder: (_) => Text(viewModel.toplamMiktar))]),
           FooterButton(
-            children: [const Text("Toplam Net Tutar"), Observer(builder: (_) => Text(viewModel.toplamNetTutar))],
+            children: [
+              const Text("Toplam Miktar"),
+              Observer(builder: (_) => Text(viewModel.toplamMiktar)),
+            ],
+          ),
+          FooterButton(
+            children: [
+              const Text("Toplam Net Tutar"),
+              Observer(builder: (_) => Text(viewModel.toplamNetTutar)),
+            ],
           ),
         ],
       ),
@@ -162,8 +170,9 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                     final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Plasiyer",
-                      children:
-                          plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList(),
+                      children: plasiyerList
+                          .map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e))
+                          .toList(),
                     );
                     if (result != null) {
                       plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -207,12 +216,9 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                   context,
                   title: "Rapor Tipi",
                   groupValue: viewModel.model.tipi,
-                  children:
-                      viewModel.raporTipi.entries
-                          .map(
-                            (e) => BottomSheetModel(title: e.key, value: e, description: e.value, groupValue: e.value),
-                          )
-                          .toList(),
+                  children: viewModel.raporTipi.entries
+                      .map((e) => BottomSheetModel(title: e.key, value: e, description: e.value, groupValue: e.value))
+                      .toList(),
                 );
                 if (result != null) {
                   raporTipiController.text = result.key;
@@ -233,17 +239,16 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                   child: Center(
                     child: CustomWidgetWithLabel(
                       child: Observer(
-                        builder:
-                            (_) => SwitchListTile.adaptive(
-                              contentPadding: UIHelper.midPadding,
-                              value: viewModel.irsDahilValue,
-                              onChanged: (value) {
-                                viewModel
-                                  ..setIrsDahilValue(value)
-                                  ..getData();
-                              },
-                              title: const Text("İrsaliye Dahil"),
-                            ),
+                        builder: (_) => SwitchListTile.adaptive(
+                          contentPadding: UIHelper.midPadding,
+                          value: viewModel.irsDahilValue,
+                          onChanged: (value) {
+                            viewModel
+                              ..setIrsDahilValue(value)
+                              ..getData();
+                          },
+                          title: const Text("İrsaliye Dahil"),
+                        ),
                       ),
                     ),
                   ),
@@ -254,17 +259,16 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                   child: Center(
                     child: CustomWidgetWithLabel(
                       child: Observer(
-                        builder:
-                            (_) => SwitchListTile.adaptive(
-                              contentPadding: UIHelper.midPadding,
-                              value: viewModel.gruplansinValue,
-                              onChanged: (value) {
-                                viewModel
-                                  ..setGruplansinValue(value)
-                                  ..getData();
-                              },
-                              title: const Text("Küçük Değerler Gruplansın"),
-                            ),
+                        builder: (_) => SwitchListTile.adaptive(
+                          contentPadding: UIHelper.midPadding,
+                          value: viewModel.gruplansinValue,
+                          onChanged: (value) {
+                            viewModel
+                              ..setGruplansinValue(value)
+                              ..getData();
+                          },
+                          title: const Text("Küçük Değerler Gruplansın"),
+                        ),
                       ),
                     ),
                   ),
@@ -274,16 +278,15 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
           ),
         ),
         Observer(
-          builder:
-              (_) => CustomPieChart(
-                pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList() ?? [],
-                pieChartTitle:
-                    viewModel.modelList
-                        ?.map((element) => "${element.grupAdi ?? element.grupKodu}")
-                        .toList()
-                        .cast<String>() ??
-                    [],
-              ),
+          builder: (_) => CustomPieChart(
+            pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList() ?? [],
+            pieChartTitle:
+                viewModel.modelList
+                    ?.map((element) => "${element.grupAdi ?? element.grupKodu}")
+                    .toList()
+                    .cast<String>() ??
+                [],
+          ),
         ).paddingOnly(bottom: UIHelper.highSize * 10),
       ],
     ).paddingAll(UIHelper.lowSize),

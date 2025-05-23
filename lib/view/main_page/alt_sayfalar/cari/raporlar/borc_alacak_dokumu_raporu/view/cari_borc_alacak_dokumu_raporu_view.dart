@@ -55,12 +55,11 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
 
   @override
   Widget build(BuildContext context) => Observer(
-    builder:
-        (_) => PDFViewerView(
-          filterBottomSheet: filterBottomSheet,
-          title: "${widget.dovizliMi ? "Dövizli " : ""}Borç/Alacak Dökümü",
-          pdfData: viewModel.pdfModel,
-        ),
+    builder: (_) => PDFViewerView(
+      filterBottomSheet: filterBottomSheet,
+      title: "${widget.dovizliMi ? "Dövizli " : ""}Borç/Alacak Dökümü",
+      pdfData: viewModel.pdfModel,
+    ),
   );
 
   Future<bool> filterBottomSheet() async {
@@ -143,10 +142,9 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
                         context,
                         title: "Döviz Tipi",
                         groupValues: viewModel.pdfModel.dicParams?.dovizTipleri,
-                        children:
-                            parametreModel.dovizList
-                                ?.map((e) => BottomSheetModel(title: e.isim ?? "", value: e, groupValue: e.dovizKodu))
-                                .toList(),
+                        children: parametreModel.dovizList
+                            ?.map((e) => BottomSheetModel(title: e.isim ?? "", value: e, groupValue: e.dovizKodu))
+                            .toList(),
                       );
                       if (result != null) {
                         _dovizTipiController.text = result.map((e) => e.isim).nonNulls.join(", ");
@@ -156,12 +154,11 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
                   ),
                   Card(
                     child: Observer(
-                      builder:
-                          (_) => SwitchListTile.adaptive(
-                            title: const Text("Sıfır Bakiye Hariç"),
-                            value: viewModel.pdfModel.dicParams?.sifirHaric == "E",
-                            onChanged: viewModel.setSifirHaric,
-                          ),
+                      builder: (_) => SwitchListTile.adaptive(
+                        title: const Text("Sıfır Bakiye Hariç"),
+                        value: viewModel.pdfModel.dicParams?.sifirHaric == "E",
+                        onChanged: viewModel.setSifirHaric,
+                      ),
                     ),
                   ),
                 ],

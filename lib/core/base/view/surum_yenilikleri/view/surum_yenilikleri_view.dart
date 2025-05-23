@@ -43,14 +43,9 @@ final class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) =>
-                viewModel.searchBar
-                    ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
-                    : AppBarTitle(
-                      title: "Sürüm Yenilikleri",
-                      subtitle: "Versiyon Kodunuz: ${AppInfoModel.instance.version}",
-                    ),
+        builder: (_) => viewModel.searchBar
+            ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
+            : AppBarTitle(title: "Sürüm Yenilikleri", subtitle: "Versiyon Kodunuz: ${AppInfoModel.instance.version}"),
       ),
       actions: [
         IconButton(
@@ -66,43 +61,38 @@ final class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
       ],
     ),
     body: Observer(
-      builder:
-          (_) => RefreshableListView(
-            onRefresh: viewModel.getData,
-            items: viewModel.getSurumYenilikleriModelList,
-            itemBuilder:
-                (item) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(item.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Text(
-                          item.tarih
-                                  ?.add(Duration(minutes: AccountModel.instance.cihazTimeZoneDakika ?? 0))
-                                  .toDateString ??
-                              "",
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      padding: UIHelper.zeroPadding,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: item.liste?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        final ValueList? newItem = item.liste?[index];
-                        return Card(
-                          // elevation: 0,
-                          child: ListTile(title: Text("• ${newItem?.aciklama ?? ""}")),
-                        );
-                      },
-                    ),
-                  ],
-                ).paddingAll(UIHelper.lowSize),
-          ),
+      builder: (_) => RefreshableListView(
+        onRefresh: viewModel.getData,
+        items: viewModel.getSurumYenilikleriModelList,
+        itemBuilder: (item) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(item.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  item.tarih?.add(Duration(minutes: AccountModel.instance.cihazTimeZoneDakika ?? 0)).toDateString ?? "",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ).paddingSymmetric(horizontal: UIHelper.lowSize),
+            ListView.builder(
+              shrinkWrap: true,
+              padding: UIHelper.zeroPadding,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: item.liste?.length ?? 0,
+              itemBuilder: (context, index) {
+                final ValueList? newItem = item.liste?[index];
+                return Card(
+                  // elevation: 0,
+                  child: ListTile(title: Text("• ${newItem?.aciklama ?? ""}")),
+                );
+              },
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      ),
     ),
   );
 }

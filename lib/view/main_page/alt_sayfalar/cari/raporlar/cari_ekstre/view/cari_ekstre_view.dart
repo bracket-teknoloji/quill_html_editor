@@ -54,8 +54,8 @@ final class _CariEkstreViewState extends BaseState<CariEkstreView> {
 
   @override
   Widget build(BuildContext context) => Observer(
-    builder:
-        (_) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Ekstre", pdfData: viewModel.pdfModel),
+    builder: (_) =>
+        PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Ekstre", pdfData: viewModel.pdfModel),
   );
 
   Future<bool> filterBottomSheet() async {
@@ -116,23 +116,23 @@ final class _CariEkstreViewState extends BaseState<CariEkstreView> {
             },
           ),
           Observer(
-            builder:
-                (_) => ElevatedButton(
-                  onPressed: () {
-                    if (viewModel.pdfModel.dicParams?.cariKodu == null ||
-                        viewModel.pdfModel.dicParams?.dovizTipi == null) {
-                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                    } else {
-                      viewModel.pdfModel.dicParams?.bastar =
-                          baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
-                      viewModel.pdfModel.dicParams?.bittar =
-                          bitisTarihiController.text != "" ? bitisTarihiController.text : null;
-                      viewModel.setFuture();
-                      Get.back();
-                    }
-                  },
-                  child: Text(loc.generalStrings.apply),
-                ).paddingAll(UIHelper.lowSize),
+            builder: (_) => ElevatedButton(
+              onPressed: () {
+                if (viewModel.pdfModel.dicParams?.cariKodu == null || viewModel.pdfModel.dicParams?.dovizTipi == null) {
+                  dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                } else {
+                  viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != ""
+                      ? baslangicTarihiController.text
+                      : null;
+                  viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != ""
+                      ? bitisTarihiController.text
+                      : null;
+                  viewModel.setFuture();
+                  Get.back();
+                }
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),

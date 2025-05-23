@@ -51,13 +51,12 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.olcumEkle,
       bodyModel: OlcumEkleModel(),
       showLoading: true,
-      data:
-          newReqModel
-              .copyWith(
-                prosesler: requestModel.prosesler?.map((e) => e..prosesId = e.id).toList(),
-                tamamlandi: requestModel.prosesler?.every((element) => element.sonuc != null) ?? false,
-              )
-              .toJson(),
+      data: newReqModel
+          .copyWith(
+            prosesler: requestModel.prosesler?.map((e) => e..prosesId = e.id).toList(),
+            tamamlandi: requestModel.prosesler?.every((element) => element.sonuc != null) ?? false,
+          )
+          .toJson(),
     );
   }
 }

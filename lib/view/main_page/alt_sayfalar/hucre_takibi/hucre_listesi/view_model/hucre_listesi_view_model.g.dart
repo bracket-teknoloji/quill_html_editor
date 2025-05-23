@@ -13,14 +13,12 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
 
   @override
   ObservableList<HucreListesiModel>? get filteredHucreListesi =>
-      (_$filteredHucreListesiComputed ??=
-              Computed<ObservableList<HucreListesiModel>?>(
-                  () => super.filteredHucreListesi,
-                  name: '_HucreListesiViewModelBase.filteredHucreListesi'))
-          .value;
+      (_$filteredHucreListesiComputed ??= Computed<ObservableList<HucreListesiModel>?>(
+        () => super.filteredHucreListesi,
+        name: '_HucreListesiViewModelBase.filteredHucreListesi',
+      )).value;
 
-  late final _$requestModelAtom =
-      Atom(name: '_HucreListesiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_HucreListesiViewModelBase.requestModel', context: context);
 
   @override
   HucreListesiRequestModel get requestModel {
@@ -35,8 +33,7 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom =
-      Atom(name: '_HucreListesiViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(name: '_HucreListesiViewModelBase.observableList', context: context);
 
   @override
   ObservableList<HucreListesiModel>? get observableList {
@@ -51,8 +48,7 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_HucreListesiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(name: '_HucreListesiViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -67,21 +63,23 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_HucreListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_HucreListesiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_HucreListesiViewModelBaseActionController =
-      ActionController(name: '_HucreListesiViewModelBase', context: context);
+  late final _$_HucreListesiViewModelBaseActionController = ActionController(
+    name: '_HucreListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_HucreListesiViewModelBaseActionController
-        .startAction(name: '_HucreListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_HucreListesiViewModelBaseActionController.startAction(
+      name: '_HucreListesiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -91,8 +89,9 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
 
   @override
   void setDepoKodu(int? value) {
-    final _$actionInfo = _$_HucreListesiViewModelBaseActionController
-        .startAction(name: '_HucreListesiViewModelBase.setDepoKodu');
+    final _$actionInfo = _$_HucreListesiViewModelBaseActionController.startAction(
+      name: '_HucreListesiViewModelBase.setDepoKodu',
+    );
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -102,8 +101,9 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
 
   @override
   void setObservableList(List<HucreListesiModel>? list) {
-    final _$actionInfo = _$_HucreListesiViewModelBaseActionController
-        .startAction(name: '_HucreListesiViewModelBase.setObservableList');
+    final _$actionInfo = _$_HucreListesiViewModelBaseActionController.startAction(
+      name: '_HucreListesiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {

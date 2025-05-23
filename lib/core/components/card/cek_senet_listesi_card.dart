@@ -75,28 +75,29 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
             ],
           ),
           if (model.dovizKodu != null)
-            const Row(children: [ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)]),
+            const Row(
+              children: [ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)],
+            ),
           Text(model.cariKodu ?? ""),
           Text(model.cariAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
           LayoutBuilder(
-            builder:
-                (context, constraints) => Wrap(
-                  children:
-                      [
-                            if (model.dovizTutari != null)
-                              Text(
-                                "Döviz Tutarı: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu}",
-                              ),
-                            Text("Tutar: ${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                            Text("İşlem Tarihi: ${model.tarih.toDateString}"),
-                            Text("Vade Tarihi: ${model.vadeTarihi.toDateString}"),
-                            if (!widget.cekSenetListesiEnum.borcMu) Text("Asıl/Ciro: ${model.ciroTipiString}"),
-                            if (widget.cekSenetListesiEnum.cekMi) Text("Seri No: ${model.seriNo ?? ""}"),
-                          ]
-                          .map((e) => e is! SizedBox ? SizedBox(width: constraints.maxWidth / 2, child: e) : null)
-                          .toList()
-                          .nullCheckWithGeneric,
-                ),
+            builder: (context, constraints) => Wrap(
+              children:
+                  [
+                        if (model.dovizTutari != null)
+                          Text(
+                            "Döviz Tutarı: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu}",
+                          ),
+                        Text("Tutar: ${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                        Text("İşlem Tarihi: ${model.tarih.toDateString}"),
+                        Text("Vade Tarihi: ${model.vadeTarihi.toDateString}"),
+                        if (!widget.cekSenetListesiEnum.borcMu) Text("Asıl/Ciro: ${model.ciroTipiString}"),
+                        if (widget.cekSenetListesiEnum.cekMi) Text("Seri No: ${model.seriNo ?? ""}"),
+                      ]
+                      .map((e) => e is! SizedBox ? SizedBox(width: constraints.maxWidth / 2, child: e) : null)
+                      .toList()
+                      .nullCheckWithGeneric,
+            ),
           ),
           if (model.getCekBankaAdi != null || model.getCekSubeAdi != null)
             Text("${model.getCekBankaAdi} ${model.getCekSubeAdi ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize),
@@ -174,14 +175,13 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
           path: ApiUrls.deleteCekSenet,
           bodyModel: EditFaturaModel(),
           showLoading: true,
-          data:
-              DeleteCekSenetModel(
-                belgeNo: model.belgeNo,
-                belgeTipi: model.belgeTipi,
-                islemKodu: 5,
-                pickerTahsilatTuru: model.belgeTipi,
-                tag: "CekSenetBordroModel",
-              ).toJson(),
+          data: DeleteCekSenetModel(
+            belgeNo: model.belgeNo,
+            belgeTipi: model.belgeTipi,
+            islemKodu: 5,
+            pickerTahsilatTuru: model.belgeTipi,
+            tag: "CekSenetBordroModel",
+          ).toJson(),
         );
         if (result.isSuccess) {
           dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
@@ -193,10 +193,14 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
 
   Future<void> showTahsilatMakbuzu() async {
     Get.back();
-    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams(belgeNo: model.belgeNo!));
+    final PdfModel pdfModel = PdfModel(
+      raporOzelKod: "TahsilatMakbuzu",
+      dicParams: DicParams(belgeNo: model.belgeNo!),
+    );
     final anaVeri = CacheManager.getAnaVeri;
-    final result =
-        anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
+    final result = anaVeri?.paramModel?.netFectDizaynList
+        ?.where((element) => element.ozelKod == "TahsilatMakbuzu")
+        .toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {
       pdfModel.dicParams?.caharInckey = "0";

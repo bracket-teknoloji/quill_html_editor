@@ -95,28 +95,25 @@ final class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
                   itemBuilder: (context, index) {
                     final BaseSiparisEditModel model = viewModel.siparisList![index];
                     return Observer(
-                      builder:
-                          (_) => SiparisRehberiCard(
-                            model: model,
-                            editTipiEnum: widget.model.getEditTipiEnum ?? EditTipiEnum.musteri,
-                            value: viewModel.selectedSiparisList.any((element) => element.belgeNo == model.belgeNo),
-                            onTap: () {
-                              if (!(widget.model.getEditTipiEnum?.siparisBaglantisiCokluSecim ?? false)) {
-                                Get.back(result: [model]);
-                              }
-                              if (viewModel.selectedSiparisList.any((element) => element.belgeNo == model.belgeNo)) {
-                                viewModel.removeSelectedSiparis(model);
-                              } else {
-                                if (viewModel.selectedSiparisList.any(
-                                  (element) => element.cariKodu != model.cariKodu,
-                                )) {
-                                  dialogManager.showErrorSnackBar("Aynı cariye ait olmayan siparişler seçilemez");
-                                } else {
-                                  viewModel.addSelectedSiparis(model);
-                                }
-                              }
-                            },
-                          ),
+                      builder: (_) => SiparisRehberiCard(
+                        model: model,
+                        editTipiEnum: widget.model.getEditTipiEnum ?? EditTipiEnum.musteri,
+                        value: viewModel.selectedSiparisList.any((element) => element.belgeNo == model.belgeNo),
+                        onTap: () {
+                          if (!(widget.model.getEditTipiEnum?.siparisBaglantisiCokluSecim ?? false)) {
+                            Get.back(result: [model]);
+                          }
+                          if (viewModel.selectedSiparisList.any((element) => element.belgeNo == model.belgeNo)) {
+                            viewModel.removeSelectedSiparis(model);
+                          } else {
+                            if (viewModel.selectedSiparisList.any((element) => element.cariKodu != model.cariKodu)) {
+                              dialogManager.showErrorSnackBar("Aynı cariye ait olmayan siparişler seçilemez");
+                            } else {
+                              viewModel.addSelectedSiparis(model);
+                            }
+                          }
+                        },
+                      ),
                     );
                   },
                 );

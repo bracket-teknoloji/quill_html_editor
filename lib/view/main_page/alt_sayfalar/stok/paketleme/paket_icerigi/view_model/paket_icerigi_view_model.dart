@@ -52,12 +52,11 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, Listable
       path: ApiUrls.savePaket,
       bodyModel: PaketIcerigiModel(),
       showLoading: true,
-      data:
-          PaketlemeEditRequestModel(
-            islemKodu: PaketIslemlerEnum.paketIcerigiSil.islemKodu,
-            kalemId: id,
-            paketId: paketID,
-          ).toJson(),
+      data: PaketlemeEditRequestModel(
+        islemKodu: PaketIslemlerEnum.paketIcerigiSil.islemKodu,
+        kalemId: id,
+        paketId: paketID,
+      ).toJson(),
     );
     return result;
   }

@@ -12,13 +12,12 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   Computed<double>? _$toplamTutarComputed;
 
   @override
-  double get toplamTutar =>
-      (_$toplamTutarComputed ??= Computed<double>(() => super.toplamTutar,
-              name: '_CekSenetListesiViewModelBase.toplamTutar'))
-          .value;
+  double get toplamTutar => (_$toplamTutarComputed ??= Computed<double>(
+    () => super.toplamTutar,
+    name: '_CekSenetListesiViewModelBase.toplamTutar',
+  )).value;
 
-  late final _$searchBarAtom =
-      Atom(name: '_CekSenetListesiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(name: '_CekSenetListesiViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -33,8 +32,7 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom = Atom(
-      name: '_CekSenetListesiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(name: '_CekSenetListesiViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -50,8 +48,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   }
 
   late final _$cekSenetListesiListesiAtom = Atom(
-      name: '_CekSenetListesiViewModelBase.cekSenetListesiListesi',
-      context: context);
+    name: '_CekSenetListesiViewModelBase.cekSenetListesiListesi',
+    context: context,
+  );
 
   @override
   ObservableList<CekSenetListesiModel>? get cekSenetListesiListesi {
@@ -61,15 +60,15 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   set cekSenetListesiListesi(ObservableList<CekSenetListesiModel>? value) {
-    _$cekSenetListesiListesiAtom
-        .reportWrite(value, super.cekSenetListesiListesi, () {
+    _$cekSenetListesiListesiAtom.reportWrite(value, super.cekSenetListesiListesi, () {
       super.cekSenetListesiListesi = value;
     });
   }
 
   late final _$cekSenetListesiRequestModelAtom = Atom(
-      name: '_CekSenetListesiViewModelBase.cekSenetListesiRequestModel',
-      context: context);
+    name: '_CekSenetListesiViewModelBase.cekSenetListesiRequestModel',
+    context: context,
+  );
 
   @override
   CekSenetListesiRequestModel get cekSenetListesiRequestModel {
@@ -79,27 +78,28 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   set cekSenetListesiRequestModel(CekSenetListesiRequestModel value) {
-    _$cekSenetListesiRequestModelAtom
-        .reportWrite(value, super.cekSenetListesiRequestModel, () {
+    _$cekSenetListesiRequestModelAtom.reportWrite(value, super.cekSenetListesiRequestModel, () {
       super.cekSenetListesiRequestModel = value;
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_CekSenetListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_CekSenetListesiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_CekSenetListesiViewModelBaseActionController =
-      ActionController(name: '_CekSenetListesiViewModelBase', context: context);
+  late final _$_CekSenetListesiViewModelBaseActionController = ActionController(
+    name: '_CekSenetListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setSearchBar');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setSearchBar',
+    );
     try {
       return super.setSearchBar();
     } finally {
@@ -109,8 +109,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setIsScrolledDown(bool value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setIsScrolledDown');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setIsScrolledDown',
+    );
     try {
       return super.setIsScrolledDown(value);
     } finally {
@@ -120,8 +121,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -131,8 +133,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setBaslangicTarihi');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setBaslangicTarihi',
+    );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -142,8 +145,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setBitisTarihi',
+    );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -153,8 +157,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setYeri(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setYeri');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setYeri',
+    );
     try {
       return super.setYeri(value);
     } finally {
@@ -164,8 +169,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setVerenCari(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setVerenCari');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setVerenCari',
+    );
     try {
       return super.setVerenCari(value);
     } finally {
@@ -175,8 +181,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setVerilenCari(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setVerilenCari');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setVerilenCari',
+    );
     try {
       return super.setVerilenCari(value);
     } finally {
@@ -186,8 +193,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBanka(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setBanka');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setBanka',
+    );
     try {
       return super.setBanka(value);
     } finally {
@@ -197,8 +205,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setVadeTarihi(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setVadeTarihi');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setVadeTarihi',
+    );
     try {
       return super.setVadeTarihi(value);
     } finally {
@@ -208,8 +217,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setDurumu(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setDurumu');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setDurumu',
+    );
     try {
       return super.setDurumu(value);
     } finally {
@@ -219,8 +229,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setSirala(String value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setSirala');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setSirala',
+    );
     try {
       return super.setSirala(value);
     } finally {
@@ -230,8 +241,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBelgeTipi(String value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
-        .startAction(name: '_CekSenetListesiViewModelBase.setBelgeTipi');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setBelgeTipi',
+    );
     try {
       return super.setBelgeTipi(value);
     } finally {
@@ -241,9 +253,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setCekSenetListesiListesi(List<CekSenetListesiModel>? value) {
-    final _$actionInfo =
-        _$_CekSenetListesiViewModelBaseActionController.startAction(
-            name: '_CekSenetListesiViewModelBase.setCekSenetListesiListesi');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
+      name: '_CekSenetListesiViewModelBase.setCekSenetListesiListesi',
+    );
     try {
       return super.setCekSenetListesiListesi(value);
     } finally {

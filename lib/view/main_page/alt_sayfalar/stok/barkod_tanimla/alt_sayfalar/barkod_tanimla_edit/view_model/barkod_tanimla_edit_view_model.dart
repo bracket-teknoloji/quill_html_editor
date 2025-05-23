@@ -37,12 +37,11 @@ abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
     path: ApiUrls.saveStok,
     bodyModel: BarkodTanimlaKayitlariModel(),
     showLoading: true,
-    data:
-        SaveStokModel()
-          ..islemKodu = 4
-          ..kodu = model.stokKodu
-          ..requestVersion = 1
-          ..stokBarkodModel = model,
+    data: SaveStokModel()
+      ..islemKodu = 4
+      ..kodu = model.stokKodu
+      ..requestVersion = 1
+      ..stokBarkodModel = model,
   );
 
   @action

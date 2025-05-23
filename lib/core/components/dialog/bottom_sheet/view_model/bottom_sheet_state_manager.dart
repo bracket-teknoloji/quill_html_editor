@@ -42,14 +42,13 @@ abstract class _BottomSheetStateManagerBase with Store {
   }
 
   @computed
-  List<BottomSheetModel>? get getFilteredList =>
-      unFilteredList
-          ?.where(
-            (element) =>
-                element.title.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ||
-                (element.description?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? false),
-          )
-          .toList();
+  List<BottomSheetModel>? get getFilteredList => unFilteredList
+      ?.where(
+        (element) =>
+            element.title.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ||
+            (element.description?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? false),
+      )
+      .toList();
 
   @action
   void changeSearchValue(String value) {

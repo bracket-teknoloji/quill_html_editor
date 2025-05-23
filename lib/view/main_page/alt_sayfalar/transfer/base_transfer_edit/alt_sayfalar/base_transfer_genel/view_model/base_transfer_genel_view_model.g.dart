@@ -9,8 +9,7 @@ part of 'base_transfer_genel_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
-  late final _$kdvDahilAtom =
-      Atom(name: '_BaseTransferGenelViewModelBase.kdvDahil', context: context);
+  late final _$kdvDahilAtom = Atom(name: '_BaseTransferGenelViewModelBase.kdvDahil', context: context);
 
   @override
   bool get kdvDahil {
@@ -25,8 +24,7 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseTransferGenelViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(name: '_BaseTransferGenelViewModelBase.model', context: context);
 
   @override
   BaseSiparisEditModel get model {
@@ -42,22 +40,25 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   late final _$fiyatGuncelleAsyncAction = AsyncAction(
-      '_BaseTransferGenelViewModelBase.fiyatGuncelle',
-      context: context);
+    '_BaseTransferGenelViewModelBase.fiyatGuncelle',
+    context: context,
+  );
 
   @override
   Future<bool> fiyatGuncelle() {
     return _$fiyatGuncelleAsyncAction.run(() => super.fiyatGuncelle());
   }
 
-  late final _$_BaseTransferGenelViewModelBaseActionController =
-      ActionController(
-          name: '_BaseTransferGenelViewModelBase', context: context);
+  late final _$_BaseTransferGenelViewModelBaseActionController = ActionController(
+    name: '_BaseTransferGenelViewModelBase',
+    context: context,
+  );
 
   @override
   void setCariAdi(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setCariAdi');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setCariAdi',
+    );
     try {
       return super.setCariAdi(value);
     } finally {
@@ -67,8 +68,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setCariKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -78,8 +80,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setTeslimCariAdi(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setTeslimCariAdi');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setTeslimCariAdi',
+    );
     try {
       return super.setTeslimCariAdi(value);
     } finally {
@@ -89,8 +92,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setTeslimCariKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setTeslimCariKodu',
+    );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
@@ -100,8 +104,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setDepoKodu(DepoList? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setDepoKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setDepoKodu',
+    );
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -111,8 +116,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void changeKdvDahil(bool value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.changeKdvDahil');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.changeKdvDahil',
+    );
     try {
       return super.changeKdvDahil(value);
     } finally {
@@ -122,8 +128,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void changeIsEmri(IsEmirleriModel? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.changeIsEmri');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.changeIsEmri',
+    );
     try {
       return super.changeIsEmri(value);
     } finally {
@@ -133,8 +140,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void changeMasrafKodu(MasrafKoduRehberiModel? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.changeMasrafKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.changeMasrafKodu',
+    );
     try {
       return super.changeMasrafKodu(value);
     } finally {
@@ -144,8 +152,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void changeCikisYeri(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.changeCikisYeri');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.changeCikisYeri',
+    );
     try {
       return super.changeCikisYeri(value);
     } finally {
@@ -155,8 +164,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setHareketTuru(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setHareketTuru');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setHareketTuru',
+    );
     try {
       return super.setHareketTuru(value);
     } finally {
@@ -166,8 +176,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setMasrafKoduTipi(int? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setMasrafKoduTipi');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setMasrafKoduTipi',
+    );
     try {
       return super.setMasrafKoduTipi(value);
     } finally {
@@ -177,8 +188,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setCikisSube(SubeList? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setCikisSube');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setCikisSube',
+    );
     try {
       return super.setCikisSube(value);
     } finally {
@@ -188,8 +200,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setGirisSube(SubeList? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setGirisSube');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setGirisSube',
+    );
     try {
       return super.setGirisSube(value);
     } finally {
@@ -199,8 +212,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setOzelKod1(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setOzelKod1');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setOzelKod1',
+    );
     try {
       return super.setOzelKod1(value);
     } finally {
@@ -210,8 +224,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setOzelKod2(String? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setOzelKod2');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setOzelKod2',
+    );
     try {
       return super.setOzelKod2(value);
     } finally {
@@ -221,8 +236,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setPlasiyer(PlasiyerList? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setPlasiyer');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setPlasiyer',
+    );
     try {
       return super.setPlasiyer(value);
     } finally {
@@ -232,8 +248,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setProje(BaseProjeModel? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setProje');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setProje',
+    );
     try {
       return super.setProje(value);
     } finally {
@@ -243,8 +260,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setTarih');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -254,9 +272,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setTopluGirisDepoKodu(DepoList? value) {
-    final _$actionInfo =
-        _$_BaseTransferGenelViewModelBaseActionController.startAction(
-            name: '_BaseTransferGenelViewModelBase.setTopluGirisDepoKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setTopluGirisDepoKodu',
+    );
     try {
       return super.setTopluGirisDepoKodu(value);
     } finally {
@@ -266,9 +284,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setTopluCikisDepoKodu(DepoList? value) {
-    final _$actionInfo =
-        _$_BaseTransferGenelViewModelBaseActionController.startAction(
-            name: '_BaseTransferGenelViewModelBase.setTopluCikisDepoKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setTopluCikisDepoKodu',
+    );
     try {
       return super.setTopluCikisDepoKodu(value);
     } finally {
@@ -278,8 +296,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setLokalDepo(bool value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setLokalDepo');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setLokalDepo',
+    );
     try {
       return super.setLokalDepo(value);
     } finally {
@@ -289,8 +308,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setEIrsaliye(bool value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setEIrsaliye');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setEIrsaliye',
+    );
     try {
       return super.setEIrsaliye(value);
     } finally {
@@ -300,8 +320,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setAciklama(int index, GenelRehberModel? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setAciklama');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController.startAction(
+      name: '_BaseTransferGenelViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(index, value);
     } finally {

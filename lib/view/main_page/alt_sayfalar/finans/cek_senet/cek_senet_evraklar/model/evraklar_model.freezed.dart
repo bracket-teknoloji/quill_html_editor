@@ -12,7 +12,8 @@ part of 'evraklar_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EvraklarModel _$EvraklarModelFromJson(Map<String, dynamic> json) {
   return _EvraklarModel.fromJson(json);
@@ -43,30 +44,28 @@ mixin _$EvraklarModel {
   /// Create a copy of EvraklarModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EvraklarModelCopyWith<EvraklarModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EvraklarModelCopyWith<EvraklarModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EvraklarModelCopyWith<$Res> {
-  factory $EvraklarModelCopyWith(
-          EvraklarModel value, $Res Function(EvraklarModel) then) =
+  factory $EvraklarModelCopyWith(EvraklarModel value, $Res Function(EvraklarModel) then) =
       _$EvraklarModelCopyWithImpl<$Res, EvraklarModel>;
   @useResult
-  $Res call(
-      {int? id,
-      String? belgeNo,
-      String? aciklama,
-      String? belgeTipi,
-      String? resimUrl,
-      String? resimUrlKucuk,
-      int? boyutByte,
-      int? islemKodu});
+  $Res call({
+    int? id,
+    String? belgeNo,
+    String? aciklama,
+    String? belgeTipi,
+    String? resimUrl,
+    String? resimUrlKucuk,
+    int? boyutByte,
+    int? islemKodu,
+  });
 }
 
 /// @nodoc
-class _$EvraklarModelCopyWithImpl<$Res, $Val extends EvraklarModel>
-    implements $EvraklarModelCopyWith<$Res> {
+class _$EvraklarModelCopyWithImpl<$Res, $Val extends EvraklarModel> implements $EvraklarModelCopyWith<$Res> {
   _$EvraklarModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,69 +87,69 @@ class _$EvraklarModelCopyWithImpl<$Res, $Val extends EvraklarModel>
     Object? boyutByte = freezed,
     Object? islemKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimUrl: freezed == resimUrl
-          ? _value.resimUrl
-          : resimUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimUrlKucuk: freezed == resimUrlKucuk
-          ? _value.resimUrlKucuk
-          : resimUrlKucuk // ignore: cast_nullable_to_non_nullable
-              as String?,
-      boyutByte: freezed == boyutByte
-          ? _value.boyutByte
-          : boyutByte // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            resimUrl: freezed == resimUrl
+                ? _value.resimUrl
+                : resimUrl // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            resimUrlKucuk: freezed == resimUrlKucuk
+                ? _value.resimUrlKucuk
+                : resimUrlKucuk // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            boyutByte: freezed == boyutByte
+                ? _value.boyutByte
+                : boyutByte // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$EvraklarModelImplCopyWith<$Res>
-    implements $EvraklarModelCopyWith<$Res> {
-  factory _$$EvraklarModelImplCopyWith(
-          _$EvraklarModelImpl value, $Res Function(_$EvraklarModelImpl) then) =
+abstract class _$$EvraklarModelImplCopyWith<$Res> implements $EvraklarModelCopyWith<$Res> {
+  factory _$$EvraklarModelImplCopyWith(_$EvraklarModelImpl value, $Res Function(_$EvraklarModelImpl) then) =
       __$$EvraklarModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      String? belgeNo,
-      String? aciklama,
-      String? belgeTipi,
-      String? resimUrl,
-      String? resimUrlKucuk,
-      int? boyutByte,
-      int? islemKodu});
+  $Res call({
+    int? id,
+    String? belgeNo,
+    String? aciklama,
+    String? belgeTipi,
+    String? resimUrl,
+    String? resimUrlKucuk,
+    int? boyutByte,
+    int? islemKodu,
+  });
 }
 
 /// @nodoc
-class __$$EvraklarModelImplCopyWithImpl<$Res>
-    extends _$EvraklarModelCopyWithImpl<$Res, _$EvraklarModelImpl>
+class __$$EvraklarModelImplCopyWithImpl<$Res> extends _$EvraklarModelCopyWithImpl<$Res, _$EvraklarModelImpl>
     implements _$$EvraklarModelImplCopyWith<$Res> {
-  __$$EvraklarModelImplCopyWithImpl(
-      _$EvraklarModelImpl _value, $Res Function(_$EvraklarModelImpl) _then)
-      : super(_value, _then);
+  __$$EvraklarModelImplCopyWithImpl(_$EvraklarModelImpl _value, $Res Function(_$EvraklarModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of EvraklarModel
   /// with the given fields replaced by the non-null parameter values.
@@ -166,59 +165,60 @@ class __$$EvraklarModelImplCopyWithImpl<$Res>
     Object? boyutByte = freezed,
     Object? islemKodu = freezed,
   }) {
-    return _then(_$EvraklarModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimUrl: freezed == resimUrl
-          ? _value.resimUrl
-          : resimUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimUrlKucuk: freezed == resimUrlKucuk
-          ? _value.resimUrlKucuk
-          : resimUrlKucuk // ignore: cast_nullable_to_non_nullable
-              as String?,
-      boyutByte: freezed == boyutByte
-          ? _value.boyutByte
-          : boyutByte // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$EvraklarModelImpl(
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        resimUrl: freezed == resimUrl
+            ? _value.resimUrl
+            : resimUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        resimUrlKucuk: freezed == resimUrlKucuk
+            ? _value.resimUrlKucuk
+            : resimUrlKucuk // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        boyutByte: freezed == boyutByte
+            ? _value.boyutByte
+            : boyutByte // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EvraklarModelImpl extends _EvraklarModel {
-  _$EvraklarModelImpl(
-      {this.id,
-      this.belgeNo,
-      this.aciklama,
-      this.belgeTipi,
-      this.resimUrl,
-      this.resimUrlKucuk,
-      this.boyutByte,
-      this.islemKodu})
-      : super._();
+  _$EvraklarModelImpl({
+    this.id,
+    this.belgeNo,
+    this.aciklama,
+    this.belgeTipi,
+    this.resimUrl,
+    this.resimUrlKucuk,
+    this.boyutByte,
+    this.islemKodu,
+  }) : super._();
 
-  factory _$EvraklarModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EvraklarModelImplFromJson(json);
+  factory _$EvraklarModelImpl.fromJson(Map<String, dynamic> json) => _$$EvraklarModelImplFromJson(json);
 
   @override
   int? id;
@@ -247,26 +247,24 @@ class _$EvraklarModelImpl extends _EvraklarModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EvraklarModelImplToJson(
-      this,
-    );
+    return _$$EvraklarModelImplToJson(this);
   }
 }
 
 abstract class _EvraklarModel extends EvraklarModel {
-  factory _EvraklarModel(
-      {int? id,
-      String? belgeNo,
-      String? aciklama,
-      String? belgeTipi,
-      String? resimUrl,
-      String? resimUrlKucuk,
-      int? boyutByte,
-      int? islemKodu}) = _$EvraklarModelImpl;
+  factory _EvraklarModel({
+    int? id,
+    String? belgeNo,
+    String? aciklama,
+    String? belgeTipi,
+    String? resimUrl,
+    String? resimUrlKucuk,
+    int? boyutByte,
+    int? islemKodu,
+  }) = _$EvraklarModelImpl;
   _EvraklarModel._() : super._();
 
-  factory _EvraklarModel.fromJson(Map<String, dynamic> json) =
-      _$EvraklarModelImpl.fromJson;
+  factory _EvraklarModel.fromJson(Map<String, dynamic> json) = _$EvraklarModelImpl.fromJson;
 
   @override
   int? get id;
@@ -297,6 +295,5 @@ abstract class _EvraklarModel extends EvraklarModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EvraklarModelImplCopyWith<_$EvraklarModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EvraklarModelImplCopyWith<_$EvraklarModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

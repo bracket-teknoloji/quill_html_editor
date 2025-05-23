@@ -105,11 +105,10 @@ final class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerVie
           children: [
             const Text("Borç"),
             Observer(
-              builder:
-                  (_) => Text(
-                    "${viewModel.toplamBorc.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(color: ColorPalette.mantis),
-                  ),
+              builder: (_) => Text(
+                "${viewModel.toplamBorc.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.mantis),
+              ),
             ),
           ],
         ),
@@ -117,11 +116,10 @@ final class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerVie
           children: [
             const Text("Alacak"),
             Observer(
-              builder:
-                  (_) => Text(
-                    "${viewModel.toplamAlacak.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(color: ColorPalette.persianRed),
-                  ),
+              builder: (_) => Text(
+                "${viewModel.toplamAlacak.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.persianRed),
+              ),
             ),
           ],
         ),

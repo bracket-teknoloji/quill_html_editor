@@ -135,7 +135,5 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is EditTipiEnumAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is EditTipiEnumAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

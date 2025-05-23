@@ -180,9 +180,8 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   };
   int get getTevkifatPay =>
       model.getEditTipiEnum?.satisMi == true ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
-  int get getTevkifatPayda =>
-      model.getEditTipiEnum?.satisMi == true
-          ? (paramModel?.satisTevkifatPayda ?? 0)
-          : (paramModel?.alisTevkifatPayda ?? 0);
+  int get getTevkifatPayda => model.getEditTipiEnum?.satisMi == true
+      ? (paramModel?.satisTevkifatPayda ?? 0)
+      : (paramModel?.alisTevkifatPayda ?? 0);
   double get getTevkifatOranlari => getTevkifatPay / getTevkifatPayda;
 }

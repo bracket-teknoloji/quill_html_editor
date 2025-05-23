@@ -44,16 +44,14 @@ final class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerV
                 subtitle: Align(
                   alignment: Alignment.topLeft,
                   child: Observer(
-                    builder:
-                        (_) => Switch.adaptive(
-                          value: viewModel.switchValueList[index],
-                          onChanged:
-                              widget.model.goruntuleMi
-                                  ? null
-                                  : (value) {
-                                    viewModel.changeSwitchValue(index);
-                                  },
-                        ),
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.switchValueList[index],
+                      onChanged: widget.model.goruntuleMi
+                          ? null
+                          : (value) {
+                              viewModel.changeSwitchValue(index);
+                            },
+                    ),
                   ),
                 ),
               ),

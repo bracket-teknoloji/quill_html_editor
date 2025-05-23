@@ -376,19 +376,18 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
   Observer? fab() {
     if (yetkiController.stokKartiYeniKayit) {
       return Observer(
-        builder:
-            (_) => CustomFloatingActionButton(
-              isScrolledDown: viewModel.isScrollDown,
-              onPressed: () async {
-                final result = await Get.toNamed(
-                  "/mainPage/stokEdit",
-                  arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel()),
-                );
-                if (result != null) {
-                  viewModel.resetList();
-                }
-              },
-            ),
+        builder: (_) => CustomFloatingActionButton(
+          isScrolledDown: viewModel.isScrollDown,
+          onPressed: () async {
+            final result = await Get.toNamed(
+              "/mainPage/stokEdit",
+              arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel()),
+            );
+            if (result != null) {
+              viewModel.resetList();
+            }
+          },
+        ),
       );
     }
     return null;
@@ -433,201 +432,194 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
           ),
         ),
         Observer(
-          builder:
-              (_) => CustomLayoutBuilder(
-                splitCount: 3,
-                doNotExpand: true,
-                children: [
-                  if (!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty))
-                    CustomTextField(
-                      labelText: "Grup Kodu",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: grupKoduController,
-                      onClear: () async => await grupKoduOnClear(0),
-                      onTap: () => getGrupKodlariBottomSheet(0),
-                    ),
-                  if (!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty))
-                    CustomTextField(
-                      labelText: "Kod 1",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: kod1Controller,
-                      onClear: () async => await grupKoduOnClear(1),
-                      onTap: () => getGrupKodlariBottomSheet(1),
-                    ),
-                  if (!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty))
-                    CustomTextField(
-                      labelText: "Kod 2",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: kod2Controller,
-                      onClear: () async => await grupKoduOnClear(2),
-                      onTap: () => getGrupKodlariBottomSheet(2),
-                    ),
-                  if (!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty))
-                    CustomTextField(
-                      labelText: "Kod 3",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: kod3Controller,
-                      onClear: () async => await grupKoduOnClear(3),
-                      onTap: () => getGrupKodlariBottomSheet(3),
-                    ),
-                  if (!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty))
-                    CustomTextField(
-                      labelText: "Kod 4",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: kod4Controller,
-                      onClear: () async => await grupKoduOnClear(4),
-                      onTap: () => getGrupKodlariBottomSheet(4),
-                    ),
-                  if (!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty))
-                    CustomTextField(
-                      labelText: "Kod 5",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: kod5Controller,
-                      onClear: () async => await grupKoduOnClear(5),
-                      onTap: () => getGrupKodlariBottomSheet(5),
-                    ),
-                ],
-              ),
+          builder: (_) => CustomLayoutBuilder(
+            splitCount: 3,
+            doNotExpand: true,
+            children: [
+              if (!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty))
+                CustomTextField(
+                  labelText: "Grup Kodu",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: grupKoduController,
+                  onClear: () async => await grupKoduOnClear(0),
+                  onTap: () => getGrupKodlariBottomSheet(0),
+                ),
+              if (!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty))
+                CustomTextField(
+                  labelText: "Kod 1",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod1Controller,
+                  onClear: () async => await grupKoduOnClear(1),
+                  onTap: () => getGrupKodlariBottomSheet(1),
+                ),
+              if (!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty))
+                CustomTextField(
+                  labelText: "Kod 2",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod2Controller,
+                  onClear: () async => await grupKoduOnClear(2),
+                  onTap: () => getGrupKodlariBottomSheet(2),
+                ),
+              if (!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty))
+                CustomTextField(
+                  labelText: "Kod 3",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod3Controller,
+                  onClear: () async => await grupKoduOnClear(3),
+                  onTap: () => getGrupKodlariBottomSheet(3),
+                ),
+              if (!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty))
+                CustomTextField(
+                  labelText: "Kod 4",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod4Controller,
+                  onClear: () async => await grupKoduOnClear(4),
+                  onTap: () => getGrupKodlariBottomSheet(4),
+                ),
+              if (!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty))
+                CustomTextField(
+                  labelText: "Kod 5",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod5Controller,
+                  onClear: () async => await grupKoduOnClear(5),
+                  onTap: () => getGrupKodlariBottomSheet(5),
+                ),
+            ],
+          ),
         ),
         Expanded(
           child: Observer(
-            builder:
-                (_) => RefreshableListView.pageable(
-                  scrollController: _scrollController,
-                  dahaVarMi: viewModel.dahaVarMi,
-                  onRefresh: viewModel.resetList,
-                  items: viewModel.observableList,
-                  itemBuilder:
-                      (item) => Card(
-                        child: ListTile(
-                          onLongPress: () async {
-                            dialogManager.showStokGridViewDialog(
-                              await getSelectedData(item),
-                              cariModel:
-                                  instance.cariKodu == null ? null : CariListesiModel()
-                                    ?..cariKodu = instance.cariKodu
-                                    ..cariAdi = instance.cariAdi,
-                            );
-                          },
-                          onTap: () async {
-                            if (BaseSiparisEditModel.instance.getEditTipiEnum case final value?) {
-                              if (item.kilitKontrol(value)) {
-                                return dialogManager.showAlertDialog(
-                                  "Kilitli olduğu için bu işlemi gerçekleştiremezsiniz.\nKilit tipi: ${item.kilitTipi}",
-                                );
-                              }
-                            }
-                            StokListesiModel? stokModel;
-                            if (instance.kalemEkliMi(item)) {
-                              final result = await dialogManager.showStokKayitliDialog(item);
-                              if (result != true) {
-                                return;
-                              }
-                            }
-                            stokModel = await getSelectedData(item);
-                            if (stokModel == null) {
-                              return;
-                            }
-                            if (item.yapilandirmaAktif == true && parametreModel.esnekYapilandir == true) {
-                              final result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: item);
-                              if (result is YapilandirmaRehberiModel) {
-                                stokModel.yapkod = result.yapkod;
-                              } else {
-                                return;
-                              }
-                              stokModel.yapkodAciklama = result.yapacik;
-                            }
-                            if (widget.isDepoTalep == true) {
-                              if (BaseSiparisEditModel.instance.kalemler?.any(
-                                    (element) => element.stokKodu == stokModel?.stokKodu,
-                                  ) ??
-                                  false) {
-                                return dialogManager.showAlertDialog("Bu stok kodu daha önce eklenmiş.");
-                              }
-                              Get.back(result: stokModel);
-                              return;
-                            }
-                            await Get.toNamed(
-                              (widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle",
-                              arguments: stokModel,
-                            );
-                            viewModel.setSelectedStokModel(null);
-                          },
-                          leading: SizedBox(
-                            height: UIHelper.highSize * 3,
-                            width: UIHelper.highSize * 3,
-                            child: InkWell(
-                              onTap:
-                                  item.resimUrlKucuk == null
-                                      ? null
-                                      : () => Get.to(() => ImageCarouselView(model: item)),
-                              child: SizedBox(
-                                height: UIHelper.highSize * 3,
-                                width: UIHelper.highSize * 3,
-                                child: ImageWidget(path: item.resimUrlKucuk),
-                              ),
-                            ),
-                          ),
-                          title: Text(
-                            item.stokKodu ?? "",
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Wrap(
-                                spacing: UIHelper.lowSize,
-                                children: [
-                                  if (item.seriCikislardaAcik == true)
-                                    const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
-                                  if ((instance.getEditTipiEnum?.satisMi == true)
-                                      ? item.satDovTip != null
-                                      : item.alisDovTip != null)
-                                    ColorfulBadge(
-                                      label: Text(
-                                        "Dövizli ${(instance.getEditTipiEnum?.satisMi == true) ? item.satisDovizAdi : item.alisDovizAdi}",
-                                      ),
-                                      badgeColorEnum: BadgeColorEnum.dovizli,
-                                    ),
-                                  if (item.yapilandirmaAktif == true)
-                                    const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
-                                  if (item.genelKilitliMi)
-                                    ColorfulBadge(
-                                      label: Text("Kilitli (${item.kilitTipi})"),
-                                      badgeColorEnum: BadgeColorEnum.hata,
-                                    ),
-                                ],
-                              ),
-                              Text(item.stokAdi ?? ""),
-                              CustomLayoutBuilder.divideInHalf(
-                                children: [
-                                  if (yetkiController.siparisMSEkstraAlanlari("acik_sip_miktari"))
-                                    Text(
-                                      "Sip. Miktarı: ${item.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                    ),
-                                  if (yetkiController.siparisMSEkstraAlanlari("satilabilir_miktar"))
-                                    Text(
-                                      "Sat. Mik.: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                      style: TextStyle(color: UIHelper.getColorWithValue(item.satilabilirMiktar ?? 0)),
-                                    ),
-                                  // Text("KDV: ${item.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} %"),
-                                ],
-                              ),
-                            ],
-                          ),
-                          trailing: Text(
-                            "${item.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${item.olcuBirimi ?? ""}",
-                          ),
-                        ),
+            builder: (_) => RefreshableListView.pageable(
+              scrollController: _scrollController,
+              dahaVarMi: viewModel.dahaVarMi,
+              onRefresh: viewModel.resetList,
+              items: viewModel.observableList,
+              itemBuilder: (item) => Card(
+                child: ListTile(
+                  onLongPress: () async {
+                    dialogManager.showStokGridViewDialog(
+                      await getSelectedData(item),
+                      cariModel: instance.cariKodu == null ? null : CariListesiModel()
+                        ?..cariKodu = instance.cariKodu
+                        ..cariAdi = instance.cariAdi,
+                    );
+                  },
+                  onTap: () async {
+                    if (BaseSiparisEditModel.instance.getEditTipiEnum case final value?) {
+                      if (item.kilitKontrol(value)) {
+                        return dialogManager.showAlertDialog(
+                          "Kilitli olduğu için bu işlemi gerçekleştiremezsiniz.\nKilit tipi: ${item.kilitTipi}",
+                        );
+                      }
+                    }
+                    StokListesiModel? stokModel;
+                    if (instance.kalemEkliMi(item)) {
+                      final result = await dialogManager.showStokKayitliDialog(item);
+                      if (result != true) {
+                        return;
+                      }
+                    }
+                    stokModel = await getSelectedData(item);
+                    if (stokModel == null) {
+                      return;
+                    }
+                    if (item.yapilandirmaAktif == true && parametreModel.esnekYapilandir == true) {
+                      final result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: item);
+                      if (result is YapilandirmaRehberiModel) {
+                        stokModel.yapkod = result.yapkod;
+                      } else {
+                        return;
+                      }
+                      stokModel.yapkodAciklama = result.yapacik;
+                    }
+                    if (widget.isDepoTalep == true) {
+                      if (BaseSiparisEditModel.instance.kalemler?.any(
+                            (element) => element.stokKodu == stokModel?.stokKodu,
+                          ) ??
+                          false) {
+                        return dialogManager.showAlertDialog("Bu stok kodu daha önce eklenmiş.");
+                      }
+                      Get.back(result: stokModel);
+                      return;
+                    }
+                    await Get.toNamed(
+                      (widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle",
+                      arguments: stokModel,
+                    );
+                    viewModel.setSelectedStokModel(null);
+                  },
+                  leading: SizedBox(
+                    height: UIHelper.highSize * 3,
+                    width: UIHelper.highSize * 3,
+                    child: InkWell(
+                      onTap: item.resimUrlKucuk == null ? null : () => Get.to(() => ImageCarouselView(model: item)),
+                      child: SizedBox(
+                        height: UIHelper.highSize * 3,
+                        width: UIHelper.highSize * 3,
+                        child: ImageWidget(path: item.resimUrlKucuk),
                       ),
+                    ),
+                  ),
+                  title: Text(
+                    item.stokKodu ?? "",
+                    textAlign: TextAlign.start,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Wrap(
+                        spacing: UIHelper.lowSize,
+                        children: [
+                          if (item.seriCikislardaAcik == true)
+                            const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
+                          if ((instance.getEditTipiEnum?.satisMi == true)
+                              ? item.satDovTip != null
+                              : item.alisDovTip != null)
+                            ColorfulBadge(
+                              label: Text(
+                                "Dövizli ${(instance.getEditTipiEnum?.satisMi == true) ? item.satisDovizAdi : item.alisDovizAdi}",
+                              ),
+                              badgeColorEnum: BadgeColorEnum.dovizli,
+                            ),
+                          if (item.yapilandirmaAktif == true)
+                            const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
+                          if (item.genelKilitliMi)
+                            ColorfulBadge(
+                              label: Text("Kilitli (${item.kilitTipi})"),
+                              badgeColorEnum: BadgeColorEnum.hata,
+                            ),
+                        ],
+                      ),
+                      Text(item.stokAdi ?? ""),
+                      CustomLayoutBuilder.divideInHalf(
+                        children: [
+                          if (yetkiController.siparisMSEkstraAlanlari("acik_sip_miktari"))
+                            Text(
+                              "Sip. Miktarı: ${item.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (yetkiController.siparisMSEkstraAlanlari("satilabilir_miktar"))
+                            Text(
+                              "Sat. Mik.: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                              style: TextStyle(color: UIHelper.getColorWithValue(item.satilabilirMiktar ?? 0)),
+                            ),
+                          // Text("KDV: ${item.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} %"),
+                        ],
+                      ),
+                    ],
+                  ),
+                  trailing: Text(
+                    "${item.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${item.olcuBirimi ?? ""}",
+                  ),
                 ),
+              ),
+            ),
           ),
         ),
       ],

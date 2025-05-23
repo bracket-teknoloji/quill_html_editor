@@ -12,10 +12,10 @@ part of 'kullanici_haritasi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-KullaniciHaritasiModel _$KullaniciHaritasiModelFromJson(
-    Map<String, dynamic> json) {
+KullaniciHaritasiModel _$KullaniciHaritasiModelFromJson(Map<String, dynamic> json) {
   return _KullaniciHaritasiModel.fromJson(json);
 }
 
@@ -46,31 +46,29 @@ mixin _$KullaniciHaritasiModel {
   /// Create a copy of KullaniciHaritasiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $KullaniciHaritasiModelCopyWith<KullaniciHaritasiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $KullaniciHaritasiModelCopyWith<KullaniciHaritasiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KullaniciHaritasiModelCopyWith<$Res> {
-  factory $KullaniciHaritasiModelCopyWith(KullaniciHaritasiModel value,
-          $Res Function(KullaniciHaritasiModel) then) =
+  factory $KullaniciHaritasiModelCopyWith(KullaniciHaritasiModel value, $Res Function(KullaniciHaritasiModel) then) =
       _$KullaniciHaritasiModelCopyWithImpl<$Res, KullaniciHaritasiModel>;
   @useResult
-  $Res call(
-      {String? kullanici,
-      String? kullaniciAdsoyad,
-      DateTime? tarih,
-      double? enlem,
-      double? boylam,
-      String? cihazMarka,
-      String? cihazModel,
-      String? cihazId,
-      int? hiz});
+  $Res call({
+    String? kullanici,
+    String? kullaniciAdsoyad,
+    DateTime? tarih,
+    double? enlem,
+    double? boylam,
+    String? cihazMarka,
+    String? cihazModel,
+    String? cihazId,
+    int? hiz,
+  });
 }
 
 /// @nodoc
-class _$KullaniciHaritasiModelCopyWithImpl<$Res,
-        $Val extends KullaniciHaritasiModel>
+class _$KullaniciHaritasiModelCopyWithImpl<$Res, $Val extends KullaniciHaritasiModel>
     implements $KullaniciHaritasiModelCopyWith<$Res> {
   _$KullaniciHaritasiModelCopyWithImpl(this._value, this._then);
 
@@ -94,77 +92,79 @@ class _$KullaniciHaritasiModelCopyWithImpl<$Res,
     Object? cihazId = freezed,
     Object? hiz = freezed,
   }) {
-    return _then(_value.copyWith(
-      kullanici: freezed == kullanici
-          ? _value.kullanici
-          : kullanici // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kullaniciAdsoyad: freezed == kullaniciAdsoyad
-          ? _value.kullaniciAdsoyad
-          : kullaniciAdsoyad // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      enlem: freezed == enlem
-          ? _value.enlem
-          : enlem // ignore: cast_nullable_to_non_nullable
-              as double?,
-      boylam: freezed == boylam
-          ? _value.boylam
-          : boylam // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cihazMarka: freezed == cihazMarka
-          ? _value.cihazMarka
-          : cihazMarka // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cihazModel: freezed == cihazModel
-          ? _value.cihazModel
-          : cihazModel // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cihazId: freezed == cihazId
-          ? _value.cihazId
-          : cihazId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hiz: freezed == hiz
-          ? _value.hiz
-          : hiz // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            kullanici: freezed == kullanici
+                ? _value.kullanici
+                : kullanici // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kullaniciAdsoyad: freezed == kullaniciAdsoyad
+                ? _value.kullaniciAdsoyad
+                : kullaniciAdsoyad // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            enlem: freezed == enlem
+                ? _value.enlem
+                : enlem // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            boylam: freezed == boylam
+                ? _value.boylam
+                : boylam // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            cihazMarka: freezed == cihazMarka
+                ? _value.cihazMarka
+                : cihazMarka // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cihazModel: freezed == cihazModel
+                ? _value.cihazModel
+                : cihazModel // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cihazId: freezed == cihazId
+                ? _value.cihazId
+                : cihazId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hiz: freezed == hiz
+                ? _value.hiz
+                : hiz // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$KullaniciHaritasiModelImplCopyWith<$Res>
-    implements $KullaniciHaritasiModelCopyWith<$Res> {
+abstract class _$$KullaniciHaritasiModelImplCopyWith<$Res> implements $KullaniciHaritasiModelCopyWith<$Res> {
   factory _$$KullaniciHaritasiModelImplCopyWith(
-          _$KullaniciHaritasiModelImpl value,
-          $Res Function(_$KullaniciHaritasiModelImpl) then) =
-      __$$KullaniciHaritasiModelImplCopyWithImpl<$Res>;
+    _$KullaniciHaritasiModelImpl value,
+    $Res Function(_$KullaniciHaritasiModelImpl) then,
+  ) = __$$KullaniciHaritasiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? kullanici,
-      String? kullaniciAdsoyad,
-      DateTime? tarih,
-      double? enlem,
-      double? boylam,
-      String? cihazMarka,
-      String? cihazModel,
-      String? cihazId,
-      int? hiz});
+  $Res call({
+    String? kullanici,
+    String? kullaniciAdsoyad,
+    DateTime? tarih,
+    double? enlem,
+    double? boylam,
+    String? cihazMarka,
+    String? cihazModel,
+    String? cihazId,
+    int? hiz,
+  });
 }
 
 /// @nodoc
 class __$$KullaniciHaritasiModelImplCopyWithImpl<$Res>
-    extends _$KullaniciHaritasiModelCopyWithImpl<$Res,
-        _$KullaniciHaritasiModelImpl>
+    extends _$KullaniciHaritasiModelCopyWithImpl<$Res, _$KullaniciHaritasiModelImpl>
     implements _$$KullaniciHaritasiModelImplCopyWith<$Res> {
   __$$KullaniciHaritasiModelImplCopyWithImpl(
-      _$KullaniciHaritasiModelImpl _value,
-      $Res Function(_$KullaniciHaritasiModelImpl) _then)
-      : super(_value, _then);
+    _$KullaniciHaritasiModelImpl _value,
+    $Res Function(_$KullaniciHaritasiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KullaniciHaritasiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -181,61 +181,63 @@ class __$$KullaniciHaritasiModelImplCopyWithImpl<$Res>
     Object? cihazId = freezed,
     Object? hiz = freezed,
   }) {
-    return _then(_$KullaniciHaritasiModelImpl(
-      kullanici: freezed == kullanici
-          ? _value.kullanici
-          : kullanici // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kullaniciAdsoyad: freezed == kullaniciAdsoyad
-          ? _value.kullaniciAdsoyad
-          : kullaniciAdsoyad // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      enlem: freezed == enlem
-          ? _value.enlem
-          : enlem // ignore: cast_nullable_to_non_nullable
-              as double?,
-      boylam: freezed == boylam
-          ? _value.boylam
-          : boylam // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cihazMarka: freezed == cihazMarka
-          ? _value.cihazMarka
-          : cihazMarka // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cihazModel: freezed == cihazModel
-          ? _value.cihazModel
-          : cihazModel // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cihazId: freezed == cihazId
-          ? _value.cihazId
-          : cihazId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hiz: freezed == hiz
-          ? _value.hiz
-          : hiz // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$KullaniciHaritasiModelImpl(
+        kullanici: freezed == kullanici
+            ? _value.kullanici
+            : kullanici // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kullaniciAdsoyad: freezed == kullaniciAdsoyad
+            ? _value.kullaniciAdsoyad
+            : kullaniciAdsoyad // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        enlem: freezed == enlem
+            ? _value.enlem
+            : enlem // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        boylam: freezed == boylam
+            ? _value.boylam
+            : boylam // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        cihazMarka: freezed == cihazMarka
+            ? _value.cihazMarka
+            : cihazMarka // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cihazModel: freezed == cihazModel
+            ? _value.cihazModel
+            : cihazModel // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cihazId: freezed == cihazId
+            ? _value.cihazId
+            : cihazId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hiz: freezed == hiz
+            ? _value.hiz
+            : hiz // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$KullaniciHaritasiModelImpl extends _KullaniciHaritasiModel {
-  _$KullaniciHaritasiModelImpl(
-      {this.kullanici,
-      this.kullaniciAdsoyad,
-      this.tarih,
-      this.enlem,
-      this.boylam,
-      this.cihazMarka,
-      this.cihazModel,
-      this.cihazId,
-      this.hiz})
-      : super._();
+  _$KullaniciHaritasiModelImpl({
+    this.kullanici,
+    this.kullaniciAdsoyad,
+    this.tarih,
+    this.enlem,
+    this.boylam,
+    this.cihazMarka,
+    this.cihazModel,
+    this.cihazId,
+    this.hiz,
+  }) : super._();
 
   factory _$KullaniciHaritasiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$KullaniciHaritasiModelImplFromJson(json);
@@ -264,33 +266,30 @@ class _$KullaniciHaritasiModelImpl extends _KullaniciHaritasiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$KullaniciHaritasiModelImplCopyWith<_$KullaniciHaritasiModelImpl>
-      get copyWith => __$$KullaniciHaritasiModelImplCopyWithImpl<
-          _$KullaniciHaritasiModelImpl>(this, _$identity);
+  _$$KullaniciHaritasiModelImplCopyWith<_$KullaniciHaritasiModelImpl> get copyWith =>
+      __$$KullaniciHaritasiModelImplCopyWithImpl<_$KullaniciHaritasiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KullaniciHaritasiModelImplToJson(
-      this,
-    );
+    return _$$KullaniciHaritasiModelImplToJson(this);
   }
 }
 
 abstract class _KullaniciHaritasiModel extends KullaniciHaritasiModel {
-  factory _KullaniciHaritasiModel(
-      {String? kullanici,
-      String? kullaniciAdsoyad,
-      DateTime? tarih,
-      double? enlem,
-      double? boylam,
-      String? cihazMarka,
-      String? cihazModel,
-      String? cihazId,
-      int? hiz}) = _$KullaniciHaritasiModelImpl;
+  factory _KullaniciHaritasiModel({
+    String? kullanici,
+    String? kullaniciAdsoyad,
+    DateTime? tarih,
+    double? enlem,
+    double? boylam,
+    String? cihazMarka,
+    String? cihazModel,
+    String? cihazId,
+    int? hiz,
+  }) = _$KullaniciHaritasiModelImpl;
   _KullaniciHaritasiModel._() : super._();
 
-  factory _KullaniciHaritasiModel.fromJson(Map<String, dynamic> json) =
-      _$KullaniciHaritasiModelImpl.fromJson;
+  factory _KullaniciHaritasiModel.fromJson(Map<String, dynamic> json) = _$KullaniciHaritasiModelImpl.fromJson;
 
   @override
   String? get kullanici;
@@ -324,6 +323,6 @@ abstract class _KullaniciHaritasiModel extends KullaniciHaritasiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KullaniciHaritasiModelImplCopyWith<_$KullaniciHaritasiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$KullaniciHaritasiModelImplCopyWith<_$KullaniciHaritasiModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

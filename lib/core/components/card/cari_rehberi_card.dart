@@ -61,37 +61,32 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
             else
               const SizedBox.shrink(),
             Row(
-              children:
-                  [
-                    if (model.efaturaMi == true)
-                      const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
-                    if (model.dovizli == true)
-                      ColorfulBadge(
-                        label: Text("Dövizli ${model.dovizAdi ?? ""}"),
-                        badgeColorEnum: BadgeColorEnum.dovizli,
-                      ),
-                    if (model.boylam != null)
-                      const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
-                    if (model.kilitliMi)
-                      const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
-                  ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
+              children: [
+                if (model.efaturaMi == true)
+                  const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
+                if (model.dovizli == true)
+                  ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
+                if (model.boylam != null)
+                  const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
+                if (model.kilitliMi)
+                  const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
+              ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
             ),
           ],
         ),
-        trailing:
-            bakiyeGorunsunMu(model)
-                ? Wrap(
-                  children: [
-                    Text(
-                      (model.bakiye == null
-                          ? "0.00 $mainCurrency"
-                          : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
+        trailing: bakiyeGorunsunMu(model)
+            ? Wrap(
+                children: [
+                  Text(
+                    (model.bakiye == null
+                        ? "0.00 $mainCurrency"
+                        : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
                               "\n"),
-                      style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
-                    ),
-                  ],
-                )
-                : null,
+                    style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
+                  ),
+                ],
+              )
+            : null,
       ),
     ),
   );

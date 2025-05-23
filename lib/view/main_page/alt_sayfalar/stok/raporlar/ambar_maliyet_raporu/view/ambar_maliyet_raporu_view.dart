@@ -79,11 +79,10 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
             text: "Sıfır Tutar Hariç",
             isVertical: true,
             child: Observer(
-              builder:
-                  (_) => Switch.adaptive(
-                    value: viewModel.sifirHaricValue,
-                    onChanged: (value) => viewModel.setSifirHaric(value),
-                  ),
+              builder: (_) => Switch.adaptive(
+                value: viewModel.sifirHaricValue,
+                onChanged: (value) => viewModel.setSifirHaric(value),
+              ),
             ),
           ),
           Row(
@@ -200,18 +199,17 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
             ],
           ),
           Observer(
-            builder:
-                (_) => ElevatedButton(
-                  onPressed: () {
-                    if (viewModel.pdfModel.dicParams?.maliyetTipi != null) {
-                      viewModel.setFuture();
-                      Get.back();
-                    } else {
-                      dialogManager.showAlertDialog("Maliyet Tipi Seçiniz");
-                    }
-                  },
-                  child: Text(loc.generalStrings.apply),
-                ).paddingAll(UIHelper.lowSize),
+            builder: (_) => ElevatedButton(
+              onPressed: () {
+                if (viewModel.pdfModel.dicParams?.maliyetTipi != null) {
+                  viewModel.setFuture();
+                  Get.back();
+                } else {
+                  dialogManager.showAlertDialog("Maliyet Tipi Seçiniz");
+                }
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),
@@ -223,12 +221,16 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
     }
-    final List<BottomSheetModel> bottomSheetList =
-        grupKodList
-            .where((e) => e.grupNo == grupNo)
-            .toList()
-            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
-            .toList();
+    final List<BottomSheetModel> bottomSheetList = grupKodList
+        .where((e) => e.grupNo == grupNo)
+        .toList()
+        .map(
+          (e) => BottomSheetModel(
+            title: e.grupKodu ?? "",
+            onTap: () => Get.back(result: e),
+          ),
+        )
+        .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,

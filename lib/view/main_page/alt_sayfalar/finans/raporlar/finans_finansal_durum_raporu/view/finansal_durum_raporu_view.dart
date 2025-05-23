@@ -72,14 +72,13 @@ final class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuV
             },
           ),
           Observer(
-            builder:
-                (_) => ElevatedButton(
-                  onPressed: () {
-                    viewModel.setFuture();
-                    Get.back();
-                  },
-                  child: Text(loc.generalStrings.apply),
-                ).paddingAll(UIHelper.lowSize),
+            builder: (_) => ElevatedButton(
+              onPressed: () {
+                viewModel.setFuture();
+                Get.back();
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),

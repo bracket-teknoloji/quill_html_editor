@@ -117,14 +117,13 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   );
 
   Observer fab() => Observer(
-    builder:
-        (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async {
-            await dialogManager.showKasaGridViewDialog(null, onSelected: (p0) => p0 ? viewModel.resetPage() : null);
-            // viewModel.resetPage();
-          },
-        ),
+    builder: (_) => CustomFloatingActionButton(
+      isScrolledDown: viewModel.isScrollDown,
+      onPressed: () async {
+        await dialogManager.showKasaGridViewDialog(null, onSelected: (p0) => p0 ? viewModel.resetPage() : null);
+        // viewModel.resetPage();
+      },
+    ),
   );
 
   Column body() => Column(
@@ -144,36 +143,33 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
         child: RefreshIndicator.adaptive(
           onRefresh: () async => await viewModel.resetPage(),
           child: Observer(
-            builder:
-                (_) =>
-                    viewModel.getKasaIslemleriListesi == null
-                        ? const Center(child: CircularProgressIndicator.adaptive())
-                        : viewModel.getKasaIslemleriListesi.ext.isNullOrEmpty
-                        ? const Center(child: Text("Veri bulunamadı"))
-                        : ListView.builder(
-                          padding: UIHelper.lowPadding,
-                          primary: false,
-                          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                          controller: _scrollController,
-                          shrinkWrap: true,
-                          itemCount:
-                              viewModel.getKasaIslemleriListesi != null
-                                  ? ((viewModel.getKasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0))
-                                  : 0,
-                          itemBuilder: (context, index) {
-                            if (index == (viewModel.getKasaIslemleriListesi?.length ?? 0)) {
-                              return const Center(child: CircularProgressIndicator.adaptive());
-                            } else {
-                              final KasaIslemleriModel item = viewModel.getKasaIslemleriListesi![index];
-                              return KasaIslemleriCard(
-                                kasaIslemleriModel: item,
-                                onDeleted: (deneme) {
-                                  viewModel.resetPage();
-                                },
-                              );
-                            }
+            builder: (_) => viewModel.getKasaIslemleriListesi == null
+                ? const Center(child: CircularProgressIndicator.adaptive())
+                : viewModel.getKasaIslemleriListesi.ext.isNullOrEmpty
+                ? const Center(child: Text("Veri bulunamadı"))
+                : ListView.builder(
+                    padding: UIHelper.lowPadding,
+                    primary: false,
+                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                    controller: _scrollController,
+                    shrinkWrap: true,
+                    itemCount: viewModel.getKasaIslemleriListesi != null
+                        ? ((viewModel.getKasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0))
+                        : 0,
+                    itemBuilder: (context, index) {
+                      if (index == (viewModel.getKasaIslemleriListesi?.length ?? 0)) {
+                        return const Center(child: CircularProgressIndicator.adaptive());
+                      } else {
+                        final KasaIslemleriModel item = viewModel.getKasaIslemleriListesi![index];
+                        return KasaIslemleriCard(
+                          kasaIslemleriModel: item,
+                          onDeleted: (deneme) {
+                            viewModel.resetPage();
                           },
-                        ),
+                        );
+                      }
+                    },
+                  ),
           ),
         ),
       ),
@@ -181,52 +177,49 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   );
 
   Observer bottomAppBar() => Observer(
-    builder:
-        (_) => BottomBarWidget(
-          isScrolledDown: viewModel.isScrollDown,
+    builder: (_) => BottomBarWidget(
+      isScrolledDown: viewModel.isScrollDown,
+      children: [
+        FooterButton(
           children: [
-            FooterButton(
-              children: [
-                const Text("Gelir"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        "${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.mantis),
-                      ),
-                ),
-              ],
-              onPressed: () {
-                if (viewModel.hesapTipiGroupValue == "G") {
-                  viewModel.setHesapTipi(null);
-                } else {
-                  viewModel.setHesapTipi("G");
-                }
-                viewModel.resetPage();
-              },
-            ),
-            FooterButton(
-              children: [
-                const Text("Gider"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.persianRed),
-                      ),
-                ),
-              ],
-              onPressed: () {
-                if (viewModel.hesapTipiGroupValue == "C") {
-                  viewModel.setHesapTipi(null);
-                } else {
-                  viewModel.setHesapTipi("C");
-                }
-                viewModel.resetPage();
-              },
+            const Text("Gelir"),
+            Observer(
+              builder: (_) => Text(
+                "${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.mantis),
+              ),
             ),
           ],
+          onPressed: () {
+            if (viewModel.hesapTipiGroupValue == "G") {
+              viewModel.setHesapTipi(null);
+            } else {
+              viewModel.setHesapTipi("G");
+            }
+            viewModel.resetPage();
+          },
         ),
+        FooterButton(
+          children: [
+            const Text("Gider"),
+            Observer(
+              builder: (_) => Text(
+                "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.persianRed),
+              ),
+            ),
+          ],
+          onPressed: () {
+            if (viewModel.hesapTipiGroupValue == "C") {
+              viewModel.setHesapTipi(null);
+            } else {
+              viewModel.setHesapTipi("C");
+            }
+            viewModel.resetPage();
+          },
+        ),
+      ],
+    ),
   );
 
   Future<void> filter() async {
@@ -236,15 +229,14 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
       body: Column(
         children: [
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
-                  filterOnChanged: (index) {
-                    viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
-                  },
-                  childrenValueList: viewModel.hesapTipiMap.values.toList(),
-                  groupValue: viewModel.hesapTipiGroupValue,
-                ),
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
+              filterOnChanged: (index) {
+                viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
+              },
+              childrenValueList: viewModel.hesapTipiMap.values.toList(),
+              groupValue: viewModel.hesapTipiGroupValue,
+            ),
           ),
           CustomTextField(
             labelText: "Kasa",

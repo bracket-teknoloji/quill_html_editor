@@ -12,7 +12,8 @@ part of 'yazici_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 YaziciModel _$YaziciModelFromJson(Map<String, dynamic> json) {
   return _YaziciModel.fromJson(json);
@@ -47,27 +48,25 @@ mixin _$YaziciModel {
   /// Create a copy of YaziciModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $YaziciModelCopyWith<YaziciModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $YaziciModelCopyWith<YaziciModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $YaziciModelCopyWith<$Res> {
-  factory $YaziciModelCopyWith(
-          YaziciModel value, $Res Function(YaziciModel) then) =
+  factory $YaziciModelCopyWith(YaziciModel value, $Res Function(YaziciModel) then) =
       _$YaziciModelCopyWithImpl<$Res, YaziciModel>;
   @useResult
-  $Res call(
-      {@HiveField(0) String? yaziciAdi,
-      @HiveField(1) String macAdresi,
-      @HiveField(2) YaziciTipi? yaziciTipi,
-      @HiveField(3) String? aciklama,
-      @HiveField(4) String? yazdirmaTipi});
+  $Res call({
+    @HiveField(0) String? yaziciAdi,
+    @HiveField(1) String macAdresi,
+    @HiveField(2) YaziciTipi? yaziciTipi,
+    @HiveField(3) String? aciklama,
+    @HiveField(4) String? yazdirmaTipi,
+  });
 }
 
 /// @nodoc
-class _$YaziciModelCopyWithImpl<$Res, $Val extends YaziciModel>
-    implements $YaziciModelCopyWith<$Res> {
+class _$YaziciModelCopyWithImpl<$Res, $Val extends YaziciModel> implements $YaziciModelCopyWith<$Res> {
   _$YaziciModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -86,54 +85,54 @@ class _$YaziciModelCopyWithImpl<$Res, $Val extends YaziciModel>
     Object? aciklama = freezed,
     Object? yazdirmaTipi = freezed,
   }) {
-    return _then(_value.copyWith(
-      yaziciAdi: freezed == yaziciAdi
-          ? _value.yaziciAdi
-          : yaziciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      macAdresi: null == macAdresi
-          ? _value.macAdresi
-          : macAdresi // ignore: cast_nullable_to_non_nullable
-              as String,
-      yaziciTipi: freezed == yaziciTipi
-          ? _value.yaziciTipi
-          : yaziciTipi // ignore: cast_nullable_to_non_nullable
-              as YaziciTipi?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yazdirmaTipi: freezed == yazdirmaTipi
-          ? _value.yazdirmaTipi
-          : yazdirmaTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            yaziciAdi: freezed == yaziciAdi
+                ? _value.yaziciAdi
+                : yaziciAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            macAdresi: null == macAdresi
+                ? _value.macAdresi
+                : macAdresi // ignore: cast_nullable_to_non_nullable
+                      as String,
+            yaziciTipi: freezed == yaziciTipi
+                ? _value.yaziciTipi
+                : yaziciTipi // ignore: cast_nullable_to_non_nullable
+                      as YaziciTipi?,
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yazdirmaTipi: freezed == yazdirmaTipi
+                ? _value.yazdirmaTipi
+                : yazdirmaTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$YaziciModelImplCopyWith<$Res>
-    implements $YaziciModelCopyWith<$Res> {
-  factory _$$YaziciModelImplCopyWith(
-          _$YaziciModelImpl value, $Res Function(_$YaziciModelImpl) then) =
+abstract class _$$YaziciModelImplCopyWith<$Res> implements $YaziciModelCopyWith<$Res> {
+  factory _$$YaziciModelImplCopyWith(_$YaziciModelImpl value, $Res Function(_$YaziciModelImpl) then) =
       __$$YaziciModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@HiveField(0) String? yaziciAdi,
-      @HiveField(1) String macAdresi,
-      @HiveField(2) YaziciTipi? yaziciTipi,
-      @HiveField(3) String? aciklama,
-      @HiveField(4) String? yazdirmaTipi});
+  $Res call({
+    @HiveField(0) String? yaziciAdi,
+    @HiveField(1) String macAdresi,
+    @HiveField(2) YaziciTipi? yaziciTipi,
+    @HiveField(3) String? aciklama,
+    @HiveField(4) String? yazdirmaTipi,
+  });
 }
 
 /// @nodoc
-class __$$YaziciModelImplCopyWithImpl<$Res>
-    extends _$YaziciModelCopyWithImpl<$Res, _$YaziciModelImpl>
+class __$$YaziciModelImplCopyWithImpl<$Res> extends _$YaziciModelCopyWithImpl<$Res, _$YaziciModelImpl>
     implements _$$YaziciModelImplCopyWith<$Res> {
-  __$$YaziciModelImplCopyWithImpl(
-      _$YaziciModelImpl _value, $Res Function(_$YaziciModelImpl) _then)
-      : super(_value, _then);
+  __$$YaziciModelImplCopyWithImpl(_$YaziciModelImpl _value, $Res Function(_$YaziciModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of YaziciModel
   /// with the given fields replaced by the non-null parameter values.
@@ -146,44 +145,45 @@ class __$$YaziciModelImplCopyWithImpl<$Res>
     Object? aciklama = freezed,
     Object? yazdirmaTipi = freezed,
   }) {
-    return _then(_$YaziciModelImpl(
-      yaziciAdi: freezed == yaziciAdi
-          ? _value.yaziciAdi
-          : yaziciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      macAdresi: null == macAdresi
-          ? _value.macAdresi
-          : macAdresi // ignore: cast_nullable_to_non_nullable
-              as String,
-      yaziciTipi: freezed == yaziciTipi
-          ? _value.yaziciTipi
-          : yaziciTipi // ignore: cast_nullable_to_non_nullable
-              as YaziciTipi?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yazdirmaTipi: freezed == yazdirmaTipi
-          ? _value.yazdirmaTipi
-          : yazdirmaTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$YaziciModelImpl(
+        yaziciAdi: freezed == yaziciAdi
+            ? _value.yaziciAdi
+            : yaziciAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        macAdresi: null == macAdresi
+            ? _value.macAdresi
+            : macAdresi // ignore: cast_nullable_to_non_nullable
+                  as String,
+        yaziciTipi: freezed == yaziciTipi
+            ? _value.yaziciTipi
+            : yaziciTipi // ignore: cast_nullable_to_non_nullable
+                  as YaziciTipi?,
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yazdirmaTipi: freezed == yazdirmaTipi
+            ? _value.yazdirmaTipi
+            : yazdirmaTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$YaziciModelImpl extends _YaziciModel {
-  _$YaziciModelImpl(
-      {@HiveField(0) this.yaziciAdi,
-      @HiveField(1) this.macAdresi = "",
-      @HiveField(2) this.yaziciTipi,
-      @HiveField(3) this.aciklama,
-      @HiveField(4) this.yazdirmaTipi})
-      : super._();
+  _$YaziciModelImpl({
+    @HiveField(0) this.yaziciAdi,
+    @HiveField(1) this.macAdresi = "",
+    @HiveField(2) this.yaziciTipi,
+    @HiveField(3) this.aciklama,
+    @HiveField(4) this.yazdirmaTipi,
+  }) : super._();
 
-  factory _$YaziciModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$YaziciModelImplFromJson(json);
+  factory _$YaziciModelImpl.fromJson(Map<String, dynamic> json) => _$$YaziciModelImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -212,23 +212,21 @@ class _$YaziciModelImpl extends _YaziciModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$YaziciModelImplToJson(
-      this,
-    );
+    return _$$YaziciModelImplToJson(this);
   }
 }
 
 abstract class _YaziciModel extends YaziciModel {
-  factory _YaziciModel(
-      {@HiveField(0) String? yaziciAdi,
-      @HiveField(1) String macAdresi,
-      @HiveField(2) YaziciTipi? yaziciTipi,
-      @HiveField(3) String? aciklama,
-      @HiveField(4) String? yazdirmaTipi}) = _$YaziciModelImpl;
+  factory _YaziciModel({
+    @HiveField(0) String? yaziciAdi,
+    @HiveField(1) String macAdresi,
+    @HiveField(2) YaziciTipi? yaziciTipi,
+    @HiveField(3) String? aciklama,
+    @HiveField(4) String? yazdirmaTipi,
+  }) = _$YaziciModelImpl;
   _YaziciModel._() : super._();
 
-  factory _YaziciModel.fromJson(Map<String, dynamic> json) =
-      _$YaziciModelImpl.fromJson;
+  factory _YaziciModel.fromJson(Map<String, dynamic> json) = _$YaziciModelImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -260,6 +258,5 @@ abstract class _YaziciModel extends YaziciModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$YaziciModelImplCopyWith<_$YaziciModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$YaziciModelImplCopyWith<_$YaziciModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

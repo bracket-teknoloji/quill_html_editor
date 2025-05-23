@@ -374,17 +374,16 @@ final class IslemlerMenuItemConstants<T> {
     isEnabled: _yetkiController.stokHareketleriStokHareketleri,
     iconData: Icons.autorenew_outlined,
     title: "Stok Cari Hareketleri",
-    onTap:
-        () async => Get.toNamed(
-          "mainPage/stokCariHareketleri",
-          arguments: [
-            // ilki stok model olmak zorunda
-            model,
-            // ikincinin de cari model olması gerekiyor
-            // O yüzden bu route'a yönlendirme yapma.
-            cariModel,
-          ],
-        ),
+    onTap: () async => Get.toNamed(
+      "mainPage/stokCariHareketleri",
+      arguments: [
+        // ilki stok model olmak zorunda
+        model,
+        // ikincinin de cari model olması gerekiyor
+        // O yüzden bu route'a yönlendirme yapma.
+        cariModel,
+      ],
+    ),
   );
   GridItemModel get cariAktivite => GridItemModel.islemler(
     iconData: Icons.sync_alt_outlined,
@@ -396,30 +395,28 @@ final class IslemlerMenuItemConstants<T> {
     iconData: Icons.add_chart_outlined,
     isEnabled: _yetkiController.cariAktiviteYeniKayit,
     title: "Aktivite Kaydı Gir",
-    onTap:
-        () async => Get.toNamed(
-          "mainPage/cariAktiviteEdit",
-          arguments: BaseEditModel<CariAktiviteListesiModel>(
-            baseEditEnum: BaseEditEnum.ekle,
-            model: CariAktiviteListesiModel.fromCariListesiModel(model as CariListesiModel),
-          ),
-        ),
+    onTap: () async => Get.toNamed(
+      "mainPage/cariAktiviteEdit",
+      arguments: BaseEditModel<CariAktiviteListesiModel>(
+        baseEditEnum: BaseEditEnum.ekle,
+        model: CariAktiviteListesiModel.fromCariListesiModel(model as CariListesiModel),
+      ),
+    ),
   );
   GridItemModel get kopyala => GridItemModel.islemler(
     title: "Kopyala",
     iconData: Icons.copy_outlined,
     isEnabled:
         ((siparisTipi?.eklensinMi ?? true) && (siparisTipi?.kopyalanabilirMi ?? true)) || AccountModel.instance.adminMi,
-    onTap:
-        () async => await Get.toNamed(
-          islemTipi.route,
-          arguments: BaseEditModel(
-            model: model,
-            baseEditEnum: BaseEditEnum.kopyala,
-            editTipiEnum:
-                siparisTipi ?? (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).getEditTipiEnum : null),
-          ),
-        ),
+    onTap: () async => await Get.toNamed(
+      islemTipi.route,
+      arguments: BaseEditModel(
+        model: model,
+        baseEditEnum: BaseEditEnum.kopyala,
+        editTipiEnum:
+            siparisTipi ?? (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).getEditTipiEnum : null),
+      ),
+    ),
   );
   //* Siparis
   GridItemModel get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
@@ -551,14 +548,13 @@ final class IslemlerMenuItemConstants<T> {
                           path: ApiUrls.saveFatura,
                           showLoading: true,
                           bodyModel: SiparisEditRequestModel(),
-                          data:
-                              EditFaturaModel.fromSiparislerModel(
-                                siparisModel!
-                                  ..yeniBelgeNo = controller.text
-                                  ..islemKodu = 10
-                                  ..tag = "FaturaModel"
-                                  ..belgeTipi = siparisModel.tipi,
-                              ).toJson(),
+                          data: EditFaturaModel.fromSiparislerModel(
+                            siparisModel!
+                              ..yeniBelgeNo = controller.text
+                              ..islemKodu = 10
+                              ..tag = "FaturaModel"
+                              ..belgeTipi = siparisModel.tipi,
+                          ).toJson(),
                         );
                         if (result.isSuccess) {
                           updatePage = true;
@@ -618,14 +614,13 @@ final class IslemlerMenuItemConstants<T> {
     title: "Stok Kartı",
     isEnabled: _yetkiController.stokKarti,
     iconData: Icons.info_outline,
-    onTap:
-        () async => Get.toNamed(
-          "/mainPage/stokEdit",
-          arguments: BaseEditModel(
-            model: model as StokListesiModel,
-            baseEditEnum: _yetkiController.stokKartiDuzenleme ? BaseEditEnum.duzenle : BaseEditEnum.goruntule,
-          ),
-        ),
+    onTap: () async => Get.toNamed(
+      "/mainPage/stokEdit",
+      arguments: BaseEditModel(
+        model: model as StokListesiModel,
+        baseEditEnum: _yetkiController.stokKartiDuzenleme ? BaseEditEnum.duzenle : BaseEditEnum.goruntule,
+      ),
+    ),
   );
   GridItemModel get stokYazdir => GridItemModel.islemler(
     title: "Yazdır",
@@ -653,11 +648,10 @@ final class IslemlerMenuItemConstants<T> {
                 (model as StokListesiModel).seriGirislerdeAcik == true)) ||
         AccountModel.instance.adminMi,
     iconData: Icons.dynamic_form_outlined,
-    onTap:
-        () async => Get.toNamed(
-          "/seriHareketleri",
-          arguments: SeriHareketleriRequestModel(stokKodu: (model as StokListesiModel).stokKodu),
-        ),
+    onTap: () async => Get.toNamed(
+      "/seriHareketleri",
+      arguments: SeriHareketleriRequestModel(stokKodu: (model as StokListesiModel).stokKodu),
+    ),
   );
   GridItemModel get seriBakiyeleri => GridItemModel.islemler(
     title: "Seri Bakiye Durumu",
@@ -680,9 +674,8 @@ final class IslemlerMenuItemConstants<T> {
     title: "Stok Resimleri",
     isEnabled: _yetkiController.stokResimGoster,
     iconData: Icons.photo_album_outlined,
-    onTap:
-        () async =>
-            await Get.toNamed("/evraklar", arguments: EvraklarRequestModel.fromStokModel(model as StokListesiModel)),
+    onTap: () async =>
+        await Get.toNamed("/evraklar", arguments: EvraklarRequestModel.fromStokModel(model as StokListesiModel)),
   );
 
   GridItemModel get stokFiyatOzeti => GridItemModel.islemler(
@@ -735,10 +728,9 @@ final class IslemlerMenuItemConstants<T> {
     iconData: Icons.people_alt_outlined,
     onTap: () async {
       final TextEditingController controller = TextEditingController();
-      final KodDegistirModel kodDegistirModel =
-          KodDegistirModel()
-            ..kaynakSil = "H"
-            ..kaynakCari = cariKodu;
+      final KodDegistirModel kodDegistirModel = KodDegistirModel()
+        ..kaynakSil = "H"
+        ..kaynakCari = cariKodu;
       await _bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Cari Kodu Değiştir",
@@ -779,14 +771,13 @@ final class IslemlerMenuItemConstants<T> {
               text: "Eski Cari Kodu Silinsin mi?",
               isVertical: true,
               child: Observer(
-                builder:
-                    (_) => Switch.adaptive(
-                      value: viewModel.cariKodDegistirSwitch,
-                      onChanged: (value) {
-                        viewModel.changeCariKodDegistirSwitch(value);
-                        kodDegistirModel.kaynakSil = (value ? "E" : "H");
-                      },
-                    ),
+                builder: (_) => Switch.adaptive(
+                  value: viewModel.cariKodDegistirSwitch,
+                  onChanged: (value) {
+                    viewModel.changeCariKodDegistirSwitch(value);
+                    kodDegistirModel.kaynakSil = (value ? "E" : "H");
+                  },
+                ),
               ),
             ),
             Row(
@@ -870,14 +861,13 @@ final class IslemlerMenuItemConstants<T> {
                 text: "Teslim Cari Kodu Değişmesin",
                 isVertical: true,
                 child: Observer(
-                  builder:
-                      (_) => Switch.adaptive(
-                        value: viewModel.cariKodDegistirSwitch,
-                        onChanged: (value) {
-                          viewModel.changeCariKodDegistirSwitch(value);
-                          newModel.paramMap?["TESLIM_CARI_DEGISMESIN"] = (value ? "E" : "H");
-                        },
-                      ),
+                  builder: (_) => Switch.adaptive(
+                    value: viewModel.cariKodDegistirSwitch,
+                    onChanged: (value) {
+                      viewModel.changeCariKodDegistirSwitch(value);
+                      newModel.paramMap?["TESLIM_CARI_DEGISMESIN"] = (value ? "E" : "H");
+                    },
+                  ),
                 ),
               ),
               ElevatedButton(
@@ -1235,14 +1225,13 @@ final class IslemlerMenuItemConstants<T> {
             path: ApiUrls.saveCari,
             bodyModel: CariListesiModel(),
             showLoading: true,
-            data:
-                CariSaveRequestModel(
-                  requestVersion: 6,
-                  islemKodu: 3,
-                  kodu: cariModel.cariKodu,
-                  enlem: result.latitude,
-                  boylam: result.longitude,
-                ).toJson(),
+            data: CariSaveRequestModel(
+              requestVersion: 6,
+              islemKodu: 3,
+              kodu: cariModel.cariKodu,
+              enlem: result.latitude,
+              boylam: result.longitude,
+            ).toJson(),
           );
           return saveCari.isSuccess;
         }
@@ -1443,8 +1432,10 @@ final class IslemlerMenuItemConstants<T> {
           }
         }
         if (kalemler != null && kalemler is List<KalemModel>) {
-          final List<KalemModel> newKalemler =
-              kalemler.map(KalemModel.forTalepTeklifSiparislestir).toList().cast<KalemModel>();
+          final List<KalemModel> newKalemler = kalemler
+              .map(KalemModel.forTalepTeklifSiparislestir)
+              .toList()
+              .cast<KalemModel>();
           final TextEditingController controller = TextEditingController();
           await getBelgeNo(controller, siparisModel);
           // ignore: use_build_context_synchronously
@@ -1470,14 +1461,13 @@ final class IslemlerMenuItemConstants<T> {
                       path: ApiUrls.talepTeklifSiparislestir,
                       showLoading: true,
                       bodyModel: SiparisEditRequestModel(),
-                      data:
-                          EditFaturaModel.fromSiparislerModel(
-                            siparisModel
-                              ..belgeTipi = null
-                              ..tipi = null
-                              ..yeniBelgeNo = controller.text
-                              ..kalemList = newKalemler,
-                          ).toJson(),
+                      data: EditFaturaModel.fromSiparislerModel(
+                        siparisModel
+                          ..belgeTipi = null
+                          ..tipi = null
+                          ..yeniBelgeNo = controller.text
+                          ..kalemList = newKalemler,
+                      ).toJson(),
                     );
                     if (result.isSuccess) {
                       _dialogManager.showSuccessSnackBar("Başarılı");
@@ -1551,10 +1541,9 @@ final class IslemlerMenuItemConstants<T> {
     final siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "Fatura Oluştur",
-      isEnabled:
-          siparisModel.getEditTipiEnum?.satisMi == true
-              ? EditTipiEnum.satisFatura.eklensinMi
-              : EditTipiEnum.alisFatura.eklensinMi,
+      isEnabled: siparisModel.getEditTipiEnum?.satisMi == true
+          ? EditTipiEnum.satisFatura.eklensinMi
+          : EditTipiEnum.alisFatura.eklensinMi,
       iconData: Icons.list_alt_outlined,
       onTap: () async {
         if (model is BaseSiparisEditModel) {
@@ -1563,8 +1552,9 @@ final class IslemlerMenuItemConstants<T> {
             arguments: BaseEditModel(
               model: siparisModel,
               baseEditEnum: BaseEditEnum.kopyala,
-              editTipiEnum:
-                  siparisModel.getEditTipiEnum?.satisMi == true ? EditTipiEnum.satisFatura : EditTipiEnum.alisFatura,
+              editTipiEnum: siparisModel.getEditTipiEnum?.satisMi == true
+                  ? EditTipiEnum.satisFatura
+                  : EditTipiEnum.alisFatura,
             ),
           );
         }
@@ -1813,14 +1803,13 @@ final class IslemlerMenuItemConstants<T> {
       title: siparisModel.onaydaMi ? "Onayla" : "Onayı Kaldır",
       iconData: siparisModel.onaydaMi ? Icons.check_circle_outline : Icons.cancel_outlined,
       onTap: () async {
-        final BaseSiparisEditModel newSiparisModel =
-            BaseSiparisEditModel()
-              ..belgeNo = siparisModel.belgeNo
-              ..belgeTuru = siparisModel.belgeTuru
-              ..pickerBelgeTuru = siparisModel.belgeTuru
-              ..cariKodu = siparisModel.cariKodu
-              ..islemKodu = siparisModel.onaydaMi ? 1 : 3
-              ..tag = "FaturaModel";
+        final BaseSiparisEditModel newSiparisModel = BaseSiparisEditModel()
+          ..belgeNo = siparisModel.belgeNo
+          ..belgeTuru = siparisModel.belgeTuru
+          ..pickerBelgeTuru = siparisModel.belgeTuru
+          ..cariKodu = siparisModel.cariKodu
+          ..islemKodu = siparisModel.onaydaMi ? 1 : 3
+          ..tag = "FaturaModel";
         final result = await _networkManager.dioPost<BaseSiparisEditModel>(
           path: ApiUrls.saveFatura,
           bodyModel: BaseSiparisEditModel(),
@@ -1843,15 +1832,14 @@ final class IslemlerMenuItemConstants<T> {
       title: "Onayla",
       iconData: Icons.check_circle_outline,
       onTap: () async {
-        final BaseSiparisEditModel newSiparisModel =
-            BaseSiparisEditModel()
-              ..belgeNo = siparisModel.belgeNo
-              ..belgeTuru = siparisModel.belgeTuru
-              ..pickerBelgeTuru = siparisModel.belgeTuru
-              ..cariKodu = siparisModel.cariKodu
-              ..islemKodu = 1
-              ..lokalDat = siparisModel.lokalDat ?? "H"
-              ..tag = "FaturaModel";
+        final BaseSiparisEditModel newSiparisModel = BaseSiparisEditModel()
+          ..belgeNo = siparisModel.belgeNo
+          ..belgeTuru = siparisModel.belgeTuru
+          ..pickerBelgeTuru = siparisModel.belgeTuru
+          ..cariKodu = siparisModel.cariKodu
+          ..islemKodu = 1
+          ..lokalDat = siparisModel.lokalDat ?? "H"
+          ..tag = "FaturaModel";
         final result = await _networkManager.dioPost<BaseSiparisEditModel>(
           path: ApiUrls.saveFatura,
           bodyModel: BaseSiparisEditModel(),
@@ -1884,13 +1872,12 @@ final class IslemlerMenuItemConstants<T> {
 
   GridItemModel get eFaturaGonder {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-    final bool yetki =
-        () {
-          if (siparisModel.eArsivSerisindenMi) return _yetkiController.ebelgeEArsivGonder;
-          if (siparisModel.eFaturaSerisindenMi) return _yetkiController.ebelgeEFaturaGonder;
-          if (siparisModel.eIrsaliyeSerisindenMi) return _yetkiController.ebelgeEIrsaliyeGonder;
-          return false;
-        }.call();
+    final bool yetki = () {
+      if (siparisModel.eArsivSerisindenMi) return _yetkiController.ebelgeEArsivGonder;
+      if (siparisModel.eFaturaSerisindenMi) return _yetkiController.ebelgeEFaturaGonder;
+      if (siparisModel.eIrsaliyeSerisindenMi) return _yetkiController.ebelgeEIrsaliyeGonder;
+      return false;
+    }.call();
     return GridItemModel.islemler(
       title: "${siparisModel.getTitle(siparisModel.belgeNo)} Gönder",
       isEnabled: yetki,
@@ -1911,24 +1898,22 @@ final class IslemlerMenuItemConstants<T> {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "E-Belge Görüntüle",
-      isEnabled:
-          () {
-            if (!siparisModel.eBelgeMi) return false;
-            if (siparisModel.eArsivMi) return _yetkiController.ebelgeEArsivGoruntule;
-            if (siparisModel.eFaturaMi || _yetkiController.ebelgeEFaturaGelenKutusu) {
-              return _yetkiController.ebelgeEFaturaGoruntule;
-            }
-            if (siparisModel.eIrsaliyeMi || _yetkiController.ebelgeEIrsaliyeGelenKutusu) {
-              return _yetkiController.ebelgeEIrsaliyeGoruntule;
-            }
-            return false;
-          }.call(),
+      isEnabled: () {
+        if (!siparisModel.eBelgeMi) return false;
+        if (siparisModel.eArsivMi) return _yetkiController.ebelgeEArsivGoruntule;
+        if (siparisModel.eFaturaMi || _yetkiController.ebelgeEFaturaGelenKutusu) {
+          return _yetkiController.ebelgeEFaturaGoruntule;
+        }
+        if (siparisModel.eIrsaliyeMi || _yetkiController.ebelgeEIrsaliyeGelenKutusu) {
+          return _yetkiController.ebelgeEIrsaliyeGoruntule;
+        }
+        return false;
+      }.call(),
       iconData: Icons.picture_as_pdf_outlined,
-      onTap:
-          () async => await Get.toNamed(
-            "/mainPage/eBelgePdf",
-            arguments: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel),
-          ),
+      onTap: () async => await Get.toNamed(
+        "/mainPage/eBelgePdf",
+        arguments: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel),
+      ),
     );
   }
 
@@ -1936,18 +1921,17 @@ final class IslemlerMenuItemConstants<T> {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "Durum Sorgula",
-      isEnabled:
-          () {
-            if (!siparisModel.eBelgeMi) return false;
-            if (siparisModel.eArsivMi || _yetkiController.ebelgeEArsivGidenKutusu) {
-              return _yetkiController.ebelgeEArsivSorgula;
-            }
-            if (siparisModel.eFaturaMi || _yetkiController.ebelgeEFaturaGidenKutusu) {
-              return _yetkiController.ebelgeEFaturaSorgula;
-            }
-            if (siparisModel.eIrsaliyeMi) return _yetkiController.ebelgeEIrsaliyeGidenKutusu;
-            return false;
-          }.call(),
+      isEnabled: () {
+        if (!siparisModel.eBelgeMi) return false;
+        if (siparisModel.eArsivMi || _yetkiController.ebelgeEArsivGidenKutusu) {
+          return _yetkiController.ebelgeEArsivSorgula;
+        }
+        if (siparisModel.eFaturaMi || _yetkiController.ebelgeEFaturaGidenKutusu) {
+          return _yetkiController.ebelgeEFaturaSorgula;
+        }
+        if (siparisModel.eIrsaliyeMi) return _yetkiController.ebelgeEIrsaliyeGidenKutusu;
+        return false;
+      }.call(),
       iconData: Icons.refresh_outlined,
       onTap: () async {
         final result = await _networkManager.dioGet<EBelgeListesiModel>(
@@ -1968,15 +1952,14 @@ final class IslemlerMenuItemConstants<T> {
 
   GridItemModel get eBelgetaslakSil {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-    final bool yetki =
-        () {
-          if (siparisModel.eBelgeMi) {
-            if (siparisModel.eArsivMi) return _yetkiController.ebelgeEArsivTaslakSil;
-            if (siparisModel.eFaturaMi) return _yetkiController.ebelgeEFaturaTaslakSil;
-            if (siparisModel.eIrsaliyeMi) return _yetkiController.ebelgeEIrsaliyeTaslakSil;
-          }
-          return false;
-        }.call();
+    final bool yetki = () {
+      if (siparisModel.eBelgeMi) {
+        if (siparisModel.eArsivMi) return _yetkiController.ebelgeEArsivTaslakSil;
+        if (siparisModel.eFaturaMi) return _yetkiController.ebelgeEFaturaTaslakSil;
+        if (siparisModel.eIrsaliyeMi) return _yetkiController.ebelgeEIrsaliyeTaslakSil;
+      }
+      return false;
+    }.call();
     return GridItemModel.islemler(
       title: "Taslağı Sil",
       isEnabled: yetki,
@@ -2164,12 +2147,11 @@ final class IslemlerMenuItemConstants<T> {
                         path: ApiUrls.saveFatura,
                         showLoading: true,
                         bodyModel: BaseSiparisEditModel(),
-                        data:
-                            BaseSiparisEditModel.belgeNoDegistir(
-                              siparisModel
-                                ..yeniBelgeNo = controller.text
-                                ..resmiBelgeNo = resmiController.text,
-                            ).toJson(),
+                        data: BaseSiparisEditModel.belgeNoDegistir(
+                          siparisModel
+                            ..yeniBelgeNo = controller.text
+                            ..resmiBelgeNo = resmiController.text,
+                        ).toJson(),
                       );
                       if (result.isSuccess) {
                         _dialogManager.showSuccessSnackBar("Başarılı");

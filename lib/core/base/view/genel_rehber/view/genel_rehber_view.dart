@@ -32,14 +32,12 @@ final class _GenelRehberViewState extends State<GenelRehberView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) =>
-                _viewModel.isSearchBarOpen
-                    ? CustomAppBarTextField(onChanged: _viewModel.setSearchText)
-                    : AppBarTitle(
-                      title: "${widget.model.baslik} Rehberi",
-                      subtitle: "${_viewModel.observableList?.length ?? 0}",
-                    ),
+        builder: (_) => _viewModel.isSearchBarOpen
+            ? CustomAppBarTextField(onChanged: _viewModel.setSearchText)
+            : AppBarTitle(
+                title: "${widget.model.baslik} Rehberi",
+                subtitle: "${_viewModel.observableList?.length ?? 0}",
+              ),
       ),
       actions: [
         IconButton(
@@ -49,25 +47,23 @@ final class _GenelRehberViewState extends State<GenelRehberView> {
       ],
     ),
     body: Observer(
-      builder:
-          (_) => RefreshableListView<GenelRehberModel>(
-            onRefresh: _viewModel.getData,
-            items: _viewModel.filteredObservableList,
-            itemBuilder:
-                (item) => Card(
-                  child: ListTile(
-                    onTap: () => Get.back(result: item),
-                    title: Text(item.adi ?? item.kodu ?? ""),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (item.adi != null && item.adi != item.kodu) Text(item.kodu ?? ""),
-                        Text(item.aciklama ?? ""),
-                      ],
-                    ),
-                  ),
-                ),
+      builder: (_) => RefreshableListView<GenelRehberModel>(
+        onRefresh: _viewModel.getData,
+        items: _viewModel.filteredObservableList,
+        itemBuilder: (item) => Card(
+          child: ListTile(
+            onTap: () => Get.back(result: item),
+            title: Text(item.adi ?? item.kodu ?? ""),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (item.adi != null && item.adi != item.kodu) Text(item.kodu ?? ""),
+                Text(item.aciklama ?? ""),
+              ],
+            ),
           ),
+        ),
+      ),
     ),
   );
 }

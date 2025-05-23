@@ -326,7 +326,10 @@ final class NetworkManager {
       return null;
     }
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await _dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
+    final response = await _dio.get(
+      path,
+      options: Options(headers: head, responseType: ResponseType.bytes),
+    );
     // response is a png file
     try {
       if (response.data is Uint8List) {
@@ -358,7 +361,10 @@ final class NetworkManager {
 
   Future<Uint8List?> getImageUint8List(String path) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await _dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
+    final response = await _dio.get(
+      path,
+      options: Options(headers: head, responseType: ResponseType.bytes),
+    );
     log(response.data.toString());
     // response is a png file
     if (response.data is Uint8List) {
@@ -506,10 +512,9 @@ final class NetworkManager {
     if (email == "demo@netfect.com") {
       return GenericResponseModel(success: true);
     }
-    final data2 =
-        getFromCache
-            ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)
-            : AccountModel.instance;
+    final data2 = getFromCache
+        ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)
+        : AccountModel.instance;
     data2?.cihazTarihi = DateTime.now().toDateTimeString();
     data2?.konumTarihi = DateTime.now().toDateTimeString();
     final result = await dioPost<AccountResponseModel>(
@@ -764,8 +769,9 @@ final class NetworkManager {
         return await BottomSheetDialogManager().showBottomSheetDialog(
           context,
           title: "Fatura Seçiniz",
-          children:
-              list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
+          children: list
+              .map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e))
+              .toList(),
         );
       }
     }
@@ -789,8 +795,9 @@ final class NetworkManager {
         return await BottomSheetDialogManager().showBottomSheetDialog(
           context,
           title: "Fatura Seçiniz",
-          children:
-              list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
+          children: list
+              .map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e))
+              .toList(),
         );
       }
     }

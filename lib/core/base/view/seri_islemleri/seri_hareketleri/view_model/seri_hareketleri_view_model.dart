@@ -50,9 +50,10 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   void setSearchQuery(String query) => searchQuery = query;
 
   @action
-  void onActionTypeChanged(int? index) =>
-      selectedActionType =
-          selectedActionType.mapIndexed((index2, e) => index == index2 ? true : false).toList().asObservable();
+  void onActionTypeChanged(int? index) => selectedActionType = selectedActionType
+      .mapIndexed((index2, e) => index == index2 ? true : false)
+      .toList()
+      .asObservable();
 
   @action
   void setIsSearchBarOpened() => isSearchBarOpened = !isSearchBarOpened;

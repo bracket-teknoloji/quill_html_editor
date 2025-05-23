@@ -152,76 +152,72 @@ final class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
   Column body() => Column(
     children: [
       LayoutBuilder(
-        builder:
-            (context, constraints) => Observer(
-              builder:
-                  (_) => ToggleButtons(
-                    constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
-                    //TODO BU ne amk selected'ı düzelt
-                    isSelected: viewModel.selectedActionType,
-                    onPressed: (index) {
-                      if (viewModel.selectedActionType[index]) {
-                        return;
-                      }
-                      viewModel.onActionTypeChanged(index);
-                      _stokKoduController.clear();
-                      viewModel
-                        ..setSeriNo(null)
-                        ..setStokKodu(null);
-                    },
-                    children: const [Text("Stok Kodundan"), Text("Seriden")],
-                  ),
-            ),
+        builder: (context, constraints) => Observer(
+          builder: (_) => ToggleButtons(
+            constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
+            //TODO BU ne amk selected'ı düzelt
+            isSelected: viewModel.selectedActionType,
+            onPressed: (index) {
+              if (viewModel.selectedActionType[index]) {
+                return;
+              }
+              viewModel.onActionTypeChanged(index);
+              _stokKoduController.clear();
+              viewModel
+                ..setSeriNo(null)
+                ..setStokKodu(null);
+            },
+            children: const [Text("Stok Kodundan"), Text("Seriden")],
+          ),
+        ),
       ).paddingSymmetric(vertical: UIHelper.lowSize),
       Observer(
-        builder:
-            (_) => CustomTextField(
-              labelText: viewModel.selectedActionType.first ? "Stok" : "Seri",
-              readOnly: viewModel.selectedActionType.first,
-              controller: _stokKoduController,
-              suffixMore: true,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  return;
-                }
-                if (viewModel.selectedActionType.first) {
-                  viewModel
-                    ..setSeriNo(null)
-                    ..setStokKodu(value);
-                } else {
-                  viewModel
-                    ..setSeriNo(null)
-                    ..setSeriNo(value);
-                }
-              },
-              onTap:
-                  !viewModel.selectedActionType.first
-                      ? null
-                      : () async {
-                        final result = await Get.toNamed(
-                          "/mainPage/stokListesiOzel",
-                          arguments: StokBottomSheetModel(seriTakibiVar: "E", resimGoster: "E", menuKodu: "STOK_SREH"),
-                        );
-                        if (result is StokListesiModel) {
-                          _stokKoduController.text = result.stokKodu ?? "";
-                          viewModel
-                            ..stokListesiModel = result
-                            ..setStokKodu(result.stokKodu ?? "");
-                          await viewModel.getData();
-                        }
-                      },
-              suffix: IconButton(
-                onPressed: () async {
-                  final result = await Get.toNamed("/qr");
-                  if (result is String) {
-                    _stokKoduController.text = result;
-                    viewModel.setStokKodu(result);
+        builder: (_) => CustomTextField(
+          labelText: viewModel.selectedActionType.first ? "Stok" : "Seri",
+          readOnly: viewModel.selectedActionType.first,
+          controller: _stokKoduController,
+          suffixMore: true,
+          onChanged: (value) {
+            if (value.isEmpty) {
+              return;
+            }
+            if (viewModel.selectedActionType.first) {
+              viewModel
+                ..setSeriNo(null)
+                ..setStokKodu(value);
+            } else {
+              viewModel
+                ..setSeriNo(null)
+                ..setSeriNo(value);
+            }
+          },
+          onTap: !viewModel.selectedActionType.first
+              ? null
+              : () async {
+                  final result = await Get.toNamed(
+                    "/mainPage/stokListesiOzel",
+                    arguments: StokBottomSheetModel(seriTakibiVar: "E", resimGoster: "E", menuKodu: "STOK_SREH"),
+                  );
+                  if (result is StokListesiModel) {
+                    _stokKoduController.text = result.stokKodu ?? "";
+                    viewModel
+                      ..stokListesiModel = result
+                      ..setStokKodu(result.stokKodu ?? "");
                     await viewModel.getData();
                   }
                 },
-                icon: const Icon(Icons.qr_code_scanner),
-              ),
-            ),
+          suffix: IconButton(
+            onPressed: () async {
+              final result = await Get.toNamed("/qr");
+              if (result is String) {
+                _stokKoduController.text = result;
+                viewModel.setStokKodu(result);
+                await viewModel.getData();
+              }
+            },
+            icon: const Icon(Icons.qr_code_scanner),
+          ),
+        ),
       ),
       Expanded(
         child: RefreshIndicator.adaptive(
@@ -234,92 +230,88 @@ final class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
               return RefreshableListView(
                 onRefresh: viewModel.getData,
                 items: viewModel.filteredList,
-                itemBuilder:
-                    (item) => Card(
-                      color: (item.gckod == "G" ? ColorPalette.mantis : ColorPalette.persianRed).withValues(alpha: 0.5),
-                      child: ListTile(
-                        title: Text(item.seriNo ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        subtitle: CustomLayoutBuilder(
-                          splitCount: 2,
-                          children: [
-                            Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
-                            if (item.depoKodu != null) Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
-                            if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
-                            if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
-                            Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
-                            Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
-                            if (item.haracik != null) Text("Açıklama: ${item.haracik ?? ""}"),
-                            if (item.gckod != null) Text("Giriş/Çıkış: ${item.gckod ?? ""}"),
-                            if (item.belgeTipi != null)
-                              Text("Belge Tipi: ${item.belgeTipi ?? ""} - ${item.belgeTipiAdi ?? ""}"),
-                            if (item.kayitTipi != null)
-                              Text("Kayıt Tipi: ${item.kayitTipi ?? ""} - ${item.kayitTipiAdi ?? ""}"),
-                            // Text("Şube: ${item. ?? ""}"),
-                            if (item.stharInc != null) Text("StHarInc: ${item.stharInc ?? ""}"),
-                            if (item.belgeNo != null) Text("Belge No: ${item.belgeNo ?? ""}"),
-                          ],
-                        ),
-                        onTap: () async {
-                          await bottomSheetDialogManager.showBottomSheetDialog(
-                            context,
-                            title: loc.generalStrings.options,
-                            children: [
-                              BottomSheetModel(
-                                title: loc.generalStrings.edit,
-                                iconWidget: Icons.edit_outlined,
-                                onTap: () async {
-                                  Get.back();
-                                  if (item.devirMi) {
-                                    final result = await Get.toNamed(
-                                      "/seriGirisi",
-                                      arguments: item.copyWith(islemKodu: 8),
-                                    );
-                                    if (result == true) {
+                itemBuilder: (item) => Card(
+                  color: (item.gckod == "G" ? ColorPalette.mantis : ColorPalette.persianRed).withValues(alpha: 0.5),
+                  child: ListTile(
+                    title: Text(item.seriNo ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: CustomLayoutBuilder(
+                      splitCount: 2,
+                      children: [
+                        Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
+                        if (item.depoKodu != null) Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
+                        if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
+                        if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
+                        Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
+                        Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
+                        if (item.haracik != null) Text("Açıklama: ${item.haracik ?? ""}"),
+                        if (item.gckod != null) Text("Giriş/Çıkış: ${item.gckod ?? ""}"),
+                        if (item.belgeTipi != null)
+                          Text("Belge Tipi: ${item.belgeTipi ?? ""} - ${item.belgeTipiAdi ?? ""}"),
+                        if (item.kayitTipi != null)
+                          Text("Kayıt Tipi: ${item.kayitTipi ?? ""} - ${item.kayitTipiAdi ?? ""}"),
+                        // Text("Şube: ${item. ?? ""}"),
+                        if (item.stharInc != null) Text("StHarInc: ${item.stharInc ?? ""}"),
+                        if (item.belgeNo != null) Text("Belge No: ${item.belgeNo ?? ""}"),
+                      ],
+                    ),
+                    onTap: () async {
+                      await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: loc.generalStrings.options,
+                        children: [
+                          BottomSheetModel(
+                            title: loc.generalStrings.edit,
+                            iconWidget: Icons.edit_outlined,
+                            onTap: () async {
+                              Get.back();
+                              if (item.devirMi) {
+                                final result = await Get.toNamed("/seriGirisi", arguments: item.copyWith(islemKodu: 8));
+                                if (result == true) {
+                                  await viewModel.getData();
+                                }
+                              } else {
+                                islemHataDialog();
+                              }
+                            },
+                          ),
+                          BottomSheetModel(
+                            title: loc.generalStrings.delete,
+                            iconWidget: Icons.delete_outline,
+                            onTap: () async {
+                              Get.back();
+                              if (item.devirMi) {
+                                dialogManager.showAreYouSureDialog(
+                                  onYes: () async {
+                                    final result = await viewModel.deleteSeriHareket(item);
+                                    if (result) {
+                                      dialogManager.showAlertDialog(loc.generalStrings.success);
                                       await viewModel.getData();
                                     }
-                                  } else {
-                                    islemHataDialog();
-                                  }
-                                },
-                              ),
-                              BottomSheetModel(
-                                title: loc.generalStrings.delete,
-                                iconWidget: Icons.delete_outline,
-                                onTap: () async {
-                                  Get.back();
-                                  if (item.devirMi) {
-                                    dialogManager.showAreYouSureDialog(
-                                      onYes: () async {
-                                        final result = await viewModel.deleteSeriHareket(item);
-                                        if (result) {
-                                          dialogManager.showAlertDialog(loc.generalStrings.success);
-                                          await viewModel.getData();
-                                        }
-                                      },
-                                    );
-                                  } else {
-                                    islemHataDialog();
-                                  }
-                                },
-                              ),
-                              BottomSheetModel(
-                                title: "Stok İşlemleri",
-                                iconWidget: Icons.list_alt,
-                                onTap: () async {
-                                  Get.back();
-                                  final result = await networkManager.getStokModel(
-                                    StokRehberiRequestModel(stokKodu: item.stokKodu),
-                                  );
-                                  if (result is StokListesiModel) {
-                                    dialogManager.showStokGridViewDialog(result);
-                                  }
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
+                                  },
+                                );
+                              } else {
+                                islemHataDialog();
+                              }
+                            },
+                          ),
+                          BottomSheetModel(
+                            title: "Stok İşlemleri",
+                            iconWidget: Icons.list_alt,
+                            onTap: () async {
+                              Get.back();
+                              final result = await networkManager.getStokModel(
+                                StokRehberiRequestModel(stokKodu: item.stokKodu),
+                              );
+                              if (result is StokListesiModel) {
+                                dialogManager.showStokGridViewDialog(result);
+                              }
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
               );
             },
           ),

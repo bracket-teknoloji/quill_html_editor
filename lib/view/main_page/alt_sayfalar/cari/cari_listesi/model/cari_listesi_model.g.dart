@@ -462,15 +462,13 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel bagliCari(String? bagliCari) => this(bagliCari: bagliCari);
 
   @override
-  CariListesiModel bagliCariAdi(String? bagliCariAdi) =>
-      this(bagliCariAdi: bagliCariAdi);
+  CariListesiModel bagliCariAdi(String? bagliCariAdi) => this(bagliCariAdi: bagliCariAdi);
 
   @override
   CariListesiModel cariTip(String? cariTip) => this(cariTip: cariTip);
 
   @override
-  CariListesiModel cariTipAciklama(String? cariTipAciklama) =>
-      this(cariTipAciklama: cariTipAciklama);
+  CariListesiModel cariTipAciklama(String? cariTipAciklama) => this(cariTipAciklama: cariTipAciklama);
 
   @override
   CariListesiModel kilit(String? kilit) => this(kilit: kilit);
@@ -482,32 +480,25 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel odemeTipi(String? odemeTipi) => this(odemeTipi: odemeTipi);
 
   @override
-  CariListesiModel hesaptutmasekli(String? hesaptutmasekli) =>
-      this(hesaptutmasekli: hesaptutmasekli);
+  CariListesiModel hesaptutmasekli(String? hesaptutmasekli) => this(hesaptutmasekli: hesaptutmasekli);
 
   @override
-  CariListesiModel plasiyerKodu(String? plasiyerKodu) =>
-      this(plasiyerKodu: plasiyerKodu);
+  CariListesiModel plasiyerKodu(String? plasiyerKodu) => this(plasiyerKodu: plasiyerKodu);
 
   @override
-  CariListesiModel plasiyerAciklama(String? plasiyerAciklama) =>
-      this(plasiyerAciklama: plasiyerAciklama);
+  CariListesiModel plasiyerAciklama(String? plasiyerAciklama) => this(plasiyerAciklama: plasiyerAciklama);
 
   @override
-  CariListesiModel borcToplami(double? borcToplami) =>
-      this(borcToplami: borcToplami);
+  CariListesiModel borcToplami(double? borcToplami) => this(borcToplami: borcToplami);
 
   @override
-  CariListesiModel bakiyeList(List<dynamic>? bakiyeList) =>
-      this(bakiyeList: bakiyeList);
+  CariListesiModel bakiyeList(List<dynamic>? bakiyeList) => this(bakiyeList: bakiyeList);
 
   @override
-  CariListesiModel alacakToplami(double? alacakToplami) =>
-      this(alacakToplami: alacakToplami);
+  CariListesiModel alacakToplami(double? alacakToplami) => this(alacakToplami: alacakToplami);
 
   @override
-  CariListesiModel genisk1Orani(int? genisk1Orani) =>
-      this(genisk1Orani: genisk1Orani);
+  CariListesiModel genisk1Orani(int? genisk1Orani) => this(genisk1Orani: genisk1Orani);
 
   @override
   CariListesiModel ulkeKodu(String? ulkeKodu) => this(ulkeKodu: ulkeKodu);
@@ -537,19 +528,16 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel cariAdres(String? cariAdres) => this(cariAdres: cariAdres);
 
   @override
-  CariListesiModel vergiDairesi(String? vergiDairesi) =>
-      this(vergiDairesi: vergiDairesi);
+  CariListesiModel vergiDairesi(String? vergiDairesi) => this(vergiDairesi: vergiDairesi);
 
   @override
-  CariListesiModel vergiNumarasi(String? vergiNumarasi) =>
-      this(vergiNumarasi: vergiNumarasi);
+  CariListesiModel vergiNumarasi(String? vergiNumarasi) => this(vergiNumarasi: vergiNumarasi);
 
   @override
   CariListesiModel grupKodu(String? grupKodu) => this(grupKodu: grupKodu);
 
   @override
-  CariListesiModel grupTanimi(String? grupTanimi) =>
-      this(grupTanimi: grupTanimi);
+  CariListesiModel grupTanimi(String? grupTanimi) => this(grupTanimi: grupTanimi);
 
   @override
   CariListesiModel bilgi(String? bilgi) => this(bilgi: bilgi);
@@ -570,74 +558,61 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel kod1(String? kod1) => this(kod1: kod1);
 
   @override
-  CariListesiModel kod1Tanimi(String? kod1Tanimi) =>
-      this(kod1Tanimi: kod1Tanimi);
+  CariListesiModel kod1Tanimi(String? kod1Tanimi) => this(kod1Tanimi: kod1Tanimi);
 
   @override
   CariListesiModel kod2(String? kod2) => this(kod2: kod2);
 
   @override
-  CariListesiModel kod2Tanimi(String? kod2Tanimi) =>
-      this(kod2Tanimi: kod2Tanimi);
+  CariListesiModel kod2Tanimi(String? kod2Tanimi) => this(kod2Tanimi: kod2Tanimi);
 
   @override
   CariListesiModel kod3(String? kod3) => this(kod3: kod3);
 
   @override
-  CariListesiModel kod3Tanimi(String? kod3Tanimi) =>
-      this(kod3Tanimi: kod3Tanimi);
+  CariListesiModel kod3Tanimi(String? kod3Tanimi) => this(kod3Tanimi: kod3Tanimi);
 
   @override
   CariListesiModel kod4(String? kod4) => this(kod4: kod4);
 
   @override
-  CariListesiModel kod4Tanimi(String? kod4Tanimi) =>
-      this(kod4Tanimi: kod4Tanimi);
+  CariListesiModel kod4Tanimi(String? kod4Tanimi) => this(kod4Tanimi: kod4Tanimi);
 
   @override
   CariListesiModel kod5(String? kod5) => this(kod5: kod5);
 
   @override
-  CariListesiModel kod5Tanimi(String? kod5Tanimi) =>
-      this(kod5Tanimi: kod5Tanimi);
+  CariListesiModel kod5Tanimi(String? kod5Tanimi) => this(kod5Tanimi: kod5Tanimi);
 
   @override
-  CariListesiModel kayityapankul(String? kayityapankul) =>
-      this(kayityapankul: kayityapankul);
+  CariListesiModel kayityapankul(String? kayityapankul) => this(kayityapankul: kayityapankul);
 
   @override
-  CariListesiModel kayittarihi(String? kayittarihi) =>
-      this(kayittarihi: kayittarihi);
+  CariListesiModel kayittarihi(String? kayittarihi) => this(kayittarihi: kayittarihi);
 
   @override
-  CariListesiModel duzeltmeyapankul(String? duzeltmeyapankul) =>
-      this(duzeltmeyapankul: duzeltmeyapankul);
+  CariListesiModel duzeltmeyapankul(String? duzeltmeyapankul) => this(duzeltmeyapankul: duzeltmeyapankul);
 
   @override
-  CariListesiModel duzeltmetarihi(String? duzeltmetarihi) =>
-      this(duzeltmetarihi: duzeltmetarihi);
+  CariListesiModel duzeltmetarihi(String? duzeltmetarihi) => this(duzeltmetarihi: duzeltmetarihi);
 
   @override
   CariListesiModel efaturaMi(bool? efaturaMi) => this(efaturaMi: efaturaMi);
 
   @override
-  CariListesiModel efaturaTipi(String? efaturaTipi) =>
-      this(efaturaTipi: efaturaTipi);
+  CariListesiModel efaturaTipi(String? efaturaTipi) => this(efaturaTipi: efaturaTipi);
 
   @override
-  CariListesiModel efatGecisTarihi(String? efatGecisTarihi) =>
-      this(efatGecisTarihi: efatGecisTarihi);
+  CariListesiModel efatGecisTarihi(String? efatGecisTarihi) => this(efatGecisTarihi: efatGecisTarihi);
 
   @override
   CariListesiModel efatAktif(bool? efatAktif) => this(efatAktif: efatAktif);
 
   @override
-  CariListesiModel riskTakibi(String? riskTakibi) =>
-      this(riskTakibi: riskTakibi);
+  CariListesiModel riskTakibi(String? riskTakibi) => this(riskTakibi: riskTakibi);
 
   @override
-  CariListesiModel efaturaCarisi(String? efaturaCarisi) =>
-      this(efaturaCarisi: efaturaCarisi);
+  CariListesiModel efaturaCarisi(String? efaturaCarisi) => this(efaturaCarisi: efaturaCarisi);
 
   @override
   CariListesiModel bakiye(double? bakiye) => this(bakiye: bakiye);
@@ -700,8 +675,7 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel fax(String? fax) => this(fax: fax);
 
   @override
-  CariListesiModel sahisFirmasiMi(bool? sahisFirmasiMi) =>
-      this(sahisFirmasiMi: sahisFirmasiMi);
+  CariListesiModel sahisFirmasiMi(bool? sahisFirmasiMi) => this(sahisFirmasiMi: sahisFirmasiMi);
 
   @override
   CariListesiModel dovizli(bool? dovizli) => this(dovizli: dovizli);
@@ -719,8 +693,7 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel kosulKodu(String? kosulKodu) => this(kosulKodu: kosulKodu);
 
   @override
-  CariListesiModel fiyatGrubu(String? fiyatGrubu) =>
-      this(fiyatGrubu: fiyatGrubu);
+  CariListesiModel fiyatGrubu(String? fiyatGrubu) => this(fiyatGrubu: fiyatGrubu);
 
   @override
   CariListesiModel kull1S(String? kull1S) => this(kull1S: kull1S);
@@ -729,12 +702,10 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel kull2S(String? kull2S) => this(kull2S: kull2S);
 
   @override
-  CariListesiModel dovBorcToplami(double? dovBorcToplami) =>
-      this(dovBorcToplami: dovBorcToplami);
+  CariListesiModel dovBorcToplami(double? dovBorcToplami) => this(dovBorcToplami: dovBorcToplami);
 
   @override
-  CariListesiModel dovAlacakToplami(double? dovAlacakToplami) =>
-      this(dovAlacakToplami: dovAlacakToplami);
+  CariListesiModel dovAlacakToplami(double? dovAlacakToplami) => this(dovAlacakToplami: dovAlacakToplami);
 
   @override
   CariListesiModel dovBakiye(double? dovBakiye) => this(dovBakiye: dovBakiye);
@@ -743,16 +714,13 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel muhKodu(String? muhKodu) => this(muhKodu: muhKodu);
 
   @override
-  CariListesiModel muhHesapTipi(String? muhHesapTipi) =>
-      this(muhHesapTipi: muhHesapTipi);
+  CariListesiModel muhHesapTipi(String? muhHesapTipi) => this(muhHesapTipi: muhHesapTipi);
 
   @override
-  CariListesiModel iadeMiktarGirebilir(bool? iadeMiktarGirebilir) =>
-      this(iadeMiktarGirebilir: iadeMiktarGirebilir);
+  CariListesiModel iadeMiktarGirebilir(bool? iadeMiktarGirebilir) => this(iadeMiktarGirebilir: iadeMiktarGirebilir);
 
   @override
-  CariListesiModel sunucuTarihi(DateTime? sunucuTarihi) =>
-      this(sunucuTarihi: sunucuTarihi);
+  CariListesiModel sunucuTarihi(DateTime? sunucuTarihi) => this(sunucuTarihi: sunucuTarihi);
 
   @override
   CariListesiModel adi(String? adi) => this(adi: adi);
@@ -761,8 +729,7 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel adres(String? adres) => this(adres: adres);
 
   @override
-  CariListesiModel efaturaSenaryo(String? efaturaSenaryo) =>
-      this(efaturaSenaryo: efaturaSenaryo);
+  CariListesiModel efaturaSenaryo(String? efaturaSenaryo) => this(efaturaSenaryo: efaturaSenaryo);
 
   @override
   CariListesiModel eposta(String? eposta) => this(eposta: eposta);
@@ -774,20 +741,16 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
 
   @override
-  CariListesiModel kurfarkialacakKodu(String? kurfarkialacakKodu) =>
-      this(kurfarkialacakKodu: kurfarkialacakKodu);
+  CariListesiModel kurfarkialacakKodu(String? kurfarkialacakKodu) => this(kurfarkialacakKodu: kurfarkialacakKodu);
 
   @override
-  CariListesiModel kurfarkiborcKodu(String? kurfarkiborcKodu) =>
-      this(kurfarkiborcKodu: kurfarkiborcKodu);
+  CariListesiModel kurfarkiborcKodu(String? kurfarkiborcKodu) => this(kurfarkiborcKodu: kurfarkiborcKodu);
 
   @override
-  CariListesiModel muhasebeKodu(String? muhasebeKodu) =>
-      this(muhasebeKodu: muhasebeKodu);
+  CariListesiModel muhasebeKodu(String? muhasebeKodu) => this(muhasebeKodu: muhasebeKodu);
 
   @override
-  CariListesiModel requestVersion(int? requestVersion) =>
-      this(requestVersion: requestVersion);
+  CariListesiModel requestVersion(int? requestVersion) => this(requestVersion: requestVersion);
 
   @override
   CariListesiModel sehir(String? sehir) => this(sehir: sehir);
@@ -805,19 +768,16 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel website(String? website) => this(website: website);
 
   @override
-  CariListesiModel depoKodlari(List<int>? depoKodlari) =>
-      this(depoKodlari: depoKodlari);
+  CariListesiModel depoKodlari(List<int>? depoKodlari) => this(depoKodlari: depoKodlari);
 
   @override
   CariListesiModel idx(int? idx) => this(idx: idx);
 
   @override
-  CariListesiModel kurfarkiborcAdi(String? kurfarkiborcAdi) =>
-      this(kurfarkiborcAdi: kurfarkiborcAdi);
+  CariListesiModel kurfarkiborcAdi(String? kurfarkiborcAdi) => this(kurfarkiborcAdi: kurfarkiborcAdi);
 
   @override
-  CariListesiModel kurfarkialacakAdi(String? kurfarkialacakAdi) =>
-      this(kurfarkialacakAdi: kurfarkialacakAdi);
+  CariListesiModel kurfarkialacakAdi(String? kurfarkialacakAdi) => this(kurfarkialacakAdi: kurfarkialacakAdi);
 
   @override
   CariListesiModel adresi(String? adresi) => this(adresi: adresi);
@@ -839,38 +799,31 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel eFaturaMi(bool? eFaturaMi) => this(eFaturaMi: eFaturaMi);
 
   @override
-  CariListesiModel eFaturaMiEh(String? eFaturaMiEh) =>
-      this(eFaturaMiEh: eFaturaMiEh);
+  CariListesiModel eFaturaMiEh(String? eFaturaMiEh) => this(eFaturaMiEh: eFaturaMiEh);
 
   @override
-  CariListesiModel eFaturaSenaryo(String? eFaturaSenaryo) =>
-      this(eFaturaSenaryo: eFaturaSenaryo);
+  CariListesiModel eFaturaSenaryo(String? eFaturaSenaryo) => this(eFaturaSenaryo: eFaturaSenaryo);
 
   @override
-  CariListesiModel eIrsaliyeMi(bool? eIrsaliyeMi) =>
-      this(eIrsaliyeMi: eIrsaliyeMi);
+  CariListesiModel eIrsaliyeMi(bool? eIrsaliyeMi) => this(eIrsaliyeMi: eIrsaliyeMi);
 
   @override
   CariListesiModel faxNo(String? faxNo) => this(faxNo: faxNo);
 
   @override
-  CariListesiModel fiyatSirasi(int? fiyatSirasi) =>
-      this(fiyatSirasi: fiyatSirasi);
+  CariListesiModel fiyatSirasi(int? fiyatSirasi) => this(fiyatSirasi: fiyatSirasi);
 
   @override
   CariListesiModel genIsk1O(double? genIsk1O) => this(genIsk1O: genIsk1O);
 
   @override
-  CariListesiModel irsaliyeRiskOrani(double? irsaliyeRiskOrani) =>
-      this(irsaliyeRiskOrani: irsaliyeRiskOrani);
+  CariListesiModel irsaliyeRiskOrani(double? irsaliyeRiskOrani) => this(irsaliyeRiskOrani: irsaliyeRiskOrani);
 
   @override
-  CariListesiModel isletmeKodu(int? isletmeKodu) =>
-      this(isletmeKodu: isletmeKodu);
+  CariListesiModel isletmeKodu(int? isletmeKodu) => this(isletmeKodu: isletmeKodu);
 
   @override
-  CariListesiModel kayitYapanKullanici(String? kayitYapanKullanici) =>
-      this(kayitYapanKullanici: kayitYapanKullanici);
+  CariListesiModel kayitYapanKullanici(String? kayitYapanKullanici) => this(kayitYapanKullanici: kayitYapanKullanici);
 
   @override
   CariListesiModel konumMetre(int? konumMetre) => this(konumMetre: konumMetre);
@@ -879,12 +832,10 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel kilitTipi(String? kilitTipi) => this(kilitTipi: kilitTipi);
 
   @override
-  CariListesiModel kurFarkiBorcMuhAdi(String? kurFarkiBorcMuhAdi) =>
-      this(kurFarkiBorcMuhAdi: kurFarkiBorcMuhAdi);
+  CariListesiModel kurFarkiBorcMuhAdi(String? kurFarkiBorcMuhAdi) => this(kurFarkiBorcMuhAdi: kurFarkiBorcMuhAdi);
 
   @override
-  CariListesiModel kurFarkiBorcMuhKodu(String? kurFarkiBorcMuhKodu) =>
-      this(kurFarkiBorcMuhKodu: kurFarkiBorcMuhKodu);
+  CariListesiModel kurFarkiBorcMuhKodu(String? kurFarkiBorcMuhKodu) => this(kurFarkiBorcMuhKodu: kurFarkiBorcMuhKodu);
 
   @override
   CariListesiModel kurFarkiAlacakMuhAdi(String? kurFarkiAlacakMuhAdi) =>
@@ -901,49 +852,39 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel odemeKodu(String? odemeKodu) => this(odemeKodu: odemeKodu);
 
   @override
-  CariListesiModel plasiyerAdi(String? plasiyerAdi) =>
-      this(plasiyerAdi: plasiyerAdi);
+  CariListesiModel plasiyerAdi(String? plasiyerAdi) => this(plasiyerAdi: plasiyerAdi);
 
   @override
   CariListesiModel postaKodu(String? postaKodu) => this(postaKodu: postaKodu);
 
   @override
-  CariListesiModel riskTutari(double? riskTutari) =>
-      this(riskTutari: riskTutari);
+  CariListesiModel riskTutari(double? riskTutari) => this(riskTutari: riskTutari);
 
   @override
-  CariListesiModel sahisSirketiMi(bool? sahisSirketiMi) =>
-      this(sahisSirketiMi: sahisSirketiMi);
+  CariListesiModel sahisSirketiMi(bool? sahisSirketiMi) => this(sahisSirketiMi: sahisSirketiMi);
 
   @override
-  CariListesiModel siparisRiskOrani(double? siparisRiskOrani) =>
-      this(siparisRiskOrani: siparisRiskOrani);
+  CariListesiModel siparisRiskOrani(double? siparisRiskOrani) => this(siparisRiskOrani: siparisRiskOrani);
 
   @override
-  CariListesiModel tempMuhtelifCari(bool? tempMuhtelifCari) =>
-      this(tempMuhtelifCari: tempMuhtelifCari);
+  CariListesiModel tempMuhtelifCari(bool? tempMuhtelifCari) => this(tempMuhtelifCari: tempMuhtelifCari);
 
   @override
-  CariListesiModel tempNoterlerSorgula(bool? tempNoterlerSorgula) =>
-      this(tempNoterlerSorgula: tempNoterlerSorgula);
+  CariListesiModel tempNoterlerSorgula(bool? tempNoterlerSorgula) => this(tempNoterlerSorgula: tempNoterlerSorgula);
 
   @override
-  CariListesiModel tipAciklama(String? tipAciklama) =>
-      this(tipAciklama: tipAciklama);
+  CariListesiModel tipAciklama(String? tipAciklama) => this(tipAciklama: tipAciklama);
 
   @override
-  CariListesiModel vadeUyarisi(String? vadeUyarisi) =>
-      this(vadeUyarisi: vadeUyarisi);
+  CariListesiModel vadeUyarisi(String? vadeUyarisi) => this(vadeUyarisi: vadeUyarisi);
 
   @override
   CariListesiModel webAdresi(String? webAdresi) => this(webAdresi: webAdresi);
 
   @override
-  CariListesiModel yurtIciDovizKodu(int? yurtIciDovizKodu) =>
-      this(yurtIciDovizKodu: yurtIciDovizKodu);
+  CariListesiModel yurtIciDovizKodu(int? yurtIciDovizKodu) => this(yurtIciDovizKodu: yurtIciDovizKodu);
 
   @override
-
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1544,11 +1485,10 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
           ? _value.cariHarf
           // ignore: cast_nullable_to_non_nullable
           : cariHarf as String?,
-      duzeltmeYapanKullanici:
-          duzeltmeYapanKullanici == const $CopyWithPlaceholder()
-              ? _value.duzeltmeYapanKullanici
-              // ignore: cast_nullable_to_non_nullable
-              : duzeltmeYapanKullanici as String?,
+      duzeltmeYapanKullanici: duzeltmeYapanKullanici == const $CopyWithPlaceholder()
+          ? _value.duzeltmeYapanKullanici
+          // ignore: cast_nullable_to_non_nullable
+          : duzeltmeYapanKullanici as String?,
       eFatAktif: eFatAktif == const $CopyWithPlaceholder()
           ? _value.eFatAktif
           // ignore: cast_nullable_to_non_nullable
@@ -1613,11 +1553,10 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
           ? _value.kurFarkiAlacakMuhAdi
           // ignore: cast_nullable_to_non_nullable
           : kurFarkiAlacakMuhAdi as String?,
-      kurFarkiAlacakMuhKodu:
-          kurFarkiAlacakMuhKodu == const $CopyWithPlaceholder()
-              ? _value.kurFarkiAlacakMuhKodu
-              // ignore: cast_nullable_to_non_nullable
-              : kurFarkiAlacakMuhKodu as String?,
+      kurFarkiAlacakMuhKodu: kurFarkiAlacakMuhKodu == const $CopyWithPlaceholder()
+          ? _value.kurFarkiAlacakMuhKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kurFarkiAlacakMuhKodu as String?,
       muhAdi: muhAdi == const $CopyWithPlaceholder()
           ? _value.muhAdi
           // ignore: cast_nullable_to_non_nullable
@@ -1691,154 +1630,152 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
   @override
   CariListesiModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return CariListesiModel(
-      cariKodu: fields[0] as String?,
-      cariAdi: fields[1] as String?,
-      bagliCari: fields[2] as String?,
-      bagliCariAdi: fields[3] as String?,
-      cariTip: fields[4] as String?,
-      cariTipAciklama: fields[5] as String?,
-      kilit: fields[6] as String?,
-      vadeGunu: fields[7] as int?,
-      odemeTipi: fields[8] as String?,
-      hesaptutmasekli: fields[9] as String?,
-      plasiyerKodu: fields[10] as String?,
-      plasiyerAciklama: fields[11] as String?,
-      borcToplami: fields[12] as double?,
-      bakiyeList: (fields[13] as List?)?.cast<dynamic>(),
-      alacakToplami: fields[15] as double?,
-      genisk1Orani: fields[16] as int?,
-      ulkeKodu: fields[17] as String?,
-      ulkeAdi: fields[18] as String?,
-      cariIl: fields[19] as String?,
-      cariIlce: fields[20] as String?,
-      cariTel: fields[21] as String?,
-      postakodu: fields[22] as String?,
-      email: fields[23] as String?,
-      web: fields[24] as String?,
-      cariAdres: fields[25] as String?,
-      vergiDairesi: fields[26] as String?,
-      vergiNumarasi: fields[27] as String?,
-      grupKodu: fields[28] as String?,
-      grupTanimi: fields[29] as String?,
-      bilgi: fields[30] as String?,
-      aciklama1: fields[31] as String?,
-      aciklama2: fields[32] as String?,
-      aciklama3: fields[33] as String?,
-      kodu: fields[34] as String?,
-      kod1: fields[35] as String?,
-      kod1Tanimi: fields[36] as String?,
-      kod2: fields[37] as String?,
-      kod2Tanimi: fields[38] as String?,
-      kod3: fields[39] as String?,
-      kod3Tanimi: fields[40] as String?,
-      kod4: fields[41] as String?,
-      kod4Tanimi: fields[42] as String?,
-      kod5: fields[43] as String?,
-      kod5Tanimi: fields[44] as String?,
-      kayityapankul: fields[45] as String?,
-      kayittarihi: fields[46] as String?,
-      duzeltmeyapankul: fields[47] as String?,
-      duzeltmetarihi: fields[48] as String?,
-      efaturaMi: fields[49] as bool?,
-      efaturaTipi: fields[50] as String?,
-      efatGecisTarihi: fields[51] as String?,
-      efatAktif: fields[52] as bool?,
-      riskTakibi: fields[53] as String?,
-      efaturaCarisi: fields[54] as String?,
-      bakiye: fields[55] as double?,
-      enlem: fields[56] as double?,
-      boylam: fields[57] as double?,
-      kull1s: fields[58] as String?,
-      kull2s: fields[59] as String?,
-      kull3s: fields[60] as String?,
-      kull4s: fields[61] as String?,
-      kull5s: fields[62] as String?,
-      kull6s: fields[63] as String?,
-      kull7s: fields[64] as String?,
-      kull8s: fields[65] as String?,
-      kull1n: fields[66] as double?,
-      kull2n: fields[67] as double?,
-      kull3n: fields[68] as double?,
-      kull4n: fields[69] as double?,
-      kull5n: fields[70] as double?,
-      kull6n: fields[71] as double?,
-      kull7n: fields[72] as double?,
-      kull8n: fields[73] as double?,
-      fax: fields[74] as String?,
-      sahisFirmasiMi: fields[75] as bool?,
-      dovizli: fields[76] as bool?,
-      dovizKodu: fields[77] as int?,
-      dovizAdi: fields[78] as String?,
-      subeKodu: fields[79] as int?,
-      kosulKodu: fields[80] as String?,
-      fiyatGrubu: fields[81] as String?,
-      kull1S: fields[82] as String?,
-      kull2S: fields[83] as String?,
-      dovBorcToplami: fields[84] as double?,
-      dovAlacakToplami: fields[85] as double?,
-      dovBakiye: fields[86] as double?,
-      muhKodu: fields[87] as String?,
-      muhHesapTipi: fields[88] as String?,
-      iadeMiktarGirebilir: fields[89] as bool?,
-      sunucuTarihi: fields[90] as DateTime?,
-      adi: fields[91] as String?,
-      adres: fields[92] as String?,
-      efaturaSenaryo: fields[93] as String?,
-      eposta: fields[94] as String?,
-      ilce: fields[95] as String?,
-      islemKodu: fields[96] as int?,
-      kurfarkialacakKodu: fields[97] as String?,
-      kurfarkiborcKodu: fields[98] as String?,
-      muhasebeKodu: fields[99] as String?,
-      requestVersion: fields[100] as int?,
-      sehir: fields[101] as String?,
-      telefon: fields[102] as String?,
-      tipi: fields[103] as String?,
-      vergiNo: fields[104] as String?,
-      website: fields[105] as String?,
-      depoKodlari: (fields[106] as List?)?.cast<int>(),
-      idx: fields[107] as int?,
-      kurfarkiborcAdi: fields[108] as String?,
-      kurfarkialacakAdi: fields[109] as String?,
-      adresi: fields[130] as String?,
-      anaCari: fields[113] as String?,
-      cariHarf: fields[138] as String?,
-      duzeltmeYapanKullanici: fields[132] as String?,
-      eFatAktif: fields[137] as bool?,
-      eFaturaMi: fields[133] as bool?,
-      eFaturaMiEh: fields[134] as String?,
-      eFaturaSenaryo: fields[135] as String?,
-      eIrsaliyeMi: fields[136] as bool?,
-      faxNo: fields[127] as String?,
-      fiyatSirasi: fields[144] as int?,
-      genIsk1O: fields[126] as double?,
-      irsaliyeRiskOrani: fields[142] as double?,
-      isletmeKodu: fields[119] as int?,
-      kayitYapanKullanici: fields[131] as String?,
-      konumMetre: fields[143] as int?,
-      kilitTipi: fields[115] as String?,
-      kurFarkiBorcMuhAdi: fields[122] as String?,
-      kurFarkiBorcMuhKodu: fields[121] as String?,
-      kurFarkiAlacakMuhAdi: fields[124] as String?,
-      kurFarkiAlacakMuhKodu: fields[123] as String?,
-      muhAdi: fields[110] as String?,
-      odemeKodu: fields[117] as String?,
-      plasiyerAdi: fields[120] as String?,
-      postaKodu: fields[128] as String?,
-      riskTutari: fields[139] as double?,
-      sahisSirketiMi: fields[116] as bool?,
-      siparisRiskOrani: fields[141] as double?,
-      tempMuhtelifCari: fields[111] as bool?,
-      tempNoterlerSorgula: fields[112] as bool?,
-      tipAciklama: fields[114] as String?,
-      vadeUyarisi: fields[140] as String?,
-      webAdresi: fields[129] as String?,
-      yurtIciDovizKodu: fields[125] as int?,
-    )
+        cariKodu: fields[0] as String?,
+        cariAdi: fields[1] as String?,
+        bagliCari: fields[2] as String?,
+        bagliCariAdi: fields[3] as String?,
+        cariTip: fields[4] as String?,
+        cariTipAciklama: fields[5] as String?,
+        kilit: fields[6] as String?,
+        vadeGunu: fields[7] as int?,
+        odemeTipi: fields[8] as String?,
+        hesaptutmasekli: fields[9] as String?,
+        plasiyerKodu: fields[10] as String?,
+        plasiyerAciklama: fields[11] as String?,
+        borcToplami: fields[12] as double?,
+        bakiyeList: (fields[13] as List?)?.cast<dynamic>(),
+        alacakToplami: fields[15] as double?,
+        genisk1Orani: fields[16] as int?,
+        ulkeKodu: fields[17] as String?,
+        ulkeAdi: fields[18] as String?,
+        cariIl: fields[19] as String?,
+        cariIlce: fields[20] as String?,
+        cariTel: fields[21] as String?,
+        postakodu: fields[22] as String?,
+        email: fields[23] as String?,
+        web: fields[24] as String?,
+        cariAdres: fields[25] as String?,
+        vergiDairesi: fields[26] as String?,
+        vergiNumarasi: fields[27] as String?,
+        grupKodu: fields[28] as String?,
+        grupTanimi: fields[29] as String?,
+        bilgi: fields[30] as String?,
+        aciklama1: fields[31] as String?,
+        aciklama2: fields[32] as String?,
+        aciklama3: fields[33] as String?,
+        kodu: fields[34] as String?,
+        kod1: fields[35] as String?,
+        kod1Tanimi: fields[36] as String?,
+        kod2: fields[37] as String?,
+        kod2Tanimi: fields[38] as String?,
+        kod3: fields[39] as String?,
+        kod3Tanimi: fields[40] as String?,
+        kod4: fields[41] as String?,
+        kod4Tanimi: fields[42] as String?,
+        kod5: fields[43] as String?,
+        kod5Tanimi: fields[44] as String?,
+        kayityapankul: fields[45] as String?,
+        kayittarihi: fields[46] as String?,
+        duzeltmeyapankul: fields[47] as String?,
+        duzeltmetarihi: fields[48] as String?,
+        efaturaMi: fields[49] as bool?,
+        efaturaTipi: fields[50] as String?,
+        efatGecisTarihi: fields[51] as String?,
+        efatAktif: fields[52] as bool?,
+        riskTakibi: fields[53] as String?,
+        efaturaCarisi: fields[54] as String?,
+        bakiye: fields[55] as double?,
+        enlem: fields[56] as double?,
+        boylam: fields[57] as double?,
+        kull1s: fields[58] as String?,
+        kull2s: fields[59] as String?,
+        kull3s: fields[60] as String?,
+        kull4s: fields[61] as String?,
+        kull5s: fields[62] as String?,
+        kull6s: fields[63] as String?,
+        kull7s: fields[64] as String?,
+        kull8s: fields[65] as String?,
+        kull1n: fields[66] as double?,
+        kull2n: fields[67] as double?,
+        kull3n: fields[68] as double?,
+        kull4n: fields[69] as double?,
+        kull5n: fields[70] as double?,
+        kull6n: fields[71] as double?,
+        kull7n: fields[72] as double?,
+        kull8n: fields[73] as double?,
+        fax: fields[74] as String?,
+        sahisFirmasiMi: fields[75] as bool?,
+        dovizli: fields[76] as bool?,
+        dovizKodu: fields[77] as int?,
+        dovizAdi: fields[78] as String?,
+        subeKodu: fields[79] as int?,
+        kosulKodu: fields[80] as String?,
+        fiyatGrubu: fields[81] as String?,
+        kull1S: fields[82] as String?,
+        kull2S: fields[83] as String?,
+        dovBorcToplami: fields[84] as double?,
+        dovAlacakToplami: fields[85] as double?,
+        dovBakiye: fields[86] as double?,
+        muhKodu: fields[87] as String?,
+        muhHesapTipi: fields[88] as String?,
+        iadeMiktarGirebilir: fields[89] as bool?,
+        sunucuTarihi: fields[90] as DateTime?,
+        adi: fields[91] as String?,
+        adres: fields[92] as String?,
+        efaturaSenaryo: fields[93] as String?,
+        eposta: fields[94] as String?,
+        ilce: fields[95] as String?,
+        islemKodu: fields[96] as int?,
+        kurfarkialacakKodu: fields[97] as String?,
+        kurfarkiborcKodu: fields[98] as String?,
+        muhasebeKodu: fields[99] as String?,
+        requestVersion: fields[100] as int?,
+        sehir: fields[101] as String?,
+        telefon: fields[102] as String?,
+        tipi: fields[103] as String?,
+        vergiNo: fields[104] as String?,
+        website: fields[105] as String?,
+        depoKodlari: (fields[106] as List?)?.cast<int>(),
+        idx: fields[107] as int?,
+        kurfarkiborcAdi: fields[108] as String?,
+        kurfarkialacakAdi: fields[109] as String?,
+        adresi: fields[130] as String?,
+        anaCari: fields[113] as String?,
+        cariHarf: fields[138] as String?,
+        duzeltmeYapanKullanici: fields[132] as String?,
+        eFatAktif: fields[137] as bool?,
+        eFaturaMi: fields[133] as bool?,
+        eFaturaMiEh: fields[134] as String?,
+        eFaturaSenaryo: fields[135] as String?,
+        eIrsaliyeMi: fields[136] as bool?,
+        faxNo: fields[127] as String?,
+        fiyatSirasi: fields[144] as int?,
+        genIsk1O: fields[126] as double?,
+        irsaliyeRiskOrani: fields[142] as double?,
+        isletmeKodu: fields[119] as int?,
+        kayitYapanKullanici: fields[131] as String?,
+        konumMetre: fields[143] as int?,
+        kilitTipi: fields[115] as String?,
+        kurFarkiBorcMuhAdi: fields[122] as String?,
+        kurFarkiBorcMuhKodu: fields[121] as String?,
+        kurFarkiAlacakMuhAdi: fields[124] as String?,
+        kurFarkiAlacakMuhKodu: fields[123] as String?,
+        muhAdi: fields[110] as String?,
+        odemeKodu: fields[117] as String?,
+        plasiyerAdi: fields[120] as String?,
+        postaKodu: fields[128] as String?,
+        riskTutari: fields[139] as double?,
+        sahisSirketiMi: fields[116] as bool?,
+        siparisRiskOrani: fields[141] as double?,
+        tempMuhtelifCari: fields[111] as bool?,
+        tempNoterlerSorgula: fields[112] as bool?,
+        tipAciklama: fields[114] as String?,
+        vadeUyarisi: fields[140] as String?,
+        webAdresi: fields[129] as String?,
+        yurtIciDovizKodu: fields[125] as int?,
+      )
       ..ozelKapatmaIncKey = fields[145] as int?
       ..dznEars = fields[146] as String?
       ..dznEarsInt = fields[147] as String?
@@ -2154,9 +2091,7 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CariListesiModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is CariListesiModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -2165,331 +2100,304 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
 
 CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
     CariListesiModel(
-      cariKodu: json['CARI_KODU'] as String?,
-      cariAdi: json['CARI_ADI'] as String?,
-      bagliCari: json['BAGLI_CARI'] as String?,
-      bagliCariAdi: json['BAGLI_CARI_ADI'] as String?,
-      cariTip: json['CARI_TIP'] as String?,
-      cariTipAciklama: json['CARI_TIP_ACIKLAMA'] as String?,
-      kilit: json['KILIT'] as String?,
-      vadeGunu: (json['VADE_GUNU'] as num?)?.toInt(),
-      odemeTipi: json['ODEME_TIPI'] as String?,
-      hesaptutmasekli: json['HESAPTUTMASEKLI'] as String?,
-      plasiyerKodu: json['PLASIYER_KODU'] as String?,
-      plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
-      borcToplami: (json['BORC_TOPLAMI'] as num?)?.toDouble(),
-      alacakToplami: (json['ALACAK_TOPLAMI'] as num?)?.toDouble(),
-      genisk1Orani: (json['GENISK1_ORANI'] as num?)?.toInt(),
-      ulkeKodu: json['ULKE_KODU'] as String?,
-      ulkeAdi: json['ULKE_ADI'] as String?,
-      cariIl: json['CARI_IL'] as String?,
-      cariIlce: json['CARI_ILCE'] as String?,
-      cariTel: json['CARI_TEL'] as String?,
-      postakodu: json['POSTAKODU'] as String?,
-      email: json['EMAIL'] as String?,
-      web: json['WEB'] as String?,
-      cariAdres: json['CARI_ADRES'] as String?,
-      vergiDairesi: json['VERGI_DAIRESI'] as String?,
-      vergiNumarasi: json['VERGI_NUMARASI'] as String?,
-      grupKodu: json['GRUP_KODU'] as String?,
-      grupTanimi: json['GRUP_TANIMI'] as String?,
-      bilgi: json['BILGI'] as String?,
-      aciklama1: json['ACIKLAMA1'] as String?,
-      aciklama2: json['ACIKLAMA2'] as String?,
-      aciklama3: json['ACIKLAMA3'] as String?,
-      kodu: json['KODU'] as String?,
-      kod1: json['KOD1'] as String?,
-      kod1Tanimi: json['KOD1_TANIMI'] as String?,
-      kod2: json['KOD2'] as String?,
-      kod2Tanimi: json['KOD2_TANIMI'] as String?,
-      kod3: json['KOD3'] as String?,
-      kod3Tanimi: json['KOD3_TANIMI'] as String?,
-      kod4: json['KOD4'] as String?,
-      kod4Tanimi: json['KOD4_TANIMI'] as String?,
-      kod5: json['KOD5'] as String?,
-      kod5Tanimi: json['KOD5_TANIMI'] as String?,
-      kayityapankul: json['KAYITYAPANKUL'] as String?,
-      kayittarihi: json['KAYITTARIHI'] as String?,
-      duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
-      duzeltmetarihi: json['DUZELTMETARIHI'] as String?,
-      efaturaMi: json['EFATURA_MI'] as bool?,
-      efaturaTipi: json['EFATURA_TIPI'] as String?,
-      efatGecisTarihi: json['EFAT_GECIS_TARIHI'] as String?,
-      efatAktif: json['EFAT_AKTIF'] as bool?,
-      riskTakibi: json['RISK_TAKIBI'] as String?,
-      efaturaCarisi: json['EFATURA_CARISI'] as String?,
-      bakiye: (json['BAKIYE'] as num?)?.toDouble(),
-      enlem: (json['ENLEM'] as num?)?.toDouble(),
-      boylam: (json['BOYLAM'] as num?)?.toDouble(),
-      kull1s: json['KULL1S'] as String?,
-      kull2s: json['KULL2S'] as String?,
-      kull3s: json['KULL3S'] as String?,
-      kull4s: json['KULL4S'] as String?,
-      kull5s: json['KULL5S'] as String?,
-      kull6s: json['KULL6S'] as String?,
-      kull7s: json['KULL7S'] as String?,
-      kull8s: json['KULL8S'] as String?,
-      kull1n: (json['KULL1N'] as num?)?.toDouble(),
-      kull2n: (json['KULL2N'] as num?)?.toDouble(),
-      kull3n: (json['KULL3N'] as num?)?.toDouble(),
-      kull4n: (json['KULL4N'] as num?)?.toDouble(),
-      kull5n: (json['KULL5N'] as num?)?.toDouble(),
-      kull6n: (json['KULL6N'] as num?)?.toDouble(),
-      kull7n: (json['KULL7N'] as num?)?.toDouble(),
-      kull8n: (json['KULL8N'] as num?)?.toDouble(),
-      fax: json['FAX'] as String?,
-      sahisFirmasiMi: json['SAHIS_FIRMASI_MI'] as bool?,
-      dovizli: json['DOVIZLI'] as bool?,
-      dovizKodu: (json['DOVIZ_KODU'] as num?)?.toInt(),
-      dovizAdi: json['DOVIZ_ADI'] as String?,
-      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
-      kosulKodu: json['KOSUL_KODU'] as String?,
-      fiyatGrubu: json['FIYAT_GRUBU'] as String?,
-      kull1S: json['KULL1_S'] as String?,
-      kull2S: json['KULL2_S'] as String?,
-      dovBorcToplami: (json['DOV_BORC_TOPLAMI'] as num?)?.toDouble(),
-      dovAlacakToplami: (json['DOV_ALACAK_TOPLAMI'] as num?)?.toDouble(),
-      dovBakiye: (json['DOV_BAKIYE'] as num?)?.toDouble(),
-      muhKodu: json['MUH_KODU'] as String?,
-      muhHesapTipi: json['MUH_HESAP_TIPI'] as String?,
-      iadeMiktarGirebilir: json['IADE_MIKTAR_GIREBILIR'] as bool?,
-      sunucuTarihi: json['SUNUCU_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['SUNUCU_TARIHI'] as String),
-      adi: json['ADI'] as String?,
-      adres: json['ADRES'] as String?,
-      efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
-      eposta: json['EPOSTA'] as String?,
-      ilce: json['ILCE'] as String?,
-      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
-      kurfarkialacakKodu: json['KURFARKIALACAK_KODU'] as String?,
-      kurfarkiborcKodu: json['KURFARKIBORC_KODU'] as String?,
-      muhasebeKodu: json['MUHASEBE_KODU'] as String?,
-      requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
-      sehir: json['SEHIR'] as String?,
-      telefon: json['TELEFON'] as String?,
-      tipi: json['TIPI'] as String?,
-      vergiNo: json['VERGI_NO'] as String?,
-      website: json['WEBSITE'] as String?,
-      depoKodlari: (json['DEPO_KODLARI'] as List<dynamic>?)
-          ?.map((e) => (e as num).toInt())
-          .toList(),
-      idx: (json['IDX'] as num?)?.toInt(),
-      kurfarkiborcAdi: json['KURFARKIBORC_ADI'] as String?,
-      kurfarkialacakAdi: json['KURFARKIALACAK_ADI'] as String?,
-      adresi: json['ADRESI'] as String?,
-      anaCari: json['ANA_CARI'] as String?,
-      cariHarf: json['CARI_HARF'] as String?,
-      duzeltmeYapanKullanici: json['DUZELTME_YAPAN_KULLANICI'] as String?,
-      eFatAktif: json['E_FAT_AKTIF'] as bool?,
-      eFaturaMi: json['E_FATURA_MI'] as bool?,
-      eFaturaMiEh: json['E_FATURA_MI_EH'] as String?,
-      eFaturaSenaryo: json['E_FATURA_SENARYO'] as String?,
-      eIrsaliyeMi: json['E_IRSALIYE_MI'] as bool?,
-      faxNo: json['FAX_NO'] as String?,
-      fiyatSirasi: (json['FIYAT_SIRASI'] as num?)?.toInt(),
-      genIsk1O: (json['GEN_ISK1_O'] as num?)?.toDouble(),
-      irsaliyeRiskOrani: (json['IRSALIYE_RISK_ORANI'] as num?)?.toDouble(),
-      isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
-      kayitYapanKullanici: json['KAYIT_YAPAN_KULLANICI'] as String?,
-      konumMetre: (json['KONUM_METRE'] as num?)?.toInt(),
-      kilitTipi: json['KILIT_TIPI'] as String?,
-      kurFarkiBorcMuhAdi: json['KUR_FARKI_BORC_MUH_ADI'] as String?,
-      kurFarkiBorcMuhKodu: json['KUR_FARKI_BORC_MUH_KODU'] as String?,
-      kurFarkiAlacakMuhAdi: json['KUR_FARKI_ALACAK_MUH_ADI'] as String?,
-      kurFarkiAlacakMuhKodu: json['KUR_FARKI_ALACAK_MUH_KODU'] as String?,
-      muhAdi: json['MUH_ADI'] as String?,
-      odemeKodu: json['ODEME_KODU'] as String?,
-      plasiyerAdi: json['PLASIYER_ADI'] as String?,
-      postaKodu: json['POSTA_KODU'] as String?,
-      riskTutari: (json['RISK_TUTARI'] as num?)?.toDouble(),
-      sahisSirketiMi: json['SAHIS_SIRKETI_MI'] as bool?,
-      siparisRiskOrani: (json['SIPARIS_RISK_ORANI'] as num?)?.toDouble(),
-      tempMuhtelifCari: json['TEMP_MUHTELIF_CARI'] as bool?,
-      tempNoterlerSorgula: json['TEMP_NOTERLER_SORGULA'] as bool?,
-      tipAciklama: json['TIP_ACIKLAMA'] as String?,
-      vadeUyarisi: json['VADE_UYARISI'] as String?,
-      webAdresi: json['WEB_ADRESI'] as String?,
-      yurtIciDovizKodu: (json['YURT_ICI_DOVIZ_KODU'] as num?)?.toInt(),
-    )
+        cariKodu: json['CARI_KODU'] as String?,
+        cariAdi: json['CARI_ADI'] as String?,
+        bagliCari: json['BAGLI_CARI'] as String?,
+        bagliCariAdi: json['BAGLI_CARI_ADI'] as String?,
+        cariTip: json['CARI_TIP'] as String?,
+        cariTipAciklama: json['CARI_TIP_ACIKLAMA'] as String?,
+        kilit: json['KILIT'] as String?,
+        vadeGunu: (json['VADE_GUNU'] as num?)?.toInt(),
+        odemeTipi: json['ODEME_TIPI'] as String?,
+        hesaptutmasekli: json['HESAPTUTMASEKLI'] as String?,
+        plasiyerKodu: json['PLASIYER_KODU'] as String?,
+        plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
+        borcToplami: (json['BORC_TOPLAMI'] as num?)?.toDouble(),
+        alacakToplami: (json['ALACAK_TOPLAMI'] as num?)?.toDouble(),
+        genisk1Orani: (json['GENISK1_ORANI'] as num?)?.toInt(),
+        ulkeKodu: json['ULKE_KODU'] as String?,
+        ulkeAdi: json['ULKE_ADI'] as String?,
+        cariIl: json['CARI_IL'] as String?,
+        cariIlce: json['CARI_ILCE'] as String?,
+        cariTel: json['CARI_TEL'] as String?,
+        postakodu: json['POSTAKODU'] as String?,
+        email: json['EMAIL'] as String?,
+        web: json['WEB'] as String?,
+        cariAdres: json['CARI_ADRES'] as String?,
+        vergiDairesi: json['VERGI_DAIRESI'] as String?,
+        vergiNumarasi: json['VERGI_NUMARASI'] as String?,
+        grupKodu: json['GRUP_KODU'] as String?,
+        grupTanimi: json['GRUP_TANIMI'] as String?,
+        bilgi: json['BILGI'] as String?,
+        aciklama1: json['ACIKLAMA1'] as String?,
+        aciklama2: json['ACIKLAMA2'] as String?,
+        aciklama3: json['ACIKLAMA3'] as String?,
+        kodu: json['KODU'] as String?,
+        kod1: json['KOD1'] as String?,
+        kod1Tanimi: json['KOD1_TANIMI'] as String?,
+        kod2: json['KOD2'] as String?,
+        kod2Tanimi: json['KOD2_TANIMI'] as String?,
+        kod3: json['KOD3'] as String?,
+        kod3Tanimi: json['KOD3_TANIMI'] as String?,
+        kod4: json['KOD4'] as String?,
+        kod4Tanimi: json['KOD4_TANIMI'] as String?,
+        kod5: json['KOD5'] as String?,
+        kod5Tanimi: json['KOD5_TANIMI'] as String?,
+        kayityapankul: json['KAYITYAPANKUL'] as String?,
+        kayittarihi: json['KAYITTARIHI'] as String?,
+        duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
+        duzeltmetarihi: json['DUZELTMETARIHI'] as String?,
+        efaturaMi: json['EFATURA_MI'] as bool?,
+        efaturaTipi: json['EFATURA_TIPI'] as String?,
+        efatGecisTarihi: json['EFAT_GECIS_TARIHI'] as String?,
+        efatAktif: json['EFAT_AKTIF'] as bool?,
+        riskTakibi: json['RISK_TAKIBI'] as String?,
+        efaturaCarisi: json['EFATURA_CARISI'] as String?,
+        bakiye: (json['BAKIYE'] as num?)?.toDouble(),
+        enlem: (json['ENLEM'] as num?)?.toDouble(),
+        boylam: (json['BOYLAM'] as num?)?.toDouble(),
+        kull1s: json['KULL1S'] as String?,
+        kull2s: json['KULL2S'] as String?,
+        kull3s: json['KULL3S'] as String?,
+        kull4s: json['KULL4S'] as String?,
+        kull5s: json['KULL5S'] as String?,
+        kull6s: json['KULL6S'] as String?,
+        kull7s: json['KULL7S'] as String?,
+        kull8s: json['KULL8S'] as String?,
+        kull1n: (json['KULL1N'] as num?)?.toDouble(),
+        kull2n: (json['KULL2N'] as num?)?.toDouble(),
+        kull3n: (json['KULL3N'] as num?)?.toDouble(),
+        kull4n: (json['KULL4N'] as num?)?.toDouble(),
+        kull5n: (json['KULL5N'] as num?)?.toDouble(),
+        kull6n: (json['KULL6N'] as num?)?.toDouble(),
+        kull7n: (json['KULL7N'] as num?)?.toDouble(),
+        kull8n: (json['KULL8N'] as num?)?.toDouble(),
+        fax: json['FAX'] as String?,
+        sahisFirmasiMi: json['SAHIS_FIRMASI_MI'] as bool?,
+        dovizli: json['DOVIZLI'] as bool?,
+        dovizKodu: (json['DOVIZ_KODU'] as num?)?.toInt(),
+        dovizAdi: json['DOVIZ_ADI'] as String?,
+        subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
+        kosulKodu: json['KOSUL_KODU'] as String?,
+        fiyatGrubu: json['FIYAT_GRUBU'] as String?,
+        kull1S: json['KULL1_S'] as String?,
+        kull2S: json['KULL2_S'] as String?,
+        dovBorcToplami: (json['DOV_BORC_TOPLAMI'] as num?)?.toDouble(),
+        dovAlacakToplami: (json['DOV_ALACAK_TOPLAMI'] as num?)?.toDouble(),
+        dovBakiye: (json['DOV_BAKIYE'] as num?)?.toDouble(),
+        muhKodu: json['MUH_KODU'] as String?,
+        muhHesapTipi: json['MUH_HESAP_TIPI'] as String?,
+        iadeMiktarGirebilir: json['IADE_MIKTAR_GIREBILIR'] as bool?,
+        sunucuTarihi: json['SUNUCU_TARIHI'] == null ? null : DateTime.parse(json['SUNUCU_TARIHI'] as String),
+        adi: json['ADI'] as String?,
+        adres: json['ADRES'] as String?,
+        efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
+        eposta: json['EPOSTA'] as String?,
+        ilce: json['ILCE'] as String?,
+        islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
+        kurfarkialacakKodu: json['KURFARKIALACAK_KODU'] as String?,
+        kurfarkiborcKodu: json['KURFARKIBORC_KODU'] as String?,
+        muhasebeKodu: json['MUHASEBE_KODU'] as String?,
+        requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
+        sehir: json['SEHIR'] as String?,
+        telefon: json['TELEFON'] as String?,
+        tipi: json['TIPI'] as String?,
+        vergiNo: json['VERGI_NO'] as String?,
+        website: json['WEBSITE'] as String?,
+        depoKodlari: (json['DEPO_KODLARI'] as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
+        idx: (json['IDX'] as num?)?.toInt(),
+        kurfarkiborcAdi: json['KURFARKIBORC_ADI'] as String?,
+        kurfarkialacakAdi: json['KURFARKIALACAK_ADI'] as String?,
+        adresi: json['ADRESI'] as String?,
+        anaCari: json['ANA_CARI'] as String?,
+        cariHarf: json['CARI_HARF'] as String?,
+        duzeltmeYapanKullanici: json['DUZELTME_YAPAN_KULLANICI'] as String?,
+        eFatAktif: json['E_FAT_AKTIF'] as bool?,
+        eFaturaMi: json['E_FATURA_MI'] as bool?,
+        eFaturaMiEh: json['E_FATURA_MI_EH'] as String?,
+        eFaturaSenaryo: json['E_FATURA_SENARYO'] as String?,
+        eIrsaliyeMi: json['E_IRSALIYE_MI'] as bool?,
+        faxNo: json['FAX_NO'] as String?,
+        fiyatSirasi: (json['FIYAT_SIRASI'] as num?)?.toInt(),
+        genIsk1O: (json['GEN_ISK1_O'] as num?)?.toDouble(),
+        irsaliyeRiskOrani: (json['IRSALIYE_RISK_ORANI'] as num?)?.toDouble(),
+        isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
+        kayitYapanKullanici: json['KAYIT_YAPAN_KULLANICI'] as String?,
+        konumMetre: (json['KONUM_METRE'] as num?)?.toInt(),
+        kilitTipi: json['KILIT_TIPI'] as String?,
+        kurFarkiBorcMuhAdi: json['KUR_FARKI_BORC_MUH_ADI'] as String?,
+        kurFarkiBorcMuhKodu: json['KUR_FARKI_BORC_MUH_KODU'] as String?,
+        kurFarkiAlacakMuhAdi: json['KUR_FARKI_ALACAK_MUH_ADI'] as String?,
+        kurFarkiAlacakMuhKodu: json['KUR_FARKI_ALACAK_MUH_KODU'] as String?,
+        muhAdi: json['MUH_ADI'] as String?,
+        odemeKodu: json['ODEME_KODU'] as String?,
+        plasiyerAdi: json['PLASIYER_ADI'] as String?,
+        postaKodu: json['POSTA_KODU'] as String?,
+        riskTutari: (json['RISK_TUTARI'] as num?)?.toDouble(),
+        sahisSirketiMi: json['SAHIS_SIRKETI_MI'] as bool?,
+        siparisRiskOrani: (json['SIPARIS_RISK_ORANI'] as num?)?.toDouble(),
+        tempMuhtelifCari: json['TEMP_MUHTELIF_CARI'] as bool?,
+        tempNoterlerSorgula: json['TEMP_NOTERLER_SORGULA'] as bool?,
+        tipAciklama: json['TIP_ACIKLAMA'] as String?,
+        vadeUyarisi: json['VADE_UYARISI'] as String?,
+        webAdresi: json['WEB_ADRESI'] as String?,
+        yurtIciDovizKodu: (json['YURT_ICI_DOVIZ_KODU'] as num?)?.toInt(),
+      )
       ..ozelKapatmaIncKey = (json['OZEL_KAPATMA_INC_KEY'] as num?)?.toInt()
       ..dznEars = json['DZN_EARS'] as String?
       ..dznEarsInt = json['DZN_EARS_INT'] as String?
       ..dznEfat = json['DZN_EFAT'] as String?
       ..dznEirs = json['DZN_EIRS'] as String?;
 
-Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
-    <String, dynamic>{
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.cariAdi case final value?) 'CARI_ADI': value,
-      if (instance.bagliCari case final value?) 'BAGLI_CARI': value,
-      if (instance.bagliCariAdi case final value?) 'BAGLI_CARI_ADI': value,
-      if (instance.cariTip case final value?) 'CARI_TIP': value,
-      if (instance.cariTipAciklama case final value?)
-        'CARI_TIP_ACIKLAMA': value,
-      if (instance.kilit case final value?) 'KILIT': value,
-      if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
-      if (instance.odemeTipi case final value?) 'ODEME_TIPI': value,
-      if (instance.hesaptutmasekli case final value?) 'HESAPTUTMASEKLI': value,
-      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
-      if (instance.plasiyerAciklama case final value?)
-        'PLASIYER_ACIKLAMA': value,
-      if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
-      if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
-      if (instance.genisk1Orani case final value?) 'GENISK1_ORANI': value,
-      if (instance.ulkeKodu case final value?) 'ULKE_KODU': value,
-      if (instance.ulkeAdi case final value?) 'ULKE_ADI': value,
-      if (instance.cariIl case final value?) 'CARI_IL': value,
-      if (instance.cariIlce case final value?) 'CARI_ILCE': value,
-      if (instance.cariTel case final value?) 'CARI_TEL': value,
-      if (instance.postakodu case final value?) 'POSTAKODU': value,
-      if (instance.email case final value?) 'EMAIL': value,
-      if (instance.web case final value?) 'WEB': value,
-      if (instance.cariAdres case final value?) 'CARI_ADRES': value,
-      if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
-      if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
-      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
-      if (instance.grupTanimi case final value?) 'GRUP_TANIMI': value,
-      if (instance.bilgi case final value?) 'BILGI': value,
-      if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
-      if (instance.aciklama2 case final value?) 'ACIKLAMA2': value,
-      if (instance.aciklama3 case final value?) 'ACIKLAMA3': value,
-      if (instance.kodu case final value?) 'KODU': value,
-      if (instance.kod1 case final value?) 'KOD1': value,
-      if (instance.kod1Tanimi case final value?) 'KOD1_TANIMI': value,
-      if (instance.kod2 case final value?) 'KOD2': value,
-      if (instance.kod2Tanimi case final value?) 'KOD2_TANIMI': value,
-      if (instance.kod3 case final value?) 'KOD3': value,
-      if (instance.kod3Tanimi case final value?) 'KOD3_TANIMI': value,
-      if (instance.kod4 case final value?) 'KOD4': value,
-      if (instance.kod4Tanimi case final value?) 'KOD4_TANIMI': value,
-      if (instance.kod5 case final value?) 'KOD5': value,
-      if (instance.kod5Tanimi case final value?) 'KOD5_TANIMI': value,
-      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-      if (instance.kayittarihi case final value?) 'KAYITTARIHI': value,
-      if (instance.duzeltmeyapankul case final value?)
-        'DUZELTMEYAPANKUL': value,
-      if (instance.duzeltmetarihi case final value?) 'DUZELTMETARIHI': value,
-      if (instance.efaturaMi case final value?) 'EFATURA_MI': value,
-      if (instance.efaturaTipi case final value?) 'EFATURA_TIPI': value,
-      if (instance.efatGecisTarihi case final value?)
-        'EFAT_GECIS_TARIHI': value,
-      if (instance.efatAktif case final value?) 'EFAT_AKTIF': value,
-      if (instance.riskTakibi case final value?) 'RISK_TAKIBI': value,
-      if (instance.efaturaCarisi case final value?) 'EFATURA_CARISI': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-      if (instance.enlem case final value?) 'ENLEM': value,
-      if (instance.boylam case final value?) 'BOYLAM': value,
-      if (instance.kull1s case final value?) 'KULL1S': value,
-      if (instance.kull2s case final value?) 'KULL2S': value,
-      if (instance.kull3s case final value?) 'KULL3S': value,
-      if (instance.kull4s case final value?) 'KULL4S': value,
-      if (instance.kull5s case final value?) 'KULL5S': value,
-      if (instance.kull6s case final value?) 'KULL6S': value,
-      if (instance.kull7s case final value?) 'KULL7S': value,
-      if (instance.kull8s case final value?) 'KULL8S': value,
-      if (instance.kull1n case final value?) 'KULL1N': value,
-      if (instance.kull2n case final value?) 'KULL2N': value,
-      if (instance.kull3n case final value?) 'KULL3N': value,
-      if (instance.kull4n case final value?) 'KULL4N': value,
-      if (instance.kull5n case final value?) 'KULL5N': value,
-      if (instance.kull6n case final value?) 'KULL6N': value,
-      if (instance.kull7n case final value?) 'KULL7N': value,
-      if (instance.kull8n case final value?) 'KULL8N': value,
-      if (instance.fax case final value?) 'FAX': value,
-      if (instance.sahisFirmasiMi case final value?) 'SAHIS_FIRMASI_MI': value,
-      if (instance.dovizli case final value?) 'DOVIZLI': value,
-      if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
-      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-      if (instance.kosulKodu case final value?) 'KOSUL_KODU': value,
-      if (instance.fiyatGrubu case final value?) 'FIYAT_GRUBU': value,
-      if (instance.kull1S case final value?) 'KULL1_S': value,
-      if (instance.kull2S case final value?) 'KULL2_S': value,
-      if (instance.dovBorcToplami case final value?) 'DOV_BORC_TOPLAMI': value,
-      if (instance.dovAlacakToplami case final value?)
-        'DOV_ALACAK_TOPLAMI': value,
-      if (instance.dovBakiye case final value?) 'DOV_BAKIYE': value,
-      if (instance.muhKodu case final value?) 'MUH_KODU': value,
-      if (instance.muhHesapTipi case final value?) 'MUH_HESAP_TIPI': value,
-      if (instance.iadeMiktarGirebilir case final value?)
-        'IADE_MIKTAR_GIREBILIR': value,
-      if (instance.sunucuTarihi?.toIso8601String() case final value?)
-        'SUNUCU_TARIHI': value,
-      if (instance.adi case final value?) 'ADI': value,
-      if (instance.adres case final value?) 'ADRES': value,
-      if (instance.efaturaSenaryo case final value?) 'EFATURA_SENARYO': value,
-      if (instance.eposta case final value?) 'EPOSTA': value,
-      if (instance.ilce case final value?) 'ILCE': value,
-      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-      if (instance.kurfarkialacakKodu case final value?)
-        'KURFARKIALACAK_KODU': value,
-      if (instance.kurfarkiborcKodu case final value?)
-        'KURFARKIBORC_KODU': value,
-      if (instance.muhasebeKodu case final value?) 'MUHASEBE_KODU': value,
-      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
-      if (instance.sehir case final value?) 'SEHIR': value,
-      if (instance.telefon case final value?) 'TELEFON': value,
-      if (instance.tipi case final value?) 'TIPI': value,
-      if (instance.vergiNo case final value?) 'VERGI_NO': value,
-      if (instance.website case final value?) 'WEBSITE': value,
-      if (instance.depoKodlari case final value?) 'DEPO_KODLARI': value,
-      if (instance.idx case final value?) 'IDX': value,
-      if (instance.kurfarkiborcAdi case final value?) 'KURFARKIBORC_ADI': value,
-      if (instance.kurfarkialacakAdi case final value?)
-        'KURFARKIALACAK_ADI': value,
-      if (instance.muhAdi case final value?) 'MUH_ADI': value,
-      if (instance.tempMuhtelifCari case final value?)
-        'TEMP_MUHTELIF_CARI': value,
-      if (instance.tempNoterlerSorgula case final value?)
-        'TEMP_NOTERLER_SORGULA': value,
-      if (instance.anaCari case final value?) 'ANA_CARI': value,
-      if (instance.tipAciklama case final value?) 'TIP_ACIKLAMA': value,
-      if (instance.kilitTipi case final value?) 'KILIT_TIPI': value,
-      if (instance.sahisSirketiMi case final value?) 'SAHIS_SIRKETI_MI': value,
-      if (instance.odemeKodu case final value?) 'ODEME_KODU': value,
-      if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
-      if (instance.plasiyerAdi case final value?) 'PLASIYER_ADI': value,
-      if (instance.kurFarkiBorcMuhKodu case final value?)
-        'KUR_FARKI_BORC_MUH_KODU': value,
-      if (instance.kurFarkiBorcMuhAdi case final value?)
-        'KUR_FARKI_BORC_MUH_ADI': value,
-      if (instance.kurFarkiAlacakMuhKodu case final value?)
-        'KUR_FARKI_ALACAK_MUH_KODU': value,
-      if (instance.kurFarkiAlacakMuhAdi case final value?)
-        'KUR_FARKI_ALACAK_MUH_ADI': value,
-      if (instance.yurtIciDovizKodu case final value?)
-        'YURT_ICI_DOVIZ_KODU': value,
-      if (instance.genIsk1O case final value?) 'GEN_ISK1_O': value,
-      if (instance.faxNo case final value?) 'FAX_NO': value,
-      if (instance.postaKodu case final value?) 'POSTA_KODU': value,
-      if (instance.webAdresi case final value?) 'WEB_ADRESI': value,
-      if (instance.adresi case final value?) 'ADRESI': value,
-      if (instance.kayitYapanKullanici case final value?)
-        'KAYIT_YAPAN_KULLANICI': value,
-      if (instance.duzeltmeYapanKullanici case final value?)
-        'DUZELTME_YAPAN_KULLANICI': value,
-      if (instance.eFaturaMi case final value?) 'E_FATURA_MI': value,
-      if (instance.eFaturaMiEh case final value?) 'E_FATURA_MI_EH': value,
-      if (instance.eFaturaSenaryo case final value?) 'E_FATURA_SENARYO': value,
-      if (instance.eIrsaliyeMi case final value?) 'E_IRSALIYE_MI': value,
-      if (instance.eFatAktif case final value?) 'E_FAT_AKTIF': value,
-      if (instance.cariHarf case final value?) 'CARI_HARF': value,
-      if (instance.riskTutari case final value?) 'RISK_TUTARI': value,
-      if (instance.vadeUyarisi case final value?) 'VADE_UYARISI': value,
-      if (instance.siparisRiskOrani case final value?)
-        'SIPARIS_RISK_ORANI': value,
-      if (instance.irsaliyeRiskOrani case final value?)
-        'IRSALIYE_RISK_ORANI': value,
-      if (instance.konumMetre case final value?) 'KONUM_METRE': value,
-      if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
-      if (instance.ozelKapatmaIncKey case final value?)
-        'OZEL_KAPATMA_INC_KEY': value,
-      if (instance.dznEars case final value?) 'DZN_EARS': value,
-      if (instance.dznEarsInt case final value?) 'DZN_EARS_INT': value,
-      if (instance.dznEfat case final value?) 'DZN_EFAT': value,
-      if (instance.dznEirs case final value?) 'DZN_EIRS': value,
-    };
+Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) => <String, dynamic>{
+  if (instance.cariKodu case final value?) 'CARI_KODU': value,
+  if (instance.cariAdi case final value?) 'CARI_ADI': value,
+  if (instance.bagliCari case final value?) 'BAGLI_CARI': value,
+  if (instance.bagliCariAdi case final value?) 'BAGLI_CARI_ADI': value,
+  if (instance.cariTip case final value?) 'CARI_TIP': value,
+  if (instance.cariTipAciklama case final value?) 'CARI_TIP_ACIKLAMA': value,
+  if (instance.kilit case final value?) 'KILIT': value,
+  if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
+  if (instance.odemeTipi case final value?) 'ODEME_TIPI': value,
+  if (instance.hesaptutmasekli case final value?) 'HESAPTUTMASEKLI': value,
+  if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+  if (instance.plasiyerAciklama case final value?) 'PLASIYER_ACIKLAMA': value,
+  if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
+  if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
+  if (instance.genisk1Orani case final value?) 'GENISK1_ORANI': value,
+  if (instance.ulkeKodu case final value?) 'ULKE_KODU': value,
+  if (instance.ulkeAdi case final value?) 'ULKE_ADI': value,
+  if (instance.cariIl case final value?) 'CARI_IL': value,
+  if (instance.cariIlce case final value?) 'CARI_ILCE': value,
+  if (instance.cariTel case final value?) 'CARI_TEL': value,
+  if (instance.postakodu case final value?) 'POSTAKODU': value,
+  if (instance.email case final value?) 'EMAIL': value,
+  if (instance.web case final value?) 'WEB': value,
+  if (instance.cariAdres case final value?) 'CARI_ADRES': value,
+  if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
+  if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
+  if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+  if (instance.grupTanimi case final value?) 'GRUP_TANIMI': value,
+  if (instance.bilgi case final value?) 'BILGI': value,
+  if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
+  if (instance.aciklama2 case final value?) 'ACIKLAMA2': value,
+  if (instance.aciklama3 case final value?) 'ACIKLAMA3': value,
+  if (instance.kodu case final value?) 'KODU': value,
+  if (instance.kod1 case final value?) 'KOD1': value,
+  if (instance.kod1Tanimi case final value?) 'KOD1_TANIMI': value,
+  if (instance.kod2 case final value?) 'KOD2': value,
+  if (instance.kod2Tanimi case final value?) 'KOD2_TANIMI': value,
+  if (instance.kod3 case final value?) 'KOD3': value,
+  if (instance.kod3Tanimi case final value?) 'KOD3_TANIMI': value,
+  if (instance.kod4 case final value?) 'KOD4': value,
+  if (instance.kod4Tanimi case final value?) 'KOD4_TANIMI': value,
+  if (instance.kod5 case final value?) 'KOD5': value,
+  if (instance.kod5Tanimi case final value?) 'KOD5_TANIMI': value,
+  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+  if (instance.kayittarihi case final value?) 'KAYITTARIHI': value,
+  if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
+  if (instance.duzeltmetarihi case final value?) 'DUZELTMETARIHI': value,
+  if (instance.efaturaMi case final value?) 'EFATURA_MI': value,
+  if (instance.efaturaTipi case final value?) 'EFATURA_TIPI': value,
+  if (instance.efatGecisTarihi case final value?) 'EFAT_GECIS_TARIHI': value,
+  if (instance.efatAktif case final value?) 'EFAT_AKTIF': value,
+  if (instance.riskTakibi case final value?) 'RISK_TAKIBI': value,
+  if (instance.efaturaCarisi case final value?) 'EFATURA_CARISI': value,
+  if (instance.bakiye case final value?) 'BAKIYE': value,
+  if (instance.enlem case final value?) 'ENLEM': value,
+  if (instance.boylam case final value?) 'BOYLAM': value,
+  if (instance.kull1s case final value?) 'KULL1S': value,
+  if (instance.kull2s case final value?) 'KULL2S': value,
+  if (instance.kull3s case final value?) 'KULL3S': value,
+  if (instance.kull4s case final value?) 'KULL4S': value,
+  if (instance.kull5s case final value?) 'KULL5S': value,
+  if (instance.kull6s case final value?) 'KULL6S': value,
+  if (instance.kull7s case final value?) 'KULL7S': value,
+  if (instance.kull8s case final value?) 'KULL8S': value,
+  if (instance.kull1n case final value?) 'KULL1N': value,
+  if (instance.kull2n case final value?) 'KULL2N': value,
+  if (instance.kull3n case final value?) 'KULL3N': value,
+  if (instance.kull4n case final value?) 'KULL4N': value,
+  if (instance.kull5n case final value?) 'KULL5N': value,
+  if (instance.kull6n case final value?) 'KULL6N': value,
+  if (instance.kull7n case final value?) 'KULL7N': value,
+  if (instance.kull8n case final value?) 'KULL8N': value,
+  if (instance.fax case final value?) 'FAX': value,
+  if (instance.sahisFirmasiMi case final value?) 'SAHIS_FIRMASI_MI': value,
+  if (instance.dovizli case final value?) 'DOVIZLI': value,
+  if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
+  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+  if (instance.kosulKodu case final value?) 'KOSUL_KODU': value,
+  if (instance.fiyatGrubu case final value?) 'FIYAT_GRUBU': value,
+  if (instance.kull1S case final value?) 'KULL1_S': value,
+  if (instance.kull2S case final value?) 'KULL2_S': value,
+  if (instance.dovBorcToplami case final value?) 'DOV_BORC_TOPLAMI': value,
+  if (instance.dovAlacakToplami case final value?) 'DOV_ALACAK_TOPLAMI': value,
+  if (instance.dovBakiye case final value?) 'DOV_BAKIYE': value,
+  if (instance.muhKodu case final value?) 'MUH_KODU': value,
+  if (instance.muhHesapTipi case final value?) 'MUH_HESAP_TIPI': value,
+  if (instance.iadeMiktarGirebilir case final value?) 'IADE_MIKTAR_GIREBILIR': value,
+  if (instance.sunucuTarihi?.toIso8601String() case final value?) 'SUNUCU_TARIHI': value,
+  if (instance.adi case final value?) 'ADI': value,
+  if (instance.adres case final value?) 'ADRES': value,
+  if (instance.efaturaSenaryo case final value?) 'EFATURA_SENARYO': value,
+  if (instance.eposta case final value?) 'EPOSTA': value,
+  if (instance.ilce case final value?) 'ILCE': value,
+  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+  if (instance.kurfarkialacakKodu case final value?) 'KURFARKIALACAK_KODU': value,
+  if (instance.kurfarkiborcKodu case final value?) 'KURFARKIBORC_KODU': value,
+  if (instance.muhasebeKodu case final value?) 'MUHASEBE_KODU': value,
+  if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+  if (instance.sehir case final value?) 'SEHIR': value,
+  if (instance.telefon case final value?) 'TELEFON': value,
+  if (instance.tipi case final value?) 'TIPI': value,
+  if (instance.vergiNo case final value?) 'VERGI_NO': value,
+  if (instance.website case final value?) 'WEBSITE': value,
+  if (instance.depoKodlari case final value?) 'DEPO_KODLARI': value,
+  if (instance.idx case final value?) 'IDX': value,
+  if (instance.kurfarkiborcAdi case final value?) 'KURFARKIBORC_ADI': value,
+  if (instance.kurfarkialacakAdi case final value?) 'KURFARKIALACAK_ADI': value,
+  if (instance.muhAdi case final value?) 'MUH_ADI': value,
+  if (instance.tempMuhtelifCari case final value?) 'TEMP_MUHTELIF_CARI': value,
+  if (instance.tempNoterlerSorgula case final value?) 'TEMP_NOTERLER_SORGULA': value,
+  if (instance.anaCari case final value?) 'ANA_CARI': value,
+  if (instance.tipAciklama case final value?) 'TIP_ACIKLAMA': value,
+  if (instance.kilitTipi case final value?) 'KILIT_TIPI': value,
+  if (instance.sahisSirketiMi case final value?) 'SAHIS_SIRKETI_MI': value,
+  if (instance.odemeKodu case final value?) 'ODEME_KODU': value,
+  if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
+  if (instance.plasiyerAdi case final value?) 'PLASIYER_ADI': value,
+  if (instance.kurFarkiBorcMuhKodu case final value?) 'KUR_FARKI_BORC_MUH_KODU': value,
+  if (instance.kurFarkiBorcMuhAdi case final value?) 'KUR_FARKI_BORC_MUH_ADI': value,
+  if (instance.kurFarkiAlacakMuhKodu case final value?) 'KUR_FARKI_ALACAK_MUH_KODU': value,
+  if (instance.kurFarkiAlacakMuhAdi case final value?) 'KUR_FARKI_ALACAK_MUH_ADI': value,
+  if (instance.yurtIciDovizKodu case final value?) 'YURT_ICI_DOVIZ_KODU': value,
+  if (instance.genIsk1O case final value?) 'GEN_ISK1_O': value,
+  if (instance.faxNo case final value?) 'FAX_NO': value,
+  if (instance.postaKodu case final value?) 'POSTA_KODU': value,
+  if (instance.webAdresi case final value?) 'WEB_ADRESI': value,
+  if (instance.adresi case final value?) 'ADRESI': value,
+  if (instance.kayitYapanKullanici case final value?) 'KAYIT_YAPAN_KULLANICI': value,
+  if (instance.duzeltmeYapanKullanici case final value?) 'DUZELTME_YAPAN_KULLANICI': value,
+  if (instance.eFaturaMi case final value?) 'E_FATURA_MI': value,
+  if (instance.eFaturaMiEh case final value?) 'E_FATURA_MI_EH': value,
+  if (instance.eFaturaSenaryo case final value?) 'E_FATURA_SENARYO': value,
+  if (instance.eIrsaliyeMi case final value?) 'E_IRSALIYE_MI': value,
+  if (instance.eFatAktif case final value?) 'E_FAT_AKTIF': value,
+  if (instance.cariHarf case final value?) 'CARI_HARF': value,
+  if (instance.riskTutari case final value?) 'RISK_TUTARI': value,
+  if (instance.vadeUyarisi case final value?) 'VADE_UYARISI': value,
+  if (instance.siparisRiskOrani case final value?) 'SIPARIS_RISK_ORANI': value,
+  if (instance.irsaliyeRiskOrani case final value?) 'IRSALIYE_RISK_ORANI': value,
+  if (instance.konumMetre case final value?) 'KONUM_METRE': value,
+  if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
+  if (instance.ozelKapatmaIncKey case final value?) 'OZEL_KAPATMA_INC_KEY': value,
+  if (instance.dznEars case final value?) 'DZN_EARS': value,
+  if (instance.dznEarsInt case final value?) 'DZN_EARS_INT': value,
+  if (instance.dznEfat case final value?) 'DZN_EFAT': value,
+  if (instance.dznEirs case final value?) 'DZN_EIRS': value,
+};
 
 BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()
   ..cariKodu = json['CARI_KODU'] as String?
@@ -2499,12 +2407,11 @@ BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()
   ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
   ..dovizAdi = json['DOVIZ_ADI'] as String?;
 
-Map<String, dynamic> _$BakiyeModelToJson(BakiyeModel instance) =>
-    <String, dynamic>{
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
-      if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-    };
+Map<String, dynamic> _$BakiyeModelToJson(BakiyeModel instance) => <String, dynamic>{
+  if (instance.cariKodu case final value?) 'CARI_KODU': value,
+  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+  if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
+  if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
+  if (instance.bakiye case final value?) 'BAKIYE': value,
+  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+};

@@ -39,7 +39,9 @@ final class _GridViewShimmerState extends BaseState<GridViewShimmer> {
         crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Expanded(child: Center(child: Icon(Icons.account_circle_outlined, size: UIHelper.midSize * 5))),
+          const Expanded(
+            child: Center(child: Icon(Icons.account_circle_outlined, size: UIHelper.midSize * 5)),
+          ),
           Container(
             width: containerWidth,
             height: UIHelper.midSize,

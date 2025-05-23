@@ -9,8 +9,7 @@ part of 'dekontlar_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
-  late final _$searchBarAtom =
-      Atom(name: '_DekontlarViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(name: '_DekontlarViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -25,8 +24,7 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_DekontlarViewModelBase.dahaVarMi', context: context);
+  late final _$dahaVarMiAtom = Atom(name: '_DekontlarViewModelBase.dahaVarMi', context: context);
 
   @override
   bool get dahaVarMi {
@@ -41,8 +39,7 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
     });
   }
 
-  late final _$isScrolledDownAtom =
-      Atom(name: '_DekontlarViewModelBase.isScrolledDown', context: context);
+  late final _$isScrolledDownAtom = Atom(name: '_DekontlarViewModelBase.isScrolledDown', context: context);
 
   @override
   bool get isScrolledDown {
@@ -57,8 +54,7 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
     });
   }
 
-  late final _$dekontRequestModelAtom = Atom(
-      name: '_DekontlarViewModelBase.dekontRequestModel', context: context);
+  late final _$dekontRequestModelAtom = Atom(name: '_DekontlarViewModelBase.dekontRequestModel', context: context);
 
   @override
   DekontRequestModel get dekontRequestModel {
@@ -73,8 +69,7 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
     });
   }
 
-  late final _$dekontListesiAtom =
-      Atom(name: '_DekontlarViewModelBase.dekontListesi', context: context);
+  late final _$dekontListesiAtom = Atom(name: '_DekontlarViewModelBase.dekontListesi', context: context);
 
   @override
   ObservableList<DekontListesiModel>? get dekontListesi {
@@ -89,29 +84,30 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_DekontlarViewModelBase.resetPage', context: context);
+  late final _$resetPageAsyncAction = AsyncAction('_DekontlarViewModelBase.resetPage', context: context);
 
   @override
   Future<void> resetPage() {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_DekontlarViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_DekontlarViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_DekontlarViewModelBaseActionController =
-      ActionController(name: '_DekontlarViewModelBase', context: context);
+  late final _$_DekontlarViewModelBaseActionController = ActionController(
+    name: '_DekontlarViewModelBase',
+    context: context,
+  );
 
   @override
   void setIsScrolledDown(bool value) {
     final _$actionInfo = _$_DekontlarViewModelBaseActionController.startAction(
-        name: '_DekontlarViewModelBase.setIsScrolledDown');
+      name: '_DekontlarViewModelBase.setIsScrolledDown',
+    );
     try {
       return super.setIsScrolledDown(value);
     } finally {
@@ -122,7 +118,8 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
   @override
   void setDahaVarMi(bool value) {
     final _$actionInfo = _$_DekontlarViewModelBaseActionController.startAction(
-        name: '_DekontlarViewModelBase.setDahaVarMi');
+      name: '_DekontlarViewModelBase.setDahaVarMi',
+    );
     try {
       return super.setDahaVarMi(value);
     } finally {
@@ -133,7 +130,8 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
   @override
   void increaseSayfa() {
     final _$actionInfo = _$_DekontlarViewModelBaseActionController.startAction(
-        name: '_DekontlarViewModelBase.increaseSayfa');
+      name: '_DekontlarViewModelBase.increaseSayfa',
+    );
     try {
       return super.increaseSayfa();
     } finally {
@@ -144,7 +142,8 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
   @override
   void resetSayfa() {
     final _$actionInfo = _$_DekontlarViewModelBaseActionController.startAction(
-        name: '_DekontlarViewModelBase.resetSayfa');
+      name: '_DekontlarViewModelBase.resetSayfa',
+    );
     try {
       return super.resetSayfa();
     } finally {
@@ -155,7 +154,8 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
   @override
   void setDekontListesi(List<DekontListesiModel>? value) {
     final _$actionInfo = _$_DekontlarViewModelBaseActionController.startAction(
-        name: '_DekontlarViewModelBase.setDekontListesi');
+      name: '_DekontlarViewModelBase.setDekontListesi',
+    );
     try {
       return super.setDekontListesi(value);
     } finally {
@@ -166,7 +166,8 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
   @override
   void addDekontListesi(List<DekontListesiModel>? value) {
     final _$actionInfo = _$_DekontlarViewModelBaseActionController.startAction(
-        name: '_DekontlarViewModelBase.addDekontListesi');
+      name: '_DekontlarViewModelBase.addDekontListesi',
+    );
     try {
       return super.addDekontListesi(value);
     } finally {
@@ -177,7 +178,8 @@ mixin _$DekontlarViewModel on _DekontlarViewModelBase, Store {
   @override
   void clearDekontListesi() {
     final _$actionInfo = _$_DekontlarViewModelBaseActionController.startAction(
-        name: '_DekontlarViewModelBase.clearDekontListesi');
+      name: '_DekontlarViewModelBase.clearDekontListesi',
+    );
     try {
       return super.clearDekontListesi();
     } finally {

@@ -100,18 +100,17 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
       Row(
         children: [
           Observer(
-            builder:
-                (_) => Visibility(
-                  visible: viewModel.returnGridItemModel.isNotEmpty,
-                  child: IconButton(
-                    onPressed: () {
-                      viewModel
-                        ..setGridItemModel(viewModel.returnGridItemModel.last.toList())
-                        ..deleteLastReturnGridItemModel();
-                    },
-                    icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
-                  ),
-                ),
+            builder: (_) => Visibility(
+              visible: viewModel.returnGridItemModel.isNotEmpty,
+              child: IconButton(
+                onPressed: () {
+                  viewModel
+                    ..setGridItemModel(viewModel.returnGridItemModel.last.toList())
+                    ..deleteLastReturnGridItemModel();
+                },
+                icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
+              ),
+            ),
           ),
           Expanded(
             child: SizedBox(
@@ -150,66 +149,65 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
               maxHeight: context.sized.dynamicHeight(0.6),
             ),
             child: Observer(
-              builder:
-                  (_) => GridView.builder(
-                    padding: UIHelper.zeroPadding,
-                    shrinkWrap: true,
-                    primary: false,
-                    // physics: const NeverScrollableScrollPhysics(),
-                    addRepaintBoundaries: false,
-                    addAutomaticKeepAlives: false,
+              builder: (_) => GridView.builder(
+                padding: UIHelper.zeroPadding,
+                shrinkWrap: true,
+                primary: false,
+                // physics: const NeverScrollableScrollPhysics(),
+                addRepaintBoundaries: false,
+                addAutomaticKeepAlives: false,
 
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          MediaQuery.sizeOf(context).width ~/ 85 > 6 ? 6 : MediaQuery.sizeOf(context).width ~/ 85,
-                      childAspectRatio: context.isLandscape ? 1.2 : 1,
-                    ),
-                    itemCount: viewModel.gridItemModelList.length,
-                    itemBuilder: (context, index) {
-                      final item = viewModel.gridItemModelList[index];
-                      return AnimationConfiguration.staggeredList(
-                        key: Key(item.title),
-                        position: index,
-                        duration: const Duration(milliseconds: 900),
-                        delay: const Duration(milliseconds: 50),
-                        child: SlideAnimation(
-                          delay: const Duration(milliseconds: 30),
-                          child: FadeInAnimation(
-                            child: AnimatedIslemlerGridTile(
-                              item: item..icon = item.icon ?? "monitoring",
-                              onTap:
-                                  item.isEnabled == false && item.menuTipi == "IS"
-                                      ? null
-                                      : () async {
-                                        if (item.altMenuVarMi) {
-                                          viewModel
-                                            ..addReturnGridItemModel(viewModel.gridItemModelList)
-                                            ..setGridItemModel(
-                                              item.altMenuler?.where((element) => element.yetkiKontrol).toList() ?? [],
-                                            );
-                                        } else {
-                                          if (item.route != null && item.menuTipi != "SR") {
-                                            Get
-                                              ..back()
-                                              ..toNamed(item.route ?? "", arguments: widget.model);
-                                          } else {
-                                            Get.back();
-                                            final result = await item.onTap?.call();
-                                            if (result is bool) {
-                                              widget.onSelected?.call(result);
-                                            }
-                                            if (result is BaseSiparisEditModel) {
-                                              widget.onSelected?.call(true);
-                                            }
-                                          }
-                                        }
-                                      },
-                            ),
-                          ),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: MediaQuery.sizeOf(context).width ~/ 85 > 6
+                      ? 6
+                      : MediaQuery.sizeOf(context).width ~/ 85,
+                  childAspectRatio: context.isLandscape ? 1.2 : 1,
+                ),
+                itemCount: viewModel.gridItemModelList.length,
+                itemBuilder: (context, index) {
+                  final item = viewModel.gridItemModelList[index];
+                  return AnimationConfiguration.staggeredList(
+                    key: Key(item.title),
+                    position: index,
+                    duration: const Duration(milliseconds: 900),
+                    delay: const Duration(milliseconds: 50),
+                    child: SlideAnimation(
+                      delay: const Duration(milliseconds: 30),
+                      child: FadeInAnimation(
+                        child: AnimatedIslemlerGridTile(
+                          item: item..icon = item.icon ?? "monitoring",
+                          onTap: item.isEnabled == false && item.menuTipi == "IS"
+                              ? null
+                              : () async {
+                                  if (item.altMenuVarMi) {
+                                    viewModel
+                                      ..addReturnGridItemModel(viewModel.gridItemModelList)
+                                      ..setGridItemModel(
+                                        item.altMenuler?.where((element) => element.yetkiKontrol).toList() ?? [],
+                                      );
+                                  } else {
+                                    if (item.route != null && item.menuTipi != "SR") {
+                                      Get
+                                        ..back()
+                                        ..toNamed(item.route ?? "", arguments: widget.model);
+                                    } else {
+                                      Get.back();
+                                      final result = await item.onTap?.call();
+                                      if (result is bool) {
+                                        widget.onSelected?.call(result);
+                                      }
+                                      if (result is BaseSiparisEditModel) {
+                                        widget.onSelected?.call(true);
+                                      }
+                                    }
+                                  }
+                                },
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           );
         },

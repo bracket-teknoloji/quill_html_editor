@@ -12,10 +12,10 @@ part of 'is_emri_hammadde_takibi_detay_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-IsEmriHammaddeTakibiDetayRequestModel
-    _$IsEmriHammaddeTakibiDetayRequestModelFromJson(Map<String, dynamic> json) {
+IsEmriHammaddeTakibiDetayRequestModel _$IsEmriHammaddeTakibiDetayRequestModelFromJson(Map<String, dynamic> json) {
   return _IsEmriHammaddeTakibiDetayRequestModel.fromJson(json);
 }
 
@@ -38,30 +38,22 @@ mixin _$IsEmriHammaddeTakibiDetayRequestModel {
   /// Create a copy of IsEmriHammaddeTakibiDetayRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $IsEmriHammaddeTakibiDetayRequestModelCopyWith<
-          IsEmriHammaddeTakibiDetayRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $IsEmriHammaddeTakibiDetayRequestModelCopyWith<IsEmriHammaddeTakibiDetayRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IsEmriHammaddeTakibiDetayRequestModelCopyWith<$Res> {
   factory $IsEmriHammaddeTakibiDetayRequestModelCopyWith(
-          IsEmriHammaddeTakibiDetayRequestModel value,
-          $Res Function(IsEmriHammaddeTakibiDetayRequestModel) then) =
-      _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res,
-          IsEmriHammaddeTakibiDetayRequestModel>;
+    IsEmriHammaddeTakibiDetayRequestModel value,
+    $Res Function(IsEmriHammaddeTakibiDetayRequestModel) then,
+  ) = _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res, IsEmriHammaddeTakibiDetayRequestModel>;
   @useResult
-  $Res call(
-      {int? takipno,
-      String? tip,
-      String? barcode,
-      int? islemKodu,
-      String? referansStokKodu});
+  $Res call({int? takipno, String? tip, String? barcode, int? islemKodu, String? referansStokKodu});
 }
 
 /// @nodoc
-class _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res,
-        $Val extends IsEmriHammaddeTakibiDetayRequestModel>
+class _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res, $Val extends IsEmriHammaddeTakibiDetayRequestModel>
     implements $IsEmriHammaddeTakibiDetayRequestModelCopyWith<$Res> {
   _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl(this._value, this._then);
 
@@ -81,28 +73,31 @@ class _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res,
     Object? islemKodu = freezed,
     Object? referansStokKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      takipno: freezed == takipno
-          ? _value.takipno
-          : takipno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as String?,
-      barcode: freezed == barcode
-          ? _value.barcode
-          : barcode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      referansStokKodu: freezed == referansStokKodu
-          ? _value.referansStokKodu
-          : referansStokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            takipno: freezed == takipno
+                ? _value.takipno
+                : takipno // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tip: freezed == tip
+                ? _value.tip
+                : tip // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            barcode: freezed == barcode
+                ? _value.barcode
+                : barcode // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            referansStokKodu: freezed == referansStokKodu
+                ? _value.referansStokKodu
+                : referansStokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -110,28 +105,22 @@ class _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res,
 abstract class _$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWith<$Res>
     implements $IsEmriHammaddeTakibiDetayRequestModelCopyWith<$Res> {
   factory _$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWith(
-          _$IsEmriHammaddeTakibiDetayRequestModelImpl value,
-          $Res Function(_$IsEmriHammaddeTakibiDetayRequestModelImpl) then) =
-      __$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWithImpl<$Res>;
+    _$IsEmriHammaddeTakibiDetayRequestModelImpl value,
+    $Res Function(_$IsEmriHammaddeTakibiDetayRequestModelImpl) then,
+  ) = __$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? takipno,
-      String? tip,
-      String? barcode,
-      int? islemKodu,
-      String? referansStokKodu});
+  $Res call({int? takipno, String? tip, String? barcode, int? islemKodu, String? referansStokKodu});
 }
 
 /// @nodoc
 class __$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWithImpl<$Res>
-    extends _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res,
-        _$IsEmriHammaddeTakibiDetayRequestModelImpl>
+    extends _$IsEmriHammaddeTakibiDetayRequestModelCopyWithImpl<$Res, _$IsEmriHammaddeTakibiDetayRequestModelImpl>
     implements _$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWith<$Res> {
   __$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWithImpl(
-      _$IsEmriHammaddeTakibiDetayRequestModelImpl _value,
-      $Res Function(_$IsEmriHammaddeTakibiDetayRequestModelImpl) _then)
-      : super(_value, _then);
+    _$IsEmriHammaddeTakibiDetayRequestModelImpl _value,
+    $Res Function(_$IsEmriHammaddeTakibiDetayRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of IsEmriHammaddeTakibiDetayRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -144,44 +133,45 @@ class __$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWithImpl<$Res>
     Object? islemKodu = freezed,
     Object? referansStokKodu = freezed,
   }) {
-    return _then(_$IsEmriHammaddeTakibiDetayRequestModelImpl(
-      takipno: freezed == takipno
-          ? _value.takipno
-          : takipno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as String?,
-      barcode: freezed == barcode
-          ? _value.barcode
-          : barcode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      referansStokKodu: freezed == referansStokKodu
-          ? _value.referansStokKodu
-          : referansStokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$IsEmriHammaddeTakibiDetayRequestModelImpl(
+        takipno: freezed == takipno
+            ? _value.takipno
+            : takipno // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tip: freezed == tip
+            ? _value.tip
+            : tip // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        barcode: freezed == barcode
+            ? _value.barcode
+            : barcode // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        referansStokKodu: freezed == referansStokKodu
+            ? _value.referansStokKodu
+            : referansStokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$IsEmriHammaddeTakibiDetayRequestModelImpl
-    implements _IsEmriHammaddeTakibiDetayRequestModel {
-  _$IsEmriHammaddeTakibiDetayRequestModelImpl(
-      {this.takipno,
-      this.tip,
-      this.barcode,
-      this.islemKodu,
-      this.referansStokKodu});
+class _$IsEmriHammaddeTakibiDetayRequestModelImpl implements _IsEmriHammaddeTakibiDetayRequestModel {
+  _$IsEmriHammaddeTakibiDetayRequestModelImpl({
+    this.takipno,
+    this.tip,
+    this.barcode,
+    this.islemKodu,
+    this.referansStokKodu,
+  });
 
-  factory _$IsEmriHammaddeTakibiDetayRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$IsEmriHammaddeTakibiDetayRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$IsEmriHammaddeTakibiDetayRequestModelImplFromJson(json);
 
   @override
@@ -200,30 +190,28 @@ class _$IsEmriHammaddeTakibiDetayRequestModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWith<
-          _$IsEmriHammaddeTakibiDetayRequestModelImpl>
-      get copyWith => __$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWithImpl<
-          _$IsEmriHammaddeTakibiDetayRequestModelImpl>(this, _$identity);
+  _$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWith<_$IsEmriHammaddeTakibiDetayRequestModelImpl> get copyWith =>
+      __$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWithImpl<_$IsEmriHammaddeTakibiDetayRequestModelImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$IsEmriHammaddeTakibiDetayRequestModelImplToJson(
-      this,
-    );
+    return _$$IsEmriHammaddeTakibiDetayRequestModelImplToJson(this);
   }
 }
 
-abstract class _IsEmriHammaddeTakibiDetayRequestModel
-    implements IsEmriHammaddeTakibiDetayRequestModel {
-  factory _IsEmriHammaddeTakibiDetayRequestModel(
-      {int? takipno,
-      String? tip,
-      String? barcode,
-      int? islemKodu,
-      String? referansStokKodu}) = _$IsEmriHammaddeTakibiDetayRequestModelImpl;
+abstract class _IsEmriHammaddeTakibiDetayRequestModel implements IsEmriHammaddeTakibiDetayRequestModel {
+  factory _IsEmriHammaddeTakibiDetayRequestModel({
+    int? takipno,
+    String? tip,
+    String? barcode,
+    int? islemKodu,
+    String? referansStokKodu,
+  }) = _$IsEmriHammaddeTakibiDetayRequestModelImpl;
 
-  factory _IsEmriHammaddeTakibiDetayRequestModel.fromJson(
-          Map<String, dynamic> json) =
+  factory _IsEmriHammaddeTakibiDetayRequestModel.fromJson(Map<String, dynamic> json) =
       _$IsEmriHammaddeTakibiDetayRequestModelImpl.fromJson;
 
   @override
@@ -246,7 +234,6 @@ abstract class _IsEmriHammaddeTakibiDetayRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWith<
-          _$IsEmriHammaddeTakibiDetayRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$IsEmriHammaddeTakibiDetayRequestModelImplCopyWith<_$IsEmriHammaddeTakibiDetayRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

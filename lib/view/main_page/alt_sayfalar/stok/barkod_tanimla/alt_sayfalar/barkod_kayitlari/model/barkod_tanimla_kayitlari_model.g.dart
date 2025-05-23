@@ -6,8 +6,7 @@ part of 'barkod_tanimla_kayitlari_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BarkodTanimlaKayitlariModelImpl _$$BarkodTanimlaKayitlariModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$BarkodTanimlaKayitlariModelImpl _$$BarkodTanimlaKayitlariModelImplFromJson(Map<String, dynamic> json) =>
     _$BarkodTanimlaKayitlariModelImpl(
       stokKodu: json['STOK_KODU'] as String?,
       barkod: json['BARKOD'] as String?,
@@ -22,8 +21,7 @@ _$BarkodTanimlaKayitlariModelImpl _$$BarkodTanimlaKayitlariModelImplFromJson(
       stokBirim1Adi: json['STOK_BIRIM1_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$BarkodTanimlaKayitlariModelImplToJson(
-        _$BarkodTanimlaKayitlariModelImpl instance) =>
+Map<String, dynamic> _$$BarkodTanimlaKayitlariModelImplToJson(_$BarkodTanimlaKayitlariModelImpl instance) =>
     <String, dynamic>{
       if (instance.stokKodu case final value?) 'STOK_KODU': value,
       if (instance.barkod case final value?) 'BARKOD': value,

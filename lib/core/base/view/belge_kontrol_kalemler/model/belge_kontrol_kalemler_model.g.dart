@@ -6,8 +6,7 @@ part of 'belge_kontrol_kalemler_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BelgeKontrolKalemlerModelImpl _$$BelgeKontrolKalemlerModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$BelgeKontrolKalemlerModelImpl _$$BelgeKontrolKalemlerModelImplFromJson(Map<String, dynamic> json) =>
     _$BelgeKontrolKalemlerModelImpl(
       kontrolId: (json['KONTROL_ID'] as num?)?.toInt(),
       belgeTipi: json['BELGE_TIPI'] as String?,
@@ -24,8 +23,7 @@ _$BelgeKontrolKalemlerModelImpl _$$BelgeKontrolKalemlerModelImplFromJson(
       kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$BelgeKontrolKalemlerModelImplToJson(
-        _$BelgeKontrolKalemlerModelImpl instance) =>
+Map<String, dynamic> _$$BelgeKontrolKalemlerModelImplToJson(_$BelgeKontrolKalemlerModelImpl instance) =>
     <String, dynamic>{
       if (instance.kontrolId case final value?) 'KONTROL_ID': value,
       if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
@@ -35,8 +33,7 @@ Map<String, dynamic> _$$BelgeKontrolKalemlerModelImplToJson(
       if (instance.stokKodu case final value?) 'STOK_KODU': value,
       if (instance.stokAdi case final value?) 'STOK_ADI': value,
       if (instance.miktar case final value?) 'MIKTAR': value,
-      if (instance.tamamlananMiktar case final value?)
-        'TAMAMLANAN_MIKTAR': value,
+      if (instance.tamamlananMiktar case final value?) 'TAMAMLANAN_MIKTAR': value,
       if (instance.kalemBirimSira case final value?) 'KALEM_BIRIM_SIRA': value,
       if (instance.stokOlcuBirimi case final value?) 'STOK_OLCU_BIRIMI': value,
       if (instance.kalemBirimAdi case final value?) 'KALEM_BIRIM_ADI': value,

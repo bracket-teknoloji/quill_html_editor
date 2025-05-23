@@ -9,8 +9,7 @@ part of 'dekont_edit_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
-  late final _$selectedTabAtom =
-      Atom(name: '_DekontEditViewModelBase.selectedTab', context: context);
+  late final _$selectedTabAtom = Atom(name: '_DekontEditViewModelBase.selectedTab', context: context);
 
   @override
   int get selectedTab {
@@ -25,8 +24,7 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
     });
   }
 
-  late final _$kalemSayisiAtom =
-      Atom(name: '_DekontEditViewModelBase.kalemSayisi', context: context);
+  late final _$kalemSayisiAtom = Atom(name: '_DekontEditViewModelBase.kalemSayisi', context: context);
 
   @override
   int get kalemSayisi {
@@ -41,8 +39,7 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
     });
   }
 
-  late final _$islemTamamlandiAtom =
-      Atom(name: '_DekontEditViewModelBase.islemTamamlandi', context: context);
+  late final _$islemTamamlandiAtom = Atom(name: '_DekontEditViewModelBase.islemTamamlandi', context: context);
 
   @override
   bool get islemTamamlandi {
@@ -57,29 +54,30 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
     });
   }
 
-  late final _$postDataAsyncAction =
-      AsyncAction('_DekontEditViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction = AsyncAction('_DekontEditViewModelBase.postData', context: context);
 
   @override
   Future<GenericResponseModel<DekontIslemlerModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_DekontEditViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_DekontEditViewModelBase.getData', context: context);
 
   @override
   Future<void> getData(DekontListesiModel model) {
     return _$getDataAsyncAction.run(() => super.getData(model));
   }
 
-  late final _$_DekontEditViewModelBaseActionController =
-      ActionController(name: '_DekontEditViewModelBase', context: context);
+  late final _$_DekontEditViewModelBaseActionController = ActionController(
+    name: '_DekontEditViewModelBase',
+    context: context,
+  );
 
   @override
   void setIslemTamamlandi(bool value) {
     final _$actionInfo = _$_DekontEditViewModelBaseActionController.startAction(
-        name: '_DekontEditViewModelBase.setIslemTamamlandi');
+      name: '_DekontEditViewModelBase.setIslemTamamlandi',
+    );
     try {
       return super.setIslemTamamlandi(value);
     } finally {
@@ -90,7 +88,8 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
   @override
   void setSelectedTab(int value) {
     final _$actionInfo = _$_DekontEditViewModelBaseActionController.startAction(
-        name: '_DekontEditViewModelBase.setSelectedTab');
+      name: '_DekontEditViewModelBase.setSelectedTab',
+    );
     try {
       return super.setSelectedTab(value);
     } finally {
@@ -101,7 +100,8 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
   @override
   void setKalemSayisi(int value) {
     final _$actionInfo = _$_DekontEditViewModelBaseActionController.startAction(
-        name: '_DekontEditViewModelBase.setKalemSayisi');
+      name: '_DekontEditViewModelBase.setKalemSayisi',
+    );
     try {
       return super.setKalemSayisi(value);
     } finally {

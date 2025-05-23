@@ -65,12 +65,21 @@ final class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with Ti
           icon: const Icon(Icons.save_outlined),
         ),
       ],
-      bottom: TabBar(controller: tabController, tabs: const [Tab(text: "Genel"), Tab(text: "Kalemler")]),
+      bottom: TabBar(
+        controller: tabController,
+        tabs: const [
+          Tab(text: "Genel"),
+          Tab(text: "Kalemler"),
+        ],
+      ),
     ),
     body: TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: tabController,
-      children: [BaseHucreGenelView(tabController: tabController), const BaseHucreKalemlerView()],
+      children: [
+        BaseHucreGenelView(tabController: tabController),
+        const BaseHucreKalemlerView(),
+      ],
     ),
   );
 }

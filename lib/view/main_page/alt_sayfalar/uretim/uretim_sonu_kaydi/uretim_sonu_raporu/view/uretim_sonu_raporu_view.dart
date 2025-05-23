@@ -38,72 +38,68 @@ final class _UretimSonuRaporuViewState extends BaseState<UretimSonuRaporuView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(
-              title: "Üretim Sonu Raporu (${viewModel.observableList?.length ?? 0})",
-              subtitle: widget.model.belgeNo,
-            ),
+        builder: (_) => AppBarTitle(
+          title: "Üretim Sonu Raporu (${viewModel.observableList?.length ?? 0})",
+          subtitle: widget.model.belgeNo,
+        ),
       ),
     ),
     body: Observer(
-      builder:
-          (_) => RefreshableListView(
-            onRefresh: viewModel.getData,
-            items: viewModel.observableList,
-            itemBuilder:
-                (item) => Card(
-                  child: ListTile(
+      builder: (_) => RefreshableListView(
+        onRefresh: viewModel.getData,
+        items: viewModel.observableList,
+        itemBuilder: (item) => Card(
+          child: ListTile(
+            onTap: () async {
+              bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: item.stokAdi ?? "",
+                children: [
+                  BottomSheetModel(
+                    title: "Stok İşlemleri",
+                    iconWidget: Icons.list_alt,
                     onTap: () async {
-                      bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: item.stokAdi ?? "",
-                        children: [
-                          BottomSheetModel(
-                            title: "Stok İşlemleri",
-                            iconWidget: Icons.list_alt,
-                            onTap: () async {
-                              Get.back();
-                              dialogManager.showStokGridViewDialog(
-                                await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
-                              );
-                            },
-                          ),
-                        ],
+                      Get.back();
+                      dialogManager.showStokGridViewDialog(
+                        await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
                       );
                     },
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(child: Text(item.stokAdi ?? "")),
-                        Icon(
-                          item.cikisIslemi == true ? Icons.arrow_forward : Icons.arrow_back,
-                          color: item.cikisIslemi == true ? ColorPalette.persianRed : ColorPalette.mantis,
-                        ),
-                      ],
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomLayoutBuilder(
-                          splitCount: 2,
-                          children: [
-                            if (item.stokKodu != null) Text("Stok Kodu: ${item.stokKodu}"),
-                            if (item.cikisIslemi != null)
-                              Text("Giriş/Çıkış: ${item.cikisIslemi == true ? "Çıkış" : "Giriş"}"),
-                            if (item.stharGcmik != null)
-                              Text("Miktar: ${item.stharGcmik.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            if (item.ekalan1 != null) Text("Ek Alan 1: ${item.ekalan1}"),
-                            if (item.ekalan2 != null) Text("Ek Alan 2: ${item.ekalan2}"),
-                            if (item.aciklama != null) Text("Açıklama: ${item.aciklama}"),
-                          ],
-                        ),
-                        Text("Depo: ${item.depoKodu}"),
-                        Text("Seri Durum: ${item.seriDurumAdi}"),
-                      ],
-                    ),
                   ),
+                ],
+              );
+            },
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(child: Text(item.stokAdi ?? "")),
+                Icon(
+                  item.cikisIslemi == true ? Icons.arrow_forward : Icons.arrow_back,
+                  color: item.cikisIslemi == true ? ColorPalette.persianRed : ColorPalette.mantis,
                 ),
+              ],
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomLayoutBuilder(
+                  splitCount: 2,
+                  children: [
+                    if (item.stokKodu != null) Text("Stok Kodu: ${item.stokKodu}"),
+                    if (item.cikisIslemi != null) Text("Giriş/Çıkış: ${item.cikisIslemi == true ? "Çıkış" : "Giriş"}"),
+                    if (item.stharGcmik != null)
+                      Text("Miktar: ${item.stharGcmik.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                    if (item.ekalan1 != null) Text("Ek Alan 1: ${item.ekalan1}"),
+                    if (item.ekalan2 != null) Text("Ek Alan 2: ${item.ekalan2}"),
+                    if (item.aciklama != null) Text("Açıklama: ${item.aciklama}"),
+                  ],
+                ),
+                Text("Depo: ${item.depoKodu}"),
+                Text("Seri Durum: ${item.seriDurumAdi}"),
+              ],
+            ),
           ),
+        ),
+      ),
     ),
   );
 }

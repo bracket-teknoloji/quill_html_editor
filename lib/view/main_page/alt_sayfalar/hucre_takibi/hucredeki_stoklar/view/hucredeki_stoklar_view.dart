@@ -36,18 +36,19 @@ final class _HucredekiStoklarViewState extends State<HucredekiStoklarView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-    appBar: AppBar(title: AppBarTitle(title: "Hücredeki Stoklar", subtitle: "Hücre: ${widget.model.hucreKodu}")),
+    appBar: AppBar(
+      title: AppBarTitle(title: "Hücredeki Stoklar", subtitle: "Hücre: ${widget.model.hucreKodu}"),
+    ),
     body: Column(
       children: [
         CustomTextField(labelText: "Ara", onChanged: viewModel.setSearchText),
         Expanded(
           child: Observer(
-            builder:
-                (_) => RefreshableListView(
-                  onRefresh: viewModel.getData,
-                  items: viewModel.observableList,
-                  itemBuilder: hucredekiStoklarCard,
-                ),
+            builder: (_) => RefreshableListView(
+              onRefresh: viewModel.getData,
+              items: viewModel.observableList,
+              itemBuilder: hucredekiStoklarCard,
+            ),
           ),
         ),
       ],

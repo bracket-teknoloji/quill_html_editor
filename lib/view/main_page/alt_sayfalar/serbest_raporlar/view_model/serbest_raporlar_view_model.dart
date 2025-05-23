@@ -22,13 +22,12 @@ abstract class _SerbestRaporlarViewModelBase with Store {
     textEditingControllerList ??= List.generate(
       serbestRaporResponseModelList?.length ?? 0,
       (index) => TextEditingController(
-        text:
-            StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")
-                ? StaticVariables.instance.serbestDicParams.entries
-                    .firstWhere((element) => element.key == serbestRaporResponseModelList![index].adi)
-                    .value
-                    .toString()
-                : serbestRaporResponseModelList?[index].deger ?? "",
+        text: StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")
+            ? StaticVariables.instance.serbestDicParams.entries
+                  .firstWhere((element) => element.key == serbestRaporResponseModelList![index].adi)
+                  .value
+                  .toString()
+            : serbestRaporResponseModelList?[index].deger ?? "",
       ),
     );
     value.where((element) => element.deger != null).forEach((element) {

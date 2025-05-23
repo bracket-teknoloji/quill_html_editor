@@ -12,27 +12,27 @@ mixin _$HucreHareketleriViewModel on _HucreHareketleriViewModelBase, Store {
   Computed<int>? _$toplamGirisComputed;
 
   @override
-  int get toplamGiris =>
-      (_$toplamGirisComputed ??= Computed<int>(() => super.toplamGiris,
-              name: '_HucreHareketleriViewModelBase.toplamGiris'))
-          .value;
+  int get toplamGiris => (_$toplamGirisComputed ??= Computed<int>(
+    () => super.toplamGiris,
+    name: '_HucreHareketleriViewModelBase.toplamGiris',
+  )).value;
   Computed<int>? _$toplamCikisComputed;
 
   @override
-  int get toplamCikis =>
-      (_$toplamCikisComputed ??= Computed<int>(() => super.toplamCikis,
-              name: '_HucreHareketleriViewModelBase.toplamCikis'))
-          .value;
+  int get toplamCikis => (_$toplamCikisComputed ??= Computed<int>(
+    () => super.toplamCikis,
+    name: '_HucreHareketleriViewModelBase.toplamCikis',
+  )).value;
   Computed<int>? _$bakiyeComputed;
 
   @override
-  int get bakiye => (_$bakiyeComputed ??= Computed<int>(() => super.bakiye,
-          name: '_HucreHareketleriViewModelBase.bakiye'))
-      .value;
+  int get bakiye =>
+      (_$bakiyeComputed ??= Computed<int>(() => super.bakiye, name: '_HucreHareketleriViewModelBase.bakiye')).value;
 
   late final _$hucreHareketleriListesiAtom = Atom(
-      name: '_HucreHareketleriViewModelBase.hucreHareketleriListesi',
-      context: context);
+    name: '_HucreHareketleriViewModelBase.hucreHareketleriListesi',
+    context: context,
+  );
 
   @override
   ObservableList<HucreHareketleriModel>? get hucreHareketleriListesi {
@@ -42,14 +42,12 @@ mixin _$HucreHareketleriViewModel on _HucreHareketleriViewModelBase, Store {
 
   @override
   set hucreHareketleriListesi(ObservableList<HucreHareketleriModel>? value) {
-    _$hucreHareketleriListesiAtom
-        .reportWrite(value, super.hucreHareketleriListesi, () {
+    _$hucreHareketleriListesiAtom.reportWrite(value, super.hucreHareketleriListesi, () {
       super.hucreHareketleriListesi = value;
     });
   }
 
-  late final _$requestModelAtom = Atom(
-      name: '_HucreHareketleriViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_HucreHareketleriViewModelBase.requestModel', context: context);
 
   @override
   HucreHareketleriRequestModel get requestModel {
@@ -64,22 +62,23 @@ mixin _$HucreHareketleriViewModel on _HucreHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_HucreHareketleriViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_HucreHareketleriViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_HucreHareketleriViewModelBaseActionController =
-      ActionController(
-          name: '_HucreHareketleriViewModelBase', context: context);
+  late final _$_HucreHareketleriViewModelBaseActionController = ActionController(
+    name: '_HucreHareketleriViewModelBase',
+    context: context,
+  );
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_HucreHareketleriViewModelBaseActionController
-        .startAction(name: '_HucreHareketleriViewModelBase.setStokKodu');
+    final _$actionInfo = _$_HucreHareketleriViewModelBaseActionController.startAction(
+      name: '_HucreHareketleriViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(value);
     } finally {
@@ -89,9 +88,9 @@ mixin _$HucreHareketleriViewModel on _HucreHareketleriViewModelBase, Store {
 
   @override
   void setHucreHareketleriListesi(List<HucreHareketleriModel>? value) {
-    final _$actionInfo =
-        _$_HucreHareketleriViewModelBaseActionController.startAction(
-            name: '_HucreHareketleriViewModelBase.setHucreHareketleriListesi');
+    final _$actionInfo = _$_HucreHareketleriViewModelBaseActionController.startAction(
+      name: '_HucreHareketleriViewModelBase.setHucreHareketleriListesi',
+    );
     try {
       return super.setHucreHareketleriListesi(value);
     } finally {

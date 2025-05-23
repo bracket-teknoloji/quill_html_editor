@@ -80,42 +80,43 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       },
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Expanded(child: Text(model.belgeNo ?? model.resmiBelgeNo ?? "")), Text(model.tarih.toDateString)],
+        children: [
+          Expanded(child: Text(model.belgeNo ?? model.resmiBelgeNo ?? "")),
+          Text(model.tarih.toDateString),
+        ],
       ),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(model.cariAdi ?? ""),
           Row(
-            children:
-                [
-                  if (model.basariylaGonderildiMi)
-                    InkWell(
-                      onTap: showCevapAciklamaSnackBar,
-                      child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili),
-                    ),
-                  if (model.dovizliMi)
-                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
-                  if (model.taslakMi) const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata),
-                  if (model.uyariMi)
-                    ColorfulBadge(label: Text(loc.generalStrings.warning), badgeColorEnum: BadgeColorEnum.uyari),
-                  if (model.reddedildiMi)
-                    const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
-                  if (model.iptalEdildiMi)
-                    ColorfulBadge(
-                      label: Text("İptal (${model.iptalTarihi.toDateString})"),
-                      badgeColorEnum: BadgeColorEnum.hata,
-                    ),
-                  if (model.basimYapildiMi) const Icon(Icons.print_outlined, size: UIHelper.highSize),
-                  if (model.basariylaGonderildi != "E" && !model.gelenMi)
-                    ColorfulBadge(
-                      label: const Text("Hata"),
-                      badgeColorEnum: BadgeColorEnum.hata,
-                      onTap: () {
-                        dialogManager.showAlertDialog("${model.cevapKodu}\n${model.cevapAciklama}");
-                      },
-                    ),
-                ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+            children: [
+              if (model.basariylaGonderildiMi)
+                InkWell(
+                  onTap: showCevapAciklamaSnackBar,
+                  child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili),
+                ),
+              if (model.dovizliMi) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+              if (model.taslakMi) const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata),
+              if (model.uyariMi)
+                ColorfulBadge(label: Text(loc.generalStrings.warning), badgeColorEnum: BadgeColorEnum.uyari),
+              if (model.reddedildiMi)
+                const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
+              if (model.iptalEdildiMi)
+                ColorfulBadge(
+                  label: Text("İptal (${model.iptalTarihi.toDateString})"),
+                  badgeColorEnum: BadgeColorEnum.hata,
+                ),
+              if (model.basimYapildiMi) const Icon(Icons.print_outlined, size: UIHelper.highSize),
+              if (model.basariylaGonderildi != "E" && !model.gelenMi)
+                ColorfulBadge(
+                  label: const Text("Hata"),
+                  badgeColorEnum: BadgeColorEnum.hata,
+                  onTap: () {
+                    dialogManager.showAlertDialog("${model.cevapKodu}\n${model.cevapAciklama}");
+                  },
+                ),
+            ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
           ).paddingSymmetric(vertical: UIHelper.lowSize),
           if (model.belgeIslendiMi) Text(model.faturaAciklama),
           LayoutBuilder(
@@ -199,18 +200,16 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   ),
               ];
 
-              final List<Widget> selectedList =
-                  model.eFaturaMi
-                      ? efaturaList
-                      : model.eArsivMi
-                      ? eArsivList
-                      : eIrsaliyeList;
+              final List<Widget> selectedList = model.eFaturaMi
+                  ? efaturaList
+                  : model.eArsivMi
+                  ? eArsivList
+                  : eIrsaliyeList;
               return Wrap(
-                children:
-                    selectedList
-                        .map((e) => e is! SizedBox ? SizedBox(width: constraints.maxWidth / 2, child: e) : null)
-                        .toList()
-                        .nullCheckWithGeneric,
+                children: selectedList
+                    .map((e) => e is! SizedBox ? SizedBox(width: constraints.maxWidth / 2, child: e) : null)
+                    .toList()
+                    .nullCheckWithGeneric,
               );
             },
           ),
@@ -495,19 +494,14 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               suffix: Row(
                 children: [
                   IconButton(
-                    onPressed:
-                        () =>
-                            int.tryParse(kopyaSayisiController.text) == 1
-                                ? null
-                                : kopyaSayisiController.text =
-                                    ((int.tryParse(kopyaSayisiController.text) ?? 1) - 1).toString(),
+                    onPressed: () => int.tryParse(kopyaSayisiController.text) == 1
+                        ? null
+                        : kopyaSayisiController.text = ((int.tryParse(kopyaSayisiController.text) ?? 1) - 1).toString(),
                     icon: const Icon(Icons.remove_outlined),
                   ),
                   IconButton(
-                    onPressed:
-                        () =>
-                            kopyaSayisiController.text =
-                                ((int.tryParse(kopyaSayisiController.text) ?? 1) + 1).toString(),
+                    onPressed: () =>
+                        kopyaSayisiController.text = ((int.tryParse(kopyaSayisiController.text) ?? 1) + 1).toString(),
                     icon: const Icon(Icons.add_outlined),
                   ),
                 ],
@@ -575,10 +569,9 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       final result = await Get.toNamed(
         "/mainPage/cariEdit",
         arguments: BaseEditModel<CariListesiModel>(
-          model:
-              CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
-                ..hesaptutmasekli = "Y"
-                ..vadeGunu = 0,
+          model: CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
+            ..hesaptutmasekli = "Y"
+            ..vadeGunu = 0,
           editTipiEnum: EditTipiEnum.cari,
           baseEditEnum: BaseEditEnum.kopyala,
         ),
@@ -659,10 +652,9 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             final result = await Get.toNamed(
               "/mainPage/cariEdit",
               arguments: BaseEditModel<CariListesiModel>(
-                model:
-                    CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
-                      ..hesaptutmasekli = "Y"
-                      ..vadeGunu = 0,
+                model: CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
+                  ..hesaptutmasekli = "Y"
+                  ..vadeGunu = 0,
                 baseEditEnum: BaseEditEnum.kopyala,
               ),
             );

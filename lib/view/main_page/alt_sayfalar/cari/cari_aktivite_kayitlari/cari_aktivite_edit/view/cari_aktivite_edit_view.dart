@@ -26,10 +26,9 @@ final class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> w
   GlobalKey<FormState>? formKey;
   CariAktiviteListesiModel get cariAktiviteModel => widget.model.model!;
 
-  bool get kayitYetkisi =>
-      widget.model.baseEditEnum?.ekleMi == true
-          ? yetkiController.cariAktiviteYeniKayit
-          : yetkiController.cariAktiviteDuzenleme;
+  bool get kayitYetkisi => widget.model.baseEditEnum?.ekleMi == true
+      ? yetkiController.cariAktiviteYeniKayit
+      : yetkiController.cariAktiviteDuzenleme;
 
   bool get enabled => widget.model.baseEditEnum?.goruntuleMi != true;
 
@@ -68,25 +67,22 @@ final class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> w
             icon: const Icon(Icons.save_outlined),
           ),
       ],
-      bottom:
-          !yetkiController.cariAktiviteDetayliMi
-              ? null
-              : TabBar(
-                controller: tabController,
-                tabs:
-                    [
-                      const Tab(text: "Genel"),
-                      if (yetkiController.cariAktiviteDetayliMi) const Tab(text: "Detay"),
-                    ].whereNot((element) => element is SizedBox).toList(),
-              ),
+      bottom: !yetkiController.cariAktiviteDetayliMi
+          ? null
+          : TabBar(
+              controller: tabController,
+              tabs: [
+                const Tab(text: "Genel"),
+                if (yetkiController.cariAktiviteDetayliMi) const Tab(text: "Detay"),
+              ].whereNot((element) => element is SizedBox).toList(),
+            ),
     ),
     body: TabBarView(
       controller: tabController,
-      children:
-          [
-            CariAktiviteGenelView(model: widget.model, onSave: (value) => formKey = value),
-            if (yetkiController.cariAktiviteDetayliMi) CariAktiviteDetayView(baseEditEnum: widget.model.baseEditEnum!),
-          ].whereNot((element) => element is SizedBox).toList(),
+      children: [
+        CariAktiviteGenelView(model: widget.model, onSave: (value) => formKey = value),
+        if (yetkiController.cariAktiviteDetayliMi) CariAktiviteDetayView(baseEditEnum: widget.model.baseEditEnum!),
+      ].whereNot((element) => element is SizedBox).toList(),
     ),
   );
 }

@@ -102,11 +102,10 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
       cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
 
   @action
-  void setVadeTarihi(String? value) =>
-      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(
-        donemTipi: value,
-        tarihTipi: value != null ? "V" : null,
-      );
+  void setVadeTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(
+    donemTipi: value,
+    tarihTipi: value != null ? "V" : null,
+  );
 
   @action
   void setDurumu(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(durum: value);

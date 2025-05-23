@@ -48,13 +48,11 @@ final class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
         if (widget.doNotExpand) {
           list.add(
             LayoutBuilder(
-              builder:
-                  (context, constraints) => Row(
-                    children:
-                        rowChildren
-                            .map((e) => SizedBox(width: constraints.maxWidth / widget.splitCount, child: e))
-                            .toList(),
-                  ),
+              builder: (context, constraints) => Row(
+                children: rowChildren
+                    .map((e) => SizedBox(width: constraints.maxWidth / widget.splitCount, child: e))
+                    .toList(),
+              ),
             ),
           );
         } else {

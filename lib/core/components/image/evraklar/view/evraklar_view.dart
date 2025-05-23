@@ -46,7 +46,9 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
     child: BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body()),
   );
 
-  AppBar appBar() => AppBar(title: AppBarTitle(title: "Evraklar", subtitle: widget.model.belgeNo));
+  AppBar appBar() => AppBar(
+    title: AppBarTitle(title: "Evraklar", subtitle: widget.model.belgeNo),
+  );
 
   CustomFloatingActionButton? fab() {
     if (yetkiController.stokResimEkle) {
@@ -65,9 +67,8 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
   }
 
   Observer body() => Observer(
-    builder:
-        (_) =>
-            RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: evrakCard),
+    builder: (_) =>
+        RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: evrakCard),
   );
 
   Widget evrakCard(EvraklarModel? model) => Card(

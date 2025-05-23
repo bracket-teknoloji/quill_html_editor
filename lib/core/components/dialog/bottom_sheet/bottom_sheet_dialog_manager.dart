@@ -94,51 +94,50 @@ final class BottomSheetDialogManager {
           MediaQuery.sizeOf(context).width *
               (context.isLandscape
                   ? kIsWeb
-                      ? 0.4
-                      : 0.6
+                        ? 0.4
+                        : 0.6
                   : 1),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
       context: context,
-      builder:
-          (context) => Padding(
-            padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
-            child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ListTile(
-                    contentPadding: UIHelper.lowPadding,
-                    title: AnimatedTextKit(
-                      animatedTexts: [
-                        TyperAnimatedText(
-                          title,
-                          textStyle: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                      totalRepeatCount: 1,
-                      displayFullTextOnTap: true,
-                    ).paddingOnly(left: UIHelper.lowSize),
-                    trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-                    splashColor: Colors.transparent,
-                  ).paddingSymmetric(vertical: UIHelper.lowSize),
-                  const Divider(thickness: 2, endIndent: 0, indent: 0),
-                  Flexible(
-                    child: body(
-                      context,
-                      title: title,
-                      children: children,
-                      list: groupValues,
-                      onlyValue: onlyValue,
-                      body: bodyWidget,
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                contentPadding: UIHelper.lowPadding,
+                title: AnimatedTextKit(
+                  animatedTexts: [
+                    TyperAnimatedText(
+                      title,
+                      textStyle: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                     ),
-                  ),
-                ],
+                  ],
+                  totalRepeatCount: 1,
+                  displayFullTextOnTap: true,
+                ).paddingOnly(left: UIHelper.lowSize),
+                trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+                splashColor: Colors.transparent,
+              ).paddingSymmetric(vertical: UIHelper.lowSize),
+              const Divider(thickness: 2, endIndent: 0, indent: 0),
+              Flexible(
+                child: body(
+                  context,
+                  title: title,
+                  children: children,
+                  list: groupValues,
+                  onlyValue: onlyValue,
+                  body: bodyWidget,
+                ),
               ),
-            ),
+            ],
           ),
+        ),
+      ),
     );
     if (result is List) return result.cast<T>();
     if (result is T) return [result];
@@ -187,14 +186,13 @@ final class BottomSheetDialogManager {
               if (value == "") {
                 children2 = children;
               }
-              children2 =
-                  children2!
-                      .where(
-                        (element) =>
-                            element.title.toLowerCase().contains(value.toLowerCase()) ||
-                            (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false),
-                      )
-                      .toList();
+              children2 = children2!
+                  .where(
+                    (element) =>
+                        element.title.toLowerCase().contains(value.toLowerCase()) ||
+                        (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false),
+                  )
+                  .toList();
             },
           ).paddingAll(UIHelper.midSize),
         if (body != null)
@@ -212,26 +210,21 @@ final class BottomSheetDialogManager {
                     ListTile(
                       onTap: item.onTap ?? () => Get.back(result: [item.value]),
                       title: Text(item.title),
-                      subtitle:
-                          item.description != null
-                              ? Text(
-                                item.description ?? "",
-                                style: TextStyle(
-                                  color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6),
-                                ),
-                              )
-                              : null,
-                      leading:
-                          item.icon != null || item.iconWidget != null
-                              ? SizedBox(
-                                width: 20,
-                                height: 20,
-                                child:
-                                    item.iconWidget != null
-                                        ? Icon(item.iconWidget, size: 25, color: UIHelper.primaryColor)
-                                        : IconHelper.smallIcon(item.icon!),
-                              )
-                              : null,
+                      subtitle: item.description != null
+                          ? Text(
+                              item.description ?? "",
+                              style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6)),
+                            )
+                          : null,
+                      leading: item.icon != null || item.iconWidget != null
+                          ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: item.iconWidget != null
+                                  ? Icon(item.iconWidget, size: 25, color: UIHelper.primaryColor)
+                                  : IconHelper.smallIcon(item.icon!),
+                            )
+                          : null,
                     ),
                     if (index != children2!.length - 1)
                       const Padding(padding: UIHelper.lowPaddingVertical, child: Divider()),
@@ -288,26 +281,24 @@ final class BottomSheetDialogManager {
           primary: false,
           separatorBuilder: (context, index) => const Padding(padding: UIHelper.lowPaddingVertical, child: Divider()),
           itemCount: children?.length ?? 0,
-          itemBuilder:
-              (context, index) => Observer(
-                builder:
-                    (_) => CheckboxListTile(
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: _viewModel.isSelectedListMap?[title]?[index] ?? false,
-                      title: Text(children?[index].title ?? ""),
-                      onChanged: (value) {
-                        _viewModel.changeIndexIsSelectedListMap(title, index, value!);
-                        // viewModel.isSelectedListMap![title]![index] = value!;
-                        list = selectedChecker(children, title, onlyValue);
-                        if (children?[index].onTap != null) {
-                          children?[index].onTap?.call();
-                        }
-                        if (!value) {
-                          list!.remove(children?[index].title);
-                        }
-                      },
-                    ),
-              ),
+          itemBuilder: (context, index) => Observer(
+            builder: (_) => CheckboxListTile(
+              controlAffinity: ListTileControlAffinity.leading,
+              value: _viewModel.isSelectedListMap?[title]?[index] ?? false,
+              title: Text(children?[index].title ?? ""),
+              onChanged: (value) {
+                _viewModel.changeIndexIsSelectedListMap(title, index, value!);
+                // viewModel.isSelectedListMap![title]![index] = value!;
+                list = selectedChecker(children, title, onlyValue);
+                if (children?[index].onTap != null) {
+                  children?[index].onTap?.call();
+                }
+                if (!value) {
+                  list!.remove(children?[index].title);
+                }
+              },
+            ),
+          ),
         ),
       ),
       ElevatedButton(
@@ -339,127 +330,114 @@ final class BottomSheetDialogManager {
           MediaQuery.sizeOf(context).width *
               (context.isLandscape
                   ? kIsWeb
-                      ? 0.4
-                      : 0.6
+                        ? 0.4
+                        : 0.6
                   : 1),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
-      builder:
-          (context) => SafeArea(
-            child: Padding(
-              padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
-              child: Observer(
-                builder:
-                    (_) => Wrap(
-                      children: <Widget>[
-                        ListTile(
-                          contentPadding: UIHelper.lowPadding,
-                          title: AnimatedTextKit(
-                            animatedTexts: [
-                              TyperAnimatedText(
-                                title,
-                                textStyle: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                            totalRepeatCount: 1,
-                            displayFullTextOnTap: true,
-                          ).paddingOnly(left: UIHelper.lowSize),
-                          trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-                          splashColor: Colors.transparent,
-                        ).paddingSymmetric(vertical: UIHelper.lowSize),
-                        const Divider(thickness: 2, endIndent: 0, indent: 0),
-                        if ((children.length) > 15) SearchField(viewModel: _viewModel).paddingAll(UIHelper.midSize),
-                        if (_viewModel.getFilteredList.ext.isNotNullOrEmpty)
-                          SizedBox(
-                            height: height < Get.height * 0.8 ? height : Get.height * 0.8,
-                            child: Scrollbar(
-                              interactive: true,
-                              child: Column(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: SingleChildScrollView(
-                                      child: SafeArea(
-                                        child: Observer(
-                                          builder:
-                                              (_) => Column(
+      builder: (context) => SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
+          child: Observer(
+            builder: (_) => Wrap(
+              children: <Widget>[
+                ListTile(
+                  contentPadding: UIHelper.lowPadding,
+                  title: AnimatedTextKit(
+                    animatedTexts: [
+                      TyperAnimatedText(
+                        title,
+                        textStyle: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                    totalRepeatCount: 1,
+                    displayFullTextOnTap: true,
+                  ).paddingOnly(left: UIHelper.lowSize),
+                  trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+                  splashColor: Colors.transparent,
+                ).paddingSymmetric(vertical: UIHelper.lowSize),
+                const Divider(thickness: 2, endIndent: 0, indent: 0),
+                if ((children.length) > 15) SearchField(viewModel: _viewModel).paddingAll(UIHelper.midSize),
+                if (_viewModel.getFilteredList.ext.isNotNullOrEmpty)
+                  SizedBox(
+                    height: height < Get.height * 0.8 ? height : Get.height * 0.8,
+                    child: Scrollbar(
+                      interactive: true,
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: SafeArea(
+                                child: Observer(
+                                  builder: (_) => Column(
+                                    children: [
+                                      Wrap(
+                                        children: <Widget>[
+                                          ...List.generate(_viewModel.getFilteredList!.length, (index) {
+                                            final BottomSheetModel? item = _viewModel.getFilteredList?[index];
+                                            return Observer(
+                                              builder: (_) => Wrap(
                                                 children: [
-                                                  Wrap(
-                                                    children: <Widget>[
-                                                      ...List.generate(_viewModel.getFilteredList!.length, (index) {
-                                                        final BottomSheetModel? item =
-                                                            _viewModel.getFilteredList?[index];
-                                                        return Observer(
-                                                          builder:
-                                                              (_) => Wrap(
-                                                                children: [
-                                                                  RadioListTile(
-                                                                    toggleable: true,
-                                                                    activeColor: UIHelper.primaryColor,
-                                                                    onChanged: (value) {
-                                                                      if (item?.onTap != null) {
-                                                                        item?.onTap!();
-                                                                      } else {
-                                                                        Get.back(result: item?.value);
-                                                                      }
-                                                                    },
-                                                                    value: item?.groupValue ?? "",
-                                                                    groupValue: groupValue,
-                                                                    title: Text(item?.title ?? ""),
-                                                                    subtitle:
-                                                                        item?.description != null ||
-                                                                                item?.descriptionWidget != null
-                                                                            ? Column(
-                                                                              crossAxisAlignment:
-                                                                                  CrossAxisAlignment.start,
-                                                                              children:
-                                                                                  [
-                                                                                    item?.descriptionWidget,
-                                                                                    if (item?.description != null)
-                                                                                      Text(
-                                                                                        item?.description ?? "",
-                                                                                        style: TextStyle(
-                                                                                          color: context
-                                                                                              .theme
-                                                                                              .textTheme
-                                                                                              .bodyLarge
-                                                                                              ?.color
-                                                                                              ?.withValues(alpha: 0.6),
-                                                                                        ),
-                                                                                      ),
-                                                                                  ].nullCheckWithGeneric,
-                                                                            )
-                                                                            : null,
-                                                                  ).paddingSymmetric(horizontal: UIHelper.midSize),
-                                                                  if (index !=
-                                                                      (_viewModel.getFilteredList?.length ?? 0) - 1)
-                                                                    const Padding(
-                                                                      padding: UIHelper.lowPaddingVertical,
-                                                                      child: Divider(),
-                                                                    ),
-                                                                ],
-                                                              ),
-                                                        );
-                                                      }),
-                                                    ],
-                                                  ).paddingOnly(bottom: UIHelper.midSize),
+                                                  RadioListTile(
+                                                    toggleable: true,
+                                                    activeColor: UIHelper.primaryColor,
+                                                    onChanged: (value) {
+                                                      if (item?.onTap != null) {
+                                                        item?.onTap!();
+                                                      } else {
+                                                        Get.back(result: item?.value);
+                                                      }
+                                                    },
+                                                    value: item?.groupValue ?? "",
+                                                    groupValue: groupValue,
+                                                    title: Text(item?.title ?? ""),
+                                                    subtitle:
+                                                        item?.description != null || item?.descriptionWidget != null
+                                                        ? Column(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              item?.descriptionWidget,
+                                                              if (item?.description != null)
+                                                                Text(
+                                                                  item?.description ?? "",
+                                                                  style: TextStyle(
+                                                                    color: context.theme.textTheme.bodyLarge?.color
+                                                                        ?.withValues(alpha: 0.6),
+                                                                  ),
+                                                                ),
+                                                            ].nullCheckWithGeneric,
+                                                          )
+                                                        : null,
+                                                  ).paddingSymmetric(horizontal: UIHelper.midSize),
+                                                  if (index != (_viewModel.getFilteredList?.length ?? 0) - 1)
+                                                    const Padding(
+                                                      padding: UIHelper.lowPaddingVertical,
+                                                      child: Divider(),
+                                                    ),
                                                 ],
                                               ),
-                                        ),
-                                      ),
-                                    ),
+                                            );
+                                          }),
+                                        ],
+                                      ).paddingOnly(bottom: UIHelper.midSize),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
-                          )
-                        else
-                          Center(child: const Text("Veri Yok").paddingAll(UIHelper.highSize)),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
-              ),
+                  )
+                else
+                  Center(child: const Text("Veri Yok").paddingAll(UIHelper.highSize)),
+              ],
             ),
           ),
+        ),
+      ),
     );
     _viewModel.searchValue = null;
     return result;
@@ -484,37 +462,35 @@ final class BottomSheetDialogManager {
         context,
         title: "Depo seç",
         groupValue: groupValue,
-        children:
-            _yetkiController.yetkiliDepoList
-                ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.depoTanimi ?? "",
-                    description: e.depoKodu.toStringIfNotNull,
-                    descriptionWidget: e.hucreTakibiMi ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
-                    value: e,
-                    groupValue: e.depoKodu,
-                  ),
-                )
-                .toList(),
+        children: _yetkiController.yetkiliDepoList
+            ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
+            .map(
+              (e) => BottomSheetModel(
+                title: e.depoTanimi ?? "",
+                description: e.depoKodu.toStringIfNotNull,
+                descriptionWidget: e.hucreTakibiMi ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
+                value: e,
+                groupValue: e.depoKodu,
+              ),
+            )
+            .toList(),
       );
   Future<DepoList?> showHucreDepoBottomSheetDialog(BuildContext context, int? groupValue) async =>
       await showRadioBottomSheetDialog(
         context,
         title: "Depo seç",
         groupValue: groupValue,
-        children:
-            _yetkiController.yetkiliDepoList
-                ?.where((element) => element.hucreTakibiMi)
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.depoTanimi ?? "",
-                    description: e.depoKodu.toStringIfNotNull,
-                    value: e,
-                    groupValue: e.depoKodu,
-                  ),
-                )
-                .toList(),
+        children: _yetkiController.yetkiliDepoList
+            ?.where((element) => element.hucreTakibiMi)
+            .map(
+              (e) => BottomSheetModel(
+                title: e.depoTanimi ?? "",
+                description: e.depoKodu.toStringIfNotNull,
+                value: e,
+                groupValue: e.depoKodu,
+              ),
+            )
+            .toList(),
       );
 
   Future<DepoList?> showTopluDepoBottomSheetDialog(
@@ -526,18 +502,17 @@ final class BottomSheetDialogManager {
     context,
     title: "Depo seç",
     groupValue: groupValue,
-    children:
-        _yetkiController.yetkiliDepoList
-            ?.map(
-              (e) => BottomSheetModel(
-                title: e.depoTanimi ?? "",
-                description: e.depoKodu.toStringIfNotNull,
-                value: e,
-                groupValue: e.depoKodu,
-                descriptionWidget: e.hucreTakibiMi ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
-              ),
-            )
-            .toList(),
+    children: _yetkiController.yetkiliDepoList
+        ?.map(
+          (e) => BottomSheetModel(
+            title: e.depoTanimi ?? "",
+            description: e.depoKodu.toStringIfNotNull,
+            value: e,
+            groupValue: e.depoKodu,
+            descriptionWidget: e.hucreTakibiMi ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
+          ),
+        )
+        .toList(),
     // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
   );
 
@@ -550,17 +525,16 @@ final class BottomSheetDialogManager {
     context,
     title: "Depo seç",
     groupValue: groupValue,
-    children:
-        _yetkiController.yetkiliDatDepoList
-            ?.map(
-              (e) => BottomSheetModel(
-                title: e.depoTanimi ?? "",
-                description: e.depoKodu.toStringIfNotNull,
-                value: e,
-                groupValue: e.depoKodu,
-              ),
-            )
-            .toList(),
+    children: _yetkiController.yetkiliDatDepoList
+        ?.map(
+          (e) => BottomSheetModel(
+            title: e.depoTanimi ?? "",
+            description: e.depoKodu.toStringIfNotNull,
+            value: e,
+            groupValue: e.depoKodu,
+          ),
+        )
+        .toList(),
     // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
   );
 
@@ -569,10 +543,9 @@ final class BottomSheetDialogManager {
         context,
         title: "Ödeme Kodu seç",
         groupValue: groupValue,
-        children:
-            _paramModel?.listCariOdemeKodu
-                ?.map((e) => BottomSheetModel(title: e.aciklama ?? "", value: e, groupValue: e.odemeKodu))
-                .toList(),
+        children: _paramModel?.listCariOdemeKodu
+            ?.map((e) => BottomSheetModel(title: e.aciklama ?? "", value: e, groupValue: e.odemeKodu))
+            .toList(),
       );
   Future<BaseBottomSheetResponseModel?> showCariTipiBottomSheetDialog(BuildContext context, String? groupValue) async =>
       await showRadioBottomSheetDialog<BaseBottomSheetResponseModel>(
@@ -628,16 +601,15 @@ final class BottomSheetDialogManager {
       context,
       title: "Plasiyer Seçiniz",
       groupValues: groupValues ?? [],
-      children:
-          plasiyerList
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "",
-                  value: e,
-                  groupValue: e.plasiyerKodu,
-                ),
-              )
-              .toList(),
+      children: plasiyerList
+          .map(
+            (e) => BottomSheetModel(
+              title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "",
+              value: e,
+              groupValue: e.plasiyerKodu,
+            ),
+          )
+          .toList(),
     );
     return result;
     // return null;
@@ -658,10 +630,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Grup Kodu($grupKodu) Seçiniz",
       groupValues: groupValues,
-      children:
-          _viewModel.filteredGrupKoduList
-              ?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e, groupValue: e.grupKodu))
-              .toList(),
+      children: _viewModel.filteredGrupKoduList
+          ?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e, groupValue: e.grupKodu))
+          .toList(),
     );
     return result;
   }
@@ -681,10 +652,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Grup Kodu Seçiniz",
       groupValue: groupValue,
-      children:
-          _viewModel.filteredGrupKoduList
-              ?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e, groupValue: e.grupKodu))
-              .toList(),
+      children: _viewModel.filteredGrupKoduList
+          ?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e, groupValue: e.grupKodu))
+          .toList(),
     );
     if (result != null) {
       return result;
@@ -708,22 +678,20 @@ final class BottomSheetDialogManager {
       context,
       groupValue: groupValue,
       title: "Muhasebe Kodu Seçiniz",
-      children:
-          _viewModel.muhasebeKoduList
-              ?.map(
-                (e) => BottomSheetModel(
-                  title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "",
-                  description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}",
-                  value: e,
-                  groupValue:
-                      alisMi == true
-                          ? e.alisHesabi
-                          : alisMi == false
-                          ? e.satisHesabi
-                          : e.muhKodu.toStringIfNotNull,
-                ),
-              )
-              .toList(),
+      children: _viewModel.muhasebeKoduList
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "",
+              description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}",
+              value: e,
+              groupValue: alisMi == true
+                  ? e.alisHesabi
+                  : alisMi == false
+                  ? e.satisHesabi
+                  : e.muhKodu.toStringIfNotNull,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -749,17 +717,16 @@ final class BottomSheetDialogManager {
       context,
       title: "Muhasebe Kodu Seçiniz",
       groupValue: groupValue,
-      children:
-          _viewModel.muhasebeKoduList
-              ?.map(
-                (e) => BottomSheetModel(
-                  title: e.hesapAdi ?? e.hesapKodu ?? "",
-                  description: e.hesapKodu,
-                  value: e,
-                  groupValue: e.hesapKodu,
-                ),
-              )
-              .toList(),
+      children: _viewModel.muhasebeKoduList
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.hesapAdi ?? e.hesapKodu ?? "",
+              description: e.hesapKodu,
+              value: e,
+              groupValue: e.hesapKodu,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -784,17 +751,16 @@ final class BottomSheetDialogManager {
       context,
       title: "Muhasebe Kodu Seçiniz",
       groupValue: groupValue,
-      children:
-          _viewModel.muhasebeKoduList
-              ?.map(
-                (e) => BottomSheetModel(
-                  title: e.hesapAdi ?? e.hesapKodu ?? "",
-                  description: e.hesapKodu,
-                  value: e,
-                  groupValue: e.hesapKodu,
-                ),
-              )
-              .toList(),
+      children: _viewModel.muhasebeKoduList
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.hesapAdi ?? e.hesapKodu ?? "",
+              description: e.hesapKodu,
+              value: e,
+              groupValue: e.hesapKodu,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -804,17 +770,16 @@ final class BottomSheetDialogManager {
       context,
       title: "Plasiyer Seçiniz",
       groupValue: groupValue,
-      children:
-          plasiyerList
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "",
-                  description: e.plasiyerKodu,
-                  value: e,
-                  groupValue: e.plasiyerKodu,
-                ),
-              )
-              .toList(),
+      children: plasiyerList
+          .map(
+            (e) => BottomSheetModel(
+              title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "",
+              description: e.plasiyerKodu,
+              value: e,
+              groupValue: e.plasiyerKodu,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -846,17 +811,15 @@ final class BottomSheetDialogManager {
       return await showBottomSheetDialog(
         context,
         title: "Şablon Seçiniz",
-        children:
-            result.dataList
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.tasiyiciUnvan ?? "",
-                    description:
-                        "${e.sablonKodu ?? ""} (${e.sofor1Adi?.split("").first ?? ""}. ${e.sofor1Soyadi ?? ""})",
-                    value: e,
-                  ),
-                )
-                .toList(),
+        children: result.dataList
+            .map(
+              (e) => BottomSheetModel(
+                title: e.tasiyiciUnvan ?? "",
+                description: "${e.sablonKodu ?? ""} (${e.sofor1Adi?.split("").first ?? ""}. ${e.sofor1Soyadi ?? ""})",
+                value: e,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
@@ -870,17 +833,16 @@ final class BottomSheetDialogManager {
       context,
       title: "Proje Seçiniz",
       groupValue: groupValue,
-      children:
-          projeList
-              ?.map(
-                (e) => BottomSheetModel(
-                  title: e.projeAciklama ?? e.projeKodu ?? "",
-                  description: e.projeKodu,
-                  value: e,
-                  groupValue: e.projeKodu,
-                ),
-              )
-              .toList(),
+      children: projeList
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.projeAciklama ?? e.projeKodu ?? "",
+              description: e.projeKodu,
+              value: e,
+              groupValue: e.projeKodu,
+            ),
+          )
+          .toList(),
     );
     return proje;
   }
@@ -891,16 +853,15 @@ final class BottomSheetDialogManager {
       context,
       title: "Döviz Seçiniz",
       groupValue: groupValue,
-      children:
-          dovizList
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.isim ?? e.dovizKodu.toStringIfNotNull ?? "",
-                  value: e,
-                  groupValue: e.dovizKodu,
-                ),
-              )
-              .toList(),
+      children: dovizList
+          .map(
+            (e) => BottomSheetModel(
+              title: e.isim ?? e.dovizKodu.toStringIfNotNull ?? "",
+              value: e,
+              groupValue: e.dovizKodu,
+            ),
+          )
+          .toList(),
     );
     return doviz;
   }
@@ -926,23 +887,22 @@ final class BottomSheetDialogManager {
       context,
       title: "Yazıcı Seçiniz",
       groupValue: groupValue,
-      children:
-          yaziciList
-              .where(filter ?? (item) => true)
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.aciklama ?? e.yaziciAdi ?? "",
-                  description: e.yaziciAdi,
-                  value: e,
-                  groupValue: e.yaziciAdi,
+      children: yaziciList
+          .where(filter ?? (item) => true)
+          .map(
+            (e) => BottomSheetModel(
+              title: e.aciklama ?? e.yaziciAdi ?? "",
+              description: e.yaziciAdi,
+              value: e,
+              groupValue: e.yaziciAdi,
 
-                  descriptionWidget: e.yaziciTipi == "SEWOO_FIS" ? const ColorfulBadge(label: Text("SEWOO_FIS")) : null,
-                  onTap: () {
-                    Get.back(result: e);
-                  },
-                ),
-              )
-              .toList(),
+              descriptionWidget: e.yaziciTipi == "SEWOO_FIS" ? const ColorfulBadge(label: Text("SEWOO_FIS")) : null,
+              onTap: () {
+                Get.back(result: e);
+              },
+            ),
+          )
+          .toList(),
     );
     if (result != null) {
       return result;
@@ -965,18 +925,17 @@ final class BottomSheetDialogManager {
       context,
       title: "Dizayn Seçiniz",
       groupValue: groupValue,
-      children:
-          netFectDizaynList
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.dizaynAdi ?? e.detayKod ?? "",
-                  value: e,
-                  groupValue: e.detayKod ?? e.ozelKod,
+      children: netFectDizaynList
+          .map(
+            (e) => BottomSheetModel(
+              title: e.dizaynAdi ?? e.detayKod ?? "",
+              value: e,
+              groupValue: e.detayKod ?? e.ozelKod,
 
-                  description: e.id.toStringIfNotNull,
-                ),
-              )
-              .toList(),
+              description: e.id.toStringIfNotNull,
+            ),
+          )
+          .toList(),
     );
     return dizayn;
   }
@@ -1001,17 +960,16 @@ final class BottomSheetDialogManager {
         context,
         title: "Banka Hesapları",
         groupValue: groupValue,
-        children:
-            bankaHesaplariList
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.hesapAdi ?? "",
-                    description: e.hesapKodu,
-                    value: e,
-                    groupValue: e.hesapKodu,
-                  ),
-                )
-                .toList(),
+        children: bankaHesaplariList
+            .map(
+              (e) => BottomSheetModel(
+                title: e.hesapAdi ?? "",
+                description: e.hesapKodu,
+                value: e,
+                groupValue: e.hesapKodu,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
@@ -1026,16 +984,15 @@ final class BottomSheetDialogManager {
       context,
       title: "Belge Tipi Seçiniz",
       groupValue: groupValue,
-      children:
-          belgeTipiList
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.belgeTipi ?? e.belgeTipiId.toStringIfNotNull ?? "",
-                  value: e,
-                  groupValue: e.belgeTipiId,
-                ),
-              )
-              .toList(),
+      children: belgeTipiList
+          .map(
+            (e) => BottomSheetModel(
+              title: e.belgeTipi ?? e.belgeTipiId.toStringIfNotNull ?? "",
+              value: e,
+              groupValue: e.belgeTipiId,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -1045,16 +1002,15 @@ final class BottomSheetDialogManager {
       context,
       title: "İskonto Tipi Seçiniz",
       groupValue: groupValue,
-      children:
-          iskontoTipiList
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.aciklama ?? e.iskontoTipi.toStringIfNotNull ?? "",
-                  value: e,
-                  groupValue: e.iskontoTipi,
-                ),
-              )
-              .toList(),
+      children: iskontoTipiList
+          .map(
+            (e) => BottomSheetModel(
+              title: e.aciklama ?? e.iskontoTipi.toStringIfNotNull ?? "",
+              value: e,
+              groupValue: e.iskontoTipi,
+            ),
+          )
+          .toList(),
     );
     return iskontoTipi;
   }
@@ -1069,12 +1025,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Koşullar Seçiniz",
       groupValue: groupValue,
-      children:
-          data
-              ?.map(
-                (e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e, groupValue: e.kosulKodu),
-              )
-              .toList(),
+      children: data
+          ?.map((e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e, groupValue: e.kosulKodu))
+          .toList(),
     );
   }
 
@@ -1084,16 +1037,12 @@ final class BottomSheetDialogManager {
       context,
       title: "KDV Oranı Seçiniz",
       groupValue: groupValue,
-      children:
-          list
-              ?.map(
-                (e) => BottomSheetModel(
-                  title: e.commaSeparatedWithDecimalDigits(OndalikEnum.oran),
-                  value: e,
-                  groupValue: e,
-                ),
-              )
-              .toList(),
+      children: list
+          ?.map(
+            (e) =>
+                BottomSheetModel(title: e.commaSeparatedWithDecimalDigits(OndalikEnum.oran), value: e, groupValue: e),
+          )
+          .toList(),
     );
   }
 
@@ -1103,10 +1052,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Kullanıcı Seçiniz",
       groupValue: groupValue,
-      children:
-          list
-              ?.map((e) => BottomSheetModel(title: e.adi ?? "", value: e, groupValue: e.kodu, description: e.kodu))
-              .toList(),
+      children: list
+          ?.map((e) => BottomSheetModel(title: e.adi ?? "", value: e, groupValue: e.kodu, description: e.kodu))
+          .toList(),
     );
   }
 
@@ -1162,17 +1110,16 @@ final class BottomSheetDialogManager {
       context,
       title: "Aktivite Tipi Seçiniz",
       groupValue: groupValue,
-      children:
-          list
-              ?.map(
-                (e) => BottomSheetModel(
-                  title: e.aktiviteAdi ?? "",
-                  value: e,
-                  groupValue: e.aktiviteTipi,
-                  description: e.aktiviteTipi.toStringIfNotNull,
-                ),
-              )
-              .toList(),
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.aktiviteAdi ?? "",
+              value: e,
+              groupValue: e.aktiviteTipi,
+              description: e.aktiviteTipi.toStringIfNotNull,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -1186,8 +1133,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Özel Kod Seçiniz",
       groupValue: groupValue,
-      children:
-          list.map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e, groupValue: e.kod)).toList(),
+      children: list
+          .map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e, groupValue: e.kod))
+          .toList(),
     );
   }
 
@@ -1201,8 +1149,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Özel Kod Seçiniz",
       groupValue: groupValue,
-      children:
-          list.map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e, groupValue: e.kod)).toList(),
+      children: list
+          .map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e, groupValue: e.kod))
+          .toList(),
     );
   }
 
@@ -1224,19 +1173,17 @@ final class BottomSheetDialogManager {
       return await showBottomSheetDialog(
         context,
         title: "Belge Bağlantıları",
-        children:
-            list
-                .where((element) => filterText != null ? filterText.contains(element.belgeTipi) : true)
-                .map(
-                  (e) => BottomSheetModel(
-                    title:
-                        EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == e.belgeTipi)?.getName ??
-                        "",
-                    description: e.belgeNo ?? "",
-                    value: e,
-                  ),
-                )
-                .toList(),
+        children: list
+            .where((element) => filterText != null ? filterText.contains(element.belgeTipi) : true)
+            .map(
+              (e) => BottomSheetModel(
+                title:
+                    EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == e.belgeTipi)?.getName ?? "",
+                description: e.belgeNo ?? "",
+                value: e,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
@@ -1261,17 +1208,16 @@ final class BottomSheetDialogManager {
         context,
         title: "Özel Kod Seçiniz",
         groupValue: groupValue,
-        children:
-            list
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.aciklama ?? e.tipAdi ?? "",
-                    description: e.kod.toStringIfNotNull ?? "",
-                    value: e,
-                    groupValue: e.kod,
-                  ),
-                )
-                .toList(),
+        children: list
+            .map(
+              (e) => BottomSheetModel(
+                title: e.aciklama ?? e.tipAdi ?? "",
+                description: e.kod.toStringIfNotNull ?? "",
+                value: e,
+                groupValue: e.kod,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
@@ -1289,17 +1235,16 @@ final class BottomSheetDialogManager {
         context,
         title: "Banka Seçiniz",
         groupValue: groupValue,
-        children:
-            list
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.bankaadi ?? "",
-                    description: e.bankakodu ?? "",
-                    value: e,
-                    groupValue: e.bankakodu,
-                  ),
-                )
-                .toList(),
+        children: list
+            .map(
+              (e) => BottomSheetModel(
+                title: e.bankaadi ?? "",
+                description: e.bankakodu ?? "",
+                value: e,
+                groupValue: e.bankakodu,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
@@ -1322,17 +1267,16 @@ final class BottomSheetDialogManager {
         context,
         title: "Şube Seçiniz",
         groupValue: groupValue,
-        children:
-            list
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.subeadi ?? "",
-                    description: e.subekodu ?? "",
-                    value: e,
-                    groupValue: e.subekodu,
-                  ),
-                )
-                .toList(),
+        children: list
+            .map(
+              (e) => BottomSheetModel(
+                title: e.subeadi ?? "",
+                description: e.subekodu ?? "",
+                value: e,
+                groupValue: e.subekodu,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
@@ -1350,10 +1294,9 @@ final class BottomSheetDialogManager {
         context,
         title: "Stok Görüncek Alanlar",
         groupValues: checkedValues,
-        children:
-            stokGorunecekAlanlar.entries
-                .map((e) => BottomSheetModel(title: e.value, value: e.key, groupValue: e.key))
-                .toList(),
+        children: stokGorunecekAlanlar.entries
+            .map((e) => BottomSheetModel(title: e.value, value: e.key, groupValue: e.key))
+            .toList(),
       );
       if (result != null) {
         final Map<String, dynamic> resultMap = {};
@@ -1378,13 +1321,11 @@ final class BottomSheetDialogManager {
         context,
         title: "Referans Kod Seçiniz",
         groupValue: groupValue,
-        children:
-            list
-                .map(
-                  (e) =>
-                      BottomSheetModel(title: e.tanimi ?? "", description: e.kodu ?? "", value: e, groupValue: e.kodu),
-                )
-                .toList(),
+        children: list
+            .map(
+              (e) => BottomSheetModel(title: e.tanimi ?? "", description: e.kodu ?? "", value: e, groupValue: e.kodu),
+            )
+            .toList(),
       );
     }
     return null;
@@ -1402,17 +1343,16 @@ final class BottomSheetDialogManager {
         context,
         title: "Seri Kod Seçiniz",
         groupValue: groupValue,
-        children:
-            list
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.aciklama ?? "",
-                    description: e.seriNo ?? "",
-                    value: e,
-                    groupValue: e.seriNo,
-                  ),
-                )
-                .toList(),
+        children: list
+            .map(
+              (e) => BottomSheetModel(
+                title: e.aciklama ?? "",
+                description: e.seriNo ?? "",
+                value: e,
+                groupValue: e.seriNo,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
@@ -1448,10 +1388,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Kasa Seçiniz",
       groupValue: groupValue,
-      children:
-          list
-              .map((e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu))
-              .toList(),
+      children: list
+          .map((e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu))
+          .toList(),
     );
   }
 
@@ -1474,10 +1413,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Operatör Seçiniz",
       groupValue: groupValue,
-      children:
-          operatorList
-              ?.map((e) => BottomSheetModel(title: e.adiSoyadi ?? e.sicilno ?? "", value: e, groupValue: e.sicilno))
-              .toList(),
+      children: operatorList
+          ?.map((e) => BottomSheetModel(title: e.adiSoyadi ?? e.sicilno ?? "", value: e, groupValue: e.sicilno))
+          .toList(),
     );
   }
 
@@ -1490,10 +1428,9 @@ final class BottomSheetDialogManager {
       context,
       title: "Şartlı Kabul Seçiniz",
       groupValue: groupValue,
-      children:
-          sartliKabullerList
-              ?.map((e) => BottomSheetModel(title: e.tanimi ?? e.kodu ?? "", value: e, groupValue: e.kodu))
-              .toList(),
+      children: sartliKabullerList
+          ?.map((e) => BottomSheetModel(title: e.tanimi ?? e.kodu ?? "", value: e, groupValue: e.kodu))
+          .toList(),
     );
   }
 
@@ -1528,18 +1465,16 @@ final class BottomSheetDialogManager {
           context,
           groupValue: printModel.yaziciAdi,
           title: "Yazıcı Seçiniz",
-          children:
-              yaziciListe
-                  .map(
-                    (e) => BottomSheetModel(
-                      title: e.yaziciAdi ?? "",
-                      value: e,
-                      groupValue: e.yaziciAdi,
-                      descriptionWidget:
-                          e.yaziciTipi == "SEWOO_FIS" ? const ColorfulBadge(label: Text("SEWOO_FIS")) : null,
-                    ),
-                  )
-                  .toList(),
+          children: yaziciListe
+              .map(
+                (e) => BottomSheetModel(
+                  title: e.yaziciAdi ?? "",
+                  value: e,
+                  groupValue: e.yaziciAdi,
+                  descriptionWidget: e.yaziciTipi == "SEWOO_FIS" ? const ColorfulBadge(label: Text("SEWOO_FIS")) : null,
+                ),
+              )
+              .toList(),
         );
         if (result != null) {
           printModel = printModel.copyWith(
@@ -1582,17 +1517,16 @@ final class BottomSheetDialogManager {
           context,
           title: "Dizayn Seçiniz",
           groupValue: printModel.dizaynId,
-          children:
-              dizaynListe
-                  .map(
-                    (e) => BottomSheetModel(
-                      title: e?.dizaynAdi ?? "",
-                      value: e,
-                      groupValue: e?.id,
-                      description: e?.id.toStringIfNotNull,
-                    ),
-                  )
-                  .toList(),
+          children: dizaynListe
+              .map(
+                (e) => BottomSheetModel(
+                  title: e?.dizaynAdi ?? "",
+                  value: e,
+                  groupValue: e?.id,
+                  description: e?.id.toStringIfNotNull,
+                ),
+              )
+              .toList(),
         );
         if (result != null) {
           printModel = printModel.copyWith(dizaynId: result.id);

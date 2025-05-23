@@ -130,15 +130,14 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                     final double? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "KDV Oranları",
-                      children:
-                          viewModel.kdvOraniList
-                              ?.map(
-                                (element) => BottomSheetModel(
-                                  title: element.commaSeparatedWithDecimalDigits(OndalikEnum.oran),
-                                  value: element,
-                                ),
-                              )
-                              .toList(),
+                      children: viewModel.kdvOraniList
+                          ?.map(
+                            (element) => BottomSheetModel(
+                              title: element.commaSeparatedWithDecimalDigits(OndalikEnum.oran),
+                              value: element,
+                            ),
+                          )
+                          .toList(),
                     );
                     if (result != null) {
                       alisKdvOraniController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
@@ -262,15 +261,14 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                     final double? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "KDV Oranları",
-                      children:
-                          viewModel.kdvOraniList
-                              ?.map(
-                                (element) => BottomSheetModel(
-                                  title: element.commaSeparatedWithDecimalDigits(OndalikEnum.oran),
-                                  value: element,
-                                ),
-                              )
-                              .toList(),
+                      children: viewModel.kdvOraniList
+                          ?.map(
+                            (element) => BottomSheetModel(
+                              title: element.commaSeparatedWithDecimalDigits(OndalikEnum.oran),
+                              value: element,
+                            ),
+                          )
+                          .toList(),
                     );
                     if (result != null) {
                       satisKdvOraniController.text = result.toString();

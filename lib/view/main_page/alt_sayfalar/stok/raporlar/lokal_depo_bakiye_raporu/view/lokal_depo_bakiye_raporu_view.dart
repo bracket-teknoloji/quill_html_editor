@@ -87,11 +87,10 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
             text: "Sıfır Tutar Hariç",
             isVertical: true,
             child: Observer(
-              builder:
-                  (_) => Switch.adaptive(
-                    value: viewModel.sifirHaricValue,
-                    onChanged: (value) => viewModel.setSifirHaric(value),
-                  ),
+              builder: (_) => Switch.adaptive(
+                value: viewModel.sifirHaricValue,
+                onChanged: (value) => viewModel.setSifirHaric(value),
+              ),
             ),
           ),
           Row(
@@ -242,11 +241,10 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
     }
-    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList =
-        grupKodList
-            .where((e) => e.grupNo == grupNo)
-            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e, groupValue: e.grupKodu))
-            .toList();
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
+        .where((e) => e.grupNo == grupNo)
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e, groupValue: e.grupKodu))
+        .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<BaseGrupKoduModel>(
       context,

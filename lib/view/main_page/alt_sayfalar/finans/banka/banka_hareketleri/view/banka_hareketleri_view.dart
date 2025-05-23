@@ -40,11 +40,10 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
 
   AppBar get appBar => AppBar(
     title: Observer(
-      builder:
-          (_) => AppBarTitle(
-            title: "Banka Hareketleri (${viewModel.bankaHareketleriListesi?.length ?? 0})",
-            subtitle: widget.model.hesapKodu,
-          ),
+      builder: (_) => AppBarTitle(
+        title: "Banka Hareketleri (${viewModel.bankaHareketleriListesi?.length ?? 0})",
+        subtitle: widget.model.hesapKodu,
+      ),
     ),
   );
 
@@ -84,12 +83,11 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
                 ),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:
-                      [
-                        Text(model.hareketAciklama ?? "", style: const TextStyle(color: UIHelper.primaryColor)),
-                        if (model.belgeno != null) Text(model.belgeno ?? ""),
-                        Text(model.aciklama ?? "", style: const TextStyle(fontStyle: FontStyle.italic)),
-                      ].where((element) => element is! SizedBox).toList(),
+                  children: [
+                    Text(model.hareketAciklama ?? "", style: const TextStyle(color: UIHelper.primaryColor)),
+                    if (model.belgeno != null) Text(model.belgeno ?? ""),
+                    Text(model.aciklama ?? "", style: const TextStyle(fontStyle: FontStyle.italic)),
+                  ].where((element) => element is! SizedBox).toList(),
                 ),
               ),
             );
@@ -106,10 +104,9 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
         children: [
           const Text("Gelir"),
           Observer(
-            builder:
-                (_) => Text(
-                  "${(widget.model.dovizAdi != null ? viewModel.dovizGelenTutar : viewModel.gelenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
-                ),
+            builder: (_) => Text(
+              "${(widget.model.dovizAdi != null ? viewModel.dovizGelenTutar : viewModel.gelenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
+            ),
           ),
         ],
       ),
@@ -117,10 +114,9 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
         children: [
           const Text("Gider"),
           Observer(
-            builder:
-                (_) => Text(
-                  "${(widget.model.dovizAdi != null ? viewModel.dovizGidenTutar : viewModel.gidenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
-                ),
+            builder: (_) => Text(
+              "${(widget.model.dovizAdi != null ? viewModel.dovizGidenTutar : viewModel.gidenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
+            ),
           ),
         ],
       ),
@@ -128,11 +124,10 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
         children: [
           const Text("Bakiye"),
           Observer(
-            builder:
-                (_) => Text(
-                  "${(widget.model.dovizAdi != null ? viewModel.dovizBakiye : viewModel.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
-                  style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye)),
-                ),
+            builder: (_) => Text(
+              "${(widget.model.dovizAdi != null ? viewModel.dovizBakiye : viewModel.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
+              style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye)),
+            ),
           ),
         ],
       ),

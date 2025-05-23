@@ -91,16 +91,15 @@ abstract class _CariHareketleriViewModelBase
 
   @computed
   double get toplamBakiye {
-    final CariHareketleriModel? model =
-        filteredCariHareketleriList
-            ?.where(
-              (element) =>
-                  element.tarih ==
-                  filteredCariHareketleriList
-                      ?.map((e) => e.tarih)
-                      .reduce((value, element) => value!.isAfter(element!) ? value : element),
-            )
-            .firstOrNull;
+    final CariHareketleriModel? model = filteredCariHareketleriList
+        ?.where(
+          (element) =>
+              element.tarih ==
+              filteredCariHareketleriList
+                  ?.map((e) => e.tarih)
+                  .reduce((value, element) => value!.isAfter(element!) ? value : element),
+        )
+        .firstOrNull;
     if (cariListesiModel?.dovizKodu != null) {
       return model?.dovYuruyenBakiye ?? 0.0;
     } else {
@@ -142,12 +141,11 @@ abstract class _CariHareketleriViewModelBase
     final result = await networkManager.dioGet<CariHareketleriModel>(
       path: ApiUrls.getCariHareketleri,
       bodyModel: CariHareketleriModel(),
-      queryParameters:
-          CariHareketleriRequestModel(
-            siralama: siralama,
-            ekranTipi: "L",
-            cariKodu: cariListesiModel?.cariKodu,
-          ).toJson(),
+      queryParameters: CariHareketleriRequestModel(
+        siralama: siralama,
+        ekranTipi: "L",
+        cariKodu: cariListesiModel?.cariKodu,
+      ).toJson(),
     );
     if (result.isSuccess) {
       setObservableList(result.dataList);

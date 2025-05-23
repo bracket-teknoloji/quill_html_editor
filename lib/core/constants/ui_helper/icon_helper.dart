@@ -6,14 +6,13 @@ import "ui_helper.dart";
 final class IconHelper {
   //* Menu Items
   //*
-  static Widget bigMenuIcon(String path, {Color? color, IconData? iconData}) =>
-      iconData == null
-          ? SvgPicture.asset(
-            _getMenuIconPath(path),
-            height: 40,
-            colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),
-          )
-          : Icon(iconData, size: 24, color: color ?? Colors.white);
+  static Widget bigMenuIcon(String path, {Color? color, IconData? iconData}) => iconData == null
+      ? SvgPicture.asset(
+          _getMenuIconPath(path),
+          height: 40,
+          colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),
+        )
+      : Icon(iconData, size: 24, color: color ?? Colors.white);
   static SvgPicture middleMenuIcon(String path, {Color? color}) => SvgPicture.asset(
     _getMenuIconPath(path),
     height: 30,

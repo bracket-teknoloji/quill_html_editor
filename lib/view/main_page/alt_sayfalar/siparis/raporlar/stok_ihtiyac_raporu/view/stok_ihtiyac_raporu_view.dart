@@ -75,10 +75,30 @@ final class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
-            const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
-            const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
-            const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
             Row(
               children: [
                 const Expanded(child: CustomTextField()),

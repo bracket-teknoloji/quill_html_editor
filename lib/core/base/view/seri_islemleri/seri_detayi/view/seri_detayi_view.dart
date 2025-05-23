@@ -144,20 +144,19 @@ final class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
               children: [
                 Expanded(
                   child: Observer(
-                    builder:
-                        (_) => CustomTextField(
-                          labelText: "Son Kullanma Tarihi",
-                          controllerText: viewModel.seriModel.sonKullanmaTarihi.toDateStringIfNull,
-                          isDateTime: true,
-                          onTap: () async {
-                            final result = await dialogManager.showDateTimePicker(
-                              initialDate: viewModel.seriModel.sonKullanmaTarihi,
-                            );
-                            if (result is DateTime) {
-                              viewModel.setSonKullanmaTarihi(result);
-                            }
-                          },
-                        ),
+                    builder: (_) => CustomTextField(
+                      labelText: "Son Kullanma Tarihi",
+                      controllerText: viewModel.seriModel.sonKullanmaTarihi.toDateStringIfNull,
+                      isDateTime: true,
+                      onTap: () async {
+                        final result = await dialogManager.showDateTimePicker(
+                          initialDate: viewModel.seriModel.sonKullanmaTarihi,
+                        );
+                        if (result is DateTime) {
+                          viewModel.setSonKullanmaTarihi(result);
+                        }
+                      },
+                    ),
                   ),
                 ),
                 Expanded(

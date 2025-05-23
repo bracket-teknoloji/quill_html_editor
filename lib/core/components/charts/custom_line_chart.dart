@@ -35,98 +35,89 @@ final class _CustomLineChartState extends BaseState<CustomLineChart> {
   @override
   Widget build(BuildContext context) => AspectRatio(
     aspectRatio: 1.8,
-    child:
-        widget.lineChartValue.ext.isNotNullOrEmpty
-            ? LineChart(
-              LineChartData(
-                borderData: FlBorderData(show: false),
-                lineTouchData: LineTouchData(
-                  touchTooltipData: LineTouchTooltipData(
-                    getTooltipColor: (touchedSpot) => touchedSpot.bar.color ?? UIHelper.primaryColor,
-                    fitInsideHorizontally: true,
-                    fitInsideVertically: true,
-                    tooltipBorderRadius: BorderRadius.circular(8),
-                    getTooltipItems:
-                        (touchedBarSpots) =>
-                            touchedBarSpots.map((barSpot) {
-                              final flSpot = barSpot;
-                              return LineTooltipItem(
-                                flSpot.y.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-                                const TextStyle(fontWeight: FontWeight.w900),
-                                children: [
-                                  TextSpan(
-                                    text: " $mainCurrency",
-                                    style: const TextStyle(fontWeight: FontWeight.normal),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
-                    rotateAngle: 0.5,
-                    tooltipPadding: const EdgeInsets.all(5),
-                  ),
+    child: widget.lineChartValue.ext.isNotNullOrEmpty
+        ? LineChart(
+            LineChartData(
+              borderData: FlBorderData(show: false),
+              lineTouchData: LineTouchData(
+                touchTooltipData: LineTouchTooltipData(
+                  getTooltipColor: (touchedSpot) => touchedSpot.bar.color ?? UIHelper.primaryColor,
+                  fitInsideHorizontally: true,
+                  fitInsideVertically: true,
+                  tooltipBorderRadius: BorderRadius.circular(8),
+                  getTooltipItems: (touchedBarSpots) => touchedBarSpots.map((barSpot) {
+                    final flSpot = barSpot;
+                    return LineTooltipItem(
+                      flSpot.y.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                      const TextStyle(fontWeight: FontWeight.w900),
+                      children: [
+                        TextSpan(
+                          text: " $mainCurrency",
+                          style: const TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    );
+                  }).toList(),
+                  rotateAngle: 0.5,
+                  tooltipPadding: const EdgeInsets.all(5),
                 ),
-                titlesData: FlTitlesData(
-                  topTitles: AxisTitles(
-                    sideTitles: SideTitles(showTitles: true, getTitlesWidget: topTitleWidgets, interval: 1),
-                  ),
-                  bottomTitles: AxisTitles(
-                    sideTitles: SideTitles(showTitles: true, getTitlesWidget: bottomTitleWidgets, interval: 1),
-                  ),
-                  rightTitles: const AxisTitles(axisNameWidget: Text("")),
-                  leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: leftTitleWidgets)),
-                ),
-                minX: 0,
-                maxX: (widget.lineChartValue?.length.toDouble() ?? 0) - 1,
-                minY: 0,
-                lineBarsData: [
-                  LineChartBarData(
-                    spots:
-                        widget.lineChartValue.ext.isNotNullOrEmpty
-                            ? List.generate(
-                              widget.lineChartValue?.length ?? 0,
-                              (index) => FlSpot(index.toDouble(), widget.lineChartValue?[index] ?? 0),
-                            )
-                            : [],
-                    preventCurveOverShooting: true,
-                    isCurved: true,
-                    curveSmoothness: 0.5,
-                    isStrokeJoinRound: true,
-                    gradient: LinearGradient(
-                      colors: Colors.primaries.sublist(
-                        0,
-                        (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length,
-                      ),
-                    ),
-                    isStrokeCapRound: true,
-                    dotData: FlDotData(
-                      getDotPainter:
-                          (spot, xPercentage, bar, index) => FlDotCirclePainter(
-                            radius: 4,
-                            color: Colors.transparent,
-                            strokeWidth: 2,
-                            strokeColor: Colors.primaries[index],
-                          ),
-                    ),
-                    belowBarData: BarAreaData(
-                      show: true,
-                      gradient: LinearGradient(
-                        end: Alignment.topRight,
-                        colors:
-                            Colors.primaries
-                                .sublist(
-                                  0,
-                                  (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length,
-                                )
-                                .map((e) => e.withValues(alpha: 0.3))
-                                .toList(),
-                      ),
-                    ),
-                  ),
-                ],
               ),
-              duration: DurationHelper.durationLow,
-            )
-            : const SizedBox.shrink(),
+              titlesData: FlTitlesData(
+                topTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: true, getTitlesWidget: topTitleWidgets, interval: 1),
+                ),
+                bottomTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: true, getTitlesWidget: bottomTitleWidgets, interval: 1),
+                ),
+                rightTitles: const AxisTitles(axisNameWidget: Text("")),
+                leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: leftTitleWidgets)),
+              ),
+              minX: 0,
+              maxX: (widget.lineChartValue?.length.toDouble() ?? 0) - 1,
+              minY: 0,
+              lineBarsData: [
+                LineChartBarData(
+                  spots: widget.lineChartValue.ext.isNotNullOrEmpty
+                      ? List.generate(
+                          widget.lineChartValue?.length ?? 0,
+                          (index) => FlSpot(index.toDouble(), widget.lineChartValue?[index] ?? 0),
+                        )
+                      : [],
+                  preventCurveOverShooting: true,
+                  isCurved: true,
+                  curveSmoothness: 0.5,
+                  isStrokeJoinRound: true,
+                  gradient: LinearGradient(
+                    colors: Colors.primaries.sublist(
+                      0,
+                      (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length,
+                    ),
+                  ),
+                  isStrokeCapRound: true,
+                  dotData: FlDotData(
+                    getDotPainter: (spot, xPercentage, bar, index) => FlDotCirclePainter(
+                      radius: 4,
+                      color: Colors.transparent,
+                      strokeWidth: 2,
+                      strokeColor: Colors.primaries[index],
+                    ),
+                  ),
+                  belowBarData: BarAreaData(
+                    show: true,
+                    gradient: LinearGradient(
+                      end: Alignment.topRight,
+                      colors: Colors.primaries
+                          .sublist(0, (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length)
+                          .map((e) => e.withValues(alpha: 0.3))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            duration: DurationHelper.durationLow,
+          )
+        : const SizedBox.shrink(),
   );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {

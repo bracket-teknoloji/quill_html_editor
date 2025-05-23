@@ -51,57 +51,50 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
   Widget build(BuildContext context) => BaseScaffold(
     floatingActionButton: yetkiController.stokBarkodEkle ? fab() : null,
     body: Observer(
-      builder:
-          (_) => RefreshableListView<BarkodTanimlaKayitlariModel>(
-            onRefresh: viewModel.getData,
-            items: viewModel.barkodTanimlaKayitlari,
-            itemBuilder:
-                (item) => Card(
-                  child: ListTile(
-                    onTap: () async {
-                      bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: item.barkod ?? "",
-                        children: [
-                          if (yetkiController.stokBarkodSil)
-                            BottomSheetModel(
-                              title: loc.generalStrings.delete,
-                              iconWidget: Icons.delete_outline_outlined,
-                              onTap: () {
-                                Get.back();
-                                dialogManager.showAreYouSureDialog(
-                                  onYes: () async {
-                                    final result = await viewModel.deleteItem(item);
-                                    if (result) {
-                                      dialogManager.showSuccessSnackBar(
-                                        "${item.barkod} barkodlu kayıt başarıyla silindi.",
-                                      );
-                                      await viewModel.getData();
-                                    }
-                                  },
-                                );
-                              },
-                            ),
-                        ],
-                      );
-                    },
-                    title: Text("Barkod: ${item.barkod}"),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomLayoutBuilder(
-                          splitCount: 2,
-                          children: [
-                            Text("Birim: ${item.birimAdi}"),
-                            Text("Tipi: ${item.barkodTipi}-${item.barkodTipiAdi}"),
-                          ],
-                        ),
-                        if (item.aciklama != null) Text("Açıklama: ${item.aciklama}"),
-                      ],
+      builder: (_) => RefreshableListView<BarkodTanimlaKayitlariModel>(
+        onRefresh: viewModel.getData,
+        items: viewModel.barkodTanimlaKayitlari,
+        itemBuilder: (item) => Card(
+          child: ListTile(
+            onTap: () async {
+              bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: item.barkod ?? "",
+                children: [
+                  if (yetkiController.stokBarkodSil)
+                    BottomSheetModel(
+                      title: loc.generalStrings.delete,
+                      iconWidget: Icons.delete_outline_outlined,
+                      onTap: () {
+                        Get.back();
+                        dialogManager.showAreYouSureDialog(
+                          onYes: () async {
+                            final result = await viewModel.deleteItem(item);
+                            if (result) {
+                              dialogManager.showSuccessSnackBar("${item.barkod} barkodlu kayıt başarıyla silindi.");
+                              await viewModel.getData();
+                            }
+                          },
+                        );
+                      },
                     ),
-                  ),
+                ],
+              );
+            },
+            title: Text("Barkod: ${item.barkod}"),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomLayoutBuilder(
+                  splitCount: 2,
+                  children: [Text("Birim: ${item.birimAdi}"), Text("Tipi: ${item.barkodTipi}-${item.barkodTipiAdi}")],
                 ),
+                if (item.aciklama != null) Text("Açıklama: ${item.aciklama}"),
+              ],
+            ),
           ),
+        ),
+      ),
     ),
   );
 

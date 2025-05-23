@@ -45,11 +45,10 @@ final class _HucreListesiViewState extends BaseState<HucreListesiView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(
-              title: "Hücre Listesi",
-              subtitle: (viewModel.filteredHucreListesi?.length ?? 0).toStringIfNotNull,
-            ),
+        builder: (_) => AppBarTitle(
+          title: "Hücre Listesi",
+          subtitle: (viewModel.filteredHucreListesi?.length ?? 0).toStringIfNotNull,
+        ),
       ),
     ),
     body: Column(
@@ -71,12 +70,11 @@ final class _HucreListesiViewState extends BaseState<HucreListesiView> {
         ),
         Expanded(
           child: Observer(
-            builder:
-                (_) => RefreshableListView(
-                  onRefresh: viewModel.getData,
-                  items: viewModel.filteredHucreListesi,
-                  itemBuilder: hucreCard,
-                ),
+            builder: (_) => RefreshableListView(
+              onRefresh: viewModel.getData,
+              items: viewModel.filteredHucreListesi,
+              itemBuilder: hucreCard,
+            ),
           ),
         ),
       ],

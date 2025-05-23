@@ -21,10 +21,9 @@ abstract class BaseTalepTeklifKalemlerViewModelBase with Store {
 
   @action
   void updateKalemList() {
-    kalemList =
-        List.generate(
-          BaseSiparisEditModel.instance.kalemList?.length ?? 0,
-          (index) => BaseSiparisEditModel.instance.kalemList?[index]?..sira = index + 1,
-        ).nullCheckWithGeneric.asObservable();
+    kalemList = List.generate(
+      BaseSiparisEditModel.instance.kalemList?.length ?? 0,
+      (index) => BaseSiparisEditModel.instance.kalemList?[index]?..sira = index + 1,
+    ).nullCheckWithGeneric.asObservable();
   }
 }

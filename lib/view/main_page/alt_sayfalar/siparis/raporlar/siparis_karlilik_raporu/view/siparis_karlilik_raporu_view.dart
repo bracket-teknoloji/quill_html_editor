@@ -222,10 +222,9 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
             CustomTextField(
               labelText: "Hariç Stok Grup Kodları",
               suffix: IconButton(
-                onPressed:
-                    () => dialogManager.showInfoDialog(
-                      "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
-                    ),
+                onPressed: () => dialogManager.showInfoDialog(
+                  "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
+                ),
                 icon: const Icon(Icons.info_outline, color: UIHelper.primaryColor),
               ),
               controller: haricStokGrupKodlariController,
@@ -234,11 +233,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
               text: "Üretim Fiyatı Dahil",
               isVertical: true,
               child: Observer(
-                builder:
-                    (_) => Switch.adaptive(
-                      value: viewModel.uretimFiyatiDahilMi,
-                      onChanged: (value) => viewModel.setUretimFiyatiDahilMi(value ? "E" : "H"),
-                    ),
+                builder: (_) => Switch.adaptive(
+                  value: viewModel.uretimFiyatiDahilMi,
+                  onChanged: (value) => viewModel.setUretimFiyatiDahilMi(value ? "E" : "H"),
+                ),
               ),
             ),
             ElevatedButton(

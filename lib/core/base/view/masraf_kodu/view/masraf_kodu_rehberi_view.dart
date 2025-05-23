@@ -37,19 +37,14 @@ final class _MasrafKoduRehberiViewState extends State<MasrafKoduRehberiView> {
 
   AppBar appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) =>
-              viewModel.isSearchBarOpen
-                  ? CustomAppBarTextField(
-                    onFieldSubmitted: (value) async {
-                      viewModel.setSearchText(value);
-                      await viewModel.resetList();
-                    },
-                  )
-                  : AppBarTitle(
-                    title: "Masraf Kodu Rehberi",
-                    subtitle: viewModel.observableList?.length.toStringIfNotNull,
-                  ),
+      builder: (_) => viewModel.isSearchBarOpen
+          ? CustomAppBarTextField(
+              onFieldSubmitted: (value) async {
+                viewModel.setSearchText(value);
+                await viewModel.resetList();
+              },
+            )
+          : AppBarTitle(title: "Masraf Kodu Rehberi", subtitle: viewModel.observableList?.length.toStringIfNotNull),
     ),
     actions: [
       IconButton(
@@ -62,14 +57,13 @@ final class _MasrafKoduRehberiViewState extends State<MasrafKoduRehberiView> {
   );
 
   Widget body() => Observer(
-    builder:
-        (_) => RefreshableListView.pageable(
-          onRefresh: viewModel.resetList,
-          scrollController: _scrollController,
-          dahaVarMi: viewModel.dahaVarMi,
-          items: viewModel.observableList,
-          itemBuilder: masrafKoduCard,
-        ),
+    builder: (_) => RefreshableListView.pageable(
+      onRefresh: viewModel.resetList,
+      scrollController: _scrollController,
+      dahaVarMi: viewModel.dahaVarMi,
+      items: viewModel.observableList,
+      itemBuilder: masrafKoduCard,
+    ),
   );
 
   Card masrafKoduCard(MasrafKoduRehberiModel item) => Card(

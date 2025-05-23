@@ -13,8 +13,8 @@ final class CariAktiviteDetayViewModel = _CariAktiviteDetayViewModelBase with _$
 
 abstract class _CariAktiviteDetayViewModelBase with Store, MobxNetworkMixin {
   @observable
-  ObservableList<CariAktiviteListesiModel> aktiviteList =
-      (SingletonModels.cariAktiviteListesi?.listDetay ?? []).asObservable();
+  ObservableList<CariAktiviteListesiModel> aktiviteList = (SingletonModels.cariAktiviteListesi?.listDetay ?? [])
+      .asObservable();
 
   @action
   void addAktivite(CariAktiviteListesiModel value) {

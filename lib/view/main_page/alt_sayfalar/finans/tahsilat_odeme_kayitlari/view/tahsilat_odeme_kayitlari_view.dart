@@ -115,19 +115,18 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
   );
 
   Observer fab() => Observer(
-    builder:
-        (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async {
-            await dialogManager.showOdemeTahsilatGridViewDialog(
-              onSelected: (p0) {
-                if (p0) {
-                  viewModel.resetPage();
-                }
-              },
-            );
+    builder: (_) => CustomFloatingActionButton(
+      isScrolledDown: viewModel.isScrollDown,
+      onPressed: () async {
+        await dialogManager.showOdemeTahsilatGridViewDialog(
+          onSelected: (p0) {
+            if (p0) {
+              viewModel.resetPage();
+            }
           },
-        ),
+        );
+      },
+    ),
   );
 
   Column body() => Column(
@@ -147,27 +146,25 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
         child: RefreshIndicator.adaptive(
           onRefresh: () async => await viewModel.resetPage(),
           child: Observer(
-            builder:
-                (_) =>
-                    viewModel.getCariHareketleriListesi == null
-                        ? const Center(child: CircularProgressIndicator.adaptive())
-                        : viewModel.getCariHareketleriListesi.ext.isNullOrEmpty
-                        ? const Center(child: Text("Veri bulunamadı"))
-                        : ListView.builder(
-                          padding: UIHelper.lowPadding,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          controller: _scrollController,
-                          itemCount: viewModel.getCariHareketleriListesi?.length,
-                          itemBuilder: (context, index) {
-                            final CariHareketleriModel item = viewModel.getCariHareketleriListesi![index];
-                            return TahsilatOdemeKayitlariCard(
-                              cariHareketleriModel: item,
-                              update: (value) async {
-                                await viewModel.resetPage();
-                              },
-                            );
-                          },
-                        ),
+            builder: (_) => viewModel.getCariHareketleriListesi == null
+                ? const Center(child: CircularProgressIndicator.adaptive())
+                : viewModel.getCariHareketleriListesi.ext.isNullOrEmpty
+                ? const Center(child: Text("Veri bulunamadı"))
+                : ListView.builder(
+                    padding: UIHelper.lowPadding,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    controller: _scrollController,
+                    itemCount: viewModel.getCariHareketleriListesi?.length,
+                    itemBuilder: (context, index) {
+                      final CariHareketleriModel item = viewModel.getCariHareketleriListesi![index];
+                      return TahsilatOdemeKayitlariCard(
+                        cariHareketleriModel: item,
+                        update: (value) async {
+                          await viewModel.resetPage();
+                        },
+                      );
+                    },
+                  ),
           ),
         ),
       ),
@@ -175,52 +172,49 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
   );
 
   Observer bottomAppBar() => Observer(
-    builder:
-        (_) => BottomBarWidget(
-          isScrolledDown: viewModel.isScrollDown,
+    builder: (_) => BottomBarWidget(
+      isScrolledDown: viewModel.isScrollDown,
+      children: [
+        FooterButton(
           children: [
-            FooterButton(
-              children: [
-                const Text("Tahsilat"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        "${viewModel.toplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.mantis),
-                      ),
-                ),
-              ],
-              onPressed: () {
-                if (viewModel.cariHareketleriRequestModel.ba == "A") {
-                  viewModel.setIslemTuru(null);
-                } else {
-                  viewModel.setIslemTuru(1);
-                }
-                viewModel.resetPage();
-              },
-            ),
-            FooterButton(
-              children: [
-                const Text("Ödeme"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        "${viewModel.toplamOdeme.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.persianRed),
-                      ),
-                ),
-              ],
-              onPressed: () {
-                if (viewModel.cariHareketleriRequestModel.ba == "B") {
-                  viewModel.setIslemTuru(null);
-                } else {
-                  viewModel.setIslemTuru(2);
-                }
-                viewModel.resetPage();
-              },
+            const Text("Tahsilat"),
+            Observer(
+              builder: (_) => Text(
+                "${viewModel.toplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.mantis),
+              ),
             ),
           ],
+          onPressed: () {
+            if (viewModel.cariHareketleriRequestModel.ba == "A") {
+              viewModel.setIslemTuru(null);
+            } else {
+              viewModel.setIslemTuru(1);
+            }
+            viewModel.resetPage();
+          },
         ),
+        FooterButton(
+          children: [
+            const Text("Ödeme"),
+            Observer(
+              builder: (_) => Text(
+                "${viewModel.toplamOdeme.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.persianRed),
+              ),
+            ),
+          ],
+          onPressed: () {
+            if (viewModel.cariHareketleriRequestModel.ba == "B") {
+              viewModel.setIslemTuru(null);
+            } else {
+              viewModel.setIslemTuru(2);
+            }
+            viewModel.resetPage();
+          },
+        ),
+      ],
+    ),
   );
 
   Future<void> filter() async {
@@ -230,13 +224,12 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
   Widget get filterBody => Column(
     children: [
       Observer(
-        builder:
-            (_) => SlideControllerWidget(
-              childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
-              filterOnChanged: viewModel.setIslemTuru,
-              childrenValueList: viewModel.hesapTipiMap.values.toList(),
-              groupValue: viewModel.cariHareketleriRequestModel.ba,
-            ),
+        builder: (_) => SlideControllerWidget(
+          childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
+          filterOnChanged: viewModel.setIslemTuru,
+          childrenValueList: viewModel.hesapTipiMap.values.toList(),
+          groupValue: viewModel.cariHareketleriRequestModel.ba,
+        ),
       ),
       CustomTextField(
         labelText: "Cari",

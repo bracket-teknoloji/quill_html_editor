@@ -12,13 +12,12 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
   Computed<double>? _$toplamPaketMiktariComputed;
 
   @override
-  double get toplamPaketMiktari => (_$toplamPaketMiktariComputed ??=
-          Computed<double>(() => super.toplamPaketMiktari,
-              name: '_PaketIcerigiViewModelBase.toplamPaketMiktari'))
-      .value;
+  double get toplamPaketMiktari => (_$toplamPaketMiktariComputed ??= Computed<double>(
+    () => super.toplamPaketMiktari,
+    name: '_PaketIcerigiViewModelBase.toplamPaketMiktari',
+  )).value;
 
-  late final _$observableListAtom =
-      Atom(name: '_PaketIcerigiViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(name: '_PaketIcerigiViewModelBase.observableList', context: context);
 
   @override
   ObservableList<PaketIcerigiModel>? get observableList {
@@ -33,8 +32,7 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_PaketIcerigiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_PaketIcerigiViewModelBase.requestModel', context: context);
 
   @override
   PaketlemeListesiRequestModel get requestModel {
@@ -49,31 +47,30 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_PaketIcerigiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_PaketIcerigiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$deleteItemAsyncAction =
-      AsyncAction('_PaketIcerigiViewModelBase.deleteItem', context: context);
+  late final _$deleteItemAsyncAction = AsyncAction('_PaketIcerigiViewModelBase.deleteItem', context: context);
 
   @override
-  Future<GenericResponseModel<PaketIcerigiModel>> deleteItem(
-      {int? id, int? paketID}) {
-    return _$deleteItemAsyncAction
-        .run(() => super.deleteItem(id: id, paketID: paketID));
+  Future<GenericResponseModel<PaketIcerigiModel>> deleteItem({int? id, int? paketID}) {
+    return _$deleteItemAsyncAction.run(() => super.deleteItem(id: id, paketID: paketID));
   }
 
-  late final _$_PaketIcerigiViewModelBaseActionController =
-      ActionController(name: '_PaketIcerigiViewModelBase', context: context);
+  late final _$_PaketIcerigiViewModelBaseActionController = ActionController(
+    name: '_PaketIcerigiViewModelBase',
+    context: context,
+  );
 
   @override
   void setPaketID(int id) {
-    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController
-        .startAction(name: '_PaketIcerigiViewModelBase.setPaketID');
+    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController.startAction(
+      name: '_PaketIcerigiViewModelBase.setPaketID',
+    );
     try {
       return super.setPaketID(id);
     } finally {
@@ -83,8 +80,9 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
 
   @override
   void setObservableList(List<PaketIcerigiModel>? list) {
-    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController
-        .startAction(name: '_PaketIcerigiViewModelBase.setObservableList');
+    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController.startAction(
+      name: '_PaketIcerigiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {

@@ -104,26 +104,25 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
     builder: (_) {
       if (viewModel.pdfFile != null) {
         return Observer(
-          builder:
-              (_) => SfPdfViewer.file(
-                viewModel.pdfFile!,
-                controller: pdfViewerController,
-                onTextSelectionChanged: (details) {
-                  if (kIsWeb) {
-                    return;
-                  }
-                  if (Platform.isAndroid || Platform.isIOS) {
-                    if (details.selectedText == null && overlayEntry != null) {
-                      overlayEntry?.remove();
-                      overlayEntry = null;
-                    } else if (details.selectedText != null && overlayEntry == null) {
-                      showContextMenu(context, details);
-                    }
-                  }
-                },
-                onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
-                onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
-              ),
+          builder: (_) => SfPdfViewer.file(
+            viewModel.pdfFile!,
+            controller: pdfViewerController,
+            onTextSelectionChanged: (details) {
+              if (kIsWeb) {
+                return;
+              }
+              if (Platform.isAndroid || Platform.isIOS) {
+                if (details.selectedText == null && overlayEntry != null) {
+                  overlayEntry?.remove();
+                  overlayEntry = null;
+                } else if (details.selectedText != null && overlayEntry == null) {
+                  showContextMenu(context, details);
+                }
+              }
+            },
+            onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+            onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+          ),
         );
       } else {
         return const Center(child: CircularProgressIndicator.adaptive());
@@ -191,20 +190,19 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
   void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
     final OverlayState overlayState = Overlay.of(context);
     overlayEntry = OverlayEntry(
-      builder:
-          (context) => Positioned(
-            top: details.globalSelectedRegion!.center.dy - 55,
-            left: details.globalSelectedRegion!.bottomLeft.dx,
-            child: ElevatedButton(
-              onPressed: () {
-                Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
-                dialogManager.showSuccessSnackBar("Kopyalandı");
-                pdfViewerController.clearSelection();
-                overlayEntry?.remove();
-              },
-              child: const Text("Kopyala"),
-            ),
-          ),
+      builder: (context) => Positioned(
+        top: details.globalSelectedRegion!.center.dy - 55,
+        left: details.globalSelectedRegion!.bottomLeft.dx,
+        child: ElevatedButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
+            dialogManager.showSuccessSnackBar("Kopyalandı");
+            pdfViewerController.clearSelection();
+            overlayEntry?.remove();
+          },
+          child: const Text("Kopyala"),
+        ),
+      ),
     );
     if (overlayEntry != null) {
       overlayState.insert(overlayEntry!);

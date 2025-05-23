@@ -37,7 +37,9 @@ final class _FiyatOzetiViewState extends State<FiyatOzetiView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
-  AppBar appBar() => AppBar(title: AppBarTitle(title: "Fiyat Özeti", subtitle: widget.model.stokKodu));
+  AppBar appBar() => AppBar(
+    title: AppBarTitle(title: "Fiyat Özeti", subtitle: widget.model.stokKodu),
+  );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
     onRefresh: () async {

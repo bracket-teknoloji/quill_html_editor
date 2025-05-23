@@ -151,7 +151,10 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
         itemCount: dahaVarMi ? items!.length + 1 : items!.length,
         itemBuilder: (context, index) {
           if (index == items!.length) {
-            return Visibility(visible: dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive()));
+            return Visibility(
+              visible: dahaVarMi,
+              child: const Center(child: CircularProgressIndicator.adaptive()),
+            );
           }
           return itemBuilder(items![index]);
         },

@@ -6,13 +6,10 @@ part of 'dekont_duzenle_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DekontDuzenleRequestModelImpl _$$DekontDuzenleRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$DekontDuzenleRequestModelImpl _$$DekontDuzenleRequestModelImplFromJson(Map<String, dynamic> json) =>
     _$DekontDuzenleRequestModelImpl(
       inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       seriNo: json['SERI_NO'] as String?,
       dekontNo: (json['DEKONT_NO'] as num?)?.toInt(),
       siraNo: (json['SIRA_NO'] as num?)?.toInt(),
@@ -37,8 +34,7 @@ _$DekontDuzenleRequestModelImpl _$$DekontDuzenleRequestModelImplFromJson(
       cariAdi: json['CARI_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$DekontDuzenleRequestModelImplToJson(
-        _$DekontDuzenleRequestModelImpl instance) =>
+Map<String, dynamic> _$$DekontDuzenleRequestModelImplToJson(_$DekontDuzenleRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.inckeyno case final value?) 'INCKEYNO': value,
       if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
@@ -47,8 +43,7 @@ Map<String, dynamic> _$$DekontDuzenleRequestModelImplToJson(
       if (instance.siraNo case final value?) 'SIRA_NO': value,
       if (instance.ba case final value?) 'BA': value,
       if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
-      if (instance.hesapTipiAciklama case final value?)
-        'HESAP_TIPI_ACIKLAMA': value,
+      if (instance.hesapTipiAciklama case final value?) 'HESAP_TIPI_ACIKLAMA': value,
       if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
       if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
       if (instance.tutar case final value?) 'TUTAR': value,
@@ -58,12 +53,10 @@ Map<String, dynamic> _$$DekontDuzenleRequestModelImplToJson(
       if (instance.aciklama case final value?) 'ACIKLAMA': value,
       if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
       if (instance.refkey case final value?) 'REFKEY': value,
-      if (instance.plasiyerAciklama case final value?)
-        'PLASIYER_ACIKLAMA': value,
+      if (instance.plasiyerAciklama case final value?) 'PLASIYER_ACIKLAMA': value,
       if (instance.depoKodu case final value?) 'DEPO_KODU': value,
       if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
-      if (instance.muhasebeHesapTipi case final value?)
-        'MUHASEBE_HESAP_TIPI': value,
+      if (instance.muhasebeHesapTipi case final value?) 'MUHASEBE_HESAP_TIPI': value,
       if (instance.belgeNo case final value?) 'BELGE_NO': value,
       if (instance.exportRefno case final value?) 'EXPORT_REFNO': value,
       if (instance.cariAdi case final value?) 'CARI_ADI': value,

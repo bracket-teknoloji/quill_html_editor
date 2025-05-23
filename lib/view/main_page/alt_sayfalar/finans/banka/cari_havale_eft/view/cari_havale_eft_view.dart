@@ -163,11 +163,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     if (result.paramData?["CAHAR_INCKEY"] != null && yetkiController.ozelHesapKapatmaIslemi) {
                       await Get.toNamed(
                         "mainPage/ozelHesapKapatma",
-                        arguments:
-                            viewModel.cariModel
-                              ?..alacakToplami = viewModel.model.tutar
-                              ..ozelKapatmaIncKey = int.tryParse(result.paramData?["CAHAR_INCKEY"])
-                              ..aciklama1 = viewModel.model.aciklama,
+                        arguments: viewModel.cariModel
+                          ?..alacakToplami = viewModel.model.tutar
+                          ..ozelKapatmaIncKey = int.tryParse(result.paramData?["CAHAR_INCKEY"])
+                          ..aciklama1 = viewModel.model.aciklama,
                       );
                     }
                     Get.back(result: result.isSuccess);
@@ -184,400 +183,382 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
       child: Form(
         key: _formKey,
         child: Observer(
-          builder:
-              (_) => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          builder: (_) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LayoutBuilder(
+                builder: (context, constraints) => Observer(
+                  builder: (_) => ToggleButtons(
+                    constraints: BoxConstraints.expand(width: constraints.maxWidth / 2 - 2),
+                    isSelected: [(viewModel.model.cariyiBorclandir == null), viewModel.model.cariyiBorclandir ?? false],
+                    onPressed: setGirisCikis,
+                    children: const [Text("Bankaya Para Girişi"), Text("Bankadan Para Çıkışı")],
+                  ),
+                ),
+              ).paddingAll(UIHelper.lowSize),
+              Row(
                 children: [
-                  LayoutBuilder(
-                    builder:
-                        (context, constraints) => Observer(
-                          builder:
-                              (_) => ToggleButtons(
-                                constraints: BoxConstraints.expand(width: constraints.maxWidth / 2 - 2),
-                                isSelected: [
-                                  (viewModel.model.cariyiBorclandir == null),
-                                  viewModel.model.cariyiBorclandir ?? false,
-                                ],
-                                onPressed: setGirisCikis,
-                                children: const [Text("Bankaya Para Girişi"), Text("Bankadan Para Çıkışı")],
-                              ),
-                        ),
-                  ).paddingAll(UIHelper.lowSize),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Tarih",
-                          controller: _tarihController,
-                          isMust: true,
-                          readOnly: true,
-                          isDateTime: true,
-                          onTap: () async {
-                            final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
-                            if (result != null) {
-                              viewModel.setTarih(result);
-                              _tarihController.text = viewModel.model.tarih?.toDateStringIfNull ?? "";
-                            }
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Dekont No",
-                          controller: _dekontNoController,
-                          onChanged: viewModel.setDekontNo,
-                        ),
-                      ),
-                    ],
-                  ),
-                  CustomTextField(
-                    labelText: "Hesap",
-                    controller: _hesapController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
-                    onTap: getHesapListesi,
-                  ),
-                  CustomTextField(
-                    labelText: "Cari",
-                    controller: _cariController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    suffix: IconButton(
-                      onPressed: () {
-                        if (viewModel.cariModel != null) {
-                          dialogManager.showCariIslemleriGridViewDialog(viewModel.cariModel);
-                        } else {
-                          dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
-                        }
-                      },
-                      icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                    ),
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
-                    onTap: () async => getCari(),
-                  ),
-                  Observer(
-                    builder:
-                        (_) =>
-                            viewModel.cariModel != null
-                                ? Text(
-                                  "Bakiye: ${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${viewModel.cariModel?.dovizAdi ?? mainCurrency} ${(viewModel.cariModel?.bakiye ?? 0) > 0
-                                      ? "(Tahsil Edilecek)"
-                                      : (viewModel.cariModel?.bakiye ?? 0) < 0
-                                      ? "(Ödenecek)"
-                                      : ""}",
-                                  style: TextStyle(
-                                    color:
-                                        (viewModel.cariModel?.bakiye ?? 0) > 0
-                                            ? ColorPalette.mantis
-                                            : ColorPalette.persianRed,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ).paddingAll(UIHelper.lowSize)
-                                : const SizedBox.shrink(),
-                  ),
-                  if (viewModel.model.cariyiBorclandir ?? false)
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "TCMB Banka Kodu",
-                            controller: _tcmbBankaKoduController,
-                            onClear: () => viewModel.setTCMBBankaKodu(null),
-                            onChanged: viewModel.setTCMBBankaKodu,
-                            // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbBankaKodu ?? "")),
-                            suffix: IconButton(
-                              onPressed: () async {
-                                final result = await bottomSheetDialogManager.showTcmbBankalarBottomSheetDialog(
-                                  context,
-                                  viewModel.model.tcmbBankaKodu,
-                                );
-                                if (result != null) {
-                                  _tcmbBankaKoduController.text = result.bankakodu ?? "";
-                                  viewModel.setTCMBBankaKodu(result.bankakodu);
-                                }
-                              },
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "TCMB Şube Kodu",
-                            controller: _tcmbSubeKoduController,
-                            onClear: () => viewModel.setTCMBSubeKodu(null),
-                            onChanged: viewModel.setTCMBSubeKodu,
-                            // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbSubeKodu ?? "")),
-                            suffix: IconButton(
-                              onPressed: () async {
-                                if (_tcmbBankaKoduController.text == "") {
-                                  dialogManager.showErrorSnackBar("TCMB Banka Kodu seçiniz.");
-                                  return;
-                                }
-                                final result = await bottomSheetDialogManager.showTcmbSubelerBottomSheetDialog(
-                                  context,
-                                  viewModel.model.tcmbBankaKodu,
-                                  viewModel.model.tcmbSubeKodu,
-                                );
-                                if (result != null) {
-                                  _tcmbSubeKoduController.text = result.subekodu ?? "";
-                                  viewModel.setTCMBSubeKodu(result.subekodu);
-                                }
-                              },
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  if (viewModel.model.cariyiBorclandir ?? false)
-                    CustomTextField(
-                      labelText: "Banka Hesap No",
-                      controller: _bankaHesapNoController,
-                      onChanged: viewModel.setBankaHesapNo,
-                    ),
-                  if (viewModel.model.cariyiBorclandir ?? false)
-                    CustomTextField(labelText: "IBAN", controller: _ibanController, onChanged: viewModel.setIBAN),
-                  Row(
-                    children: [
-                      if (viewModel.cariModel?.dovizli == true)
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Döviz Tipi",
-                            controller: _dovizTipiController,
-                            isMust: true,
-                            readOnly: true,
-                            suffixMore: true,
-                            valueWidget: Observer(
-                              builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? ""),
-                            ),
-                            onTap: () async {
-                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
-                                context,
-                                viewModel.model.dovizTipi,
-                              );
-                              if (result != null) {
-                                if (result.dovizKodu != viewModel.model.dovizTipi) {
-                                  _dovizTipiController.text = result.isim ?? "";
-                                  viewModel.setDovizTipi(result.dovizKodu);
-                                  await getDovizDialog();
-                                }
-                              }
-                            },
-                          ),
-                        ),
-                      if (viewModel.model.dovizliMi)
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Döviz Tutarı",
-                            controller: _dovizTutariController,
-                            isMust: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            isFormattedString: true,
-                            onChanged: (value) {
-                              viewModel
-                                ..setDovizTutari(value.toDoubleWithFormattedString)
-                                ..setTutar(
-                                  (viewModel.model.dovizTutari ?? 0) *
-                                      (_dovizKuruController.text.toDoubleWithFormattedString),
-                                );
-                              _tutarController.text =
-                                  viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                            },
-                          ),
-                        ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      if (viewModel.model.dovizliMi)
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Döviz Kuru",
-                            controller: _dovizKuruController,
-                            isMust: true,
-                            isFormattedString: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            onChanged: (value) {
-                              if (_dovizKuruController.text != "") {
-                                viewModel.setDovizTutari(
-                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
-                                );
-                                _dovizTutariController.text =
-                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-                                    "";
-                              } else {
-                                viewModel.setDovizTutari(null);
-                                _dovizTutariController.clear();
-                              }
-                            },
-                            suffix: IconButton(
-                              onPressed: () async => await getDovizDialog(),
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            ),
-                          ),
-                        ),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Tutar",
-                          controller: _tutarController,
-                          isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          isFormattedString: true,
-                          onChanged: (value) {
-                            viewModel.setTutar(value.toDoubleWithFormattedString);
-                            if (viewModel.model.dovizliMi) {
-                              viewModel.setDovizTutari(
-                                (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
-                              );
-                              _dovizTutariController.text =
-                                  viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                            } else {
-                              viewModel.setDovizTutari(null);
-                              _dovizTutariController.clear();
-                            }
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  if (parametreModel.finansBankaIslemModulu == "B")
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Masraf Tutarı",
-                            controller: _masrafTutariController,
-                            isFormattedString: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            onChanged: (value) => viewModel.setMasrafTutari(value.toDoubleWithFormattedString),
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "BSMV",
-                            controller: _bsmvController,
-                            isFormattedString: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            onChanged: (value) => viewModel.setBSMV(value.toDoubleWithFormattedString),
-                          ),
-                        ),
-                      ],
-                      // Muhasebe entegre ve finans aktif
-                    ),
-                  Row(
-                    children: [
-                      if (yetkiController.referansKodu("B") ||
-                          parametreModel.finansBankaIslemModulu == "B" && parametreModel.muhasebeEntegre == true)
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Masraf Muh. Kodu",
-                            controller: _masrafMuhKoduController,
-                            readOnly: true,
-                            suffixMore: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.model.masrafMuhKodu ?? "")),
-                            onTap: () async {
-                              if (_masrafTutariController.text == "") {
-                                dialogManager.showErrorSnackBar("Masraf tutarını giriniz.");
-                                return;
-                              }
-                              final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
-                                context,
-                                viewModel.model.masrafMuhKodu,
-                                hesapTipi: "M",
-                                belgeTipi: MuhasebeBelgeTipiEnum.cariHavaleEft.value,
-                              );
-                              if (result != null) {
-                                _masrafMuhKoduController.text = result.hesapAdi ?? "";
-                                viewModel.setMasrafMuhKodu(result.hesapKodu);
-                              }
-                            },
-                          ),
-                        ),
-                      if (yetkiController.plasiyerUygulamasiAcikMi)
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Plasiyer",
-                            controller: _plasiyerController,
-                            isMust: true,
-                            readOnly: true,
-                            suffixMore: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                            onTap: () async {
-                              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
-                                context,
-                                viewModel.model.plasiyerKodu,
-                              );
-                              if (result != null) {
-                                _plasiyerController.text = result.plasiyerAciklama ?? "";
-                                viewModel.setPlasiyerKodu(result.plasiyerKodu);
-                              }
-                            },
-                          ),
-                        ),
-                    ],
-                  ),
-                  if (yetkiController.projeUygulamasiAcikMi)
-                    CustomTextField(
-                      labelText: "Proje",
-                      controller: _projeController,
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Tarih",
+                      controller: _tarihController,
                       isMust: true,
                       readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                      isDateTime: true,
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
-                          context,
-                          viewModel.model.projeKodu,
-                        );
+                        final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                         if (result != null) {
-                          _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
-                          viewModel.setProjeKodu(result.projeKodu);
+                          viewModel.setTarih(result);
+                          _tarihController.text = viewModel.model.tarih?.toDateStringIfNull ?? "";
                         }
                       },
                     ),
-                  CustomTextField(
-                    labelText: "Açıklama",
-                    controller: _aciklamaController,
-                    onChanged: viewModel.setAciklama,
                   ),
-                  Observer(
-                    builder: (_) {
-                      log("Cari Hesap Referans Kodu: ${viewModel.cariModel?.muhHesapTipi}");
-                      log("Banka Hesap Referans Kodu: ${viewModel.bankaModel?.muhasebeHesapTipi}");
-                      if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
-                          yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi)) {
-                        // if (viewModel.model.cariyiBorclandir ?? false)
-                        // if (!yetkiController.referansKodu("") && !yetkiController.referansKoduSorulsun(false)) {
-
-                        return CustomTextField(
-                          labelText: "Referans Kodu",
-                          controller: _referansKoduController,
-                          isMust: true,
-                          enabled: yetkiController.adminMi,
-                          readOnly: true,
-                          suffixMore: true,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.hedefHesapReferansKodu ?? "")),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showReferansKodBottomSheetDialog(
-                              context,
-                              viewModel.model.hedefHesapReferansKodu,
-                            );
-                            if (result != null) {
-                              _referansKoduController.text = result.tanimi ?? "";
-                              viewModel.setReferansKodu(result.kodu);
-                            }
-                          },
-                        );
-                      }
-                      // if (viewModel.model.hedefHesapReferansKodu != null) viewModel.setReferansKodu(null);
-                      return const SizedBox.shrink();
-                    },
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Dekont No",
+                      controller: _dekontNoController,
+                      onChanged: viewModel.setDekontNo,
+                    ),
                   ),
                 ],
-              ).paddingAll(UIHelper.lowSize),
+              ),
+              CustomTextField(
+                labelText: "Hesap",
+                controller: _hesapController,
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
+                onTap: getHesapListesi,
+              ),
+              CustomTextField(
+                labelText: "Cari",
+                controller: _cariController,
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                suffix: IconButton(
+                  onPressed: () {
+                    if (viewModel.cariModel != null) {
+                      dialogManager.showCariIslemleriGridViewDialog(viewModel.cariModel);
+                    } else {
+                      dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
+                    }
+                  },
+                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                ),
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+                onTap: () async => getCari(),
+              ),
+              Observer(
+                builder: (_) => viewModel.cariModel != null
+                    ? Text(
+                        "Bakiye: ${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${viewModel.cariModel?.dovizAdi ?? mainCurrency} ${(viewModel.cariModel?.bakiye ?? 0) > 0
+                            ? "(Tahsil Edilecek)"
+                            : (viewModel.cariModel?.bakiye ?? 0) < 0
+                            ? "(Ödenecek)"
+                            : ""}",
+                        style: TextStyle(
+                          color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ).paddingAll(UIHelper.lowSize)
+                    : const SizedBox.shrink(),
+              ),
+              if (viewModel.model.cariyiBorclandir ?? false)
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "TCMB Banka Kodu",
+                        controller: _tcmbBankaKoduController,
+                        onClear: () => viewModel.setTCMBBankaKodu(null),
+                        onChanged: viewModel.setTCMBBankaKodu,
+                        // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbBankaKodu ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            final result = await bottomSheetDialogManager.showTcmbBankalarBottomSheetDialog(
+                              context,
+                              viewModel.model.tcmbBankaKodu,
+                            );
+                            if (result != null) {
+                              _tcmbBankaKoduController.text = result.bankakodu ?? "";
+                              viewModel.setTCMBBankaKodu(result.bankakodu);
+                            }
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "TCMB Şube Kodu",
+                        controller: _tcmbSubeKoduController,
+                        onClear: () => viewModel.setTCMBSubeKodu(null),
+                        onChanged: viewModel.setTCMBSubeKodu,
+                        // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbSubeKodu ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            if (_tcmbBankaKoduController.text == "") {
+                              dialogManager.showErrorSnackBar("TCMB Banka Kodu seçiniz.");
+                              return;
+                            }
+                            final result = await bottomSheetDialogManager.showTcmbSubelerBottomSheetDialog(
+                              context,
+                              viewModel.model.tcmbBankaKodu,
+                              viewModel.model.tcmbSubeKodu,
+                            );
+                            if (result != null) {
+                              _tcmbSubeKoduController.text = result.subekodu ?? "";
+                              viewModel.setTCMBSubeKodu(result.subekodu);
+                            }
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              if (viewModel.model.cariyiBorclandir ?? false)
+                CustomTextField(
+                  labelText: "Banka Hesap No",
+                  controller: _bankaHesapNoController,
+                  onChanged: viewModel.setBankaHesapNo,
+                ),
+              if (viewModel.model.cariyiBorclandir ?? false)
+                CustomTextField(labelText: "IBAN", controller: _ibanController, onChanged: viewModel.setIBAN),
+              Row(
+                children: [
+                  if (viewModel.cariModel?.dovizli == true)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Döviz Tipi",
+                        controller: _dovizTipiController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
+                            context,
+                            viewModel.model.dovizTipi,
+                          );
+                          if (result != null) {
+                            if (result.dovizKodu != viewModel.model.dovizTipi) {
+                              _dovizTipiController.text = result.isim ?? "";
+                              viewModel.setDovizTipi(result.dovizKodu);
+                              await getDovizDialog();
+                            }
+                          }
+                        },
+                      ),
+                    ),
+                  if (viewModel.model.dovizliMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Döviz Tutarı",
+                        controller: _dovizTutariController,
+                        isMust: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        isFormattedString: true,
+                        onChanged: (value) {
+                          viewModel
+                            ..setDovizTutari(value.toDoubleWithFormattedString)
+                            ..setTutar(
+                              (viewModel.model.dovizTutari ?? 0) *
+                                  (_dovizKuruController.text.toDoubleWithFormattedString),
+                            );
+                          _tutarController.text =
+                              viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                        },
+                      ),
+                    ),
+                ],
+              ),
+              Row(
+                children: [
+                  if (viewModel.model.dovizliMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Döviz Kuru",
+                        controller: _dovizKuruController,
+                        isMust: true,
+                        isFormattedString: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        onChanged: (value) {
+                          if (_dovizKuruController.text != "") {
+                            viewModel.setDovizTutari(
+                              (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                            );
+                            _dovizTutariController.text =
+                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                          } else {
+                            viewModel.setDovizTutari(null);
+                            _dovizTutariController.clear();
+                          }
+                        },
+                        suffix: IconButton(
+                          onPressed: () async => await getDovizDialog(),
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
+                      ),
+                    ),
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Tutar",
+                      controller: _tutarController,
+                      isMust: true,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      isFormattedString: true,
+                      onChanged: (value) {
+                        viewModel.setTutar(value.toDoubleWithFormattedString);
+                        if (viewModel.model.dovizliMi) {
+                          viewModel.setDovizTutari(
+                            (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                          );
+                          _dovizTutariController.text =
+                              viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                        } else {
+                          viewModel.setDovizTutari(null);
+                          _dovizTutariController.clear();
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              if (parametreModel.finansBankaIslemModulu == "B")
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Masraf Tutarı",
+                        controller: _masrafTutariController,
+                        isFormattedString: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        onChanged: (value) => viewModel.setMasrafTutari(value.toDoubleWithFormattedString),
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "BSMV",
+                        controller: _bsmvController,
+                        isFormattedString: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        onChanged: (value) => viewModel.setBSMV(value.toDoubleWithFormattedString),
+                      ),
+                    ),
+                  ],
+                  // Muhasebe entegre ve finans aktif
+                ),
+              Row(
+                children: [
+                  if (yetkiController.referansKodu("B") ||
+                      parametreModel.finansBankaIslemModulu == "B" && parametreModel.muhasebeEntegre == true)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Masraf Muh. Kodu",
+                        controller: _masrafMuhKoduController,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.masrafMuhKodu ?? "")),
+                        onTap: () async {
+                          if (_masrafTutariController.text == "") {
+                            dialogManager.showErrorSnackBar("Masraf tutarını giriniz.");
+                            return;
+                          }
+                          final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
+                            context,
+                            viewModel.model.masrafMuhKodu,
+                            hesapTipi: "M",
+                            belgeTipi: MuhasebeBelgeTipiEnum.cariHavaleEft.value,
+                          );
+                          if (result != null) {
+                            _masrafMuhKoduController.text = result.hesapAdi ?? "";
+                            viewModel.setMasrafMuhKodu(result.hesapKodu);
+                          }
+                        },
+                      ),
+                    ),
+                  if (yetkiController.plasiyerUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Plasiyer",
+                        controller: _plasiyerController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                            context,
+                            viewModel.model.plasiyerKodu,
+                          );
+                          if (result != null) {
+                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            viewModel.setPlasiyerKodu(result.plasiyerKodu);
+                          }
+                        },
+                      ),
+                    ),
+                ],
+              ),
+              if (yetkiController.projeUygulamasiAcikMi)
+                CustomTextField(
+                  labelText: "Proje",
+                  controller: _projeController,
+                  isMust: true,
+                  readOnly: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                      context,
+                      viewModel.model.projeKodu,
+                    );
+                    if (result != null) {
+                      _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                      viewModel.setProjeKodu(result.projeKodu);
+                    }
+                  },
+                ),
+              CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
+              Observer(
+                builder: (_) {
+                  log("Cari Hesap Referans Kodu: ${viewModel.cariModel?.muhHesapTipi}");
+                  log("Banka Hesap Referans Kodu: ${viewModel.bankaModel?.muhasebeHesapTipi}");
+                  if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
+                      yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi)) {
+                    // if (viewModel.model.cariyiBorclandir ?? false)
+                    // if (!yetkiController.referansKodu("") && !yetkiController.referansKoduSorulsun(false)) {
+
+                    return CustomTextField(
+                      labelText: "Referans Kodu",
+                      controller: _referansKoduController,
+                      isMust: true,
+                      enabled: yetkiController.adminMi,
+                      readOnly: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.hedefHesapReferansKodu ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showReferansKodBottomSheetDialog(
+                          context,
+                          viewModel.model.hedefHesapReferansKodu,
+                        );
+                        if (result != null) {
+                          _referansKoduController.text = result.tanimi ?? "";
+                          viewModel.setReferansKodu(result.kodu);
+                        }
+                      },
+                    );
+                  }
+                  // if (viewModel.model.hedefHesapReferansKodu != null) viewModel.setReferansKodu(null);
+                  return const SizedBox.shrink();
+                },
+              ),
+            ],
+          ).paddingAll(UIHelper.lowSize),
         ),
       ),
     ),

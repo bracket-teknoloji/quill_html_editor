@@ -12,7 +12,8 @@ part of 'stok_detay_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 SeriList _$SeriListFromJson(Map<String, dynamic> json) {
   return _SeriList.fromJson(json);
@@ -127,46 +128,44 @@ mixin _$SeriList {
   /// Create a copy of SeriList
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SeriListCopyWith<SeriList> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SeriListCopyWith<SeriList> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SeriListCopyWith<$Res> {
-  factory $SeriListCopyWith(SeriList value, $Res Function(SeriList) then) =
-      _$SeriListCopyWithImpl<$Res, SeriList>;
+  factory $SeriListCopyWith(SeriList value, $Res Function(SeriList) then) = _$SeriListCopyWithImpl<$Res, SeriList>;
   @useResult
-  $Res call(
-      {@HiveField(0) String? stokKodu,
-      @HiveField(1) int? depoKodu,
-      @HiveField(2) double? miktar,
-      @HiveField(3) String? seriNo,
-      @HiveField(4) int? inckeyno,
-      @HiveField(5) String? depoTanimi,
-      @HiveField(6) int? hareketId,
-      @HiveField(7) String? barkod,
-      @HiveField(8) String? gckod,
-      @HiveField(9) String? seri1,
-      @HiveField(10) int? requestVersion,
-      @HiveField(11) String? tempBarkod,
-      @HiveField(12) String? seri2,
-      @HiveField(13) String? seri3,
-      @HiveField(14) String? seri4,
-      @HiveField(15) String? acik1,
-      @HiveField(16) String? acik2,
-      @HiveField(17) String? acik3,
-      @HiveField(18) String? acik4,
-      @HiveField(19) DateTime? sonKullanmaTarihi,
-      @HiveField(20) String? stokAdi,
-      @HiveField(21) String? hucreKodu,
-      @HiveField(22) DateTime? tarih,
-      @HiveField(23) int? refId,
-      @HiveField(24) String? aciklama1});
+  $Res call({
+    @HiveField(0) String? stokKodu,
+    @HiveField(1) int? depoKodu,
+    @HiveField(2) double? miktar,
+    @HiveField(3) String? seriNo,
+    @HiveField(4) int? inckeyno,
+    @HiveField(5) String? depoTanimi,
+    @HiveField(6) int? hareketId,
+    @HiveField(7) String? barkod,
+    @HiveField(8) String? gckod,
+    @HiveField(9) String? seri1,
+    @HiveField(10) int? requestVersion,
+    @HiveField(11) String? tempBarkod,
+    @HiveField(12) String? seri2,
+    @HiveField(13) String? seri3,
+    @HiveField(14) String? seri4,
+    @HiveField(15) String? acik1,
+    @HiveField(16) String? acik2,
+    @HiveField(17) String? acik3,
+    @HiveField(18) String? acik4,
+    @HiveField(19) DateTime? sonKullanmaTarihi,
+    @HiveField(20) String? stokAdi,
+    @HiveField(21) String? hucreKodu,
+    @HiveField(22) DateTime? tarih,
+    @HiveField(23) int? refId,
+    @HiveField(24) String? aciklama1,
+  });
 }
 
 /// @nodoc
-class _$SeriListCopyWithImpl<$Res, $Val extends SeriList>
-    implements $SeriListCopyWith<$Res> {
+class _$SeriListCopyWithImpl<$Res, $Val extends SeriList> implements $SeriListCopyWith<$Res> {
   _$SeriListCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -205,154 +204,153 @@ class _$SeriListCopyWithImpl<$Res, $Val extends SeriList>
     Object? refId = freezed,
     Object? aciklama1 = freezed,
   }) {
-    return _then(_value.copyWith(
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoTanimi: freezed == depoTanimi
-          ? _value.depoTanimi
-          : depoTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hareketId: freezed == hareketId
-          ? _value.hareketId
-          : hareketId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      barkod: freezed == barkod
-          ? _value.barkod
-          : barkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gckod: freezed == gckod
-          ? _value.gckod
-          : gckod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri1: freezed == seri1
-          ? _value.seri1
-          : seri1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      requestVersion: freezed == requestVersion
-          ? _value.requestVersion
-          : requestVersion // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tempBarkod: freezed == tempBarkod
-          ? _value.tempBarkod
-          : tempBarkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri2: freezed == seri2
-          ? _value.seri2
-          : seri2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri3: freezed == seri3
-          ? _value.seri3
-          : seri3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri4: freezed == seri4
-          ? _value.seri4
-          : seri4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik1: freezed == acik1
-          ? _value.acik1
-          : acik1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik2: freezed == acik2
-          ? _value.acik2
-          : acik2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik3: freezed == acik3
-          ? _value.acik3
-          : acik3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik4: freezed == acik4
-          ? _value.acik4
-          : acik4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sonKullanmaTarihi: freezed == sonKullanmaTarihi
-          ? _value.sonKullanmaTarihi
-          : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hucreKodu: freezed == hucreKodu
-          ? _value.hucreKodu
-          : hucreKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      refId: freezed == refId
-          ? _value.refId
-          : refId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aciklama1: freezed == aciklama1
-          ? _value.aciklama1
-          : aciklama1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            seriNo: freezed == seriNo
+                ? _value.seriNo
+                : seriNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            inckeyno: freezed == inckeyno
+                ? _value.inckeyno
+                : inckeyno // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            depoTanimi: freezed == depoTanimi
+                ? _value.depoTanimi
+                : depoTanimi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hareketId: freezed == hareketId
+                ? _value.hareketId
+                : hareketId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            barkod: freezed == barkod
+                ? _value.barkod
+                : barkod // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gckod: freezed == gckod
+                ? _value.gckod
+                : gckod // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seri1: freezed == seri1
+                ? _value.seri1
+                : seri1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            requestVersion: freezed == requestVersion
+                ? _value.requestVersion
+                : requestVersion // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tempBarkod: freezed == tempBarkod
+                ? _value.tempBarkod
+                : tempBarkod // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seri2: freezed == seri2
+                ? _value.seri2
+                : seri2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seri3: freezed == seri3
+                ? _value.seri3
+                : seri3 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seri4: freezed == seri4
+                ? _value.seri4
+                : seri4 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik1: freezed == acik1
+                ? _value.acik1
+                : acik1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik2: freezed == acik2
+                ? _value.acik2
+                : acik2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik3: freezed == acik3
+                ? _value.acik3
+                : acik3 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik4: freezed == acik4
+                ? _value.acik4
+                : acik4 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sonKullanmaTarihi: freezed == sonKullanmaTarihi
+                ? _value.sonKullanmaTarihi
+                : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            stokAdi: freezed == stokAdi
+                ? _value.stokAdi
+                : stokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hucreKodu: freezed == hucreKodu
+                ? _value.hucreKodu
+                : hucreKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            refId: freezed == refId
+                ? _value.refId
+                : refId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            aciklama1: freezed == aciklama1
+                ? _value.aciklama1
+                : aciklama1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$SeriListImplCopyWith<$Res>
-    implements $SeriListCopyWith<$Res> {
-  factory _$$SeriListImplCopyWith(
-          _$SeriListImpl value, $Res Function(_$SeriListImpl) then) =
+abstract class _$$SeriListImplCopyWith<$Res> implements $SeriListCopyWith<$Res> {
+  factory _$$SeriListImplCopyWith(_$SeriListImpl value, $Res Function(_$SeriListImpl) then) =
       __$$SeriListImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@HiveField(0) String? stokKodu,
-      @HiveField(1) int? depoKodu,
-      @HiveField(2) double? miktar,
-      @HiveField(3) String? seriNo,
-      @HiveField(4) int? inckeyno,
-      @HiveField(5) String? depoTanimi,
-      @HiveField(6) int? hareketId,
-      @HiveField(7) String? barkod,
-      @HiveField(8) String? gckod,
-      @HiveField(9) String? seri1,
-      @HiveField(10) int? requestVersion,
-      @HiveField(11) String? tempBarkod,
-      @HiveField(12) String? seri2,
-      @HiveField(13) String? seri3,
-      @HiveField(14) String? seri4,
-      @HiveField(15) String? acik1,
-      @HiveField(16) String? acik2,
-      @HiveField(17) String? acik3,
-      @HiveField(18) String? acik4,
-      @HiveField(19) DateTime? sonKullanmaTarihi,
-      @HiveField(20) String? stokAdi,
-      @HiveField(21) String? hucreKodu,
-      @HiveField(22) DateTime? tarih,
-      @HiveField(23) int? refId,
-      @HiveField(24) String? aciklama1});
+  $Res call({
+    @HiveField(0) String? stokKodu,
+    @HiveField(1) int? depoKodu,
+    @HiveField(2) double? miktar,
+    @HiveField(3) String? seriNo,
+    @HiveField(4) int? inckeyno,
+    @HiveField(5) String? depoTanimi,
+    @HiveField(6) int? hareketId,
+    @HiveField(7) String? barkod,
+    @HiveField(8) String? gckod,
+    @HiveField(9) String? seri1,
+    @HiveField(10) int? requestVersion,
+    @HiveField(11) String? tempBarkod,
+    @HiveField(12) String? seri2,
+    @HiveField(13) String? seri3,
+    @HiveField(14) String? seri4,
+    @HiveField(15) String? acik1,
+    @HiveField(16) String? acik2,
+    @HiveField(17) String? acik3,
+    @HiveField(18) String? acik4,
+    @HiveField(19) DateTime? sonKullanmaTarihi,
+    @HiveField(20) String? stokAdi,
+    @HiveField(21) String? hucreKodu,
+    @HiveField(22) DateTime? tarih,
+    @HiveField(23) int? refId,
+    @HiveField(24) String? aciklama1,
+  });
 }
 
 /// @nodoc
-class __$$SeriListImplCopyWithImpl<$Res>
-    extends _$SeriListCopyWithImpl<$Res, _$SeriListImpl>
+class __$$SeriListImplCopyWithImpl<$Res> extends _$SeriListCopyWithImpl<$Res, _$SeriListImpl>
     implements _$$SeriListImplCopyWith<$Res> {
-  __$$SeriListImplCopyWithImpl(
-      _$SeriListImpl _value, $Res Function(_$SeriListImpl) _then)
-      : super(_value, _then);
+  __$$SeriListImplCopyWithImpl(_$SeriListImpl _value, $Res Function(_$SeriListImpl) _then) : super(_value, _then);
 
   /// Create a copy of SeriList
   /// with the given fields replaced by the non-null parameter values.
@@ -385,108 +383,110 @@ class __$$SeriListImplCopyWithImpl<$Res>
     Object? refId = freezed,
     Object? aciklama1 = freezed,
   }) {
-    return _then(_$SeriListImpl(
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoTanimi: freezed == depoTanimi
-          ? _value.depoTanimi
-          : depoTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hareketId: freezed == hareketId
-          ? _value.hareketId
-          : hareketId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      barkod: freezed == barkod
-          ? _value.barkod
-          : barkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gckod: freezed == gckod
-          ? _value.gckod
-          : gckod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri1: freezed == seri1
-          ? _value.seri1
-          : seri1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      requestVersion: freezed == requestVersion
-          ? _value.requestVersion
-          : requestVersion // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tempBarkod: freezed == tempBarkod
-          ? _value.tempBarkod
-          : tempBarkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri2: freezed == seri2
-          ? _value.seri2
-          : seri2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri3: freezed == seri3
-          ? _value.seri3
-          : seri3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seri4: freezed == seri4
-          ? _value.seri4
-          : seri4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik1: freezed == acik1
-          ? _value.acik1
-          : acik1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik2: freezed == acik2
-          ? _value.acik2
-          : acik2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik3: freezed == acik3
-          ? _value.acik3
-          : acik3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik4: freezed == acik4
-          ? _value.acik4
-          : acik4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sonKullanmaTarihi: freezed == sonKullanmaTarihi
-          ? _value.sonKullanmaTarihi
-          : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hucreKodu: freezed == hucreKodu
-          ? _value.hucreKodu
-          : hucreKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      refId: freezed == refId
-          ? _value.refId
-          : refId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aciklama1: freezed == aciklama1
-          ? _value.aciklama1
-          : aciklama1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SeriListImpl(
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        seriNo: freezed == seriNo
+            ? _value.seriNo
+            : seriNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        inckeyno: freezed == inckeyno
+            ? _value.inckeyno
+            : inckeyno // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        depoTanimi: freezed == depoTanimi
+            ? _value.depoTanimi
+            : depoTanimi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hareketId: freezed == hareketId
+            ? _value.hareketId
+            : hareketId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        barkod: freezed == barkod
+            ? _value.barkod
+            : barkod // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gckod: freezed == gckod
+            ? _value.gckod
+            : gckod // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seri1: freezed == seri1
+            ? _value.seri1
+            : seri1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        requestVersion: freezed == requestVersion
+            ? _value.requestVersion
+            : requestVersion // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tempBarkod: freezed == tempBarkod
+            ? _value.tempBarkod
+            : tempBarkod // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seri2: freezed == seri2
+            ? _value.seri2
+            : seri2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seri3: freezed == seri3
+            ? _value.seri3
+            : seri3 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seri4: freezed == seri4
+            ? _value.seri4
+            : seri4 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik1: freezed == acik1
+            ? _value.acik1
+            : acik1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik2: freezed == acik2
+            ? _value.acik2
+            : acik2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik3: freezed == acik3
+            ? _value.acik3
+            : acik3 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik4: freezed == acik4
+            ? _value.acik4
+            : acik4 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sonKullanmaTarihi: freezed == sonKullanmaTarihi
+            ? _value.sonKullanmaTarihi
+            : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        stokAdi: freezed == stokAdi
+            ? _value.stokAdi
+            : stokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hucreKodu: freezed == hucreKodu
+            ? _value.hucreKodu
+            : hucreKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        refId: freezed == refId
+            ? _value.refId
+            : refId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        aciklama1: freezed == aciklama1
+            ? _value.aciklama1
+            : aciklama1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -494,36 +494,35 @@ class __$$SeriListImplCopyWithImpl<$Res>
 @JsonSerializable()
 @HiveType(typeId: 196)
 class _$SeriListImpl extends _SeriList {
-  _$SeriListImpl(
-      {@HiveField(0) this.stokKodu,
-      @HiveField(1) this.depoKodu,
-      @HiveField(2) this.miktar,
-      @HiveField(3) this.seriNo,
-      @HiveField(4) this.inckeyno,
-      @HiveField(5) this.depoTanimi,
-      @HiveField(6) this.hareketId,
-      @HiveField(7) this.barkod,
-      @HiveField(8) this.gckod,
-      @HiveField(9) this.seri1,
-      @HiveField(10) this.requestVersion,
-      @HiveField(11) this.tempBarkod,
-      @HiveField(12) this.seri2,
-      @HiveField(13) this.seri3,
-      @HiveField(14) this.seri4,
-      @HiveField(15) this.acik1,
-      @HiveField(16) this.acik2,
-      @HiveField(17) this.acik3,
-      @HiveField(18) this.acik4,
-      @HiveField(19) this.sonKullanmaTarihi,
-      @HiveField(20) this.stokAdi,
-      @HiveField(21) this.hucreKodu,
-      @HiveField(22) this.tarih,
-      @HiveField(23) this.refId,
-      @HiveField(24) this.aciklama1})
-      : super._();
+  _$SeriListImpl({
+    @HiveField(0) this.stokKodu,
+    @HiveField(1) this.depoKodu,
+    @HiveField(2) this.miktar,
+    @HiveField(3) this.seriNo,
+    @HiveField(4) this.inckeyno,
+    @HiveField(5) this.depoTanimi,
+    @HiveField(6) this.hareketId,
+    @HiveField(7) this.barkod,
+    @HiveField(8) this.gckod,
+    @HiveField(9) this.seri1,
+    @HiveField(10) this.requestVersion,
+    @HiveField(11) this.tempBarkod,
+    @HiveField(12) this.seri2,
+    @HiveField(13) this.seri3,
+    @HiveField(14) this.seri4,
+    @HiveField(15) this.acik1,
+    @HiveField(16) this.acik2,
+    @HiveField(17) this.acik3,
+    @HiveField(18) this.acik4,
+    @HiveField(19) this.sonKullanmaTarihi,
+    @HiveField(20) this.stokAdi,
+    @HiveField(21) this.hucreKodu,
+    @HiveField(22) this.tarih,
+    @HiveField(23) this.refId,
+    @HiveField(24) this.aciklama1,
+  }) : super._();
 
-  factory _$SeriListImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SeriListImplFromJson(json);
+  factory _$SeriListImpl.fromJson(Map<String, dynamic> json) => _$$SeriListImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -611,43 +610,41 @@ class _$SeriListImpl extends _SeriList {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SeriListImplToJson(
-      this,
-    );
+    return _$$SeriListImplToJson(this);
   }
 }
 
 abstract class _SeriList extends SeriList {
-  factory _SeriList(
-      {@HiveField(0) String? stokKodu,
-      @HiveField(1) int? depoKodu,
-      @HiveField(2) double? miktar,
-      @HiveField(3) String? seriNo,
-      @HiveField(4) int? inckeyno,
-      @HiveField(5) String? depoTanimi,
-      @HiveField(6) int? hareketId,
-      @HiveField(7) String? barkod,
-      @HiveField(8) String? gckod,
-      @HiveField(9) String? seri1,
-      @HiveField(10) int? requestVersion,
-      @HiveField(11) String? tempBarkod,
-      @HiveField(12) String? seri2,
-      @HiveField(13) String? seri3,
-      @HiveField(14) String? seri4,
-      @HiveField(15) String? acik1,
-      @HiveField(16) String? acik2,
-      @HiveField(17) String? acik3,
-      @HiveField(18) String? acik4,
-      @HiveField(19) DateTime? sonKullanmaTarihi,
-      @HiveField(20) String? stokAdi,
-      @HiveField(21) String? hucreKodu,
-      @HiveField(22) DateTime? tarih,
-      @HiveField(23) int? refId,
-      @HiveField(24) String? aciklama1}) = _$SeriListImpl;
+  factory _SeriList({
+    @HiveField(0) String? stokKodu,
+    @HiveField(1) int? depoKodu,
+    @HiveField(2) double? miktar,
+    @HiveField(3) String? seriNo,
+    @HiveField(4) int? inckeyno,
+    @HiveField(5) String? depoTanimi,
+    @HiveField(6) int? hareketId,
+    @HiveField(7) String? barkod,
+    @HiveField(8) String? gckod,
+    @HiveField(9) String? seri1,
+    @HiveField(10) int? requestVersion,
+    @HiveField(11) String? tempBarkod,
+    @HiveField(12) String? seri2,
+    @HiveField(13) String? seri3,
+    @HiveField(14) String? seri4,
+    @HiveField(15) String? acik1,
+    @HiveField(16) String? acik2,
+    @HiveField(17) String? acik3,
+    @HiveField(18) String? acik4,
+    @HiveField(19) DateTime? sonKullanmaTarihi,
+    @HiveField(20) String? stokAdi,
+    @HiveField(21) String? hucreKodu,
+    @HiveField(22) DateTime? tarih,
+    @HiveField(23) int? refId,
+    @HiveField(24) String? aciklama1,
+  }) = _$SeriListImpl;
   _SeriList._() : super._();
 
-  factory _SeriList.fromJson(Map<String, dynamic> json) =
-      _$SeriListImpl.fromJson;
+  factory _SeriList.fromJson(Map<String, dynamic> json) = _$SeriListImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -779,6 +776,5 @@ abstract class _SeriList extends SeriList {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SeriListImplCopyWith<_$SeriListImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SeriListImplCopyWith<_$SeriListImpl> get copyWith => throw _privateConstructorUsedError;
 }

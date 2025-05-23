@@ -12,7 +12,8 @@ part of 'e_belge_pdf_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EBelgePdfModel _$EBelgePdfModelFromJson(Map<String, dynamic> json) {
   return _EBelgePdfModel.fromJson(json);
@@ -33,14 +34,12 @@ mixin _$EBelgePdfModel {
   /// Create a copy of EBelgePdfModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EBelgePdfModelCopyWith<EBelgePdfModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EBelgePdfModelCopyWith<EBelgePdfModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EBelgePdfModelCopyWith<$Res> {
-  factory $EBelgePdfModelCopyWith(
-          EBelgePdfModel value, $Res Function(EBelgePdfModel) then) =
+  factory $EBelgePdfModelCopyWith(EBelgePdfModel value, $Res Function(EBelgePdfModel) then) =
       _$EBelgePdfModelCopyWithImpl<$Res, EBelgePdfModel>;
   @useResult
   $Res call({int? islemKodu, @JsonKey(name: "FileModel") FileModel? fileModel});
@@ -49,8 +48,7 @@ abstract class $EBelgePdfModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel>
-    implements $EBelgePdfModelCopyWith<$Res> {
+class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel> implements $EBelgePdfModelCopyWith<$Res> {
   _$EBelgePdfModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -62,20 +60,20 @@ class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? islemKodu = freezed,
-    Object? fileModel = freezed,
-  }) {
-    return _then(_value.copyWith(
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      fileModel: freezed == fileModel
-          ? _value.fileModel
-          : fileModel // ignore: cast_nullable_to_non_nullable
-              as FileModel?,
-    ) as $Val);
+  $Res call({Object? islemKodu = freezed, Object? fileModel = freezed}) {
+    return _then(
+      _value.copyWith(
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            fileModel: freezed == fileModel
+                ? _value.fileModel
+                : fileModel // ignore: cast_nullable_to_non_nullable
+                      as FileModel?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of EBelgePdfModel
@@ -94,10 +92,8 @@ class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel>
 }
 
 /// @nodoc
-abstract class _$$EBelgePdfModelImplCopyWith<$Res>
-    implements $EBelgePdfModelCopyWith<$Res> {
-  factory _$$EBelgePdfModelImplCopyWith(_$EBelgePdfModelImpl value,
-          $Res Function(_$EBelgePdfModelImpl) then) =
+abstract class _$$EBelgePdfModelImplCopyWith<$Res> implements $EBelgePdfModelCopyWith<$Res> {
+  factory _$$EBelgePdfModelImplCopyWith(_$EBelgePdfModelImpl value, $Res Function(_$EBelgePdfModelImpl) then) =
       __$$EBelgePdfModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -108,43 +104,37 @@ abstract class _$$EBelgePdfModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EBelgePdfModelImplCopyWithImpl<$Res>
-    extends _$EBelgePdfModelCopyWithImpl<$Res, _$EBelgePdfModelImpl>
+class __$$EBelgePdfModelImplCopyWithImpl<$Res> extends _$EBelgePdfModelCopyWithImpl<$Res, _$EBelgePdfModelImpl>
     implements _$$EBelgePdfModelImplCopyWith<$Res> {
-  __$$EBelgePdfModelImplCopyWithImpl(
-      _$EBelgePdfModelImpl _value, $Res Function(_$EBelgePdfModelImpl) _then)
-      : super(_value, _then);
+  __$$EBelgePdfModelImplCopyWithImpl(_$EBelgePdfModelImpl _value, $Res Function(_$EBelgePdfModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of EBelgePdfModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? islemKodu = freezed,
-    Object? fileModel = freezed,
-  }) {
-    return _then(_$EBelgePdfModelImpl(
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      fileModel: freezed == fileModel
-          ? _value.fileModel
-          : fileModel // ignore: cast_nullable_to_non_nullable
-              as FileModel?,
-    ));
+  $Res call({Object? islemKodu = freezed, Object? fileModel = freezed}) {
+    return _then(
+      _$EBelgePdfModelImpl(
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        fileModel: freezed == fileModel
+            ? _value.fileModel
+            : fileModel // ignore: cast_nullable_to_non_nullable
+                  as FileModel?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EBelgePdfModelImpl extends _EBelgePdfModel {
-  _$EBelgePdfModelImpl(
-      {this.islemKodu, @JsonKey(name: "FileModel") this.fileModel})
-      : super._();
+  _$EBelgePdfModelImpl({this.islemKodu, @JsonKey(name: "FileModel") this.fileModel}) : super._();
 
-  factory _$EBelgePdfModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EBelgePdfModelImplFromJson(json);
+  factory _$EBelgePdfModelImpl.fromJson(Map<String, dynamic> json) => _$$EBelgePdfModelImplFromJson(json);
 
   @override
   int? islemKodu;
@@ -158,25 +148,19 @@ class _$EBelgePdfModelImpl extends _EBelgePdfModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith =>
-      __$$EBelgePdfModelImplCopyWithImpl<_$EBelgePdfModelImpl>(
-          this, _$identity);
+      __$$EBelgePdfModelImplCopyWithImpl<_$EBelgePdfModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EBelgePdfModelImplToJson(
-      this,
-    );
+    return _$$EBelgePdfModelImplToJson(this);
   }
 }
 
 abstract class _EBelgePdfModel extends EBelgePdfModel {
-  factory _EBelgePdfModel(
-      {int? islemKodu,
-      @JsonKey(name: "FileModel") FileModel? fileModel}) = _$EBelgePdfModelImpl;
+  factory _EBelgePdfModel({int? islemKodu, @JsonKey(name: "FileModel") FileModel? fileModel}) = _$EBelgePdfModelImpl;
   _EBelgePdfModel._() : super._();
 
-  factory _EBelgePdfModel.fromJson(Map<String, dynamic> json) =
-      _$EBelgePdfModelImpl.fromJson;
+  factory _EBelgePdfModel.fromJson(Map<String, dynamic> json) = _$EBelgePdfModelImpl.fromJson;
 
   @override
   int? get islemKodu;
@@ -191,8 +175,7 @@ abstract class _EBelgePdfModel extends EBelgePdfModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 FileModel _$FileModelFromJson(Map<String, dynamic> json) {
@@ -212,25 +195,18 @@ mixin _$FileModel {
   /// Create a copy of FileModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FileModelCopyWith<FileModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FileModelCopyWith<FileModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FileModelCopyWith<$Res> {
-  factory $FileModelCopyWith(FileModel value, $Res Function(FileModel) then) =
-      _$FileModelCopyWithImpl<$Res, FileModel>;
+  factory $FileModelCopyWith(FileModel value, $Res Function(FileModel) then) = _$FileModelCopyWithImpl<$Res, FileModel>;
   @useResult
-  $Res call(
-      {String? byteData,
-      String? uzanti,
-      DateTime? dosyaTarihi,
-      String? dosyaAdi});
+  $Res call({String? byteData, String? uzanti, DateTime? dosyaTarihi, String? dosyaAdi});
 }
 
 /// @nodoc
-class _$FileModelCopyWithImpl<$Res, $Val extends FileModel>
-    implements $FileModelCopyWith<$Res> {
+class _$FileModelCopyWithImpl<$Res, $Val extends FileModel> implements $FileModelCopyWith<$Res> {
   _$FileModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -248,49 +224,43 @@ class _$FileModelCopyWithImpl<$Res, $Val extends FileModel>
     Object? dosyaTarihi = freezed,
     Object? dosyaAdi = freezed,
   }) {
-    return _then(_value.copyWith(
-      byteData: freezed == byteData
-          ? _value.byteData
-          : byteData // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uzanti: freezed == uzanti
-          ? _value.uzanti
-          : uzanti // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dosyaTarihi: freezed == dosyaTarihi
-          ? _value.dosyaTarihi
-          : dosyaTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      dosyaAdi: freezed == dosyaAdi
-          ? _value.dosyaAdi
-          : dosyaAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            byteData: freezed == byteData
+                ? _value.byteData
+                : byteData // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            uzanti: freezed == uzanti
+                ? _value.uzanti
+                : uzanti // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dosyaTarihi: freezed == dosyaTarihi
+                ? _value.dosyaTarihi
+                : dosyaTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            dosyaAdi: freezed == dosyaAdi
+                ? _value.dosyaAdi
+                : dosyaAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$FileModelImplCopyWith<$Res>
-    implements $FileModelCopyWith<$Res> {
-  factory _$$FileModelImplCopyWith(
-          _$FileModelImpl value, $Res Function(_$FileModelImpl) then) =
+abstract class _$$FileModelImplCopyWith<$Res> implements $FileModelCopyWith<$Res> {
+  factory _$$FileModelImplCopyWith(_$FileModelImpl value, $Res Function(_$FileModelImpl) then) =
       __$$FileModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? byteData,
-      String? uzanti,
-      DateTime? dosyaTarihi,
-      String? dosyaAdi});
+  $Res call({String? byteData, String? uzanti, DateTime? dosyaTarihi, String? dosyaAdi});
 }
 
 /// @nodoc
-class __$$FileModelImplCopyWithImpl<$Res>
-    extends _$FileModelCopyWithImpl<$Res, _$FileModelImpl>
+class __$$FileModelImplCopyWithImpl<$Res> extends _$FileModelCopyWithImpl<$Res, _$FileModelImpl>
     implements _$$FileModelImplCopyWith<$Res> {
-  __$$FileModelImplCopyWithImpl(
-      _$FileModelImpl _value, $Res Function(_$FileModelImpl) _then)
-      : super(_value, _then);
+  __$$FileModelImplCopyWithImpl(_$FileModelImpl _value, $Res Function(_$FileModelImpl) _then) : super(_value, _then);
 
   /// Create a copy of FileModel
   /// with the given fields replaced by the non-null parameter values.
@@ -302,35 +272,35 @@ class __$$FileModelImplCopyWithImpl<$Res>
     Object? dosyaTarihi = freezed,
     Object? dosyaAdi = freezed,
   }) {
-    return _then(_$FileModelImpl(
-      byteData: freezed == byteData
-          ? _value.byteData
-          : byteData // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uzanti: freezed == uzanti
-          ? _value.uzanti
-          : uzanti // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dosyaTarihi: freezed == dosyaTarihi
-          ? _value.dosyaTarihi
-          : dosyaTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      dosyaAdi: freezed == dosyaAdi
-          ? _value.dosyaAdi
-          : dosyaAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$FileModelImpl(
+        byteData: freezed == byteData
+            ? _value.byteData
+            : byteData // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        uzanti: freezed == uzanti
+            ? _value.uzanti
+            : uzanti // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dosyaTarihi: freezed == dosyaTarihi
+            ? _value.dosyaTarihi
+            : dosyaTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        dosyaAdi: freezed == dosyaAdi
+            ? _value.dosyaAdi
+            : dosyaAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$FileModelImpl implements _FileModel {
-  const _$FileModelImpl(
-      {this.byteData, this.uzanti, this.dosyaTarihi, this.dosyaAdi});
+  const _$FileModelImpl({this.byteData, this.uzanti, this.dosyaTarihi, this.dosyaAdi});
 
-  factory _$FileModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FileModelImplFromJson(json);
+  factory _$FileModelImpl.fromJson(Map<String, dynamic> json) => _$$FileModelImplFromJson(json);
 
   @override
   final String? byteData;
@@ -346,19 +316,15 @@ class _$FileModelImpl implements _FileModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FileModelImpl &&
-            (identical(other.byteData, byteData) ||
-                other.byteData == byteData) &&
+            (identical(other.byteData, byteData) || other.byteData == byteData) &&
             (identical(other.uzanti, uzanti) || other.uzanti == uzanti) &&
-            (identical(other.dosyaTarihi, dosyaTarihi) ||
-                other.dosyaTarihi == dosyaTarihi) &&
-            (identical(other.dosyaAdi, dosyaAdi) ||
-                other.dosyaAdi == dosyaAdi));
+            (identical(other.dosyaTarihi, dosyaTarihi) || other.dosyaTarihi == dosyaTarihi) &&
+            (identical(other.dosyaAdi, dosyaAdi) || other.dosyaAdi == dosyaAdi));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, byteData, uzanti, dosyaTarihi, dosyaAdi);
+  int get hashCode => Object.hash(runtimeType, byteData, uzanti, dosyaTarihi, dosyaAdi);
 
   /// Create a copy of FileModel
   /// with the given fields replaced by the non-null parameter values.
@@ -370,21 +336,19 @@ class _$FileModelImpl implements _FileModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FileModelImplToJson(
-      this,
-    );
+    return _$$FileModelImplToJson(this);
   }
 }
 
 abstract class _FileModel implements FileModel {
-  const factory _FileModel(
-      {final String? byteData,
-      final String? uzanti,
-      final DateTime? dosyaTarihi,
-      final String? dosyaAdi}) = _$FileModelImpl;
+  const factory _FileModel({
+    final String? byteData,
+    final String? uzanti,
+    final DateTime? dosyaTarihi,
+    final String? dosyaAdi,
+  }) = _$FileModelImpl;
 
-  factory _FileModel.fromJson(Map<String, dynamic> json) =
-      _$FileModelImpl.fromJson;
+  factory _FileModel.fromJson(Map<String, dynamic> json) = _$FileModelImpl.fromJson;
 
   @override
   String? get byteData;
@@ -399,6 +363,5 @@ abstract class _FileModel implements FileModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

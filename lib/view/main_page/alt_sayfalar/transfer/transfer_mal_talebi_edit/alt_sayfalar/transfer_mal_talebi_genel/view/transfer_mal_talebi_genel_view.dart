@@ -51,11 +51,9 @@ final class _TransferMalTalebiGenelViewState extends BaseState<TransferMalTalebi
               ?.firstWhereOrNull((element) => element.depoKodu == model.depoKodu)
               ?.depoTanimi ??
           "";
-      _karsiSubeController.text =
-          (model.hedefSube != null)
-              ? parametreModel.subeList?.firstWhereOrNull((element) => element.subeKodu == model.hedefSube)?.subeAdi ??
-                  ""
-              : "";
+      _karsiSubeController.text = (model.hedefSube != null)
+          ? parametreModel.subeList?.firstWhereOrNull((element) => element.subeKodu == model.hedefSube)?.subeAdi ?? ""
+          : "";
       _isEmriController.text = model.belgeNo ?? "";
       _aciklamaController.text = model.aciklama ?? "";
     });

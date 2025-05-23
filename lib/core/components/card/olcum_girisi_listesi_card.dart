@@ -66,33 +66,32 @@ final class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCar
           ),
         ],
       ),
-      onTap:
-          () async => await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: widget.model.belgeNo ?? "Ölçüm Detayı",
-            children: [
-              BottomSheetModel(
-                title: loc.generalStrings.view,
-                iconWidget: Icons.preview_outlined,
-                onTap: () async {
-                  Get.back();
-                  final OlcumBelgeModel result = widget.model;
-                  if (widget.model.getEditTipiEnum.kalemSecilecekMi) {
-                    final result2 = await Get.toNamed("/mainPage/olcumKalemSec", arguments: result);
-                    if (result2 == true) {
-                      widget.onTapped.call(true);
-                    }
-                    return;
-                  }
-                  final result2 = await Get.toNamed("/mainPage/olcumDetay", arguments: result);
-                  if (result2 == true) {
-                    widget.onTapped.call(true);
-                  }
-                },
-              ),
-              // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
-            ],
+      onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: widget.model.belgeNo ?? "Ölçüm Detayı",
+        children: [
+          BottomSheetModel(
+            title: loc.generalStrings.view,
+            iconWidget: Icons.preview_outlined,
+            onTap: () async {
+              Get.back();
+              final OlcumBelgeModel result = widget.model;
+              if (widget.model.getEditTipiEnum.kalemSecilecekMi) {
+                final result2 = await Get.toNamed("/mainPage/olcumKalemSec", arguments: result);
+                if (result2 == true) {
+                  widget.onTapped.call(true);
+                }
+                return;
+              }
+              final result2 = await Get.toNamed("/mainPage/olcumDetay", arguments: result);
+              if (result2 == true) {
+                widget.onTapped.call(true);
+              }
+            },
           ),
+          // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
+        ],
+      ),
       onLongPress: () async {
         if (widget.model.getEditTipiEnum.kalemSecilecekMi && yetkiController.cariListesi) {
           dialogManager.showCariIslemleriGridViewDialog(

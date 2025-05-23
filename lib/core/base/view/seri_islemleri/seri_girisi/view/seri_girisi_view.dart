@@ -97,16 +97,14 @@ final class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
       child: Column(
         children: [
           LayoutBuilder(
-            builder:
-                (context, constraints) => Observer(
-                  builder:
-                      (_) => ToggleButtons(
-                        constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 2),
-                        isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
-                        onPressed: (index) => viewModel.setGcKod(index == 0 ? "G" : "C"),
-                        children: const [Text("Giriş"), Text("Çıkış")],
-                      ),
-                ),
+            builder: (context, constraints) => Observer(
+              builder: (_) => ToggleButtons(
+                constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 2),
+                isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
+                onPressed: (index) => viewModel.setGcKod(index == 0 ? "G" : "C"),
+                children: const [Text("Giriş"), Text("Çıkış")],
+              ),
+            ),
           ).paddingSymmetric(vertical: UIHelper.lowSize),
           CustomTextField(
             labelText: "Stok",

@@ -12,7 +12,8 @@ part of 'seri_uret_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 SeriUretModel _$SeriUretModelFromJson(Map<String, dynamic> json) {
   return _SeriUretModel.fromJson(json);
@@ -33,22 +34,19 @@ mixin _$SeriUretModel {
   /// Create a copy of SeriUretModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SeriUretModelCopyWith<SeriUretModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SeriUretModelCopyWith<SeriUretModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SeriUretModelCopyWith<$Res> {
-  factory $SeriUretModelCopyWith(
-          SeriUretModel value, $Res Function(SeriUretModel) then) =
+  factory $SeriUretModelCopyWith(SeriUretModel value, $Res Function(SeriUretModel) then) =
       _$SeriUretModelCopyWithImpl<$Res, SeriUretModel>;
   @useResult
   $Res call({String? seriNo, String? stokKodu, int? sonNo});
 }
 
 /// @nodoc
-class _$SeriUretModelCopyWithImpl<$Res, $Val extends SeriUretModel>
-    implements $SeriUretModelCopyWith<$Res> {
+class _$SeriUretModelCopyWithImpl<$Res, $Val extends SeriUretModel> implements $SeriUretModelCopyWith<$Res> {
   _$SeriUretModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -60,33 +58,30 @@ class _$SeriUretModelCopyWithImpl<$Res, $Val extends SeriUretModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? seriNo = freezed,
-    Object? stokKodu = freezed,
-    Object? sonNo = freezed,
-  }) {
-    return _then(_value.copyWith(
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sonNo: freezed == sonNo
-          ? _value.sonNo
-          : sonNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+  $Res call({Object? seriNo = freezed, Object? stokKodu = freezed, Object? sonNo = freezed}) {
+    return _then(
+      _value.copyWith(
+            seriNo: freezed == seriNo
+                ? _value.seriNo
+                : seriNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sonNo: freezed == sonNo
+                ? _value.sonNo
+                : sonNo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$SeriUretModelImplCopyWith<$Res>
-    implements $SeriUretModelCopyWith<$Res> {
-  factory _$$SeriUretModelImplCopyWith(
-          _$SeriUretModelImpl value, $Res Function(_$SeriUretModelImpl) then) =
+abstract class _$$SeriUretModelImplCopyWith<$Res> implements $SeriUretModelCopyWith<$Res> {
+  factory _$$SeriUretModelImplCopyWith(_$SeriUretModelImpl value, $Res Function(_$SeriUretModelImpl) then) =
       __$$SeriUretModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -94,36 +89,32 @@ abstract class _$$SeriUretModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SeriUretModelImplCopyWithImpl<$Res>
-    extends _$SeriUretModelCopyWithImpl<$Res, _$SeriUretModelImpl>
+class __$$SeriUretModelImplCopyWithImpl<$Res> extends _$SeriUretModelCopyWithImpl<$Res, _$SeriUretModelImpl>
     implements _$$SeriUretModelImplCopyWith<$Res> {
-  __$$SeriUretModelImplCopyWithImpl(
-      _$SeriUretModelImpl _value, $Res Function(_$SeriUretModelImpl) _then)
-      : super(_value, _then);
+  __$$SeriUretModelImplCopyWithImpl(_$SeriUretModelImpl _value, $Res Function(_$SeriUretModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of SeriUretModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? seriNo = freezed,
-    Object? stokKodu = freezed,
-    Object? sonNo = freezed,
-  }) {
-    return _then(_$SeriUretModelImpl(
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sonNo: freezed == sonNo
-          ? _value.sonNo
-          : sonNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+  $Res call({Object? seriNo = freezed, Object? stokKodu = freezed, Object? sonNo = freezed}) {
+    return _then(
+      _$SeriUretModelImpl(
+        seriNo: freezed == seriNo
+            ? _value.seriNo
+            : seriNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sonNo: freezed == sonNo
+            ? _value.sonNo
+            : sonNo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
@@ -132,8 +123,7 @@ class __$$SeriUretModelImplCopyWithImpl<$Res>
 class _$SeriUretModelImpl extends _SeriUretModel {
   _$SeriUretModelImpl({this.seriNo, this.stokKodu, this.sonNo}) : super._();
 
-  factory _$SeriUretModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SeriUretModelImplFromJson(json);
+  factory _$SeriUretModelImpl.fromJson(Map<String, dynamic> json) => _$$SeriUretModelImplFromJson(json);
 
   @override
   String? seriNo;
@@ -152,19 +142,15 @@ class _$SeriUretModelImpl extends _SeriUretModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SeriUretModelImplToJson(
-      this,
-    );
+    return _$$SeriUretModelImplToJson(this);
   }
 }
 
 abstract class _SeriUretModel extends SeriUretModel {
-  factory _SeriUretModel({String? seriNo, String? stokKodu, int? sonNo}) =
-      _$SeriUretModelImpl;
+  factory _SeriUretModel({String? seriNo, String? stokKodu, int? sonNo}) = _$SeriUretModelImpl;
   _SeriUretModel._() : super._();
 
-  factory _SeriUretModel.fromJson(Map<String, dynamic> json) =
-      _$SeriUretModelImpl.fromJson;
+  factory _SeriUretModel.fromJson(Map<String, dynamic> json) = _$SeriUretModelImpl.fromJson;
 
   @override
   String? get seriNo;
@@ -180,6 +166,5 @@ abstract class _SeriUretModel extends SeriUretModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SeriUretModelImplCopyWith<_$SeriUretModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SeriUretModelImplCopyWith<_$SeriUretModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

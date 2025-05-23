@@ -70,12 +70,11 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
       // CustomTextField(onTap: () {}),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView<KalemModel>(
-                onRefresh: () async {},
-                items: viewModel.observableList,
-                itemBuilder: kalemCard,
-              ),
+          builder: (_) => RefreshableListView<KalemModel>(
+            onRefresh: () async {},
+            items: viewModel.observableList,
+            itemBuilder: kalemCard,
+          ),
         ),
       ),
     ],

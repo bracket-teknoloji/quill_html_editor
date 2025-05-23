@@ -86,7 +86,9 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                           ((element.deger ?? 0) <= (widget.model.model!.ustSinir ?? 0)),
                     ) ??
                     false) {
-                  Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
+                  Get.back(
+                    result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"),
+                  );
                   dialogManager.showSuccessSnackBar("Başarılı");
                 } else {
                   final result = await showOlcumSonucBilgileri();
@@ -104,64 +106,62 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
       child: Form(
         key: formKey,
         child: Observer(
-          builder:
-              (_) => Column(
-                children: [
-                  Card(
-                    child: ListTile(
-                      title: Text(widget.model.model!.proses ?? ""),
-                      subtitle: CustomLayoutBuilder.divideInHalf(
-                        children: [
-                          if (widget.model.model!.kriter != null) Text("Kriter: ${widget.model.model!.kriter}"),
-                          if (widget.model.model!.tolerans != null) Text("Tolerans: ${widget.model.model!.tolerans}"),
-                          if (widget.model.model!.tur != null) Text("Tür: ${widget.model.model!.tur}"),
-                          if (widget.model.model!.ekipman != null) Text("Ekipman: ${widget.model.model!.ekipman}"),
-                          if (widget.model.model!.altSinir != null)
-                            Text(
-                              "Alt Sınır: ${widget.model.model!.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                            ),
-                          if (widget.model.model!.ustSinir != null)
-                            Text(
-                              "Üst Sınır: ${widget.model.model!.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                            ),
-                        ],
-                      ),
-                    ),
+          builder: (_) => Column(
+            children: [
+              Card(
+                child: ListTile(
+                  title: Text(widget.model.model!.proses ?? ""),
+                  subtitle: CustomLayoutBuilder.divideInHalf(
+                    children: [
+                      if (widget.model.model!.kriter != null) Text("Kriter: ${widget.model.model!.kriter}"),
+                      if (widget.model.model!.tolerans != null) Text("Tolerans: ${widget.model.model!.tolerans}"),
+                      if (widget.model.model!.tur != null) Text("Tür: ${widget.model.model!.tur}"),
+                      if (widget.model.model!.ekipman != null) Text("Ekipman: ${widget.model.model!.ekipman}"),
+                      if (widget.model.model!.altSinir != null)
+                        Text(
+                          "Alt Sınır: ${widget.model.model!.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                        ),
+                      if (widget.model.model!.ustSinir != null)
+                        Text(
+                          "Üst Sınır: ${widget.model.model!.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                        ),
+                    ],
                   ),
-                  Card(
-                    child: ListTile(
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Observer(
-                            builder:
-                                (_) => CustomLayoutBuilder(
-                                  splitCount: 2,
-                                  children: [
-                                    Text("Numune Sayısı: ${widget.model.model!.numuneMiktari}"),
-                                    Text(
-                                      "Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                    ),
-                                    Text(
-                                      "En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                    ),
-                                    Text(
-                                      "En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                    ),
-                                  ],
-                                ),
-                          ),
-                          Text(
-                            "Açıklama: ${widget.model.model?.aciklama}",
-                          ).yetkiVarMi(widget.model.model?.aciklama != null),
-                        ],
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Observer(
+                        builder: (_) => CustomLayoutBuilder(
+                          splitCount: 2,
+                          children: [
+                            Text("Numune Sayısı: ${widget.model.model!.numuneMiktari}"),
+                            Text(
+                              "Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                            Text(
+                              "En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                            Text(
+                              "En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ).yetkiVarMi(widget.model.model!.olculecekMi),
-                  if (widget.model.model!.olculecekMi) ...buildFormFields(),
-                  if (!widget.model.model!.olculecekMi) switchButton(),
-                ],
-              ).paddingAll(UIHelper.lowSize),
+                      Text(
+                        "Açıklama: ${widget.model.model?.aciklama}",
+                      ).yetkiVarMi(widget.model.model?.aciklama != null),
+                    ],
+                  ),
+                ),
+              ).yetkiVarMi(widget.model.model!.olculecekMi),
+              if (widget.model.model!.olculecekMi) ...buildFormFields(),
+              if (!widget.model.model!.olculecekMi) switchButton(),
+            ],
+          ).paddingAll(UIHelper.lowSize),
         ),
       ),
     ),
@@ -188,8 +188,8 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
       ),
       isMust: true,
       isFormattedString: true,
-      onChanged:
-          (value) => viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: value.toDoubleWithFormattedString)),
+      onChanged: (value) =>
+          viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: value.toDoubleWithFormattedString)),
       keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
     ),
   );
@@ -198,17 +198,16 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
     children: [
       Expanded(
         child: ElevatedButton(
-          onPressed:
-              widget.model.baseEditEnum?.goruntuleMi == true
-                  ? () {}
-                  : () {
-                    Get.back(
-                      result: widget.model.model!.copyWith(
-                        olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(),
-                        sonuc: "K",
-                      ),
-                    );
-                  },
+          onPressed: widget.model.baseEditEnum?.goruntuleMi == true
+              ? () {}
+              : () {
+                  Get.back(
+                    result: widget.model.model!.copyWith(
+                      olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(),
+                      sonuc: "K",
+                    ),
+                  );
+                },
           style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.mantis)),
           child: const Text("Onay"),
         ).paddingAll(UIHelper.lowSize),
@@ -218,17 +217,16 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
       ),
       Expanded(
         child: ElevatedButton(
-          onPressed:
-              widget.model.baseEditEnum?.goruntuleMi == true
-                  ? () {}
-                  : () {
-                    Get.back(
-                      result: widget.model.model!.copyWith(
-                        olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(),
-                        sonuc: "R",
-                      ),
-                    );
-                  },
+          onPressed: widget.model.baseEditEnum?.goruntuleMi == true
+              ? () {}
+              : () {
+                  Get.back(
+                    result: widget.model.model!.copyWith(
+                      olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(),
+                      sonuc: "R",
+                    ),
+                  );
+                },
           style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.persianRed)),
           child: const Text("Ret"),
         ).paddingAll(UIHelper.lowSize),
@@ -248,20 +246,19 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  scroll: false,
-                  title: "Sonuç Türü",
-                  childrenTitleList: viewModel.sonucTuruTitleList,
-                  childrenValueList: viewModel.sonucTuruValueList,
-                  groupValue: viewModel.sonucTuruGroupValue,
-                  filterOnChanged: (index) {
-                    viewModel.setSonucTuruGroupValue(index ?? 0);
-                    if (!viewModel.sartliKabulMu) {
-                      sartliKabulTuruController.clear();
-                    }
-                  },
-                ),
+            builder: (_) => SlideControllerWidget(
+              scroll: false,
+              title: "Sonuç Türü",
+              childrenTitleList: viewModel.sonucTuruTitleList,
+              childrenValueList: viewModel.sonucTuruValueList,
+              groupValue: viewModel.sonucTuruGroupValue,
+              filterOnChanged: (index) {
+                viewModel.setSonucTuruGroupValue(index ?? 0);
+                if (!viewModel.sartliKabulMu) {
+                  sartliKabulTuruController.clear();
+                }
+              },
+            ),
           ),
           CustomTextField(
             labelText: "Operatör",
@@ -281,25 +278,24 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
             },
           ),
           Observer(
-            builder:
-                (_) => CustomTextField(
-                  labelText: "Şartlı Kabul Türü",
-                  controller: sartliKabulTuruController,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showOlcumSartliKabullerBottomSheetDialog(
-                      context,
-                      viewModel.ekleModel.sartliKabulNedeni,
-                    );
-                    if (result != null) {
-                      viewModel.ekleModel.sartliKabulNedeniAciklama = result.tanimi ?? result.kodu;
-                      viewModel.setSartliKabul(result.kodu);
-                      sartliKabulTuruController.text = result.tanimi ?? "";
-                    }
-                  },
-                ).yetkiVarMi(viewModel.sartliKabulMu),
+            builder: (_) => CustomTextField(
+              labelText: "Şartlı Kabul Türü",
+              controller: sartliKabulTuruController,
+              isMust: true,
+              readOnly: true,
+              suffixMore: true,
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showOlcumSartliKabullerBottomSheetDialog(
+                  context,
+                  viewModel.ekleModel.sartliKabulNedeni,
+                );
+                if (result != null) {
+                  viewModel.ekleModel.sartliKabulNedeniAciklama = result.tanimi ?? result.kodu;
+                  viewModel.setSartliKabul(result.kodu);
+                  sartliKabulTuruController.text = result.tanimi ?? "";
+                }
+              },
+            ).yetkiVarMi(viewModel.sartliKabulMu),
           ),
           CustomTextField(labelText: "Açıklama", controller: aciklamaController, onChanged: viewModel.setAciklama),
           ElevatedButton(

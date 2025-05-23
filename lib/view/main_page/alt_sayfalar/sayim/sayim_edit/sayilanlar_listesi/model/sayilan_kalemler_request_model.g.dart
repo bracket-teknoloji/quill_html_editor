@@ -6,8 +6,7 @@ part of 'sayilan_kalemler_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SayilanKalemlerRequestModelImpl _$$SayilanKalemlerRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$SayilanKalemlerRequestModelImpl _$$SayilanKalemlerRequestModelImplFromJson(Map<String, dynamic> json) =>
     _$SayilanKalemlerRequestModelImpl(
       filtreKodu: (json['FiltreKodu'] as num?)?.toInt(),
       depoKodu: (json['DepoKodu'] as num?)?.toInt(),
@@ -18,8 +17,7 @@ _$SayilanKalemlerRequestModelImpl _$$SayilanKalemlerRequestModelImplFromJson(
       id: (json['ID'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$SayilanKalemlerRequestModelImplToJson(
-        _$SayilanKalemlerRequestModelImpl instance) =>
+Map<String, dynamic> _$$SayilanKalemlerRequestModelImplToJson(_$SayilanKalemlerRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.filtreKodu case final value?) 'FiltreKodu': value,
       if (instance.depoKodu case final value?) 'DepoKodu': value,

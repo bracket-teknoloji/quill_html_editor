@@ -54,10 +54,9 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
     }
     _belgeNoController = TextEditingController(text: model.belgeNo);
     _islemTarihiController = TextEditingController(
-      text:
-          (model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0
-              ? model.tarih.toDateString
-              : DateTime.now().toDateString,
+      text: (model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0
+          ? model.tarih.toDateString
+          : DateTime.now().toDateString,
     );
     _projeController = TextEditingController(text: model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerKodu ?? model.plasiyerKodu);

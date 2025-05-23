@@ -43,56 +43,53 @@ class _YaziciListesiViewState extends BaseState<YaziciListesiView> {
   );
 
   Observer body() => Observer(
-    builder:
-        (_) => RefreshableListView(
-          onRefresh: () async => viewModel.setYaziciListesi(),
-          items: viewModel.yaziciListesi,
-          itemBuilder:
-              (item) => Card(
-                child: ListTile(
-                  title: Text(item.yaziciAdi ?? ""),
-                  subtitle: Text(item.macAdresi),
-                  leading: StreamBuilder<bool>(
-                    stream: BluetoothManager().isDeviceConnected(item.macAdresi),
-                    builder:
-                        (context, snapshot) => IconButton(
-                          onPressed: () async {
-                            if (snapshot.data != true) {
-                              await BluetoothManager().connectToDevice(item.macAdresi);
-                            } else {
-                              await BluetoothManager().disconnectFromDevice();
-                            }
-                            viewModel.setYaziciListesi();
-                          },
-                          icon: Icon(
-                            snapshot.data != true ? Icons.bluetooth_searching : Icons.bluetooth_connected,
-                            color: snapshot.data != true ? null : Colors.green,
-                          ),
-                        ),
-                  ),
-                  trailing: Wrap(
-                    children: [
-                      IconButton(
-                        onPressed: () async {
-                          BluetoothManager().printText();
-                        },
-                        icon: const Icon(Icons.print_outlined),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          dialogManager.showAreYouSureDialog(
-                            onYes: () async {
-                              await BluetoothManager().disconnectFromDevice();
-                              viewModel.removeYaziciListesi(item);
-                            },
-                          );
-                        },
-                        icon: const Icon(Icons.delete_outline_outlined),
-                      ),
-                    ],
-                  ),
-                ),
+    builder: (_) => RefreshableListView(
+      onRefresh: () async => viewModel.setYaziciListesi(),
+      items: viewModel.yaziciListesi,
+      itemBuilder: (item) => Card(
+        child: ListTile(
+          title: Text(item.yaziciAdi ?? ""),
+          subtitle: Text(item.macAdresi),
+          leading: StreamBuilder<bool>(
+            stream: BluetoothManager().isDeviceConnected(item.macAdresi),
+            builder: (context, snapshot) => IconButton(
+              onPressed: () async {
+                if (snapshot.data != true) {
+                  await BluetoothManager().connectToDevice(item.macAdresi);
+                } else {
+                  await BluetoothManager().disconnectFromDevice();
+                }
+                viewModel.setYaziciListesi();
+              },
+              icon: Icon(
+                snapshot.data != true ? Icons.bluetooth_searching : Icons.bluetooth_connected,
+                color: snapshot.data != true ? null : Colors.green,
               ),
+            ),
+          ),
+          trailing: Wrap(
+            children: [
+              IconButton(
+                onPressed: () async {
+                  BluetoothManager().printText();
+                },
+                icon: const Icon(Icons.print_outlined),
+              ),
+              IconButton(
+                onPressed: () {
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      await BluetoothManager().disconnectFromDevice();
+                      viewModel.removeYaziciListesi(item);
+                    },
+                  );
+                },
+                icon: const Icon(Icons.delete_outline_outlined),
+              ),
+            ],
+          ),
         ),
+      ),
+    ),
   );
 }

@@ -38,11 +38,8 @@ final class _PaketIcerigiViewState extends BaseState<PaketIcerigiView> {
 
   AppBar appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) => AppBarTitle(
-            title: "Paket İçeriği (${viewModel.observableList?.length ?? 0})",
-            subtitle: widget.model.kodu,
-          ),
+      builder: (_) =>
+          AppBarTitle(title: "Paket İçeriği (${viewModel.observableList?.length ?? 0})", subtitle: widget.model.kodu),
     ),
   );
 
@@ -61,12 +58,11 @@ final class _PaketIcerigiViewState extends BaseState<PaketIcerigiView> {
   );
 
   Widget body() => Observer(
-    builder:
-        (_) => RefreshableListView(
-          onRefresh: viewModel.getData,
-          items: viewModel.observableList,
-          itemBuilder: paketIcerigiCard,
-        ),
+    builder: (_) => RefreshableListView(
+      onRefresh: viewModel.getData,
+      items: viewModel.observableList,
+      itemBuilder: paketIcerigiCard,
+    ),
   );
 
   PaketIcerigiCard paketIcerigiCard(PaketIcerigiModel item) => PaketIcerigiCard(

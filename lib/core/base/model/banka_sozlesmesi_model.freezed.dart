@@ -12,7 +12,8 @@ part of 'banka_sozlesmesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 BankaSozlesmesiModel _$BankaSozlesmesiModelFromJson(Map<String, dynamic> json) {
   return _BankaSozlesmesiModel.fromJson(json);
@@ -41,29 +42,27 @@ mixin _$BankaSozlesmesiModel {
   /// Create a copy of BankaSozlesmesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BankaSozlesmesiModelCopyWith<BankaSozlesmesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BankaSozlesmesiModelCopyWith<BankaSozlesmesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaSozlesmesiModelCopyWith<$Res> {
-  factory $BankaSozlesmesiModelCopyWith(BankaSozlesmesiModel value,
-          $Res Function(BankaSozlesmesiModel) then) =
+  factory $BankaSozlesmesiModelCopyWith(BankaSozlesmesiModel value, $Res Function(BankaSozlesmesiModel) then) =
       _$BankaSozlesmesiModelCopyWithImpl<$Res, BankaSozlesmesiModel>;
   @useResult
-  $Res call(
-      {String? sozlesmeKodu,
-      String? sozlesmeAdi,
-      String? krediKartiTanimi,
-      String? bankaTanimi,
-      DateTime? baslamaTarihi,
-      DateTime? bitisTarihi,
-      int? taksitBitis});
+  $Res call({
+    String? sozlesmeKodu,
+    String? sozlesmeAdi,
+    String? krediKartiTanimi,
+    String? bankaTanimi,
+    DateTime? baslamaTarihi,
+    DateTime? bitisTarihi,
+    int? taksitBitis,
+  });
 }
 
 /// @nodoc
-class _$BankaSozlesmesiModelCopyWithImpl<$Res,
-        $Val extends BankaSozlesmesiModel>
+class _$BankaSozlesmesiModelCopyWithImpl<$Res, $Val extends BankaSozlesmesiModel>
     implements $BankaSozlesmesiModelCopyWith<$Res> {
   _$BankaSozlesmesiModelCopyWithImpl(this._value, this._then);
 
@@ -85,64 +84,69 @@ class _$BankaSozlesmesiModelCopyWithImpl<$Res,
     Object? bitisTarihi = freezed,
     Object? taksitBitis = freezed,
   }) {
-    return _then(_value.copyWith(
-      sozlesmeKodu: freezed == sozlesmeKodu
-          ? _value.sozlesmeKodu
-          : sozlesmeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sozlesmeAdi: freezed == sozlesmeAdi
-          ? _value.sozlesmeAdi
-          : sozlesmeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      krediKartiTanimi: freezed == krediKartiTanimi
-          ? _value.krediKartiTanimi
-          : krediKartiTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bankaTanimi: freezed == bankaTanimi
-          ? _value.bankaTanimi
-          : bankaTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      taksitBitis: freezed == taksitBitis
-          ? _value.taksitBitis
-          : taksitBitis // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            sozlesmeKodu: freezed == sozlesmeKodu
+                ? _value.sozlesmeKodu
+                : sozlesmeKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sozlesmeAdi: freezed == sozlesmeAdi
+                ? _value.sozlesmeAdi
+                : sozlesmeAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            krediKartiTanimi: freezed == krediKartiTanimi
+                ? _value.krediKartiTanimi
+                : krediKartiTanimi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bankaTanimi: freezed == bankaTanimi
+                ? _value.bankaTanimi
+                : bankaTanimi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            baslamaTarihi: freezed == baslamaTarihi
+                ? _value.baslamaTarihi
+                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            bitisTarihi: freezed == bitisTarihi
+                ? _value.bitisTarihi
+                : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            taksitBitis: freezed == taksitBitis
+                ? _value.taksitBitis
+                : taksitBitis // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$BankaSozlesmesiModelImplCopyWith<$Res>
-    implements $BankaSozlesmesiModelCopyWith<$Res> {
-  factory _$$BankaSozlesmesiModelImplCopyWith(_$BankaSozlesmesiModelImpl value,
-          $Res Function(_$BankaSozlesmesiModelImpl) then) =
-      __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaSozlesmesiModelImplCopyWith<$Res> implements $BankaSozlesmesiModelCopyWith<$Res> {
+  factory _$$BankaSozlesmesiModelImplCopyWith(
+    _$BankaSozlesmesiModelImpl value,
+    $Res Function(_$BankaSozlesmesiModelImpl) then,
+  ) = __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? sozlesmeKodu,
-      String? sozlesmeAdi,
-      String? krediKartiTanimi,
-      String? bankaTanimi,
-      DateTime? baslamaTarihi,
-      DateTime? bitisTarihi,
-      int? taksitBitis});
+  $Res call({
+    String? sozlesmeKodu,
+    String? sozlesmeAdi,
+    String? krediKartiTanimi,
+    String? bankaTanimi,
+    DateTime? baslamaTarihi,
+    DateTime? bitisTarihi,
+    int? taksitBitis,
+  });
 }
 
 /// @nodoc
 class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
     extends _$BankaSozlesmesiModelCopyWithImpl<$Res, _$BankaSozlesmesiModelImpl>
     implements _$$BankaSozlesmesiModelImplCopyWith<$Res> {
-  __$$BankaSozlesmesiModelImplCopyWithImpl(_$BankaSozlesmesiModelImpl _value,
-      $Res Function(_$BankaSozlesmesiModelImpl) _then)
-      : super(_value, _then);
+  __$$BankaSozlesmesiModelImplCopyWithImpl(
+    _$BankaSozlesmesiModelImpl _value,
+    $Res Function(_$BankaSozlesmesiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BankaSozlesmesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -157,54 +161,55 @@ class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
     Object? bitisTarihi = freezed,
     Object? taksitBitis = freezed,
   }) {
-    return _then(_$BankaSozlesmesiModelImpl(
-      sozlesmeKodu: freezed == sozlesmeKodu
-          ? _value.sozlesmeKodu
-          : sozlesmeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sozlesmeAdi: freezed == sozlesmeAdi
-          ? _value.sozlesmeAdi
-          : sozlesmeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      krediKartiTanimi: freezed == krediKartiTanimi
-          ? _value.krediKartiTanimi
-          : krediKartiTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bankaTanimi: freezed == bankaTanimi
-          ? _value.bankaTanimi
-          : bankaTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      taksitBitis: freezed == taksitBitis
-          ? _value.taksitBitis
-          : taksitBitis // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$BankaSozlesmesiModelImpl(
+        sozlesmeKodu: freezed == sozlesmeKodu
+            ? _value.sozlesmeKodu
+            : sozlesmeKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sozlesmeAdi: freezed == sozlesmeAdi
+            ? _value.sozlesmeAdi
+            : sozlesmeAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        krediKartiTanimi: freezed == krediKartiTanimi
+            ? _value.krediKartiTanimi
+            : krediKartiTanimi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bankaTanimi: freezed == bankaTanimi
+            ? _value.bankaTanimi
+            : bankaTanimi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        baslamaTarihi: freezed == baslamaTarihi
+            ? _value.baslamaTarihi
+            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        bitisTarihi: freezed == bitisTarihi
+            ? _value.bitisTarihi
+            : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        taksitBitis: freezed == taksitBitis
+            ? _value.taksitBitis
+            : taksitBitis // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
-  _$BankaSozlesmesiModelImpl(
-      {this.sozlesmeKodu,
-      this.sozlesmeAdi,
-      this.krediKartiTanimi,
-      this.bankaTanimi,
-      this.baslamaTarihi,
-      this.bitisTarihi,
-      this.taksitBitis})
-      : super._();
+  _$BankaSozlesmesiModelImpl({
+    this.sozlesmeKodu,
+    this.sozlesmeAdi,
+    this.krediKartiTanimi,
+    this.bankaTanimi,
+    this.baslamaTarihi,
+    this.bitisTarihi,
+    this.taksitBitis,
+  }) : super._();
 
-  factory _$BankaSozlesmesiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BankaSozlesmesiModelImplFromJson(json);
+  factory _$BankaSozlesmesiModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaSozlesmesiModelImplFromJson(json);
 
   @override
   String? sozlesmeKodu;
@@ -226,32 +231,28 @@ class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
-      get copyWith =>
-          __$$BankaSozlesmesiModelImplCopyWithImpl<_$BankaSozlesmesiModelImpl>(
-              this, _$identity);
+  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl> get copyWith =>
+      __$$BankaSozlesmesiModelImplCopyWithImpl<_$BankaSozlesmesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BankaSozlesmesiModelImplToJson(
-      this,
-    );
+    return _$$BankaSozlesmesiModelImplToJson(this);
   }
 }
 
 abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
-  factory _BankaSozlesmesiModel(
-      {String? sozlesmeKodu,
-      String? sozlesmeAdi,
-      String? krediKartiTanimi,
-      String? bankaTanimi,
-      DateTime? baslamaTarihi,
-      DateTime? bitisTarihi,
-      int? taksitBitis}) = _$BankaSozlesmesiModelImpl;
+  factory _BankaSozlesmesiModel({
+    String? sozlesmeKodu,
+    String? sozlesmeAdi,
+    String? krediKartiTanimi,
+    String? bankaTanimi,
+    DateTime? baslamaTarihi,
+    DateTime? bitisTarihi,
+    int? taksitBitis,
+  }) = _$BankaSozlesmesiModelImpl;
   _BankaSozlesmesiModel._() : super._();
 
-  factory _BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) =
-      _$BankaSozlesmesiModelImpl.fromJson;
+  factory _BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) = _$BankaSozlesmesiModelImpl.fromJson;
 
   @override
   String? get sozlesmeKodu;
@@ -279,6 +280,5 @@ abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

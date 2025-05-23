@@ -78,43 +78,42 @@ final class DialogManager {
   );
   Future<TimeOfDay?> showSaatPicker() async => await showTimePicker(context: context, initialTime: TimeOfDay.now());
 
-  Future<void> showAlertDialog(String message) async =>
-      _baseDialog(
-        dialogType: DialogType.error,
-        btnOkText: "Tamam",
-        body: Column(
-          children: [
-            Container(
-              constraints: BoxConstraints(maxHeight: Get.height * 0.5),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: UIHelper.midSize),
-                      child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    ),
-                    Padding(
-                      padding: UIHelper.midPaddingHorizontal,
-                      child: SelectableText(message, textAlign: TextAlign.center),
-                    ),
-                  ],
+  Future<void> showAlertDialog(String message) async => _baseDialog(
+    dialogType: DialogType.error,
+    btnOkText: "Tamam",
+    body: Column(
+      children: [
+        Container(
+          constraints: BoxConstraints(maxHeight: Get.height * 0.5),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(bottom: UIHelper.midSize),
+                  child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                 ),
-              ),
+                Padding(
+                  padding: UIHelper.midPaddingHorizontal,
+                  child: SelectableText(message, textAlign: TextAlign.center),
+                ),
+              ],
             ),
-            Padding(
-              padding: UIHelper.midPaddingHorizontal,
-              child: Text(
-                getAppInfo,
-                style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8), fontSize: 12),
-                textAlign: TextAlign.center,
-              ),
-            ).paddingOnly(top: UIHelper.highSize),
-          ],
+          ),
         ),
-        // onOk is rootNavigator true without Get
-        onOk: () {},
-      ).show();
+        Padding(
+          padding: UIHelper.midPaddingHorizontal,
+          child: Text(
+            getAppInfo,
+            style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8), fontSize: 12),
+            textAlign: TextAlign.center,
+          ),
+        ).paddingOnly(top: UIHelper.highSize),
+      ],
+    ),
+    // onOk is rootNavigator true without Get
+    onOk: () {},
+  ).show();
 
   String get getAppInfo => [
     "Version: ${AppInfoModel.instance.version}+${AppInfoModel.instance.buildNumber}",
@@ -125,68 +124,66 @@ final class DialogManager {
     "E-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}",
   ].join("\n");
 
-  Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
-      _baseDialog(
-        dialogType: DialogType.error,
-        title: "Eksik var",
-        btnOkText: "Tamam",
-        desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ",
-        onOk: onOk ?? () {},
-      ).show();
+  Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) => _baseDialog(
+    dialogType: DialogType.error,
+    title: "Eksik var",
+    btnOkText: "Tamam",
+    desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ",
+    onOk: onOk ?? () {},
+  ).show();
 
-  void internetConnectionDialog() =>
-      _baseDialog(
-        customHeader: const CircularProgressIndicator.adaptive(),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Padding(padding: EdgeInsets.only(bottom: UIHelper.midSize), child: Text("Uyarı")),
-            const Padding(
-              padding: UIHelper.midPaddingHorizontal,
-              child: Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
-            ),
-            Padding(
-              padding: UIHelper.midPaddingHorizontal,
-              child: Text(
-                getAppInfo,
-                style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8)),
-                textAlign: TextAlign.center,
-              ),
-            ).paddingOnly(top: UIHelper.highSize),
-          ],
+  void internetConnectionDialog() => _baseDialog(
+    customHeader: const CircularProgressIndicator.adaptive(),
+    body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(bottom: UIHelper.midSize),
+          child: Text("Uyarı"),
         ),
-      ).show();
-
-  void showLoadingDialog(String loadText) =>
-      _baseDialog(
-        body: Center(
-          child: Column(
-            children: [
-              const CircularProgressIndicator.adaptive(),
-              context.sized.emptySizedHeightBoxLow,
-              Text(loadText, style: context.theme.textTheme.labelSmall),
-            ],
+        const Padding(
+          padding: UIHelper.midPaddingHorizontal,
+          child: Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
+        ),
+        Padding(
+          padding: UIHelper.midPaddingHorizontal,
+          child: Text(
+            getAppInfo,
+            style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8)),
+            textAlign: TextAlign.center,
           ),
-        ),
-      ).show();
+        ).paddingOnly(top: UIHelper.highSize),
+      ],
+    ),
+  ).show();
+
+  void showLoadingDialog(String loadText) => _baseDialog(
+    body: Center(
+      child: Column(
+        children: [
+          const CircularProgressIndicator.adaptive(),
+          context.sized.emptySizedHeightBoxLow,
+          Text(loadText, style: context.theme.textTheme.labelSmall),
+        ],
+      ),
+    ),
+  ).show();
   Future showAreYouSureDialog({required void Function() onYes, String? title, String? yesButtonText}) async =>
       await _areYouSureDialog(onYes, title, yesButtonText: yesButtonText).show();
 
-  void showSuccesDialog(String? description) =>
-      _baseDialog(
-        dialogType: DialogType.success,
-        btnOkText: "Tamam",
-        body: Text(description ?? "", textAlign: TextAlign.center),
-        onOk: () {},
-      ).show();
+  void showSuccesDialog(String? description) => _baseDialog(
+    dialogType: DialogType.success,
+    btnOkText: "Tamam",
+    body: Text(description ?? "", textAlign: TextAlign.center),
+    onOk: () {},
+  ).show();
 
-  Future<void> showInfoDialog(String? description) async =>
-      await _baseDialog(
-        dialogType: DialogType.info,
-        btnOkText: "Tamam",
-        body: Text(description ?? "", textAlign: TextAlign.center),
-        onOk: () {},
-      ).show();
+  Future<void> showInfoDialog(String? description) async => await _baseDialog(
+    dialogType: DialogType.info,
+    btnOkText: "Tamam",
+    body: Text(description ?? "", textAlign: TextAlign.center),
+    onOk: () {},
+  ).show();
 
   Future showStokKayitliDialog(StokListesiModel model) async {
     bool result = false;
@@ -201,15 +198,14 @@ final class DialogManager {
     return result;
   }
 
-  Future<void> showDialog({required Widget body, void Function()? onYes}) async =>
-      await _baseDialog(
-        body: body,
-        onOk: onYes,
-        onCancel: () {},
-        btnCancelText: "Hayır",
-        btnOkText: onYes != null ? "Evet" : null,
-        dialogType: DialogType.question,
-      ).show();
+  Future<void> showDialog({required Widget body, void Function()? onYes}) async => await _baseDialog(
+    body: body,
+    onOk: onYes,
+    onCancel: () {},
+    btnCancelText: "Hayır",
+    btnOkText: onYes != null ? "Evet" : null,
+    dialogType: DialogType.question,
+  ).show();
 
   void showGridViewDialog(Widget body) =>
       _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
@@ -218,19 +214,18 @@ final class DialogManager {
     CariListesiModel? model, {
     Function(bool)? onSelected,
     IslemTipiEnum islemTipi = IslemTipiEnum.cari,
-  }) async =>
-      _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(
-          cariListesiModel: model,
-          model: model,
-          islemTipi: islemTipi,
-          title: model?.cariAdi ?? model?.cariKodu,
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => _baseDialog(
+    body: CustomAnimatedGridView<CariListesiModel>(
+      cariListesiModel: model,
+      model: model,
+      islemTipi: islemTipi,
+      title: model?.cariAdi ?? model?.cariKodu,
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
   Future<dynamic> showCariIslemleriGridViewDialog(CariListesiModel? model, {void Function(bool)? onselected}) async {
     if (model == null) {
       showAlertDialog("Seçili Cari Bulunamadı.");
@@ -257,36 +252,34 @@ final class DialogManager {
     IslemTipiEnum? tip,
     EditTipiEnum? siparisTipi,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.eBelge,
-          title: model.cariAdi ?? model.cariKodu,
-          onSelected: onSelected,
-          siparisTipi: siparisTipi,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<BaseSiparisEditModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.eBelge,
+      title: model.cariAdi ?? model.cariKodu,
+      onSelected: onSelected,
+      siparisTipi: siparisTipi,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
   Future<dynamic> showCekSenetGridViewDialog(
     CekSenetListesiModel? model, {
     IslemTipiEnum? tip,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<CekSenetListesiModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.cekSenet,
-          title: model?.cariAdi ?? model?.cariKodu,
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<CekSenetListesiModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.cekSenet,
+      title: model?.cariAdi ?? model?.cariKodu,
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
   Future<void> showCariHareketleriGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected}) async =>
       await _baseDialog(
@@ -306,128 +299,119 @@ final class DialogManager {
     IslemTipiEnum? tip,
     EditTipiEnum? siparisTipi,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.talepTeklif,
-          siparisTipi: siparisTipi,
-          title: model?.belgeNo,
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<BaseSiparisEditModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.talepTeklif,
+      siparisTipi: siparisTipi,
+      title: model?.belgeNo,
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
   Future<dynamic> showFaturaGridViewDialog({
     BaseSiparisEditModel? model,
     IslemTipiEnum? tip,
     EditTipiEnum? siparisTipi,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.fatura,
-          siparisTipi: siparisTipi,
-          title: model?.belgeNo,
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<BaseSiparisEditModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.fatura,
+      siparisTipi: siparisTipi,
+      title: model?.belgeNo,
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
   Future<dynamic> showTransferGridViewDialog({
     BaseSiparisEditModel? model,
     IslemTipiEnum? tip,
     EditTipiEnum? siparisTipi,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.depoTransferi,
-          siparisTipi: siparisTipi,
-          title: model?.belgeNo,
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<BaseSiparisEditModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.depoTransferi,
+      siparisTipi: siparisTipi,
+      title: model?.belgeNo,
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
   Future<dynamic> showKasaGridViewDialog(
     KasaListesiModel? model, {
     IslemTipiEnum? tip,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<KasaListesiModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.kasa,
-          title: "Kasa İşlemleri",
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<KasaListesiModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.kasa,
+      title: "Kasa İşlemleri",
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
   Future<dynamic> showBankaIslemleriGridViewDialog(
     BankaListesiModel? model, {
     IslemTipiEnum? tip,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<BankaListesiModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.bankaIslemleri,
-          title: "Banka İşlemleri",
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<BankaListesiModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.bankaIslemleri,
+      title: "Banka İşlemleri",
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
   Future<dynamic> showBankaGridViewDialog(
     BankaListesiModel? model, {
     IslemTipiEnum? tip,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<BankaListesiModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.banka,
-          title: "Banka İşlemleri",
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<BankaListesiModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.banka,
+      title: "Banka İşlemleri",
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
-  void showCariRaporlarGridViewDialog({CariListesiModel? model}) =>
-      _baseDialog(
-        body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.cariRapor),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  void showCariRaporlarGridViewDialog({CariListesiModel? model}) => _baseDialog(
+    body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.cariRapor),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
-  void showStokRaporlarGridViewDialog({StokListesiModel? model}) =>
-      _baseDialog(
-        body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.stokRapor),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
-  void showCariSerbestRaporlarGridViewDialog() =>
-      _baseDialog(
-        body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  void showStokRaporlarGridViewDialog({StokListesiModel? model}) => _baseDialog(
+    body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.stokRapor),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
+  void showCariSerbestRaporlarGridViewDialog() => _baseDialog(
+    body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
   Future<dynamic> showStokGridViewDialog(
     StokListesiModel? model, {
@@ -456,63 +440,60 @@ final class DialogManager {
     IslemTipiEnum? tip,
     EditTipiEnum? siparisTipi,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.siparis,
-          siparisTipi: siparisTipi,
-          title: model?.belgeNo,
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<BaseSiparisEditModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.siparis,
+      siparisTipi: siparisTipi,
+      title: model?.belgeNo,
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
   Future<dynamic> showOdemeTahsilatGridViewDialog({
     CariHareketleriModel? model,
     IslemTipiEnum? tip,
     EditTipiEnum? siparisTipi,
     Function(bool)? onSelected,
-  }) async =>
-      await _baseDialog(
-        body: CustomAnimatedGridView<CariHareketleriModel>(
-          model: model,
-          islemTipi: tip ?? IslemTipiEnum.tahsilatOdeme,
-          siparisTipi: siparisTipi,
-          title: model?.belgeNo,
-          onSelected: onSelected,
-        ),
-        onOk: () {},
-        btnOkText: "İptal",
-        dialogType: DialogType.noHeader,
-      ).show();
+  }) async => await _baseDialog(
+    body: CustomAnimatedGridView<CariHareketleriModel>(
+      model: model,
+      islemTipi: tip ?? IslemTipiEnum.tahsilatOdeme,
+      siparisTipi: siparisTipi,
+      title: model?.belgeNo,
+      onSelected: onSelected,
+    ),
+    onOk: () {},
+    btnOkText: "İptal",
+    dialogType: DialogType.noHeader,
+  ).show();
 
-  void showExitDialog() =>
-      _baseDialog(
-        title: "Uyarı",
-        desc: "Çıkmak istediğinize emin misiniz?",
-        dialogType: DialogType.question,
-        onOk: () async {
-          DIManager.delete<LocationManager>();
-          final response = await NetworkManager().dioPost<LogoutModel>(
-            path: ApiUrls.logoutUser,
-            bodyModel: LogoutModel(),
-            data: AccountModel.instance.toJson(),
-            showLoading: true,
-          );
-          if (response.isSuccess) {
-            showLoadingDialog("Çıkış yapılıyor...");
-            hideMaterialBanner();
-            log("Çıkış yapılıyor...");
-            CacheManager.setLogout(false);
-            Get.offAllNamed("/login", arguments: true);
-          }
-        },
-        btnOkText: "Evet",
-        onCancel: () {},
-        btnCancelText: "Hayır",
-      ).show();
+  void showExitDialog() => _baseDialog(
+    title: "Uyarı",
+    desc: "Çıkmak istediğinize emin misiniz?",
+    dialogType: DialogType.question,
+    onOk: () async {
+      DIManager.delete<LocationManager>();
+      final response = await NetworkManager().dioPost<LogoutModel>(
+        path: ApiUrls.logoutUser,
+        bodyModel: LogoutModel(),
+        data: AccountModel.instance.toJson(),
+        showLoading: true,
+      );
+      if (response.isSuccess) {
+        showLoadingDialog("Çıkış yapılıyor...");
+        hideMaterialBanner();
+        log("Çıkış yapılıyor...");
+        CacheManager.setLogout(false);
+        Get.offAllNamed("/login", arguments: true);
+      }
+    },
+    btnOkText: "Evet",
+    onCancel: () {},
+    btnCancelText: "Hayır",
+  ).show();
 
   Future<void> showLocationDialog() async {
     final Location location = Location();
@@ -547,15 +528,14 @@ final class DialogManager {
     // ).show();
   }
 
-  Future<void> showSettingsDialog(String value) async =>
-      _baseDialog(
-        dialogType: DialogType.question,
-        body: Text("$value\nUygulama ayarlarına gitmek istiyor musunuz?", textAlign: TextAlign.center),
-        onOk: () async {
-          await AppSettings.openAppSettings();
-        },
-        onCancel: () {},
-      ).show();
+  Future<void> showSettingsDialog(String value) async => _baseDialog(
+    dialogType: DialogType.question,
+    body: Text("$value\nUygulama ayarlarına gitmek istiyor musunuz?", textAlign: TextAlign.center),
+    onOk: () async {
+      await AppSettings.openAppSettings();
+    },
+    onCancel: () {},
+  ).show();
 
   ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBanner(
     String message, {
@@ -744,10 +724,9 @@ final class DialogManager {
             onTap: () {
               Get.back(
                 result: LoginDialogModel(
-                  account:
-                      AccountResponseModel()
-                        ..firma = "demo"
-                        ..email = "demo@netfect.com",
+                  account: AccountResponseModel()
+                    ..firma = "demo"
+                    ..email = "demo@netfect.com",
                   username: "demo",
                   password: "demo",
                 ),
@@ -798,16 +777,15 @@ final class DialogManager {
     enableEnterKey: true,
     context: context,
     isDense: true,
-    width:
-        kIsWeb
-            ? context.isLandscape
-                ? MediaQuery.sizeOf(context).width * 0.4
-                : MediaQuery.sizeOf(context).width * 0.6
-            : Platform.isLinux || Platform.isWindows || Platform.isMacOS
-            ? context.isLandscape
-                ? MediaQuery.sizeOf(context).width * 0.4
-                : MediaQuery.sizeOf(context).width * 0.6
-            : null,
+    width: kIsWeb
+        ? context.isLandscape
+              ? MediaQuery.sizeOf(context).width * 0.4
+              : MediaQuery.sizeOf(context).width * 0.6
+        : Platform.isLinux || Platform.isWindows || Platform.isMacOS
+        ? context.isLandscape
+              ? MediaQuery.sizeOf(context).width * 0.4
+              : MediaQuery.sizeOf(context).width * 0.6
+        : null,
     customHeader: customHeader,
     onDismissCallback: (type) {},
     barrierColor: Colors.black.withValues(alpha: 0.6),

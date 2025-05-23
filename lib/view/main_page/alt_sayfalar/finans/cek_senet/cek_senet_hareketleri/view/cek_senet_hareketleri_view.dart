@@ -34,51 +34,48 @@ final class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView>
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(title: "Çek Senet Hareketleri (${viewModel.cekSenetHareketleriListesi?.length ?? 0})"),
+        builder: (_) =>
+            AppBarTitle(title: "Çek Senet Hareketleri (${viewModel.cekSenetHareketleriListesi?.length ?? 0})"),
       ),
     ),
     body: Observer(
-      builder:
-          (_) => ListView.builder(
-            itemCount: viewModel.cekSenetHareketleriListesi?.length ?? 0,
-            itemBuilder: (context, index) {
-              if (viewModel.cekSenetHareketleriListesi == null) {
-                return const Center(child: CircularProgressIndicator.adaptive());
-              } else if ((viewModel.cekSenetHareketleriListesi?.length ?? 0) < 1) {
-                return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
-              } else {
-                final CekSenetHareketleriModel model = viewModel.cekSenetHareketleriListesi![index];
-                return Card(
-                  child: ListTile(
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text(model.belgeNo ?? ""), Text(model.tarih.toDateString)],
-                        ),
-                        Text(widget.model.cariAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Text(model.hesapKodu ?? ""),
-                        Text(model.islemAdi ?? ""),
-                      ],
+      builder: (_) => ListView.builder(
+        itemCount: viewModel.cekSenetHareketleriListesi?.length ?? 0,
+        itemBuilder: (context, index) {
+          if (viewModel.cekSenetHareketleriListesi == null) {
+            return const Center(child: CircularProgressIndicator.adaptive());
+          } else if ((viewModel.cekSenetHareketleriListesi?.length ?? 0) < 1) {
+            return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
+          } else {
+            final CekSenetHareketleriModel model = viewModel.cekSenetHareketleriListesi![index];
+            return Card(
+              child: ListTile(
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [Text(model.belgeNo ?? ""), Text(model.tarih.toDateString)],
                     ),
-                    subtitle: LayoutBuilder(
-                      builder:
-                          (context, constraints) => Wrap(
-                            children:
-                                [
-                                  Text("Yeri:\n${model.yerAdi}"),
-                                  Text("Durumu:\n${model.durumAdi}"),
-                                  Text("Kayıt Yapan Kul:\n${model.kayityapankul ?? ""}"),
-                                ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
-                          ),
-                    ),
+                    Text(widget.model.cariAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text(model.hesapKodu ?? ""),
+                    Text(model.islemAdi ?? ""),
+                  ],
+                ),
+                subtitle: LayoutBuilder(
+                  builder: (context, constraints) => Wrap(
+                    children: [
+                      Text("Yeri:\n${model.yerAdi}"),
+                      Text("Durumu:\n${model.durumAdi}"),
+                      Text("Kayıt Yapan Kul:\n${model.kayityapankul ?? ""}"),
+                    ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
                   ),
-                );
-              }
-            },
-          ).paddingAll(UIHelper.lowSize),
+                ),
+              ),
+            );
+          }
+        },
+      ).paddingAll(UIHelper.lowSize),
     ),
   );
 }

@@ -32,10 +32,9 @@ abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
   void resetFuture() => futureController = ObservableFuture.value(false);
 
   @action
-  void isDovizli(bool value) =>
-      pdfModel = pdfModel.copyWith(
-        raporOzelKod: value ? "Rapor_CariDovizliBorcAlacakDokumu" : "Rapor_CariBorcAlacakDokumu",
-      );
+  void isDovizli(bool value) => pdfModel = pdfModel.copyWith(
+    raporOzelKod: value ? "Rapor_CariDovizliBorcAlacakDokumu" : "Rapor_CariBorcAlacakDokumu",
+  );
 
   @action
   void setDovizTipleri(List<int>? dovizTipleri) {

@@ -76,21 +76,19 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
                   child: CustomWidgetWithLabel(
                     text: "Şifre",
                     child: Observer(
-                      builder:
-                          (_) => CustomTextField(
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: viewModel.obscurePassword,
-                            controller: passwordController,
-                            isMust: true,
-                            onSubmitted: (value) => loginMethod(),
-                            suffix: IconButton(
-                              onPressed: viewModel.togglePassword,
-                              icon: Observer(
-                                builder:
-                                    (_) => Icon(viewModel.obscurePassword ? Icons.visibility : Icons.visibility_off),
-                              ),
-                            ),
+                      builder: (_) => CustomTextField(
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: viewModel.obscurePassword,
+                        controller: passwordController,
+                        isMust: true,
+                        onSubmitted: (value) => loginMethod(),
+                        suffix: IconButton(
+                          onPressed: viewModel.togglePassword,
+                          icon: Observer(
+                            builder: (_) => Icon(viewModel.obscurePassword ? Icons.visibility : Icons.visibility_off),
                           ),
+                        ),
+                      ),
                     ),
                   ),
                 ),

@@ -12,10 +12,10 @@ part of 'talep_teklif_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-TalepTeklifListesiModel _$TalepTeklifListesiModelFromJson(
-    Map<String, dynamic> json) {
+TalepTeklifListesiModel _$TalepTeklifListesiModelFromJson(Map<String, dynamic> json) {
   return _TalepTeklifListesiModel.fromJson(json);
 }
 
@@ -70,8 +70,7 @@ mixin _$TalepTeklifListesiModel {
   List<dynamic>? get tempSipList => throw _privateConstructorUsedError;
   set tempSipList(List<dynamic>? value) => throw _privateConstructorUsedError;
   List<KalemListModel>? get kalemList => throw _privateConstructorUsedError;
-  set kalemList(List<KalemListModel>? value) =>
-      throw _privateConstructorUsedError;
+  set kalemList(List<KalemListModel>? value) => throw _privateConstructorUsedError;
   String? get acik1 => throw _privateConstructorUsedError;
   set acik1(String? value) => throw _privateConstructorUsedError;
   String? get acik2 => throw _privateConstructorUsedError;
@@ -177,96 +176,94 @@ mixin _$TalepTeklifListesiModel {
   /// Create a copy of TalepTeklifListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TalepTeklifListesiModelCopyWith<TalepTeklifListesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TalepTeklifListesiModelCopyWith<TalepTeklifListesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TalepTeklifListesiModelCopyWith<$Res> {
-  factory $TalepTeklifListesiModelCopyWith(TalepTeklifListesiModel value,
-          $Res Function(TalepTeklifListesiModel) then) =
+  factory $TalepTeklifListesiModelCopyWith(TalepTeklifListesiModel value, $Res Function(TalepTeklifListesiModel) then) =
       _$TalepTeklifListesiModelCopyWithImpl<$Res, TalepTeklifListesiModel>;
   @useResult
-  $Res call(
-      {bool? cariDovizli,
-      DateTime? kayittarihi,
-      DateTime? tarih,
-      DateTime? teslimTarihi,
-      DateTime? vadeTarihi,
-      double? dovizTutari,
-      double? genelIskonto1,
-      double? genelIskonto2,
-      double? genelIskonto3,
-      double? genelToplam,
-      double? genIsk1O,
-      double? genisk1Tipi,
-      double? genIsk2O,
-      double? genIsk3O,
-      double? kalanMiktar,
-      double? kdv,
-      double? miktar,
-      double? tamamlananMiktar,
-      int? dovizTipi,
-      int? genisk3Tipi,
-      int? kalemAdedi,
-      int? tipi,
-      int? vadeGunu,
-      List<dynamic>? tempSipList,
-      List<KalemListModel>? kalemList,
-      String? acik1,
-      String? acik2,
-      String? acik3,
-      String? acik4,
-      String? acik5,
-      String? acik6,
-      String? acik7,
-      String? acik8,
-      String? acik9,
-      String? acik10,
-      String? acik11,
-      String? acik12,
-      String? acik13,
-      String? acik14,
-      String? acik15,
-      String? acik16,
-      String? belgeKodu,
-      String? belgeNo,
-      String? belgeTuru,
-      String? cariAdi,
-      String? cariKodu,
-      String? cYedek6,
-      String? dovizAdi,
-      String? ekAciklama,
-      String? faturalasti,
-      String? kasaKodu,
-      String? kayityapankul,
-      String? kdvDahil,
-      String? plasiyerAciklama,
-      String? plasiyerKodu,
-      String? siparislesti,
-      String? ekAcik1,
-      String? ekAcik10,
-      String? ekAcik11,
-      String? ekAcik12,
-      String? ekAcik13,
-      String? ekAcik14,
-      String? ekAcik15,
-      String? ekAcik16,
-      String? ekAcik2,
-      String? ekAcik3,
-      String? ekAcik4,
-      String? ekAcik5,
-      String? ekAcik6,
-      String? ekAcik7,
-      String? ekAcik8,
-      String? ekAcik9,
-      int? islemKodu,
-      String? tag});
+  $Res call({
+    bool? cariDovizli,
+    DateTime? kayittarihi,
+    DateTime? tarih,
+    DateTime? teslimTarihi,
+    DateTime? vadeTarihi,
+    double? dovizTutari,
+    double? genelIskonto1,
+    double? genelIskonto2,
+    double? genelIskonto3,
+    double? genelToplam,
+    double? genIsk1O,
+    double? genisk1Tipi,
+    double? genIsk2O,
+    double? genIsk3O,
+    double? kalanMiktar,
+    double? kdv,
+    double? miktar,
+    double? tamamlananMiktar,
+    int? dovizTipi,
+    int? genisk3Tipi,
+    int? kalemAdedi,
+    int? tipi,
+    int? vadeGunu,
+    List<dynamic>? tempSipList,
+    List<KalemListModel>? kalemList,
+    String? acik1,
+    String? acik2,
+    String? acik3,
+    String? acik4,
+    String? acik5,
+    String? acik6,
+    String? acik7,
+    String? acik8,
+    String? acik9,
+    String? acik10,
+    String? acik11,
+    String? acik12,
+    String? acik13,
+    String? acik14,
+    String? acik15,
+    String? acik16,
+    String? belgeKodu,
+    String? belgeNo,
+    String? belgeTuru,
+    String? cariAdi,
+    String? cariKodu,
+    String? cYedek6,
+    String? dovizAdi,
+    String? ekAciklama,
+    String? faturalasti,
+    String? kasaKodu,
+    String? kayityapankul,
+    String? kdvDahil,
+    String? plasiyerAciklama,
+    String? plasiyerKodu,
+    String? siparislesti,
+    String? ekAcik1,
+    String? ekAcik10,
+    String? ekAcik11,
+    String? ekAcik12,
+    String? ekAcik13,
+    String? ekAcik14,
+    String? ekAcik15,
+    String? ekAcik16,
+    String? ekAcik2,
+    String? ekAcik3,
+    String? ekAcik4,
+    String? ekAcik5,
+    String? ekAcik6,
+    String? ekAcik7,
+    String? ekAcik8,
+    String? ekAcik9,
+    int? islemKodu,
+    String? tag,
+  });
 }
 
 /// @nodoc
-class _$TalepTeklifListesiModelCopyWithImpl<$Res,
-        $Val extends TalepTeklifListesiModel>
+class _$TalepTeklifListesiModelCopyWithImpl<$Res, $Val extends TalepTeklifListesiModel>
     implements $TalepTeklifListesiModelCopyWith<$Res> {
   _$TalepTeklifListesiModelCopyWithImpl(this._value, this._then);
 
@@ -355,402 +352,404 @@ class _$TalepTeklifListesiModelCopyWithImpl<$Res,
     Object? islemKodu = freezed,
     Object? tag = freezed,
   }) {
-    return _then(_value.copyWith(
-      cariDovizli: freezed == cariDovizli
-          ? _value.cariDovizli
-          : cariDovizli // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      teslimTarihi: freezed == teslimTarihi
-          ? _value.teslimTarihi
-          : teslimTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      vadeTarihi: freezed == vadeTarihi
-          ? _value.vadeTarihi
-          : vadeTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelIskonto1: freezed == genelIskonto1
-          ? _value.genelIskonto1
-          : genelIskonto1 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelIskonto2: freezed == genelIskonto2
-          ? _value.genelIskonto2
-          : genelIskonto2 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelIskonto3: freezed == genelIskonto3
-          ? _value.genelIskonto3
-          : genelIskonto3 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelToplam: freezed == genelToplam
-          ? _value.genelToplam
-          : genelToplam // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genIsk1O: freezed == genIsk1O
-          ? _value.genIsk1O
-          : genIsk1O // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genisk1Tipi: freezed == genisk1Tipi
-          ? _value.genisk1Tipi
-          : genisk1Tipi // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genIsk2O: freezed == genIsk2O
-          ? _value.genIsk2O
-          : genIsk2O // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genIsk3O: freezed == genIsk3O
-          ? _value.genIsk3O
-          : genIsk3O // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kalanMiktar: freezed == kalanMiktar
-          ? _value.kalanMiktar
-          : kalanMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kdv: freezed == kdv
-          ? _value.kdv
-          : kdv // ignore: cast_nullable_to_non_nullable
-              as double?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tamamlananMiktar: freezed == tamamlananMiktar
-          ? _value.tamamlananMiktar
-          : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      genisk3Tipi: freezed == genisk3Tipi
-          ? _value.genisk3Tipi
-          : genisk3Tipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kalemAdedi: freezed == kalemAdedi
-          ? _value.kalemAdedi
-          : kalemAdedi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      vadeGunu: freezed == vadeGunu
-          ? _value.vadeGunu
-          : vadeGunu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tempSipList: freezed == tempSipList
-          ? _value.tempSipList
-          : tempSipList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      kalemList: freezed == kalemList
-          ? _value.kalemList
-          : kalemList // ignore: cast_nullable_to_non_nullable
-              as List<KalemListModel>?,
-      acik1: freezed == acik1
-          ? _value.acik1
-          : acik1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik2: freezed == acik2
-          ? _value.acik2
-          : acik2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik3: freezed == acik3
-          ? _value.acik3
-          : acik3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik4: freezed == acik4
-          ? _value.acik4
-          : acik4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik5: freezed == acik5
-          ? _value.acik5
-          : acik5 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik6: freezed == acik6
-          ? _value.acik6
-          : acik6 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik7: freezed == acik7
-          ? _value.acik7
-          : acik7 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik8: freezed == acik8
-          ? _value.acik8
-          : acik8 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik9: freezed == acik9
-          ? _value.acik9
-          : acik9 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik10: freezed == acik10
-          ? _value.acik10
-          : acik10 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik11: freezed == acik11
-          ? _value.acik11
-          : acik11 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik12: freezed == acik12
-          ? _value.acik12
-          : acik12 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik13: freezed == acik13
-          ? _value.acik13
-          : acik13 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik14: freezed == acik14
-          ? _value.acik14
-          : acik14 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik15: freezed == acik15
-          ? _value.acik15
-          : acik15 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik16: freezed == acik16
-          ? _value.acik16
-          : acik16 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeKodu: freezed == belgeKodu
-          ? _value.belgeKodu
-          : belgeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cYedek6: freezed == cYedek6
-          ? _value.cYedek6
-          : cYedek6 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAciklama: freezed == ekAciklama
-          ? _value.ekAciklama
-          : ekAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturalasti: freezed == faturalasti
-          ? _value.faturalasti
-          : faturalasti // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kdvDahil: freezed == kdvDahil
-          ? _value.kdvDahil
-          : kdvDahil // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAciklama: freezed == plasiyerAciklama
-          ? _value.plasiyerAciklama
-          : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      siparislesti: freezed == siparislesti
-          ? _value.siparislesti
-          : siparislesti // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik1: freezed == ekAcik1
-          ? _value.ekAcik1
-          : ekAcik1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik10: freezed == ekAcik10
-          ? _value.ekAcik10
-          : ekAcik10 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik11: freezed == ekAcik11
-          ? _value.ekAcik11
-          : ekAcik11 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik12: freezed == ekAcik12
-          ? _value.ekAcik12
-          : ekAcik12 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik13: freezed == ekAcik13
-          ? _value.ekAcik13
-          : ekAcik13 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik14: freezed == ekAcik14
-          ? _value.ekAcik14
-          : ekAcik14 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik15: freezed == ekAcik15
-          ? _value.ekAcik15
-          : ekAcik15 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik16: freezed == ekAcik16
-          ? _value.ekAcik16
-          : ekAcik16 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik2: freezed == ekAcik2
-          ? _value.ekAcik2
-          : ekAcik2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik3: freezed == ekAcik3
-          ? _value.ekAcik3
-          : ekAcik3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik4: freezed == ekAcik4
-          ? _value.ekAcik4
-          : ekAcik4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik5: freezed == ekAcik5
-          ? _value.ekAcik5
-          : ekAcik5 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik6: freezed == ekAcik6
-          ? _value.ekAcik6
-          : ekAcik6 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik7: freezed == ekAcik7
-          ? _value.ekAcik7
-          : ekAcik7 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik8: freezed == ekAcik8
-          ? _value.ekAcik8
-          : ekAcik8 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik9: freezed == ekAcik9
-          ? _value.ekAcik9
-          : ekAcik9 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tag: freezed == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            cariDovizli: freezed == cariDovizli
+                ? _value.cariDovizli
+                : cariDovizli // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            kayittarihi: freezed == kayittarihi
+                ? _value.kayittarihi
+                : kayittarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            teslimTarihi: freezed == teslimTarihi
+                ? _value.teslimTarihi
+                : teslimTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            vadeTarihi: freezed == vadeTarihi
+                ? _value.vadeTarihi
+                : vadeTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            dovizTutari: freezed == dovizTutari
+                ? _value.dovizTutari
+                : dovizTutari // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genelIskonto1: freezed == genelIskonto1
+                ? _value.genelIskonto1
+                : genelIskonto1 // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genelIskonto2: freezed == genelIskonto2
+                ? _value.genelIskonto2
+                : genelIskonto2 // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genelIskonto3: freezed == genelIskonto3
+                ? _value.genelIskonto3
+                : genelIskonto3 // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genelToplam: freezed == genelToplam
+                ? _value.genelToplam
+                : genelToplam // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genIsk1O: freezed == genIsk1O
+                ? _value.genIsk1O
+                : genIsk1O // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genisk1Tipi: freezed == genisk1Tipi
+                ? _value.genisk1Tipi
+                : genisk1Tipi // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genIsk2O: freezed == genIsk2O
+                ? _value.genIsk2O
+                : genIsk2O // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            genIsk3O: freezed == genIsk3O
+                ? _value.genIsk3O
+                : genIsk3O // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            kalanMiktar: freezed == kalanMiktar
+                ? _value.kalanMiktar
+                : kalanMiktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            kdv: freezed == kdv
+                ? _value.kdv
+                : kdv // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            tamamlananMiktar: freezed == tamamlananMiktar
+                ? _value.tamamlananMiktar
+                : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            dovizTipi: freezed == dovizTipi
+                ? _value.dovizTipi
+                : dovizTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            genisk3Tipi: freezed == genisk3Tipi
+                ? _value.genisk3Tipi
+                : genisk3Tipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kalemAdedi: freezed == kalemAdedi
+                ? _value.kalemAdedi
+                : kalemAdedi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tipi: freezed == tipi
+                ? _value.tipi
+                : tipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            vadeGunu: freezed == vadeGunu
+                ? _value.vadeGunu
+                : vadeGunu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tempSipList: freezed == tempSipList
+                ? _value.tempSipList
+                : tempSipList // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>?,
+            kalemList: freezed == kalemList
+                ? _value.kalemList
+                : kalemList // ignore: cast_nullable_to_non_nullable
+                      as List<KalemListModel>?,
+            acik1: freezed == acik1
+                ? _value.acik1
+                : acik1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik2: freezed == acik2
+                ? _value.acik2
+                : acik2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik3: freezed == acik3
+                ? _value.acik3
+                : acik3 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik4: freezed == acik4
+                ? _value.acik4
+                : acik4 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik5: freezed == acik5
+                ? _value.acik5
+                : acik5 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik6: freezed == acik6
+                ? _value.acik6
+                : acik6 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik7: freezed == acik7
+                ? _value.acik7
+                : acik7 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik8: freezed == acik8
+                ? _value.acik8
+                : acik8 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik9: freezed == acik9
+                ? _value.acik9
+                : acik9 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik10: freezed == acik10
+                ? _value.acik10
+                : acik10 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik11: freezed == acik11
+                ? _value.acik11
+                : acik11 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik12: freezed == acik12
+                ? _value.acik12
+                : acik12 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik13: freezed == acik13
+                ? _value.acik13
+                : acik13 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik14: freezed == acik14
+                ? _value.acik14
+                : acik14 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik15: freezed == acik15
+                ? _value.acik15
+                : acik15 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            acik16: freezed == acik16
+                ? _value.acik16
+                : acik16 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeKodu: freezed == belgeKodu
+                ? _value.belgeKodu
+                : belgeKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTuru: freezed == belgeTuru
+                ? _value.belgeTuru
+                : belgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariAdi: freezed == cariAdi
+                ? _value.cariAdi
+                : cariAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cYedek6: freezed == cYedek6
+                ? _value.cYedek6
+                : cYedek6 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dovizAdi: freezed == dovizAdi
+                ? _value.dovizAdi
+                : dovizAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAciklama: freezed == ekAciklama
+                ? _value.ekAciklama
+                : ekAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            faturalasti: freezed == faturalasti
+                ? _value.faturalasti
+                : faturalasti // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kasaKodu: freezed == kasaKodu
+                ? _value.kasaKodu
+                : kasaKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayityapankul: freezed == kayityapankul
+                ? _value.kayityapankul
+                : kayityapankul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kdvDahil: freezed == kdvDahil
+                ? _value.kdvDahil
+                : kdvDahil // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            plasiyerAciklama: freezed == plasiyerAciklama
+                ? _value.plasiyerAciklama
+                : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            plasiyerKodu: freezed == plasiyerKodu
+                ? _value.plasiyerKodu
+                : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            siparislesti: freezed == siparislesti
+                ? _value.siparislesti
+                : siparislesti // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik1: freezed == ekAcik1
+                ? _value.ekAcik1
+                : ekAcik1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik10: freezed == ekAcik10
+                ? _value.ekAcik10
+                : ekAcik10 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik11: freezed == ekAcik11
+                ? _value.ekAcik11
+                : ekAcik11 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik12: freezed == ekAcik12
+                ? _value.ekAcik12
+                : ekAcik12 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik13: freezed == ekAcik13
+                ? _value.ekAcik13
+                : ekAcik13 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik14: freezed == ekAcik14
+                ? _value.ekAcik14
+                : ekAcik14 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik15: freezed == ekAcik15
+                ? _value.ekAcik15
+                : ekAcik15 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik16: freezed == ekAcik16
+                ? _value.ekAcik16
+                : ekAcik16 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik2: freezed == ekAcik2
+                ? _value.ekAcik2
+                : ekAcik2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik3: freezed == ekAcik3
+                ? _value.ekAcik3
+                : ekAcik3 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik4: freezed == ekAcik4
+                ? _value.ekAcik4
+                : ekAcik4 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik5: freezed == ekAcik5
+                ? _value.ekAcik5
+                : ekAcik5 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik6: freezed == ekAcik6
+                ? _value.ekAcik6
+                : ekAcik6 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik7: freezed == ekAcik7
+                ? _value.ekAcik7
+                : ekAcik7 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik8: freezed == ekAcik8
+                ? _value.ekAcik8
+                : ekAcik8 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAcik9: freezed == ekAcik9
+                ? _value.ekAcik9
+                : ekAcik9 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tag: freezed == tag
+                ? _value.tag
+                : tag // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$TalepTeklifListesiModelImplCopyWith<$Res>
-    implements $TalepTeklifListesiModelCopyWith<$Res> {
+abstract class _$$TalepTeklifListesiModelImplCopyWith<$Res> implements $TalepTeklifListesiModelCopyWith<$Res> {
   factory _$$TalepTeklifListesiModelImplCopyWith(
-          _$TalepTeklifListesiModelImpl value,
-          $Res Function(_$TalepTeklifListesiModelImpl) then) =
-      __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>;
+    _$TalepTeklifListesiModelImpl value,
+    $Res Function(_$TalepTeklifListesiModelImpl) then,
+  ) = __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool? cariDovizli,
-      DateTime? kayittarihi,
-      DateTime? tarih,
-      DateTime? teslimTarihi,
-      DateTime? vadeTarihi,
-      double? dovizTutari,
-      double? genelIskonto1,
-      double? genelIskonto2,
-      double? genelIskonto3,
-      double? genelToplam,
-      double? genIsk1O,
-      double? genisk1Tipi,
-      double? genIsk2O,
-      double? genIsk3O,
-      double? kalanMiktar,
-      double? kdv,
-      double? miktar,
-      double? tamamlananMiktar,
-      int? dovizTipi,
-      int? genisk3Tipi,
-      int? kalemAdedi,
-      int? tipi,
-      int? vadeGunu,
-      List<dynamic>? tempSipList,
-      List<KalemListModel>? kalemList,
-      String? acik1,
-      String? acik2,
-      String? acik3,
-      String? acik4,
-      String? acik5,
-      String? acik6,
-      String? acik7,
-      String? acik8,
-      String? acik9,
-      String? acik10,
-      String? acik11,
-      String? acik12,
-      String? acik13,
-      String? acik14,
-      String? acik15,
-      String? acik16,
-      String? belgeKodu,
-      String? belgeNo,
-      String? belgeTuru,
-      String? cariAdi,
-      String? cariKodu,
-      String? cYedek6,
-      String? dovizAdi,
-      String? ekAciklama,
-      String? faturalasti,
-      String? kasaKodu,
-      String? kayityapankul,
-      String? kdvDahil,
-      String? plasiyerAciklama,
-      String? plasiyerKodu,
-      String? siparislesti,
-      String? ekAcik1,
-      String? ekAcik10,
-      String? ekAcik11,
-      String? ekAcik12,
-      String? ekAcik13,
-      String? ekAcik14,
-      String? ekAcik15,
-      String? ekAcik16,
-      String? ekAcik2,
-      String? ekAcik3,
-      String? ekAcik4,
-      String? ekAcik5,
-      String? ekAcik6,
-      String? ekAcik7,
-      String? ekAcik8,
-      String? ekAcik9,
-      int? islemKodu,
-      String? tag});
+  $Res call({
+    bool? cariDovizli,
+    DateTime? kayittarihi,
+    DateTime? tarih,
+    DateTime? teslimTarihi,
+    DateTime? vadeTarihi,
+    double? dovizTutari,
+    double? genelIskonto1,
+    double? genelIskonto2,
+    double? genelIskonto3,
+    double? genelToplam,
+    double? genIsk1O,
+    double? genisk1Tipi,
+    double? genIsk2O,
+    double? genIsk3O,
+    double? kalanMiktar,
+    double? kdv,
+    double? miktar,
+    double? tamamlananMiktar,
+    int? dovizTipi,
+    int? genisk3Tipi,
+    int? kalemAdedi,
+    int? tipi,
+    int? vadeGunu,
+    List<dynamic>? tempSipList,
+    List<KalemListModel>? kalemList,
+    String? acik1,
+    String? acik2,
+    String? acik3,
+    String? acik4,
+    String? acik5,
+    String? acik6,
+    String? acik7,
+    String? acik8,
+    String? acik9,
+    String? acik10,
+    String? acik11,
+    String? acik12,
+    String? acik13,
+    String? acik14,
+    String? acik15,
+    String? acik16,
+    String? belgeKodu,
+    String? belgeNo,
+    String? belgeTuru,
+    String? cariAdi,
+    String? cariKodu,
+    String? cYedek6,
+    String? dovizAdi,
+    String? ekAciklama,
+    String? faturalasti,
+    String? kasaKodu,
+    String? kayityapankul,
+    String? kdvDahil,
+    String? plasiyerAciklama,
+    String? plasiyerKodu,
+    String? siparislesti,
+    String? ekAcik1,
+    String? ekAcik10,
+    String? ekAcik11,
+    String? ekAcik12,
+    String? ekAcik13,
+    String? ekAcik14,
+    String? ekAcik15,
+    String? ekAcik16,
+    String? ekAcik2,
+    String? ekAcik3,
+    String? ekAcik4,
+    String? ekAcik5,
+    String? ekAcik6,
+    String? ekAcik7,
+    String? ekAcik8,
+    String? ekAcik9,
+    int? islemKodu,
+    String? tag,
+  });
 }
 
 /// @nodoc
 class __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>
-    extends _$TalepTeklifListesiModelCopyWithImpl<$Res,
-        _$TalepTeklifListesiModelImpl>
+    extends _$TalepTeklifListesiModelCopyWithImpl<$Res, _$TalepTeklifListesiModelImpl>
     implements _$$TalepTeklifListesiModelImplCopyWith<$Res> {
   __$$TalepTeklifListesiModelImplCopyWithImpl(
-      _$TalepTeklifListesiModelImpl _value,
-      $Res Function(_$TalepTeklifListesiModelImpl) _then)
-      : super(_value, _then);
+    _$TalepTeklifListesiModelImpl _value,
+    $Res Function(_$TalepTeklifListesiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TalepTeklifListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -832,386 +831,388 @@ class __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>
     Object? islemKodu = freezed,
     Object? tag = freezed,
   }) {
-    return _then(_$TalepTeklifListesiModelImpl(
-      cariDovizli: freezed == cariDovizli
-          ? _value.cariDovizli
-          : cariDovizli // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      teslimTarihi: freezed == teslimTarihi
-          ? _value.teslimTarihi
-          : teslimTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      vadeTarihi: freezed == vadeTarihi
-          ? _value.vadeTarihi
-          : vadeTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelIskonto1: freezed == genelIskonto1
-          ? _value.genelIskonto1
-          : genelIskonto1 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelIskonto2: freezed == genelIskonto2
-          ? _value.genelIskonto2
-          : genelIskonto2 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelIskonto3: freezed == genelIskonto3
-          ? _value.genelIskonto3
-          : genelIskonto3 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genelToplam: freezed == genelToplam
-          ? _value.genelToplam
-          : genelToplam // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genIsk1O: freezed == genIsk1O
-          ? _value.genIsk1O
-          : genIsk1O // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genisk1Tipi: freezed == genisk1Tipi
-          ? _value.genisk1Tipi
-          : genisk1Tipi // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genIsk2O: freezed == genIsk2O
-          ? _value.genIsk2O
-          : genIsk2O // ignore: cast_nullable_to_non_nullable
-              as double?,
-      genIsk3O: freezed == genIsk3O
-          ? _value.genIsk3O
-          : genIsk3O // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kalanMiktar: freezed == kalanMiktar
-          ? _value.kalanMiktar
-          : kalanMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kdv: freezed == kdv
-          ? _value.kdv
-          : kdv // ignore: cast_nullable_to_non_nullable
-              as double?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tamamlananMiktar: freezed == tamamlananMiktar
-          ? _value.tamamlananMiktar
-          : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      genisk3Tipi: freezed == genisk3Tipi
-          ? _value.genisk3Tipi
-          : genisk3Tipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kalemAdedi: freezed == kalemAdedi
-          ? _value.kalemAdedi
-          : kalemAdedi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      vadeGunu: freezed == vadeGunu
-          ? _value.vadeGunu
-          : vadeGunu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tempSipList: freezed == tempSipList
-          ? _value.tempSipList
-          : tempSipList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      kalemList: freezed == kalemList
-          ? _value.kalemList
-          : kalemList // ignore: cast_nullable_to_non_nullable
-              as List<KalemListModel>?,
-      acik1: freezed == acik1
-          ? _value.acik1
-          : acik1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik2: freezed == acik2
-          ? _value.acik2
-          : acik2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik3: freezed == acik3
-          ? _value.acik3
-          : acik3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik4: freezed == acik4
-          ? _value.acik4
-          : acik4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik5: freezed == acik5
-          ? _value.acik5
-          : acik5 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik6: freezed == acik6
-          ? _value.acik6
-          : acik6 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik7: freezed == acik7
-          ? _value.acik7
-          : acik7 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik8: freezed == acik8
-          ? _value.acik8
-          : acik8 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik9: freezed == acik9
-          ? _value.acik9
-          : acik9 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik10: freezed == acik10
-          ? _value.acik10
-          : acik10 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik11: freezed == acik11
-          ? _value.acik11
-          : acik11 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik12: freezed == acik12
-          ? _value.acik12
-          : acik12 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik13: freezed == acik13
-          ? _value.acik13
-          : acik13 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik14: freezed == acik14
-          ? _value.acik14
-          : acik14 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik15: freezed == acik15
-          ? _value.acik15
-          : acik15 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      acik16: freezed == acik16
-          ? _value.acik16
-          : acik16 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeKodu: freezed == belgeKodu
-          ? _value.belgeKodu
-          : belgeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cYedek6: freezed == cYedek6
-          ? _value.cYedek6
-          : cYedek6 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAciklama: freezed == ekAciklama
-          ? _value.ekAciklama
-          : ekAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturalasti: freezed == faturalasti
-          ? _value.faturalasti
-          : faturalasti // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kdvDahil: freezed == kdvDahil
-          ? _value.kdvDahil
-          : kdvDahil // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAciklama: freezed == plasiyerAciklama
-          ? _value.plasiyerAciklama
-          : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      siparislesti: freezed == siparislesti
-          ? _value.siparislesti
-          : siparislesti // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik1: freezed == ekAcik1
-          ? _value.ekAcik1
-          : ekAcik1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik10: freezed == ekAcik10
-          ? _value.ekAcik10
-          : ekAcik10 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik11: freezed == ekAcik11
-          ? _value.ekAcik11
-          : ekAcik11 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik12: freezed == ekAcik12
-          ? _value.ekAcik12
-          : ekAcik12 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik13: freezed == ekAcik13
-          ? _value.ekAcik13
-          : ekAcik13 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik14: freezed == ekAcik14
-          ? _value.ekAcik14
-          : ekAcik14 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik15: freezed == ekAcik15
-          ? _value.ekAcik15
-          : ekAcik15 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik16: freezed == ekAcik16
-          ? _value.ekAcik16
-          : ekAcik16 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik2: freezed == ekAcik2
-          ? _value.ekAcik2
-          : ekAcik2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik3: freezed == ekAcik3
-          ? _value.ekAcik3
-          : ekAcik3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik4: freezed == ekAcik4
-          ? _value.ekAcik4
-          : ekAcik4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik5: freezed == ekAcik5
-          ? _value.ekAcik5
-          : ekAcik5 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik6: freezed == ekAcik6
-          ? _value.ekAcik6
-          : ekAcik6 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik7: freezed == ekAcik7
-          ? _value.ekAcik7
-          : ekAcik7 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik8: freezed == ekAcik8
-          ? _value.ekAcik8
-          : ekAcik8 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAcik9: freezed == ekAcik9
-          ? _value.ekAcik9
-          : ekAcik9 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tag: freezed == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$TalepTeklifListesiModelImpl(
+        cariDovizli: freezed == cariDovizli
+            ? _value.cariDovizli
+            : cariDovizli // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        kayittarihi: freezed == kayittarihi
+            ? _value.kayittarihi
+            : kayittarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        teslimTarihi: freezed == teslimTarihi
+            ? _value.teslimTarihi
+            : teslimTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        vadeTarihi: freezed == vadeTarihi
+            ? _value.vadeTarihi
+            : vadeTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        dovizTutari: freezed == dovizTutari
+            ? _value.dovizTutari
+            : dovizTutari // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genelIskonto1: freezed == genelIskonto1
+            ? _value.genelIskonto1
+            : genelIskonto1 // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genelIskonto2: freezed == genelIskonto2
+            ? _value.genelIskonto2
+            : genelIskonto2 // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genelIskonto3: freezed == genelIskonto3
+            ? _value.genelIskonto3
+            : genelIskonto3 // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genelToplam: freezed == genelToplam
+            ? _value.genelToplam
+            : genelToplam // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genIsk1O: freezed == genIsk1O
+            ? _value.genIsk1O
+            : genIsk1O // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genisk1Tipi: freezed == genisk1Tipi
+            ? _value.genisk1Tipi
+            : genisk1Tipi // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genIsk2O: freezed == genIsk2O
+            ? _value.genIsk2O
+            : genIsk2O // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        genIsk3O: freezed == genIsk3O
+            ? _value.genIsk3O
+            : genIsk3O // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        kalanMiktar: freezed == kalanMiktar
+            ? _value.kalanMiktar
+            : kalanMiktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        kdv: freezed == kdv
+            ? _value.kdv
+            : kdv // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        tamamlananMiktar: freezed == tamamlananMiktar
+            ? _value.tamamlananMiktar
+            : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        dovizTipi: freezed == dovizTipi
+            ? _value.dovizTipi
+            : dovizTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        genisk3Tipi: freezed == genisk3Tipi
+            ? _value.genisk3Tipi
+            : genisk3Tipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kalemAdedi: freezed == kalemAdedi
+            ? _value.kalemAdedi
+            : kalemAdedi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tipi: freezed == tipi
+            ? _value.tipi
+            : tipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        vadeGunu: freezed == vadeGunu
+            ? _value.vadeGunu
+            : vadeGunu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tempSipList: freezed == tempSipList
+            ? _value.tempSipList
+            : tempSipList // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>?,
+        kalemList: freezed == kalemList
+            ? _value.kalemList
+            : kalemList // ignore: cast_nullable_to_non_nullable
+                  as List<KalemListModel>?,
+        acik1: freezed == acik1
+            ? _value.acik1
+            : acik1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik2: freezed == acik2
+            ? _value.acik2
+            : acik2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik3: freezed == acik3
+            ? _value.acik3
+            : acik3 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik4: freezed == acik4
+            ? _value.acik4
+            : acik4 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik5: freezed == acik5
+            ? _value.acik5
+            : acik5 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik6: freezed == acik6
+            ? _value.acik6
+            : acik6 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik7: freezed == acik7
+            ? _value.acik7
+            : acik7 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik8: freezed == acik8
+            ? _value.acik8
+            : acik8 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik9: freezed == acik9
+            ? _value.acik9
+            : acik9 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik10: freezed == acik10
+            ? _value.acik10
+            : acik10 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik11: freezed == acik11
+            ? _value.acik11
+            : acik11 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik12: freezed == acik12
+            ? _value.acik12
+            : acik12 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik13: freezed == acik13
+            ? _value.acik13
+            : acik13 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik14: freezed == acik14
+            ? _value.acik14
+            : acik14 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik15: freezed == acik15
+            ? _value.acik15
+            : acik15 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        acik16: freezed == acik16
+            ? _value.acik16
+            : acik16 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeKodu: freezed == belgeKodu
+            ? _value.belgeKodu
+            : belgeKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTuru: freezed == belgeTuru
+            ? _value.belgeTuru
+            : belgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariAdi: freezed == cariAdi
+            ? _value.cariAdi
+            : cariAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cYedek6: freezed == cYedek6
+            ? _value.cYedek6
+            : cYedek6 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dovizAdi: freezed == dovizAdi
+            ? _value.dovizAdi
+            : dovizAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAciklama: freezed == ekAciklama
+            ? _value.ekAciklama
+            : ekAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        faturalasti: freezed == faturalasti
+            ? _value.faturalasti
+            : faturalasti // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kasaKodu: freezed == kasaKodu
+            ? _value.kasaKodu
+            : kasaKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayityapankul: freezed == kayityapankul
+            ? _value.kayityapankul
+            : kayityapankul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kdvDahil: freezed == kdvDahil
+            ? _value.kdvDahil
+            : kdvDahil // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        plasiyerAciklama: freezed == plasiyerAciklama
+            ? _value.plasiyerAciklama
+            : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        plasiyerKodu: freezed == plasiyerKodu
+            ? _value.plasiyerKodu
+            : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        siparislesti: freezed == siparislesti
+            ? _value.siparislesti
+            : siparislesti // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik1: freezed == ekAcik1
+            ? _value.ekAcik1
+            : ekAcik1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik10: freezed == ekAcik10
+            ? _value.ekAcik10
+            : ekAcik10 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik11: freezed == ekAcik11
+            ? _value.ekAcik11
+            : ekAcik11 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik12: freezed == ekAcik12
+            ? _value.ekAcik12
+            : ekAcik12 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik13: freezed == ekAcik13
+            ? _value.ekAcik13
+            : ekAcik13 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik14: freezed == ekAcik14
+            ? _value.ekAcik14
+            : ekAcik14 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik15: freezed == ekAcik15
+            ? _value.ekAcik15
+            : ekAcik15 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik16: freezed == ekAcik16
+            ? _value.ekAcik16
+            : ekAcik16 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik2: freezed == ekAcik2
+            ? _value.ekAcik2
+            : ekAcik2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik3: freezed == ekAcik3
+            ? _value.ekAcik3
+            : ekAcik3 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik4: freezed == ekAcik4
+            ? _value.ekAcik4
+            : ekAcik4 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik5: freezed == ekAcik5
+            ? _value.ekAcik5
+            : ekAcik5 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik6: freezed == ekAcik6
+            ? _value.ekAcik6
+            : ekAcik6 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik7: freezed == ekAcik7
+            ? _value.ekAcik7
+            : ekAcik7 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik8: freezed == ekAcik8
+            ? _value.ekAcik8
+            : ekAcik8 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAcik9: freezed == ekAcik9
+            ? _value.ekAcik9
+            : ekAcik9 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tag: freezed == tag
+            ? _value.tag
+            : tag // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TalepTeklifListesiModelImpl extends _TalepTeklifListesiModel {
-  _$TalepTeklifListesiModelImpl(
-      {this.cariDovizli,
-      this.kayittarihi,
-      this.tarih,
-      this.teslimTarihi,
-      this.vadeTarihi,
-      this.dovizTutari,
-      this.genelIskonto1,
-      this.genelIskonto2,
-      this.genelIskonto3,
-      this.genelToplam,
-      this.genIsk1O,
-      this.genisk1Tipi,
-      this.genIsk2O,
-      this.genIsk3O,
-      this.kalanMiktar,
-      this.kdv,
-      this.miktar,
-      this.tamamlananMiktar,
-      this.dovizTipi,
-      this.genisk3Tipi,
-      this.kalemAdedi,
-      this.tipi,
-      this.vadeGunu,
-      this.tempSipList,
-      this.kalemList,
-      this.acik1,
-      this.acik2,
-      this.acik3,
-      this.acik4,
-      this.acik5,
-      this.acik6,
-      this.acik7,
-      this.acik8,
-      this.acik9,
-      this.acik10,
-      this.acik11,
-      this.acik12,
-      this.acik13,
-      this.acik14,
-      this.acik15,
-      this.acik16,
-      this.belgeKodu,
-      this.belgeNo,
-      this.belgeTuru,
-      this.cariAdi,
-      this.cariKodu,
-      this.cYedek6,
-      this.dovizAdi,
-      this.ekAciklama,
-      this.faturalasti,
-      this.kasaKodu,
-      this.kayityapankul,
-      this.kdvDahil,
-      this.plasiyerAciklama,
-      this.plasiyerKodu,
-      this.siparislesti,
-      this.ekAcik1,
-      this.ekAcik10,
-      this.ekAcik11,
-      this.ekAcik12,
-      this.ekAcik13,
-      this.ekAcik14,
-      this.ekAcik15,
-      this.ekAcik16,
-      this.ekAcik2,
-      this.ekAcik3,
-      this.ekAcik4,
-      this.ekAcik5,
-      this.ekAcik6,
-      this.ekAcik7,
-      this.ekAcik8,
-      this.ekAcik9,
-      this.islemKodu,
-      this.tag = "FaturaModel"})
-      : super._();
+  _$TalepTeklifListesiModelImpl({
+    this.cariDovizli,
+    this.kayittarihi,
+    this.tarih,
+    this.teslimTarihi,
+    this.vadeTarihi,
+    this.dovizTutari,
+    this.genelIskonto1,
+    this.genelIskonto2,
+    this.genelIskonto3,
+    this.genelToplam,
+    this.genIsk1O,
+    this.genisk1Tipi,
+    this.genIsk2O,
+    this.genIsk3O,
+    this.kalanMiktar,
+    this.kdv,
+    this.miktar,
+    this.tamamlananMiktar,
+    this.dovizTipi,
+    this.genisk3Tipi,
+    this.kalemAdedi,
+    this.tipi,
+    this.vadeGunu,
+    this.tempSipList,
+    this.kalemList,
+    this.acik1,
+    this.acik2,
+    this.acik3,
+    this.acik4,
+    this.acik5,
+    this.acik6,
+    this.acik7,
+    this.acik8,
+    this.acik9,
+    this.acik10,
+    this.acik11,
+    this.acik12,
+    this.acik13,
+    this.acik14,
+    this.acik15,
+    this.acik16,
+    this.belgeKodu,
+    this.belgeNo,
+    this.belgeTuru,
+    this.cariAdi,
+    this.cariKodu,
+    this.cYedek6,
+    this.dovizAdi,
+    this.ekAciklama,
+    this.faturalasti,
+    this.kasaKodu,
+    this.kayityapankul,
+    this.kdvDahil,
+    this.plasiyerAciklama,
+    this.plasiyerKodu,
+    this.siparislesti,
+    this.ekAcik1,
+    this.ekAcik10,
+    this.ekAcik11,
+    this.ekAcik12,
+    this.ekAcik13,
+    this.ekAcik14,
+    this.ekAcik15,
+    this.ekAcik16,
+    this.ekAcik2,
+    this.ekAcik3,
+    this.ekAcik4,
+    this.ekAcik5,
+    this.ekAcik6,
+    this.ekAcik7,
+    this.ekAcik8,
+    this.ekAcik9,
+    this.islemKodu,
+    this.tag = "FaturaModel",
+  }) : super._();
 
   factory _$TalepTeklifListesiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TalepTeklifListesiModelImplFromJson(json);
@@ -1371,98 +1372,95 @@ class _$TalepTeklifListesiModelImpl extends _TalepTeklifListesiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TalepTeklifListesiModelImplCopyWith<_$TalepTeklifListesiModelImpl>
-      get copyWith => __$$TalepTeklifListesiModelImplCopyWithImpl<
-          _$TalepTeklifListesiModelImpl>(this, _$identity);
+  _$$TalepTeklifListesiModelImplCopyWith<_$TalepTeklifListesiModelImpl> get copyWith =>
+      __$$TalepTeklifListesiModelImplCopyWithImpl<_$TalepTeklifListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TalepTeklifListesiModelImplToJson(
-      this,
-    );
+    return _$$TalepTeklifListesiModelImplToJson(this);
   }
 }
 
 abstract class _TalepTeklifListesiModel extends TalepTeklifListesiModel {
-  factory _TalepTeklifListesiModel(
-      {bool? cariDovizli,
-      DateTime? kayittarihi,
-      DateTime? tarih,
-      DateTime? teslimTarihi,
-      DateTime? vadeTarihi,
-      double? dovizTutari,
-      double? genelIskonto1,
-      double? genelIskonto2,
-      double? genelIskonto3,
-      double? genelToplam,
-      double? genIsk1O,
-      double? genisk1Tipi,
-      double? genIsk2O,
-      double? genIsk3O,
-      double? kalanMiktar,
-      double? kdv,
-      double? miktar,
-      double? tamamlananMiktar,
-      int? dovizTipi,
-      int? genisk3Tipi,
-      int? kalemAdedi,
-      int? tipi,
-      int? vadeGunu,
-      List<dynamic>? tempSipList,
-      List<KalemListModel>? kalemList,
-      String? acik1,
-      String? acik2,
-      String? acik3,
-      String? acik4,
-      String? acik5,
-      String? acik6,
-      String? acik7,
-      String? acik8,
-      String? acik9,
-      String? acik10,
-      String? acik11,
-      String? acik12,
-      String? acik13,
-      String? acik14,
-      String? acik15,
-      String? acik16,
-      String? belgeKodu,
-      String? belgeNo,
-      String? belgeTuru,
-      String? cariAdi,
-      String? cariKodu,
-      String? cYedek6,
-      String? dovizAdi,
-      String? ekAciklama,
-      String? faturalasti,
-      String? kasaKodu,
-      String? kayityapankul,
-      String? kdvDahil,
-      String? plasiyerAciklama,
-      String? plasiyerKodu,
-      String? siparislesti,
-      String? ekAcik1,
-      String? ekAcik10,
-      String? ekAcik11,
-      String? ekAcik12,
-      String? ekAcik13,
-      String? ekAcik14,
-      String? ekAcik15,
-      String? ekAcik16,
-      String? ekAcik2,
-      String? ekAcik3,
-      String? ekAcik4,
-      String? ekAcik5,
-      String? ekAcik6,
-      String? ekAcik7,
-      String? ekAcik8,
-      String? ekAcik9,
-      int? islemKodu,
-      String? tag}) = _$TalepTeklifListesiModelImpl;
+  factory _TalepTeklifListesiModel({
+    bool? cariDovizli,
+    DateTime? kayittarihi,
+    DateTime? tarih,
+    DateTime? teslimTarihi,
+    DateTime? vadeTarihi,
+    double? dovizTutari,
+    double? genelIskonto1,
+    double? genelIskonto2,
+    double? genelIskonto3,
+    double? genelToplam,
+    double? genIsk1O,
+    double? genisk1Tipi,
+    double? genIsk2O,
+    double? genIsk3O,
+    double? kalanMiktar,
+    double? kdv,
+    double? miktar,
+    double? tamamlananMiktar,
+    int? dovizTipi,
+    int? genisk3Tipi,
+    int? kalemAdedi,
+    int? tipi,
+    int? vadeGunu,
+    List<dynamic>? tempSipList,
+    List<KalemListModel>? kalemList,
+    String? acik1,
+    String? acik2,
+    String? acik3,
+    String? acik4,
+    String? acik5,
+    String? acik6,
+    String? acik7,
+    String? acik8,
+    String? acik9,
+    String? acik10,
+    String? acik11,
+    String? acik12,
+    String? acik13,
+    String? acik14,
+    String? acik15,
+    String? acik16,
+    String? belgeKodu,
+    String? belgeNo,
+    String? belgeTuru,
+    String? cariAdi,
+    String? cariKodu,
+    String? cYedek6,
+    String? dovizAdi,
+    String? ekAciklama,
+    String? faturalasti,
+    String? kasaKodu,
+    String? kayityapankul,
+    String? kdvDahil,
+    String? plasiyerAciklama,
+    String? plasiyerKodu,
+    String? siparislesti,
+    String? ekAcik1,
+    String? ekAcik10,
+    String? ekAcik11,
+    String? ekAcik12,
+    String? ekAcik13,
+    String? ekAcik14,
+    String? ekAcik15,
+    String? ekAcik16,
+    String? ekAcik2,
+    String? ekAcik3,
+    String? ekAcik4,
+    String? ekAcik5,
+    String? ekAcik6,
+    String? ekAcik7,
+    String? ekAcik8,
+    String? ekAcik9,
+    int? islemKodu,
+    String? tag,
+  }) = _$TalepTeklifListesiModelImpl;
   _TalepTeklifListesiModel._() : super._();
 
-  factory _TalepTeklifListesiModel.fromJson(Map<String, dynamic> json) =
-      _$TalepTeklifListesiModelImpl.fromJson;
+  factory _TalepTeklifListesiModel.fromJson(Map<String, dynamic> json) = _$TalepTeklifListesiModelImpl.fromJson;
 
   @override
   bool? get cariDovizli;
@@ -1691,6 +1689,6 @@ abstract class _TalepTeklifListesiModel extends TalepTeklifListesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TalepTeklifListesiModelImplCopyWith<_$TalepTeklifListesiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TalepTeklifListesiModelImplCopyWith<_$TalepTeklifListesiModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

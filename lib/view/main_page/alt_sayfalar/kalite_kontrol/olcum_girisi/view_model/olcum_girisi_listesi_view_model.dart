@@ -122,10 +122,9 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     // setOlcumList(null);
-    final OlcumGirisiRequestModel olcumGirisiRequestModel =
-        requestModel.qrstring != null
-            ? OlcumGirisiRequestModel(qrstring: requestModel.qrstring, sayfa: 1)
-            : requestModel;
+    final OlcumGirisiRequestModel olcumGirisiRequestModel = requestModel.qrstring != null
+        ? OlcumGirisiRequestModel(qrstring: requestModel.qrstring, sayfa: 1)
+        : requestModel;
     final result = await networkManager.dioPost(
       path: ApiUrls.getOlcumBelgeler,
       bodyModel: OlcumBelgeModel(),

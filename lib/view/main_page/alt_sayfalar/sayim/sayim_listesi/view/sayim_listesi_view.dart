@@ -97,15 +97,14 @@ final class _SayimListesiViewState extends BaseState<SayimListesiView> {
         return ListView.builder(
           itemCount: viewModel.sayimList?.length ?? 0,
           padding: UIHelper.lowPadding,
-          itemBuilder:
-              (context, index) => SayimlarCard(
-                model: viewModel.sayimList![index],
-                onChanged: (value) async {
-                  if (value) {
-                    await viewModel.getData();
-                  }
-                },
-              ),
+          itemBuilder: (context, index) => SayimlarCard(
+            model: viewModel.sayimList![index],
+            onChanged: (value) async {
+              if (value) {
+                await viewModel.getData();
+              }
+            },
+          ),
         );
       },
     ),

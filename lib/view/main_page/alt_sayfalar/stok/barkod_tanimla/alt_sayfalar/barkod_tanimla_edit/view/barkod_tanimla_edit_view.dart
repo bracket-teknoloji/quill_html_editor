@@ -87,17 +87,16 @@ final class _BarkodTanimlaEditViewState extends BaseState<BarkodTanimlaEditView>
                   context,
                   title: "Barkod Tipi",
                   groupValue: viewModel.model.barkodTipi,
-                  children:
-                      yetkiController.stokBarkodGecerliBarkodTipleri
-                          .map(
-                            (e) => BottomSheetModel(
-                              title: e.barkodAdi,
-                              value: e,
-                              description: e.barkodTipi,
-                              groupValue: e.barkodTipi,
-                            ),
-                          )
-                          .toList(),
+                  children: yetkiController.stokBarkodGecerliBarkodTipleri
+                      .map(
+                        (e) => BottomSheetModel(
+                          title: e.barkodAdi,
+                          value: e,
+                          description: e.barkodTipi,
+                          groupValue: e.barkodTipi,
+                        ),
+                      )
+                      .toList(),
                 );
                 if (result is BarkodTipiEnum) {
                   viewModel.setBarkodTipi(result);

@@ -12,21 +12,20 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   Computed<bool>? _$indexSifirMiComputed;
 
   @override
-  bool get indexSifirMi =>
-      (_$indexSifirMiComputed ??= Computed<bool>(() => super.indexSifirMi,
-              name: '_SayimEditViewModelBase.indexSifirMi'))
-          .value;
+  bool get indexSifirMi => (_$indexSifirMiComputed ??= Computed<bool>(
+    () => super.indexSifirMi,
+    name: '_SayimEditViewModelBase.indexSifirMi',
+  )).value;
   Computed<ObservableList<SayimFiltreModel>?>? _$sayimListesiComputed;
 
   @override
   ObservableList<SayimFiltreModel>? get sayimListesi =>
       (_$sayimListesiComputed ??= Computed<ObservableList<SayimFiltreModel>?>(
-              () => super.sayimListesi,
-              name: '_SayimEditViewModelBase.sayimListesi'))
-          .value;
+        () => super.sayimListesi,
+        name: '_SayimEditViewModelBase.sayimListesi',
+      )).value;
 
-  late final _$tabIndexAtom =
-      Atom(name: '_SayimEditViewModelBase.tabIndex', context: context);
+  late final _$tabIndexAtom = Atom(name: '_SayimEditViewModelBase.tabIndex', context: context);
 
   @override
   int get tabIndex {
@@ -41,8 +40,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$faturaRequestModelAtom = Atom(
-      name: '_SayimEditViewModelBase.faturaRequestModel', context: context);
+  late final _$faturaRequestModelAtom = Atom(name: '_SayimEditViewModelBase.faturaRequestModel', context: context);
 
   @override
   SiparislerRequestModel get faturaRequestModel {
@@ -57,8 +55,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$sayimListesiModelAtom =
-      Atom(name: '_SayimEditViewModelBase.sayimListesiModel', context: context);
+  late final _$sayimListesiModelAtom = Atom(name: '_SayimEditViewModelBase.sayimListesiModel', context: context);
 
   @override
   SayimListesiModel? get sayimListesiModel {
@@ -73,8 +70,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$filtreModelAtom =
-      Atom(name: '_SayimEditViewModelBase.filtreModel', context: context);
+  late final _$filtreModelAtom = Atom(name: '_SayimEditViewModelBase.filtreModel', context: context);
 
   @override
   SayimFiltreModel get filtreModel {
@@ -89,8 +85,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$stokModelAtom =
-      Atom(name: '_SayimEditViewModelBase.stokModel', context: context);
+  late final _$stokModelAtom = Atom(name: '_SayimEditViewModelBase.stokModel', context: context);
 
   @override
   StokListesiModel? get stokModel {
@@ -105,8 +100,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$hemenKaydetsinMiAtom =
-      Atom(name: '_SayimEditViewModelBase.hemenKaydetsinMi', context: context);
+  late final _$hemenKaydetsinMiAtom = Atom(name: '_SayimEditViewModelBase.hemenKaydetsinMi', context: context);
 
   @override
   bool get hemenKaydetsinMi {
@@ -121,8 +115,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$otomatikEtiketYazdirAtom = Atom(
-      name: '_SayimEditViewModelBase.otomatikEtiketYazdir', context: context);
+  late final _$otomatikEtiketYazdirAtom = Atom(name: '_SayimEditViewModelBase.otomatikEtiketYazdir', context: context);
 
   @override
   bool get otomatikEtiketYazdir {
@@ -132,14 +125,12 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
 
   @override
   set otomatikEtiketYazdir(bool value) {
-    _$otomatikEtiketYazdirAtom.reportWrite(value, super.otomatikEtiketYazdir,
-        () {
+    _$otomatikEtiketYazdirAtom.reportWrite(value, super.otomatikEtiketYazdir, () {
       super.otomatikEtiketYazdir = value;
     });
   }
 
-  late final _$printModelAtom =
-      Atom(name: '_SayimEditViewModelBase.printModel', context: context);
+  late final _$printModelAtom = Atom(name: '_SayimEditViewModelBase.printModel', context: context);
 
   @override
   PrintModel get printModel {
@@ -154,8 +145,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$_sayimListesiAtom =
-      Atom(name: '_SayimEditViewModelBase._sayimListesi', context: context);
+  late final _$_sayimListesiAtom = Atom(name: '_SayimEditViewModelBase._sayimListesi', context: context);
 
   @override
   ObservableList<SayimFiltreModel>? get _sayimListesi {
@@ -170,8 +160,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_SayimEditViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_SayimEditViewModelBase.requestModel', context: context);
 
   @override
   SayilanKalemlerRequestModel get requestModel {
@@ -186,8 +175,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$filterTextAtom =
-      Atom(name: '_SayimEditViewModelBase.filterText', context: context);
+  late final _$filterTextAtom = Atom(name: '_SayimEditViewModelBase.filterText', context: context);
 
   @override
   String get filterText {
@@ -202,53 +190,51 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
-  late final _$sendDataAsyncAction =
-      AsyncAction('_SayimEditViewModelBase.sendData', context: context);
+  late final _$sendDataAsyncAction = AsyncAction('_SayimEditViewModelBase.sendData', context: context);
 
   @override
   Future<GenericResponseModel<SayimListesiModel>> sendData(int depoKodu) {
     return _$sendDataAsyncAction.run(() => super.sendData(depoKodu));
   }
 
-  late final _$sayimiBitirAsyncAction =
-      AsyncAction('_SayimEditViewModelBase.sayimiBitir', context: context);
+  late final _$sayimiBitirAsyncAction = AsyncAction('_SayimEditViewModelBase.sayimiBitir', context: context);
 
   @override
   Future<bool> sayimiBitir() {
     return _$sayimiBitirAsyncAction.run(() => super.sayimiBitir());
   }
 
-  late final _$deleteItemAsyncAction =
-      AsyncAction('_SayimEditViewModelBase.deleteItem', context: context);
+  late final _$deleteItemAsyncAction = AsyncAction('_SayimEditViewModelBase.deleteItem', context: context);
 
   @override
   Future<bool?> deleteItem(SayimFiltreModel model) {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(model));
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_SayimEditViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_SayimEditViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$getSelectedItemAsyncAction =
-      AsyncAction('_SayimEditViewModelBase.getSelectedItem', context: context);
+  late final _$getSelectedItemAsyncAction = AsyncAction('_SayimEditViewModelBase.getSelectedItem', context: context);
 
   @override
   Future<SayimFiltreModel?> getSelectedItem(SayimFiltreModel? model) {
     return _$getSelectedItemAsyncAction.run(() => super.getSelectedItem(model));
   }
 
-  late final _$_SayimEditViewModelBaseActionController =
-      ActionController(name: '_SayimEditViewModelBase', context: context);
+  late final _$_SayimEditViewModelBaseActionController = ActionController(
+    name: '_SayimEditViewModelBase',
+    context: context,
+  );
 
   @override
   void setSayimListesiModel(SayimListesiModel? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setSayimListesiModel');
+      name: '_SayimEditViewModelBase.setSayimListesiModel',
+    );
     try {
       return super.setSayimListesiModel(value);
     } finally {
@@ -259,7 +245,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setTabIndex(int value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setTabIndex');
+      name: '_SayimEditViewModelBase.setTabIndex',
+    );
     try {
       return super.setTabIndex(value);
     } finally {
@@ -270,7 +257,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setFiltreModel(SayimFiltreModel? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setFiltreModel');
+      name: '_SayimEditViewModelBase.setFiltreModel',
+    );
     try {
       return super.setFiltreModel(value);
     } finally {
@@ -281,7 +269,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setStokModel(StokListesiModel? model) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setStokModel');
+      name: '_SayimEditViewModelBase.setStokModel',
+    );
     try {
       return super.setStokModel(model);
     } finally {
@@ -292,7 +281,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setHemenKaydet(bool value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setHemenKaydet');
+      name: '_SayimEditViewModelBase.setHemenKaydet',
+    );
     try {
       return super.setHemenKaydet(value);
     } finally {
@@ -303,7 +293,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setPrintModel(PrintModel? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setPrintModel');
+      name: '_SayimEditViewModelBase.setPrintModel',
+    );
     try {
       return super.setPrintModel(value);
     } finally {
@@ -314,7 +305,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setOtomatikEtiketYazdir(bool value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setOtomatikEtiketYazdir');
+      name: '_SayimEditViewModelBase.setOtomatikEtiketYazdir',
+    );
     try {
       return super.setOtomatikEtiketYazdir(value);
     } finally {
@@ -325,7 +317,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setProjeKodu(BaseProjeModel? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setProjeKodu');
+      name: '_SayimEditViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(value);
     } finally {
@@ -336,7 +329,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setOlcuBirimi(int? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setOlcuBirimi');
+      name: '_SayimEditViewModelBase.setOlcuBirimi',
+    );
     try {
       return super.setOlcuBirimi(value);
     } finally {
@@ -347,7 +341,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setEkAlan1(String? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setEkAlan1');
+      name: '_SayimEditViewModelBase.setEkAlan1',
+    );
     try {
       return super.setEkAlan1(value);
     } finally {
@@ -358,7 +353,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setEkAlan2(String? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setEkAlan2');
+      name: '_SayimEditViewModelBase.setEkAlan2',
+    );
     try {
       return super.setEkAlan2(value);
     } finally {
@@ -369,7 +365,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setEkAlan3(String? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setEkAlan3');
+      name: '_SayimEditViewModelBase.setEkAlan3',
+    );
     try {
       return super.setEkAlan3(value);
     } finally {
@@ -380,7 +377,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setEkAlan4(String? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setEkAlan4');
+      name: '_SayimEditViewModelBase.setEkAlan4',
+    );
     try {
       return super.setEkAlan4(value);
     } finally {
@@ -391,7 +389,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setEkAlan5(String? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setEkAlan5');
+      name: '_SayimEditViewModelBase.setEkAlan5',
+    );
     try {
       return super.setEkAlan5(value);
     } finally {
@@ -402,7 +401,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setSeriler(List<SeriList>? list) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setSeriler');
+      name: '_SayimEditViewModelBase.setSeriler',
+    );
     try {
       return super.setSeriler(list);
     } finally {
@@ -413,7 +413,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void increaseMiktar() {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.increaseMiktar');
+      name: '_SayimEditViewModelBase.increaseMiktar',
+    );
     try {
       return super.increaseMiktar();
     } finally {
@@ -424,7 +425,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setMiktar(double? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setMiktar');
+      name: '_SayimEditViewModelBase.setMiktar',
+    );
     try {
       return super.setMiktar(value);
     } finally {
@@ -435,7 +437,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void decreaseMiktar() {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.decreaseMiktar');
+      name: '_SayimEditViewModelBase.decreaseMiktar',
+    );
     try {
       return super.decreaseMiktar();
     } finally {
@@ -446,7 +449,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setSayimListesi(List<SayimFiltreModel>? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setSayimListesi');
+      name: '_SayimEditViewModelBase.setSayimListesi',
+    );
     try {
       return super.setSayimListesi(value);
     } finally {
@@ -457,7 +461,8 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   @override
   void setFilterText(String? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
-        name: '_SayimEditViewModelBase.setFilterText');
+      name: '_SayimEditViewModelBase.setFilterText',
+    );
     try {
       return super.setFilterText(value);
     } finally {

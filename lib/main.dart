@@ -58,8 +58,9 @@ Future<void> firebaseInitialized() async {
   await messaging.requestPermission();
   await messaging.setAutoInitEnabled(true);
   AccountModel.instance.fcmToken = await messaging.getToken(
-    vapidKey:
-        !kIsWeb ? null : "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE",
+    vapidKey: !kIsWeb
+        ? null
+        : "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE",
   );
   log("${AccountModel.instance.fcmToken}", name: "fcmToken");
   if (kIsWeb || await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {

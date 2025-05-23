@@ -30,15 +30,14 @@ abstract class _GenelRehberViewModelBase
   String? searchText = "";
 
   @computed
-  ObservableList<GenelRehberModel>? get filteredObservableList =>
-      observableList
-          ?.where(
-            (element) =>
-                (element.adi?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
-                (element.kodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
-          )
-          .toList()
-          .asObservable();
+  ObservableList<GenelRehberModel>? get filteredObservableList => observableList
+      ?.where(
+        (element) =>
+            (element.adi?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
+            (element.kodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
+      )
+      .toList()
+      .asObservable();
 
   @action
   @override

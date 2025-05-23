@@ -168,10 +168,9 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   void changeDigerGoster() => digerGoster = !digerGoster;
 
   @action
-  void changeSorgulanmasin() =>
-      eBelgeRequestModel = eBelgeRequestModel.copyWith(
-        sorgulanmasin: eBelgeRequestModel.sorgulanmasin == null ? true : null,
-      );
+  void changeSorgulanmasin() => eBelgeRequestModel = eBelgeRequestModel.copyWith(
+    sorgulanmasin: eBelgeRequestModel.sorgulanmasin == null ? true : null,
+  );
 
   @action
   void changeBaslangicTarihi(String? value) {
@@ -226,10 +225,9 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
 
     if (result.isSuccess) {
       if (eBelgeRequestModel.sayfa == 1) {
-        paramData =
-            result.paramData
-                ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
-                .asObservable();
+        paramData = result.paramData
+            ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+            .asObservable();
       }
       final List<EBelgeListesiModel> list = result.dataList;
       if ((eBelgeRequestModel.sayfa ?? 0) < 2) {

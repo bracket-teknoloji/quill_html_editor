@@ -25,19 +25,19 @@ abstract final class MenuItemConstants {
 
   static List<NetFectDizaynList> get _serbestRapor =>
       CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
-          ? _anaVeri?.paramModel?.netFectDizaynList
-                  ?.where(
-                    (element) =>
-                        element.ozelKod == "Serbest" &&
-                        ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any(
-                                  (element2) => element2 == element.id,
-                                ) ??
-                                false) ||
-                            AccountModel.instance.adminMi),
-                  )
-                  .toList() ??
-              []
-          : [];
+      ? _anaVeri?.paramModel?.netFectDizaynList
+                ?.where(
+                  (element) =>
+                      element.ozelKod == "Serbest" &&
+                      ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any(
+                                (element2) => element2 == element.id,
+                              ) ??
+                              false) ||
+                          AccountModel.instance.adminMi),
+                )
+                .toList() ??
+            []
+      : [];
 
   // static List<GridItemModel> get getGridItemModel =>
   //     _serbestRapor
@@ -55,8 +55,9 @@ abstract final class MenuItemConstants {
 
   static List<GridItemModel>? get getStokSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.stok);
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
-    final List<NetFectDizaynList> serbestRaporList =
-        _serbestRapor.where((element) => detayKod.hepsiMi || (element.detayKod == detayKod.detayKod)).toList();
+    final List<NetFectDizaynList> serbestRaporList = _serbestRapor
+        .where((element) => detayKod.hepsiMi || (element.detayKod == detayKod.detayKod))
+        .toList();
     if (serbestRaporList.ext.isNullOrEmpty ||
         (CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true &&
             AccountModel.instance.admin != "E")) {

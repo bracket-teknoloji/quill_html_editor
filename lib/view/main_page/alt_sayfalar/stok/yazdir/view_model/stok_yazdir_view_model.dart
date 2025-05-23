@@ -39,11 +39,18 @@ abstract class _StokYazdirViewModelBase with Store {
 
   //* PrintModel
   @observable
-  PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams(belgeNo: ""));
+  PrintModel printModel = PrintModel(
+    raporOzelKod: "StokEtiket",
+    dicParams: DicParams(belgeNo: ""),
+  );
 
   @action
-  void setPrintModel(PrintModel? model) =>
-      printModel = model ?? PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams(belgeNo: ""));
+  void setPrintModel(PrintModel? model) => printModel =
+      model ??
+      PrintModel(
+        raporOzelKod: "StokEtiket",
+        dicParams: DicParams(belgeNo: ""),
+      );
 
   @action
   void setYapilandirmaKodu(String? yapilandirmaKodu) {
@@ -73,10 +80,9 @@ abstract class _StokYazdirViewModelBase with Store {
       printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(miktar: miktar));
 
   @action
-  void increaseMiktar() =>
-      printModel = printModel.copyWith(
-        dicParams: printModel.dicParams?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) + 1),
-      );
+  void increaseMiktar() => printModel = printModel.copyWith(
+    dicParams: printModel.dicParams?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) + 1),
+  );
 
   @action
   void decreaseMiktar() {

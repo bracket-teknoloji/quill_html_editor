@@ -12,13 +12,12 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   Computed<DateTime?>? _$vadeGunuComputed;
 
   @override
-  DateTime? get vadeGunu =>
-      (_$vadeGunuComputed ??= Computed<DateTime?>(() => super.vadeGunu,
-              name: '_CariVirmanViewModelBase.vadeGunu'))
-          .value;
+  DateTime? get vadeGunu => (_$vadeGunuComputed ??= Computed<DateTime?>(
+    () => super.vadeGunu,
+    name: '_CariVirmanViewModelBase.vadeGunu',
+  )).value;
 
-  late final _$requestModelAtom =
-      Atom(name: '_CariVirmanViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_CariVirmanViewModelBase.requestModel', context: context);
 
   @override
   TahsilatRequestModel get requestModel {
@@ -33,21 +32,23 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
     });
   }
 
-  late final _$sendDataAsyncAction =
-      AsyncAction('_CariVirmanViewModelBase.sendData', context: context);
+  late final _$sendDataAsyncAction = AsyncAction('_CariVirmanViewModelBase.sendData', context: context);
 
   @override
   Future<GenericResponseModel<TahsilatRequestModel>> sendData() {
     return _$sendDataAsyncAction.run(() => super.sendData());
   }
 
-  late final _$_CariVirmanViewModelBaseActionController =
-      ActionController(name: '_CariVirmanViewModelBase', context: context);
+  late final _$_CariVirmanViewModelBaseActionController = ActionController(
+    name: '_CariVirmanViewModelBase',
+    context: context,
+  );
 
   @override
   void setTarih(DateTime? time) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setTarih');
+      name: '_CariVirmanViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(time);
     } finally {
@@ -58,7 +59,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setTahsilatBakiye(double? value) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setTahsilatBakiye');
+      name: '_CariVirmanViewModelBase.setTahsilatBakiye',
+    );
     try {
       return super.setTahsilatBakiye(value);
     } finally {
@@ -69,7 +71,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setOdemeBakiye(double? value) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setOdemeBakiye');
+      name: '_CariVirmanViewModelBase.setOdemeBakiye',
+    );
     try {
       return super.setOdemeBakiye(value);
     } finally {
@@ -80,7 +83,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setSeri(String? seri) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setSeri');
+      name: '_CariVirmanViewModelBase.setSeri',
+    );
     try {
       return super.setSeri(seri);
     } finally {
@@ -91,7 +95,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setTahsilatCari(String? cariKodu) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setTahsilatCari');
+      name: '_CariVirmanViewModelBase.setTahsilatCari',
+    );
     try {
       return super.setTahsilatCari(cariKodu);
     } finally {
@@ -102,7 +107,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setOdemeCari(String? cariKodu) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setOdemeCari');
+      name: '_CariVirmanViewModelBase.setOdemeCari',
+    );
     try {
       return super.setOdemeCari(cariKodu);
     } finally {
@@ -113,7 +119,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setTutar(double? tutar) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setTutar');
+      name: '_CariVirmanViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(tutar);
     } finally {
@@ -124,7 +131,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setVadeGunu(int? vade) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setVadeGunu');
+      name: '_CariVirmanViewModelBase.setVadeGunu',
+    );
     try {
       return super.setVadeGunu(vade);
     } finally {
@@ -135,7 +143,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setPlasiyer(String? plasiyer) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setPlasiyer');
+      name: '_CariVirmanViewModelBase.setPlasiyer',
+    );
     try {
       return super.setPlasiyer(plasiyer);
     } finally {
@@ -146,7 +155,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setProjeKodu(String? proje) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setProjeKodu');
+      name: '_CariVirmanViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(proje);
     } finally {
@@ -157,7 +167,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setAciklama(String? aciklama) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setAciklama');
+      name: '_CariVirmanViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(aciklama);
     } finally {
@@ -168,7 +179,8 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   @override
   void setHedefAciklama(String? aciklama) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
-        name: '_CariVirmanViewModelBase.setHedefAciklama');
+      name: '_CariVirmanViewModelBase.setHedefAciklama',
+    );
     try {
       return super.setHedefAciklama(aciklama);
     } finally {

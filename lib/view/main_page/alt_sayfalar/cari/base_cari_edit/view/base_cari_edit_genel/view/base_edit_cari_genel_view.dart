@@ -99,27 +99,24 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
     vergiDairesiController = TextEditingController(text: viewModel.model?.vergiDairesi);
     vergiNoController = TextEditingController(text: viewModel.model?.vergiNo);
     dovizController = TextEditingController(
-      text:
-          (viewModel.model?.dovizli == "E" && viewModel.model?.dovizKoduAciklama == null)
-              ? mainCurrency
-              : viewModel.model?.dovizKoduAciklama,
+      text: (viewModel.model?.dovizli == "E" && viewModel.model?.dovizKoduAciklama == null)
+          ? mainCurrency
+          : viewModel.model?.dovizKoduAciklama,
     );
     plasiyerController = TextEditingController(
-      text:
-          parametreModel.plasiyerListTumu
-              ?.firstWhereOrNull((element) => element.plasiyerKodu == viewModel.model?.plasiyerKodu)
-              ?.plasiyerAciklama,
+      text: parametreModel.plasiyerListTumu
+          ?.firstWhereOrNull((element) => element.plasiyerKodu == viewModel.model?.plasiyerKodu)
+          ?.plasiyerAciklama,
     );
     vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu ?? "");
     odemeTipiController = TextEditingController(
-      text:
-          viewModel.model?.odemeTipi == "0"
-              ? "Nakit"
-              : viewModel.model?.odemeTipi == "1"
-              ? "Havale"
-              : viewModel.model?.odemeTipi == "2"
-              ? "Çek"
-              : "",
+      text: viewModel.model?.odemeTipi == "0"
+          ? "Nakit"
+          : viewModel.model?.odemeTipi == "1"
+          ? "Havale"
+          : viewModel.model?.odemeTipi == "2"
+          ? "Çek"
+          : "",
     );
     // if (widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
     //   getCariDetay(model?.cariKodu ?? "");
@@ -151,11 +148,10 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
             child: CustomWidgetWithLabel(
               text: "Şahıs Firması",
               child: Observer(
-                builder:
-                    (_) => Switch.adaptive(
-                      value: viewModel.isSahisFirmasi,
-                      onChanged: enabled ? (value) => viewModel.changeIsSahisFirmasi(value) : null,
-                    ),
+                builder: (_) => Switch.adaptive(
+                  value: viewModel.isSahisFirmasi,
+                  onChanged: enabled ? (value) => viewModel.changeIsSahisFirmasi(value) : null,
+                ),
               ),
             ),
           ),
@@ -176,28 +172,27 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                   controller: kodController,
                   onChanged: viewModel.changeKodu,
                   suffix: Wrap(
-                    children:
-                        <IconButton>[
-                          IconButton(
-                            onPressed: () async {
-                              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                              if (result != null && result is CariListesiModel) {
-                                kodController.text = result.kodu ?? "";
-                                viewModel.changeKodu(result.kodu);
-                              }
-                              log(result.toString());
-                            },
-                            icon: const Icon(Icons.more_horiz_outlined),
-                          ),
-                          IconButton(
-                            onPressed: () async {
-                              final String? kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
-                              kodController.text = kod ?? "";
-                              viewModel.changeKodu(kod);
-                            },
-                            icon: const Icon(Icons.format_list_numbered_rtl_outlined),
-                          ),
-                        ].map((e) => SizedBox(width: 35, child: e)).toList(),
+                    children: <IconButton>[
+                      IconButton(
+                        onPressed: () async {
+                          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                          if (result != null && result is CariListesiModel) {
+                            kodController.text = result.kodu ?? "";
+                            viewModel.changeKodu(result.kodu);
+                          }
+                          log(result.toString());
+                        },
+                        icon: const Icon(Icons.more_horiz_outlined),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          final String? kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
+                          kodController.text = kod ?? "";
+                          viewModel.changeKodu(kod);
+                        },
+                        icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                      ),
+                    ].map((e) => SizedBox(width: 35, child: e)).toList(),
                   ),
                 ),
               ),
@@ -365,15 +360,14 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
               ),
               Expanded(
                 child: Observer(
-                  builder:
-                      (_) => CustomTextField(
-                        enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
-                        labelText: viewModel.isSahisFirmasi ? "T.C. Kimlik No" : "Vergi No",
-                        controller: vergiNoController,
-                        keyboardType: TextInputType.number,
-                        maxLength: viewModel.isSahisFirmasi ? 11 : 10,
-                        onChanged: (p0) => viewModel.changeVergiNo(p0),
-                      ),
+                  builder: (_) => CustomTextField(
+                    enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
+                    labelText: viewModel.isSahisFirmasi ? "T.C. Kimlik No" : "Vergi No",
+                    controller: vergiNoController,
+                    keyboardType: TextInputType.number,
+                    maxLength: viewModel.isSahisFirmasi ? 11 : 10,
+                    onChanged: (p0) => viewModel.changeVergiNo(p0),
+                  ),
                 ),
               ),
             ],
@@ -409,48 +403,45 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                 child: CustomWidgetWithLabel(
                   text: "Dövizli",
                   child: Observer(
-                    builder:
-                        (_) => Switch.adaptive(
-                          value: viewModel.isDovizli,
-                          onChanged:
-                              enabled
-                                  ? (value) {
-                                    if (!value) {
-                                      dovizController.clear();
-                                      viewModel.changeDovizTipi(null);
-                                    }
-                                    viewModel.changeIsDovizli(value);
-                                  }
-                                  : null,
-                        ),
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.isDovizli,
+                      onChanged: enabled
+                          ? (value) {
+                              if (!value) {
+                                dovizController.clear();
+                                viewModel.changeDovizTipi(null);
+                              }
+                              viewModel.changeIsDovizli(value);
+                            }
+                          : null,
+                    ),
                   ),
                 ),
               ),
             ],
           ),
           Observer(
-            builder:
-                (_) => Visibility(
-                  visible: viewModel.isDovizli,
-                  child: CustomTextField(
-                    enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("dov_tipi"),
-                    labelText: "Döviz Tipi",
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.dovizKodu.toStringIfNotNull ?? "")),
-                    controller: dovizController,
-                    readOnly: true,
-                    suffixMore: true,
-                    onTap: () async {
-                      final DovizList? result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
-                        context,
-                        viewModel.model?.dovizKodu,
-                      );
-                      if (result is DovizList) {
-                        dovizController.text = result.isim ?? "";
-                        viewModel.changeDovizTipi(result);
-                      }
-                    },
-                  ),
-                ),
+            builder: (_) => Visibility(
+              visible: viewModel.isDovizli,
+              child: CustomTextField(
+                enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("dov_tipi"),
+                labelText: "Döviz Tipi",
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.dovizKodu.toStringIfNotNull ?? "")),
+                controller: dovizController,
+                readOnly: true,
+                suffixMore: true,
+                onTap: () async {
+                  final DovizList? result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
+                    context,
+                    viewModel.model?.dovizKodu,
+                  );
+                  if (result is DovizList) {
+                    dovizController.text = result.isim ?? "";
+                    viewModel.changeDovizTipi(result);
+                  }
+                },
+              ),
+            ),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,

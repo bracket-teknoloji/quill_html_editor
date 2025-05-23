@@ -86,7 +86,10 @@ final class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiE
     ],
     bottom: TabBar(
       controller: _tabController,
-      tabs: [Tab(text: loc.generalStrings.general), const Tab(text: "Kalemler")],
+      tabs: [
+        Tab(text: loc.generalStrings.general),
+        const Tab(text: "Kalemler"),
+      ],
     ),
   );
 
@@ -94,11 +97,9 @@ final class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiE
     controller: _tabController,
     children: [
       Observer(
-        builder:
-            (_) =>
-                viewModel.model != null
-                    ? TransferMalTalebiGenelView(model: widget.model)
-                    : const Center(child: CircularProgressIndicator.adaptive()),
+        builder: (_) => viewModel.model != null
+            ? TransferMalTalebiGenelView(model: widget.model)
+            : const Center(child: CircularProgressIndicator.adaptive()),
       ),
       Observer(
         builder: (_) => TransferMalTalebiKalemlerView(model: widget.model..model = BaseSiparisEditModel.instance),

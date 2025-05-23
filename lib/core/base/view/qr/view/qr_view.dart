@@ -71,37 +71,40 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
       actions: [
         if (!kIsWeb)
           Observer(
-            builder:
-                (_) => IconButton(
-                  onPressed: () {
-                    viewModel.changeFlash();
-                    qrViewController.toggleTorch();
-                  },
-                  icon: Icon(Icons.flash_on, color: viewModel.isFlashOpen ? ColorPalette.gamboge : null),
-                ),
+            builder: (_) => IconButton(
+              onPressed: () {
+                viewModel.changeFlash();
+                qrViewController.toggleTorch();
+              },
+              icon: Icon(Icons.flash_on, color: viewModel.isFlashOpen ? ColorPalette.gamboge : null),
+            ),
           ),
         if (!kIsWeb)
           Observer(
-            builder:
-                (_) => IconButton(
-                  isSelected: false,
-                  onPressed: () {
-                    if (viewModel.isFlashOpen) {
-                      viewModel.changeFlash();
-                      qrViewController.toggleTorch();
-                    }
-                    viewModel.changeCameraReverse();
-                    qrViewController.switchCamera();
-                  },
-                  icon: Icon(Icons.flip_camera_ios, color: viewModel.isCameraReverse ? ColorPalette.gamboge : null),
-                ),
+            builder: (_) => IconButton(
+              isSelected: false,
+              onPressed: () {
+                if (viewModel.isFlashOpen) {
+                  viewModel.changeFlash();
+                  qrViewController.toggleTorch();
+                }
+                viewModel.changeCameraReverse();
+                qrViewController.switchCamera();
+              },
+              icon: Icon(Icons.flip_camera_ios, color: viewModel.isCameraReverse ? ColorPalette.gamboge : null),
+            ),
           ),
       ],
     ),
     body: Stack(
       children: [
         Stack(fit: StackFit.expand, children: [buildQrView(), buildResult()]),
-        Center(child: CustomPaint(painter: BorderPainter(), child: SizedBox(width: width * 0.7, height: width * 0.7))),
+        Center(
+          child: CustomPaint(
+            painter: BorderPainter(),
+            child: SizedBox(width: width * 0.7, height: width * 0.7),
+          ),
+        ),
       ],
     ),
   );
@@ -168,12 +171,11 @@ final class BorderPainter extends CustomPainter {
     final clippingRect2 = Rect.fromLTWH(0, size.height - tRadius, tRadius, tRadius);
     final clippingRect3 = Rect.fromLTWH(size.width - tRadius, size.height - tRadius, tRadius, tRadius);
 
-    final path =
-        Path()
-          ..addRect(clippingRect0)
-          ..addRect(clippingRect1)
-          ..addRect(clippingRect2)
-          ..addRect(clippingRect3);
+    final path = Path()
+      ..addRect(clippingRect0)
+      ..addRect(clippingRect1)
+      ..addRect(clippingRect2)
+      ..addRect(clippingRect3);
 
     canvas
       ..clipPath(path)

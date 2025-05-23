@@ -17,7 +17,11 @@ abstract class _CariEkstreViewModelBase with Store {
   void changeDovizValue(String value) => dovizValue = value;
 
   @observable
-  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_CariEkstre", standart: true, dicParams: DicParams(belgeNo: ""));
+  PdfModel pdfModel = PdfModel(
+    raporOzelKod: "Rapor_CariEkstre",
+    standart: true,
+    dicParams: DicParams(belgeNo: ""),
+  );
 
   //* Cari Kodu
   //*

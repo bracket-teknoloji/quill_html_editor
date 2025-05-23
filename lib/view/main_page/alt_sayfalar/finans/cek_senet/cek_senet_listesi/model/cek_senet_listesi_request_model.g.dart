@@ -6,8 +6,7 @@ part of 'cek_senet_listesi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CekSenetListesiRequestModelImpl _$$CekSenetListesiRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$CekSenetListesiRequestModelImpl _$$CekSenetListesiRequestModelImplFromJson(Map<String, dynamic> json) =>
     _$CekSenetListesiRequestModelImpl(
       verenKodu: json['VerenKodu'] as String?,
       sirala: json['Sirala'] as String?,
@@ -23,8 +22,7 @@ _$CekSenetListesiRequestModelImpl _$$CekSenetListesiRequestModelImplFromJson(
       bitisTarihi: json['BitisTarihi'] as String?,
     );
 
-Map<String, dynamic> _$$CekSenetListesiRequestModelImplToJson(
-        _$CekSenetListesiRequestModelImpl instance) =>
+Map<String, dynamic> _$$CekSenetListesiRequestModelImplToJson(_$CekSenetListesiRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.verenKodu case final value?) 'VerenKodu': value,
       if (instance.sirala case final value?) 'Sirala': value,

@@ -40,12 +40,11 @@ abstract class _StokHareketleriViewModelBase with Store {
   }
 
   @computed
-  String get getIsSelected =>
-      isSelectedGroupValue == 0
-          ? ""
-          : isSelectedGroupValue == 1
-          ? "G"
-          : "C";
+  String get getIsSelected => isSelectedGroupValue == 0
+      ? ""
+      : isSelectedGroupValue == 1
+      ? "G"
+      : "C";
 
   @computed
   double get toplamGiris =>
@@ -151,7 +150,7 @@ abstract class _StokHareketleriViewModelBase with Store {
   List<StokHareketleriModel>? filteredStokHareketleri = [];
 
   @action
-  void filterStokHareketleri(String value) =>
-      filteredStokHareketleri =
-          stokHareketleri?.where((element) => element.fisno!.toLowerCase().contains(value.toLowerCase())).toList();
+  void filterStokHareketleri(String value) => filteredStokHareketleri = stokHareketleri
+      ?.where((element) => element.fisno!.toLowerCase().contains(value.toLowerCase()))
+      .toList();
 }

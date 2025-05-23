@@ -12,7 +12,8 @@ part of 'ek_alanlar_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EkAlanlarModel _$EkAlanlarModelFromJson(Map<String, dynamic> json) {
   return _EkAlanlarModel.fromJson(json);
@@ -51,33 +52,31 @@ mixin _$EkAlanlarModel {
   /// Create a copy of EkAlanlarModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EkAlanlarModelCopyWith<EkAlanlarModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EkAlanlarModelCopyWith<EkAlanlarModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EkAlanlarModelCopyWith<$Res> {
-  factory $EkAlanlarModelCopyWith(
-          EkAlanlarModel value, $Res Function(EkAlanlarModel) then) =
+  factory $EkAlanlarModelCopyWith(EkAlanlarModel value, $Res Function(EkAlanlarModel) then) =
       _$EkAlanlarModelCopyWithImpl<$Res, EkAlanlarModel>;
   @useResult
-  $Res call(
-      {String? tabloAdi,
-      String? alanKodu,
-      String? alanAciklama,
-      String? zorunlu,
-      String? aktif,
-      int? sira,
-      int? veriTipi,
-      int? uzunluk,
-      int? componentTipi,
-      @JsonKey(name: "SecimListesi") List<String>? secimListesi,
-      String? ondeger});
+  $Res call({
+    String? tabloAdi,
+    String? alanKodu,
+    String? alanAciklama,
+    String? zorunlu,
+    String? aktif,
+    int? sira,
+    int? veriTipi,
+    int? uzunluk,
+    int? componentTipi,
+    @JsonKey(name: "SecimListesi") List<String>? secimListesi,
+    String? ondeger,
+  });
 }
 
 /// @nodoc
-class _$EkAlanlarModelCopyWithImpl<$Res, $Val extends EkAlanlarModel>
-    implements $EkAlanlarModelCopyWith<$Res> {
+class _$EkAlanlarModelCopyWithImpl<$Res, $Val extends EkAlanlarModel> implements $EkAlanlarModelCopyWith<$Res> {
   _$EkAlanlarModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -102,84 +101,84 @@ class _$EkAlanlarModelCopyWithImpl<$Res, $Val extends EkAlanlarModel>
     Object? secimListesi = freezed,
     Object? ondeger = freezed,
   }) {
-    return _then(_value.copyWith(
-      tabloAdi: freezed == tabloAdi
-          ? _value.tabloAdi
-          : tabloAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alanKodu: freezed == alanKodu
-          ? _value.alanKodu
-          : alanKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alanAciklama: freezed == alanAciklama
-          ? _value.alanAciklama
-          : alanAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zorunlu: freezed == zorunlu
-          ? _value.zorunlu
-          : zorunlu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aktif: freezed == aktif
-          ? _value.aktif
-          : aktif // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      veriTipi: freezed == veriTipi
-          ? _value.veriTipi
-          : veriTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      uzunluk: freezed == uzunluk
-          ? _value.uzunluk
-          : uzunluk // ignore: cast_nullable_to_non_nullable
-              as int?,
-      componentTipi: freezed == componentTipi
-          ? _value.componentTipi
-          : componentTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      secimListesi: freezed == secimListesi
-          ? _value.secimListesi
-          : secimListesi // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      ondeger: freezed == ondeger
-          ? _value.ondeger
-          : ondeger // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            tabloAdi: freezed == tabloAdi
+                ? _value.tabloAdi
+                : tabloAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            alanKodu: freezed == alanKodu
+                ? _value.alanKodu
+                : alanKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            alanAciklama: freezed == alanAciklama
+                ? _value.alanAciklama
+                : alanAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            zorunlu: freezed == zorunlu
+                ? _value.zorunlu
+                : zorunlu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            aktif: freezed == aktif
+                ? _value.aktif
+                : aktif // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sira: freezed == sira
+                ? _value.sira
+                : sira // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            veriTipi: freezed == veriTipi
+                ? _value.veriTipi
+                : veriTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            uzunluk: freezed == uzunluk
+                ? _value.uzunluk
+                : uzunluk // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            componentTipi: freezed == componentTipi
+                ? _value.componentTipi
+                : componentTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            secimListesi: freezed == secimListesi
+                ? _value.secimListesi
+                : secimListesi // ignore: cast_nullable_to_non_nullable
+                      as List<String>?,
+            ondeger: freezed == ondeger
+                ? _value.ondeger
+                : ondeger // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$EkAlanlarModelImplCopyWith<$Res>
-    implements $EkAlanlarModelCopyWith<$Res> {
-  factory _$$EkAlanlarModelImplCopyWith(_$EkAlanlarModelImpl value,
-          $Res Function(_$EkAlanlarModelImpl) then) =
+abstract class _$$EkAlanlarModelImplCopyWith<$Res> implements $EkAlanlarModelCopyWith<$Res> {
+  factory _$$EkAlanlarModelImplCopyWith(_$EkAlanlarModelImpl value, $Res Function(_$EkAlanlarModelImpl) then) =
       __$$EkAlanlarModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? tabloAdi,
-      String? alanKodu,
-      String? alanAciklama,
-      String? zorunlu,
-      String? aktif,
-      int? sira,
-      int? veriTipi,
-      int? uzunluk,
-      int? componentTipi,
-      @JsonKey(name: "SecimListesi") List<String>? secimListesi,
-      String? ondeger});
+  $Res call({
+    String? tabloAdi,
+    String? alanKodu,
+    String? alanAciklama,
+    String? zorunlu,
+    String? aktif,
+    int? sira,
+    int? veriTipi,
+    int? uzunluk,
+    int? componentTipi,
+    @JsonKey(name: "SecimListesi") List<String>? secimListesi,
+    String? ondeger,
+  });
 }
 
 /// @nodoc
-class __$$EkAlanlarModelImplCopyWithImpl<$Res>
-    extends _$EkAlanlarModelCopyWithImpl<$Res, _$EkAlanlarModelImpl>
+class __$$EkAlanlarModelImplCopyWithImpl<$Res> extends _$EkAlanlarModelCopyWithImpl<$Res, _$EkAlanlarModelImpl>
     implements _$$EkAlanlarModelImplCopyWith<$Res> {
-  __$$EkAlanlarModelImplCopyWithImpl(
-      _$EkAlanlarModelImpl _value, $Res Function(_$EkAlanlarModelImpl) _then)
-      : super(_value, _then);
+  __$$EkAlanlarModelImplCopyWithImpl(_$EkAlanlarModelImpl _value, $Res Function(_$EkAlanlarModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of EkAlanlarModel
   /// with the given fields replaced by the non-null parameter values.
@@ -198,74 +197,75 @@ class __$$EkAlanlarModelImplCopyWithImpl<$Res>
     Object? secimListesi = freezed,
     Object? ondeger = freezed,
   }) {
-    return _then(_$EkAlanlarModelImpl(
-      tabloAdi: freezed == tabloAdi
-          ? _value.tabloAdi
-          : tabloAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alanKodu: freezed == alanKodu
-          ? _value.alanKodu
-          : alanKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alanAciklama: freezed == alanAciklama
-          ? _value.alanAciklama
-          : alanAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zorunlu: freezed == zorunlu
-          ? _value.zorunlu
-          : zorunlu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aktif: freezed == aktif
-          ? _value.aktif
-          : aktif // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      veriTipi: freezed == veriTipi
-          ? _value.veriTipi
-          : veriTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      uzunluk: freezed == uzunluk
-          ? _value.uzunluk
-          : uzunluk // ignore: cast_nullable_to_non_nullable
-              as int?,
-      componentTipi: freezed == componentTipi
-          ? _value.componentTipi
-          : componentTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      secimListesi: freezed == secimListesi
-          ? _value.secimListesi
-          : secimListesi // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      ondeger: freezed == ondeger
-          ? _value.ondeger
-          : ondeger // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$EkAlanlarModelImpl(
+        tabloAdi: freezed == tabloAdi
+            ? _value.tabloAdi
+            : tabloAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        alanKodu: freezed == alanKodu
+            ? _value.alanKodu
+            : alanKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        alanAciklama: freezed == alanAciklama
+            ? _value.alanAciklama
+            : alanAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        zorunlu: freezed == zorunlu
+            ? _value.zorunlu
+            : zorunlu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        aktif: freezed == aktif
+            ? _value.aktif
+            : aktif // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sira: freezed == sira
+            ? _value.sira
+            : sira // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        veriTipi: freezed == veriTipi
+            ? _value.veriTipi
+            : veriTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        uzunluk: freezed == uzunluk
+            ? _value.uzunluk
+            : uzunluk // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        componentTipi: freezed == componentTipi
+            ? _value.componentTipi
+            : componentTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        secimListesi: freezed == secimListesi
+            ? _value.secimListesi
+            : secimListesi // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
+        ondeger: freezed == ondeger
+            ? _value.ondeger
+            : ondeger // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EkAlanlarModelImpl extends _EkAlanlarModel {
-  _$EkAlanlarModelImpl(
-      {this.tabloAdi,
-      this.alanKodu,
-      this.alanAciklama,
-      this.zorunlu,
-      this.aktif,
-      this.sira,
-      this.veriTipi,
-      this.uzunluk,
-      this.componentTipi,
-      @JsonKey(name: "SecimListesi") this.secimListesi,
-      this.ondeger})
-      : super._();
+  _$EkAlanlarModelImpl({
+    this.tabloAdi,
+    this.alanKodu,
+    this.alanAciklama,
+    this.zorunlu,
+    this.aktif,
+    this.sira,
+    this.veriTipi,
+    this.uzunluk,
+    this.componentTipi,
+    @JsonKey(name: "SecimListesi") this.secimListesi,
+    this.ondeger,
+  }) : super._();
 
-  factory _$EkAlanlarModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EkAlanlarModelImplFromJson(json);
+  factory _$EkAlanlarModelImpl.fromJson(Map<String, dynamic> json) => _$$EkAlanlarModelImplFromJson(json);
 
   @override
   String? tabloAdi;
@@ -297,34 +297,31 @@ class _$EkAlanlarModelImpl extends _EkAlanlarModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EkAlanlarModelImplCopyWith<_$EkAlanlarModelImpl> get copyWith =>
-      __$$EkAlanlarModelImplCopyWithImpl<_$EkAlanlarModelImpl>(
-          this, _$identity);
+      __$$EkAlanlarModelImplCopyWithImpl<_$EkAlanlarModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EkAlanlarModelImplToJson(
-      this,
-    );
+    return _$$EkAlanlarModelImplToJson(this);
   }
 }
 
 abstract class _EkAlanlarModel extends EkAlanlarModel {
-  factory _EkAlanlarModel(
-      {String? tabloAdi,
-      String? alanKodu,
-      String? alanAciklama,
-      String? zorunlu,
-      String? aktif,
-      int? sira,
-      int? veriTipi,
-      int? uzunluk,
-      int? componentTipi,
-      @JsonKey(name: "SecimListesi") List<String>? secimListesi,
-      String? ondeger}) = _$EkAlanlarModelImpl;
+  factory _EkAlanlarModel({
+    String? tabloAdi,
+    String? alanKodu,
+    String? alanAciklama,
+    String? zorunlu,
+    String? aktif,
+    int? sira,
+    int? veriTipi,
+    int? uzunluk,
+    int? componentTipi,
+    @JsonKey(name: "SecimListesi") List<String>? secimListesi,
+    String? ondeger,
+  }) = _$EkAlanlarModelImpl;
   _EkAlanlarModel._() : super._();
 
-  factory _EkAlanlarModel.fromJson(Map<String, dynamic> json) =
-      _$EkAlanlarModelImpl.fromJson;
+  factory _EkAlanlarModel.fromJson(Map<String, dynamic> json) = _$EkAlanlarModelImpl.fromJson;
 
   @override
   String? get tabloAdi;
@@ -366,6 +363,5 @@ abstract class _EkAlanlarModel extends EkAlanlarModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EkAlanlarModelImplCopyWith<_$EkAlanlarModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EkAlanlarModelImplCopyWith<_$EkAlanlarModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

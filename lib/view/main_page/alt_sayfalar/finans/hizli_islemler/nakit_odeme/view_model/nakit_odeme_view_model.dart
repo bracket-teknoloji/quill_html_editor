@@ -76,12 +76,11 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setTahsilatmi(bool? value) =>
-      model = model.copyWith(
-        tahsilatmi: value,
-        gc: value == true ? "G" : "C",
-        pickerBelgeTuru: value == true ? "NAT" : "NAO",
-      );
+  void setTahsilatmi(bool? value) => model = model.copyWith(
+    tahsilatmi: value,
+    gc: value == true ? "G" : "C",
+    pickerBelgeTuru: value == true ? "NAT" : "NAO",
+  );
 
   @action
   void setBelgeNo(String? value) => model = model.copyWith(belgeNo: value);

@@ -19,13 +19,12 @@ final class PickerApp extends StatelessWidget {
     ),
     alignment: Alignment.center,
     child: ClipRRect(
-      borderRadius:
-          !context.isPhone && context.isLandscape
-              ? const BorderRadius.only(
-                topLeft: Radius.circular(UIHelper.highSize),
-                topRight: Radius.circular(UIHelper.highSize),
-              )
-              : BorderRadius.zero,
+      borderRadius: !context.isPhone && context.isLandscape
+          ? const BorderRadius.only(
+              topLeft: Radius.circular(UIHelper.highSize),
+              topRight: Radius.circular(UIHelper.highSize),
+            )
+          : BorderRadius.zero,
       child: Container(
         constraints: BoxConstraints(
           maxWidth: !context.isPhone && context.isLandscape ? getWidth(context) : double.infinity,
@@ -71,11 +70,17 @@ final class PickerMaterialApp extends StatelessWidget {
     darkTheme: AppThemeDark.instance?.theme,
     themeMode: CacheManager.getProfilParametre.temaModu,
     initialRoute: "/",
-    onUnknownRoute: (settings) => GetPageRoute(settings: const RouteSettings(name: "/"), page: SplashAuthView.new),
+    onUnknownRoute: (settings) => GetPageRoute(
+      settings: const RouteSettings(name: "/"),
+      page: SplashAuthView.new,
+    ),
     getPages: <GetPage>[
       GetPage(name: "/", page: SplashAuthView.new),
       GetPage(name: "/login", page: () => const LoginView()),
-      GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
+      GetPage(
+        name: "/entryCompany",
+        page: () => EntryCompanyView(isSplash: Get.arguments),
+      ),
       GetPage(name: "/addCompany", page: () => const AccountsView()),
       GetPage(name: "/addAccount", page: () => const AddAccountView()),
       GetPage(name: "/qr", page: () => const QRScannerView()),
@@ -85,35 +90,63 @@ final class PickerMaterialApp extends StatelessWidget {
       GetPage(name: "/servisIslemleri", page: () => const ServisIslemleriView()),
       GetPage(
         name: "/kalemEkle",
-        page:
-            () => KalemEkleView(
-              stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
-              kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
-            ),
+        page: () => KalemEkleView(
+          stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
+          kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
+        ),
       ),
       GetPage(
         name: "/talepTeklifKalemEkle",
-        page:
-            () => KalemEkleView(
-              stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
-              kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
-            ),
+        page: () => KalemEkleView(
+          stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
+          kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
+        ),
       ),
       //* Seri İşlemleri
-      GetPage(name: "/seriListesi", page: () => SeriListesiView(kalemModel: Get.arguments)),
-      GetPage(name: "/seriListesiOzel", page: () => SeriListesiView.goruntule(kalemModel: Get.arguments)),
+      GetPage(
+        name: "/seriListesi",
+        page: () => SeriListesiView(kalemModel: Get.arguments),
+      ),
+      GetPage(
+        name: "/seriListesiOzel",
+        page: () => SeriListesiView.goruntule(kalemModel: Get.arguments),
+      ),
       GetPage(name: "/kayitliYazicilar", page: YaziciListesiView.new),
       GetPage(name: "/yaziciRehberi", page: YaziciRehberiView.new),
       GetPage(name: "/yaziciEkle", page: YaziciEditView.ekle),
       GetPage(name: "/yaziciDuzenle", page: YaziciEditView.duzenle),
-      GetPage(name: "/seriDetayi", page: () => SeriDetayiView(seriDetayiModel: Get.arguments)),
-      GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
-      GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
-      GetPage(name: "/seriBakiyeleri", page: () => SeriBakiyeleriView(stokModel: Get.arguments)),
-      GetPage(name: "/seriRehberi", page: () => SeriRehberiView(stokModel: Get.arguments)),
-      GetPage(name: "/seriRehberiUSK", page: () => SeriRehberiView.usk(stokModel: Get.arguments)),
-      GetPage(name: "/evraklar", page: () => EvraklarView(model: Get.arguments)),
-      GetPage(name: "/imagePicker", page: () => ImagePickerView(requestModel: Get.arguments)),
+      GetPage(
+        name: "/seriDetayi",
+        page: () => SeriDetayiView(seriDetayiModel: Get.arguments),
+      ),
+      GetPage(
+        name: "/seriHareketleri",
+        page: () => SeriHareketleriView(model: Get.arguments),
+      ),
+      GetPage(
+        name: "/seriGirisi",
+        page: () => SeriGirisiView(seriHareketleriModel: Get.arguments),
+      ),
+      GetPage(
+        name: "/seriBakiyeleri",
+        page: () => SeriBakiyeleriView(stokModel: Get.arguments),
+      ),
+      GetPage(
+        name: "/seriRehberi",
+        page: () => SeriRehberiView(stokModel: Get.arguments),
+      ),
+      GetPage(
+        name: "/seriRehberiUSK",
+        page: () => SeriRehberiView.usk(stokModel: Get.arguments),
+      ),
+      GetPage(
+        name: "/evraklar",
+        page: () => EvraklarView(model: Get.arguments),
+      ),
+      GetPage(
+        name: "/imagePicker",
+        page: () => ImagePickerView(requestModel: Get.arguments),
+      ),
       GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
       GetPage(
         name: "/mainPage",
@@ -124,51 +157,127 @@ final class PickerMaterialApp extends StatelessWidget {
           GetPage(name: "/belgeKontrol", page: BelgeKontrolView.new),
           GetPage(name: "/belgeEkle", page: () => const BelgeKontrolEditView.add()),
           GetPage(name: "/belgeDuzenle", page: () => const BelgeKontrolEditView.edit()),
-          GetPage(name: "/belgeKalemler", page: () => BelgeKontrolKalemlerView(belgeKontrolModel: Get.arguments)),
-          GetPage(name: "/belgeKalemlerEdit", page: () => BelgeKontrolKalemEditView(belgeKontrolModel: Get.arguments)),
-          GetPage(name: "/genelRehber", page: () => GenelRehberView(model: Get.arguments)),
-          GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
-          GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),
-          GetPage(name: "/eIrsaliyeEkBilgiler", page: () => EIrsaliyeEkBilgilerView(model: Get.arguments)),
+          GetPage(
+            name: "/belgeKalemler",
+            page: () => BelgeKontrolKalemlerView(belgeKontrolModel: Get.arguments),
+          ),
+          GetPage(
+            name: "/belgeKalemlerEdit",
+            page: () => BelgeKontrolKalemEditView(belgeKontrolModel: Get.arguments),
+          ),
+          GetPage(
+            name: "/genelRehber",
+            page: () => GenelRehberView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/kalemRehberi",
+            page: () => KalemRehberiView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/siparisRehberi",
+            page: () => SiparisRehberiView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/eIrsaliyeEkBilgiler",
+            page: () => EIrsaliyeEkBilgilerView(model: Get.arguments),
+          ),
 
           //* E-Fatura - E-Arşiv - E-İrsaliye
-          GetPage(name: "/eBelgeGonder", page: () => EBelgeGonderView(model: Get.arguments), popGesture: false),
+          GetPage(
+            name: "/eBelgeGonder",
+            page: () => EBelgeGonderView(model: Get.arguments),
+            popGesture: false,
+          ),
 
           //* Cari
-          GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
+          GetPage(
+            name: "/cariListesi",
+            page: () => CariListesiView(isGetData: Get.arguments),
+          ),
           GetPage(
             name: "/cariListesiOzel",
             page: () => CariListesiView(isGetData: true, cariRequestModel: Get.arguments),
           ),
-          GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariRequestModel: Get.arguments)),
+          GetPage(
+            name: "/cariRehberi",
+            page: () => CariRehberiView(cariRequestModel: Get.arguments),
+          ),
           GetPage(name: "/MuhtelifCariEkle", page: MuhtelifCariEkleView.new),
-          GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
-          GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
-          GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
+          GetPage(
+            name: "/cariEdit",
+            page: () => BaseCariEditingView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariHareketleri",
+            page: () => CariHareketleriView(cari: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariYeniKayit",
+            page: () => CariYeniKayitView(model: Get.arguments),
+          ),
           GetPage(name: "/cariHaritasi", page: CariHaritasiView.new),
-          GetPage(name: "/cariHaritasiOzel", page: () => CariHaritasiView(isGetData: true, konum: Get.arguments)),
-          GetPage(name: "/cariHaritasiGoruntule", page: () => CariHaritasiView(isGetData: false, model: Get.arguments)),
-          GetPage(name: "/cariAktivite", page: () => CariAktiviteView(cariModel: Get.arguments)),
-          GetPage(name: "/cariAktiviteEdit", page: () => CariAktiviteEditView(model: Get.arguments)),
-          GetPage(name: "/cariAktiviteDetayiEdit", page: () => CariAktiviteDetayiEditView(model: Get.arguments)),
+          GetPage(
+            name: "/cariHaritasiOzel",
+            page: () => CariHaritasiView(isGetData: true, konum: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariHaritasiGoruntule",
+            page: () => CariHaritasiView(isGetData: false, model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariAktivite",
+            page: () => CariAktiviteView(cariModel: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariAktiviteEdit",
+            page: () => CariAktiviteEditView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariAktiviteDetayiEdit",
+            page: () => CariAktiviteDetayiEditView(model: Get.arguments),
+          ),
 
           //* Cari Raporları
-          GetPage(name: "/cariEkstre", page: () => CariEkstreView(model: Get.arguments)),
-          GetPage(name: "/cariDovizliEkstre", page: () => CariDovizliEkstreView(model: Get.arguments)),
-          GetPage(name: "/cariStokEkstre", page: () => StokEkstreView(model: Get.arguments)),
-          GetPage(name: "/cariBorcAlacakDokumu", page: () => CariBorcAlacakDokumuRaporuView(model: Get.arguments)),
+          GetPage(
+            name: "/cariEkstre",
+            page: () => CariEkstreView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariDovizliEkstre",
+            page: () => CariDovizliEkstreView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariStokEkstre",
+            page: () => StokEkstreView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariBorcAlacakDokumu",
+            page: () => CariBorcAlacakDokumuRaporuView(model: Get.arguments),
+          ),
           GetPage(
             name: "/cariDovizliBorcAlacakDokumu",
             page: () => CariBorcAlacakDokumuRaporuView.dovizli(model: Get.arguments),
           ),
-          GetPage(name: "/cariYaslandirmaRaporu", page: () => YaslandirmaRaporuView(model: Get.arguments)),
-          GetPage(name: "/cariDovizBakiyeRaporu", page: () => DovizBakiyeRaporuView(model: Get.arguments)),
-          GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),
+          GetPage(
+            name: "/cariYaslandirmaRaporu",
+            page: () => YaslandirmaRaporuView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariDovizBakiyeRaporu",
+            page: () => DovizBakiyeRaporuView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariHareketRaporu",
+            page: () => CariHareketRaporuView(model: Get.arguments),
+          ),
           GetPage(
             name: "/cariHareketDetayliYaslandirmaRaporu",
             page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments),
           ),
-          GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
+          GetPage(
+            name: "/cariStokSatisOzeti",
+            page: () => CariStokSatisOzetiView(model: Get.arguments),
+          ),
 
           //* E-Belge
           GetPage(
@@ -179,7 +288,10 @@ final class PickerMaterialApp extends StatelessWidget {
             name: "/eBelgeGidenKutusu",
             page: () => const EBelgeGelenGidenKutusuView(eBelgeEnum: EBelgeEnum.giden),
           ),
-          GetPage(name: "/eBelgePdf", page: () => EBelgePdfView(model: Get.arguments)),
+          GetPage(
+            name: "/eBelgePdf",
+            page: () => EBelgePdfView(model: Get.arguments),
+          ),
 
           //* Finans
 
@@ -190,15 +302,27 @@ final class PickerMaterialApp extends StatelessWidget {
             page: () => BankaListesiView(isGetData: true, requestModel: Get.arguments),
           ),
           GetPage(name: "/bankaIslemleri", page: BankaIslemleriView.new),
-          GetPage(name: "/bankaHareketleri", page: () => BankaHareketleriView(model: Get.arguments)),
-          GetPage(name: "/cariEFTHavale", page: () => CariHavaleEftView(cariListesiModel: Get.arguments)),
-          GetPage(name: "/ozelHesapKapatma", page: () => OzelHesapKapatmaView(cariModel: Get.arguments)),
+          GetPage(
+            name: "/bankaHareketleri",
+            page: () => BankaHareketleriView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cariEFTHavale",
+            page: () => CariHavaleEftView(cariListesiModel: Get.arguments),
+          ),
+          GetPage(
+            name: "/ozelHesapKapatma",
+            page: () => OzelHesapKapatmaView(cariModel: Get.arguments),
+          ),
           GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
           GetPage(
             name: "/hesaplarArasiVirman",
             page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.virman),
           ),
-          GetPage(name: "/cariVirman", page: () => CariVirmanView(model: Get.arguments)),
+          GetPage(
+            name: "/cariVirman",
+            page: () => CariVirmanView(model: Get.arguments),
+          ),
           GetPage(
             name: "/hesaplarArasiEftHavale",
             page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.eftHavale),
@@ -211,11 +335,20 @@ final class PickerMaterialApp extends StatelessWidget {
             name: "/bankaMuhtelifOdeme",
             page: () => const BankaMuhtelifIslemlerView(bankaMuhtelifIslemlerEnum: BankaMuhtelifIslemlerEnum.odeme),
           ),
-          GetPage(name: "/masrafKoduRehberi", page: () => MasrafKoduRehberiView(tipi: Get.arguments)),
+          GetPage(
+            name: "/masrafKoduRehberi",
+            page: () => MasrafKoduRehberiView(tipi: Get.arguments),
+          ),
 
           //* * Kasa
-          GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),
-          GetPage(name: "/kasaHareketDetayi", page: () => KasaHareketDetayiView(cariListesiModel: Get.arguments)),
+          GetPage(
+            name: "/kasaHareketleri",
+            page: () => KasaHareketleriView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/kasaHareketDetayi",
+            page: () => KasaHareketDetayiView(cariListesiModel: Get.arguments),
+          ),
           GetPage(name: "/kasaListesi", page: KasaListesiView.new),
           GetPage(name: "/kasaIslemleri", page: KasaIslemleriView.new),
           GetPage(name: "/kasaTransferi", page: KasaTransferiView.new),
@@ -223,7 +356,10 @@ final class PickerMaterialApp extends StatelessWidget {
 
           //* * Dekontlar
           GetPage(name: "/dekontlarListesi", page: DekontlarView.new),
-          GetPage(name: "/dekontEkle", page: () => const DekontEditView(baseEditEnum: BaseEditEnum.ekle)),
+          GetPage(
+            name: "/dekontEkle",
+            page: () => const DekontEditView(baseEditEnum: BaseEditEnum.ekle),
+          ),
           GetPage(
             name: "/dekontEBelgedenEkle",
             page: () => DekontEditView(baseEditEnum: BaseEditEnum.taslak, eBelgeModel: Get.arguments),
@@ -232,8 +368,14 @@ final class PickerMaterialApp extends StatelessWidget {
             name: "/dekontDuzenle",
             page: () => DekontEditView(baseEditEnum: BaseEditEnum.duzenle, model: Get.arguments),
           ),
-          GetPage(name: "/dekontGoruntule", page: () => DekontGoruntuleView(model: Get.arguments)),
-          GetPage(name: "/dekontGoruntuleRefKey", page: () => DekontGoruntuleView(refKey: Get.arguments)),
+          GetPage(
+            name: "/dekontGoruntule",
+            page: () => DekontGoruntuleView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/dekontGoruntuleRefKey",
+            page: () => DekontGoruntuleView(refKey: Get.arguments),
+          ),
           GetPage(
             name: "/dekontKalemEkle",
             page: () => DekontKalemEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle),
@@ -260,66 +402,66 @@ final class PickerMaterialApp extends StatelessWidget {
             name: "/borcSenetleri",
             page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc),
           ),
-          GetPage(name: "/cekSenetHareketleri", page: () => CekSenetHareketleriView(model: Get.arguments)),
+          GetPage(
+            name: "/cekSenetHareketleri",
+            page: () => CekSenetHareketleriView(model: Get.arguments),
+          ),
           GetPage(
             name: "/cekBorcTahsilat",
-            page:
-                () => CekSenetTahsilatiView(
-                  cekSenetListesiEnum: CekSenetListesiEnum.cekBorc,
-                  cariListesiModel: Get.arguments,
-                ),
+            page: () => CekSenetTahsilatiView(
+              cekSenetListesiEnum: CekSenetListesiEnum.cekBorc,
+              cariListesiModel: Get.arguments,
+            ),
           ),
           GetPage(
             name: "/cekMusteriTahsilat",
-            page:
-                () => CekSenetTahsilatiView(
-                  cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri,
-                  cariListesiModel: Get.arguments,
-                ),
+            page: () => CekSenetTahsilatiView(
+              cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri,
+              cariListesiModel: Get.arguments,
+            ),
           ),
           GetPage(
             name: "/senetBorcTahsilat",
-            page:
-                () => CekSenetTahsilatiView(
-                  cekSenetListesiEnum: CekSenetListesiEnum.senetBorc,
-                  cariListesiModel: Get.arguments,
-                ),
+            page: () => CekSenetTahsilatiView(
+              cekSenetListesiEnum: CekSenetListesiEnum.senetBorc,
+              cariListesiModel: Get.arguments,
+            ),
           ),
           GetPage(
             name: "/senetMusteriTahsilat",
-            page:
-                () => CekSenetTahsilatiView(
-                  cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri,
-                  cariListesiModel: Get.arguments,
-                ),
+            page: () => CekSenetTahsilatiView(
+              cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri,
+              cariListesiModel: Get.arguments,
+            ),
           ),
           GetPage(
             name: "/cekMusteriTahsilatEkle",
-            page:
-                () =>
-                    CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri),
+            page: () =>
+                CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri),
           ),
           GetPage(
             name: "/senetMusteriTahsilatEkle",
-            page:
-                () => CekSenetTahsilatEkleView(
-                  model: Get.arguments,
-                  cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri,
-                ),
+            page: () =>
+                CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri),
           ),
           GetPage(
             name: "/cekBorcTahsilatEkle",
-            page:
-                () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekBorc),
+            page: () =>
+                CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekBorc),
           ),
           GetPage(
             name: "/senetBorcTahsilatEkle",
-            page:
-                () =>
-                    CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetBorc),
+            page: () =>
+                CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetBorc),
           ),
-          GetPage(name: "/cekSenetEvraklari", page: () => CekSenetEvraklarView(model: Get.arguments)),
-          GetPage(name: "/cekSenetGoruntule", page: () => CekSenetGoruntuleView(model: Get.arguments)),
+          GetPage(
+            name: "/cekSenetEvraklari",
+            page: () => CekSenetEvraklarView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/cekSenetGoruntule",
+            page: () => CekSenetGoruntuleView(model: Get.arguments),
+          ),
           GetPage(
             name: "/cariHesabaCirola",
             page: () => HesabaCirolaView(model: Get.arguments, cirolaEnum: CirolaEnum.cari),
@@ -328,9 +470,18 @@ final class PickerMaterialApp extends StatelessWidget {
             name: "/tahsilHesabaCirola",
             page: () => HesabaCirolaView(model: Get.arguments, cirolaEnum: CirolaEnum.tahsil),
           ),
-          GetPage(name: "/kasadanTahsilEt", page: () => KasadanTahsilEtView(model: Get.arguments)),
-          GetPage(name: "/odemeDekontOlustur", page: () => OdemeDekontuOlusturView(model: Get.arguments)),
-          GetPage(name: "/tahsilDekontuOlustur", page: () => OdemeDekontuOlusturView(model: Get.arguments)),
+          GetPage(
+            name: "/kasadanTahsilEt",
+            page: () => KasadanTahsilEtView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/odemeDekontOlustur",
+            page: () => OdemeDekontuOlusturView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/tahsilDekontuOlustur",
+            page: () => OdemeDekontuOlusturView(model: Get.arguments),
+          ),
 
           //* * Ortalama Vade Tarihi Hesaplama
           GetPage(name: "/ortalamaVadeTarihiHesaplama", page: () => const OrtalamaVadeTarihiHesaplamaView()),
@@ -342,12 +493,18 @@ final class PickerMaterialApp extends StatelessWidget {
           GetPage(name: "/hizliTahsilatKayitlari", page: HizliTahsilatKayitlariView.new),
 
           //* * Hızlı İşlemler
-          GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),
+          GetPage(
+            name: "/krediKartiTahsilati",
+            page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments),
+          ),
           GetPage(
             name: "/nakitTahsilat",
             page: () => NakitOdemeView(tahsilatMi: true, cariListesiModel: Get.arguments),
           ),
-          GetPage(name: "/nakitOdeme", page: () => NakitOdemeView(cariListesiModel: Get.arguments)),
+          GetPage(
+            name: "/nakitOdeme",
+            page: () => NakitOdemeView(cariListesiModel: Get.arguments),
+          ),
           GetPage(name: "/muhtelifTahsilat", page: () => const MuhtelifOdemeView(tahsilatMi: true)),
           GetPage(name: "/muhtelifOdeme", page: MuhtelifOdemeView.new),
 
@@ -358,25 +515,32 @@ final class PickerMaterialApp extends StatelessWidget {
 
           //* Sayım
           GetPage(name: "/sayimListesi", page: SayimListesiView.new),
-          GetPage(name: "/sayimEdit", page: () => SayimEditView(model: Get.arguments)),
-          GetPage(name: "/sayimDepoFarkRaporu", page: () => DepoFarkRaporuView(model: Get.arguments)),
+          GetPage(
+            name: "/sayimEdit",
+            page: () => SayimEditView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/sayimDepoFarkRaporu",
+            page: () => DepoFarkRaporuView(model: Get.arguments),
+          ),
 
           //* Sipariş
           GetPage(
             name: "/siparisMusteriSiparisi",
-            page:
-                () => SiparislerView(
-                  widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.musteri, isGetData: Get.arguments),
-                ),
+            page: () => SiparislerView(
+              widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.musteri, isGetData: Get.arguments),
+            ),
           ),
           GetPage(
             name: "/siparisSaticiSiparisi",
-            page:
-                () => SiparislerView(
-                  widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.satici, isGetData: Get.arguments),
-                ),
+            page: () => SiparislerView(
+              widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.satici, isGetData: Get.arguments),
+            ),
           ),
-          GetPage(name: "/siparisEdit", page: () => BaseSiparisEditingView(model: Get.arguments)),
+          GetPage(
+            name: "/siparisEdit",
+            page: () => BaseSiparisEditingView(model: Get.arguments),
+          ),
           GetPage(
             name: "/siparisMusteriSiparisiDurumRaporu",
             page: () => const SiparisDurumRaporuView(editTipiEnum: EditTipiEnum.musteri),
@@ -391,39 +555,67 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
           GetPage(
             name: "/siparisMusteriSiparisiTeslimRaporu",
-            page:
-                () => SiparisTeslimRaporuView(editTipiEnum: EditTipiEnum.musteri, baseSiparisEditModel: Get.arguments),
+            page: () =>
+                SiparisTeslimRaporuView(editTipiEnum: EditTipiEnum.musteri, baseSiparisEditModel: Get.arguments),
           ),
           GetPage(
             name: "/siparisSaticiSiparisiTeslimRaporu",
             page: () => SiparisTeslimRaporuView(editTipiEnum: EditTipiEnum.satici, baseSiparisEditModel: Get.arguments),
           ),
-          GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
+          GetPage(
+            name: "/siparisSiparisKarlilikRaporu",
+            page: () => SiparisKarlilikRaporuView(model: Get.arguments),
+          ),
 
           //* Stok
           GetPage(
             name: "/stokListesi",
-            page:
-                () => StokListesiView(
-                  isGetData:
-                      Get.arguments is bool
-                          ? Get.arguments
-                          : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
-                  searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null,
-                ),
+            page: () => StokListesiView(
+              isGetData: Get.arguments is bool
+                  ? Get.arguments
+                  : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
+              searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null,
+            ),
           ),
-          GetPage(name: "/stokDetayliArama", page: () => StokDetayliAramaView(aramaList: Get.arguments)),
-          GetPage(name: "/stokListesiOzel", page: () => StokListesiView(isGetData: true, requestModel: Get.arguments)),
-          GetPage(name: "/stokFiyatGor", page: () => FiyatGorView(model: Get.arguments)),
-          GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
+          GetPage(
+            name: "/stokDetayliArama",
+            page: () => StokDetayliAramaView(aramaList: Get.arguments),
+          ),
+          GetPage(
+            name: "/stokListesiOzel",
+            page: () => StokListesiView(isGetData: true, requestModel: Get.arguments),
+          ),
+          GetPage(
+            name: "/stokFiyatGor",
+            page: () => FiyatGorView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/stokYazdir",
+            page: () => StokYazdirView(model: Get.arguments),
+          ),
           GetPage(name: "/stokBarkodTanimla", page: BarkodTanimlaView.new),
-          GetPage(name: "/barkodEdit", page: () => BarkodTanimlaEditView(model: Get.arguments)),
-          GetPage(name: "/hucreYazdir", page: () => StokYazdirView(hucreModel: Get.arguments)),
-          GetPage(name: "/depoBakiyeDurumu", page: () => DepoBakiyeDurumuView(model: Get.arguments)),
+          GetPage(
+            name: "/barkodEdit",
+            page: () => BarkodTanimlaEditView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/hucreYazdir",
+            page: () => StokYazdirView(hucreModel: Get.arguments),
+          ),
+          GetPage(
+            name: "/depoBakiyeDurumu",
+            page: () => DepoBakiyeDurumuView(model: Get.arguments),
+          ),
           GetPage(name: "/stokFiyatGecmisi", page: FiyatGecmisiView.new),
 
-          GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
-          GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
+          GetPage(
+            name: "/stokEdit",
+            page: () => BaseStokEditingView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/stokRehberi",
+            page: () => StokRehberiView(searchText: Get.arguments),
+          ),
           GetPage(
             name: "/talepTeklifStokRehberi",
             page: () => StokRehberiView(searchText: Get.arguments, isTalepTeklif: true),
@@ -432,15 +624,17 @@ final class PickerMaterialApp extends StatelessWidget {
             name: "/depoTalepStokRehberi",
             page: () => StokRehberiView(searchText: Get.arguments, isDepoTalep: true),
           ),
-          GetPage(name: "/yapilandirmaRehberi", page: () => YapilandirmaRehberiView(model: Get.arguments)),
+          GetPage(
+            name: "/yapilandirmaRehberi",
+            page: () => YapilandirmaRehberiView(model: Get.arguments),
+          ),
           GetPage(
             name: "/stokHareketleri",
-            page:
-                () => StokHareketleriView(
-                  model: Get.arguments is StokListesiModel ? Get.arguments : null,
-                  stokKodu: Get.arguments is String ? Get.arguments : null,
-                  cariModel: Get.arguments is CariListesiModel ? Get.arguments : null,
-                ),
+            page: () => StokHareketleriView(
+              model: Get.arguments is StokListesiModel ? Get.arguments : null,
+              stokKodu: Get.arguments is String ? Get.arguments : null,
+              cariModel: Get.arguments is CariListesiModel ? Get.arguments : null,
+            ),
           ),
           GetPage(
             name: "/stokCariHareketleri",
@@ -456,22 +650,40 @@ final class PickerMaterialApp extends StatelessWidget {
               );
             },
           ),
-          GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
-          GetPage(name: "/fiyatOzeti", page: () => FiyatOzetiView(model: Get.arguments)),
+          GetPage(
+            name: "/stokYeniKayit",
+            page: () => StokYeniKayitView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/fiyatOzeti",
+            page: () => FiyatOzetiView(model: Get.arguments),
+          ),
           GetPage(name: "/paketleme", page: PaketlemeListesiView.new),
-          GetPage(name: "/paketIcerigi", page: () => PaketIcerigiView(model: Get.arguments)),
+          GetPage(
+            name: "/paketIcerigi",
+            page: () => PaketIcerigiView(model: Get.arguments),
+          ),
 
           //* Stok Raporları
-          GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
-          GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
+          GetPage(
+            name: "/stokAmbarMaliyetRaporu",
+            page: () => AmbarMaliyetRaporuView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/stokLokalDepoBakiyeRaporu",
+            page: () => LokalDepoBakiyeRaporuView(model: Get.arguments),
+          ),
           GetPage(
             name: "/urunGrubunaGoreSatisGrafigi",
-            page:
-                () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null),
+            page: () =>
+                UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null),
           ),
 
           //! Faturalar
-          GetPage(name: "/faturaEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
+          GetPage(
+            name: "/faturaEdit",
+            page: () => BaseFaturaEditView(model: Get.arguments),
+          ),
           //* Mal Kabul
           GetPage(
             name: "/malKabulAlisFaturasi",
@@ -497,9 +709,8 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
           GetPage(
             name: "/sevkiyatSatisFaturasiOzel",
-            page:
-                () =>
-                    FaturalarView(editTipiEnum: EditTipiEnum.satisFatura, isGetData: true, isFromRapor: Get.arguments),
+            page: () =>
+                FaturalarView(editTipiEnum: EditTipiEnum.satisFatura, isGetData: true, isFromRapor: Get.arguments),
           ),
           GetPage(name: "/malToplama", page: MalToplamaView.new),
           GetPage(
@@ -535,7 +746,10 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
 
           //* * İrsaliye Faturalaştırma
-          GetPage(name: "/irsaliyeFaturalastir", page: () => IrsaliyeFaturalastirView(model: Get.arguments)),
+          GetPage(
+            name: "/irsaliyeFaturalastir",
+            page: () => IrsaliyeFaturalastirView(model: Get.arguments),
+          ),
 
           //* Profil
           GetPage(name: "/temsilciProfil", page: TemsilciProfilView.new),
@@ -555,7 +769,10 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
 
           //* * Talep Teklif Edit
-          GetPage(name: "/talTekEdit", page: () => BaseTalepTeklifEditingView(model: Get.arguments)),
+          GetPage(
+            name: "/talTekEdit",
+            page: () => BaseTalepTeklifEditingView(model: Get.arguments),
+          ),
 
           //* * Talep Açıklama Düzenleme
           GetPage(
@@ -586,7 +803,10 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
           GetPage(name: "/transferMalTalebi", page: () => const TransferMalTalebiListesiView(talepMi: true)),
           GetPage(name: "/transferMalToplama", page: () => const TransferMalTalebiListesiView(talepMi: false)),
-          GetPage(name: "/transferTalepToplananlar", page: () => DepoTalepToplananlarView(model: Get.arguments)),
+          GetPage(
+            name: "/transferTalepToplananlar",
+            page: () => DepoTalepToplananlarView(model: Get.arguments),
+          ),
 
           //* * Transfer Açıklama Düzenleme
           GetPage(
@@ -603,9 +823,18 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
 
           //* * Transfer Edit
-          GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
-          GetPage(name: "/transferMalToplamaEdit", page: () => DepoTalepMalToplamaView(model: Get.arguments)),
-          GetPage(name: "/transferMalTalebiEdit", page: () => TransferMalTalebiEditView(model: Get.arguments)),
+          GetPage(
+            name: "/transferEdit",
+            page: () => BaseTransferEditingView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/transferMalToplamaEdit",
+            page: () => DepoTalepMalToplamaView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/transferMalTalebiEdit",
+            page: () => TransferMalTalebiEditView(model: Get.arguments),
+          ),
 
           //* * Depo Mal Talebi
           GetPage(
@@ -621,25 +850,61 @@ final class PickerMaterialApp extends StatelessWidget {
 
           //* * Üretim Sonu Kaydı
           GetPage(name: "/uretimSonuKaydi", page: UretimSonuKaydiListesiView.new),
-          GetPage(name: "/uretimSonuKaydiEdit", page: () => UretimSonuKaydiEditView(model: Get.arguments)),
-          GetPage(name: "/uretimFireBilgileri", page: () => UretimFireBilgileriView(model: Get.arguments)),
-          GetPage(name: "/uretimSonuKaydiKalemEdit", page: () => UretimSonuKaydiKalemEkleView(model: Get.arguments)),
-          GetPage(name: "/uretimSonuRaporu", page: () => UretimSonuRaporuView(model: Get.arguments)),
-          GetPage(name: "/uskSeriListesi", page: () => UretimSonuKaydiSeriListesi(model: Get.arguments)),
+          GetPage(
+            name: "/uretimSonuKaydiEdit",
+            page: () => UretimSonuKaydiEditView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/uretimFireBilgileri",
+            page: () => UretimFireBilgileriView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/uretimSonuKaydiKalemEdit",
+            page: () => UretimSonuKaydiKalemEkleView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/uretimSonuRaporu",
+            page: () => UretimSonuRaporuView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/uskSeriListesi",
+            page: () => UretimSonuKaydiSeriListesi(model: Get.arguments),
+          ),
 
           //* * İş Emirleri
-          GetPage(name: "/isEmriRehberiOzel", page: () => IsEmriRehberiView(isGetData: true, stokKodu: Get.arguments)),
+          GetPage(
+            name: "/isEmriRehberiOzel",
+            page: () => IsEmriRehberiView(isGetData: true, stokKodu: Get.arguments),
+          ),
           GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
-          GetPage(name: "/isEmriEdit", page: () => IsEmriEditView(model: Get.arguments)),
+          GetPage(
+            name: "/isEmriEdit",
+            page: () => IsEmriEditView(model: Get.arguments),
+          ),
           GetPage(name: "/isEmriHammaddeTakibi", page: IsEmriHammaddeTakibiView.new),
-          GetPage(name: "/isEmriHammaddeTakibiDetay", page: () => IsEmriHammaddeTakibiDetayView(model: Get.arguments)),
+          GetPage(
+            name: "/isEmriHammaddeTakibiDetay",
+            page: () => IsEmriHammaddeTakibiDetayView(model: Get.arguments),
+          ),
 
           //* Kalite-Kontrol
           GetPage(name: "/olcumGirisi", page: OlcumGirisiListesiView.new),
-          GetPage(name: "/olcumKalemSec", page: () => OlcumKalemSecView(model: Get.arguments)),
-          GetPage(name: "/olcumDetay", page: () => OlcumBelgeEditView(model: Get.arguments)),
-          GetPage(name: "/prosesEkle", page: () => ProsesEkleView(model: Get.arguments)),
-          GetPage(name: "/olcumEkle", page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle)),
+          GetPage(
+            name: "/olcumKalemSec",
+            page: () => OlcumKalemSecView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/olcumDetay",
+            page: () => OlcumBelgeEditView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/prosesEkle",
+            page: () => ProsesEkleView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/olcumEkle",
+            page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle),
+          ),
           GetPage(
             name: "/olcumGoruntule",
             page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.goruntule),
@@ -651,10 +916,19 @@ final class PickerMaterialApp extends StatelessWidget {
 
           //* Hücre Takibi
           GetPage(name: "/hucreListesi", page: HucreListesiView.new),
-          GetPage(name: "/hucreListesiOzel", page: () => HucreListesiView(depoKodu: Get.arguments)),
+          GetPage(
+            name: "/hucreListesiOzel",
+            page: () => HucreListesiView(depoKodu: Get.arguments),
+          ),
           GetPage(name: "/hucreTransferi", page: HucreTransferiView.new),
-          GetPage(name: "/hucreHareketleri", page: () => HucreHareketleriView(model: Get.arguments)),
-          GetPage(name: "/hucredekiStoklar", page: () => HucredekiStoklarView(model: Get.arguments)),
+          GetPage(
+            name: "/hucreHareketleri",
+            page: () => HucreHareketleriView(model: Get.arguments),
+          ),
+          GetPage(
+            name: "/hucredekiStoklar",
+            page: () => HucredekiStoklarView(model: Get.arguments),
+          ),
           GetPage(name: "/hucreTakibiStoklar", page: HucreTakibiStoklarView.new),
           GetPage(name: "/hucreAra", page: HucreAraView.new),
           GetPage(
@@ -665,7 +939,10 @@ final class PickerMaterialApp extends StatelessWidget {
             name: "/hucreEditBosalt",
             page: () => const BaseHucreEditView(islemTuru: HucreTakibiIslemTuruEnum.hucreBosalt),
           ),
-          GetPage(name: "/belgeRehberi", page: () => BelgeRehberiView(model: Get.arguments)),
+          GetPage(
+            name: "/belgeRehberi",
+            page: () => BelgeRehberiView(model: Get.arguments),
+          ),
 
           //* Payker
           GetPage(name: "/paykerTahsilat", page: PaykerTahsilatView.new),
@@ -674,12 +951,11 @@ final class PickerMaterialApp extends StatelessWidget {
           //*
           GetPage(
             name: "/serbestRaporlar",
-            page:
-                () => SerbestRaporlarView(
-                  dizaynList: Get.arguments is NetFectDizaynList ? Get.arguments : null,
-                  cariListesiModel: Get.arguments is CariListesiModel ? Get.arguments : null,
-                  stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
-                ),
+            page: () => SerbestRaporlarView(
+              dizaynList: Get.arguments is NetFectDizaynList ? Get.arguments : null,
+              cariListesiModel: Get.arguments is CariListesiModel ? Get.arguments : null,
+              stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
+            ),
           ),
         ],
       ),

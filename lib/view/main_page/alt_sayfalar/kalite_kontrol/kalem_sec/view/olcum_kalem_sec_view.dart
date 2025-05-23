@@ -87,11 +87,10 @@ final class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
             itemBuilder: (context, index) {
               if (index == viewModel.olcumGirisiListesi?.length) {
                 return Observer(
-                  builder:
-                      (_) => Visibility(
-                        visible: viewModel.dahaVarMi,
-                        child: const Center(child: CircularProgressIndicator.adaptive()),
-                      ),
+                  builder: (_) => Visibility(
+                    visible: viewModel.dahaVarMi,
+                    child: const Center(child: CircularProgressIndicator.adaptive()),
+                  ),
                 );
               }
               final OlcumBelgeModel item = viewModel.olcumGirisiListesi![index];

@@ -70,16 +70,12 @@ class _UretimFireBilgileriViewState extends BaseState<UretimFireBilgileriView> {
                     context,
                     title: "Hurda/Fire Kodu",
                     groupValue: viewModel.fireModel.kodu,
-                    children:
-                        viewModel.observableList
-                            ?.map(
-                              (element) => BottomSheetModel(
-                                title: element.tanimi ?? "",
-                                groupValue: element.kodu,
-                                value: element,
-                              ),
-                            )
-                            .toList(),
+                    children: viewModel.observableList
+                        ?.map(
+                          (element) =>
+                              BottomSheetModel(title: element.tanimi ?? "", groupValue: element.kodu, value: element),
+                        )
+                        .toList(),
                   );
                   if (result != null) {
                     _hurdaFireKoduController.text = result.tanimi ?? result.kodu ?? "";
@@ -94,9 +90,8 @@ class _UretimFireBilgileriViewState extends BaseState<UretimFireBilgileriView> {
                 controller: _miktarController,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 isFormattedString: true,
-                onChanged:
-                    (value) =>
-                        viewModel.setFireModel(viewModel.fireModel.copyWith(miktar: value.toDoubleWithFormattedString)),
+                onChanged: (value) =>
+                    viewModel.setFireModel(viewModel.fireModel.copyWith(miktar: value.toDoubleWithFormattedString)),
               ),
             ),
             OutlinedButton(
@@ -113,17 +108,16 @@ class _UretimFireBilgileriViewState extends BaseState<UretimFireBilgileriView> {
           child: RefreshableListView(
             items: viewModel.model.fireListe,
             onRefresh: () async {},
-            itemBuilder:
-                (item) => Card(
-                  child: ListTile(
-                    title: Text(item.tanimi ?? ""),
-                    subtitle: Text(item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete_outline_outlined),
-                      onPressed: () => viewModel.removeFireModel(item),
-                    ),
-                  ),
+            itemBuilder: (item) => Card(
+              child: ListTile(
+                title: Text(item.tanimi ?? ""),
+                subtitle: Text(item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete_outline_outlined),
+                  onPressed: () => viewModel.removeFireModel(item),
                 ),
+              ),
+            ),
           ),
         ),
       ],

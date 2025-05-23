@@ -9,8 +9,7 @@ part of 'olcum_girisi_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
-  late final _$searchBarAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(name: '_OlcumGirisiViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -25,8 +24,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$appBarTitleAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.appBarTitle', context: context);
+  late final _$appBarTitleAtom = Atom(name: '_OlcumGirisiViewModelBase.appBarTitle', context: context);
 
   @override
   String? get appBarTitle {
@@ -41,8 +39,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.dahaVarMi', context: context);
+  late final _$dahaVarMiAtom = Atom(name: '_OlcumGirisiViewModelBase.dahaVarMi', context: context);
 
   @override
   bool get dahaVarMi {
@@ -57,8 +54,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_OlcumGirisiViewModelBase.requestModel', context: context);
 
   @override
   OlcumGirisiRequestModel get requestModel {
@@ -73,8 +69,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$olcumListAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.olcumList', context: context);
+  late final _$olcumListAtom = Atom(name: '_OlcumGirisiViewModelBase.olcumList', context: context);
 
   @override
   ObservableList<OlcumBelgeModel>? get olcumList {
@@ -89,8 +84,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$qrOlcumListAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.qrOlcumList', context: context);
+  late final _$qrOlcumListAtom = Atom(name: '_OlcumGirisiViewModelBase.qrOlcumList', context: context);
 
   @override
   ObservableList<OlcumBelgeModel>? get qrOlcumList {
@@ -105,29 +99,30 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$resetSayfaAsyncAction =
-      AsyncAction('_OlcumGirisiViewModelBase.resetSayfa', context: context);
+  late final _$resetSayfaAsyncAction = AsyncAction('_OlcumGirisiViewModelBase.resetSayfa', context: context);
 
   @override
   Future<void> resetSayfa() {
     return _$resetSayfaAsyncAction.run(() => super.resetSayfa());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_OlcumGirisiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_OlcumGirisiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_OlcumGirisiViewModelBaseActionController =
-      ActionController(name: '_OlcumGirisiViewModelBase', context: context);
+  late final _$_OlcumGirisiViewModelBaseActionController = ActionController(
+    name: '_OlcumGirisiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setSearchBar');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setSearchBar',
+    );
     try {
       return super.setSearchBar();
     } finally {
@@ -137,8 +132,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setDahaVarMi');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setDahaVarMi',
+    );
     try {
       return super.setDahaVarMi(value);
     } finally {
@@ -148,8 +144,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setBastar(String? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setBastar');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setBastar',
+    );
     try {
       return super.setBastar(value);
     } finally {
@@ -159,8 +156,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setBittar(String? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setBittar');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setBittar',
+    );
     try {
       return super.setBittar(value);
     } finally {
@@ -170,8 +168,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setBelgeTipi(EditTipiEnum? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setBelgeTipi');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setBelgeTipi',
+    );
     try {
       return super.setBelgeTipi(value);
     } finally {
@@ -181,8 +180,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setSiralama(String? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setSiralama');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setSiralama',
+    );
     try {
       return super.setSiralama(value);
     } finally {
@@ -192,8 +192,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setDurum(int? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setDurum');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setDurum',
+    );
     try {
       return super.setDurum(value);
     } finally {
@@ -203,8 +204,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setQr(String? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setQr');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setQr',
+    );
     try {
       return super.setQr(value);
     } finally {
@@ -214,8 +216,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setOlcumList(List<OlcumBelgeModel>? list) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setOlcumList');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setOlcumList',
+    );
     try {
       return super.setOlcumList(list);
     } finally {
@@ -225,8 +228,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setQrOlcumList(List<OlcumBelgeModel>? list) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setQrOlcumList');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setQrOlcumList',
+    );
     try {
       return super.setQrOlcumList(list);
     } finally {
@@ -236,8 +240,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void addOlcumList(List<OlcumBelgeModel> list) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.addOlcumList');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.addOlcumList',
+    );
     try {
       return super.addOlcumList(list);
     } finally {
@@ -247,8 +252,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setAppBarTitle(String? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setAppBarTitle');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setAppBarTitle',
+    );
     try {
       return super.setAppBarTitle(value);
     } finally {
@@ -258,8 +264,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void increaseSayfa() {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.increaseSayfa');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.increaseSayfa',
+    );
     try {
       return super.increaseSayfa();
     } finally {
@@ -269,8 +276,9 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.setSearchText');
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController.startAction(
+      name: '_OlcumGirisiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {

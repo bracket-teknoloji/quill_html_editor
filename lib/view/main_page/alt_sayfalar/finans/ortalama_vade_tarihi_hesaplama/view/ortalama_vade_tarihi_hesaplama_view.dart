@@ -164,7 +164,10 @@ final class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVade
     isScrolledDown: true,
     children: [
       FooterButton(
-        children: [const Text("Kayıt Sayısı:"), Observer(builder: (_) => Text(viewModel.toplamKayitSayisi.toString()))],
+        children: [
+          const Text("Kayıt Sayısı:"),
+          Observer(builder: (_) => Text(viewModel.toplamKayitSayisi.toString())),
+        ],
       ),
       FooterButton(
         children: [
@@ -173,7 +176,10 @@ final class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVade
         ],
       ),
       FooterButton(
-        children: [const Text("Vade Günü:"), Observer(builder: (_) => Text(viewModel.ortalamaVadeTarihiString))],
+        children: [
+          const Text("Vade Günü:"),
+          Observer(builder: (_) => Text(viewModel.ortalamaVadeTarihiString)),
+        ],
       ),
     ],
   );

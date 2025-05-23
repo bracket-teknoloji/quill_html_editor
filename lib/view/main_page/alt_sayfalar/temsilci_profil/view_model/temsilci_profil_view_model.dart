@@ -21,12 +21,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
   void setIadeDurumuValueList(int index) {
     iadeDurumuValueList = iadeDurumuValueList.map((e) => false).toList();
     iadeDurumuValueList[index] = true;
-    temsilciProfilRequestModel.iadeDurumu =
-        index == 0
-            ? "H"
-            : index == 1
-            ? "D"
-            : "S";
+    temsilciProfilRequestModel.iadeDurumu = index == 0
+        ? "H"
+        : index == 1
+        ? "D"
+        : "S";
   }
 
   @observable
@@ -53,21 +52,19 @@ abstract class _TemsilciProfilViewModelBase with Store {
   void setDonemValueList(int index) {
     donemValueList = donemValueList.map((e) => false).toList();
     donemValueList[index] = true;
-    temsilciProfilRequestModel.donemTipi =
-        index == 0
-            ? "SY"
-            : index == 1
-            ? "BY"
-            : "GY";
+    temsilciProfilRequestModel.donemTipi = index == 0
+        ? "SY"
+        : index == 1
+        ? "BY"
+        : "GY";
   }
 
   @observable
-  TemsilciProfilRequestModel temsilciProfilRequestModel =
-      TemsilciProfilRequestModel()
-        ..donemTipi = "SY"
-        ..satisIrsDahil = "H"
-        ..iadeDurumu = "H"
-        ..kdvDahil = "H";
+  TemsilciProfilRequestModel temsilciProfilRequestModel = TemsilciProfilRequestModel()
+    ..donemTipi = "SY"
+    ..satisIrsDahil = "H"
+    ..iadeDurumu = "H"
+    ..kdvDahil = "H";
   @observable
   String? aciklama;
 
@@ -109,9 +106,10 @@ abstract class _TemsilciProfilViewModelBase with Store {
   ObservableList<TemsilciProfilModel>? temsilciProfilList;
 
   @action
-  void setTemsilciProfilList(List<TemsilciProfilModel>? value) =>
-      temsilciProfilList =
-          value?.where((element) => plasiyer == null ? true : element.plasiyerKodu == plasiyer).toList().asObservable();
+  void setTemsilciProfilList(List<TemsilciProfilModel>? value) => temsilciProfilList = value
+      ?.where((element) => plasiyer == null ? true : element.plasiyerKodu == plasiyer)
+      .toList()
+      .asObservable();
 
   @computed
   double get getBugunSatis =>
@@ -233,12 +231,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
   double get getNakitTahsilat =>
       temsilciProfilList
           ?.where(
-            (element) =>
-                selectedDonem(tahsilatDonemKodu) == null
-                    ? tahsilatDonemKodu != 13
-                    : element.tabloTipi == "TAHSILAT" &&
-                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
-                        element.kayitTipi == "D",
+            (element) => selectedDonem(tahsilatDonemKodu) == null
+                ? tahsilatDonemKodu != 13
+                : element.tabloTipi == "TAHSILAT" &&
+                      element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                      element.kayitTipi == "D",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -247,12 +244,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
   double get getKrediKartiTahsilat =>
       temsilciProfilList
           ?.where(
-            (element) =>
-                selectedDonem(tahsilatDonemKodu) == null
-                    ? tahsilatDonemKodu != 13
-                    : element.tabloTipi == "TAHSILAT" &&
-                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
-                        element.kayitTipi == "|",
+            (element) => selectedDonem(tahsilatDonemKodu) == null
+                ? tahsilatDonemKodu != 13
+                : element.tabloTipi == "TAHSILAT" &&
+                      element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                      element.kayitTipi == "|",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -261,12 +257,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
   double get getCekTahsilat =>
       temsilciProfilList
           ?.where(
-            (element) =>
-                selectedDonem(tahsilatDonemKodu) == null
-                    ? tahsilatDonemKodu != 13
-                    : element.tabloTipi == "TAHSILAT" &&
-                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
-                        element.kayitTipi == "G",
+            (element) => selectedDonem(tahsilatDonemKodu) == null
+                ? tahsilatDonemKodu != 13
+                : element.tabloTipi == "TAHSILAT" &&
+                      element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                      element.kayitTipi == "G",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -275,12 +270,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
   double get getSenetTahsilat =>
       temsilciProfilList
           ?.where(
-            (element) =>
-                selectedDonem(tahsilatDonemKodu) == null
-                    ? tahsilatDonemKodu != 13
-                    : element.tabloTipi == "TAHSILAT" &&
-                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
-                        element.kayitTipi == "E",
+            (element) => selectedDonem(tahsilatDonemKodu) == null
+                ? tahsilatDonemKodu != 13
+                : element.tabloTipi == "TAHSILAT" &&
+                      element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                      element.kayitTipi == "E",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -289,12 +283,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
   double get getDekontTahsilat =>
       temsilciProfilList
           ?.where(
-            (element) =>
-                selectedDonem(tahsilatDonemKodu) == null
-                    ? tahsilatDonemKodu != 13
-                    : element.tabloTipi == "TAHSILAT" &&
-                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
-                        element.kayitTipi == "K",
+            (element) => selectedDonem(tahsilatDonemKodu) == null
+                ? tahsilatDonemKodu != 13
+                : element.tabloTipi == "TAHSILAT" &&
+                      element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                      element.kayitTipi == "K",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -391,11 +384,10 @@ abstract class _TemsilciProfilViewModelBase with Store {
       biggestMonth--;
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      final value =
-          temsilciProfilList
-              ?.where((element) => element.tabloTipi == "SATIS" && element.ayKodu == i && (element.tutar != null))
-              .map((e) => e.tutar)
-              .toList();
+      final value = temsilciProfilList
+          ?.where((element) => element.tabloTipi == "SATIS" && element.ayKodu == i && (element.tutar != null))
+          .map((e) => e.tutar)
+          .toList();
       if (value.ext.isNotNullOrEmpty) {
         list[i > 12 ? DateTime.now().copyWith(month: DateTime.now().month - 1).month : i - 1] +=
             value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0)) ?? 0;
@@ -422,11 +414,10 @@ abstract class _TemsilciProfilViewModelBase with Store {
       biggestMonth--;
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      final value =
-          temsilciProfilList
-              ?.where((element) => element.tabloTipi == "ALIS" && element.ayKodu == i && (element.tutar != null))
-              .map((e) => e.tutar)
-              .toList();
+      final value = temsilciProfilList
+          ?.where((element) => element.tabloTipi == "ALIS" && element.ayKodu == i && (element.tutar != null))
+          .map((e) => e.tutar)
+          .toList();
       if (value.ext.isNotNullOrEmpty) {
         list[i > 12 ? DateTime.now().copyWith(month: DateTime.now().month - 1).month : i - 1] +=
             value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0)) ?? 0;
@@ -454,11 +445,10 @@ abstract class _TemsilciProfilViewModelBase with Store {
       biggestMonth--;
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      final value =
-          temsilciProfilList
-              ?.where((element) => element.tabloTipi == "SIPARIS" && element.ayKodu == i && (element.tutar != null))
-              .map((e) => e.tutar)
-              .toList();
+      final value = temsilciProfilList
+          ?.where((element) => element.tabloTipi == "SIPARIS" && element.ayKodu == i && (element.tutar != null))
+          .map((e) => e.tutar)
+          .toList();
       if (value.ext.isNotNullOrEmpty) {
         list[i > 12 ? DateTime.now().copyWith(month: DateTime.now().month - 1).month : i - 1] =
             list[i > 12 ? DateTime.now().copyWith(month: DateTime.now().month - 1).month : i - 1] +
@@ -485,11 +475,10 @@ abstract class _TemsilciProfilViewModelBase with Store {
       biggestMonth--;
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      final value =
-          temsilciProfilList
-              ?.where((element) => element.tabloTipi == "TAHSILAT" && element.ayKodu == i && (element.tutar != null))
-              .map((e) => e.tutar)
-              .toList();
+      final value = temsilciProfilList
+          ?.where((element) => element.tabloTipi == "TAHSILAT" && element.ayKodu == i && (element.tutar != null))
+          .map((e) => e.tutar)
+          .toList();
       if (value.ext.isNotNullOrEmpty) {
         list[i > 12 ? DateTime.now().copyWith(month: DateTime.now().month - 1).month : i - 1] =
             list[i > 12 ? DateTime.now().copyWith(month: DateTime.now().month - 1).month : i - 1] +

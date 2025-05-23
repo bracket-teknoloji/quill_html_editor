@@ -107,186 +107,174 @@ final class _FiyatGorViewState extends BaseState<FiyatGorView> {
               },
             ),
             Observer(
-              builder:
-                  (_) => Visibility(
-                    visible: viewModel.stokListesiModel != null,
-                    child: CustomTextField(
-                      labelText: "Stok",
-                      readOnly: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.stokListesiModel?.stokKodu ?? "")),
-                      controller: stokController,
-                      suffix: IconButton(
-                        icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                        onPressed: () async {
-                          dialogManager.showStokGridViewDialog(viewModel.stokListesiModel);
-                        },
-                      ),
-                    ),
+              builder: (_) => Visibility(
+                visible: viewModel.stokListesiModel != null,
+                child: CustomTextField(
+                  labelText: "Stok",
+                  readOnly: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.stokListesiModel?.stokKodu ?? "")),
+                  controller: stokController,
+                  suffix: IconButton(
+                    icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                    onPressed: () async {
+                      dialogManager.showStokGridViewDialog(viewModel.stokListesiModel);
+                    },
                   ),
+                ),
+              ),
             ),
             Observer(
-              builder:
-                  (_) =>
-                      viewModel.modelList != null
-                          ? (viewModel.modelList?.isEmpty ?? true)
-                              ? const Center(child: Text("Stok bulunamadı"))
-                              : Column(
-                                // direction: context.isPhone ? Axis.vertical : Axis.horizontal,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children:
-                                    [
-                                          Card(
-                                            child: Observer(
-                                              builder:
-                                                  (_) => Column(
-                                                    mainAxisSize: MainAxisSize.min,
-                                                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                    children: [
-                                                      Text.rich(
-                                                        TextSpan(
-                                                          children: [
-                                                            const TextSpan(text: "Satış  KDV"),
-                                                            TextSpan(
-                                                              text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}",
-                                                              style: TextStyle(
-                                                                color: theme.textTheme.titleLarge?.color?.withValues(
-                                                                  alpha: 0.7,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
+              builder: (_) => viewModel.modelList != null
+                  ? (viewModel.modelList?.isEmpty ?? true)
+                        ? const Center(child: Text("Stok bulunamadı"))
+                        : Column(
+                            // direction: context.isPhone ? Axis.vertical : Axis.horizontal,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children:
+                                [
+                                      Card(
+                                        child: Observer(
+                                          builder: (_) => Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                            children: [
+                                              Text.rich(
+                                                TextSpan(
+                                                  children: [
+                                                    const TextSpan(text: "Satış  KDV"),
+                                                    TextSpan(
+                                                      text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}",
+                                                      style: TextStyle(
+                                                        color: theme.textTheme.titleLarge?.color?.withValues(
+                                                          alpha: 0.7,
                                                         ),
-                                                      ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),
-                                                      GridView.builder(
-                                                        physics: const NeverScrollableScrollPhysics(),
-                                                        shrinkWrap: true,
-                                                        padding: UIHelper.lowPadding,
-                                                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                          crossAxisCount: 3,
-                                                          crossAxisSpacing: UIHelper.midSize,
-                                                          mainAxisSpacing: UIHelper.midSize,
-                                                          childAspectRatio: 1.7,
-                                                        ),
-                                                        itemCount: 5,
-                                                        itemBuilder:
-                                                            (context, index) => InkWell(
-                                                              onTap: () async {
-                                                                if ((viewModel.getBilgi(index) ?? 0) > 0) {
-                                                                  await Get.toNamed(
-                                                                    "mainPage/stokYazdir",
-                                                                    arguments: viewModel.stokListesiModel,
-                                                                  );
-                                                                } else {
-                                                                  dialogManager.showErrorSnackBar(
-                                                                    "Fiyat sıfır olduğu için yazdırılamaz",
-                                                                  );
-                                                                }
-                                                              },
-                                                              child: Card(
-                                                                color: theme.colorScheme.onSecondary,
-                                                                child: Column(
-                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    Text(
-                                                                      viewModel.titleList[index],
-                                                                    ).paddingAll(UIHelper.lowSize),
-                                                                    const Divider(
-                                                                      endIndent: UIHelper.lowSize,
-                                                                      indent: UIHelper.lowSize,
-                                                                    ),
-                                                                    Text(
-                                                                      "${viewModel.getBilgi(index, isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency",
-                                                                    ).paddingAll(UIHelper.lowSize),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
                                                       ),
-                                                    ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),
+                                              GridView.builder(
+                                                physics: const NeverScrollableScrollPhysics(),
+                                                shrinkWrap: true,
+                                                padding: UIHelper.lowPadding,
+                                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 3,
+                                                  crossAxisSpacing: UIHelper.midSize,
+                                                  mainAxisSpacing: UIHelper.midSize,
+                                                  childAspectRatio: 1.7,
+                                                ),
+                                                itemCount: 5,
+                                                itemBuilder: (context, index) => InkWell(
+                                                  onTap: () async {
+                                                    if ((viewModel.getBilgi(index) ?? 0) > 0) {
+                                                      await Get.toNamed(
+                                                        "mainPage/stokYazdir",
+                                                        arguments: viewModel.stokListesiModel,
+                                                      );
+                                                    } else {
+                                                      dialogManager.showErrorSnackBar(
+                                                        "Fiyat sıfır olduğu için yazdırılamaz",
+                                                      );
+                                                    }
+                                                  },
+                                                  child: Card(
+                                                    color: theme.colorScheme.onSecondary,
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
+                                                        const Divider(
+                                                          endIndent: UIHelper.lowSize,
+                                                          indent: UIHelper.lowSize,
+                                                        ),
+                                                        Text(
+                                                          "${viewModel.getBilgi(index, isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency",
+                                                        ).paddingAll(UIHelper.lowSize),
+                                                      ],
+                                                    ),
                                                   ),
-                                            ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          Card(
-                                            child: Observer(
-                                              builder:
-                                                  (_) => Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                    children: [
-                                                      Text.rich(
-                                                        TextSpan(
-                                                          children: [
-                                                            const TextSpan(text: "Alış KDV"),
-                                                            TextSpan(
-                                                              text: " %${viewModel.modelList?.last?.kdvOrani ?? 0}",
-                                                              style: TextStyle(
-                                                                color: theme.textTheme.titleLarge?.color?.withValues(
-                                                                  alpha: 0.7,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
+                                        ),
+                                      ),
+                                      Card(
+                                        child: Observer(
+                                          builder: (_) => Column(
+                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                            children: [
+                                              Text.rich(
+                                                TextSpan(
+                                                  children: [
+                                                    const TextSpan(text: "Alış KDV"),
+                                                    TextSpan(
+                                                      text: " %${viewModel.modelList?.last?.kdvOrani ?? 0}",
+                                                      style: TextStyle(
+                                                        color: theme.textTheme.titleLarge?.color?.withValues(
+                                                          alpha: 0.7,
                                                         ),
-                                                      ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),
-                                                      GridView.builder(
-                                                        physics: const NeverScrollableScrollPhysics(),
-                                                        shrinkWrap: true,
-                                                        padding: UIHelper.lowPadding,
-                                                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                          crossAxisCount: 3,
-                                                          crossAxisSpacing: UIHelper.midSize,
-                                                          mainAxisSpacing: UIHelper.midSize,
-                                                          childAspectRatio: 1.7,
-                                                        ),
-                                                        itemCount: 5,
-                                                        itemBuilder:
-                                                            (context, index) => InkWell(
-                                                              onTap: () async {
-                                                                if ((viewModel.getBilgi(index, isSatis: true) ?? 0) >
-                                                                    0) {
-                                                                  await Get.toNamed(
-                                                                    "mainPage/stokYazdir",
-                                                                    arguments: viewModel.stokListesiModel,
-                                                                  );
-                                                                } else {
-                                                                  dialogManager.showErrorSnackBar(
-                                                                    "Fiyat sıfır olduğu için yazdırılamaz",
-                                                                  );
-                                                                }
-                                                              },
-                                                              child: Card(
-                                                                color: theme.colorScheme.onSecondary,
-                                                                child: Column(
-                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    Text(
-                                                                      viewModel.titleList[index],
-                                                                    ).paddingAll(UIHelper.lowSize),
-                                                                    const Divider(
-                                                                      endIndent: UIHelper.lowSize,
-                                                                      indent: UIHelper.lowSize,
-                                                                    ),
-                                                                    Text(
-                                                                      "${viewModel.getBilgi(index).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency",
-                                                                    ).paddingAll(UIHelper.lowSize),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
                                                       ),
-                                                    ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),
+                                              GridView.builder(
+                                                physics: const NeverScrollableScrollPhysics(),
+                                                shrinkWrap: true,
+                                                padding: UIHelper.lowPadding,
+                                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 3,
+                                                  crossAxisSpacing: UIHelper.midSize,
+                                                  mainAxisSpacing: UIHelper.midSize,
+                                                  childAspectRatio: 1.7,
+                                                ),
+                                                itemCount: 5,
+                                                itemBuilder: (context, index) => InkWell(
+                                                  onTap: () async {
+                                                    if ((viewModel.getBilgi(index, isSatis: true) ?? 0) > 0) {
+                                                      await Get.toNamed(
+                                                        "mainPage/stokYazdir",
+                                                        arguments: viewModel.stokListesiModel,
+                                                      );
+                                                    } else {
+                                                      dialogManager.showErrorSnackBar(
+                                                        "Fiyat sıfır olduğu için yazdırılamaz",
+                                                      );
+                                                    }
+                                                  },
+                                                  child: Card(
+                                                    color: theme.colorScheme.onSecondary,
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
+                                                        const Divider(
+                                                          endIndent: UIHelper.lowSize,
+                                                          indent: UIHelper.lowSize,
+                                                        ),
+                                                        Text(
+                                                          "${viewModel.getBilgi(index).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency",
+                                                        ).paddingAll(UIHelper.lowSize),
+                                                      ],
+                                                    ),
                                                   ),
-                                            ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ]
-                                        .map(
-                                          (e) => DecoratedBox(
-                                            decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius),
-                                            child: e,
-                                          ),
-                                        )
-                                        .toList(),
-                              )
-                          : const SizedBox.shrink(),
+                                        ),
+                                      ),
+                                    ]
+                                    .map(
+                                      (e) => DecoratedBox(
+                                        decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius),
+                                        child: e,
+                                      ),
+                                    )
+                                    .toList(),
+                          )
+                  : const SizedBox.shrink(),
             ),
           ],
         ),

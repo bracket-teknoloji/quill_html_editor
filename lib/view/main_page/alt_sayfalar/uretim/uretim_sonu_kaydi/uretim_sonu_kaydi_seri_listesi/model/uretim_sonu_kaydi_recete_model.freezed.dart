@@ -12,7 +12,8 @@ part of 'uretim_sonu_kaydi_recete_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 UskReceteModel _$UskReceteModelFromJson(Map<String, dynamic> json) {
   return _UskReceteModel.fromJson(json);
@@ -57,37 +58,35 @@ mixin _$UskReceteModel {
   /// Create a copy of UskReceteModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UskReceteModelCopyWith<UskReceteModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $UskReceteModelCopyWith<UskReceteModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UskReceteModelCopyWith<$Res> {
-  factory $UskReceteModelCopyWith(
-          UskReceteModel value, $Res Function(UskReceteModel) then) =
+  factory $UskReceteModelCopyWith(UskReceteModel value, $Res Function(UskReceteModel) then) =
       _$UskReceteModelCopyWithImpl<$Res, UskReceteModel>;
   @useResult
-  $Res call(
-      {String? mamulKodu,
-      String? stokKodu,
-      String? stokAdi,
-      String? sonOperasyon,
-      String? ob,
-      double? miktar,
-      String? cikistaSeri,
-      String? seriMiktarKadar,
-      String? seriBakiyeKontrol,
-      String? seriCikistaOtomatik,
-      String? seriGiristeOtomatik,
-      String? sira,
-      String? otorec,
-      List<SeriList>? seriList,
-      String? giristeSeri});
+  $Res call({
+    String? mamulKodu,
+    String? stokKodu,
+    String? stokAdi,
+    String? sonOperasyon,
+    String? ob,
+    double? miktar,
+    String? cikistaSeri,
+    String? seriMiktarKadar,
+    String? seriBakiyeKontrol,
+    String? seriCikistaOtomatik,
+    String? seriGiristeOtomatik,
+    String? sira,
+    String? otorec,
+    List<SeriList>? seriList,
+    String? giristeSeri,
+  });
 }
 
 /// @nodoc
-class _$UskReceteModelCopyWithImpl<$Res, $Val extends UskReceteModel>
-    implements $UskReceteModelCopyWith<$Res> {
+class _$UskReceteModelCopyWithImpl<$Res, $Val extends UskReceteModel> implements $UskReceteModelCopyWith<$Res> {
   _$UskReceteModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -116,104 +115,104 @@ class _$UskReceteModelCopyWithImpl<$Res, $Val extends UskReceteModel>
     Object? seriList = freezed,
     Object? giristeSeri = freezed,
   }) {
-    return _then(_value.copyWith(
-      mamulKodu: freezed == mamulKodu
-          ? _value.mamulKodu
-          : mamulKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sonOperasyon: freezed == sonOperasyon
-          ? _value.sonOperasyon
-          : sonOperasyon // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ob: freezed == ob
-          ? _value.ob
-          : ob // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cikistaSeri: freezed == cikistaSeri
-          ? _value.cikistaSeri
-          : cikistaSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriMiktarKadar: freezed == seriMiktarKadar
-          ? _value.seriMiktarKadar
-          : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriBakiyeKontrol: freezed == seriBakiyeKontrol
-          ? _value.seriBakiyeKontrol
-          : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriCikistaOtomatik: freezed == seriCikistaOtomatik
-          ? _value.seriCikistaOtomatik
-          : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriGiristeOtomatik: freezed == seriGiristeOtomatik
-          ? _value.seriGiristeOtomatik
-          : seriGiristeOtomatik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as String?,
-      otorec: freezed == otorec
-          ? _value.otorec
-          : otorec // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriList: freezed == seriList
-          ? _value.seriList
-          : seriList // ignore: cast_nullable_to_non_nullable
-              as List<SeriList>?,
-      giristeSeri: freezed == giristeSeri
-          ? _value.giristeSeri
-          : giristeSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            mamulKodu: freezed == mamulKodu
+                ? _value.mamulKodu
+                : mamulKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokAdi: freezed == stokAdi
+                ? _value.stokAdi
+                : stokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sonOperasyon: freezed == sonOperasyon
+                ? _value.sonOperasyon
+                : sonOperasyon // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ob: freezed == ob
+                ? _value.ob
+                : ob // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            cikistaSeri: freezed == cikistaSeri
+                ? _value.cikistaSeri
+                : cikistaSeri // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriMiktarKadar: freezed == seriMiktarKadar
+                ? _value.seriMiktarKadar
+                : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriBakiyeKontrol: freezed == seriBakiyeKontrol
+                ? _value.seriBakiyeKontrol
+                : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriCikistaOtomatik: freezed == seriCikistaOtomatik
+                ? _value.seriCikistaOtomatik
+                : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriGiristeOtomatik: freezed == seriGiristeOtomatik
+                ? _value.seriGiristeOtomatik
+                : seriGiristeOtomatik // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sira: freezed == sira
+                ? _value.sira
+                : sira // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            otorec: freezed == otorec
+                ? _value.otorec
+                : otorec // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriList: freezed == seriList
+                ? _value.seriList
+                : seriList // ignore: cast_nullable_to_non_nullable
+                      as List<SeriList>?,
+            giristeSeri: freezed == giristeSeri
+                ? _value.giristeSeri
+                : giristeSeri // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$UskReceteModelImplCopyWith<$Res>
-    implements $UskReceteModelCopyWith<$Res> {
-  factory _$$UskReceteModelImplCopyWith(_$UskReceteModelImpl value,
-          $Res Function(_$UskReceteModelImpl) then) =
+abstract class _$$UskReceteModelImplCopyWith<$Res> implements $UskReceteModelCopyWith<$Res> {
+  factory _$$UskReceteModelImplCopyWith(_$UskReceteModelImpl value, $Res Function(_$UskReceteModelImpl) then) =
       __$$UskReceteModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? mamulKodu,
-      String? stokKodu,
-      String? stokAdi,
-      String? sonOperasyon,
-      String? ob,
-      double? miktar,
-      String? cikistaSeri,
-      String? seriMiktarKadar,
-      String? seriBakiyeKontrol,
-      String? seriCikistaOtomatik,
-      String? seriGiristeOtomatik,
-      String? sira,
-      String? otorec,
-      List<SeriList>? seriList,
-      String? giristeSeri});
+  $Res call({
+    String? mamulKodu,
+    String? stokKodu,
+    String? stokAdi,
+    String? sonOperasyon,
+    String? ob,
+    double? miktar,
+    String? cikistaSeri,
+    String? seriMiktarKadar,
+    String? seriBakiyeKontrol,
+    String? seriCikistaOtomatik,
+    String? seriGiristeOtomatik,
+    String? sira,
+    String? otorec,
+    List<SeriList>? seriList,
+    String? giristeSeri,
+  });
 }
 
 /// @nodoc
-class __$$UskReceteModelImplCopyWithImpl<$Res>
-    extends _$UskReceteModelCopyWithImpl<$Res, _$UskReceteModelImpl>
+class __$$UskReceteModelImplCopyWithImpl<$Res> extends _$UskReceteModelCopyWithImpl<$Res, _$UskReceteModelImpl>
     implements _$$UskReceteModelImplCopyWith<$Res> {
-  __$$UskReceteModelImplCopyWithImpl(
-      _$UskReceteModelImpl _value, $Res Function(_$UskReceteModelImpl) _then)
-      : super(_value, _then);
+  __$$UskReceteModelImplCopyWithImpl(_$UskReceteModelImpl _value, $Res Function(_$UskReceteModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of UskReceteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -236,94 +235,95 @@ class __$$UskReceteModelImplCopyWithImpl<$Res>
     Object? seriList = freezed,
     Object? giristeSeri = freezed,
   }) {
-    return _then(_$UskReceteModelImpl(
-      mamulKodu: freezed == mamulKodu
-          ? _value.mamulKodu
-          : mamulKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sonOperasyon: freezed == sonOperasyon
-          ? _value.sonOperasyon
-          : sonOperasyon // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ob: freezed == ob
-          ? _value.ob
-          : ob // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cikistaSeri: freezed == cikistaSeri
-          ? _value.cikistaSeri
-          : cikistaSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriMiktarKadar: freezed == seriMiktarKadar
-          ? _value.seriMiktarKadar
-          : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriBakiyeKontrol: freezed == seriBakiyeKontrol
-          ? _value.seriBakiyeKontrol
-          : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriCikistaOtomatik: freezed == seriCikistaOtomatik
-          ? _value.seriCikistaOtomatik
-          : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriGiristeOtomatik: freezed == seriGiristeOtomatik
-          ? _value.seriGiristeOtomatik
-          : seriGiristeOtomatik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as String?,
-      otorec: freezed == otorec
-          ? _value.otorec
-          : otorec // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriList: freezed == seriList
-          ? _value.seriList
-          : seriList // ignore: cast_nullable_to_non_nullable
-              as List<SeriList>?,
-      giristeSeri: freezed == giristeSeri
-          ? _value.giristeSeri
-          : giristeSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$UskReceteModelImpl(
+        mamulKodu: freezed == mamulKodu
+            ? _value.mamulKodu
+            : mamulKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokAdi: freezed == stokAdi
+            ? _value.stokAdi
+            : stokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sonOperasyon: freezed == sonOperasyon
+            ? _value.sonOperasyon
+            : sonOperasyon // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ob: freezed == ob
+            ? _value.ob
+            : ob // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        cikistaSeri: freezed == cikistaSeri
+            ? _value.cikistaSeri
+            : cikistaSeri // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriMiktarKadar: freezed == seriMiktarKadar
+            ? _value.seriMiktarKadar
+            : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriBakiyeKontrol: freezed == seriBakiyeKontrol
+            ? _value.seriBakiyeKontrol
+            : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriCikistaOtomatik: freezed == seriCikistaOtomatik
+            ? _value.seriCikistaOtomatik
+            : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriGiristeOtomatik: freezed == seriGiristeOtomatik
+            ? _value.seriGiristeOtomatik
+            : seriGiristeOtomatik // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sira: freezed == sira
+            ? _value.sira
+            : sira // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        otorec: freezed == otorec
+            ? _value.otorec
+            : otorec // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriList: freezed == seriList
+            ? _value.seriList
+            : seriList // ignore: cast_nullable_to_non_nullable
+                  as List<SeriList>?,
+        giristeSeri: freezed == giristeSeri
+            ? _value.giristeSeri
+            : giristeSeri // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UskReceteModelImpl extends _UskReceteModel {
-  _$UskReceteModelImpl(
-      {this.mamulKodu,
-      this.stokKodu,
-      this.stokAdi,
-      this.sonOperasyon,
-      this.ob,
-      this.miktar,
-      this.cikistaSeri,
-      this.seriMiktarKadar,
-      this.seriBakiyeKontrol,
-      this.seriCikistaOtomatik,
-      this.seriGiristeOtomatik,
-      this.sira,
-      this.otorec,
-      this.seriList,
-      this.giristeSeri})
-      : super._();
+  _$UskReceteModelImpl({
+    this.mamulKodu,
+    this.stokKodu,
+    this.stokAdi,
+    this.sonOperasyon,
+    this.ob,
+    this.miktar,
+    this.cikistaSeri,
+    this.seriMiktarKadar,
+    this.seriBakiyeKontrol,
+    this.seriCikistaOtomatik,
+    this.seriGiristeOtomatik,
+    this.sira,
+    this.otorec,
+    this.seriList,
+    this.giristeSeri,
+  }) : super._();
 
-  factory _$UskReceteModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UskReceteModelImplFromJson(json);
+  factory _$UskReceteModelImpl.fromJson(Map<String, dynamic> json) => _$$UskReceteModelImplFromJson(json);
 
   @override
   String? mamulKodu;
@@ -362,38 +362,35 @@ class _$UskReceteModelImpl extends _UskReceteModel {
   @override
   @pragma('vm:prefer-inline')
   _$$UskReceteModelImplCopyWith<_$UskReceteModelImpl> get copyWith =>
-      __$$UskReceteModelImplCopyWithImpl<_$UskReceteModelImpl>(
-          this, _$identity);
+      __$$UskReceteModelImplCopyWithImpl<_$UskReceteModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UskReceteModelImplToJson(
-      this,
-    );
+    return _$$UskReceteModelImplToJson(this);
   }
 }
 
 abstract class _UskReceteModel extends UskReceteModel {
-  factory _UskReceteModel(
-      {String? mamulKodu,
-      String? stokKodu,
-      String? stokAdi,
-      String? sonOperasyon,
-      String? ob,
-      double? miktar,
-      String? cikistaSeri,
-      String? seriMiktarKadar,
-      String? seriBakiyeKontrol,
-      String? seriCikistaOtomatik,
-      String? seriGiristeOtomatik,
-      String? sira,
-      String? otorec,
-      List<SeriList>? seriList,
-      String? giristeSeri}) = _$UskReceteModelImpl;
+  factory _UskReceteModel({
+    String? mamulKodu,
+    String? stokKodu,
+    String? stokAdi,
+    String? sonOperasyon,
+    String? ob,
+    double? miktar,
+    String? cikistaSeri,
+    String? seriMiktarKadar,
+    String? seriBakiyeKontrol,
+    String? seriCikistaOtomatik,
+    String? seriGiristeOtomatik,
+    String? sira,
+    String? otorec,
+    List<SeriList>? seriList,
+    String? giristeSeri,
+  }) = _$UskReceteModelImpl;
   _UskReceteModel._() : super._();
 
-  factory _UskReceteModel.fromJson(Map<String, dynamic> json) =
-      _$UskReceteModelImpl.fromJson;
+  factory _UskReceteModel.fromJson(Map<String, dynamic> json) = _$UskReceteModelImpl.fromJson;
 
   @override
   String? get mamulKodu;
@@ -445,6 +442,5 @@ abstract class _UskReceteModel extends UskReceteModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UskReceteModelImplCopyWith<_$UskReceteModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UskReceteModelImplCopyWith<_$UskReceteModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

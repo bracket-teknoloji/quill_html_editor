@@ -12,7 +12,8 @@ part of 'e_belge_islem_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EBelgeIslemModel _$EBelgeIslemModelFromJson(Map<String, dynamic> json) {
   return _EBelgeIslemModel.fromJson(json);
@@ -65,41 +66,39 @@ mixin _$EBelgeIslemModel {
   /// Create a copy of EBelgeIslemModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EBelgeIslemModelCopyWith<EBelgeIslemModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EBelgeIslemModelCopyWith<EBelgeIslemModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EBelgeIslemModelCopyWith<$Res> {
-  factory $EBelgeIslemModelCopyWith(
-          EBelgeIslemModel value, $Res Function(EBelgeIslemModel) then) =
+  factory $EBelgeIslemModelCopyWith(EBelgeIslemModel value, $Res Function(EBelgeIslemModel) then) =
       _$EBelgeIslemModelCopyWithImpl<$Res, EBelgeIslemModel>;
   @useResult
-  $Res call(
-      {String? aciklama,
-      String? belgeTuru,
-      String? ebelgeTuru,
-      String? kutuTuru,
-      int? inckeyno,
-      int? islemKodu,
-      String? resmiBelgeNo,
-      String? senaryoTipi,
-      String? zarfid,
-      String? belgeNo,
-      String? cariKodu,
-      DateTime? iptalTarihi,
-      int? kopyaSayisi,
-      String? yaziciAdi,
-      int? dizaynNo,
-      bool? dovizliOlustur,
-      bool? gonderimSekliEposta,
-      bool? internetFaturasi,
-      String? kabul});
+  $Res call({
+    String? aciklama,
+    String? belgeTuru,
+    String? ebelgeTuru,
+    String? kutuTuru,
+    int? inckeyno,
+    int? islemKodu,
+    String? resmiBelgeNo,
+    String? senaryoTipi,
+    String? zarfid,
+    String? belgeNo,
+    String? cariKodu,
+    DateTime? iptalTarihi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? gonderimSekliEposta,
+    bool? internetFaturasi,
+    String? kabul,
+  });
 }
 
 /// @nodoc
-class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel>
-    implements $EBelgeIslemModelCopyWith<$Res> {
+class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel> implements $EBelgeIslemModelCopyWith<$Res> {
   _$EBelgeIslemModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -132,124 +131,124 @@ class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel>
     Object? internetFaturasi = freezed,
     Object? kabul = freezed,
   }) {
-    return _then(_value.copyWith(
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ebelgeTuru: freezed == ebelgeTuru
-          ? _value.ebelgeTuru
-          : ebelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kutuTuru: freezed == kutuTuru
-          ? _value.kutuTuru
-          : kutuTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      resmiBelgeNo: freezed == resmiBelgeNo
-          ? _value.resmiBelgeNo
-          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senaryoTipi: freezed == senaryoTipi
-          ? _value.senaryoTipi
-          : senaryoTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zarfid: freezed == zarfid
-          ? _value.zarfid
-          : zarfid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iptalTarihi: freezed == iptalTarihi
-          ? _value.iptalTarihi
-          : iptalTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kopyaSayisi: freezed == kopyaSayisi
-          ? _value.kopyaSayisi
-          : kopyaSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      yaziciAdi: freezed == yaziciAdi
-          ? _value.yaziciAdi
-          : yaziciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dizaynNo: freezed == dizaynNo
-          ? _value.dizaynNo
-          : dizaynNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizliOlustur: freezed == dovizliOlustur
-          ? _value.dovizliOlustur
-          : dovizliOlustur // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      gonderimSekliEposta: freezed == gonderimSekliEposta
-          ? _value.gonderimSekliEposta
-          : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      internetFaturasi: freezed == internetFaturasi
-          ? _value.internetFaturasi
-          : internetFaturasi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      kabul: freezed == kabul
-          ? _value.kabul
-          : kabul // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTuru: freezed == belgeTuru
+                ? _value.belgeTuru
+                : belgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ebelgeTuru: freezed == ebelgeTuru
+                ? _value.ebelgeTuru
+                : ebelgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kutuTuru: freezed == kutuTuru
+                ? _value.kutuTuru
+                : kutuTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            inckeyno: freezed == inckeyno
+                ? _value.inckeyno
+                : inckeyno // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            resmiBelgeNo: freezed == resmiBelgeNo
+                ? _value.resmiBelgeNo
+                : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            senaryoTipi: freezed == senaryoTipi
+                ? _value.senaryoTipi
+                : senaryoTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            zarfid: freezed == zarfid
+                ? _value.zarfid
+                : zarfid // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            iptalTarihi: freezed == iptalTarihi
+                ? _value.iptalTarihi
+                : iptalTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            kopyaSayisi: freezed == kopyaSayisi
+                ? _value.kopyaSayisi
+                : kopyaSayisi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            yaziciAdi: freezed == yaziciAdi
+                ? _value.yaziciAdi
+                : yaziciAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dizaynNo: freezed == dizaynNo
+                ? _value.dizaynNo
+                : dizaynNo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            dovizliOlustur: freezed == dovizliOlustur
+                ? _value.dovizliOlustur
+                : dovizliOlustur // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            gonderimSekliEposta: freezed == gonderimSekliEposta
+                ? _value.gonderimSekliEposta
+                : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            internetFaturasi: freezed == internetFaturasi
+                ? _value.internetFaturasi
+                : internetFaturasi // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            kabul: freezed == kabul
+                ? _value.kabul
+                : kabul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$EBelgeIslemModelImplCopyWith<$Res>
-    implements $EBelgeIslemModelCopyWith<$Res> {
-  factory _$$EBelgeIslemModelImplCopyWith(_$EBelgeIslemModelImpl value,
-          $Res Function(_$EBelgeIslemModelImpl) then) =
+abstract class _$$EBelgeIslemModelImplCopyWith<$Res> implements $EBelgeIslemModelCopyWith<$Res> {
+  factory _$$EBelgeIslemModelImplCopyWith(_$EBelgeIslemModelImpl value, $Res Function(_$EBelgeIslemModelImpl) then) =
       __$$EBelgeIslemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? aciklama,
-      String? belgeTuru,
-      String? ebelgeTuru,
-      String? kutuTuru,
-      int? inckeyno,
-      int? islemKodu,
-      String? resmiBelgeNo,
-      String? senaryoTipi,
-      String? zarfid,
-      String? belgeNo,
-      String? cariKodu,
-      DateTime? iptalTarihi,
-      int? kopyaSayisi,
-      String? yaziciAdi,
-      int? dizaynNo,
-      bool? dovizliOlustur,
-      bool? gonderimSekliEposta,
-      bool? internetFaturasi,
-      String? kabul});
+  $Res call({
+    String? aciklama,
+    String? belgeTuru,
+    String? ebelgeTuru,
+    String? kutuTuru,
+    int? inckeyno,
+    int? islemKodu,
+    String? resmiBelgeNo,
+    String? senaryoTipi,
+    String? zarfid,
+    String? belgeNo,
+    String? cariKodu,
+    DateTime? iptalTarihi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? gonderimSekliEposta,
+    bool? internetFaturasi,
+    String? kabul,
+  });
 }
 
 /// @nodoc
-class __$$EBelgeIslemModelImplCopyWithImpl<$Res>
-    extends _$EBelgeIslemModelCopyWithImpl<$Res, _$EBelgeIslemModelImpl>
+class __$$EBelgeIslemModelImplCopyWithImpl<$Res> extends _$EBelgeIslemModelCopyWithImpl<$Res, _$EBelgeIslemModelImpl>
     implements _$$EBelgeIslemModelImplCopyWith<$Res> {
-  __$$EBelgeIslemModelImplCopyWithImpl(_$EBelgeIslemModelImpl _value,
-      $Res Function(_$EBelgeIslemModelImpl) _then)
-      : super(_value, _then);
+  __$$EBelgeIslemModelImplCopyWithImpl(_$EBelgeIslemModelImpl _value, $Res Function(_$EBelgeIslemModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of EBelgeIslemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -276,114 +275,115 @@ class __$$EBelgeIslemModelImplCopyWithImpl<$Res>
     Object? internetFaturasi = freezed,
     Object? kabul = freezed,
   }) {
-    return _then(_$EBelgeIslemModelImpl(
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ebelgeTuru: freezed == ebelgeTuru
-          ? _value.ebelgeTuru
-          : ebelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kutuTuru: freezed == kutuTuru
-          ? _value.kutuTuru
-          : kutuTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      resmiBelgeNo: freezed == resmiBelgeNo
-          ? _value.resmiBelgeNo
-          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senaryoTipi: freezed == senaryoTipi
-          ? _value.senaryoTipi
-          : senaryoTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zarfid: freezed == zarfid
-          ? _value.zarfid
-          : zarfid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iptalTarihi: freezed == iptalTarihi
-          ? _value.iptalTarihi
-          : iptalTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kopyaSayisi: freezed == kopyaSayisi
-          ? _value.kopyaSayisi
-          : kopyaSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      yaziciAdi: freezed == yaziciAdi
-          ? _value.yaziciAdi
-          : yaziciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dizaynNo: freezed == dizaynNo
-          ? _value.dizaynNo
-          : dizaynNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizliOlustur: freezed == dovizliOlustur
-          ? _value.dovizliOlustur
-          : dovizliOlustur // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      gonderimSekliEposta: freezed == gonderimSekliEposta
-          ? _value.gonderimSekliEposta
-          : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      internetFaturasi: freezed == internetFaturasi
-          ? _value.internetFaturasi
-          : internetFaturasi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      kabul: freezed == kabul
-          ? _value.kabul
-          : kabul // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$EBelgeIslemModelImpl(
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTuru: freezed == belgeTuru
+            ? _value.belgeTuru
+            : belgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ebelgeTuru: freezed == ebelgeTuru
+            ? _value.ebelgeTuru
+            : ebelgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kutuTuru: freezed == kutuTuru
+            ? _value.kutuTuru
+            : kutuTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        inckeyno: freezed == inckeyno
+            ? _value.inckeyno
+            : inckeyno // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        resmiBelgeNo: freezed == resmiBelgeNo
+            ? _value.resmiBelgeNo
+            : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        senaryoTipi: freezed == senaryoTipi
+            ? _value.senaryoTipi
+            : senaryoTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        zarfid: freezed == zarfid
+            ? _value.zarfid
+            : zarfid // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        iptalTarihi: freezed == iptalTarihi
+            ? _value.iptalTarihi
+            : iptalTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        kopyaSayisi: freezed == kopyaSayisi
+            ? _value.kopyaSayisi
+            : kopyaSayisi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        yaziciAdi: freezed == yaziciAdi
+            ? _value.yaziciAdi
+            : yaziciAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dizaynNo: freezed == dizaynNo
+            ? _value.dizaynNo
+            : dizaynNo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        dovizliOlustur: freezed == dovizliOlustur
+            ? _value.dovizliOlustur
+            : dovizliOlustur // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        gonderimSekliEposta: freezed == gonderimSekliEposta
+            ? _value.gonderimSekliEposta
+            : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        internetFaturasi: freezed == internetFaturasi
+            ? _value.internetFaturasi
+            : internetFaturasi // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        kabul: freezed == kabul
+            ? _value.kabul
+            : kabul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
-  _$EBelgeIslemModelImpl(
-      {this.aciklama,
-      this.belgeTuru,
-      this.ebelgeTuru,
-      this.kutuTuru,
-      this.inckeyno,
-      this.islemKodu,
-      this.resmiBelgeNo,
-      this.senaryoTipi,
-      this.zarfid,
-      this.belgeNo,
-      this.cariKodu,
-      this.iptalTarihi,
-      this.kopyaSayisi,
-      this.yaziciAdi,
-      this.dizaynNo,
-      this.dovizliOlustur,
-      this.gonderimSekliEposta,
-      this.internetFaturasi,
-      this.kabul})
-      : super._();
+  _$EBelgeIslemModelImpl({
+    this.aciklama,
+    this.belgeTuru,
+    this.ebelgeTuru,
+    this.kutuTuru,
+    this.inckeyno,
+    this.islemKodu,
+    this.resmiBelgeNo,
+    this.senaryoTipi,
+    this.zarfid,
+    this.belgeNo,
+    this.cariKodu,
+    this.iptalTarihi,
+    this.kopyaSayisi,
+    this.yaziciAdi,
+    this.dizaynNo,
+    this.dovizliOlustur,
+    this.gonderimSekliEposta,
+    this.internetFaturasi,
+    this.kabul,
+  }) : super._();
 
-  factory _$EBelgeIslemModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EBelgeIslemModelImplFromJson(json);
+  factory _$EBelgeIslemModelImpl.fromJson(Map<String, dynamic> json) => _$$EBelgeIslemModelImplFromJson(json);
 
   @override
   String? aciklama;
@@ -430,42 +430,39 @@ class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgeIslemModelImplCopyWith<_$EBelgeIslemModelImpl> get copyWith =>
-      __$$EBelgeIslemModelImplCopyWithImpl<_$EBelgeIslemModelImpl>(
-          this, _$identity);
+      __$$EBelgeIslemModelImplCopyWithImpl<_$EBelgeIslemModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EBelgeIslemModelImplToJson(
-      this,
-    );
+    return _$$EBelgeIslemModelImplToJson(this);
   }
 }
 
 abstract class _EBelgeIslemModel extends EBelgeIslemModel {
-  factory _EBelgeIslemModel(
-      {String? aciklama,
-      String? belgeTuru,
-      String? ebelgeTuru,
-      String? kutuTuru,
-      int? inckeyno,
-      int? islemKodu,
-      String? resmiBelgeNo,
-      String? senaryoTipi,
-      String? zarfid,
-      String? belgeNo,
-      String? cariKodu,
-      DateTime? iptalTarihi,
-      int? kopyaSayisi,
-      String? yaziciAdi,
-      int? dizaynNo,
-      bool? dovizliOlustur,
-      bool? gonderimSekliEposta,
-      bool? internetFaturasi,
-      String? kabul}) = _$EBelgeIslemModelImpl;
+  factory _EBelgeIslemModel({
+    String? aciklama,
+    String? belgeTuru,
+    String? ebelgeTuru,
+    String? kutuTuru,
+    int? inckeyno,
+    int? islemKodu,
+    String? resmiBelgeNo,
+    String? senaryoTipi,
+    String? zarfid,
+    String? belgeNo,
+    String? cariKodu,
+    DateTime? iptalTarihi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? gonderimSekliEposta,
+    bool? internetFaturasi,
+    String? kabul,
+  }) = _$EBelgeIslemModelImpl;
   _EBelgeIslemModel._() : super._();
 
-  factory _EBelgeIslemModel.fromJson(Map<String, dynamic> json) =
-      _$EBelgeIslemModelImpl.fromJson;
+  factory _EBelgeIslemModel.fromJson(Map<String, dynamic> json) = _$EBelgeIslemModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -529,6 +526,5 @@ abstract class _EBelgeIslemModel extends EBelgeIslemModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EBelgeIslemModelImplCopyWith<_$EBelgeIslemModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EBelgeIslemModelImplCopyWith<_$EBelgeIslemModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

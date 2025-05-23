@@ -10,8 +10,9 @@ part of 'stok_yazdir_view_model.dart';
 
 mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   late final _$stokSecildigindeYazdirAtom = Atom(
-      name: '_StokYazdirViewModelBase.stokSecildigindeYazdir',
-      context: context);
+    name: '_StokYazdirViewModelBase.stokSecildigindeYazdir',
+    context: context,
+  );
 
   @override
   bool get stokSecildigindeYazdir {
@@ -21,15 +22,15 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
 
   @override
   set stokSecildigindeYazdir(bool value) {
-    _$stokSecildigindeYazdirAtom
-        .reportWrite(value, super.stokSecildigindeYazdir, () {
+    _$stokSecildigindeYazdirAtom.reportWrite(value, super.stokSecildigindeYazdir, () {
       super.stokSecildigindeYazdir = value;
     });
   }
 
   late final _$yaziciVeDizayniHatirlaAtom = Atom(
-      name: '_StokYazdirViewModelBase.yaziciVeDizayniHatirla',
-      context: context);
+    name: '_StokYazdirViewModelBase.yaziciVeDizayniHatirla',
+    context: context,
+  );
 
   @override
   bool get yaziciVeDizayniHatirla {
@@ -39,14 +40,12 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
 
   @override
   set yaziciVeDizayniHatirla(bool value) {
-    _$yaziciVeDizayniHatirlaAtom
-        .reportWrite(value, super.yaziciVeDizayniHatirla, () {
+    _$yaziciVeDizayniHatirlaAtom.reportWrite(value, super.yaziciVeDizayniHatirla, () {
       super.yaziciVeDizayniHatirla = value;
     });
   }
 
-  late final _$stokAdiAtom =
-      Atom(name: '_StokYazdirViewModelBase.stokAdi', context: context);
+  late final _$stokAdiAtom = Atom(name: '_StokYazdirViewModelBase.stokAdi', context: context);
 
   @override
   String? get stokAdi {
@@ -61,8 +60,7 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     });
   }
 
-  late final _$showYapilandirmaAtom =
-      Atom(name: '_StokYazdirViewModelBase.showYapilandirma', context: context);
+  late final _$showYapilandirmaAtom = Atom(name: '_StokYazdirViewModelBase.showYapilandirma', context: context);
 
   @override
   bool get showYapilandirma {
@@ -77,8 +75,7 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     });
   }
 
-  late final _$stokListesiModelAtom =
-      Atom(name: '_StokYazdirViewModelBase.stokListesiModel', context: context);
+  late final _$stokListesiModelAtom = Atom(name: '_StokYazdirViewModelBase.stokListesiModel', context: context);
 
   @override
   StokListesiModel? get stokListesiModel {
@@ -93,8 +90,7 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     });
   }
 
-  late final _$printModelAtom =
-      Atom(name: '_StokYazdirViewModelBase.printModel', context: context);
+  late final _$printModelAtom = Atom(name: '_StokYazdirViewModelBase.printModel', context: context);
 
   @override
   PrintModel get printModel {
@@ -109,13 +105,14 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     });
   }
 
-  late final _$_StokYazdirViewModelBaseActionController =
-      ActionController(name: '_StokYazdirViewModelBase', context: context);
+  late final _$_StokYazdirViewModelBaseActionController = ActionController(
+    name: '_StokYazdirViewModelBase',
+    context: context,
+  );
 
   @override
   void init() {
-    final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.init');
+    final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(name: '_StokYazdirViewModelBase.init');
     try {
       return super.init();
     } finally {
@@ -126,7 +123,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void changeStokSecildigindeYazdir(bool value) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.changeStokSecildigindeYazdir');
+      name: '_StokYazdirViewModelBase.changeStokSecildigindeYazdir',
+    );
     try {
       return super.changeStokSecildigindeYazdir(value);
     } finally {
@@ -137,7 +135,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void changeYaziciVeDizayniHatirla(bool value) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.changeYaziciVeDizayniHatirla');
+      name: '_StokYazdirViewModelBase.changeYaziciVeDizayniHatirla',
+    );
     try {
       return super.changeYaziciVeDizayniHatirla(value);
     } finally {
@@ -148,7 +147,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setPrintModel(PrintModel? model) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setPrintModel');
+      name: '_StokYazdirViewModelBase.setPrintModel',
+    );
     try {
       return super.setPrintModel(model);
     } finally {
@@ -159,7 +159,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setYapilandirmaKodu(String? yapilandirmaKodu) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setYapilandirmaKodu');
+      name: '_StokYazdirViewModelBase.setYapilandirmaKodu',
+    );
     try {
       return super.setYapilandirmaKodu(yapilandirmaKodu);
     } finally {
@@ -170,7 +171,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setHucreKodu(String? value) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setHucreKodu');
+      name: '_StokYazdirViewModelBase.setHucreKodu',
+    );
     try {
       return super.setHucreKodu(value);
     } finally {
@@ -181,7 +183,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setDizaynId(int? dizaynId) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setDizaynId');
+      name: '_StokYazdirViewModelBase.setDizaynId',
+    );
     try {
       return super.setDizaynId(dizaynId);
     } finally {
@@ -192,7 +195,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setEtiketSayisi(int? etiketSayisi) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setEtiketSayisi');
+      name: '_StokYazdirViewModelBase.setEtiketSayisi',
+    );
     try {
       return super.setEtiketSayisi(etiketSayisi);
     } finally {
@@ -203,7 +207,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setYaziciAdi(String? yaziciAdi) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setYaziciAdi');
+      name: '_StokYazdirViewModelBase.setYaziciAdi',
+    );
     try {
       return super.setYaziciAdi(yaziciAdi);
     } finally {
@@ -214,7 +219,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setMiktar(int? miktar) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setMiktar');
+      name: '_StokYazdirViewModelBase.setMiktar',
+    );
     try {
       return super.setMiktar(miktar);
     } finally {
@@ -225,7 +231,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void increaseMiktar() {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.increaseMiktar');
+      name: '_StokYazdirViewModelBase.increaseMiktar',
+    );
     try {
       return super.increaseMiktar();
     } finally {
@@ -236,7 +243,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void decreaseMiktar() {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.decreaseMiktar');
+      name: '_StokYazdirViewModelBase.decreaseMiktar',
+    );
     try {
       return super.decreaseMiktar();
     } finally {
@@ -247,7 +255,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setKopyaSayisi(int? kopyaSayisi) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setKopyaSayisi');
+      name: '_StokYazdirViewModelBase.setKopyaSayisi',
+    );
     try {
       return super.setKopyaSayisi(kopyaSayisi);
     } finally {
@@ -258,7 +267,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void increaseKopyaSayisi() {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.increaseKopyaSayisi');
+      name: '_StokYazdirViewModelBase.increaseKopyaSayisi',
+    );
     try {
       return super.increaseKopyaSayisi();
     } finally {
@@ -269,7 +279,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void decreaseKopyaSayisi() {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.decreaseKopyaSayisi');
+      name: '_StokYazdirViewModelBase.decreaseKopyaSayisi',
+    );
     try {
       return super.decreaseKopyaSayisi();
     } finally {
@@ -280,7 +291,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   @override
   void setStokKodu(StokListesiModel? model) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.setStokKodu');
+      name: '_StokYazdirViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(model);
     } finally {

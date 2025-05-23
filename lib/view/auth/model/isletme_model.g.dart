@@ -13,9 +13,7 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
   @override
   IsletmeModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return IsletmeModel(
       sirket: fields[0] as String?,
       isletmeKodu: fields[1] as int?,
@@ -77,9 +75,7 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is IsletmeModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is IsletmeModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -87,38 +83,37 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
 // **************************************************************************
 
 IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) => IsletmeModel(
-      sirket: json['SIRKET'] as String?,
-      isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
-      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
-      subeAdi: json['SUBE_ADI'] as String?,
-      isletmeAdi: json['ISLETME_ADI'] as String?,
-      lokalDepoAktif: json['LOKAL_DEPO_AKTIF'] as bool?,
-      merkezmi: json['MERKEZMI'] as String?,
-      adres: json['ADRES'] as String?,
-      telefon: json['TELEFON'] as String?,
-      faks: json['FAKS'] as String?,
-      email: json['EMAIL'] as String?,
-      ilAdi: json['IL_ADI'] as String?,
-      ilce: json['ILCE'] as String?,
-      vergiNumarasi: json['VERGI_NUMARASI'] as String?,
-      vergiDairesi: json['VERGI_DAIRESI'] as String?,
-    );
+  sirket: json['SIRKET'] as String?,
+  isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
+  subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
+  subeAdi: json['SUBE_ADI'] as String?,
+  isletmeAdi: json['ISLETME_ADI'] as String?,
+  lokalDepoAktif: json['LOKAL_DEPO_AKTIF'] as bool?,
+  merkezmi: json['MERKEZMI'] as String?,
+  adres: json['ADRES'] as String?,
+  telefon: json['TELEFON'] as String?,
+  faks: json['FAKS'] as String?,
+  email: json['EMAIL'] as String?,
+  ilAdi: json['IL_ADI'] as String?,
+  ilce: json['ILCE'] as String?,
+  vergiNumarasi: json['VERGI_NUMARASI'] as String?,
+  vergiDairesi: json['VERGI_DAIRESI'] as String?,
+);
 
-Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) =>
-    <String, dynamic>{
-      if (instance.sirket case final value?) 'SIRKET': value,
-      if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
-      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-      if (instance.subeAdi case final value?) 'SUBE_ADI': value,
-      if (instance.isletmeAdi case final value?) 'ISLETME_ADI': value,
-      if (instance.lokalDepoAktif case final value?) 'LOKAL_DEPO_AKTIF': value,
-      if (instance.merkezmi case final value?) 'MERKEZMI': value,
-      if (instance.adres case final value?) 'ADRES': value,
-      if (instance.telefon case final value?) 'TELEFON': value,
-      if (instance.faks case final value?) 'FAKS': value,
-      if (instance.email case final value?) 'EMAIL': value,
-      if (instance.ilAdi case final value?) 'IL_ADI': value,
-      if (instance.ilce case final value?) 'ILCE': value,
-      if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
-      if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
-    };
+Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) => <String, dynamic>{
+  if (instance.sirket case final value?) 'SIRKET': value,
+  if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
+  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+  if (instance.subeAdi case final value?) 'SUBE_ADI': value,
+  if (instance.isletmeAdi case final value?) 'ISLETME_ADI': value,
+  if (instance.lokalDepoAktif case final value?) 'LOKAL_DEPO_AKTIF': value,
+  if (instance.merkezmi case final value?) 'MERKEZMI': value,
+  if (instance.adres case final value?) 'ADRES': value,
+  if (instance.telefon case final value?) 'TELEFON': value,
+  if (instance.faks case final value?) 'FAKS': value,
+  if (instance.email case final value?) 'EMAIL': value,
+  if (instance.ilAdi case final value?) 'IL_ADI': value,
+  if (instance.ilce case final value?) 'ILCE': value,
+  if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
+  if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
+};

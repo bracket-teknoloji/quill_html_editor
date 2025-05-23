@@ -79,12 +79,11 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(
-              title: "Cari Haritası",
-              subtitle: viewModel.cariList?.length.toStringIfNotNull,
-              // subtitle: viewModel.currentPosition?.latitude.toIntIfDouble.toStringIfNotNull,
-            ),
+        builder: (_) => AppBarTitle(
+          title: "Cari Haritası",
+          subtitle: viewModel.cariList?.length.toStringIfNotNull,
+          // subtitle: viewModel.currentPosition?.latitude.toIntIfDouble.toStringIfNotNull,
+        ),
       ),
       actions: [
         if (widget.isGetData == true)
@@ -102,63 +101,61 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         return Stack(
           children: [
             Observer(
-              builder:
-                  (_) => GoogleMap(
-                    style: googleMapsStyle(),
-                    clusterManagers: {
-                      ClusterManager(
-                        clusterManagerId: const ClusterManagerId("value"),
-                        onClusterTap: (argument) {
-                          _controller?.animateCamera(
-                            CameraUpdate.newCameraPosition(
-                              CameraPosition(
-                                target: LatLng(argument.position.latitude, argument.position.longitude),
-                                zoom: 15.5,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    },
-                    initialCameraPosition: myLocation,
-                    webGestureHandling: WebGestureHandling.greedy,
-                    onMapCreated: (controller) async {
-                      if (_controller == null) {
-                        _controller = controller;
-                        await setCameraPosition();
-                      }
-                      for (final CariListesiModel? model in viewModel.cariList ?? []) {
-                        viewModel.addMarker(
-                          Marker(
-                            icon: await setMarker(model),
-                            clusterManagerId: const ClusterManagerId("value"),
-                            markerId: MarkerId(model?.cariKodu ?? ""),
-                            onTap: () => dialogManager.showCariIslemleriGridViewDialog(model),
-                            position: LatLng(model?.enlem ?? 0, model?.boylam ?? 0),
-                            // infoWindow: widget.isGetData == true
-                            //     ? InfoWindow.noText
-                            //     : InfoWindow(
-                            //         title: model?.cariAdi,
-                            //         snippet: model?.cariKodu,
-                            //         onTap: () => dialogManager.showCariIslemleriGridViewDialog(model),
-                            //       ),
+              builder: (_) => GoogleMap(
+                style: googleMapsStyle(),
+                clusterManagers: {
+                  ClusterManager(
+                    clusterManagerId: const ClusterManagerId("value"),
+                    onClusterTap: (argument) {
+                      _controller?.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                            target: LatLng(argument.position.latitude, argument.position.longitude),
+                            zoom: 15.5,
                           ),
-                        );
-                        // _controller.complete(controller);
-                        // if (widget.isGetData != true) {
-                        //   }
-                      }
-                      setState(() {});
+                        ),
+                      );
                     },
-                    myLocationEnabled: true,
-                    markers: viewModel.markerSet,
-                    onCameraMove:
-                        widget.isGetData != true
-                            ? null
-                            : (position) {
-                              viewModel.setCurrentPosition(position.target);
-                            },
                   ),
+                },
+                initialCameraPosition: myLocation,
+                webGestureHandling: WebGestureHandling.greedy,
+                onMapCreated: (controller) async {
+                  if (_controller == null) {
+                    _controller = controller;
+                    await setCameraPosition();
+                  }
+                  for (final CariListesiModel? model in viewModel.cariList ?? []) {
+                    viewModel.addMarker(
+                      Marker(
+                        icon: await setMarker(model),
+                        clusterManagerId: const ClusterManagerId("value"),
+                        markerId: MarkerId(model?.cariKodu ?? ""),
+                        onTap: () => dialogManager.showCariIslemleriGridViewDialog(model),
+                        position: LatLng(model?.enlem ?? 0, model?.boylam ?? 0),
+                        // infoWindow: widget.isGetData == true
+                        //     ? InfoWindow.noText
+                        //     : InfoWindow(
+                        //         title: model?.cariAdi,
+                        //         snippet: model?.cariKodu,
+                        //         onTap: () => dialogManager.showCariIslemleriGridViewDialog(model),
+                        //       ),
+                      ),
+                    );
+                    // _controller.complete(controller);
+                    // if (widget.isGetData != true) {
+                    //   }
+                  }
+                  setState(() {});
+                },
+                myLocationEnabled: true,
+                markers: viewModel.markerSet,
+                onCameraMove: widget.isGetData != true
+                    ? null
+                    : (position) {
+                        viewModel.setCurrentPosition(position.target);
+                      },
+              ),
             ),
             if (widget.isGetData == true)
               Center(child: Assets.lotties.locationLottie.lottie()).paddingOnly(bottom: UIHelper.midSize * 3),

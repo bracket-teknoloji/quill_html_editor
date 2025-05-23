@@ -317,26 +317,24 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
             CustomLayoutBuilder.divideInHalf(
               children: [
                 Observer(
-                  builder:
-                      (_) => CustomWidgetWithLabel(
-                        text: "Kapalı",
-                        isVertical: true,
-                        child: Switch.adaptive(
-                          value: viewModel.model?.kapali == "E",
-                          onChanged: !isEnabled ? null : viewModel.setKapaliMi,
-                        ),
-                      ),
+                  builder: (_) => CustomWidgetWithLabel(
+                    text: "Kapalı",
+                    isVertical: true,
+                    child: Switch.adaptive(
+                      value: viewModel.model?.kapali == "E",
+                      onChanged: !isEnabled ? null : viewModel.setKapaliMi,
+                    ),
+                  ),
                 ),
                 Observer(
-                  builder:
-                      (_) => CustomWidgetWithLabel(
-                        text: "Rework İş Emri",
-                        isVertical: true,
-                        child: Switch.adaptive(
-                          value: viewModel.model?.rework == "E",
-                          onChanged: !isEnabled ? null : viewModel.setReworkMu,
-                        ),
-                      ),
+                  builder: (_) => CustomWidgetWithLabel(
+                    text: "Rework İş Emri",
+                    isVertical: true,
+                    child: Switch.adaptive(
+                      value: viewModel.model?.rework == "E",
+                      onChanged: !isEnabled ? null : viewModel.setReworkMu,
+                    ),
+                  ),
                 ),
               ],
             ),

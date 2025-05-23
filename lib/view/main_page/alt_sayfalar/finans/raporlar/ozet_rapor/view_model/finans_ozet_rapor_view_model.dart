@@ -35,18 +35,16 @@ abstract class _FinansOzetRaporViewModelBase with Store, MobxNetworkMixin {
   ObservableList<FinansOzetRaporModel>? aylikTutarlarList;
 
   @computed
-  double? get toplamSatisFaturasi =>
-      aylikTutarlarList
-          ?.where((element) => element.belgeTipi == EditTipiEnum.satisFatura.rawValue)
-          .map((e) => e.tutar1)
-          .sum;
+  double? get toplamSatisFaturasi => aylikTutarlarList
+      ?.where((element) => element.belgeTipi == EditTipiEnum.satisFatura.rawValue)
+      .map((e) => e.tutar1)
+      .sum;
 
   @computed
-  double? get toplamAlisFaturasi =>
-      aylikTutarlarList
-          ?.where((element) => element.belgeTipi == EditTipiEnum.alisFatura.rawValue)
-          .map((e) => e.tutar1)
-          .sum;
+  double? get toplamAlisFaturasi => aylikTutarlarList
+      ?.where((element) => element.belgeTipi == EditTipiEnum.alisFatura.rawValue)
+      .map((e) => e.tutar1)
+      .sum;
 
   @action
   void setBaslangicTarihi(String? value) => requestModel.baslamaTarihi = value;

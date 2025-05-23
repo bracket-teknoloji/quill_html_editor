@@ -62,11 +62,8 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
           return CustomAppBarTextField(onChanged: viewModel.setSearchText);
         }
         return Observer(
-          builder:
-              (_) => AppBarTitle(
-                title: "Kasa Listesi",
-                subtitle: viewModel.getKasaListesi?.length.toStringIfNotNull ?? "",
-              ),
+          builder: (_) =>
+              AppBarTitle(title: "Kasa Listesi", subtitle: viewModel.getKasaListesi?.length.toStringIfNotNull ?? ""),
         );
       },
     ),
@@ -82,13 +79,12 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
       children: [
         AppBarButton(
           iconWidget: Observer(
-            builder:
-                (_) => Icon(
-                  Icons.filter_alt_outlined,
-                  size: 20,
-                  fill: 1,
-                  color: viewModel.filtreGroupValue != "T" ? UIHelper.primaryColor : null,
-                ),
+            builder: (_) => Icon(
+              Icons.filter_alt_outlined,
+              size: 20,
+              fill: 1,
+              color: viewModel.filtreGroupValue != "T" ? UIHelper.primaryColor : null,
+            ),
           ),
           onPressed: filtrele,
           child: Text(loc.generalStrings.filter),
@@ -107,21 +103,19 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
   );
 
   Widget body() => Observer(
-    builder:
-        (_) => RefreshableListView(
-          onRefresh: viewModel.resetList,
-          items: viewModel.getKasaListesi,
-          itemBuilder:
-              (item) => KasaListesiCard(
-                item: item,
-                onSelected: (p0) async {
-                  if (p0) {
-                    viewModel.setObservableList(null);
-                    await viewModel.getData();
-                  }
-                },
-              ),
-        ),
+    builder: (_) => RefreshableListView(
+      onRefresh: viewModel.resetList,
+      items: viewModel.getKasaListesi,
+      itemBuilder: (item) => KasaListesiCard(
+        item: item,
+        onSelected: (p0) async {
+          if (p0) {
+            viewModel.setObservableList(null);
+            await viewModel.getData();
+          }
+        },
+      ),
+    ),
   );
 
   BottomBarWidget bottomAppBar() => BottomBarWidget(
@@ -131,11 +125,10 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
         children: [
           const Text("Gelir"),
           Observer(
-            builder:
-                (_) => Text(
-                  "${viewModel.getGelir.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                  style: const TextStyle(color: ColorPalette.mantis),
-                ),
+            builder: (_) => Text(
+              "${viewModel.getGelir.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+              style: const TextStyle(color: ColorPalette.mantis),
+            ),
           ),
         ],
         onPressed: () {
@@ -153,11 +146,10 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
         children: [
           const Text("Gider"),
           Observer(
-            builder:
-                (_) => Text(
-                  "${viewModel.getGider.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                  style: const TextStyle(color: ColorPalette.persianRed),
-                ),
+            builder: (_) => Text(
+              "${viewModel.getGider.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+              style: const TextStyle(color: ColorPalette.persianRed),
+            ),
           ),
         ],
         onPressed: () {
@@ -175,11 +167,10 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
         children: [
           const Text("Bakiye"),
           Observer(
-            builder:
-                (_) => Text(
-                  "${viewModel.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                  style: const TextStyle(color: ColorPalette.slateGray),
-                ),
+            builder: (_) => Text(
+              "${viewModel.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+              style: const TextStyle(color: ColorPalette.slateGray),
+            ),
           ),
         ],
       ),
@@ -215,13 +206,12 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
       body: Column(
         children: [
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  childrenTitleList: viewModel.filtreleMap.keys.toList(),
-                  childrenValueList: viewModel.filtreleMap.values.toList(),
-                  filterOnChanged: (index) => viewModel.setFiltreGroupValue(index ?? 0),
-                  groupValue: viewModel.filtreGroupValue,
-                ),
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.filtreleMap.keys.toList(),
+              childrenValueList: viewModel.filtreleMap.values.toList(),
+              filterOnChanged: (index) => viewModel.setFiltreGroupValue(index ?? 0),
+              groupValue: viewModel.filtreGroupValue,
+            ),
           ),
           Row(
             children: [

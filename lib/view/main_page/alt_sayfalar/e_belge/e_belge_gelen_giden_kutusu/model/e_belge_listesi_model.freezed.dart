@@ -12,7 +12,8 @@ part of 'e_belge_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EBelgeListesiModel _$EBelgeListesiModelFromJson(Map<String, dynamic> json) {
   return _EBelgeListesiModel.fromJson(json);
@@ -133,11 +134,9 @@ mixin _$EBelgeListesiModel {
   String? get kayitYapanKul => throw _privateConstructorUsedError;
   set kayitYapanKul(String? value) => throw _privateConstructorUsedError;
   String? get gelenEFatKontrolEdildi => throw _privateConstructorUsedError;
-  set gelenEFatKontrolEdildi(String? value) =>
-      throw _privateConstructorUsedError;
+  set gelenEFatKontrolEdildi(String? value) => throw _privateConstructorUsedError;
   String? get gelenEFatKontrolAciklama => throw _privateConstructorUsedError;
-  set gelenEFatKontrolAciklama(String? value) =>
-      throw _privateConstructorUsedError;
+  set gelenEFatKontrolAciklama(String? value) => throw _privateConstructorUsedError;
   bool? get gonderimSekliEPosta => throw _privateConstructorUsedError;
   set gonderimSekliEPosta(bool? value) => throw _privateConstructorUsedError;
   String? get ePosta => throw _privateConstructorUsedError;
@@ -161,8 +160,7 @@ mixin _$EBelgeListesiModel {
   bool? get internetFaturasi => throw _privateConstructorUsedError;
   set internetFaturasi(bool? value) => throw _privateConstructorUsedError;
   EIrsaliyeBilgiModel? get eirsBilgi => throw _privateConstructorUsedError;
-  set eirsBilgi(EIrsaliyeBilgiModel? value) =>
-      throw _privateConstructorUsedError;
+  set eirsBilgi(EIrsaliyeBilgiModel? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get dizaynAdi => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -174,89 +172,87 @@ mixin _$EBelgeListesiModel {
   /// Create a copy of EBelgeListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EBelgeListesiModelCopyWith<EBelgeListesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EBelgeListesiModelCopyWith<EBelgeListesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EBelgeListesiModelCopyWith<$Res> {
-  factory $EBelgeListesiModelCopyWith(
-          EBelgeListesiModel value, $Res Function(EBelgeListesiModel) then) =
+  factory $EBelgeListesiModelCopyWith(EBelgeListesiModel value, $Res Function(EBelgeListesiModel) then) =
       _$EBelgeListesiModelCopyWithImpl<$Res, EBelgeListesiModel>;
   @useResult
-  $Res call(
-      {String? ebelgeTuru,
-      int? inckeyno,
-      int? efatmasInckeyno,
-      String? gelen,
-      String? taslak,
-      String? gonderildi,
-      String? faturaIslendi,
-      String? dekontIslendi,
-      String? iptalEdildi,
-      int? cevapKodu,
-      String? cevapAciklama,
-      String? basariylaGonderildi,
-      String? onayDurumKodu,
-      String? onayAciklama,
-      String? resmiBelgeNo,
-      DateTime? tarih,
-      DateTime? kayittarihi,
-      String? belgeTuru,
-      String? cariAdi,
-      String? vergiNo,
-      String? cariIlce,
-      String? cariIl,
-      double? dovizKuru,
-      String? basimYapildi,
-      double? genelToplam,
-      double? kdvTutari,
-      String? senaryo,
-      String? zarfid,
-      String? uuid,
-      String? faturaTipi,
-      String? kayityapankul,
-      String? kontrolEdildi,
-      String? kayitliCariKodu,
-      String? belgeNo,
-      String? islenenBelgeNo,
-      String? cariKodu,
-      int? dovizTipi,
-      String? dovizAdi,
-      double? dovizTutari,
-      double? iskontoTutari,
-      String? dekontJson,
-      String? kontrolAciklama,
-      String? dizaynYolu,
-      String? gondermeDurumu,
-      String? zarfSilinebilir,
-      DateTime? iptalTarihi,
-      String? eposta,
-      String? eBelgeTuru,
-      int? id,
-      int? eFatMasId,
-      int? eIrsMasId,
-      DateTime? kayitTarihi,
-      DateTime? eFaturaIptalTarihi,
-      String? ilce,
-      String? sehir,
-      String? kayitYapanKul,
-      String? gelenEFatKontrolEdildi,
-      String? gelenEFatKontrolAciklama,
-      bool? gonderimSekliEPosta,
-      String? ePosta,
-      int? islemKodu,
-      String? kutuTuru,
-      String? aciklama,
-      String? senaryoTipi,
-      int? kopyaSayisi,
-      String? yaziciAdi,
-      int? dizaynNo,
-      bool? dovizliOlustur,
-      bool? internetFaturasi,
-      EIrsaliyeBilgiModel? eirsBilgi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? dizaynAdi});
+  $Res call({
+    String? ebelgeTuru,
+    int? inckeyno,
+    int? efatmasInckeyno,
+    String? gelen,
+    String? taslak,
+    String? gonderildi,
+    String? faturaIslendi,
+    String? dekontIslendi,
+    String? iptalEdildi,
+    int? cevapKodu,
+    String? cevapAciklama,
+    String? basariylaGonderildi,
+    String? onayDurumKodu,
+    String? onayAciklama,
+    String? resmiBelgeNo,
+    DateTime? tarih,
+    DateTime? kayittarihi,
+    String? belgeTuru,
+    String? cariAdi,
+    String? vergiNo,
+    String? cariIlce,
+    String? cariIl,
+    double? dovizKuru,
+    String? basimYapildi,
+    double? genelToplam,
+    double? kdvTutari,
+    String? senaryo,
+    String? zarfid,
+    String? uuid,
+    String? faturaTipi,
+    String? kayityapankul,
+    String? kontrolEdildi,
+    String? kayitliCariKodu,
+    String? belgeNo,
+    String? islenenBelgeNo,
+    String? cariKodu,
+    int? dovizTipi,
+    String? dovizAdi,
+    double? dovizTutari,
+    double? iskontoTutari,
+    String? dekontJson,
+    String? kontrolAciklama,
+    String? dizaynYolu,
+    String? gondermeDurumu,
+    String? zarfSilinebilir,
+    DateTime? iptalTarihi,
+    String? eposta,
+    String? eBelgeTuru,
+    int? id,
+    int? eFatMasId,
+    int? eIrsMasId,
+    DateTime? kayitTarihi,
+    DateTime? eFaturaIptalTarihi,
+    String? ilce,
+    String? sehir,
+    String? kayitYapanKul,
+    String? gelenEFatKontrolEdildi,
+    String? gelenEFatKontrolAciklama,
+    bool? gonderimSekliEPosta,
+    String? ePosta,
+    int? islemKodu,
+    String? kutuTuru,
+    String? aciklama,
+    String? senaryoTipi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? internetFaturasi,
+    EIrsaliyeBilgiModel? eirsBilgi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? dizaynAdi,
+  });
 
   $EIrsaliyeBilgiModelCopyWith<$Res>? get eirsBilgi;
 }
@@ -348,292 +344,295 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? eirsBilgi = freezed,
     Object? dizaynAdi = freezed,
   }) {
-    return _then(_value.copyWith(
-      ebelgeTuru: freezed == ebelgeTuru
-          ? _value.ebelgeTuru
-          : ebelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      efatmasInckeyno: freezed == efatmasInckeyno
-          ? _value.efatmasInckeyno
-          : efatmasInckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      gelen: freezed == gelen
-          ? _value.gelen
-          : gelen // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taslak: freezed == taslak
-          ? _value.taslak
-          : taslak // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gonderildi: freezed == gonderildi
-          ? _value.gonderildi
-          : gonderildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaIslendi: freezed == faturaIslendi
-          ? _value.faturaIslendi
-          : faturaIslendi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontIslendi: freezed == dekontIslendi
-          ? _value.dekontIslendi
-          : dekontIslendi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iptalEdildi: freezed == iptalEdildi
-          ? _value.iptalEdildi
-          : iptalEdildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cevapKodu: freezed == cevapKodu
-          ? _value.cevapKodu
-          : cevapKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cevapAciklama: freezed == cevapAciklama
-          ? _value.cevapAciklama
-          : cevapAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      basariylaGonderildi: freezed == basariylaGonderildi
-          ? _value.basariylaGonderildi
-          : basariylaGonderildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      onayDurumKodu: freezed == onayDurumKodu
-          ? _value.onayDurumKodu
-          : onayDurumKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      onayAciklama: freezed == onayAciklama
-          ? _value.onayAciklama
-          : onayAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resmiBelgeNo: freezed == resmiBelgeNo
-          ? _value.resmiBelgeNo
-          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vergiNo: freezed == vergiNo
-          ? _value.vergiNo
-          : vergiNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariIlce: freezed == cariIlce
-          ? _value.cariIlce
-          : cariIlce // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariIl: freezed == cariIl
-          ? _value.cariIl
-          : cariIl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizKuru: freezed == dovizKuru
-          ? _value.dovizKuru
-          : dovizKuru // ignore: cast_nullable_to_non_nullable
-              as double?,
-      basimYapildi: freezed == basimYapildi
-          ? _value.basimYapildi
-          : basimYapildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      genelToplam: freezed == genelToplam
-          ? _value.genelToplam
-          : genelToplam // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kdvTutari: freezed == kdvTutari
-          ? _value.kdvTutari
-          : kdvTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      senaryo: freezed == senaryo
-          ? _value.senaryo
-          : senaryo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zarfid: freezed == zarfid
-          ? _value.zarfid
-          : zarfid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uuid: freezed == uuid
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaTipi: freezed == faturaTipi
-          ? _value.faturaTipi
-          : faturaTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kontrolEdildi: freezed == kontrolEdildi
-          ? _value.kontrolEdildi
-          : kontrolEdildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayitliCariKodu: freezed == kayitliCariKodu
-          ? _value.kayitliCariKodu
-          : kayitliCariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islenenBelgeNo: freezed == islenenBelgeNo
-          ? _value.islenenBelgeNo
-          : islenenBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      iskontoTutari: freezed == iskontoTutari
-          ? _value.iskontoTutari
-          : iskontoTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dekontJson: freezed == dekontJson
-          ? _value.dekontJson
-          : dekontJson // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kontrolAciklama: freezed == kontrolAciklama
-          ? _value.kontrolAciklama
-          : kontrolAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dizaynYolu: freezed == dizaynYolu
-          ? _value.dizaynYolu
-          : dizaynYolu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gondermeDurumu: freezed == gondermeDurumu
-          ? _value.gondermeDurumu
-          : gondermeDurumu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zarfSilinebilir: freezed == zarfSilinebilir
-          ? _value.zarfSilinebilir
-          : zarfSilinebilir // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iptalTarihi: freezed == iptalTarihi
-          ? _value.iptalTarihi
-          : iptalTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      eposta: freezed == eposta
-          ? _value.eposta
-          : eposta // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eBelgeTuru: freezed == eBelgeTuru
-          ? _value.eBelgeTuru
-          : eBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      eFatMasId: freezed == eFatMasId
-          ? _value.eFatMasId
-          : eFatMasId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      eIrsMasId: freezed == eIrsMasId
-          ? _value.eIrsMasId
-          : eIrsMasId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kayitTarihi: freezed == kayitTarihi
-          ? _value.kayitTarihi
-          : kayitTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      eFaturaIptalTarihi: freezed == eFaturaIptalTarihi
-          ? _value.eFaturaIptalTarihi
-          : eFaturaIptalTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      ilce: freezed == ilce
-          ? _value.ilce
-          : ilce // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sehir: freezed == sehir
-          ? _value.sehir
-          : sehir // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayitYapanKul: freezed == kayitYapanKul
-          ? _value.kayitYapanKul
-          : kayitYapanKul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gelenEFatKontrolEdildi: freezed == gelenEFatKontrolEdildi
-          ? _value.gelenEFatKontrolEdildi
-          : gelenEFatKontrolEdildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gelenEFatKontrolAciklama: freezed == gelenEFatKontrolAciklama
-          ? _value.gelenEFatKontrolAciklama
-          : gelenEFatKontrolAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gonderimSekliEPosta: freezed == gonderimSekliEPosta
-          ? _value.gonderimSekliEPosta
-          : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      ePosta: freezed == ePosta
-          ? _value.ePosta
-          : ePosta // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kutuTuru: freezed == kutuTuru
-          ? _value.kutuTuru
-          : kutuTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senaryoTipi: freezed == senaryoTipi
-          ? _value.senaryoTipi
-          : senaryoTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kopyaSayisi: freezed == kopyaSayisi
-          ? _value.kopyaSayisi
-          : kopyaSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      yaziciAdi: freezed == yaziciAdi
-          ? _value.yaziciAdi
-          : yaziciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dizaynNo: freezed == dizaynNo
-          ? _value.dizaynNo
-          : dizaynNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizliOlustur: freezed == dovizliOlustur
-          ? _value.dovizliOlustur
-          : dovizliOlustur // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      internetFaturasi: freezed == internetFaturasi
-          ? _value.internetFaturasi
-          : internetFaturasi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      eirsBilgi: freezed == eirsBilgi
-          ? _value.eirsBilgi
-          : eirsBilgi // ignore: cast_nullable_to_non_nullable
-              as EIrsaliyeBilgiModel?,
-      dizaynAdi: freezed == dizaynAdi
-          ? _value.dizaynAdi
-          : dizaynAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            ebelgeTuru: freezed == ebelgeTuru
+                ? _value.ebelgeTuru
+                : ebelgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            inckeyno: freezed == inckeyno
+                ? _value.inckeyno
+                : inckeyno // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            efatmasInckeyno: freezed == efatmasInckeyno
+                ? _value.efatmasInckeyno
+                : efatmasInckeyno // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            gelen: freezed == gelen
+                ? _value.gelen
+                : gelen // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            taslak: freezed == taslak
+                ? _value.taslak
+                : taslak // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gonderildi: freezed == gonderildi
+                ? _value.gonderildi
+                : gonderildi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            faturaIslendi: freezed == faturaIslendi
+                ? _value.faturaIslendi
+                : faturaIslendi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dekontIslendi: freezed == dekontIslendi
+                ? _value.dekontIslendi
+                : dekontIslendi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            iptalEdildi: freezed == iptalEdildi
+                ? _value.iptalEdildi
+                : iptalEdildi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cevapKodu: freezed == cevapKodu
+                ? _value.cevapKodu
+                : cevapKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            cevapAciklama: freezed == cevapAciklama
+                ? _value.cevapAciklama
+                : cevapAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            basariylaGonderildi: freezed == basariylaGonderildi
+                ? _value.basariylaGonderildi
+                : basariylaGonderildi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            onayDurumKodu: freezed == onayDurumKodu
+                ? _value.onayDurumKodu
+                : onayDurumKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            onayAciklama: freezed == onayAciklama
+                ? _value.onayAciklama
+                : onayAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            resmiBelgeNo: freezed == resmiBelgeNo
+                ? _value.resmiBelgeNo
+                : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            kayittarihi: freezed == kayittarihi
+                ? _value.kayittarihi
+                : kayittarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            belgeTuru: freezed == belgeTuru
+                ? _value.belgeTuru
+                : belgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariAdi: freezed == cariAdi
+                ? _value.cariAdi
+                : cariAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            vergiNo: freezed == vergiNo
+                ? _value.vergiNo
+                : vergiNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariIlce: freezed == cariIlce
+                ? _value.cariIlce
+                : cariIlce // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariIl: freezed == cariIl
+                ? _value.cariIl
+                : cariIl // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dovizKuru: freezed == dovizKuru
+                ? _value.dovizKuru
+                : dovizKuru // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            basimYapildi: freezed == basimYapildi
+                ? _value.basimYapildi
+                : basimYapildi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            genelToplam: freezed == genelToplam
+                ? _value.genelToplam
+                : genelToplam // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            kdvTutari: freezed == kdvTutari
+                ? _value.kdvTutari
+                : kdvTutari // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            senaryo: freezed == senaryo
+                ? _value.senaryo
+                : senaryo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            zarfid: freezed == zarfid
+                ? _value.zarfid
+                : zarfid // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            uuid: freezed == uuid
+                ? _value.uuid
+                : uuid // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            faturaTipi: freezed == faturaTipi
+                ? _value.faturaTipi
+                : faturaTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayityapankul: freezed == kayityapankul
+                ? _value.kayityapankul
+                : kayityapankul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kontrolEdildi: freezed == kontrolEdildi
+                ? _value.kontrolEdildi
+                : kontrolEdildi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayitliCariKodu: freezed == kayitliCariKodu
+                ? _value.kayitliCariKodu
+                : kayitliCariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islenenBelgeNo: freezed == islenenBelgeNo
+                ? _value.islenenBelgeNo
+                : islenenBelgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dovizTipi: freezed == dovizTipi
+                ? _value.dovizTipi
+                : dovizTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            dovizAdi: freezed == dovizAdi
+                ? _value.dovizAdi
+                : dovizAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dovizTutari: freezed == dovizTutari
+                ? _value.dovizTutari
+                : dovizTutari // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            iskontoTutari: freezed == iskontoTutari
+                ? _value.iskontoTutari
+                : iskontoTutari // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            dekontJson: freezed == dekontJson
+                ? _value.dekontJson
+                : dekontJson // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kontrolAciklama: freezed == kontrolAciklama
+                ? _value.kontrolAciklama
+                : kontrolAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dizaynYolu: freezed == dizaynYolu
+                ? _value.dizaynYolu
+                : dizaynYolu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gondermeDurumu: freezed == gondermeDurumu
+                ? _value.gondermeDurumu
+                : gondermeDurumu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            zarfSilinebilir: freezed == zarfSilinebilir
+                ? _value.zarfSilinebilir
+                : zarfSilinebilir // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            iptalTarihi: freezed == iptalTarihi
+                ? _value.iptalTarihi
+                : iptalTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            eposta: freezed == eposta
+                ? _value.eposta
+                : eposta // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            eBelgeTuru: freezed == eBelgeTuru
+                ? _value.eBelgeTuru
+                : eBelgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            eFatMasId: freezed == eFatMasId
+                ? _value.eFatMasId
+                : eFatMasId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            eIrsMasId: freezed == eIrsMasId
+                ? _value.eIrsMasId
+                : eIrsMasId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kayitTarihi: freezed == kayitTarihi
+                ? _value.kayitTarihi
+                : kayitTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            eFaturaIptalTarihi: freezed == eFaturaIptalTarihi
+                ? _value.eFaturaIptalTarihi
+                : eFaturaIptalTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            ilce: freezed == ilce
+                ? _value.ilce
+                : ilce // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sehir: freezed == sehir
+                ? _value.sehir
+                : sehir // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayitYapanKul: freezed == kayitYapanKul
+                ? _value.kayitYapanKul
+                : kayitYapanKul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gelenEFatKontrolEdildi: freezed == gelenEFatKontrolEdildi
+                ? _value.gelenEFatKontrolEdildi
+                : gelenEFatKontrolEdildi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gelenEFatKontrolAciklama: freezed == gelenEFatKontrolAciklama
+                ? _value.gelenEFatKontrolAciklama
+                : gelenEFatKontrolAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gonderimSekliEPosta: freezed == gonderimSekliEPosta
+                ? _value.gonderimSekliEPosta
+                : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            ePosta: freezed == ePosta
+                ? _value.ePosta
+                : ePosta // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kutuTuru: freezed == kutuTuru
+                ? _value.kutuTuru
+                : kutuTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            senaryoTipi: freezed == senaryoTipi
+                ? _value.senaryoTipi
+                : senaryoTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kopyaSayisi: freezed == kopyaSayisi
+                ? _value.kopyaSayisi
+                : kopyaSayisi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            yaziciAdi: freezed == yaziciAdi
+                ? _value.yaziciAdi
+                : yaziciAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dizaynNo: freezed == dizaynNo
+                ? _value.dizaynNo
+                : dizaynNo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            dovizliOlustur: freezed == dovizliOlustur
+                ? _value.dovizliOlustur
+                : dovizliOlustur // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            internetFaturasi: freezed == internetFaturasi
+                ? _value.internetFaturasi
+                : internetFaturasi // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            eirsBilgi: freezed == eirsBilgi
+                ? _value.eirsBilgi
+                : eirsBilgi // ignore: cast_nullable_to_non_nullable
+                      as EIrsaliyeBilgiModel?,
+            dizaynAdi: freezed == dizaynAdi
+                ? _value.dizaynAdi
+                : dizaynAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of EBelgeListesiModel
@@ -652,86 +651,86 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
 }
 
 /// @nodoc
-abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
-    implements $EBelgeListesiModelCopyWith<$Res> {
-  factory _$$EBelgeListesiModelImplCopyWith(_$EBelgeListesiModelImpl value,
-          $Res Function(_$EBelgeListesiModelImpl) then) =
-      __$$EBelgeListesiModelImplCopyWithImpl<$Res>;
+abstract class _$$EBelgeListesiModelImplCopyWith<$Res> implements $EBelgeListesiModelCopyWith<$Res> {
+  factory _$$EBelgeListesiModelImplCopyWith(
+    _$EBelgeListesiModelImpl value,
+    $Res Function(_$EBelgeListesiModelImpl) then,
+  ) = __$$EBelgeListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? ebelgeTuru,
-      int? inckeyno,
-      int? efatmasInckeyno,
-      String? gelen,
-      String? taslak,
-      String? gonderildi,
-      String? faturaIslendi,
-      String? dekontIslendi,
-      String? iptalEdildi,
-      int? cevapKodu,
-      String? cevapAciklama,
-      String? basariylaGonderildi,
-      String? onayDurumKodu,
-      String? onayAciklama,
-      String? resmiBelgeNo,
-      DateTime? tarih,
-      DateTime? kayittarihi,
-      String? belgeTuru,
-      String? cariAdi,
-      String? vergiNo,
-      String? cariIlce,
-      String? cariIl,
-      double? dovizKuru,
-      String? basimYapildi,
-      double? genelToplam,
-      double? kdvTutari,
-      String? senaryo,
-      String? zarfid,
-      String? uuid,
-      String? faturaTipi,
-      String? kayityapankul,
-      String? kontrolEdildi,
-      String? kayitliCariKodu,
-      String? belgeNo,
-      String? islenenBelgeNo,
-      String? cariKodu,
-      int? dovizTipi,
-      String? dovizAdi,
-      double? dovizTutari,
-      double? iskontoTutari,
-      String? dekontJson,
-      String? kontrolAciklama,
-      String? dizaynYolu,
-      String? gondermeDurumu,
-      String? zarfSilinebilir,
-      DateTime? iptalTarihi,
-      String? eposta,
-      String? eBelgeTuru,
-      int? id,
-      int? eFatMasId,
-      int? eIrsMasId,
-      DateTime? kayitTarihi,
-      DateTime? eFaturaIptalTarihi,
-      String? ilce,
-      String? sehir,
-      String? kayitYapanKul,
-      String? gelenEFatKontrolEdildi,
-      String? gelenEFatKontrolAciklama,
-      bool? gonderimSekliEPosta,
-      String? ePosta,
-      int? islemKodu,
-      String? kutuTuru,
-      String? aciklama,
-      String? senaryoTipi,
-      int? kopyaSayisi,
-      String? yaziciAdi,
-      int? dizaynNo,
-      bool? dovizliOlustur,
-      bool? internetFaturasi,
-      EIrsaliyeBilgiModel? eirsBilgi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? dizaynAdi});
+  $Res call({
+    String? ebelgeTuru,
+    int? inckeyno,
+    int? efatmasInckeyno,
+    String? gelen,
+    String? taslak,
+    String? gonderildi,
+    String? faturaIslendi,
+    String? dekontIslendi,
+    String? iptalEdildi,
+    int? cevapKodu,
+    String? cevapAciklama,
+    String? basariylaGonderildi,
+    String? onayDurumKodu,
+    String? onayAciklama,
+    String? resmiBelgeNo,
+    DateTime? tarih,
+    DateTime? kayittarihi,
+    String? belgeTuru,
+    String? cariAdi,
+    String? vergiNo,
+    String? cariIlce,
+    String? cariIl,
+    double? dovizKuru,
+    String? basimYapildi,
+    double? genelToplam,
+    double? kdvTutari,
+    String? senaryo,
+    String? zarfid,
+    String? uuid,
+    String? faturaTipi,
+    String? kayityapankul,
+    String? kontrolEdildi,
+    String? kayitliCariKodu,
+    String? belgeNo,
+    String? islenenBelgeNo,
+    String? cariKodu,
+    int? dovizTipi,
+    String? dovizAdi,
+    double? dovizTutari,
+    double? iskontoTutari,
+    String? dekontJson,
+    String? kontrolAciklama,
+    String? dizaynYolu,
+    String? gondermeDurumu,
+    String? zarfSilinebilir,
+    DateTime? iptalTarihi,
+    String? eposta,
+    String? eBelgeTuru,
+    int? id,
+    int? eFatMasId,
+    int? eIrsMasId,
+    DateTime? kayitTarihi,
+    DateTime? eFaturaIptalTarihi,
+    String? ilce,
+    String? sehir,
+    String? kayitYapanKul,
+    String? gelenEFatKontrolEdildi,
+    String? gelenEFatKontrolAciklama,
+    bool? gonderimSekliEPosta,
+    String? ePosta,
+    int? islemKodu,
+    String? kutuTuru,
+    String? aciklama,
+    String? senaryoTipi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? internetFaturasi,
+    EIrsaliyeBilgiModel? eirsBilgi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? dizaynAdi,
+  });
 
   @override
   $EIrsaliyeBilgiModelCopyWith<$Res>? get eirsBilgi;
@@ -741,9 +740,8 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
 class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     extends _$EBelgeListesiModelCopyWithImpl<$Res, _$EBelgeListesiModelImpl>
     implements _$$EBelgeListesiModelImplCopyWith<$Res> {
-  __$$EBelgeListesiModelImplCopyWithImpl(_$EBelgeListesiModelImpl _value,
-      $Res Function(_$EBelgeListesiModelImpl) _then)
-      : super(_value, _then);
+  __$$EBelgeListesiModelImplCopyWithImpl(_$EBelgeListesiModelImpl _value, $Res Function(_$EBelgeListesiModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of EBelgeListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -822,374 +820,375 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? eirsBilgi = freezed,
     Object? dizaynAdi = freezed,
   }) {
-    return _then(_$EBelgeListesiModelImpl(
-      ebelgeTuru: freezed == ebelgeTuru
-          ? _value.ebelgeTuru
-          : ebelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      efatmasInckeyno: freezed == efatmasInckeyno
-          ? _value.efatmasInckeyno
-          : efatmasInckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      gelen: freezed == gelen
-          ? _value.gelen
-          : gelen // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taslak: freezed == taslak
-          ? _value.taslak
-          : taslak // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gonderildi: freezed == gonderildi
-          ? _value.gonderildi
-          : gonderildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaIslendi: freezed == faturaIslendi
-          ? _value.faturaIslendi
-          : faturaIslendi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontIslendi: freezed == dekontIslendi
-          ? _value.dekontIslendi
-          : dekontIslendi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iptalEdildi: freezed == iptalEdildi
-          ? _value.iptalEdildi
-          : iptalEdildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cevapKodu: freezed == cevapKodu
-          ? _value.cevapKodu
-          : cevapKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cevapAciklama: freezed == cevapAciklama
-          ? _value.cevapAciklama
-          : cevapAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      basariylaGonderildi: freezed == basariylaGonderildi
-          ? _value.basariylaGonderildi
-          : basariylaGonderildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      onayDurumKodu: freezed == onayDurumKodu
-          ? _value.onayDurumKodu
-          : onayDurumKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      onayAciklama: freezed == onayAciklama
-          ? _value.onayAciklama
-          : onayAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resmiBelgeNo: freezed == resmiBelgeNo
-          ? _value.resmiBelgeNo
-          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      belgeTuru: freezed == belgeTuru
-          ? _value.belgeTuru
-          : belgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vergiNo: freezed == vergiNo
-          ? _value.vergiNo
-          : vergiNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariIlce: freezed == cariIlce
-          ? _value.cariIlce
-          : cariIlce // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariIl: freezed == cariIl
-          ? _value.cariIl
-          : cariIl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizKuru: freezed == dovizKuru
-          ? _value.dovizKuru
-          : dovizKuru // ignore: cast_nullable_to_non_nullable
-              as double?,
-      basimYapildi: freezed == basimYapildi
-          ? _value.basimYapildi
-          : basimYapildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      genelToplam: freezed == genelToplam
-          ? _value.genelToplam
-          : genelToplam // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kdvTutari: freezed == kdvTutari
-          ? _value.kdvTutari
-          : kdvTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      senaryo: freezed == senaryo
-          ? _value.senaryo
-          : senaryo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zarfid: freezed == zarfid
-          ? _value.zarfid
-          : zarfid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uuid: freezed == uuid
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaTipi: freezed == faturaTipi
-          ? _value.faturaTipi
-          : faturaTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kontrolEdildi: freezed == kontrolEdildi
-          ? _value.kontrolEdildi
-          : kontrolEdildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayitliCariKodu: freezed == kayitliCariKodu
-          ? _value.kayitliCariKodu
-          : kayitliCariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islenenBelgeNo: freezed == islenenBelgeNo
-          ? _value.islenenBelgeNo
-          : islenenBelgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      iskontoTutari: freezed == iskontoTutari
-          ? _value.iskontoTutari
-          : iskontoTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dekontJson: freezed == dekontJson
-          ? _value.dekontJson
-          : dekontJson // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kontrolAciklama: freezed == kontrolAciklama
-          ? _value.kontrolAciklama
-          : kontrolAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dizaynYolu: freezed == dizaynYolu
-          ? _value.dizaynYolu
-          : dizaynYolu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gondermeDurumu: freezed == gondermeDurumu
-          ? _value.gondermeDurumu
-          : gondermeDurumu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zarfSilinebilir: freezed == zarfSilinebilir
-          ? _value.zarfSilinebilir
-          : zarfSilinebilir // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iptalTarihi: freezed == iptalTarihi
-          ? _value.iptalTarihi
-          : iptalTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      eposta: freezed == eposta
-          ? _value.eposta
-          : eposta // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eBelgeTuru: freezed == eBelgeTuru
-          ? _value.eBelgeTuru
-          : eBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      eFatMasId: freezed == eFatMasId
-          ? _value.eFatMasId
-          : eFatMasId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      eIrsMasId: freezed == eIrsMasId
-          ? _value.eIrsMasId
-          : eIrsMasId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kayitTarihi: freezed == kayitTarihi
-          ? _value.kayitTarihi
-          : kayitTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      eFaturaIptalTarihi: freezed == eFaturaIptalTarihi
-          ? _value.eFaturaIptalTarihi
-          : eFaturaIptalTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      ilce: freezed == ilce
-          ? _value.ilce
-          : ilce // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sehir: freezed == sehir
-          ? _value.sehir
-          : sehir // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayitYapanKul: freezed == kayitYapanKul
-          ? _value.kayitYapanKul
-          : kayitYapanKul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gelenEFatKontrolEdildi: freezed == gelenEFatKontrolEdildi
-          ? _value.gelenEFatKontrolEdildi
-          : gelenEFatKontrolEdildi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gelenEFatKontrolAciklama: freezed == gelenEFatKontrolAciklama
-          ? _value.gelenEFatKontrolAciklama
-          : gelenEFatKontrolAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gonderimSekliEPosta: freezed == gonderimSekliEPosta
-          ? _value.gonderimSekliEPosta
-          : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      ePosta: freezed == ePosta
-          ? _value.ePosta
-          : ePosta // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kutuTuru: freezed == kutuTuru
-          ? _value.kutuTuru
-          : kutuTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senaryoTipi: freezed == senaryoTipi
-          ? _value.senaryoTipi
-          : senaryoTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kopyaSayisi: freezed == kopyaSayisi
-          ? _value.kopyaSayisi
-          : kopyaSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      yaziciAdi: freezed == yaziciAdi
-          ? _value.yaziciAdi
-          : yaziciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dizaynNo: freezed == dizaynNo
-          ? _value.dizaynNo
-          : dizaynNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizliOlustur: freezed == dovizliOlustur
-          ? _value.dovizliOlustur
-          : dovizliOlustur // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      internetFaturasi: freezed == internetFaturasi
-          ? _value.internetFaturasi
-          : internetFaturasi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      eirsBilgi: freezed == eirsBilgi
-          ? _value.eirsBilgi
-          : eirsBilgi // ignore: cast_nullable_to_non_nullable
-              as EIrsaliyeBilgiModel?,
-      dizaynAdi: freezed == dizaynAdi
-          ? _value.dizaynAdi
-          : dizaynAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$EBelgeListesiModelImpl(
+        ebelgeTuru: freezed == ebelgeTuru
+            ? _value.ebelgeTuru
+            : ebelgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        inckeyno: freezed == inckeyno
+            ? _value.inckeyno
+            : inckeyno // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        efatmasInckeyno: freezed == efatmasInckeyno
+            ? _value.efatmasInckeyno
+            : efatmasInckeyno // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        gelen: freezed == gelen
+            ? _value.gelen
+            : gelen // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        taslak: freezed == taslak
+            ? _value.taslak
+            : taslak // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gonderildi: freezed == gonderildi
+            ? _value.gonderildi
+            : gonderildi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        faturaIslendi: freezed == faturaIslendi
+            ? _value.faturaIslendi
+            : faturaIslendi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dekontIslendi: freezed == dekontIslendi
+            ? _value.dekontIslendi
+            : dekontIslendi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        iptalEdildi: freezed == iptalEdildi
+            ? _value.iptalEdildi
+            : iptalEdildi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cevapKodu: freezed == cevapKodu
+            ? _value.cevapKodu
+            : cevapKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        cevapAciklama: freezed == cevapAciklama
+            ? _value.cevapAciklama
+            : cevapAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        basariylaGonderildi: freezed == basariylaGonderildi
+            ? _value.basariylaGonderildi
+            : basariylaGonderildi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        onayDurumKodu: freezed == onayDurumKodu
+            ? _value.onayDurumKodu
+            : onayDurumKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        onayAciklama: freezed == onayAciklama
+            ? _value.onayAciklama
+            : onayAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        resmiBelgeNo: freezed == resmiBelgeNo
+            ? _value.resmiBelgeNo
+            : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        kayittarihi: freezed == kayittarihi
+            ? _value.kayittarihi
+            : kayittarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        belgeTuru: freezed == belgeTuru
+            ? _value.belgeTuru
+            : belgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariAdi: freezed == cariAdi
+            ? _value.cariAdi
+            : cariAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        vergiNo: freezed == vergiNo
+            ? _value.vergiNo
+            : vergiNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariIlce: freezed == cariIlce
+            ? _value.cariIlce
+            : cariIlce // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariIl: freezed == cariIl
+            ? _value.cariIl
+            : cariIl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dovizKuru: freezed == dovizKuru
+            ? _value.dovizKuru
+            : dovizKuru // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        basimYapildi: freezed == basimYapildi
+            ? _value.basimYapildi
+            : basimYapildi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        genelToplam: freezed == genelToplam
+            ? _value.genelToplam
+            : genelToplam // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        kdvTutari: freezed == kdvTutari
+            ? _value.kdvTutari
+            : kdvTutari // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        senaryo: freezed == senaryo
+            ? _value.senaryo
+            : senaryo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        zarfid: freezed == zarfid
+            ? _value.zarfid
+            : zarfid // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        uuid: freezed == uuid
+            ? _value.uuid
+            : uuid // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        faturaTipi: freezed == faturaTipi
+            ? _value.faturaTipi
+            : faturaTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayityapankul: freezed == kayityapankul
+            ? _value.kayityapankul
+            : kayityapankul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kontrolEdildi: freezed == kontrolEdildi
+            ? _value.kontrolEdildi
+            : kontrolEdildi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayitliCariKodu: freezed == kayitliCariKodu
+            ? _value.kayitliCariKodu
+            : kayitliCariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islenenBelgeNo: freezed == islenenBelgeNo
+            ? _value.islenenBelgeNo
+            : islenenBelgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dovizTipi: freezed == dovizTipi
+            ? _value.dovizTipi
+            : dovizTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        dovizAdi: freezed == dovizAdi
+            ? _value.dovizAdi
+            : dovizAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dovizTutari: freezed == dovizTutari
+            ? _value.dovizTutari
+            : dovizTutari // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        iskontoTutari: freezed == iskontoTutari
+            ? _value.iskontoTutari
+            : iskontoTutari // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        dekontJson: freezed == dekontJson
+            ? _value.dekontJson
+            : dekontJson // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kontrolAciklama: freezed == kontrolAciklama
+            ? _value.kontrolAciklama
+            : kontrolAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dizaynYolu: freezed == dizaynYolu
+            ? _value.dizaynYolu
+            : dizaynYolu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gondermeDurumu: freezed == gondermeDurumu
+            ? _value.gondermeDurumu
+            : gondermeDurumu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        zarfSilinebilir: freezed == zarfSilinebilir
+            ? _value.zarfSilinebilir
+            : zarfSilinebilir // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        iptalTarihi: freezed == iptalTarihi
+            ? _value.iptalTarihi
+            : iptalTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        eposta: freezed == eposta
+            ? _value.eposta
+            : eposta // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        eBelgeTuru: freezed == eBelgeTuru
+            ? _value.eBelgeTuru
+            : eBelgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        eFatMasId: freezed == eFatMasId
+            ? _value.eFatMasId
+            : eFatMasId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        eIrsMasId: freezed == eIrsMasId
+            ? _value.eIrsMasId
+            : eIrsMasId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kayitTarihi: freezed == kayitTarihi
+            ? _value.kayitTarihi
+            : kayitTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        eFaturaIptalTarihi: freezed == eFaturaIptalTarihi
+            ? _value.eFaturaIptalTarihi
+            : eFaturaIptalTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        ilce: freezed == ilce
+            ? _value.ilce
+            : ilce // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sehir: freezed == sehir
+            ? _value.sehir
+            : sehir // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayitYapanKul: freezed == kayitYapanKul
+            ? _value.kayitYapanKul
+            : kayitYapanKul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gelenEFatKontrolEdildi: freezed == gelenEFatKontrolEdildi
+            ? _value.gelenEFatKontrolEdildi
+            : gelenEFatKontrolEdildi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gelenEFatKontrolAciklama: freezed == gelenEFatKontrolAciklama
+            ? _value.gelenEFatKontrolAciklama
+            : gelenEFatKontrolAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gonderimSekliEPosta: freezed == gonderimSekliEPosta
+            ? _value.gonderimSekliEPosta
+            : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        ePosta: freezed == ePosta
+            ? _value.ePosta
+            : ePosta // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kutuTuru: freezed == kutuTuru
+            ? _value.kutuTuru
+            : kutuTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        senaryoTipi: freezed == senaryoTipi
+            ? _value.senaryoTipi
+            : senaryoTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kopyaSayisi: freezed == kopyaSayisi
+            ? _value.kopyaSayisi
+            : kopyaSayisi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        yaziciAdi: freezed == yaziciAdi
+            ? _value.yaziciAdi
+            : yaziciAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dizaynNo: freezed == dizaynNo
+            ? _value.dizaynNo
+            : dizaynNo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        dovizliOlustur: freezed == dovizliOlustur
+            ? _value.dovizliOlustur
+            : dovizliOlustur // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        internetFaturasi: freezed == internetFaturasi
+            ? _value.internetFaturasi
+            : internetFaturasi // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        eirsBilgi: freezed == eirsBilgi
+            ? _value.eirsBilgi
+            : eirsBilgi // ignore: cast_nullable_to_non_nullable
+                  as EIrsaliyeBilgiModel?,
+        dizaynAdi: freezed == dizaynAdi
+            ? _value.dizaynAdi
+            : dizaynAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
-  _$EBelgeListesiModelImpl(
-      {this.ebelgeTuru,
-      this.inckeyno,
-      this.efatmasInckeyno,
-      this.gelen,
-      this.taslak,
-      this.gonderildi,
-      this.faturaIslendi,
-      this.dekontIslendi,
-      this.iptalEdildi,
-      this.cevapKodu,
-      this.cevapAciklama,
-      this.basariylaGonderildi,
-      this.onayDurumKodu,
-      this.onayAciklama,
-      this.resmiBelgeNo,
-      this.tarih,
-      this.kayittarihi,
-      this.belgeTuru,
-      this.cariAdi,
-      this.vergiNo,
-      this.cariIlce,
-      this.cariIl,
-      this.dovizKuru,
-      this.basimYapildi,
-      this.genelToplam,
-      this.kdvTutari,
-      this.senaryo,
-      this.zarfid,
-      this.uuid,
-      this.faturaTipi,
-      this.kayityapankul,
-      this.kontrolEdildi,
-      this.kayitliCariKodu,
-      this.belgeNo,
-      this.islenenBelgeNo,
-      this.cariKodu,
-      this.dovizTipi,
-      this.dovizAdi,
-      this.dovizTutari,
-      this.iskontoTutari,
-      this.dekontJson,
-      this.kontrolAciklama,
-      this.dizaynYolu,
-      this.gondermeDurumu,
-      this.zarfSilinebilir,
-      this.iptalTarihi,
-      this.eposta,
-      this.eBelgeTuru,
-      this.id,
-      this.eFatMasId,
-      this.eIrsMasId,
-      this.kayitTarihi,
-      this.eFaturaIptalTarihi,
-      this.ilce,
-      this.sehir,
-      this.kayitYapanKul,
-      this.gelenEFatKontrolEdildi,
-      this.gelenEFatKontrolAciklama,
-      this.gonderimSekliEPosta,
-      this.ePosta,
-      this.islemKodu,
-      this.kutuTuru,
-      this.aciklama,
-      this.senaryoTipi,
-      this.kopyaSayisi,
-      this.yaziciAdi,
-      this.dizaynNo,
-      this.dovizliOlustur,
-      this.internetFaturasi,
-      this.eirsBilgi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.dizaynAdi})
-      : super._();
+  _$EBelgeListesiModelImpl({
+    this.ebelgeTuru,
+    this.inckeyno,
+    this.efatmasInckeyno,
+    this.gelen,
+    this.taslak,
+    this.gonderildi,
+    this.faturaIslendi,
+    this.dekontIslendi,
+    this.iptalEdildi,
+    this.cevapKodu,
+    this.cevapAciklama,
+    this.basariylaGonderildi,
+    this.onayDurumKodu,
+    this.onayAciklama,
+    this.resmiBelgeNo,
+    this.tarih,
+    this.kayittarihi,
+    this.belgeTuru,
+    this.cariAdi,
+    this.vergiNo,
+    this.cariIlce,
+    this.cariIl,
+    this.dovizKuru,
+    this.basimYapildi,
+    this.genelToplam,
+    this.kdvTutari,
+    this.senaryo,
+    this.zarfid,
+    this.uuid,
+    this.faturaTipi,
+    this.kayityapankul,
+    this.kontrolEdildi,
+    this.kayitliCariKodu,
+    this.belgeNo,
+    this.islenenBelgeNo,
+    this.cariKodu,
+    this.dovizTipi,
+    this.dovizAdi,
+    this.dovizTutari,
+    this.iskontoTutari,
+    this.dekontJson,
+    this.kontrolAciklama,
+    this.dizaynYolu,
+    this.gondermeDurumu,
+    this.zarfSilinebilir,
+    this.iptalTarihi,
+    this.eposta,
+    this.eBelgeTuru,
+    this.id,
+    this.eFatMasId,
+    this.eIrsMasId,
+    this.kayitTarihi,
+    this.eFaturaIptalTarihi,
+    this.ilce,
+    this.sehir,
+    this.kayitYapanKul,
+    this.gelenEFatKontrolEdildi,
+    this.gelenEFatKontrolAciklama,
+    this.gonderimSekliEPosta,
+    this.ePosta,
+    this.islemKodu,
+    this.kutuTuru,
+    this.aciklama,
+    this.senaryoTipi,
+    this.kopyaSayisi,
+    this.yaziciAdi,
+    this.dizaynNo,
+    this.dovizliOlustur,
+    this.internetFaturasi,
+    this.eirsBilgi,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.dizaynAdi,
+  }) : super._();
 
-  factory _$EBelgeListesiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EBelgeListesiModelImplFromJson(json);
+  factory _$EBelgeListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$EBelgeListesiModelImplFromJson(json);
 
   @override
   String? ebelgeTuru;
@@ -1341,95 +1340,91 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>
-      __$$EBelgeListesiModelImplCopyWithImpl<_$EBelgeListesiModelImpl>(
-          this, _$identity);
+      __$$EBelgeListesiModelImplCopyWithImpl<_$EBelgeListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EBelgeListesiModelImplToJson(
-      this,
-    );
+    return _$$EBelgeListesiModelImplToJson(this);
   }
 }
 
 abstract class _EBelgeListesiModel extends EBelgeListesiModel {
-  factory _EBelgeListesiModel(
-      {String? ebelgeTuru,
-      int? inckeyno,
-      int? efatmasInckeyno,
-      String? gelen,
-      String? taslak,
-      String? gonderildi,
-      String? faturaIslendi,
-      String? dekontIslendi,
-      String? iptalEdildi,
-      int? cevapKodu,
-      String? cevapAciklama,
-      String? basariylaGonderildi,
-      String? onayDurumKodu,
-      String? onayAciklama,
-      String? resmiBelgeNo,
-      DateTime? tarih,
-      DateTime? kayittarihi,
-      String? belgeTuru,
-      String? cariAdi,
-      String? vergiNo,
-      String? cariIlce,
-      String? cariIl,
-      double? dovizKuru,
-      String? basimYapildi,
-      double? genelToplam,
-      double? kdvTutari,
-      String? senaryo,
-      String? zarfid,
-      String? uuid,
-      String? faturaTipi,
-      String? kayityapankul,
-      String? kontrolEdildi,
-      String? kayitliCariKodu,
-      String? belgeNo,
-      String? islenenBelgeNo,
-      String? cariKodu,
-      int? dovizTipi,
-      String? dovizAdi,
-      double? dovizTutari,
-      double? iskontoTutari,
-      String? dekontJson,
-      String? kontrolAciklama,
-      String? dizaynYolu,
-      String? gondermeDurumu,
-      String? zarfSilinebilir,
-      DateTime? iptalTarihi,
-      String? eposta,
-      String? eBelgeTuru,
-      int? id,
-      int? eFatMasId,
-      int? eIrsMasId,
-      DateTime? kayitTarihi,
-      DateTime? eFaturaIptalTarihi,
-      String? ilce,
-      String? sehir,
-      String? kayitYapanKul,
-      String? gelenEFatKontrolEdildi,
-      String? gelenEFatKontrolAciklama,
-      bool? gonderimSekliEPosta,
-      String? ePosta,
-      int? islemKodu,
-      String? kutuTuru,
-      String? aciklama,
-      String? senaryoTipi,
-      int? kopyaSayisi,
-      String? yaziciAdi,
-      int? dizaynNo,
-      bool? dovizliOlustur,
-      bool? internetFaturasi,
-      EIrsaliyeBilgiModel? eirsBilgi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? dizaynAdi}) = _$EBelgeListesiModelImpl;
+  factory _EBelgeListesiModel({
+    String? ebelgeTuru,
+    int? inckeyno,
+    int? efatmasInckeyno,
+    String? gelen,
+    String? taslak,
+    String? gonderildi,
+    String? faturaIslendi,
+    String? dekontIslendi,
+    String? iptalEdildi,
+    int? cevapKodu,
+    String? cevapAciklama,
+    String? basariylaGonderildi,
+    String? onayDurumKodu,
+    String? onayAciklama,
+    String? resmiBelgeNo,
+    DateTime? tarih,
+    DateTime? kayittarihi,
+    String? belgeTuru,
+    String? cariAdi,
+    String? vergiNo,
+    String? cariIlce,
+    String? cariIl,
+    double? dovizKuru,
+    String? basimYapildi,
+    double? genelToplam,
+    double? kdvTutari,
+    String? senaryo,
+    String? zarfid,
+    String? uuid,
+    String? faturaTipi,
+    String? kayityapankul,
+    String? kontrolEdildi,
+    String? kayitliCariKodu,
+    String? belgeNo,
+    String? islenenBelgeNo,
+    String? cariKodu,
+    int? dovizTipi,
+    String? dovizAdi,
+    double? dovizTutari,
+    double? iskontoTutari,
+    String? dekontJson,
+    String? kontrolAciklama,
+    String? dizaynYolu,
+    String? gondermeDurumu,
+    String? zarfSilinebilir,
+    DateTime? iptalTarihi,
+    String? eposta,
+    String? eBelgeTuru,
+    int? id,
+    int? eFatMasId,
+    int? eIrsMasId,
+    DateTime? kayitTarihi,
+    DateTime? eFaturaIptalTarihi,
+    String? ilce,
+    String? sehir,
+    String? kayitYapanKul,
+    String? gelenEFatKontrolEdildi,
+    String? gelenEFatKontrolAciklama,
+    bool? gonderimSekliEPosta,
+    String? ePosta,
+    int? islemKodu,
+    String? kutuTuru,
+    String? aciklama,
+    String? senaryoTipi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? internetFaturasi,
+    EIrsaliyeBilgiModel? eirsBilgi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? dizaynAdi,
+  }) = _$EBelgeListesiModelImpl;
   _EBelgeListesiModel._() : super._();
 
-  factory _EBelgeListesiModel.fromJson(Map<String, dynamic> json) =
-      _$EBelgeListesiModelImpl.fromJson;
+  factory _EBelgeListesiModel.fromJson(Map<String, dynamic> json) = _$EBelgeListesiModelImpl.fromJson;
 
   @override
   String? get ebelgeTuru;
@@ -1651,6 +1646,5 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

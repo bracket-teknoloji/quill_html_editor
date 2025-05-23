@@ -12,7 +12,8 @@ part of 'kullanicilar_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 KullanicilarModel _$KullanicilarModelFromJson(Map<String, dynamic> json) {
   return _KullanicilarModel.fromJson(json);
@@ -29,14 +30,12 @@ mixin _$KullanicilarModel {
   /// Create a copy of KullanicilarModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $KullanicilarModelCopyWith<KullanicilarModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $KullanicilarModelCopyWith<KullanicilarModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KullanicilarModelCopyWith<$Res> {
-  factory $KullanicilarModelCopyWith(
-          KullanicilarModel value, $Res Function(KullanicilarModel) then) =
+  factory $KullanicilarModelCopyWith(KullanicilarModel value, $Res Function(KullanicilarModel) then) =
       _$KullanicilarModelCopyWithImpl<$Res, KullanicilarModel>;
   @useResult
   $Res call({String? kodu, String? adi});
@@ -56,28 +55,26 @@ class _$KullanicilarModelCopyWithImpl<$Res, $Val extends KullanicilarModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? kodu = freezed,
-    Object? adi = freezed,
-  }) {
-    return _then(_value.copyWith(
-      kodu: freezed == kodu
-          ? _value.kodu
-          : kodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      adi: freezed == adi
-          ? _value.adi
-          : adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? kodu = freezed, Object? adi = freezed}) {
+    return _then(
+      _value.copyWith(
+            kodu: freezed == kodu
+                ? _value.kodu
+                : kodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            adi: freezed == adi
+                ? _value.adi
+                : adi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$KullanicilarModelImplCopyWith<$Res>
-    implements $KullanicilarModelCopyWith<$Res> {
-  factory _$$KullanicilarModelImplCopyWith(_$KullanicilarModelImpl value,
-          $Res Function(_$KullanicilarModelImpl) then) =
+abstract class _$$KullanicilarModelImplCopyWith<$Res> implements $KullanicilarModelCopyWith<$Res> {
+  factory _$$KullanicilarModelImplCopyWith(_$KullanicilarModelImpl value, $Res Function(_$KullanicilarModelImpl) then) =
       __$$KullanicilarModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -85,31 +82,28 @@ abstract class _$$KullanicilarModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$KullanicilarModelImplCopyWithImpl<$Res>
-    extends _$KullanicilarModelCopyWithImpl<$Res, _$KullanicilarModelImpl>
+class __$$KullanicilarModelImplCopyWithImpl<$Res> extends _$KullanicilarModelCopyWithImpl<$Res, _$KullanicilarModelImpl>
     implements _$$KullanicilarModelImplCopyWith<$Res> {
-  __$$KullanicilarModelImplCopyWithImpl(_$KullanicilarModelImpl _value,
-      $Res Function(_$KullanicilarModelImpl) _then)
-      : super(_value, _then);
+  __$$KullanicilarModelImplCopyWithImpl(_$KullanicilarModelImpl _value, $Res Function(_$KullanicilarModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of KullanicilarModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? kodu = freezed,
-    Object? adi = freezed,
-  }) {
-    return _then(_$KullanicilarModelImpl(
-      kodu: freezed == kodu
-          ? _value.kodu
-          : kodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      adi: freezed == adi
-          ? _value.adi
-          : adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? kodu = freezed, Object? adi = freezed}) {
+    return _then(
+      _$KullanicilarModelImpl(
+        kodu: freezed == kodu
+            ? _value.kodu
+            : kodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        adi: freezed == adi
+            ? _value.adi
+            : adi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -118,8 +112,7 @@ class __$$KullanicilarModelImplCopyWithImpl<$Res>
 class _$KullanicilarModelImpl extends _KullanicilarModel {
   const _$KullanicilarModelImpl({this.kodu, this.adi}) : super._();
 
-  factory _$KullanicilarModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KullanicilarModelImplFromJson(json);
+  factory _$KullanicilarModelImpl.fromJson(Map<String, dynamic> json) => _$$KullanicilarModelImplFromJson(json);
 
   @override
   final String? kodu;
@@ -132,24 +125,19 @@ class _$KullanicilarModelImpl extends _KullanicilarModel {
   @override
   @pragma('vm:prefer-inline')
   _$$KullanicilarModelImplCopyWith<_$KullanicilarModelImpl> get copyWith =>
-      __$$KullanicilarModelImplCopyWithImpl<_$KullanicilarModelImpl>(
-          this, _$identity);
+      __$$KullanicilarModelImplCopyWithImpl<_$KullanicilarModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KullanicilarModelImplToJson(
-      this,
-    );
+    return _$$KullanicilarModelImplToJson(this);
   }
 }
 
 abstract class _KullanicilarModel extends KullanicilarModel {
-  const factory _KullanicilarModel({final String? kodu, final String? adi}) =
-      _$KullanicilarModelImpl;
+  const factory _KullanicilarModel({final String? kodu, final String? adi}) = _$KullanicilarModelImpl;
   const _KullanicilarModel._() : super._();
 
-  factory _KullanicilarModel.fromJson(Map<String, dynamic> json) =
-      _$KullanicilarModelImpl.fromJson;
+  factory _KullanicilarModel.fromJson(Map<String, dynamic> json) = _$KullanicilarModelImpl.fromJson;
 
   @override
   String? get kodu;
@@ -160,6 +148,5 @@ abstract class _KullanicilarModel extends KullanicilarModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KullanicilarModelImplCopyWith<_$KullanicilarModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$KullanicilarModelImplCopyWith<_$KullanicilarModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

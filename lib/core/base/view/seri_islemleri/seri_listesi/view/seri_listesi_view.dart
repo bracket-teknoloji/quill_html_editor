@@ -52,11 +52,10 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(
-              title: "Seri Listesi",
-              subtitle: viewModel.kalemModel.seriList?.length.toStringIfNotNull ?? "0",
-            ),
+        builder: (_) => AppBarTitle(
+          title: "Seri Listesi",
+          subtitle: viewModel.kalemModel.seriList?.length.toStringIfNotNull ?? "0",
+        ),
       ),
       actions: [
         // IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
@@ -66,8 +65,9 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
               if (viewModel.kalanMiktar == 0) {
                 viewModel.setKalemModel(
                   viewModel.kalemModel.copyWith(
-                    seriList:
-                        viewModel.kalemModel.seriList?.where((element) => ![null, 0].contains(element.miktar)).toList(),
+                    seriList: viewModel.kalemModel.seriList
+                        ?.where((element) => ![null, 0].contains(element.miktar))
+                        .toList(),
                   ),
                 );
                 Get.back(result: viewModel.kalemModel.seriList);
@@ -83,102 +83,93 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Observer(
-          builder:
-              (_) => Text(
-                "Stok Adı: ${viewModel.stokModel?.stokAdi ?? ""}",
-                overflow: TextOverflow.ellipsis,
-              ).paddingAll(UIHelper.lowSize),
+          builder: (_) => Text(
+            "Stok Adı: ${viewModel.stokModel?.stokAdi ?? ""}",
+            overflow: TextOverflow.ellipsis,
+          ).paddingAll(UIHelper.lowSize),
         ),
         Text("Stok Kodu: ${viewModel.kalemModel.stokKodu ?? ""}").paddingAll(UIHelper.lowSize),
         Text("Depo Kodu: ${viewModel.kalemModel.depoKodu ?? 0}").paddingAll(UIHelper.lowSize),
         Observer(
-          builder:
-              (_) =>
-                  viewModel.stokModel?.seriMiktarKadarSor == true
-                      ? const Card(
-                        child: ListTile(
-                          leading: Icon(Icons.info_outline),
-                          title: Text("Her 1 miktar için seri giriniz."),
-                        ),
-                      )
-                      : const SizedBox.shrink(),
+          builder: (_) => viewModel.stokModel?.seriMiktarKadarSor == true
+              ? const Card(
+                  child: ListTile(leading: Icon(Icons.info_outline), title: Text("Her 1 miktar için seri giriniz.")),
+                )
+              : const SizedBox.shrink(),
         ),
         Observer(
-          builder:
-              (_) =>
-                  viewModel.kalanMiktar != 0 || viewModel.kalemModel.seriList.ext.isNullOrEmpty
-                      ? Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: () async {
-                                // ignore: prefer_typing_uninitialized_variables
-                                dynamic result;
-                                if (viewModel.kalemModel.isUsk == true) {
-                                  result = await Get.toNamed(
-                                    "/seriRehberiUSK",
-                                    arguments:
-                                        viewModel.stokModel
-                                          ?..depoKodu = widget.kalemModel.depoKodu
-                                          ..belgeTarihi = widget.kalemModel.tarih,
-                                  );
-                                } else {
-                                  result = await Get.toNamed(
-                                    "/seriRehberi",
-                                    arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu,
-                                  );
-                                }
-                                if (result is! SeriList) return;
-                                final result2 = await Get.toNamed(
-                                  "/seriDetayi",
-                                  arguments: SeriDetayiModel(
-                                    kalanMiktar: viewModel.kalanMiktar,
-                                    hareketMiktari: viewModel.hareketMiktari,
-                                    miktarKadarSor: viewModel.stokModel?.seriMiktarKadarSor,
-                                    seriList: result..seri1 = result.seriNo,
-                                  ),
-                                );
-                                if (result2 is SeriList) {
-                                  viewModel.addSeriList(result2);
-                                }
-                              },
-                              label: const Text("Seri Rehberi"),
-                              icon: const Icon(Icons.safety_divider, size: UIHelper.midSize * 2),
-                            ).paddingAll(UIHelper.lowSize),
-                          ),
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: () async {
-                                final result = await Get.toNamed(
-                                  "/seriDetayi",
-                                  arguments: SeriDetayiModel(
-                                    kalanMiktar: viewModel.kalanMiktar,
-                                    hareketMiktari: viewModel.hareketMiktari,
-                                    miktarKadarSor: viewModel.stokModel?.seriMiktarKadarSor,
-                                  ),
-                                );
-                                if (result is SeriList) {
-                                  viewModel.addSeriList(result);
-                                }
-                              },
-                              label: const Text("Seri Girişi"),
-                              icon: const Icon(Icons.edit_outlined, size: UIHelper.midSize * 2),
-                            ).paddingAll(UIHelper.lowSize),
-                          ),
-                          if ((BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false
-                                  ? viewModel.stokModel?.seriCikistaOtomatikMi
-                                  : viewModel.stokModel?.seriCikistaOtomatikMi) ??
-                              false)
-                            Expanded(
-                              child: ElevatedButton.icon(
-                                onPressed: seriNoUret,
-                                label: const Text("Seri Üret"),
-                                icon: const Icon(Icons.add_outlined, size: UIHelper.midSize * 2),
-                              ).paddingAll(UIHelper.lowSize),
+          builder: (_) => viewModel.kalanMiktar != 0 || viewModel.kalemModel.seriList.ext.isNullOrEmpty
+              ? Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () async {
+                          // ignore: prefer_typing_uninitialized_variables
+                          dynamic result;
+                          if (viewModel.kalemModel.isUsk == true) {
+                            result = await Get.toNamed(
+                              "/seriRehberiUSK",
+                              arguments: viewModel.stokModel
+                                ?..depoKodu = widget.kalemModel.depoKodu
+                                ..belgeTarihi = widget.kalemModel.tarih,
+                            );
+                          } else {
+                            result = await Get.toNamed(
+                              "/seriRehberi",
+                              arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu,
+                            );
+                          }
+                          if (result is! SeriList) return;
+                          final result2 = await Get.toNamed(
+                            "/seriDetayi",
+                            arguments: SeriDetayiModel(
+                              kalanMiktar: viewModel.kalanMiktar,
+                              hareketMiktari: viewModel.hareketMiktari,
+                              miktarKadarSor: viewModel.stokModel?.seriMiktarKadarSor,
+                              seriList: result..seri1 = result.seriNo,
                             ),
-                        ],
-                      )
-                      : const SizedBox.shrink(),
+                          );
+                          if (result2 is SeriList) {
+                            viewModel.addSeriList(result2);
+                          }
+                        },
+                        label: const Text("Seri Rehberi"),
+                        icon: const Icon(Icons.safety_divider, size: UIHelper.midSize * 2),
+                      ).paddingAll(UIHelper.lowSize),
+                    ),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () async {
+                          final result = await Get.toNamed(
+                            "/seriDetayi",
+                            arguments: SeriDetayiModel(
+                              kalanMiktar: viewModel.kalanMiktar,
+                              hareketMiktari: viewModel.hareketMiktari,
+                              miktarKadarSor: viewModel.stokModel?.seriMiktarKadarSor,
+                            ),
+                          );
+                          if (result is SeriList) {
+                            viewModel.addSeriList(result);
+                          }
+                        },
+                        label: const Text("Seri Girişi"),
+                        icon: const Icon(Icons.edit_outlined, size: UIHelper.midSize * 2),
+                      ).paddingAll(UIHelper.lowSize),
+                    ),
+                    if ((BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false
+                            ? viewModel.stokModel?.seriCikistaOtomatikMi
+                            : viewModel.stokModel?.seriCikistaOtomatikMi) ??
+                        false)
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: seriNoUret,
+                          label: const Text("Seri Üret"),
+                          icon: const Icon(Icons.add_outlined, size: UIHelper.midSize * 2),
+                        ).paddingAll(UIHelper.lowSize),
+                      ),
+                  ],
+                )
+              : const SizedBox.shrink(),
         ),
         Expanded(
           child: Observer(
@@ -270,10 +261,16 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
     isScrolledDown: true,
     children: [
       FooterButton(
-        children: [const Text("Hareket Miktarı"), Observer(builder: (_) => Text(viewModel.hareketMiktari.toString()))],
+        children: [
+          const Text("Hareket Miktarı"),
+          Observer(builder: (_) => Text(viewModel.hareketMiktari.toString())),
+        ],
       ),
       FooterButton(
-        children: [const Text("Kalan Miktar"), Observer(builder: (_) => Text(viewModel.kalanMiktar.toString()))],
+        children: [
+          const Text("Kalan Miktar"),
+          Observer(builder: (_) => Text(viewModel.kalanMiktar.toString())),
+        ],
       ),
     ],
   );

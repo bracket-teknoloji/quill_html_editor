@@ -205,11 +205,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
                   text: "Kapalılar Hariç",
                   isVertical: true,
                   child: Observer(
-                    builder:
-                        (_) => Switch.adaptive(
-                          value: viewModel.kapaliMi,
-                          onChanged: (value) => viewModel.setKapali(value ? "E" : "H"),
-                        ),
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.kapaliMi,
+                      onChanged: (value) => viewModel.setKapali(value ? "E" : "H"),
+                    ),
                   ),
                 ),
               ),
@@ -218,11 +217,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
                   text: "Sadece Kalanlar",
                   isVertical: true,
                   child: Observer(
-                    builder:
-                        (_) => Switch.adaptive(
-                          value: viewModel.durum,
-                          onChanged: (value) => viewModel.setDurum(value ? "K" : null),
-                        ),
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.durum,
+                      onChanged: (value) => viewModel.setDurum(value ? "K" : null),
+                    ),
                   ),
                 ),
               ),

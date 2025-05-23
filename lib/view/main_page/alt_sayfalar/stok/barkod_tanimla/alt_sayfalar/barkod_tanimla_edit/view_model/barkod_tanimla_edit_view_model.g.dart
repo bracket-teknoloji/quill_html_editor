@@ -9,8 +9,7 @@ part of 'barkod_tanimla_edit_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_BarkodTanimlaEditViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(name: '_BarkodTanimlaEditViewModelBase.model', context: context);
 
   @override
   BarkodTanimlaKayitlariModel get model {
@@ -25,31 +24,30 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
     });
   }
 
-  late final _$sendDataAsyncAction =
-      AsyncAction('_BarkodTanimlaEditViewModelBase.sendData', context: context);
+  late final _$sendDataAsyncAction = AsyncAction('_BarkodTanimlaEditViewModelBase.sendData', context: context);
 
   @override
   Future<GenericResponseModel<BarkodTanimlaKayitlariModel>> sendData() {
     return _$sendDataAsyncAction.run(() => super.sendData());
   }
 
-  late final _$getBarkodAsyncAction = AsyncAction(
-      '_BarkodTanimlaEditViewModelBase.getBarkod',
-      context: context);
+  late final _$getBarkodAsyncAction = AsyncAction('_BarkodTanimlaEditViewModelBase.getBarkod', context: context);
 
   @override
   Future<GenericResponseModel<StokOlcuBirimleriModel>> getBarkod() {
     return _$getBarkodAsyncAction.run(() => super.getBarkod());
   }
 
-  late final _$_BarkodTanimlaEditViewModelBaseActionController =
-      ActionController(
-          name: '_BarkodTanimlaEditViewModelBase', context: context);
+  late final _$_BarkodTanimlaEditViewModelBaseActionController = ActionController(
+    name: '_BarkodTanimlaEditViewModelBase',
+    context: context,
+  );
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController
-        .startAction(name: '_BarkodTanimlaEditViewModelBase.setStokKodu');
+    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController.startAction(
+      name: '_BarkodTanimlaEditViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(value);
     } finally {
@@ -59,8 +57,9 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
 
   @override
   void setBarkod(String? value) {
-    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController
-        .startAction(name: '_BarkodTanimlaEditViewModelBase.setBarkod');
+    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController.startAction(
+      name: '_BarkodTanimlaEditViewModelBase.setBarkod',
+    );
     try {
       return super.setBarkod(value);
     } finally {
@@ -70,8 +69,9 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
 
   @override
   void setBarkodTipi(BarkodTipiEnum? value) {
-    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController
-        .startAction(name: '_BarkodTanimlaEditViewModelBase.setBarkodTipi');
+    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController.startAction(
+      name: '_BarkodTanimlaEditViewModelBase.setBarkodTipi',
+    );
     try {
       return super.setBarkodTipi(value);
     } finally {
@@ -81,8 +81,9 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
 
   @override
   void setBirim(int? value) {
-    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController
-        .startAction(name: '_BarkodTanimlaEditViewModelBase.setBirim');
+    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController.startAction(
+      name: '_BarkodTanimlaEditViewModelBase.setBirim',
+    );
     try {
       return super.setBirim(value);
     } finally {
@@ -92,8 +93,9 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController
-        .startAction(name: '_BarkodTanimlaEditViewModelBase.setAciklama');
+    final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController.startAction(
+      name: '_BarkodTanimlaEditViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {

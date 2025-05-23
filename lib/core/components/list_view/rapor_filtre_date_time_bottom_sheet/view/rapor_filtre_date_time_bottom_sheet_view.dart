@@ -102,32 +102,30 @@ final class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFilt
             controller: scrollController,
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.childrenTitleList.length,
-            itemBuilder:
-                (context, listTileIndex) => RadioMenuButton(
-                  style: ButtonStyle(
-                    // padding: MaterialStateProperty.all(EdgeInsets.zero),
-                    shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(UIHelper.midSize),
-                        side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
-                      ),
-                    ),
+            itemBuilder: (context, listTileIndex) => RadioMenuButton(
+              style: ButtonStyle(
+                // padding: MaterialStateProperty.all(EdgeInsets.zero),
+                shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(UIHelper.midSize),
+                    side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
                   ),
-                  value: listTileIndex,
-                  groupValue: viewModel.groupValue,
-                  onChanged: (index) {
-                    widget.baslangicTarihiController.text =
-                        viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull ?? "";
-                    widget.bitisTarihiController.text =
-                        index != 0
-                            ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull ?? ""
-                            : "";
-                    widget.filterOnChanged(index);
-                    viewModel.changeGroupValue(index ?? 0);
-                    setState(() {});
-                  },
-                  child: Text(viewModel.childrenTitleList[listTileIndex]),
-                ).paddingOnly(right: UIHelper.lowSize),
+                ),
+              ),
+              value: listTileIndex,
+              groupValue: viewModel.groupValue,
+              onChanged: (index) {
+                widget.baslangicTarihiController.text =
+                    viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull ?? "";
+                widget.bitisTarihiController.text = index != 0
+                    ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull ?? ""
+                    : "";
+                widget.filterOnChanged(index);
+                viewModel.changeGroupValue(index ?? 0);
+                setState(() {});
+              },
+              child: Text(viewModel.childrenTitleList[listTileIndex]),
+            ).paddingOnly(right: UIHelper.lowSize),
           ),
         ).paddingAll(UIHelper.lowSize).paddingOnly(bottom: UIHelper.lowSize),
         Row(children: children2.map((e) => Expanded(child: e)).toList()),
@@ -138,26 +136,23 @@ final class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFilt
   Future<void> getDate(bool isBaslangic) async {
     final result = await showDatePicker(
       context: context,
-      initialDate:
-          isBaslangic
-              ? (widget.baslangicTarihiController.text != ""
-                  ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY()
-                  : DateTime.now())
-              : (widget.bitisTarihiController.text != ""
-                  ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY()
-                  : DateTime.now()),
-      firstDate:
-          (isBaslangic
-              ? DateTime(2000)
-              : (widget.baslangicTarihiController.text != ""
-                  ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now()
-                  : DateTime.now())),
-      lastDate:
-          (isBaslangic
-              ? (widget.bitisTarihiController.text != ""
-                  ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now()
-                  : DateTime.now())
-              : DateTime.now()),
+      initialDate: isBaslangic
+          ? (widget.baslangicTarihiController.text != ""
+                ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY()
+                : DateTime.now())
+          : (widget.bitisTarihiController.text != ""
+                ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY()
+                : DateTime.now()),
+      firstDate: (isBaslangic
+          ? DateTime(2000)
+          : (widget.baslangicTarihiController.text != ""
+                ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now()
+                : DateTime.now())),
+      lastDate: (isBaslangic
+          ? (widget.bitisTarihiController.text != ""
+                ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now()
+                : DateTime.now())
+          : DateTime.now()),
     );
     if (result is DateTime) {
       isBaslangic

@@ -49,18 +49,17 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   //* Computed
   @computed
-  ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi =>
-      searchText != null
-          ? kasaIslemleriListesi
-              ?.where(
-                (element) =>
-                    (element.belgeNo?.contains(searchText ?? "") ?? false) ||
-                    (element.cariAdi?.contains(searchText ?? "") ?? false) ||
-                    (element.cariKodu?.contains(searchText ?? "") ?? false),
-              )
-              .toList()
-              .asObservable()
-          : kasaIslemleriListesi;
+  ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi => searchText != null
+      ? kasaIslemleriListesi
+            ?.where(
+              (element) =>
+                  (element.belgeNo?.contains(searchText ?? "") ?? false) ||
+                  (element.cariAdi?.contains(searchText ?? "") ?? false) ||
+                  (element.cariKodu?.contains(searchText ?? "") ?? false),
+            )
+            .toList()
+            .asObservable()
+      : kasaIslemleriListesi;
 
   @computed
   bool get getAnyFilter =>
@@ -148,10 +147,9 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
     if (result.isSuccess) {
       final List<KasaIslemleriModel> list = result.dataList;
       if ((kasaIslemleriRequestModel.sayfa ?? 0) < 2) {
-        paramData =
-            result.paramData
-                ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
-                .asObservable();
+        paramData = result.paramData
+            ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+            .asObservable();
         setKasaIslemleriListesi(list);
       } else {
         addKasaIslemleriListesi(list);

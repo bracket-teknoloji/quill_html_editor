@@ -27,16 +27,15 @@ abstract class _HizliTahsilatKayitlariViewModelBase
   bool isSearchBarOpen = false;
 
   @computed
-  ObservableList<BankaHareketleriModel>? get filteredObservableList =>
-      observableList
-          ?.where(
-            (element) =>
-                (element.cariAdi?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
-                (element.cariKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
-                (element.belgeNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
-          )
-          .toList()
-          .asObservable();
+  ObservableList<BankaHareketleriModel>? get filteredObservableList => observableList
+      ?.where(
+        (element) =>
+            (element.cariAdi?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
+            (element.cariKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
+            (element.belgeNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
+      )
+      .toList()
+      .asObservable();
 
   @override
   @action

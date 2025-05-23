@@ -76,22 +76,23 @@ final class _StokEkstreViewState extends BaseState<StokEkstreView> {
             },
           ),
           Observer(
-            builder:
-                (_) => ElevatedButton(
-                  onPressed: () {
-                    if (viewModel.pdfModel.dicParams?.cariKodu == null) {
-                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                    } else {
-                      viewModel.pdfModel.dicParams?.bastar =
-                          baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
-                      viewModel.pdfModel.dicParams?.bittar =
-                          bitisTarihiController.text != "" ? bitisTarihiController.text : null;
-                      viewModel.setFuture();
-                      Get.back();
-                    }
-                  },
-                  child: Text(loc.generalStrings.apply),
-                ).paddingAll(UIHelper.lowSize),
+            builder: (_) => ElevatedButton(
+              onPressed: () {
+                if (viewModel.pdfModel.dicParams?.cariKodu == null) {
+                  dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                } else {
+                  viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != ""
+                      ? baslangicTarihiController.text
+                      : null;
+                  viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != ""
+                      ? bitisTarihiController.text
+                      : null;
+                  viewModel.setFuture();
+                  Get.back();
+                }
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),

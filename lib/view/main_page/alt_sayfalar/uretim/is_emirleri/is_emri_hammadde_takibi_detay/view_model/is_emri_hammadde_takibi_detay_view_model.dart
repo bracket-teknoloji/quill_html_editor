@@ -85,8 +85,9 @@ abstract class _IsEmriHammaddeTakibiDetayViewModelBase
       path: ApiUrls.isemriHammaddeTakipIslem,
       bodyModel: IsEmriHammaddeTakibiDetayModel(),
       showLoading: true,
-      queryParameters:
-          requestModel.copyWith(barcode: model.referanslar?.firstOrNull?.id.toStringIfNotNull, islemKodu: 3).toJson(),
+      queryParameters: requestModel
+          .copyWith(barcode: model.referanslar?.firstOrNull?.id.toStringIfNotNull, islemKodu: 3)
+          .toJson(),
     );
     return result.isSuccess;
   }

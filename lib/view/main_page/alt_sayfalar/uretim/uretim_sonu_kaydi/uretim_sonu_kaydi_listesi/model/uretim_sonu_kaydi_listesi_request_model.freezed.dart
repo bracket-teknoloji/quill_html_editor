@@ -12,10 +12,10 @@ part of 'uretim_sonu_kaydi_listesi_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-UretimSonuKaydiListesiRequestModel _$UretimSonuKaydiListesiRequestModelFromJson(
-    Map<String, dynamic> json) {
+UretimSonuKaydiListesiRequestModel _$UretimSonuKaydiListesiRequestModelFromJson(Map<String, dynamic> json) {
   return _UretimSonuKaydiListesiRequestModel.fromJson(json);
 }
 
@@ -36,26 +36,22 @@ mixin _$UretimSonuKaydiListesiRequestModel {
   /// Create a copy of UretimSonuKaydiListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UretimSonuKaydiListesiRequestModelCopyWith<
-          UretimSonuKaydiListesiRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $UretimSonuKaydiListesiRequestModelCopyWith<UretimSonuKaydiListesiRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UretimSonuKaydiListesiRequestModelCopyWith<$Res> {
   factory $UretimSonuKaydiListesiRequestModelCopyWith(
-          UretimSonuKaydiListesiRequestModel value,
-          $Res Function(UretimSonuKaydiListesiRequestModel) then) =
-      _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
-          UretimSonuKaydiListesiRequestModel>;
+    UretimSonuKaydiListesiRequestModel value,
+    $Res Function(UretimSonuKaydiListesiRequestModel) then,
+  ) = _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res, UretimSonuKaydiListesiRequestModel>;
   @useResult
-  $Res call(
-      {int? sayfa, String? ekranTipi, String? belgeNo, String? searchText});
+  $Res call({int? sayfa, String? ekranTipi, String? belgeNo, String? searchText});
 }
 
 /// @nodoc
-class _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
-        $Val extends UretimSonuKaydiListesiRequestModel>
+class _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res, $Val extends UretimSonuKaydiListesiRequestModel>
     implements $UretimSonuKaydiListesiRequestModelCopyWith<$Res> {
   _$UretimSonuKaydiListesiRequestModelCopyWithImpl(this._value, this._then);
 
@@ -74,24 +70,27 @@ class _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
     Object? belgeNo = freezed,
     Object? searchText = freezed,
   }) {
-    return _then(_value.copyWith(
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            sayfa: freezed == sayfa
+                ? _value.sayfa
+                : sayfa // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            searchText: freezed == searchText
+                ? _value.searchText
+                : searchText // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -99,24 +98,22 @@ class _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
 abstract class _$$UretimSonuKaydiListesiRequestModelImplCopyWith<$Res>
     implements $UretimSonuKaydiListesiRequestModelCopyWith<$Res> {
   factory _$$UretimSonuKaydiListesiRequestModelImplCopyWith(
-          _$UretimSonuKaydiListesiRequestModelImpl value,
-          $Res Function(_$UretimSonuKaydiListesiRequestModelImpl) then) =
-      __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>;
+    _$UretimSonuKaydiListesiRequestModelImpl value,
+    $Res Function(_$UretimSonuKaydiListesiRequestModelImpl) then,
+  ) = __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? sayfa, String? ekranTipi, String? belgeNo, String? searchText});
+  $Res call({int? sayfa, String? ekranTipi, String? belgeNo, String? searchText});
 }
 
 /// @nodoc
 class __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>
-    extends _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
-        _$UretimSonuKaydiListesiRequestModelImpl>
+    extends _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res, _$UretimSonuKaydiListesiRequestModelImpl>
     implements _$$UretimSonuKaydiListesiRequestModelImplCopyWith<$Res> {
   __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl(
-      _$UretimSonuKaydiListesiRequestModelImpl _value,
-      $Res Function(_$UretimSonuKaydiListesiRequestModelImpl) _then)
-      : super(_value, _then);
+    _$UretimSonuKaydiListesiRequestModelImpl _value,
+    $Res Function(_$UretimSonuKaydiListesiRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UretimSonuKaydiListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -128,37 +125,36 @@ class __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>
     Object? belgeNo = freezed,
     Object? searchText = freezed,
   }) {
-    return _then(_$UretimSonuKaydiListesiRequestModelImpl(
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$UretimSonuKaydiListesiRequestModelImpl(
+        sayfa: freezed == sayfa
+            ? _value.sayfa
+            : sayfa // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        searchText: freezed == searchText
+            ? _value.searchText
+            : searchText // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$UretimSonuKaydiListesiRequestModelImpl
-    implements _UretimSonuKaydiListesiRequestModel {
-  _$UretimSonuKaydiListesiRequestModelImpl(
-      {this.sayfa, this.ekranTipi, this.belgeNo, this.searchText});
+class _$UretimSonuKaydiListesiRequestModelImpl implements _UretimSonuKaydiListesiRequestModel {
+  _$UretimSonuKaydiListesiRequestModelImpl({this.sayfa, this.ekranTipi, this.belgeNo, this.searchText});
 
-  factory _$UretimSonuKaydiListesiRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$UretimSonuKaydiListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UretimSonuKaydiListesiRequestModelImplFromJson(json);
 
   @override
@@ -175,29 +171,23 @@ class _$UretimSonuKaydiListesiRequestModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UretimSonuKaydiListesiRequestModelImplCopyWith<
-          _$UretimSonuKaydiListesiRequestModelImpl>
-      get copyWith => __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<
-          _$UretimSonuKaydiListesiRequestModelImpl>(this, _$identity);
+  _$$UretimSonuKaydiListesiRequestModelImplCopyWith<_$UretimSonuKaydiListesiRequestModelImpl> get copyWith =>
+      __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<_$UretimSonuKaydiListesiRequestModelImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UretimSonuKaydiListesiRequestModelImplToJson(
-      this,
-    );
+    return _$$UretimSonuKaydiListesiRequestModelImplToJson(this);
   }
 }
 
-abstract class _UretimSonuKaydiListesiRequestModel
-    implements UretimSonuKaydiListesiRequestModel {
-  factory _UretimSonuKaydiListesiRequestModel(
-      {int? sayfa,
-      String? ekranTipi,
-      String? belgeNo,
-      String? searchText}) = _$UretimSonuKaydiListesiRequestModelImpl;
+abstract class _UretimSonuKaydiListesiRequestModel implements UretimSonuKaydiListesiRequestModel {
+  factory _UretimSonuKaydiListesiRequestModel({int? sayfa, String? ekranTipi, String? belgeNo, String? searchText}) =
+      _$UretimSonuKaydiListesiRequestModelImpl;
 
-  factory _UretimSonuKaydiListesiRequestModel.fromJson(
-          Map<String, dynamic> json) =
+  factory _UretimSonuKaydiListesiRequestModel.fromJson(Map<String, dynamic> json) =
       _$UretimSonuKaydiListesiRequestModelImpl.fromJson;
 
   @override
@@ -217,7 +207,6 @@ abstract class _UretimSonuKaydiListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UretimSonuKaydiListesiRequestModelImplCopyWith<
-          _$UretimSonuKaydiListesiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$UretimSonuKaydiListesiRequestModelImplCopyWith<_$UretimSonuKaydiListesiRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

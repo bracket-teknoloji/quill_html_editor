@@ -12,10 +12,10 @@ part of 'cek_senet_evrak_ekle_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-CekSenetEvrakEkleModel _$CekSenetEvrakEkleModelFromJson(
-    Map<String, dynamic> json) {
+CekSenetEvrakEkleModel _$CekSenetEvrakEkleModelFromJson(Map<String, dynamic> json) {
   return _CekSenetEvrakEkleModel.fromJson(json);
 }
 
@@ -40,28 +40,19 @@ mixin _$CekSenetEvrakEkleModel {
   /// Create a copy of CekSenetEvrakEkleModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CekSenetEvrakEkleModelCopyWith<CekSenetEvrakEkleModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CekSenetEvrakEkleModelCopyWith<CekSenetEvrakEkleModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetEvrakEkleModelCopyWith<$Res> {
-  factory $CekSenetEvrakEkleModelCopyWith(CekSenetEvrakEkleModel value,
-          $Res Function(CekSenetEvrakEkleModel) then) =
+  factory $CekSenetEvrakEkleModelCopyWith(CekSenetEvrakEkleModel value, $Res Function(CekSenetEvrakEkleModel) then) =
       _$CekSenetEvrakEkleModelCopyWithImpl<$Res, CekSenetEvrakEkleModel>;
   @useResult
-  $Res call(
-      {String? aciklama,
-      String? base64Data,
-      String? belgeNo,
-      String? belgeTipi,
-      int? boyutByte,
-      int? islemKodu});
+  $Res call({String? aciklama, String? base64Data, String? belgeNo, String? belgeTipi, int? boyutByte, int? islemKodu});
 }
 
 /// @nodoc
-class _$CekSenetEvrakEkleModelCopyWithImpl<$Res,
-        $Val extends CekSenetEvrakEkleModel>
+class _$CekSenetEvrakEkleModelCopyWithImpl<$Res, $Val extends CekSenetEvrakEkleModel>
     implements $CekSenetEvrakEkleModelCopyWith<$Res> {
   _$CekSenetEvrakEkleModelCopyWithImpl(this._value, this._then);
 
@@ -82,62 +73,57 @@ class _$CekSenetEvrakEkleModelCopyWithImpl<$Res,
     Object? boyutByte = freezed,
     Object? islemKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      base64Data: freezed == base64Data
-          ? _value.base64Data
-          : base64Data // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      boyutByte: freezed == boyutByte
-          ? _value.boyutByte
-          : boyutByte // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            base64Data: freezed == base64Data
+                ? _value.base64Data
+                : base64Data // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            boyutByte: freezed == boyutByte
+                ? _value.boyutByte
+                : boyutByte // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$CekSenetEvrakEkleModelImplCopyWith<$Res>
-    implements $CekSenetEvrakEkleModelCopyWith<$Res> {
+abstract class _$$CekSenetEvrakEkleModelImplCopyWith<$Res> implements $CekSenetEvrakEkleModelCopyWith<$Res> {
   factory _$$CekSenetEvrakEkleModelImplCopyWith(
-          _$CekSenetEvrakEkleModelImpl value,
-          $Res Function(_$CekSenetEvrakEkleModelImpl) then) =
-      __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>;
+    _$CekSenetEvrakEkleModelImpl value,
+    $Res Function(_$CekSenetEvrakEkleModelImpl) then,
+  ) = __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? aciklama,
-      String? base64Data,
-      String? belgeNo,
-      String? belgeTipi,
-      int? boyutByte,
-      int? islemKodu});
+  $Res call({String? aciklama, String? base64Data, String? belgeNo, String? belgeTipi, int? boyutByte, int? islemKodu});
 }
 
 /// @nodoc
 class __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>
-    extends _$CekSenetEvrakEkleModelCopyWithImpl<$Res,
-        _$CekSenetEvrakEkleModelImpl>
+    extends _$CekSenetEvrakEkleModelCopyWithImpl<$Res, _$CekSenetEvrakEkleModelImpl>
     implements _$$CekSenetEvrakEkleModelImplCopyWith<$Res> {
   __$$CekSenetEvrakEkleModelImplCopyWithImpl(
-      _$CekSenetEvrakEkleModelImpl _value,
-      $Res Function(_$CekSenetEvrakEkleModelImpl) _then)
-      : super(_value, _then);
+    _$CekSenetEvrakEkleModelImpl _value,
+    $Res Function(_$CekSenetEvrakEkleModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CekSenetEvrakEkleModel
   /// with the given fields replaced by the non-null parameter values.
@@ -151,45 +137,48 @@ class __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>
     Object? boyutByte = freezed,
     Object? islemKodu = freezed,
   }) {
-    return _then(_$CekSenetEvrakEkleModelImpl(
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      base64Data: freezed == base64Data
-          ? _value.base64Data
-          : base64Data // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      boyutByte: freezed == boyutByte
-          ? _value.boyutByte
-          : boyutByte // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$CekSenetEvrakEkleModelImpl(
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        base64Data: freezed == base64Data
+            ? _value.base64Data
+            : base64Data // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        boyutByte: freezed == boyutByte
+            ? _value.boyutByte
+            : boyutByte // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CekSenetEvrakEkleModelImpl implements _CekSenetEvrakEkleModel {
-  _$CekSenetEvrakEkleModelImpl(
-      {this.aciklama,
-      this.base64Data,
-      this.belgeNo,
-      this.belgeTipi,
-      this.boyutByte,
-      this.islemKodu});
+  _$CekSenetEvrakEkleModelImpl({
+    this.aciklama,
+    this.base64Data,
+    this.belgeNo,
+    this.belgeTipi,
+    this.boyutByte,
+    this.islemKodu,
+  });
 
   factory _$CekSenetEvrakEkleModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CekSenetEvrakEkleModelImplFromJson(json);
@@ -212,29 +201,26 @@ class _$CekSenetEvrakEkleModelImpl implements _CekSenetEvrakEkleModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl>
-      get copyWith => __$$CekSenetEvrakEkleModelImplCopyWithImpl<
-          _$CekSenetEvrakEkleModelImpl>(this, _$identity);
+  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl> get copyWith =>
+      __$$CekSenetEvrakEkleModelImplCopyWithImpl<_$CekSenetEvrakEkleModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CekSenetEvrakEkleModelImplToJson(
-      this,
-    );
+    return _$$CekSenetEvrakEkleModelImplToJson(this);
   }
 }
 
 abstract class _CekSenetEvrakEkleModel implements CekSenetEvrakEkleModel {
-  factory _CekSenetEvrakEkleModel(
-      {String? aciklama,
-      String? base64Data,
-      String? belgeNo,
-      String? belgeTipi,
-      int? boyutByte,
-      int? islemKodu}) = _$CekSenetEvrakEkleModelImpl;
+  factory _CekSenetEvrakEkleModel({
+    String? aciklama,
+    String? base64Data,
+    String? belgeNo,
+    String? belgeTipi,
+    int? boyutByte,
+    int? islemKodu,
+  }) = _$CekSenetEvrakEkleModelImpl;
 
-  factory _CekSenetEvrakEkleModel.fromJson(Map<String, dynamic> json) =
-      _$CekSenetEvrakEkleModelImpl.fromJson;
+  factory _CekSenetEvrakEkleModel.fromJson(Map<String, dynamic> json) = _$CekSenetEvrakEkleModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -259,6 +245,6 @@ abstract class _CekSenetEvrakEkleModel implements CekSenetEvrakEkleModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

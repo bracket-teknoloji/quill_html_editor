@@ -56,11 +56,9 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
 
   AppBar get appBar => AppBar(
     title: Observer(
-      builder:
-          (_) =>
-              viewModel.searchBar
-                  ? CustomAppBarTextField(controller: searchTextController, onChanged: viewModel.setSearchText)
-                  : AppBarTitle(title: "Depo Fark Raporu", subtitle: widget.model.fisno),
+      builder: (_) => viewModel.searchBar
+          ? CustomAppBarTextField(controller: searchTextController, onChanged: viewModel.setSearchText)
+          : AppBarTitle(title: "Depo Fark Raporu", subtitle: widget.model.fisno),
     ),
     actions: [
       IconButton(
@@ -183,12 +181,11 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
           ),
           Card(
             child: Observer(
-              builder:
-                  (_) => SwitchListTile.adaptive(
-                    title: const Text("Seri Bazında Mı?"),
-                    value: viewModel.requestModel.seriBazinda == "E",
-                    onChanged: viewModel.setSeriBazindaMi,
-                  ),
+              builder: (_) => SwitchListTile.adaptive(
+                title: const Text("Seri Bazında Mı?"),
+                value: viewModel.requestModel.seriBazinda == "E",
+                onChanged: viewModel.setSeriBazindaMi,
+              ),
             ),
           ),
           ElevatedButton(

@@ -12,10 +12,10 @@ part of 'cek_senet_hareketleri_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-CekSenetHareketleriModel _$CekSenetHareketleriModelFromJson(
-    Map<String, dynamic> json) {
+CekSenetHareketleriModel _$CekSenetHareketleriModelFromJson(Map<String, dynamic> json) {
   return _CekSenetHareketleriModel.fromJson(json);
 }
 
@@ -56,36 +56,36 @@ mixin _$CekSenetHareketleriModel {
   /// Create a copy of CekSenetHareketleriModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CekSenetHareketleriModelCopyWith<CekSenetHareketleriModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CekSenetHareketleriModelCopyWith<CekSenetHareketleriModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetHareketleriModelCopyWith<$Res> {
-  factory $CekSenetHareketleriModelCopyWith(CekSenetHareketleriModel value,
-          $Res Function(CekSenetHareketleriModel) then) =
-      _$CekSenetHareketleriModelCopyWithImpl<$Res, CekSenetHareketleriModel>;
+  factory $CekSenetHareketleriModelCopyWith(
+    CekSenetHareketleriModel value,
+    $Res Function(CekSenetHareketleriModel) then,
+  ) = _$CekSenetHareketleriModelCopyWithImpl<$Res, CekSenetHareketleriModel>;
   @useResult
-  $Res call(
-      {int? inckeyno,
-      String? belgeTipi,
-      String? belgeNo,
-      String? yeri,
-      String? durum,
-      DateTime? tarih,
-      String? hesapKodu,
-      int? islemKodu,
-      String? islemAdi,
-      String? alinanBordroNo,
-      String? devir,
-      String? nereye,
-      String? kayityapankul,
-      String? kayittarihi});
+  $Res call({
+    int? inckeyno,
+    String? belgeTipi,
+    String? belgeNo,
+    String? yeri,
+    String? durum,
+    DateTime? tarih,
+    String? hesapKodu,
+    int? islemKodu,
+    String? islemAdi,
+    String? alinanBordroNo,
+    String? devir,
+    String? nereye,
+    String? kayityapankul,
+    String? kayittarihi,
+  });
 }
 
 /// @nodoc
-class _$CekSenetHareketleriModelCopyWithImpl<$Res,
-        $Val extends CekSenetHareketleriModel>
+class _$CekSenetHareketleriModelCopyWithImpl<$Res, $Val extends CekSenetHareketleriModel>
     implements $CekSenetHareketleriModelCopyWith<$Res> {
   _$CekSenetHareketleriModelCopyWithImpl(this._value, this._then);
 
@@ -114,102 +114,104 @@ class _$CekSenetHareketleriModelCopyWithImpl<$Res,
     Object? kayityapankul = freezed,
     Object? kayittarihi = freezed,
   }) {
-    return _then(_value.copyWith(
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeri: freezed == yeri
-          ? _value.yeri
-          : yeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      durum: freezed == durum
-          ? _value.durum
-          : durum // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemAdi: freezed == islemAdi
-          ? _value.islemAdi
-          : islemAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alinanBordroNo: freezed == alinanBordroNo
-          ? _value.alinanBordroNo
-          : alinanBordroNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      devir: freezed == devir
-          ? _value.devir
-          : devir // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nereye: freezed == nereye
-          ? _value.nereye
-          : nereye // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            inckeyno: freezed == inckeyno
+                ? _value.inckeyno
+                : inckeyno // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yeri: freezed == yeri
+                ? _value.yeri
+                : yeri // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            durum: freezed == durum
+                ? _value.durum
+                : durum // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            hesapKodu: freezed == hesapKodu
+                ? _value.hesapKodu
+                : hesapKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemAdi: freezed == islemAdi
+                ? _value.islemAdi
+                : islemAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            alinanBordroNo: freezed == alinanBordroNo
+                ? _value.alinanBordroNo
+                : alinanBordroNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            devir: freezed == devir
+                ? _value.devir
+                : devir // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            nereye: freezed == nereye
+                ? _value.nereye
+                : nereye // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayityapankul: freezed == kayityapankul
+                ? _value.kayityapankul
+                : kayityapankul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayittarihi: freezed == kayittarihi
+                ? _value.kayittarihi
+                : kayittarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$CekSenetHareketleriModelImplCopyWith<$Res>
-    implements $CekSenetHareketleriModelCopyWith<$Res> {
+abstract class _$$CekSenetHareketleriModelImplCopyWith<$Res> implements $CekSenetHareketleriModelCopyWith<$Res> {
   factory _$$CekSenetHareketleriModelImplCopyWith(
-          _$CekSenetHareketleriModelImpl value,
-          $Res Function(_$CekSenetHareketleriModelImpl) then) =
-      __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>;
+    _$CekSenetHareketleriModelImpl value,
+    $Res Function(_$CekSenetHareketleriModelImpl) then,
+  ) = __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? inckeyno,
-      String? belgeTipi,
-      String? belgeNo,
-      String? yeri,
-      String? durum,
-      DateTime? tarih,
-      String? hesapKodu,
-      int? islemKodu,
-      String? islemAdi,
-      String? alinanBordroNo,
-      String? devir,
-      String? nereye,
-      String? kayityapankul,
-      String? kayittarihi});
+  $Res call({
+    int? inckeyno,
+    String? belgeTipi,
+    String? belgeNo,
+    String? yeri,
+    String? durum,
+    DateTime? tarih,
+    String? hesapKodu,
+    int? islemKodu,
+    String? islemAdi,
+    String? alinanBordroNo,
+    String? devir,
+    String? nereye,
+    String? kayityapankul,
+    String? kayittarihi,
+  });
 }
 
 /// @nodoc
 class __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>
-    extends _$CekSenetHareketleriModelCopyWithImpl<$Res,
-        _$CekSenetHareketleriModelImpl>
+    extends _$CekSenetHareketleriModelCopyWithImpl<$Res, _$CekSenetHareketleriModelImpl>
     implements _$$CekSenetHareketleriModelImplCopyWith<$Res> {
   __$$CekSenetHareketleriModelImplCopyWithImpl(
-      _$CekSenetHareketleriModelImpl _value,
-      $Res Function(_$CekSenetHareketleriModelImpl) _then)
-      : super(_value, _then);
+    _$CekSenetHareketleriModelImpl _value,
+    $Res Function(_$CekSenetHareketleriModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CekSenetHareketleriModel
   /// with the given fields replaced by the non-null parameter values.
@@ -231,86 +233,88 @@ class __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>
     Object? kayityapankul = freezed,
     Object? kayittarihi = freezed,
   }) {
-    return _then(_$CekSenetHareketleriModelImpl(
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeri: freezed == yeri
-          ? _value.yeri
-          : yeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      durum: freezed == durum
-          ? _value.durum
-          : durum // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemAdi: freezed == islemAdi
-          ? _value.islemAdi
-          : islemAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alinanBordroNo: freezed == alinanBordroNo
-          ? _value.alinanBordroNo
-          : alinanBordroNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      devir: freezed == devir
-          ? _value.devir
-          : devir // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nereye: freezed == nereye
-          ? _value.nereye
-          : nereye // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$CekSenetHareketleriModelImpl(
+        inckeyno: freezed == inckeyno
+            ? _value.inckeyno
+            : inckeyno // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yeri: freezed == yeri
+            ? _value.yeri
+            : yeri // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        durum: freezed == durum
+            ? _value.durum
+            : durum // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        hesapKodu: freezed == hesapKodu
+            ? _value.hesapKodu
+            : hesapKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemAdi: freezed == islemAdi
+            ? _value.islemAdi
+            : islemAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        alinanBordroNo: freezed == alinanBordroNo
+            ? _value.alinanBordroNo
+            : alinanBordroNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        devir: freezed == devir
+            ? _value.devir
+            : devir // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        nereye: freezed == nereye
+            ? _value.nereye
+            : nereye // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayityapankul: freezed == kayityapankul
+            ? _value.kayityapankul
+            : kayityapankul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayittarihi: freezed == kayittarihi
+            ? _value.kayittarihi
+            : kayittarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CekSenetHareketleriModelImpl extends _CekSenetHareketleriModel {
-  _$CekSenetHareketleriModelImpl(
-      {this.inckeyno,
-      this.belgeTipi,
-      this.belgeNo,
-      this.yeri,
-      this.durum,
-      this.tarih,
-      this.hesapKodu,
-      this.islemKodu,
-      this.islemAdi,
-      this.alinanBordroNo,
-      this.devir,
-      this.nereye,
-      this.kayityapankul,
-      this.kayittarihi})
-      : super._();
+  _$CekSenetHareketleriModelImpl({
+    this.inckeyno,
+    this.belgeTipi,
+    this.belgeNo,
+    this.yeri,
+    this.durum,
+    this.tarih,
+    this.hesapKodu,
+    this.islemKodu,
+    this.islemAdi,
+    this.alinanBordroNo,
+    this.devir,
+    this.nereye,
+    this.kayityapankul,
+    this.kayittarihi,
+  }) : super._();
 
   factory _$CekSenetHareketleriModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CekSenetHareketleriModelImplFromJson(json);
@@ -349,38 +353,35 @@ class _$CekSenetHareketleriModelImpl extends _CekSenetHareketleriModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl>
-      get copyWith => __$$CekSenetHareketleriModelImplCopyWithImpl<
-          _$CekSenetHareketleriModelImpl>(this, _$identity);
+  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl> get copyWith =>
+      __$$CekSenetHareketleriModelImplCopyWithImpl<_$CekSenetHareketleriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CekSenetHareketleriModelImplToJson(
-      this,
-    );
+    return _$$CekSenetHareketleriModelImplToJson(this);
   }
 }
 
 abstract class _CekSenetHareketleriModel extends CekSenetHareketleriModel {
-  factory _CekSenetHareketleriModel(
-      {int? inckeyno,
-      String? belgeTipi,
-      String? belgeNo,
-      String? yeri,
-      String? durum,
-      DateTime? tarih,
-      String? hesapKodu,
-      int? islemKodu,
-      String? islemAdi,
-      String? alinanBordroNo,
-      String? devir,
-      String? nereye,
-      String? kayityapankul,
-      String? kayittarihi}) = _$CekSenetHareketleriModelImpl;
+  factory _CekSenetHareketleriModel({
+    int? inckeyno,
+    String? belgeTipi,
+    String? belgeNo,
+    String? yeri,
+    String? durum,
+    DateTime? tarih,
+    String? hesapKodu,
+    int? islemKodu,
+    String? islemAdi,
+    String? alinanBordroNo,
+    String? devir,
+    String? nereye,
+    String? kayityapankul,
+    String? kayittarihi,
+  }) = _$CekSenetHareketleriModelImpl;
   _CekSenetHareketleriModel._() : super._();
 
-  factory _CekSenetHareketleriModel.fromJson(Map<String, dynamic> json) =
-      _$CekSenetHareketleriModelImpl.fromJson;
+  factory _CekSenetHareketleriModel.fromJson(Map<String, dynamic> json) = _$CekSenetHareketleriModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -429,6 +430,6 @@ abstract class _CekSenetHareketleriModel extends CekSenetHareketleriModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

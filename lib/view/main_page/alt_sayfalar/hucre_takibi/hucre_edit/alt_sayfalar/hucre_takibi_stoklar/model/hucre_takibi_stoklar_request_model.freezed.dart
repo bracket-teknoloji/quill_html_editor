@@ -12,10 +12,10 @@ part of 'hucre_takibi_stoklar_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-HucreTakibiStoklarRequestModel _$HucreTakibiStoklarRequestModelFromJson(
-    Map<String, dynamic> json) {
+HucreTakibiStoklarRequestModel _$HucreTakibiStoklarRequestModelFromJson(Map<String, dynamic> json) {
   return _HucreTakibiStoklarRequestModel.fromJson(json);
 }
 
@@ -34,30 +34,29 @@ mixin _$HucreTakibiStoklarRequestModel {
   /// Create a copy of HucreTakibiStoklarRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $HucreTakibiStoklarRequestModelCopyWith<HucreTakibiStoklarRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $HucreTakibiStoklarRequestModelCopyWith<HucreTakibiStoklarRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HucreTakibiStoklarRequestModelCopyWith<$Res> {
   factory $HucreTakibiStoklarRequestModelCopyWith(
-          HucreTakibiStoklarRequestModel value,
-          $Res Function(HucreTakibiStoklarRequestModel) then) =
-      _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res,
-          HucreTakibiStoklarRequestModel>;
+    HucreTakibiStoklarRequestModel value,
+    $Res Function(HucreTakibiStoklarRequestModel) then,
+  ) = _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res, HucreTakibiStoklarRequestModel>;
   @useResult
-  $Res call(
-      {int? depoKodu,
-      String? islemTuru,
-      String? cariKodu,
-      String? pickerBelgeTuru,
-      String? stokKodu,
-      String? belgeNo});
+  $Res call({
+    int? depoKodu,
+    String? islemTuru,
+    String? cariKodu,
+    String? pickerBelgeTuru,
+    String? stokKodu,
+    String? belgeNo,
+  });
 }
 
 /// @nodoc
-class _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res,
-        $Val extends HucreTakibiStoklarRequestModel>
+class _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res, $Val extends HucreTakibiStoklarRequestModel>
     implements $HucreTakibiStoklarRequestModelCopyWith<$Res> {
   _$HucreTakibiStoklarRequestModelCopyWithImpl(this._value, this._then);
 
@@ -78,32 +77,35 @@ class _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res,
     Object? stokKodu = freezed,
     Object? belgeNo = freezed,
   }) {
-    return _then(_value.copyWith(
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemTuru: freezed == islemTuru
-          ? _value.islemTuru
-          : islemTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pickerBelgeTuru: freezed == pickerBelgeTuru
-          ? _value.pickerBelgeTuru
-          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemTuru: freezed == islemTuru
+                ? _value.islemTuru
+                : islemTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            pickerBelgeTuru: freezed == pickerBelgeTuru
+                ? _value.pickerBelgeTuru
+                : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -111,29 +113,29 @@ class _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res,
 abstract class _$$HucreTakibiStoklarRequestModelImplCopyWith<$Res>
     implements $HucreTakibiStoklarRequestModelCopyWith<$Res> {
   factory _$$HucreTakibiStoklarRequestModelImplCopyWith(
-          _$HucreTakibiStoklarRequestModelImpl value,
-          $Res Function(_$HucreTakibiStoklarRequestModelImpl) then) =
-      __$$HucreTakibiStoklarRequestModelImplCopyWithImpl<$Res>;
+    _$HucreTakibiStoklarRequestModelImpl value,
+    $Res Function(_$HucreTakibiStoklarRequestModelImpl) then,
+  ) = __$$HucreTakibiStoklarRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? depoKodu,
-      String? islemTuru,
-      String? cariKodu,
-      String? pickerBelgeTuru,
-      String? stokKodu,
-      String? belgeNo});
+  $Res call({
+    int? depoKodu,
+    String? islemTuru,
+    String? cariKodu,
+    String? pickerBelgeTuru,
+    String? stokKodu,
+    String? belgeNo,
+  });
 }
 
 /// @nodoc
 class __$$HucreTakibiStoklarRequestModelImplCopyWithImpl<$Res>
-    extends _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res,
-        _$HucreTakibiStoklarRequestModelImpl>
+    extends _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res, _$HucreTakibiStoklarRequestModelImpl>
     implements _$$HucreTakibiStoklarRequestModelImplCopyWith<$Res> {
   __$$HucreTakibiStoklarRequestModelImplCopyWithImpl(
-      _$HucreTakibiStoklarRequestModelImpl _value,
-      $Res Function(_$HucreTakibiStoklarRequestModelImpl) _then)
-      : super(_value, _then);
+    _$HucreTakibiStoklarRequestModelImpl _value,
+    $Res Function(_$HucreTakibiStoklarRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HucreTakibiStoklarRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -147,50 +149,51 @@ class __$$HucreTakibiStoklarRequestModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? belgeNo = freezed,
   }) {
-    return _then(_$HucreTakibiStoklarRequestModelImpl(
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemTuru: freezed == islemTuru
-          ? _value.islemTuru
-          : islemTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pickerBelgeTuru: freezed == pickerBelgeTuru
-          ? _value.pickerBelgeTuru
-          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$HucreTakibiStoklarRequestModelImpl(
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemTuru: freezed == islemTuru
+            ? _value.islemTuru
+            : islemTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        pickerBelgeTuru: freezed == pickerBelgeTuru
+            ? _value.pickerBelgeTuru
+            : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$HucreTakibiStoklarRequestModelImpl
-    implements _HucreTakibiStoklarRequestModel {
-  const _$HucreTakibiStoklarRequestModelImpl(
-      {this.depoKodu,
-      this.islemTuru,
-      this.cariKodu,
-      this.pickerBelgeTuru,
-      this.stokKodu,
-      this.belgeNo});
+class _$HucreTakibiStoklarRequestModelImpl implements _HucreTakibiStoklarRequestModel {
+  const _$HucreTakibiStoklarRequestModelImpl({
+    this.depoKodu,
+    this.islemTuru,
+    this.cariKodu,
+    this.pickerBelgeTuru,
+    this.stokKodu,
+    this.belgeNo,
+  });
 
-  factory _$HucreTakibiStoklarRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$HucreTakibiStoklarRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$HucreTakibiStoklarRequestModelImplFromJson(json);
 
   @override
@@ -211,51 +214,41 @@ class _$HucreTakibiStoklarRequestModelImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HucreTakibiStoklarRequestModelImpl &&
-            (identical(other.depoKodu, depoKodu) ||
-                other.depoKodu == depoKodu) &&
-            (identical(other.islemTuru, islemTuru) ||
-                other.islemTuru == islemTuru) &&
-            (identical(other.cariKodu, cariKodu) ||
-                other.cariKodu == cariKodu) &&
-            (identical(other.pickerBelgeTuru, pickerBelgeTuru) ||
-                other.pickerBelgeTuru == pickerBelgeTuru) &&
-            (identical(other.stokKodu, stokKodu) ||
-                other.stokKodu == stokKodu) &&
+            (identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu) &&
+            (identical(other.islemTuru, islemTuru) || other.islemTuru == islemTuru) &&
+            (identical(other.cariKodu, cariKodu) || other.cariKodu == cariKodu) &&
+            (identical(other.pickerBelgeTuru, pickerBelgeTuru) || other.pickerBelgeTuru == pickerBelgeTuru) &&
+            (identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu) &&
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, depoKodu, islemTuru, cariKodu,
-      pickerBelgeTuru, stokKodu, belgeNo);
+  int get hashCode => Object.hash(runtimeType, depoKodu, islemTuru, cariKodu, pickerBelgeTuru, stokKodu, belgeNo);
 
   /// Create a copy of HucreTakibiStoklarRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HucreTakibiStoklarRequestModelImplCopyWith<
-          _$HucreTakibiStoklarRequestModelImpl>
-      get copyWith => __$$HucreTakibiStoklarRequestModelImplCopyWithImpl<
-          _$HucreTakibiStoklarRequestModelImpl>(this, _$identity);
+  _$$HucreTakibiStoklarRequestModelImplCopyWith<_$HucreTakibiStoklarRequestModelImpl> get copyWith =>
+      __$$HucreTakibiStoklarRequestModelImplCopyWithImpl<_$HucreTakibiStoklarRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HucreTakibiStoklarRequestModelImplToJson(
-      this,
-    );
+    return _$$HucreTakibiStoklarRequestModelImplToJson(this);
   }
 }
 
-abstract class _HucreTakibiStoklarRequestModel
-    implements HucreTakibiStoklarRequestModel {
-  const factory _HucreTakibiStoklarRequestModel(
-      {final int? depoKodu,
-      final String? islemTuru,
-      final String? cariKodu,
-      final String? pickerBelgeTuru,
-      final String? stokKodu,
-      final String? belgeNo}) = _$HucreTakibiStoklarRequestModelImpl;
+abstract class _HucreTakibiStoklarRequestModel implements HucreTakibiStoklarRequestModel {
+  const factory _HucreTakibiStoklarRequestModel({
+    final int? depoKodu,
+    final String? islemTuru,
+    final String? cariKodu,
+    final String? pickerBelgeTuru,
+    final String? stokKodu,
+    final String? belgeNo,
+  }) = _$HucreTakibiStoklarRequestModelImpl;
 
   factory _HucreTakibiStoklarRequestModel.fromJson(Map<String, dynamic> json) =
       _$HucreTakibiStoklarRequestModelImpl.fromJson;
@@ -277,7 +270,6 @@ abstract class _HucreTakibiStoklarRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HucreTakibiStoklarRequestModelImplCopyWith<
-          _$HucreTakibiStoklarRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$HucreTakibiStoklarRequestModelImplCopyWith<_$HucreTakibiStoklarRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

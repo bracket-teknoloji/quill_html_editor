@@ -49,14 +49,13 @@ class _OzelHesapKapatmaViewState extends BaseState<OzelHesapKapatmaView> {
           children: [
             const Text("Seçilen Kapatılmamış Tutar"),
             Observer(
-              builder:
-                  (_) => Text(
-                    viewModel.selectedList
-                        .map((element) => element.kalanTutar)
-                        .sum
-                        .commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
+              builder: (_) => Text(
+                viewModel.selectedList
+                    .map((element) => element.kalanTutar)
+                    .sum
+                    .commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),
@@ -101,73 +100,68 @@ class _OzelHesapKapatmaViewState extends BaseState<OzelHesapKapatmaView> {
       ),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: () async {},
-                items: viewModel.observableList,
-                itemBuilder:
-                    (item) => Card(
-                      child: Observer(
-                        builder:
-                            (_) => CheckboxListTile(
-                              value: viewModel.isSelected(item),
-                              controlAffinity: ListTileControlAffinity.platform,
-                              onChanged: (value) => viewModel.checkSelectedList(value ?? false, item),
-                              title: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(item.tarih.toDateString),
-                                      Wrap(
-                                        children: [
-                                          Text("(${item.borcHareketiMi ? "B" : "A"})"),
-                                          Text(
-                                            "${item.tutar.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
-                                          ).paddingOnly(left: UIHelper.lowSize),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Text(item.aciklama ?? ""),
-                                ],
-                              ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  if (item.hareketAciklama case final value?)
-                                    Text(value, style: const TextStyle(color: UIHelper.primaryColor)),
-                                  Text(
-                                    "ÖZEL HESAP KAPATMALI CARİ",
-                                    style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.7),
-                                    ),
-                                  ),
-                                  CustomLayoutBuilder.divideInHalf(
-                                    children: [
-                                      Text("Belge No: ${item.belgeNo ?? ""}"),
-                                      if (item.vadeTarihi case final value?) Text("Vade Tarihi: ${value.toDateString}"),
-                                      if (item.plasiyerAciklama case final value?) Text("Plasiyer: $value"),
-                                      Text(
-                                        "Kapatılmış Tutar: ${item.kapatilmisTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
-                                      ),
-                                      Text(
-                                        "Kalan Tutar: ${item.kalanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
-                                      ),
-                                    ],
-                                  ),
-                                  if (item.aciklama case final value?) ...[
-                                    const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
-                                    Text(value),
-                                  ],
-                                ],
-                              ),
-                            ),
+          builder: (_) => RefreshableListView(
+            onRefresh: () async {},
+            items: viewModel.observableList,
+            itemBuilder: (item) => Card(
+              child: Observer(
+                builder: (_) => CheckboxListTile(
+                  value: viewModel.isSelected(item),
+                  controlAffinity: ListTileControlAffinity.platform,
+                  onChanged: (value) => viewModel.checkSelectedList(value ?? false, item),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(item.tarih.toDateString),
+                          Wrap(
+                            children: [
+                              Text("(${item.borcHareketiMi ? "B" : "A"})"),
+                              Text(
+                                "${item.tutar.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
+                              ).paddingOnly(left: UIHelper.lowSize),
+                            ],
+                          ),
+                        ],
                       ),
-                    ),
+                      Text(item.aciklama ?? ""),
+                    ],
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (item.hareketAciklama case final value?)
+                        Text(value, style: const TextStyle(color: UIHelper.primaryColor)),
+                      Text(
+                        "ÖZEL HESAP KAPATMALI CARİ",
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.7),
+                        ),
+                      ),
+                      CustomLayoutBuilder.divideInHalf(
+                        children: [
+                          Text("Belge No: ${item.belgeNo ?? ""}"),
+                          if (item.vadeTarihi case final value?) Text("Vade Tarihi: ${value.toDateString}"),
+                          if (item.plasiyerAciklama case final value?) Text("Plasiyer: $value"),
+                          Text(
+                            "Kapatılmış Tutar: ${item.kapatilmisTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                          ),
+                          Text("Kalan Tutar: ${item.kalanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                        ],
+                      ),
+                      if (item.aciklama case final value?) ...[
+                        const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
+                        Text(value),
+                      ],
+                    ],
+                  ),
+                ),
               ),
+            ),
+          ),
         ),
       ),
     ],

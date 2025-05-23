@@ -6,23 +6,20 @@ part of 'is_emri_hammadde_takibi_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IsEmriHammaddeTakibiListesiModelImpl
-    _$$IsEmriHammaddeTakibiListesiModelImplFromJson(
-            Map<String, dynamic> json) =>
-        _$IsEmriHammaddeTakibiListesiModelImpl(
-          takipno: (json['TAKIPNO'] as num?)?.toInt(),
-          nfisemrino: (json['NFISEMRINO'] as num?)?.toInt(),
-          isemrino: json['ISEMRINO'] as String?,
-          stokKodu: json['STOK_KODU'] as String?,
-          stokAdi: json['STOK_ADI'] as String?,
-          yapkod: json['YAPKOD'] as String?,
-          yapacik: json['YAPACIK'] as String?,
-          makineKodu: json['MAKINE_KODU'] as String?,
-          miktar: (json['MIKTAR'] as num?)?.toDouble(),
-        );
+_$IsEmriHammaddeTakibiListesiModelImpl _$$IsEmriHammaddeTakibiListesiModelImplFromJson(Map<String, dynamic> json) =>
+    _$IsEmriHammaddeTakibiListesiModelImpl(
+      takipno: (json['TAKIPNO'] as num?)?.toInt(),
+      nfisemrino: (json['NFISEMRINO'] as num?)?.toInt(),
+      isemrino: json['ISEMRINO'] as String?,
+      stokKodu: json['STOK_KODU'] as String?,
+      stokAdi: json['STOK_ADI'] as String?,
+      yapkod: json['YAPKOD'] as String?,
+      yapacik: json['YAPACIK'] as String?,
+      makineKodu: json['MAKINE_KODU'] as String?,
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
+    );
 
-Map<String, dynamic> _$$IsEmriHammaddeTakibiListesiModelImplToJson(
-        _$IsEmriHammaddeTakibiListesiModelImpl instance) =>
+Map<String, dynamic> _$$IsEmriHammaddeTakibiListesiModelImplToJson(_$IsEmriHammaddeTakibiListesiModelImpl instance) =>
     <String, dynamic>{
       if (instance.takipno case final value?) 'TAKIPNO': value,
       if (instance.nfisemrino case final value?) 'NFISEMRINO': value,

@@ -12,7 +12,10 @@ import "package:picker/core/init/cache/cache_manager.dart";
 extension WidgetExtension on Widget {
   Widget yetkiVarMi(bool yetki) => yetki ? this : const SizedBox.shrink();
 
-  Widget wrapWithHero<T>(T tag) => InkWell(onTap: () => Get.to(() => HeroWidget(tag: tag, child: this)), child: this);
+  Widget wrapWithHero<T>(T tag) => InkWell(
+    onTap: () => Get.to(() => HeroWidget(tag: tag, child: this)),
+    child: this,
+  );
 
   Future<BitmapDescriptor> toBitmapDescriptor({
     Size? logicalSize,

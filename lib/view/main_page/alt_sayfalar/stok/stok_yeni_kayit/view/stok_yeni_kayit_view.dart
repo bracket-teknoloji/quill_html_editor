@@ -28,10 +28,8 @@ final class StokYeniKayitView extends StatefulWidget {
 }
 
 final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
-  late StokYeniKayitViewModel viewModel =
-      StokYeniKayitViewModel()
-        ..isSelected =
-            (widget.model?.cikisIslemi ?? false) ? [false, true].asObservable() : ([true, false]).asObservable();
+  late StokYeniKayitViewModel viewModel = StokYeniKayitViewModel()
+    ..isSelected = (widget.model?.cikisIslemi ?? false) ? [false, true].asObservable() : ([true, false]).asObservable();
   late final TextEditingController stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
   late final TextEditingController tarihController = TextEditingController(
     text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString,
@@ -101,220 +99,214 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         key: key,
         child: Column(
-          children:
-              [
-                Center(
-                  child: Observer(
-                    builder:
-                        (_) => ToggleButtons(
-                          constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
-                          isSelected: viewModel.isSelected,
-                          children: viewModel.toggleButtonName.map(Text.new).toList(),
-                          onPressed: (index) {
-                            viewModel.model.gc = index == 0 ? "G" : "C";
-                            viewModel.changeIsSelected(index);
-                          },
+          children: [
+            Center(
+              child: Observer(
+                builder: (_) => ToggleButtons(
+                  constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
+                  isSelected: viewModel.isSelected,
+                  children: viewModel.toggleButtonName.map(Text.new).toList(),
+                  onPressed: (index) {
+                    viewModel.model.gc = index == 0 ? "G" : "C";
+                    viewModel.changeIsSelected(index);
+                  },
+                ),
+              ),
+            ),
+            CustomTextField(
+              labelText: "Stok",
+              valueText: widget.model?.stokKodu ?? "",
+              readOnly: true,
+              isMust: true,
+              controller: stokKoduController,
+            ),
+            CustomTextField(
+              labelText: "Tarih",
+              isMust: true,
+              readOnly: true,
+              controller: tarihController,
+              isDateTime: true,
+              onTap: () {
+                showDatePicker(
+                  context: context,
+                  initialDate: viewModel.model.tarih ?? DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2100),
+                ).then((value) {
+                  if (value != null) {
+                    viewModel.model.tarih = value;
+                    tarihController.text = viewModel.model.tarih.toDateString;
+                  }
+                });
+              },
+            ),
+            CustomTextField(
+              labelText: "Belge No",
+              controller: belgeNoController,
+              onSubmitted: (p0) {
+                viewModel.model.belgeNo = p0;
+                belgeNoController.text = viewModel.model.belgeNo ?? "";
+              },
+            ),
+            CustomTextField(
+              labelText: "Hareket Türü",
+              valueText: viewModel.model.hareketTuru,
+              isMust: true,
+              readOnly: true,
+              controller: hareketTuruController,
+              suffixMore: true,
+              onTap: () async {
+                final MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: "Hareket Türü",
+                  children: viewModel.hareketTurMap.entries
+                      .map((e) => BottomSheetModel(title: e.key, description: e.value, value: e))
+                      .toList(),
+                );
+                if (result != null) {
+                  hareketTuruController.text = result.key;
+                  viewModel.model.hareketTuru = result.value;
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Fiyat",
+              controller: fiyatController,
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              onSubmitted: (p0) {
+                if (p0.isNotEmpty) {
+                  viewModel.model.fiyat = double.tryParse(p0);
+                  fiyatController.text = viewModel.model.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Depo",
+              isMust: true,
+              readOnly: true,
+              controller: depoController,
+              suffixMore: true,
+              onTap: () async {
+                final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: "Depo",
+                  children: yetkiController.yetkiliDepoList
+                      ?.map(
+                        (e) => BottomSheetModel(
+                          title: e.depoTanimi ?? "",
+                          description: e.depoKodu.toStringIfNotNull,
+                          value: e,
                         ),
+                      )
+                      .toList(),
+                );
+                if (result != null) {
+                  depoController.text = result.depoTanimi ?? "";
+                  viewModel.model.depoKodu = result.depoKodu;
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Miktar",
+              isMust: true,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Bu alan boş bırakılamaz";
+                }
+                return null;
+              },
+              controller: miktarController,
+              suffix: Wrap(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      viewModel.model.miktar = (viewModel.model.miktar!) + 1;
+                      miktarController.text = viewModel.model.miktar.toStringIfNotNull ?? "";
+                    },
+                    icon: const Icon(Icons.add),
                   ),
-                ),
-                CustomTextField(
-                  labelText: "Stok",
-                  valueText: widget.model?.stokKodu ?? "",
-                  readOnly: true,
-                  isMust: true,
-                  controller: stokKoduController,
-                ),
-                CustomTextField(
-                  labelText: "Tarih",
-                  isMust: true,
-                  readOnly: true,
-                  controller: tarihController,
-                  isDateTime: true,
-                  onTap: () {
-                    showDatePicker(
-                      context: context,
-                      initialDate: viewModel.model.tarih ?? DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100),
-                    ).then((value) {
-                      if (value != null) {
-                        viewModel.model.tarih = value;
-                        tarihController.text = viewModel.model.tarih.toDateString;
-                      }
-                    });
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Belge No",
-                  controller: belgeNoController,
-                  onSubmitted: (p0) {
-                    viewModel.model.belgeNo = p0;
-                    belgeNoController.text = viewModel.model.belgeNo ?? "";
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Hareket Türü",
-                  valueText: viewModel.model.hareketTuru,
-                  isMust: true,
-                  readOnly: true,
-                  controller: hareketTuruController,
-                  suffixMore: true,
-                  onTap: () async {
-                    final MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                  IconButton(
+                    onPressed: () {
+                      if (viewModel.model.miktar! > 0) viewModel.model.miktar = (viewModel.model.miktar!) - 1;
+                      miktarController.text = viewModel.model.miktar.toStringIfNotNull ?? "";
+                    },
+                    icon: const Icon(Icons.remove),
+                  ),
+                ],
+              ),
+            ),
+            CustomTextField(
+              labelText: "Açıklama",
+              controller: aciklamaController,
+              onSubmitted: (p0) => viewModel.model.aciklama = p0,
+            ),
+            if (yetkiController.plasiyerUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Plasiyer",
+                isMust: true,
+                readOnly: true,
+                controller: plasiyerController,
+                suffixMore: true,
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    context,
+                    title: "Plasiyer",
+                    children: viewModel.anaVeri?.paramModel?.plasiyerList
+                        ?.map(
+                          (e) => BottomSheetModel(
+                            title: e.plasiyerAciklama ?? "",
+                            onTap: () {
+                              Get.back(result: e);
+                            },
+                          ),
+                        )
+                        .toList(),
+                  );
+                  if (result != null) {
+                    plasiyerController.text = result.plasiyerAciklama ?? "";
+                    viewModel.model.plasiyerKodu = result.plasiyerKodu;
+                  }
+                },
+              ),
+            if (yetkiController.projeUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Proje",
+                valueText: viewModel.model.projeKodu ?? "",
+                isMust: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Bu alan boş bırakılamaz";
+                  }
+                  return null;
+                },
+                readOnly: true,
+                controller: projeController,
+                suffixMore: true,
+                onTap: () async {
+                  final result = viewModel.projeListesi ?? await getProjeData();
+                  if (result != null) {
+                    // ignore: use_build_context_synchronously
+                    final BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
-                      title: "Hareket Türü",
-                      children:
-                          viewModel.hareketTurMap.entries
-                              .map((e) => BottomSheetModel(title: e.key, description: e.value, value: e))
-                              .toList(),
+                      title: "Proje (${result.length})",
+                      children: result
+                          .map(
+                            (e) => BottomSheetModel(
+                              title: e.projeKodu ?? "",
+                              description: e.projeAciklama ?? "",
+                              value: e,
+                            ),
+                          )
+                          .toList(),
                     );
-                    if (result != null) {
-                      hareketTuruController.text = result.key;
-                      viewModel.model.hareketTuru = result.value;
+                    if (dialogResult != null) {
+                      projeController.text = dialogResult.projeAciklama ?? dialogResult.projeKodu ?? "";
+                      viewModel.model.projeKodu = dialogResult.projeKodu;
                     }
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Fiyat",
-                  controller: fiyatController,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onSubmitted: (p0) {
-                    if (p0.isNotEmpty) {
-                      viewModel.model.fiyat = double.tryParse(p0);
-                      fiyatController.text = viewModel.model.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
-                    }
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Depo",
-                  isMust: true,
-                  readOnly: true,
-                  controller: depoController,
-                  suffixMore: true,
-                  onTap: () async {
-                    final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Depo",
-                      children:
-                          yetkiController.yetkiliDepoList
-                              ?.map(
-                                (e) => BottomSheetModel(
-                                  title: e.depoTanimi ?? "",
-                                  description: e.depoKodu.toStringIfNotNull,
-                                  value: e,
-                                ),
-                              )
-                              .toList(),
-                    );
-                    if (result != null) {
-                      depoController.text = result.depoTanimi ?? "";
-                      viewModel.model.depoKodu = result.depoKodu;
-                    }
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Miktar",
-                  isMust: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Bu alan boş bırakılamaz";
-                    }
-                    return null;
-                  },
-                  controller: miktarController,
-                  suffix: Wrap(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          viewModel.model.miktar = (viewModel.model.miktar!) + 1;
-                          miktarController.text = viewModel.model.miktar.toStringIfNotNull ?? "";
-                        },
-                        icon: const Icon(Icons.add),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          if (viewModel.model.miktar! > 0) viewModel.model.miktar = (viewModel.model.miktar!) - 1;
-                          miktarController.text = viewModel.model.miktar.toStringIfNotNull ?? "";
-                        },
-                        icon: const Icon(Icons.remove),
-                      ),
-                    ],
-                  ),
-                ),
-                CustomTextField(
-                  labelText: "Açıklama",
-                  controller: aciklamaController,
-                  onSubmitted: (p0) => viewModel.model.aciklama = p0,
-                ),
-                if (yetkiController.plasiyerUygulamasiAcikMi)
-                  CustomTextField(
-                    labelText: "Plasiyer",
-                    isMust: true,
-                    readOnly: true,
-                    controller: plasiyerController,
-                    suffixMore: true,
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "Plasiyer",
-                        children:
-                            viewModel.anaVeri?.paramModel?.plasiyerList
-                                ?.map(
-                                  (e) => BottomSheetModel(
-                                    title: e.plasiyerAciklama ?? "",
-                                    onTap: () {
-                                      Get.back(result: e);
-                                    },
-                                  ),
-                                )
-                                .toList(),
-                      );
-                      if (result != null) {
-                        plasiyerController.text = result.plasiyerAciklama ?? "";
-                        viewModel.model.plasiyerKodu = result.plasiyerKodu;
-                      }
-                    },
-                  ),
-                if (yetkiController.projeUygulamasiAcikMi)
-                  CustomTextField(
-                    labelText: "Proje",
-                    valueText: viewModel.model.projeKodu ?? "",
-                    isMust: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Bu alan boş bırakılamaz";
-                      }
-                      return null;
-                    },
-                    readOnly: true,
-                    controller: projeController,
-                    suffixMore: true,
-                    onTap: () async {
-                      final result = viewModel.projeListesi ?? await getProjeData();
-                      if (result != null) {
-                        // ignore: use_build_context_synchronously
-                        final BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Proje (${result.length})",
-                          children:
-                              result
-                                  .map(
-                                    (e) => BottomSheetModel(
-                                      title: e.projeKodu ?? "",
-                                      description: e.projeAciklama ?? "",
-                                      value: e,
-                                    ),
-                                  )
-                                  .toList(),
-                        );
-                        if (dialogResult != null) {
-                          projeController.text = dialogResult.projeAciklama ?? dialogResult.projeKodu ?? "";
-                          viewModel.model.projeKodu = dialogResult.projeKodu;
-                        }
-                      }
-                    },
-                  ),
-              ].map((e) => e.paddingOnly(bottom: UIHelper.lowSize)).toList(),
+                  }
+                },
+              ),
+          ].map((e) => e.paddingOnly(bottom: UIHelper.lowSize)).toList(),
         ).paddingAll(UIHelper.lowSize),
       ),
     ),

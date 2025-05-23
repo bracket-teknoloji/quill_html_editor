@@ -159,102 +159,101 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
     builder: (_) {
       if (viewModel.futureController.value == true && viewModel.pdfModel != null) {
         return Observer(
-          builder:
-              (_) => SfPdfViewer.memory(
-                base64Decode(viewModel.pdfModel?.byteData ?? ""),
-                controller: pdfViewerController,
-                onHyperlinkClicked: (details) async {
-                  final String uri = details.uri;
-                  if (uri.startsWith("https://picker.link/")) {
-                    if (uri.contains("CARI$urlEncode")) {
-                      final String cariKodu = uriSplitter(uri);
-                      return dialogManager.showCariGridViewDialog(
-                        await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])),
-                      );
-                    }
-                    if (uri.contains("CARI_HAR$urlEncode") || uri.contains("CARIHAR$urlEncode")) {
-                      final String cariKodu = uriSplitter(uri);
-                      return Get.toNamed(
-                        "mainPage/cariHareketleri",
-                        arguments: await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])),
-                      );
-                    }
-                    if (uri.contains("STOK$urlEncode")) {
-                      final String stokKodu = uriSplitter(uri);
-                      return dialogManager.showStokGridViewDialog(
-                        await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)),
-                      );
-                    }
-                    if (uri.contains("STOK_HAR$urlEncode") || uri.contains("STOKHAR$urlEncode")) {
-                      final String stokKodu = uriSplitter(uri);
-                      return Get.toNamed(
-                        "mainPage/stokHareketleri",
-                        arguments: await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)),
-                      );
-                    }
-                    if (uri.contains("CARI_RAPORLAR")) {
-                      final String cariKodu = uriSplitter(uri);
-                      return dialogManager.showCariRaporlarGridViewDialog(
-                        model: await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])),
-                      );
-                    }
-                    if (uri.contains("STOK_RAPORLAR")) {
-                      final String stokKodu = uriSplitter(uri);
+          builder: (_) => SfPdfViewer.memory(
+            base64Decode(viewModel.pdfModel?.byteData ?? ""),
+            controller: pdfViewerController,
+            onHyperlinkClicked: (details) async {
+              final String uri = details.uri;
+              if (uri.startsWith("https://picker.link/")) {
+                if (uri.contains("CARI$urlEncode")) {
+                  final String cariKodu = uriSplitter(uri);
+                  return dialogManager.showCariGridViewDialog(
+                    await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])),
+                  );
+                }
+                if (uri.contains("CARI_HAR$urlEncode") || uri.contains("CARIHAR$urlEncode")) {
+                  final String cariKodu = uriSplitter(uri);
+                  return Get.toNamed(
+                    "mainPage/cariHareketleri",
+                    arguments: await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])),
+                  );
+                }
+                if (uri.contains("STOK$urlEncode")) {
+                  final String stokKodu = uriSplitter(uri);
+                  return dialogManager.showStokGridViewDialog(
+                    await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)),
+                  );
+                }
+                if (uri.contains("STOK_HAR$urlEncode") || uri.contains("STOKHAR$urlEncode")) {
+                  final String stokKodu = uriSplitter(uri);
+                  return Get.toNamed(
+                    "mainPage/stokHareketleri",
+                    arguments: await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)),
+                  );
+                }
+                if (uri.contains("CARI_RAPORLAR")) {
+                  final String cariKodu = uriSplitter(uri);
+                  return dialogManager.showCariRaporlarGridViewDialog(
+                    model: await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])),
+                  );
+                }
+                if (uri.contains("STOK_RAPORLAR")) {
+                  final String stokKodu = uriSplitter(uri);
 
-                      return dialogManager.showStokRaporlarGridViewDialog(
-                        model: await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)),
-                      );
-                    }
-                    if (uri.contains("SERBEST_RAPOR")) {
-                      final int? serbestRaporKodu = int.tryParse(uriSplitter(uri));
+                  return dialogManager.showStokRaporlarGridViewDialog(
+                    model: await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)),
+                  );
+                }
+                if (uri.contains("SERBEST_RAPOR")) {
+                  final int? serbestRaporKodu = int.tryParse(uriSplitter(uri));
 
-                      final NetFectDizaynList? netFectDizaynList =
-                          (CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true ||
-                                      AccountModel.instance.adminMi
-                                  ? parametreModel.netFectDizaynList
-                                          ?.where(
-                                            (element) =>
-                                                element.ozelKod == "Serbest" &&
-                                                ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest
-                                                            ?.any((element2) => element2 == element.id) ??
-                                                        false) ||
-                                                    AccountModel.instance.adminMi),
-                                          )
-                                          .toList() ??
-                                      []
-                                  : [])
-                              .firstWhereOrNull((element) => element.id == serbestRaporKodu);
-                      if (netFectDizaynList == null) {
-                        return dialogManager.showAlertDialog("$serbestRaporKodu numaralı rapor bulunamadı.");
-                      }
-                      Get.toNamed("/mainPage/serbestRaporlar", arguments: netFectDizaynList, preventDuplicates: false);
-                      // if (netFectDizaynList.)
+                  final NetFectDizaynList? netFectDizaynList =
+                      (CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true ||
+                                  AccountModel.instance.adminMi
+                              ? parametreModel.netFectDizaynList
+                                        ?.where(
+                                          (element) =>
+                                              element.ozelKod == "Serbest" &&
+                                              ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest
+                                                          ?.any((element2) => element2 == element.id) ??
+                                                      false) ||
+                                                  AccountModel.instance.adminMi),
+                                        )
+                                        .toList() ??
+                                    []
+                              : [])
+                          .firstWhereOrNull((element) => element.id == serbestRaporKodu);
+                  if (netFectDizaynList == null) {
+                    return dialogManager.showAlertDialog("$serbestRaporKodu numaralı rapor bulunamadı.");
+                  }
+                  Get.toNamed("/mainPage/serbestRaporlar", arguments: netFectDizaynList, preventDuplicates: false);
+                  // if (netFectDizaynList.)
 
-                      return;
-                    }
-                  } else {
-                    if (!await launchUrl(Uri.parse(uri), mode: LaunchMode.inAppWebView)) {
-                      throw Exception("Could not launch $uri");
-                    }
-                  }
-                },
-                canShowHyperlinkDialog: false,
-                onTextSelectionChanged: (details) {
-                  if (kIsWeb) {
-                    return;
-                  }
-                  if (Platform.isAndroid || Platform.isIOS) {
-                    if (details.selectedText == null && overlayEntry != null) {
-                      overlayEntry?.remove();
-                      overlayEntry = null;
-                    } else if (details.selectedText != null && overlayEntry == null) {
-                      showContextMenu(context, details);
-                    }
-                  }
-                },
-                onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
-                onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
-              ),
+                  return;
+                }
+              } else {
+                if (!await launchUrl(Uri.parse(uri), mode: LaunchMode.inAppWebView)) {
+                  throw Exception("Could not launch $uri");
+                }
+              }
+            },
+            canShowHyperlinkDialog: false,
+            onTextSelectionChanged: (details) {
+              if (kIsWeb) {
+                return;
+              }
+              if (Platform.isAndroid || Platform.isIOS) {
+                if (details.selectedText == null && overlayEntry != null) {
+                  overlayEntry?.remove();
+                  overlayEntry = null;
+                } else if (details.selectedText != null && overlayEntry == null) {
+                  showContextMenu(context, details);
+                }
+              }
+            },
+            onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+            onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+          ),
         );
       } else if (viewModel.futureController.value == null) {
         return const Center(child: CircularProgressIndicator.adaptive());
@@ -354,20 +353,19 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
   void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
     final OverlayState overlayState = Overlay.of(context);
     overlayEntry = OverlayEntry(
-      builder:
-          (context) => Positioned(
-            top: details.globalSelectedRegion!.center.dy - 55,
-            left: details.globalSelectedRegion!.bottomLeft.dx,
-            child: ElevatedButton(
-              onPressed: () {
-                Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
-                dialogManager.showSuccessSnackBar("Kopyalandı");
-                pdfViewerController.clearSelection();
-                overlayEntry?.remove();
-              },
-              child: const Text("Kopyala"),
-            ),
-          ),
+      builder: (context) => Positioned(
+        top: details.globalSelectedRegion!.center.dy - 55,
+        left: details.globalSelectedRegion!.bottomLeft.dx,
+        child: ElevatedButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
+            dialogManager.showSuccessSnackBar("Kopyalandı");
+            pdfViewerController.clearSelection();
+            overlayEntry?.remove();
+          },
+          child: const Text("Kopyala"),
+        ),
+      ),
     );
     if (overlayEntry != null) {
       overlayState.insert(overlayEntry!);

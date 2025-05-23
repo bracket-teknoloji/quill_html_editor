@@ -31,13 +31,12 @@ final class BluetoothManager implements InjectableInterface {
     );
     await for (final List<ScanResult> results in FlutterBluePlus.scanResults) {
       log("BluetoothManager.scanForDevices: results: $results");
-      devices =
-          results
-              .map(
-                (scanResult) =>
-                    YaziciModel(yaziciAdi: scanResult.device.platformName, macAdresi: scanResult.device.remoteId.str),
-              )
-              .toList();
+      devices = results
+          .map(
+            (scanResult) =>
+                YaziciModel(yaziciAdi: scanResult.device.platformName, macAdresi: scanResult.device.remoteId.str),
+          )
+          .toList();
       yield devices;
     }
 
@@ -94,9 +93,21 @@ final class BluetoothManager implements InjectableInterface {
     bytes += generator.text("Align right", styles: const PosStyles(align: PosAlign.right), linesAfter: 1);
 
     bytes += generator.row([
-      PosColumn(text: "col3", width: 3, styles: const PosStyles(align: PosAlign.center, underline: true)),
-      PosColumn(text: "col6", width: 6, styles: const PosStyles(align: PosAlign.center, underline: true)),
-      PosColumn(text: "col3", width: 3, styles: const PosStyles(align: PosAlign.center, underline: true)),
+      PosColumn(
+        text: "col3",
+        width: 3,
+        styles: const PosStyles(align: PosAlign.center, underline: true),
+      ),
+      PosColumn(
+        text: "col6",
+        width: 6,
+        styles: const PosStyles(align: PosAlign.center, underline: true),
+      ),
+      PosColumn(
+        text: "col3",
+        width: 3,
+        styles: const PosStyles(align: PosAlign.center, underline: true),
+      ),
     ]);
 
     //barcode

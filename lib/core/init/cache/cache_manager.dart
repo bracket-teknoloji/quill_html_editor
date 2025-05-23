@@ -147,36 +147,32 @@ final class CacheManager {
   static bool getIsLicenseVerified(String key) =>
       key == "demo@netfect.com" ? true : (isLicenseVerifiedBox.get(key) ?? false);
 
-  static List<BaseSiparisEditModel>? getSiparisEditLists(EditTipiEnum siparisTipi) =>
-      siparisEditListBox
-          .get(StaticVariables.getSiparisString)
-          ?.list
-          ?.where((element) => element.siparisTipi == siparisTipi)
-          .toList();
+  static List<BaseSiparisEditModel>? getSiparisEditLists(EditTipiEnum siparisTipi) => siparisEditListBox
+      .get(StaticVariables.getSiparisString)
+      ?.list
+      ?.where((element) => element.siparisTipi == siparisTipi)
+      .toList();
 
-  static List<BaseSiparisEditModel>? getFaturaEditLists(EditTipiEnum siparisTipi) =>
-      faturaEditListBox
-          .get(StaticVariables.getSiparisString)
-          ?.list
-          ?.where((element) => element.siparisTipi == siparisTipi)
-          .toList();
+  static List<BaseSiparisEditModel>? getFaturaEditLists(EditTipiEnum siparisTipi) => faturaEditListBox
+      .get(StaticVariables.getSiparisString)
+      ?.list
+      ?.where((element) => element.siparisTipi == siparisTipi)
+      .toList();
 
   static List<BaseSiparisEditModel>? getTransferEditLists(EditTipiEnum siparisTipi) {
-    final result =
-        transferEditListBox
-            .get(StaticVariables.getSiparisString)
-            ?.list
-            ?.where((element) => element.siparisTipi == siparisTipi)
-            .toList();
+    final result = transferEditListBox
+        .get(StaticVariables.getSiparisString)
+        ?.list
+        ?.where((element) => element.siparisTipi == siparisTipi)
+        .toList();
     return result ?? [];
   }
 
-  static List<BaseSiparisEditModel>? getTaltekEditLists(EditTipiEnum siparisTipi) =>
-      talepTeklifEditListBox
-          .get(StaticVariables.getSiparisString)
-          ?.list
-          ?.where((element) => element.siparisTipi == siparisTipi)
-          .toList();
+  static List<BaseSiparisEditModel>? getTaltekEditLists(EditTipiEnum siparisTipi) => talepTeklifEditListBox
+      .get(StaticVariables.getSiparisString)
+      ?.list
+      ?.where((element) => element.siparisTipi == siparisTipi)
+      .toList();
 
   static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson(
     (profilParametreBox.get("value") ?? {}).cast<String, dynamic>().map(
@@ -224,12 +220,11 @@ final class CacheManager {
       siparisEditListBox.put(
         StaticVariables.getSiparisString,
         ListSiparisEditModel(
-          list:
-              siparisEditListBox
-                  .get(StaticVariables.getSiparisString)
-                  ?.list
-                  ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
-                  .toList(),
+          list: siparisEditListBox
+              .get(StaticVariables.getSiparisString)
+              ?.list
+              ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
+              .toList(),
         ),
       );
     } else {
@@ -252,12 +247,11 @@ final class CacheManager {
       faturaEditListBox.put(
         StaticVariables.getSiparisString,
         ListSiparisEditModel(
-          list:
-              faturaEditListBox
-                  .get(StaticVariables.getSiparisString)
-                  ?.list
-                  ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
-                  .toList(),
+          list: faturaEditListBox
+              .get(StaticVariables.getSiparisString)
+              ?.list
+              ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
+              .toList(),
         ),
       );
     } else {
@@ -280,12 +274,11 @@ final class CacheManager {
       talepTeklifEditListBox.put(
         StaticVariables.getSiparisString,
         ListSiparisEditModel(
-          list:
-              talepTeklifEditListBox
-                  .get(StaticVariables.getSiparisString)
-                  ?.list
-                  ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
-                  .toList(),
+          list: talepTeklifEditListBox
+              .get(StaticVariables.getSiparisString)
+              ?.list
+              ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
+              .toList(),
         ),
       );
     } else {
@@ -308,12 +301,11 @@ final class CacheManager {
       transferEditListBox.put(
         StaticVariables.getSiparisString,
         ListSiparisEditModel(
-          list:
-              transferEditListBox
-                  .get(StaticVariables.getSiparisString)
-                  ?.list
-                  ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
-                  .toList(),
+          list: transferEditListBox
+              .get(StaticVariables.getSiparisString)
+              ?.list
+              ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
+              .toList(),
         ),
       );
     } else {

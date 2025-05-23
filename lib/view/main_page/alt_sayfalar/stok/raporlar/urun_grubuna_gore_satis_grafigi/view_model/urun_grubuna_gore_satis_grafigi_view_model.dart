@@ -35,7 +35,12 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetwork
 
   final List<BottomSheetModel> grupNoBottomSheetList =
       ["Stok Grup Kodu", "Stok Kod 1", "Stok Kod 2", "Stok Kod 3", "Stok Kod 4", "Stok Kod 5"]
-          .mapIndexed((index, element) => BottomSheetModel(title: element, onTap: () => Get.back(result: element)))
+          .mapIndexed(
+            (index, element) => BottomSheetModel(
+              title: element,
+              onTap: () => Get.back(result: element),
+            ),
+          )
           .toList();
   @observable
   UrunGrubunaGoreSatisGrafigiRequestModel model = UrunGrubunaGoreSatisGrafigiRequestModel(

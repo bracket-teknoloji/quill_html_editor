@@ -63,7 +63,9 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   );
 
   AppBar get appBar => AppBar(
-    title: Observer(builder: (_) => AppBarTitle(title: widget.model.getTitle, subtitle: viewModel.model.resmiBelgeNo)),
+    title: Observer(
+      builder: (_) => AppBarTitle(title: widget.model.getTitle, subtitle: viewModel.model.resmiBelgeNo),
+    ),
     actions: [
       IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
       if (widget.model.taslakMi)
@@ -73,87 +75,82 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   );
 
   Observer body(BuildContext context) => Observer(
-    builder:
-        (_) =>
-            viewModel.eBelgePdfModel != null
-                ? Observer(
-                  builder:
-                      (_) => SfPdfViewer.memory(
-                        base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""),
-                        controller: pdfViewerController,
-                        onTextSelectionChanged: (details) {
-                          if (kIsWeb) {
-                            return;
-                          }
-                          if (Platform.isAndroid || Platform.isIOS) {
-                            if (details.selectedText == null && overlayEntry != null) {
-                              overlayEntry?.remove();
-                              overlayEntry = null;
-                            } else if (details.selectedText != null && overlayEntry == null) {
-                              showContextMenu(context, details);
-                            }
-                          }
-                        },
-                        onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
-                        onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
-                      ),
-                )
-                : const Center(child: CircularProgressIndicator.adaptive()),
+    builder: (_) => viewModel.eBelgePdfModel != null
+        ? Observer(
+            builder: (_) => SfPdfViewer.memory(
+              base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""),
+              controller: pdfViewerController,
+              onTextSelectionChanged: (details) {
+                if (kIsWeb) {
+                  return;
+                }
+                if (Platform.isAndroid || Platform.isIOS) {
+                  if (details.selectedText == null && overlayEntry != null) {
+                    overlayEntry?.remove();
+                    overlayEntry = null;
+                  } else if (details.selectedText != null && overlayEntry == null) {
+                    showContextMenu(context, details);
+                  }
+                }
+              },
+              onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+              onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+            ),
+          )
+        : const Center(child: CircularProgressIndicator.adaptive()),
   );
 
   Observer get bottomAppBar => Observer(
-    builder:
-        (_) => BottomBarWidget(
-          isScrolledDown: viewModel.pageCounter > 1,
+    builder: (_) => BottomBarWidget(
+      isScrolledDown: viewModel.pageCounter > 1,
+      children: [
+        FooterButton(
           children: [
-            FooterButton(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
-                    FloatingActionButton.small(
-                      onPressed: () => pdfViewerController.firstPage(),
-                      child: const Icon(Icons.first_page_outlined),
-                    ),
-                    FloatingActionButton.small(
-                      onPressed: () => pdfViewerController.previousPage(),
-                      child: const Icon(Icons.arrow_back_outlined),
-                    ),
-                    FloatingActionButton.small(
-                      onPressed: () => pdfViewerController.nextPage(),
-                      child: const Icon(Icons.arrow_forward_outlined),
-                    ),
-                    FloatingActionButton.small(
-                      onPressed: () => pdfViewerController.lastPage(),
-                      child: const Icon(Icons.last_page_outlined),
-                    ),
-                  ],
-                ).marginAll(UIHelper.lowSize),
+                Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
+                FloatingActionButton.small(
+                  onPressed: () => pdfViewerController.firstPage(),
+                  child: const Icon(Icons.first_page_outlined),
+                ),
+                FloatingActionButton.small(
+                  onPressed: () => pdfViewerController.previousPage(),
+                  child: const Icon(Icons.arrow_back_outlined),
+                ),
+                FloatingActionButton.small(
+                  onPressed: () => pdfViewerController.nextPage(),
+                  child: const Icon(Icons.arrow_forward_outlined),
+                ),
+                FloatingActionButton.small(
+                  onPressed: () => pdfViewerController.lastPage(),
+                  child: const Icon(Icons.last_page_outlined),
+                ),
               ],
-            ),
+            ).marginAll(UIHelper.lowSize),
           ],
         ),
+      ],
+    ),
   );
 
   void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
     final OverlayState overlayState = Overlay.of(context);
     overlayEntry = OverlayEntry(
-      builder:
-          (context) => Positioned(
-            top: details.globalSelectedRegion!.center.dy - 55,
-            left: details.globalSelectedRegion!.bottomLeft.dx,
-            child: ElevatedButton(
-              onPressed: () {
-                Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
-                dialogManager.showSuccessSnackBar("Kopyalandı");
-                pdfViewerController.clearSelection();
-                overlayEntry?.remove();
-              },
-              child: const Text("Kopyala"),
-            ),
-          ),
+      builder: (context) => Positioned(
+        top: details.globalSelectedRegion!.center.dy - 55,
+        left: details.globalSelectedRegion!.bottomLeft.dx,
+        child: ElevatedButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
+            dialogManager.showSuccessSnackBar("Kopyalandı");
+            pdfViewerController.clearSelection();
+            overlayEntry?.remove();
+          },
+          child: const Text("Kopyala"),
+        ),
+      ),
     );
     if (overlayEntry != null) {
       overlayState.insert(overlayEntry!);

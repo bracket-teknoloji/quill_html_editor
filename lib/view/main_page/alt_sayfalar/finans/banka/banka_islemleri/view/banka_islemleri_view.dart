@@ -108,16 +108,15 @@ final class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   );
 
   Observer fab() => Observer(
-    builder:
-        (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async {
-            final result = await dialogManager.showBankaGridViewDialog(null);
-            if (result != null) {
-              await viewModel.resetPage();
-            }
-          },
-        ),
+    builder: (_) => CustomFloatingActionButton(
+      isScrolledDown: viewModel.isScrollDown,
+      onPressed: () async {
+        final result = await dialogManager.showBankaGridViewDialog(null);
+        if (result != null) {
+          await viewModel.resetPage();
+        }
+      },
+    ),
   );
 
   Column body() => Column(
@@ -137,28 +136,26 @@ final class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
         child: RefreshIndicator.adaptive(
           onRefresh: () async => await viewModel.resetPage(),
           child: Observer(
-            builder:
-                (_) =>
-                    viewModel.getBankaIslemleriListesi == null
-                        ? const Center(child: CircularProgressIndicator.adaptive())
-                        : viewModel.getBankaIslemleriListesi.ext.isNullOrEmpty
-                        ? const Center(child: Text("Veri bulunamadı"))
-                        : ListView.builder(
-                          padding: UIHelper.lowPadding,
-                          primary: false,
-                          controller: _scrollController,
-                          shrinkWrap: true,
-                          itemCount: viewModel.getBankaIslemleriListesi?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            final BankaHareketleriModel? item = viewModel.getBankaIslemleriListesi?[index];
-                            return BankaIslemleriCard(
-                              bankaHareketleriModel: item,
-                              onDeleted: (deneme) {
-                                viewModel.resetPage();
-                              },
-                            );
-                          },
-                        ),
+            builder: (_) => viewModel.getBankaIslemleriListesi == null
+                ? const Center(child: CircularProgressIndicator.adaptive())
+                : viewModel.getBankaIslemleriListesi.ext.isNullOrEmpty
+                ? const Center(child: Text("Veri bulunamadı"))
+                : ListView.builder(
+                    padding: UIHelper.lowPadding,
+                    primary: false,
+                    controller: _scrollController,
+                    shrinkWrap: true,
+                    itemCount: viewModel.getBankaIslemleriListesi?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      final BankaHareketleriModel? item = viewModel.getBankaIslemleriListesi?[index];
+                      return BankaIslemleriCard(
+                        bankaHareketleriModel: item,
+                        onDeleted: (deneme) {
+                          viewModel.resetPage();
+                        },
+                      );
+                    },
+                  ),
           ),
         ),
       ),
@@ -166,36 +163,33 @@ final class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   );
 
   Observer bottomAppBar() => Observer(
-    builder:
-        (_) => BottomBarWidget(
-          isScrolledDown: viewModel.isScrollDown,
+    builder: (_) => BottomBarWidget(
+      isScrolledDown: viewModel.isScrollDown,
+      children: [
+        FooterButton(
           children: [
-            FooterButton(
-              children: [
-                const Text("Gelir"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        "${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.mantis),
-                      ),
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Gider"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: ColorPalette.persianRed),
-                      ),
-                ),
-              ],
+            const Text("Gelir"),
+            Observer(
+              builder: (_) => Text(
+                "${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.mantis),
+              ),
             ),
           ],
         ),
+        FooterButton(
+          children: [
+            const Text("Gider"),
+            Observer(
+              builder: (_) => Text(
+                "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                style: const TextStyle(color: ColorPalette.persianRed),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
   );
 
   Future<void> filter() async {

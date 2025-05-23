@@ -12,10 +12,10 @@ part of 'banka_listesi_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-BankaListesiRequestModel _$BankaListesiRequestModelFromJson(
-    Map<String, dynamic> json) {
+BankaListesiRequestModel _$BankaListesiRequestModelFromJson(Map<String, dynamic> json) {
   return _BankaListesiRequestModel.fromJson(json);
 }
 
@@ -46,31 +46,31 @@ mixin _$BankaListesiRequestModel {
   /// Create a copy of BankaListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BankaListesiRequestModelCopyWith<BankaListesiRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BankaListesiRequestModelCopyWith<BankaListesiRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaListesiRequestModelCopyWith<$Res> {
-  factory $BankaListesiRequestModelCopyWith(BankaListesiRequestModel value,
-          $Res Function(BankaListesiRequestModel) then) =
-      _$BankaListesiRequestModelCopyWithImpl<$Res, BankaListesiRequestModel>;
+  factory $BankaListesiRequestModelCopyWith(
+    BankaListesiRequestModel value,
+    $Res Function(BankaListesiRequestModel) then,
+  ) = _$BankaListesiRequestModelCopyWithImpl<$Res, BankaListesiRequestModel>;
   @useResult
-  $Res call(
-      {String? bakiye,
-      String? arrHesapTipi,
-      String? haricHesaplarArray,
-      String? sirala,
-      String? ekranTipi,
-      String? menuKodu,
-      String? belgeTipi,
-      String? bankaKodu,
-      String? islemModulu});
+  $Res call({
+    String? bakiye,
+    String? arrHesapTipi,
+    String? haricHesaplarArray,
+    String? sirala,
+    String? ekranTipi,
+    String? menuKodu,
+    String? belgeTipi,
+    String? bankaKodu,
+    String? islemModulu,
+  });
 }
 
 /// @nodoc
-class _$BankaListesiRequestModelCopyWithImpl<$Res,
-        $Val extends BankaListesiRequestModel>
+class _$BankaListesiRequestModelCopyWithImpl<$Res, $Val extends BankaListesiRequestModel>
     implements $BankaListesiRequestModelCopyWith<$Res> {
   _$BankaListesiRequestModelCopyWithImpl(this._value, this._then);
 
@@ -94,77 +94,79 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
     Object? bankaKodu = freezed,
     Object? islemModulu = freezed,
   }) {
-    return _then(_value.copyWith(
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as String?,
-      arrHesapTipi: freezed == arrHesapTipi
-          ? _value.arrHesapTipi
-          : arrHesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      haricHesaplarArray: freezed == haricHesaplarArray
-          ? _value.haricHesaplarArray
-          : haricHesaplarArray // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sirala: freezed == sirala
-          ? _value.sirala
-          : sirala // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bankaKodu: freezed == bankaKodu
-          ? _value.bankaKodu
-          : bankaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemModulu: freezed == islemModulu
-          ? _value.islemModulu
-          : islemModulu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            bakiye: freezed == bakiye
+                ? _value.bakiye
+                : bakiye // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            arrHesapTipi: freezed == arrHesapTipi
+                ? _value.arrHesapTipi
+                : arrHesapTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            haricHesaplarArray: freezed == haricHesaplarArray
+                ? _value.haricHesaplarArray
+                : haricHesaplarArray // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sirala: freezed == sirala
+                ? _value.sirala
+                : sirala // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            menuKodu: freezed == menuKodu
+                ? _value.menuKodu
+                : menuKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bankaKodu: freezed == bankaKodu
+                ? _value.bankaKodu
+                : bankaKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            islemModulu: freezed == islemModulu
+                ? _value.islemModulu
+                : islemModulu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$BankaListesiRequestModelImplCopyWith<$Res>
-    implements $BankaListesiRequestModelCopyWith<$Res> {
+abstract class _$$BankaListesiRequestModelImplCopyWith<$Res> implements $BankaListesiRequestModelCopyWith<$Res> {
   factory _$$BankaListesiRequestModelImplCopyWith(
-          _$BankaListesiRequestModelImpl value,
-          $Res Function(_$BankaListesiRequestModelImpl) then) =
-      __$$BankaListesiRequestModelImplCopyWithImpl<$Res>;
+    _$BankaListesiRequestModelImpl value,
+    $Res Function(_$BankaListesiRequestModelImpl) then,
+  ) = __$$BankaListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? bakiye,
-      String? arrHesapTipi,
-      String? haricHesaplarArray,
-      String? sirala,
-      String? ekranTipi,
-      String? menuKodu,
-      String? belgeTipi,
-      String? bankaKodu,
-      String? islemModulu});
+  $Res call({
+    String? bakiye,
+    String? arrHesapTipi,
+    String? haricHesaplarArray,
+    String? sirala,
+    String? ekranTipi,
+    String? menuKodu,
+    String? belgeTipi,
+    String? bankaKodu,
+    String? islemModulu,
+  });
 }
 
 /// @nodoc
 class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
-    extends _$BankaListesiRequestModelCopyWithImpl<$Res,
-        _$BankaListesiRequestModelImpl>
+    extends _$BankaListesiRequestModelCopyWithImpl<$Res, _$BankaListesiRequestModelImpl>
     implements _$$BankaListesiRequestModelImplCopyWith<$Res> {
   __$$BankaListesiRequestModelImplCopyWithImpl(
-      _$BankaListesiRequestModelImpl _value,
-      $Res Function(_$BankaListesiRequestModelImpl) _then)
-      : super(_value, _then);
+    _$BankaListesiRequestModelImpl _value,
+    $Res Function(_$BankaListesiRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BankaListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -181,44 +183,46 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
     Object? bankaKodu = freezed,
     Object? islemModulu = freezed,
   }) {
-    return _then(_$BankaListesiRequestModelImpl(
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as String?,
-      arrHesapTipi: freezed == arrHesapTipi
-          ? _value.arrHesapTipi
-          : arrHesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      haricHesaplarArray: freezed == haricHesaplarArray
-          ? _value.haricHesaplarArray
-          : haricHesaplarArray // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sirala: freezed == sirala
-          ? _value.sirala
-          : sirala // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bankaKodu: freezed == bankaKodu
-          ? _value.bankaKodu
-          : bankaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      islemModulu: freezed == islemModulu
-          ? _value.islemModulu
-          : islemModulu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$BankaListesiRequestModelImpl(
+        bakiye: freezed == bakiye
+            ? _value.bakiye
+            : bakiye // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        arrHesapTipi: freezed == arrHesapTipi
+            ? _value.arrHesapTipi
+            : arrHesapTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        haricHesaplarArray: freezed == haricHesaplarArray
+            ? _value.haricHesaplarArray
+            : haricHesaplarArray // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sirala: freezed == sirala
+            ? _value.sirala
+            : sirala // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        menuKodu: freezed == menuKodu
+            ? _value.menuKodu
+            : menuKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bankaKodu: freezed == bankaKodu
+            ? _value.bankaKodu
+            : bankaKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        islemModulu: freezed == islemModulu
+            ? _value.islemModulu
+            : islemModulu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -226,16 +230,17 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
-  _$BankaListesiRequestModelImpl(
-      {this.bakiye,
-      this.arrHesapTipi,
-      this.haricHesaplarArray,
-      this.sirala,
-      this.ekranTipi = "R",
-      this.menuKodu,
-      this.belgeTipi,
-      this.bankaKodu,
-      this.islemModulu});
+  _$BankaListesiRequestModelImpl({
+    this.bakiye,
+    this.arrHesapTipi,
+    this.haricHesaplarArray,
+    this.sirala,
+    this.ekranTipi = "R",
+    this.menuKodu,
+    this.belgeTipi,
+    this.bankaKodu,
+    this.islemModulu,
+  });
 
   factory _$BankaListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BankaListesiRequestModelImplFromJson(json);
@@ -265,32 +270,29 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>
-      get copyWith => __$$BankaListesiRequestModelImplCopyWithImpl<
-          _$BankaListesiRequestModelImpl>(this, _$identity);
+  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl> get copyWith =>
+      __$$BankaListesiRequestModelImplCopyWithImpl<_$BankaListesiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BankaListesiRequestModelImplToJson(
-      this,
-    );
+    return _$$BankaListesiRequestModelImplToJson(this);
   }
 }
 
 abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
-  factory _BankaListesiRequestModel(
-      {String? bakiye,
-      String? arrHesapTipi,
-      String? haricHesaplarArray,
-      String? sirala,
-      String? ekranTipi,
-      String? menuKodu,
-      String? belgeTipi,
-      String? bankaKodu,
-      String? islemModulu}) = _$BankaListesiRequestModelImpl;
+  factory _BankaListesiRequestModel({
+    String? bakiye,
+    String? arrHesapTipi,
+    String? haricHesaplarArray,
+    String? sirala,
+    String? ekranTipi,
+    String? menuKodu,
+    String? belgeTipi,
+    String? bankaKodu,
+    String? islemModulu,
+  }) = _$BankaListesiRequestModelImpl;
 
-  factory _BankaListesiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$BankaListesiRequestModelImpl.fromJson;
+  factory _BankaListesiRequestModel.fromJson(Map<String, dynamic> json) = _$BankaListesiRequestModelImpl.fromJson;
 
   @override
   String? get bakiye;
@@ -324,6 +326,6 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

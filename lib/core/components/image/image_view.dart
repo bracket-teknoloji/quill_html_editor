@@ -30,6 +30,14 @@ final class _ImageViewState extends BaseState<ImageView> {
       //   ),
       // ],
     ),
-    body: Column(children: [Expanded(child: InteractiveViewer(child: Center(child: ImageWidget(path: widget.path))))]),
+    body: Column(
+      children: [
+        Expanded(
+          child: InteractiveViewer(
+            child: Center(child: ImageWidget(path: widget.path)),
+          ),
+        ),
+      ],
+    ),
   );
 }

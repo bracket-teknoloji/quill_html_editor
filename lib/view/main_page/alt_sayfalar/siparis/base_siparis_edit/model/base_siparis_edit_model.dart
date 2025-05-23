@@ -1506,22 +1506,21 @@ final class KalemModel with NetworkManagerMixin {
       miktar: model.bulunanMiktar ?? model.varsayilanMiktar,
       miktar2: model.miktar2,
     );
-    final KalemModel kalemModel =
-        KalemModel.fromStokListesiModel(model)
-          ..barkodList = [newBarkod]
-          ..dovizTipi = model.bulunanDovizTipi
-          ..dovizKodu = model.bulunanDovizTipi
-          ..seriGirislerdeAcik = model.seriGirislerdeAcik
-          ..seriCikislardaAcik = model.seriCikislardaAcik
-          ..dovizFiyati = model.bulunanDovizFiyati
-          ..dovizliFiyat = model.bulunanDovizFiyati
-          ..ekalan1 = model.bulunanEkalan1
-          ..ekalan2 = model.bulunanEkalan2
-          ..isemriNo = model.bulunanIsemri
-          ..miktar = model.bulunanMiktar ?? model.varsayilanMiktar
-          ..depoKodu = model.bulunanDepo
-          ..brutFiyat = model.bulunanFiyat
-          ..barkod = model.okutulanBarkod;
+    final KalemModel kalemModel = KalemModel.fromStokListesiModel(model)
+      ..barkodList = [newBarkod]
+      ..dovizTipi = model.bulunanDovizTipi
+      ..dovizKodu = model.bulunanDovizTipi
+      ..seriGirislerdeAcik = model.seriGirislerdeAcik
+      ..seriCikislardaAcik = model.seriCikislardaAcik
+      ..dovizFiyati = model.bulunanDovizFiyati
+      ..dovizliFiyat = model.bulunanDovizFiyati
+      ..ekalan1 = model.bulunanEkalan1
+      ..ekalan2 = model.bulunanEkalan2
+      ..isemriNo = model.bulunanIsemri
+      ..miktar = model.bulunanMiktar ?? model.varsayilanMiktar
+      ..depoKodu = model.bulunanDepo
+      ..brutFiyat = model.bulunanFiyat
+      ..barkod = model.okutulanBarkod;
     final SeriList newSeri = SeriList(
       miktar: model.bulunanMiktar ?? model.varsayilanMiktar,
       sonKullanmaTarihi: model.bulunanSeriSkt,
@@ -1957,10 +1956,9 @@ final class KalemModel with NetworkManagerMixin {
   double get dovizliBrutTutar =>
       ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0) + dovizliOTVTutar;
 
-  double get koliTutar =>
-      (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false)
-          ? brutTutar
-          : kalemList?.map((e) => e.brutTutar + e.kdvTutari).sum ?? 0;
+  double get koliTutar => (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false)
+      ? brutTutar
+      : kalemList?.map((e) => e.brutTutar + e.kdvTutari).sum ?? 0;
 
   double get toplamTutar => (isKoli ? koliTutar : brutTutar) + (otvTutar ?? 0);
 
@@ -1982,10 +1980,9 @@ final class KalemModel with NetworkManagerMixin {
 
   double get mfTutari => (malfazIskAdedi ?? 0) * (brutFiyat ?? 0);
 
-  double get kdvTutari =>
-      (BaseSiparisEditModel.instance.kdvDahilMi ?? false)
-          ? otvliAraToplamTutari - (otvliAraToplamTutari * 100 / ((kdvOrani ?? 0) + 100))
-          : otvliAraToplamTutari * ((kdvOrani ?? 0) / 100);
+  double get kdvTutari => (BaseSiparisEditModel.instance.kdvDahilMi ?? false)
+      ? otvliAraToplamTutari - (otvliAraToplamTutari * 100 / ((kdvOrani ?? 0) + 100))
+      : otvliAraToplamTutari * ((kdvOrani ?? 0) / 100);
 
   double get dovizKdvTutari => !dovizliMi ? 0 : kdvTutari / (dovizKuru ?? 1);
 
@@ -2043,10 +2040,9 @@ final class KalemModel with NetworkManagerMixin {
     return ((getSelectedMiktar ?? 0) * (dovizliFiyat ?? 0)) - result;
   }
 
-  double get dovizBrutTutar =>
-      !dovizliMi
-          ? 0
-          : ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1)));
+  double get dovizBrutTutar => !dovizliMi
+      ? 0
+      : ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1)));
   double get getDovizBrutTutar {
     if (!dovizliMi) return 0;
     return brutTutar / (dovizKuru ?? 1);

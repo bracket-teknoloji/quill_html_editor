@@ -65,11 +65,10 @@ abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<List<BankaListesiModel>> get groupedWithHesapTipiAdiList {
     if (bankaListesi == null) return <ObservableList<BankaListesiModel>>[].asObservable();
     // create a list of filtered items by searchValue
-    final filteredList =
-        bankaListesi
-            ?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? true)
-            .toList()
-            .asObservable();
+    final filteredList = bankaListesi
+        ?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? true)
+        .toList()
+        .asObservable();
     final groupedList = groupBy(filteredList ?? <BankaListesiModel>[], (e) => e.hesapTipiAdi);
     return groupedList.values
         .toList()
@@ -81,11 +80,10 @@ abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<List<BankaListesiModel>> get groupedWithBankName {
     if (bankaListesi == null) return <ObservableList<BankaListesiModel>>[].asObservable();
     // create a list of filtered items by searchValue
-    final filteredList =
-        bankaListesi
-            ?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? true)
-            .toList()
-            .asObservable();
+    final filteredList = bankaListesi
+        ?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? true)
+        .toList()
+        .asObservable();
     final groupedList = groupBy(filteredList ?? <BankaListesiModel>[], (e) => e.bankaAdi);
     return groupedList.values
         .toList()

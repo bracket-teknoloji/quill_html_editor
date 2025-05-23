@@ -68,16 +68,15 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
       bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi =>
-      (searchText != null && searchText != "")
-          ? bankaIslemleriListesi
-              ?.where(
-                (element) =>
-                    element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase()),
-              )
-              .toList()
-              .asObservable()
-          : bankaIslemleriListesi;
+  ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")
+      ? bankaIslemleriListesi
+            ?.where(
+              (element) =>
+                  element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase()),
+            )
+            .toList()
+            .asObservable()
+      : bankaIslemleriListesi;
 
   //* Actions
   @action

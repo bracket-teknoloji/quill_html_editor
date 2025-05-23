@@ -12,10 +12,10 @@ part of 'cek_senet_listesi_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-CekSenetListesiRequestModel _$CekSenetListesiRequestModelFromJson(
-    Map<String, dynamic> json) {
+CekSenetListesiRequestModel _$CekSenetListesiRequestModelFromJson(Map<String, dynamic> json) {
   return _CekSenetListesiRequestModel.fromJson(json);
 }
 
@@ -52,36 +52,34 @@ mixin _$CekSenetListesiRequestModel {
   /// Create a copy of CekSenetListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CekSenetListesiRequestModelCopyWith<CekSenetListesiRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $CekSenetListesiRequestModelCopyWith<CekSenetListesiRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetListesiRequestModelCopyWith<$Res> {
   factory $CekSenetListesiRequestModelCopyWith(
-          CekSenetListesiRequestModel value,
-          $Res Function(CekSenetListesiRequestModel) then) =
-      _$CekSenetListesiRequestModelCopyWithImpl<$Res,
-          CekSenetListesiRequestModel>;
+    CekSenetListesiRequestModel value,
+    $Res Function(CekSenetListesiRequestModel) then,
+  ) = _$CekSenetListesiRequestModelCopyWithImpl<$Res, CekSenetListesiRequestModel>;
   @useResult
-  $Res call(
-      {String? verenKodu,
-      String? sirala,
-      String? ekranTipi,
-      String? yer,
-      String? donemTipi,
-      String? tarihTipi,
-      String? tipi,
-      String? verilenKodu,
-      String? durum,
-      String? searchText,
-      String? baslangicTarihi,
-      String? bitisTarihi});
+  $Res call({
+    String? verenKodu,
+    String? sirala,
+    String? ekranTipi,
+    String? yer,
+    String? donemTipi,
+    String? tarihTipi,
+    String? tipi,
+    String? verilenKodu,
+    String? durum,
+    String? searchText,
+    String? baslangicTarihi,
+    String? bitisTarihi,
+  });
 }
 
 /// @nodoc
-class _$CekSenetListesiRequestModelCopyWithImpl<$Res,
-        $Val extends CekSenetListesiRequestModel>
+class _$CekSenetListesiRequestModelCopyWithImpl<$Res, $Val extends CekSenetListesiRequestModel>
     implements $CekSenetListesiRequestModelCopyWith<$Res> {
   _$CekSenetListesiRequestModelCopyWithImpl(this._value, this._then);
 
@@ -108,92 +106,94 @@ class _$CekSenetListesiRequestModelCopyWithImpl<$Res,
     Object? baslangicTarihi = freezed,
     Object? bitisTarihi = freezed,
   }) {
-    return _then(_value.copyWith(
-      verenKodu: freezed == verenKodu
-          ? _value.verenKodu
-          : verenKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sirala: freezed == sirala
-          ? _value.sirala
-          : sirala // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yer: freezed == yer
-          ? _value.yer
-          : yer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      donemTipi: freezed == donemTipi
-          ? _value.donemTipi
-          : donemTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarihTipi: freezed == tarihTipi
-          ? _value.tarihTipi
-          : tarihTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      verilenKodu: freezed == verilenKodu
-          ? _value.verilenKodu
-          : verilenKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      durum: freezed == durum
-          ? _value.durum
-          : durum // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      baslangicTarihi: freezed == baslangicTarihi
-          ? _value.baslangicTarihi
-          : baslangicTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            verenKodu: freezed == verenKodu
+                ? _value.verenKodu
+                : verenKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sirala: freezed == sirala
+                ? _value.sirala
+                : sirala // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yer: freezed == yer
+                ? _value.yer
+                : yer // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            donemTipi: freezed == donemTipi
+                ? _value.donemTipi
+                : donemTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarihTipi: freezed == tarihTipi
+                ? _value.tarihTipi
+                : tarihTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tipi: freezed == tipi
+                ? _value.tipi
+                : tipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            verilenKodu: freezed == verilenKodu
+                ? _value.verilenKodu
+                : verilenKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            durum: freezed == durum
+                ? _value.durum
+                : durum // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            searchText: freezed == searchText
+                ? _value.searchText
+                : searchText // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            baslangicTarihi: freezed == baslangicTarihi
+                ? _value.baslangicTarihi
+                : baslangicTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bitisTarihi: freezed == bitisTarihi
+                ? _value.bitisTarihi
+                : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$CekSenetListesiRequestModelImplCopyWith<$Res>
-    implements $CekSenetListesiRequestModelCopyWith<$Res> {
+abstract class _$$CekSenetListesiRequestModelImplCopyWith<$Res> implements $CekSenetListesiRequestModelCopyWith<$Res> {
   factory _$$CekSenetListesiRequestModelImplCopyWith(
-          _$CekSenetListesiRequestModelImpl value,
-          $Res Function(_$CekSenetListesiRequestModelImpl) then) =
-      __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>;
+    _$CekSenetListesiRequestModelImpl value,
+    $Res Function(_$CekSenetListesiRequestModelImpl) then,
+  ) = __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? verenKodu,
-      String? sirala,
-      String? ekranTipi,
-      String? yer,
-      String? donemTipi,
-      String? tarihTipi,
-      String? tipi,
-      String? verilenKodu,
-      String? durum,
-      String? searchText,
-      String? baslangicTarihi,
-      String? bitisTarihi});
+  $Res call({
+    String? verenKodu,
+    String? sirala,
+    String? ekranTipi,
+    String? yer,
+    String? donemTipi,
+    String? tarihTipi,
+    String? tipi,
+    String? verilenKodu,
+    String? durum,
+    String? searchText,
+    String? baslangicTarihi,
+    String? bitisTarihi,
+  });
 }
 
 /// @nodoc
 class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>
-    extends _$CekSenetListesiRequestModelCopyWithImpl<$Res,
-        _$CekSenetListesiRequestModelImpl>
+    extends _$CekSenetListesiRequestModelCopyWithImpl<$Res, _$CekSenetListesiRequestModelImpl>
     implements _$$CekSenetListesiRequestModelImplCopyWith<$Res> {
   __$$CekSenetListesiRequestModelImplCopyWithImpl(
-      _$CekSenetListesiRequestModelImpl _value,
-      $Res Function(_$CekSenetListesiRequestModelImpl) _then)
-      : super(_value, _then);
+    _$CekSenetListesiRequestModelImpl _value,
+    $Res Function(_$CekSenetListesiRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CekSenetListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -213,80 +213,81 @@ class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>
     Object? baslangicTarihi = freezed,
     Object? bitisTarihi = freezed,
   }) {
-    return _then(_$CekSenetListesiRequestModelImpl(
-      verenKodu: freezed == verenKodu
-          ? _value.verenKodu
-          : verenKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sirala: freezed == sirala
-          ? _value.sirala
-          : sirala // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yer: freezed == yer
-          ? _value.yer
-          : yer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      donemTipi: freezed == donemTipi
-          ? _value.donemTipi
-          : donemTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarihTipi: freezed == tarihTipi
-          ? _value.tarihTipi
-          : tarihTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipi: freezed == tipi
-          ? _value.tipi
-          : tipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      verilenKodu: freezed == verilenKodu
-          ? _value.verilenKodu
-          : verilenKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      durum: freezed == durum
-          ? _value.durum
-          : durum // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      baslangicTarihi: freezed == baslangicTarihi
-          ? _value.baslangicTarihi
-          : baslangicTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$CekSenetListesiRequestModelImpl(
+        verenKodu: freezed == verenKodu
+            ? _value.verenKodu
+            : verenKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sirala: freezed == sirala
+            ? _value.sirala
+            : sirala // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yer: freezed == yer
+            ? _value.yer
+            : yer // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        donemTipi: freezed == donemTipi
+            ? _value.donemTipi
+            : donemTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarihTipi: freezed == tarihTipi
+            ? _value.tarihTipi
+            : tarihTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tipi: freezed == tipi
+            ? _value.tipi
+            : tipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        verilenKodu: freezed == verilenKodu
+            ? _value.verilenKodu
+            : verilenKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        durum: freezed == durum
+            ? _value.durum
+            : durum // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        searchText: freezed == searchText
+            ? _value.searchText
+            : searchText // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        baslangicTarihi: freezed == baslangicTarihi
+            ? _value.baslangicTarihi
+            : baslangicTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bitisTarihi: freezed == bitisTarihi
+            ? _value.bitisTarihi
+            : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$CekSenetListesiRequestModelImpl
-    implements _CekSenetListesiRequestModel {
-  _$CekSenetListesiRequestModelImpl(
-      {this.verenKodu,
-      this.sirala,
-      this.ekranTipi,
-      this.yer,
-      this.donemTipi,
-      this.tarihTipi,
-      this.tipi,
-      this.verilenKodu,
-      this.durum,
-      this.searchText,
-      this.baslangicTarihi,
-      this.bitisTarihi});
+class _$CekSenetListesiRequestModelImpl implements _CekSenetListesiRequestModel {
+  _$CekSenetListesiRequestModelImpl({
+    this.verenKodu,
+    this.sirala,
+    this.ekranTipi,
+    this.yer,
+    this.donemTipi,
+    this.tarihTipi,
+    this.tipi,
+    this.verilenKodu,
+    this.durum,
+    this.searchText,
+    this.baslangicTarihi,
+    this.bitisTarihi,
+  });
 
-  factory _$CekSenetListesiRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$CekSenetListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CekSenetListesiRequestModelImplFromJson(json);
 
   @override
@@ -319,36 +320,32 @@ class _$CekSenetListesiRequestModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl>
-      get copyWith => __$$CekSenetListesiRequestModelImplCopyWithImpl<
-          _$CekSenetListesiRequestModelImpl>(this, _$identity);
+  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl> get copyWith =>
+      __$$CekSenetListesiRequestModelImplCopyWithImpl<_$CekSenetListesiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CekSenetListesiRequestModelImplToJson(
-      this,
-    );
+    return _$$CekSenetListesiRequestModelImplToJson(this);
   }
 }
 
-abstract class _CekSenetListesiRequestModel
-    implements CekSenetListesiRequestModel {
-  factory _CekSenetListesiRequestModel(
-      {String? verenKodu,
-      String? sirala,
-      String? ekranTipi,
-      String? yer,
-      String? donemTipi,
-      String? tarihTipi,
-      String? tipi,
-      String? verilenKodu,
-      String? durum,
-      String? searchText,
-      String? baslangicTarihi,
-      String? bitisTarihi}) = _$CekSenetListesiRequestModelImpl;
+abstract class _CekSenetListesiRequestModel implements CekSenetListesiRequestModel {
+  factory _CekSenetListesiRequestModel({
+    String? verenKodu,
+    String? sirala,
+    String? ekranTipi,
+    String? yer,
+    String? donemTipi,
+    String? tarihTipi,
+    String? tipi,
+    String? verilenKodu,
+    String? durum,
+    String? searchText,
+    String? baslangicTarihi,
+    String? bitisTarihi,
+  }) = _$CekSenetListesiRequestModelImpl;
 
-  factory _CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$CekSenetListesiRequestModelImpl.fromJson;
+  factory _CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) = _$CekSenetListesiRequestModelImpl.fromJson;
 
   @override
   String? get verenKodu;
@@ -391,6 +388,6 @@ abstract class _CekSenetListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -12,10 +12,10 @@ part of 'depo_bakiye_durumu_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-DepoBakiyeDurumuModel _$DepoBakiyeDurumuModelFromJson(
-    Map<String, dynamic> json) {
+DepoBakiyeDurumuModel _$DepoBakiyeDurumuModelFromJson(Map<String, dynamic> json) {
   return _DepoBakiyeDurumuModel.fromJson(json);
 }
 
@@ -37,31 +37,29 @@ mixin _$DepoBakiyeDurumuModel {
   /// Create a copy of DepoBakiyeDurumuModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DepoBakiyeDurumuModelCopyWith<DepoBakiyeDurumuModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DepoBakiyeDurumuModelCopyWith<DepoBakiyeDurumuModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DepoBakiyeDurumuModelCopyWith<$Res> {
-  factory $DepoBakiyeDurumuModelCopyWith(DepoBakiyeDurumuModel value,
-          $Res Function(DepoBakiyeDurumuModel) then) =
+  factory $DepoBakiyeDurumuModelCopyWith(DepoBakiyeDurumuModel value, $Res Function(DepoBakiyeDurumuModel) then) =
       _$DepoBakiyeDurumuModelCopyWithImpl<$Res, DepoBakiyeDurumuModel>;
   @useResult
-  $Res call(
-      {int? subeKodu,
-      int? depoKodu,
-      String? stokKodu,
-      double? giris,
-      double? cikis,
-      double? bakiye,
-      String? subeAdi,
-      String? stokAdi,
-      String? depoAdi});
+  $Res call({
+    int? subeKodu,
+    int? depoKodu,
+    String? stokKodu,
+    double? giris,
+    double? cikis,
+    double? bakiye,
+    String? subeAdi,
+    String? stokAdi,
+    String? depoAdi,
+  });
 }
 
 /// @nodoc
-class _$DepoBakiyeDurumuModelCopyWithImpl<$Res,
-        $Val extends DepoBakiyeDurumuModel>
+class _$DepoBakiyeDurumuModelCopyWithImpl<$Res, $Val extends DepoBakiyeDurumuModel>
     implements $DepoBakiyeDurumuModelCopyWith<$Res> {
   _$DepoBakiyeDurumuModelCopyWithImpl(this._value, this._then);
 
@@ -85,76 +83,79 @@ class _$DepoBakiyeDurumuModelCopyWithImpl<$Res,
     Object? stokAdi = freezed,
     Object? depoAdi = freezed,
   }) {
-    return _then(_value.copyWith(
-      subeKodu: freezed == subeKodu
-          ? _value.subeKodu
-          : subeKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      giris: freezed == giris
-          ? _value.giris
-          : giris // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cikis: freezed == cikis
-          ? _value.cikis
-          : cikis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      subeAdi: freezed == subeAdi
-          ? _value.subeAdi
-          : subeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoAdi: freezed == depoAdi
-          ? _value.depoAdi
-          : depoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            subeKodu: freezed == subeKodu
+                ? _value.subeKodu
+                : subeKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            giris: freezed == giris
+                ? _value.giris
+                : giris // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            cikis: freezed == cikis
+                ? _value.cikis
+                : cikis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            bakiye: freezed == bakiye
+                ? _value.bakiye
+                : bakiye // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            subeAdi: freezed == subeAdi
+                ? _value.subeAdi
+                : subeAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokAdi: freezed == stokAdi
+                ? _value.stokAdi
+                : stokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            depoAdi: freezed == depoAdi
+                ? _value.depoAdi
+                : depoAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DepoBakiyeDurumuModelImplCopyWith<$Res>
-    implements $DepoBakiyeDurumuModelCopyWith<$Res> {
+abstract class _$$DepoBakiyeDurumuModelImplCopyWith<$Res> implements $DepoBakiyeDurumuModelCopyWith<$Res> {
   factory _$$DepoBakiyeDurumuModelImplCopyWith(
-          _$DepoBakiyeDurumuModelImpl value,
-          $Res Function(_$DepoBakiyeDurumuModelImpl) then) =
-      __$$DepoBakiyeDurumuModelImplCopyWithImpl<$Res>;
+    _$DepoBakiyeDurumuModelImpl value,
+    $Res Function(_$DepoBakiyeDurumuModelImpl) then,
+  ) = __$$DepoBakiyeDurumuModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? subeKodu,
-      int? depoKodu,
-      String? stokKodu,
-      double? giris,
-      double? cikis,
-      double? bakiye,
-      String? subeAdi,
-      String? stokAdi,
-      String? depoAdi});
+  $Res call({
+    int? subeKodu,
+    int? depoKodu,
+    String? stokKodu,
+    double? giris,
+    double? cikis,
+    double? bakiye,
+    String? subeAdi,
+    String? stokAdi,
+    String? depoAdi,
+  });
 }
 
 /// @nodoc
 class __$$DepoBakiyeDurumuModelImplCopyWithImpl<$Res>
-    extends _$DepoBakiyeDurumuModelCopyWithImpl<$Res,
-        _$DepoBakiyeDurumuModelImpl>
+    extends _$DepoBakiyeDurumuModelCopyWithImpl<$Res, _$DepoBakiyeDurumuModelImpl>
     implements _$$DepoBakiyeDurumuModelImplCopyWith<$Res> {
-  __$$DepoBakiyeDurumuModelImplCopyWithImpl(_$DepoBakiyeDurumuModelImpl _value,
-      $Res Function(_$DepoBakiyeDurumuModelImpl) _then)
-      : super(_value, _then);
+  __$$DepoBakiyeDurumuModelImplCopyWithImpl(
+    _$DepoBakiyeDurumuModelImpl _value,
+    $Res Function(_$DepoBakiyeDurumuModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DepoBakiyeDurumuModel
   /// with the given fields replaced by the non-null parameter values.
@@ -171,64 +172,65 @@ class __$$DepoBakiyeDurumuModelImplCopyWithImpl<$Res>
     Object? stokAdi = freezed,
     Object? depoAdi = freezed,
   }) {
-    return _then(_$DepoBakiyeDurumuModelImpl(
-      subeKodu: freezed == subeKodu
-          ? _value.subeKodu
-          : subeKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      giris: freezed == giris
-          ? _value.giris
-          : giris // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cikis: freezed == cikis
-          ? _value.cikis
-          : cikis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      subeAdi: freezed == subeAdi
-          ? _value.subeAdi
-          : subeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoAdi: freezed == depoAdi
-          ? _value.depoAdi
-          : depoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$DepoBakiyeDurumuModelImpl(
+        subeKodu: freezed == subeKodu
+            ? _value.subeKodu
+            : subeKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        giris: freezed == giris
+            ? _value.giris
+            : giris // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        cikis: freezed == cikis
+            ? _value.cikis
+            : cikis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        bakiye: freezed == bakiye
+            ? _value.bakiye
+            : bakiye // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        subeAdi: freezed == subeAdi
+            ? _value.subeAdi
+            : subeAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokAdi: freezed == stokAdi
+            ? _value.stokAdi
+            : stokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        depoAdi: freezed == depoAdi
+            ? _value.depoAdi
+            : depoAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DepoBakiyeDurumuModelImpl extends _DepoBakiyeDurumuModel {
-  const _$DepoBakiyeDurumuModelImpl(
-      {this.subeKodu,
-      this.depoKodu,
-      this.stokKodu,
-      this.giris,
-      this.cikis,
-      this.bakiye,
-      this.subeAdi,
-      this.stokAdi,
-      this.depoAdi})
-      : super._();
+  const _$DepoBakiyeDurumuModelImpl({
+    this.subeKodu,
+    this.depoKodu,
+    this.stokKodu,
+    this.giris,
+    this.cikis,
+    this.bakiye,
+    this.subeAdi,
+    this.stokAdi,
+    this.depoAdi,
+  }) : super._();
 
-  factory _$DepoBakiyeDurumuModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DepoBakiyeDurumuModelImplFromJson(json);
+  factory _$DepoBakiyeDurumuModelImpl.fromJson(Map<String, dynamic> json) => _$$DepoBakiyeDurumuModelImplFromJson(json);
 
   @override
   final int? subeKodu;
@@ -254,33 +256,30 @@ class _$DepoBakiyeDurumuModelImpl extends _DepoBakiyeDurumuModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl>
-      get copyWith => __$$DepoBakiyeDurumuModelImplCopyWithImpl<
-          _$DepoBakiyeDurumuModelImpl>(this, _$identity);
+  _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl> get copyWith =>
+      __$$DepoBakiyeDurumuModelImplCopyWithImpl<_$DepoBakiyeDurumuModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DepoBakiyeDurumuModelImplToJson(
-      this,
-    );
+    return _$$DepoBakiyeDurumuModelImplToJson(this);
   }
 }
 
 abstract class _DepoBakiyeDurumuModel extends DepoBakiyeDurumuModel {
-  const factory _DepoBakiyeDurumuModel(
-      {final int? subeKodu,
-      final int? depoKodu,
-      final String? stokKodu,
-      final double? giris,
-      final double? cikis,
-      final double? bakiye,
-      final String? subeAdi,
-      final String? stokAdi,
-      final String? depoAdi}) = _$DepoBakiyeDurumuModelImpl;
+  const factory _DepoBakiyeDurumuModel({
+    final int? subeKodu,
+    final int? depoKodu,
+    final String? stokKodu,
+    final double? giris,
+    final double? cikis,
+    final double? bakiye,
+    final String? subeAdi,
+    final String? stokAdi,
+    final String? depoAdi,
+  }) = _$DepoBakiyeDurumuModelImpl;
   const _DepoBakiyeDurumuModel._() : super._();
 
-  factory _DepoBakiyeDurumuModel.fromJson(Map<String, dynamic> json) =
-      _$DepoBakiyeDurumuModelImpl.fromJson;
+  factory _DepoBakiyeDurumuModel.fromJson(Map<String, dynamic> json) = _$DepoBakiyeDurumuModelImpl.fromJson;
 
   @override
   int? get subeKodu;
@@ -305,6 +304,5 @@ abstract class _DepoBakiyeDurumuModel extends DepoBakiyeDurumuModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

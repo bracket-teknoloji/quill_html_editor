@@ -85,12 +85,11 @@ final class _HucreAraViewState extends BaseState<HucreAraView> {
         ),
         Expanded(
           child: Observer(
-            builder:
-                (_) => RefreshableListView(
-                  onRefresh: viewModel.getData,
-                  items: viewModel.stokList,
-                  itemBuilder: (item) => HucreAraCard(model: item),
-                ),
+            builder: (_) => RefreshableListView(
+              onRefresh: viewModel.getData,
+              items: viewModel.stokList,
+              itemBuilder: (item) => HucreAraCard(model: item),
+            ),
           ),
         ),
       ],

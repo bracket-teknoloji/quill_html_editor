@@ -36,27 +36,35 @@ final class _HucreHareketleriViewState extends State<HucreHareketleriView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(
-              title: "Hücre Hareketleri (${viewModel.hucreHareketleriListesi?.length ?? 0})",
-              subtitle: widget.model.stokKodu,
-            ),
+        builder: (_) => AppBarTitle(
+          title: "Hücre Hareketleri (${viewModel.hucreHareketleriListesi?.length ?? 0})",
+          subtitle: widget.model.stokKodu,
+        ),
       ),
     ),
     bottomNavigationBar: BottomBarWidget(
       isScrolledDown: true,
       children: [
-        FooterButton(children: [const Text("Giriş"), Observer(builder: (_) => Text(viewModel.toplamGiris.toString()))]),
-        FooterButton(children: [const Text("Çıkış"), Observer(builder: (_) => Text(viewModel.toplamCikis.toString()))]),
+        FooterButton(
+          children: [
+            const Text("Giriş"),
+            Observer(builder: (_) => Text(viewModel.toplamGiris.toString())),
+          ],
+        ),
+        FooterButton(
+          children: [
+            const Text("Çıkış"),
+            Observer(builder: (_) => Text(viewModel.toplamCikis.toString())),
+          ],
+        ),
         FooterButton(
           children: [
             const Text("Bakiye"),
             Observer(
-              builder:
-                  (_) => Text(
-                    viewModel.bakiye.toString(),
-                    style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye.toDouble())),
-                  ),
+              builder: (_) => Text(
+                viewModel.bakiye.toString(),
+                style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye.toDouble())),
+              ),
             ),
           ],
         ),

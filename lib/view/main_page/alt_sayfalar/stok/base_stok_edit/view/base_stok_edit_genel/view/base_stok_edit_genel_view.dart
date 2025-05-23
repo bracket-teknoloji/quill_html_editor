@@ -102,10 +102,9 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     barkod2Controller = TextEditingController(text: stokModel.barkod2);
     barkod3Controller = TextEditingController(text: stokModel.barkod3);
     subeController = TextEditingController(
-      text:
-          subeList.ext.isNotNullOrEmpty
-              ? subeList.where((element) => element.subeKodu == stokModel.subeKodu).firstOrNull?.subeAdi
-              : null,
+      text: subeList.ext.isNotNullOrEmpty
+          ? subeList.where((element) => element.subeKodu == stokModel.subeKodu).firstOrNull?.subeAdi
+          : null,
     ); //text: model?.stokAdi
     ureticiKoduController = TextEditingController(text: stokModel.ureticiKodu); //text: model?.stokAdi
     grupKoduController = TextEditingController(text: stokModel.grupKodu);
@@ -170,52 +169,50 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                 if (stokModel.resimBase64 != null || widget.model.ekleMi)
                   Expanded(
                     child: Observer(
-                      builder:
-                          (_) => InkWell(
-                            child:
-                                stokModel.resimBase64 != null
-                                    ? SizedBox(
-                                      height: kTextTabBarHeight,
-                                      child: Image.memory(
-                                        base64Decode(stokModel.resimBase64 ?? ""),
-                                        fit: BoxFit.fitHeight,
-                                      ).paddingAll(UIHelper.lowSize),
-                                    )
-                                    : const Center(child: Icon(Icons.add)),
-                            onTap: () async {
-                              final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
-                                context,
-                                title: "Kaynak tipi",
-                                children: [
-                                  BottomSheetModel(
-                                    title: "Galeri",
-                                    iconWidget: Icons.photo_library_outlined,
-                                    value: ImageSource.gallery,
-                                  ),
-                                  BottomSheetModel(
-                                    title: "Kamera",
-                                    iconWidget: Icons.camera_alt_outlined,
-                                    value: ImageSource.camera,
-                                  ),
-                                  if (stokModel.resimBase64 != null)
-                                    BottomSheetModel(
-                                      title: "Fotoğrafı Kaldır",
-                                      iconWidget: Icons.delete_forever_outlined,
-                                      value: "",
-                                    ),
-                                ],
-                              );
-                              if (sourceType is ImageSource) {
-                                viewModel.setImage(await imageCompresser(sourceType));
-                              } else if (sourceType == "") {
-                                dialogManager.showAreYouSureDialog(
-                                  onYes: () {
-                                    viewModel.setImage(null);
-                                  },
-                                );
-                              }
-                            },
-                          ),
+                      builder: (_) => InkWell(
+                        child: stokModel.resimBase64 != null
+                            ? SizedBox(
+                                height: kTextTabBarHeight,
+                                child: Image.memory(
+                                  base64Decode(stokModel.resimBase64 ?? ""),
+                                  fit: BoxFit.fitHeight,
+                                ).paddingAll(UIHelper.lowSize),
+                              )
+                            : const Center(child: Icon(Icons.add)),
+                        onTap: () async {
+                          final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "Kaynak tipi",
+                            children: [
+                              BottomSheetModel(
+                                title: "Galeri",
+                                iconWidget: Icons.photo_library_outlined,
+                                value: ImageSource.gallery,
+                              ),
+                              BottomSheetModel(
+                                title: "Kamera",
+                                iconWidget: Icons.camera_alt_outlined,
+                                value: ImageSource.camera,
+                              ),
+                              if (stokModel.resimBase64 != null)
+                                BottomSheetModel(
+                                  title: "Fotoğrafı Kaldır",
+                                  iconWidget: Icons.delete_forever_outlined,
+                                  value: "",
+                                ),
+                            ],
+                          );
+                          if (sourceType is ImageSource) {
+                            viewModel.setImage(await imageCompresser(sourceType));
+                          } else if (sourceType == "") {
+                            dialogManager.showAreYouSureDialog(
+                              onYes: () {
+                                viewModel.setImage(null);
+                              },
+                            );
+                          }
+                        },
+                      ),
                     ),
                   ),
                 Expanded(
@@ -229,54 +226,52 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       stokModel.stokKodu = value;
                     },
                     suffix: Wrap(
-                      children:
-                          [
-                            IconButton(
-                              onPressed:
-                                  () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                                    context,
-                                    title: loc.generalStrings.options,
-                                    children: [
-                                      BottomSheetModel(
-                                        title: "Kodu Rehberden Seç",
-                                        iconWidget: Icons.list_alt_outlined,
-                                        onTap: () async {
-                                          Get.back();
-                                          final result = await Get.toNamed("/mainPage/stokListesiOzel");
-                                          if (result != null) {
-                                            stokKoduController.text = result.stokKodu;
-                                            stokModel.stokKodu = stokKoduController.text;
-                                          }
-                                        },
-                                      ),
-                                      BottomSheetModel(
-                                        title: "${stokKoduController.text} ile Başlayan Son Kodu Getir",
-                                        iconWidget: Icons.add,
-                                        onTap: () async {
-                                          Get.back();
-                                          stokKoduController.text =
-                                              await getSiradakiKod(
-                                                kod: stokKoduController.text,
-                                                isOnBuild: true,
-                                                sonKoduGetir: true,
-                                              ) ??
-                                              "";
-                                          stokModel.stokKodu = stokKoduController.text;
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            ),
-                            IconButton(
-                              onPressed: () async {
-                                stokKoduController.text =
-                                    await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";
-                                stokModel.stokKodu = stokKoduController.text;
-                              },
-                              icon: const Icon(Icons.add),
-                            ),
-                          ].map((e) => SizedBox(width: 35, child: e)).toList(),
+                      children: [
+                        IconButton(
+                          onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: loc.generalStrings.options,
+                            children: [
+                              BottomSheetModel(
+                                title: "Kodu Rehberden Seç",
+                                iconWidget: Icons.list_alt_outlined,
+                                onTap: () async {
+                                  Get.back();
+                                  final result = await Get.toNamed("/mainPage/stokListesiOzel");
+                                  if (result != null) {
+                                    stokKoduController.text = result.stokKodu;
+                                    stokModel.stokKodu = stokKoduController.text;
+                                  }
+                                },
+                              ),
+                              BottomSheetModel(
+                                title: "${stokKoduController.text} ile Başlayan Son Kodu Getir",
+                                iconWidget: Icons.add,
+                                onTap: () async {
+                                  Get.back();
+                                  stokKoduController.text =
+                                      await getSiradakiKod(
+                                        kod: stokKoduController.text,
+                                        isOnBuild: true,
+                                        sonKoduGetir: true,
+                                      ) ??
+                                      "";
+                                  stokModel.stokKodu = stokKoduController.text;
+                                },
+                              ),
+                            ],
+                          ),
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            stokKoduController.text =
+                                await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";
+                            stokModel.stokKodu = stokKoduController.text;
+                          },
+                          icon: const Icon(Icons.add),
+                        ),
+                      ].map((e) => SizedBox(width: 35, child: e)).toList(),
                     ),
                   ),
                 ),
@@ -519,17 +514,16 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                   context,
                   groupValue: stokModel.subeKodu,
                   title: "Şube",
-                  children:
-                      subeList
-                          .map(
-                            (e) => BottomSheetModel(
-                              title: "${e.subeAdi}",
-                              description: e.subeKodu.toStringIfNotNull,
-                              value: e,
-                              groupValue: e.subeKodu,
-                            ),
-                          )
-                          .toList(),
+                  children: subeList
+                      .map(
+                        (e) => BottomSheetModel(
+                          title: "${e.subeAdi}",
+                          description: e.subeKodu.toStringIfNotNull,
+                          value: e,
+                          groupValue: e.subeKodu,
+                        ),
+                      )
+                      .toList(),
                 );
                 if (result != null) {
                   subeController.text = "${result.subeAdi} ${result.subeKodu}";
@@ -702,17 +696,16 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                               context,
                               title: "Kod 3",
                               groupValue: stokModel.kod3,
-                              children:
-                                  viewModel.grupKodlariMap?[3]
-                                      ?.map(
-                                        (e) => BottomSheetModel(
-                                          title: "${e.grupAdi}",
-                                          description: e.grupKodu,
-                                          groupValue: e.grupKodu,
-                                          value: e,
-                                        ),
-                                      )
-                                      .toList(),
+                              children: viewModel.grupKodlariMap?[3]
+                                  ?.map(
+                                    (e) => BottomSheetModel(
+                                      title: "${e.grupAdi}",
+                                      description: e.grupKodu,
+                                      groupValue: e.grupKodu,
+                                      value: e,
+                                    ),
+                                  )
+                                  .toList(),
                             );
                             if (result == null) return;
                             kod3Controller.text = result.grupKodu ?? "";
@@ -746,17 +739,16 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                               context,
                               title: "Kod 4",
                               groupValue: stokModel.kod4,
-                              children:
-                                  viewModel.grupKodlariMap?[4]
-                                      ?.map(
-                                        (e) => BottomSheetModel(
-                                          title: "${e.grupAdi}",
-                                          description: e.grupKodu,
-                                          groupValue: e.grupKodu,
-                                          value: e,
-                                        ),
-                                      )
-                                      .toList(),
+                              children: viewModel.grupKodlariMap?[4]
+                                  ?.map(
+                                    (e) => BottomSheetModel(
+                                      title: "${e.grupAdi}",
+                                      description: e.grupKodu,
+                                      groupValue: e.grupKodu,
+                                      value: e,
+                                    ),
+                                  )
+                                  .toList(),
                             );
                             if (result == null) return;
                             kod4Controller.text = result.grupKodu ?? "";
@@ -788,17 +780,16 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                               context,
                               title: "Kod 5",
                               groupValue: stokModel.kod5,
-                              children:
-                                  viewModel.grupKodlariMap?[5]
-                                      ?.map(
-                                        (e) => BottomSheetModel(
-                                          title: "${e.grupAdi}",
-                                          description: e.grupKodu,
-                                          groupValue: e.grupKodu,
-                                          value: e,
-                                        ),
-                                      )
-                                      .toList(),
+                              children: viewModel.grupKodlariMap?[5]
+                                  ?.map(
+                                    (e) => BottomSheetModel(
+                                      title: "${e.grupAdi}",
+                                      description: e.grupKodu,
+                                      groupValue: e.grupKodu,
+                                      value: e,
+                                    ),
+                                  )
+                                  .toList(),
                             );
                             if (result == null) return;
                             kod5Controller.text = result.grupKodu ?? "";
@@ -858,16 +849,15 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
       groupValue: stokModel.olcuBirimiSelector(controller),
       context,
       title: "Ölçü Birimi $controller",
-      children:
-          filteredList
-              ?.map(
-                (e) => BottomSheetModel(
-                  title: e.olcuBirimi ?? "",
-                  groupValue: e.olcuBirimi,
-                  onTap: () => Get.back(result: e.olcuBirimi),
-                ),
-              )
-              .toList(),
+      children: filteredList
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.olcuBirimi ?? "",
+              groupValue: e.olcuBirimi,
+              onTap: () => Get.back(result: e.olcuBirimi),
+            ),
+          )
+          .toList(),
     );
     if (result != null) {
       if (controller == 1) {

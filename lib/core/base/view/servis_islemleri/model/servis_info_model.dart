@@ -57,7 +57,8 @@ final class ServisInfoModel with NetworkManagerMixin {
   @override
   Map<String, dynamic> toJson() => _$ServisInfoModelToJson(this);
 
-  String get getInfo => """
+  String get getInfo =>
+      """
 Versiyon: ${version ?? ""}
 Versiyon Tarihi: ${updateDate?.toDateString ?? ""}
 Sunucu Adı: ${serverName ?? ""}

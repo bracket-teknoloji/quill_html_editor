@@ -12,10 +12,10 @@ part of 'cari_aktivite_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-CariAktiviteListesiModel _$CariAktiviteListesiModelFromJson(
-    Map<String, dynamic> json) {
+CariAktiviteListesiModel _$CariAktiviteListesiModelFromJson(Map<String, dynamic> json) {
   return _CariAktiviteListesiModel.fromJson(json);
 }
 
@@ -67,10 +67,8 @@ mixin _$CariAktiviteListesiModel {
   bool? get aktiviteBitirilsin => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false)
   set aktiviteBitirilsin(bool? value) => throw _privateConstructorUsedError;
-  List<CariAktiviteListesiModel>? get listDetay =>
-      throw _privateConstructorUsedError;
-  set listDetay(List<CariAktiviteListesiModel>? value) =>
-      throw _privateConstructorUsedError;
+  List<CariAktiviteListesiModel>? get listDetay => throw _privateConstructorUsedError;
+  set listDetay(List<CariAktiviteListesiModel>? value) => throw _privateConstructorUsedError;
 
   /// Serializes this CariAktiviteListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -78,45 +76,45 @@ mixin _$CariAktiviteListesiModel {
   /// Create a copy of CariAktiviteListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CariAktiviteListesiModelCopyWith<CariAktiviteListesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CariAktiviteListesiModelCopyWith<CariAktiviteListesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CariAktiviteListesiModelCopyWith<$Res> {
-  factory $CariAktiviteListesiModelCopyWith(CariAktiviteListesiModel value,
-          $Res Function(CariAktiviteListesiModel) then) =
-      _$CariAktiviteListesiModelCopyWithImpl<$Res, CariAktiviteListesiModel>;
+  factory $CariAktiviteListesiModelCopyWith(
+    CariAktiviteListesiModel value,
+    $Res Function(CariAktiviteListesiModel) then,
+  ) = _$CariAktiviteListesiModelCopyWithImpl<$Res, CariAktiviteListesiModel>;
   @useResult
-  $Res call(
-      {int? id,
-      int? islemKodu,
-      String? cariKodu,
-      String? cariAdi,
-      String? kullaniciAdi,
-      String? kullaniciTitle,
-      int? aktiviteTipi,
-      int? aktiviteId,
-      String? aktiviteAdi,
-      DateTime? bastar,
-      DateTime? kayittarihi,
-      String? kayityapankul,
-      DateTime? bittar,
-      String? sonucAciklama,
-      double? sure,
-      String? aciklama,
-      DateTime? duzeltmetarihi,
-      DateTime? tarih,
-      String? duzeltmeyapankul,
-      String? ilgiliKisi,
-      String? bolum,
-      @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
-      List<CariAktiviteListesiModel>? listDetay});
+  $Res call({
+    int? id,
+    int? islemKodu,
+    String? cariKodu,
+    String? cariAdi,
+    String? kullaniciAdi,
+    String? kullaniciTitle,
+    int? aktiviteTipi,
+    int? aktiviteId,
+    String? aktiviteAdi,
+    DateTime? bastar,
+    DateTime? kayittarihi,
+    String? kayityapankul,
+    DateTime? bittar,
+    String? sonucAciklama,
+    double? sure,
+    String? aciklama,
+    DateTime? duzeltmetarihi,
+    DateTime? tarih,
+    String? duzeltmeyapankul,
+    String? ilgiliKisi,
+    String? bolum,
+    @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
+    List<CariAktiviteListesiModel>? listDetay,
+  });
 }
 
 /// @nodoc
-class _$CariAktiviteListesiModelCopyWithImpl<$Res,
-        $Val extends CariAktiviteListesiModel>
+class _$CariAktiviteListesiModelCopyWithImpl<$Res, $Val extends CariAktiviteListesiModel>
     implements $CariAktiviteListesiModelCopyWith<$Res> {
   _$CariAktiviteListesiModelCopyWithImpl(this._value, this._then);
 
@@ -154,147 +152,149 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
     Object? aktiviteBitirilsin = freezed,
     Object? listDetay = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kullaniciAdi: freezed == kullaniciAdi
-          ? _value.kullaniciAdi
-          : kullaniciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kullaniciTitle: freezed == kullaniciTitle
-          ? _value.kullaniciTitle
-          : kullaniciTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aktiviteTipi: freezed == aktiviteTipi
-          ? _value.aktiviteTipi
-          : aktiviteTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aktiviteId: freezed == aktiviteId
-          ? _value.aktiviteId
-          : aktiviteId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aktiviteAdi: freezed == aktiviteAdi
-          ? _value.aktiviteAdi
-          : aktiviteAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bastar: freezed == bastar
-          ? _value.bastar
-          : bastar // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bittar: freezed == bittar
-          ? _value.bittar
-          : bittar // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sonucAciklama: freezed == sonucAciklama
-          ? _value.sonucAciklama
-          : sonucAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sure: freezed == sure
-          ? _value.sure
-          : sure // ignore: cast_nullable_to_non_nullable
-              as double?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      duzeltmetarihi: freezed == duzeltmetarihi
-          ? _value.duzeltmetarihi
-          : duzeltmetarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      duzeltmeyapankul: freezed == duzeltmeyapankul
-          ? _value.duzeltmeyapankul
-          : duzeltmeyapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ilgiliKisi: freezed == ilgiliKisi
-          ? _value.ilgiliKisi
-          : ilgiliKisi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bolum: freezed == bolum
-          ? _value.bolum
-          : bolum // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aktiviteBitirilsin: freezed == aktiviteBitirilsin
-          ? _value.aktiviteBitirilsin
-          : aktiviteBitirilsin // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      listDetay: freezed == listDetay
-          ? _value.listDetay
-          : listDetay // ignore: cast_nullable_to_non_nullable
-              as List<CariAktiviteListesiModel>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemKodu: freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariAdi: freezed == cariAdi
+                ? _value.cariAdi
+                : cariAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kullaniciAdi: freezed == kullaniciAdi
+                ? _value.kullaniciAdi
+                : kullaniciAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kullaniciTitle: freezed == kullaniciTitle
+                ? _value.kullaniciTitle
+                : kullaniciTitle // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            aktiviteTipi: freezed == aktiviteTipi
+                ? _value.aktiviteTipi
+                : aktiviteTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            aktiviteId: freezed == aktiviteId
+                ? _value.aktiviteId
+                : aktiviteId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            aktiviteAdi: freezed == aktiviteAdi
+                ? _value.aktiviteAdi
+                : aktiviteAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bastar: freezed == bastar
+                ? _value.bastar
+                : bastar // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            kayittarihi: freezed == kayittarihi
+                ? _value.kayittarihi
+                : kayittarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            kayityapankul: freezed == kayityapankul
+                ? _value.kayityapankul
+                : kayityapankul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bittar: freezed == bittar
+                ? _value.bittar
+                : bittar // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            sonucAciklama: freezed == sonucAciklama
+                ? _value.sonucAciklama
+                : sonucAciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sure: freezed == sure
+                ? _value.sure
+                : sure // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            duzeltmetarihi: freezed == duzeltmetarihi
+                ? _value.duzeltmetarihi
+                : duzeltmetarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            duzeltmeyapankul: freezed == duzeltmeyapankul
+                ? _value.duzeltmeyapankul
+                : duzeltmeyapankul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ilgiliKisi: freezed == ilgiliKisi
+                ? _value.ilgiliKisi
+                : ilgiliKisi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bolum: freezed == bolum
+                ? _value.bolum
+                : bolum // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            aktiviteBitirilsin: freezed == aktiviteBitirilsin
+                ? _value.aktiviteBitirilsin
+                : aktiviteBitirilsin // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            listDetay: freezed == listDetay
+                ? _value.listDetay
+                : listDetay // ignore: cast_nullable_to_non_nullable
+                      as List<CariAktiviteListesiModel>?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$CariAktiviteListesiModelImplCopyWith<$Res>
-    implements $CariAktiviteListesiModelCopyWith<$Res> {
+abstract class _$$CariAktiviteListesiModelImplCopyWith<$Res> implements $CariAktiviteListesiModelCopyWith<$Res> {
   factory _$$CariAktiviteListesiModelImplCopyWith(
-          _$CariAktiviteListesiModelImpl value,
-          $Res Function(_$CariAktiviteListesiModelImpl) then) =
-      __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>;
+    _$CariAktiviteListesiModelImpl value,
+    $Res Function(_$CariAktiviteListesiModelImpl) then,
+  ) = __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      int? islemKodu,
-      String? cariKodu,
-      String? cariAdi,
-      String? kullaniciAdi,
-      String? kullaniciTitle,
-      int? aktiviteTipi,
-      int? aktiviteId,
-      String? aktiviteAdi,
-      DateTime? bastar,
-      DateTime? kayittarihi,
-      String? kayityapankul,
-      DateTime? bittar,
-      String? sonucAciklama,
-      double? sure,
-      String? aciklama,
-      DateTime? duzeltmetarihi,
-      DateTime? tarih,
-      String? duzeltmeyapankul,
-      String? ilgiliKisi,
-      String? bolum,
-      @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
-      List<CariAktiviteListesiModel>? listDetay});
+  $Res call({
+    int? id,
+    int? islemKodu,
+    String? cariKodu,
+    String? cariAdi,
+    String? kullaniciAdi,
+    String? kullaniciTitle,
+    int? aktiviteTipi,
+    int? aktiviteId,
+    String? aktiviteAdi,
+    DateTime? bastar,
+    DateTime? kayittarihi,
+    String? kayityapankul,
+    DateTime? bittar,
+    String? sonucAciklama,
+    double? sure,
+    String? aciklama,
+    DateTime? duzeltmetarihi,
+    DateTime? tarih,
+    String? duzeltmeyapankul,
+    String? ilgiliKisi,
+    String? bolum,
+    @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
+    List<CariAktiviteListesiModel>? listDetay,
+  });
 }
 
 /// @nodoc
 class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
-    extends _$CariAktiviteListesiModelCopyWithImpl<$Res,
-        _$CariAktiviteListesiModelImpl>
+    extends _$CariAktiviteListesiModelCopyWithImpl<$Res, _$CariAktiviteListesiModelImpl>
     implements _$$CariAktiviteListesiModelImplCopyWith<$Res> {
   __$$CariAktiviteListesiModelImplCopyWithImpl(
-      _$CariAktiviteListesiModelImpl _value,
-      $Res Function(_$CariAktiviteListesiModelImpl) _then)
-      : super(_value, _then);
+    _$CariAktiviteListesiModelImpl _value,
+    $Res Function(_$CariAktiviteListesiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CariAktiviteListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -325,131 +325,133 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
     Object? aktiviteBitirilsin = freezed,
     Object? listDetay = freezed,
   }) {
-    return _then(_$CariAktiviteListesiModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kullaniciAdi: freezed == kullaniciAdi
-          ? _value.kullaniciAdi
-          : kullaniciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kullaniciTitle: freezed == kullaniciTitle
-          ? _value.kullaniciTitle
-          : kullaniciTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aktiviteTipi: freezed == aktiviteTipi
-          ? _value.aktiviteTipi
-          : aktiviteTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aktiviteId: freezed == aktiviteId
-          ? _value.aktiviteId
-          : aktiviteId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aktiviteAdi: freezed == aktiviteAdi
-          ? _value.aktiviteAdi
-          : aktiviteAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bastar: freezed == bastar
-          ? _value.bastar
-          : bastar // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bittar: freezed == bittar
-          ? _value.bittar
-          : bittar // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sonucAciklama: freezed == sonucAciklama
-          ? _value.sonucAciklama
-          : sonucAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sure: freezed == sure
-          ? _value.sure
-          : sure // ignore: cast_nullable_to_non_nullable
-              as double?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      duzeltmetarihi: freezed == duzeltmetarihi
-          ? _value.duzeltmetarihi
-          : duzeltmetarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      duzeltmeyapankul: freezed == duzeltmeyapankul
-          ? _value.duzeltmeyapankul
-          : duzeltmeyapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ilgiliKisi: freezed == ilgiliKisi
-          ? _value.ilgiliKisi
-          : ilgiliKisi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bolum: freezed == bolum
-          ? _value.bolum
-          : bolum // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aktiviteBitirilsin: freezed == aktiviteBitirilsin
-          ? _value.aktiviteBitirilsin
-          : aktiviteBitirilsin // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      listDetay: freezed == listDetay
-          ? _value.listDetay
-          : listDetay // ignore: cast_nullable_to_non_nullable
-              as List<CariAktiviteListesiModel>?,
-    ));
+    return _then(
+      _$CariAktiviteListesiModelImpl(
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemKodu: freezed == islemKodu
+            ? _value.islemKodu
+            : islemKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariAdi: freezed == cariAdi
+            ? _value.cariAdi
+            : cariAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kullaniciAdi: freezed == kullaniciAdi
+            ? _value.kullaniciAdi
+            : kullaniciAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kullaniciTitle: freezed == kullaniciTitle
+            ? _value.kullaniciTitle
+            : kullaniciTitle // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        aktiviteTipi: freezed == aktiviteTipi
+            ? _value.aktiviteTipi
+            : aktiviteTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        aktiviteId: freezed == aktiviteId
+            ? _value.aktiviteId
+            : aktiviteId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        aktiviteAdi: freezed == aktiviteAdi
+            ? _value.aktiviteAdi
+            : aktiviteAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bastar: freezed == bastar
+            ? _value.bastar
+            : bastar // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        kayittarihi: freezed == kayittarihi
+            ? _value.kayittarihi
+            : kayittarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        kayityapankul: freezed == kayityapankul
+            ? _value.kayityapankul
+            : kayityapankul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bittar: freezed == bittar
+            ? _value.bittar
+            : bittar // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        sonucAciklama: freezed == sonucAciklama
+            ? _value.sonucAciklama
+            : sonucAciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sure: freezed == sure
+            ? _value.sure
+            : sure // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        duzeltmetarihi: freezed == duzeltmetarihi
+            ? _value.duzeltmetarihi
+            : duzeltmetarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        duzeltmeyapankul: freezed == duzeltmeyapankul
+            ? _value.duzeltmeyapankul
+            : duzeltmeyapankul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ilgiliKisi: freezed == ilgiliKisi
+            ? _value.ilgiliKisi
+            : ilgiliKisi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bolum: freezed == bolum
+            ? _value.bolum
+            : bolum // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        aktiviteBitirilsin: freezed == aktiviteBitirilsin
+            ? _value.aktiviteBitirilsin
+            : aktiviteBitirilsin // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        listDetay: freezed == listDetay
+            ? _value.listDetay
+            : listDetay // ignore: cast_nullable_to_non_nullable
+                  as List<CariAktiviteListesiModel>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
-  _$CariAktiviteListesiModelImpl(
-      {this.id,
-      this.islemKodu,
-      this.cariKodu,
-      this.cariAdi,
-      this.kullaniciAdi,
-      this.kullaniciTitle,
-      this.aktiviteTipi,
-      this.aktiviteId,
-      this.aktiviteAdi,
-      this.bastar,
-      this.kayittarihi,
-      this.kayityapankul,
-      this.bittar,
-      this.sonucAciklama,
-      this.sure,
-      this.aciklama,
-      this.duzeltmetarihi,
-      this.tarih,
-      this.duzeltmeyapankul,
-      this.ilgiliKisi,
-      this.bolum,
-      @JsonKey(includeToJson: false) this.aktiviteBitirilsin,
-      this.listDetay})
-      : super._();
+  _$CariAktiviteListesiModelImpl({
+    this.id,
+    this.islemKodu,
+    this.cariKodu,
+    this.cariAdi,
+    this.kullaniciAdi,
+    this.kullaniciTitle,
+    this.aktiviteTipi,
+    this.aktiviteId,
+    this.aktiviteAdi,
+    this.bastar,
+    this.kayittarihi,
+    this.kayityapankul,
+    this.bittar,
+    this.sonucAciklama,
+    this.sure,
+    this.aciklama,
+    this.duzeltmetarihi,
+    this.tarih,
+    this.duzeltmeyapankul,
+    this.ilgiliKisi,
+    this.bolum,
+    @JsonKey(includeToJson: false) this.aktiviteBitirilsin,
+    this.listDetay,
+  }) : super._();
 
   factory _$CariAktiviteListesiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CariAktiviteListesiModelImplFromJson(json);
@@ -507,48 +509,44 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CariAktiviteListesiModelImplCopyWith<_$CariAktiviteListesiModelImpl>
-      get copyWith => __$$CariAktiviteListesiModelImplCopyWithImpl<
-          _$CariAktiviteListesiModelImpl>(this, _$identity);
+  _$$CariAktiviteListesiModelImplCopyWith<_$CariAktiviteListesiModelImpl> get copyWith =>
+      __$$CariAktiviteListesiModelImplCopyWithImpl<_$CariAktiviteListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CariAktiviteListesiModelImplToJson(
-      this,
-    );
+    return _$$CariAktiviteListesiModelImplToJson(this);
   }
 }
 
 abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
-  factory _CariAktiviteListesiModel(
-          {int? id,
-          int? islemKodu,
-          String? cariKodu,
-          String? cariAdi,
-          String? kullaniciAdi,
-          String? kullaniciTitle,
-          int? aktiviteTipi,
-          int? aktiviteId,
-          String? aktiviteAdi,
-          DateTime? bastar,
-          DateTime? kayittarihi,
-          String? kayityapankul,
-          DateTime? bittar,
-          String? sonucAciklama,
-          double? sure,
-          String? aciklama,
-          DateTime? duzeltmetarihi,
-          DateTime? tarih,
-          String? duzeltmeyapankul,
-          String? ilgiliKisi,
-          String? bolum,
-          @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
-          List<CariAktiviteListesiModel>? listDetay}) =
-      _$CariAktiviteListesiModelImpl;
+  factory _CariAktiviteListesiModel({
+    int? id,
+    int? islemKodu,
+    String? cariKodu,
+    String? cariAdi,
+    String? kullaniciAdi,
+    String? kullaniciTitle,
+    int? aktiviteTipi,
+    int? aktiviteId,
+    String? aktiviteAdi,
+    DateTime? bastar,
+    DateTime? kayittarihi,
+    String? kayityapankul,
+    DateTime? bittar,
+    String? sonucAciklama,
+    double? sure,
+    String? aciklama,
+    DateTime? duzeltmetarihi,
+    DateTime? tarih,
+    String? duzeltmeyapankul,
+    String? ilgiliKisi,
+    String? bolum,
+    @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
+    List<CariAktiviteListesiModel>? listDetay,
+  }) = _$CariAktiviteListesiModelImpl;
   _CariAktiviteListesiModel._() : super._();
 
-  factory _CariAktiviteListesiModel.fromJson(Map<String, dynamic> json) =
-      _$CariAktiviteListesiModelImpl.fromJson;
+  factory _CariAktiviteListesiModel.fromJson(Map<String, dynamic> json) = _$CariAktiviteListesiModelImpl.fromJson;
 
   @override
   int? get id;
@@ -626,6 +624,6 @@ abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CariAktiviteListesiModelImplCopyWith<_$CariAktiviteListesiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CariAktiviteListesiModelImplCopyWith<_$CariAktiviteListesiModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

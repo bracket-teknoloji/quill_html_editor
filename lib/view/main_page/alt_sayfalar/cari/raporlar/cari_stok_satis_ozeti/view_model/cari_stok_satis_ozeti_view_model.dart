@@ -52,15 +52,14 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
   String searchText = "";
 
   @computed
-  ObservableList<CariStokSatisOzetiModel>? get filteredList =>
-      modelList
-          ?.where(
-            (element) =>
-                element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true ||
-                element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
-          )
-          .toList()
-          .asObservable();
+  ObservableList<CariStokSatisOzetiModel>? get filteredList => modelList
+      ?.where(
+        (element) =>
+            element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true ||
+            element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
+      )
+      .toList()
+      .asObservable();
 
   @action
   void setIrsDahil(bool value) => irsDahil = value;

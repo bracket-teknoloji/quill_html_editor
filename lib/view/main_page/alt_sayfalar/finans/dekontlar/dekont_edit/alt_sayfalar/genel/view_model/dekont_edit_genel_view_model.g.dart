@@ -10,8 +10,9 @@ part of 'dekont_edit_genel_view_model.dart';
 
 mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
   late final _$dekontIslemlerRequestModelAtom = Atom(
-      name: '_DekontEditGenelViewModelBase.dekontIslemlerRequestModel',
-      context: context);
+    name: '_DekontEditGenelViewModelBase.dekontIslemlerRequestModel',
+    context: context,
+  );
 
   @override
   DekontIslemlerRequestModel get dekontIslemlerRequestModel {
@@ -21,19 +22,21 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   set dekontIslemlerRequestModel(DekontIslemlerRequestModel value) {
-    _$dekontIslemlerRequestModelAtom
-        .reportWrite(value, super.dekontIslemlerRequestModel, () {
+    _$dekontIslemlerRequestModelAtom.reportWrite(value, super.dekontIslemlerRequestModel, () {
       super.dekontIslemlerRequestModel = value;
     });
   }
 
-  late final _$_DekontEditGenelViewModelBaseActionController =
-      ActionController(name: '_DekontEditGenelViewModelBase', context: context);
+  late final _$_DekontEditGenelViewModelBaseActionController = ActionController(
+    name: '_DekontEditGenelViewModelBase',
+    context: context,
+  );
 
   @override
   void setSingleton() {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setSingleton');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setSingleton',
+    );
     try {
       return super.setSingleton();
     } finally {
@@ -43,8 +46,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setTarih');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -54,8 +58,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setSeri(SeriModel? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setSeri');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setSeri',
+    );
     try {
       return super.setSeri(value);
     } finally {
@@ -65,8 +70,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -76,8 +82,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setProjeKodu(BaseProjeModel? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setProjeKodu');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(value);
     } finally {

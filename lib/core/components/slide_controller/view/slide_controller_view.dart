@@ -67,22 +67,21 @@ final class _SlideControllerWidgetState extends BaseState<SlideControllerWidget>
         scrollDirection: Axis.horizontal,
         // itemExtent: scrollController.hasClients && scrollController.position.extentTotal < width ? scrollController.position.extentTotal / widget.childrenTitleList.length : null,
         itemCount: widget.childrenTitleList.length,
-        itemBuilder:
-            (context, listTileIndex) => RadioMenuButton(
-              style: ButtonStyle(
-                // padding: MaterialStateProperty.all(EdgeInsets.zero),
-                shape: WidgetStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: UIHelper.midBorderRadius,
-                    side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
-                  ),
-                ),
+        itemBuilder: (context, listTileIndex) => RadioMenuButton(
+          style: ButtonStyle(
+            // padding: MaterialStateProperty.all(EdgeInsets.zero),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: UIHelper.midBorderRadius,
+                side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
               ),
-              value: widget.childrenValueList[listTileIndex],
-              groupValue: widget.groupValue,
-              onChanged: (index) => widget.filterOnChanged(listTileIndex),
-              child: Text(widget.childrenTitleList[listTileIndex]),
-            ).paddingOnly(right: UIHelper.lowSize),
+            ),
+          ),
+          value: widget.childrenValueList[listTileIndex],
+          groupValue: widget.groupValue,
+          onChanged: (index) => widget.filterOnChanged(listTileIndex),
+          child: Text(widget.childrenTitleList[listTileIndex]),
+        ).paddingOnly(right: UIHelper.lowSize),
       ),
     ),
   ).paddingAll(UIHelper.lowSize);

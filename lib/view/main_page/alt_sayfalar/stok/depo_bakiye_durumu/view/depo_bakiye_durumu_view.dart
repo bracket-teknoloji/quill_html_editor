@@ -52,10 +52,9 @@ final class _DepoBakiyeDurumuViewState extends BaseState<DepoBakiyeDurumuView> {
             children: [
               BottomSheetModel(
                 title: "Sıfır Bakiye Hariç",
-                iconWidget:
-                    viewModel.dicParams.sifirHaric == "E"
-                        ? Icons.check_box_outlined
-                        : Icons.check_box_outline_blank_outlined,
+                iconWidget: viewModel.dicParams.sifirHaric == "E"
+                    ? Icons.check_box_outlined
+                    : Icons.check_box_outline_blank_outlined,
                 onTap: () async {
                   Get.back();
                   viewModel.setSifirHaric(viewModel.dicParams.sifirHaric != "E");
@@ -103,32 +102,31 @@ final class _DepoBakiyeDurumuViewState extends BaseState<DepoBakiyeDurumuView> {
       }
       return ListView.builder(
         itemCount: viewModel.subeAdiList?.length ?? 0,
-        itemBuilder:
-            (context, index) => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  viewModel.subeAdiList?[index] ?? "",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                ...List.generate(
-                  viewModel.depoBakiyeDurumuList
-                          ?.where((element) => element.subeAdi == viewModel.subeAdiList?[index])
-                          .length ??
-                      0,
-                  (index) {
-                    final DepoBakiyeDurumuModel? item = viewModel.depoBakiyeDurumuList?[index];
-                    return Card(
-                      child: ListTile(
-                        title: Text("${item?.depoAdi}"),
-                        subtitle: Text("Depo Kodu: ${item?.depoKodu}"),
-                        trailing: Text("${item?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ).paddingAll(UIHelper.lowSize),
+        itemBuilder: (context, index) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              viewModel.subeAdiList?[index] ?? "",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ).paddingSymmetric(horizontal: UIHelper.lowSize),
+            ...List.generate(
+              viewModel.depoBakiyeDurumuList
+                      ?.where((element) => element.subeAdi == viewModel.subeAdiList?[index])
+                      .length ??
+                  0,
+              (index) {
+                final DepoBakiyeDurumuModel? item = viewModel.depoBakiyeDurumuList?[index];
+                return Card(
+                  child: ListTile(
+                    title: Text("${item?.depoAdi}"),
+                    subtitle: Text("Depo Kodu: ${item?.depoKodu}"),
+                    trailing: Text("${item?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  ),
+                );
+              },
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
       );
     },
   );

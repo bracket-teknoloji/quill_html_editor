@@ -309,15 +309,14 @@ abstract class _StokListesiViewModelBase
     final result = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
       bodyModel: StokListesiModel(),
-      data:
-          bottomSheetModel
-              .copyWith(
-                resimGoster: resimleriGoster,
-                menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK",
-                searchText: searchText,
-                sayfa: page,
-              )
-              .toJsonWithList(),
+      data: bottomSheetModel
+          .copyWith(
+            resimGoster: resimleriGoster,
+            menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK",
+            searchText: searchText,
+            sayfa: page,
+          )
+          .toJsonWithList(),
     );
     if (result.isSuccess) {
       if (page > 1) {

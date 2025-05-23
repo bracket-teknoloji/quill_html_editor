@@ -21,28 +21,26 @@ final class LeftDrawer extends StatefulWidget {
 
 final class _LeftDrawerState extends BaseState<LeftDrawer> {
   bool isEditing = false;
-  List<FavoritesModel> list =
-      CacheManager.getFavoriler.values
-          .toList()
-          .where(
-            (element) =>
-                (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) ||
-                AccountModel.instance.adminMi,
-          )
-          .toList();
+  List<FavoritesModel> list = CacheManager.getFavoriler.values
+      .toList()
+      .where(
+        (element) =>
+            (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) ||
+            AccountModel.instance.adminMi,
+      )
+      .toList();
   List<FavoritesModel> get liste => list.where((element) => element.yetkiKontrol).toList();
 
   @override
   Widget build(BuildContext context) => Drawer(
-    shape:
-        !context.isLandscape
-            ? const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(UIHelper.highSize),
-                bottomRight: Radius.circular(UIHelper.highSize),
-              ),
-            )
-            : const RoundedRectangleBorder(),
+    shape: !context.isLandscape
+        ? const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(UIHelper.highSize),
+              bottomRight: Radius.circular(UIHelper.highSize),
+            ),
+          )
+        : const RoundedRectangleBorder(),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
 
@@ -81,15 +79,14 @@ final class _LeftDrawerState extends BaseState<LeftDrawer> {
             child: ValueListenableBuilder(
               valueListenable: CacheManager.favorilerBox.listenable(),
               builder: (context, box, widget2) {
-                list =
-                    box.values
-                        .toList()
-                        .where(
-                          (element) =>
-                              (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) ||
-                              AccountModel.instance.adminMi,
-                        )
-                        .toList();
+                list = box.values
+                    .toList()
+                    .where(
+                      (element) =>
+                          (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) ||
+                          AccountModel.instance.adminMi,
+                    )
+                    .toList();
                 if (list.ext.isNullOrEmpty) {
                   return Column(
                     children: [
@@ -136,17 +133,16 @@ final class _LeftDrawerState extends BaseState<LeftDrawer> {
                         enabled: liste.any((element) => element.title == value.title),
                         title: Text(value.title.toString()),
                         leading: IconHelper.middleMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                        trailing:
-                            isEditing
-                                ? IconButton(
-                                  style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
-                                  onPressed: () {
-                                    list.removeAt(index);
-                                    CacheManager.setFavorilerList(list);
-                                  },
-                                  icon: const Icon(Icons.delete_outline),
-                                )
-                                : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
+                        trailing: isEditing
+                            ? IconButton(
+                                style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
+                                onPressed: () {
+                                  list.removeAt(index);
+                                  CacheManager.setFavorilerList(list);
+                                },
+                                icon: const Icon(Icons.delete_outline),
+                              )
+                            : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
                         onTap: () {
                           if (mounted) {
                             widget.scaffoldKey.currentState!.closeDrawer();

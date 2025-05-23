@@ -63,14 +63,13 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
         children: [
           const Text("Miktar"),
           Observer(
-            builder:
-                (_) => Text(
-                  viewModel.observableList
-                          ?.map((element) => element.miktar ?? 0)
-                          .sum
-                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
-                      "0",
-                ),
+            builder: (_) => Text(
+              viewModel.observableList
+                      ?.map((element) => element.miktar ?? 0)
+                      .sum
+                      .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                  "0",
+            ),
           ),
         ],
       ),
@@ -78,14 +77,13 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
         children: [
           const Text("Kalan Miktar"),
           Observer(
-            builder:
-                (_) => Text(
-                  viewModel.observableList
-                          ?.map((element) => element.miktar ?? 0)
-                          .sum
-                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
-                      "0  ",
-                ),
+            builder: (_) => Text(
+              viewModel.observableList
+                      ?.map((element) => element.miktar ?? 0)
+                      .sum
+                      .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                  "0  ",
+            ),
           ),
         ],
       ),
@@ -93,60 +91,57 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
   );
 
   Observer seriCard(UskReceteModel item) => Observer(
-    builder:
-        (_) => Card(
-          color: item.miktar == item.seriList?.map((e) => e.miktar ?? 0).sum ? ColorPalette.mantis : null,
-          child: ListTile(
-            onTap: () async {
-              final result = await Get.toNamed(
-                "/seriListesi",
-                arguments:
-                    KalemModel.fromUSKReceteModel(item)
-                      ..tarih = widget.model.tarih
-                      ..depoKodu = widget.model.cikisDepo,
-              );
-              if (result is List<SeriList>) {
-                viewModel.updateCard(
-                  item.copyWith(
-                    seriList:
-                        result
-                            .map(
-                              (e) => e.copyWith(
-                                requestVersion: 2,
-                                barkod: widget.model.stokKodu,
-                                tempBarkod: widget.model.stokKodu,
-                                gckod: item.sira != "0" ? "C" : "G",
-                                inckeyno: -1,
-                              ),
-                            )
-                            .toList(),
-                  ),
-                );
-              }
-            },
-            onLongPress: () async {
-              dialogManager.showStokGridViewDialog(
-                await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
-              );
-            },
-            title: Text(item.stokAdi ?? ""),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    builder: (_) => Card(
+      color: item.miktar == item.seriList?.map((e) => e.miktar ?? 0).sum ? ColorPalette.mantis : null,
+      child: ListTile(
+        onTap: () async {
+          final result = await Get.toNamed(
+            "/seriListesi",
+            arguments: KalemModel.fromUSKReceteModel(item)
+              ..tarih = widget.model.tarih
+              ..depoKodu = widget.model.cikisDepo,
+          );
+          if (result is List<SeriList>) {
+            viewModel.updateCard(
+              item.copyWith(
+                seriList: result
+                    .map(
+                      (e) => e.copyWith(
+                        requestVersion: 2,
+                        barkod: widget.model.stokKodu,
+                        tempBarkod: widget.model.stokKodu,
+                        gckod: item.sira != "0" ? "C" : "G",
+                        inckeyno: -1,
+                      ),
+                    )
+                    .toList(),
+              ),
+            );
+          }
+        },
+        onLongPress: () async {
+          dialogManager.showStokGridViewDialog(
+            await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
+          );
+        },
+        title: Text(item.stokAdi ?? ""),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomLayoutBuilder.divideInHalf(
               children: [
-                CustomLayoutBuilder.divideInHalf(
-                  children: [
-                    Text("Stok Kodu: ${item.stokKodu}"),
-                    Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                    Text(
-                      "Seri Miktarı: ${item.seriList?.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}",
-                    ),
-                    const Text("Giriş/Çıkış: ${"G"}"),
-                  ],
+                Text("Stok Kodu: ${item.stokKodu}"),
+                Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                Text(
+                  "Seri Miktarı: ${item.seriList?.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}",
                 ),
-                Text("Seriler(${item.seriList?.length ?? 0}): ${item.seriList?.map((e) => e.seri1).join(", ") ?? ""}"),
+                const Text("Giriş/Çıkış: ${"G"}"),
               ],
             ),
-          ),
+            Text("Seriler(${item.seriList?.length ?? 0}): ${item.seriList?.map((e) => e.seri1).join(", ") ?? ""}"),
+          ],
         ),
+      ),
+    ),
   );
 }

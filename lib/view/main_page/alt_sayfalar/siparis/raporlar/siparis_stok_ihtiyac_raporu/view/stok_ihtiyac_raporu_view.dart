@@ -215,11 +215,10 @@ final class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuV
             isVertical: true,
             text: "Sadece İhtiyaçlar",
             child: Observer(
-              builder:
-                  (_) => Switch.adaptive(
-                    value: viewModel.sadeceIhtiyaclarMi,
-                    onChanged: (value) => viewModel.setSadeceIhtiyaclarMi(value),
-                  ),
+              builder: (_) => Switch.adaptive(
+                value: viewModel.sadeceIhtiyaclarMi,
+                onChanged: (value) => viewModel.setSadeceIhtiyaclarMi(value),
+              ),
             ),
           ),
           ElevatedButton(

@@ -6,8 +6,7 @@ part of 'cari_hareketleri_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(Map<String, dynamic> json) =>
     _$CariHareketleriRequestModelImpl(
       siralama: json['SIRALAMA'] as String?,
       sadeceTahsilatlarOdemeler: json['SadeceTahsilatlarOdemeler'] as bool?,
@@ -22,12 +21,10 @@ _$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(
       kapatilmis: json['Kapatilmis'] as String?,
     );
 
-Map<String, dynamic> _$$CariHareketleriRequestModelImplToJson(
-        _$CariHareketleriRequestModelImpl instance) =>
+Map<String, dynamic> _$$CariHareketleriRequestModelImplToJson(_$CariHareketleriRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.siralama case final value?) 'SIRALAMA': value,
-      if (instance.sadeceTahsilatlarOdemeler case final value?)
-        'SadeceTahsilatlarOdemeler': value,
+      if (instance.sadeceTahsilatlarOdemeler case final value?) 'SadeceTahsilatlarOdemeler': value,
       if (instance.cariKodu case final value?) 'CariKodu': value,
       if (instance.ekranTipi case final value?) 'EkranTipi': value,
       if (instance.arrPlasiyerKodu case final value?) 'ArrPlasiyerKodu': value,

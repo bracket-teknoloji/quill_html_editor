@@ -12,13 +12,12 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
   Computed<Future<CariListesiModel?>>? _$getCariModelComputed;
 
   @override
-  Future<CariListesiModel?> get getCariModel => (_$getCariModelComputed ??=
-          Computed<Future<CariListesiModel?>>(() => super.getCariModel,
-              name: '_EBelgeGonderViewModelBase.getCariModel'))
-      .value;
+  Future<CariListesiModel?> get getCariModel => (_$getCariModelComputed ??= Computed<Future<CariListesiModel?>>(
+    () => super.getCariModel,
+    name: '_EBelgeGonderViewModelBase.getCariModel',
+  )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(name: '_EBelgeGonderViewModelBase.model', context: context);
 
   @override
   EBelgeListesiModel get model {
@@ -33,8 +32,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$cariModelAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.cariModel', context: context);
+  late final _$cariModelAtom = Atom(name: '_EBelgeGonderViewModelBase.cariModel', context: context);
 
   @override
   CariListesiModel? get cariModel {
@@ -49,8 +47,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$eIrsaliyeModelAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.eIrsaliyeModel', context: context);
+  late final _$eIrsaliyeModelAtom = Atom(name: '_EBelgeGonderViewModelBase.eIrsaliyeModel', context: context);
 
   @override
   EIrsaliyeBilgiModel? get eIrsaliyeModel {
@@ -65,8 +62,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$siparisEditModelAtom = Atom(
-      name: '_EBelgeGonderViewModelBase.siparisEditModel', context: context);
+  late final _$siparisEditModelAtom = Atom(name: '_EBelgeGonderViewModelBase.siparisEditModel', context: context);
 
   @override
   BaseSiparisEditModel get siparisEditModel {
@@ -81,8 +77,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$dizaynListAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.dizaynList', context: context);
+  late final _$dizaynListAtom = Atom(name: '_EBelgeGonderViewModelBase.dizaynList', context: context);
 
   @override
   ObservableList<DizaynModel>? get dizaynList {
@@ -97,61 +92,58 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$getDizaynAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.getDizayn', context: context);
+  late final _$getDizaynAsyncAction = AsyncAction('_EBelgeGonderViewModelBase.getDizayn', context: context);
 
   @override
   Future<List<DizaynModel>> getDizayn() {
     return _$getDizaynAsyncAction.run(() => super.getDizayn());
   }
 
-  late final _$getCariAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.getCari', context: context);
+  late final _$getCariAsyncAction = AsyncAction('_EBelgeGonderViewModelBase.getCari', context: context);
 
   @override
   Future<CariListesiModel?> getCari() {
     return _$getCariAsyncAction.run(() => super.getCari());
   }
 
-  late final _$sendTaslakAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.sendTaslak', context: context);
+  late final _$sendTaslakAsyncAction = AsyncAction('_EBelgeGonderViewModelBase.sendTaslak', context: context);
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> sendTaslak() {
     return _$sendTaslakAsyncAction.run(() => super.sendTaslak());
   }
 
-  late final _$sendSenaryoAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.sendSenaryo', context: context);
+  late final _$sendSenaryoAsyncAction = AsyncAction('_EBelgeGonderViewModelBase.sendSenaryo', context: context);
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> sendSenaryo() {
     return _$sendSenaryoAsyncAction.run(() => super.sendSenaryo());
   }
 
-  late final _$sendEBelgeAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.sendEBelge', context: context);
+  late final _$sendEBelgeAsyncAction = AsyncAction('_EBelgeGonderViewModelBase.sendEBelge', context: context);
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> sendEBelge() {
     return _$sendEBelgeAsyncAction.run(() => super.sendEBelge());
   }
 
-  late final _$deleteTaslakAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.deleteTaslak', context: context);
+  late final _$deleteTaslakAsyncAction = AsyncAction('_EBelgeGonderViewModelBase.deleteTaslak', context: context);
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> deleteTaslak() {
     return _$deleteTaslakAsyncAction.run(() => super.deleteTaslak());
   }
 
-  late final _$_EBelgeGonderViewModelBaseActionController =
-      ActionController(name: '_EBelgeGonderViewModelBase', context: context);
+  late final _$_EBelgeGonderViewModelBaseActionController = ActionController(
+    name: '_EBelgeGonderViewModelBase',
+    context: context,
+  );
 
   @override
   void setEIrsaliyeModel(EIrsaliyeBilgiModel? value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setEIrsaliyeModel');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setEIrsaliyeModel',
+    );
     try {
       return super.setEIrsaliyeModel(value);
     } finally {
@@ -161,8 +153,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setModel(EBelgeListesiModel value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setModel');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setModel',
+    );
     try {
       return super.setModel(value);
     } finally {
@@ -172,8 +165,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setSenaryo(String value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setSenaryo');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setSenaryo',
+    );
     try {
       return super.setSenaryo(value);
     } finally {
@@ -183,8 +177,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setDizaynNo(int value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setDizaynNo');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setDizaynNo',
+    );
     try {
       return super.setDizaynNo(value);
     } finally {
@@ -194,8 +189,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setDovizOlustur(bool value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setDovizOlustur');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setDovizOlustur',
+    );
     try {
       return super.setDovizOlustur(value);
     } finally {
@@ -205,8 +201,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setInternetFaturasi(bool value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setInternetFaturasi');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setInternetFaturasi',
+    );
     try {
       return super.setInternetFaturasi(value);
     } finally {
@@ -216,8 +213,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setGonderimSekliEposta(bool value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setGonderimSekliEposta');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setGonderimSekliEposta',
+    );
     try {
       return super.setGonderimSekliEposta(value);
     } finally {
@@ -227,8 +225,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setEPosta(String? value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setEPosta');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setEPosta',
+    );
     try {
       return super.setEPosta(value);
     } finally {
@@ -238,8 +237,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   @override
   void setSiparisModel(BaseSiparisEditModel value) {
-    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
-        .startAction(name: '_EBelgeGonderViewModelBase.setSiparisModel');
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController.startAction(
+      name: '_EBelgeGonderViewModelBase.setSiparisModel',
+    );
     try {
       return super.setSiparisModel(value);
     } finally {

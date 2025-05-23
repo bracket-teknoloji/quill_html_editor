@@ -12,10 +12,10 @@ part of 'uretim_sonu_kaydi_edit_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-UretimSonuKaydiEditModel _$UretimSonuKaydiEditModelFromJson(
-    Map<String, dynamic> json) {
+UretimSonuKaydiEditModel _$UretimSonuKaydiEditModelFromJson(Map<String, dynamic> json) {
   return _UretimSonuKaydiEditModel.fromJson(json);
 }
 
@@ -74,43 +74,40 @@ mixin _$UretimSonuKaydiEditModel {
   /// Create a copy of UretimSonuKaydiEditModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UretimSonuKaydiEditModelCopyWith<UretimSonuKaydiEditModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $UretimSonuKaydiEditModelCopyWith<UretimSonuKaydiEditModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UretimSonuKaydiEditModelCopyWith<$Res> {
-  factory $UretimSonuKaydiEditModelCopyWith(UretimSonuKaydiEditModel value,
-          $Res Function(UretimSonuKaydiEditModel) then) =
-      _$UretimSonuKaydiEditModelCopyWithImpl<$Res, UretimSonuKaydiEditModel>;
+  factory $UretimSonuKaydiEditModelCopyWith(
+    UretimSonuKaydiEditModel value,
+    $Res Function(UretimSonuKaydiEditModel) then,
+  ) = _$UretimSonuKaydiEditModelCopyWithImpl<$Res, UretimSonuKaydiEditModel>;
   @useResult
-  $Res call(
-      {String? belgeNo,
-      DateTime? belgeTarihi,
-      int? cikisDepo,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? cikisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? girisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      StokListesiModel? stokModel,
-      String? aciklama,
-      String? depoOnceligi,
-      @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
-      int? girisDepo,
-      String? guid,
-      @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
-      String? projeKodu,
-      String? tarih,
-      @JsonKey(name: "_YeniKayit") bool? yeniKayit});
+  $Res call({
+    String? belgeNo,
+    DateTime? belgeTarihi,
+    int? cikisDepo,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? cikisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? girisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) StokListesiModel? stokModel,
+    String? aciklama,
+    String? depoOnceligi,
+    @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
+    int? girisDepo,
+    String? guid,
+    @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
+    String? projeKodu,
+    String? tarih,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+  });
 
   $EkAlanlarCopyWith<$Res>? get ekAlanlar;
 }
 
 /// @nodoc
-class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
-        $Val extends UretimSonuKaydiEditModel>
+class _$UretimSonuKaydiEditModelCopyWithImpl<$Res, $Val extends UretimSonuKaydiEditModel>
     implements $UretimSonuKaydiEditModelCopyWith<$Res> {
   _$UretimSonuKaydiEditModelCopyWithImpl(this._value, this._then);
 
@@ -141,72 +138,75 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
   }) {
-    return _then(_value.copyWith(
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      cikisDepo: freezed == cikisDepo
-          ? _value.cikisDepo
-          : cikisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cikisDepoAdi: freezed == cikisDepoAdi
-          ? _value.cikisDepoAdi
-          : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      girisDepoAdi: freezed == girisDepoAdi
-          ? _value.girisDepoAdi
-          : girisDepoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeAdi: freezed == projeAdi
-          ? _value.projeAdi
-          : projeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokModel: freezed == stokModel
-          ? _value.stokModel
-          : stokModel // ignore: cast_nullable_to_non_nullable
-              as StokListesiModel?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoOnceligi: freezed == depoOnceligi
-          ? _value.depoOnceligi
-          : depoOnceligi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAlanlar: freezed == ekAlanlar
-          ? _value.ekAlanlar
-          : ekAlanlar // ignore: cast_nullable_to_non_nullable
-              as EkAlanlar?,
-      girisDepo: freezed == girisDepo
-          ? _value.girisDepo
-          : girisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      guid: freezed == guid
-          ? _value.guid
-          : guid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemList: freezed == kalemList
-          ? _value.kalemList
-          : kalemList // ignore: cast_nullable_to_non_nullable
-              as List<KalemModel>?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeniKayit: freezed == yeniKayit
-          ? _value.yeniKayit
-          : yeniKayit // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTarihi: freezed == belgeTarihi
+                ? _value.belgeTarihi
+                : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            cikisDepo: freezed == cikisDepo
+                ? _value.cikisDepo
+                : cikisDepo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            cikisDepoAdi: freezed == cikisDepoAdi
+                ? _value.cikisDepoAdi
+                : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            girisDepoAdi: freezed == girisDepoAdi
+                ? _value.girisDepoAdi
+                : girisDepoAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            projeAdi: freezed == projeAdi
+                ? _value.projeAdi
+                : projeAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokModel: freezed == stokModel
+                ? _value.stokModel
+                : stokModel // ignore: cast_nullable_to_non_nullable
+                      as StokListesiModel?,
+            aciklama: freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            depoOnceligi: freezed == depoOnceligi
+                ? _value.depoOnceligi
+                : depoOnceligi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekAlanlar: freezed == ekAlanlar
+                ? _value.ekAlanlar
+                : ekAlanlar // ignore: cast_nullable_to_non_nullable
+                      as EkAlanlar?,
+            girisDepo: freezed == girisDepo
+                ? _value.girisDepo
+                : girisDepo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            guid: freezed == guid
+                ? _value.guid
+                : guid // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kalemList: freezed == kalemList
+                ? _value.kalemList
+                : kalemList // ignore: cast_nullable_to_non_nullable
+                      as List<KalemModel>?,
+            projeKodu: freezed == projeKodu
+                ? _value.projeKodu
+                : projeKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yeniKayit: freezed == yeniKayit
+                ? _value.yeniKayit
+                : yeniKayit // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of UretimSonuKaydiEditModel
@@ -225,34 +225,31 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$UretimSonuKaydiEditModelImplCopyWith<$Res>
-    implements $UretimSonuKaydiEditModelCopyWith<$Res> {
+abstract class _$$UretimSonuKaydiEditModelImplCopyWith<$Res> implements $UretimSonuKaydiEditModelCopyWith<$Res> {
   factory _$$UretimSonuKaydiEditModelImplCopyWith(
-          _$UretimSonuKaydiEditModelImpl value,
-          $Res Function(_$UretimSonuKaydiEditModelImpl) then) =
-      __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>;
+    _$UretimSonuKaydiEditModelImpl value,
+    $Res Function(_$UretimSonuKaydiEditModelImpl) then,
+  ) = __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? belgeNo,
-      DateTime? belgeTarihi,
-      int? cikisDepo,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? cikisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? girisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      StokListesiModel? stokModel,
-      String? aciklama,
-      String? depoOnceligi,
-      @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
-      int? girisDepo,
-      String? guid,
-      @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
-      String? projeKodu,
-      String? tarih,
-      @JsonKey(name: "_YeniKayit") bool? yeniKayit});
+  $Res call({
+    String? belgeNo,
+    DateTime? belgeTarihi,
+    int? cikisDepo,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? cikisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? girisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) StokListesiModel? stokModel,
+    String? aciklama,
+    String? depoOnceligi,
+    @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
+    int? girisDepo,
+    String? guid,
+    @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
+    String? projeKodu,
+    String? tarih,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+  });
 
   @override
   $EkAlanlarCopyWith<$Res>? get ekAlanlar;
@@ -260,13 +257,12 @@ abstract class _$$UretimSonuKaydiEditModelImplCopyWith<$Res>
 
 /// @nodoc
 class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
-    extends _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
-        _$UretimSonuKaydiEditModelImpl>
+    extends _$UretimSonuKaydiEditModelCopyWithImpl<$Res, _$UretimSonuKaydiEditModelImpl>
     implements _$$UretimSonuKaydiEditModelImplCopyWith<$Res> {
   __$$UretimSonuKaydiEditModelImplCopyWithImpl(
-      _$UretimSonuKaydiEditModelImpl _value,
-      $Res Function(_$UretimSonuKaydiEditModelImpl) _then)
-      : super(_value, _then);
+    _$UretimSonuKaydiEditModelImpl _value,
+    $Res Function(_$UretimSonuKaydiEditModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UretimSonuKaydiEditModel
   /// with the given fields replaced by the non-null parameter values.
@@ -290,96 +286,98 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
   }) {
-    return _then(_$UretimSonuKaydiEditModelImpl(
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      cikisDepo: freezed == cikisDepo
-          ? _value.cikisDepo
-          : cikisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cikisDepoAdi: freezed == cikisDepoAdi
-          ? _value.cikisDepoAdi
-          : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      girisDepoAdi: freezed == girisDepoAdi
-          ? _value.girisDepoAdi
-          : girisDepoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeAdi: freezed == projeAdi
-          ? _value.projeAdi
-          : projeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokModel: freezed == stokModel
-          ? _value.stokModel
-          : stokModel // ignore: cast_nullable_to_non_nullable
-              as StokListesiModel?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoOnceligi: freezed == depoOnceligi
-          ? _value.depoOnceligi
-          : depoOnceligi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekAlanlar: freezed == ekAlanlar
-          ? _value.ekAlanlar
-          : ekAlanlar // ignore: cast_nullable_to_non_nullable
-              as EkAlanlar?,
-      girisDepo: freezed == girisDepo
-          ? _value.girisDepo
-          : girisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      guid: freezed == guid
-          ? _value.guid
-          : guid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemList: freezed == kalemList
-          ? _value.kalemList
-          : kalemList // ignore: cast_nullable_to_non_nullable
-              as List<KalemModel>?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yeniKayit: freezed == yeniKayit
-          ? _value.yeniKayit
-          : yeniKayit // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$UretimSonuKaydiEditModelImpl(
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTarihi: freezed == belgeTarihi
+            ? _value.belgeTarihi
+            : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        cikisDepo: freezed == cikisDepo
+            ? _value.cikisDepo
+            : cikisDepo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        cikisDepoAdi: freezed == cikisDepoAdi
+            ? _value.cikisDepoAdi
+            : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        girisDepoAdi: freezed == girisDepoAdi
+            ? _value.girisDepoAdi
+            : girisDepoAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        projeAdi: freezed == projeAdi
+            ? _value.projeAdi
+            : projeAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokModel: freezed == stokModel
+            ? _value.stokModel
+            : stokModel // ignore: cast_nullable_to_non_nullable
+                  as StokListesiModel?,
+        aciklama: freezed == aciklama
+            ? _value.aciklama
+            : aciklama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        depoOnceligi: freezed == depoOnceligi
+            ? _value.depoOnceligi
+            : depoOnceligi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekAlanlar: freezed == ekAlanlar
+            ? _value.ekAlanlar
+            : ekAlanlar // ignore: cast_nullable_to_non_nullable
+                  as EkAlanlar?,
+        girisDepo: freezed == girisDepo
+            ? _value.girisDepo
+            : girisDepo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        guid: freezed == guid
+            ? _value.guid
+            : guid // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kalemList: freezed == kalemList
+            ? _value.kalemList
+            : kalemList // ignore: cast_nullable_to_non_nullable
+                  as List<KalemModel>?,
+        projeKodu: freezed == projeKodu
+            ? _value.projeKodu
+            : projeKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yeniKayit: freezed == yeniKayit
+            ? _value.yeniKayit
+            : yeniKayit // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
-  _$UretimSonuKaydiEditModelImpl(
-      {this.belgeNo,
-      this.belgeTarihi,
-      this.cikisDepo,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.cikisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.girisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.stokModel,
-      this.aciklama,
-      this.depoOnceligi,
-      @JsonKey(name: "EkAlanlar") this.ekAlanlar,
-      this.girisDepo,
-      this.guid,
-      @JsonKey(name: "KalemList") this.kalemList,
-      this.projeKodu,
-      this.tarih,
-      @JsonKey(name: "_YeniKayit") this.yeniKayit})
-      : super._();
+  _$UretimSonuKaydiEditModelImpl({
+    this.belgeNo,
+    this.belgeTarihi,
+    this.cikisDepo,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.cikisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.girisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.stokModel,
+    this.aciklama,
+    this.depoOnceligi,
+    @JsonKey(name: "EkAlanlar") this.ekAlanlar,
+    this.girisDepo,
+    this.guid,
+    @JsonKey(name: "KalemList") this.kalemList,
+    this.projeKodu,
+    this.tarih,
+    @JsonKey(name: "_YeniKayit") this.yeniKayit,
+  }) : super._();
 
   factory _$UretimSonuKaydiEditModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UretimSonuKaydiEditModelImplFromJson(json);
@@ -429,44 +427,37 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UretimSonuKaydiEditModelImplCopyWith<_$UretimSonuKaydiEditModelImpl>
-      get copyWith => __$$UretimSonuKaydiEditModelImplCopyWithImpl<
-          _$UretimSonuKaydiEditModelImpl>(this, _$identity);
+  _$$UretimSonuKaydiEditModelImplCopyWith<_$UretimSonuKaydiEditModelImpl> get copyWith =>
+      __$$UretimSonuKaydiEditModelImplCopyWithImpl<_$UretimSonuKaydiEditModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UretimSonuKaydiEditModelImplToJson(
-      this,
-    );
+    return _$$UretimSonuKaydiEditModelImplToJson(this);
   }
 }
 
 abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
-  factory _UretimSonuKaydiEditModel(
-      {String? belgeNo,
-      DateTime? belgeTarihi,
-      int? cikisDepo,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? cikisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? girisDepoAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      StokListesiModel? stokModel,
-      String? aciklama,
-      String? depoOnceligi,
-      @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
-      int? girisDepo,
-      String? guid,
-      @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
-      String? projeKodu,
-      String? tarih,
-      @JsonKey(name: "_YeniKayit")
-      bool? yeniKayit}) = _$UretimSonuKaydiEditModelImpl;
+  factory _UretimSonuKaydiEditModel({
+    String? belgeNo,
+    DateTime? belgeTarihi,
+    int? cikisDepo,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? cikisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? girisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) StokListesiModel? stokModel,
+    String? aciklama,
+    String? depoOnceligi,
+    @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
+    int? girisDepo,
+    String? guid,
+    @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
+    String? projeKodu,
+    String? tarih,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+  }) = _$UretimSonuKaydiEditModelImpl;
   _UretimSonuKaydiEditModel._() : super._();
 
-  factory _UretimSonuKaydiEditModel.fromJson(Map<String, dynamic> json) =
-      _$UretimSonuKaydiEditModelImpl.fromJson;
+  factory _UretimSonuKaydiEditModel.fromJson(Map<String, dynamic> json) = _$UretimSonuKaydiEditModelImpl.fromJson;
 
   @override
   String? get belgeNo;
@@ -535,8 +526,8 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UretimSonuKaydiEditModelImplCopyWith<_$UretimSonuKaydiEditModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$UretimSonuKaydiEditModelImplCopyWith<_$UretimSonuKaydiEditModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 EkAlanlar _$EkAlanlarFromJson(Map<String, dynamic> json) {
@@ -558,21 +549,18 @@ mixin _$EkAlanlar {
   /// Create a copy of EkAlanlar
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EkAlanlarCopyWith<EkAlanlar> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EkAlanlarCopyWith<EkAlanlar> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EkAlanlarCopyWith<$Res> {
-  factory $EkAlanlarCopyWith(EkAlanlar value, $Res Function(EkAlanlar) then) =
-      _$EkAlanlarCopyWithImpl<$Res, EkAlanlar>;
+  factory $EkAlanlarCopyWith(EkAlanlar value, $Res Function(EkAlanlar) then) = _$EkAlanlarCopyWithImpl<$Res, EkAlanlar>;
   @useResult
   $Res call({String? ktAlan1, String? ktAlan3, String? ktAlan4});
 }
 
 /// @nodoc
-class _$EkAlanlarCopyWithImpl<$Res, $Val extends EkAlanlar>
-    implements $EkAlanlarCopyWith<$Res> {
+class _$EkAlanlarCopyWithImpl<$Res, $Val extends EkAlanlar> implements $EkAlanlarCopyWith<$Res> {
   _$EkAlanlarCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -584,33 +572,30 @@ class _$EkAlanlarCopyWithImpl<$Res, $Val extends EkAlanlar>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? ktAlan1 = freezed,
-    Object? ktAlan3 = freezed,
-    Object? ktAlan4 = freezed,
-  }) {
-    return _then(_value.copyWith(
-      ktAlan1: freezed == ktAlan1
-          ? _value.ktAlan1
-          : ktAlan1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ktAlan3: freezed == ktAlan3
-          ? _value.ktAlan3
-          : ktAlan3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ktAlan4: freezed == ktAlan4
-          ? _value.ktAlan4
-          : ktAlan4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? ktAlan1 = freezed, Object? ktAlan3 = freezed, Object? ktAlan4 = freezed}) {
+    return _then(
+      _value.copyWith(
+            ktAlan1: freezed == ktAlan1
+                ? _value.ktAlan1
+                : ktAlan1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ktAlan3: freezed == ktAlan3
+                ? _value.ktAlan3
+                : ktAlan3 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ktAlan4: freezed == ktAlan4
+                ? _value.ktAlan4
+                : ktAlan4 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$EkAlanlarImplCopyWith<$Res>
-    implements $EkAlanlarCopyWith<$Res> {
-  factory _$$EkAlanlarImplCopyWith(
-          _$EkAlanlarImpl value, $Res Function(_$EkAlanlarImpl) then) =
+abstract class _$$EkAlanlarImplCopyWith<$Res> implements $EkAlanlarCopyWith<$Res> {
+  factory _$$EkAlanlarImplCopyWith(_$EkAlanlarImpl value, $Res Function(_$EkAlanlarImpl) then) =
       __$$EkAlanlarImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -618,36 +603,31 @@ abstract class _$$EkAlanlarImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EkAlanlarImplCopyWithImpl<$Res>
-    extends _$EkAlanlarCopyWithImpl<$Res, _$EkAlanlarImpl>
+class __$$EkAlanlarImplCopyWithImpl<$Res> extends _$EkAlanlarCopyWithImpl<$Res, _$EkAlanlarImpl>
     implements _$$EkAlanlarImplCopyWith<$Res> {
-  __$$EkAlanlarImplCopyWithImpl(
-      _$EkAlanlarImpl _value, $Res Function(_$EkAlanlarImpl) _then)
-      : super(_value, _then);
+  __$$EkAlanlarImplCopyWithImpl(_$EkAlanlarImpl _value, $Res Function(_$EkAlanlarImpl) _then) : super(_value, _then);
 
   /// Create a copy of EkAlanlar
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? ktAlan1 = freezed,
-    Object? ktAlan3 = freezed,
-    Object? ktAlan4 = freezed,
-  }) {
-    return _then(_$EkAlanlarImpl(
-      ktAlan1: freezed == ktAlan1
-          ? _value.ktAlan1
-          : ktAlan1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ktAlan3: freezed == ktAlan3
-          ? _value.ktAlan3
-          : ktAlan3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ktAlan4: freezed == ktAlan4
-          ? _value.ktAlan4
-          : ktAlan4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? ktAlan1 = freezed, Object? ktAlan3 = freezed, Object? ktAlan4 = freezed}) {
+    return _then(
+      _$EkAlanlarImpl(
+        ktAlan1: freezed == ktAlan1
+            ? _value.ktAlan1
+            : ktAlan1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ktAlan3: freezed == ktAlan3
+            ? _value.ktAlan3
+            : ktAlan3 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ktAlan4: freezed == ktAlan4
+            ? _value.ktAlan4
+            : ktAlan4 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -656,8 +636,7 @@ class __$$EkAlanlarImplCopyWithImpl<$Res>
 class _$EkAlanlarImpl extends _EkAlanlar {
   _$EkAlanlarImpl({this.ktAlan1, this.ktAlan3, this.ktAlan4}) : super._();
 
-  factory _$EkAlanlarImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EkAlanlarImplFromJson(json);
+  factory _$EkAlanlarImpl.fromJson(Map<String, dynamic> json) => _$$EkAlanlarImplFromJson(json);
 
   @override
   String? ktAlan1;
@@ -676,19 +655,15 @@ class _$EkAlanlarImpl extends _EkAlanlar {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EkAlanlarImplToJson(
-      this,
-    );
+    return _$$EkAlanlarImplToJson(this);
   }
 }
 
 abstract class _EkAlanlar extends EkAlanlar {
-  factory _EkAlanlar({String? ktAlan1, String? ktAlan3, String? ktAlan4}) =
-      _$EkAlanlarImpl;
+  factory _EkAlanlar({String? ktAlan1, String? ktAlan3, String? ktAlan4}) = _$EkAlanlarImpl;
   _EkAlanlar._() : super._();
 
-  factory _EkAlanlar.fromJson(Map<String, dynamic> json) =
-      _$EkAlanlarImpl.fromJson;
+  factory _EkAlanlar.fromJson(Map<String, dynamic> json) = _$EkAlanlarImpl.fromJson;
 
   @override
   String? get ktAlan1;
@@ -704,6 +679,5 @@ abstract class _EkAlanlar extends EkAlanlar {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EkAlanlarImplCopyWith<_$EkAlanlarImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EkAlanlarImplCopyWith<_$EkAlanlarImpl> get copyWith => throw _privateConstructorUsedError;
 }

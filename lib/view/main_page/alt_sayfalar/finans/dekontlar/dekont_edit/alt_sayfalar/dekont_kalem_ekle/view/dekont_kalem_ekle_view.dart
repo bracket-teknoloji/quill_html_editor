@@ -74,10 +74,9 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
     );
     _aciklamaController = TextEditingController(text: viewModel.model.aciklama ?? "");
     _exportTipiController = TextEditingController(
-      text:
-          viewModel.model.exportTipi != null && viewModel.model.exportTipi != 0
-              ? viewModel.exportTipiList[(viewModel.model.exportTipi ?? 1) - 1]
-              : "",
+      text: viewModel.model.exportTipi != null && viewModel.model.exportTipi != 0
+          ? viewModel.exportTipiList[(viewModel.model.exportTipi ?? 1) - 1]
+          : "",
     );
     _exportRefNoController = TextEditingController(text: viewModel.model.exportRefno ?? "");
     _plasiyerController = TextEditingController(
@@ -126,49 +125,45 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
           child: Column(
             children: [
               LayoutBuilder(
-                builder:
-                    (context, constraints) => Observer(
-                      builder:
-                          (_) => ToggleButtons(
-                            constraints: BoxConstraints.expand(
-                              width: (constraints.maxWidth - 5) / viewModel.selectedHesapTipi.length,
-                            ),
-                            isSelected: viewModel.selectedHesapTipi,
-                            onPressed: (index) {
-                              if (widget.baseEditEnum != BaseEditEnum.ekle) {
-                                return;
-                              }
-                              if (!viewModel.selectedHesapTipi[index]) {
-                                _hesapController.clear();
-                                viewModel.setHesapKodu(null);
-                              }
-                              viewModel.setHesapTipi(index);
-                              if (!viewModel.model.stokMu) {
-                                viewModel.setDepoKodu(null);
-                                _depoController.clear();
-                              }
-                            },
-                            children: List.generate(
-                              viewModel.hesapTipiMap.values.length,
-                              (index) => Text(viewModel.hesapTipiMap.keys.toList()[index]),
-                            ),
-                          ),
+                builder: (context, constraints) => Observer(
+                  builder: (_) => ToggleButtons(
+                    constraints: BoxConstraints.expand(
+                      width: (constraints.maxWidth - 5) / viewModel.selectedHesapTipi.length,
                     ),
+                    isSelected: viewModel.selectedHesapTipi,
+                    onPressed: (index) {
+                      if (widget.baseEditEnum != BaseEditEnum.ekle) {
+                        return;
+                      }
+                      if (!viewModel.selectedHesapTipi[index]) {
+                        _hesapController.clear();
+                        viewModel.setHesapKodu(null);
+                      }
+                      viewModel.setHesapTipi(index);
+                      if (!viewModel.model.stokMu) {
+                        viewModel.setDepoKodu(null);
+                        _depoController.clear();
+                      }
+                    },
+                    children: List.generate(
+                      viewModel.hesapTipiMap.values.length,
+                      (index) => Text(viewModel.hesapTipiMap.keys.toList()[index]),
+                    ),
+                  ),
+                ),
               ).paddingAll(UIHelper.lowSize),
               LayoutBuilder(
-                builder:
-                    (context, constraints) => Observer(
-                      builder:
-                          (_) => ToggleButtons(
-                            constraints: BoxConstraints.expand(width: (constraints.maxWidth - 3) / 2),
-                            isSelected: viewModel.selectedBorcTipi,
-                            onPressed: viewModel.setBa,
-                            children: List.generate(
-                              viewModel.borcTipiMap.values.length,
-                              (index) => Text(viewModel.borcTipiMap.keys.toList()[index]),
-                            ),
-                          ),
+                builder: (context, constraints) => Observer(
+                  builder: (_) => ToggleButtons(
+                    constraints: BoxConstraints.expand(width: (constraints.maxWidth - 3) / 2),
+                    isSelected: viewModel.selectedBorcTipi,
+                    onPressed: viewModel.setBa,
+                    children: List.generate(
+                      viewModel.borcTipiMap.values.length,
+                      (index) => Text(viewModel.borcTipiMap.keys.toList()[index]),
                     ),
+                  ),
+                ),
               ).paddingAll(UIHelper.lowSize),
               CustomTextField(labelText: "Belge No", controller: _belgeNoController, onChanged: viewModel.setBelgeNo),
               CustomTextField(
@@ -181,109 +176,102 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                 onTap: setHesap,
               ),
               Observer(
-                builder:
-                    (_) => CustomTextField(
-                      labelText: "Depo",
-                      controller: _depoController,
-                      isMust: true,
-                      suffixMore: true,
-                      readOnly: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.depoKodu.toStringIfNotNull ?? "")),
-                      onTap: setDepo,
-                    ).yetkiVarMi(viewModel.model.stokMu),
+                builder: (_) => CustomTextField(
+                  labelText: "Depo",
+                  controller: _depoController,
+                  isMust: true,
+                  suffixMore: true,
+                  readOnly: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.depoKodu.toStringIfNotNull ?? "")),
+                  onTap: setDepo,
+                ).yetkiVarMi(viewModel.model.stokMu),
               ),
               Observer(
-                builder:
-                    (_) => Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Döviz Tipi",
-                            controller: _dovizTipiController,
-                            suffixMore: true,
-                            readOnly: true,
-                            valueWidget: Observer(
-                              builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "0"),
-                            ),
-                            onTap: setDovizTipi,
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Döviz Tutarı",
-                            controller: _dovizTutariController,
-                            isMust: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            isFormattedString: true,
-                            onChanged: (value) {
-                              viewModel
-                                ..setDovizTutari(value.toDoubleWithFormattedString)
-                                ..setTutar(
-                                  (viewModel.model.dovizTutari ?? 0) *
-                                      (_dovizKuruController.text.toDoubleWithFormattedString),
-                                );
-                              _tutarController.text =
-                                  viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                            },
-                          ),
-                        ).yetkiVarMi(viewModel.model.dovizliMi),
-                      ],
+                builder: (_) => Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Döviz Tipi",
+                        controller: _dovizTipiController,
+                        suffixMore: true,
+                        readOnly: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "0")),
+                        onTap: setDovizTipi,
+                      ),
                     ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Döviz Tutarı",
+                        controller: _dovizTutariController,
+                        isMust: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        isFormattedString: true,
+                        onChanged: (value) {
+                          viewModel
+                            ..setDovizTutari(value.toDoubleWithFormattedString)
+                            ..setTutar(
+                              (viewModel.model.dovizTutari ?? 0) *
+                                  (_dovizKuruController.text.toDoubleWithFormattedString),
+                            );
+                          _tutarController.text =
+                              viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                        },
+                      ),
+                    ).yetkiVarMi(viewModel.model.dovizliMi),
+                  ],
+                ),
               ),
               Observer(
-                builder:
-                    (_) => Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Döviz Kuru",
-                            controller: _dovizKuruController,
-                            isFormattedString: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            onChanged: (value) {
-                              if (_dovizKuruController.text != "") {
-                                viewModel.setDovizTutari(
-                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
-                                );
-                                _dovizTutariController.text =
-                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-                                    "";
-                              } else {
-                                viewModel.setDovizTutari(null);
-                                _dovizTutariController.clear();
-                              }
-                            },
-                            suffix: IconButton(
-                              onPressed: () async => await getDovizDialog(),
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            ),
-                          ),
-                        ).yetkiVarMi(viewModel.model.dovizliMi),
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Tutar",
-                            controller: _tutarController,
-                            isMust: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            isFormattedString: true,
-                            onChanged: (value) {
-                              viewModel.setTutar(value.toDoubleWithFormattedString);
-                              if (viewModel.model.dovizliMi) {
-                                viewModel.setDovizTutari(
-                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
-                                );
-                                _dovizTutariController.text =
-                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-                                    "";
-                              } else {
-                                viewModel.setDovizTutari(null);
-                                _dovizTutariController.clear();
-                              }
-                            },
-                          ),
+                builder: (_) => Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Döviz Kuru",
+                        controller: _dovizKuruController,
+                        isFormattedString: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        onChanged: (value) {
+                          if (_dovizKuruController.text != "") {
+                            viewModel.setDovizTutari(
+                              (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                            );
+                            _dovizTutariController.text =
+                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                          } else {
+                            viewModel.setDovizTutari(null);
+                            _dovizTutariController.clear();
+                          }
+                        },
+                        suffix: IconButton(
+                          onPressed: () async => await getDovizDialog(),
+                          icon: const Icon(Icons.more_horiz_outlined),
                         ),
-                      ],
+                      ),
+                    ).yetkiVarMi(viewModel.model.dovizliMi),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Tutar",
+                        controller: _tutarController,
+                        isMust: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        isFormattedString: true,
+                        onChanged: (value) {
+                          viewModel.setTutar(value.toDoubleWithFormattedString);
+                          if (viewModel.model.dovizliMi) {
+                            viewModel.setDovizTutari(
+                              (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                            );
+                            _dovizTutariController.text =
+                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                          } else {
+                            viewModel.setDovizTutari(null);
+                            _dovizTutariController.clear();
+                          }
+                        },
+                      ),
                     ),
+                  ],
+                ),
               ),
               CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
               Row(

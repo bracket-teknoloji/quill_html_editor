@@ -86,22 +86,20 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  childrenTitleList: viewModel.sureAraligiList,
-                  filterOnChanged: (index) => viewModel.changeSureAraligi(index),
-                  childrenValueList: viewModel.sureAraligivalue,
-                  groupValue: viewModel.sureAraligiGroupValue,
-                ),
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.sureAraligiList,
+              filterOnChanged: (index) => viewModel.changeSureAraligi(index),
+              childrenValueList: viewModel.sureAraligivalue,
+              groupValue: viewModel.sureAraligiGroupValue,
+            ),
           ),
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  childrenTitleList: viewModel.odemeTipiList,
-                  filterOnChanged: (index) => viewModel.changeOdemeTipi(index),
-                  childrenValueList: viewModel.odemeTipiValue,
-                  groupValue: viewModel.odemeTipiGroupValue,
-                ),
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.odemeTipiList,
+              filterOnChanged: (index) => viewModel.changeOdemeTipi(index),
+              childrenValueList: viewModel.odemeTipiValue,
+              groupValue: viewModel.odemeTipiGroupValue,
+            ),
           ),
           CustomTextField(
             labelText: "Cari",
@@ -151,10 +149,9 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,
                           title: "Plasiyer",
-                          children:
-                              plasiyerList
-                                  .map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e))
-                                  .toList(),
+                          children: plasiyerList
+                              .map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e))
+                              .toList(),
                         );
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -287,11 +284,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
-    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList =
-        grupKodList
-            .where((e) => e.grupNo == grupNo)
-            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e, groupValue: e.grupKodu))
-            .toList();
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
+        .where((e) => e.grupNo == grupNo)
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e, groupValue: e.grupKodu))
+        .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,

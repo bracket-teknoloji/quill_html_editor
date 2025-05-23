@@ -9,8 +9,7 @@ part of 'is_emri_rehberi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
-  late final _$isSearchBarOpenAtom = Atom(
-      name: '_IsEmriRehberiViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom = Atom(name: '_IsEmriRehberiViewModelBase.isSearchBarOpen', context: context);
 
   @override
   bool get isSearchBarOpen {
@@ -25,8 +24,7 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(name: '_IsEmriRehberiViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -41,8 +39,7 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(name: '_IsEmriRehberiViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -57,8 +54,7 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$stokKoduAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.stokKodu', context: context);
+  late final _$stokKoduAtom = Atom(name: '_IsEmriRehberiViewModelBase.stokKodu', context: context);
 
   @override
   String? get stokKodu {
@@ -73,8 +69,7 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom = Atom(
-      name: '_IsEmriRehberiViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(name: '_IsEmriRehberiViewModelBase.observableList', context: context);
 
   @override
   ObservableList<IsEmirleriModel>? get observableList {
@@ -90,38 +85,39 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   }
 
   late final _$changeSearchBarStatusAsyncAction = AsyncAction(
-      '_IsEmriRehberiViewModelBase.changeSearchBarStatus',
-      context: context);
+    '_IsEmriRehberiViewModelBase.changeSearchBarStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeSearchBarStatus() {
-    return _$changeSearchBarStatusAsyncAction
-        .run(() => super.changeSearchBarStatus());
+    return _$changeSearchBarStatusAsyncAction.run(() => super.changeSearchBarStatus());
   }
 
-  late final _$resetListAsyncAction =
-      AsyncAction('_IsEmriRehberiViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction('_IsEmriRehberiViewModelBase.resetList', context: context);
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_IsEmriRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_IsEmriRehberiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_IsEmriRehberiViewModelBaseActionController =
-      ActionController(name: '_IsEmriRehberiViewModelBase', context: context);
+  late final _$_IsEmriRehberiViewModelBaseActionController = ActionController(
+    name: '_IsEmriRehberiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
-        .startAction(name: '_IsEmriRehberiViewModelBase.setSearchText');
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController.startAction(
+      name: '_IsEmriRehberiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -131,8 +127,9 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
-        .startAction(name: '_IsEmriRehberiViewModelBase.setIsScrollDown');
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController.startAction(
+      name: '_IsEmriRehberiViewModelBase.setIsScrollDown',
+    );
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -142,8 +139,9 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
-        .startAction(name: '_IsEmriRehberiViewModelBase.setStokKodu');
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController.startAction(
+      name: '_IsEmriRehberiViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(value);
     } finally {
@@ -153,8 +151,9 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
 
   @override
   void setObservableList(List<IsEmirleriModel>? list) {
-    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
-        .startAction(name: '_IsEmriRehberiViewModelBase.setObservableList');
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController.startAction(
+      name: '_IsEmriRehberiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {
@@ -164,8 +163,9 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
 
   @override
   void addObservableList(List<IsEmirleriModel>? list) {
-    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
-        .startAction(name: '_IsEmriRehberiViewModelBase.addObservableList');
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController.startAction(
+      name: '_IsEmriRehberiViewModelBase.addObservableList',
+    );
     try {
       return super.addObservableList(list);
     } finally {

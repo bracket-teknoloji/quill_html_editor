@@ -12,41 +12,40 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
   Computed<String>? _$getIsSelectedComputed;
 
   @override
-  String get getIsSelected =>
-      (_$getIsSelectedComputed ??= Computed<String>(() => super.getIsSelected,
-              name: '_StokHareketleriViewModelBase.getIsSelected'))
-          .value;
+  String get getIsSelected => (_$getIsSelectedComputed ??= Computed<String>(
+    () => super.getIsSelected,
+    name: '_StokHareketleriViewModelBase.getIsSelected',
+  )).value;
   Computed<double>? _$toplamGirisComputed;
 
   @override
-  double get toplamGiris =>
-      (_$toplamGirisComputed ??= Computed<double>(() => super.toplamGiris,
-              name: '_StokHareketleriViewModelBase.toplamGiris'))
-          .value;
+  double get toplamGiris => (_$toplamGirisComputed ??= Computed<double>(
+    () => super.toplamGiris,
+    name: '_StokHareketleriViewModelBase.toplamGiris',
+  )).value;
   Computed<double>? _$toplamCikisComputed;
 
   @override
-  double get toplamCikis =>
-      (_$toplamCikisComputed ??= Computed<double>(() => super.toplamCikis,
-              name: '_StokHareketleriViewModelBase.toplamCikis'))
-          .value;
+  double get toplamCikis => (_$toplamCikisComputed ??= Computed<double>(
+    () => super.toplamCikis,
+    name: '_StokHareketleriViewModelBase.toplamCikis',
+  )).value;
   Computed<double>? _$toplamBakiyeComputed;
 
   @override
-  double get toplamBakiye =>
-      (_$toplamBakiyeComputed ??= Computed<double>(() => super.toplamBakiye,
-              name: '_StokHareketleriViewModelBase.toplamBakiye'))
-          .value;
+  double get toplamBakiye => (_$toplamBakiyeComputed ??= Computed<double>(
+    () => super.toplamBakiye,
+    name: '_StokHareketleriViewModelBase.toplamBakiye',
+  )).value;
   Computed<String>? _$getArrHareketTuruComputed;
 
   @override
-  String get getArrHareketTuru => (_$getArrHareketTuruComputed ??=
-          Computed<String>(() => super.getArrHareketTuru,
-              name: '_StokHareketleriViewModelBase.getArrHareketTuru'))
-      .value;
+  String get getArrHareketTuru => (_$getArrHareketTuruComputed ??= Computed<String>(
+    () => super.getArrHareketTuru,
+    name: '_StokHareketleriViewModelBase.getArrHareketTuru',
+  )).value;
 
-  late final _$cariListesiModelAtom = Atom(
-      name: '_StokHareketleriViewModelBase.cariListesiModel', context: context);
+  late final _$cariListesiModelAtom = Atom(name: '_StokHareketleriViewModelBase.cariListesiModel', context: context);
 
   @override
   CariListesiModel? get cariListesiModel {
@@ -61,8 +60,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$isSelectedAtom =
-      Atom(name: '_StokHareketleriViewModelBase.isSelected', context: context);
+  late final _$isSelectedAtom = Atom(name: '_StokHareketleriViewModelBase.isSelected', context: context);
 
   @override
   ObservableList<int> get isSelected {
@@ -78,8 +76,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
   }
 
   late final _$isSelectedGroupValueAtom = Atom(
-      name: '_StokHareketleriViewModelBase.isSelectedGroupValue',
-      context: context);
+    name: '_StokHareketleriViewModelBase.isSelectedGroupValue',
+    context: context,
+  );
 
   @override
   int? get isSelectedGroupValue {
@@ -89,14 +88,12 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   set isSelectedGroupValue(int? value) {
-    _$isSelectedGroupValueAtom.reportWrite(value, super.isSelectedGroupValue,
-        () {
+    _$isSelectedGroupValueAtom.reportWrite(value, super.isSelectedGroupValue, () {
       super.isSelectedGroupValue = value;
     });
   }
 
-  late final _$hareketTuruMapAtom = Atom(
-      name: '_StokHareketleriViewModelBase.hareketTuruMap', context: context);
+  late final _$hareketTuruMapAtom = Atom(name: '_StokHareketleriViewModelBase.hareketTuruMap', context: context);
 
   @override
   Map<String, String> get hareketTuruMap {
@@ -112,8 +109,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
   }
 
   late final _$gizlenecekAlanlarListAtom = Atom(
-      name: '_StokHareketleriViewModelBase.gizlenecekAlanlarList',
-      context: context);
+    name: '_StokHareketleriViewModelBase.gizlenecekAlanlarList',
+    context: context,
+  );
 
   @override
   List<({String name, String value})> get gizlenecekAlanlarList {
@@ -123,14 +121,12 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   set gizlenecekAlanlarList(List<({String name, String value})> value) {
-    _$gizlenecekAlanlarListAtom.reportWrite(value, super.gizlenecekAlanlarList,
-        () {
+    _$gizlenecekAlanlarListAtom.reportWrite(value, super.gizlenecekAlanlarList, () {
       super.gizlenecekAlanlarList = value;
     });
   }
 
-  late final _$hareketYonuListAtom = Atom(
-      name: '_StokHareketleriViewModelBase.hareketYonuList', context: context);
+  late final _$hareketYonuListAtom = Atom(name: '_StokHareketleriViewModelBase.hareketYonuList', context: context);
 
   @override
   List<String> get hareketYonuList {
@@ -145,8 +141,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$arrHareketTuruAtom = Atom(
-      name: '_StokHareketleriViewModelBase.arrHareketTuru', context: context);
+  late final _$arrHareketTuruAtom = Atom(name: '_StokHareketleriViewModelBase.arrHareketTuru', context: context);
 
   @override
   List<String>? get arrHareketTuru {
@@ -161,8 +156,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$dovizliFiyatAtom = Atom(
-      name: '_StokHareketleriViewModelBase.dovizliFiyat', context: context);
+  late final _$dovizliFiyatAtom = Atom(name: '_StokHareketleriViewModelBase.dovizliFiyat', context: context);
 
   @override
   bool get dovizliFiyat {
@@ -177,8 +171,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$siralamaAtom =
-      Atom(name: '_StokHareketleriViewModelBase.siralama', context: context);
+  late final _$siralamaAtom = Atom(name: '_StokHareketleriViewModelBase.siralama', context: context);
 
   @override
   String? get siralama {
@@ -193,8 +186,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$futureAtom =
-      Atom(name: '_StokHareketleriViewModelBase.future', context: context);
+  late final _$futureAtom = Atom(name: '_StokHareketleriViewModelBase.future', context: context);
 
   @override
   Future<dynamic>? get future {
@@ -209,8 +201,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_StokHareketleriViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(name: '_StokHareketleriViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -225,8 +216,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$stokHareketleriAtom = Atom(
-      name: '_StokHareketleriViewModelBase.stokHareketleri', context: context);
+  late final _$stokHareketleriAtom = Atom(name: '_StokHareketleriViewModelBase.stokHareketleri', context: context);
 
   @override
   List<StokHareketleriModel>? get stokHareketleri {
@@ -242,8 +232,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
   }
 
   late final _$filteredStokHareketleriAtom = Atom(
-      name: '_StokHareketleriViewModelBase.filteredStokHareketleri',
-      context: context);
+    name: '_StokHareketleriViewModelBase.filteredStokHareketleri',
+    context: context,
+  );
 
   @override
   List<StokHareketleriModel>? get filteredStokHareketleri {
@@ -253,19 +244,21 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   set filteredStokHareketleri(List<StokHareketleriModel>? value) {
-    _$filteredStokHareketleriAtom
-        .reportWrite(value, super.filteredStokHareketleri, () {
+    _$filteredStokHareketleriAtom.reportWrite(value, super.filteredStokHareketleri, () {
       super.filteredStokHareketleri = value;
     });
   }
 
-  late final _$_StokHareketleriViewModelBaseActionController =
-      ActionController(name: '_StokHareketleriViewModelBase', context: context);
+  late final _$_StokHareketleriViewModelBaseActionController = ActionController(
+    name: '_StokHareketleriViewModelBase',
+    context: context,
+  );
 
   @override
   void setCariListesiModel(CariListesiModel? model) {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.setCariListesiModel');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.setCariListesiModel',
+    );
     try {
       return super.setCariListesiModel(model);
     } finally {
@@ -275,8 +268,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void changeIsSelected(int index) {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.changeIsSelected');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.changeIsSelected',
+    );
     try {
       return super.changeIsSelected(index);
     } finally {
@@ -286,9 +280,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void setGizlenecekAlanlar(List<({String name, String value})> list) {
-    final _$actionInfo =
-        _$_StokHareketleriViewModelBaseActionController.startAction(
-            name: '_StokHareketleriViewModelBase.setGizlenecekAlanlar');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.setGizlenecekAlanlar',
+    );
     try {
       return super.setGizlenecekAlanlar(list);
     } finally {
@@ -298,8 +292,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void addArrHareketTuru(String value) {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.addArrHareketTuru');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.addArrHareketTuru',
+    );
     try {
       return super.addArrHareketTuru(value);
     } finally {
@@ -309,9 +304,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void changeArrHareketTuru(List<String> value) {
-    final _$actionInfo =
-        _$_StokHareketleriViewModelBaseActionController.startAction(
-            name: '_StokHareketleriViewModelBase.changeArrHareketTuru');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.changeArrHareketTuru',
+    );
     try {
       return super.changeArrHareketTuru(value);
     } finally {
@@ -321,8 +316,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void clearArrHareketTuru() {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.clearArrHareketTuru');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.clearArrHareketTuru',
+    );
     try {
       return super.clearArrHareketTuru();
     } finally {
@@ -332,8 +328,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void changeDovizliFiyat() {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.changeDovizliFiyat');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.changeDovizliFiyat',
+    );
     try {
       return super.changeDovizliFiyat();
     } finally {
@@ -343,8 +340,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void setSiralama(String value) {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.setSiralama');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.setSiralama',
+    );
     try {
       return super.setSiralama(value);
     } finally {
@@ -354,8 +352,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void setFuture(Future<dynamic>? value) {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.setFuture');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.setFuture',
+    );
     try {
       return super.setFuture(value);
     } finally {
@@ -365,8 +364,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.changeSearchBar');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.changeSearchBar',
+    );
     try {
       return super.changeSearchBar();
     } finally {
@@ -376,8 +376,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void setStokHareketleri(List<StokHareketleriModel> value) {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.setStokHareketleri');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.setStokHareketleri',
+    );
     try {
       return super.setStokHareketleri(value);
     } finally {
@@ -387,8 +388,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void addStokHareketleri(StokHareketleriModel value) {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.addStokHareketleri');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.addStokHareketleri',
+    );
     try {
       return super.addStokHareketleri(value);
     } finally {
@@ -398,9 +400,9 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
 
   @override
   void filterStokHareketleri(String value) {
-    final _$actionInfo =
-        _$_StokHareketleriViewModelBaseActionController.startAction(
-            name: '_StokHareketleriViewModelBase.filterStokHareketleri');
+    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController.startAction(
+      name: '_StokHareketleriViewModelBase.filterStokHareketleri',
+    );
     try {
       return super.filterStokHareketleri(value);
     } finally {

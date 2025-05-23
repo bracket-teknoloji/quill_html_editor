@@ -12,7 +12,8 @@ part of 'base_grup_kodu_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 BaseGrupKoduModel _$BaseGrupKoduModelFromJson(Map<String, dynamic> json) {
   return _BaseGrupKoduModel.fromJson(json);
@@ -57,32 +58,31 @@ mixin _$BaseGrupKoduModel {
   /// Create a copy of BaseGrupKoduModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BaseGrupKoduModelCopyWith<BaseGrupKoduModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BaseGrupKoduModelCopyWith<BaseGrupKoduModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BaseGrupKoduModelCopyWith<$Res> {
-  factory $BaseGrupKoduModelCopyWith(
-          BaseGrupKoduModel value, $Res Function(BaseGrupKoduModel) then) =
+  factory $BaseGrupKoduModelCopyWith(BaseGrupKoduModel value, $Res Function(BaseGrupKoduModel) then) =
       _$BaseGrupKoduModelCopyWithImpl<$Res, BaseGrupKoduModel>;
   @useResult
-  $Res call(
-      {String? modul,
-      int? grupNo,
-      String? grupKodu,
-      String? grupAdi,
-      String? tip,
-      String? kod1,
-      String? kod2,
-      String? kod3,
-      String? kod4,
-      String? kod5,
-      String? kod1Adi,
-      String? kod2Adi,
-      String? kod3Adi,
-      String? kod4Adi,
-      String? kod5Adi});
+  $Res call({
+    String? modul,
+    int? grupNo,
+    String? grupKodu,
+    String? grupAdi,
+    String? tip,
+    String? kod1,
+    String? kod2,
+    String? kod3,
+    String? kod4,
+    String? kod5,
+    String? kod1Adi,
+    String? kod2Adi,
+    String? kod3Adi,
+    String? kod4Adi,
+    String? kod5Adi,
+  });
 }
 
 /// @nodoc
@@ -116,104 +116,104 @@ class _$BaseGrupKoduModelCopyWithImpl<$Res, $Val extends BaseGrupKoduModel>
     Object? kod4Adi = freezed,
     Object? kod5Adi = freezed,
   }) {
-    return _then(_value.copyWith(
-      modul: freezed == modul
-          ? _value.modul
-          : modul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupNo: freezed == grupNo
-          ? _value.grupNo
-          : grupNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      grupKodu: freezed == grupKodu
-          ? _value.grupKodu
-          : grupKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupAdi: freezed == grupAdi
-          ? _value.grupAdi
-          : grupAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod1: freezed == kod1
-          ? _value.kod1
-          : kod1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod2: freezed == kod2
-          ? _value.kod2
-          : kod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod3: freezed == kod3
-          ? _value.kod3
-          : kod3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod4: freezed == kod4
-          ? _value.kod4
-          : kod4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod5: freezed == kod5
-          ? _value.kod5
-          : kod5 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod1Adi: freezed == kod1Adi
-          ? _value.kod1Adi
-          : kod1Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod2Adi: freezed == kod2Adi
-          ? _value.kod2Adi
-          : kod2Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod3Adi: freezed == kod3Adi
-          ? _value.kod3Adi
-          : kod3Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod4Adi: freezed == kod4Adi
-          ? _value.kod4Adi
-          : kod4Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod5Adi: freezed == kod5Adi
-          ? _value.kod5Adi
-          : kod5Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            modul: freezed == modul
+                ? _value.modul
+                : modul // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            grupNo: freezed == grupNo
+                ? _value.grupNo
+                : grupNo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            grupKodu: freezed == grupKodu
+                ? _value.grupKodu
+                : grupKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            grupAdi: freezed == grupAdi
+                ? _value.grupAdi
+                : grupAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tip: freezed == tip
+                ? _value.tip
+                : tip // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod1: freezed == kod1
+                ? _value.kod1
+                : kod1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod2: freezed == kod2
+                ? _value.kod2
+                : kod2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod3: freezed == kod3
+                ? _value.kod3
+                : kod3 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod4: freezed == kod4
+                ? _value.kod4
+                : kod4 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod5: freezed == kod5
+                ? _value.kod5
+                : kod5 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod1Adi: freezed == kod1Adi
+                ? _value.kod1Adi
+                : kod1Adi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod2Adi: freezed == kod2Adi
+                ? _value.kod2Adi
+                : kod2Adi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod3Adi: freezed == kod3Adi
+                ? _value.kod3Adi
+                : kod3Adi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod4Adi: freezed == kod4Adi
+                ? _value.kod4Adi
+                : kod4Adi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kod5Adi: freezed == kod5Adi
+                ? _value.kod5Adi
+                : kod5Adi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$BaseGrupKoduModelImplCopyWith<$Res>
-    implements $BaseGrupKoduModelCopyWith<$Res> {
-  factory _$$BaseGrupKoduModelImplCopyWith(_$BaseGrupKoduModelImpl value,
-          $Res Function(_$BaseGrupKoduModelImpl) then) =
+abstract class _$$BaseGrupKoduModelImplCopyWith<$Res> implements $BaseGrupKoduModelCopyWith<$Res> {
+  factory _$$BaseGrupKoduModelImplCopyWith(_$BaseGrupKoduModelImpl value, $Res Function(_$BaseGrupKoduModelImpl) then) =
       __$$BaseGrupKoduModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? modul,
-      int? grupNo,
-      String? grupKodu,
-      String? grupAdi,
-      String? tip,
-      String? kod1,
-      String? kod2,
-      String? kod3,
-      String? kod4,
-      String? kod5,
-      String? kod1Adi,
-      String? kod2Adi,
-      String? kod3Adi,
-      String? kod4Adi,
-      String? kod5Adi});
+  $Res call({
+    String? modul,
+    int? grupNo,
+    String? grupKodu,
+    String? grupAdi,
+    String? tip,
+    String? kod1,
+    String? kod2,
+    String? kod3,
+    String? kod4,
+    String? kod5,
+    String? kod1Adi,
+    String? kod2Adi,
+    String? kod3Adi,
+    String? kod4Adi,
+    String? kod5Adi,
+  });
 }
 
 /// @nodoc
-class __$$BaseGrupKoduModelImplCopyWithImpl<$Res>
-    extends _$BaseGrupKoduModelCopyWithImpl<$Res, _$BaseGrupKoduModelImpl>
+class __$$BaseGrupKoduModelImplCopyWithImpl<$Res> extends _$BaseGrupKoduModelCopyWithImpl<$Res, _$BaseGrupKoduModelImpl>
     implements _$$BaseGrupKoduModelImplCopyWith<$Res> {
-  __$$BaseGrupKoduModelImplCopyWithImpl(_$BaseGrupKoduModelImpl _value,
-      $Res Function(_$BaseGrupKoduModelImpl) _then)
-      : super(_value, _then);
+  __$$BaseGrupKoduModelImplCopyWithImpl(_$BaseGrupKoduModelImpl _value, $Res Function(_$BaseGrupKoduModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of BaseGrupKoduModel
   /// with the given fields replaced by the non-null parameter values.
@@ -236,68 +236,70 @@ class __$$BaseGrupKoduModelImplCopyWithImpl<$Res>
     Object? kod4Adi = freezed,
     Object? kod5Adi = freezed,
   }) {
-    return _then(_$BaseGrupKoduModelImpl(
-      modul: freezed == modul
-          ? _value.modul
-          : modul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupNo: freezed == grupNo
-          ? _value.grupNo
-          : grupNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      grupKodu: freezed == grupKodu
-          ? _value.grupKodu
-          : grupKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      grupAdi: freezed == grupAdi
-          ? _value.grupAdi
-          : grupAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod1: freezed == kod1
-          ? _value.kod1
-          : kod1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod2: freezed == kod2
-          ? _value.kod2
-          : kod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod3: freezed == kod3
-          ? _value.kod3
-          : kod3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod4: freezed == kod4
-          ? _value.kod4
-          : kod4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod5: freezed == kod5
-          ? _value.kod5
-          : kod5 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod1Adi: freezed == kod1Adi
-          ? _value.kod1Adi
-          : kod1Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod2Adi: freezed == kod2Adi
-          ? _value.kod2Adi
-          : kod2Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod3Adi: freezed == kod3Adi
-          ? _value.kod3Adi
-          : kod3Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod4Adi: freezed == kod4Adi
-          ? _value.kod4Adi
-          : kod4Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod5Adi: freezed == kod5Adi
-          ? _value.kod5Adi
-          : kod5Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$BaseGrupKoduModelImpl(
+        modul: freezed == modul
+            ? _value.modul
+            : modul // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        grupNo: freezed == grupNo
+            ? _value.grupNo
+            : grupNo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        grupKodu: freezed == grupKodu
+            ? _value.grupKodu
+            : grupKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        grupAdi: freezed == grupAdi
+            ? _value.grupAdi
+            : grupAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tip: freezed == tip
+            ? _value.tip
+            : tip // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod1: freezed == kod1
+            ? _value.kod1
+            : kod1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod2: freezed == kod2
+            ? _value.kod2
+            : kod2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod3: freezed == kod3
+            ? _value.kod3
+            : kod3 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod4: freezed == kod4
+            ? _value.kod4
+            : kod4 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod5: freezed == kod5
+            ? _value.kod5
+            : kod5 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod1Adi: freezed == kod1Adi
+            ? _value.kod1Adi
+            : kod1Adi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod2Adi: freezed == kod2Adi
+            ? _value.kod2Adi
+            : kod2Adi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod3Adi: freezed == kod3Adi
+            ? _value.kod3Adi
+            : kod3Adi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod4Adi: freezed == kod4Adi
+            ? _value.kod4Adi
+            : kod4Adi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kod5Adi: freezed == kod5Adi
+            ? _value.kod5Adi
+            : kod5Adi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -305,26 +307,25 @@ class __$$BaseGrupKoduModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(createFactory: true)
 class _$BaseGrupKoduModelImpl extends _BaseGrupKoduModel {
-  _$BaseGrupKoduModelImpl(
-      {this.modul,
-      this.grupNo,
-      this.grupKodu,
-      this.grupAdi,
-      this.tip,
-      this.kod1,
-      this.kod2,
-      this.kod3,
-      this.kod4,
-      this.kod5,
-      this.kod1Adi,
-      this.kod2Adi,
-      this.kod3Adi,
-      this.kod4Adi,
-      this.kod5Adi})
-      : super._();
+  _$BaseGrupKoduModelImpl({
+    this.modul,
+    this.grupNo,
+    this.grupKodu,
+    this.grupAdi,
+    this.tip,
+    this.kod1,
+    this.kod2,
+    this.kod3,
+    this.kod4,
+    this.kod5,
+    this.kod1Adi,
+    this.kod2Adi,
+    this.kod3Adi,
+    this.kod4Adi,
+    this.kod5Adi,
+  }) : super._();
 
-  factory _$BaseGrupKoduModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BaseGrupKoduModelImplFromJson(json);
+  factory _$BaseGrupKoduModelImpl.fromJson(Map<String, dynamic> json) => _$$BaseGrupKoduModelImplFromJson(json);
 
   @override
   String? modul;
@@ -363,38 +364,35 @@ class _$BaseGrupKoduModelImpl extends _BaseGrupKoduModel {
   @override
   @pragma('vm:prefer-inline')
   _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith =>
-      __$$BaseGrupKoduModelImplCopyWithImpl<_$BaseGrupKoduModelImpl>(
-          this, _$identity);
+      __$$BaseGrupKoduModelImplCopyWithImpl<_$BaseGrupKoduModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BaseGrupKoduModelImplToJson(
-      this,
-    );
+    return _$$BaseGrupKoduModelImplToJson(this);
   }
 }
 
 abstract class _BaseGrupKoduModel extends BaseGrupKoduModel {
-  factory _BaseGrupKoduModel(
-      {String? modul,
-      int? grupNo,
-      String? grupKodu,
-      String? grupAdi,
-      String? tip,
-      String? kod1,
-      String? kod2,
-      String? kod3,
-      String? kod4,
-      String? kod5,
-      String? kod1Adi,
-      String? kod2Adi,
-      String? kod3Adi,
-      String? kod4Adi,
-      String? kod5Adi}) = _$BaseGrupKoduModelImpl;
+  factory _BaseGrupKoduModel({
+    String? modul,
+    int? grupNo,
+    String? grupKodu,
+    String? grupAdi,
+    String? tip,
+    String? kod1,
+    String? kod2,
+    String? kod3,
+    String? kod4,
+    String? kod5,
+    String? kod1Adi,
+    String? kod2Adi,
+    String? kod3Adi,
+    String? kod4Adi,
+    String? kod5Adi,
+  }) = _$BaseGrupKoduModelImpl;
   _BaseGrupKoduModel._() : super._();
 
-  factory _BaseGrupKoduModel.fromJson(Map<String, dynamic> json) =
-      _$BaseGrupKoduModelImpl.fromJson;
+  factory _BaseGrupKoduModel.fromJson(Map<String, dynamic> json) = _$BaseGrupKoduModelImpl.fromJson;
 
   @override
   String? get modul;
@@ -446,6 +444,5 @@ abstract class _BaseGrupKoduModel extends BaseGrupKoduModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

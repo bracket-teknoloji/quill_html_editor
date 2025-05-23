@@ -100,18 +100,16 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
         ..setTopluCikisDepoKodu(
           DepoList()
             ..depoKodu = BaseSiparisEditModel.instance.cikisDepoKodu
-            ..depoTanimi =
-                parametreModel.depoList
-                    ?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.cikisDepoKodu)
-                    ?.depoTanimi,
+            ..depoTanimi = parametreModel.depoList
+                ?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.cikisDepoKodu)
+                ?.depoTanimi,
         )
         ..setTopluGirisDepoKodu(
           DepoList()
             ..depoKodu = BaseSiparisEditModel.instance.girisDepoKodu
-            ..depoTanimi =
-                parametreModel.depoList
-                    ?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.girisDepoKodu)
-                    ?.depoTanimi,
+            ..depoTanimi = parametreModel.depoList
+                ?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.girisDepoKodu)
+                ?.depoTanimi,
         );
     }
     _belgeNoController = TextEditingController(text: model.belgeNo);
@@ -119,10 +117,9 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
     _gidecegiSubeController = TextEditingController(text: model.girisSubeAciklama);
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _hareketTuruController = TextEditingController(
-      text:
-          viewModel.hareketTuruMap.entries
-              .firstWhereOrNull((element) => element.value == viewModel.model.hareketTuru)
-              ?.key,
+      text: viewModel.hareketTuruMap.entries
+          .firstWhereOrNull((element) => element.value == viewModel.model.hareketTuru)
+          ?.key,
     );
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _masrafKoduController = TextEditingController(text: model.masrafKoduAdi ?? model.masrafKodu);
@@ -281,64 +278,61 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
             // ),
             if (!(widget.model.editTipiEnum?.ambarGirisiMi ?? false))
               Observer(
-                builder:
-                    (_) => CustomTextField(
-                      labelText: "Cari",
-                      readOnly: true,
-                      isMust: viewModel.model.lokalDat != "E",
-                      suffixMore: true,
-                      controller: _cariController,
-                      enabled: isEkle,
-                      valueWidget: Observer(
-                        builder:
-                            (_) => Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(text: viewModel.model.cariKodu ?? ""),
-                                  const TextSpan(text: "  "),
-                                  TextSpan(
-                                    text: viewModel.model.cariTitle,
-                                    style: const TextStyle(color: ColorPalette.mantis),
-                                  ),
-                                ],
-                              ),
-                            ),
+                builder: (_) => CustomTextField(
+                  labelText: "Cari",
+                  readOnly: true,
+                  isMust: viewModel.model.lokalDat != "E",
+                  suffixMore: true,
+                  controller: _cariController,
+                  enabled: isEkle,
+                  valueWidget: Observer(
+                    builder: (_) => Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: viewModel.model.cariKodu ?? ""),
+                          const TextSpan(text: "  "),
+                          TextSpan(
+                            text: viewModel.model.cariTitle,
+                            style: const TextStyle(color: ColorPalette.mantis),
+                          ),
+                        ],
                       ),
-                      onTap: () async {
-                        final cariModel = await Get.toNamed(
-                          "mainPage/cariRehberi",
-                          arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
-                        );
-                        if (cariModel == null) return;
-                        final result = await networkManager.getCariModel(
-                          CariRequestModel.fromCariListesiModel(cariModel)
-                            ..secildi = "E"
-                            ..kisitYok = true
-                            ..teslimCari = "E"
-                            ..eFaturaGoster = true,
-                        );
-                        if (result is CariListesiModel) {
-                          _cariController.text = result.cariAdi ?? "";
-                          viewModel.model.cariTitle =
-                              result.efaturaCarisi == "E"
-                                  ? "E-Fatura"
-                                  : result.efaturaCarisi == "H"
-                                  ? "E-Arşiv"
-                                  : null;
-                          //TODO DEPO KODUNU ZEKİ ABİYE SOR
-                          // if (yetkiController.transferDatCarininDepoGetir) {
-                          //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
-                          // }
-                          viewModel
-                            ..setCariAdi(result.cariAdi)
-                            ..setCariKodu(result.cariKodu);
-                          viewModel.model.vadeGunu = result.vadeGunu;
-                          viewModel.model.efaturaTipi = result.efaturaTipi;
-                          // _belgeNoController.clear();
-                          // await getBelgeNo();
-                        }
-                      },
                     ),
+                  ),
+                  onTap: () async {
+                    final cariModel = await Get.toNamed(
+                      "mainPage/cariRehberi",
+                      arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
+                    );
+                    if (cariModel == null) return;
+                    final result = await networkManager.getCariModel(
+                      CariRequestModel.fromCariListesiModel(cariModel)
+                        ..secildi = "E"
+                        ..kisitYok = true
+                        ..teslimCari = "E"
+                        ..eFaturaGoster = true,
+                    );
+                    if (result is CariListesiModel) {
+                      _cariController.text = result.cariAdi ?? "";
+                      viewModel.model.cariTitle = result.efaturaCarisi == "E"
+                          ? "E-Fatura"
+                          : result.efaturaCarisi == "H"
+                          ? "E-Arşiv"
+                          : null;
+                      //TODO DEPO KODUNU ZEKİ ABİYE SOR
+                      // if (yetkiController.transferDatCarininDepoGetir) {
+                      //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
+                      // }
+                      viewModel
+                        ..setCariAdi(result.cariAdi)
+                        ..setCariKodu(result.cariKodu);
+                      viewModel.model.vadeGunu = result.vadeGunu;
+                      viewModel.model.efaturaTipi = result.efaturaTipi;
+                      // _belgeNoController.clear();
+                      // await getBelgeNo();
+                    }
+                  },
+                ),
               ),
             Row(
               children: [
@@ -348,11 +342,10 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       text: "Lokal Depo",
                       isVertical: true,
                       child: Observer(
-                        builder:
-                            (_) => Switch.adaptive(
-                              value: viewModel.model.lokalDat == "E",
-                              onChanged: enable ? viewModel.setLokalDepo : null,
-                            ),
+                        builder: (_) => Switch.adaptive(
+                          value: viewModel.model.lokalDat == "E",
+                          onChanged: enable ? viewModel.setLokalDepo : null,
+                        ),
                       ),
                     ),
                   ),
@@ -363,11 +356,10 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       text: "KDV Dahil",
                       isVertical: true,
                       child: Observer(
-                        builder:
-                            (_) => Switch.adaptive(
-                              value: viewModel.kdvDahil,
-                              onChanged: enable ? viewModel.changeKdvDahil : null,
-                            ),
+                        builder: (_) => Switch.adaptive(
+                          value: viewModel.kdvDahil,
+                          onChanged: enable ? viewModel.changeKdvDahil : null,
+                        ),
                       ),
                     ),
                   ),
@@ -376,29 +368,27 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                     text: "E-İrsaliye",
                     isVertical: true,
                     child: Observer(
-                      builder:
-                          (_) => Switch.adaptive(
-                            value: viewModel.model.eBelgeCheckBoxMi,
-                            onChanged:
-                                enable && !(model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false)
-                                    ? (value) {
-                                      viewModel.setEIrsaliye(value);
-                                      if (value) {
-                                        dialogManager.showInfoSnackBar(
-                                          "E-İrsaliye için ${parametreModel.arrEIrsSeri?.join(", ")} serisi kullanılmalı.",
-                                        );
-                                      }
-                                    }
-                                    : null,
-                          ),
+                      builder: (_) => Switch.adaptive(
+                        value: viewModel.model.eBelgeCheckBoxMi,
+                        onChanged: enable && !(model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false)
+                            ? (value) {
+                                viewModel.setEIrsaliye(value);
+                                if (value) {
+                                  dialogManager.showInfoSnackBar(
+                                    "E-İrsaliye için ${parametreModel.arrEIrsSeri?.join(", ")} serisi kullanılmalı.",
+                                  );
+                                }
+                              }
+                            : null,
+                      ),
                     ),
                   ),
                 ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
               ],
             ),
             Observer(
-              builder:
-                  (_) => Row(
+              builder: (_) =>
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
@@ -413,14 +403,13 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                             builder: (_) => Text(viewModel.model.girisSubeKodu.toIntIfDouble.toStringIfNotNull ?? ""),
                           ),
                           onTap: () async {
-                            final subeList =
-                                parametreModel.subeList
-                                    ?.where(
-                                      (element) =>
-                                          (element.subeKodu ?? 0).toStringIfNotNull !=
-                                          CacheManager.getVeriTabani["Şube"].toString(),
-                                    )
-                                    .toList();
+                            final subeList = parametreModel.subeList
+                                ?.where(
+                                  (element) =>
+                                      (element.subeKodu ?? 0).toStringIfNotNull !=
+                                      CacheManager.getVeriTabani["Şube"].toString(),
+                                )
+                                .toList();
                             final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                               context,
                               title: "Gideceği Şube",

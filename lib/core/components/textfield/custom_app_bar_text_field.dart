@@ -24,16 +24,15 @@ final class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
         autofocus: true,
         decoration: InputDecoration(
           hintText: "Ara",
-          suffixIcon:
-              widget.controller != null
-                  ? IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () {
-                      widget.controller?.clear();
-                      widget.onChanged?.call("");
-                    },
-                  )
-                  : null,
+          suffixIcon: widget.controller != null
+              ? IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    widget.controller?.clear();
+                    widget.onChanged?.call("");
+                  },
+                )
+              : null,
         ),
         onChanged: widget.onChanged,
         onFieldSubmitted: widget.onFieldSubmitted,

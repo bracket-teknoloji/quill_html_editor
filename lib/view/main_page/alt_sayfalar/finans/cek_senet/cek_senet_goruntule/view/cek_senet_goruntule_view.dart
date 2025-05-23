@@ -22,7 +22,9 @@ final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView>
   CekSenetListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => BaseScaffold(
-    appBar: AppBar(title: AppBarTitle(title: loc.generalStrings.view, subtitle: model.belgeNo ?? "")),
+    appBar: AppBar(
+      title: AppBarTitle(title: loc.generalStrings.view, subtitle: model.belgeNo ?? ""),
+    ),
     body: SingleChildScrollView(
       child: Column(
         children: [
@@ -41,12 +43,16 @@ final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView>
               Expanded(
                 child: CustomTextField(labelText: "Asıl/Ciro", controllerText: model.ciroTipiString, readOnly: true),
               ),
-              Expanded(child: CustomTextField(labelText: "Yeri", controllerText: model.yerAciklama, readOnly: true)),
+              Expanded(
+                child: CustomTextField(labelText: "Yeri", controllerText: model.yerAciklama, readOnly: true),
+              ),
             ],
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(labelText: "Durum", controllerText: model.durumString, readOnly: true)),
+              Expanded(
+                child: CustomTextField(labelText: "Durum", controllerText: model.durumString, readOnly: true),
+              ),
               Expanded(
                 child: CustomTextField(
                   labelText: "Tutar",

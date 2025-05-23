@@ -26,15 +26,14 @@ abstract class _IsEmriHammaddeTakibiViewModelBase
   void setSearchText(String? value) => searchText = value;
 
   @computed
-  ObservableList<IsEmriHammaddeTakibiListesiModel>? get getList =>
-      observableList
-          ?.where(
-            (element) =>
-                (element.stokKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
-                (element.isemrino?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
-          )
-          .toList()
-          .asObservable();
+  ObservableList<IsEmriHammaddeTakibiListesiModel>? get getList => observableList
+      ?.where(
+        (element) =>
+            (element.stokKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
+            (element.isemrino?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
+      )
+      .toList()
+      .asObservable();
   @override
   @action
   void changeSearchBarStatus() {

@@ -150,30 +150,27 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
                       body: Column(
                         children: <Widget>[
                           Observer(
-                            builder:
-                                (_) => SwitchListTile.adaptive(
-                                  title: const Text("Ek Açıklamalar"),
-                                  value: viewModel.ekstraAlanlarMap["EK"] ?? false,
-                                  onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),
-                                ),
+                            builder: (_) => SwitchListTile.adaptive(
+                              title: const Text("Ek Açıklamalar"),
+                              value: viewModel.ekstraAlanlarMap["EK"] ?? false,
+                              onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),
+                            ),
                           ),
                           Observer(
-                            builder:
-                                (_) => SwitchListTile.adaptive(
-                                  title: const Text("Miktar"),
-                                  value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
-                                  onChanged: (value) {
-                                    viewModel.changeEkstraAlanlarMap("MİK", value);
-                                  },
-                                ),
+                            builder: (_) => SwitchListTile.adaptive(
+                              title: const Text("Miktar"),
+                              value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
+                              onChanged: (value) {
+                                viewModel.changeEkstraAlanlarMap("MİK", value);
+                              },
+                            ),
                           ),
                           Observer(
-                            builder:
-                                (_) => SwitchListTile.adaptive(
-                                  title: const Text("Vade"),
-                                  value: viewModel.ekstraAlanlarMap["VADE"] ?? false,
-                                  onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),
-                                ),
+                            builder: (_) => SwitchListTile.adaptive(
+                              title: const Text("Vade"),
+                              value: viewModel.ekstraAlanlarMap["VADE"] ?? false,
+                              onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),
+                            ),
                           ),
                         ],
                       ),
@@ -190,45 +187,42 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
   );
 
   Widget fab() => Observer(
-    builder:
-        (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async {
-            final result = await Get.toNamed(
-              "/mainPage/transferEdit",
-              arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum),
-            );
-            if (result is BaseSiparisEditModel) {
-              await resetPage(result);
-            }
-          },
-        ),
+    builder: (_) => CustomFloatingActionButton(
+      isScrolledDown: viewModel.isScrollDown,
+      onPressed: () async {
+        final result = await Get.toNamed(
+          "/mainPage/transferEdit",
+          arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum),
+        );
+        if (result is BaseSiparisEditModel) {
+          await resetPage(result);
+        }
+      },
+    ),
   );
 
   Widget body() => Observer(
-    builder:
-        (_) => RefreshableListView.pageable(
-          scrollController: _scrollController,
-          onRefresh: viewModel.resetList,
-          dahaVarMi: viewModel.dahaVarMi,
-          items: viewModel.observableList?.mapIndexed((index, item) => item.copyWith(index: index)).toList(),
-          itemBuilder:
-              (item) => TransferlerCard(
-                index: item.index,
-                model: item,
-                isGetData: widget.isGetData ?? false,
-                editTipiEnum: widget.editTipiEnum,
-                showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
-                showMiktar: viewModel.ekstraAlanlarMap["MİK"],
-                showVade: viewModel.ekstraAlanlarMap["VADE"],
-                onDeleted: () async => await viewModel.resetList(),
-                onUpdated: (value) async {
-                  if (value is BaseSiparisEditModel) {
-                    await resetPage(value);
-                  }
-                },
-              ),
-        ),
+    builder: (_) => RefreshableListView.pageable(
+      scrollController: _scrollController,
+      onRefresh: viewModel.resetList,
+      dahaVarMi: viewModel.dahaVarMi,
+      items: viewModel.observableList?.mapIndexed((index, item) => item.copyWith(index: index)).toList(),
+      itemBuilder: (item) => TransferlerCard(
+        index: item.index,
+        model: item,
+        isGetData: widget.isGetData ?? false,
+        editTipiEnum: widget.editTipiEnum,
+        showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
+        showMiktar: viewModel.ekstraAlanlarMap["MİK"],
+        showVade: viewModel.ekstraAlanlarMap["VADE"],
+        onDeleted: () async => await viewModel.resetList(),
+        onUpdated: (value) async {
+          if (value is BaseSiparisEditModel) {
+            await resetPage(value);
+          }
+        },
+      ),
+    ),
   );
 
   Future<void> filter() async {
@@ -265,16 +259,15 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
           ),
           if (widget.editTipiEnum.depoTransferiMi)
             Observer(
-              builder:
-                  (_) => SlideControllerWidget(
-                    childrenTitleList: viewModel.transferTipiMap.keys.toList(),
-                    filterOnChanged: (index) {
-                      viewModel.setLokalDAT(viewModel.transferTipiMap.values.toList()[index ?? 0]);
-                    },
-                    title: "Transfer Tipi",
-                    childrenValueList: viewModel.transferTipiMap.values.toList(),
-                    groupValue: viewModel.faturaRequestModel.lokalDAT,
-                  ),
+              builder: (_) => SlideControllerWidget(
+                childrenTitleList: viewModel.transferTipiMap.keys.toList(),
+                filterOnChanged: (index) {
+                  viewModel.setLokalDAT(viewModel.transferTipiMap.values.toList()[index ?? 0]);
+                },
+                title: "Transfer Tipi",
+                childrenValueList: viewModel.transferTipiMap.values.toList(),
+                groupValue: viewModel.faturaRequestModel.lokalDAT,
+              ),
             ),
           Row(
             children: <Widget>[

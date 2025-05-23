@@ -28,16 +28,14 @@ final class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSize
       children: [
         Expanded(
           child: LayoutBuilder(
-            builder:
-                (context, constraints) => ListView(
-                  shrinkWrap: true,
-                  itemExtent: constraints.maxWidth / widget.children.length,
-                  scrollDirection: Axis.horizontal,
-                  children:
-                      widget.children
-                          .map((e) => e.paddingSymmetric(horizontal: UIHelper.lowSize, vertical: UIHelper.lowSize))
-                          .toList(),
-                ),
+            builder: (context, constraints) => ListView(
+              shrinkWrap: true,
+              itemExtent: constraints.maxWidth / widget.children.length,
+              scrollDirection: Axis.horizontal,
+              children: widget.children
+                  .map((e) => e.paddingSymmetric(horizontal: UIHelper.lowSize, vertical: UIHelper.lowSize))
+                  .toList(),
+            ),
           ),
         ),
         if (widget.filter != null) widget.filter!,

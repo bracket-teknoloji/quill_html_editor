@@ -112,16 +112,14 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
       child: Column(
         children: [
           Observer(
-            builder:
-                (_) => ToggleButtons(
-                  isSelected: viewModel.isSelected,
-                  constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
-                  onPressed:
-                      widget.model?.baseEditEnum.goruntuleMi ?? false
-                          ? null
-                          : (index) => viewModel.setIsSelected(index),
-                  children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
-                ),
+            builder: (_) => ToggleButtons(
+              isSelected: viewModel.isSelected,
+              constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
+              onPressed: widget.model?.baseEditEnum.goruntuleMi ?? false
+                  ? null
+                  : (index) => viewModel.setIsSelected(index),
+              children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
+            ),
           ).paddingSymmetric(vertical: UIHelper.lowSize),
           CustomTextField(
             enabled: enable,
@@ -154,33 +152,32 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
             },
           ),
           Observer(
-            builder:
-                (_) => CustomTextField(
-                  enabled: enable,
-                  labelText: "Hareket Türü",
-                  valueText: model?.hareketKodu ?? viewModel.getHareketKodu,
-                  isMust: true,
-                  readOnly: true,
-                  controller: hareketTuruController,
-                  suffixMore: true,
-                  onTap: () async {
-                    final Map? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Hareket Türü",
-                      children: [
-                        BottomSheetModel(
-                          title: "Devir",
-                          description: "A",
-                          onTap: () => Get.back(result: {"title": "Devir", "value": "A"}),
-                        ),
-                      ],
-                    );
-                    if (result != null) {
-                      hareketTuruController.text = result["title"];
-                      viewModel.setModelHareketKodu(result["value"]);
-                    }
-                  },
-                ),
+            builder: (_) => CustomTextField(
+              enabled: enable,
+              labelText: "Hareket Türü",
+              valueText: model?.hareketKodu ?? viewModel.getHareketKodu,
+              isMust: true,
+              readOnly: true,
+              controller: hareketTuruController,
+              suffixMore: true,
+              onTap: () async {
+                final Map? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: "Hareket Türü",
+                  children: [
+                    BottomSheetModel(
+                      title: "Devir",
+                      description: "A",
+                      onTap: () => Get.back(result: {"title": "Devir", "value": "A"}),
+                    ),
+                  ],
+                );
+                if (result != null) {
+                  hareketTuruController.text = result["title"];
+                  viewModel.setModelHareketKodu(result["value"]);
+                }
+              },
+            ),
           ),
           CustomTextField(
             enabled: enable,
@@ -229,11 +226,9 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   isFormattedString: true,
                   controller: tutarController,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged:
-                      (value) =>
-                          viewModel.model.borc == null
-                              ? viewModel.model.alacak = double.tryParse(value)
-                              : viewModel.model.borc = double.tryParse(value),
+                  onChanged: (value) => viewModel.model.borc == null
+                      ? viewModel.model.alacak = double.tryParse(value)
+                      : viewModel.model.borc = double.tryParse(value),
                 ),
               ),
             ],
@@ -254,16 +249,15 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: "Plasiyer",
-                        children:
-                            mainPageModel?.paramModel?.plasiyerList
-                                ?.map(
-                                  (e) => BottomSheetModel(
-                                    title: e.plasiyerAciklama ?? "",
-                                    description: e.plasiyerKodu,
-                                    onTap: () => Get.back(result: e),
-                                  ),
-                                )
-                                .toList(),
+                        children: mainPageModel?.paramModel?.plasiyerList
+                            ?.map(
+                              (e) => BottomSheetModel(
+                                title: e.plasiyerAciklama ?? "",
+                                description: e.plasiyerKodu,
+                                onTap: () => Get.back(result: e),
+                              ),
+                            )
+                            .toList(),
                       );
                       if (result is PlasiyerList) {
                         plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -289,16 +283,11 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: "Projeler",
-                        children:
-                            viewModel.projeList
-                                .map(
-                                  (e) => BottomSheetModel(
-                                    title: e.projeAciklama ?? "",
-                                    description: e.projeKodu,
-                                    value: e,
-                                  ),
-                                )
-                                .toList(),
+                        children: viewModel.projeList
+                            .map(
+                              (e) => BottomSheetModel(title: e.projeAciklama ?? "", description: e.projeKodu, value: e),
+                            )
+                            .toList(),
                       );
                       if (result is BaseProjeModel) {
                         projeController.text = result.projeAciklama ?? result.projeKodu ?? "";

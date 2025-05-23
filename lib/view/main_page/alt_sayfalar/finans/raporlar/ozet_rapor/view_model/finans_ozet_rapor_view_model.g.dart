@@ -12,20 +12,19 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
   Computed<double?>? _$toplamSatisFaturasiComputed;
 
   @override
-  double? get toplamSatisFaturasi => (_$toplamSatisFaturasiComputed ??=
-          Computed<double?>(() => super.toplamSatisFaturasi,
-              name: '_FinansOzetRaporViewModelBase.toplamSatisFaturasi'))
-      .value;
+  double? get toplamSatisFaturasi => (_$toplamSatisFaturasiComputed ??= Computed<double?>(
+    () => super.toplamSatisFaturasi,
+    name: '_FinansOzetRaporViewModelBase.toplamSatisFaturasi',
+  )).value;
   Computed<double?>? _$toplamAlisFaturasiComputed;
 
   @override
-  double? get toplamAlisFaturasi => (_$toplamAlisFaturasiComputed ??=
-          Computed<double?>(() => super.toplamAlisFaturasi,
-              name: '_FinansOzetRaporViewModelBase.toplamAlisFaturasi'))
-      .value;
+  double? get toplamAlisFaturasi => (_$toplamAlisFaturasiComputed ??= Computed<double?>(
+    () => super.toplamAlisFaturasi,
+    name: '_FinansOzetRaporViewModelBase.toplamAlisFaturasi',
+  )).value;
 
-  late final _$requestModelAtom = Atom(
-      name: '_FinansOzetRaporViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_FinansOzetRaporViewModelBase.requestModel', context: context);
 
   @override
   FinansOzetRaporRequestModel get requestModel {
@@ -40,9 +39,7 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
     });
   }
 
-  late final _$gunSonuRaporuListAtom = Atom(
-      name: '_FinansOzetRaporViewModelBase.gunSonuRaporuList',
-      context: context);
+  late final _$gunSonuRaporuListAtom = Atom(name: '_FinansOzetRaporViewModelBase.gunSonuRaporuList', context: context);
 
   @override
   ObservableList<FinansOzetRaporModel>? get gunSonuRaporuList {
@@ -57,9 +54,7 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
     });
   }
 
-  late final _$aylikTutarlarListAtom = Atom(
-      name: '_FinansOzetRaporViewModelBase.aylikTutarlarList',
-      context: context);
+  late final _$aylikTutarlarListAtom = Atom(name: '_FinansOzetRaporViewModelBase.aylikTutarlarList', context: context);
 
   @override
   ObservableList<FinansOzetRaporModel>? get aylikTutarlarList {
@@ -75,21 +70,25 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
   }
 
   late final _$getGunSonuRaporuAsyncAction = AsyncAction(
-      '_FinansOzetRaporViewModelBase.getGunSonuRaporu',
-      context: context);
+    '_FinansOzetRaporViewModelBase.getGunSonuRaporu',
+    context: context,
+  );
 
   @override
   Future<void> getGunSonuRaporu() {
     return _$getGunSonuRaporuAsyncAction.run(() => super.getGunSonuRaporu());
   }
 
-  late final _$_FinansOzetRaporViewModelBaseActionController =
-      ActionController(name: '_FinansOzetRaporViewModelBase', context: context);
+  late final _$_FinansOzetRaporViewModelBaseActionController = ActionController(
+    name: '_FinansOzetRaporViewModelBase',
+    context: context,
+  );
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController
-        .startAction(name: '_FinansOzetRaporViewModelBase.setBaslangicTarihi');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setBaslangicTarihi',
+    );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -99,8 +98,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController
-        .startAction(name: '_FinansOzetRaporViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setBitisTarihi',
+    );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -110,8 +110,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(String? value) {
-    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController
-        .startAction(name: '_FinansOzetRaporViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -121,8 +122,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController
-        .startAction(name: '_FinansOzetRaporViewModelBase.setCariKodu');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -132,9 +134,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setCariKoduIleBaslar(String? value) {
-    final _$actionInfo =
-        _$_FinansOzetRaporViewModelBaseActionController.startAction(
-            name: '_FinansOzetRaporViewModelBase.setCariKoduIleBaslar');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setCariKoduIleBaslar',
+    );
     try {
       return super.setCariKoduIleBaslar(value);
     } finally {
@@ -144,8 +146,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setKdvDahil(bool? value) {
-    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController
-        .startAction(name: '_FinansOzetRaporViewModelBase.setKdvDahil');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setKdvDahil',
+    );
     try {
       return super.setKdvDahil(value);
     } finally {
@@ -155,8 +158,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setIadeDurumu(String? value) {
-    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController
-        .startAction(name: '_FinansOzetRaporViewModelBase.setIadeDurumu');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setIadeDurumu',
+    );
     try {
       return super.setIadeDurumu(value);
     } finally {
@@ -166,8 +170,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setTarihTipi(String? value) {
-    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController
-        .startAction(name: '_FinansOzetRaporViewModelBase.setTarihTipi');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setTarihTipi',
+    );
     try {
       return super.setTarihTipi(value);
     } finally {
@@ -177,9 +182,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setGunSonuRaporuList(List<FinansOzetRaporModel>? value) {
-    final _$actionInfo =
-        _$_FinansOzetRaporViewModelBaseActionController.startAction(
-            name: '_FinansOzetRaporViewModelBase.setGunSonuRaporuList');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setGunSonuRaporuList',
+    );
     try {
       return super.setGunSonuRaporuList(value);
     } finally {
@@ -189,9 +194,9 @@ mixin _$FinansOzetRaporViewModel on _FinansOzetRaporViewModelBase, Store {
 
   @override
   void setAylikTutarlarList(List<FinansOzetRaporModel>? value) {
-    final _$actionInfo =
-        _$_FinansOzetRaporViewModelBaseActionController.startAction(
-            name: '_FinansOzetRaporViewModelBase.setAylikTutarlarList');
+    final _$actionInfo = _$_FinansOzetRaporViewModelBaseActionController.startAction(
+      name: '_FinansOzetRaporViewModelBase.setAylikTutarlarList',
+    );
     try {
       return super.setAylikTutarlarList(value);
     } finally {

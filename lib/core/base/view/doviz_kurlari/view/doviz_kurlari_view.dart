@@ -151,12 +151,11 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
       const Divider().paddingSymmetric(vertical: UIHelper.lowSize),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: viewModel.getData,
-                items: viewModel.observableList,
-                itemBuilder: dovizKurlariCard,
-              ),
+          builder: (_) => RefreshableListView(
+            onRefresh: viewModel.getData,
+            items: viewModel.observableList,
+            itemBuilder: dovizKurlariCard,
+          ),
         ),
       ),
     ],
@@ -174,33 +173,32 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:
-            [
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Alış",
-                child: Text(item.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
-              ),
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Satış",
-                child: Text(item.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
-              ),
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Ef. Alış",
-                child: Text(item.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
-              ),
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Ef. Satış",
-                child: Text(item.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
-              ),
-            ].map((e) => Expanded(child: e)).toList(),
+        children: [
+          CustomWidgetWithLabel(
+            isVertical: true,
+            addPadding: false,
+            text: "Alış",
+            child: Text(item.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+          ),
+          CustomWidgetWithLabel(
+            isVertical: true,
+            addPadding: false,
+            text: "Satış",
+            child: Text(item.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+          ),
+          CustomWidgetWithLabel(
+            isVertical: true,
+            addPadding: false,
+            text: "Ef. Alış",
+            child: Text(item.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+          ),
+          CustomWidgetWithLabel(
+            isVertical: true,
+            addPadding: false,
+            text: "Ef. Satış",
+            child: Text(item.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+          ),
+        ].map((e) => Expanded(child: e)).toList(),
       ),
       onTap: () async {
         await bottomSheetDialogManager.showBottomSheetDialog(
@@ -262,12 +260,11 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         children: [
           Text("${viewModel.tarih.toDateString} tarihli döviz kurları güncellensin mi?"),
           Observer(
-            builder:
-                (_) => CheckboxListTile.adaptive(
-                  title: const Text("Mevcut kurları sil ve tekrar güncelle"),
-                  value: viewModel.kurlariSilTekrarGuncelle,
-                  onChanged: (value) => viewModel.changeKurlariSilTekrarGuncelle(),
-                ),
+            builder: (_) => CheckboxListTile.adaptive(
+              title: const Text("Mevcut kurları sil ve tekrar güncelle"),
+              value: viewModel.kurlariSilTekrarGuncelle,
+              onChanged: (value) => viewModel.changeKurlariSilTekrarGuncelle(),
+            ),
           ).paddingSymmetric(vertical: UIHelper.lowSize),
         ],
       ),

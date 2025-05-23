@@ -12,20 +12,19 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
   Computed<int>? _$hareketMiktariComputed;
 
   @override
-  int get hareketMiktari =>
-      (_$hareketMiktariComputed ??= Computed<int>(() => super.hareketMiktari,
-              name: '_SeriListesiViewModelBase.hareketMiktari'))
-          .value;
+  int get hareketMiktari => (_$hareketMiktariComputed ??= Computed<int>(
+    () => super.hareketMiktari,
+    name: '_SeriListesiViewModelBase.hareketMiktari',
+  )).value;
   Computed<int>? _$kalanMiktarComputed;
 
   @override
-  int get kalanMiktar =>
-      (_$kalanMiktarComputed ??= Computed<int>(() => super.kalanMiktar,
-              name: '_SeriListesiViewModelBase.kalanMiktar'))
-          .value;
+  int get kalanMiktar => (_$kalanMiktarComputed ??= Computed<int>(
+    () => super.kalanMiktar,
+    name: '_SeriListesiViewModelBase.kalanMiktar',
+  )).value;
 
-  late final _$kalemModelAtom =
-      Atom(name: '_SeriListesiViewModelBase.kalemModel', context: context);
+  late final _$kalemModelAtom = Atom(name: '_SeriListesiViewModelBase.kalemModel', context: context);
 
   @override
   KalemModel get kalemModel {
@@ -37,15 +36,13 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   set kalemModel(KalemModel value) {
-    _$kalemModelAtom.reportWrite(
-        value, _kalemModelIsInitialized ? super.kalemModel : null, () {
+    _$kalemModelAtom.reportWrite(value, _kalemModelIsInitialized ? super.kalemModel : null, () {
       super.kalemModel = value;
       _kalemModelIsInitialized = true;
     });
   }
 
-  late final _$stokModelAtom =
-      Atom(name: '_SeriListesiViewModelBase.stokModel', context: context);
+  late final _$stokModelAtom = Atom(name: '_SeriListesiViewModelBase.stokModel', context: context);
 
   @override
   StokListesiModel? get stokModel {
@@ -60,29 +57,30 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
     });
   }
 
-  late final _$getStokAsyncAction =
-      AsyncAction('_SeriListesiViewModelBase.getStok', context: context);
+  late final _$getStokAsyncAction = AsyncAction('_SeriListesiViewModelBase.getStok', context: context);
 
   @override
   Future<void> getStok() {
     return _$getStokAsyncAction.run(() => super.getStok());
   }
 
-  late final _$seriNoUretAsyncAction =
-      AsyncAction('_SeriListesiViewModelBase.seriNoUret', context: context);
+  late final _$seriNoUretAsyncAction = AsyncAction('_SeriListesiViewModelBase.seriNoUret', context: context);
 
   @override
   Future<SeriUretModel?> seriNoUret() {
     return _$seriNoUretAsyncAction.run(() => super.seriNoUret());
   }
 
-  late final _$_SeriListesiViewModelBaseActionController =
-      ActionController(name: '_SeriListesiViewModelBase', context: context);
+  late final _$_SeriListesiViewModelBaseActionController = ActionController(
+    name: '_SeriListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setKalemModel(KalemModel model) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.setKalemModel');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.setKalemModel',
+    );
     try {
       return super.setKalemModel(model);
     } finally {
@@ -92,8 +90,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void addSeriList(SeriList model) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.addSeriList');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.addSeriList',
+    );
     try {
       return super.addSeriList(model);
     } finally {
@@ -103,8 +102,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void updateSeriList(SeriList model, String seri1) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.updateSeriList');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.updateSeriList',
+    );
     try {
       return super.updateSeriList(model, seri1);
     } finally {
@@ -114,8 +114,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void removeSeriList(String seri1) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.removeSeriList');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.removeSeriList',
+    );
     try {
       return super.removeSeriList(seri1);
     } finally {
@@ -125,8 +126,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void removeSeriListWithIndex(int index) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.removeSeriListWithIndex');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.removeSeriListWithIndex',
+    );
     try {
       return super.removeSeriListWithIndex(index);
     } finally {

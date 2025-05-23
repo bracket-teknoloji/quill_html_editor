@@ -72,13 +72,17 @@ final class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView>
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-    appBar: AppBar(title: AppBarTitle(title: "Kasa Hareket Detayı", subtitle: model.cariAdi)),
+    appBar: AppBar(
+      title: AppBarTitle(title: "Kasa Hareket Detayı", subtitle: model.cariAdi),
+    ),
     body: SingleChildScrollView(
       child: Column(
         children: [
           Row(
             children: [
-              Expanded(child: CustomTextField(labelText: "Tarih", controller: _tarihController, readOnly: true)),
+              Expanded(
+                child: CustomTextField(labelText: "Tarih", controller: _tarihController, readOnly: true),
+              ),
               Expanded(
                 child: CustomTextField(
                   labelText: "Kasa",
@@ -91,7 +95,9 @@ final class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView>
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(labelText: "Belge No", controller: _belgeNoController, readOnly: true)),
+              Expanded(
+                child: CustomTextField(labelText: "Belge No", controller: _belgeNoController, readOnly: true),
+              ),
               Expanded(
                 child: CustomTextField(labelText: "Gelir/Gider", controller: _gelirGiderController, readOnly: true),
               ),
@@ -99,7 +105,9 @@ final class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView>
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(labelText: "Tutar", controller: _tutarController, readOnly: true)),
+              Expanded(
+                child: CustomTextField(labelText: "Tutar", controller: _tutarController, readOnly: true),
+              ),
             ],
           ),
           CustomTextField(labelText: "Açıklama", controller: _aciklamaController, readOnly: true),

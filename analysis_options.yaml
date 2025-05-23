@@ -25,6 +25,7 @@ format:
 
 formatter:
   page_width: 120
+  trailing_commas: preserve
 
 linter:
   # The lint rules applied to this project can be customized in the

@@ -60,21 +60,22 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
         Expanded(
           flex: 3,
           child: Observer(
-            builder:
-                (_) => InkWell(
-                  onTap: selectPhoto,
-                  child: Card(
-                    child:
-                        viewModel.image != null
-                            ? viewModel.isProcessing
-                                ? const Center(child: CircularProgressIndicator.adaptive())
-                                : Image.memory(viewModel.image!)
-                            : Icon(Icons.preview_outlined, size: width * 0.3),
-                  ),
-                ),
+            builder: (_) => InkWell(
+              onTap: selectPhoto,
+              child: Card(
+                child: viewModel.image != null
+                    ? viewModel.isProcessing
+                          ? const Center(child: CircularProgressIndicator.adaptive())
+                          : Image.memory(viewModel.image!)
+                    : Icon(Icons.preview_outlined, size: width * 0.3),
+              ),
+            ),
           ),
         ),
-        Expanded(flex: 2, child: CustomTextField(labelText: "Açıklama", onChanged: viewModel.setAciklama)),
+        Expanded(
+          flex: 2,
+          child: CustomTextField(labelText: "Açıklama", onChanged: viewModel.setAciklama),
+        ),
       ],
     ).paddingAll(UIHelper.lowSize),
   );

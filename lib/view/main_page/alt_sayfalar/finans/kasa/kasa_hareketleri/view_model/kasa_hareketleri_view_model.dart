@@ -100,10 +100,9 @@ abstract class _KasaHareketleriViewModelBase
         addObservableList(result.dataList);
       } else {
         setObservableList(result.dataList);
-        paramData =
-            result.paramData
-                ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
-                .asObservable();
+        paramData = result.paramData
+            ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+            .asObservable();
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);

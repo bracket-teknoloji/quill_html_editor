@@ -122,13 +122,9 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           iconWidget: Icons.storage_outlined,
           title: model?.company ?? "",
           description: "${model?.year}",
-          descriptionWidget:
-              model?.isDevredilmis == true
-                  ? ColorfulBadge(
-                    label: Text("Devredildi (${model?.devSirket})"),
-                    badgeColorEnum: BadgeColorEnum.kapali,
-                  )
-                  : null,
+          descriptionWidget: model?.isDevredilmis == true
+              ? ColorfulBadge(label: Text("Devredildi (${model?.devSirket})"), badgeColorEnum: BadgeColorEnum.kapali)
+              : null,
           value: model,
           groupValue: model?.company,
         );
@@ -225,113 +221,109 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children:
-                        [
-                          CustomWidgetWithLabel(
-                            text: "Şirket",
-                            child: CustomTextField(
-                              suffixMore: true,
-                              controller: sirketController,
-                              readOnly: true,
-                              onTap: () async => await sirketDialog(context),
-                            ),
+                    children: [
+                      CustomWidgetWithLabel(
+                        text: "Şirket",
+                        child: CustomTextField(
+                          suffixMore: true,
+                          controller: sirketController,
+                          readOnly: true,
+                          onTap: () async => await sirketDialog(context),
+                        ),
+                      ),
+                      Observer(
+                        builder: (_) => CustomWidgetWithLabel(
+                          text: "İşletme Kodu",
+                          child: CustomTextField(
+                            suffixMore: true,
+                            enabled: viewModel.isletmeList.ext.isNotNullOrEmpty,
+                            controller: isletmeController,
+                            readOnly: true,
+                            onTap: () async => await isletmeDialog(context, isTapOnIsletme: true),
                           ),
-                          Observer(
-                            builder:
-                                (_) => CustomWidgetWithLabel(
-                                  text: "İşletme Kodu",
-                                  child: CustomTextField(
-                                    suffixMore: true,
-                                    enabled: viewModel.isletmeList.ext.isNotNullOrEmpty,
-                                    controller: isletmeController,
-                                    readOnly: true,
-                                    onTap: () async => await isletmeDialog(context, isTapOnIsletme: true),
-                                  ),
+                        ),
+                      ),
+                      CustomWidgetWithLabel(
+                        text: "Şube Kodu",
+                        child: Observer(
+                          builder: (_) => CustomTextField(
+                            suffixMore: true,
+                            enabled: viewModel.subeList.ext.isNotNullOrEmpty,
+                            controller: subeController,
+                            readOnly: true,
+                            onTap: () async => await subeDialog(context),
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          if (!viewModel.selected.values.contains(null)) {
+                            final model = AccountModel.instance
+                              ..aktifVeritabani = viewModel.selected["Şirket"]
+                              ..aktifIsletmeKodu = viewModel.selected["İşletme"]
+                              ..aktifSubeKodu = viewModel.selected["Şube"]
+                              ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
+                            final token = await networkManager.getToken(
+                              queryParameters: {
+                                "deviceInfos": jsonEncode(
+                                  (CacheManager.getHesapBilgileri
+                                        ?..cihazKimligi = AccountModel.instance.cihazKimligi
+                                        ..konumDate = DateTime.now()
+                                        ..konumTarihi = AccountModel.instance.getKonumTarihi
+                                        ..cihazTarihi = AccountModel.instance.getKonumTarihi
+                                        ..uyeEmail = CacheManager.getVerifiedUser.account?.email ?? "")
+                                      ?.toJson(),
                                 ),
-                          ),
-                          CustomWidgetWithLabel(
-                            text: "Şube Kodu",
-                            child: Observer(
-                              builder:
-                                  (_) => CustomTextField(
-                                    suffixMore: true,
-                                    enabled: viewModel.subeList.ext.isNotNullOrEmpty,
-                                    controller: subeController,
-                                    readOnly: true,
-                                    onTap: () async => await subeDialog(context),
-                                  ),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () async {
-                              if (!viewModel.selected.values.contains(null)) {
-                                final model =
-                                    AccountModel.instance
-                                      ..aktifVeritabani = viewModel.selected["Şirket"]
-                                      ..aktifIsletmeKodu = viewModel.selected["İşletme"]
-                                      ..aktifSubeKodu = viewModel.selected["Şube"]
-                                      ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
-                                final token = await networkManager.getToken(
-                                  queryParameters: {
-                                    "deviceInfos": jsonEncode(
-                                      (CacheManager.getHesapBilgileri
-                                            ?..cihazKimligi = AccountModel.instance.cihazKimligi
-                                            ..konumDate = DateTime.now()
-                                            ..konumTarihi = AccountModel.instance.getKonumTarihi
-                                            ..cihazTarihi = AccountModel.instance.getKonumTarihi
-                                            ..uyeEmail = CacheManager.getVerifiedUser.account?.email ?? "")
-                                          ?.toJson(),
-                                    ),
-                                  },
-                                  data: {
-                                    "grant_type": "password",
-                                    "username": CacheManager.getVerifiedUser.username,
-                                    "password": CacheManager.getVerifiedUser.password,
-                                  },
-                                );
-                                if (token != null) {
-                                  CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
-                                  if (token.accessToken != null) {
-                                    CacheManager.setToken(token.accessToken!);
-                                  }
-                                }
-                                final response = await networkManager.dioPost<MainPageModel>(
-                                  path: ApiUrls.createSession,
-                                  bodyModel: MainPageModel(),
-                                  showLoading: true,
-                                  data: model,
-                                  headers: {
-                                    "VERITABANI": viewModel.selected["Şirket"].toString(),
-                                    "ISLETME_KODU": viewModel.selected["İşletme"].toString(),
-                                    "SUBE_KODU": viewModel.selected["Şube"].toString(),
-                                    "content-type": "application/json",
-                                  },
-                                );
-                                if (response.isSuccess) {
-                                  final MainPageModel model = response.dataList[0];
-                                  CacheManager.setVeriTabani(viewModel.selected);
-                                  CacheManager.setIsletmeSube(viewModel.userData);
-                                  CacheManager.setLogout(true);
-                                  await CacheManager.setAnaVeri(model);
-                                  Get.offAllNamed("/mainPage");
-                                  final account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
-                                  if (account?.karsilamaMesaji != null) {
-                                    dialogManager.showInfoSnackBar(
-                                      account?.karsilamaMesaji ?? "",
-                                      duration: Duration(seconds: account?.karsilamaSaniye ?? 0),
-                                    );
-                                  }
-                                  if (response.message.ext.isNotNullOrNoEmpty) {
-                                    dialogManager.showInfoDialog(response.message ?? "");
-                                  }
-                                }
-                              } else {
-                                dialogManager.showErrorSnackBar("Boş bırakmayınız.");
+                              },
+                              data: {
+                                "grant_type": "password",
+                                "username": CacheManager.getVerifiedUser.username,
+                                "password": CacheManager.getVerifiedUser.password,
+                              },
+                            );
+                            if (token != null) {
+                              CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
+                              if (token.accessToken != null) {
+                                CacheManager.setToken(token.accessToken!);
                               }
-                            },
-                            child: const Text("Giriş"),
-                          ).paddingAll(UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
-                        ].map((widget) => Padding(padding: context.padding.onlyBottomLow, child: widget)).toList(),
+                            }
+                            final response = await networkManager.dioPost<MainPageModel>(
+                              path: ApiUrls.createSession,
+                              bodyModel: MainPageModel(),
+                              showLoading: true,
+                              data: model,
+                              headers: {
+                                "VERITABANI": viewModel.selected["Şirket"].toString(),
+                                "ISLETME_KODU": viewModel.selected["İşletme"].toString(),
+                                "SUBE_KODU": viewModel.selected["Şube"].toString(),
+                                "content-type": "application/json",
+                              },
+                            );
+                            if (response.isSuccess) {
+                              final MainPageModel model = response.dataList[0];
+                              CacheManager.setVeriTabani(viewModel.selected);
+                              CacheManager.setIsletmeSube(viewModel.userData);
+                              CacheManager.setLogout(true);
+                              await CacheManager.setAnaVeri(model);
+                              Get.offAllNamed("/mainPage");
+                              final account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
+                              if (account?.karsilamaMesaji != null) {
+                                dialogManager.showInfoSnackBar(
+                                  account?.karsilamaMesaji ?? "",
+                                  duration: Duration(seconds: account?.karsilamaSaniye ?? 0),
+                                );
+                              }
+                              if (response.message.ext.isNotNullOrNoEmpty) {
+                                dialogManager.showInfoDialog(response.message ?? "");
+                              }
+                            }
+                          } else {
+                            dialogManager.showErrorSnackBar("Boş bırakmayınız.");
+                          }
+                        },
+                        child: const Text("Giriş"),
+                      ).paddingAll(UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
+                    ].map((widget) => Padding(padding: context.padding.onlyBottomLow, child: widget)).toList(),
                   ),
                 ),
               ),

@@ -13,9 +13,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
   @override
   UserModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return UserModel()
       ..id = fields[0] as int?
       ..kuladi = fields[1] as String?
@@ -84,10 +82,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UserModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is UserModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -104,11 +99,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..erpParola = json['ERP_PAROLA'] as String?
   ..profilKodu = (json['PROFIL_KODU'] as num?)?.toInt()
   ..profilAdi = json['PROFIL_ADI'] as String?
-  ..profilYetki = json['PROFIL_YETKI'] == null
-      ? null
-      : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
-  ..kullaniciYetki =
-      KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String?)
+  ..profilYetki = json['PROFIL_YETKI'] == null ? null : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
+  ..kullaniciYetki = KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String?)
   .._pickerYetkili = json['PICKER_YETKILI'] as String?
   ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
@@ -123,30 +115,25 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
       .toList();
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.kuladi case final value?) 'KULADI': value,
-      if (instance.parola case final value?) 'PAROLA': value,
-      if (instance.adi case final value?) 'ADI': value,
-      if (instance.soyadi case final value?) 'SOYADI': value,
-      if (instance.erpKullanici case final value?) 'ERP_KULLANICI': value,
-      if (instance.erpParola case final value?) 'ERP_PAROLA': value,
-      if (instance.profilKodu case final value?) 'PROFIL_KODU': value,
-      if (instance.profilAdi case final value?) 'PROFIL_ADI': value,
-      if (instance.profilYetki?.toJson() case final value?)
-        'PROFIL_YETKI': value,
-      if (instance.kullaniciYetki?.toJson() case final value?)
-        'KULLANICI_YETKI': value,
-      if (instance._pickerYetkili case final value?) 'PICKER_YETKILI': value,
-      if (instance.yetkiliSubelerJson case final value?)
-        'YETKILI_SUBELER_JSON': value,
-      if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
-      if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
-      if (instance.adSoyad case final value?) 'AD_SOYAD': value,
-      if (instance._admin case final value?) 'ADMIN': value,
-      if (instance.adminMi case final value?) 'ADMIN_MI': value,
-      if (instance.plasiyerTanimi case final value?) 'PLASIYER_TANIMI': value,
-      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
-      if (instance.ekRehberler?.map((e) => e.toJson()).toList()
-          case final value?)
-        'EKREHBERLER': value,
-    };
+  if (instance.id case final value?) 'ID': value,
+  if (instance.kuladi case final value?) 'KULADI': value,
+  if (instance.parola case final value?) 'PAROLA': value,
+  if (instance.adi case final value?) 'ADI': value,
+  if (instance.soyadi case final value?) 'SOYADI': value,
+  if (instance.erpKullanici case final value?) 'ERP_KULLANICI': value,
+  if (instance.erpParola case final value?) 'ERP_PAROLA': value,
+  if (instance.profilKodu case final value?) 'PROFIL_KODU': value,
+  if (instance.profilAdi case final value?) 'PROFIL_ADI': value,
+  if (instance.profilYetki?.toJson() case final value?) 'PROFIL_YETKI': value,
+  if (instance.kullaniciYetki?.toJson() case final value?) 'KULLANICI_YETKI': value,
+  if (instance._pickerYetkili case final value?) 'PICKER_YETKILI': value,
+  if (instance.yetkiliSubelerJson case final value?) 'YETKILI_SUBELER_JSON': value,
+  if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
+  if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
+  if (instance.adSoyad case final value?) 'AD_SOYAD': value,
+  if (instance._admin case final value?) 'ADMIN': value,
+  if (instance.adminMi case final value?) 'ADMIN_MI': value,
+  if (instance.plasiyerTanimi case final value?) 'PLASIYER_TANIMI': value,
+  if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+  if (instance.ekRehberler?.map((e) => e.toJson()).toList() case final value?) 'EKREHBERLER': value,
+};

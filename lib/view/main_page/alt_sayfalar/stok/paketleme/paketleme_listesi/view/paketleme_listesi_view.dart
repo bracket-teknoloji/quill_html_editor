@@ -45,14 +45,9 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) =>
-                viewModel.isSearchBarOpen
-                    ? CustomAppBarTextField(controller: searchController, onChanged: viewModel.setSearchText)
-                    : AppBarTitle(
-                      title: "Paketleme",
-                      subtitle: viewModel.filteredPaketlemeListesi?.length.toStringIfNotNull,
-                    ),
+        builder: (_) => viewModel.isSearchBarOpen
+            ? CustomAppBarTextField(controller: searchController, onChanged: viewModel.setSearchText)
+            : AppBarTitle(title: "Paketleme", subtitle: viewModel.filteredPaketlemeListesi?.length.toStringIfNotNull),
       ),
       actions: [
         IconButton(
@@ -64,12 +59,11 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
       ],
     ),
     body: Observer(
-      builder:
-          (_) => RefreshableListView(
-            onRefresh: viewModel.getData,
-            items: viewModel.filteredPaketlemeListesi,
-            itemBuilder: card,
-          ),
+      builder: (_) => RefreshableListView(
+        onRefresh: viewModel.getData,
+        items: viewModel.filteredPaketlemeListesi,
+        itemBuilder: card,
+      ),
     ),
   );
 

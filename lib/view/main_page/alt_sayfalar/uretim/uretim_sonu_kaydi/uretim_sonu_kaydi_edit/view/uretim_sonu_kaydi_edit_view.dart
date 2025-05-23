@@ -81,40 +81,37 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
       actions: [
         if (viewModel.showSaveButton && !widget.model.baseEditEnum.goruntuleMi)
           Observer(
-            builder:
-                (_) => IconButton(
-                  onPressed: () async {
-                    if (viewModel.requestModel.kalemList.ext.isNullOrEmpty) {
-                      return dialogManager.showAlertDialog("Kalem seçiniz.");
-                    }
-                    if (tabController.index != 1 &&
-                        StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() != true) {
-                      return;
-                    }
-                    dialogManager.showAreYouSureDialog(
-                      onYes: () async {
-                        final result = await viewModel.saveUSK();
-                        if (!result.isSuccess) return;
-                        Get.back(result: true);
-                        dialogManager.showSuccessSnackBar("Üretim Sonu Kaydı başarıyla kaydedildi.");
-                      },
-                    );
+            builder: (_) => IconButton(
+              onPressed: () async {
+                if (viewModel.requestModel.kalemList.ext.isNullOrEmpty) {
+                  return dialogManager.showAlertDialog("Kalem seçiniz.");
+                }
+                if (tabController.index != 1 &&
+                    StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() != true) {
+                  return;
+                }
+                dialogManager.showAreYouSureDialog(
+                  onYes: () async {
+                    final result = await viewModel.saveUSK();
+                    if (!result.isSuccess) return;
+                    Get.back(result: true);
+                    dialogManager.showSuccessSnackBar("Üretim Sonu Kaydı başarıyla kaydedildi.");
                   },
-                  icon: const Icon(Icons.save_outlined),
-                ),
+                );
+              },
+              icon: const Icon(Icons.save_outlined),
+            ),
           ),
       ],
-      bottom:
-          yetkiController.uretimSonuKalemliYapi
-              ? TabBar(
-                controller: tabController,
-                tabs: [
-                  Tab(text: loc.generalStrings.general),
-                  if (tabSize == 2)
-                    Observer(builder: (_) => Tab(text: "Kalemler (${viewModel.kalemList?.length ?? 0})")),
-                ],
-              )
-              : null,
+      bottom: yetkiController.uretimSonuKalemliYapi
+          ? TabBar(
+              controller: tabController,
+              tabs: [
+                Tab(text: loc.generalStrings.general),
+                if (tabSize == 2) Observer(builder: (_) => Tab(text: "Kalemler (${viewModel.kalemList?.length ?? 0})")),
+              ],
+            )
+          : null,
     ),
     body: TabBarView(
       controller: tabController,
@@ -134,13 +131,12 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         ),
         if (yetkiController.uretimSonuKalemliYapi)
           Observer(
-            builder:
-                (_) => UretimSonuKaydiEditKalemlerView(
-                  model: widget.model,
-                  kalemList: viewModel.kalemList,
-                  requestModel: viewModel.requestModel,
-                  onKalemListChange: viewModel.setKalemList,
-                ),
+            builder: (_) => UretimSonuKaydiEditKalemlerView(
+              model: widget.model,
+              kalemList: viewModel.kalemList,
+              requestModel: viewModel.requestModel,
+              onKalemListChange: viewModel.setKalemList,
+            ),
           ),
       ],
     ).paddingAll(UIHelper.lowSize),

@@ -106,18 +106,15 @@ final class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
                       CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex + 1);
                     }
                   },
-                  itemBuilder:
-                      (context, index) => Card(
-                        key: Key(
-                          viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])],
-                        ),
-                        child: ListTile(
-                          title: Text(
-                            viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])],
-                          ),
-                          subtitle: Text("s" * index),
-                        ),
+                  itemBuilder: (context, index) => Card(
+                    key: Key(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                    child: ListTile(
+                      title: Text(
+                        viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])],
                       ),
+                      subtitle: Text("s" * index),
+                    ),
+                  ),
                 );
               },
             ),

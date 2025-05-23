@@ -9,7 +9,11 @@ final class StokEkstreViewModel = _StokEkstreViewModelBase with _$StokEkstreView
 
 abstract class _StokEkstreViewModelBase with Store {
   @observable
-  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_CariStokEkstre", standart: true, dicParams: DicParams(belgeNo: ""));
+  PdfModel pdfModel = PdfModel(
+    raporOzelKod: "Rapor_CariStokEkstre",
+    standart: true,
+    dicParams: DicParams(belgeNo: ""),
+  );
 
   //* Cari Kodu
   //*

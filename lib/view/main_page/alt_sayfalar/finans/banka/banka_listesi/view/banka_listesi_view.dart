@@ -66,11 +66,9 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
 
   AppBar appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) =>
-              viewModel.searchBar
-                  ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
-                  : AppBarTitle(title: "Banka Listesi", subtitle: viewModel.bankaListesi?.length.toStringIfNotNull),
+      builder: (_) => viewModel.searchBar
+          ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
+          : AppBarTitle(title: "Banka Listesi", subtitle: viewModel.bankaListesi?.length.toStringIfNotNull),
     ),
     actions: [
       IconButton(
@@ -83,72 +81,67 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
         AppBarButton(
           icon: Icons.filter_alt_outlined,
           child: Text(loc.generalStrings.filter),
-          onPressed:
-              () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                context,
-                title: loc.generalStrings.filter,
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    CustomWidgetWithLabel(
-                      text: "Bakiye",
-                      child: Observer(
-                        builder:
-                            (_) => SlideControllerWidget(
-                              childrenTitleList: viewModel.filtreleMap.keys.toList(),
-                              filterOnChanged:
-                                  (value) => viewModel.setBakiye(viewModel.filtreleMap.values.toList()[value ?? 0]),
-                              childrenValueList: viewModel.filtreleMap.values.toList(),
-                              groupValue: viewModel.model.bakiye,
-                            ),
-                      ),
+          onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
+            title: loc.generalStrings.filter,
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CustomWidgetWithLabel(
+                  text: "Bakiye",
+                  child: Observer(
+                    builder: (_) => SlideControllerWidget(
+                      childrenTitleList: viewModel.filtreleMap.keys.toList(),
+                      filterOnChanged: (value) =>
+                          viewModel.setBakiye(viewModel.filtreleMap.values.toList()[value ?? 0]),
+                      childrenValueList: viewModel.filtreleMap.values.toList(),
+                      groupValue: viewModel.model.bakiye,
                     ),
-                    CustomTextField(
-                      labelText: "Hesap Tipi",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: _hesapTipiController,
-                      onClear: () {
+                  ),
+                ),
+                CustomTextField(
+                  labelText: "Hesap Tipi",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: _hesapTipiController,
+                  onClear: () {
+                    _hesapTipiController.clear();
+                    viewModel.setHesapTipi(null);
+                  },
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<int>(
+                      context,
+                      title: "Hesap Tipi Seçiniz",
+                      groupValues: jsonDecode(viewModel.model.arrHesapTipi ?? "[]"),
+                      children: List.generate(
+                        viewModel.hesapTipiList.length,
+                        (index) =>
+                            BottomSheetModel(title: viewModel.hesapTipiList[index], value: index, groupValue: index),
+                      ),
+                    );
+                    if (result != null) {
+                      if (result.isNotEmpty) {
+                        _hesapTipiController.text = viewModel.hesapTipiList
+                            .whereIndexed((index, element) => result.contains(index))
+                            .join(", ");
+                        viewModel.setHesapTipi(result.toList().cast<int>());
+                      } else {
                         _hesapTipiController.clear();
                         viewModel.setHesapTipi(null);
-                      },
-                      onTap: () async {
-                        final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<int>(
-                          context,
-                          title: "Hesap Tipi Seçiniz",
-                          groupValues: jsonDecode(viewModel.model.arrHesapTipi ?? "[]"),
-                          children: List.generate(
-                            viewModel.hesapTipiList.length,
-                            (index) => BottomSheetModel(
-                              title: viewModel.hesapTipiList[index],
-                              value: index,
-                              groupValue: index,
-                            ),
-                          ),
-                        );
-                        if (result != null) {
-                          if (result.isNotEmpty) {
-                            _hesapTipiController.text = viewModel.hesapTipiList
-                                .whereIndexed((index, element) => result.contains(index))
-                                .join(", ");
-                            viewModel.setHesapTipi(result.toList().cast<int>());
-                          } else {
-                            _hesapTipiController.clear();
-                            viewModel.setHesapTipi(null);
-                          }
-                        }
-                      },
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        Get.back();
-                        await viewModel.resetPage();
-                      },
-                      child: Text(loc.generalStrings.apply),
-                    ).paddingAll(UIHelper.lowSize),
-                  ],
+                      }
+                    }
+                  },
                 ),
-              ),
+                ElevatedButton(
+                  onPressed: () async {
+                    Get.back();
+                    await viewModel.resetPage();
+                  },
+                  child: Text(loc.generalStrings.apply),
+                ).paddingAll(UIHelper.lowSize),
+              ],
+            ),
+          ),
         ),
         AppBarButton(
           icon: Icons.sort_by_alpha_outlined,
@@ -246,11 +239,9 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
               return Card(
                 elevation: 0,
                 child: ListTile(
-                  onTap:
-                      () async =>
-                          widget.isGetData == true
-                              ? Get.back(result: item)
-                              : await dialogManager.showBankaGridViewDialog(item),
+                  onTap: () async => widget.isGetData == true
+                      ? Get.back(result: item)
+                      : await dialogManager.showBankaGridViewDialog(item),
                   leading: CircleAvatar(
                     foregroundColor: Colors.white,
                     backgroundColor: UIHelper.getColorWithValue(item.bakiye),

@@ -12,10 +12,10 @@ part of 'kasa_islemleri_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-KasaIslemleriRequestModel _$KasaIslemleriRequestModelFromJson(
-    Map<String, dynamic> json) {
+KasaIslemleriRequestModel _$KasaIslemleriRequestModelFromJson(Map<String, dynamic> json) {
   return _KasaIslemleriRequestModel.fromJson(json);
 }
 
@@ -50,33 +50,33 @@ mixin _$KasaIslemleriRequestModel {
   /// Create a copy of KasaIslemleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $KasaIslemleriRequestModelCopyWith<KasaIslemleriRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $KasaIslemleriRequestModelCopyWith<KasaIslemleriRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KasaIslemleriRequestModelCopyWith<$Res> {
-  factory $KasaIslemleriRequestModelCopyWith(KasaIslemleriRequestModel value,
-          $Res Function(KasaIslemleriRequestModel) then) =
-      _$KasaIslemleriRequestModelCopyWithImpl<$Res, KasaIslemleriRequestModel>;
+  factory $KasaIslemleriRequestModelCopyWith(
+    KasaIslemleriRequestModel value,
+    $Res Function(KasaIslemleriRequestModel) then,
+  ) = _$KasaIslemleriRequestModelCopyWithImpl<$Res, KasaIslemleriRequestModel>;
   @useResult
-  $Res call(
-      {String? baslamaTarihi,
-      String? bitisTarihi,
-      String? menuKodu,
-      int? sayfa,
-      String? plasiyerKodu,
-      String? hesapTipi,
-      String? hesapKodu,
-      String? kasaKodu,
-      String? gc,
-      bool? kisitYok,
-      String? refKey});
+  $Res call({
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? menuKodu,
+    int? sayfa,
+    String? plasiyerKodu,
+    String? hesapTipi,
+    String? hesapKodu,
+    String? kasaKodu,
+    String? gc,
+    bool? kisitYok,
+    String? refKey,
+  });
 }
 
 /// @nodoc
-class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
-        $Val extends KasaIslemleriRequestModel>
+class _$KasaIslemleriRequestModelCopyWithImpl<$Res, $Val extends KasaIslemleriRequestModel>
     implements $KasaIslemleriRequestModelCopyWith<$Res> {
   _$KasaIslemleriRequestModelCopyWithImpl(this._value, this._then);
 
@@ -102,87 +102,89 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
     Object? kisitYok = freezed,
     Object? refKey = freezed,
   }) {
-    return _then(_value.copyWith(
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipi: freezed == hesapTipi
-          ? _value.hesapTipi
-          : hesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gc: freezed == gc
-          ? _value.gc
-          : gc // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kisitYok: freezed == kisitYok
-          ? _value.kisitYok
-          : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      refKey: freezed == refKey
-          ? _value.refKey
-          : refKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            baslamaTarihi: freezed == baslamaTarihi
+                ? _value.baslamaTarihi
+                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bitisTarihi: freezed == bitisTarihi
+                ? _value.bitisTarihi
+                : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            menuKodu: freezed == menuKodu
+                ? _value.menuKodu
+                : menuKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sayfa: freezed == sayfa
+                ? _value.sayfa
+                : sayfa // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            plasiyerKodu: freezed == plasiyerKodu
+                ? _value.plasiyerKodu
+                : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hesapTipi: freezed == hesapTipi
+                ? _value.hesapTipi
+                : hesapTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hesapKodu: freezed == hesapKodu
+                ? _value.hesapKodu
+                : hesapKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kasaKodu: freezed == kasaKodu
+                ? _value.kasaKodu
+                : kasaKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gc: freezed == gc
+                ? _value.gc
+                : gc // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kisitYok: freezed == kisitYok
+                ? _value.kisitYok
+                : kisitYok // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            refKey: freezed == refKey
+                ? _value.refKey
+                : refKey // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$KasaIslemleriRequestModelImplCopyWith<$Res>
-    implements $KasaIslemleriRequestModelCopyWith<$Res> {
+abstract class _$$KasaIslemleriRequestModelImplCopyWith<$Res> implements $KasaIslemleriRequestModelCopyWith<$Res> {
   factory _$$KasaIslemleriRequestModelImplCopyWith(
-          _$KasaIslemleriRequestModelImpl value,
-          $Res Function(_$KasaIslemleriRequestModelImpl) then) =
-      __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>;
+    _$KasaIslemleriRequestModelImpl value,
+    $Res Function(_$KasaIslemleriRequestModelImpl) then,
+  ) = __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? baslamaTarihi,
-      String? bitisTarihi,
-      String? menuKodu,
-      int? sayfa,
-      String? plasiyerKodu,
-      String? hesapTipi,
-      String? hesapKodu,
-      String? kasaKodu,
-      String? gc,
-      bool? kisitYok,
-      String? refKey});
+  $Res call({
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? menuKodu,
+    int? sayfa,
+    String? plasiyerKodu,
+    String? hesapTipi,
+    String? hesapKodu,
+    String? kasaKodu,
+    String? gc,
+    bool? kisitYok,
+    String? refKey,
+  });
 }
 
 /// @nodoc
 class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
-    extends _$KasaIslemleriRequestModelCopyWithImpl<$Res,
-        _$KasaIslemleriRequestModelImpl>
+    extends _$KasaIslemleriRequestModelCopyWithImpl<$Res, _$KasaIslemleriRequestModelImpl>
     implements _$$KasaIslemleriRequestModelImplCopyWith<$Res> {
   __$$KasaIslemleriRequestModelImplCopyWithImpl(
-      _$KasaIslemleriRequestModelImpl _value,
-      $Res Function(_$KasaIslemleriRequestModelImpl) _then)
-      : super(_value, _then);
+    _$KasaIslemleriRequestModelImpl _value,
+    $Res Function(_$KasaIslemleriRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KasaIslemleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -201,52 +203,54 @@ class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
     Object? kisitYok = freezed,
     Object? refKey = freezed,
   }) {
-    return _then(_$KasaIslemleriRequestModelImpl(
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipi: freezed == hesapTipi
-          ? _value.hesapTipi
-          : hesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gc: freezed == gc
-          ? _value.gc
-          : gc // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kisitYok: freezed == kisitYok
-          ? _value.kisitYok
-          : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      refKey: freezed == refKey
-          ? _value.refKey
-          : refKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$KasaIslemleriRequestModelImpl(
+        baslamaTarihi: freezed == baslamaTarihi
+            ? _value.baslamaTarihi
+            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bitisTarihi: freezed == bitisTarihi
+            ? _value.bitisTarihi
+            : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        menuKodu: freezed == menuKodu
+            ? _value.menuKodu
+            : menuKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sayfa: freezed == sayfa
+            ? _value.sayfa
+            : sayfa // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        plasiyerKodu: freezed == plasiyerKodu
+            ? _value.plasiyerKodu
+            : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hesapTipi: freezed == hesapTipi
+            ? _value.hesapTipi
+            : hesapTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hesapKodu: freezed == hesapKodu
+            ? _value.hesapKodu
+            : hesapKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kasaKodu: freezed == kasaKodu
+            ? _value.kasaKodu
+            : kasaKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gc: freezed == gc
+            ? _value.gc
+            : gc // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kisitYok: freezed == kisitYok
+            ? _value.kisitYok
+            : kisitYok // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        refKey: freezed == refKey
+            ? _value.refKey
+            : refKey // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -254,18 +258,19 @@ class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
-  _$KasaIslemleriRequestModelImpl(
-      {this.baslamaTarihi,
-      this.bitisTarihi,
-      this.menuKodu,
-      this.sayfa,
-      this.plasiyerKodu,
-      this.hesapTipi,
-      this.hesapKodu,
-      this.kasaKodu,
-      this.gc,
-      this.kisitYok,
-      this.refKey});
+  _$KasaIslemleriRequestModelImpl({
+    this.baslamaTarihi,
+    this.bitisTarihi,
+    this.menuKodu,
+    this.sayfa,
+    this.plasiyerKodu,
+    this.hesapTipi,
+    this.hesapKodu,
+    this.kasaKodu,
+    this.gc,
+    this.kisitYok,
+    this.refKey,
+  });
 
   factory _$KasaIslemleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$KasaIslemleriRequestModelImplFromJson(json);
@@ -298,34 +303,31 @@ class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
-      get copyWith => __$$KasaIslemleriRequestModelImplCopyWithImpl<
-          _$KasaIslemleriRequestModelImpl>(this, _$identity);
+  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl> get copyWith =>
+      __$$KasaIslemleriRequestModelImplCopyWithImpl<_$KasaIslemleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KasaIslemleriRequestModelImplToJson(
-      this,
-    );
+    return _$$KasaIslemleriRequestModelImplToJson(this);
   }
 }
 
 abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
-  factory _KasaIslemleriRequestModel(
-      {String? baslamaTarihi,
-      String? bitisTarihi,
-      String? menuKodu,
-      int? sayfa,
-      String? plasiyerKodu,
-      String? hesapTipi,
-      String? hesapKodu,
-      String? kasaKodu,
-      String? gc,
-      bool? kisitYok,
-      String? refKey}) = _$KasaIslemleriRequestModelImpl;
+  factory _KasaIslemleriRequestModel({
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? menuKodu,
+    int? sayfa,
+    String? plasiyerKodu,
+    String? hesapTipi,
+    String? hesapKodu,
+    String? kasaKodu,
+    String? gc,
+    bool? kisitYok,
+    String? refKey,
+  }) = _$KasaIslemleriRequestModelImpl;
 
-  factory _KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$KasaIslemleriRequestModelImpl.fromJson;
+  factory _KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) = _$KasaIslemleriRequestModelImpl.fromJson;
 
   @override
   String? get baslamaTarihi;
@@ -365,6 +367,6 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

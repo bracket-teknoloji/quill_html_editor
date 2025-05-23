@@ -12,7 +12,8 @@ part of 'olcum_ekle_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OlcumEkleModel _$OlcumEkleModelFromJson(Map<String, dynamic> json) {
   return _OlcumEkleModel.fromJson(json);
@@ -49,8 +50,7 @@ mixin _$OlcumEkleModel {
   bool? get tamamlandi => throw _privateConstructorUsedError;
   set tamamlandi(bool? value) => throw _privateConstructorUsedError;
   List<OlcumProsesModel>? get prosesler => throw _privateConstructorUsedError;
-  set prosesler(List<OlcumProsesModel>? value) =>
-      throw _privateConstructorUsedError;
+  set prosesler(List<OlcumProsesModel>? value) => throw _privateConstructorUsedError;
 
   /// Serializes this OlcumEkleModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,37 +58,35 @@ mixin _$OlcumEkleModel {
   /// Create a copy of OlcumEkleModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OlcumEkleModelCopyWith<OlcumEkleModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OlcumEkleModelCopyWith<OlcumEkleModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OlcumEkleModelCopyWith<$Res> {
-  factory $OlcumEkleModelCopyWith(
-          OlcumEkleModel value, $Res Function(OlcumEkleModel) then) =
+  factory $OlcumEkleModelCopyWith(OlcumEkleModel value, $Res Function(OlcumEkleModel) then) =
       _$OlcumEkleModelCopyWithImpl<$Res, OlcumEkleModel>;
   @useResult
-  $Res call(
-      {String? belgeNo,
-      String? belgeTipi,
-      int? belgeSira,
-      String? stokKodu,
-      String? yapkod,
-      String? opkodu,
-      String? kayitOperator,
-      DateTime? tarih,
-      int? sira,
-      String? stokAdi,
-      String? seriNo,
-      double? miktar,
-      int? belgeId,
-      bool? tamamlandi,
-      List<OlcumProsesModel>? prosesler});
+  $Res call({
+    String? belgeNo,
+    String? belgeTipi,
+    int? belgeSira,
+    String? stokKodu,
+    String? yapkod,
+    String? opkodu,
+    String? kayitOperator,
+    DateTime? tarih,
+    int? sira,
+    String? stokAdi,
+    String? seriNo,
+    double? miktar,
+    int? belgeId,
+    bool? tamamlandi,
+    List<OlcumProsesModel>? prosesler,
+  });
 }
 
 /// @nodoc
-class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel>
-    implements $OlcumEkleModelCopyWith<$Res> {
+class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel> implements $OlcumEkleModelCopyWith<$Res> {
   _$OlcumEkleModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -117,104 +115,104 @@ class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel>
     Object? tamamlandi = freezed,
     Object? prosesler = freezed,
   }) {
-    return _then(_value.copyWith(
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeSira: freezed == belgeSira
-          ? _value.belgeSira
-          : belgeSira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yapkod: freezed == yapkod
-          ? _value.yapkod
-          : yapkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      opkodu: freezed == opkodu
-          ? _value.opkodu
-          : opkodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayitOperator: freezed == kayitOperator
-          ? _value.kayitOperator
-          : kayitOperator // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      belgeId: freezed == belgeId
-          ? _value.belgeId
-          : belgeId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tamamlandi: freezed == tamamlandi
-          ? _value.tamamlandi
-          : tamamlandi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      prosesler: freezed == prosesler
-          ? _value.prosesler
-          : prosesler // ignore: cast_nullable_to_non_nullable
-              as List<OlcumProsesModel>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeSira: freezed == belgeSira
+                ? _value.belgeSira
+                : belgeSira // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yapkod: freezed == yapkod
+                ? _value.yapkod
+                : yapkod // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            opkodu: freezed == opkodu
+                ? _value.opkodu
+                : opkodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kayitOperator: freezed == kayitOperator
+                ? _value.kayitOperator
+                : kayitOperator // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            sira: freezed == sira
+                ? _value.sira
+                : sira // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            stokAdi: freezed == stokAdi
+                ? _value.stokAdi
+                : stokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriNo: freezed == seriNo
+                ? _value.seriNo
+                : seriNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            belgeId: freezed == belgeId
+                ? _value.belgeId
+                : belgeId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tamamlandi: freezed == tamamlandi
+                ? _value.tamamlandi
+                : tamamlandi // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            prosesler: freezed == prosesler
+                ? _value.prosesler
+                : prosesler // ignore: cast_nullable_to_non_nullable
+                      as List<OlcumProsesModel>?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$OlcumEkleModelImplCopyWith<$Res>
-    implements $OlcumEkleModelCopyWith<$Res> {
-  factory _$$OlcumEkleModelImplCopyWith(_$OlcumEkleModelImpl value,
-          $Res Function(_$OlcumEkleModelImpl) then) =
+abstract class _$$OlcumEkleModelImplCopyWith<$Res> implements $OlcumEkleModelCopyWith<$Res> {
+  factory _$$OlcumEkleModelImplCopyWith(_$OlcumEkleModelImpl value, $Res Function(_$OlcumEkleModelImpl) then) =
       __$$OlcumEkleModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? belgeNo,
-      String? belgeTipi,
-      int? belgeSira,
-      String? stokKodu,
-      String? yapkod,
-      String? opkodu,
-      String? kayitOperator,
-      DateTime? tarih,
-      int? sira,
-      String? stokAdi,
-      String? seriNo,
-      double? miktar,
-      int? belgeId,
-      bool? tamamlandi,
-      List<OlcumProsesModel>? prosesler});
+  $Res call({
+    String? belgeNo,
+    String? belgeTipi,
+    int? belgeSira,
+    String? stokKodu,
+    String? yapkod,
+    String? opkodu,
+    String? kayitOperator,
+    DateTime? tarih,
+    int? sira,
+    String? stokAdi,
+    String? seriNo,
+    double? miktar,
+    int? belgeId,
+    bool? tamamlandi,
+    List<OlcumProsesModel>? prosesler,
+  });
 }
 
 /// @nodoc
-class __$$OlcumEkleModelImplCopyWithImpl<$Res>
-    extends _$OlcumEkleModelCopyWithImpl<$Res, _$OlcumEkleModelImpl>
+class __$$OlcumEkleModelImplCopyWithImpl<$Res> extends _$OlcumEkleModelCopyWithImpl<$Res, _$OlcumEkleModelImpl>
     implements _$$OlcumEkleModelImplCopyWith<$Res> {
-  __$$OlcumEkleModelImplCopyWithImpl(
-      _$OlcumEkleModelImpl _value, $Res Function(_$OlcumEkleModelImpl) _then)
-      : super(_value, _then);
+  __$$OlcumEkleModelImplCopyWithImpl(_$OlcumEkleModelImpl _value, $Res Function(_$OlcumEkleModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of OlcumEkleModel
   /// with the given fields replaced by the non-null parameter values.
@@ -237,94 +235,95 @@ class __$$OlcumEkleModelImplCopyWithImpl<$Res>
     Object? tamamlandi = freezed,
     Object? prosesler = freezed,
   }) {
-    return _then(_$OlcumEkleModelImpl(
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeSira: freezed == belgeSira
-          ? _value.belgeSira
-          : belgeSira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yapkod: freezed == yapkod
-          ? _value.yapkod
-          : yapkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      opkodu: freezed == opkodu
-          ? _value.opkodu
-          : opkodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kayitOperator: freezed == kayitOperator
-          ? _value.kayitOperator
-          : kayitOperator // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      belgeId: freezed == belgeId
-          ? _value.belgeId
-          : belgeId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tamamlandi: freezed == tamamlandi
-          ? _value.tamamlandi
-          : tamamlandi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      prosesler: freezed == prosesler
-          ? _value.prosesler
-          : prosesler // ignore: cast_nullable_to_non_nullable
-              as List<OlcumProsesModel>?,
-    ));
+    return _then(
+      _$OlcumEkleModelImpl(
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeSira: freezed == belgeSira
+            ? _value.belgeSira
+            : belgeSira // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yapkod: freezed == yapkod
+            ? _value.yapkod
+            : yapkod // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        opkodu: freezed == opkodu
+            ? _value.opkodu
+            : opkodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kayitOperator: freezed == kayitOperator
+            ? _value.kayitOperator
+            : kayitOperator // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        sira: freezed == sira
+            ? _value.sira
+            : sira // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        stokAdi: freezed == stokAdi
+            ? _value.stokAdi
+            : stokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriNo: freezed == seriNo
+            ? _value.seriNo
+            : seriNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        belgeId: freezed == belgeId
+            ? _value.belgeId
+            : belgeId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tamamlandi: freezed == tamamlandi
+            ? _value.tamamlandi
+            : tamamlandi // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        prosesler: freezed == prosesler
+            ? _value.prosesler
+            : prosesler // ignore: cast_nullable_to_non_nullable
+                  as List<OlcumProsesModel>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$OlcumEkleModelImpl extends _OlcumEkleModel {
-  _$OlcumEkleModelImpl(
-      {this.belgeNo,
-      this.belgeTipi,
-      this.belgeSira,
-      this.stokKodu,
-      this.yapkod,
-      this.opkodu,
-      this.kayitOperator,
-      this.tarih,
-      this.sira,
-      this.stokAdi,
-      this.seriNo,
-      this.miktar,
-      this.belgeId,
-      this.tamamlandi,
-      this.prosesler})
-      : super._();
+  _$OlcumEkleModelImpl({
+    this.belgeNo,
+    this.belgeTipi,
+    this.belgeSira,
+    this.stokKodu,
+    this.yapkod,
+    this.opkodu,
+    this.kayitOperator,
+    this.tarih,
+    this.sira,
+    this.stokAdi,
+    this.seriNo,
+    this.miktar,
+    this.belgeId,
+    this.tamamlandi,
+    this.prosesler,
+  }) : super._();
 
-  factory _$OlcumEkleModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OlcumEkleModelImplFromJson(json);
+  factory _$OlcumEkleModelImpl.fromJson(Map<String, dynamic> json) => _$$OlcumEkleModelImplFromJson(json);
 
   @override
   String? belgeNo;
@@ -363,38 +362,35 @@ class _$OlcumEkleModelImpl extends _OlcumEkleModel {
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumEkleModelImplCopyWith<_$OlcumEkleModelImpl> get copyWith =>
-      __$$OlcumEkleModelImplCopyWithImpl<_$OlcumEkleModelImpl>(
-          this, _$identity);
+      __$$OlcumEkleModelImplCopyWithImpl<_$OlcumEkleModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OlcumEkleModelImplToJson(
-      this,
-    );
+    return _$$OlcumEkleModelImplToJson(this);
   }
 }
 
 abstract class _OlcumEkleModel extends OlcumEkleModel {
-  factory _OlcumEkleModel(
-      {String? belgeNo,
-      String? belgeTipi,
-      int? belgeSira,
-      String? stokKodu,
-      String? yapkod,
-      String? opkodu,
-      String? kayitOperator,
-      DateTime? tarih,
-      int? sira,
-      String? stokAdi,
-      String? seriNo,
-      double? miktar,
-      int? belgeId,
-      bool? tamamlandi,
-      List<OlcumProsesModel>? prosesler}) = _$OlcumEkleModelImpl;
+  factory _OlcumEkleModel({
+    String? belgeNo,
+    String? belgeTipi,
+    int? belgeSira,
+    String? stokKodu,
+    String? yapkod,
+    String? opkodu,
+    String? kayitOperator,
+    DateTime? tarih,
+    int? sira,
+    String? stokAdi,
+    String? seriNo,
+    double? miktar,
+    int? belgeId,
+    bool? tamamlandi,
+    List<OlcumProsesModel>? prosesler,
+  }) = _$OlcumEkleModelImpl;
   _OlcumEkleModel._() : super._();
 
-  factory _OlcumEkleModel.fromJson(Map<String, dynamic> json) =
-      _$OlcumEkleModelImpl.fromJson;
+  factory _OlcumEkleModel.fromJson(Map<String, dynamic> json) = _$OlcumEkleModelImpl.fromJson;
 
   @override
   String? get belgeNo;
@@ -446,6 +442,5 @@ abstract class _OlcumEkleModel extends OlcumEkleModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OlcumEkleModelImplCopyWith<_$OlcumEkleModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OlcumEkleModelImplCopyWith<_$OlcumEkleModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

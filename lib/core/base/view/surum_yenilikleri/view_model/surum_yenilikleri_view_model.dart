@@ -22,19 +22,18 @@ abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin, List
   ObservableList<SurumYenilikleriModel>? observableList;
 
   @computed
-  ObservableList<SurumYenilikleriModel>? get getSurumYenilikleriModelList =>
-      (searchText != null && searchText != "")
-          ? observableList
-              ?.where(
-                (element) =>
-                    element.liste?.any(
-                      (element) => element.aciklama?.toLowerCase().contains(searchText!.toLowerCase()) ?? false,
-                    ) ??
-                    false,
-              )
-              .toList()
-              .asObservable()
-          : observableList;
+  ObservableList<SurumYenilikleriModel>? get getSurumYenilikleriModelList => (searchText != null && searchText != "")
+      ? observableList
+            ?.where(
+              (element) =>
+                  element.liste?.any(
+                    (element) => element.aciklama?.toLowerCase().contains(searchText!.toLowerCase()) ?? false,
+                  ) ??
+                  false,
+            )
+            .toList()
+            .asObservable()
+      : observableList;
 
   @action
   void setSearchText(String? value) => searchText = value;

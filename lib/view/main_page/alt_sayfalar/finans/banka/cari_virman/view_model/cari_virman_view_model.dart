@@ -19,10 +19,9 @@ abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   );
 
   @computed
-  DateTime? get vadeGunu =>
-      requestModel.cariKodu == null && requestModel.vadeGunu != null
-          ? null
-          : DateTime.now().add(Duration(days: requestModel.vadeGunu ?? 0));
+  DateTime? get vadeGunu => requestModel.cariKodu == null && requestModel.vadeGunu != null
+      ? null
+      : DateTime.now().add(Duration(days: requestModel.vadeGunu ?? 0));
 
   @action
   void setTarih(DateTime? time) => requestModel = requestModel.copyWith(tarih: time);

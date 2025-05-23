@@ -87,15 +87,14 @@ final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder:
-                (_) => RaporFiltreDateTimeBottomSheetView(
-                  filterOnChanged: (index) {
-                    viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text;
-                    viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text;
-                  },
-                  baslangicTarihiController: baslangicTarihiController,
-                  bitisTarihiController: bitisTarihiController,
-                ),
+            builder: (_) => RaporFiltreDateTimeBottomSheetView(
+              filterOnChanged: (index) {
+                viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text;
+                viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text;
+              },
+              baslangicTarihiController: baslangicTarihiController,
+              bitisTarihiController: bitisTarihiController,
+            ),
           ),
           CustomTextField(
             labelText: "Cari",
@@ -124,10 +123,9 @@ final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView>
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,
                           title: "Plasiyer",
-                          children:
-                              plasiyerList
-                                  .map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e))
-                                  .toList(),
+                          children: plasiyerList
+                              .map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e))
+                              .toList(),
                         );
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -226,14 +224,13 @@ final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView>
             ],
           ),
           Observer(
-            builder:
-                (_) => ElevatedButton(
-                  onPressed: () {
-                    viewModel.setFuture();
-                    Get.back();
-                  },
-                  child: Text(loc.generalStrings.apply),
-                ).paddingAll(UIHelper.lowSize),
+            builder: (_) => ElevatedButton(
+              onPressed: () {
+                viewModel.setFuture();
+                Get.back();
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),
@@ -245,11 +242,10 @@ final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView>
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
-    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList =
-        grupKodList
-            .where((e) => e.grupNo == grupNo)
-            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e))
-            .toList();
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
+        .where((e) => e.grupNo == grupNo)
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e))
+        .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,

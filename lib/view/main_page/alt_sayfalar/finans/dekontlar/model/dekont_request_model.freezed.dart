@@ -12,7 +12,8 @@ part of 'dekont_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DekontRequestModel _$DekontRequestModelFromJson(Map<String, dynamic> json) {
   return _DekontRequestModel.fromJson(json);
@@ -33,14 +34,12 @@ mixin _$DekontRequestModel {
   /// Create a copy of DekontRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DekontRequestModelCopyWith<DekontRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DekontRequestModelCopyWith<DekontRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontRequestModelCopyWith<$Res> {
-  factory $DekontRequestModelCopyWith(
-          DekontRequestModel value, $Res Function(DekontRequestModel) then) =
+  factory $DekontRequestModelCopyWith(DekontRequestModel value, $Res Function(DekontRequestModel) then) =
       _$DekontRequestModelCopyWithImpl<$Res, DekontRequestModel>;
   @useResult
   $Res call({int? sayfa, String? ekranTipi, String? searchText});
@@ -60,34 +59,33 @@ class _$DekontRequestModelCopyWithImpl<$Res, $Val extends DekontRequestModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? sayfa = freezed,
-    Object? ekranTipi = freezed,
-    Object? searchText = freezed,
-  }) {
-    return _then(_value.copyWith(
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? sayfa = freezed, Object? ekranTipi = freezed, Object? searchText = freezed}) {
+    return _then(
+      _value.copyWith(
+            sayfa: freezed == sayfa
+                ? _value.sayfa
+                : sayfa // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            searchText: freezed == searchText
+                ? _value.searchText
+                : searchText // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DekontRequestModelImplCopyWith<$Res>
-    implements $DekontRequestModelCopyWith<$Res> {
-  factory _$$DekontRequestModelImplCopyWith(_$DekontRequestModelImpl value,
-          $Res Function(_$DekontRequestModelImpl) then) =
-      __$$DekontRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$DekontRequestModelImplCopyWith<$Res> implements $DekontRequestModelCopyWith<$Res> {
+  factory _$$DekontRequestModelImplCopyWith(
+    _$DekontRequestModelImpl value,
+    $Res Function(_$DekontRequestModelImpl) then,
+  ) = __$$DekontRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? sayfa, String? ekranTipi, String? searchText});
@@ -97,33 +95,30 @@ abstract class _$$DekontRequestModelImplCopyWith<$Res>
 class __$$DekontRequestModelImplCopyWithImpl<$Res>
     extends _$DekontRequestModelCopyWithImpl<$Res, _$DekontRequestModelImpl>
     implements _$$DekontRequestModelImplCopyWith<$Res> {
-  __$$DekontRequestModelImplCopyWithImpl(_$DekontRequestModelImpl _value,
-      $Res Function(_$DekontRequestModelImpl) _then)
-      : super(_value, _then);
+  __$$DekontRequestModelImplCopyWithImpl(_$DekontRequestModelImpl _value, $Res Function(_$DekontRequestModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of DekontRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? sayfa = freezed,
-    Object? ekranTipi = freezed,
-    Object? searchText = freezed,
-  }) {
-    return _then(_$DekontRequestModelImpl(
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? sayfa = freezed, Object? ekranTipi = freezed, Object? searchText = freezed}) {
+    return _then(
+      _$DekontRequestModelImpl(
+        sayfa: freezed == sayfa
+            ? _value.sayfa
+            : sayfa // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        searchText: freezed == searchText
+            ? _value.searchText
+            : searchText // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -133,8 +128,7 @@ class __$$DekontRequestModelImplCopyWithImpl<$Res>
 class _$DekontRequestModelImpl implements _DekontRequestModel {
   _$DekontRequestModelImpl({this.sayfa, this.ekranTipi = "L", this.searchText});
 
-  factory _$DekontRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DekontRequestModelImplFromJson(json);
+  factory _$DekontRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$DekontRequestModelImplFromJson(json);
 
   @override
   int? sayfa;
@@ -150,25 +144,18 @@ class _$DekontRequestModelImpl implements _DekontRequestModel {
   @override
   @pragma('vm:prefer-inline')
   _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith =>
-      __$$DekontRequestModelImplCopyWithImpl<_$DekontRequestModelImpl>(
-          this, _$identity);
+      __$$DekontRequestModelImplCopyWithImpl<_$DekontRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DekontRequestModelImplToJson(
-      this,
-    );
+    return _$$DekontRequestModelImplToJson(this);
   }
 }
 
 abstract class _DekontRequestModel implements DekontRequestModel {
-  factory _DekontRequestModel(
-      {int? sayfa,
-      String? ekranTipi,
-      String? searchText}) = _$DekontRequestModelImpl;
+  factory _DekontRequestModel({int? sayfa, String? ekranTipi, String? searchText}) = _$DekontRequestModelImpl;
 
-  factory _DekontRequestModel.fromJson(Map<String, dynamic> json) =
-      _$DekontRequestModelImpl.fromJson;
+  factory _DekontRequestModel.fromJson(Map<String, dynamic> json) = _$DekontRequestModelImpl.fromJson;
 
   @override
   int? get sayfa;
@@ -184,6 +171,5 @@ abstract class _DekontRequestModel implements DekontRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

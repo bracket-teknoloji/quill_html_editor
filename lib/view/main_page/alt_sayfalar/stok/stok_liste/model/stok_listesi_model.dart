@@ -137,27 +137,26 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
   factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 
-  factory StokListesiModel.fromKalemModel(KalemModel model) =>
-      StokListesiModel()
-        ..stokKodu = model.stokKodu
-        ..stokAdi = model.stokAdi
-        ..paketMi = model.paketMi
-        ..alisKdv = model.kdvOrani
-        ..satisKdv = model.kdvOrani
-        ..alisDovTip = model.dovizTipi ?? 0
-        ..satDovTip = model.dovizTipi ?? 0
-        ..alisDovizAdi = model.dovizAdi
-        ..satisDovizAdi = model.dovizAdi
-        ..alisFiat1 = model.brutFiyat
-        ..satisFiat1 = model.brutFiyat
-        ..seriCikislardaAcik = model.seriCikislardaAcik
-        ..seriGirislerdeAcik = model.seriGirislerdeAcik
-        ..seriMiktarKadarSor = model.seriMiktarKadarSor
-        ..dovAlisFiat = model.dovizliFiyat
-        ..dovSatisFiat = model.dovizliFiyat
-        ..satisDovizAdi = model.dovizAdi
-        ..alisDovizAdi = model.dovizAdi
-        ..depoKodu = model.depoKodu;
+  factory StokListesiModel.fromKalemModel(KalemModel model) => StokListesiModel()
+    ..stokKodu = model.stokKodu
+    ..stokAdi = model.stokAdi
+    ..paketMi = model.paketMi
+    ..alisKdv = model.kdvOrani
+    ..satisKdv = model.kdvOrani
+    ..alisDovTip = model.dovizTipi ?? 0
+    ..satDovTip = model.dovizTipi ?? 0
+    ..alisDovizAdi = model.dovizAdi
+    ..satisDovizAdi = model.dovizAdi
+    ..alisFiat1 = model.brutFiyat
+    ..satisFiat1 = model.brutFiyat
+    ..seriCikislardaAcik = model.seriCikislardaAcik
+    ..seriGirislerdeAcik = model.seriGirislerdeAcik
+    ..seriMiktarKadarSor = model.seriMiktarKadarSor
+    ..dovAlisFiat = model.dovizliFiyat
+    ..dovSatisFiat = model.dovizliFiyat
+    ..satisDovizAdi = model.dovizAdi
+    ..alisDovizAdi = model.dovizAdi
+    ..depoKodu = model.depoKodu;
   StokListesiModel._init();
   @override
   String? stokAdi;

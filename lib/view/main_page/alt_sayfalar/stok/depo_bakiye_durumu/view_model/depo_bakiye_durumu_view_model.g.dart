@@ -12,35 +12,36 @@ mixin _$DepoBakiyeDurumuViewModel on _DepoBakiyeDurumuViewModelBase, Store {
   Computed<List<String>?>? _$subeAdiListComputed;
 
   @override
-  List<String>? get subeAdiList => (_$subeAdiListComputed ??=
-          Computed<List<String>?>(() => super.subeAdiList,
-              name: '_DepoBakiyeDurumuViewModelBase.subeAdiList'))
-      .value;
+  List<String>? get subeAdiList => (_$subeAdiListComputed ??= Computed<List<String>?>(
+    () => super.subeAdiList,
+    name: '_DepoBakiyeDurumuViewModelBase.subeAdiList',
+  )).value;
   Computed<double>? _$toplamGirisComputed;
 
   @override
-  double get toplamGiris =>
-      (_$toplamGirisComputed ??= Computed<double>(() => super.toplamGiris,
-              name: '_DepoBakiyeDurumuViewModelBase.toplamGiris'))
-          .value;
+  double get toplamGiris => (_$toplamGirisComputed ??= Computed<double>(
+    () => super.toplamGiris,
+    name: '_DepoBakiyeDurumuViewModelBase.toplamGiris',
+  )).value;
   Computed<double>? _$toplamCikisComputed;
 
   @override
-  double get toplamCikis =>
-      (_$toplamCikisComputed ??= Computed<double>(() => super.toplamCikis,
-              name: '_DepoBakiyeDurumuViewModelBase.toplamCikis'))
-          .value;
+  double get toplamCikis => (_$toplamCikisComputed ??= Computed<double>(
+    () => super.toplamCikis,
+    name: '_DepoBakiyeDurumuViewModelBase.toplamCikis',
+  )).value;
   Computed<double>? _$toplamBakiyeComputed;
 
   @override
-  double get toplamBakiye =>
-      (_$toplamBakiyeComputed ??= Computed<double>(() => super.toplamBakiye,
-              name: '_DepoBakiyeDurumuViewModelBase.toplamBakiye'))
-          .value;
+  double get toplamBakiye => (_$toplamBakiyeComputed ??= Computed<double>(
+    () => super.toplamBakiye,
+    name: '_DepoBakiyeDurumuViewModelBase.toplamBakiye',
+  )).value;
 
   late final _$depoBakiyeDurumuListAtom = Atom(
-      name: '_DepoBakiyeDurumuViewModelBase.depoBakiyeDurumuList',
-      context: context);
+    name: '_DepoBakiyeDurumuViewModelBase.depoBakiyeDurumuList',
+    context: context,
+  );
 
   @override
   ObservableList<DepoBakiyeDurumuModel>? get depoBakiyeDurumuList {
@@ -50,14 +51,12 @@ mixin _$DepoBakiyeDurumuViewModel on _DepoBakiyeDurumuViewModelBase, Store {
 
   @override
   set depoBakiyeDurumuList(ObservableList<DepoBakiyeDurumuModel>? value) {
-    _$depoBakiyeDurumuListAtom.reportWrite(value, super.depoBakiyeDurumuList,
-        () {
+    _$depoBakiyeDurumuListAtom.reportWrite(value, super.depoBakiyeDurumuList, () {
       super.depoBakiyeDurumuList = value;
     });
   }
 
-  late final _$dicParamsAtom =
-      Atom(name: '_DepoBakiyeDurumuViewModelBase.dicParams', context: context);
+  late final _$dicParamsAtom = Atom(name: '_DepoBakiyeDurumuViewModelBase.dicParams', context: context);
 
   @override
   DicParams get dicParams {
@@ -72,22 +71,23 @@ mixin _$DepoBakiyeDurumuViewModel on _DepoBakiyeDurumuViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_DepoBakiyeDurumuViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_DepoBakiyeDurumuViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_DepoBakiyeDurumuViewModelBaseActionController =
-      ActionController(
-          name: '_DepoBakiyeDurumuViewModelBase', context: context);
+  late final _$_DepoBakiyeDurumuViewModelBaseActionController = ActionController(
+    name: '_DepoBakiyeDurumuViewModelBase',
+    context: context,
+  );
 
   @override
   void setSifirHaric(bool? sifirHaric) {
-    final _$actionInfo = _$_DepoBakiyeDurumuViewModelBaseActionController
-        .startAction(name: '_DepoBakiyeDurumuViewModelBase.setSifirHaric');
+    final _$actionInfo = _$_DepoBakiyeDurumuViewModelBaseActionController.startAction(
+      name: '_DepoBakiyeDurumuViewModelBase.setSifirHaric',
+    );
     try {
       return super.setSifirHaric(sifirHaric);
     } finally {
@@ -97,8 +97,9 @@ mixin _$DepoBakiyeDurumuViewModel on _DepoBakiyeDurumuViewModelBase, Store {
 
   @override
   void setStokKodu(String? stokKodu) {
-    final _$actionInfo = _$_DepoBakiyeDurumuViewModelBaseActionController
-        .startAction(name: '_DepoBakiyeDurumuViewModelBase.setStokKodu');
+    final _$actionInfo = _$_DepoBakiyeDurumuViewModelBaseActionController.startAction(
+      name: '_DepoBakiyeDurumuViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(stokKodu);
     } finally {
@@ -108,9 +109,9 @@ mixin _$DepoBakiyeDurumuViewModel on _DepoBakiyeDurumuViewModelBase, Store {
 
   @override
   void setDepoBakiyeDurumuList(List<DepoBakiyeDurumuModel>? list) {
-    final _$actionInfo =
-        _$_DepoBakiyeDurumuViewModelBaseActionController.startAction(
-            name: '_DepoBakiyeDurumuViewModelBase.setDepoBakiyeDurumuList');
+    final _$actionInfo = _$_DepoBakiyeDurumuViewModelBaseActionController.startAction(
+      name: '_DepoBakiyeDurumuViewModelBase.setDepoBakiyeDurumuList',
+    );
     try {
       return super.setDepoBakiyeDurumuList(list);
     } finally {

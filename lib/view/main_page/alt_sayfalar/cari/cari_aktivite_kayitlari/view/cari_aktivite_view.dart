@@ -64,8 +64,8 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(title: "Aktivite Kayıtları", subtitle: (viewModel.filteredList?.length ?? 0).toString()),
+        builder: (_) =>
+            AppBarTitle(title: "Aktivite Kayıtları", subtitle: (viewModel.filteredList?.length ?? 0).toString()),
       ),
       actions: [IconButton(onPressed: getFilter, icon: const Icon(Icons.filter_alt_outlined))],
     ),
@@ -96,21 +96,19 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
         ),
         Expanded(
           child: Observer(
-            builder:
-                (_) => RefreshableListView(
-                  onRefresh: viewModel.getData,
-                  items: viewModel.filteredList,
-                  itemBuilder:
-                      (item) => CariAktiviteCard(
-                        model: item,
-                        onRefresh: (value) async {
-                          if (value) {
-                            await viewModel.getData();
-                          }
-                        },
-                        updatedModel: () async => await viewModel.getNewItem(item.id),
-                      ),
-                ),
+            builder: (_) => RefreshableListView(
+              onRefresh: viewModel.getData,
+              items: viewModel.filteredList,
+              itemBuilder: (item) => CariAktiviteCard(
+                model: item,
+                onRefresh: (value) async {
+                  if (value) {
+                    await viewModel.getData();
+                  }
+                },
+                updatedModel: () async => await viewModel.getNewItem(item.id),
+              ),
+            ),
           ),
         ),
       ],
@@ -145,15 +143,14 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  childrenTitleList: CariAktiviteDurumEnum.values.map((e) => e.value).toList(),
-                  childrenValueList: CariAktiviteDurumEnum.values,
-                  groupValue: viewModel.durum,
-                  filterOnChanged: (index) async {
-                    viewModel.setDurum(CariAktiviteDurumEnum.values[index ?? 0]);
-                  },
-                ),
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: CariAktiviteDurumEnum.values.map((e) => e.value).toList(),
+              childrenValueList: CariAktiviteDurumEnum.values,
+              groupValue: viewModel.durum,
+              filterOnChanged: (index) async {
+                viewModel.setDurum(CariAktiviteDurumEnum.values[index ?? 0]);
+              },
+            ),
           ),
           CustomTextField(
             labelText: "Cari",

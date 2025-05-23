@@ -32,13 +32,12 @@ final class CustomWidgetWithLabel extends StatelessWidget {
         if (text != null)
           Text(
             text ?? "",
-            style:
-                (isTitleSmall ?? false)
-                    ? Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontSize: UIHelper.midSize,
-                      color: (isMust ?? false) ? UIHelper.primaryColor : null,
-                    )
-                    : null,
+            style: (isTitleSmall ?? false)
+                ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontSize: UIHelper.midSize,
+                    color: (isMust ?? false) ? UIHelper.primaryColor : null,
+                  )
+                : null,
           ).paddingOnly(left: addPadding ? UIHelper.lowSize : 0),
         child,
       ],

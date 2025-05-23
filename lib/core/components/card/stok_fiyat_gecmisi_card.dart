@@ -60,7 +60,10 @@ final class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
             children: [
               Wrap(
                 direction: Axis.vertical,
-                children: [Text("Stok Kodu", style: TextStyleHelper.captionWhite), Text(widget.model?.stokKodu ?? "")],
+                children: [
+                  Text("Stok Kodu", style: TextStyleHelper.captionWhite),
+                  Text(widget.model?.stokKodu ?? ""),
+                ],
               ),
               Wrap(
                 direction: Axis.vertical,

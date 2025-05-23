@@ -70,11 +70,10 @@ final class _IsEmriHammaddeTakibiViewState extends State<IsEmriHammaddeTakibiVie
   );
 
   Observer body() => Observer(
-    builder:
-        (_) => RefreshableListView(
-          onRefresh: viewModel.getData,
-          items: viewModel.getList,
-          itemBuilder: (item) => IsEmriHammaddeTakibiCard(model: item),
-        ),
+    builder: (_) => RefreshableListView(
+      onRefresh: viewModel.getData,
+      items: viewModel.getList,
+      itemBuilder: (item) => IsEmriHammaddeTakibiCard(model: item),
+    ),
   );
 }

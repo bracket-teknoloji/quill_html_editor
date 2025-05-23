@@ -12,7 +12,8 @@ part of 'doviz_kurlari_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DovizKurlariModel _$DovizKurlariModelFromJson(Map<String, dynamic> json) {
   return _DovizKurlariModel.fromJson(json);
@@ -43,25 +44,24 @@ mixin _$DovizKurlariModel {
   /// Create a copy of DovizKurlariModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DovizKurlariModelCopyWith<DovizKurlariModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DovizKurlariModelCopyWith<DovizKurlariModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DovizKurlariModelCopyWith<$Res> {
-  factory $DovizKurlariModelCopyWith(
-          DovizKurlariModel value, $Res Function(DovizKurlariModel) then) =
+  factory $DovizKurlariModelCopyWith(DovizKurlariModel value, $Res Function(DovizKurlariModel) then) =
       _$DovizKurlariModelCopyWithImpl<$Res, DovizKurlariModel>;
   @useResult
-  $Res call(
-      {DateTime? tarih,
-      int? sira,
-      int? dovizTipi,
-      double? dovAlis,
-      double? dovSatis,
-      String? dovizAdi,
-      double? effAlis,
-      double? effSatis});
+  $Res call({
+    DateTime? tarih,
+    int? sira,
+    int? dovizTipi,
+    double? dovAlis,
+    double? dovSatis,
+    String? dovizAdi,
+    double? effAlis,
+    double? effSatis,
+  });
 }
 
 /// @nodoc
@@ -88,69 +88,69 @@ class _$DovizKurlariModelCopyWithImpl<$Res, $Val extends DovizKurlariModel>
     Object? effAlis = freezed,
     Object? effSatis = freezed,
   }) {
-    return _then(_value.copyWith(
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovAlis: freezed == dovAlis
-          ? _value.dovAlis
-          : dovAlis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovSatis: freezed == dovSatis
-          ? _value.dovSatis
-          : dovSatis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      effAlis: freezed == effAlis
-          ? _value.effAlis
-          : effAlis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      effSatis: freezed == effSatis
-          ? _value.effSatis
-          : effSatis // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            sira: freezed == sira
+                ? _value.sira
+                : sira // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            dovizTipi: freezed == dovizTipi
+                ? _value.dovizTipi
+                : dovizTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            dovAlis: freezed == dovAlis
+                ? _value.dovAlis
+                : dovAlis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            dovSatis: freezed == dovSatis
+                ? _value.dovSatis
+                : dovSatis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            dovizAdi: freezed == dovizAdi
+                ? _value.dovizAdi
+                : dovizAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            effAlis: freezed == effAlis
+                ? _value.effAlis
+                : effAlis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            effSatis: freezed == effSatis
+                ? _value.effSatis
+                : effSatis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DovizKurlariModelImplCopyWith<$Res>
-    implements $DovizKurlariModelCopyWith<$Res> {
-  factory _$$DovizKurlariModelImplCopyWith(_$DovizKurlariModelImpl value,
-          $Res Function(_$DovizKurlariModelImpl) then) =
+abstract class _$$DovizKurlariModelImplCopyWith<$Res> implements $DovizKurlariModelCopyWith<$Res> {
+  factory _$$DovizKurlariModelImplCopyWith(_$DovizKurlariModelImpl value, $Res Function(_$DovizKurlariModelImpl) then) =
       __$$DovizKurlariModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DateTime? tarih,
-      int? sira,
-      int? dovizTipi,
-      double? dovAlis,
-      double? dovSatis,
-      String? dovizAdi,
-      double? effAlis,
-      double? effSatis});
+  $Res call({
+    DateTime? tarih,
+    int? sira,
+    int? dovizTipi,
+    double? dovAlis,
+    double? dovSatis,
+    String? dovizAdi,
+    double? effAlis,
+    double? effSatis,
+  });
 }
 
 /// @nodoc
-class __$$DovizKurlariModelImplCopyWithImpl<$Res>
-    extends _$DovizKurlariModelCopyWithImpl<$Res, _$DovizKurlariModelImpl>
+class __$$DovizKurlariModelImplCopyWithImpl<$Res> extends _$DovizKurlariModelCopyWithImpl<$Res, _$DovizKurlariModelImpl>
     implements _$$DovizKurlariModelImplCopyWith<$Res> {
-  __$$DovizKurlariModelImplCopyWithImpl(_$DovizKurlariModelImpl _value,
-      $Res Function(_$DovizKurlariModelImpl) _then)
-      : super(_value, _then);
+  __$$DovizKurlariModelImplCopyWithImpl(_$DovizKurlariModelImpl _value, $Res Function(_$DovizKurlariModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of DovizKurlariModel
   /// with the given fields replaced by the non-null parameter values.
@@ -166,40 +166,42 @@ class __$$DovizKurlariModelImplCopyWithImpl<$Res>
     Object? effAlis = freezed,
     Object? effSatis = freezed,
   }) {
-    return _then(_$DovizKurlariModelImpl(
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovAlis: freezed == dovAlis
-          ? _value.dovAlis
-          : dovAlis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovSatis: freezed == dovSatis
-          ? _value.dovSatis
-          : dovSatis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      effAlis: freezed == effAlis
-          ? _value.effAlis
-          : effAlis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      effSatis: freezed == effSatis
-          ? _value.effSatis
-          : effSatis // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _$DovizKurlariModelImpl(
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        sira: freezed == sira
+            ? _value.sira
+            : sira // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        dovizTipi: freezed == dovizTipi
+            ? _value.dovizTipi
+            : dovizTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        dovAlis: freezed == dovAlis
+            ? _value.dovAlis
+            : dovAlis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        dovSatis: freezed == dovSatis
+            ? _value.dovSatis
+            : dovSatis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        dovizAdi: freezed == dovizAdi
+            ? _value.dovizAdi
+            : dovizAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        effAlis: freezed == effAlis
+            ? _value.effAlis
+            : effAlis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        effSatis: freezed == effSatis
+            ? _value.effSatis
+            : effSatis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+      ),
+    );
   }
 }
 
@@ -207,19 +209,18 @@ class __$$DovizKurlariModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
 class _$DovizKurlariModelImpl extends _DovizKurlariModel {
-  _$DovizKurlariModelImpl(
-      {this.tarih,
-      this.sira,
-      this.dovizTipi,
-      this.dovAlis,
-      this.dovSatis,
-      this.dovizAdi,
-      this.effAlis,
-      this.effSatis})
-      : super._();
+  _$DovizKurlariModelImpl({
+    this.tarih,
+    this.sira,
+    this.dovizTipi,
+    this.dovAlis,
+    this.dovSatis,
+    this.dovizAdi,
+    this.effAlis,
+    this.effSatis,
+  }) : super._();
 
-  factory _$DovizKurlariModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DovizKurlariModelImplFromJson(json);
+  factory _$DovizKurlariModelImpl.fromJson(Map<String, dynamic> json) => _$$DovizKurlariModelImplFromJson(json);
 
   @override
   DateTime? tarih;
@@ -244,31 +245,28 @@ class _$DovizKurlariModelImpl extends _DovizKurlariModel {
   @override
   @pragma('vm:prefer-inline')
   _$$DovizKurlariModelImplCopyWith<_$DovizKurlariModelImpl> get copyWith =>
-      __$$DovizKurlariModelImplCopyWithImpl<_$DovizKurlariModelImpl>(
-          this, _$identity);
+      __$$DovizKurlariModelImplCopyWithImpl<_$DovizKurlariModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DovizKurlariModelImplToJson(
-      this,
-    );
+    return _$$DovizKurlariModelImplToJson(this);
   }
 }
 
 abstract class _DovizKurlariModel extends DovizKurlariModel {
-  factory _DovizKurlariModel(
-      {DateTime? tarih,
-      int? sira,
-      int? dovizTipi,
-      double? dovAlis,
-      double? dovSatis,
-      String? dovizAdi,
-      double? effAlis,
-      double? effSatis}) = _$DovizKurlariModelImpl;
+  factory _DovizKurlariModel({
+    DateTime? tarih,
+    int? sira,
+    int? dovizTipi,
+    double? dovAlis,
+    double? dovSatis,
+    String? dovizAdi,
+    double? effAlis,
+    double? effSatis,
+  }) = _$DovizKurlariModelImpl;
   _DovizKurlariModel._() : super._();
 
-  factory _DovizKurlariModel.fromJson(Map<String, dynamic> json) =
-      _$DovizKurlariModelImpl.fromJson;
+  factory _DovizKurlariModel.fromJson(Map<String, dynamic> json) = _$DovizKurlariModelImpl.fromJson;
 
   @override
   DateTime? get tarih;
@@ -299,12 +297,10 @@ abstract class _DovizKurlariModel extends DovizKurlariModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DovizKurlariModelImplCopyWith<_$DovizKurlariModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DovizKurlariModelImplCopyWith<_$DovizKurlariModelImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
-DovizKurlariRequestModel _$DovizKurlariRequestModelFromJson(
-    Map<String, dynamic> json) {
+DovizKurlariRequestModel _$DovizKurlariRequestModelFromJson(Map<String, dynamic> json) {
   return _DovizKurlariRequestModel.fromJson(json);
 }
 
@@ -333,30 +329,30 @@ mixin _$DovizKurlariRequestModel {
   /// Create a copy of DovizKurlariRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DovizKurlariRequestModelCopyWith<DovizKurlariRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DovizKurlariRequestModelCopyWith<DovizKurlariRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DovizKurlariRequestModelCopyWith<$Res> {
-  factory $DovizKurlariRequestModelCopyWith(DovizKurlariRequestModel value,
-          $Res Function(DovizKurlariRequestModel) then) =
-      _$DovizKurlariRequestModelCopyWithImpl<$Res, DovizKurlariRequestModel>;
+  factory $DovizKurlariRequestModelCopyWith(
+    DovizKurlariRequestModel value,
+    $Res Function(DovizKurlariRequestModel) then,
+  ) = _$DovizKurlariRequestModelCopyWithImpl<$Res, DovizKurlariRequestModel>;
   @useResult
-  $Res call(
-      {DateTime? tarih,
-      int? sira,
-      int? dovizTipi,
-      double? alis,
-      double? satis,
-      String? dovizAdi,
-      double? eFAlis,
-      double? eFSatis});
+  $Res call({
+    DateTime? tarih,
+    int? sira,
+    int? dovizTipi,
+    double? alis,
+    double? satis,
+    String? dovizAdi,
+    double? eFAlis,
+    double? eFSatis,
+  });
 }
 
 /// @nodoc
-class _$DovizKurlariRequestModelCopyWithImpl<$Res,
-        $Val extends DovizKurlariRequestModel>
+class _$DovizKurlariRequestModelCopyWithImpl<$Res, $Val extends DovizKurlariRequestModel>
     implements $DovizKurlariRequestModelCopyWith<$Res> {
   _$DovizKurlariRequestModelCopyWithImpl(this._value, this._then);
 
@@ -379,72 +375,74 @@ class _$DovizKurlariRequestModelCopyWithImpl<$Res,
     Object? eFAlis = freezed,
     Object? eFSatis = freezed,
   }) {
-    return _then(_value.copyWith(
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      alis: freezed == alis
-          ? _value.alis
-          : alis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      satis: freezed == satis
-          ? _value.satis
-          : satis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eFAlis: freezed == eFAlis
-          ? _value.eFAlis
-          : eFAlis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      eFSatis: freezed == eFSatis
-          ? _value.eFSatis
-          : eFSatis // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            sira: freezed == sira
+                ? _value.sira
+                : sira // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            dovizTipi: freezed == dovizTipi
+                ? _value.dovizTipi
+                : dovizTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            alis: freezed == alis
+                ? _value.alis
+                : alis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            satis: freezed == satis
+                ? _value.satis
+                : satis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            dovizAdi: freezed == dovizAdi
+                ? _value.dovizAdi
+                : dovizAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            eFAlis: freezed == eFAlis
+                ? _value.eFAlis
+                : eFAlis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            eFSatis: freezed == eFSatis
+                ? _value.eFSatis
+                : eFSatis // ignore: cast_nullable_to_non_nullable
+                      as double?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DovizKurlariRequestModelImplCopyWith<$Res>
-    implements $DovizKurlariRequestModelCopyWith<$Res> {
+abstract class _$$DovizKurlariRequestModelImplCopyWith<$Res> implements $DovizKurlariRequestModelCopyWith<$Res> {
   factory _$$DovizKurlariRequestModelImplCopyWith(
-          _$DovizKurlariRequestModelImpl value,
-          $Res Function(_$DovizKurlariRequestModelImpl) then) =
-      __$$DovizKurlariRequestModelImplCopyWithImpl<$Res>;
+    _$DovizKurlariRequestModelImpl value,
+    $Res Function(_$DovizKurlariRequestModelImpl) then,
+  ) = __$$DovizKurlariRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DateTime? tarih,
-      int? sira,
-      int? dovizTipi,
-      double? alis,
-      double? satis,
-      String? dovizAdi,
-      double? eFAlis,
-      double? eFSatis});
+  $Res call({
+    DateTime? tarih,
+    int? sira,
+    int? dovizTipi,
+    double? alis,
+    double? satis,
+    String? dovizAdi,
+    double? eFAlis,
+    double? eFSatis,
+  });
 }
 
 /// @nodoc
 class __$$DovizKurlariRequestModelImplCopyWithImpl<$Res>
-    extends _$DovizKurlariRequestModelCopyWithImpl<$Res,
-        _$DovizKurlariRequestModelImpl>
+    extends _$DovizKurlariRequestModelCopyWithImpl<$Res, _$DovizKurlariRequestModelImpl>
     implements _$$DovizKurlariRequestModelImplCopyWith<$Res> {
   __$$DovizKurlariRequestModelImplCopyWithImpl(
-      _$DovizKurlariRequestModelImpl _value,
-      $Res Function(_$DovizKurlariRequestModelImpl) _then)
-      : super(_value, _then);
+    _$DovizKurlariRequestModelImpl _value,
+    $Res Function(_$DovizKurlariRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DovizKurlariRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -460,61 +458,59 @@ class __$$DovizKurlariRequestModelImplCopyWithImpl<$Res>
     Object? eFAlis = freezed,
     Object? eFSatis = freezed,
   }) {
-    return _then(_$DovizKurlariRequestModelImpl(
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      alis: freezed == alis
-          ? _value.alis
-          : alis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      satis: freezed == satis
-          ? _value.satis
-          : satis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eFAlis: freezed == eFAlis
-          ? _value.eFAlis
-          : eFAlis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      eFSatis: freezed == eFSatis
-          ? _value.eFSatis
-          : eFSatis // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _$DovizKurlariRequestModelImpl(
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        sira: freezed == sira
+            ? _value.sira
+            : sira // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        dovizTipi: freezed == dovizTipi
+            ? _value.dovizTipi
+            : dovizTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        alis: freezed == alis
+            ? _value.alis
+            : alis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        satis: freezed == satis
+            ? _value.satis
+            : satis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        dovizAdi: freezed == dovizAdi
+            ? _value.dovizAdi
+            : dovizAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        eFAlis: freezed == eFAlis
+            ? _value.eFAlis
+            : eFAlis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        eFSatis: freezed == eFSatis
+            ? _value.eFSatis
+            : eFSatis // ignore: cast_nullable_to_non_nullable
+                  as double?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-@JsonSerializable(
-    createFactory: true,
-    explicitToJson: true,
-    createToJson: true,
-    fieldRename: FieldRename.pascal)
+@JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true, fieldRename: FieldRename.pascal)
 class _$DovizKurlariRequestModelImpl extends _DovizKurlariRequestModel {
-  _$DovizKurlariRequestModelImpl(
-      {this.tarih,
-      this.sira,
-      this.dovizTipi,
-      this.alis,
-      this.satis,
-      this.dovizAdi,
-      this.eFAlis,
-      this.eFSatis})
-      : super._();
+  _$DovizKurlariRequestModelImpl({
+    this.tarih,
+    this.sira,
+    this.dovizTipi,
+    this.alis,
+    this.satis,
+    this.dovizAdi,
+    this.eFAlis,
+    this.eFSatis,
+  }) : super._();
 
   factory _$DovizKurlariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DovizKurlariRequestModelImplFromJson(json);
@@ -541,32 +537,29 @@ class _$DovizKurlariRequestModelImpl extends _DovizKurlariRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl>
-      get copyWith => __$$DovizKurlariRequestModelImplCopyWithImpl<
-          _$DovizKurlariRequestModelImpl>(this, _$identity);
+  _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl> get copyWith =>
+      __$$DovizKurlariRequestModelImplCopyWithImpl<_$DovizKurlariRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DovizKurlariRequestModelImplToJson(
-      this,
-    );
+    return _$$DovizKurlariRequestModelImplToJson(this);
   }
 }
 
 abstract class _DovizKurlariRequestModel extends DovizKurlariRequestModel {
-  factory _DovizKurlariRequestModel(
-      {DateTime? tarih,
-      int? sira,
-      int? dovizTipi,
-      double? alis,
-      double? satis,
-      String? dovizAdi,
-      double? eFAlis,
-      double? eFSatis}) = _$DovizKurlariRequestModelImpl;
+  factory _DovizKurlariRequestModel({
+    DateTime? tarih,
+    int? sira,
+    int? dovizTipi,
+    double? alis,
+    double? satis,
+    String? dovizAdi,
+    double? eFAlis,
+    double? eFSatis,
+  }) = _$DovizKurlariRequestModelImpl;
   _DovizKurlariRequestModel._() : super._();
 
-  factory _DovizKurlariRequestModel.fromJson(Map<String, dynamic> json) =
-      _$DovizKurlariRequestModelImpl.fromJson;
+  factory _DovizKurlariRequestModel.fromJson(Map<String, dynamic> json) = _$DovizKurlariRequestModelImpl.fromJson;
 
   @override
   DateTime? get tarih;
@@ -597,6 +590,6 @@ abstract class _DovizKurlariRequestModel extends DovizKurlariRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

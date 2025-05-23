@@ -33,27 +33,26 @@ final class _KasaListesiCardState extends BaseState<KasaListesiCard> {
       ),
       trailing: Text.rich(
         TextSpan(
-          children:
-              [
-                TextSpan(
-                  style: TextStyle(
-                    color:
-                        ((widget.item?.dovizli == "E"
-                                    ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari ?? 0)
-                                    : widget.item?.devirliBakiye ?? 0) <
-                                0)
-                            ? ColorPalette.persianRed
-                            : ColorPalette.mantis,
-                  ),
-                  text:
-                      "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n",
-                ),
-                if (widget.item?.dovizli == "E")
-                  TextSpan(
-                    text:
-                        "${(widget.item?.dovizli == "E" ? widget.item?.devirliBakiye : widget.item?.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                  ),
-              ].nullCheckWithGeneric,
+          children: [
+            TextSpan(
+              style: TextStyle(
+                color:
+                    ((widget.item?.dovizli == "E"
+                            ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari ?? 0)
+                            : widget.item?.devirliBakiye ?? 0) <
+                        0)
+                    ? ColorPalette.persianRed
+                    : ColorPalette.mantis,
+              ),
+              text:
+                  "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n",
+            ),
+            if (widget.item?.dovizli == "E")
+              TextSpan(
+                text:
+                    "${(widget.item?.dovizli == "E" ? widget.item?.devirliBakiye : widget.item?.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+              ),
+          ].nullCheckWithGeneric,
         ),
         textAlign: TextAlign.end,
       ),

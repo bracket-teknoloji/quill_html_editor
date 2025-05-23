@@ -100,10 +100,9 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
     // altKodlariGetir();
-    yapilandirmaProfilList?[page - 1]?.deger =
-        yapilandirmaList
-            ?.where((element) => element.ozellikSira == value?.ozellikSira && element.deger == value?.deger)
-            .toList();
+    yapilandirmaProfilList?[page - 1]?.deger = yapilandirmaList
+        ?.where((element) => element.ozellikSira == value?.ozellikSira && element.deger == value?.deger)
+        .toList();
   }
 
   // yapilandirmaProfilList?[page - 1]?.copyWith(deger: yapilandirmaList?.where((element) => element.degerAciklama == value?.degerAciklama && element.deger == value?.deger).toList());

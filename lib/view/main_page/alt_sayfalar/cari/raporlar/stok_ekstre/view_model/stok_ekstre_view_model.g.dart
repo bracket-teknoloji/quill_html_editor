@@ -9,8 +9,7 @@ part of 'stok_ekstre_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokEkstreViewModel on _StokEkstreViewModelBase, Store {
-  late final _$pdfModelAtom =
-      Atom(name: '_StokEkstreViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(name: '_StokEkstreViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -25,8 +24,7 @@ mixin _$StokEkstreViewModel on _StokEkstreViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom =
-      Atom(name: '_StokEkstreViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(name: '_StokEkstreViewModelBase.futureController', context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -41,13 +39,16 @@ mixin _$StokEkstreViewModel on _StokEkstreViewModelBase, Store {
     });
   }
 
-  late final _$_StokEkstreViewModelBaseActionController =
-      ActionController(name: '_StokEkstreViewModelBase', context: context);
+  late final _$_StokEkstreViewModelBaseActionController = ActionController(
+    name: '_StokEkstreViewModelBase',
+    context: context,
+  );
 
   @override
   void changeCariKodu(String? value) {
     final _$actionInfo = _$_StokEkstreViewModelBaseActionController.startAction(
-        name: '_StokEkstreViewModelBase.changeCariKodu');
+      name: '_StokEkstreViewModelBase.changeCariKodu',
+    );
     try {
       return super.changeCariKodu(value);
     } finally {
@@ -58,7 +59,8 @@ mixin _$StokEkstreViewModel on _StokEkstreViewModelBase, Store {
   @override
   void changeDovizTipi(int value) {
     final _$actionInfo = _$_StokEkstreViewModelBaseActionController.startAction(
-        name: '_StokEkstreViewModelBase.changeDovizTipi');
+      name: '_StokEkstreViewModelBase.changeDovizTipi',
+    );
     try {
       return super.changeDovizTipi(value);
     } finally {
@@ -69,7 +71,8 @@ mixin _$StokEkstreViewModel on _StokEkstreViewModelBase, Store {
   @override
   void setFuture() {
     final _$actionInfo = _$_StokEkstreViewModelBaseActionController.startAction(
-        name: '_StokEkstreViewModelBase.setFuture');
+      name: '_StokEkstreViewModelBase.setFuture',
+    );
     try {
       return super.setFuture();
     } finally {
@@ -80,7 +83,8 @@ mixin _$StokEkstreViewModel on _StokEkstreViewModelBase, Store {
   @override
   void resetFuture() {
     final _$actionInfo = _$_StokEkstreViewModelBaseActionController.startAction(
-        name: '_StokEkstreViewModelBase.resetFuture');
+      name: '_StokEkstreViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

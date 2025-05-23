@@ -31,10 +31,9 @@ abstract class _PaketlemeListesiViewModelBase
   PaketlemeListesiRequestModel requestModel = PaketlemeListesiRequestModel(menuKodu: "STOK_PKET");
 
   @computed
-  List<PaketlemeListesiModel>? get filteredPaketlemeListesi =>
-      observableList
-          ?.where((element) => element.kodu?.toLowerCase().contains(searchText.toLowerCase()) ?? false)
-          .toList();
+  List<PaketlemeListesiModel>? get filteredPaketlemeListesi => observableList
+      ?.where((element) => element.kodu?.toLowerCase().contains(searchText.toLowerCase()) ?? false)
+      .toList();
 
   @override
   @action

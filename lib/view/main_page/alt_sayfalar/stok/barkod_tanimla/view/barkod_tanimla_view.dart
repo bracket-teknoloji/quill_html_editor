@@ -59,82 +59,78 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
         if (yetkiController.stokBarkodStokKartiGorunsun && yetkiController.stokBarkodEkle)
           IconButton(onPressed: saveStok, icon: const Icon(Icons.save_outlined)),
       ],
-      bottom:
-          yetkiController.stokBarkodStokKartiGorunsun
-              ? TabBar(
-                controller: tabController,
-                tabs: [
-                  if (yetkiController.stokBarkodStokKartiGorunsun) const Tab(text: "Stok Kartı"),
-                  if (yetkiController.stokBarkodKayitlari) const Tab(text: "Barkod Kayıtları"),
-                ],
-              )
-              : null,
+      bottom: yetkiController.stokBarkodStokKartiGorunsun
+          ? TabBar(
+              controller: tabController,
+              tabs: [
+                if (yetkiController.stokBarkodStokKartiGorunsun) const Tab(text: "Stok Kartı"),
+                if (yetkiController.stokBarkodKayitlari) const Tab(text: "Barkod Kayıtları"),
+              ],
+            )
+          : null,
     ),
     body: NestedScrollView(
-      headerSliverBuilder:
-          (context, innerBoxIsScrolled) => [
-            SliverToBoxAdapter(
-              child: CustomTextField(
-                labelText: "Stok Kodu/Barkod",
-                controller: searchController,
-                onSubmitted: updateStok,
-                suffix: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        final qr = await Get.toNamed("qr");
-                        if (qr is String) {
-                          await updateStok(qr);
-                        }
-                      },
-                      icon: const Icon(Icons.qr_code_scanner_outlined),
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        final stok = await Get.toNamed("/mainPage/stokListesiOzel");
-                        if (stok is StokListesiModel) {
-                          await updateStok(stok.stokKodu!);
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz_outlined),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: CustomTextField(
-                labelText: "Stok",
-                controller: stokController,
-                valueWidget: Observer(builder: (_) => Text(viewModel.stokModel?.stokKodu ?? "")),
-                isMust: true,
-                readOnly: true,
-                suffix: IconButton(
-                  onPressed: () {
-                    if (viewModel.stokModel == null) {
-                      dialogManager.showAlertDialog("Önce stok seçiniz.");
-                      return;
+      headerSliverBuilder: (context, innerBoxIsScrolled) => [
+        SliverToBoxAdapter(
+          child: CustomTextField(
+            labelText: "Stok Kodu/Barkod",
+            controller: searchController,
+            onSubmitted: updateStok,
+            suffix: Row(
+              children: [
+                IconButton(
+                  onPressed: () async {
+                    final qr = await Get.toNamed("qr");
+                    if (qr is String) {
+                      await updateStok(qr);
                     }
-                    dialogManager.showStokGridViewDialog(viewModel.stokModel);
                   },
-                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                  icon: const Icon(Icons.qr_code_scanner_outlined),
                 ),
-              ),
+                IconButton(
+                  onPressed: () async {
+                    final stok = await Get.toNamed("/mainPage/stokListesiOzel");
+                    if (stok is StokListesiModel) {
+                      await updateStok(stok.stokKodu!);
+                    }
+                  },
+                  icon: const Icon(Icons.more_horiz_outlined),
+                ),
+              ],
             ),
-          ],
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: CustomTextField(
+            labelText: "Stok",
+            controller: stokController,
+            valueWidget: Observer(builder: (_) => Text(viewModel.stokModel?.stokKodu ?? "")),
+            isMust: true,
+            readOnly: true,
+            suffix: IconButton(
+              onPressed: () {
+                if (viewModel.stokModel == null) {
+                  dialogManager.showAlertDialog("Önce stok seçiniz.");
+                  return;
+                }
+                dialogManager.showStokGridViewDialog(viewModel.stokModel);
+              },
+              icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+            ),
+          ),
+        ),
+      ],
       body: TabBarView(
         controller: tabController,
         physics: const NeverScrollableScrollPhysics(),
-        children:
-            [
-              if (yetkiController.stokBarkodStokKartiGorunsun)
-                Observer(
-                  builder:
-                      (_) => BarkodTanimlaStokKartiView(model: viewModel.stokModel, onChanged: viewModel.setStokModel),
-                ),
-              if (yetkiController.stokBarkodKayitlari)
-                Observer(builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel)),
-            ].where((element) => element is! SizedBox).toList(),
+        children: [
+          if (yetkiController.stokBarkodStokKartiGorunsun)
+            Observer(
+              builder: (_) => BarkodTanimlaStokKartiView(model: viewModel.stokModel, onChanged: viewModel.setStokModel),
+            ),
+          if (yetkiController.stokBarkodKayitlari)
+            Observer(builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel)),
+        ].where((element) => element is! SizedBox).toList(),
       ),
     ).paddingAll(UIHelper.lowSize),
   );

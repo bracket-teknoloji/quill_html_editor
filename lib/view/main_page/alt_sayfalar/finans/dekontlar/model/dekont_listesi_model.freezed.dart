@@ -12,7 +12,8 @@ part of 'dekont_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DekontListesiModel _$DekontListesiModelFromJson(Map<String, dynamic> json) {
   return _DekontListesiModel.fromJson(json);
@@ -41,24 +42,23 @@ mixin _$DekontListesiModel {
   /// Create a copy of DekontListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DekontListesiModelCopyWith<DekontListesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DekontListesiModelCopyWith<DekontListesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontListesiModelCopyWith<$Res> {
-  factory $DekontListesiModelCopyWith(
-          DekontListesiModel value, $Res Function(DekontListesiModel) then) =
+  factory $DekontListesiModelCopyWith(DekontListesiModel value, $Res Function(DekontListesiModel) then) =
       _$DekontListesiModelCopyWithImpl<$Res, DekontListesiModel>;
   @useResult
-  $Res call(
-      {int? inckeyno,
-      String? seri,
-      int? dekontNo,
-      DateTime? tarih,
-      int? kalemSayisi,
-      double? borcToplami,
-      String? seriAdi});
+  $Res call({
+    int? inckeyno,
+    String? seri,
+    int? dekontNo,
+    DateTime? tarih,
+    int? kalemSayisi,
+    double? borcToplami,
+    String? seriAdi,
+  });
 }
 
 /// @nodoc
@@ -84,64 +84,67 @@ class _$DekontListesiModelCopyWithImpl<$Res, $Val extends DekontListesiModel>
     Object? borcToplami = freezed,
     Object? seriAdi = freezed,
   }) {
-    return _then(_value.copyWith(
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      seri: freezed == seri
-          ? _value.seri
-          : seri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontNo: freezed == dekontNo
-          ? _value.dekontNo
-          : dekontNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kalemSayisi: freezed == kalemSayisi
-          ? _value.kalemSayisi
-          : kalemSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      borcToplami: freezed == borcToplami
-          ? _value.borcToplami
-          : borcToplami // ignore: cast_nullable_to_non_nullable
-              as double?,
-      seriAdi: freezed == seriAdi
-          ? _value.seriAdi
-          : seriAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            inckeyno: freezed == inckeyno
+                ? _value.inckeyno
+                : inckeyno // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            seri: freezed == seri
+                ? _value.seri
+                : seri // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dekontNo: freezed == dekontNo
+                ? _value.dekontNo
+                : dekontNo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            kalemSayisi: freezed == kalemSayisi
+                ? _value.kalemSayisi
+                : kalemSayisi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            borcToplami: freezed == borcToplami
+                ? _value.borcToplami
+                : borcToplami // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            seriAdi: freezed == seriAdi
+                ? _value.seriAdi
+                : seriAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DekontListesiModelImplCopyWith<$Res>
-    implements $DekontListesiModelCopyWith<$Res> {
-  factory _$$DekontListesiModelImplCopyWith(_$DekontListesiModelImpl value,
-          $Res Function(_$DekontListesiModelImpl) then) =
-      __$$DekontListesiModelImplCopyWithImpl<$Res>;
+abstract class _$$DekontListesiModelImplCopyWith<$Res> implements $DekontListesiModelCopyWith<$Res> {
+  factory _$$DekontListesiModelImplCopyWith(
+    _$DekontListesiModelImpl value,
+    $Res Function(_$DekontListesiModelImpl) then,
+  ) = __$$DekontListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? inckeyno,
-      String? seri,
-      int? dekontNo,
-      DateTime? tarih,
-      int? kalemSayisi,
-      double? borcToplami,
-      String? seriAdi});
+  $Res call({
+    int? inckeyno,
+    String? seri,
+    int? dekontNo,
+    DateTime? tarih,
+    int? kalemSayisi,
+    double? borcToplami,
+    String? seriAdi,
+  });
 }
 
 /// @nodoc
 class __$$DekontListesiModelImplCopyWithImpl<$Res>
     extends _$DekontListesiModelCopyWithImpl<$Res, _$DekontListesiModelImpl>
     implements _$$DekontListesiModelImplCopyWith<$Res> {
-  __$$DekontListesiModelImplCopyWithImpl(_$DekontListesiModelImpl _value,
-      $Res Function(_$DekontListesiModelImpl) _then)
-      : super(_value, _then);
+  __$$DekontListesiModelImplCopyWithImpl(_$DekontListesiModelImpl _value, $Res Function(_$DekontListesiModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of DekontListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -156,54 +159,55 @@ class __$$DekontListesiModelImplCopyWithImpl<$Res>
     Object? borcToplami = freezed,
     Object? seriAdi = freezed,
   }) {
-    return _then(_$DekontListesiModelImpl(
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      seri: freezed == seri
-          ? _value.seri
-          : seri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontNo: freezed == dekontNo
-          ? _value.dekontNo
-          : dekontNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kalemSayisi: freezed == kalemSayisi
-          ? _value.kalemSayisi
-          : kalemSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      borcToplami: freezed == borcToplami
-          ? _value.borcToplami
-          : borcToplami // ignore: cast_nullable_to_non_nullable
-              as double?,
-      seriAdi: freezed == seriAdi
-          ? _value.seriAdi
-          : seriAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$DekontListesiModelImpl(
+        inckeyno: freezed == inckeyno
+            ? _value.inckeyno
+            : inckeyno // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        seri: freezed == seri
+            ? _value.seri
+            : seri // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dekontNo: freezed == dekontNo
+            ? _value.dekontNo
+            : dekontNo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        kalemSayisi: freezed == kalemSayisi
+            ? _value.kalemSayisi
+            : kalemSayisi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        borcToplami: freezed == borcToplami
+            ? _value.borcToplami
+            : borcToplami // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        seriAdi: freezed == seriAdi
+            ? _value.seriAdi
+            : seriAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DekontListesiModelImpl extends _DekontListesiModel {
-  _$DekontListesiModelImpl(
-      {this.inckeyno,
-      this.seri,
-      this.dekontNo,
-      this.tarih,
-      this.kalemSayisi,
-      this.borcToplami,
-      this.seriAdi})
-      : super._();
+  _$DekontListesiModelImpl({
+    this.inckeyno,
+    this.seri,
+    this.dekontNo,
+    this.tarih,
+    this.kalemSayisi,
+    this.borcToplami,
+    this.seriAdi,
+  }) : super._();
 
-  factory _$DekontListesiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DekontListesiModelImplFromJson(json);
+  factory _$DekontListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$DekontListesiModelImplFromJson(json);
 
   @override
   int? inckeyno;
@@ -226,30 +230,27 @@ class _$DekontListesiModelImpl extends _DekontListesiModel {
   @override
   @pragma('vm:prefer-inline')
   _$$DekontListesiModelImplCopyWith<_$DekontListesiModelImpl> get copyWith =>
-      __$$DekontListesiModelImplCopyWithImpl<_$DekontListesiModelImpl>(
-          this, _$identity);
+      __$$DekontListesiModelImplCopyWithImpl<_$DekontListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DekontListesiModelImplToJson(
-      this,
-    );
+    return _$$DekontListesiModelImplToJson(this);
   }
 }
 
 abstract class _DekontListesiModel extends DekontListesiModel {
-  factory _DekontListesiModel(
-      {int? inckeyno,
-      String? seri,
-      int? dekontNo,
-      DateTime? tarih,
-      int? kalemSayisi,
-      double? borcToplami,
-      String? seriAdi}) = _$DekontListesiModelImpl;
+  factory _DekontListesiModel({
+    int? inckeyno,
+    String? seri,
+    int? dekontNo,
+    DateTime? tarih,
+    int? kalemSayisi,
+    double? borcToplami,
+    String? seriAdi,
+  }) = _$DekontListesiModelImpl;
   _DekontListesiModel._() : super._();
 
-  factory _DekontListesiModel.fromJson(Map<String, dynamic> json) =
-      _$DekontListesiModelImpl.fromJson;
+  factory _DekontListesiModel.fromJson(Map<String, dynamic> json) = _$DekontListesiModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -277,6 +278,5 @@ abstract class _DekontListesiModel extends DekontListesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DekontListesiModelImplCopyWith<_$DekontListesiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DekontListesiModelImplCopyWith<_$DekontListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -28,12 +28,11 @@ abstract class _SiparislerViewModelBase with Store {
   final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap =
-      {
-        "EK": CacheManager.getProfilParametre.siparisEkAlan,
-        "MİK": CacheManager.getProfilParametre.siparisMiktar,
-        "VADE": CacheManager.getProfilParametre.siparisVade,
-      }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap = {
+    "EK": CacheManager.getProfilParametre.siparisEkAlan,
+    "MİK": CacheManager.getProfilParametre.siparisMiktar,
+    "VADE": CacheManager.getProfilParametre.siparisVade,
+  }.asObservable();
   @action
   void changeEkstraAlanlarMap(String key, bool value) {
     ekstraAlanlarMap.remove(key);

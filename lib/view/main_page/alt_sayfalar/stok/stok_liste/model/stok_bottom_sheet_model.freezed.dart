@@ -12,7 +12,8 @@ part of 'stok_bottom_sheet_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 StokBottomSheetModel _$StokBottomSheetModelFromJson(Map<String, dynamic> json) {
   return _StokBottomSheetModel.fromJson(json);
@@ -62,29 +63,20 @@ mixin _$StokBottomSheetModel {
   set ozelKod1(String? value) => throw _privateConstructorUsedError;
   String? get ozelKod2 => throw _privateConstructorUsedError;
   set ozelKod2(String? value) => throw _privateConstructorUsedError;
-  List<StokDetayliAramaAlanlar>? get searchList =>
-      throw _privateConstructorUsedError;
-  set searchList(List<StokDetayliAramaAlanlar>? value) =>
-      throw _privateConstructorUsedError;
-  List<BaseGrupKoduModel>? get arrGrupKodu =>
-      throw _privateConstructorUsedError;
-  set arrGrupKodu(List<BaseGrupKoduModel>? value) =>
-      throw _privateConstructorUsedError;
+  List<StokDetayliAramaAlanlar>? get searchList => throw _privateConstructorUsedError;
+  set searchList(List<StokDetayliAramaAlanlar>? value) => throw _privateConstructorUsedError;
+  List<BaseGrupKoduModel>? get arrGrupKodu => throw _privateConstructorUsedError;
+  set arrGrupKodu(List<BaseGrupKoduModel>? value) => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod1 => throw _privateConstructorUsedError;
-  set arrKod1(List<BaseGrupKoduModel>? value) =>
-      throw _privateConstructorUsedError;
+  set arrKod1(List<BaseGrupKoduModel>? value) => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod2 => throw _privateConstructorUsedError;
-  set arrKod2(List<BaseGrupKoduModel>? value) =>
-      throw _privateConstructorUsedError;
+  set arrKod2(List<BaseGrupKoduModel>? value) => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod3 => throw _privateConstructorUsedError;
-  set arrKod3(List<BaseGrupKoduModel>? value) =>
-      throw _privateConstructorUsedError;
+  set arrKod3(List<BaseGrupKoduModel>? value) => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod4 => throw _privateConstructorUsedError;
-  set arrKod4(List<BaseGrupKoduModel>? value) =>
-      throw _privateConstructorUsedError;
+  set arrKod4(List<BaseGrupKoduModel>? value) => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod5 => throw _privateConstructorUsedError;
-  set arrKod5(List<BaseGrupKoduModel>? value) =>
-      throw _privateConstructorUsedError;
+  set arrKod5(List<BaseGrupKoduModel>? value) => throw _privateConstructorUsedError;
   bool? get receteliStoklar => throw _privateConstructorUsedError;
   set receteliStoklar(bool? value) => throw _privateConstructorUsedError;
 
@@ -94,51 +86,49 @@ mixin _$StokBottomSheetModel {
   /// Create a copy of StokBottomSheetModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $StokBottomSheetModelCopyWith<StokBottomSheetModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StokBottomSheetModelCopyWith<StokBottomSheetModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StokBottomSheetModelCopyWith<$Res> {
-  factory $StokBottomSheetModelCopyWith(StokBottomSheetModel value,
-          $Res Function(StokBottomSheetModel) then) =
+  factory $StokBottomSheetModelCopyWith(StokBottomSheetModel value, $Res Function(StokBottomSheetModel) then) =
       _$StokBottomSheetModelCopyWithImpl<$Res, StokBottomSheetModel>;
   @useResult
-  $Res call(
-      {int? sayfa,
-      String? bakiyeDurumu,
-      String? menuKodu,
-      String? resimleriGoster,
-      String? siralama,
-      String? searchText,
-      String? belgeNo,
-      String? belgeTarihi,
-      String? belgeTipi,
-      String? cariKodu,
-      int? faturaDepoKodu,
-      String? ekranTipi,
-      int? faturaTipi,
-      String? resimGoster,
-      bool? kisitYok,
-      String? stokKodu,
-      bool? okutuldu,
-      String? seriTakibiVar,
-      String? fiyatGrubu,
-      String? ozelKod1,
-      String? ozelKod2,
-      List<StokDetayliAramaAlanlar>? searchList,
-      List<BaseGrupKoduModel>? arrGrupKodu,
-      List<BaseGrupKoduModel>? arrKod1,
-      List<BaseGrupKoduModel>? arrKod2,
-      List<BaseGrupKoduModel>? arrKod3,
-      List<BaseGrupKoduModel>? arrKod4,
-      List<BaseGrupKoduModel>? arrKod5,
-      bool? receteliStoklar});
+  $Res call({
+    int? sayfa,
+    String? bakiyeDurumu,
+    String? menuKodu,
+    String? resimleriGoster,
+    String? siralama,
+    String? searchText,
+    String? belgeNo,
+    String? belgeTarihi,
+    String? belgeTipi,
+    String? cariKodu,
+    int? faturaDepoKodu,
+    String? ekranTipi,
+    int? faturaTipi,
+    String? resimGoster,
+    bool? kisitYok,
+    String? stokKodu,
+    bool? okutuldu,
+    String? seriTakibiVar,
+    String? fiyatGrubu,
+    String? ozelKod1,
+    String? ozelKod2,
+    List<StokDetayliAramaAlanlar>? searchList,
+    List<BaseGrupKoduModel>? arrGrupKodu,
+    List<BaseGrupKoduModel>? arrKod1,
+    List<BaseGrupKoduModel>? arrKod2,
+    List<BaseGrupKoduModel>? arrKod3,
+    List<BaseGrupKoduModel>? arrKod4,
+    List<BaseGrupKoduModel>? arrKod5,
+    bool? receteliStoklar,
+  });
 }
 
 /// @nodoc
-class _$StokBottomSheetModelCopyWithImpl<$Res,
-        $Val extends StokBottomSheetModel>
+class _$StokBottomSheetModelCopyWithImpl<$Res, $Val extends StokBottomSheetModel>
     implements $StokBottomSheetModelCopyWith<$Res> {
   _$StokBottomSheetModelCopyWithImpl(this._value, this._then);
 
@@ -182,174 +172,179 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
     Object? arrKod5 = freezed,
     Object? receteliStoklar = freezed,
   }) {
-    return _then(_value.copyWith(
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      bakiyeDurumu: freezed == bakiyeDurumu
-          ? _value.bakiyeDurumu
-          : bakiyeDurumu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimleriGoster: freezed == resimleriGoster
-          ? _value.resimleriGoster
-          : resimleriGoster // ignore: cast_nullable_to_non_nullable
-              as String?,
-      siralama: freezed == siralama
-          ? _value.siralama
-          : siralama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaDepoKodu: freezed == faturaDepoKodu
-          ? _value.faturaDepoKodu
-          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaTipi: freezed == faturaTipi
-          ? _value.faturaTipi
-          : faturaTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      resimGoster: freezed == resimGoster
-          ? _value.resimGoster
-          : resimGoster // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kisitYok: freezed == kisitYok
-          ? _value.kisitYok
-          : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      okutuldu: freezed == okutuldu
-          ? _value.okutuldu
-          : okutuldu // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      seriTakibiVar: freezed == seriTakibiVar
-          ? _value.seriTakibiVar
-          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fiyatGrubu: freezed == fiyatGrubu
-          ? _value.fiyatGrubu
-          : fiyatGrubu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod1: freezed == ozelKod1
-          ? _value.ozelKod1
-          : ozelKod1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod2: freezed == ozelKod2
-          ? _value.ozelKod2
-          : ozelKod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchList: freezed == searchList
-          ? _value.searchList
-          : searchList // ignore: cast_nullable_to_non_nullable
-              as List<StokDetayliAramaAlanlar>?,
-      arrGrupKodu: freezed == arrGrupKodu
-          ? _value.arrGrupKodu
-          : arrGrupKodu // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod1: freezed == arrKod1
-          ? _value.arrKod1
-          : arrKod1 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod2: freezed == arrKod2
-          ? _value.arrKod2
-          : arrKod2 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod3: freezed == arrKod3
-          ? _value.arrKod3
-          : arrKod3 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod4: freezed == arrKod4
-          ? _value.arrKod4
-          : arrKod4 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod5: freezed == arrKod5
-          ? _value.arrKod5
-          : arrKod5 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      receteliStoklar: freezed == receteliStoklar
-          ? _value.receteliStoklar
-          : receteliStoklar // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            sayfa: freezed == sayfa
+                ? _value.sayfa
+                : sayfa // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            bakiyeDurumu: freezed == bakiyeDurumu
+                ? _value.bakiyeDurumu
+                : bakiyeDurumu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            menuKodu: freezed == menuKodu
+                ? _value.menuKodu
+                : menuKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            resimleriGoster: freezed == resimleriGoster
+                ? _value.resimleriGoster
+                : resimleriGoster // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            siralama: freezed == siralama
+                ? _value.siralama
+                : siralama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            searchText: freezed == searchText
+                ? _value.searchText
+                : searchText // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTarihi: freezed == belgeTarihi
+                ? _value.belgeTarihi
+                : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            faturaDepoKodu: freezed == faturaDepoKodu
+                ? _value.faturaDepoKodu
+                : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            faturaTipi: freezed == faturaTipi
+                ? _value.faturaTipi
+                : faturaTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            resimGoster: freezed == resimGoster
+                ? _value.resimGoster
+                : resimGoster // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kisitYok: freezed == kisitYok
+                ? _value.kisitYok
+                : kisitYok // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            okutuldu: freezed == okutuldu
+                ? _value.okutuldu
+                : okutuldu // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            seriTakibiVar: freezed == seriTakibiVar
+                ? _value.seriTakibiVar
+                : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            fiyatGrubu: freezed == fiyatGrubu
+                ? _value.fiyatGrubu
+                : fiyatGrubu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ozelKod1: freezed == ozelKod1
+                ? _value.ozelKod1
+                : ozelKod1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ozelKod2: freezed == ozelKod2
+                ? _value.ozelKod2
+                : ozelKod2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            searchList: freezed == searchList
+                ? _value.searchList
+                : searchList // ignore: cast_nullable_to_non_nullable
+                      as List<StokDetayliAramaAlanlar>?,
+            arrGrupKodu: freezed == arrGrupKodu
+                ? _value.arrGrupKodu
+                : arrGrupKodu // ignore: cast_nullable_to_non_nullable
+                      as List<BaseGrupKoduModel>?,
+            arrKod1: freezed == arrKod1
+                ? _value.arrKod1
+                : arrKod1 // ignore: cast_nullable_to_non_nullable
+                      as List<BaseGrupKoduModel>?,
+            arrKod2: freezed == arrKod2
+                ? _value.arrKod2
+                : arrKod2 // ignore: cast_nullable_to_non_nullable
+                      as List<BaseGrupKoduModel>?,
+            arrKod3: freezed == arrKod3
+                ? _value.arrKod3
+                : arrKod3 // ignore: cast_nullable_to_non_nullable
+                      as List<BaseGrupKoduModel>?,
+            arrKod4: freezed == arrKod4
+                ? _value.arrKod4
+                : arrKod4 // ignore: cast_nullable_to_non_nullable
+                      as List<BaseGrupKoduModel>?,
+            arrKod5: freezed == arrKod5
+                ? _value.arrKod5
+                : arrKod5 // ignore: cast_nullable_to_non_nullable
+                      as List<BaseGrupKoduModel>?,
+            receteliStoklar: freezed == receteliStoklar
+                ? _value.receteliStoklar
+                : receteliStoklar // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
-    implements $StokBottomSheetModelCopyWith<$Res> {
-  factory _$$StokBottomSheetModelImplCopyWith(_$StokBottomSheetModelImpl value,
-          $Res Function(_$StokBottomSheetModelImpl) then) =
-      __$$StokBottomSheetModelImplCopyWithImpl<$Res>;
+abstract class _$$StokBottomSheetModelImplCopyWith<$Res> implements $StokBottomSheetModelCopyWith<$Res> {
+  factory _$$StokBottomSheetModelImplCopyWith(
+    _$StokBottomSheetModelImpl value,
+    $Res Function(_$StokBottomSheetModelImpl) then,
+  ) = __$$StokBottomSheetModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? sayfa,
-      String? bakiyeDurumu,
-      String? menuKodu,
-      String? resimleriGoster,
-      String? siralama,
-      String? searchText,
-      String? belgeNo,
-      String? belgeTarihi,
-      String? belgeTipi,
-      String? cariKodu,
-      int? faturaDepoKodu,
-      String? ekranTipi,
-      int? faturaTipi,
-      String? resimGoster,
-      bool? kisitYok,
-      String? stokKodu,
-      bool? okutuldu,
-      String? seriTakibiVar,
-      String? fiyatGrubu,
-      String? ozelKod1,
-      String? ozelKod2,
-      List<StokDetayliAramaAlanlar>? searchList,
-      List<BaseGrupKoduModel>? arrGrupKodu,
-      List<BaseGrupKoduModel>? arrKod1,
-      List<BaseGrupKoduModel>? arrKod2,
-      List<BaseGrupKoduModel>? arrKod3,
-      List<BaseGrupKoduModel>? arrKod4,
-      List<BaseGrupKoduModel>? arrKod5,
-      bool? receteliStoklar});
+  $Res call({
+    int? sayfa,
+    String? bakiyeDurumu,
+    String? menuKodu,
+    String? resimleriGoster,
+    String? siralama,
+    String? searchText,
+    String? belgeNo,
+    String? belgeTarihi,
+    String? belgeTipi,
+    String? cariKodu,
+    int? faturaDepoKodu,
+    String? ekranTipi,
+    int? faturaTipi,
+    String? resimGoster,
+    bool? kisitYok,
+    String? stokKodu,
+    bool? okutuldu,
+    String? seriTakibiVar,
+    String? fiyatGrubu,
+    String? ozelKod1,
+    String? ozelKod2,
+    List<StokDetayliAramaAlanlar>? searchList,
+    List<BaseGrupKoduModel>? arrGrupKodu,
+    List<BaseGrupKoduModel>? arrKod1,
+    List<BaseGrupKoduModel>? arrKod2,
+    List<BaseGrupKoduModel>? arrKod3,
+    List<BaseGrupKoduModel>? arrKod4,
+    List<BaseGrupKoduModel>? arrKod5,
+    bool? receteliStoklar,
+  });
 }
 
 /// @nodoc
 class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
     extends _$StokBottomSheetModelCopyWithImpl<$Res, _$StokBottomSheetModelImpl>
     implements _$$StokBottomSheetModelImplCopyWith<$Res> {
-  __$$StokBottomSheetModelImplCopyWithImpl(_$StokBottomSheetModelImpl _value,
-      $Res Function(_$StokBottomSheetModelImpl) _then)
-      : super(_value, _then);
+  __$$StokBottomSheetModelImplCopyWithImpl(
+    _$StokBottomSheetModelImpl _value,
+    $Res Function(_$StokBottomSheetModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of StokBottomSheetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -386,124 +381,126 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
     Object? arrKod5 = freezed,
     Object? receteliStoklar = freezed,
   }) {
-    return _then(_$StokBottomSheetModelImpl(
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      bakiyeDurumu: freezed == bakiyeDurumu
-          ? _value.bakiyeDurumu
-          : bakiyeDurumu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimleriGoster: freezed == resimleriGoster
-          ? _value.resimleriGoster
-          : resimleriGoster // ignore: cast_nullable_to_non_nullable
-              as String?,
-      siralama: freezed == siralama
-          ? _value.siralama
-          : siralama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaDepoKodu: freezed == faturaDepoKodu
-          ? _value.faturaDepoKodu
-          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaTipi: freezed == faturaTipi
-          ? _value.faturaTipi
-          : faturaTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      resimGoster: freezed == resimGoster
-          ? _value.resimGoster
-          : resimGoster // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kisitYok: freezed == kisitYok
-          ? _value.kisitYok
-          : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      okutuldu: freezed == okutuldu
-          ? _value.okutuldu
-          : okutuldu // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      seriTakibiVar: freezed == seriTakibiVar
-          ? _value.seriTakibiVar
-          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fiyatGrubu: freezed == fiyatGrubu
-          ? _value.fiyatGrubu
-          : fiyatGrubu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod1: freezed == ozelKod1
-          ? _value.ozelKod1
-          : ozelKod1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod2: freezed == ozelKod2
-          ? _value.ozelKod2
-          : ozelKod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchList: freezed == searchList
-          ? _value.searchList
-          : searchList // ignore: cast_nullable_to_non_nullable
-              as List<StokDetayliAramaAlanlar>?,
-      arrGrupKodu: freezed == arrGrupKodu
-          ? _value.arrGrupKodu
-          : arrGrupKodu // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod1: freezed == arrKod1
-          ? _value.arrKod1
-          : arrKod1 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod2: freezed == arrKod2
-          ? _value.arrKod2
-          : arrKod2 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod3: freezed == arrKod3
-          ? _value.arrKod3
-          : arrKod3 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod4: freezed == arrKod4
-          ? _value.arrKod4
-          : arrKod4 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      arrKod5: freezed == arrKod5
-          ? _value.arrKod5
-          : arrKod5 // ignore: cast_nullable_to_non_nullable
-              as List<BaseGrupKoduModel>?,
-      receteliStoklar: freezed == receteliStoklar
-          ? _value.receteliStoklar
-          : receteliStoklar // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$StokBottomSheetModelImpl(
+        sayfa: freezed == sayfa
+            ? _value.sayfa
+            : sayfa // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        bakiyeDurumu: freezed == bakiyeDurumu
+            ? _value.bakiyeDurumu
+            : bakiyeDurumu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        menuKodu: freezed == menuKodu
+            ? _value.menuKodu
+            : menuKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        resimleriGoster: freezed == resimleriGoster
+            ? _value.resimleriGoster
+            : resimleriGoster // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        siralama: freezed == siralama
+            ? _value.siralama
+            : siralama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        searchText: freezed == searchText
+            ? _value.searchText
+            : searchText // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTarihi: freezed == belgeTarihi
+            ? _value.belgeTarihi
+            : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        faturaDepoKodu: freezed == faturaDepoKodu
+            ? _value.faturaDepoKodu
+            : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        faturaTipi: freezed == faturaTipi
+            ? _value.faturaTipi
+            : faturaTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        resimGoster: freezed == resimGoster
+            ? _value.resimGoster
+            : resimGoster // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kisitYok: freezed == kisitYok
+            ? _value.kisitYok
+            : kisitYok // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        okutuldu: freezed == okutuldu
+            ? _value.okutuldu
+            : okutuldu // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        seriTakibiVar: freezed == seriTakibiVar
+            ? _value.seriTakibiVar
+            : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        fiyatGrubu: freezed == fiyatGrubu
+            ? _value.fiyatGrubu
+            : fiyatGrubu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ozelKod1: freezed == ozelKod1
+            ? _value.ozelKod1
+            : ozelKod1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ozelKod2: freezed == ozelKod2
+            ? _value.ozelKod2
+            : ozelKod2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        searchList: freezed == searchList
+            ? _value.searchList
+            : searchList // ignore: cast_nullable_to_non_nullable
+                  as List<StokDetayliAramaAlanlar>?,
+        arrGrupKodu: freezed == arrGrupKodu
+            ? _value.arrGrupKodu
+            : arrGrupKodu // ignore: cast_nullable_to_non_nullable
+                  as List<BaseGrupKoduModel>?,
+        arrKod1: freezed == arrKod1
+            ? _value.arrKod1
+            : arrKod1 // ignore: cast_nullable_to_non_nullable
+                  as List<BaseGrupKoduModel>?,
+        arrKod2: freezed == arrKod2
+            ? _value.arrKod2
+            : arrKod2 // ignore: cast_nullable_to_non_nullable
+                  as List<BaseGrupKoduModel>?,
+        arrKod3: freezed == arrKod3
+            ? _value.arrKod3
+            : arrKod3 // ignore: cast_nullable_to_non_nullable
+                  as List<BaseGrupKoduModel>?,
+        arrKod4: freezed == arrKod4
+            ? _value.arrKod4
+            : arrKod4 // ignore: cast_nullable_to_non_nullable
+                  as List<BaseGrupKoduModel>?,
+        arrKod5: freezed == arrKod5
+            ? _value.arrKod5
+            : arrKod5 // ignore: cast_nullable_to_non_nullable
+                  as List<BaseGrupKoduModel>?,
+        receteliStoklar: freezed == receteliStoklar
+            ? _value.receteliStoklar
+            : receteliStoklar // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
@@ -511,40 +508,39 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
-  _$StokBottomSheetModelImpl(
-      {this.sayfa,
-      this.bakiyeDurumu,
-      this.menuKodu,
-      this.resimleriGoster,
-      this.siralama = "AZ",
-      this.searchText,
-      this.belgeNo,
-      this.belgeTarihi,
-      this.belgeTipi,
-      this.cariKodu,
-      this.faturaDepoKodu,
-      this.ekranTipi = "R",
-      this.faturaTipi,
-      this.resimGoster,
-      this.kisitYok,
-      this.stokKodu,
-      this.okutuldu,
-      this.seriTakibiVar,
-      this.fiyatGrubu,
-      this.ozelKod1,
-      this.ozelKod2,
-      this.searchList,
-      this.arrGrupKodu = const [],
-      this.arrKod1 = const [],
-      this.arrKod2 = const [],
-      this.arrKod3 = const [],
-      this.arrKod4 = const [],
-      this.arrKod5 = const [],
-      this.receteliStoklar})
-      : super._();
+  _$StokBottomSheetModelImpl({
+    this.sayfa,
+    this.bakiyeDurumu,
+    this.menuKodu,
+    this.resimleriGoster,
+    this.siralama = "AZ",
+    this.searchText,
+    this.belgeNo,
+    this.belgeTarihi,
+    this.belgeTipi,
+    this.cariKodu,
+    this.faturaDepoKodu,
+    this.ekranTipi = "R",
+    this.faturaTipi,
+    this.resimGoster,
+    this.kisitYok,
+    this.stokKodu,
+    this.okutuldu,
+    this.seriTakibiVar,
+    this.fiyatGrubu,
+    this.ozelKod1,
+    this.ozelKod2,
+    this.searchList,
+    this.arrGrupKodu = const [],
+    this.arrKod1 = const [],
+    this.arrKod2 = const [],
+    this.arrKod3 = const [],
+    this.arrKod4 = const [],
+    this.arrKod5 = const [],
+    this.receteliStoklar,
+  }) : super._();
 
-  factory _$StokBottomSheetModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StokBottomSheetModelImplFromJson(json);
+  factory _$StokBottomSheetModelImpl.fromJson(Map<String, dynamic> json) => _$$StokBottomSheetModelImplFromJson(json);
 
   @override
   int? sayfa;
@@ -618,54 +614,50 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
-      get copyWith =>
-          __$$StokBottomSheetModelImplCopyWithImpl<_$StokBottomSheetModelImpl>(
-              this, _$identity);
+  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl> get copyWith =>
+      __$$StokBottomSheetModelImplCopyWithImpl<_$StokBottomSheetModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StokBottomSheetModelImplToJson(
-      this,
-    );
+    return _$$StokBottomSheetModelImplToJson(this);
   }
 }
 
 abstract class _StokBottomSheetModel extends StokBottomSheetModel {
-  factory _StokBottomSheetModel(
-      {int? sayfa,
-      String? bakiyeDurumu,
-      String? menuKodu,
-      String? resimleriGoster,
-      String? siralama,
-      String? searchText,
-      String? belgeNo,
-      String? belgeTarihi,
-      String? belgeTipi,
-      String? cariKodu,
-      int? faturaDepoKodu,
-      String? ekranTipi,
-      int? faturaTipi,
-      String? resimGoster,
-      bool? kisitYok,
-      String? stokKodu,
-      bool? okutuldu,
-      String? seriTakibiVar,
-      String? fiyatGrubu,
-      String? ozelKod1,
-      String? ozelKod2,
-      List<StokDetayliAramaAlanlar>? searchList,
-      List<BaseGrupKoduModel>? arrGrupKodu,
-      List<BaseGrupKoduModel>? arrKod1,
-      List<BaseGrupKoduModel>? arrKod2,
-      List<BaseGrupKoduModel>? arrKod3,
-      List<BaseGrupKoduModel>? arrKod4,
-      List<BaseGrupKoduModel>? arrKod5,
-      bool? receteliStoklar}) = _$StokBottomSheetModelImpl;
+  factory _StokBottomSheetModel({
+    int? sayfa,
+    String? bakiyeDurumu,
+    String? menuKodu,
+    String? resimleriGoster,
+    String? siralama,
+    String? searchText,
+    String? belgeNo,
+    String? belgeTarihi,
+    String? belgeTipi,
+    String? cariKodu,
+    int? faturaDepoKodu,
+    String? ekranTipi,
+    int? faturaTipi,
+    String? resimGoster,
+    bool? kisitYok,
+    String? stokKodu,
+    bool? okutuldu,
+    String? seriTakibiVar,
+    String? fiyatGrubu,
+    String? ozelKod1,
+    String? ozelKod2,
+    List<StokDetayliAramaAlanlar>? searchList,
+    List<BaseGrupKoduModel>? arrGrupKodu,
+    List<BaseGrupKoduModel>? arrKod1,
+    List<BaseGrupKoduModel>? arrKod2,
+    List<BaseGrupKoduModel>? arrKod3,
+    List<BaseGrupKoduModel>? arrKod4,
+    List<BaseGrupKoduModel>? arrKod5,
+    bool? receteliStoklar,
+  }) = _$StokBottomSheetModelImpl;
   _StokBottomSheetModel._() : super._();
 
-  factory _StokBottomSheetModel.fromJson(Map<String, dynamic> json) =
-      _$StokBottomSheetModelImpl.fromJson;
+  factory _StokBottomSheetModel.fromJson(Map<String, dynamic> json) = _$StokBottomSheetModelImpl.fromJson;
 
   @override
   int? get sayfa;
@@ -759,6 +751,5 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

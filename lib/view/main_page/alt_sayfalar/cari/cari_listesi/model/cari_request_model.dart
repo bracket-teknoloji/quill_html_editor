@@ -83,8 +83,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
   @override
   CariRequestModel fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
 
-  Map<String, dynamic> toJsonWithArray() =>
-      toJson()
-        ..["KOD"] = null
-        ..["KOD"] = jsonEncode(kod);
+  Map<String, dynamic> toJsonWithArray() => toJson()
+    ..["KOD"] = null
+    ..["KOD"] = jsonEncode(kod);
 }

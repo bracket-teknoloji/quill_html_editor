@@ -9,8 +9,7 @@ part of 'siparis_rehberi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
-  late final _$siparisListAtom =
-      Atom(name: '_SiparisRehberiViewModelBase.siparisList', context: context);
+  late final _$siparisListAtom = Atom(name: '_SiparisRehberiViewModelBase.siparisList', context: context);
 
   @override
   ObservableList<BaseSiparisEditModel>? get siparisList {
@@ -26,8 +25,9 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
   }
 
   late final _$selectedSiparisListAtom = Atom(
-      name: '_SiparisRehberiViewModelBase.selectedSiparisList',
-      context: context);
+    name: '_SiparisRehberiViewModelBase.selectedSiparisList',
+    context: context,
+  );
 
   @override
   ObservableList<BaseSiparisEditModel> get selectedSiparisList {
@@ -42,8 +42,7 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_SiparisRehberiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_SiparisRehberiViewModelBase.requestModel', context: context);
 
   @override
   SiparislerRequestModel get requestModel {
@@ -58,29 +57,30 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_SiparisRehberiViewModelBase.resetPage', context: context);
+  late final _$resetPageAsyncAction = AsyncAction('_SiparisRehberiViewModelBase.resetPage', context: context);
 
   @override
   Future<void> resetPage() {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_SiparisRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction('_SiparisRehberiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_SiparisRehberiViewModelBaseActionController =
-      ActionController(name: '_SiparisRehberiViewModelBase', context: context);
+  late final _$_SiparisRehberiViewModelBaseActionController = ActionController(
+    name: '_SiparisRehberiViewModelBase',
+    context: context,
+  );
 
   @override
   void setRequestModel(BaseSiparisEditModel model) {
-    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController
-        .startAction(name: '_SiparisRehberiViewModelBase.setRequestModel');
+    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController.startAction(
+      name: '_SiparisRehberiViewModelBase.setRequestModel',
+    );
     try {
       return super.setRequestModel(model);
     } finally {
@@ -90,8 +90,9 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController
-        .startAction(name: '_SiparisRehberiViewModelBase.setBaslangicTarihi');
+    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController.startAction(
+      name: '_SiparisRehberiViewModelBase.setBaslangicTarihi',
+    );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -101,8 +102,9 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController
-        .startAction(name: '_SiparisRehberiViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController.startAction(
+      name: '_SiparisRehberiViewModelBase.setBitisTarihi',
+    );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -112,8 +114,9 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
 
   @override
   void setSiparisList(List<BaseSiparisEditModel>? value) {
-    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController
-        .startAction(name: '_SiparisRehberiViewModelBase.setSiparisList');
+    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController.startAction(
+      name: '_SiparisRehberiViewModelBase.setSiparisList',
+    );
     try {
       return super.setSiparisList(value);
     } finally {
@@ -123,8 +126,9 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
 
   @override
   void incrementPage() {
-    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController
-        .startAction(name: '_SiparisRehberiViewModelBase.incrementPage');
+    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController.startAction(
+      name: '_SiparisRehberiViewModelBase.incrementPage',
+    );
     try {
       return super.incrementPage();
     } finally {
@@ -134,8 +138,9 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
 
   @override
   void addSelectedSiparis(BaseSiparisEditModel value) {
-    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController
-        .startAction(name: '_SiparisRehberiViewModelBase.addSelectedSiparis');
+    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController.startAction(
+      name: '_SiparisRehberiViewModelBase.addSelectedSiparis',
+    );
     try {
       return super.addSelectedSiparis(value);
     } finally {
@@ -145,9 +150,9 @@ mixin _$SiparisRehberiViewModel on _SiparisRehberiViewModelBase, Store {
 
   @override
   void removeSelectedSiparis(BaseSiparisEditModel value) {
-    final _$actionInfo =
-        _$_SiparisRehberiViewModelBaseActionController.startAction(
-            name: '_SiparisRehberiViewModelBase.removeSelectedSiparis');
+    final _$actionInfo = _$_SiparisRehberiViewModelBaseActionController.startAction(
+      name: '_SiparisRehberiViewModelBase.removeSelectedSiparis',
+    );
     try {
       return super.removeSelectedSiparis(value);
     } finally {

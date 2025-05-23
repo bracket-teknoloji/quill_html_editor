@@ -12,10 +12,10 @@ part of 'olcum_seri_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-OlcumSeriRequestModel _$OlcumSeriRequestModelFromJson(
-    Map<String, dynamic> json) {
+OlcumSeriRequestModel _$OlcumSeriRequestModelFromJson(Map<String, dynamic> json) {
   return _OlcumSeriRequestModel.fromJson(json);
 }
 
@@ -34,28 +34,26 @@ mixin _$OlcumSeriRequestModel {
   /// Create a copy of OlcumSeriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OlcumSeriRequestModelCopyWith<OlcumSeriRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OlcumSeriRequestModelCopyWith<OlcumSeriRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OlcumSeriRequestModelCopyWith<$Res> {
-  factory $OlcumSeriRequestModelCopyWith(OlcumSeriRequestModel value,
-          $Res Function(OlcumSeriRequestModel) then) =
+  factory $OlcumSeriRequestModelCopyWith(OlcumSeriRequestModel value, $Res Function(OlcumSeriRequestModel) then) =
       _$OlcumSeriRequestModelCopyWithImpl<$Res, OlcumSeriRequestModel>;
   @useResult
-  $Res call(
-      {String? stokKodu,
-      int? girisDepo,
-      int? cikisDepo,
-      int? redGirisDepo,
-      int? kabulGirisDepo,
-      List<String>? seriListe});
+  $Res call({
+    String? stokKodu,
+    int? girisDepo,
+    int? cikisDepo,
+    int? redGirisDepo,
+    int? kabulGirisDepo,
+    List<String>? seriListe,
+  });
 }
 
 /// @nodoc
-class _$OlcumSeriRequestModelCopyWithImpl<$Res,
-        $Val extends OlcumSeriRequestModel>
+class _$OlcumSeriRequestModelCopyWithImpl<$Res, $Val extends OlcumSeriRequestModel>
     implements $OlcumSeriRequestModelCopyWith<$Res> {
   _$OlcumSeriRequestModelCopyWithImpl(this._value, this._then);
 
@@ -76,61 +74,64 @@ class _$OlcumSeriRequestModelCopyWithImpl<$Res,
     Object? kabulGirisDepo = freezed,
     Object? seriListe = freezed,
   }) {
-    return _then(_value.copyWith(
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      girisDepo: freezed == girisDepo
-          ? _value.girisDepo
-          : girisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cikisDepo: freezed == cikisDepo
-          ? _value.cikisDepo
-          : cikisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      redGirisDepo: freezed == redGirisDepo
-          ? _value.redGirisDepo
-          : redGirisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kabulGirisDepo: freezed == kabulGirisDepo
-          ? _value.kabulGirisDepo
-          : kabulGirisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      seriListe: freezed == seriListe
-          ? _value.seriListe
-          : seriListe // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            girisDepo: freezed == girisDepo
+                ? _value.girisDepo
+                : girisDepo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            cikisDepo: freezed == cikisDepo
+                ? _value.cikisDepo
+                : cikisDepo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            redGirisDepo: freezed == redGirisDepo
+                ? _value.redGirisDepo
+                : redGirisDepo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kabulGirisDepo: freezed == kabulGirisDepo
+                ? _value.kabulGirisDepo
+                : kabulGirisDepo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            seriListe: freezed == seriListe
+                ? _value.seriListe
+                : seriListe // ignore: cast_nullable_to_non_nullable
+                      as List<String>?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$OlcumSeriRequestModelImplCopyWith<$Res>
-    implements $OlcumSeriRequestModelCopyWith<$Res> {
+abstract class _$$OlcumSeriRequestModelImplCopyWith<$Res> implements $OlcumSeriRequestModelCopyWith<$Res> {
   factory _$$OlcumSeriRequestModelImplCopyWith(
-          _$OlcumSeriRequestModelImpl value,
-          $Res Function(_$OlcumSeriRequestModelImpl) then) =
-      __$$OlcumSeriRequestModelImplCopyWithImpl<$Res>;
+    _$OlcumSeriRequestModelImpl value,
+    $Res Function(_$OlcumSeriRequestModelImpl) then,
+  ) = __$$OlcumSeriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? stokKodu,
-      int? girisDepo,
-      int? cikisDepo,
-      int? redGirisDepo,
-      int? kabulGirisDepo,
-      List<String>? seriListe});
+  $Res call({
+    String? stokKodu,
+    int? girisDepo,
+    int? cikisDepo,
+    int? redGirisDepo,
+    int? kabulGirisDepo,
+    List<String>? seriListe,
+  });
 }
 
 /// @nodoc
 class __$$OlcumSeriRequestModelImplCopyWithImpl<$Res>
-    extends _$OlcumSeriRequestModelCopyWithImpl<$Res,
-        _$OlcumSeriRequestModelImpl>
+    extends _$OlcumSeriRequestModelCopyWithImpl<$Res, _$OlcumSeriRequestModelImpl>
     implements _$$OlcumSeriRequestModelImplCopyWith<$Res> {
-  __$$OlcumSeriRequestModelImplCopyWithImpl(_$OlcumSeriRequestModelImpl _value,
-      $Res Function(_$OlcumSeriRequestModelImpl) _then)
-      : super(_value, _then);
+  __$$OlcumSeriRequestModelImplCopyWithImpl(
+    _$OlcumSeriRequestModelImpl _value,
+    $Res Function(_$OlcumSeriRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OlcumSeriRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -144,49 +145,50 @@ class __$$OlcumSeriRequestModelImplCopyWithImpl<$Res>
     Object? kabulGirisDepo = freezed,
     Object? seriListe = freezed,
   }) {
-    return _then(_$OlcumSeriRequestModelImpl(
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      girisDepo: freezed == girisDepo
-          ? _value.girisDepo
-          : girisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cikisDepo: freezed == cikisDepo
-          ? _value.cikisDepo
-          : cikisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      redGirisDepo: freezed == redGirisDepo
-          ? _value.redGirisDepo
-          : redGirisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kabulGirisDepo: freezed == kabulGirisDepo
-          ? _value.kabulGirisDepo
-          : kabulGirisDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      seriListe: freezed == seriListe
-          ? _value._seriListe
-          : seriListe // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ));
+    return _then(
+      _$OlcumSeriRequestModelImpl(
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        girisDepo: freezed == girisDepo
+            ? _value.girisDepo
+            : girisDepo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        cikisDepo: freezed == cikisDepo
+            ? _value.cikisDepo
+            : cikisDepo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        redGirisDepo: freezed == redGirisDepo
+            ? _value.redGirisDepo
+            : redGirisDepo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kabulGirisDepo: freezed == kabulGirisDepo
+            ? _value.kabulGirisDepo
+            : kabulGirisDepo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        seriListe: freezed == seriListe
+            ? _value._seriListe
+            : seriListe // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
-  const _$OlcumSeriRequestModelImpl(
-      {this.stokKodu,
-      this.girisDepo,
-      this.cikisDepo,
-      this.redGirisDepo,
-      this.kabulGirisDepo,
-      final List<String>? seriListe})
-      : _seriListe = seriListe;
+  const _$OlcumSeriRequestModelImpl({
+    this.stokKodu,
+    this.girisDepo,
+    this.cikisDepo,
+    this.redGirisDepo,
+    this.kabulGirisDepo,
+    final List<String>? seriListe,
+  }) : _seriListe = seriListe;
 
-  factory _$OlcumSeriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OlcumSeriRequestModelImplFromJson(json);
+  factory _$OlcumSeriRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$OlcumSeriRequestModelImplFromJson(json);
 
   @override
   final String? stokKodu;
@@ -213,59 +215,51 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OlcumSeriRequestModelImpl &&
-            (identical(other.stokKodu, stokKodu) ||
-                other.stokKodu == stokKodu) &&
-            (identical(other.girisDepo, girisDepo) ||
-                other.girisDepo == girisDepo) &&
-            (identical(other.cikisDepo, cikisDepo) ||
-                other.cikisDepo == cikisDepo) &&
-            (identical(other.redGirisDepo, redGirisDepo) ||
-                other.redGirisDepo == redGirisDepo) &&
-            (identical(other.kabulGirisDepo, kabulGirisDepo) ||
-                other.kabulGirisDepo == kabulGirisDepo) &&
-            const DeepCollectionEquality()
-                .equals(other._seriListe, _seriListe));
+            (identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu) &&
+            (identical(other.girisDepo, girisDepo) || other.girisDepo == girisDepo) &&
+            (identical(other.cikisDepo, cikisDepo) || other.cikisDepo == cikisDepo) &&
+            (identical(other.redGirisDepo, redGirisDepo) || other.redGirisDepo == redGirisDepo) &&
+            (identical(other.kabulGirisDepo, kabulGirisDepo) || other.kabulGirisDepo == kabulGirisDepo) &&
+            const DeepCollectionEquality().equals(other._seriListe, _seriListe));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      stokKodu,
-      girisDepo,
-      cikisDepo,
-      redGirisDepo,
-      kabulGirisDepo,
-      const DeepCollectionEquality().hash(_seriListe));
+    runtimeType,
+    stokKodu,
+    girisDepo,
+    cikisDepo,
+    redGirisDepo,
+    kabulGirisDepo,
+    const DeepCollectionEquality().hash(_seriListe),
+  );
 
   /// Create a copy of OlcumSeriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OlcumSeriRequestModelImplCopyWith<_$OlcumSeriRequestModelImpl>
-      get copyWith => __$$OlcumSeriRequestModelImplCopyWithImpl<
-          _$OlcumSeriRequestModelImpl>(this, _$identity);
+  _$$OlcumSeriRequestModelImplCopyWith<_$OlcumSeriRequestModelImpl> get copyWith =>
+      __$$OlcumSeriRequestModelImplCopyWithImpl<_$OlcumSeriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OlcumSeriRequestModelImplToJson(
-      this,
-    );
+    return _$$OlcumSeriRequestModelImplToJson(this);
   }
 }
 
 abstract class _OlcumSeriRequestModel implements OlcumSeriRequestModel {
-  const factory _OlcumSeriRequestModel(
-      {final String? stokKodu,
-      final int? girisDepo,
-      final int? cikisDepo,
-      final int? redGirisDepo,
-      final int? kabulGirisDepo,
-      final List<String>? seriListe}) = _$OlcumSeriRequestModelImpl;
+  const factory _OlcumSeriRequestModel({
+    final String? stokKodu,
+    final int? girisDepo,
+    final int? cikisDepo,
+    final int? redGirisDepo,
+    final int? kabulGirisDepo,
+    final List<String>? seriListe,
+  }) = _$OlcumSeriRequestModelImpl;
 
-  factory _OlcumSeriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$OlcumSeriRequestModelImpl.fromJson;
+  factory _OlcumSeriRequestModel.fromJson(Map<String, dynamic> json) = _$OlcumSeriRequestModelImpl.fromJson;
 
   @override
   String? get stokKodu;
@@ -284,6 +278,5 @@ abstract class _OlcumSeriRequestModel implements OlcumSeriRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OlcumSeriRequestModelImplCopyWith<_$OlcumSeriRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$OlcumSeriRequestModelImplCopyWith<_$OlcumSeriRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

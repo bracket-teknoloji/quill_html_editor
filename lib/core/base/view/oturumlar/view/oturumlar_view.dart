@@ -60,60 +60,58 @@ final class _OturumlarViewState extends BaseState<OturumlarView> {
       ],
     ),
     body: Observer(
-      builder:
-          (_) => RefreshableListView(
-            onRefresh: viewModel.getData,
-            items: viewModel.filteredList,
-            itemBuilder:
-                (item) => Card(
-                  child: ListTile(
+      builder: (_) => RefreshableListView(
+        onRefresh: viewModel.getData,
+        items: viewModel.filteredList,
+        itemBuilder: (item) => Card(
+          child: ListTile(
+            onTap: () async {
+              await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: item.kullaniciAdi ?? "",
+                children: [
+                  BottomSheetModel(
+                    title: "Oturumu Kapat",
+                    iconWidget: Icons.logout_outlined,
                     onTap: () async {
-                      await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: item.kullaniciAdi ?? "",
-                        children: [
-                          BottomSheetModel(
-                            title: "Oturumu Kapat",
-                            iconWidget: Icons.logout_outlined,
-                            onTap: () async {
-                              Get.back();
-                              dialogManager.showAreYouSureDialog(
-                                onYes: () async {
-                                  viewModel.logout(item);
-                                  await viewModel.getData();
-                                },
-                              );
-                            },
-                          ),
-                        ],
+                      Get.back();
+                      dialogManager.showAreYouSureDialog(
+                        onYes: () async {
+                          viewModel.logout(item);
+                          await viewModel.getData();
+                        },
                       );
                     },
-                    title: Text(
-                      "${item.kullaniciAdi ?? ""} (${item.adi ?? ""} ${item.soyadi ?? ""})",
-                      style: TextStyle(
-                        color: item.cihazKimligi == AccountModel.instance.cihazKimligi ? UIHelper.primaryColor : null,
-                      ),
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Kayıt Tarihi: ${item.girisTarihi?.toDateString}"),
-                        Text("Son Giriş Tarihi: ${item.sonKullanimTarihi?.toDateString}"),
-                        CustomLayoutBuilder(
-                          splitCount: 2,
-                          children: [
-                            Text("Marka: ${item.cihazMarkasi ?? ""}"),
-                            Text("Model: ${item.cihazModeli ?? ""}"),
-                            Text("Şirket: ${item.aktifVeritabani ?? ""}"),
-                            Text("Şube: ${item.aktifSubeKodu ?? "0"}"),
-                            Text("Uyg.Rev No: ${item.uygulamaSurumKodu ?? ""}"),
-                          ],
-                        ),
-                      ],
-                    ).paddingOnly(top: UIHelper.lowSize),
                   ),
+                ],
+              );
+            },
+            title: Text(
+              "${item.kullaniciAdi ?? ""} (${item.adi ?? ""} ${item.soyadi ?? ""})",
+              style: TextStyle(
+                color: item.cihazKimligi == AccountModel.instance.cihazKimligi ? UIHelper.primaryColor : null,
+              ),
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Kayıt Tarihi: ${item.girisTarihi?.toDateString}"),
+                Text("Son Giriş Tarihi: ${item.sonKullanimTarihi?.toDateString}"),
+                CustomLayoutBuilder(
+                  splitCount: 2,
+                  children: [
+                    Text("Marka: ${item.cihazMarkasi ?? ""}"),
+                    Text("Model: ${item.cihazModeli ?? ""}"),
+                    Text("Şirket: ${item.aktifVeritabani ?? ""}"),
+                    Text("Şube: ${item.aktifSubeKodu ?? "0"}"),
+                    Text("Uyg.Rev No: ${item.uygulamaSurumKodu ?? ""}"),
+                  ],
                 ),
+              ],
+            ).paddingOnly(top: UIHelper.lowSize),
           ),
+        ),
+      ),
     ),
   );
 }

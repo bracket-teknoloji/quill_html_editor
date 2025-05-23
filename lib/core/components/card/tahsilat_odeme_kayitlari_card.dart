@@ -194,7 +194,10 @@ final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayi
   }
 
   Future<void> showPdf(String ozelKod, CariHareketleriModel model) async {
-    final PdfModel pdfModel = PdfModel(raporOzelKod: ozelKod, dicParams: DicParams(belgeNo: model.belgeNo ?? ""));
+    final PdfModel pdfModel = PdfModel(
+      raporOzelKod: ozelKod,
+      dicParams: DicParams(belgeNo: model.belgeNo ?? ""),
+    );
     final result = parametreModel.netFectDizaynList?.where((element) => element.ozelKod == ozelKod).toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {

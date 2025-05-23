@@ -12,10 +12,10 @@ part of 'hucredeki_stoklar_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-HucredekiStoklarModel _$HucredekiStoklarModelFromJson(
-    Map<String, dynamic> json) {
+HucredekiStoklarModel _$HucredekiStoklarModelFromJson(Map<String, dynamic> json) {
   return _HucredekiStoklarModel.fromJson(json);
 }
 
@@ -38,32 +38,30 @@ mixin _$HucredekiStoklarModel {
   /// Create a copy of HucredekiStoklarModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $HucredekiStoklarModelCopyWith<HucredekiStoklarModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $HucredekiStoklarModelCopyWith<HucredekiStoklarModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HucredekiStoklarModelCopyWith<$Res> {
-  factory $HucredekiStoklarModelCopyWith(HucredekiStoklarModel value,
-          $Res Function(HucredekiStoklarModel) then) =
+  factory $HucredekiStoklarModelCopyWith(HucredekiStoklarModel value, $Res Function(HucredekiStoklarModel) then) =
       _$HucredekiStoklarModelCopyWithImpl<$Res, HucredekiStoklarModel>;
   @useResult
-  $Res call(
-      {String? hucreKodu,
-      int? depoKodu,
-      String? stokKodu,
-      String? stokAdi,
-      double? netMiktar,
-      String? yapkod,
-      String? yapacik,
-      double? bakiye,
-      double? miktar,
-      String? olcuBirimi});
+  $Res call({
+    String? hucreKodu,
+    int? depoKodu,
+    String? stokKodu,
+    String? stokAdi,
+    double? netMiktar,
+    String? yapkod,
+    String? yapacik,
+    double? bakiye,
+    double? miktar,
+    String? olcuBirimi,
+  });
 }
 
 /// @nodoc
-class _$HucredekiStoklarModelCopyWithImpl<$Res,
-        $Val extends HucredekiStoklarModel>
+class _$HucredekiStoklarModelCopyWithImpl<$Res, $Val extends HucredekiStoklarModel>
     implements $HucredekiStoklarModelCopyWith<$Res> {
   _$HucredekiStoklarModelCopyWithImpl(this._value, this._then);
 
@@ -88,81 +86,84 @@ class _$HucredekiStoklarModelCopyWithImpl<$Res,
     Object? miktar = freezed,
     Object? olcuBirimi = freezed,
   }) {
-    return _then(_value.copyWith(
-      hucreKodu: freezed == hucreKodu
-          ? _value.hucreKodu
-          : hucreKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      netMiktar: freezed == netMiktar
-          ? _value.netMiktar
-          : netMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      yapkod: freezed == yapkod
-          ? _value.yapkod
-          : yapkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yapacik: freezed == yapacik
-          ? _value.yapacik
-          : yapacik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      olcuBirimi: freezed == olcuBirimi
-          ? _value.olcuBirimi
-          : olcuBirimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            hucreKodu: freezed == hucreKodu
+                ? _value.hucreKodu
+                : hucreKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokAdi: freezed == stokAdi
+                ? _value.stokAdi
+                : stokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            netMiktar: freezed == netMiktar
+                ? _value.netMiktar
+                : netMiktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            yapkod: freezed == yapkod
+                ? _value.yapkod
+                : yapkod // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            yapacik: freezed == yapacik
+                ? _value.yapacik
+                : yapacik // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bakiye: freezed == bakiye
+                ? _value.bakiye
+                : bakiye // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            olcuBirimi: freezed == olcuBirimi
+                ? _value.olcuBirimi
+                : olcuBirimi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$HucredekiStoklarModelImplCopyWith<$Res>
-    implements $HucredekiStoklarModelCopyWith<$Res> {
+abstract class _$$HucredekiStoklarModelImplCopyWith<$Res> implements $HucredekiStoklarModelCopyWith<$Res> {
   factory _$$HucredekiStoklarModelImplCopyWith(
-          _$HucredekiStoklarModelImpl value,
-          $Res Function(_$HucredekiStoklarModelImpl) then) =
-      __$$HucredekiStoklarModelImplCopyWithImpl<$Res>;
+    _$HucredekiStoklarModelImpl value,
+    $Res Function(_$HucredekiStoklarModelImpl) then,
+  ) = __$$HucredekiStoklarModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? hucreKodu,
-      int? depoKodu,
-      String? stokKodu,
-      String? stokAdi,
-      double? netMiktar,
-      String? yapkod,
-      String? yapacik,
-      double? bakiye,
-      double? miktar,
-      String? olcuBirimi});
+  $Res call({
+    String? hucreKodu,
+    int? depoKodu,
+    String? stokKodu,
+    String? stokAdi,
+    double? netMiktar,
+    String? yapkod,
+    String? yapacik,
+    double? bakiye,
+    double? miktar,
+    String? olcuBirimi,
+  });
 }
 
 /// @nodoc
 class __$$HucredekiStoklarModelImplCopyWithImpl<$Res>
-    extends _$HucredekiStoklarModelCopyWithImpl<$Res,
-        _$HucredekiStoklarModelImpl>
+    extends _$HucredekiStoklarModelCopyWithImpl<$Res, _$HucredekiStoklarModelImpl>
     implements _$$HucredekiStoklarModelImplCopyWith<$Res> {
-  __$$HucredekiStoklarModelImplCopyWithImpl(_$HucredekiStoklarModelImpl _value,
-      $Res Function(_$HucredekiStoklarModelImpl) _then)
-      : super(_value, _then);
+  __$$HucredekiStoklarModelImplCopyWithImpl(
+    _$HucredekiStoklarModelImpl _value,
+    $Res Function(_$HucredekiStoklarModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HucredekiStoklarModel
   /// with the given fields replaced by the non-null parameter values.
@@ -180,69 +181,70 @@ class __$$HucredekiStoklarModelImplCopyWithImpl<$Res>
     Object? miktar = freezed,
     Object? olcuBirimi = freezed,
   }) {
-    return _then(_$HucredekiStoklarModelImpl(
-      hucreKodu: freezed == hucreKodu
-          ? _value.hucreKodu
-          : hucreKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      netMiktar: freezed == netMiktar
-          ? _value.netMiktar
-          : netMiktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      yapkod: freezed == yapkod
-          ? _value.yapkod
-          : yapkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      yapacik: freezed == yapacik
-          ? _value.yapacik
-          : yapacik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      olcuBirimi: freezed == olcuBirimi
-          ? _value.olcuBirimi
-          : olcuBirimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$HucredekiStoklarModelImpl(
+        hucreKodu: freezed == hucreKodu
+            ? _value.hucreKodu
+            : hucreKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokAdi: freezed == stokAdi
+            ? _value.stokAdi
+            : stokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        netMiktar: freezed == netMiktar
+            ? _value.netMiktar
+            : netMiktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        yapkod: freezed == yapkod
+            ? _value.yapkod
+            : yapkod // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        yapacik: freezed == yapacik
+            ? _value.yapacik
+            : yapacik // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bakiye: freezed == bakiye
+            ? _value.bakiye
+            : bakiye // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        olcuBirimi: freezed == olcuBirimi
+            ? _value.olcuBirimi
+            : olcuBirimi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HucredekiStoklarModelImpl extends _HucredekiStoklarModel {
-  _$HucredekiStoklarModelImpl(
-      {this.hucreKodu,
-      this.depoKodu,
-      this.stokKodu,
-      this.stokAdi,
-      this.netMiktar,
-      this.yapkod,
-      this.yapacik,
-      this.bakiye,
-      this.miktar,
-      this.olcuBirimi})
-      : super._();
+  _$HucredekiStoklarModelImpl({
+    this.hucreKodu,
+    this.depoKodu,
+    this.stokKodu,
+    this.stokAdi,
+    this.netMiktar,
+    this.yapkod,
+    this.yapacik,
+    this.bakiye,
+    this.miktar,
+    this.olcuBirimi,
+  }) : super._();
 
-  factory _$HucredekiStoklarModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HucredekiStoklarModelImplFromJson(json);
+  factory _$HucredekiStoklarModelImpl.fromJson(Map<String, dynamic> json) => _$$HucredekiStoklarModelImplFromJson(json);
 
   @override
   final String? hucreKodu;
@@ -270,34 +272,31 @@ class _$HucredekiStoklarModelImpl extends _HucredekiStoklarModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HucredekiStoklarModelImplCopyWith<_$HucredekiStoklarModelImpl>
-      get copyWith => __$$HucredekiStoklarModelImplCopyWithImpl<
-          _$HucredekiStoklarModelImpl>(this, _$identity);
+  _$$HucredekiStoklarModelImplCopyWith<_$HucredekiStoklarModelImpl> get copyWith =>
+      __$$HucredekiStoklarModelImplCopyWithImpl<_$HucredekiStoklarModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HucredekiStoklarModelImplToJson(
-      this,
-    );
+    return _$$HucredekiStoklarModelImplToJson(this);
   }
 }
 
 abstract class _HucredekiStoklarModel extends HucredekiStoklarModel {
-  factory _HucredekiStoklarModel(
-      {final String? hucreKodu,
-      final int? depoKodu,
-      final String? stokKodu,
-      final String? stokAdi,
-      final double? netMiktar,
-      final String? yapkod,
-      final String? yapacik,
-      final double? bakiye,
-      final double? miktar,
-      final String? olcuBirimi}) = _$HucredekiStoklarModelImpl;
+  factory _HucredekiStoklarModel({
+    final String? hucreKodu,
+    final int? depoKodu,
+    final String? stokKodu,
+    final String? stokAdi,
+    final double? netMiktar,
+    final String? yapkod,
+    final String? yapacik,
+    final double? bakiye,
+    final double? miktar,
+    final String? olcuBirimi,
+  }) = _$HucredekiStoklarModelImpl;
   _HucredekiStoklarModel._() : super._();
 
-  factory _HucredekiStoklarModel.fromJson(Map<String, dynamic> json) =
-      _$HucredekiStoklarModelImpl.fromJson;
+  factory _HucredekiStoklarModel.fromJson(Map<String, dynamic> json) = _$HucredekiStoklarModelImpl.fromJson;
 
   @override
   String? get hucreKodu;
@@ -324,6 +323,5 @@ abstract class _HucredekiStoklarModel extends HucredekiStoklarModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HucredekiStoklarModelImplCopyWith<_$HucredekiStoklarModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$HucredekiStoklarModelImplCopyWith<_$HucredekiStoklarModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

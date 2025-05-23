@@ -40,15 +40,14 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     if (value.ext.isNullOrEmpty) {
       filteredModelList = modelList;
     } else {
-      filteredModelList =
-          modelList
-              ?.where(
-                (element) =>
-                    (element.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) ||
-                    (element.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false),
-              )
-              .toList()
-              .asObservable();
+      filteredModelList = modelList
+          ?.where(
+            (element) =>
+                (element.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) ||
+                (element.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false),
+          )
+          .toList()
+          .asObservable();
     }
   }
 

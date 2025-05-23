@@ -58,17 +58,16 @@ class _KullaniciHaritasiViewState extends BaseState<KullaniciHaritasiView> {
               context,
               title: "Kullanıcıya Odaklan",
               groupValue: null,
-              children:
-                  viewModel.kullaniciHaritasiList
-                      ?.map(
-                        (e) => BottomSheetModel(
-                          title: e.kullaniciAdsoyad ?? "",
-                          description:
-                              "${e.kullanici} (${e.cihazMarka} - ${e.cihazModel})\n${DateTime.now().difference(e.tarih ?? DateTime.now()).inDays} gün önce",
-                          value: e,
-                        ),
-                      )
-                      .toList(),
+              children: viewModel.kullaniciHaritasiList
+                  ?.map(
+                    (e) => BottomSheetModel(
+                      title: e.kullaniciAdsoyad ?? "",
+                      description:
+                          "${e.kullanici} (${e.cihazMarka} - ${e.cihazModel})\n${DateTime.now().difference(e.tarih ?? DateTime.now()).inDays} gün önce",
+                      value: e,
+                    ),
+                  )
+                  .toList(),
             );
             if (result case final value?) {
               _controller?.animateCamera(

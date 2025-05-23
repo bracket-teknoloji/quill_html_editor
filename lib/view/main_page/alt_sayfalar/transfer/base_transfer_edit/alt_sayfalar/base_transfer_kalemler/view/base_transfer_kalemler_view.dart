@@ -86,59 +86,56 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
           ).paddingOnly(top: UIHelper.lowSize),
         Expanded(
           child: Observer(
-            builder:
-                (_) =>
-                    viewModel.kalemList.ext.isNullOrEmpty
-                        ? Center(
+            builder: (_) => viewModel.kalemList.ext.isNullOrEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(Icons.manage_search_outlined, size: 50, color: theme.colorScheme.primary),
+                        const Text("Kalem bulunamadı.\nLütfen Kalem Ekleyin.", textAlign: TextAlign.center),
+                      ],
+                    ),
+                  )
+                : Observer(
+                    builder: (_) => ReorderableListView.builder(
+                      onReorder: (oldIndex, newIndex) {
+                        if (oldIndex == newIndex) return;
+                        if (newIndex > oldIndex) {
+                          newIndex -= 1;
+                        }
+                        final item = viewModel.kalemList?[oldIndex];
+                        if (item != null) {
+                          final List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
+                          kalemList?.removeAt(oldIndex);
+                          kalemList?.insert(newIndex, item);
+                          BaseSiparisEditModel.instance.kalemList = kalemList;
+                          viewModel.updateKalemList();
+                        }
+                      },
+                      primary: true,
+                      itemCount: viewModel.kalemList?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final KalemModel kalemModel = viewModel.kalemList![index];
+                        return Card(
+                          key: Key((kalemModel.sira ?? index).toString()),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(Icons.manage_search_outlined, size: 50, color: theme.colorScheme.primary),
-                              const Text("Kalem bulunamadı.\nLütfen Kalem Ekleyin.", textAlign: TextAlign.center),
+                              kalemListTile(context, index, kalemModel),
+                              ...List.generate(kalemModel.kalemList?.length ?? 0, (index2) {
+                                final KalemModel? model = kalemModel.kalemList?[index2];
+                                return Column(
+                                  children: <Widget>[
+                                    const Divider(),
+                                    hucreListTile(model, kalemModel).paddingOnly(left: UIHelper.highSize),
+                                  ],
+                                );
+                              }),
                             ],
                           ),
-                        )
-                        : Observer(
-                          builder:
-                              (_) => ReorderableListView.builder(
-                                onReorder: (oldIndex, newIndex) {
-                                  if (oldIndex == newIndex) return;
-                                  if (newIndex > oldIndex) {
-                                    newIndex -= 1;
-                                  }
-                                  final item = viewModel.kalemList?[oldIndex];
-                                  if (item != null) {
-                                    final List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
-                                    kalemList?.removeAt(oldIndex);
-                                    kalemList?.insert(newIndex, item);
-                                    BaseSiparisEditModel.instance.kalemList = kalemList;
-                                    viewModel.updateKalemList();
-                                  }
-                                },
-                                primary: true,
-                                itemCount: viewModel.kalemList?.length ?? 0,
-                                itemBuilder: (context, index) {
-                                  final KalemModel kalemModel = viewModel.kalemList![index];
-                                  return Card(
-                                    key: Key((kalemModel.sira ?? index).toString()),
-                                    child: Column(
-                                      children: <Widget>[
-                                        kalemListTile(context, index, kalemModel),
-                                        ...List.generate(kalemModel.kalemList?.length ?? 0, (index2) {
-                                          final KalemModel? model = kalemModel.kalemList?[index2];
-                                          return Column(
-                                            children: <Widget>[
-                                              const Divider(),
-                                              hucreListTile(model, kalemModel).paddingOnly(left: UIHelper.highSize),
-                                            ],
-                                          );
-                                        }),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                        ),
+                        );
+                      },
+                    ),
+                  ),
           ),
         ),
       ],
@@ -295,23 +292,22 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
       ],
     ),
     subtitle: Wrap(
-      children:
-          <Text>[
-            Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
-            if (model.getEditTipiEnum?.fiyatGor == true)
-              Text(
-                "Fiyat: ${(kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
-              ),
-            // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
-            Text(
-              "KDV %: ${((model.getEditTipiEnum?.satisMi == true ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}",
-            ),
+      children: <Text>[
+        Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
+        if (model.getEditTipiEnum?.fiyatGor == true)
+          Text(
+            "Fiyat: ${(kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+          ),
+        // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
+        Text(
+          "KDV %: ${((model.getEditTipiEnum?.satisMi == true ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}",
+        ),
 
-            if (model.getEditTipiEnum?.fiyatGor == true)
-              Text(
-                "Tutar: ${(((kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat) ?? 0) * (kalemList?.koliBilesenMiktari ?? 0)).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
-              ),
-          ].map((e) => SizedBox(width: width * 0.4, child: e)).toList(),
+        if (model.getEditTipiEnum?.fiyatGor == true)
+          Text(
+            "Tutar: ${(((kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat) ?? 0) * (kalemList?.koliBilesenMiktari ?? 0)).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+          ),
+      ].map((e) => SizedBox(width: width * 0.4, child: e)).toList(),
     ),
     // title: Text("${stokList?.stokKodu ?? ""}-${stokList?.stokAdi ?? ""}"),
     // subtitle: Text("${viewModel.kalemList?[index].kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].kalemList?[index].olcuBirimAdi ?? ""}"),

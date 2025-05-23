@@ -12,12 +12,10 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
   Computed<PdfModel>? _$pdfModelComputed;
 
   @override
-  PdfModel get pdfModel =>
-      (_$pdfModelComputed ??= Computed<PdfModel>(
-            () => super.pdfModel,
-            name: '_MusteriSiparisiDurumRaporuViewModelBase.pdfModel',
-          ))
-          .value;
+  PdfModel get pdfModel => (_$pdfModelComputed ??= Computed<PdfModel>(
+    () => super.pdfModel,
+    name: '_MusteriSiparisiDurumRaporuViewModelBase.pdfModel',
+  )).value;
 
   late final _$dicParamsAtom = Atom(name: '_MusteriSiparisiDurumRaporuViewModelBase.dicParams', context: context);
 

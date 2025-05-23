@@ -81,8 +81,9 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
         }
         return AppBarTitle(
           title: "Ölçüm Girişi",
-          subtitle:
-              viewModel.appBarTitle != null ? "${viewModel.appBarTitle} (${viewModel.olcumList?.length ?? 0})" : null,
+          subtitle: viewModel.appBarTitle != null
+              ? "${viewModel.appBarTitle} (${viewModel.olcumList?.length ?? 0})"
+              : null,
         );
       },
     ),
@@ -138,34 +139,32 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
         if (viewModel.olcumList == null) return const ListViewShimmer();
         if (viewModel.olcumList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
         return Observer(
-          builder:
-              (_) => ListView.builder(
-                controller: _scrollController,
-                itemCount: viewModel.olcumList?.length != null ? viewModel.olcumList!.length + 1 : 0,
-                //musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0
-                padding: UIHelper.lowPadding,
-                primary: false,
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                itemBuilder: (context, index) {
-                  if (index == viewModel.olcumList?.length) {
-                    return Observer(
-                      builder:
-                          (_) => Visibility(
-                            visible: viewModel.dahaVarMi,
-                            child: const Center(child: CircularProgressIndicator.adaptive()),
-                          ),
-                    );
+          builder: (_) => ListView.builder(
+            controller: _scrollController,
+            itemCount: viewModel.olcumList?.length != null ? viewModel.olcumList!.length + 1 : 0,
+            //musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0
+            padding: UIHelper.lowPadding,
+            primary: false,
+            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            itemBuilder: (context, index) {
+              if (index == viewModel.olcumList?.length) {
+                return Observer(
+                  builder: (_) => Visibility(
+                    visible: viewModel.dahaVarMi,
+                    child: const Center(child: CircularProgressIndicator.adaptive()),
+                  ),
+                );
+              }
+              return OlcumGirisiListesiCard(
+                model: viewModel.olcumList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi),
+                onTapped: (value) async {
+                  if (value) {
+                    await viewModel.getData();
                   }
-                  return OlcumGirisiListesiCard(
-                    model: viewModel.olcumList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi),
-                    onTapped: (value) async {
-                      if (value) {
-                        await viewModel.getData();
-                      }
-                    },
-                  );
                 },
-              ),
+              );
+            },
+          ),
         );
       },
     ),
@@ -281,17 +280,16 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
         context,
         title: "Ölçüm Seçiniz",
         groupValue: 0,
-        children:
-            viewModel.qrOlcumList
-                ?.map(
-                  (element) => BottomSheetModel(
-                    title: element.belgeNo ?? "",
-                    value: element,
-                    description: element.belgeTipi ?? "",
-                    groupValue: "",
-                  ),
-                )
-                .toList(),
+        children: viewModel.qrOlcumList
+            ?.map(
+              (element) => BottomSheetModel(
+                title: element.belgeNo ?? "",
+                value: element,
+                description: element.belgeTipi ?? "",
+                groupValue: "",
+              ),
+            )
+            .toList(),
       );
     }
     if (selectedOlcumModel == null) return;

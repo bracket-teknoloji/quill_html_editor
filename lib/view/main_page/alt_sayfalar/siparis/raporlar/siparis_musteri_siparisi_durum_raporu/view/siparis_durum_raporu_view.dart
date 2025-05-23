@@ -170,28 +170,25 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
       getData();
     },
     child: Observer(
-      builder:
-          (_) =>
-              viewModel.kalemListComputed.ext.isNullOrEmpty
-                  ? viewModel.kalemListComputed != null
-                      ? const Center(child: Text("Sonuç Bulunamadı."))
-                      : const Center(child: CircularProgressIndicator.adaptive())
-                  : ListView.builder(
-                    itemCount: (viewModel.kalemListComputed?.length ?? 0) + 1,
-                    itemBuilder: (context, index) {
-                      if (index != viewModel.kalemListComputed?.length) {
-                        final KalemModel? kalemModel = viewModel.kalemListComputed?[index];
-                        return siparisDurumListTile(kalemModel, context);
-                      }
-                      return Observer(
-                        builder:
-                            (_) => Visibility(
-                              visible: viewModel.dahaVarMi,
-                              child: const Center(child: CircularProgressIndicator.adaptive()),
-                            ),
-                      );
-                    },
+      builder: (_) => viewModel.kalemListComputed.ext.isNullOrEmpty
+          ? viewModel.kalemListComputed != null
+                ? const Center(child: Text("Sonuç Bulunamadı."))
+                : const Center(child: CircularProgressIndicator.adaptive())
+          : ListView.builder(
+              itemCount: (viewModel.kalemListComputed?.length ?? 0) + 1,
+              itemBuilder: (context, index) {
+                if (index != viewModel.kalemListComputed?.length) {
+                  final KalemModel? kalemModel = viewModel.kalemListComputed?[index];
+                  return siparisDurumListTile(kalemModel, context);
+                }
+                return Observer(
+                  builder: (_) => Visibility(
+                    visible: viewModel.dahaVarMi,
+                    child: const Center(child: CircularProgressIndicator.adaptive()),
                   ),
+                );
+              },
+            ),
     ),
   );
 
@@ -206,57 +203,53 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
           if (viewModel.gorunecekAlanlarMap["Stok"] ?? false) Text("Stok kodu: ${kalemModel?.stokKodu ?? ""}"),
           Text(kalemModel?.cariKodu ?? ""),
           Wrap(
-            children:
-                [
-                  if (viewModel.gorunecekAlanlarMap["Cari"] ?? false) Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}"),
-                  if (_fiyatGor)
-                    Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                  Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? "0"}"),
-                  Text("Kalan miktar: ${kalemModel?.kalan.toIntIfDouble ?? "0"}"),
-                  Text("Döviz kuru: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                  Text("Döviz cinsi: ${(kalemModel?.miktar ?? 0) - (kalemModel?.kalan ?? 0)}"),
-                ].map((e) => SizedBox(width: width / 2.4, child: e)).toList(),
+            children: [
+              if (viewModel.gorunecekAlanlarMap["Cari"] ?? false) Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}"),
+              if (_fiyatGor)
+                Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+              Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? "0"}"),
+              Text("Kalan miktar: ${kalemModel?.kalan.toIntIfDouble ?? "0"}"),
+              Text("Döviz kuru: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+              Text("Döviz cinsi: ${(kalemModel?.miktar ?? 0) - (kalemModel?.kalan ?? 0)}"),
+            ].map((e) => SizedBox(width: width / 2.4, child: e)).toList(),
           ),
         ],
       ),
-      onTap:
-          () async => await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: loc.generalStrings.options,
-            children: [
-              BottomSheetModel(
-                title: "Belgeyi Görüntüle",
-                iconWidget: Icons.search_outlined,
-                onTap: () {
-                  Get.back();
-                  return Get.toNamed(
-                    "mainPage/siparisEdit",
-                    arguments: BaseEditModel(
-                      model: SiparisEditRequestModel.fromKalemModel(kalemModel!),
-                      baseEditEnum: BaseEditEnum.goruntule,
-                      editTipiEnum: widget.editTipiEnum,
-                    ),
-                  );
-                },
-              ),
-              BottomSheetModel(
-                title: "Stok İşlemleri",
-                iconWidget: Icons.list_alt_outlined,
-                onTap:
-                    () =>
-                        dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemModel?.stokKodu ?? ""),
-              ),
-              BottomSheetModel(
-                title: "Cari İşlemleri",
-                iconWidget: Icons.person_2_outlined,
-                onTap:
-                    () =>
-                        dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
-              ),
-            ],
+      onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: loc.generalStrings.options,
+        children: [
+          BottomSheetModel(
+            title: "Belgeyi Görüntüle",
+            iconWidget: Icons.search_outlined,
+            onTap: () {
+              Get.back();
+              return Get.toNamed(
+                "mainPage/siparisEdit",
+                arguments: BaseEditModel(
+                  model: SiparisEditRequestModel.fromKalemModel(kalemModel!),
+                  baseEditEnum: BaseEditEnum.goruntule,
+                  editTipiEnum: widget.editTipiEnum,
+                ),
+              );
+            },
           ),
-      onLongPress:
-          () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
+          BottomSheetModel(
+            title: "Stok İşlemleri",
+            iconWidget: Icons.list_alt_outlined,
+            onTap: () =>
+                dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemModel?.stokKodu ?? ""),
+          ),
+          BottomSheetModel(
+            title: "Cari İşlemleri",
+            iconWidget: Icons.person_2_outlined,
+            onTap: () =>
+                dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
+          ),
+        ],
+      ),
+      onLongPress: () =>
+          dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
     ),
   );
 
@@ -398,24 +391,22 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
             ],
           ),
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  title: "Karşılanma Durumu",
-                  groupValue: viewModel.karsilanmaGroupValue,
-                  childrenTitleList: const ["Tümü", "Kalanlar", "Tamamlananlar"],
-                  childrenValueList: const [1, 2, 3],
-                  filterOnChanged: (index) => viewModel.setKarsilanmaGroupValue(index ?? 0),
-                ),
+            builder: (_) => SlideControllerWidget(
+              title: "Karşılanma Durumu",
+              groupValue: viewModel.karsilanmaGroupValue,
+              childrenTitleList: const ["Tümü", "Kalanlar", "Tamamlananlar"],
+              childrenValueList: const [1, 2, 3],
+              filterOnChanged: (index) => viewModel.setKarsilanmaGroupValue(index ?? 0),
+            ),
           ),
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  title: "Sipariş Durumu",
-                  groupValue: viewModel.durumGroupValue,
-                  childrenTitleList: const ["Tümü", "Açık", "Kapalı"],
-                  childrenValueList: const [1, 2, 3],
-                  filterOnChanged: (index) => viewModel.setDurumGroupValue(index ?? 0),
-                ),
+            builder: (_) => SlideControllerWidget(
+              title: "Sipariş Durumu",
+              groupValue: viewModel.durumGroupValue,
+              childrenTitleList: const ["Tümü", "Açık", "Kapalı"],
+              childrenValueList: const [1, 2, 3],
+              filterOnChanged: (index) => viewModel.setDurumGroupValue(index ?? 0),
+            ),
           ),
           ElevatedButton(
             onPressed: () {

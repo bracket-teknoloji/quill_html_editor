@@ -83,8 +83,9 @@ final class _LoginViewState extends BaseState<LoginView> {
         ),
         // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
         floatingActionButton: !context.general.isKeyBoardOpen ? fab() : null,
-        floatingActionButtonLocation:
-            context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: context.isLandscape
+            ? FloatingActionButtonLocation.endFloat
+            : FloatingActionButtonLocation.centerDocked,
         // primary: true,
         // backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
@@ -119,10 +120,9 @@ final class _LoginViewState extends BaseState<LoginView> {
                 children: [
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 50),
-                    height:
-                        context.general.isKeyBoardOpen
-                            ? context.sized.dynamicHeight(0.06)
-                            : context.sized.dynamicHeight(0.12),
+                    height: context.general.isKeyBoardOpen
+                        ? context.sized.dynamicHeight(0.06)
+                        : context.sized.dynamicHeight(0.12),
                     child: Assets.appIcon.pickerLogoBeyaz.svg(),
                   ).paddingOnly(bottom: context.sized.dynamicHeight(0.02), top: context.sized.dynamicHeight(0.04)),
                   Padding(
@@ -204,22 +204,20 @@ final class _LoginViewState extends BaseState<LoginView> {
                       addPadding: false,
                       text: "Şifre",
                       child: Observer(
-                        builder:
-                            (_) => TextField(
-                              controller: passwordController,
-                              textInputAction: TextInputAction.done,
-                              obscureText: viewModel.obscurePassword,
-                              onSubmitted: (_) => login(),
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () => viewModel.changeShowPassword(),
-                                  icon:
-                                      viewModel.obscurePassword
-                                          ? const Icon(Icons.visibility)
-                                          : const Icon(Icons.visibility_off),
-                                ),
-                              ),
+                        builder: (_) => TextField(
+                          controller: passwordController,
+                          textInputAction: TextInputAction.done,
+                          obscureText: viewModel.obscurePassword,
+                          onSubmitted: (_) => login(),
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              onPressed: () => viewModel.changeShowPassword(),
+                              icon: viewModel.obscurePassword
+                                  ? const Icon(Icons.visibility)
+                                  : const Icon(Icons.visibility_off),
                             ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -239,11 +237,10 @@ final class _LoginViewState extends BaseState<LoginView> {
                   child: Row(
                     children: [
                       Observer(
-                        builder:
-                            (_) => Text(
-                              "${viewModel.baglantiTipi} Sunucu",
-                              style: TextStyle(color: theme.colorScheme.primary),
-                            ),
+                        builder: (_) => Text(
+                          "${viewModel.baglantiTipi} Sunucu",
+                          style: TextStyle(color: theme.colorScheme.primary),
+                        ),
                       ),
                       const Icon(Icons.expand_more_outlined, size: UIHelper.highSize),
                     ],
@@ -269,10 +266,9 @@ final class _LoginViewState extends BaseState<LoginView> {
   Future<void> login() async {
     // dialogManager.showLoadingDialog("Yükleniyor...");
 
-    var instance =
-        AccountModel.instance
-          ..kullaniciAdi = emailController.text
-          ..uyeEmail = selectedUser.account?.email;
+    var instance = AccountModel.instance
+      ..kullaniciAdi = emailController.text
+      ..uyeEmail = selectedUser.account?.email;
     if (instance.uyeEmail == "demo@netfect.com") {
       instance.uyeSifre = null;
     } else {
@@ -312,11 +308,10 @@ final class _LoginViewState extends BaseState<LoginView> {
       }
       if (response?.error == null) {
         log(jsonEncode(instance.toJson()), name: "sea");
-        instance =
-            instance
-              ..adi = response?.userJson?.ad
-              ..soyadi = response?.userJson?.soyad
-              ..admin = response?.userJson?.admin ?? "H";
+        instance = instance
+          ..adi = response?.userJson?.ad
+          ..soyadi = response?.userJson?.soyad
+          ..admin = response?.userJson?.admin ?? "H";
         CacheManager.setHesapBilgileri(instance);
         viewModel.checkDebug();
         dialogManager.hideAlertDialog;

@@ -25,15 +25,14 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) => Drawer(
-    shape:
-        (kIsWeb && context.isLandscape)
-            ? null
-            : const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(UIHelper.highSize),
-                bottomLeft: Radius.circular(UIHelper.highSize),
-              ),
+    shape: (kIsWeb && context.isLandscape)
+        ? null
+        : const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(UIHelper.highSize),
+              bottomLeft: Radius.circular(UIHelper.highSize),
             ),
+          ),
     child: SafeArea(
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
@@ -76,13 +75,12 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                           ).marginOnly(right: UIHelper.lowSize),
                         Text(
                           CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc.rightDrawer.executiveUser,
-                          style:
-                              userModel.admin
-                                  ? theme.textTheme.bodyMedium?.copyWith(
-                                    color: UIHelper.primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  )
-                                  : theme.textTheme.bodySmall,
+                          style: userModel.admin
+                              ? theme.textTheme.bodyMedium?.copyWith(
+                                  color: UIHelper.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                )
+                              : theme.textTheme.bodySmall,
                         ),
                       ],
                     ).marginOnly(bottom: UIHelper.midSize),
@@ -117,10 +115,9 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                     title: Text(items[index].title, style: theme.textTheme.bodyMedium),
                     // horizontalTitleGap: 0,
                     leading: Icon(item.iconWidget, size: 20, color: theme.colorScheme.primary),
-                    trailing:
-                        item.trailingIcon != null
-                            ? Icon(item.trailingIcon, size: 20, color: theme.colorScheme.primary)
-                            : null,
+                    trailing: item.trailingIcon != null
+                        ? Icon(item.trailingIcon, size: 20, color: theme.colorScheme.primary)
+                        : null,
                   ),
                 );
               },
@@ -139,7 +136,9 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
             children: [
               Expanded(
                 child: DecoratedBox(
-                  decoration: BoxDecoration(border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1))),
+                  decoration: BoxDecoration(
+                    border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1)),
+                  ),
                   child: TextButton(
                     style: ButtonStyle(
                       shape: WidgetStateProperty.all<RoundedRectangleBorder>(

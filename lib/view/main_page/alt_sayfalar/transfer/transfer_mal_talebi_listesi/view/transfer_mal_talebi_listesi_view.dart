@@ -90,22 +90,20 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
   Widget body() => Column(
     children: [
       Observer(
-        builder:
-            (_) => SlideControllerWidget(
-              childrenTitleList: DepoMalToplamaEnum.values.map((e) => e.durumAdi).toList(),
-              filterOnChanged: (index) => viewModel.setSelectedDepoMalToplamaEnum(DepoMalToplamaEnum.values[index!]),
-              childrenValueList: DepoMalToplamaEnum.values,
-              groupValue: viewModel.selectedDepoMalToplamaEnum,
-            ),
+        builder: (_) => SlideControllerWidget(
+          childrenTitleList: DepoMalToplamaEnum.values.map((e) => e.durumAdi).toList(),
+          filterOnChanged: (index) => viewModel.setSelectedDepoMalToplamaEnum(DepoMalToplamaEnum.values[index!]),
+          childrenValueList: DepoMalToplamaEnum.values,
+          groupValue: viewModel.selectedDepoMalToplamaEnum,
+        ),
       ),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: viewModel.resetList,
-                items: viewModel.filteredObservableList,
-                itemBuilder: _malToplamaCard,
-              ),
+          builder: (_) => RefreshableListView(
+            onRefresh: viewModel.resetList,
+            items: viewModel.filteredObservableList,
+            itemBuilder: _malToplamaCard,
+          ),
         ),
       ),
     ],

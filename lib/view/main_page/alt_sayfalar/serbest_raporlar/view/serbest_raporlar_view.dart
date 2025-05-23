@@ -57,14 +57,13 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   @override
   Widget build(BuildContext context) => Observer(
-    builder:
-        (_) => PDFViewerView(
-          filterBottomSheet: filterBottomSheet,
-          filtreVarMi: !viewModel.serbestRaporResponseModelList.isEmptyOrNull,
-          title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar",
-          serbestMi: true,
-          pdfData: viewModel.pdfModel,
-        ),
+    builder: (_) => PDFViewerView(
+      filterBottomSheet: filterBottomSheet,
+      filtreVarMi: !viewModel.serbestRaporResponseModelList.isEmptyOrNull,
+      title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar",
+      serbestMi: true,
+      pdfData: viewModel.pdfModel,
+    ),
   );
 
   Future<bool> filterBottomSheet() async {
@@ -120,9 +119,10 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
             // suffix: const Icon(Icons.calendar_today),
             onTap: () async {
               final DateTime? result = await dialogManager.showDateTimePicker(
-                initialDate:
-                    viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0].text
-                        .toDateTimeDDMMYYYY(),
+                initialDate: viewModel
+                    .textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0]
+                    .text
+                    .toDateTimeDDMMYYYY(),
               );
               if (result != null) {
                 viewModel.changeDicParams(e.adi ?? "", result.toDateString);
@@ -150,30 +150,30 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
             labelText: e.aciklama ?? e.adi ?? "",
             readOnly: e.paramMap != null ? true : null,
             controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
-            valueWidget:
-                e.paramMap == null ? null : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
+            valueWidget: e.paramMap == null
+                ? null
+                : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
             isMust: e.bosGecilebilir != true,
             suffixMore: e.paramMap != null,
-            onTap:
-                e.paramMap == null
-                    ? null
-                    : () async {
-                      final List<BottomSheetModel<MapEntry>> bottomSheetModels = [];
-                      e.paramMap?.forEach(
-                        (key, value) => bottomSheetModels.add(
-                          BottomSheetModel(title: value, value: MapEntry(key, value), description: key),
-                        ),
-                      );
-                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry>(
-                        context,
-                        title: "Seçiniz",
-                        groupValue: viewModel.dicParams[e.adi ?? ""],
-                        children: bottomSheetModels,
-                      );
-                      if (result != null) {
-                        viewModel.changeDicParams(e.adi ?? "", result.key, controllerValue: result.value);
-                      }
-                    },
+            onTap: e.paramMap == null
+                ? null
+                : () async {
+                    final List<BottomSheetModel<MapEntry>> bottomSheetModels = [];
+                    e.paramMap?.forEach(
+                      (key, value) => bottomSheetModels.add(
+                        BottomSheetModel(title: value, value: MapEntry(key, value), description: key),
+                      ),
+                    );
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry>(
+                      context,
+                      title: "Seçiniz",
+                      groupValue: viewModel.dicParams[e.adi ?? ""],
+                      children: bottomSheetModels,
+                    );
+                    if (result != null) {
+                      viewModel.changeDicParams(e.adi ?? "", result.key, controllerValue: result.value);
+                    }
+                  },
             onChanged: (value) {
               viewModel.changeDicParams(e.adi ?? "", value);
             },
@@ -232,17 +232,12 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         context,
         title: "Grup Kodu Seçiniz",
         groupValue: viewModel.dicParams["KOD${model.adi?.split("").last}"] ?? "",
-        children:
-            grupKodList
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.grupAdi ?? "",
-                    description: e.grupKodu,
-                    value: e,
-                    groupValue: e.grupKodu,
-                  ),
-                )
-                .toList(),
+        children: grupKodList
+            .map(
+              (e) =>
+                  BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu, value: e, groupValue: e.grupKodu),
+            )
+            .toList(),
       );
       if (result != null) {
         viewModel
@@ -258,17 +253,12 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         context,
         title: "Grup Kodu Seçiniz",
         groupValue: viewModel.dicParams["KOD${model.adi?.split("").last}"] ?? "",
-        children:
-            grupKodList
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.grupAdi ?? "",
-                    description: e.grupKodu,
-                    value: e,
-                    groupValue: e.grupKodu,
-                  ),
-                )
-                .toList(),
+        children: grupKodList
+            .map(
+              (e) =>
+                  BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu, value: e, groupValue: e.grupKodu),
+            )
+            .toList(),
       );
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
@@ -293,17 +283,13 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         context,
         title: "Muhasebe Kodu Seçiniz",
         groupValue: viewModel.dicParams[model.adi] ?? "",
-        children:
-            muhasebeList.dataList
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.muhKodu.toString(),
-                    groupValue: viewModel.dicParams[e.adi ?? ""],
-                    value: e,
-                  ),
-                )
-                .toList()
-                .cast<BottomSheetModel<StokMuhasebeKoduModel>>(),
+        children: muhasebeList.dataList
+            .map(
+              (e) =>
+                  BottomSheetModel(title: e.muhKodu.toString(), groupValue: viewModel.dicParams[e.adi ?? ""], value: e),
+            )
+            .toList()
+            .cast<BottomSheetModel<StokMuhasebeKoduModel>>(),
       );
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.muhKodu.toString());

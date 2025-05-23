@@ -12,10 +12,10 @@ part of 'is_emri_hammadde_takibi_detay_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-IsEmriHammaddeTakibiDetayModel _$IsEmriHammaddeTakibiDetayModelFromJson(
-    Map<String, dynamic> json) {
+IsEmriHammaddeTakibiDetayModel _$IsEmriHammaddeTakibiDetayModelFromJson(Map<String, dynamic> json) {
   return _IsEmriHammaddeTakibiDetayModel.fromJson(json);
 }
 
@@ -28,8 +28,7 @@ mixin _$IsEmriHammaddeTakibiDetayModel {
   int? get miktar => throw _privateConstructorUsedError;
   set miktar(int? value) => throw _privateConstructorUsedError;
   List<Referanslar>? get referanslar => throw _privateConstructorUsedError;
-  set referanslar(List<Referanslar>? value) =>
-      throw _privateConstructorUsedError;
+  set referanslar(List<Referanslar>? value) => throw _privateConstructorUsedError;
 
   /// Serializes this IsEmriHammaddeTakibiDetayModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,28 +36,22 @@ mixin _$IsEmriHammaddeTakibiDetayModel {
   /// Create a copy of IsEmriHammaddeTakibiDetayModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $IsEmriHammaddeTakibiDetayModelCopyWith<IsEmriHammaddeTakibiDetayModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $IsEmriHammaddeTakibiDetayModelCopyWith<IsEmriHammaddeTakibiDetayModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IsEmriHammaddeTakibiDetayModelCopyWith<$Res> {
   factory $IsEmriHammaddeTakibiDetayModelCopyWith(
-          IsEmriHammaddeTakibiDetayModel value,
-          $Res Function(IsEmriHammaddeTakibiDetayModel) then) =
-      _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res,
-          IsEmriHammaddeTakibiDetayModel>;
+    IsEmriHammaddeTakibiDetayModel value,
+    $Res Function(IsEmriHammaddeTakibiDetayModel) then,
+  ) = _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res, IsEmriHammaddeTakibiDetayModel>;
   @useResult
-  $Res call(
-      {String? hamKodu,
-      String? hamAdi,
-      int? miktar,
-      List<Referanslar>? referanslar});
+  $Res call({String? hamKodu, String? hamAdi, int? miktar, List<Referanslar>? referanslar});
 }
 
 /// @nodoc
-class _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res,
-        $Val extends IsEmriHammaddeTakibiDetayModel>
+class _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res, $Val extends IsEmriHammaddeTakibiDetayModel>
     implements $IsEmriHammaddeTakibiDetayModelCopyWith<$Res> {
   _$IsEmriHammaddeTakibiDetayModelCopyWithImpl(this._value, this._then);
 
@@ -77,24 +70,27 @@ class _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res,
     Object? miktar = freezed,
     Object? referanslar = freezed,
   }) {
-    return _then(_value.copyWith(
-      hamKodu: freezed == hamKodu
-          ? _value.hamKodu
-          : hamKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hamAdi: freezed == hamAdi
-          ? _value.hamAdi
-          : hamAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as int?,
-      referanslar: freezed == referanslar
-          ? _value.referanslar
-          : referanslar // ignore: cast_nullable_to_non_nullable
-              as List<Referanslar>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            hamKodu: freezed == hamKodu
+                ? _value.hamKodu
+                : hamKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hamAdi: freezed == hamAdi
+                ? _value.hamAdi
+                : hamAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            referanslar: freezed == referanslar
+                ? _value.referanslar
+                : referanslar // ignore: cast_nullable_to_non_nullable
+                      as List<Referanslar>?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -102,27 +98,22 @@ class _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res,
 abstract class _$$IsEmriHammaddeTakibiDetayModelImplCopyWith<$Res>
     implements $IsEmriHammaddeTakibiDetayModelCopyWith<$Res> {
   factory _$$IsEmriHammaddeTakibiDetayModelImplCopyWith(
-          _$IsEmriHammaddeTakibiDetayModelImpl value,
-          $Res Function(_$IsEmriHammaddeTakibiDetayModelImpl) then) =
-      __$$IsEmriHammaddeTakibiDetayModelImplCopyWithImpl<$Res>;
+    _$IsEmriHammaddeTakibiDetayModelImpl value,
+    $Res Function(_$IsEmriHammaddeTakibiDetayModelImpl) then,
+  ) = __$$IsEmriHammaddeTakibiDetayModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? hamKodu,
-      String? hamAdi,
-      int? miktar,
-      List<Referanslar>? referanslar});
+  $Res call({String? hamKodu, String? hamAdi, int? miktar, List<Referanslar>? referanslar});
 }
 
 /// @nodoc
 class __$$IsEmriHammaddeTakibiDetayModelImplCopyWithImpl<$Res>
-    extends _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res,
-        _$IsEmriHammaddeTakibiDetayModelImpl>
+    extends _$IsEmriHammaddeTakibiDetayModelCopyWithImpl<$Res, _$IsEmriHammaddeTakibiDetayModelImpl>
     implements _$$IsEmriHammaddeTakibiDetayModelImplCopyWith<$Res> {
   __$$IsEmriHammaddeTakibiDetayModelImplCopyWithImpl(
-      _$IsEmriHammaddeTakibiDetayModelImpl _value,
-      $Res Function(_$IsEmriHammaddeTakibiDetayModelImpl) _then)
-      : super(_value, _then);
+    _$IsEmriHammaddeTakibiDetayModelImpl _value,
+    $Res Function(_$IsEmriHammaddeTakibiDetayModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of IsEmriHammaddeTakibiDetayModel
   /// with the given fields replaced by the non-null parameter values.
@@ -134,37 +125,35 @@ class __$$IsEmriHammaddeTakibiDetayModelImplCopyWithImpl<$Res>
     Object? miktar = freezed,
     Object? referanslar = freezed,
   }) {
-    return _then(_$IsEmriHammaddeTakibiDetayModelImpl(
-      hamKodu: freezed == hamKodu
-          ? _value.hamKodu
-          : hamKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hamAdi: freezed == hamAdi
-          ? _value.hamAdi
-          : hamAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as int?,
-      referanslar: freezed == referanslar
-          ? _value.referanslar
-          : referanslar // ignore: cast_nullable_to_non_nullable
-              as List<Referanslar>?,
-    ));
+    return _then(
+      _$IsEmriHammaddeTakibiDetayModelImpl(
+        hamKodu: freezed == hamKodu
+            ? _value.hamKodu
+            : hamKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hamAdi: freezed == hamAdi
+            ? _value.hamAdi
+            : hamAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        referanslar: freezed == referanslar
+            ? _value.referanslar
+            : referanslar // ignore: cast_nullable_to_non_nullable
+                  as List<Referanslar>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$IsEmriHammaddeTakibiDetayModelImpl
-    extends _IsEmriHammaddeTakibiDetayModel {
-  _$IsEmriHammaddeTakibiDetayModelImpl(
-      {this.hamKodu, this.hamAdi, this.miktar, this.referanslar})
-      : super._();
+class _$IsEmriHammaddeTakibiDetayModelImpl extends _IsEmriHammaddeTakibiDetayModel {
+  _$IsEmriHammaddeTakibiDetayModelImpl({this.hamKodu, this.hamAdi, this.miktar, this.referanslar}) : super._();
 
-  factory _$IsEmriHammaddeTakibiDetayModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$IsEmriHammaddeTakibiDetayModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$IsEmriHammaddeTakibiDetayModelImplFromJson(json);
 
   @override
@@ -181,26 +170,22 @@ class _$IsEmriHammaddeTakibiDetayModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$IsEmriHammaddeTakibiDetayModelImplCopyWith<
-          _$IsEmriHammaddeTakibiDetayModelImpl>
-      get copyWith => __$$IsEmriHammaddeTakibiDetayModelImplCopyWithImpl<
-          _$IsEmriHammaddeTakibiDetayModelImpl>(this, _$identity);
+  _$$IsEmriHammaddeTakibiDetayModelImplCopyWith<_$IsEmriHammaddeTakibiDetayModelImpl> get copyWith =>
+      __$$IsEmriHammaddeTakibiDetayModelImplCopyWithImpl<_$IsEmriHammaddeTakibiDetayModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$IsEmriHammaddeTakibiDetayModelImplToJson(
-      this,
-    );
+    return _$$IsEmriHammaddeTakibiDetayModelImplToJson(this);
   }
 }
 
-abstract class _IsEmriHammaddeTakibiDetayModel
-    extends IsEmriHammaddeTakibiDetayModel {
-  factory _IsEmriHammaddeTakibiDetayModel(
-      {String? hamKodu,
-      String? hamAdi,
-      int? miktar,
-      List<Referanslar>? referanslar}) = _$IsEmriHammaddeTakibiDetayModelImpl;
+abstract class _IsEmriHammaddeTakibiDetayModel extends IsEmriHammaddeTakibiDetayModel {
+  factory _IsEmriHammaddeTakibiDetayModel({
+    String? hamKodu,
+    String? hamAdi,
+    int? miktar,
+    List<Referanslar>? referanslar,
+  }) = _$IsEmriHammaddeTakibiDetayModelImpl;
   _IsEmriHammaddeTakibiDetayModel._() : super._();
 
   factory _IsEmriHammaddeTakibiDetayModel.fromJson(Map<String, dynamic> json) =
@@ -223,9 +208,8 @@ abstract class _IsEmriHammaddeTakibiDetayModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$IsEmriHammaddeTakibiDetayModelImplCopyWith<
-          _$IsEmriHammaddeTakibiDetayModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$IsEmriHammaddeTakibiDetayModelImplCopyWith<_$IsEmriHammaddeTakibiDetayModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Referanslar _$ReferanslarFromJson(Map<String, dynamic> json) {
@@ -253,28 +237,26 @@ mixin _$Referanslar {
   /// Create a copy of Referanslar
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReferanslarCopyWith<Referanslar> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ReferanslarCopyWith<Referanslar> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ReferanslarCopyWith<$Res> {
-  factory $ReferanslarCopyWith(
-          Referanslar value, $Res Function(Referanslar) then) =
+  factory $ReferanslarCopyWith(Referanslar value, $Res Function(Referanslar) then) =
       _$ReferanslarCopyWithImpl<$Res, Referanslar>;
   @useResult
-  $Res call(
-      {int? id,
-      String? hammaddeNo,
-      String? stokKodu,
-      String? stokAdi,
-      String? referansStokKodu,
-      String? referansStokAdi});
+  $Res call({
+    int? id,
+    String? hammaddeNo,
+    String? stokKodu,
+    String? stokAdi,
+    String? referansStokKodu,
+    String? referansStokAdi,
+  });
 }
 
 /// @nodoc
-class _$ReferanslarCopyWithImpl<$Res, $Val extends Referanslar>
-    implements $ReferanslarCopyWith<$Res> {
+class _$ReferanslarCopyWithImpl<$Res, $Val extends Referanslar> implements $ReferanslarCopyWith<$Res> {
   _$ReferanslarCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -294,59 +276,59 @@ class _$ReferanslarCopyWithImpl<$Res, $Val extends Referanslar>
     Object? referansStokKodu = freezed,
     Object? referansStokAdi = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      hammaddeNo: freezed == hammaddeNo
-          ? _value.hammaddeNo
-          : hammaddeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referansStokKodu: freezed == referansStokKodu
-          ? _value.referansStokKodu
-          : referansStokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referansStokAdi: freezed == referansStokAdi
-          ? _value.referansStokAdi
-          : referansStokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            hammaddeNo: freezed == hammaddeNo
+                ? _value.hammaddeNo
+                : hammaddeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokAdi: freezed == stokAdi
+                ? _value.stokAdi
+                : stokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            referansStokKodu: freezed == referansStokKodu
+                ? _value.referansStokKodu
+                : referansStokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            referansStokAdi: freezed == referansStokAdi
+                ? _value.referansStokAdi
+                : referansStokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$ReferanslarImplCopyWith<$Res>
-    implements $ReferanslarCopyWith<$Res> {
-  factory _$$ReferanslarImplCopyWith(
-          _$ReferanslarImpl value, $Res Function(_$ReferanslarImpl) then) =
+abstract class _$$ReferanslarImplCopyWith<$Res> implements $ReferanslarCopyWith<$Res> {
+  factory _$$ReferanslarImplCopyWith(_$ReferanslarImpl value, $Res Function(_$ReferanslarImpl) then) =
       __$$ReferanslarImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      String? hammaddeNo,
-      String? stokKodu,
-      String? stokAdi,
-      String? referansStokKodu,
-      String? referansStokAdi});
+  $Res call({
+    int? id,
+    String? hammaddeNo,
+    String? stokKodu,
+    String? stokAdi,
+    String? referansStokKodu,
+    String? referansStokAdi,
+  });
 }
 
 /// @nodoc
-class __$$ReferanslarImplCopyWithImpl<$Res>
-    extends _$ReferanslarCopyWithImpl<$Res, _$ReferanslarImpl>
+class __$$ReferanslarImplCopyWithImpl<$Res> extends _$ReferanslarCopyWithImpl<$Res, _$ReferanslarImpl>
     implements _$$ReferanslarImplCopyWith<$Res> {
-  __$$ReferanslarImplCopyWithImpl(
-      _$ReferanslarImpl _value, $Res Function(_$ReferanslarImpl) _then)
-      : super(_value, _then);
+  __$$ReferanslarImplCopyWithImpl(_$ReferanslarImpl _value, $Res Function(_$ReferanslarImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of Referanslar
   /// with the given fields replaced by the non-null parameter values.
@@ -360,48 +342,50 @@ class __$$ReferanslarImplCopyWithImpl<$Res>
     Object? referansStokKodu = freezed,
     Object? referansStokAdi = freezed,
   }) {
-    return _then(_$ReferanslarImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      hammaddeNo: freezed == hammaddeNo
-          ? _value.hammaddeNo
-          : hammaddeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referansStokKodu: freezed == referansStokKodu
-          ? _value.referansStokKodu
-          : referansStokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referansStokAdi: freezed == referansStokAdi
-          ? _value.referansStokAdi
-          : referansStokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ReferanslarImpl(
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        hammaddeNo: freezed == hammaddeNo
+            ? _value.hammaddeNo
+            : hammaddeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokAdi: freezed == stokAdi
+            ? _value.stokAdi
+            : stokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        referansStokKodu: freezed == referansStokKodu
+            ? _value.referansStokKodu
+            : referansStokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        referansStokAdi: freezed == referansStokAdi
+            ? _value.referansStokAdi
+            : referansStokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ReferanslarImpl implements _Referanslar {
-  _$ReferanslarImpl(
-      {this.id,
-      this.hammaddeNo,
-      this.stokKodu,
-      this.stokAdi,
-      this.referansStokKodu,
-      this.referansStokAdi});
+  _$ReferanslarImpl({
+    this.id,
+    this.hammaddeNo,
+    this.stokKodu,
+    this.stokAdi,
+    this.referansStokKodu,
+    this.referansStokAdi,
+  });
 
-  factory _$ReferanslarImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReferanslarImplFromJson(json);
+  factory _$ReferanslarImpl.fromJson(Map<String, dynamic> json) => _$$ReferanslarImplFromJson(json);
 
   @override
   int? id;
@@ -426,23 +410,21 @@ class _$ReferanslarImpl implements _Referanslar {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReferanslarImplToJson(
-      this,
-    );
+    return _$$ReferanslarImplToJson(this);
   }
 }
 
 abstract class _Referanslar implements Referanslar {
-  factory _Referanslar(
-      {int? id,
-      String? hammaddeNo,
-      String? stokKodu,
-      String? stokAdi,
-      String? referansStokKodu,
-      String? referansStokAdi}) = _$ReferanslarImpl;
+  factory _Referanslar({
+    int? id,
+    String? hammaddeNo,
+    String? stokKodu,
+    String? stokAdi,
+    String? referansStokKodu,
+    String? referansStokAdi,
+  }) = _$ReferanslarImpl;
 
-  factory _Referanslar.fromJson(Map<String, dynamic> json) =
-      _$ReferanslarImpl.fromJson;
+  factory _Referanslar.fromJson(Map<String, dynamic> json) = _$ReferanslarImpl.fromJson;
 
   @override
   int? get id;
@@ -467,6 +449,5 @@ abstract class _Referanslar implements Referanslar {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReferanslarImplCopyWith<_$ReferanslarImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ReferanslarImplCopyWith<_$ReferanslarImpl> get copyWith => throw _privateConstructorUsedError;
 }

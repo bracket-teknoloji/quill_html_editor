@@ -67,42 +67,35 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
     ),
     body: ListView.builder(
       itemCount: viewModel.observableList?.length,
-      itemBuilder:
-          (context, index) => CustomTextField(
-            controller: controllerList[index],
-            labelText: viewModel.observableList?[index].name ?? "",
-            onChanged: (value) => viewModel.setSearchText(index, value),
-            valueWidget: Observer(
-              builder:
-                  (_) => Text(
-                    viewModel.detaySekliList
-                            .firstWhereOrNull(
-                              (element) => element.kodu == viewModel.observableList?[index].searchCriter,
-                            )
-                            ?.adi ??
-                        "",
-                  ),
-            ),
-            suffix: IconButton(
-              onPressed: () async {
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                  context,
-                  title: "Kriter Seçiniz",
-                  groupValue: viewModel.observableList?[index].searchCriter,
-                  children:
-                      viewModel.detaySekliList
-                          .map(
-                            (element) => BottomSheetModel(title: element.adi, value: element, groupValue: element.kodu),
-                          )
-                          .toList(),
-                );
-                if (result is DetaySekliRecord) {
-                  viewModel.setKriter(index, result);
-                }
-              },
-              icon: const Icon(Icons.manage_search_outlined),
-            ),
+      itemBuilder: (context, index) => CustomTextField(
+        controller: controllerList[index],
+        labelText: viewModel.observableList?[index].name ?? "",
+        onChanged: (value) => viewModel.setSearchText(index, value),
+        valueWidget: Observer(
+          builder: (_) => Text(
+            viewModel.detaySekliList
+                    .firstWhereOrNull((element) => element.kodu == viewModel.observableList?[index].searchCriter)
+                    ?.adi ??
+                "",
           ),
+        ),
+        suffix: IconButton(
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: "Kriter Seçiniz",
+              groupValue: viewModel.observableList?[index].searchCriter,
+              children: viewModel.detaySekliList
+                  .map((element) => BottomSheetModel(title: element.adi, value: element, groupValue: element.kodu))
+                  .toList(),
+            );
+            if (result is DetaySekliRecord) {
+              viewModel.setKriter(index, result);
+            }
+          },
+          icon: const Icon(Icons.manage_search_outlined),
+        ),
+      ),
     ).paddingAll(UIHelper.lowSize),
   );
 }

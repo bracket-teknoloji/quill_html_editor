@@ -44,68 +44,52 @@ final class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
           CustomTextField(
             labelText: "Unvan",
             isMust: true,
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..adi = value
-                      ..cariAdi = value,
+            onChanged: (value) => cariModel
+              ..adi = value
+              ..cariAdi = value,
           ),
           CustomTextField(
             labelText: "İl",
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..cariIl = value
-                      ..sehir = value,
+            onChanged: (value) => cariModel
+              ..cariIl = value
+              ..sehir = value,
           ),
           CustomTextField(
             labelText: "İlçe",
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..cariIlce = value
-                      ..ilce = value,
+            onChanged: (value) => cariModel
+              ..cariIlce = value
+              ..ilce = value,
           ),
           CustomTextField(
             labelText: "Adres",
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..cariAdres = value
-                      ..adres = value,
+            onChanged: (value) => cariModel
+              ..cariAdres = value
+              ..adres = value,
           ),
           CustomTextField(
             labelText: "Telefon",
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..cariTel = value
-                      ..telefon = value,
+            onChanged: (value) => cariModel
+              ..cariTel = value
+              ..telefon = value,
           ),
           CustomTextField(
             labelText: "E-Posta",
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..email = value
-                      ..eposta = value,
+            onChanged: (value) => cariModel
+              ..email = value
+              ..eposta = value,
           ),
           CustomTextField(
             labelText: "Web",
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..web = value
-                      ..website = value,
+            onChanged: (value) => cariModel
+              ..web = value
+              ..website = value,
           ),
           CustomTextField(labelText: "Vergi Dairesi", onChanged: (value) => cariModel.vergiDairesi = value),
           CustomTextField(
             labelText: "Vergi No",
-            onChanged:
-                (value) =>
-                    cariModel
-                      ..vergiNo = value
-                      ..vergiNumarasi = value,
+            onChanged: (value) => cariModel
+              ..vergiNo = value
+              ..vergiNumarasi = value,
           ),
         ],
       ).paddingAll(UIHelper.lowSize),

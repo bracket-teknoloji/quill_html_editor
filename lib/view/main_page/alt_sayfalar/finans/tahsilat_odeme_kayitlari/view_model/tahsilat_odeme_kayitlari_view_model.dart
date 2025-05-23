@@ -59,18 +59,17 @@ abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin
 
   //* Computed
   @computed
-  ObservableList<CariHareketleriModel>? get getCariHareketleriListesi =>
-      searchText != null
-          ? cariHareketleriListesi
-              ?.where(
-                (element) =>
-                    (element.belgeNo?.contains(searchText ?? "") ?? false) ||
-                    (element.cariAdi?.contains(searchText ?? "") ?? false) ||
-                    (element.cariKodu?.contains(searchText ?? "") ?? false),
-              )
-              .toList()
-              .asObservable()
-          : cariHareketleriListesi;
+  ObservableList<CariHareketleriModel>? get getCariHareketleriListesi => searchText != null
+      ? cariHareketleriListesi
+            ?.where(
+              (element) =>
+                  (element.belgeNo?.contains(searchText ?? "") ?? false) ||
+                  (element.cariAdi?.contains(searchText ?? "") ?? false) ||
+                  (element.cariKodu?.contains(searchText ?? "") ?? false),
+            )
+            .toList()
+            .asObservable()
+      : cariHareketleriListesi;
 
   @computed
   bool get getAnyFilter =>

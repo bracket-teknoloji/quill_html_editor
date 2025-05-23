@@ -169,18 +169,17 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
       child: Column(
         children: [
           Observer(
-            builder:
-                (_) => SwitchListTile.adaptive(
-                  value: viewModel.model.ciroMu,
-                  onChanged: (value) {
-                    viewModel.setCiroTipi(value ? "C" : "A");
-                    if (!value) {
-                      viewModel.setAsilCari(null);
-                      _asilBorcluController.clear();
-                    }
-                  },
-                  title: const Text("Ciro"),
-                ).yetkiVarMi(!widget.cekSenetListesiEnum.borcMu),
+            builder: (_) => SwitchListTile.adaptive(
+              value: viewModel.model.ciroMu,
+              onChanged: (value) {
+                viewModel.setCiroTipi(value ? "C" : "A");
+                if (!value) {
+                  viewModel.setAsilCari(null);
+                  _asilBorcluController.clear();
+                }
+              },
+              title: const Text("Ciro"),
+            ).yetkiVarMi(!widget.cekSenetListesiEnum.borcMu),
           ),
           CustomTextField(
             labelText: "Banka Hesap Kodu",
@@ -191,19 +190,18 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
             onTap: getBankaHesapKodu,
           ).yetkiVarMi(widget.cekSenetListesiEnum == CekSenetListesiEnum.cekBorc),
           Observer(
-            builder:
-                (_) => CustomTextField(
-                  labelText: "Asıl Borçlu",
-                  controller: _asilBorcluController,
-                  onClear: () => viewModel.setAsilCari(null),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      await getAsilBorclu();
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
-                  ),
-                  onChanged: viewModel.setAsilCari,
-                ).yetkiVarMi(viewModel.model.ciroMu && widget.cekSenetListesiEnum.cekMi),
+            builder: (_) => CustomTextField(
+              labelText: "Asıl Borçlu",
+              controller: _asilBorcluController,
+              onClear: () => viewModel.setAsilCari(null),
+              suffix: IconButton(
+                onPressed: () async {
+                  await getAsilBorclu();
+                },
+                icon: const Icon(Icons.more_horiz_outlined),
+              ),
+              onChanged: viewModel.setAsilCari,
+            ).yetkiVarMi(viewModel.model.ciroMu && widget.cekSenetListesiEnum.cekMi),
           ),
           Row(
             children: [
@@ -227,93 +225,90 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
             ],
           ),
           Observer(
-            builder:
-                (_) => Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Döviz Tipi",
-                        controller: _dovizTipiController,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
-                        onTap: getDovizTipi,
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Döviz Tutarı",
-                        controller: _dovizTutariController,
-                        isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        onChanged: (value) {
-                          viewModel
-                            ..setDovizTutari(value.toDoubleWithFormattedString)
-                            ..setTutar(
-                              (viewModel.model.dovizTutari ?? 0) *
-                                  (_dovizKuruController.text.toDoubleWithFormattedString),
-                            );
-                          _tutarController.text =
-                              viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                        },
-                      ),
-                    ).yetkiVarMi(viewModel.model.dovizliMi),
-                  ],
-                ).yetkiVarMi(widget.cekSenetListesiEnum != CekSenetListesiEnum.cekBorc),
+            builder: (_) => Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Döviz Tipi",
+                    controller: _dovizTipiController,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
+                    onTap: getDovizTipi,
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Döviz Tutarı",
+                    controller: _dovizTutariController,
+                    isMust: true,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    isFormattedString: true,
+                    onChanged: (value) {
+                      viewModel
+                        ..setDovizTutari(value.toDoubleWithFormattedString)
+                        ..setTutar(
+                          (viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString),
+                        );
+                      _tutarController.text =
+                          viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                    },
+                  ),
+                ).yetkiVarMi(viewModel.model.dovizliMi),
+              ],
+            ).yetkiVarMi(widget.cekSenetListesiEnum != CekSenetListesiEnum.cekBorc),
           ),
           Observer(
-            builder:
-                (_) => Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Döviz Kuru",
-                        controller: _dovizKuruController,
-                        isFormattedString: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) {
-                          if (_dovizKuruController.text != "") {
-                            viewModel.setDovizTutari(
-                              (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
-                            );
-                            _dovizTutariController.text =
-                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                          } else {
-                            viewModel.setDovizTutari(null);
-                            _dovizTutariController.clear();
-                          }
-                        },
-                        suffix: IconButton(
-                          onPressed: () async => await getDovizDialog(),
-                          icon: const Icon(Icons.more_horiz_outlined),
-                        ),
-                      ),
-                    ).yetkiVarMi(viewModel.model.dovizliMi),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Tutar",
-                        controller: _tutarController,
-                        isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        onChanged: (value) {
-                          viewModel.setTutar(value.toDoubleWithFormattedString);
-                          if (viewModel.model.dovizliMi) {
-                            viewModel.setDovizTutari(
-                              (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
-                            );
-                            _dovizTutariController.text =
-                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                          } else {
-                            viewModel.setDovizTutari(null);
-                            _dovizTutariController.clear();
-                          }
-                        },
-                      ),
+            builder: (_) => Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Döviz Kuru",
+                    controller: _dovizKuruController,
+                    isFormattedString: true,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    onChanged: (value) {
+                      if (_dovizKuruController.text != "") {
+                        viewModel.setDovizTutari(
+                          (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                        );
+                        _dovizTutariController.text =
+                            viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                      } else {
+                        viewModel.setDovizTutari(null);
+                        _dovizTutariController.clear();
+                      }
+                    },
+                    suffix: IconButton(
+                      onPressed: () async => await getDovizDialog(),
+                      icon: const Icon(Icons.more_horiz_outlined),
                     ),
-                  ],
+                  ),
+                ).yetkiVarMi(viewModel.model.dovizliMi),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tutar",
+                    controller: _tutarController,
+                    isMust: true,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    isFormattedString: true,
+                    onChanged: (value) {
+                      viewModel.setTutar(value.toDoubleWithFormattedString);
+                      if (viewModel.model.dovizliMi) {
+                        viewModel.setDovizTutari(
+                          (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                        );
+                        _dovizTutariController.text =
+                            viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                      } else {
+                        viewModel.setDovizTutari(null);
+                        _dovizTutariController.clear();
+                      }
+                    },
+                  ),
                 ),
+              ],
+            ),
           ),
           CustomTextField(
             labelText: "Düzenlendiği Yer",
@@ -321,8 +316,8 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
             onChanged: viewModel.setDuzenlendigiYer,
           ).yetkiVarMi(!widget.cekSenetListesiEnum.cekMi),
           Observer(
-            builder:
-                (_) => CustomTextField(
+            builder: (_) =>
+                CustomTextField(
                   labelText: "Referans Kodu",
                   controller: _referansKoduController,
                   isMust: true,
@@ -337,17 +332,16 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
                       context,
                       title: "Referans Kodu",
                       groupValue: viewModel.model.refKod,
-                      children:
-                          viewModel.muhaRefList!
-                              .map(
-                                (e) => BottomSheetModel(
-                                  title: e.tanimi ?? "",
-                                  description: e.kodu,
-                                  value: e,
-                                  groupValue: e.kodu,
-                                ),
-                              )
-                              .toList(),
+                      children: viewModel.muhaRefList!
+                          .map(
+                            (e) => BottomSheetModel(
+                              title: e.tanimi ?? "",
+                              description: e.kodu,
+                              value: e,
+                              groupValue: e.kodu,
+                            ),
+                          )
+                          .toList(),
                     );
                     if (result is MuhasebeReferansModel) {
                       _referansKoduController.text = result.tanimi ?? "";
@@ -436,66 +430,59 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
             ],
           ),
           LayoutBuilder(
-            builder:
-                (context, constraints) => Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          const Text("Ön Taraf").paddingAll(UIHelper.lowSize),
-                          InkWell(
-                            onTap: () async => await takeImage(1),
-                            child: Card(
-                              child: SizedBox(
-                                height: (constraints.maxWidth - UIHelper.midSize) / 2,
-                                child: Observer(
-                                  builder: (_) {
-                                    if (viewModel.model.gorsel1 != null) {
-                                      return Image.memory(
-                                        base64Decode(viewModel.model.gorsel1!),
-                                        fit: BoxFit.scaleDown,
-                                      );
-                                    }
-                                    return const Icon(Icons.camera_alt_outlined);
-                                  },
-                                ).paddingAll(UIHelper.lowSize),
-                              ),
-                            ),
+            builder: (context, constraints) => Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const Text("Ön Taraf").paddingAll(UIHelper.lowSize),
+                      InkWell(
+                        onTap: () async => await takeImage(1),
+                        child: Card(
+                          child: SizedBox(
+                            height: (constraints.maxWidth - UIHelper.midSize) / 2,
+                            child: Observer(
+                              builder: (_) {
+                                if (viewModel.model.gorsel1 != null) {
+                                  return Image.memory(base64Decode(viewModel.model.gorsel1!), fit: BoxFit.scaleDown);
+                                }
+                                return const Icon(Icons.camera_alt_outlined);
+                              },
+                            ).paddingAll(UIHelper.lowSize),
                           ),
-                        ],
-                      ).paddingAll(UIHelper.lowSize),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          const Text("Arka Taraf").paddingAll(UIHelper.lowSize),
-                          InkWell(
-                            onTap: () async => await takeImage(2),
-                            child: Card(
-                              child: SizedBox(
-                                height: (constraints.maxWidth - UIHelper.midSize) / 2,
-                                child: Observer(
-                                  builder: (_) {
-                                    if (viewModel.model.gorsel2 != null) {
-                                      return Image.memory(
-                                        base64Decode(viewModel.model.gorsel2!),
-                                        fit: BoxFit.scaleDown,
-                                      );
-                                    }
-                                    return const Icon(Icons.camera_alt_outlined);
-                                  },
-                                ).paddingAll(UIHelper.lowSize),
-                              ),
-                            ),
+                        ),
+                      ),
+                    ],
+                  ).paddingAll(UIHelper.lowSize),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const Text("Arka Taraf").paddingAll(UIHelper.lowSize),
+                      InkWell(
+                        onTap: () async => await takeImage(2),
+                        child: Card(
+                          child: SizedBox(
+                            height: (constraints.maxWidth - UIHelper.midSize) / 2,
+                            child: Observer(
+                              builder: (_) {
+                                if (viewModel.model.gorsel2 != null) {
+                                  return Image.memory(base64Decode(viewModel.model.gorsel2!), fit: BoxFit.scaleDown);
+                                }
+                                return const Icon(Icons.camera_alt_outlined);
+                              },
+                            ).paddingAll(UIHelper.lowSize),
                           ),
-                        ],
-                      ).paddingAll(UIHelper.lowSize),
-                    ),
-                  ],
-                ).paddingSymmetric(vertical: UIHelper.highSize * 2),
+                        ),
+                      ),
+                    ],
+                  ).paddingAll(UIHelper.lowSize),
+                ),
+              ],
+            ).paddingSymmetric(vertical: UIHelper.highSize * 2),
           ),
         ],
       ).paddingAll(UIHelper.lowSize),

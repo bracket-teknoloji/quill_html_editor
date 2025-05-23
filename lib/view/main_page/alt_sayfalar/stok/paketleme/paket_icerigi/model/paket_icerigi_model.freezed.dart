@@ -12,7 +12,8 @@ part of 'paket_icerigi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PaketIcerigiModel _$PaketIcerigiModelFromJson(Map<String, dynamic> json) {
   return _PaketIcerigiModel.fromJson(json);
@@ -40,30 +41,29 @@ mixin _$PaketIcerigiModel {
   /// Create a copy of PaketIcerigiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaketIcerigiModelCopyWith<PaketIcerigiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PaketIcerigiModelCopyWith<PaketIcerigiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaketIcerigiModelCopyWith<$Res> {
-  factory $PaketIcerigiModelCopyWith(
-          PaketIcerigiModel value, $Res Function(PaketIcerigiModel) then) =
+  factory $PaketIcerigiModelCopyWith(PaketIcerigiModel value, $Res Function(PaketIcerigiModel) then) =
       _$PaketIcerigiModelCopyWithImpl<$Res, PaketIcerigiModel>;
   @useResult
-  $Res call(
-      {int? id,
-      int? paketId,
-      String? paketKodu,
-      int? depoKodu,
-      String? depoAdi,
-      String? stokKodu,
-      String? stokAdi,
-      double? miktar,
-      String? cikistaSeri,
-      String? seriMiktarKadar,
-      String? seriBakiyeKontrol,
-      String? seriCikistaOtomatik,
-      List<SeriList>? seriList});
+  $Res call({
+    int? id,
+    int? paketId,
+    String? paketKodu,
+    int? depoKodu,
+    String? depoAdi,
+    String? stokKodu,
+    String? stokAdi,
+    double? miktar,
+    String? cikistaSeri,
+    String? seriMiktarKadar,
+    String? seriBakiyeKontrol,
+    String? seriCikistaOtomatik,
+    List<SeriList>? seriList,
+  });
 }
 
 /// @nodoc
@@ -95,94 +95,94 @@ class _$PaketIcerigiModelCopyWithImpl<$Res, $Val extends PaketIcerigiModel>
     Object? seriCikistaOtomatik = freezed,
     Object? seriList = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketId: freezed == paketId
-          ? _value.paketId
-          : paketId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketKodu: freezed == paketKodu
-          ? _value.paketKodu
-          : paketKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoAdi: freezed == depoAdi
-          ? _value.depoAdi
-          : depoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cikistaSeri: freezed == cikistaSeri
-          ? _value.cikistaSeri
-          : cikistaSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriMiktarKadar: freezed == seriMiktarKadar
-          ? _value.seriMiktarKadar
-          : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriBakiyeKontrol: freezed == seriBakiyeKontrol
-          ? _value.seriBakiyeKontrol
-          : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriCikistaOtomatik: freezed == seriCikistaOtomatik
-          ? _value.seriCikistaOtomatik
-          : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriList: freezed == seriList
-          ? _value.seriList
-          : seriList // ignore: cast_nullable_to_non_nullable
-              as List<SeriList>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            paketId: freezed == paketId
+                ? _value.paketId
+                : paketId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            paketKodu: freezed == paketKodu
+                ? _value.paketKodu
+                : paketKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            depoAdi: freezed == depoAdi
+                ? _value.depoAdi
+                : depoAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokAdi: freezed == stokAdi
+                ? _value.stokAdi
+                : stokAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            miktar: freezed == miktar
+                ? _value.miktar
+                : miktar // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            cikistaSeri: freezed == cikistaSeri
+                ? _value.cikistaSeri
+                : cikistaSeri // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriMiktarKadar: freezed == seriMiktarKadar
+                ? _value.seriMiktarKadar
+                : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriBakiyeKontrol: freezed == seriBakiyeKontrol
+                ? _value.seriBakiyeKontrol
+                : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriCikistaOtomatik: freezed == seriCikistaOtomatik
+                ? _value.seriCikistaOtomatik
+                : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriList: freezed == seriList
+                ? _value.seriList
+                : seriList // ignore: cast_nullable_to_non_nullable
+                      as List<SeriList>?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$PaketIcerigiModelImplCopyWith<$Res>
-    implements $PaketIcerigiModelCopyWith<$Res> {
-  factory _$$PaketIcerigiModelImplCopyWith(_$PaketIcerigiModelImpl value,
-          $Res Function(_$PaketIcerigiModelImpl) then) =
+abstract class _$$PaketIcerigiModelImplCopyWith<$Res> implements $PaketIcerigiModelCopyWith<$Res> {
+  factory _$$PaketIcerigiModelImplCopyWith(_$PaketIcerigiModelImpl value, $Res Function(_$PaketIcerigiModelImpl) then) =
       __$$PaketIcerigiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      int? paketId,
-      String? paketKodu,
-      int? depoKodu,
-      String? depoAdi,
-      String? stokKodu,
-      String? stokAdi,
-      double? miktar,
-      String? cikistaSeri,
-      String? seriMiktarKadar,
-      String? seriBakiyeKontrol,
-      String? seriCikistaOtomatik,
-      List<SeriList>? seriList});
+  $Res call({
+    int? id,
+    int? paketId,
+    String? paketKodu,
+    int? depoKodu,
+    String? depoAdi,
+    String? stokKodu,
+    String? stokAdi,
+    double? miktar,
+    String? cikistaSeri,
+    String? seriMiktarKadar,
+    String? seriBakiyeKontrol,
+    String? seriCikistaOtomatik,
+    List<SeriList>? seriList,
+  });
 }
 
 /// @nodoc
-class __$$PaketIcerigiModelImplCopyWithImpl<$Res>
-    extends _$PaketIcerigiModelCopyWithImpl<$Res, _$PaketIcerigiModelImpl>
+class __$$PaketIcerigiModelImplCopyWithImpl<$Res> extends _$PaketIcerigiModelCopyWithImpl<$Res, _$PaketIcerigiModelImpl>
     implements _$$PaketIcerigiModelImplCopyWith<$Res> {
-  __$$PaketIcerigiModelImplCopyWithImpl(_$PaketIcerigiModelImpl _value,
-      $Res Function(_$PaketIcerigiModelImpl) _then)
-      : super(_value, _then);
+  __$$PaketIcerigiModelImplCopyWithImpl(_$PaketIcerigiModelImpl _value, $Res Function(_$PaketIcerigiModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of PaketIcerigiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -203,85 +203,86 @@ class __$$PaketIcerigiModelImplCopyWithImpl<$Res>
     Object? seriCikistaOtomatik = freezed,
     Object? seriList = freezed,
   }) {
-    return _then(_$PaketIcerigiModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketId: freezed == paketId
-          ? _value.paketId
-          : paketId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketKodu: freezed == paketKodu
-          ? _value.paketKodu
-          : paketKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoAdi: freezed == depoAdi
-          ? _value.depoAdi
-          : depoAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokAdi: freezed == stokAdi
-          ? _value.stokAdi
-          : stokAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      miktar: freezed == miktar
-          ? _value.miktar
-          : miktar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cikistaSeri: freezed == cikistaSeri
-          ? _value.cikistaSeri
-          : cikistaSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriMiktarKadar: freezed == seriMiktarKadar
-          ? _value.seriMiktarKadar
-          : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriBakiyeKontrol: freezed == seriBakiyeKontrol
-          ? _value.seriBakiyeKontrol
-          : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriCikistaOtomatik: freezed == seriCikistaOtomatik
-          ? _value.seriCikistaOtomatik
-          : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriList: freezed == seriList
-          ? _value._seriList
-          : seriList // ignore: cast_nullable_to_non_nullable
-              as List<SeriList>?,
-    ));
+    return _then(
+      _$PaketIcerigiModelImpl(
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        paketId: freezed == paketId
+            ? _value.paketId
+            : paketId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        paketKodu: freezed == paketKodu
+            ? _value.paketKodu
+            : paketKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        depoAdi: freezed == depoAdi
+            ? _value.depoAdi
+            : depoAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokAdi: freezed == stokAdi
+            ? _value.stokAdi
+            : stokAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        miktar: freezed == miktar
+            ? _value.miktar
+            : miktar // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        cikistaSeri: freezed == cikistaSeri
+            ? _value.cikistaSeri
+            : cikistaSeri // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriMiktarKadar: freezed == seriMiktarKadar
+            ? _value.seriMiktarKadar
+            : seriMiktarKadar // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriBakiyeKontrol: freezed == seriBakiyeKontrol
+            ? _value.seriBakiyeKontrol
+            : seriBakiyeKontrol // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriCikistaOtomatik: freezed == seriCikistaOtomatik
+            ? _value.seriCikistaOtomatik
+            : seriCikistaOtomatik // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriList: freezed == seriList
+            ? _value._seriList
+            : seriList // ignore: cast_nullable_to_non_nullable
+                  as List<SeriList>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PaketIcerigiModelImpl extends _PaketIcerigiModel {
-  _$PaketIcerigiModelImpl(
-      {this.id,
-      this.paketId,
-      this.paketKodu,
-      this.depoKodu,
-      this.depoAdi,
-      this.stokKodu,
-      this.stokAdi,
-      this.miktar,
-      this.cikistaSeri,
-      this.seriMiktarKadar,
-      this.seriBakiyeKontrol,
-      this.seriCikistaOtomatik,
-      final List<SeriList>? seriList})
-      : _seriList = seriList,
-        super._();
+  _$PaketIcerigiModelImpl({
+    this.id,
+    this.paketId,
+    this.paketKodu,
+    this.depoKodu,
+    this.depoAdi,
+    this.stokKodu,
+    this.stokAdi,
+    this.miktar,
+    this.cikistaSeri,
+    this.seriMiktarKadar,
+    this.seriBakiyeKontrol,
+    this.seriCikistaOtomatik,
+    final List<SeriList>? seriList,
+  }) : _seriList = seriList,
+       super._();
 
-  factory _$PaketIcerigiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaketIcerigiModelImplFromJson(json);
+  factory _$PaketIcerigiModelImpl.fromJson(Map<String, dynamic> json) => _$$PaketIcerigiModelImplFromJson(json);
 
   @override
   final int? id;
@@ -323,36 +324,33 @@ class _$PaketIcerigiModelImpl extends _PaketIcerigiModel {
   @override
   @pragma('vm:prefer-inline')
   _$$PaketIcerigiModelImplCopyWith<_$PaketIcerigiModelImpl> get copyWith =>
-      __$$PaketIcerigiModelImplCopyWithImpl<_$PaketIcerigiModelImpl>(
-          this, _$identity);
+      __$$PaketIcerigiModelImplCopyWithImpl<_$PaketIcerigiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PaketIcerigiModelImplToJson(
-      this,
-    );
+    return _$$PaketIcerigiModelImplToJson(this);
   }
 }
 
 abstract class _PaketIcerigiModel extends PaketIcerigiModel {
-  factory _PaketIcerigiModel(
-      {final int? id,
-      final int? paketId,
-      final String? paketKodu,
-      final int? depoKodu,
-      final String? depoAdi,
-      final String? stokKodu,
-      final String? stokAdi,
-      final double? miktar,
-      final String? cikistaSeri,
-      final String? seriMiktarKadar,
-      final String? seriBakiyeKontrol,
-      final String? seriCikistaOtomatik,
-      final List<SeriList>? seriList}) = _$PaketIcerigiModelImpl;
+  factory _PaketIcerigiModel({
+    final int? id,
+    final int? paketId,
+    final String? paketKodu,
+    final int? depoKodu,
+    final String? depoAdi,
+    final String? stokKodu,
+    final String? stokAdi,
+    final double? miktar,
+    final String? cikistaSeri,
+    final String? seriMiktarKadar,
+    final String? seriBakiyeKontrol,
+    final String? seriCikistaOtomatik,
+    final List<SeriList>? seriList,
+  }) = _$PaketIcerigiModelImpl;
   _PaketIcerigiModel._() : super._();
 
-  factory _PaketIcerigiModel.fromJson(Map<String, dynamic> json) =
-      _$PaketIcerigiModelImpl.fromJson;
+  factory _PaketIcerigiModel.fromJson(Map<String, dynamic> json) = _$PaketIcerigiModelImpl.fromJson;
 
   @override
   int? get id;
@@ -385,6 +383,5 @@ abstract class _PaketIcerigiModel extends PaketIcerigiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaketIcerigiModelImplCopyWith<_$PaketIcerigiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PaketIcerigiModelImplCopyWith<_$PaketIcerigiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

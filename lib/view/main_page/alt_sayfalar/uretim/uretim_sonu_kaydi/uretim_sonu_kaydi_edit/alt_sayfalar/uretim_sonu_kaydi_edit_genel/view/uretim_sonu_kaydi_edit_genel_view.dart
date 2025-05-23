@@ -211,15 +211,14 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           ),
           if (!yapiKalemliMi) mamulKoduField(),
           Observer(
-            builder:
-                (_) => CustomLayoutBuilder.divideInHalf(
-                  children: [
-                    if (!yapiKalemliMi) hurdaFireMiktariField(),
-                    if (!yapiKalemliMi && (viewModel.kalem?.seriCikislardaAcik ?? false)) serilerField(),
-                    if (!widget.model.baseEditEnum.ekleMi && !yapiKalemliMi) maliyetFiyatiField(),
-                    if (!widget.model.baseEditEnum.ekleMi && !yapiKalemliMi) mailyetTutariField(),
-                  ],
-                ),
+            builder: (_) => CustomLayoutBuilder.divideInHalf(
+              children: [
+                if (!yapiKalemliMi) hurdaFireMiktariField(),
+                if (!yapiKalemliMi && (viewModel.kalem?.seriCikislardaAcik ?? false)) serilerField(),
+                if (!widget.model.baseEditEnum.ekleMi && !yapiKalemliMi) maliyetFiyatiField(),
+                if (!widget.model.baseEditEnum.ekleMi && !yapiKalemliMi) mailyetTutariField(),
+              ],
+            ),
           ),
           aciklamaField(),
           if (!yapiKalemliMi) ekAlan1Field(),
@@ -449,17 +448,16 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     readOnly: !yetkiController.uretimFireDetayUygulamasi,
     suffixMore: yetkiController.uretimFireDetayUygulamasi,
     keyboardType: const TextInputType.numberWithOptions(decimal: true),
-    onTap:
-        yetkiController.uretimFireDetayUygulamasi
-            ? () async {
-              final result = await Get.toNamed("mainPage/uretimFireBilgileri", arguments: viewModel.kalem);
-              if (result case final List<KalemFireModel> value?) {
-                viewModel.setKalemFireList(value);
-                hurdaFireMiktariController.text =
-                    "Toplam (${value.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}) | ${value.length} Kalem";
-              }
+    onTap: yetkiController.uretimFireDetayUygulamasi
+        ? () async {
+            final result = await Get.toNamed("mainPage/uretimFireBilgileri", arguments: viewModel.kalem);
+            if (result case final List<KalemFireModel> value?) {
+              viewModel.setKalemFireList(value);
+              hurdaFireMiktariController.text =
+                  "Toplam (${value.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}) | ${value.length} Kalem";
             }
-            : null,
+          }
+        : null,
     onChanged: (value) => viewModel.setHurdaMiktari(value.toDoubleWithFormattedString),
   );
 
@@ -470,12 +468,11 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     isMust: true,
     readOnly: true,
     valueWidget: Observer(
-      builder:
-          (_) => Text(
-            viewModel.kalem?.seriList != null
-                ? "(${viewModel.kalem?.seriList?.length.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)})"
-                : "",
-          ),
+      builder: (_) => Text(
+        viewModel.kalem?.seriList != null
+            ? "(${viewModel.kalem?.seriList?.length.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)})"
+            : "",
+      ),
     ),
     onTap: getSeriler,
   );

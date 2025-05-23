@@ -210,103 +210,98 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
             ],
           ),
           Observer(
-            builder:
-                (_) => Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (viewModel.model.dovizliMi)
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Döviz Tipi",
-                          controller: dovizTipiController,
-                          readOnly: true,
-                          isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          isFormattedString: true,
-                          valueWidget: Observer(
-                            builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? ""),
-                          ),
-                          onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
-                        ),
-                      ),
-                    if (viewModel.model.dovizliMi)
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Döviz Kuru",
-                          controller: dovizKuruController,
-                          isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          isFormattedString: true,
-                          onChanged: (value) {
-                            if (dovizKuruController.text != "") {
-                              viewModel.setDovizTutari(
-                                (viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString,
-                              );
-                              dovizTutariController.text =
-                                  viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                            } else {
-                              viewModel.setDovizTutari(null);
-                              dovizTutariController.clear();
-                            }
-                          },
-                          suffix: IconButton(
-                            onPressed: () async => await getDovizDialog(),
-                            icon: const Icon(Icons.more_horiz_outlined),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-          ),
-          Observer(
-            builder:
-                (_) => Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (viewModel.model.dovizliMi)
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Döviz Tutarı",
-                          controller: dovizTutariController,
-                          isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          isFormattedString: true,
-                          onChanged: (value) {
-                            viewModel
-                              ..setDovizTutari(value.toDoubleWithFormattedString)
-                              ..setTutar(
-                                (viewModel.model.dovizTutari ?? 0) *
-                                    (dovizKuruController.text.toDoubleWithFormattedString),
-                              );
-                            tutarController.text =
-                                viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                          },
-                        ),
-                      ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Tutar",
-                        controller: tutarController,
-                        isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        onChanged: (value) {
-                          viewModel.setTutar(value.toDoubleWithFormattedString);
-                          if (viewModel.model.dovizliMi) {
-                            viewModel.setDovizTutari(
-                              (viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString,
-                            );
-                            dovizTutariController.text =
-                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                          } else {
-                            viewModel.setDovizTutari(null);
-                            dovizTutariController.clear();
-                          }
-                        },
+            builder: (_) => Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (viewModel.model.dovizliMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Döviz Tipi",
+                      controller: dovizTipiController,
+                      readOnly: true,
+                      isMust: true,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      isFormattedString: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
+                      onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
+                    ),
+                  ),
+                if (viewModel.model.dovizliMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Döviz Kuru",
+                      controller: dovizKuruController,
+                      isMust: true,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      isFormattedString: true,
+                      onChanged: (value) {
+                        if (dovizKuruController.text != "") {
+                          viewModel.setDovizTutari(
+                            (viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString,
+                          );
+                          dovizTutariController.text =
+                              viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                        } else {
+                          viewModel.setDovizTutari(null);
+                          dovizTutariController.clear();
+                        }
+                      },
+                      suffix: IconButton(
+                        onPressed: () async => await getDovizDialog(),
+                        icon: const Icon(Icons.more_horiz_outlined),
                       ),
                     ),
-                  ],
+                  ),
+              ],
+            ),
+          ),
+          Observer(
+            builder: (_) => Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (viewModel.model.dovizliMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Döviz Tutarı",
+                      controller: dovizTutariController,
+                      isMust: true,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      isFormattedString: true,
+                      onChanged: (value) {
+                        viewModel
+                          ..setDovizTutari(value.toDoubleWithFormattedString)
+                          ..setTutar(
+                            (viewModel.model.dovizTutari ?? 0) * (dovizKuruController.text.toDoubleWithFormattedString),
+                          );
+                        tutarController.text =
+                            viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                      },
+                    ),
+                  ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tutar",
+                    controller: tutarController,
+                    isMust: true,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    isFormattedString: true,
+                    onChanged: (value) {
+                      viewModel.setTutar(value.toDoubleWithFormattedString);
+                      if (viewModel.model.dovizliMi) {
+                        viewModel.setDovizTutari(
+                          (viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString,
+                        );
+                        dovizTutariController.text =
+                            viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                      } else {
+                        viewModel.setDovizTutari(null);
+                        dovizTutariController.clear();
+                      }
+                    },
+                  ),
                 ),
+              ],
+            ),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,

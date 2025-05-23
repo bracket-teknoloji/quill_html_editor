@@ -6,8 +6,7 @@ part of 'cek_senet_evrak_ekle_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CekSenetEvrakEkleModelImpl _$$CekSenetEvrakEkleModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$CekSenetEvrakEkleModelImpl _$$CekSenetEvrakEkleModelImplFromJson(Map<String, dynamic> json) =>
     _$CekSenetEvrakEkleModelImpl(
       aciklama: json['ACIKLAMA'] as String?,
       base64Data: json['BASE64_DATA'] as String?,
@@ -17,13 +16,11 @@ _$CekSenetEvrakEkleModelImpl _$$CekSenetEvrakEkleModelImplFromJson(
       islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$CekSenetEvrakEkleModelImplToJson(
-        _$CekSenetEvrakEkleModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.base64Data case final value?) 'BASE64_DATA': value,
-      if (instance.belgeNo case final value?) 'BELGE_NO': value,
-      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-      if (instance.boyutByte case final value?) 'BOYUT_BYTE': value,
-      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-    };
+Map<String, dynamic> _$$CekSenetEvrakEkleModelImplToJson(_$CekSenetEvrakEkleModelImpl instance) => <String, dynamic>{
+  if (instance.aciklama case final value?) 'ACIKLAMA': value,
+  if (instance.base64Data case final value?) 'BASE64_DATA': value,
+  if (instance.belgeNo case final value?) 'BELGE_NO': value,
+  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+  if (instance.boyutByte case final value?) 'BOYUT_BYTE': value,
+  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+};

@@ -120,42 +120,40 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
               suffixMore: true,
               controller: cariController,
               valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
-              suffix:
-                  isEkle
-                      ? IconButton(
-                        onPressed: () async {
-
-// public boolean isSatisTeslimCarideBaglanmisCarilerSecilsin(String belgeTuru) {
-// 		boolean result = false;
-// 		if (BelgeUtils.belgeSatisMi(belgeTuru)) {
-// 			if (cari_TeslimCari_SatisBaglanmisCarilerSecilsin.isEmpty()) {
-// 				result = PrefManager.getInstance().getParamsModel().SatisTeslimCarideBaglanmisCarilerSecilsin;
-// 			} else if (cari_TeslimCari_SatisBaglanmisCarilerSecilsin.equalsIgnoreCase("E")) {
-// 				result = true;
-// 			}
-// 		} else if (BelgeUtils.belgeAlisMi(belgeTuru)) {
-// 			if (cari_TeslimCari_AlisBaglanmisCarilerSecilsin.isEmpty()) {
-// 				result = PrefManager.getInstance().getParamsModel().AlisTeslimCarideBaglanmisCarilerSecilsin;
-// 			} else if (cari_TeslimCari_AlisBaglanmisCarilerSecilsin.equalsIgnoreCase("E")) {
-// 				result = true;
-// 			}
-// 		}
-// 		return result;
-// 	}
-                          if (cariController.text.isEmpty) {
-                            dialogManager.showAlertDialog("Önce Cari Seçiniz");
-                            return;
-                          }
-                          final result = await networkManager.getCariModel(
-                            CariRequestModel(kod: [viewModel.model.cariKodu ?? ""]),
-                          );
-                          if (result != null) {
-                            dialogManager.showCariIslemleriGridViewDialog(result);
-                          }
-                        },
-                        icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                      )
-                      : null,
+              suffix: isEkle
+                  ? IconButton(
+                      onPressed: () async {
+                        // public boolean isSatisTeslimCarideBaglanmisCarilerSecilsin(String belgeTuru) {
+                        // 		boolean result = false;
+                        // 		if (BelgeUtils.belgeSatisMi(belgeTuru)) {
+                        // 			if (cari_TeslimCari_SatisBaglanmisCarilerSecilsin.isEmpty()) {
+                        // 				result = PrefManager.getInstance().getParamsModel().SatisTeslimCarideBaglanmisCarilerSecilsin;
+                        // 			} else if (cari_TeslimCari_SatisBaglanmisCarilerSecilsin.equalsIgnoreCase("E")) {
+                        // 				result = true;
+                        // 			}
+                        // 		} else if (BelgeUtils.belgeAlisMi(belgeTuru)) {
+                        // 			if (cari_TeslimCari_AlisBaglanmisCarilerSecilsin.isEmpty()) {
+                        // 				result = PrefManager.getInstance().getParamsModel().AlisTeslimCarideBaglanmisCarilerSecilsin;
+                        // 			} else if (cari_TeslimCari_AlisBaglanmisCarilerSecilsin.equalsIgnoreCase("E")) {
+                        // 				result = true;
+                        // 			}
+                        // 		}
+                        // 		return result;
+                        // 	}
+                        if (cariController.text.isEmpty) {
+                          dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                          return;
+                        }
+                        final result = await networkManager.getCariModel(
+                          CariRequestModel(kod: [viewModel.model.cariKodu ?? ""]),
+                        );
+                        if (result != null) {
+                          dialogManager.showCariIslemleriGridViewDialog(result);
+                        }
+                      },
+                      icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                    )
+                  : null,
               onTap: () async {
                 final result = await Get.toNamed(
                   "mainPage/cariRehberi",
@@ -181,12 +179,11 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   // _plasiyerController.text = result.plasiyerAciklama ?? "";
                   if (!result.bagliMi) {
                     viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
-                    viewModel.model.cariTitle =
-                        cariModel.efaturaCarisi == "E"
-                            ? "E-Fatura"
-                            : cariModel.efaturaCarisi == "H"
-                            ? "E-Arşiv"
-                            : null;
+                    viewModel.model.cariTitle = cariModel.efaturaCarisi == "E"
+                        ? "E-Fatura"
+                        : cariModel.efaturaCarisi == "H"
+                        ? "E-Arşiv"
+                        : null;
                     viewModel.setPlasiyer(
                       PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu),
                     );
@@ -198,12 +195,11 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       ..efaturaTipi = cariModel.efaturaTipi;
                   } else if (yetkiController.teslimCariBaglanmisCarilerSecilsinMi(model.getEditTipiEnum)) {
                     viewModel.model.efaturaSenaryo = cariModel.tempCariModel?.efaturaSenaryo;
-                    viewModel.model.cariTitle =
-                        cariModel.tempCariModel?.efaturaCarisi == "E"
-                            ? "E-Fatura"
-                            : cariModel.tempCariModel?.efaturaCarisi == "H"
-                            ? "E-Arşiv"
-                            : null;
+                    viewModel.model.cariTitle = cariModel.tempCariModel?.efaturaCarisi == "E"
+                        ? "E-Fatura"
+                        : cariModel.tempCariModel?.efaturaCarisi == "H"
+                        ? "E-Arşiv"
+                        : null;
                     viewModel.setPlasiyer(
                       PlasiyerList(
                         plasiyerAciklama: cariModel.tempCariModel?.plasiyerAciklama,
@@ -213,8 +209,9 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     plasiyerController.text = cariModel.tempCariModel?.plasiyerAciklama ?? "";
                     viewModel.model
                       ..vadeGunu = cariModel.tempCariModel?.vadeGunu
-                      ..vadeTarihi =
-                          DateTime.now().add(Duration(days: cariModel.tempCariModel?.vadeGunu ?? 0)).dateTimeWithoutTime
+                      ..vadeTarihi = DateTime.now()
+                          .add(Duration(days: cariModel.tempCariModel?.vadeGunu ?? 0))
+                          .dateTimeWithoutTime
                       ..efaturaTipi = cariModel.tempCariModel?.efaturaTipi;
                   }
                   viewModel
@@ -234,74 +231,72 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                 suffixMore: true,
                 controller: teslimCariController,
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
-                suffix:
-                    yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
-                        ? null
-                        : IconButton(
-                          onPressed: () async {
-                            if (cariController.text.isEmpty) {
-                              dialogManager.showAlertDialog("Önce Cari Seçiniz");
-                              return;
-                            }
-                            final result = await Get.toNamed(
-                              "mainPage/cariRehberi",
-                              arguments: CariListesiRequestModel(
-                                bagliCariKodu: model.cariKodu,
-                                teslimCari: "E",
-                                belgeTuru: widget.model.editTipiEnum?.rawValue,
-                              ),
-                            );
-                            if (result != null && result is CariListesiModel) {
-                              model
-                                ..teslimCari = result.cariKodu
-                                ..teslimCariAdi = result.cariAdi;
-                              teslimCariController.text = result.cariAdi ?? "";
-                            }
-                          },
-                          icon: const Icon(Icons.hub_outlined),
-                        ),
+                suffix: yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
+                    ? null
+                    : IconButton(
+                        onPressed: () async {
+                          if (cariController.text.isEmpty) {
+                            dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                            return;
+                          }
+                          final result = await Get.toNamed(
+                            "mainPage/cariRehberi",
+                            arguments: CariListesiRequestModel(
+                              bagliCariKodu: model.cariKodu,
+                              teslimCari: "E",
+                              belgeTuru: widget.model.editTipiEnum?.rawValue,
+                            ),
+                          );
+                          if (result != null && result is CariListesiModel) {
+                            model
+                              ..teslimCari = result.cariKodu
+                              ..teslimCariAdi = result.cariAdi;
+                            teslimCariController.text = result.cariAdi ?? "";
+                          }
+                        },
+                        icon: const Icon(Icons.hub_outlined),
+                      ),
                 onClear: () {
                   model
                     ..teslimCari = null
                     ..teslimCariAdi = null;
                   teslimCariController.clear();
                 },
-                onTap:
-                    !yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)
-                        ? null
-                        : () async {
-                          if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
-                            final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                            if (result != null && result is CariListesiModel) {
-                              model
-                                ..teslimCari = result.cariKodu
-                                ..teslimCariAdi = result.cariAdi
-                                ..plasiyerAciklama = result.plasiyerAciklama
-                                ..plasiyerKodu = result.plasiyerKodu;
-                              teslimCariController.text = result.cariAdi ?? "";
-                              plasiyerController.text = result.plasiyerAciklama ?? "";
-                            }
-                          } else {
-                            if (cariController.text.isEmpty) {
-                              dialogManager.showAlertDialog("Önce Cari Seçiniz");
-                              return;
-                            }
-                            final result = await Get.toNamed(
-                              "mainPage/cariRehberi",
-                              arguments: CariListesiRequestModel(
-                                bagliCariKodu: model.cariKodu,
-                                teslimCari: "E",
-                                belgeTuru: widget.model.editTipiEnum?.rawValue,
-                              ),
-                            );
-                            if (result != null && result is CariListesiModel) {
-                              model
-                                ..teslimCari = result.cariKodu
-                                ..teslimCariAdi = result.cariAdi;
-                              teslimCariController.text = result.cariAdi ?? "";
-                            }
+                onTap: !yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)
+                    ? null
+                    : () async {
+                        if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
+                          final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                          if (result != null && result is CariListesiModel) {
+                            model
+                              ..teslimCari = result.cariKodu
+                              ..teslimCariAdi = result.cariAdi
+                              ..plasiyerAciklama = result.plasiyerAciklama
+                              ..plasiyerKodu = result.plasiyerKodu;
+                            teslimCariController.text = result.cariAdi ?? "";
+                            plasiyerController.text = result.plasiyerAciklama ?? "";
                           }
-                        },
+                        } else {
+                          if (cariController.text.isEmpty) {
+                            dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                            return;
+                          }
+                          final result = await Get.toNamed(
+                            "mainPage/cariRehberi",
+                            arguments: CariListesiRequestModel(
+                              bagliCariKodu: model.cariKodu,
+                              teslimCari: "E",
+                              belgeTuru: widget.model.editTipiEnum?.rawValue,
+                            ),
+                          );
+                          if (result != null && result is CariListesiModel) {
+                            model
+                              ..teslimCari = result.cariKodu
+                              ..teslimCariAdi = result.cariAdi;
+                            teslimCariController.text = result.cariAdi ?? "";
+                          }
+                        }
+                      },
               ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -559,11 +554,10 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
               text: "KDV Dahil",
               isVertical: true,
               child: Observer(
-                builder:
-                    (_) => Switch.adaptive(
-                      value: viewModel.kdvDahil,
-                      onChanged: widget.model.baseEditEnum != BaseEditEnum.goruntule ? viewModel.changeKdvDahil : null,
-                    ),
+                builder: (_) => Switch.adaptive(
+                  value: viewModel.kdvDahil,
+                  onChanged: widget.model.baseEditEnum != BaseEditEnum.goruntule ? viewModel.changeKdvDahil : null,
+                ),
               ),
             ).paddingAll(UIHelper.lowSize),
             if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))
@@ -581,13 +575,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(1, null),
                         onChanged: (value) => viewModel.setAciklama(1, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama1Adi ?? "")),
-                        labelText:
-                            getEkRehberById(1)?.alan == "ACIK1"
-                                ? getEkRehberById(1)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi1
-                                        : parametreModel.alisEkAciklamaTanimi1) ??
-                                    "Açıklama 1",
+                        labelText: getEkRehberById(1)?.alan == "ACIK1"
+                            ? getEkRehberById(1)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi1
+                                      : parametreModel.alisEkAciklamaTanimi1) ??
+                                  "Açıklama 1",
                         controller: _aciklama1Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2))
@@ -600,13 +593,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onTap: () async => await getGenelRehber(2),
                         onChanged: (value) => viewModel.setAciklama(2, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama2Adi ?? "")),
-                        labelText:
-                            getEkRehberById(2)?.alan == "ACIK2"
-                                ? getEkRehberById(2)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi2
-                                        : parametreModel.alisEkAciklamaTanimi2) ??
-                                    "Açıklama 2",
+                        labelText: getEkRehberById(2)?.alan == "ACIK2"
+                            ? getEkRehberById(2)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi2
+                                      : parametreModel.alisEkAciklamaTanimi2) ??
+                                  "Açıklama 2",
                         controller: _aciklama2Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3))
@@ -618,13 +610,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(3, null),
                         onChanged: (value) => viewModel.setAciklama(3, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama3Adi ?? "")),
-                        labelText:
-                            getEkRehberById(3)?.alan == "ACIK3"
-                                ? getEkRehberById(3)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi3
-                                        : parametreModel.alisEkAciklamaTanimi3) ??
-                                    "Açıklama 3",
+                        labelText: getEkRehberById(3)?.alan == "ACIK3"
+                            ? getEkRehberById(3)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi3
+                                      : parametreModel.alisEkAciklamaTanimi3) ??
+                                  "Açıklama 3",
                         controller: _aciklama3Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4))
@@ -637,13 +628,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onTap: () async => await getGenelRehber(4),
                         onChanged: (value) => viewModel.setAciklama(4, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama4Adi ?? "")),
-                        labelText:
-                            getEkRehberById(4)?.alan == "ACIK4"
-                                ? getEkRehberById(4)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi4
-                                        : parametreModel.alisEkAciklamaTanimi4) ??
-                                    "Açıklama 4",
+                        labelText: getEkRehberById(4)?.alan == "ACIK4"
+                            ? getEkRehberById(4)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi4
+                                      : parametreModel.alisEkAciklamaTanimi4) ??
+                                  "Açıklama 4",
                         controller: _aciklama4Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5))
@@ -656,13 +646,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(5, null),
                         onChanged: (value) => viewModel.setAciklama(5, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
-                        labelText:
-                            getEkRehberById(5)?.alan == "ACIK5"
-                                ? getEkRehberById(5)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi5
-                                        : parametreModel.alisEkAciklamaTanimi5) ??
-                                    "Açıklama 5",
+                        labelText: getEkRehberById(5)?.alan == "ACIK5"
+                            ? getEkRehberById(5)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi5
+                                      : parametreModel.alisEkAciklamaTanimi5) ??
+                                  "Açıklama 5",
                         controller: _aciklama5Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6))
@@ -675,13 +664,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(6, null),
                         onChanged: (value) => viewModel.setAciklama(6, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
-                        labelText:
-                            getEkRehberById(6)?.alan == "ACIK6"
-                                ? getEkRehberById(6)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi6
-                                        : parametreModel.alisEkAciklamaTanimi6) ??
-                                    "Açıklama 6",
+                        labelText: getEkRehberById(6)?.alan == "ACIK6"
+                            ? getEkRehberById(6)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi6
+                                      : parametreModel.alisEkAciklamaTanimi6) ??
+                                  "Açıklama 6",
                         controller: _aciklama6Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7))
@@ -694,13 +682,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(7, null),
                         onChanged: (value) => viewModel.setAciklama(7, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama7Adi ?? "")),
-                        labelText:
-                            getEkRehberById(7)?.alan == "ACIK7"
-                                ? getEkRehberById(7)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi7
-                                        : parametreModel.alisEkAciklamaTanimi7) ??
-                                    "Açıklama 7",
+                        labelText: getEkRehberById(7)?.alan == "ACIK7"
+                            ? getEkRehberById(7)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi7
+                                      : parametreModel.alisEkAciklamaTanimi7) ??
+                                  "Açıklama 7",
                         controller: _aciklama7Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8))
@@ -713,13 +700,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onTap: () async => await getGenelRehber(8),
                         onChanged: (value) => viewModel.setAciklama(8, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama8Adi ?? "")),
-                        labelText:
-                            getEkRehberById(8)?.alan == "ACIK8"
-                                ? getEkRehberById(8)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi8
-                                        : parametreModel.alisEkAciklamaTanimi8) ??
-                                    "Açıklama 8",
+                        labelText: getEkRehberById(8)?.alan == "ACIK8"
+                            ? getEkRehberById(8)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi8
+                                      : parametreModel.alisEkAciklamaTanimi8) ??
+                                  "Açıklama 8",
                         controller: _aciklama8Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9))
@@ -732,13 +718,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(9, null),
                         onChanged: (value) => viewModel.setAciklama(9, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama9Adi ?? "")),
-                        labelText:
-                            getEkRehberById(9)?.alan == "ACIK9"
-                                ? getEkRehberById(9)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi9
-                                        : parametreModel.alisEkAciklamaTanimi9) ??
-                                    "Açıklama 9",
+                        labelText: getEkRehberById(9)?.alan == "ACIK9"
+                            ? getEkRehberById(9)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi9
+                                      : parametreModel.alisEkAciklamaTanimi9) ??
+                                  "Açıklama 9",
                         controller: _aciklama9Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10))
@@ -751,13 +736,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(10, null),
                         onChanged: (value) => viewModel.setAciklama(10, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama10Adi ?? "")),
-                        labelText:
-                            getEkRehberById(10)?.alan == "ACIK10"
-                                ? getEkRehberById(10)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi10
-                                        : parametreModel.alisEkAciklamaTanimi10) ??
-                                    "Açıklama 10",
+                        labelText: getEkRehberById(10)?.alan == "ACIK10"
+                            ? getEkRehberById(10)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi10
+                                      : parametreModel.alisEkAciklamaTanimi10) ??
+                                  "Açıklama 10",
                         controller: _aciklama10Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11))
@@ -770,13 +754,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(11, null),
                         onChanged: (value) => viewModel.setAciklama(11, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama11Adi ?? "")),
-                        labelText:
-                            getEkRehberById(11)?.alan == "ACIK11"
-                                ? getEkRehberById(11)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi11
-                                        : parametreModel.alisEkAciklamaTanimi11) ??
-                                    "Açıklama 11",
+                        labelText: getEkRehberById(11)?.alan == "ACIK11"
+                            ? getEkRehberById(11)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi11
+                                      : parametreModel.alisEkAciklamaTanimi11) ??
+                                  "Açıklama 11",
                         controller: _aciklama11Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12))
@@ -789,13 +772,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(12, null),
                         onChanged: (value) => viewModel.setAciklama(12, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama12Adi ?? "")),
-                        labelText:
-                            getEkRehberById(12)?.alan == "ACIK12"
-                                ? getEkRehberById(12)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi12
-                                        : parametreModel.alisEkAciklamaTanimi12) ??
-                                    "Açıklama 12",
+                        labelText: getEkRehberById(12)?.alan == "ACIK12"
+                            ? getEkRehberById(12)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi12
+                                      : parametreModel.alisEkAciklamaTanimi12) ??
+                                  "Açıklama 12",
                         controller: _aciklama12Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13))
@@ -808,13 +790,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(13, null),
                         onChanged: (value) => viewModel.setAciklama(13, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama13Adi ?? "")),
-                        labelText:
-                            getEkRehberById(13)?.alan == "ACIK13"
-                                ? getEkRehberById(13)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi13
-                                        : parametreModel.alisEkAciklamaTanimi13) ??
-                                    "Açıklama 13",
+                        labelText: getEkRehberById(13)?.alan == "ACIK13"
+                            ? getEkRehberById(13)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi13
+                                      : parametreModel.alisEkAciklamaTanimi13) ??
+                                  "Açıklama 13",
                         controller: _aciklama13Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14))
@@ -827,13 +808,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(14, null),
                         onChanged: (value) => viewModel.setAciklama(14, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama14Adi ?? "")),
-                        labelText:
-                            getEkRehberById(14)?.alan == "ACIK14"
-                                ? getEkRehberById(14)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi14
-                                        : parametreModel.alisEkAciklamaTanimi14) ??
-                                    "Açıklama 14",
+                        labelText: getEkRehberById(14)?.alan == "ACIK14"
+                            ? getEkRehberById(14)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi14
+                                      : parametreModel.alisEkAciklamaTanimi14) ??
+                                  "Açıklama 14",
                         controller: _aciklama14Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15))
@@ -846,13 +826,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(15, null),
                         onChanged: (value) => viewModel.setAciklama(15, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
-                        labelText:
-                            getEkRehberById(15)?.alan == "ACIK15"
-                                ? getEkRehberById(15)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi15
-                                        : parametreModel.alisEkAciklamaTanimi15) ??
-                                    "Açıklama 15",
+                        labelText: getEkRehberById(15)?.alan == "ACIK15"
+                            ? getEkRehberById(15)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi15
+                                      : parametreModel.alisEkAciklamaTanimi15) ??
+                                  "Açıklama 15",
                         controller: _aciklama15Controller,
                       ),
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16))
@@ -865,13 +844,12 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onClear: () => viewModel.setAciklama(16, null),
                         onChanged: (value) => viewModel.setAciklama(16, GenelRehberModel(kodu: value)),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
-                        labelText:
-                            getEkRehberById(16)?.alan == "ACIK16"
-                                ? getEkRehberById(16)?.baslik
-                                : (satisMi
-                                        ? parametreModel.satisEkAciklamaTanimi16
-                                        : parametreModel.alisEkAciklamaTanimi16) ??
-                                    "Açıklama 16",
+                        labelText: getEkRehberById(16)?.alan == "ACIK16"
+                            ? getEkRehberById(16)?.baslik
+                            : (satisMi
+                                      ? parametreModel.satisEkAciklamaTanimi16
+                                      : parametreModel.alisEkAciklamaTanimi16) ??
+                                  "Açıklama 16",
                         controller: _aciklama16Controller,
                       ),
                   ],
@@ -923,8 +901,9 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     plasiyerController.text = model.plasiyerAciklama ?? model.plasiyerKodu ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
-    topluDepoController.text =
-        yetkiController.lokalDepoUygulamasiAcikMi ? (model.depoTanimi ?? model.topluDepo.toStringIfNotNull) ?? "" : "";
+    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi
+        ? (model.depoTanimi ?? model.topluDepo.toStringIfNotNull) ?? ""
+        : "";
     projeController.text = model.projeAciklama ?? model.projeKodu ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";
@@ -1181,4 +1160,3 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     return getEkRehberById(id)!.baslik;
   }
 }
-

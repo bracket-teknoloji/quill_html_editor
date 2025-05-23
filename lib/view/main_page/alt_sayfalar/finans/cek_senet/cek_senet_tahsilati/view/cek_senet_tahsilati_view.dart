@@ -223,30 +223,29 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
                             if (item.cekBanka != null) Text(item.cekBanka ?? ""),
                           ],
                         ),
-                        onTap:
-                            () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                              context,
-                              title: loc.generalStrings.options,
-                              children: [
-                                BottomSheetModel(
-                                  title: loc.generalStrings.edit,
-                                  iconWidget: Icons.edit_outlined,
-                                  onTap: () {
-                                    Get.back();
-                                    duzenle(item);
-                                  },
-                                ),
-                                BottomSheetModel(
-                                  title: loc.generalStrings.delete,
-                                  iconWidget: Icons.delete_outline,
-                                  onTap: () {
-                                    Get.back();
-                                    viewModel.removeCekSenetKalemlerModel(item);
-                                    dialogManager.showSuccessSnackBar("Silindi");
-                                  },
-                                ),
-                              ],
+                        onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: loc.generalStrings.options,
+                          children: [
+                            BottomSheetModel(
+                              title: loc.generalStrings.edit,
+                              iconWidget: Icons.edit_outlined,
+                              onTap: () {
+                                Get.back();
+                                duzenle(item);
+                              },
                             ),
+                            BottomSheetModel(
+                              title: loc.generalStrings.delete,
+                              iconWidget: Icons.delete_outline,
+                              onTap: () {
+                                Get.back();
+                                viewModel.removeCekSenetKalemlerModel(item);
+                                dialogManager.showSuccessSnackBar("Silindi");
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -266,10 +265,9 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
       FooterButton(
         children: [
           Observer(
-            builder:
-                (_) => Text(
-                  "Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
+            builder: (_) => Text(
+              "Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            ),
           ),
         ],
       ),

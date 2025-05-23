@@ -185,16 +185,18 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
               controller: _cariController,
               enabled: isEkle,
               valueWidget: Observer(
-                builder:
-                    (_) => Text.rich(
+                builder: (_) => Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: viewModel.model.cariKodu ?? ""),
+                      const TextSpan(text: "  "),
                       TextSpan(
-                        children: [
-                          TextSpan(text: viewModel.model.cariKodu ?? ""),
-                          const TextSpan(text: "  "),
-                          TextSpan(text: viewModel.model.cariTitle, style: const TextStyle(color: ColorPalette.mantis)),
-                        ],
+                        text: viewModel.model.cariTitle,
+                        style: const TextStyle(color: ColorPalette.mantis),
                       ),
-                    ),
+                    ],
+                  ),
+                ),
               ),
               onTap: () async {
                 final cariModel = await Get.toNamed(
@@ -212,12 +214,11 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 if (result is CariListesiModel) {
                   _cariController.text = result.cariAdi ?? "";
                   _plasiyerController.text = result.plasiyerAciklama ?? "";
-                  viewModel.model.cariTitle =
-                      result.efaturaCarisi == "E"
-                          ? "E-Fatura"
-                          : result.efaturaCarisi == "H"
-                          ? "E-Arşiv"
-                          : null;
+                  viewModel.model.cariTitle = result.efaturaCarisi == "E"
+                      ? "E-Fatura"
+                      : result.efaturaCarisi == "H"
+                      ? "E-Arşiv"
+                      : null;
                   viewModel
                     ..setCariAdi(result.cariAdi)
                     ..setCariKodu(result.cariKodu)
@@ -361,14 +362,13 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 text: "KDV Dahil",
                 isVertical: true,
                 child: Observer(
-                  builder:
-                      (_) => Switch.adaptive(
-                        value: viewModel.kdvDahil,
-                        onChanged:
-                            (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false))
-                                ? (value) => viewModel.changeKdvDahil(value)
-                                : null,
-                      ),
+                  builder: (_) => Switch.adaptive(
+                    value: viewModel.kdvDahil,
+                    onChanged:
+                        (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false))
+                        ? (value) => viewModel.changeKdvDahil(value)
+                        : null,
+                  ),
                 ),
               ),
             if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))

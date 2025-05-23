@@ -75,29 +75,27 @@ final class _SeriRehberiViewState extends State<SeriRehberiView> {
       Text("Depo Kodu: ${widget.stokModel.depoKodu ?? 0}").paddingAll(UIHelper.lowSize),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: viewModel.getData,
-                items: viewModel.filteredList,
-                itemBuilder:
-                    (item) => Card(
-                      child: ListTile(
-                        onTap: () async {
-                          Get.back(result: item);
-                        },
-                        title: Text(item.seriNo ?? ""),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
-                            if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
-                            Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
-                            Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
-                          ],
-                        ),
-                      ),
-                    ),
+          builder: (_) => RefreshableListView(
+            onRefresh: viewModel.getData,
+            items: viewModel.filteredList,
+            itemBuilder: (item) => Card(
+              child: ListTile(
+                onTap: () async {
+                  Get.back(result: item);
+                },
+                title: Text(item.seriNo ?? ""),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
+                    if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
+                    Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
+                    Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
+                  ],
+                ),
               ),
+            ),
+          ),
         ),
       ),
     ],

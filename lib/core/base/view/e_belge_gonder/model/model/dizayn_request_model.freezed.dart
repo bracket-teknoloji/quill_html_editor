@@ -12,7 +12,8 @@ part of 'dizayn_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DizaynRequestModel _$DizaynRequestModelFromJson(Map<String, dynamic> json) {
   return _DizaynRequestModel.fromJson(json);
@@ -31,19 +32,15 @@ mixin _$DizaynRequestModel {
   /// Create a copy of DizaynRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DizaynRequestModelCopyWith<DizaynRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DizaynRequestModelCopyWith<DizaynRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DizaynRequestModelCopyWith<$Res> {
-  factory $DizaynRequestModelCopyWith(
-          DizaynRequestModel value, $Res Function(DizaynRequestModel) then) =
+  factory $DizaynRequestModelCopyWith(DizaynRequestModel value, $Res Function(DizaynRequestModel) then) =
       _$DizaynRequestModelCopyWithImpl<$Res, DizaynRequestModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "ModulID") int? modulId,
-      @JsonKey(name: "ERPDizaynlari") bool? erpDizaynlari});
+  $Res call({@JsonKey(name: "ModulID") int? modulId, @JsonKey(name: "ERPDizaynlari") bool? erpDizaynlari});
 }
 
 /// @nodoc
@@ -60,74 +57,70 @@ class _$DizaynRequestModelCopyWithImpl<$Res, $Val extends DizaynRequestModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? modulId = freezed,
-    Object? erpDizaynlari = freezed,
-  }) {
-    return _then(_value.copyWith(
-      modulId: freezed == modulId
-          ? _value.modulId
-          : modulId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      erpDizaynlari: freezed == erpDizaynlari
-          ? _value.erpDizaynlari
-          : erpDizaynlari // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+  $Res call({Object? modulId = freezed, Object? erpDizaynlari = freezed}) {
+    return _then(
+      _value.copyWith(
+            modulId: freezed == modulId
+                ? _value.modulId
+                : modulId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            erpDizaynlari: freezed == erpDizaynlari
+                ? _value.erpDizaynlari
+                : erpDizaynlari // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DizaynRequestModelImplCopyWith<$Res>
-    implements $DizaynRequestModelCopyWith<$Res> {
-  factory _$$DizaynRequestModelImplCopyWith(_$DizaynRequestModelImpl value,
-          $Res Function(_$DizaynRequestModelImpl) then) =
-      __$$DizaynRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$DizaynRequestModelImplCopyWith<$Res> implements $DizaynRequestModelCopyWith<$Res> {
+  factory _$$DizaynRequestModelImplCopyWith(
+    _$DizaynRequestModelImpl value,
+    $Res Function(_$DizaynRequestModelImpl) then,
+  ) = __$$DizaynRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "ModulID") int? modulId,
-      @JsonKey(name: "ERPDizaynlari") bool? erpDizaynlari});
+  $Res call({@JsonKey(name: "ModulID") int? modulId, @JsonKey(name: "ERPDizaynlari") bool? erpDizaynlari});
 }
 
 /// @nodoc
 class __$$DizaynRequestModelImplCopyWithImpl<$Res>
     extends _$DizaynRequestModelCopyWithImpl<$Res, _$DizaynRequestModelImpl>
     implements _$$DizaynRequestModelImplCopyWith<$Res> {
-  __$$DizaynRequestModelImplCopyWithImpl(_$DizaynRequestModelImpl _value,
-      $Res Function(_$DizaynRequestModelImpl) _then)
-      : super(_value, _then);
+  __$$DizaynRequestModelImplCopyWithImpl(_$DizaynRequestModelImpl _value, $Res Function(_$DizaynRequestModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of DizaynRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? modulId = freezed,
-    Object? erpDizaynlari = freezed,
-  }) {
-    return _then(_$DizaynRequestModelImpl(
-      modulId: freezed == modulId
-          ? _value.modulId
-          : modulId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      erpDizaynlari: freezed == erpDizaynlari
-          ? _value.erpDizaynlari
-          : erpDizaynlari // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+  $Res call({Object? modulId = freezed, Object? erpDizaynlari = freezed}) {
+    return _then(
+      _$DizaynRequestModelImpl(
+        modulId: freezed == modulId
+            ? _value.modulId
+            : modulId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        erpDizaynlari: freezed == erpDizaynlari
+            ? _value.erpDizaynlari
+            : erpDizaynlari // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DizaynRequestModelImpl implements _DizaynRequestModel {
-  const _$DizaynRequestModelImpl(
-      {@JsonKey(name: "ModulID") this.modulId,
-      @JsonKey(name: "ERPDizaynlari") this.erpDizaynlari});
+  const _$DizaynRequestModelImpl({
+    @JsonKey(name: "ModulID") this.modulId,
+    @JsonKey(name: "ERPDizaynlari") this.erpDizaynlari,
+  });
 
-  factory _$DizaynRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DizaynRequestModelImplFromJson(json);
+  factory _$DizaynRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$DizaynRequestModelImplFromJson(json);
 
   @override
   @JsonKey(name: "ModulID")
@@ -142,8 +135,7 @@ class _$DizaynRequestModelImpl implements _DizaynRequestModel {
         (other.runtimeType == runtimeType &&
             other is _$DizaynRequestModelImpl &&
             (identical(other.modulId, modulId) || other.modulId == modulId) &&
-            (identical(other.erpDizaynlari, erpDizaynlari) ||
-                other.erpDizaynlari == erpDizaynlari));
+            (identical(other.erpDizaynlari, erpDizaynlari) || other.erpDizaynlari == erpDizaynlari));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -156,25 +148,21 @@ class _$DizaynRequestModelImpl implements _DizaynRequestModel {
   @override
   @pragma('vm:prefer-inline')
   _$$DizaynRequestModelImplCopyWith<_$DizaynRequestModelImpl> get copyWith =>
-      __$$DizaynRequestModelImplCopyWithImpl<_$DizaynRequestModelImpl>(
-          this, _$identity);
+      __$$DizaynRequestModelImplCopyWithImpl<_$DizaynRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DizaynRequestModelImplToJson(
-      this,
-    );
+    return _$$DizaynRequestModelImplToJson(this);
   }
 }
 
 abstract class _DizaynRequestModel implements DizaynRequestModel {
-  const factory _DizaynRequestModel(
-          {@JsonKey(name: "ModulID") final int? modulId,
-          @JsonKey(name: "ERPDizaynlari") final bool? erpDizaynlari}) =
-      _$DizaynRequestModelImpl;
+  const factory _DizaynRequestModel({
+    @JsonKey(name: "ModulID") final int? modulId,
+    @JsonKey(name: "ERPDizaynlari") final bool? erpDizaynlari,
+  }) = _$DizaynRequestModelImpl;
 
-  factory _DizaynRequestModel.fromJson(Map<String, dynamic> json) =
-      _$DizaynRequestModelImpl.fromJson;
+  factory _DizaynRequestModel.fromJson(Map<String, dynamic> json) = _$DizaynRequestModelImpl.fromJson;
 
   @override
   @JsonKey(name: "ModulID")
@@ -187,6 +175,5 @@ abstract class _DizaynRequestModel implements DizaynRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DizaynRequestModelImplCopyWith<_$DizaynRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DizaynRequestModelImplCopyWith<_$DizaynRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

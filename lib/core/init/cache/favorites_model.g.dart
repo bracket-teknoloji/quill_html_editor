@@ -13,9 +13,7 @@ class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
   @override
   FavoritesModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return FavoritesModel(
       name: fields[0] as String?,
       title: fields[1] as String?,
@@ -53,7 +51,5 @@ class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FavoritesModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is FavoritesModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

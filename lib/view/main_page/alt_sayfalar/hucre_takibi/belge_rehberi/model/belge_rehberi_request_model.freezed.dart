@@ -12,10 +12,10 @@ part of 'belge_rehberi_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-BelgeRehberiRequestModel _$BelgeRehberiRequestModelFromJson(
-    Map<String, dynamic> json) {
+BelgeRehberiRequestModel _$BelgeRehberiRequestModelFromJson(Map<String, dynamic> json) {
   return _BelgeRehberiRequestModel.fromJson(json);
 }
 
@@ -32,26 +32,21 @@ mixin _$BelgeRehberiRequestModel {
   /// Create a copy of BelgeRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BelgeRehberiRequestModelCopyWith<BelgeRehberiRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BelgeRehberiRequestModelCopyWith<BelgeRehberiRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BelgeRehberiRequestModelCopyWith<$Res> {
-  factory $BelgeRehberiRequestModelCopyWith(BelgeRehberiRequestModel value,
-          $Res Function(BelgeRehberiRequestModel) then) =
-      _$BelgeRehberiRequestModelCopyWithImpl<$Res, BelgeRehberiRequestModel>;
+  factory $BelgeRehberiRequestModelCopyWith(
+    BelgeRehberiRequestModel value,
+    $Res Function(BelgeRehberiRequestModel) then,
+  ) = _$BelgeRehberiRequestModelCopyWithImpl<$Res, BelgeRehberiRequestModel>;
   @useResult
-  $Res call(
-      {int? depoKodu,
-      String? islemTuru,
-      String? pickerBelgeTuru,
-      String? searchText});
+  $Res call({int? depoKodu, String? islemTuru, String? pickerBelgeTuru, String? searchText});
 }
 
 /// @nodoc
-class _$BelgeRehberiRequestModelCopyWithImpl<$Res,
-        $Val extends BelgeRehberiRequestModel>
+class _$BelgeRehberiRequestModelCopyWithImpl<$Res, $Val extends BelgeRehberiRequestModel>
     implements $BelgeRehberiRequestModelCopyWith<$Res> {
   _$BelgeRehberiRequestModelCopyWithImpl(this._value, this._then);
 
@@ -70,52 +65,49 @@ class _$BelgeRehberiRequestModelCopyWithImpl<$Res,
     Object? pickerBelgeTuru = freezed,
     Object? searchText = freezed,
   }) {
-    return _then(_value.copyWith(
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemTuru: freezed == islemTuru
-          ? _value.islemTuru
-          : islemTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pickerBelgeTuru: freezed == pickerBelgeTuru
-          ? _value.pickerBelgeTuru
-          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            islemTuru: freezed == islemTuru
+                ? _value.islemTuru
+                : islemTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            pickerBelgeTuru: freezed == pickerBelgeTuru
+                ? _value.pickerBelgeTuru
+                : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            searchText: freezed == searchText
+                ? _value.searchText
+                : searchText // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$BelgeRehberiRequestModelImplCopyWith<$Res>
-    implements $BelgeRehberiRequestModelCopyWith<$Res> {
+abstract class _$$BelgeRehberiRequestModelImplCopyWith<$Res> implements $BelgeRehberiRequestModelCopyWith<$Res> {
   factory _$$BelgeRehberiRequestModelImplCopyWith(
-          _$BelgeRehberiRequestModelImpl value,
-          $Res Function(_$BelgeRehberiRequestModelImpl) then) =
-      __$$BelgeRehberiRequestModelImplCopyWithImpl<$Res>;
+    _$BelgeRehberiRequestModelImpl value,
+    $Res Function(_$BelgeRehberiRequestModelImpl) then,
+  ) = __$$BelgeRehberiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? depoKodu,
-      String? islemTuru,
-      String? pickerBelgeTuru,
-      String? searchText});
+  $Res call({int? depoKodu, String? islemTuru, String? pickerBelgeTuru, String? searchText});
 }
 
 /// @nodoc
 class __$$BelgeRehberiRequestModelImplCopyWithImpl<$Res>
-    extends _$BelgeRehberiRequestModelCopyWithImpl<$Res,
-        _$BelgeRehberiRequestModelImpl>
+    extends _$BelgeRehberiRequestModelCopyWithImpl<$Res, _$BelgeRehberiRequestModelImpl>
     implements _$$BelgeRehberiRequestModelImplCopyWith<$Res> {
   __$$BelgeRehberiRequestModelImplCopyWithImpl(
-      _$BelgeRehberiRequestModelImpl _value,
-      $Res Function(_$BelgeRehberiRequestModelImpl) _then)
-      : super(_value, _then);
+    _$BelgeRehberiRequestModelImpl _value,
+    $Res Function(_$BelgeRehberiRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BelgeRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -127,24 +119,26 @@ class __$$BelgeRehberiRequestModelImplCopyWithImpl<$Res>
     Object? pickerBelgeTuru = freezed,
     Object? searchText = freezed,
   }) {
-    return _then(_$BelgeRehberiRequestModelImpl(
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemTuru: freezed == islemTuru
-          ? _value.islemTuru
-          : islemTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pickerBelgeTuru: freezed == pickerBelgeTuru
-          ? _value.pickerBelgeTuru
-          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$BelgeRehberiRequestModelImpl(
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        islemTuru: freezed == islemTuru
+            ? _value.islemTuru
+            : islemTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        pickerBelgeTuru: freezed == pickerBelgeTuru
+            ? _value.pickerBelgeTuru
+            : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        searchText: freezed == searchText
+            ? _value.searchText
+            : searchText // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -152,8 +146,7 @@ class __$$BelgeRehberiRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$BelgeRehberiRequestModelImpl implements _BelgeRehberiRequestModel {
-  const _$BelgeRehberiRequestModelImpl(
-      {this.depoKodu, this.islemTuru, this.pickerBelgeTuru, this.searchText});
+  const _$BelgeRehberiRequestModelImpl({this.depoKodu, this.islemTuru, this.pickerBelgeTuru, this.searchText});
 
   factory _$BelgeRehberiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BelgeRehberiRequestModelImplFromJson(json);
@@ -172,47 +165,39 @@ class _$BelgeRehberiRequestModelImpl implements _BelgeRehberiRequestModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BelgeRehberiRequestModelImpl &&
-            (identical(other.depoKodu, depoKodu) ||
-                other.depoKodu == depoKodu) &&
-            (identical(other.islemTuru, islemTuru) ||
-                other.islemTuru == islemTuru) &&
-            (identical(other.pickerBelgeTuru, pickerBelgeTuru) ||
-                other.pickerBelgeTuru == pickerBelgeTuru) &&
-            (identical(other.searchText, searchText) ||
-                other.searchText == searchText));
+            (identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu) &&
+            (identical(other.islemTuru, islemTuru) || other.islemTuru == islemTuru) &&
+            (identical(other.pickerBelgeTuru, pickerBelgeTuru) || other.pickerBelgeTuru == pickerBelgeTuru) &&
+            (identical(other.searchText, searchText) || other.searchText == searchText));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, depoKodu, islemTuru, pickerBelgeTuru, searchText);
+  int get hashCode => Object.hash(runtimeType, depoKodu, islemTuru, pickerBelgeTuru, searchText);
 
   /// Create a copy of BelgeRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BelgeRehberiRequestModelImplCopyWith<_$BelgeRehberiRequestModelImpl>
-      get copyWith => __$$BelgeRehberiRequestModelImplCopyWithImpl<
-          _$BelgeRehberiRequestModelImpl>(this, _$identity);
+  _$$BelgeRehberiRequestModelImplCopyWith<_$BelgeRehberiRequestModelImpl> get copyWith =>
+      __$$BelgeRehberiRequestModelImplCopyWithImpl<_$BelgeRehberiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BelgeRehberiRequestModelImplToJson(
-      this,
-    );
+    return _$$BelgeRehberiRequestModelImplToJson(this);
   }
 }
 
 abstract class _BelgeRehberiRequestModel implements BelgeRehberiRequestModel {
-  const factory _BelgeRehberiRequestModel(
-      {final int? depoKodu,
-      final String? islemTuru,
-      final String? pickerBelgeTuru,
-      final String? searchText}) = _$BelgeRehberiRequestModelImpl;
+  const factory _BelgeRehberiRequestModel({
+    final int? depoKodu,
+    final String? islemTuru,
+    final String? pickerBelgeTuru,
+    final String? searchText,
+  }) = _$BelgeRehberiRequestModelImpl;
 
-  factory _BelgeRehberiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$BelgeRehberiRequestModelImpl.fromJson;
+  factory _BelgeRehberiRequestModel.fromJson(Map<String, dynamic> json) = _$BelgeRehberiRequestModelImpl.fromJson;
 
   @override
   int? get depoKodu;
@@ -227,6 +212,6 @@ abstract class _BelgeRehberiRequestModel implements BelgeRehberiRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BelgeRehberiRequestModelImplCopyWith<_$BelgeRehberiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BelgeRehberiRequestModelImplCopyWith<_$BelgeRehberiRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

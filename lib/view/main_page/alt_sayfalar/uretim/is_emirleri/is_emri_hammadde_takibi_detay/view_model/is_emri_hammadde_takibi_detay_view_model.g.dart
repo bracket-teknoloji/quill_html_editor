@@ -8,19 +8,19 @@ part of 'is_emri_hammadde_takibi_detay_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$IsEmriHammaddeTakibiDetayViewModel
-    on _IsEmriHammaddeTakibiDetayViewModelBase, Store {
+mixin _$IsEmriHammaddeTakibiDetayViewModel on _IsEmriHammaddeTakibiDetayViewModelBase, Store {
   Computed<ObservableList<bool>>? _$valueListComputed;
 
   @override
-  ObservableList<bool> get valueList => (_$valueListComputed ??=
-          Computed<ObservableList<bool>>(() => super.valueList,
-              name: '_IsEmriHammaddeTakibiDetayViewModelBase.valueList'))
-      .value;
+  ObservableList<bool> get valueList => (_$valueListComputed ??= Computed<ObservableList<bool>>(
+    () => super.valueList,
+    name: '_IsEmriHammaddeTakibiDetayViewModelBase.valueList',
+  )).value;
 
   late final _$observableListAtom = Atom(
-      name: '_IsEmriHammaddeTakibiDetayViewModelBase.observableList',
-      context: context);
+    name: '_IsEmriHammaddeTakibiDetayViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<IsEmriHammaddeTakibiDetayModel>? get observableList {
@@ -35,9 +35,7 @@ mixin _$IsEmriHammaddeTakibiDetayViewModel
     });
   }
 
-  late final _$requestModelAtom = Atom(
-      name: '_IsEmriHammaddeTakibiDetayViewModelBase.requestModel',
-      context: context);
+  late final _$requestModelAtom = Atom(name: '_IsEmriHammaddeTakibiDetayViewModelBase.requestModel', context: context);
 
   @override
   IsEmriHammaddeTakibiDetayRequestModel get requestModel {
@@ -52,9 +50,7 @@ mixin _$IsEmriHammaddeTakibiDetayViewModel
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction(
-      '_IsEmriHammaddeTakibiDetayViewModelBase.getData',
-      context: context);
+  late final _$getDataAsyncAction = AsyncAction('_IsEmriHammaddeTakibiDetayViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
@@ -62,18 +58,16 @@ mixin _$IsEmriHammaddeTakibiDetayViewModel
   }
 
   late final _$setBarkodAsyncAction = AsyncAction(
-      '_IsEmriHammaddeTakibiDetayViewModelBase.setBarkod',
-      context: context);
+    '_IsEmriHammaddeTakibiDetayViewModelBase.setBarkod',
+    context: context,
+  );
 
   @override
-  Future<GenericResponseModel<IsEmriHammaddeTakibiDetayModel>> setBarkod(
-      String stok) {
+  Future<GenericResponseModel<IsEmriHammaddeTakibiDetayModel>> setBarkod(String stok) {
     return _$setBarkodAsyncAction.run(() => super.setBarkod(stok));
   }
 
-  late final _$addItemAsyncAction = AsyncAction(
-      '_IsEmriHammaddeTakibiDetayViewModelBase.addItem',
-      context: context);
+  late final _$addItemAsyncAction = AsyncAction('_IsEmriHammaddeTakibiDetayViewModelBase.addItem', context: context);
 
   @override
   Future<bool> addItem(String stok, String referansStok) {
@@ -81,41 +75,41 @@ mixin _$IsEmriHammaddeTakibiDetayViewModel
   }
 
   late final _$deleteItemAsyncAction = AsyncAction(
-      '_IsEmriHammaddeTakibiDetayViewModelBase.deleteItem',
-      context: context);
+    '_IsEmriHammaddeTakibiDetayViewModelBase.deleteItem',
+    context: context,
+  );
 
   @override
   Future<bool> deleteItem(IsEmriHammaddeTakibiDetayModel model) {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(model));
   }
 
-  late final _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController =
-      ActionController(
-          name: '_IsEmriHammaddeTakibiDetayViewModelBase', context: context);
+  late final _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController = ActionController(
+    name: '_IsEmriHammaddeTakibiDetayViewModelBase',
+    context: context,
+  );
 
   @override
   void setObservableList(List<IsEmriHammaddeTakibiDetayModel>? list) {
-    final _$actionInfo =
-        _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
-            name: '_IsEmriHammaddeTakibiDetayViewModelBase.setObservableList');
+    final _$actionInfo = _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
+      name: '_IsEmriHammaddeTakibiDetayViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {
-      _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setSelectedTipi(String? value) {
-    final _$actionInfo =
-        _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
-            name: '_IsEmriHammaddeTakibiDetayViewModelBase.setSelectedTipi');
+    final _$actionInfo = _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
+      name: '_IsEmriHammaddeTakibiDetayViewModelBase.setSelectedTipi',
+    );
     try {
       return super.setSelectedTipi(value);
     } finally {
-      _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 

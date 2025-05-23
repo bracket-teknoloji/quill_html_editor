@@ -12,10 +12,10 @@ part of 'masraf_kodu_rehberi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-MasrafKoduRehberiModel _$MasrafKoduRehberiModelFromJson(
-    Map<String, dynamic> json) {
+MasrafKoduRehberiModel _$MasrafKoduRehberiModelFromJson(Map<String, dynamic> json) {
   return _MasrafKoduRehberiModel.fromJson(json);
 }
 
@@ -32,22 +32,19 @@ mixin _$MasrafKoduRehberiModel {
   /// Create a copy of MasrafKoduRehberiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MasrafKoduRehberiModelCopyWith<MasrafKoduRehberiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MasrafKoduRehberiModelCopyWith<MasrafKoduRehberiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MasrafKoduRehberiModelCopyWith<$Res> {
-  factory $MasrafKoduRehberiModelCopyWith(MasrafKoduRehberiModel value,
-          $Res Function(MasrafKoduRehberiModel) then) =
+  factory $MasrafKoduRehberiModelCopyWith(MasrafKoduRehberiModel value, $Res Function(MasrafKoduRehberiModel) then) =
       _$MasrafKoduRehberiModelCopyWithImpl<$Res, MasrafKoduRehberiModel>;
   @useResult
   $Res call({String? masrafKodu, String? masrafAdi});
 }
 
 /// @nodoc
-class _$MasrafKoduRehberiModelCopyWithImpl<$Res,
-        $Val extends MasrafKoduRehberiModel>
+class _$MasrafKoduRehberiModelCopyWithImpl<$Res, $Val extends MasrafKoduRehberiModel>
     implements $MasrafKoduRehberiModelCopyWith<$Res> {
   _$MasrafKoduRehberiModelCopyWithImpl(this._value, this._then);
 
@@ -60,30 +57,29 @@ class _$MasrafKoduRehberiModelCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? masrafKodu = freezed,
-    Object? masrafAdi = freezed,
-  }) {
-    return _then(_value.copyWith(
-      masrafKodu: freezed == masrafKodu
-          ? _value.masrafKodu
-          : masrafKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      masrafAdi: freezed == masrafAdi
-          ? _value.masrafAdi
-          : masrafAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? masrafKodu = freezed, Object? masrafAdi = freezed}) {
+    return _then(
+      _value.copyWith(
+            masrafKodu: freezed == masrafKodu
+                ? _value.masrafKodu
+                : masrafKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            masrafAdi: freezed == masrafAdi
+                ? _value.masrafAdi
+                : masrafAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$MasrafKoduRehberiModelImplCopyWith<$Res>
-    implements $MasrafKoduRehberiModelCopyWith<$Res> {
+abstract class _$$MasrafKoduRehberiModelImplCopyWith<$Res> implements $MasrafKoduRehberiModelCopyWith<$Res> {
   factory _$$MasrafKoduRehberiModelImplCopyWith(
-          _$MasrafKoduRehberiModelImpl value,
-          $Res Function(_$MasrafKoduRehberiModelImpl) then) =
-      __$$MasrafKoduRehberiModelImplCopyWithImpl<$Res>;
+    _$MasrafKoduRehberiModelImpl value,
+    $Res Function(_$MasrafKoduRehberiModelImpl) then,
+  ) = __$$MasrafKoduRehberiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? masrafKodu, String? masrafAdi});
@@ -91,32 +87,30 @@ abstract class _$$MasrafKoduRehberiModelImplCopyWith<$Res>
 
 /// @nodoc
 class __$$MasrafKoduRehberiModelImplCopyWithImpl<$Res>
-    extends _$MasrafKoduRehberiModelCopyWithImpl<$Res,
-        _$MasrafKoduRehberiModelImpl>
+    extends _$MasrafKoduRehberiModelCopyWithImpl<$Res, _$MasrafKoduRehberiModelImpl>
     implements _$$MasrafKoduRehberiModelImplCopyWith<$Res> {
   __$$MasrafKoduRehberiModelImplCopyWithImpl(
-      _$MasrafKoduRehberiModelImpl _value,
-      $Res Function(_$MasrafKoduRehberiModelImpl) _then)
-      : super(_value, _then);
+    _$MasrafKoduRehberiModelImpl _value,
+    $Res Function(_$MasrafKoduRehberiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MasrafKoduRehberiModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? masrafKodu = freezed,
-    Object? masrafAdi = freezed,
-  }) {
-    return _then(_$MasrafKoduRehberiModelImpl(
-      masrafKodu: freezed == masrafKodu
-          ? _value.masrafKodu
-          : masrafKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      masrafAdi: freezed == masrafAdi
-          ? _value.masrafAdi
-          : masrafAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? masrafKodu = freezed, Object? masrafAdi = freezed}) {
+    return _then(
+      _$MasrafKoduRehberiModelImpl(
+        masrafKodu: freezed == masrafKodu
+            ? _value.masrafKodu
+            : masrafKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        masrafAdi: freezed == masrafAdi
+            ? _value.masrafAdi
+            : masrafAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -138,25 +132,20 @@ class _$MasrafKoduRehberiModelImpl extends _MasrafKoduRehberiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MasrafKoduRehberiModelImplCopyWith<_$MasrafKoduRehberiModelImpl>
-      get copyWith => __$$MasrafKoduRehberiModelImplCopyWithImpl<
-          _$MasrafKoduRehberiModelImpl>(this, _$identity);
+  _$$MasrafKoduRehberiModelImplCopyWith<_$MasrafKoduRehberiModelImpl> get copyWith =>
+      __$$MasrafKoduRehberiModelImplCopyWithImpl<_$MasrafKoduRehberiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MasrafKoduRehberiModelImplToJson(
-      this,
-    );
+    return _$$MasrafKoduRehberiModelImplToJson(this);
   }
 }
 
 abstract class _MasrafKoduRehberiModel extends MasrafKoduRehberiModel {
-  factory _MasrafKoduRehberiModel({String? masrafKodu, String? masrafAdi}) =
-      _$MasrafKoduRehberiModelImpl;
+  factory _MasrafKoduRehberiModel({String? masrafKodu, String? masrafAdi}) = _$MasrafKoduRehberiModelImpl;
   _MasrafKoduRehberiModel._() : super._();
 
-  factory _MasrafKoduRehberiModel.fromJson(Map<String, dynamic> json) =
-      _$MasrafKoduRehberiModelImpl.fromJson;
+  factory _MasrafKoduRehberiModel.fromJson(Map<String, dynamic> json) = _$MasrafKoduRehberiModelImpl.fromJson;
 
   @override
   String? get masrafKodu;
@@ -169,6 +158,6 @@ abstract class _MasrafKoduRehberiModel extends MasrafKoduRehberiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MasrafKoduRehberiModelImplCopyWith<_$MasrafKoduRehberiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$MasrafKoduRehberiModelImplCopyWith<_$MasrafKoduRehberiModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

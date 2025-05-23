@@ -13,27 +13,23 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
 
   @override
   String get formTipi =>
-      (_$formTipiComputed ??= Computed<String>(() => super.formTipi,
-              name: '_NakitOdemeViewModelBase.formTipi'))
-          .value;
+      (_$formTipiComputed ??= Computed<String>(() => super.formTipi, name: '_NakitOdemeViewModelBase.formTipi')).value;
   Computed<TahsilatRequestModel>? _$getStokYeniKayitModelComputed;
 
   @override
-  TahsilatRequestModel get getStokYeniKayitModel =>
-      (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
-              () => super.getStokYeniKayitModel,
-              name: '_NakitOdemeViewModelBase.getStokYeniKayitModel'))
-          .value;
+  TahsilatRequestModel get getStokYeniKayitModel => (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
+    () => super.getStokYeniKayitModel,
+    name: '_NakitOdemeViewModelBase.getStokYeniKayitModel',
+  )).value;
   Computed<String?>? _$getCariBakiyeComputed;
 
   @override
-  String? get getCariBakiye =>
-      (_$getCariBakiyeComputed ??= Computed<String?>(() => super.getCariBakiye,
-              name: '_NakitOdemeViewModelBase.getCariBakiye'))
-          .value;
+  String? get getCariBakiye => (_$getCariBakiyeComputed ??= Computed<String?>(
+    () => super.getCariBakiye,
+    name: '_NakitOdemeViewModelBase.getCariBakiye',
+  )).value;
 
-  late final _$cariBakiyeAtom =
-      Atom(name: '_NakitOdemeViewModelBase.cariBakiye', context: context);
+  late final _$cariBakiyeAtom = Atom(name: '_NakitOdemeViewModelBase.cariBakiye', context: context);
 
   @override
   double? get cariBakiye {
@@ -48,8 +44,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
-  late final _$cariModelAtom =
-      Atom(name: '_NakitOdemeViewModelBase.cariModel', context: context);
+  late final _$cariModelAtom = Atom(name: '_NakitOdemeViewModelBase.cariModel', context: context);
 
   @override
   CariListesiModel? get cariModel {
@@ -64,8 +59,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_NakitOdemeViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(name: '_NakitOdemeViewModelBase.model', context: context);
 
   @override
   TahsilatRequestModel get model {
@@ -80,8 +74,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
-  late final _$dovizKurlariListesiAtom = Atom(
-      name: '_NakitOdemeViewModelBase.dovizKurlariListesi', context: context);
+  late final _$dovizKurlariListesiAtom = Atom(name: '_NakitOdemeViewModelBase.dovizKurlariListesi', context: context);
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -96,8 +89,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
-  late final _$muhaRefListAtom =
-      Atom(name: '_NakitOdemeViewModelBase.muhaRefList', context: context);
+  late final _$muhaRefListAtom = Atom(name: '_NakitOdemeViewModelBase.muhaRefList', context: context);
 
   @override
   ObservableList<MuhasebeReferansModel>? get muhaRefList {
@@ -112,8 +104,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
-  late final _$kasaAtom =
-      Atom(name: '_NakitOdemeViewModelBase.kasa', context: context);
+  late final _$kasaAtom = Atom(name: '_NakitOdemeViewModelBase.kasa', context: context);
 
   @override
   KasaList? get kasa {
@@ -128,8 +119,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
-  late final _$showReferansKoduAtom =
-      Atom(name: '_NakitOdemeViewModelBase.showReferansKodu', context: context);
+  late final _$showReferansKoduAtom = Atom(name: '_NakitOdemeViewModelBase.showReferansKodu', context: context);
 
   @override
   bool? get showReferansKodu {
@@ -144,53 +134,51 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
-  late final _$getSiradakiKodAsyncAction =
-      AsyncAction('_NakitOdemeViewModelBase.getSiradakiKod', context: context);
+  late final _$getSiradakiKodAsyncAction = AsyncAction('_NakitOdemeViewModelBase.getSiradakiKod', context: context);
 
   @override
   Future<void> getSiradakiKod() {
     return _$getSiradakiKodAsyncAction.run(() => super.getSiradakiKod());
   }
 
-  late final _$getKasalarAsyncAction =
-      AsyncAction('_NakitOdemeViewModelBase.getKasalar', context: context);
+  late final _$getKasalarAsyncAction = AsyncAction('_NakitOdemeViewModelBase.getKasalar', context: context);
 
   @override
   Future<KasaList?> getKasalar(String? kasaKodu) {
     return _$getKasalarAsyncAction.run(() => super.getKasalar(kasaKodu));
   }
 
-  late final _$getMuhaRefListAsyncAction =
-      AsyncAction('_NakitOdemeViewModelBase.getMuhaRefList', context: context);
+  late final _$getMuhaRefListAsyncAction = AsyncAction('_NakitOdemeViewModelBase.getMuhaRefList', context: context);
 
   @override
   Future<void> getMuhaRefList() {
     return _$getMuhaRefListAsyncAction.run(() => super.getMuhaRefList());
   }
 
-  late final _$getDovizlerAsyncAction =
-      AsyncAction('_NakitOdemeViewModelBase.getDovizler', context: context);
+  late final _$getDovizlerAsyncAction = AsyncAction('_NakitOdemeViewModelBase.getDovizler', context: context);
 
   @override
   Future<void> getDovizler() {
     return _$getDovizlerAsyncAction.run(() => super.getDovizler());
   }
 
-  late final _$postDataAsyncAction =
-      AsyncAction('_NakitOdemeViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction = AsyncAction('_NakitOdemeViewModelBase.postData', context: context);
 
   @override
   Future<GenericResponseModel<DovizKurlariModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$_NakitOdemeViewModelBaseActionController =
-      ActionController(name: '_NakitOdemeViewModelBase', context: context);
+  late final _$_NakitOdemeViewModelBaseActionController = ActionController(
+    name: '_NakitOdemeViewModelBase',
+    context: context,
+  );
 
   @override
   void setCariModel(CariListesiModel? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setCariModel');
+      name: '_NakitOdemeViewModelBase.setCariModel',
+    );
     try {
       return super.setCariModel(value);
     } finally {
@@ -201,7 +189,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setCariBakiye(double? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setCariBakiye');
+      name: '_NakitOdemeViewModelBase.setCariBakiye',
+    );
     try {
       return super.setCariBakiye(value);
     } finally {
@@ -212,7 +201,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setShowReferansKodu(bool? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setShowReferansKodu');
+      name: '_NakitOdemeViewModelBase.setShowReferansKodu',
+    );
     try {
       return super.setShowReferansKodu(value);
     } finally {
@@ -223,7 +213,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setDovizKurlariListesi');
+      name: '_NakitOdemeViewModelBase.setDovizKurlariListesi',
+    );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
@@ -234,7 +225,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setTahsilatmi(bool? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setTahsilatmi');
+      name: '_NakitOdemeViewModelBase.setTahsilatmi',
+    );
     try {
       return super.setTahsilatmi(value);
     } finally {
@@ -245,7 +237,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setBelgeNo(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setBelgeNo');
+      name: '_NakitOdemeViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -256,7 +249,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setTarih(DateTime? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setTarih');
+      name: '_NakitOdemeViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -267,7 +261,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setKasa(KasaList? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setKasa');
+      name: '_NakitOdemeViewModelBase.setKasa',
+    );
     try {
       return super.setKasa(value);
     } finally {
@@ -278,7 +273,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setAciklama(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setAciklama');
+      name: '_NakitOdemeViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {
@@ -289,7 +285,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setTutar(double? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setTutar');
+      name: '_NakitOdemeViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(value);
     } finally {
@@ -300,7 +297,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setDovizTutari(double? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setDovizTutari');
+      name: '_NakitOdemeViewModelBase.setDovizTutari',
+    );
     try {
       return super.setDovizTutari(value);
     } finally {
@@ -311,7 +309,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setProjekodu(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setProjekodu');
+      name: '_NakitOdemeViewModelBase.setProjekodu',
+    );
     try {
       return super.setProjekodu(value);
     } finally {
@@ -322,7 +321,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setPlasiyerKodu');
+      name: '_NakitOdemeViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -333,7 +333,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setKasaKodu(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setKasaKodu');
+      name: '_NakitOdemeViewModelBase.setKasaKodu',
+    );
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -344,7 +345,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setDovizTipi(int? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setDovizTipi');
+      name: '_NakitOdemeViewModelBase.setDovizTipi',
+    );
     try {
       return super.setDovizTipi(value);
     } finally {
@@ -355,7 +357,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setCariKodu(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setCariKodu');
+      name: '_NakitOdemeViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -366,7 +369,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setHesapKodu(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setHesapKodu');
+      name: '_NakitOdemeViewModelBase.setHesapKodu',
+    );
     try {
       return super.setHesapKodu(value);
     } finally {
@@ -377,7 +381,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setHedefAciklama(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setHedefAciklama');
+      name: '_NakitOdemeViewModelBase.setHedefAciklama',
+    );
     try {
       return super.setHedefAciklama(value);
     } finally {
@@ -388,7 +393,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setMuhaRefList(List<MuhasebeReferansModel>? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setMuhaRefList');
+      name: '_NakitOdemeViewModelBase.setMuhaRefList',
+    );
     try {
       return super.setMuhaRefList(value);
     } finally {
@@ -399,7 +405,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   void setReferansKodu(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
-        name: '_NakitOdemeViewModelBase.setReferansKodu');
+      name: '_NakitOdemeViewModelBase.setReferansKodu',
+    );
     try {
       return super.setReferansKodu(value);
     } finally {

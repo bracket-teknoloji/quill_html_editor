@@ -51,8 +51,8 @@ final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(title: "Seri Bakiyeleri", subtitle: (viewModel.seriList?.length ?? 0).toStringIfNotNull),
+        builder: (_) =>
+            AppBarTitle(title: "Seri Bakiyeleri", subtitle: (viewModel.seriList?.length ?? 0).toStringIfNotNull),
       ),
     ),
     body: Column(
@@ -86,16 +86,15 @@ final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
           ),
         ),
         Observer(
-          builder:
-              (_) => SlideControllerWidget(
-                groupValue: viewModel.requestModel.bakiyeDurumu,
-                childrenTitleList: viewModel.bakiyeDurumuMap.keys.toList(),
-                childrenValueList: viewModel.bakiyeDurumuMap.values.toList(),
-                filterOnChanged: (index) async {
-                  viewModel.setBakiyeDurumu(viewModel.bakiyeDurumuMap.values.toList()[index ?? 0]);
-                  await viewModel.getData();
-                },
-              ),
+          builder: (_) => SlideControllerWidget(
+            groupValue: viewModel.requestModel.bakiyeDurumu,
+            childrenTitleList: viewModel.bakiyeDurumuMap.keys.toList(),
+            childrenValueList: viewModel.bakiyeDurumuMap.values.toList(),
+            filterOnChanged: (index) async {
+              viewModel.setBakiyeDurumu(viewModel.bakiyeDurumuMap.values.toList()[index ?? 0]);
+              await viewModel.getData();
+            },
+          ),
         ),
         Expanded(
           child: RefreshIndicator.adaptive(
@@ -119,14 +118,13 @@ final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
                         title: Text(seriModel.seriNo ?? ""),
                         subtitle: CustomLayoutBuilder(
                           splitCount: 2,
-                          children:
-                              [
-                                if (seriModel.seri1 != null) Text("Seri 1: ${seriModel.seri1}"),
-                                if (seriModel.seri2 != null) Text("Seri 2: ${seriModel.seri2}"),
-                                if (seriModel.depoTanimi != null) Text("Depo: ${seriModel.depoTanimi}"),
-                                if (seriModel.hucreKodu != null) Text("Hücre: ${seriModel.hucreKodu}"),
-                                if (seriModel.miktar != null) Text("Miktar: ${seriModel.miktar.toIntIfDouble}"),
-                              ].where((element) => element is! SizedBox).toList(),
+                          children: [
+                            if (seriModel.seri1 != null) Text("Seri 1: ${seriModel.seri1}"),
+                            if (seriModel.seri2 != null) Text("Seri 2: ${seriModel.seri2}"),
+                            if (seriModel.depoTanimi != null) Text("Depo: ${seriModel.depoTanimi}"),
+                            if (seriModel.hucreKodu != null) Text("Hücre: ${seriModel.hucreKodu}"),
+                            if (seriModel.miktar != null) Text("Miktar: ${seriModel.miktar.toIntIfDouble}"),
+                          ].where((element) => element is! SizedBox).toList(),
                         ),
                       ),
                     );
@@ -144,10 +142,9 @@ final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
         FooterButton(
           children: [
             Observer(
-              builder:
-                  (_) => Text(
-                    "Toplam Miktar: ${viewModel.seriList?.map((element) => element.miktar ?? 0).sum.toIntIfDouble ?? 0}",
-                  ),
+              builder: (_) => Text(
+                "Toplam Miktar: ${viewModel.seriList?.map((element) => element.miktar ?? 0).sum.toIntIfDouble ?? 0}",
+              ),
             ),
           ],
         ),

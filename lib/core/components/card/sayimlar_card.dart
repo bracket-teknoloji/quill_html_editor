@@ -41,13 +41,10 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
         children: [
           Text(model.fisno ?? ""),
           Row(
-            children:
-                [
-                  if (model.serbestMi)
-                    const ColorfulBadge(label: Text("Serbest"), badgeColorEnum: BadgeColorEnum.kapali),
-                  if (model.filtreliMi)
-                    const ColorfulBadge(label: Text("Filtre"), badgeColorEnum: BadgeColorEnum.kapali),
-                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
+            children: [
+              if (model.serbestMi) const ColorfulBadge(label: Text("Serbest"), badgeColorEnum: BadgeColorEnum.kapali),
+              if (model.filtreliMi) const ColorfulBadge(label: Text("Filtre"), badgeColorEnum: BadgeColorEnum.kapali),
+            ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
           ),
         ],
       ),
@@ -182,10 +179,9 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
               );
               final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(context, null);
               if (sayimFiltre == null) return;
-              pdfModel.dicParams?.filtre =
-                  DepoFarkRaporuFiltreEnum.values
-                      .indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi)
-                      .toStringIfNotNull;
+              pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values
+                  .indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi)
+                  .toStringIfNotNull;
               // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
               final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
                 context,

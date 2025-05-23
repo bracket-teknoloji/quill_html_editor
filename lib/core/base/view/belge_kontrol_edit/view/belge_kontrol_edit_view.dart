@@ -79,10 +79,9 @@ final class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
                 context,
                 title: "Belge Türü Seçiniz",
                 groupValue: viewModel.belgeKontrolModel.belgeTipi,
-                children:
-                    yetkiController.genelBelgeKontrolBelgeTipleri
-                        .map((e) => BottomSheetModel(title: e.getName, value: e, groupValue: e.rawValue))
-                        .toList(),
+                children: yetkiController.genelBelgeKontrolBelgeTipleri
+                    .map((e) => BottomSheetModel(title: e.getName, value: e, groupValue: e.rawValue))
+                    .toList(),
               );
 
               if (result case final value?) {

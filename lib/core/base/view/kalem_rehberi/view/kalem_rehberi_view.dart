@@ -42,15 +42,14 @@ final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(
-              title: "Kalem Rehberi (${viewModel.kalemList?.length ?? 0})",
-              subtitle:
-                  EditTipiEnum.values
-                      .firstWhereOrNull((element) => element.rawValue == viewModel.model?.pickerBelgeTuru)
-                      ?.getName ??
-                  "",
-            ),
+        builder: (_) => AppBarTitle(
+          title: "Kalem Rehberi (${viewModel.kalemList?.length ?? 0})",
+          subtitle:
+              EditTipiEnum.values
+                  .firstWhereOrNull((element) => element.rawValue == viewModel.model?.pickerBelgeTuru)
+                  ?.getName ??
+              "",
+        ),
       ),
       actions: [
         IconButton(
@@ -61,16 +60,14 @@ final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
               if (EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).faturaMi ||
                   EditTipiEnum.satisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).siparisMi) {
                 Get.back(
-                  result:
-                      viewModel.selectedKalemList
-                          .map(
-                            (e) =>
-                                e
-                                  ..siparisNo = widget.model.belgeNo
-                                  ..belgeNo = null
-                                  ..siparisSira = viewModel.selectedKalemList.indexOf(e) + 1,
-                          )
-                          .toList(),
+                  result: viewModel.selectedKalemList
+                      .map(
+                        (e) => e
+                          ..siparisNo = widget.model.belgeNo
+                          ..belgeNo = null
+                          ..siparisSira = viewModel.selectedKalemList.indexOf(e) + 1,
+                      )
+                      .toList(),
                 );
                 return;
               }
@@ -111,23 +108,21 @@ final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
             final KalemModel model = viewModel.kalemList?[index] ?? KalemModel();
             return Card(
               child: ListTile(
-                onTap:
-                    () => changeCheckBox(
-                      !viewModel.selectedKalemList.any(
-                        (element) => element.belgeNo == model.belgeNo && element.sira == model.sira,
-                      ),
-                      model,
-                    ),
+                onTap: () => changeCheckBox(
+                  !viewModel.selectedKalemList.any(
+                    (element) => element.belgeNo == model.belgeNo && element.sira == model.sira,
+                  ),
+                  model,
+                ),
                 visualDensity: VisualDensity.compact,
                 leading: Observer(
-                  builder:
-                      (_) => Checkbox(
-                        visualDensity: VisualDensity.compact,
-                        value: viewModel.selectedKalemList.any(
-                          (element) => element.belgeNo == model.belgeNo && element.sira == model.sira,
-                        ),
-                        onChanged: (value) => changeCheckBox(value, model),
-                      ),
+                  builder: (_) => Checkbox(
+                    visualDensity: VisualDensity.compact,
+                    value: viewModel.selectedKalemList.any(
+                      (element) => element.belgeNo == model.belgeNo && element.sira == model.sira,
+                    ),
+                    onChanged: (value) => changeCheckBox(value, model),
+                  ),
                 ),
                 title: Text(model.kalemAdi ?? model.stokAdi ?? "", overflow: TextOverflow.ellipsis),
                 subtitle: Column(
@@ -171,7 +166,9 @@ final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
             ),
           ),
           const SizedBox(width: UIHelper.lowSize),
-          Expanded(child: ElevatedButton(onPressed: viewModel.addAllSelectedKalem, child: const Text("Tümünü Seç"))),
+          Expanded(
+            child: ElevatedButton(onPressed: viewModel.addAllSelectedKalem, child: const Text("Tümünü Seç")),
+          ),
         ],
       ),
     ),

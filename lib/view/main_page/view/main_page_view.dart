@@ -87,17 +87,15 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         Expanded(
           flex: (context.isLandscape) ? 3 : 1,
           child: Observer(
-            builder:
-                (_) => Scaffold(
-                  appBar: appBar(scaffoldKey, context),
-                  key: scaffoldKey,
-                  drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
-                  drawer: (context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
-                  endDrawer:
-                      (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-                  body: body(context),
-                  // bottomNavigationBar: bottomBar(scaffoldKey),
-                ),
+            builder: (_) => Scaffold(
+              appBar: appBar(scaffoldKey, context),
+              key: scaffoldKey,
+              drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
+              drawer: (context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
+              endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+              body: body(context),
+              // bottomNavigationBar: bottomBar(scaffoldKey),
+            ),
           ),
         ),
         if (kIsWeb && context.isLandscape) Expanded(child: EndDrawer(scaffoldKey: scaffoldKey)),
@@ -107,40 +105,36 @@ final class _MainPageViewState extends BaseState<MainPageView> {
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
     title: Observer(
-      builder:
-          (_) => Title(
-            color: UIHelper.primaryColor,
-            title:
-                CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaBaslik ??
-                "Picker'a hoş geldiniz",
-            child: AppBarTitle(title: viewModel.titleList.last, changeTitle: false),
-          ),
+      builder: (_) => Title(
+        color: UIHelper.primaryColor,
+        title:
+            CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaBaslik ?? "Picker'a hoş geldiniz",
+        child: AppBarTitle(title: viewModel.titleList.last, changeTitle: false),
+      ),
     ),
     centerTitle: true,
     leading: Observer(
-      builder:
-          (_) =>
-              anaSayfaMi
-                  ? IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      viewModel
-                        ..setItems(viewModel.lastItems.last)
-                        ..removeLastItem(context);
-                    },
-                  )
-                  : (context.isLandscape)
-                  ? const SizedBox.shrink()
-                  : IconButton(
-                    icon: const Icon(Icons.star_border_outlined),
-                    onPressed: () async {
-                      if (scaffoldKey.currentState!.isDrawerOpen) {
-                        Navigator.pop(context);
-                      } else {
-                        scaffoldKey.currentState!.openDrawer();
-                      }
-                    },
-                  ),
+      builder: (_) => anaSayfaMi
+          ? IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                viewModel
+                  ..setItems(viewModel.lastItems.last)
+                  ..removeLastItem(context);
+              },
+            )
+          : (context.isLandscape)
+          ? const SizedBox.shrink()
+          : IconButton(
+              icon: const Icon(Icons.star_border_outlined),
+              onPressed: () async {
+                if (scaffoldKey.currentState!.isDrawerOpen) {
+                  Navigator.pop(context);
+                } else {
+                  scaffoldKey.currentState!.openDrawer();
+                }
+              },
+            ),
     ),
     actions: [
       if (kDebugMode)
@@ -229,63 +223,61 @@ final class _MainPageViewState extends BaseState<MainPageView> {
       Expanded(
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final crossAxisCount =
-                kIsWeb
-                    ? constraints.maxWidth ~/ 100 > 7
-                        ? 7
-                        : constraints.maxWidth ~/ 100
-                    : constraints.maxWidth ~/ 90 > 10
-                    ? 10
-                    : constraints.maxWidth ~/ 90;
+            final crossAxisCount = kIsWeb
+                ? constraints.maxWidth ~/ 100 > 7
+                      ? 7
+                      : constraints.maxWidth ~/ 100
+                : constraints.maxWidth ~/ 90 > 10
+                ? 10
+                : constraints.maxWidth ~/ 90;
             return Observer(
-              builder:
-                  (_) => GridView.builder(
-                    padding: UIHelper.lowPadding,
-                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: crossAxisCount > 0 ? crossAxisCount : 1,
-                      childAspectRatio: 0.9,
-                    ),
-                    itemCount: viewModel.items.length,
-                    itemBuilder: (context, index) {
-                      //* indexteki itemi burada alıyoruz
-                      final item = viewModel.items[index];
-                      return AnimationConfiguration.staggeredList(
-                        key: Key(item.title),
-                        position: index,
-                        duration: const Duration(milliseconds: 500),
-                        delay: const Duration(milliseconds: 50),
-                        child: FadeInAnimation(
-                          child: CustomGridTile(
-                            // color: item.color,
-                            model: item,
-                            // title: item.title.toString(),
-                            onTap: () {
-                              if (item.altMenuVarMi) {
-                                if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
-                                  item.altMenuler?.firstOrNull?.onTap?.call();
-                                  return;
+              builder: (_) => GridView.builder(
+                padding: UIHelper.lowPadding,
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount > 0 ? crossAxisCount : 1,
+                  childAspectRatio: 0.9,
+                ),
+                itemCount: viewModel.items.length,
+                itemBuilder: (context, index) {
+                  //* indexteki itemi burada alıyoruz
+                  final item = viewModel.items[index];
+                  return AnimationConfiguration.staggeredList(
+                    key: Key(item.title),
+                    position: index,
+                    duration: const Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 50),
+                    child: FadeInAnimation(
+                      child: CustomGridTile(
+                        // color: item.color,
+                        model: item,
+                        // title: item.title.toString(),
+                        onTap: () {
+                          if (item.altMenuVarMi) {
+                            if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
+                              item.altMenuler?.firstOrNull?.onTap?.call();
+                              return;
+                            }
+                            viewModel.addLastItem(viewModel.items);
+                            viewModel.titleList.add(item.title);
+                            viewModel.setItems(
+                              item.altMenuler!.where((element) {
+                                element.color ??= item.color;
+                                if (element.icon.ext.isNullOrEmpty) {
+                                  element.icon = item.icon;
                                 }
-                                viewModel.addLastItem(viewModel.items);
-                                viewModel.titleList.add(item.title);
-                                viewModel.setItems(
-                                  item.altMenuler!.where((element) {
-                                    element.color ??= item.color;
-                                    if (element.icon.ext.isNullOrEmpty) {
-                                      element.icon = item.icon;
-                                    }
-                                    return element.yetkiKontrol;
-                                  }).toList(),
-                                );
-                              } else {
-                                item.onTap?.call();
-                              }
-                            },
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                                return element.yetkiKontrol;
+                              }).toList(),
+                            );
+                          } else {
+                            item.onTap?.call();
+                          }
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
             );
           },
         ),

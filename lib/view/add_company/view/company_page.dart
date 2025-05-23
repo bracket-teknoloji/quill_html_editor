@@ -40,54 +40,53 @@ final class _AccountsViewState extends BaseState<AccountsView> {
     // child: const Icon(Icons.add),
   );
 
-  Widget body() =>
-      getListLength == 0
-          ? const Center(child: Text("Hesap Bulunamadı"))
-          : Padding(
-            padding: UIHelper.midPadding,
-            child: ListView.builder(
-              itemCount: getListLength == 0 ? 1 : getListLength,
-              itemBuilder: (context, index) {
-                final AccountResponseModel account = Hive.box("accounts").getAt(index);
-                return Card(
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.only(left: UIHelper.midSize, right: UIHelper.lowSize),
-                    onTap: () {
-                      bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: account.firma.toString(),
-                        children: [
-                          BottomSheetModel(
-                            iconWidget: Icons.delete_outline,
-                            title: loc.generalStrings.delete,
-                            onTap: () {
-                              Get.back();
-                              dialogManager.showAreYouSureDialog(
-                                onYes: () {
-                                  CacheManager.removeAccounts(account.email ?? "");
-                                  CacheManager.resetVerifiedUser();
-                                  setState(() {});
-                                },
-                              );
-                            },
-                          ),
-                          BottomSheetModel(
-                            iconWidget: Icons.storage_rounded,
-                            title: "Sunucu Tercihi",
-                            onTap: () async {
-                              Get.back();
-                              await bottomSheetDialogManager.showBaglantiSekliBottomSheetDialog(context, account);
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                    title: Text(account.firma.toString()),
-                    subtitle: Text(account.email.toString()),
-                    trailing: const Icon(Icons.more_vert_outlined),
-                  ),
-                );
-              },
-            ),
-          );
+  Widget body() => getListLength == 0
+      ? const Center(child: Text("Hesap Bulunamadı"))
+      : Padding(
+          padding: UIHelper.midPadding,
+          child: ListView.builder(
+            itemCount: getListLength == 0 ? 1 : getListLength,
+            itemBuilder: (context, index) {
+              final AccountResponseModel account = Hive.box("accounts").getAt(index);
+              return Card(
+                child: ListTile(
+                  contentPadding: const EdgeInsets.only(left: UIHelper.midSize, right: UIHelper.lowSize),
+                  onTap: () {
+                    bottomSheetDialogManager.showBottomSheetDialog(
+                      context,
+                      title: account.firma.toString(),
+                      children: [
+                        BottomSheetModel(
+                          iconWidget: Icons.delete_outline,
+                          title: loc.generalStrings.delete,
+                          onTap: () {
+                            Get.back();
+                            dialogManager.showAreYouSureDialog(
+                              onYes: () {
+                                CacheManager.removeAccounts(account.email ?? "");
+                                CacheManager.resetVerifiedUser();
+                                setState(() {});
+                              },
+                            );
+                          },
+                        ),
+                        BottomSheetModel(
+                          iconWidget: Icons.storage_rounded,
+                          title: "Sunucu Tercihi",
+                          onTap: () async {
+                            Get.back();
+                            await bottomSheetDialogManager.showBaglantiSekliBottomSheetDialog(context, account);
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                  title: Text(account.firma.toString()),
+                  subtitle: Text(account.email.toString()),
+                  trailing: const Icon(Icons.more_vert_outlined),
+                ),
+              );
+            },
+          ),
+        );
 }

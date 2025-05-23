@@ -12,7 +12,8 @@ part of 'finans_ozet_rapor_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 FinansOzetRaporModel _$FinansOzetRaporModelFromJson(Map<String, dynamic> json) {
   return _FinansOzetRaporModel.fromJson(json);
@@ -37,27 +38,19 @@ mixin _$FinansOzetRaporModel {
   /// Create a copy of FinansOzetRaporModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FinansOzetRaporModelCopyWith<FinansOzetRaporModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FinansOzetRaporModelCopyWith<FinansOzetRaporModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FinansOzetRaporModelCopyWith<$Res> {
-  factory $FinansOzetRaporModelCopyWith(FinansOzetRaporModel value,
-          $Res Function(FinansOzetRaporModel) then) =
+  factory $FinansOzetRaporModelCopyWith(FinansOzetRaporModel value, $Res Function(FinansOzetRaporModel) then) =
       _$FinansOzetRaporModelCopyWithImpl<$Res, FinansOzetRaporModel>;
   @useResult
-  $Res call(
-      {String? tabloTipi,
-      String? belgeTipi,
-      int? ayKodu,
-      double? tutar1,
-      double? tutar2});
+  $Res call({String? tabloTipi, String? belgeTipi, int? ayKodu, double? tutar1, double? tutar2});
 }
 
 /// @nodoc
-class _$FinansOzetRaporModelCopyWithImpl<$Res,
-        $Val extends FinansOzetRaporModel>
+class _$FinansOzetRaporModelCopyWithImpl<$Res, $Val extends FinansOzetRaporModel>
     implements $FinansOzetRaporModelCopyWith<$Res> {
   _$FinansOzetRaporModelCopyWithImpl(this._value, this._then);
 
@@ -77,54 +70,53 @@ class _$FinansOzetRaporModelCopyWithImpl<$Res,
     Object? tutar1 = freezed,
     Object? tutar2 = freezed,
   }) {
-    return _then(_value.copyWith(
-      tabloTipi: freezed == tabloTipi
-          ? _value.tabloTipi
-          : tabloTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ayKodu: freezed == ayKodu
-          ? _value.ayKodu
-          : ayKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tutar1: freezed == tutar1
-          ? _value.tutar1
-          : tutar1 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tutar2: freezed == tutar2
-          ? _value.tutar2
-          : tutar2 // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            tabloTipi: freezed == tabloTipi
+                ? _value.tabloTipi
+                : tabloTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ayKodu: freezed == ayKodu
+                ? _value.ayKodu
+                : ayKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tutar1: freezed == tutar1
+                ? _value.tutar1
+                : tutar1 // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            tutar2: freezed == tutar2
+                ? _value.tutar2
+                : tutar2 // ignore: cast_nullable_to_non_nullable
+                      as double?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$FinansOzetRaporModelImplCopyWith<$Res>
-    implements $FinansOzetRaporModelCopyWith<$Res> {
-  factory _$$FinansOzetRaporModelImplCopyWith(_$FinansOzetRaporModelImpl value,
-          $Res Function(_$FinansOzetRaporModelImpl) then) =
-      __$$FinansOzetRaporModelImplCopyWithImpl<$Res>;
+abstract class _$$FinansOzetRaporModelImplCopyWith<$Res> implements $FinansOzetRaporModelCopyWith<$Res> {
+  factory _$$FinansOzetRaporModelImplCopyWith(
+    _$FinansOzetRaporModelImpl value,
+    $Res Function(_$FinansOzetRaporModelImpl) then,
+  ) = __$$FinansOzetRaporModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? tabloTipi,
-      String? belgeTipi,
-      int? ayKodu,
-      double? tutar1,
-      double? tutar2});
+  $Res call({String? tabloTipi, String? belgeTipi, int? ayKodu, double? tutar1, double? tutar2});
 }
 
 /// @nodoc
 class __$$FinansOzetRaporModelImplCopyWithImpl<$Res>
     extends _$FinansOzetRaporModelCopyWithImpl<$Res, _$FinansOzetRaporModelImpl>
     implements _$$FinansOzetRaporModelImplCopyWith<$Res> {
-  __$$FinansOzetRaporModelImplCopyWithImpl(_$FinansOzetRaporModelImpl _value,
-      $Res Function(_$FinansOzetRaporModelImpl) _then)
-      : super(_value, _then);
+  __$$FinansOzetRaporModelImplCopyWithImpl(
+    _$FinansOzetRaporModelImpl _value,
+    $Res Function(_$FinansOzetRaporModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FinansOzetRaporModel
   /// with the given fields replaced by the non-null parameter values.
@@ -137,40 +129,39 @@ class __$$FinansOzetRaporModelImplCopyWithImpl<$Res>
     Object? tutar1 = freezed,
     Object? tutar2 = freezed,
   }) {
-    return _then(_$FinansOzetRaporModelImpl(
-      tabloTipi: freezed == tabloTipi
-          ? _value.tabloTipi
-          : tabloTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ayKodu: freezed == ayKodu
-          ? _value.ayKodu
-          : ayKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tutar1: freezed == tutar1
-          ? _value.tutar1
-          : tutar1 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tutar2: freezed == tutar2
-          ? _value.tutar2
-          : tutar2 // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _$FinansOzetRaporModelImpl(
+        tabloTipi: freezed == tabloTipi
+            ? _value.tabloTipi
+            : tabloTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ayKodu: freezed == ayKodu
+            ? _value.ayKodu
+            : ayKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tutar1: freezed == tutar1
+            ? _value.tutar1
+            : tutar1 // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        tutar2: freezed == tutar2
+            ? _value.tutar2
+            : tutar2 // ignore: cast_nullable_to_non_nullable
+                  as double?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$FinansOzetRaporModelImpl extends _FinansOzetRaporModel {
-  _$FinansOzetRaporModelImpl(
-      {this.tabloTipi, this.belgeTipi, this.ayKodu, this.tutar1, this.tutar2})
-      : super._();
+  _$FinansOzetRaporModelImpl({this.tabloTipi, this.belgeTipi, this.ayKodu, this.tutar1, this.tutar2}) : super._();
 
-  factory _$FinansOzetRaporModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FinansOzetRaporModelImplFromJson(json);
+  factory _$FinansOzetRaporModelImpl.fromJson(Map<String, dynamic> json) => _$$FinansOzetRaporModelImplFromJson(json);
 
   @override
   String? tabloTipi;
@@ -188,30 +179,21 @@ class _$FinansOzetRaporModelImpl extends _FinansOzetRaporModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FinansOzetRaporModelImplCopyWith<_$FinansOzetRaporModelImpl>
-      get copyWith =>
-          __$$FinansOzetRaporModelImplCopyWithImpl<_$FinansOzetRaporModelImpl>(
-              this, _$identity);
+  _$$FinansOzetRaporModelImplCopyWith<_$FinansOzetRaporModelImpl> get copyWith =>
+      __$$FinansOzetRaporModelImplCopyWithImpl<_$FinansOzetRaporModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FinansOzetRaporModelImplToJson(
-      this,
-    );
+    return _$$FinansOzetRaporModelImplToJson(this);
   }
 }
 
 abstract class _FinansOzetRaporModel extends FinansOzetRaporModel {
-  factory _FinansOzetRaporModel(
-      {String? tabloTipi,
-      String? belgeTipi,
-      int? ayKodu,
-      double? tutar1,
-      double? tutar2}) = _$FinansOzetRaporModelImpl;
+  factory _FinansOzetRaporModel({String? tabloTipi, String? belgeTipi, int? ayKodu, double? tutar1, double? tutar2}) =
+      _$FinansOzetRaporModelImpl;
   _FinansOzetRaporModel._() : super._();
 
-  factory _FinansOzetRaporModel.fromJson(Map<String, dynamic> json) =
-      _$FinansOzetRaporModelImpl.fromJson;
+  factory _FinansOzetRaporModel.fromJson(Map<String, dynamic> json) = _$FinansOzetRaporModelImpl.fromJson;
 
   @override
   String? get tabloTipi;
@@ -233,6 +215,5 @@ abstract class _FinansOzetRaporModel extends FinansOzetRaporModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FinansOzetRaporModelImplCopyWith<_$FinansOzetRaporModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$FinansOzetRaporModelImplCopyWith<_$FinansOzetRaporModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

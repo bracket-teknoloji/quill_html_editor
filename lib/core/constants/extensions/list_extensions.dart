@@ -40,54 +40,46 @@ extension DizaynListExtensions on List<NetFectDizaynList> {
       return where((element) => element.ozelKod == editTipiEnum?.getPrintValue).toList();
     }
     return switch (editTipiEnum) {
-      EditTipiEnum.satisTeklifi =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynSatisTeklifi?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
-      EditTipiEnum.satisIrsaliye =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
-      EditTipiEnum.satisFatura =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynSatisFat?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
-      EditTipiEnum.alisIrsaliye =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynAlisIrs?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
-      EditTipiEnum.alisFatura =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynAlisFat?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
-      EditTipiEnum.satisTalebi =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynSatisTalebi?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
-      EditTipiEnum.musteri =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynMusSip?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
-      EditTipiEnum.satici =>
-        where(
-          (element) =>
-              profilYetkiModel.yazdirmaDizaynSaticiSip?.any((element2) => element.id == element2) ??
-              AccountModel.instance.adminMi,
-        ).toList(),
+      EditTipiEnum.satisTeklifi => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynSatisTeklifi?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
+      EditTipiEnum.satisIrsaliye => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
+      EditTipiEnum.satisFatura => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynSatisFat?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
+      EditTipiEnum.alisIrsaliye => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynAlisIrs?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
+      EditTipiEnum.alisFatura => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynAlisFat?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
+      EditTipiEnum.satisTalebi => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynSatisTalebi?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
+      EditTipiEnum.musteri => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynMusSip?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
+      EditTipiEnum.satici => where(
+        (element) =>
+            profilYetkiModel.yazdirmaDizaynSaticiSip?.any((element2) => element.id == element2) ??
+            AccountModel.instance.adminMi,
+      ).toList(),
       _ => [],
     };
   }

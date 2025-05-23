@@ -20,13 +20,12 @@ abstract class _UretimFireBilgileriViewModelBase with Store, MobxNetworkMixin, L
   void addFireModel(KalemFireModel value) {
     if (model.fireListe?.any((element) => element.kodu == value.kodu) ?? false) {
       model = model.copyWith(
-        fireListe:
-            model.fireListe?.map((e) {
-              if (e.kodu == value.kodu) {
-                return e.copyWith(miktar: (e.miktar ?? 0) + (value.miktar ?? 0));
-              }
-              return e;
-            }).toList(),
+        fireListe: model.fireListe?.map((e) {
+          if (e.kodu == value.kodu) {
+            return e.copyWith(miktar: (e.miktar ?? 0) + (value.miktar ?? 0));
+          }
+          return e;
+        }).toList(),
       );
     } else {
       model = model.copyWith(fireListe: [...(model.fireListe ?? <KalemFireModel>[]), value].toList());

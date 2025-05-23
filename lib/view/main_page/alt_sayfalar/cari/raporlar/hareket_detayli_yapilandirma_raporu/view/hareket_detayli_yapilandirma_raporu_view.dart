@@ -58,13 +58,12 @@ final class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketD
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder:
-                (_) => SlideControllerWidget(
-                  childrenTitleList: viewModel.bakiyeDurumuTitleList,
-                  filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
-                  childrenValueList: viewModel.bakiyeDurumuListValue,
-                  groupValue: viewModel.bakiyeDurumuGroupValue,
-                ),
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.bakiyeDurumuTitleList,
+              filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
+              childrenValueList: viewModel.bakiyeDurumuListValue,
+              groupValue: viewModel.bakiyeDurumuGroupValue,
+            ),
           ),
           CustomTextField(
             labelText: "Cari",

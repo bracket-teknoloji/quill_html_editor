@@ -46,15 +46,13 @@ final class _BelgeRehberiViewState extends State<BelgeRehberiView> {
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
       title: Observer(
-        builder:
-            (_) => AppBarTitle(
-              title: "Belge Rehberi (${viewModel.belgeRehberiList?.length ?? 0})",
-              subtitle:
-                  EditTipiEnum.values
-                      .where((element) => element.rawValue == widget.model.pickerBelgeTuru)
-                      .firstOrNull
-                      ?.getName,
-            ),
+        builder: (_) => AppBarTitle(
+          title: "Belge Rehberi (${viewModel.belgeRehberiList?.length ?? 0})",
+          subtitle: EditTipiEnum.values
+              .where((element) => element.rawValue == widget.model.pickerBelgeTuru)
+              .firstOrNull
+              ?.getName,
+        ),
       ),
     ),
     body: Column(
@@ -78,12 +76,11 @@ final class _BelgeRehberiViewState extends State<BelgeRehberiView> {
         ).paddingAll(UIHelper.lowSize),
         Expanded(
           child: Observer(
-            builder:
-                (_) => RefreshableListView<BelgeRehberiModel>(
-                  onRefresh: viewModel.getData,
-                  items: viewModel.belgeRehberiList,
-                  itemBuilder: (item) => BelgeRehberiCard(model: item),
-                ),
+            builder: (_) => RefreshableListView<BelgeRehberiModel>(
+              onRefresh: viewModel.getData,
+              items: viewModel.belgeRehberiList,
+              itemBuilder: (item) => BelgeRehberiCard(model: item),
+            ),
           ),
         ),
       ],

@@ -13,9 +13,7 @@ class YaziciModelAdapter extends TypeAdapter<YaziciModel> {
   @override
   YaziciModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return YaziciModel(
       yaziciAdi: fields[0] as String?,
       macAdresi: fields[1] as String,
@@ -47,9 +45,7 @@ class YaziciModelAdapter extends TypeAdapter<YaziciModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is YaziciModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is YaziciModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class YaziciTipiAdapter extends TypeAdapter<YaziciTipi> {
@@ -116,33 +112,28 @@ class YaziciTipiAdapter extends TypeAdapter<YaziciTipi> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is YaziciTipiAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is YaziciTipiAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$YaziciModelImpl _$$YaziciModelImplFromJson(Map<String, dynamic> json) =>
-    _$YaziciModelImpl(
-      yaziciAdi: json['YAZICI_ADI'] as String?,
-      macAdresi: json['MAC_ADRESI'] as String? ?? "",
-      yaziciTipi: $enumDecodeNullable(_$YaziciTipiEnumMap, json['YAZICI_TIPI']),
-      aciklama: json['ACIKLAMA'] as String?,
-      yazdirmaTipi: json['YAZDIRMA_TIPI'] as String?,
-    );
+_$YaziciModelImpl _$$YaziciModelImplFromJson(Map<String, dynamic> json) => _$YaziciModelImpl(
+  yaziciAdi: json['YAZICI_ADI'] as String?,
+  macAdresi: json['MAC_ADRESI'] as String? ?? "",
+  yaziciTipi: $enumDecodeNullable(_$YaziciTipiEnumMap, json['YAZICI_TIPI']),
+  aciklama: json['ACIKLAMA'] as String?,
+  yazdirmaTipi: json['YAZDIRMA_TIPI'] as String?,
+);
 
-Map<String, dynamic> _$$YaziciModelImplToJson(_$YaziciModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
-      'MAC_ADRESI': instance.macAdresi,
-      if (_$YaziciTipiEnumMap[instance.yaziciTipi] case final value?)
-        'YAZICI_TIPI': value,
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.yazdirmaTipi case final value?) 'YAZDIRMA_TIPI': value,
-    };
+Map<String, dynamic> _$$YaziciModelImplToJson(_$YaziciModelImpl instance) => <String, dynamic>{
+  if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
+  'MAC_ADRESI': instance.macAdresi,
+  if (_$YaziciTipiEnumMap[instance.yaziciTipi] case final value?) 'YAZICI_TIPI': value,
+  if (instance.aciklama case final value?) 'ACIKLAMA': value,
+  if (instance.yazdirmaTipi case final value?) 'YAZDIRMA_TIPI': value,
+};
 
 const _$YaziciTipiEnumMap = {
   YaziciTipi.sewooEtiket: 'sewooEtiket',

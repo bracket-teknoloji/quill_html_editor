@@ -57,14 +57,12 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
 
   AppBar appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) =>
-              viewModel.isSearchBarOpen
-                  ? CustomAppBarTextField(controller: searchController, onChanged: viewModel.setSearchText)
-                  : AppBarTitle(
-                    title: "Hızlı Tahsilat Kayıtları",
-                    subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "0",
-                  ),
+      builder: (_) => viewModel.isSearchBarOpen
+          ? CustomAppBarTextField(controller: searchController, onChanged: viewModel.setSearchText)
+          : AppBarTitle(
+              title: "Hızlı Tahsilat Kayıtları",
+              subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "0",
+            ),
     ),
     actions: [
       IconButton(
@@ -90,12 +88,11 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
       ),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: viewModel.resetList,
-                items: viewModel.filteredObservableList,
-                itemBuilder: hizliTahsilatKayitlariCard,
-              ),
+          builder: (_) => RefreshableListView(
+            onRefresh: viewModel.resetList,
+            items: viewModel.filteredObservableList,
+            itemBuilder: hizliTahsilatKayitlariCard,
+          ),
         ),
       ),
     ],

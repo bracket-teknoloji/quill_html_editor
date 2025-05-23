@@ -24,10 +24,9 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
   @override
   Widget build(BuildContext context) => AspectRatio(
     aspectRatio: 1.8,
-    child:
-        widget.pieChartValue != null
-            ? (widget.pieChartValue?.sum ?? 0) > 0
-                ? Padding(
+    child: widget.pieChartValue != null
+        ? (widget.pieChartValue?.sum ?? 0) > 0
+              ? Padding(
                   padding: UIHelper.lowPadding,
                   child: PieChart(
                     PieChartData(
@@ -68,7 +67,7 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                     duration: DurationHelper.durationLow,
                   ),
                 )
-                : const Card(
+              : const Card(
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -79,6 +78,6 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                     ),
                   ),
                 )
-            : const Center(child: CircularProgressIndicator.adaptive()),
+        : const Center(child: CircularProgressIndicator.adaptive()),
   );
 }

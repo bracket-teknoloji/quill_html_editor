@@ -100,7 +100,9 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
             return const SizedBox.shrink();
           }
           if (index == items!.length + 1) {
-            return Center(child: Visibility(visible: dahaVarMi, child: const CircularProgressIndicator.adaptive()));
+            return Center(
+              child: Visibility(visible: dahaVarMi, child: const CircularProgressIndicator.adaptive()),
+            );
           }
           return itemBuilder(items![index]);
         },
@@ -118,11 +120,10 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
 
   SliverGridDelegateWithFixedCrossAxisCount gridDelegate() => SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: crossAxisCount,
-    childAspectRatio:
-        crossAxisCount == 1
-            ? 1.3
-            : crossAxisCount == 2
-            ? 0.6
-            : 0.5,
+    childAspectRatio: crossAxisCount == 1
+        ? 1.3
+        : crossAxisCount == 2
+        ? 0.6
+        : 0.5,
   );
 }

@@ -168,7 +168,9 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
   Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
-    title: Observer(builder: (_) => AppBarTitle(title: "K.Kartı Tahsilatı", subtitle: viewModel.appBarSubTitle)),
+    title: Observer(
+      builder: (_) => AppBarTitle(title: "K.Kartı Tahsilatı", subtitle: viewModel.appBarSubTitle),
+    ),
     actions: [
       IconButton(
         onPressed: () async {
@@ -201,23 +203,21 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Observer(
-            builder:
-                (_) =>
-                    (viewModel.model.kktYontemi != "D")
-                        ? CustomTextField(
-                          labelText: "Belge No",
-                          controller: _belgeNoController,
-                          maxLength: 15,
-                          onChanged: viewModel.setBelgeNo,
-                          suffix: IconButton(
-                            onPressed: () async {
-                              await viewModel.getSiradakiKod();
-                              _belgeNoController.text = viewModel.model.belgeNo ?? "";
-                            },
-                            icon: const Icon(Icons.add_outlined),
-                          ),
-                        )
-                        : const SizedBox.shrink(),
+            builder: (_) => (viewModel.model.kktYontemi != "D")
+                ? CustomTextField(
+                    labelText: "Belge No",
+                    controller: _belgeNoController,
+                    maxLength: 15,
+                    onChanged: viewModel.setBelgeNo,
+                    suffix: IconButton(
+                      onPressed: () async {
+                        await viewModel.getSiradakiKod();
+                        _belgeNoController.text = viewModel.model.belgeNo ?? "";
+                      },
+                      icon: const Icon(Icons.add_outlined),
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ),
           CustomTextField(
             labelText: "Tarih",
@@ -261,44 +261,40 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
             ),
           ),
           Observer(
-            builder:
-                (_) => Text(
-                  (viewModel.getCariBakiye ?? "") +
-                      ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
-                  style: TextStyle(
-                    color: (viewModel.cariBakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
-                  ),
-                ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null),
+            builder: (_) => Text(
+              (viewModel.getCariBakiye ?? "") +
+                  ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
+              style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed),
+            ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null),
           ),
           Observer(
-            builder:
-                (_) => Row(
-                  children: [
-                    if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H")
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Kasa",
-                          controller: _kasaController,
-                          isMust: true,
-                          readOnly: true,
-                          suffixMore: true,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
-                          onTap: () async => await getKasa(),
-                        ),
-                      ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Sözleşme",
-                        controller: _sozlesmeController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.sozlesmeKodu ?? "")),
-                        onTap: () async => await getBankaSozlesmesi(),
-                      ),
-                    ).yetkiVarMi(viewModel.model.kktYontemi == "H"),
-                  ],
-                ),
+            builder: (_) => Row(
+              children: [
+                if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H")
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Kasa",
+                      controller: _kasaController,
+                      isMust: true,
+                      readOnly: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
+                      onTap: () async => await getKasa(),
+                    ),
+                  ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Sözleşme",
+                    controller: _sozlesmeController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.sozlesmeKodu ?? "")),
+                    onTap: () async => await getBankaSozlesmesi(),
+                  ),
+                ).yetkiVarMi(viewModel.model.kktYontemi == "H"),
+              ],
+            ),
           ),
           Observer(
             builder: (_) {
@@ -353,44 +349,42 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
             },
           ),
           Observer(
-            builder:
-                (_) => Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Seri",
-                        controller: _seriController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
-                        onTap: () async => await getSeri(),
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Hesap",
-                        controller: _hesapController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
-                        onTap: () async => await getBankaHesaplari(),
-                      ),
-                    ),
-                  ],
-                ).yetkiVarMi(viewModel.model.kktYontemi == "D"),
+            builder: (_) => Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Seri",
+                    controller: _seriController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
+                    onTap: () async => await getSeri(),
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Hesap",
+                    controller: _hesapController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
+                    onTap: () async => await getBankaHesaplari(),
+                  ),
+                ),
+              ],
+            ).yetkiVarMi(viewModel.model.kktYontemi == "D"),
           ),
           Observer(
-            builder:
-                (_) => CustomTextField(
-                  labelText: "Kredi Kartı No",
-                  isMust: true,
-                  controller: _krediKartiNoController,
-                  keyboardType: TextInputType.number,
-                  maxLength: 16,
-                  onChanged: viewModel.setKrediKartiNo,
-                ).yetkiVarMi(viewModel.model.kktYontemi == "H"),
+            builder: (_) => CustomTextField(
+              labelText: "Kredi Kartı No",
+              isMust: true,
+              controller: _krediKartiNoController,
+              keyboardType: TextInputType.number,
+              maxLength: 16,
+              onChanged: viewModel.setKrediKartiNo,
+            ).yetkiVarMi(viewModel.model.kktYontemi == "H"),
           ),
           Row(
             children: [
@@ -472,10 +466,9 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                             context,
                             title: "Referans Kodu",
                             groupValue: viewModel.model.refKod,
-                            children:
-                                viewModel.muhaRefList!
-                                    .map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu))
-                                    .toList(),
+                            children: viewModel.muhaRefList!
+                                .map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu))
+                                .toList(),
                           );
                           if (result is MuhasebeReferansModel) {
                             _referansKoduController.text = result.tanimi ?? "";
@@ -554,20 +547,19 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       context,
       title: "Banka Sözleşmesi",
       groupValue: viewModel.model.sozlesmeKodu,
-      children:
-          viewModel.bankaSozlesmesiList!
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.sozlesmeAdi ?? "",
-                  descriptionWidget: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text("Taksitler: (0-${e.taksitBitis ?? 0})"), Text("Banka: ${e.bankaTanimi ?? ""}")],
-                  ),
-                  value: e,
-                  groupValue: e.sozlesmeKodu,
-                ),
-              )
-              .toList(),
+      children: viewModel.bankaSozlesmesiList!
+          .map(
+            (e) => BottomSheetModel(
+              title: e.sozlesmeAdi ?? "",
+              descriptionWidget: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text("Taksitler: (0-${e.taksitBitis ?? 0})"), Text("Banka: ${e.bankaTanimi ?? ""}")],
+              ),
+              value: e,
+              groupValue: e.sozlesmeKodu,
+            ),
+          )
+          .toList(),
     );
     if (result is BankaSozlesmesiModel) {
       _sozlesmeController.text = result.sozlesmeAdi ?? "";
@@ -589,19 +581,18 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         context,
         title: "Banka Hesapları",
         groupValue: viewModel.model.hesapKodu,
-        children:
-            viewModel.bankaHesaplariList
-                ?.where((e) => userModel.kullaniciYetki?.kkartiHesaplar?.contains(e.hesapKodu) ?? false)
-                .toList()
-                .map(
-                  (e) => BottomSheetModel(
-                    title: e.hesapAdi ?? "",
-                    description: e.hesapKodu,
-                    value: e,
-                    groupValue: e.hesapKodu,
-                  ),
-                )
-                .toList(),
+        children: viewModel.bankaHesaplariList
+            ?.where((e) => userModel.kullaniciYetki?.kkartiHesaplar?.contains(e.hesapKodu) ?? false)
+            .toList()
+            .map(
+              (e) => BottomSheetModel(
+                title: e.hesapAdi ?? "",
+                description: e.hesapKodu,
+                value: e,
+                groupValue: e.hesapKodu,
+              ),
+            )
+            .toList(),
       );
       if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
@@ -623,13 +614,11 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         context,
         title: "Seri",
         groupValue: viewModel.model.dekontSeri,
-        children:
-            viewModel.seriList!
-                .map(
-                  (e) =>
-                      BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e, groupValue: e.seriNo),
-                )
-                .toList(),
+        children: viewModel.seriList!
+            .map(
+              (e) => BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e, groupValue: e.seriNo),
+            )
+            .toList(),
       );
       if (result != null) {
         _seriController.text = result.aciklama ?? "";

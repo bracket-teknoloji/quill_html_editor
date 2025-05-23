@@ -12,10 +12,10 @@ part of 'seri_hareketleri_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-SeriHareketleriRequestModel _$SeriHareketleriRequestModelFromJson(
-    Map<String, dynamic> json) {
+SeriHareketleriRequestModel _$SeriHareketleriRequestModelFromJson(Map<String, dynamic> json) {
   return _SeriHareketleriRequestModel.fromJson(json);
 }
 
@@ -56,31 +56,29 @@ mixin _$SeriHareketleriRequestModel {
   /// Create a copy of SeriHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SeriHareketleriRequestModelCopyWith<SeriHareketleriRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $SeriHareketleriRequestModelCopyWith<SeriHareketleriRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SeriHareketleriRequestModelCopyWith<$Res> {
   factory $SeriHareketleriRequestModelCopyWith(
-          SeriHareketleriRequestModel value,
-          $Res Function(SeriHareketleriRequestModel) then) =
-      _$SeriHareketleriRequestModelCopyWithImpl<$Res,
-          SeriHareketleriRequestModel>;
+    SeriHareketleriRequestModel value,
+    $Res Function(SeriHareketleriRequestModel) then,
+  ) = _$SeriHareketleriRequestModelCopyWithImpl<$Res, SeriHareketleriRequestModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "StokKodu") String? stokKodu,
-      @JsonKey(name: "SeriNo") String? seriNo,
-      @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
-      @JsonKey(name: "BelgeNo") String? belgeNo,
-      @JsonKey(name: "BelgeTipi") String? belgeTipi,
-      @JsonKey(name: "HareketID") int? hareketId,
-      @JsonKey(name: "TempGetir") String? tempGetir});
+  $Res call({
+    @JsonKey(name: "StokKodu") String? stokKodu,
+    @JsonKey(name: "SeriNo") String? seriNo,
+    @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
+    @JsonKey(name: "BelgeNo") String? belgeNo,
+    @JsonKey(name: "BelgeTipi") String? belgeTipi,
+    @JsonKey(name: "HareketID") int? hareketId,
+    @JsonKey(name: "TempGetir") String? tempGetir,
+  });
 }
 
 /// @nodoc
-class _$SeriHareketleriRequestModelCopyWithImpl<$Res,
-        $Val extends SeriHareketleriRequestModel>
+class _$SeriHareketleriRequestModelCopyWithImpl<$Res, $Val extends SeriHareketleriRequestModel>
     implements $SeriHareketleriRequestModelCopyWith<$Res> {
   _$SeriHareketleriRequestModelCopyWithImpl(this._value, this._then);
 
@@ -102,67 +100,69 @@ class _$SeriHareketleriRequestModelCopyWithImpl<$Res,
     Object? hareketId = freezed,
     Object? tempGetir = freezed,
   }) {
-    return _then(_value.copyWith(
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sirala: freezed == sirala
-          ? _value.sirala
-          : sirala // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hareketId: freezed == hareketId
-          ? _value.hareketId
-          : hareketId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tempGetir: freezed == tempGetir
-          ? _value.tempGetir
-          : tempGetir // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriNo: freezed == seriNo
+                ? _value.seriNo
+                : seriNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sirala: freezed == sirala
+                ? _value.sirala
+                : sirala // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            hareketId: freezed == hareketId
+                ? _value.hareketId
+                : hareketId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            tempGetir: freezed == tempGetir
+                ? _value.tempGetir
+                : tempGetir // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$SeriHareketleriRequestModelImplCopyWith<$Res>
-    implements $SeriHareketleriRequestModelCopyWith<$Res> {
+abstract class _$$SeriHareketleriRequestModelImplCopyWith<$Res> implements $SeriHareketleriRequestModelCopyWith<$Res> {
   factory _$$SeriHareketleriRequestModelImplCopyWith(
-          _$SeriHareketleriRequestModelImpl value,
-          $Res Function(_$SeriHareketleriRequestModelImpl) then) =
-      __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>;
+    _$SeriHareketleriRequestModelImpl value,
+    $Res Function(_$SeriHareketleriRequestModelImpl) then,
+  ) = __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "StokKodu") String? stokKodu,
-      @JsonKey(name: "SeriNo") String? seriNo,
-      @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
-      @JsonKey(name: "BelgeNo") String? belgeNo,
-      @JsonKey(name: "BelgeTipi") String? belgeTipi,
-      @JsonKey(name: "HareketID") int? hareketId,
-      @JsonKey(name: "TempGetir") String? tempGetir});
+  $Res call({
+    @JsonKey(name: "StokKodu") String? stokKodu,
+    @JsonKey(name: "SeriNo") String? seriNo,
+    @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
+    @JsonKey(name: "BelgeNo") String? belgeNo,
+    @JsonKey(name: "BelgeTipi") String? belgeTipi,
+    @JsonKey(name: "HareketID") int? hareketId,
+    @JsonKey(name: "TempGetir") String? tempGetir,
+  });
 }
 
 /// @nodoc
 class __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>
-    extends _$SeriHareketleriRequestModelCopyWithImpl<$Res,
-        _$SeriHareketleriRequestModelImpl>
+    extends _$SeriHareketleriRequestModelCopyWithImpl<$Res, _$SeriHareketleriRequestModelImpl>
     implements _$$SeriHareketleriRequestModelImplCopyWith<$Res> {
   __$$SeriHareketleriRequestModelImplCopyWithImpl(
-      _$SeriHareketleriRequestModelImpl _value,
-      $Res Function(_$SeriHareketleriRequestModelImpl) _then)
-      : super(_value, _then);
+    _$SeriHareketleriRequestModelImpl _value,
+    $Res Function(_$SeriHareketleriRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SeriHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -177,54 +177,55 @@ class __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>
     Object? hareketId = freezed,
     Object? tempGetir = freezed,
   }) {
-    return _then(_$SeriHareketleriRequestModelImpl(
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sirala: freezed == sirala
-          ? _value.sirala
-          : sirala // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hareketId: freezed == hareketId
-          ? _value.hareketId
-          : hareketId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tempGetir: freezed == tempGetir
-          ? _value.tempGetir
-          : tempGetir // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SeriHareketleriRequestModelImpl(
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriNo: freezed == seriNo
+            ? _value.seriNo
+            : seriNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sirala: freezed == sirala
+            ? _value.sirala
+            : sirala // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hareketId: freezed == hareketId
+            ? _value.hareketId
+            : hareketId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tempGetir: freezed == tempGetir
+            ? _value.tempGetir
+            : tempGetir // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SeriHareketleriRequestModelImpl
-    implements _SeriHareketleriRequestModel {
-  _$SeriHareketleriRequestModelImpl(
-      {@JsonKey(name: "StokKodu") this.stokKodu,
-      @JsonKey(name: "SeriNo") this.seriNo,
-      @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") this.sirala,
-      @JsonKey(name: "BelgeNo") this.belgeNo,
-      @JsonKey(name: "BelgeTipi") this.belgeTipi,
-      @JsonKey(name: "HareketID") this.hareketId,
-      @JsonKey(name: "TempGetir") this.tempGetir});
+class _$SeriHareketleriRequestModelImpl implements _SeriHareketleriRequestModel {
+  _$SeriHareketleriRequestModelImpl({
+    @JsonKey(name: "StokKodu") this.stokKodu,
+    @JsonKey(name: "SeriNo") this.seriNo,
+    @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") this.sirala,
+    @JsonKey(name: "BelgeNo") this.belgeNo,
+    @JsonKey(name: "BelgeTipi") this.belgeTipi,
+    @JsonKey(name: "HareketID") this.hareketId,
+    @JsonKey(name: "TempGetir") this.tempGetir,
+  });
 
-  factory _$SeriHareketleriRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$SeriHareketleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SeriHareketleriRequestModelImplFromJson(json);
 
   @override
@@ -254,32 +255,27 @@ class _$SeriHareketleriRequestModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SeriHareketleriRequestModelImplCopyWith<_$SeriHareketleriRequestModelImpl>
-      get copyWith => __$$SeriHareketleriRequestModelImplCopyWithImpl<
-          _$SeriHareketleriRequestModelImpl>(this, _$identity);
+  _$$SeriHareketleriRequestModelImplCopyWith<_$SeriHareketleriRequestModelImpl> get copyWith =>
+      __$$SeriHareketleriRequestModelImplCopyWithImpl<_$SeriHareketleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SeriHareketleriRequestModelImplToJson(
-      this,
-    );
+    return _$$SeriHareketleriRequestModelImplToJson(this);
   }
 }
 
-abstract class _SeriHareketleriRequestModel
-    implements SeriHareketleriRequestModel {
-  factory _SeriHareketleriRequestModel(
-          {@JsonKey(name: "StokKodu") String? stokKodu,
-          @JsonKey(name: "SeriNo") String? seriNo,
-          @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
-          @JsonKey(name: "BelgeNo") String? belgeNo,
-          @JsonKey(name: "BelgeTipi") String? belgeTipi,
-          @JsonKey(name: "HareketID") int? hareketId,
-          @JsonKey(name: "TempGetir") String? tempGetir}) =
-      _$SeriHareketleriRequestModelImpl;
+abstract class _SeriHareketleriRequestModel implements SeriHareketleriRequestModel {
+  factory _SeriHareketleriRequestModel({
+    @JsonKey(name: "StokKodu") String? stokKodu,
+    @JsonKey(name: "SeriNo") String? seriNo,
+    @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
+    @JsonKey(name: "BelgeNo") String? belgeNo,
+    @JsonKey(name: "BelgeTipi") String? belgeTipi,
+    @JsonKey(name: "HareketID") int? hareketId,
+    @JsonKey(name: "TempGetir") String? tempGetir,
+  }) = _$SeriHareketleriRequestModelImpl;
 
-  factory _SeriHareketleriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$SeriHareketleriRequestModelImpl.fromJson;
+  factory _SeriHareketleriRequestModel.fromJson(Map<String, dynamic> json) = _$SeriHareketleriRequestModelImpl.fromJson;
 
   @override
   @JsonKey(name: "StokKodu")
@@ -321,6 +317,6 @@ abstract class _SeriHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SeriHareketleriRequestModelImplCopyWith<_$SeriHareketleriRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SeriHareketleriRequestModelImplCopyWith<_$SeriHareketleriRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

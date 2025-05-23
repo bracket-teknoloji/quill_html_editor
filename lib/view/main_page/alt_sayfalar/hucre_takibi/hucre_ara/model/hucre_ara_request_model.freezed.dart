@@ -12,7 +12,8 @@ part of 'hucre_ara_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HucreAraRequestModel _$HucreAraRequestModelFromJson(Map<String, dynamic> json) {
   return _HucreAraRequestModel.fromJson(json);
@@ -26,10 +27,8 @@ mixin _$HucreAraRequestModel {
   set ekranTipi(String? value) => throw _privateConstructorUsedError;
   int? get filtreKodu => throw _privateConstructorUsedError;
   set filtreKodu(int? value) => throw _privateConstructorUsedError;
-  Map<String, double>? get hucreMiktarArray =>
-      throw _privateConstructorUsedError;
-  set hucreMiktarArray(Map<String, double>? value) =>
-      throw _privateConstructorUsedError;
+  Map<String, double>? get hucreMiktarArray => throw _privateConstructorUsedError;
+  set hucreMiktarArray(Map<String, double>? value) => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
   set menuKodu(String? value) => throw _privateConstructorUsedError;
 
@@ -39,27 +38,25 @@ mixin _$HucreAraRequestModel {
   /// Create a copy of HucreAraRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $HucreAraRequestModelCopyWith<HucreAraRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $HucreAraRequestModelCopyWith<HucreAraRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HucreAraRequestModelCopyWith<$Res> {
-  factory $HucreAraRequestModelCopyWith(HucreAraRequestModel value,
-          $Res Function(HucreAraRequestModel) then) =
+  factory $HucreAraRequestModelCopyWith(HucreAraRequestModel value, $Res Function(HucreAraRequestModel) then) =
       _$HucreAraRequestModelCopyWithImpl<$Res, HucreAraRequestModel>;
   @useResult
-  $Res call(
-      {String? barkod,
-      String? ekranTipi,
-      int? filtreKodu,
-      Map<String, double>? hucreMiktarArray,
-      String? menuKodu});
+  $Res call({
+    String? barkod,
+    String? ekranTipi,
+    int? filtreKodu,
+    Map<String, double>? hucreMiktarArray,
+    String? menuKodu,
+  });
 }
 
 /// @nodoc
-class _$HucreAraRequestModelCopyWithImpl<$Res,
-        $Val extends HucreAraRequestModel>
+class _$HucreAraRequestModelCopyWithImpl<$Res, $Val extends HucreAraRequestModel>
     implements $HucreAraRequestModelCopyWith<$Res> {
   _$HucreAraRequestModelCopyWithImpl(this._value, this._then);
 
@@ -79,54 +76,59 @@ class _$HucreAraRequestModelCopyWithImpl<$Res,
     Object? hucreMiktarArray = freezed,
     Object? menuKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      barkod: freezed == barkod
-          ? _value.barkod
-          : barkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      filtreKodu: freezed == filtreKodu
-          ? _value.filtreKodu
-          : filtreKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      hucreMiktarArray: freezed == hucreMiktarArray
-          ? _value.hucreMiktarArray
-          : hucreMiktarArray // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            barkod: freezed == barkod
+                ? _value.barkod
+                : barkod // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            filtreKodu: freezed == filtreKodu
+                ? _value.filtreKodu
+                : filtreKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            hucreMiktarArray: freezed == hucreMiktarArray
+                ? _value.hucreMiktarArray
+                : hucreMiktarArray // ignore: cast_nullable_to_non_nullable
+                      as Map<String, double>?,
+            menuKodu: freezed == menuKodu
+                ? _value.menuKodu
+                : menuKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$HucreAraRequestModelImplCopyWith<$Res>
-    implements $HucreAraRequestModelCopyWith<$Res> {
-  factory _$$HucreAraRequestModelImplCopyWith(_$HucreAraRequestModelImpl value,
-          $Res Function(_$HucreAraRequestModelImpl) then) =
-      __$$HucreAraRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$HucreAraRequestModelImplCopyWith<$Res> implements $HucreAraRequestModelCopyWith<$Res> {
+  factory _$$HucreAraRequestModelImplCopyWith(
+    _$HucreAraRequestModelImpl value,
+    $Res Function(_$HucreAraRequestModelImpl) then,
+  ) = __$$HucreAraRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? barkod,
-      String? ekranTipi,
-      int? filtreKodu,
-      Map<String, double>? hucreMiktarArray,
-      String? menuKodu});
+  $Res call({
+    String? barkod,
+    String? ekranTipi,
+    int? filtreKodu,
+    Map<String, double>? hucreMiktarArray,
+    String? menuKodu,
+  });
 }
 
 /// @nodoc
 class __$$HucreAraRequestModelImplCopyWithImpl<$Res>
     extends _$HucreAraRequestModelCopyWithImpl<$Res, _$HucreAraRequestModelImpl>
     implements _$$HucreAraRequestModelImplCopyWith<$Res> {
-  __$$HucreAraRequestModelImplCopyWithImpl(_$HucreAraRequestModelImpl _value,
-      $Res Function(_$HucreAraRequestModelImpl) _then)
-      : super(_value, _then);
+  __$$HucreAraRequestModelImplCopyWithImpl(
+    _$HucreAraRequestModelImpl _value,
+    $Res Function(_$HucreAraRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HucreAraRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -139,28 +141,30 @@ class __$$HucreAraRequestModelImplCopyWithImpl<$Res>
     Object? hucreMiktarArray = freezed,
     Object? menuKodu = freezed,
   }) {
-    return _then(_$HucreAraRequestModelImpl(
-      barkod: freezed == barkod
-          ? _value.barkod
-          : barkod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      filtreKodu: freezed == filtreKodu
-          ? _value.filtreKodu
-          : filtreKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      hucreMiktarArray: freezed == hucreMiktarArray
-          ? _value.hucreMiktarArray
-          : hucreMiktarArray // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$HucreAraRequestModelImpl(
+        barkod: freezed == barkod
+            ? _value.barkod
+            : barkod // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        filtreKodu: freezed == filtreKodu
+            ? _value.filtreKodu
+            : filtreKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        hucreMiktarArray: freezed == hucreMiktarArray
+            ? _value.hucreMiktarArray
+            : hucreMiktarArray // ignore: cast_nullable_to_non_nullable
+                  as Map<String, double>?,
+        menuKodu: freezed == menuKodu
+            ? _value.menuKodu
+            : menuKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -168,16 +172,10 @@ class __$$HucreAraRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$HucreAraRequestModelImpl extends _HucreAraRequestModel {
-  _$HucreAraRequestModelImpl(
-      {this.barkod,
-      this.ekranTipi,
-      this.filtreKodu,
-      this.hucreMiktarArray,
-      this.menuKodu})
-      : super._();
+  _$HucreAraRequestModelImpl({this.barkod, this.ekranTipi, this.filtreKodu, this.hucreMiktarArray, this.menuKodu})
+    : super._();
 
-  factory _$HucreAraRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HucreAraRequestModelImplFromJson(json);
+  factory _$HucreAraRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$HucreAraRequestModelImplFromJson(json);
 
   @override
   String? barkod;
@@ -195,30 +193,26 @@ class _$HucreAraRequestModelImpl extends _HucreAraRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HucreAraRequestModelImplCopyWith<_$HucreAraRequestModelImpl>
-      get copyWith =>
-          __$$HucreAraRequestModelImplCopyWithImpl<_$HucreAraRequestModelImpl>(
-              this, _$identity);
+  _$$HucreAraRequestModelImplCopyWith<_$HucreAraRequestModelImpl> get copyWith =>
+      __$$HucreAraRequestModelImplCopyWithImpl<_$HucreAraRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HucreAraRequestModelImplToJson(
-      this,
-    );
+    return _$$HucreAraRequestModelImplToJson(this);
   }
 }
 
 abstract class _HucreAraRequestModel extends HucreAraRequestModel {
-  factory _HucreAraRequestModel(
-      {String? barkod,
-      String? ekranTipi,
-      int? filtreKodu,
-      Map<String, double>? hucreMiktarArray,
-      String? menuKodu}) = _$HucreAraRequestModelImpl;
+  factory _HucreAraRequestModel({
+    String? barkod,
+    String? ekranTipi,
+    int? filtreKodu,
+    Map<String, double>? hucreMiktarArray,
+    String? menuKodu,
+  }) = _$HucreAraRequestModelImpl;
   _HucreAraRequestModel._() : super._();
 
-  factory _HucreAraRequestModel.fromJson(Map<String, dynamic> json) =
-      _$HucreAraRequestModelImpl.fromJson;
+  factory _HucreAraRequestModel.fromJson(Map<String, dynamic> json) = _$HucreAraRequestModelImpl.fromJson;
 
   @override
   String? get barkod;
@@ -240,6 +234,5 @@ abstract class _HucreAraRequestModel extends HucreAraRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HucreAraRequestModelImplCopyWith<_$HucreAraRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$HucreAraRequestModelImplCopyWith<_$HucreAraRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

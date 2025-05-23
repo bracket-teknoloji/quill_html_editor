@@ -83,13 +83,12 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Observer(
-              builder:
-                  (_) => SlideControllerWidget(
-                    childrenTitleList: viewModel.bakiyeDurumuTitleList,
-                    filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
-                    childrenValueList: viewModel.bakiyeDurumuValueList,
-                    groupValue: viewModel.bakiyeDurumuGroupValue,
-                  ),
+              builder: (_) => SlideControllerWidget(
+                childrenTitleList: viewModel.bakiyeDurumuTitleList,
+                filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
+                childrenValueList: viewModel.bakiyeDurumuValueList,
+                groupValue: viewModel.bakiyeDurumuGroupValue,
+              ),
             ),
             CustomTextField(
               labelText: "Cari",
@@ -241,12 +240,16 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
-    final List<BottomSheetModel> bottomSheetList =
-        grupKodList
-            .where((e) => e.grupNo == grupNo)
-            .toList()
-            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
-            .toList();
+    final List<BottomSheetModel> bottomSheetList = grupKodList
+        .where((e) => e.grupNo == grupNo)
+        .toList()
+        .map(
+          (e) => BottomSheetModel(
+            title: e.grupKodu ?? "",
+            onTap: () => Get.back(result: e),
+          ),
+        )
+        .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,

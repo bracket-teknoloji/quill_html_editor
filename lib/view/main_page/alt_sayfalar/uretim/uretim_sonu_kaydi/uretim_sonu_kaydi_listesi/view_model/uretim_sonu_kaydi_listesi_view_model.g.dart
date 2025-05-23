@@ -8,11 +8,11 @@ part of 'uretim_sonu_kaydi_listesi_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UretimSonuKaydiListesiViewModel
-    on _UretimSonuKaydiListesiViewModelBase, Store {
+mixin _$UretimSonuKaydiListesiViewModel on _UretimSonuKaydiListesiViewModelBase, Store {
   late final _$isSearchBarOpenAtom = Atom(
-      name: '_UretimSonuKaydiListesiViewModelBase.isSearchBarOpen',
-      context: context);
+    name: '_UretimSonuKaydiListesiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -27,9 +27,7 @@ mixin _$UretimSonuKaydiListesiViewModel
     });
   }
 
-  late final _$isScrollDownAtom = Atom(
-      name: '_UretimSonuKaydiListesiViewModelBase.isScrollDown',
-      context: context);
+  late final _$isScrollDownAtom = Atom(name: '_UretimSonuKaydiListesiViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -44,9 +42,7 @@ mixin _$UretimSonuKaydiListesiViewModel
     });
   }
 
-  late final _$searchTextAtom = Atom(
-      name: '_UretimSonuKaydiListesiViewModelBase.searchText',
-      context: context);
+  late final _$searchTextAtom = Atom(name: '_UretimSonuKaydiListesiViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -61,9 +57,7 @@ mixin _$UretimSonuKaydiListesiViewModel
     });
   }
 
-  late final _$observableListAtom = Atom(
-      name: '_UretimSonuKaydiListesiViewModelBase.observableList',
-      context: context);
+  late final _$observableListAtom = Atom(name: '_UretimSonuKaydiListesiViewModelBase.observableList', context: context);
 
   @override
   ObservableList<KalemModel>? get observableList {
@@ -78,86 +72,77 @@ mixin _$UretimSonuKaydiListesiViewModel
     });
   }
 
-  late final _$resetListAsyncAction = AsyncAction(
-      '_UretimSonuKaydiListesiViewModelBase.resetList',
-      context: context);
+  late final _$resetListAsyncAction = AsyncAction('_UretimSonuKaydiListesiViewModelBase.resetList', context: context);
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$deleteItemAsyncAction = AsyncAction(
-      '_UretimSonuKaydiListesiViewModelBase.deleteItem',
-      context: context);
+  late final _$deleteItemAsyncAction = AsyncAction('_UretimSonuKaydiListesiViewModelBase.deleteItem', context: context);
 
   @override
   Future<GenericResponseModel<KalemModel>> deleteItem(KalemModel item) {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(item));
   }
 
-  late final _$getDataAsyncAction = AsyncAction(
-      '_UretimSonuKaydiListesiViewModelBase.getData',
-      context: context);
+  late final _$getDataAsyncAction = AsyncAction('_UretimSonuKaydiListesiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_UretimSonuKaydiListesiViewModelBaseActionController =
-      ActionController(
-          name: '_UretimSonuKaydiListesiViewModelBase', context: context);
+  late final _$_UretimSonuKaydiListesiViewModelBaseActionController = ActionController(
+    name: '_UretimSonuKaydiListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo =
-        _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiListesiViewModelBase.changeSearchBarStatus');
+    final _$actionInfo = _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiListesiViewModelBase.changeSearchBarStatus',
+    );
     try {
       return super.changeSearchBarStatus();
     } finally {
-      _$_UretimSonuKaydiListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiListesiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
-      _$_UretimSonuKaydiListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setObservableList(List<KalemModel>? list) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiListesiViewModelBase.setObservableList');
+    final _$actionInfo = _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiListesiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {
-      _$_UretimSonuKaydiListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void addObservableList(List<KalemModel>? list) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiListesiViewModelBase.addObservableList');
+    final _$actionInfo = _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiListesiViewModelBase.addObservableList',
+    );
     try {
       return super.addObservableList(list);
     } finally {
-      _$_UretimSonuKaydiListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 

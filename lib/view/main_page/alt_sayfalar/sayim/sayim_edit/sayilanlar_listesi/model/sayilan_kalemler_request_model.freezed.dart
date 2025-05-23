@@ -12,10 +12,10 @@ part of 'sayilan_kalemler_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-SayilanKalemlerRequestModel _$SayilanKalemlerRequestModelFromJson(
-    Map<String, dynamic> json) {
+SayilanKalemlerRequestModel _$SayilanKalemlerRequestModelFromJson(Map<String, dynamic> json) {
   return _SayilanKalemlerRequestModel.fromJson(json);
 }
 
@@ -56,31 +56,29 @@ mixin _$SayilanKalemlerRequestModel {
   /// Create a copy of SayilanKalemlerRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SayilanKalemlerRequestModelCopyWith<SayilanKalemlerRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $SayilanKalemlerRequestModelCopyWith<SayilanKalemlerRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SayilanKalemlerRequestModelCopyWith<$Res> {
   factory $SayilanKalemlerRequestModelCopyWith(
-          SayilanKalemlerRequestModel value,
-          $Res Function(SayilanKalemlerRequestModel) then) =
-      _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
-          SayilanKalemlerRequestModel>;
+    SayilanKalemlerRequestModel value,
+    $Res Function(SayilanKalemlerRequestModel) then,
+  ) = _$SayilanKalemlerRequestModelCopyWithImpl<$Res, SayilanKalemlerRequestModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "FiltreKodu") int? filtreKodu,
-      @JsonKey(name: "DepoKodu") int? depoKodu,
-      @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
-      @JsonKey(name: "EkranTipi") String? ekranTipi,
-      @JsonKey(name: "BelgeNo") String? belgeNo,
-      @JsonKey(name: "seriBazinda") String? seriBazinda,
-      @JsonKey(name: "ID") int? id});
+  $Res call({
+    @JsonKey(name: "FiltreKodu") int? filtreKodu,
+    @JsonKey(name: "DepoKodu") int? depoKodu,
+    @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
+    @JsonKey(name: "EkranTipi") String? ekranTipi,
+    @JsonKey(name: "BelgeNo") String? belgeNo,
+    @JsonKey(name: "seriBazinda") String? seriBazinda,
+    @JsonKey(name: "ID") int? id,
+  });
 }
 
 /// @nodoc
-class _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
-        $Val extends SayilanKalemlerRequestModel>
+class _$SayilanKalemlerRequestModelCopyWithImpl<$Res, $Val extends SayilanKalemlerRequestModel>
     implements $SayilanKalemlerRequestModelCopyWith<$Res> {
   _$SayilanKalemlerRequestModelCopyWithImpl(this._value, this._then);
 
@@ -102,67 +100,69 @@ class _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
     Object? seriBazinda = freezed,
     Object? id = freezed,
   }) {
-    return _then(_value.copyWith(
-      filtreKodu: freezed == filtreKodu
-          ? _value.filtreKodu
-          : filtreKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kullaniciAdi: freezed == kullaniciAdi
-          ? _value.kullaniciAdi
-          : kullaniciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriBazinda: freezed == seriBazinda
-          ? _value.seriBazinda
-          : seriBazinda // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            filtreKodu: freezed == filtreKodu
+                ? _value.filtreKodu
+                : filtreKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kullaniciAdi: freezed == kullaniciAdi
+                ? _value.kullaniciAdi
+                : kullaniciAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriBazinda: freezed == seriBazinda
+                ? _value.seriBazinda
+                : seriBazinda // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$SayilanKalemlerRequestModelImplCopyWith<$Res>
-    implements $SayilanKalemlerRequestModelCopyWith<$Res> {
+abstract class _$$SayilanKalemlerRequestModelImplCopyWith<$Res> implements $SayilanKalemlerRequestModelCopyWith<$Res> {
   factory _$$SayilanKalemlerRequestModelImplCopyWith(
-          _$SayilanKalemlerRequestModelImpl value,
-          $Res Function(_$SayilanKalemlerRequestModelImpl) then) =
-      __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>;
+    _$SayilanKalemlerRequestModelImpl value,
+    $Res Function(_$SayilanKalemlerRequestModelImpl) then,
+  ) = __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "FiltreKodu") int? filtreKodu,
-      @JsonKey(name: "DepoKodu") int? depoKodu,
-      @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
-      @JsonKey(name: "EkranTipi") String? ekranTipi,
-      @JsonKey(name: "BelgeNo") String? belgeNo,
-      @JsonKey(name: "seriBazinda") String? seriBazinda,
-      @JsonKey(name: "ID") int? id});
+  $Res call({
+    @JsonKey(name: "FiltreKodu") int? filtreKodu,
+    @JsonKey(name: "DepoKodu") int? depoKodu,
+    @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
+    @JsonKey(name: "EkranTipi") String? ekranTipi,
+    @JsonKey(name: "BelgeNo") String? belgeNo,
+    @JsonKey(name: "seriBazinda") String? seriBazinda,
+    @JsonKey(name: "ID") int? id,
+  });
 }
 
 /// @nodoc
 class __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>
-    extends _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
-        _$SayilanKalemlerRequestModelImpl>
+    extends _$SayilanKalemlerRequestModelCopyWithImpl<$Res, _$SayilanKalemlerRequestModelImpl>
     implements _$$SayilanKalemlerRequestModelImplCopyWith<$Res> {
   __$$SayilanKalemlerRequestModelImplCopyWithImpl(
-      _$SayilanKalemlerRequestModelImpl _value,
-      $Res Function(_$SayilanKalemlerRequestModelImpl) _then)
-      : super(_value, _then);
+    _$SayilanKalemlerRequestModelImpl _value,
+    $Res Function(_$SayilanKalemlerRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SayilanKalemlerRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -177,54 +177,55 @@ class __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>
     Object? seriBazinda = freezed,
     Object? id = freezed,
   }) {
-    return _then(_$SayilanKalemlerRequestModelImpl(
-      filtreKodu: freezed == filtreKodu
-          ? _value.filtreKodu
-          : filtreKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kullaniciAdi: freezed == kullaniciAdi
-          ? _value.kullaniciAdi
-          : kullaniciAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriBazinda: freezed == seriBazinda
-          ? _value.seriBazinda
-          : seriBazinda // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$SayilanKalemlerRequestModelImpl(
+        filtreKodu: freezed == filtreKodu
+            ? _value.filtreKodu
+            : filtreKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kullaniciAdi: freezed == kullaniciAdi
+            ? _value.kullaniciAdi
+            : kullaniciAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriBazinda: freezed == seriBazinda
+            ? _value.seriBazinda
+            : seriBazinda // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SayilanKalemlerRequestModelImpl
-    implements _SayilanKalemlerRequestModel {
-  _$SayilanKalemlerRequestModelImpl(
-      {@JsonKey(name: "FiltreKodu") this.filtreKodu,
-      @JsonKey(name: "DepoKodu") this.depoKodu,
-      @JsonKey(name: "KullaniciAdi") this.kullaniciAdi,
-      @JsonKey(name: "EkranTipi") this.ekranTipi = "L",
-      @JsonKey(name: "BelgeNo") this.belgeNo,
-      @JsonKey(name: "seriBazinda") this.seriBazinda,
-      @JsonKey(name: "ID") this.id});
+class _$SayilanKalemlerRequestModelImpl implements _SayilanKalemlerRequestModel {
+  _$SayilanKalemlerRequestModelImpl({
+    @JsonKey(name: "FiltreKodu") this.filtreKodu,
+    @JsonKey(name: "DepoKodu") this.depoKodu,
+    @JsonKey(name: "KullaniciAdi") this.kullaniciAdi,
+    @JsonKey(name: "EkranTipi") this.ekranTipi = "L",
+    @JsonKey(name: "BelgeNo") this.belgeNo,
+    @JsonKey(name: "seriBazinda") this.seriBazinda,
+    @JsonKey(name: "ID") this.id,
+  });
 
-  factory _$SayilanKalemlerRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$SayilanKalemlerRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SayilanKalemlerRequestModelImplFromJson(json);
 
   @override
@@ -254,31 +255,27 @@ class _$SayilanKalemlerRequestModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl>
-      get copyWith => __$$SayilanKalemlerRequestModelImplCopyWithImpl<
-          _$SayilanKalemlerRequestModelImpl>(this, _$identity);
+  _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl> get copyWith =>
+      __$$SayilanKalemlerRequestModelImplCopyWithImpl<_$SayilanKalemlerRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SayilanKalemlerRequestModelImplToJson(
-      this,
-    );
+    return _$$SayilanKalemlerRequestModelImplToJson(this);
   }
 }
 
-abstract class _SayilanKalemlerRequestModel
-    implements SayilanKalemlerRequestModel {
-  factory _SayilanKalemlerRequestModel(
-      {@JsonKey(name: "FiltreKodu") int? filtreKodu,
-      @JsonKey(name: "DepoKodu") int? depoKodu,
-      @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
-      @JsonKey(name: "EkranTipi") String? ekranTipi,
-      @JsonKey(name: "BelgeNo") String? belgeNo,
-      @JsonKey(name: "seriBazinda") String? seriBazinda,
-      @JsonKey(name: "ID") int? id}) = _$SayilanKalemlerRequestModelImpl;
+abstract class _SayilanKalemlerRequestModel implements SayilanKalemlerRequestModel {
+  factory _SayilanKalemlerRequestModel({
+    @JsonKey(name: "FiltreKodu") int? filtreKodu,
+    @JsonKey(name: "DepoKodu") int? depoKodu,
+    @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
+    @JsonKey(name: "EkranTipi") String? ekranTipi,
+    @JsonKey(name: "BelgeNo") String? belgeNo,
+    @JsonKey(name: "seriBazinda") String? seriBazinda,
+    @JsonKey(name: "ID") int? id,
+  }) = _$SayilanKalemlerRequestModelImpl;
 
-  factory _SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) =
-      _$SayilanKalemlerRequestModelImpl.fromJson;
+  factory _SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) = _$SayilanKalemlerRequestModelImpl.fromJson;
 
   @override
   @JsonKey(name: "FiltreKodu")
@@ -320,6 +317,6 @@ abstract class _SayilanKalemlerRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

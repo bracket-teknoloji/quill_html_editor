@@ -41,46 +41,44 @@ class _DepoTalepToplananlarViewState extends BaseState<DepoTalepToplananlarView>
 
   AppBar appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) => AppBarTitle(title: "Depo Talep Toplananlar", subtitle: viewModel.kalemList?.length.toStringIfNotNull),
+      builder: (_) =>
+          AppBarTitle(title: "Depo Talep Toplananlar", subtitle: viewModel.kalemList?.length.toStringIfNotNull),
     ),
   );
 
   Observer body() => Observer(
-    builder:
-        (_) => RefreshableListView(
-          onRefresh: () async => await viewModel.getKalemler(widget.model.id!),
-          items: viewModel.kalemList,
-          itemBuilder:
-              (item) => Card(
-                child: ListTile(
-                  title: Text(item.stokAdi ?? ""),
-                  trailing: IconButton(
-                    onPressed: () async {
-                      dialogManager.showAreYouSureDialog(
-                        onYes: () async {
-                          final result = await viewModel.deleteKalem(item.id!);
-                          if (result) {
-                            await viewModel.getKalemler(widget.model.id!);
-                            if (viewModel.kalemList.ext.isNullOrEmpty) {
-                              Get.back(result: result);
-                            }
-                            dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                          }
-                        },
-                      );
-                    },
-                    icon: const Icon(Icons.delete_outline_outlined),
-                  ),
-                  subtitle: CustomLayoutBuilder.divideInHalf(
-                    children: [
-                      Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                      Text("Kullanıcı: ${item.kayityapankul ?? ""}"),
-                      Text("Depo Kodu: ${item.depoKodu ?? ""}"),
-                    ],
-                  ),
-                ),
-              ),
+    builder: (_) => RefreshableListView(
+      onRefresh: () async => await viewModel.getKalemler(widget.model.id!),
+      items: viewModel.kalemList,
+      itemBuilder: (item) => Card(
+        child: ListTile(
+          title: Text(item.stokAdi ?? ""),
+          trailing: IconButton(
+            onPressed: () async {
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  final result = await viewModel.deleteKalem(item.id!);
+                  if (result) {
+                    await viewModel.getKalemler(widget.model.id!);
+                    if (viewModel.kalemList.ext.isNullOrEmpty) {
+                      Get.back(result: result);
+                    }
+                    dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+                  }
+                },
+              );
+            },
+            icon: const Icon(Icons.delete_outline_outlined),
+          ),
+          subtitle: CustomLayoutBuilder.divideInHalf(
+            children: [
+              Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              Text("Kullanıcı: ${item.kayityapankul ?? ""}"),
+              Text("Depo Kodu: ${item.depoKodu ?? ""}"),
+            ],
+          ),
         ),
+      ),
+    ),
   );
 }

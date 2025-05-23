@@ -94,15 +94,14 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<CariListesiModel?> getCari() async =>
-      cariModel = await networkManager.getCariModel(
-        CariRequestModel(
-          kod: [model.cariKodu ?? ""],
-          belgeTuru: model.belgeTuru,
-          eFaturaGoster: true,
-          plasiyerKisitiYok: true,
-        ),
-      );
+  Future<CariListesiModel?> getCari() async => cariModel = await networkManager.getCariModel(
+    CariRequestModel(
+      kod: [model.cariKodu ?? ""],
+      belgeTuru: model.belgeTuru,
+      eFaturaGoster: true,
+      plasiyerKisitiYok: true,
+    ),
+  );
 
   @action
   Future<GenericResponseModel<EBelgeListesiModel>> sendTaslak() async {

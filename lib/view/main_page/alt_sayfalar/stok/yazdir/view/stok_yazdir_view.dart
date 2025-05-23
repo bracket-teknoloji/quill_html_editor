@@ -161,27 +161,26 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
               ),
             ),
           Observer(
-            builder:
-                (_) => Visibility(
-                  visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
-                  child: CustomTextField(
-                    labelText: "Yapılandırma Kodu",
-                    controller: yapilandirmaKoduController,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.yapkod ?? "")),
-                    onTap: () async {
-                      final result = await Get.toNamed(
-                        "/mainPage/yapilandirmaRehberi",
-                        arguments: viewModel.stokListesiModel,
-                      );
-                      if (result is YapilandirmaRehberiModel) {
-                        viewModel.setYapilandirmaKodu(result.yapkod);
-                        yapilandirmaKoduController.text = result.yapacik ?? "";
-                      }
-                    },
-                  ),
-                ),
+            builder: (_) => Visibility(
+              visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
+              child: CustomTextField(
+                labelText: "Yapılandırma Kodu",
+                controller: yapilandirmaKoduController,
+                readOnly: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.yapkod ?? "")),
+                onTap: () async {
+                  final result = await Get.toNamed(
+                    "/mainPage/yapilandirmaRehberi",
+                    arguments: viewModel.stokListesiModel,
+                  );
+                  if (result is YapilandirmaRehberiModel) {
+                    viewModel.setYapilandirmaKodu(result.yapkod);
+                    yapilandirmaKoduController.text = result.yapacik ?? "";
+                  }
+                },
+              ),
+            ),
           ),
           Row(
             children: [
@@ -272,11 +271,10 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     isVertical: true,
                     text: "Stok Seçildiğinde Yazdır",
                     child: Observer(
-                      builder:
-                          (_) => Switch.adaptive(
-                            value: viewModel.stokSecildigindeYazdir,
-                            onChanged: viewModel.changeStokSecildigindeYazdir,
-                          ),
+                      builder: (_) => Switch.adaptive(
+                        value: viewModel.stokSecildigindeYazdir,
+                        onChanged: viewModel.changeStokSecildigindeYazdir,
+                      ),
                     ),
                   ).paddingAll(UIHelper.lowSize),
                 ),
@@ -285,26 +283,25 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
                   isVertical: true,
                   text: "Yazıcı ve Dizaynı Hatırla",
                   child: Observer(
-                    builder:
-                        (_) => Switch.adaptive(
-                          value: viewModel.yaziciVeDizayniHatirla,
-                          onChanged: (value) {
-                            viewModel.changeYaziciVeDizayniHatirla(value);
-                            if (value) {
-                              CacheManager.setProfilParametre(
-                                CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: true),
-                              );
-                            } else {
-                              CacheManager.setProfilParametre(
-                                CacheManager.getProfilParametre.copyWith(
-                                  stokYazdirDizaynVeYaziciHatirla: false,
-                                  yaziciList: null,
-                                  netFectDizaynList: null,
-                                ),
-                              );
-                            }
-                          },
-                        ),
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.yaziciVeDizayniHatirla,
+                      onChanged: (value) {
+                        viewModel.changeYaziciVeDizayniHatirla(value);
+                        if (value) {
+                          CacheManager.setProfilParametre(
+                            CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: true),
+                          );
+                        } else {
+                          CacheManager.setProfilParametre(
+                            CacheManager.getProfilParametre.copyWith(
+                              stokYazdirDizaynVeYaziciHatirla: false,
+                              yaziciList: null,
+                              netFectDizaynList: null,
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   ),
                 ).paddingAll(UIHelper.lowSize),
               ),
@@ -316,14 +313,13 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
   );
 
   Future<void> setDizayn() async {
-    final List<NetFectDizaynList>? dizaynList =
-        parametreModel.netFectDizaynList
-            ?.where(
-              (element) =>
-                  element.ozelKod == "StokEtiket" &&
-                  (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((element2) => element.id == element2) ?? true),
-            )
-            .toList();
+    final List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
+        ?.where(
+          (element) =>
+              element.ozelKod == "StokEtiket" &&
+              (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((element2) => element.id == element2) ?? true),
+        )
+        .toList();
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Dizayn",
@@ -361,9 +357,8 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
     final result = await bottomSheetDialogManager.showYaziciBottomSheetDialog(
       context,
       viewModel.printModel.yaziciAdi,
-      filter:
-          (item) =>
-              profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == item.yaziciAdi) ?? true,
+      filter: (item) =>
+          profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == item.yaziciAdi) ?? true,
     );
     if (result is YaziciList) {
       yaziciController.text = result.aciklama ?? result.yaziciAdi ?? "";

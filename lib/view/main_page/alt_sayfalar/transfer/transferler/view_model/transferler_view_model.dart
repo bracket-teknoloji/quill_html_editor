@@ -57,12 +57,11 @@ abstract class _TransferlerViewModelBase
   bool isSearchBarOpen = false;
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap =
-      {
-        "EK": CacheManager.getProfilParametre.siparisEkAlan,
-        "MİK": CacheManager.getProfilParametre.siparisMiktar,
-        "VADE": CacheManager.getProfilParametre.siparisVade,
-      }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap = {
+    "EK": CacheManager.getProfilParametre.siparisEkAlan,
+    "MİK": CacheManager.getProfilParametre.siparisMiktar,
+    "VADE": CacheManager.getProfilParametre.siparisVade,
+  }.asObservable();
 
   @override
   @observable
@@ -173,13 +172,12 @@ abstract class _TransferlerViewModelBase
   void setOzelKod2(String? value) => faturaRequestModel = faturaRequestModel.copyWith(ozelKod2: value);
 
   @action
-  void resetFilter() =>
-      faturaRequestModel = faturaRequestModel.copyWith(
-        baslamaTarihi: null,
-        bitisTarihi: null,
-        ozelKod2: null,
-        lokalDAT: null,
-      );
+  void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(
+    baslamaTarihi: null,
+    bitisTarihi: null,
+    ozelKod2: null,
+    lokalDAT: null,
+  );
 
   @override
   @action

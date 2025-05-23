@@ -6,17 +6,14 @@ part of 'cek_senet_hareketleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(Map<String, dynamic> json) =>
     _$CekSenetHareketleriModelImpl(
       inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       yeri: json['YERI'] as String?,
       durum: json['DURUM'] as String?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       hesapKodu: json['HESAP_KODU'] as String?,
       islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       islemAdi: json['ISLEM_ADI'] as String?,
@@ -27,8 +24,7 @@ _$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(
       kayittarihi: json['KAYITTARIHI'] as String?,
     );
 
-Map<String, dynamic> _$$CekSenetHareketleriModelImplToJson(
-        _$CekSenetHareketleriModelImpl instance) =>
+Map<String, dynamic> _$$CekSenetHareketleriModelImplToJson(_$CekSenetHareketleriModelImpl instance) =>
     <String, dynamic>{
       if (instance.inckeyno case final value?) 'INCKEYNO': value,
       if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,

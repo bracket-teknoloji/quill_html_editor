@@ -13,9 +13,7 @@ class LoginDialogModelAdapter extends TypeAdapter<LoginDialogModel> {
   @override
   LoginDialogModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return LoginDialogModel(
       account: fields[0] as AccountResponseModel?,
       username: fields[1] as String?,
@@ -41,7 +39,5 @@ class LoginDialogModelAdapter extends TypeAdapter<LoginDialogModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LoginDialogModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is LoginDialogModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

@@ -84,41 +84,39 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children:
-                  [
-                    if (model.projeAdi != null && yetkiController.projeUygulamasiAcikMi)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Proje", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text(model.projeAdi ?? "", overflow: TextOverflow.ellipsis),
-                        ],
-                      ),
-                    if (yetkiController.plasiyerUygulamasiAcikMi && model.plasiyerAdi != null)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Plasiyer", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text(model.plasiyerAdi ?? "", overflow: TextOverflow.ellipsis),
-                        ],
-                      ),
-                    if (model.kasaAdi != null)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Kasa", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text(model.kasaAdi ?? "", overflow: TextOverflow.ellipsis),
-                        ],
-                      ),
-                  ].map((e) => e is! SizedBox ? Expanded(child: e) : null).toList().nullCheckWithGeneric,
+              children: [
+                if (model.projeAdi != null && yetkiController.projeUygulamasiAcikMi)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Proje", style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(model.projeAdi ?? "", overflow: TextOverflow.ellipsis),
+                    ],
+                  ),
+                if (yetkiController.plasiyerUygulamasiAcikMi && model.plasiyerAdi != null)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Plasiyer", style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(model.plasiyerAdi ?? "", overflow: TextOverflow.ellipsis),
+                    ],
+                  ),
+                if (model.kasaAdi != null)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Kasa", style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(model.kasaAdi ?? "", overflow: TextOverflow.ellipsis),
+                    ],
+                  ),
+              ].map((e) => e is! SizedBox ? Expanded(child: e) : null).toList().nullCheckWithGeneric,
             ).paddingSymmetric(vertical: UIHelper.lowSize),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children:
-                  [
-                    const Text("Açıklama", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text(model.aciklama ?? ""),
-                  ].where((element) => element is! SizedBox).toList(),
+              children: [
+                const Text("Açıklama", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(model.aciklama ?? ""),
+              ].where((element) => element is! SizedBox).toList(),
             ),
           ],
         ),
@@ -154,10 +152,9 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       dicParams: DicParams(belgeNo: model.belgeNo ?? ""),
     );
     final anaVeri = CacheManager.getAnaVeri;
-    final result =
-        anaVeri?.paramModel?.netFectDizaynList
-            ?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu"))
-            .toList();
+    final result = anaVeri?.paramModel?.netFectDizaynList
+        ?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu"))
+        .toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {
       pdfModel.dicParams?.caharInckey = model.caharInckeyno.toStringIfNotNull;
@@ -188,25 +185,23 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       text: TextSpan(
         children: [
           TextSpan(
-            text:
-                dovizliMi
-                    ? (model.tutar != 0
-                        ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency"
-                        : "")
-                    : (model.dovizTutari != 0
-                        ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}"
-                        : ""),
+            text: dovizliMi
+                ? (model.tutar != 0
+                      ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency"
+                      : "")
+                : (model.dovizTutari != 0
+                      ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}"
+                      : ""),
             style: const TextStyle(color: ColorPalette.slateGray, fontSize: UIHelper.midSize),
           ),
           TextSpan(
-            text:
-                dovizliMi
-                    ? (model.dovizTutari != 0
-                        ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}"
-                        : "")
-                    : (model.tutar != 0
-                        ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency"
-                        : ""),
+            text: dovizliMi
+                ? (model.dovizTutari != 0
+                      ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}"
+                      : "")
+                : (model.tutar != 0
+                      ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency"
+                      : ""),
             style: TextStyle(color: model.gc == "G" ? ColorPalette.mantis : ColorPalette.persianRed),
           ),
         ],

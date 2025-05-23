@@ -241,85 +241,81 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
               return Card(
                 // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
                 child: Observer(
-                  builder:
-                      (_) => ListTile(
-                        onTap: () async {
-                          final eklenenProses =
-                              viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
-                          final result = await Get.toNamed(
-                            "/mainPage/prosesEkle",
-                            arguments: BaseEditModel<OlcumProsesModel>(
-                              model: eklenenProses?.copyWith(
-                                numuneler:
-                                    viewModel.requestModel.prosesler
-                                        ?.where((element) => element.id == proses.id)
-                                        .firstOrNull,
-                              ),
-                              baseEditEnum: widget.baseEditEnum,
-                            ),
-                          );
-                          if (result is OlcumProsesModel) {
-                            viewModel.addProsesModel(result);
-                          }
-                        },
-                        title: Observer(
-                          builder: (_) {
-                            final eklenenProses =
-                                viewModel.requestModel.prosesler
-                                    ?.where((element) => element.id == proses.id)
-                                    .firstOrNull;
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(proses.proses ?? ""),
-                                if (eklenenProses?.sonuc != null)
-                                  ColorfulBadge(
-                                    label: Text(eklenenProses.sonucAdi),
-                                    badgeColorEnum: eklenenProses.cardColor,
-                                  ),
-                              ],
-                            );
-                          },
+                  builder: (_) => ListTile(
+                    onTap: () async {
+                      final eklenenProses = viewModel.requestModel.prosesler
+                          ?.where((element) => element.id == proses.id)
+                          .firstOrNull;
+                      final result = await Get.toNamed(
+                        "/mainPage/prosesEkle",
+                        arguments: BaseEditModel<OlcumProsesModel>(
+                          model: eklenenProses?.copyWith(
+                            numuneler: viewModel.requestModel.prosesler
+                                ?.where((element) => element.id == proses.id)
+                                .firstOrNull,
+                          ),
+                          baseEditEnum: widget.baseEditEnum,
                         ),
-                        subtitle: Observer(
-                          builder: (_) {
-                            final eklenenProses =
-                                viewModel.requestModel.prosesler
-                                    ?.where((element) => element.id == proses.id)
-                                    .firstOrNull;
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                      );
+                      if (result is OlcumProsesModel) {
+                        viewModel.addProsesModel(result);
+                      }
+                    },
+                    title: Observer(
+                      builder: (_) {
+                        final eklenenProses = viewModel.requestModel.prosesler
+                            ?.where((element) => element.id == proses.id)
+                            .firstOrNull;
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(proses.proses ?? ""),
+                            if (eklenenProses?.sonuc != null)
+                              ColorfulBadge(
+                                label: Text(eklenenProses.sonucAdi),
+                                badgeColorEnum: eklenenProses.cardColor,
+                              ),
+                          ],
+                        );
+                      },
+                    ),
+                    subtitle: Observer(
+                      builder: (_) {
+                        final eklenenProses = viewModel.requestModel.prosesler
+                            ?.where((element) => element.id == proses.id)
+                            .firstOrNull;
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomLayoutBuilder(
+                              splitCount: 2,
                               children: [
-                                CustomLayoutBuilder(
-                                  splitCount: 2,
-                                  children: [
-                                    if (eklenenProses?.kriter != null) Text("Kriter: ${eklenenProses?.kriter}"),
-                                    if (eklenenProses?.kabulSarti != null)
-                                      Text("Kabul Şartı: ${eklenenProses?.kabulSarti ?? ""}"),
-                                    if (eklenenProses?.ekipman != null) Text("Ekipman: ${eklenenProses?.ekipman}"),
-                                    Text(
-                                      "Numune Miktarı: ${eklenenProses?.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
+                                if (eklenenProses?.kriter != null) Text("Kriter: ${eklenenProses?.kriter}"),
+                                if (eklenenProses?.kabulSarti != null)
+                                  Text("Kabul Şartı: ${eklenenProses?.kabulSarti ?? ""}"),
+                                if (eklenenProses?.ekipman != null) Text("Ekipman: ${eklenenProses?.ekipman}"),
+                                Text(
+                                  "Numune Miktarı: ${eklenenProses?.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                if (eklenenProses?.aciklama != null) Text("Açıklama: ${eklenenProses?.aciklama}"),
                               ],
-                            );
-                          },
-                        ),
-                        trailing: Observer(
-                          builder:
-                              (_) => Icon(
-                                viewModel.requestModel.prosesler?.any(
-                                          (element) => (element.id == proses.id) && element.sonuc != null,
-                                        ) ??
-                                        false
-                                    ? Icons.check_box_outlined
-                                    : Icons.check_box_outline_blank,
-                              ),
-                        ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
+                            ),
+                            if (eklenenProses?.aciklama != null) Text("Açıklama: ${eklenenProses?.aciklama}"),
+                          ],
+                        );
+                      },
+                    ),
+                    trailing: Observer(
+                      builder: (_) => Icon(
+                        viewModel.requestModel.prosesler?.any(
+                                  (element) => (element.id == proses.id) && element.sonuc != null,
+                                ) ??
+                                false
+                            ? Icons.check_box_outlined
+                            : Icons.check_box_outline_blank,
                       ),
+                    ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
+                  ),
                 ),
               );
             },

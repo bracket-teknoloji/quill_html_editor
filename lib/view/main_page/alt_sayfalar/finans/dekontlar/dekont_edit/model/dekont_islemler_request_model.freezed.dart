@@ -12,10 +12,10 @@ part of 'dekont_islemler_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-DekontIslemlerRequestModel _$DekontIslemlerRequestModelFromJson(
-    Map<String, dynamic> json) {
+DekontIslemlerRequestModel _$DekontIslemlerRequestModelFromJson(Map<String, dynamic> json) {
   return _DekontIslemlerRequestModel.fromJson(json);
 }
 
@@ -28,8 +28,7 @@ mixin _$DekontIslemlerRequestModel {
   String? get guid => throw _privateConstructorUsedError;
   set guid(String? value) => throw _privateConstructorUsedError;
   List<DekontKalemler>? get kalemler => throw _privateConstructorUsedError;
-  set kalemler(List<DekontKalemler>? value) =>
-      throw _privateConstructorUsedError;
+  set kalemler(List<DekontKalemler>? value) => throw _privateConstructorUsedError;
   String? get plasiyerKodu => throw _privateConstructorUsedError;
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
   String? get projeKodu => throw _privateConstructorUsedError;
@@ -63,37 +62,35 @@ mixin _$DekontIslemlerRequestModel {
   /// Create a copy of DekontIslemlerRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DekontIslemlerRequestModelCopyWith<DekontIslemlerRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $DekontIslemlerRequestModelCopyWith<DekontIslemlerRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontIslemlerRequestModelCopyWith<$Res> {
-  factory $DekontIslemlerRequestModelCopyWith(DekontIslemlerRequestModel value,
-          $Res Function(DekontIslemlerRequestModel) then) =
-      _$DekontIslemlerRequestModelCopyWithImpl<$Res,
-          DekontIslemlerRequestModel>;
+  factory $DekontIslemlerRequestModelCopyWith(
+    DekontIslemlerRequestModel value,
+    $Res Function(DekontIslemlerRequestModel) then,
+  ) = _$DekontIslemlerRequestModelCopyWithImpl<$Res, DekontIslemlerRequestModel>;
   @useResult
-  $Res call(
-      {String? dekontIslemTuru,
-      String? dekontSeri,
-      String? guid,
-      List<DekontKalemler>? kalemler,
-      String? plasiyerKodu,
-      String? projeKodu,
-      String? tag,
-      DateTime? tarih,
-      @JsonKey(name: "_YeniKayit") bool? yeniKayit,
-      int? dekontNo,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? plasiyerAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi});
+  $Res call({
+    String? dekontIslemTuru,
+    String? dekontSeri,
+    String? guid,
+    List<DekontKalemler>? kalemler,
+    String? plasiyerKodu,
+    String? projeKodu,
+    String? tag,
+    DateTime? tarih,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+    int? dekontNo,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+  });
 }
 
 /// @nodoc
-class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
-        $Val extends DekontIslemlerRequestModel>
+class _$DekontIslemlerRequestModelCopyWithImpl<$Res, $Val extends DekontIslemlerRequestModel>
     implements $DekontIslemlerRequestModelCopyWith<$Res> {
   _$DekontIslemlerRequestModelCopyWithImpl(this._value, this._then);
 
@@ -121,98 +118,99 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
     Object? plasiyerAdi = freezed,
     Object? projeAdi = freezed,
   }) {
-    return _then(_value.copyWith(
-      dekontIslemTuru: freezed == dekontIslemTuru
-          ? _value.dekontIslemTuru
-          : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontSeri: freezed == dekontSeri
-          ? _value.dekontSeri
-          : dekontSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      guid: freezed == guid
-          ? _value.guid
-          : guid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemler: freezed == kalemler
-          ? _value.kalemler
-          : kalemler // ignore: cast_nullable_to_non_nullable
-              as List<DekontKalemler>?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tag: freezed == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      yeniKayit: freezed == yeniKayit
-          ? _value.yeniKayit
-          : yeniKayit // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      dekontNo: freezed == dekontNo
-          ? _value.dekontNo
-          : dekontNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      seriAdi: freezed == seriAdi
-          ? _value.seriAdi
-          : seriAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAdi: freezed == plasiyerAdi
-          ? _value.plasiyerAdi
-          : plasiyerAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeAdi: freezed == projeAdi
-          ? _value.projeAdi
-          : projeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            dekontIslemTuru: freezed == dekontIslemTuru
+                ? _value.dekontIslemTuru
+                : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            dekontSeri: freezed == dekontSeri
+                ? _value.dekontSeri
+                : dekontSeri // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            guid: freezed == guid
+                ? _value.guid
+                : guid // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kalemler: freezed == kalemler
+                ? _value.kalemler
+                : kalemler // ignore: cast_nullable_to_non_nullable
+                      as List<DekontKalemler>?,
+            plasiyerKodu: freezed == plasiyerKodu
+                ? _value.plasiyerKodu
+                : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            projeKodu: freezed == projeKodu
+                ? _value.projeKodu
+                : projeKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tag: freezed == tag
+                ? _value.tag
+                : tag // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            tarih: freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            yeniKayit: freezed == yeniKayit
+                ? _value.yeniKayit
+                : yeniKayit // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            dekontNo: freezed == dekontNo
+                ? _value.dekontNo
+                : dekontNo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            seriAdi: freezed == seriAdi
+                ? _value.seriAdi
+                : seriAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            plasiyerAdi: freezed == plasiyerAdi
+                ? _value.plasiyerAdi
+                : plasiyerAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            projeAdi: freezed == projeAdi
+                ? _value.projeAdi
+                : projeAdi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DekontIslemlerRequestModelImplCopyWith<$Res>
-    implements $DekontIslemlerRequestModelCopyWith<$Res> {
+abstract class _$$DekontIslemlerRequestModelImplCopyWith<$Res> implements $DekontIslemlerRequestModelCopyWith<$Res> {
   factory _$$DekontIslemlerRequestModelImplCopyWith(
-          _$DekontIslemlerRequestModelImpl value,
-          $Res Function(_$DekontIslemlerRequestModelImpl) then) =
-      __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>;
+    _$DekontIslemlerRequestModelImpl value,
+    $Res Function(_$DekontIslemlerRequestModelImpl) then,
+  ) = __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? dekontIslemTuru,
-      String? dekontSeri,
-      String? guid,
-      List<DekontKalemler>? kalemler,
-      String? plasiyerKodu,
-      String? projeKodu,
-      String? tag,
-      DateTime? tarih,
-      @JsonKey(name: "_YeniKayit") bool? yeniKayit,
-      int? dekontNo,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? plasiyerAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi});
+  $Res call({
+    String? dekontIslemTuru,
+    String? dekontSeri,
+    String? guid,
+    List<DekontKalemler>? kalemler,
+    String? plasiyerKodu,
+    String? projeKodu,
+    String? tag,
+    DateTime? tarih,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+    int? dekontNo,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+  });
 }
 
 /// @nodoc
 class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
-    extends _$DekontIslemlerRequestModelCopyWithImpl<$Res,
-        _$DekontIslemlerRequestModelImpl>
+    extends _$DekontIslemlerRequestModelCopyWithImpl<$Res, _$DekontIslemlerRequestModelImpl>
     implements _$$DekontIslemlerRequestModelImplCopyWith<$Res> {
   __$$DekontIslemlerRequestModelImplCopyWithImpl(
-      _$DekontIslemlerRequestModelImpl _value,
-      $Res Function(_$DekontIslemlerRequestModelImpl) _then)
-      : super(_value, _then);
+    _$DekontIslemlerRequestModelImpl _value,
+    $Res Function(_$DekontIslemlerRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DekontIslemlerRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -233,84 +231,85 @@ class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
     Object? plasiyerAdi = freezed,
     Object? projeAdi = freezed,
   }) {
-    return _then(_$DekontIslemlerRequestModelImpl(
-      dekontIslemTuru: freezed == dekontIslemTuru
-          ? _value.dekontIslemTuru
-          : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontSeri: freezed == dekontSeri
-          ? _value.dekontSeri
-          : dekontSeri // ignore: cast_nullable_to_non_nullable
-              as String?,
-      guid: freezed == guid
-          ? _value.guid
-          : guid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemler: freezed == kalemler
-          ? _value.kalemler
-          : kalemler // ignore: cast_nullable_to_non_nullable
-              as List<DekontKalemler>?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tag: freezed == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      yeniKayit: freezed == yeniKayit
-          ? _value.yeniKayit
-          : yeniKayit // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      dekontNo: freezed == dekontNo
-          ? _value.dekontNo
-          : dekontNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      seriAdi: freezed == seriAdi
-          ? _value.seriAdi
-          : seriAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAdi: freezed == plasiyerAdi
-          ? _value.plasiyerAdi
-          : plasiyerAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeAdi: freezed == projeAdi
-          ? _value.projeAdi
-          : projeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$DekontIslemlerRequestModelImpl(
+        dekontIslemTuru: freezed == dekontIslemTuru
+            ? _value.dekontIslemTuru
+            : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        dekontSeri: freezed == dekontSeri
+            ? _value.dekontSeri
+            : dekontSeri // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        guid: freezed == guid
+            ? _value.guid
+            : guid // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kalemler: freezed == kalemler
+            ? _value.kalemler
+            : kalemler // ignore: cast_nullable_to_non_nullable
+                  as List<DekontKalemler>?,
+        plasiyerKodu: freezed == plasiyerKodu
+            ? _value.plasiyerKodu
+            : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        projeKodu: freezed == projeKodu
+            ? _value.projeKodu
+            : projeKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tag: freezed == tag
+            ? _value.tag
+            : tag // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        tarih: freezed == tarih
+            ? _value.tarih
+            : tarih // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        yeniKayit: freezed == yeniKayit
+            ? _value.yeniKayit
+            : yeniKayit // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        dekontNo: freezed == dekontNo
+            ? _value.dekontNo
+            : dekontNo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        seriAdi: freezed == seriAdi
+            ? _value.seriAdi
+            : seriAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        plasiyerAdi: freezed == plasiyerAdi
+            ? _value.plasiyerAdi
+            : plasiyerAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        projeAdi: freezed == projeAdi
+            ? _value.projeAdi
+            : projeAdi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
-  _$DekontIslemlerRequestModelImpl(
-      {this.dekontIslemTuru,
-      this.dekontSeri,
-      this.guid,
-      this.kalemler,
-      this.plasiyerKodu,
-      this.projeKodu,
-      this.tag = "DekontModel",
-      this.tarih,
-      @JsonKey(name: "_YeniKayit") this.yeniKayit,
-      this.dekontNo,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.plasiyerAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi})
-      : super._();
+  _$DekontIslemlerRequestModelImpl({
+    this.dekontIslemTuru,
+    this.dekontSeri,
+    this.guid,
+    this.kalemler,
+    this.plasiyerKodu,
+    this.projeKodu,
+    this.tag = "DekontModel",
+    this.tarih,
+    @JsonKey(name: "_YeniKayit") this.yeniKayit,
+    this.dekontNo,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.seriAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.plasiyerAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi,
+  }) : super._();
 
-  factory _$DekontIslemlerRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$DekontIslemlerRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DekontIslemlerRequestModelImplFromJson(json);
 
   @override
@@ -350,39 +349,34 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl>
-      get copyWith => __$$DekontIslemlerRequestModelImplCopyWithImpl<
-          _$DekontIslemlerRequestModelImpl>(this, _$identity);
+  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl> get copyWith =>
+      __$$DekontIslemlerRequestModelImplCopyWithImpl<_$DekontIslemlerRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DekontIslemlerRequestModelImplToJson(
-      this,
-    );
+    return _$$DekontIslemlerRequestModelImplToJson(this);
   }
 }
 
 abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
-  factory _DekontIslemlerRequestModel(
-      {String? dekontIslemTuru,
-      String? dekontSeri,
-      String? guid,
-      List<DekontKalemler>? kalemler,
-      String? plasiyerKodu,
-      String? projeKodu,
-      String? tag,
-      DateTime? tarih,
-      @JsonKey(name: "_YeniKayit") bool? yeniKayit,
-      int? dekontNo,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? plasiyerAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      String? projeAdi}) = _$DekontIslemlerRequestModelImpl;
+  factory _DekontIslemlerRequestModel({
+    String? dekontIslemTuru,
+    String? dekontSeri,
+    String? guid,
+    List<DekontKalemler>? kalemler,
+    String? plasiyerKodu,
+    String? projeKodu,
+    String? tag,
+    DateTime? tarih,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+    int? dekontNo,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+  }) = _$DekontIslemlerRequestModelImpl;
   _DekontIslemlerRequestModel._() : super._();
 
-  factory _DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) =
-      _$DekontIslemlerRequestModelImpl.fromJson;
+  factory _DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) = _$DekontIslemlerRequestModelImpl.fromJson;
 
   @override
   String? get dekontIslemTuru;
@@ -436,6 +430,6 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

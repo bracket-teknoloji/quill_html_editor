@@ -41,10 +41,9 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   bool get dovizliMi => kalemModel.dovizliMi;
 
   @computed
-  String get dovizAdi =>
-      BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true
-          ? kalemModel.stokSatDovizAdi ?? ""
-          : kalemModel.stokAlisDovizAdi ?? "";
+  String get dovizAdi => BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true
+      ? kalemModel.stokSatDovizAdi ?? ""
+      : kalemModel.stokAlisDovizAdi ?? "";
 
   @computed
   List<Olculer> get olcuBirimiMap => [
@@ -94,10 +93,9 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
 
   @action
-  void addSeriList(SeriList seriList) =>
-      kalemModel = kalemModel.copyWith(
-        seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList ?? [], seriList],
-      );
+  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(
+    seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList ?? [], seriList],
+  );
 
   @action
   void setDovizAdi(String? value) => kalemModel = kalemModel.copyWith(dovizAdi: value);
@@ -109,12 +107,11 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizliFiyat: value, dovizFiyati: value);
 
   @action
-  void setOlcuBirimi(MapEntry<Olculer, int>? value) =>
-      kalemModel = kalemModel.copyWith(
-        olcuBirimKodu: value?.value,
-        olcuBirimAdi: value?.key.adi,
-        olcuBirimCarpani: (value?.key.pay ?? 1) / (value?.key.payda ?? 1),
-      );
+  void setOlcuBirimi(MapEntry<Olculer, int>? value) => kalemModel = kalemModel.copyWith(
+    olcuBirimKodu: value?.value,
+    olcuBirimAdi: value?.key.adi,
+    olcuBirimCarpani: (value?.key.pay ?? 1) / (value?.key.payda ?? 1),
+  );
 
   @action
   void setFiyat(double? value) => kalemModel = kalemModel.copyWith(satisFiyati: value);

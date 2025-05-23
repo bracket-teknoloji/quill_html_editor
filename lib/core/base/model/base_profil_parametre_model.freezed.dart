@@ -12,10 +12,10 @@ part of 'base_profil_parametre_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-BaseProfilParametreModel _$BaseProfilParametreModelFromJson(
-    Map<String, dynamic> json) {
+BaseProfilParametreModel _$BaseProfilParametreModelFromJson(Map<String, dynamic> json) {
   return _BaseProfilParametreModel.fromJson(json);
 }
 
@@ -30,8 +30,7 @@ mixin _$BaseProfilParametreModel {
   bool get siparisVade => throw _privateConstructorUsedError;
   bool get kurlariSilTekrarGuncelle => throw _privateConstructorUsedError;
   bool get stokResimleriGoster => throw _privateConstructorUsedError;
-  bool get stokYazdirDizaynVeYaziciHatirla =>
-      throw _privateConstructorUsedError;
+  bool get stokYazdirDizaynVeYaziciHatirla => throw _privateConstructorUsedError;
   bool get stokSecildigindeYazdir => throw _privateConstructorUsedError;
   bool get finansOzelRaporGrafikGoster => throw _privateConstructorUsedError;
   @Deprecated("Bunun yerine temaModu kullanılacak.")
@@ -42,30 +41,24 @@ mixin _$BaseProfilParametreModel {
   /// 3 ise karanlık tema
   ThemeMode get temaModu => throw _privateConstructorUsedError;
   bool get rotaDisiGorunsunMu => throw _privateConstructorUsedError;
-  NetFectDizaynList? get netFectDizaynList =>
-      throw _privateConstructorUsedError;
+  NetFectDizaynList? get netFectDizaynList => throw _privateConstructorUsedError;
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
   EditTipiEnum get olcumGirisiBelgeTipi => throw _privateConstructorUsedError;
   bool get kapaliBelgelerListelenmesinMi => throw _privateConstructorUsedError;
-  bool get sayimStokSecildigindeHemenKaydet =>
-      throw _privateConstructorUsedError;
+  bool get sayimStokSecildigindeHemenKaydet => throw _privateConstructorUsedError;
   bool get sayimOtomatikEtiketYazdir => throw _privateConstructorUsedError;
-  Map<String, dynamic> get stokGorunecekEkstraAlanlar =>
-      throw _privateConstructorUsedError;
+  Map<String, dynamic> get stokGorunecekEkstraAlanlar => throw _privateConstructorUsedError;
   int get stokListesiGridSayisi => throw _privateConstructorUsedError;
-  String get urunGrubunaGoreSatisRaporTipi =>
-      throw _privateConstructorUsedError;
+  String get urunGrubunaGoreSatisRaporTipi => throw _privateConstructorUsedError;
   bool get urunGrubunaGoreGruplansin => throw _privateConstructorUsedError;
   String get cariListesiSirala => throw _privateConstructorUsedError;
   String get stokListesiSirala => throw _privateConstructorUsedError;
-  bool get irsFaturalasanIrsaliyelerGelsin =>
-      throw _privateConstructorUsedError;
+  bool get irsFaturalasanIrsaliyelerGelsin => throw _privateConstructorUsedError;
   bool get eIrsaliyeSeciliGelsin => throw _privateConstructorUsedError;
   DepoList? get depoTalepDepoList => throw _privateConstructorUsedError;
   String get faturaKarlilikMaliyetTipi => throw _privateConstructorUsedError;
   bool get stokhareketleriDovizliGoster => throw _privateConstructorUsedError;
-  List<String> get stokhareketleriGizlenecekAlanlar =>
-      throw _privateConstructorUsedError;
+  List<String> get stokhareketleriGizlenecekAlanlar => throw _privateConstructorUsedError;
 
   /// Serializes this BaseProfilParametreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,55 +66,55 @@ mixin _$BaseProfilParametreModel {
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BaseProfilParametreModelCopyWith<BaseProfilParametreModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BaseProfilParametreModelCopyWith<BaseProfilParametreModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BaseProfilParametreModelCopyWith<$Res> {
-  factory $BaseProfilParametreModelCopyWith(BaseProfilParametreModel value,
-          $Res Function(BaseProfilParametreModel) then) =
-      _$BaseProfilParametreModelCopyWithImpl<$Res, BaseProfilParametreModel>;
+  factory $BaseProfilParametreModelCopyWith(
+    BaseProfilParametreModel value,
+    $Res Function(BaseProfilParametreModel) then,
+  ) = _$BaseProfilParametreModelCopyWithImpl<$Res, BaseProfilParametreModel>;
   @useResult
-  $Res call(
-      {bool siparisYeniKaydaHazirla,
-      bool faturaYeniKaydaHazirla,
-      bool talepTeklifYeniKaydaHazirla,
-      bool transferYeniKaydaHazirla,
-      bool siparisEkAlan,
-      bool siparisMiktar,
-      bool siparisVade,
-      bool kurlariSilTekrarGuncelle,
-      bool stokResimleriGoster,
-      bool stokYazdirDizaynVeYaziciHatirla,
-      bool stokSecildigindeYazdir,
-      bool finansOzelRaporGrafikGoster,
-      @Deprecated("Bunun yerine temaModu kullanılacak.") bool acikTemaMi,
-      ThemeMode temaModu,
-      bool rotaDisiGorunsunMu,
-      NetFectDizaynList? netFectDizaynList,
-      YaziciList? yaziciList,
-      EditTipiEnum olcumGirisiBelgeTipi,
-      bool kapaliBelgelerListelenmesinMi,
-      bool sayimStokSecildigindeHemenKaydet,
-      bool sayimOtomatikEtiketYazdir,
-      Map<String, dynamic> stokGorunecekEkstraAlanlar,
-      int stokListesiGridSayisi,
-      String urunGrubunaGoreSatisRaporTipi,
-      bool urunGrubunaGoreGruplansin,
-      String cariListesiSirala,
-      String stokListesiSirala,
-      bool irsFaturalasanIrsaliyelerGelsin,
-      bool eIrsaliyeSeciliGelsin,
-      DepoList? depoTalepDepoList,
-      String faturaKarlilikMaliyetTipi,
-      bool stokhareketleriDovizliGoster,
-      List<String> stokhareketleriGizlenecekAlanlar});
+  $Res call({
+    bool siparisYeniKaydaHazirla,
+    bool faturaYeniKaydaHazirla,
+    bool talepTeklifYeniKaydaHazirla,
+    bool transferYeniKaydaHazirla,
+    bool siparisEkAlan,
+    bool siparisMiktar,
+    bool siparisVade,
+    bool kurlariSilTekrarGuncelle,
+    bool stokResimleriGoster,
+    bool stokYazdirDizaynVeYaziciHatirla,
+    bool stokSecildigindeYazdir,
+    bool finansOzelRaporGrafikGoster,
+    @Deprecated("Bunun yerine temaModu kullanılacak.") bool acikTemaMi,
+    ThemeMode temaModu,
+    bool rotaDisiGorunsunMu,
+    NetFectDizaynList? netFectDizaynList,
+    YaziciList? yaziciList,
+    EditTipiEnum olcumGirisiBelgeTipi,
+    bool kapaliBelgelerListelenmesinMi,
+    bool sayimStokSecildigindeHemenKaydet,
+    bool sayimOtomatikEtiketYazdir,
+    Map<String, dynamic> stokGorunecekEkstraAlanlar,
+    int stokListesiGridSayisi,
+    String urunGrubunaGoreSatisRaporTipi,
+    bool urunGrubunaGoreGruplansin,
+    String cariListesiSirala,
+    String stokListesiSirala,
+    bool irsFaturalasanIrsaliyelerGelsin,
+    bool eIrsaliyeSeciliGelsin,
+    DepoList? depoTalepDepoList,
+    String faturaKarlilikMaliyetTipi,
+    bool stokhareketleriDovizliGoster,
+    List<String> stokhareketleriGizlenecekAlanlar,
+  });
 }
 
 /// @nodoc
-class _$BaseProfilParametreModelCopyWithImpl<$Res,
-        $Val extends BaseProfilParametreModel>
+class _$BaseProfilParametreModelCopyWithImpl<$Res, $Val extends BaseProfilParametreModel>
     implements $BaseProfilParametreModelCopyWith<$Res> {
   _$BaseProfilParametreModelCopyWithImpl(this._value, this._then);
 
@@ -169,197 +162,199 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? stokhareketleriDovizliGoster = null,
     Object? stokhareketleriGizlenecekAlanlar = null,
   }) {
-    return _then(_value.copyWith(
-      siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
-          ? _value.siparisYeniKaydaHazirla
-          : siparisYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      faturaYeniKaydaHazirla: null == faturaYeniKaydaHazirla
-          ? _value.faturaYeniKaydaHazirla
-          : faturaYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
-          ? _value.talepTeklifYeniKaydaHazirla
-          : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      transferYeniKaydaHazirla: null == transferYeniKaydaHazirla
-          ? _value.transferYeniKaydaHazirla
-          : transferYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      siparisEkAlan: null == siparisEkAlan
-          ? _value.siparisEkAlan
-          : siparisEkAlan // ignore: cast_nullable_to_non_nullable
-              as bool,
-      siparisMiktar: null == siparisMiktar
-          ? _value.siparisMiktar
-          : siparisMiktar // ignore: cast_nullable_to_non_nullable
-              as bool,
-      siparisVade: null == siparisVade
-          ? _value.siparisVade
-          : siparisVade // ignore: cast_nullable_to_non_nullable
-              as bool,
-      kurlariSilTekrarGuncelle: null == kurlariSilTekrarGuncelle
-          ? _value.kurlariSilTekrarGuncelle
-          : kurlariSilTekrarGuncelle // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokResimleriGoster: null == stokResimleriGoster
-          ? _value.stokResimleriGoster
-          : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokYazdirDizaynVeYaziciHatirla: null == stokYazdirDizaynVeYaziciHatirla
-          ? _value.stokYazdirDizaynVeYaziciHatirla
-          : stokYazdirDizaynVeYaziciHatirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokSecildigindeYazdir: null == stokSecildigindeYazdir
-          ? _value.stokSecildigindeYazdir
-          : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
-              as bool,
-      finansOzelRaporGrafikGoster: null == finansOzelRaporGrafikGoster
-          ? _value.finansOzelRaporGrafikGoster
-          : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
-              as bool,
-      acikTemaMi: null == acikTemaMi
-          ? _value.acikTemaMi
-          : acikTemaMi // ignore: cast_nullable_to_non_nullable
-              as bool,
-      temaModu: null == temaModu
-          ? _value.temaModu
-          : temaModu // ignore: cast_nullable_to_non_nullable
-              as ThemeMode,
-      rotaDisiGorunsunMu: null == rotaDisiGorunsunMu
-          ? _value.rotaDisiGorunsunMu
-          : rotaDisiGorunsunMu // ignore: cast_nullable_to_non_nullable
-              as bool,
-      netFectDizaynList: freezed == netFectDizaynList
-          ? _value.netFectDizaynList
-          : netFectDizaynList // ignore: cast_nullable_to_non_nullable
-              as NetFectDizaynList?,
-      yaziciList: freezed == yaziciList
-          ? _value.yaziciList
-          : yaziciList // ignore: cast_nullable_to_non_nullable
-              as YaziciList?,
-      olcumGirisiBelgeTipi: null == olcumGirisiBelgeTipi
-          ? _value.olcumGirisiBelgeTipi
-          : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
-              as EditTipiEnum,
-      kapaliBelgelerListelenmesinMi: null == kapaliBelgelerListelenmesinMi
-          ? _value.kapaliBelgelerListelenmesinMi
-          : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sayimStokSecildigindeHemenKaydet: null == sayimStokSecildigindeHemenKaydet
-          ? _value.sayimStokSecildigindeHemenKaydet
-          : sayimStokSecildigindeHemenKaydet // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sayimOtomatikEtiketYazdir: null == sayimOtomatikEtiketYazdir
-          ? _value.sayimOtomatikEtiketYazdir
-          : sayimOtomatikEtiketYazdir // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
-          ? _value.stokGorunecekEkstraAlanlar
-          : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      stokListesiGridSayisi: null == stokListesiGridSayisi
-          ? _value.stokListesiGridSayisi
-          : stokListesiGridSayisi // ignore: cast_nullable_to_non_nullable
-              as int,
-      urunGrubunaGoreSatisRaporTipi: null == urunGrubunaGoreSatisRaporTipi
-          ? _value.urunGrubunaGoreSatisRaporTipi
-          : urunGrubunaGoreSatisRaporTipi // ignore: cast_nullable_to_non_nullable
-              as String,
-      urunGrubunaGoreGruplansin: null == urunGrubunaGoreGruplansin
-          ? _value.urunGrubunaGoreGruplansin
-          : urunGrubunaGoreGruplansin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      cariListesiSirala: null == cariListesiSirala
-          ? _value.cariListesiSirala
-          : cariListesiSirala // ignore: cast_nullable_to_non_nullable
-              as String,
-      stokListesiSirala: null == stokListesiSirala
-          ? _value.stokListesiSirala
-          : stokListesiSirala // ignore: cast_nullable_to_non_nullable
-              as String,
-      irsFaturalasanIrsaliyelerGelsin: null == irsFaturalasanIrsaliyelerGelsin
-          ? _value.irsFaturalasanIrsaliyelerGelsin
-          : irsFaturalasanIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      eIrsaliyeSeciliGelsin: null == eIrsaliyeSeciliGelsin
-          ? _value.eIrsaliyeSeciliGelsin
-          : eIrsaliyeSeciliGelsin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      depoTalepDepoList: freezed == depoTalepDepoList
-          ? _value.depoTalepDepoList
-          : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
-              as DepoList?,
-      faturaKarlilikMaliyetTipi: null == faturaKarlilikMaliyetTipi
-          ? _value.faturaKarlilikMaliyetTipi
-          : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
-              as String,
-      stokhareketleriDovizliGoster: null == stokhareketleriDovizliGoster
-          ? _value.stokhareketleriDovizliGoster
-          : stokhareketleriDovizliGoster // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokhareketleriGizlenecekAlanlar: null == stokhareketleriGizlenecekAlanlar
-          ? _value.stokhareketleriGizlenecekAlanlar
-          : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
+                ? _value.siparisYeniKaydaHazirla
+                : siparisYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            faturaYeniKaydaHazirla: null == faturaYeniKaydaHazirla
+                ? _value.faturaYeniKaydaHazirla
+                : faturaYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
+                ? _value.talepTeklifYeniKaydaHazirla
+                : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            transferYeniKaydaHazirla: null == transferYeniKaydaHazirla
+                ? _value.transferYeniKaydaHazirla
+                : transferYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            siparisEkAlan: null == siparisEkAlan
+                ? _value.siparisEkAlan
+                : siparisEkAlan // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            siparisMiktar: null == siparisMiktar
+                ? _value.siparisMiktar
+                : siparisMiktar // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            siparisVade: null == siparisVade
+                ? _value.siparisVade
+                : siparisVade // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            kurlariSilTekrarGuncelle: null == kurlariSilTekrarGuncelle
+                ? _value.kurlariSilTekrarGuncelle
+                : kurlariSilTekrarGuncelle // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            stokResimleriGoster: null == stokResimleriGoster
+                ? _value.stokResimleriGoster
+                : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            stokYazdirDizaynVeYaziciHatirla: null == stokYazdirDizaynVeYaziciHatirla
+                ? _value.stokYazdirDizaynVeYaziciHatirla
+                : stokYazdirDizaynVeYaziciHatirla // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            stokSecildigindeYazdir: null == stokSecildigindeYazdir
+                ? _value.stokSecildigindeYazdir
+                : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            finansOzelRaporGrafikGoster: null == finansOzelRaporGrafikGoster
+                ? _value.finansOzelRaporGrafikGoster
+                : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            acikTemaMi: null == acikTemaMi
+                ? _value.acikTemaMi
+                : acikTemaMi // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            temaModu: null == temaModu
+                ? _value.temaModu
+                : temaModu // ignore: cast_nullable_to_non_nullable
+                      as ThemeMode,
+            rotaDisiGorunsunMu: null == rotaDisiGorunsunMu
+                ? _value.rotaDisiGorunsunMu
+                : rotaDisiGorunsunMu // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            netFectDizaynList: freezed == netFectDizaynList
+                ? _value.netFectDizaynList
+                : netFectDizaynList // ignore: cast_nullable_to_non_nullable
+                      as NetFectDizaynList?,
+            yaziciList: freezed == yaziciList
+                ? _value.yaziciList
+                : yaziciList // ignore: cast_nullable_to_non_nullable
+                      as YaziciList?,
+            olcumGirisiBelgeTipi: null == olcumGirisiBelgeTipi
+                ? _value.olcumGirisiBelgeTipi
+                : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
+                      as EditTipiEnum,
+            kapaliBelgelerListelenmesinMi: null == kapaliBelgelerListelenmesinMi
+                ? _value.kapaliBelgelerListelenmesinMi
+                : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            sayimStokSecildigindeHemenKaydet: null == sayimStokSecildigindeHemenKaydet
+                ? _value.sayimStokSecildigindeHemenKaydet
+                : sayimStokSecildigindeHemenKaydet // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            sayimOtomatikEtiketYazdir: null == sayimOtomatikEtiketYazdir
+                ? _value.sayimOtomatikEtiketYazdir
+                : sayimOtomatikEtiketYazdir // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
+                ? _value.stokGorunecekEkstraAlanlar
+                : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>,
+            stokListesiGridSayisi: null == stokListesiGridSayisi
+                ? _value.stokListesiGridSayisi
+                : stokListesiGridSayisi // ignore: cast_nullable_to_non_nullable
+                      as int,
+            urunGrubunaGoreSatisRaporTipi: null == urunGrubunaGoreSatisRaporTipi
+                ? _value.urunGrubunaGoreSatisRaporTipi
+                : urunGrubunaGoreSatisRaporTipi // ignore: cast_nullable_to_non_nullable
+                      as String,
+            urunGrubunaGoreGruplansin: null == urunGrubunaGoreGruplansin
+                ? _value.urunGrubunaGoreGruplansin
+                : urunGrubunaGoreGruplansin // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            cariListesiSirala: null == cariListesiSirala
+                ? _value.cariListesiSirala
+                : cariListesiSirala // ignore: cast_nullable_to_non_nullable
+                      as String,
+            stokListesiSirala: null == stokListesiSirala
+                ? _value.stokListesiSirala
+                : stokListesiSirala // ignore: cast_nullable_to_non_nullable
+                      as String,
+            irsFaturalasanIrsaliyelerGelsin: null == irsFaturalasanIrsaliyelerGelsin
+                ? _value.irsFaturalasanIrsaliyelerGelsin
+                : irsFaturalasanIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            eIrsaliyeSeciliGelsin: null == eIrsaliyeSeciliGelsin
+                ? _value.eIrsaliyeSeciliGelsin
+                : eIrsaliyeSeciliGelsin // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            depoTalepDepoList: freezed == depoTalepDepoList
+                ? _value.depoTalepDepoList
+                : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
+                      as DepoList?,
+            faturaKarlilikMaliyetTipi: null == faturaKarlilikMaliyetTipi
+                ? _value.faturaKarlilikMaliyetTipi
+                : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
+                      as String,
+            stokhareketleriDovizliGoster: null == stokhareketleriDovizliGoster
+                ? _value.stokhareketleriDovizliGoster
+                : stokhareketleriDovizliGoster // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            stokhareketleriGizlenecekAlanlar: null == stokhareketleriGizlenecekAlanlar
+                ? _value.stokhareketleriGizlenecekAlanlar
+                : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
-    implements $BaseProfilParametreModelCopyWith<$Res> {
+abstract class _$$BaseProfilParametreModelImplCopyWith<$Res> implements $BaseProfilParametreModelCopyWith<$Res> {
   factory _$$BaseProfilParametreModelImplCopyWith(
-          _$BaseProfilParametreModelImpl value,
-          $Res Function(_$BaseProfilParametreModelImpl) then) =
-      __$$BaseProfilParametreModelImplCopyWithImpl<$Res>;
+    _$BaseProfilParametreModelImpl value,
+    $Res Function(_$BaseProfilParametreModelImpl) then,
+  ) = __$$BaseProfilParametreModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool siparisYeniKaydaHazirla,
-      bool faturaYeniKaydaHazirla,
-      bool talepTeklifYeniKaydaHazirla,
-      bool transferYeniKaydaHazirla,
-      bool siparisEkAlan,
-      bool siparisMiktar,
-      bool siparisVade,
-      bool kurlariSilTekrarGuncelle,
-      bool stokResimleriGoster,
-      bool stokYazdirDizaynVeYaziciHatirla,
-      bool stokSecildigindeYazdir,
-      bool finansOzelRaporGrafikGoster,
-      @Deprecated("Bunun yerine temaModu kullanılacak.") bool acikTemaMi,
-      ThemeMode temaModu,
-      bool rotaDisiGorunsunMu,
-      NetFectDizaynList? netFectDizaynList,
-      YaziciList? yaziciList,
-      EditTipiEnum olcumGirisiBelgeTipi,
-      bool kapaliBelgelerListelenmesinMi,
-      bool sayimStokSecildigindeHemenKaydet,
-      bool sayimOtomatikEtiketYazdir,
-      Map<String, dynamic> stokGorunecekEkstraAlanlar,
-      int stokListesiGridSayisi,
-      String urunGrubunaGoreSatisRaporTipi,
-      bool urunGrubunaGoreGruplansin,
-      String cariListesiSirala,
-      String stokListesiSirala,
-      bool irsFaturalasanIrsaliyelerGelsin,
-      bool eIrsaliyeSeciliGelsin,
-      DepoList? depoTalepDepoList,
-      String faturaKarlilikMaliyetTipi,
-      bool stokhareketleriDovizliGoster,
-      List<String> stokhareketleriGizlenecekAlanlar});
+  $Res call({
+    bool siparisYeniKaydaHazirla,
+    bool faturaYeniKaydaHazirla,
+    bool talepTeklifYeniKaydaHazirla,
+    bool transferYeniKaydaHazirla,
+    bool siparisEkAlan,
+    bool siparisMiktar,
+    bool siparisVade,
+    bool kurlariSilTekrarGuncelle,
+    bool stokResimleriGoster,
+    bool stokYazdirDizaynVeYaziciHatirla,
+    bool stokSecildigindeYazdir,
+    bool finansOzelRaporGrafikGoster,
+    @Deprecated("Bunun yerine temaModu kullanılacak.") bool acikTemaMi,
+    ThemeMode temaModu,
+    bool rotaDisiGorunsunMu,
+    NetFectDizaynList? netFectDizaynList,
+    YaziciList? yaziciList,
+    EditTipiEnum olcumGirisiBelgeTipi,
+    bool kapaliBelgelerListelenmesinMi,
+    bool sayimStokSecildigindeHemenKaydet,
+    bool sayimOtomatikEtiketYazdir,
+    Map<String, dynamic> stokGorunecekEkstraAlanlar,
+    int stokListesiGridSayisi,
+    String urunGrubunaGoreSatisRaporTipi,
+    bool urunGrubunaGoreGruplansin,
+    String cariListesiSirala,
+    String stokListesiSirala,
+    bool irsFaturalasanIrsaliyelerGelsin,
+    bool eIrsaliyeSeciliGelsin,
+    DepoList? depoTalepDepoList,
+    String faturaKarlilikMaliyetTipi,
+    bool stokhareketleriDovizliGoster,
+    List<String> stokhareketleriGizlenecekAlanlar,
+  });
 }
 
 /// @nodoc
 class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
-    extends _$BaseProfilParametreModelCopyWithImpl<$Res,
-        _$BaseProfilParametreModelImpl>
+    extends _$BaseProfilParametreModelCopyWithImpl<$Res, _$BaseProfilParametreModelImpl>
     implements _$$BaseProfilParametreModelImplCopyWith<$Res> {
   __$$BaseProfilParametreModelImplCopyWithImpl(
-      _$BaseProfilParametreModelImpl _value,
-      $Res Function(_$BaseProfilParametreModelImpl) _then)
-      : super(_value, _then);
+    _$BaseProfilParametreModelImpl _value,
+    $Res Function(_$BaseProfilParametreModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
@@ -400,184 +395,185 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? stokhareketleriDovizliGoster = null,
     Object? stokhareketleriGizlenecekAlanlar = null,
   }) {
-    return _then(_$BaseProfilParametreModelImpl(
-      siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
-          ? _value.siparisYeniKaydaHazirla
-          : siparisYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      faturaYeniKaydaHazirla: null == faturaYeniKaydaHazirla
-          ? _value.faturaYeniKaydaHazirla
-          : faturaYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
-          ? _value.talepTeklifYeniKaydaHazirla
-          : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      transferYeniKaydaHazirla: null == transferYeniKaydaHazirla
-          ? _value.transferYeniKaydaHazirla
-          : transferYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      siparisEkAlan: null == siparisEkAlan
-          ? _value.siparisEkAlan
-          : siparisEkAlan // ignore: cast_nullable_to_non_nullable
-              as bool,
-      siparisMiktar: null == siparisMiktar
-          ? _value.siparisMiktar
-          : siparisMiktar // ignore: cast_nullable_to_non_nullable
-              as bool,
-      siparisVade: null == siparisVade
-          ? _value.siparisVade
-          : siparisVade // ignore: cast_nullable_to_non_nullable
-              as bool,
-      kurlariSilTekrarGuncelle: null == kurlariSilTekrarGuncelle
-          ? _value.kurlariSilTekrarGuncelle
-          : kurlariSilTekrarGuncelle // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokResimleriGoster: null == stokResimleriGoster
-          ? _value.stokResimleriGoster
-          : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokYazdirDizaynVeYaziciHatirla: null == stokYazdirDizaynVeYaziciHatirla
-          ? _value.stokYazdirDizaynVeYaziciHatirla
-          : stokYazdirDizaynVeYaziciHatirla // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokSecildigindeYazdir: null == stokSecildigindeYazdir
-          ? _value.stokSecildigindeYazdir
-          : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
-              as bool,
-      finansOzelRaporGrafikGoster: null == finansOzelRaporGrafikGoster
-          ? _value.finansOzelRaporGrafikGoster
-          : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
-              as bool,
-      acikTemaMi: null == acikTemaMi
-          ? _value.acikTemaMi
-          : acikTemaMi // ignore: cast_nullable_to_non_nullable
-              as bool,
-      temaModu: null == temaModu
-          ? _value.temaModu
-          : temaModu // ignore: cast_nullable_to_non_nullable
-              as ThemeMode,
-      rotaDisiGorunsunMu: null == rotaDisiGorunsunMu
-          ? _value.rotaDisiGorunsunMu
-          : rotaDisiGorunsunMu // ignore: cast_nullable_to_non_nullable
-              as bool,
-      netFectDizaynList: freezed == netFectDizaynList
-          ? _value.netFectDizaynList
-          : netFectDizaynList // ignore: cast_nullable_to_non_nullable
-              as NetFectDizaynList?,
-      yaziciList: freezed == yaziciList
-          ? _value.yaziciList
-          : yaziciList // ignore: cast_nullable_to_non_nullable
-              as YaziciList?,
-      olcumGirisiBelgeTipi: null == olcumGirisiBelgeTipi
-          ? _value.olcumGirisiBelgeTipi
-          : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
-              as EditTipiEnum,
-      kapaliBelgelerListelenmesinMi: null == kapaliBelgelerListelenmesinMi
-          ? _value.kapaliBelgelerListelenmesinMi
-          : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sayimStokSecildigindeHemenKaydet: null == sayimStokSecildigindeHemenKaydet
-          ? _value.sayimStokSecildigindeHemenKaydet
-          : sayimStokSecildigindeHemenKaydet // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sayimOtomatikEtiketYazdir: null == sayimOtomatikEtiketYazdir
-          ? _value.sayimOtomatikEtiketYazdir
-          : sayimOtomatikEtiketYazdir // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
-          ? _value._stokGorunecekEkstraAlanlar
-          : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      stokListesiGridSayisi: null == stokListesiGridSayisi
-          ? _value.stokListesiGridSayisi
-          : stokListesiGridSayisi // ignore: cast_nullable_to_non_nullable
-              as int,
-      urunGrubunaGoreSatisRaporTipi: null == urunGrubunaGoreSatisRaporTipi
-          ? _value.urunGrubunaGoreSatisRaporTipi
-          : urunGrubunaGoreSatisRaporTipi // ignore: cast_nullable_to_non_nullable
-              as String,
-      urunGrubunaGoreGruplansin: null == urunGrubunaGoreGruplansin
-          ? _value.urunGrubunaGoreGruplansin
-          : urunGrubunaGoreGruplansin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      cariListesiSirala: null == cariListesiSirala
-          ? _value.cariListesiSirala
-          : cariListesiSirala // ignore: cast_nullable_to_non_nullable
-              as String,
-      stokListesiSirala: null == stokListesiSirala
-          ? _value.stokListesiSirala
-          : stokListesiSirala // ignore: cast_nullable_to_non_nullable
-              as String,
-      irsFaturalasanIrsaliyelerGelsin: null == irsFaturalasanIrsaliyelerGelsin
-          ? _value.irsFaturalasanIrsaliyelerGelsin
-          : irsFaturalasanIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      eIrsaliyeSeciliGelsin: null == eIrsaliyeSeciliGelsin
-          ? _value.eIrsaliyeSeciliGelsin
-          : eIrsaliyeSeciliGelsin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      depoTalepDepoList: freezed == depoTalepDepoList
-          ? _value.depoTalepDepoList
-          : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
-              as DepoList?,
-      faturaKarlilikMaliyetTipi: null == faturaKarlilikMaliyetTipi
-          ? _value.faturaKarlilikMaliyetTipi
-          : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
-              as String,
-      stokhareketleriDovizliGoster: null == stokhareketleriDovizliGoster
-          ? _value.stokhareketleriDovizliGoster
-          : stokhareketleriDovizliGoster // ignore: cast_nullable_to_non_nullable
-              as bool,
-      stokhareketleriGizlenecekAlanlar: null == stokhareketleriGizlenecekAlanlar
-          ? _value._stokhareketleriGizlenecekAlanlar
-          : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _$BaseProfilParametreModelImpl(
+        siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
+            ? _value.siparisYeniKaydaHazirla
+            : siparisYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        faturaYeniKaydaHazirla: null == faturaYeniKaydaHazirla
+            ? _value.faturaYeniKaydaHazirla
+            : faturaYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
+            ? _value.talepTeklifYeniKaydaHazirla
+            : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        transferYeniKaydaHazirla: null == transferYeniKaydaHazirla
+            ? _value.transferYeniKaydaHazirla
+            : transferYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        siparisEkAlan: null == siparisEkAlan
+            ? _value.siparisEkAlan
+            : siparisEkAlan // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        siparisMiktar: null == siparisMiktar
+            ? _value.siparisMiktar
+            : siparisMiktar // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        siparisVade: null == siparisVade
+            ? _value.siparisVade
+            : siparisVade // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        kurlariSilTekrarGuncelle: null == kurlariSilTekrarGuncelle
+            ? _value.kurlariSilTekrarGuncelle
+            : kurlariSilTekrarGuncelle // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        stokResimleriGoster: null == stokResimleriGoster
+            ? _value.stokResimleriGoster
+            : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        stokYazdirDizaynVeYaziciHatirla: null == stokYazdirDizaynVeYaziciHatirla
+            ? _value.stokYazdirDizaynVeYaziciHatirla
+            : stokYazdirDizaynVeYaziciHatirla // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        stokSecildigindeYazdir: null == stokSecildigindeYazdir
+            ? _value.stokSecildigindeYazdir
+            : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        finansOzelRaporGrafikGoster: null == finansOzelRaporGrafikGoster
+            ? _value.finansOzelRaporGrafikGoster
+            : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        acikTemaMi: null == acikTemaMi
+            ? _value.acikTemaMi
+            : acikTemaMi // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        temaModu: null == temaModu
+            ? _value.temaModu
+            : temaModu // ignore: cast_nullable_to_non_nullable
+                  as ThemeMode,
+        rotaDisiGorunsunMu: null == rotaDisiGorunsunMu
+            ? _value.rotaDisiGorunsunMu
+            : rotaDisiGorunsunMu // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        netFectDizaynList: freezed == netFectDizaynList
+            ? _value.netFectDizaynList
+            : netFectDizaynList // ignore: cast_nullable_to_non_nullable
+                  as NetFectDizaynList?,
+        yaziciList: freezed == yaziciList
+            ? _value.yaziciList
+            : yaziciList // ignore: cast_nullable_to_non_nullable
+                  as YaziciList?,
+        olcumGirisiBelgeTipi: null == olcumGirisiBelgeTipi
+            ? _value.olcumGirisiBelgeTipi
+            : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
+                  as EditTipiEnum,
+        kapaliBelgelerListelenmesinMi: null == kapaliBelgelerListelenmesinMi
+            ? _value.kapaliBelgelerListelenmesinMi
+            : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        sayimStokSecildigindeHemenKaydet: null == sayimStokSecildigindeHemenKaydet
+            ? _value.sayimStokSecildigindeHemenKaydet
+            : sayimStokSecildigindeHemenKaydet // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        sayimOtomatikEtiketYazdir: null == sayimOtomatikEtiketYazdir
+            ? _value.sayimOtomatikEtiketYazdir
+            : sayimOtomatikEtiketYazdir // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
+            ? _value._stokGorunecekEkstraAlanlar
+            : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>,
+        stokListesiGridSayisi: null == stokListesiGridSayisi
+            ? _value.stokListesiGridSayisi
+            : stokListesiGridSayisi // ignore: cast_nullable_to_non_nullable
+                  as int,
+        urunGrubunaGoreSatisRaporTipi: null == urunGrubunaGoreSatisRaporTipi
+            ? _value.urunGrubunaGoreSatisRaporTipi
+            : urunGrubunaGoreSatisRaporTipi // ignore: cast_nullable_to_non_nullable
+                  as String,
+        urunGrubunaGoreGruplansin: null == urunGrubunaGoreGruplansin
+            ? _value.urunGrubunaGoreGruplansin
+            : urunGrubunaGoreGruplansin // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        cariListesiSirala: null == cariListesiSirala
+            ? _value.cariListesiSirala
+            : cariListesiSirala // ignore: cast_nullable_to_non_nullable
+                  as String,
+        stokListesiSirala: null == stokListesiSirala
+            ? _value.stokListesiSirala
+            : stokListesiSirala // ignore: cast_nullable_to_non_nullable
+                  as String,
+        irsFaturalasanIrsaliyelerGelsin: null == irsFaturalasanIrsaliyelerGelsin
+            ? _value.irsFaturalasanIrsaliyelerGelsin
+            : irsFaturalasanIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        eIrsaliyeSeciliGelsin: null == eIrsaliyeSeciliGelsin
+            ? _value.eIrsaliyeSeciliGelsin
+            : eIrsaliyeSeciliGelsin // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        depoTalepDepoList: freezed == depoTalepDepoList
+            ? _value.depoTalepDepoList
+            : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
+                  as DepoList?,
+        faturaKarlilikMaliyetTipi: null == faturaKarlilikMaliyetTipi
+            ? _value.faturaKarlilikMaliyetTipi
+            : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
+                  as String,
+        stokhareketleriDovizliGoster: null == stokhareketleriDovizliGoster
+            ? _value.stokhareketleriDovizliGoster
+            : stokhareketleriDovizliGoster // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        stokhareketleriGizlenecekAlanlar: null == stokhareketleriGizlenecekAlanlar
+            ? _value._stokhareketleriGizlenecekAlanlar
+            : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
-  const _$BaseProfilParametreModelImpl(
-      {this.siparisYeniKaydaHazirla = false,
-      this.faturaYeniKaydaHazirla = false,
-      this.talepTeklifYeniKaydaHazirla = false,
-      this.transferYeniKaydaHazirla = false,
-      this.siparisEkAlan = false,
-      this.siparisMiktar = false,
-      this.siparisVade = false,
-      this.kurlariSilTekrarGuncelle = false,
-      this.stokResimleriGoster = false,
-      this.stokYazdirDizaynVeYaziciHatirla = false,
-      this.stokSecildigindeYazdir = false,
-      this.finansOzelRaporGrafikGoster = false,
-      @Deprecated("Bunun yerine temaModu kullanılacak.")
-      this.acikTemaMi = false,
-      this.temaModu = ThemeMode.dark,
-      this.rotaDisiGorunsunMu = false,
-      this.netFectDizaynList,
-      this.yaziciList,
-      this.olcumGirisiBelgeTipi = EditTipiEnum.isEmri,
-      this.kapaliBelgelerListelenmesinMi = false,
-      this.sayimStokSecildigindeHemenKaydet = false,
-      this.sayimOtomatikEtiketYazdir = false,
-      final Map<String, dynamic> stokGorunecekEkstraAlanlar = const {},
-      this.stokListesiGridSayisi = 0,
-      this.urunGrubunaGoreSatisRaporTipi = "T",
-      this.urunGrubunaGoreGruplansin = false,
-      this.cariListesiSirala = "AZ",
-      this.stokListesiSirala = "AZ",
-      this.irsFaturalasanIrsaliyelerGelsin = false,
-      this.eIrsaliyeSeciliGelsin = false,
-      this.depoTalepDepoList = null,
-      this.faturaKarlilikMaliyetTipi = "SGF",
-      this.stokhareketleriDovizliGoster = false,
-      final List<String> stokhareketleriGizlenecekAlanlar = const []})
-      : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
-        _stokhareketleriGizlenecekAlanlar = stokhareketleriGizlenecekAlanlar,
-        super._();
+  const _$BaseProfilParametreModelImpl({
+    this.siparisYeniKaydaHazirla = false,
+    this.faturaYeniKaydaHazirla = false,
+    this.talepTeklifYeniKaydaHazirla = false,
+    this.transferYeniKaydaHazirla = false,
+    this.siparisEkAlan = false,
+    this.siparisMiktar = false,
+    this.siparisVade = false,
+    this.kurlariSilTekrarGuncelle = false,
+    this.stokResimleriGoster = false,
+    this.stokYazdirDizaynVeYaziciHatirla = false,
+    this.stokSecildigindeYazdir = false,
+    this.finansOzelRaporGrafikGoster = false,
+    @Deprecated("Bunun yerine temaModu kullanılacak.") this.acikTemaMi = false,
+    this.temaModu = ThemeMode.dark,
+    this.rotaDisiGorunsunMu = false,
+    this.netFectDizaynList,
+    this.yaziciList,
+    this.olcumGirisiBelgeTipi = EditTipiEnum.isEmri,
+    this.kapaliBelgelerListelenmesinMi = false,
+    this.sayimStokSecildigindeHemenKaydet = false,
+    this.sayimOtomatikEtiketYazdir = false,
+    final Map<String, dynamic> stokGorunecekEkstraAlanlar = const {},
+    this.stokListesiGridSayisi = 0,
+    this.urunGrubunaGoreSatisRaporTipi = "T",
+    this.urunGrubunaGoreGruplansin = false,
+    this.cariListesiSirala = "AZ",
+    this.stokListesiSirala = "AZ",
+    this.irsFaturalasanIrsaliyelerGelsin = false,
+    this.eIrsaliyeSeciliGelsin = false,
+    this.depoTalepDepoList = null,
+    this.faturaKarlilikMaliyetTipi = "SGF",
+    this.stokhareketleriDovizliGoster = false,
+    final List<String> stokhareketleriGizlenecekAlanlar = const [],
+  }) : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
+       _stokhareketleriGizlenecekAlanlar = stokhareketleriGizlenecekAlanlar,
+       super._();
 
   factory _$BaseProfilParametreModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseProfilParametreModelImplFromJson(json);
@@ -652,8 +648,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   Map<String, dynamic> get stokGorunecekEkstraAlanlar {
-    if (_stokGorunecekEkstraAlanlar is EqualUnmodifiableMapView)
-      return _stokGorunecekEkstraAlanlar;
+    if (_stokGorunecekEkstraAlanlar is EqualUnmodifiableMapView) return _stokGorunecekEkstraAlanlar;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_stokGorunecekEkstraAlanlar);
   }
@@ -692,8 +687,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   List<String> get stokhareketleriGizlenecekAlanlar {
-    if (_stokhareketleriGizlenecekAlanlar is EqualUnmodifiableListView)
-      return _stokhareketleriGizlenecekAlanlar;
+    if (_stokhareketleriGizlenecekAlanlar is EqualUnmodifiableListView) return _stokhareketleriGizlenecekAlanlar;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_stokhareketleriGizlenecekAlanlar);
   }
@@ -703,58 +697,54 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>
-      get copyWith => __$$BaseProfilParametreModelImplCopyWithImpl<
-          _$BaseProfilParametreModelImpl>(this, _$identity);
+  _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl> get copyWith =>
+      __$$BaseProfilParametreModelImplCopyWithImpl<_$BaseProfilParametreModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BaseProfilParametreModelImplToJson(
-      this,
-    );
+    return _$$BaseProfilParametreModelImplToJson(this);
   }
 }
 
 abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
-  const factory _BaseProfilParametreModel(
-      {final bool siparisYeniKaydaHazirla,
-      final bool faturaYeniKaydaHazirla,
-      final bool talepTeklifYeniKaydaHazirla,
-      final bool transferYeniKaydaHazirla,
-      final bool siparisEkAlan,
-      final bool siparisMiktar,
-      final bool siparisVade,
-      final bool kurlariSilTekrarGuncelle,
-      final bool stokResimleriGoster,
-      final bool stokYazdirDizaynVeYaziciHatirla,
-      final bool stokSecildigindeYazdir,
-      final bool finansOzelRaporGrafikGoster,
-      @Deprecated("Bunun yerine temaModu kullanılacak.") final bool acikTemaMi,
-      final ThemeMode temaModu,
-      final bool rotaDisiGorunsunMu,
-      final NetFectDizaynList? netFectDizaynList,
-      final YaziciList? yaziciList,
-      final EditTipiEnum olcumGirisiBelgeTipi,
-      final bool kapaliBelgelerListelenmesinMi,
-      final bool sayimStokSecildigindeHemenKaydet,
-      final bool sayimOtomatikEtiketYazdir,
-      final Map<String, dynamic> stokGorunecekEkstraAlanlar,
-      final int stokListesiGridSayisi,
-      final String urunGrubunaGoreSatisRaporTipi,
-      final bool urunGrubunaGoreGruplansin,
-      final String cariListesiSirala,
-      final String stokListesiSirala,
-      final bool irsFaturalasanIrsaliyelerGelsin,
-      final bool eIrsaliyeSeciliGelsin,
-      final DepoList? depoTalepDepoList,
-      final String faturaKarlilikMaliyetTipi,
-      final bool stokhareketleriDovizliGoster,
-      final List<String>
-          stokhareketleriGizlenecekAlanlar}) = _$BaseProfilParametreModelImpl;
+  const factory _BaseProfilParametreModel({
+    final bool siparisYeniKaydaHazirla,
+    final bool faturaYeniKaydaHazirla,
+    final bool talepTeklifYeniKaydaHazirla,
+    final bool transferYeniKaydaHazirla,
+    final bool siparisEkAlan,
+    final bool siparisMiktar,
+    final bool siparisVade,
+    final bool kurlariSilTekrarGuncelle,
+    final bool stokResimleriGoster,
+    final bool stokYazdirDizaynVeYaziciHatirla,
+    final bool stokSecildigindeYazdir,
+    final bool finansOzelRaporGrafikGoster,
+    @Deprecated("Bunun yerine temaModu kullanılacak.") final bool acikTemaMi,
+    final ThemeMode temaModu,
+    final bool rotaDisiGorunsunMu,
+    final NetFectDizaynList? netFectDizaynList,
+    final YaziciList? yaziciList,
+    final EditTipiEnum olcumGirisiBelgeTipi,
+    final bool kapaliBelgelerListelenmesinMi,
+    final bool sayimStokSecildigindeHemenKaydet,
+    final bool sayimOtomatikEtiketYazdir,
+    final Map<String, dynamic> stokGorunecekEkstraAlanlar,
+    final int stokListesiGridSayisi,
+    final String urunGrubunaGoreSatisRaporTipi,
+    final bool urunGrubunaGoreGruplansin,
+    final String cariListesiSirala,
+    final String stokListesiSirala,
+    final bool irsFaturalasanIrsaliyelerGelsin,
+    final bool eIrsaliyeSeciliGelsin,
+    final DepoList? depoTalepDepoList,
+    final String faturaKarlilikMaliyetTipi,
+    final bool stokhareketleriDovizliGoster,
+    final List<String> stokhareketleriGizlenecekAlanlar,
+  }) = _$BaseProfilParametreModelImpl;
   const _BaseProfilParametreModel._() : super._();
 
-  factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
-      _$BaseProfilParametreModelImpl.fromJson;
+  factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) = _$BaseProfilParametreModelImpl.fromJson;
 
   @override
   bool get siparisYeniKaydaHazirla;
@@ -832,6 +822,6 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

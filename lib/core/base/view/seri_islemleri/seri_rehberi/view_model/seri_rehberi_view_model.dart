@@ -32,11 +32,10 @@ abstract class _SeriRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   bool isSearchBarOpen = false;
 
   @computed
-  ObservableList<SeriList>? get filteredList =>
-      observableList
-          ?.where((element) => element.seriNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? true)
-          .toList()
-          .asObservable();
+  ObservableList<SeriList>? get filteredList => observableList
+      ?.where((element) => element.seriNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? true)
+      .toList()
+      .asObservable();
   @override
   @action
   void setObservableList(List<SeriList>? list) => observableList = list?.asObservable();

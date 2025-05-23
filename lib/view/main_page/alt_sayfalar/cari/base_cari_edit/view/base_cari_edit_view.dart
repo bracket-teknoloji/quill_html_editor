@@ -53,11 +53,9 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
 
   List<Widget> get views => <Widget>[
     Observer(
-      builder:
-          (_) =>
-              viewModel.isDownloadCompletedSuccesfully == true
-                  ? BaseEditCariGenelView(model: widget.model)
-                  : Center(child: Text(viewModel.message ?? "")),
+      builder: (_) => viewModel.isDownloadCompletedSuccesfully == true
+          ? BaseEditCariGenelView(model: widget.model)
+          : Center(child: Text(viewModel.message ?? "")),
     ),
     CariEditDigerView(model: widget.model),
     if (goruntulenecekMi) const BaseEditCariOzetView(),
@@ -97,10 +95,9 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
             CariSaveRequestModel.instance.kodu = kod;
           }
           final List<CariKosullarModel>? kosulList = await CariNetworkManager.getkosullar(null);
-          CariSaveRequestModel.instance.kosulKoduAciklama =
-              kosulList
-                  ?.firstWhereOrNull((element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)
-                  ?.kosulSabitAdi;
+          CariSaveRequestModel.instance.kosulKoduAciklama = kosulList
+              ?.firstWhereOrNull((element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)
+              ?.kosulSabitAdi;
         } else {
           await dialogManager.showAlertDialog(
             result.message ?? result.messageDetail ?? result.errorDetails ?? "Bilinmeyen bir hata oluştu",

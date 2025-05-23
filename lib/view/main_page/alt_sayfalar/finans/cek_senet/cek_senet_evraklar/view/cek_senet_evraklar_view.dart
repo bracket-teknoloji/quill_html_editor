@@ -49,7 +49,9 @@ final class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
     body: body(),
   );
 
-  AppBar appBar() => AppBar(title: AppBarTitle(title: "Evraklar", subtitle: widget.model.belgeNo ?? ""));
+  AppBar appBar() => AppBar(
+    title: AppBarTitle(title: "Evraklar", subtitle: widget.model.belgeNo ?? ""),
+  );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
     onRefresh: () async => await viewModel.resetPage(),

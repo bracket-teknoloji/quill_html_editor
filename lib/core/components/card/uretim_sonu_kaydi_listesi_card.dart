@@ -70,28 +70,27 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [Text(model.belgeNo ?? ""), Text(model.tarih.toDateString)],
       ),
-      subtitle:
-          model.kalemSayisi == 1
-              ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(model.stokAdi ?? ""),
-                  Text(model.stokKodu ?? ""),
-                  if (model.kalemSayisi == 1)
-                    CustomLayoutBuilder.divideInHalf(
-                      children: [
-                        if (model.cikisDepo != null) Text("Çıkış Depo: ${model.cikisDepo}"),
-                        if (model.girisDepo != null) Text("Giriş Depo: ${model.girisDepo}"),
-                        Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                        Text(
-                          "${(yetkiController.uretimFireUygulamasi) ? "Hurda/Fire Mik" : "Miktar 2"}: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                        ),
-                      ],
-                    ),
-                  Text(model.aciklama ?? ""),
-                ],
-              )
-              : Text("Kalem Sayısı: ${model.kalemSayisi}"),
+      subtitle: model.kalemSayisi == 1
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(model.stokAdi ?? ""),
+                Text(model.stokKodu ?? ""),
+                if (model.kalemSayisi == 1)
+                  CustomLayoutBuilder.divideInHalf(
+                    children: [
+                      if (model.cikisDepo != null) Text("Çıkış Depo: ${model.cikisDepo}"),
+                      if (model.girisDepo != null) Text("Giriş Depo: ${model.girisDepo}"),
+                      Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                      Text(
+                        "${(yetkiController.uretimFireUygulamasi) ? "Hurda/Fire Mik" : "Miktar 2"}: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                      ),
+                    ],
+                  ),
+                Text(model.aciklama ?? ""),
+              ],
+            )
+          : Text("Kalem Sayısı: ${model.kalemSayisi}"),
     ),
   );
 }

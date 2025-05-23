@@ -124,24 +124,21 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
       ),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: viewModel.resetList,
-                items: viewModel.filteredList,
-                itemBuilder: _card,
-              ),
+          builder: (_) =>
+              RefreshableListView(onRefresh: viewModel.resetList, items: viewModel.filteredList, itemBuilder: _card),
         ),
       ),
     ],
   );
 
   Card _card(BelgeKontrolKalemlerModel item) => Card(
-    color: (item.isTamamlandi
-            ? ColorPalette.mantis
-            : item.isDevamEdiyor
-            ? ColorPalette.gamboge
-            : null)
-        ?.withValues(alpha: 0.3),
+    color:
+        (item.isTamamlandi
+                ? ColorPalette.mantis
+                : item.isDevamEdiyor
+                ? ColorPalette.gamboge
+                : null)
+            ?.withValues(alpha: 0.3),
     child: ListTile(
       title: Text(item.stokAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: CustomLayoutBuilder.divideInHalf(
@@ -208,14 +205,10 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
         children: [
           const Text("Miktar"),
           Observer(
-            builder:
-                (_) => Text(
-                  viewModel.filteredList
-                          ?.map((e) => e.miktar)
-                          .sum
-                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
-                      "0",
-                ),
+            builder: (_) => Text(
+              viewModel.filteredList?.map((e) => e.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                  "0",
+            ),
           ),
         ],
       ),
@@ -223,14 +216,13 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
         children: [
           const Text("Kont. Miktar"),
           Observer(
-            builder:
-                (_) => Text(
-                  viewModel.filteredList
-                          ?.map((e) => e.tamamlananMiktar)
-                          .sum
-                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
-                      "0",
-                ),
+            builder: (_) => Text(
+              viewModel.filteredList
+                      ?.map((e) => e.tamamlananMiktar)
+                      .sum
+                      .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                  "0",
+            ),
           ),
         ],
       ),
@@ -238,14 +230,13 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
         children: [
           const Text("Kalan Miktar"),
           Observer(
-            builder:
-                (_) => Text(
-                  viewModel.filteredList
-                          ?.map((e) => e.kalanMiktar)
-                          .sum
-                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
-                      "0",
-                ),
+            builder: (_) => Text(
+              viewModel.filteredList
+                      ?.map((e) => e.kalanMiktar)
+                      .sum
+                      .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                  "0",
+            ),
           ),
         ],
       ),

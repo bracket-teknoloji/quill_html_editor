@@ -12,13 +12,12 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
   Computed<bool>? _$onlyOneItemComputed;
 
   @override
-  bool get onlyOneItem =>
-      (_$onlyOneItemComputed ??= Computed<bool>(() => super.onlyOneItem,
-              name: '_ImageCarouselViewModelBase.onlyOneItem'))
-          .value;
+  bool get onlyOneItem => (_$onlyOneItemComputed ??= Computed<bool>(
+    () => super.onlyOneItem,
+    name: '_ImageCarouselViewModelBase.onlyOneItem',
+  )).value;
 
-  late final _$observableListAtom = Atom(
-      name: '_ImageCarouselViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(name: '_ImageCarouselViewModelBase.observableList', context: context);
 
   @override
   ObservableList<EvraklarModel>? get observableList {
@@ -33,8 +32,7 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
     });
   }
 
-  late final _$selectedImageAtom =
-      Atom(name: '_ImageCarouselViewModelBase.selectedImage', context: context);
+  late final _$selectedImageAtom = Atom(name: '_ImageCarouselViewModelBase.selectedImage', context: context);
 
   @override
   String? get selectedImage {
@@ -49,8 +47,7 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_ImageCarouselViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(name: '_ImageCarouselViewModelBase.requestModel', context: context);
 
   @override
   EvraklarRequestModel? get requestModel {
@@ -65,13 +62,16 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
     });
   }
 
-  late final _$_ImageCarouselViewModelBaseActionController =
-      ActionController(name: '_ImageCarouselViewModelBase', context: context);
+  late final _$_ImageCarouselViewModelBaseActionController = ActionController(
+    name: '_ImageCarouselViewModelBase',
+    context: context,
+  );
 
   @override
   void setObservableList(List<EvraklarModel>? list) {
-    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController
-        .startAction(name: '_ImageCarouselViewModelBase.setObservableList');
+    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController.startAction(
+      name: '_ImageCarouselViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {
@@ -81,8 +81,9 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
 
   @override
   void setSelectedImage(String? image) {
-    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController
-        .startAction(name: '_ImageCarouselViewModelBase.setSelectedImage');
+    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController.startAction(
+      name: '_ImageCarouselViewModelBase.setSelectedImage',
+    );
     try {
       return super.setSelectedImage(image);
     } finally {

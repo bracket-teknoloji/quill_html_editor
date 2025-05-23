@@ -12,10 +12,10 @@ part of 'cari_hareketleri_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-CariHareketleriRequestModel _$CariHareketleriRequestModelFromJson(
-    Map<String, dynamic> json) {
+CariHareketleriRequestModel _$CariHareketleriRequestModelFromJson(Map<String, dynamic> json) {
   return _CariHareketleriRequestModel.fromJson(json);
 }
 
@@ -26,8 +26,7 @@ mixin _$CariHareketleriRequestModel {
   @JsonKey(name: "SIRALAMA")
   set siralama(String? value) => throw _privateConstructorUsedError;
   bool? get sadeceTahsilatlarOdemeler => throw _privateConstructorUsedError;
-  set sadeceTahsilatlarOdemeler(bool? value) =>
-      throw _privateConstructorUsedError;
+  set sadeceTahsilatlarOdemeler(bool? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
@@ -55,35 +54,33 @@ mixin _$CariHareketleriRequestModel {
   /// Create a copy of CariHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CariHareketleriRequestModelCopyWith<CariHareketleriRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $CariHareketleriRequestModelCopyWith<CariHareketleriRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CariHareketleriRequestModelCopyWith<$Res> {
   factory $CariHareketleriRequestModelCopyWith(
-          CariHareketleriRequestModel value,
-          $Res Function(CariHareketleriRequestModel) then) =
-      _$CariHareketleriRequestModelCopyWithImpl<$Res,
-          CariHareketleriRequestModel>;
+    CariHareketleriRequestModel value,
+    $Res Function(CariHareketleriRequestModel) then,
+  ) = _$CariHareketleriRequestModelCopyWithImpl<$Res, CariHareketleriRequestModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "SIRALAMA") String? siralama,
-      bool? sadeceTahsilatlarOdemeler,
-      String? cariKodu,
-      String? ekranTipi,
-      String? arrPlasiyerKodu,
-      String? arrHareketTuru,
-      String? baslamaTarihi,
-      String? bitisTarihi,
-      @JsonKey(name: "BA") String? ba,
-      String? menuKodu,
-      String? kapatilmis});
+  $Res call({
+    @JsonKey(name: "SIRALAMA") String? siralama,
+    bool? sadeceTahsilatlarOdemeler,
+    String? cariKodu,
+    String? ekranTipi,
+    String? arrPlasiyerKodu,
+    String? arrHareketTuru,
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    @JsonKey(name: "BA") String? ba,
+    String? menuKodu,
+    String? kapatilmis,
+  });
 }
 
 /// @nodoc
-class _$CariHareketleriRequestModelCopyWithImpl<$Res,
-        $Val extends CariHareketleriRequestModel>
+class _$CariHareketleriRequestModelCopyWithImpl<$Res, $Val extends CariHareketleriRequestModel>
     implements $CariHareketleriRequestModelCopyWith<$Res> {
   _$CariHareketleriRequestModelCopyWithImpl(this._value, this._then);
 
@@ -109,87 +106,89 @@ class _$CariHareketleriRequestModelCopyWithImpl<$Res,
     Object? menuKodu = freezed,
     Object? kapatilmis = freezed,
   }) {
-    return _then(_value.copyWith(
-      siralama: freezed == siralama
-          ? _value.siralama
-          : siralama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler
-          ? _value.sadeceTahsilatlarOdemeler
-          : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      arrPlasiyerKodu: freezed == arrPlasiyerKodu
-          ? _value.arrPlasiyerKodu
-          : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      arrHareketTuru: freezed == arrHareketTuru
-          ? _value.arrHareketTuru
-          : arrHareketTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ba: freezed == ba
-          ? _value.ba
-          : ba // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kapatilmis: freezed == kapatilmis
-          ? _value.kapatilmis
-          : kapatilmis // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            siralama: freezed == siralama
+                ? _value.siralama
+                : siralama // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler
+                ? _value.sadeceTahsilatlarOdemeler
+                : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            arrPlasiyerKodu: freezed == arrPlasiyerKodu
+                ? _value.arrPlasiyerKodu
+                : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            arrHareketTuru: freezed == arrHareketTuru
+                ? _value.arrHareketTuru
+                : arrHareketTuru // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            baslamaTarihi: freezed == baslamaTarihi
+                ? _value.baslamaTarihi
+                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bitisTarihi: freezed == bitisTarihi
+                ? _value.bitisTarihi
+                : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ba: freezed == ba
+                ? _value.ba
+                : ba // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            menuKodu: freezed == menuKodu
+                ? _value.menuKodu
+                : menuKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            kapatilmis: freezed == kapatilmis
+                ? _value.kapatilmis
+                : kapatilmis // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$CariHareketleriRequestModelImplCopyWith<$Res>
-    implements $CariHareketleriRequestModelCopyWith<$Res> {
+abstract class _$$CariHareketleriRequestModelImplCopyWith<$Res> implements $CariHareketleriRequestModelCopyWith<$Res> {
   factory _$$CariHareketleriRequestModelImplCopyWith(
-          _$CariHareketleriRequestModelImpl value,
-          $Res Function(_$CariHareketleriRequestModelImpl) then) =
-      __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>;
+    _$CariHareketleriRequestModelImpl value,
+    $Res Function(_$CariHareketleriRequestModelImpl) then,
+  ) = __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "SIRALAMA") String? siralama,
-      bool? sadeceTahsilatlarOdemeler,
-      String? cariKodu,
-      String? ekranTipi,
-      String? arrPlasiyerKodu,
-      String? arrHareketTuru,
-      String? baslamaTarihi,
-      String? bitisTarihi,
-      @JsonKey(name: "BA") String? ba,
-      String? menuKodu,
-      String? kapatilmis});
+  $Res call({
+    @JsonKey(name: "SIRALAMA") String? siralama,
+    bool? sadeceTahsilatlarOdemeler,
+    String? cariKodu,
+    String? ekranTipi,
+    String? arrPlasiyerKodu,
+    String? arrHareketTuru,
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    @JsonKey(name: "BA") String? ba,
+    String? menuKodu,
+    String? kapatilmis,
+  });
 }
 
 /// @nodoc
 class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
-    extends _$CariHareketleriRequestModelCopyWithImpl<$Res,
-        _$CariHareketleriRequestModelImpl>
+    extends _$CariHareketleriRequestModelCopyWithImpl<$Res, _$CariHareketleriRequestModelImpl>
     implements _$$CariHareketleriRequestModelImplCopyWith<$Res> {
   __$$CariHareketleriRequestModelImplCopyWithImpl(
-      _$CariHareketleriRequestModelImpl _value,
-      $Res Function(_$CariHareketleriRequestModelImpl) _then)
-      : super(_value, _then);
+    _$CariHareketleriRequestModelImpl _value,
+    $Res Function(_$CariHareketleriRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CariHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -208,75 +207,76 @@ class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
     Object? menuKodu = freezed,
     Object? kapatilmis = freezed,
   }) {
-    return _then(_$CariHareketleriRequestModelImpl(
-      siralama: freezed == siralama
-          ? _value.siralama
-          : siralama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler
-          ? _value.sadeceTahsilatlarOdemeler
-          : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      arrPlasiyerKodu: freezed == arrPlasiyerKodu
-          ? _value.arrPlasiyerKodu
-          : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      arrHareketTuru: freezed == arrHareketTuru
-          ? _value.arrHareketTuru
-          : arrHareketTuru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ba: freezed == ba
-          ? _value.ba
-          : ba // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kapatilmis: freezed == kapatilmis
-          ? _value.kapatilmis
-          : kapatilmis // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$CariHareketleriRequestModelImpl(
+        siralama: freezed == siralama
+            ? _value.siralama
+            : siralama // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler
+            ? _value.sadeceTahsilatlarOdemeler
+            : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        arrPlasiyerKodu: freezed == arrPlasiyerKodu
+            ? _value.arrPlasiyerKodu
+            : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        arrHareketTuru: freezed == arrHareketTuru
+            ? _value.arrHareketTuru
+            : arrHareketTuru // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        baslamaTarihi: freezed == baslamaTarihi
+            ? _value.baslamaTarihi
+            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bitisTarihi: freezed == bitisTarihi
+            ? _value.bitisTarihi
+            : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ba: freezed == ba
+            ? _value.ba
+            : ba // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        menuKodu: freezed == menuKodu
+            ? _value.menuKodu
+            : menuKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        kapatilmis: freezed == kapatilmis
+            ? _value.kapatilmis
+            : kapatilmis // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$CariHareketleriRequestModelImpl
-    implements _CariHareketleriRequestModel {
-  _$CariHareketleriRequestModelImpl(
-      {@JsonKey(name: "SIRALAMA") this.siralama,
-      this.sadeceTahsilatlarOdemeler,
-      this.cariKodu,
-      this.ekranTipi,
-      this.arrPlasiyerKodu,
-      this.arrHareketTuru,
-      this.baslamaTarihi,
-      this.bitisTarihi,
-      @JsonKey(name: "BA") this.ba,
-      this.menuKodu,
-      this.kapatilmis});
+class _$CariHareketleriRequestModelImpl implements _CariHareketleriRequestModel {
+  _$CariHareketleriRequestModelImpl({
+    @JsonKey(name: "SIRALAMA") this.siralama,
+    this.sadeceTahsilatlarOdemeler,
+    this.cariKodu,
+    this.ekranTipi,
+    this.arrPlasiyerKodu,
+    this.arrHareketTuru,
+    this.baslamaTarihi,
+    this.bitisTarihi,
+    @JsonKey(name: "BA") this.ba,
+    this.menuKodu,
+    this.kapatilmis,
+  });
 
-  factory _$CariHareketleriRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$CariHareketleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CariHareketleriRequestModelImplFromJson(json);
 
   @override
@@ -309,35 +309,31 @@ class _$CariHareketleriRequestModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl>
-      get copyWith => __$$CariHareketleriRequestModelImplCopyWithImpl<
-          _$CariHareketleriRequestModelImpl>(this, _$identity);
+  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl> get copyWith =>
+      __$$CariHareketleriRequestModelImplCopyWithImpl<_$CariHareketleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CariHareketleriRequestModelImplToJson(
-      this,
-    );
+    return _$$CariHareketleriRequestModelImplToJson(this);
   }
 }
 
-abstract class _CariHareketleriRequestModel
-    implements CariHareketleriRequestModel {
-  factory _CariHareketleriRequestModel(
-      {@JsonKey(name: "SIRALAMA") String? siralama,
-      bool? sadeceTahsilatlarOdemeler,
-      String? cariKodu,
-      String? ekranTipi,
-      String? arrPlasiyerKodu,
-      String? arrHareketTuru,
-      String? baslamaTarihi,
-      String? bitisTarihi,
-      @JsonKey(name: "BA") String? ba,
-      String? menuKodu,
-      String? kapatilmis}) = _$CariHareketleriRequestModelImpl;
+abstract class _CariHareketleriRequestModel implements CariHareketleriRequestModel {
+  factory _CariHareketleriRequestModel({
+    @JsonKey(name: "SIRALAMA") String? siralama,
+    bool? sadeceTahsilatlarOdemeler,
+    String? cariKodu,
+    String? ekranTipi,
+    String? arrPlasiyerKodu,
+    String? arrHareketTuru,
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    @JsonKey(name: "BA") String? ba,
+    String? menuKodu,
+    String? kapatilmis,
+  }) = _$CariHareketleriRequestModelImpl;
 
-  factory _CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$CariHareketleriRequestModelImpl.fromJson;
+  factory _CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) = _$CariHareketleriRequestModelImpl.fromJson;
 
   @override
   @JsonKey(name: "SIRALAMA")
@@ -381,6 +377,6 @@ abstract class _CariHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

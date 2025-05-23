@@ -12,10 +12,10 @@ part of 'stok_rehberi_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-StokRehberiRequestModel _$StokRehberiRequestModelFromJson(
-    Map<String, dynamic> json) {
+StokRehberiRequestModel _$StokRehberiRequestModelFromJson(Map<String, dynamic> json) {
   return _StokRehberiRequestModel.fromJson(json);
 }
 
@@ -66,41 +66,39 @@ mixin _$StokRehberiRequestModel {
   /// Create a copy of StokRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $StokRehberiRequestModelCopyWith<StokRehberiRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StokRehberiRequestModelCopyWith<StokRehberiRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StokRehberiRequestModelCopyWith<$Res> {
-  factory $StokRehberiRequestModelCopyWith(StokRehberiRequestModel value,
-          $Res Function(StokRehberiRequestModel) then) =
+  factory $StokRehberiRequestModelCopyWith(StokRehberiRequestModel value, $Res Function(StokRehberiRequestModel) then) =
       _$StokRehberiRequestModelCopyWithImpl<$Res, StokRehberiRequestModel>;
   @useResult
-  $Res call(
-      {String? belgeNo,
-      String? belgeTarihi,
-      String? belgeTipi,
-      String? cariKodu,
-      String? ekranTipi,
-      int? faturaTipi,
-      bool? kisitYok,
-      String? menuKodu,
-      String? resimGoster,
-      String? stokKodu,
-      String? seriTakibiVar,
-      int? depoKodu,
-      bool? okutuldu,
-      String? oto,
-      String? ozelKod1,
-      String? ozelKod2,
-      String? barkod2,
-      int? faturaDepoKodu,
-      int? faturaHedefDepo});
+  $Res call({
+    String? belgeNo,
+    String? belgeTarihi,
+    String? belgeTipi,
+    String? cariKodu,
+    String? ekranTipi,
+    int? faturaTipi,
+    bool? kisitYok,
+    String? menuKodu,
+    String? resimGoster,
+    String? stokKodu,
+    String? seriTakibiVar,
+    int? depoKodu,
+    bool? okutuldu,
+    String? oto,
+    String? ozelKod1,
+    String? ozelKod2,
+    String? barkod2,
+    int? faturaDepoKodu,
+    int? faturaHedefDepo,
+  });
 }
 
 /// @nodoc
-class _$StokRehberiRequestModelCopyWithImpl<$Res,
-        $Val extends StokRehberiRequestModel>
+class _$StokRehberiRequestModelCopyWithImpl<$Res, $Val extends StokRehberiRequestModel>
     implements $StokRehberiRequestModelCopyWith<$Res> {
   _$StokRehberiRequestModelCopyWithImpl(this._value, this._then);
 
@@ -134,127 +132,129 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
     Object? faturaDepoKodu = freezed,
     Object? faturaHedefDepo = freezed,
   }) {
-    return _then(_value.copyWith(
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaTipi: freezed == faturaTipi
-          ? _value.faturaTipi
-          : faturaTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kisitYok: freezed == kisitYok
-          ? _value.kisitYok
-          : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimGoster: freezed == resimGoster
-          ? _value.resimGoster
-          : resimGoster // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriTakibiVar: freezed == seriTakibiVar
-          ? _value.seriTakibiVar
-          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      okutuldu: freezed == okutuldu
-          ? _value.okutuldu
-          : okutuldu // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      oto: freezed == oto
-          ? _value.oto
-          : oto // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod1: freezed == ozelKod1
-          ? _value.ozelKod1
-          : ozelKod1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod2: freezed == ozelKod2
-          ? _value.ozelKod2
-          : ozelKod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      barkod2: freezed == barkod2
-          ? _value.barkod2
-          : barkod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaDepoKodu: freezed == faturaDepoKodu
-          ? _value.faturaDepoKodu
-          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      faturaHedefDepo: freezed == faturaHedefDepo
-          ? _value.faturaHedefDepo
-          : faturaHedefDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            belgeNo: freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTarihi: freezed == belgeTarihi
+                ? _value.belgeTarihi
+                : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            belgeTipi: freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cariKodu: freezed == cariKodu
+                ? _value.cariKodu
+                : cariKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ekranTipi: freezed == ekranTipi
+                ? _value.ekranTipi
+                : ekranTipi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            faturaTipi: freezed == faturaTipi
+                ? _value.faturaTipi
+                : faturaTipi // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            kisitYok: freezed == kisitYok
+                ? _value.kisitYok
+                : kisitYok // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            menuKodu: freezed == menuKodu
+                ? _value.menuKodu
+                : menuKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            resimGoster: freezed == resimGoster
+                ? _value.resimGoster
+                : resimGoster // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            stokKodu: freezed == stokKodu
+                ? _value.stokKodu
+                : stokKodu // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            seriTakibiVar: freezed == seriTakibiVar
+                ? _value.seriTakibiVar
+                : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            depoKodu: freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            okutuldu: freezed == okutuldu
+                ? _value.okutuldu
+                : okutuldu // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            oto: freezed == oto
+                ? _value.oto
+                : oto // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ozelKod1: freezed == ozelKod1
+                ? _value.ozelKod1
+                : ozelKod1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ozelKod2: freezed == ozelKod2
+                ? _value.ozelKod2
+                : ozelKod2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            barkod2: freezed == barkod2
+                ? _value.barkod2
+                : barkod2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            faturaDepoKodu: freezed == faturaDepoKodu
+                ? _value.faturaDepoKodu
+                : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            faturaHedefDepo: freezed == faturaHedefDepo
+                ? _value.faturaHedefDepo
+                : faturaHedefDepo // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$StokRehberiRequestModelImplCopyWith<$Res>
-    implements $StokRehberiRequestModelCopyWith<$Res> {
+abstract class _$$StokRehberiRequestModelImplCopyWith<$Res> implements $StokRehberiRequestModelCopyWith<$Res> {
   factory _$$StokRehberiRequestModelImplCopyWith(
-          _$StokRehberiRequestModelImpl value,
-          $Res Function(_$StokRehberiRequestModelImpl) then) =
-      __$$StokRehberiRequestModelImplCopyWithImpl<$Res>;
+    _$StokRehberiRequestModelImpl value,
+    $Res Function(_$StokRehberiRequestModelImpl) then,
+  ) = __$$StokRehberiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? belgeNo,
-      String? belgeTarihi,
-      String? belgeTipi,
-      String? cariKodu,
-      String? ekranTipi,
-      int? faturaTipi,
-      bool? kisitYok,
-      String? menuKodu,
-      String? resimGoster,
-      String? stokKodu,
-      String? seriTakibiVar,
-      int? depoKodu,
-      bool? okutuldu,
-      String? oto,
-      String? ozelKod1,
-      String? ozelKod2,
-      String? barkod2,
-      int? faturaDepoKodu,
-      int? faturaHedefDepo});
+  $Res call({
+    String? belgeNo,
+    String? belgeTarihi,
+    String? belgeTipi,
+    String? cariKodu,
+    String? ekranTipi,
+    int? faturaTipi,
+    bool? kisitYok,
+    String? menuKodu,
+    String? resimGoster,
+    String? stokKodu,
+    String? seriTakibiVar,
+    int? depoKodu,
+    bool? okutuldu,
+    String? oto,
+    String? ozelKod1,
+    String? ozelKod2,
+    String? barkod2,
+    int? faturaDepoKodu,
+    int? faturaHedefDepo,
+  });
 }
 
 /// @nodoc
 class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
-    extends _$StokRehberiRequestModelCopyWithImpl<$Res,
-        _$StokRehberiRequestModelImpl>
+    extends _$StokRehberiRequestModelCopyWithImpl<$Res, _$StokRehberiRequestModelImpl>
     implements _$$StokRehberiRequestModelImplCopyWith<$Res> {
   __$$StokRehberiRequestModelImplCopyWithImpl(
-      _$StokRehberiRequestModelImpl _value,
-      $Res Function(_$StokRehberiRequestModelImpl) _then)
-      : super(_value, _then);
+    _$StokRehberiRequestModelImpl _value,
+    $Res Function(_$StokRehberiRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of StokRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -281,84 +281,86 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
     Object? faturaDepoKodu = freezed,
     Object? faturaHedefDepo = freezed,
   }) {
-    return _then(_$StokRehberiRequestModelImpl(
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTarihi: freezed == belgeTarihi
-          ? _value.belgeTarihi
-          : belgeTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ekranTipi: freezed == ekranTipi
-          ? _value.ekranTipi
-          : ekranTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaTipi: freezed == faturaTipi
-          ? _value.faturaTipi
-          : faturaTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kisitYok: freezed == kisitYok
-          ? _value.kisitYok
-          : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resimGoster: freezed == resimGoster
-          ? _value.resimGoster
-          : resimGoster // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stokKodu: freezed == stokKodu
-          ? _value.stokKodu
-          : stokKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriTakibiVar: freezed == seriTakibiVar
-          ? _value.seriTakibiVar
-          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      okutuldu: freezed == okutuldu
-          ? _value.okutuldu
-          : okutuldu // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      oto: freezed == oto
-          ? _value.oto
-          : oto // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod1: freezed == ozelKod1
-          ? _value.ozelKod1
-          : ozelKod1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ozelKod2: freezed == ozelKod2
-          ? _value.ozelKod2
-          : ozelKod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      barkod2: freezed == barkod2
-          ? _value.barkod2
-          : barkod2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      faturaDepoKodu: freezed == faturaDepoKodu
-          ? _value.faturaDepoKodu
-          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      faturaHedefDepo: freezed == faturaHedefDepo
-          ? _value.faturaHedefDepo
-          : faturaHedefDepo // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$StokRehberiRequestModelImpl(
+        belgeNo: freezed == belgeNo
+            ? _value.belgeNo
+            : belgeNo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTarihi: freezed == belgeTarihi
+            ? _value.belgeTarihi
+            : belgeTarihi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        belgeTipi: freezed == belgeTipi
+            ? _value.belgeTipi
+            : belgeTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cariKodu: freezed == cariKodu
+            ? _value.cariKodu
+            : cariKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ekranTipi: freezed == ekranTipi
+            ? _value.ekranTipi
+            : ekranTipi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        faturaTipi: freezed == faturaTipi
+            ? _value.faturaTipi
+            : faturaTipi // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        kisitYok: freezed == kisitYok
+            ? _value.kisitYok
+            : kisitYok // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        menuKodu: freezed == menuKodu
+            ? _value.menuKodu
+            : menuKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        resimGoster: freezed == resimGoster
+            ? _value.resimGoster
+            : resimGoster // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        stokKodu: freezed == stokKodu
+            ? _value.stokKodu
+            : stokKodu // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        seriTakibiVar: freezed == seriTakibiVar
+            ? _value.seriTakibiVar
+            : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        depoKodu: freezed == depoKodu
+            ? _value.depoKodu
+            : depoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        okutuldu: freezed == okutuldu
+            ? _value.okutuldu
+            : okutuldu // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        oto: freezed == oto
+            ? _value.oto
+            : oto // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ozelKod1: freezed == ozelKod1
+            ? _value.ozelKod1
+            : ozelKod1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ozelKod2: freezed == ozelKod2
+            ? _value.ozelKod2
+            : ozelKod2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        barkod2: freezed == barkod2
+            ? _value.barkod2
+            : barkod2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        faturaDepoKodu: freezed == faturaDepoKodu
+            ? _value.faturaDepoKodu
+            : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        faturaHedefDepo: freezed == faturaHedefDepo
+            ? _value.faturaHedefDepo
+            : faturaHedefDepo // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
@@ -366,26 +368,27 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
-  _$StokRehberiRequestModelImpl(
-      {this.belgeNo,
-      this.belgeTarihi,
-      this.belgeTipi,
-      this.cariKodu,
-      this.ekranTipi = "D",
-      this.faturaTipi,
-      this.kisitYok,
-      this.menuKodu,
-      this.resimGoster,
-      this.stokKodu,
-      this.seriTakibiVar,
-      this.depoKodu,
-      this.okutuldu,
-      this.oto,
-      this.ozelKod1,
-      this.ozelKod2,
-      this.barkod2,
-      this.faturaDepoKodu,
-      this.faturaHedefDepo});
+  _$StokRehberiRequestModelImpl({
+    this.belgeNo,
+    this.belgeTarihi,
+    this.belgeTipi,
+    this.cariKodu,
+    this.ekranTipi = "D",
+    this.faturaTipi,
+    this.kisitYok,
+    this.menuKodu,
+    this.resimGoster,
+    this.stokKodu,
+    this.seriTakibiVar,
+    this.depoKodu,
+    this.okutuldu,
+    this.oto,
+    this.ozelKod1,
+    this.ozelKod2,
+    this.barkod2,
+    this.faturaDepoKodu,
+    this.faturaHedefDepo,
+  });
 
   factory _$StokRehberiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$StokRehberiRequestModelImplFromJson(json);
@@ -435,42 +438,39 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl>
-      get copyWith => __$$StokRehberiRequestModelImplCopyWithImpl<
-          _$StokRehberiRequestModelImpl>(this, _$identity);
+  _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl> get copyWith =>
+      __$$StokRehberiRequestModelImplCopyWithImpl<_$StokRehberiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StokRehberiRequestModelImplToJson(
-      this,
-    );
+    return _$$StokRehberiRequestModelImplToJson(this);
   }
 }
 
 abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
-  factory _StokRehberiRequestModel(
-      {String? belgeNo,
-      String? belgeTarihi,
-      String? belgeTipi,
-      String? cariKodu,
-      String? ekranTipi,
-      int? faturaTipi,
-      bool? kisitYok,
-      String? menuKodu,
-      String? resimGoster,
-      String? stokKodu,
-      String? seriTakibiVar,
-      int? depoKodu,
-      bool? okutuldu,
-      String? oto,
-      String? ozelKod1,
-      String? ozelKod2,
-      String? barkod2,
-      int? faturaDepoKodu,
-      int? faturaHedefDepo}) = _$StokRehberiRequestModelImpl;
+  factory _StokRehberiRequestModel({
+    String? belgeNo,
+    String? belgeTarihi,
+    String? belgeTipi,
+    String? cariKodu,
+    String? ekranTipi,
+    int? faturaTipi,
+    bool? kisitYok,
+    String? menuKodu,
+    String? resimGoster,
+    String? stokKodu,
+    String? seriTakibiVar,
+    int? depoKodu,
+    bool? okutuldu,
+    String? oto,
+    String? ozelKod1,
+    String? ozelKod2,
+    String? barkod2,
+    int? faturaDepoKodu,
+    int? faturaHedefDepo,
+  }) = _$StokRehberiRequestModelImpl;
 
-  factory _StokRehberiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$StokRehberiRequestModelImpl.fromJson;
+  factory _StokRehberiRequestModel.fromJson(Map<String, dynamic> json) = _$StokRehberiRequestModelImpl.fromJson;
 
   @override
   String? get belgeNo;
@@ -534,6 +534,6 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

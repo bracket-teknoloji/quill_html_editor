@@ -41,10 +41,9 @@ final class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView>
   late final TextEditingController sureController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  bool get kayitYetkisi =>
-      widget.model.baseEditEnum?.ekleMi == true
-          ? yetkiController.cariAktiviteYeniKayit
-          : yetkiController.cariAktiviteDuzenleme;
+  bool get kayitYetkisi => widget.model.baseEditEnum?.ekleMi == true
+      ? yetkiController.cariAktiviteYeniKayit
+      : yetkiController.cariAktiviteDuzenleme;
 
   bool get enabled => widget.model.baseEditEnum?.goruntuleMi != true;
 
@@ -273,53 +272,47 @@ final class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView>
           if (widget.model.baseEditEnum.ekleMi)
             Card(
               child: Observer(
-                builder:
-                    (_) => SwitchListTile.adaptive(
-                      value: viewModel.aktiviteBitirilsinMi,
-                      onChanged: viewModel.setAktiviteBitirilsinMi,
-                      title: const Text("Aktivite Bitirilsin"),
-                    ),
+                builder: (_) => SwitchListTile.adaptive(
+                  value: viewModel.aktiviteBitirilsinMi,
+                  onChanged: viewModel.setAktiviteBitirilsinMi,
+                  title: const Text("Aktivite Bitirilsin"),
+                ),
               ),
             ),
           Observer(
-            builder:
-                (_) =>
-                    viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi
-                        ? CustomTextField(
-                          labelText: "Sonuç Açıklaması",
-                          isMust: true,
-                          controller: sonucAciklamaController,
-                          onChanged: viewModel.setSonucAciklama,
-                          suffix: IconButton(
-                            onPressed: () async {
-                              final result = await bottomSheetDialogManager
-                                  .showCariAktiviteSonucAciklamalarBottomSheetDialog(
-                                    context,
-                                    viewModel.model.sonucAciklama,
-                                  );
-                              if (result != null) {
-                                sonucAciklamaController.text = result.adi ?? "";
-                                viewModel.setAciklama(result.adi);
-                              }
-                            },
-                            icon: const Icon(Icons.more_horiz_outlined),
-                          ),
-                        )
-                        : const SizedBox.shrink(),
+            builder: (_) => viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi
+                ? CustomTextField(
+                    labelText: "Sonuç Açıklaması",
+                    isMust: true,
+                    controller: sonucAciklamaController,
+                    onChanged: viewModel.setSonucAciklama,
+                    suffix: IconButton(
+                      onPressed: () async {
+                        final result = await bottomSheetDialogManager.showCariAktiviteSonucAciklamalarBottomSheetDialog(
+                          context,
+                          viewModel.model.sonucAciklama,
+                        );
+                        if (result != null) {
+                          sonucAciklamaController.text = result.adi ?? "";
+                          viewModel.setAciklama(result.adi);
+                        }
+                      },
+                      icon: const Icon(Icons.more_horiz_outlined),
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ),
           Observer(
-            builder:
-                (_) =>
-                    viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi
-                        ? CustomTextField(
-                          labelText: "Süre (Saat)",
-                          controller: sureController,
-                          isFormattedString: true,
-                          isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          onChanged: (value) => viewModel.setSure(value.toDoubleWithFormattedString),
-                        )
-                        : const SizedBox.shrink(),
+            builder: (_) => viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi
+                ? CustomTextField(
+                    labelText: "Süre (Saat)",
+                    controller: sureController,
+                    isFormattedString: true,
+                    isMust: true,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    onChanged: (value) => viewModel.setSure(value.toDoubleWithFormattedString),
+                  )
+                : const SizedBox.shrink(),
           ),
         ],
       ).paddingAll(UIHelper.lowSize),

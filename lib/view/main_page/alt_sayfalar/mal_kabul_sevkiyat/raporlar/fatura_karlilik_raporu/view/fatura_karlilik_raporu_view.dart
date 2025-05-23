@@ -40,10 +40,9 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
     cariController = TextEditingController();
     plasiyerController = TextEditingController();
     maliyetTipiController = TextEditingController(
-      text:
-          viewModel.maliyetTipiList
-              .firstWhereOrNull((element) => element.value?.value == viewModel.pdfModel.dicParams?.maliyetTipi)
-              ?.title,
+      text: viewModel.maliyetTipiList
+          .firstWhereOrNull((element) => element.value?.value == viewModel.pdfModel.dicParams?.maliyetTipi)
+          ?.title,
     );
     baslangicController = TextEditingController();
     bitisController = TextEditingController();
@@ -186,22 +185,20 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                 children: [
                   Card(
                     child: Observer(
-                      builder:
-                          (_) => SwitchListTile.adaptive(
-                            value: viewModel.pdfModel.dicParams?.irsDahil == "E",
-                            onChanged: viewModel.setIrsaliyeDahil,
-                            title: const Text("İrsaliye Hariç"),
-                          ),
+                      builder: (_) => SwitchListTile.adaptive(
+                        value: viewModel.pdfModel.dicParams?.irsDahil == "E",
+                        onChanged: viewModel.setIrsaliyeDahil,
+                        title: const Text("İrsaliye Hariç"),
+                      ),
                     ),
                   ),
                   Card(
                     child: Observer(
-                      builder:
-                          (_) => SwitchListTile.adaptive(
-                            value: viewModel.pdfModel.dicParams?.uretimFiyatiDahil == "E",
-                            onChanged: viewModel.setUretimFiyatiDahil,
-                            title: const Text("Üretim Fiyatı Dahil"),
-                          ),
+                      builder: (_) => SwitchListTile.adaptive(
+                        value: viewModel.pdfModel.dicParams?.uretimFiyatiDahil == "E",
+                        onChanged: viewModel.setUretimFiyatiDahil,
+                        title: const Text("Üretim Fiyatı Dahil"),
+                      ),
                     ),
                   ),
                 ],
@@ -210,10 +207,9 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                 labelText: "Hariç Stok Grup Kodları",
                 onChanged: (value) => viewModel.pdfModel.dicParams?.haricStokGrupKodlari = value,
                 suffix: IconButton(
-                  onPressed:
-                      () async => dialogManager.showInfoDialog(
-                        "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
-                      ),
+                  onPressed: () async => dialogManager.showInfoDialog(
+                    "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
+                  ),
                   icon: const Icon(Icons.info_outline),
                 ),
               ),

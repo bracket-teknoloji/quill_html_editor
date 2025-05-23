@@ -45,12 +45,11 @@ abstract class _TalepTeklifListesiViewModelBase
   List<String?> teslimatDurumuValueList = const [null, "K", "B"];
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap =
-      {
-        "EK": CacheManager.getProfilParametre.siparisEkAlan,
-        "MİK": CacheManager.getProfilParametre.siparisMiktar,
-        "VADE": CacheManager.getProfilParametre.siparisVade,
-      }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap = {
+    "EK": CacheManager.getProfilParametre.siparisEkAlan,
+    "MİK": CacheManager.getProfilParametre.siparisMiktar,
+    "VADE": CacheManager.getProfilParametre.siparisVade,
+  }.asObservable();
 
   @observable
   bool grupKodlariGoster = false;
@@ -225,10 +224,9 @@ abstract class _TalepTeklifListesiViewModelBase
   void setCariTipi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(cariTipi: value);
 
   @action
-  void setTeslimatDurumuGroupValue(int? value) =>
-      siparislerRequestModel = siparislerRequestModel.copyWith(
-        siparisKarsilanmaDurumu: teslimatDurumuValueList[value ?? 0],
-      );
+  void setTeslimatDurumuGroupValue(int? value) => siparislerRequestModel = siparislerRequestModel.copyWith(
+    siparisKarsilanmaDurumu: teslimatDurumuValueList[value ?? 0],
+  );
 
   @action
   void setKapaliBelgelerListelenmesin(bool? value) {

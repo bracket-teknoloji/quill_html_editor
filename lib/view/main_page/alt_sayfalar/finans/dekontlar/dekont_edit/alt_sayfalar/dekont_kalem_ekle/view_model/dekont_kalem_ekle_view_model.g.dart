@@ -12,20 +12,19 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
   Computed<List<bool>>? _$selectedBorcTipiComputed;
 
   @override
-  List<bool> get selectedBorcTipi => (_$selectedBorcTipiComputed ??=
-          Computed<List<bool>>(() => super.selectedBorcTipi,
-              name: '_DekontKalemEkleViewModelBase.selectedBorcTipi'))
-      .value;
+  List<bool> get selectedBorcTipi => (_$selectedBorcTipiComputed ??= Computed<List<bool>>(
+    () => super.selectedBorcTipi,
+    name: '_DekontKalemEkleViewModelBase.selectedBorcTipi',
+  )).value;
   Computed<List<bool>>? _$selectedHesapTipiComputed;
 
   @override
-  List<bool> get selectedHesapTipi => (_$selectedHesapTipiComputed ??=
-          Computed<List<bool>>(() => super.selectedHesapTipi,
-              name: '_DekontKalemEkleViewModelBase.selectedHesapTipi'))
-      .value;
+  List<bool> get selectedHesapTipi => (_$selectedHesapTipiComputed ??= Computed<List<bool>>(
+    () => super.selectedHesapTipi,
+    name: '_DekontKalemEkleViewModelBase.selectedHesapTipi',
+  )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_DekontKalemEkleViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(name: '_DekontKalemEkleViewModelBase.model', context: context);
 
   @override
   DekontKalemler get model {
@@ -37,16 +36,16 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   set model(DekontKalemler value) {
-    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
-        () {
+    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null, () {
       super.model = value;
       _modelIsInitialized = true;
     });
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_DekontKalemEkleViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_DekontKalemEkleViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -61,22 +60,23 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
     });
   }
 
-  late final _$getDovizlerAsyncAction = AsyncAction(
-      '_DekontKalemEkleViewModelBase.getDovizler',
-      context: context);
+  late final _$getDovizlerAsyncAction = AsyncAction('_DekontKalemEkleViewModelBase.getDovizler', context: context);
 
   @override
   Future<void> getDovizler() {
     return _$getDovizlerAsyncAction.run(() => super.getDovizler());
   }
 
-  late final _$_DekontKalemEkleViewModelBaseActionController =
-      ActionController(name: '_DekontKalemEkleViewModelBase', context: context);
+  late final _$_DekontKalemEkleViewModelBaseActionController = ActionController(
+    name: '_DekontKalemEkleViewModelBase',
+    context: context,
+  );
 
   @override
   void setModel(DekontKalemler value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setModel');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setModel',
+    );
     try {
       return super.setModel(value);
     } finally {
@@ -86,8 +86,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setBa(int value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setBa');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setBa',
+    );
     try {
       return super.setBa(value);
     } finally {
@@ -97,8 +98,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setHesapTipi(int value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setHesapTipi');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setHesapTipi',
+    );
     try {
       return super.setHesapTipi(value);
     } finally {
@@ -108,8 +110,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setDepoKodu(DepoList? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setDepoKodu');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setDepoKodu',
+    );
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -119,8 +122,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -130,8 +134,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setHesapKodu(String? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setHesapKodu');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setHesapKodu',
+    );
     try {
       return super.setHesapKodu(value);
     } finally {
@@ -141,8 +146,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setKalemAdi(String? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setKalemAdi');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setKalemAdi',
+    );
     try {
       return super.setKalemAdi(value);
     } finally {
@@ -152,8 +158,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setDovizTipi(DovizList? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setDovizTipi');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setDovizTipi',
+    );
     try {
       return super.setDovizTipi(value);
     } finally {
@@ -163,8 +170,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setDovizTutari(double? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setDovizTutari',
+    );
     try {
       return super.setDovizTutari(value);
     } finally {
@@ -174,8 +182,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setTutar(double? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setTutar');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(value);
     } finally {
@@ -185,8 +194,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setAciklama');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {
@@ -196,8 +206,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setExportTipi(int? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setExportTipi');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setExportTipi',
+    );
     try {
       return super.setExportTipi(value);
     } finally {
@@ -207,8 +218,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setExportRefNo(String? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setExportRefNo');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setExportRefNo',
+    );
     try {
       return super.setExportRefNo(value);
     } finally {
@@ -218,8 +230,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
-        .startAction(name: '_DekontKalemEkleViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -229,9 +242,9 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_DekontKalemEkleViewModelBaseActionController.startAction(
-            name: '_DekontKalemEkleViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController.startAction(
+      name: '_DekontKalemEkleViewModelBase.setDovizKurlariListesi',
+    );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {

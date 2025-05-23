@@ -33,106 +33,99 @@ final class _ImageCarouselViewState extends BaseState<ImageCarouselView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-    appBar: AppBar(title: AppBarTitle(title: "Görseller", subtitle: widget.model.stokAdi ?? widget.model.stokKodu)),
+    appBar: AppBar(
+      title: AppBarTitle(title: "Görseller", subtitle: widget.model.stokAdi ?? widget.model.stokKodu),
+    ),
     body: Observer(
-      builder:
-          (_) =>
-              viewModel.observableList == null
-                  ? Center(
-                    child: ColorFiltered(
-                      colorFilter: ColorFilter.mode(theme.colorScheme.primary, BlendMode.modulate),
-                      child: Assets.lotties.imageProcessingLottie.lottie(),
+      builder: (_) => viewModel.observableList == null
+          ? Center(
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(theme.colorScheme.primary, BlendMode.modulate),
+                child: Assets.lotties.imageProcessingLottie.lottie(),
+              ),
+            )
+          : Observer(
+              builder: (_) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    flex: 10,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: radius,
+                        topRight: radius,
+                        bottomLeft: viewModel.onlyOneItem ? radius : UIHelper.lowBorderRadius.topRight,
+                        bottomRight: viewModel.onlyOneItem ? radius : UIHelper.lowBorderRadius.topRight,
+                      ),
+                      child: InteractiveViewer(
+                        child: Observer(builder: (_) => ImageWidget(path: viewModel.selectedImage, fit: false)),
+                      ),
                     ),
-                  )
-                  : Observer(
-                    builder:
-                        (_) => Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              flex: 10,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: radius,
-                                  topRight: radius,
-                                  bottomLeft: viewModel.onlyOneItem ? radius : UIHelper.lowBorderRadius.topRight,
-                                  bottomRight: viewModel.onlyOneItem ? radius : UIHelper.lowBorderRadius.topRight,
-                                ),
-                                child: InteractiveViewer(
-                                  child: Observer(
-                                    builder: (_) => ImageWidget(path: viewModel.selectedImage, fit: false),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            if (viewModel.observableList?.length != 1)
-                              Expanded(
-                                flex: 3,
-                                child: Observer(
-                                  builder:
-                                      (_) => CarouselView(
-                                        itemExtent: context.isPortrait ? width / 1.3 : height / 1.3,
-                                        // shrinkExtent: width / 4,
-                                        elevation: 0.9,
-                                        padding: const EdgeInsets.only(
-                                          top: UIHelper.lowSize,
-                                          bottom: UIHelper.lowSize,
-                                          right: UIHelper.lowSize,
-                                        ),
-                                        itemSnapping: true,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius),
-                                        ),
-                                        onTap: (value) {
-                                          final item = viewModel.observableList?[value];
-                                          viewModel.setSelectedImage(item?.resimUrl);
-                                          // Get.to(
-                                          //   () => ImageView(
-                                          //     path: item?.resimUrl ?? "",
-                                          //     title: item?.belgeNo ?? "",
-                                          //   ),
-                                          //   fullscreenDialog: true,
-                                          // );
-                                        },
-                                        children:
-                                            viewModel.observableList
-                                                ?.map(
-                                                  (item) => Stack(
-                                                    fit: StackFit.expand,
-                                                    children: [
-                                                      ImageWidget(path: item.resimUrl),
-                                                      Container(
-                                                        alignment: Alignment.bottomCenter,
-                                                        decoration: BoxDecoration(
-                                                          gradient: LinearGradient(
-                                                            begin: Alignment.topCenter,
-                                                            end: Alignment.bottomCenter,
-                                                            colors: <Color>[
-                                                              Colors.black.withAlpha(0),
-                                                              Colors.black12,
-                                                              Colors.black45,
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        child: Text(
-                                                          item.aciklama ?? "",
-                                                          style: const TextStyle(
-                                                            color: Colors.white,
-                                                            fontWeight: FontWeight.bold,
-                                                          ),
-                                                        ).paddingAll(UIHelper.lowSize),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                                .toList() ??
-                                            [],
-                                      ),
-                                ),
-                              ),
-                          ],
-                        ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(bottom: UIHelper.midSize),
                   ),
+                  if (viewModel.observableList?.length != 1)
+                    Expanded(
+                      flex: 3,
+                      child: Observer(
+                        builder: (_) => CarouselView(
+                          itemExtent: context.isPortrait ? width / 1.3 : height / 1.3,
+                          // shrinkExtent: width / 4,
+                          elevation: 0.9,
+                          padding: const EdgeInsets.only(
+                            top: UIHelper.lowSize,
+                            bottom: UIHelper.lowSize,
+                            right: UIHelper.lowSize,
+                          ),
+                          itemSnapping: true,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius),
+                          ),
+                          onTap: (value) {
+                            final item = viewModel.observableList?[value];
+                            viewModel.setSelectedImage(item?.resimUrl);
+                            // Get.to(
+                            //   () => ImageView(
+                            //     path: item?.resimUrl ?? "",
+                            //     title: item?.belgeNo ?? "",
+                            //   ),
+                            //   fullscreenDialog: true,
+                            // );
+                          },
+                          children:
+                              viewModel.observableList
+                                  ?.map(
+                                    (item) => Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        ImageWidget(path: item.resimUrl),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: <Color>[
+                                                Colors.black.withAlpha(0),
+                                                Colors.black12,
+                                                Colors.black45,
+                                              ],
+                                            ),
+                                          ),
+                                          child: Text(
+                                            item.aciklama ?? "",
+                                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                                          ).paddingAll(UIHelper.lowSize),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                  .toList() ??
+                              [],
+                        ),
+                      ),
+                    ),
+                ],
+              ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(bottom: UIHelper.midSize),
+            ),
     ),
   );
 }
