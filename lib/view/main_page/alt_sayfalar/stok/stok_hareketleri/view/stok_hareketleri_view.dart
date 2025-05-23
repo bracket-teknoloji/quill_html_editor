@@ -382,22 +382,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           children2.add(
                             SlidableAction(
                               onPressed: (context) async {
-                                final editTipi = model.editTipi;
-                                if (editTipi?.goruntulensinMi ?? false) {
-                                  await Get.toNamed(
-                                    editTipi?.getEditRoute ?? "",
-                                    arguments: BaseEditModel<SiparisEditRequestModel>(
-                                      baseEditEnum: BaseEditEnum.goruntule,
-                                      model: SiparisEditRequestModel.fromStokHareketleriModel(
-                                        model,
-                                      ).copyWith(belgeTuru: editTipi?.rawValue, belgeTipi: editTipi?.rawValue),
-                                      editTipiEnum: editTipi,
-                                    ),
-                                  );
-                                  viewModel.setStokHareketleri(await getData()!);
-                                } else {
-                                  dialogManager.showErrorSnackBar("Bu belge tipi için yetkiniz bulunmamaktadır.");
-                                }
+                                await _viewBelgeDetay(model);
                               },
                               icon: Icons.directions_walk_outlined,
                               backgroundColor: theme.colorScheme.onPrimary,
@@ -418,24 +403,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       title: "Belgeyi Görüntüle",
                                       iconWidget: Icons.preview_outlined,
                                       onTap: () async {
-                                        final editTipi = model.editTipi;
-                                        if (editTipi?.goruntulensinMi ?? false) {
-                                          await Get.toNamed(
-                                            "mainPage/faturaEdit",
-                                            arguments: BaseEditModel<SiparisEditRequestModel>(
-                                              baseEditEnum: BaseEditEnum.goruntule,
-                                              model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                              editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
-                                                (element) => element.getName == model.belgeTipiAciklama,
-                                              ),
-                                            ),
-                                          );
-                                          viewModel.setStokHareketleri(await getData() ?? []);
-                                        } else {
-                                          dialogManager.showErrorSnackBar(
-                                            "Bu belge tipi için yetkiniz bulunmamaktadır.",
-                                          );
-                                        }
+                                        await _viewBelgeDetay(model);
                                       },
                                     ),
                                   BottomSheetModel(
@@ -480,6 +448,25 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
       }
     },
   );
+
+  Future<void> _viewBelgeDetay(StokHareketleriModel model) async {
+    final editTipi = model.editTipi;
+    if (editTipi?.goruntulensinMi ?? false) {
+      await Get.toNamed(
+        editTipi?.getEditRoute ?? "",
+        arguments: BaseEditModel<SiparisEditRequestModel>(
+          baseEditEnum: BaseEditEnum.goruntule,
+          model: SiparisEditRequestModel.fromStokHareketleriModel(
+            model,
+          ).copyWith(belgeTuru: editTipi?.rawValue, belgeTipi: editTipi?.rawValue),
+          editTipiEnum: editTipi,
+        ),
+      );
+      viewModel.setStokHareketleri(await getData()!);
+    } else {
+      dialogManager.showErrorSnackBar("Bu belge tipi için yetkiniz bulunmamaktadır.");
+    }
+  }
 
   Widget bottomButtonBar() => BottomBarWidget(
     isScrolledDown: true,
