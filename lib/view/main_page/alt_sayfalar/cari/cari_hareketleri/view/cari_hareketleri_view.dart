@@ -3,6 +3,8 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
+import "package:picker/core/constants/enum/menu_list_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -218,7 +220,17 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     }
                   },
                 ),
-              if (item.resmiBelgeNo != null)
+              if (item.resmiBelgeNo != null &&
+                  mainPageModel?.menuList?.any(
+                        (item) => MenuItemsEnum.eBelge.yetkiName == item,
+                      ) ==
+                      true &&
+                  EBelgeTuruEnum.values
+                          .firstWhereOrNull(
+                            (e) => e.value == item.ebelgeTuru,
+                          )
+                          ?.goruntule ==
+                      true)
                 BottomSheetModel(
                   iconWidget: Icons.preview_outlined,
                   title: "E-Belge Görüntüle",

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/model/main_page_model.dart";
 
 import "../../../generated/locale_base.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -18,9 +19,11 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   final BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
   final NetworkManager networkManager = NetworkManager();
   final YetkiController yetkiController = YetkiController();
-  ParamModel get parametreModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
-  UserModel get userModel => CacheManager.getAnaVeri?.userModel ?? UserModel();
-  ProfilYetkiModel get profilYetkiModel => CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();
+  ParamModel get parametreModel => mainPageModel?.paramModel ?? ParamModel();
+
+  MainPageModel? get mainPageModel => CacheManager.getAnaVeri;
+  UserModel get userModel => mainPageModel?.userModel ?? UserModel();
+  ProfilYetkiModel get profilYetkiModel => mainPageModel?.userModel?.profilYetki ?? ProfilYetkiModel();
   String get mainCurrency => parametreModel.paraBirimi ?? "TL";
   double get width => Get.width;
   double get height => Get.height;
