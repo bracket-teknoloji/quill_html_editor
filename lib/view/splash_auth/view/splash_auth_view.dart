@@ -210,7 +210,8 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
       if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
         viewModel
           ..setTitle(
-            "${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.",
+            lisansResponse.message ??
+                "${lisansResponse.ex?["Message"] ?? ""}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.",
           )
           ..setIsError(true);
         return;
