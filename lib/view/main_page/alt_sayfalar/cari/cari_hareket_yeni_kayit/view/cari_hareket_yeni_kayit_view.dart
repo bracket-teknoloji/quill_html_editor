@@ -13,9 +13,7 @@ import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
-import "../../../../model/main_page_model.dart";
 import "../../../../model/param_model.dart";
 import "../../cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../model/cari_hareket_yeni_kayit_model.dart";
@@ -43,7 +41,6 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   late final TextEditingController tutarController;
   late final TextEditingController plasiyerController;
   late final TextEditingController projeController;
-  MainPageModel? mainPageModel = CacheManager.getAnaVeri;
 
   @override
   void initState() {
