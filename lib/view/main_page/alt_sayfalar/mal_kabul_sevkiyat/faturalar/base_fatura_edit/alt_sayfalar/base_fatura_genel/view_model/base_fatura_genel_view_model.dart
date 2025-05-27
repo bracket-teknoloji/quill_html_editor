@@ -94,6 +94,12 @@ abstract class _BaseFaturaGenelViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setOdemeKodu(String? value) {
+    model = model.copyWith(odemeKodu: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
   void setOzelKod2(String? value) {
     model = model.copyWith(ozelKod2: value);
     BaseSiparisEditModel.setInstance(model);

@@ -445,10 +445,10 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (yetkiController.siparisKosulAktifMi(model.getEditTipiEnum))
+                if (yetkiController.kosulAktif(model.getEditTipiEnum))
                   Expanded(
                     child: CustomTextField(
-                      enabled: enable,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("OdemeKodu") ?? false),
                       labelText: "Ödeme Kodu",
                       readOnly: true,
                       suffixMore: true,
