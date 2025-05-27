@@ -472,6 +472,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kosul") ?? false),
                       labelText: "Koşul",
                       readOnly: true,
+                      isMust: true,
                       suffixMore: true,
                       controller: kosulController,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),

@@ -660,6 +660,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   ),
                 if (yetkiController.siparisKosulSatirdaSor(editTipi) &&
                     !transferMi &&
+                    !(editTipi?.gizlenecekAlanlar("kosul_kalem") ?? false) &&
                     yetkiController.kosulAktif(editTipi))
                   Expanded(
                     child: CustomTextField(
