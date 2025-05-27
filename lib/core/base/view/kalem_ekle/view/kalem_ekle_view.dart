@@ -1361,36 +1361,49 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
           kosulKodu: model.kosulKodu,
         ),
       );
-      if (viewModel.model?.kosulUygulandiMi ?? false) {
-        String snackBarText = "";
-        if (viewModel.model?.kosulIsk1 != null) {
-          snackBarText += "Koşul İskonto 1: ${viewModel.model?.kosulIsk1}\n";
-          isk1Controller?.text = viewModel.model?.kosulIsk1.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ?? "";
-          viewModel.kalemModel.iskonto1 = viewModel.model?.kosulIsk1;
-        }
-        if (viewModel.model?.kosulIsk2 != null) {
-          snackBarText += "Koşul İskonto 2: ${viewModel.model?.kosulIsk2}\n";
-          isk2YuzdeController?.text =
-              viewModel.model?.kosulIsk2.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ?? "";
-          viewModel.kalemModel.iskonto2 = viewModel.model?.kosulIsk2;
-        }
-        if (viewModel.model?.kosulIsk3 != null) {
-          snackBarText += "Koşul İskonto 3: ${viewModel.model?.kosulIsk3}\n";
-          isk3YuzdeController?.text =
-              viewModel.model?.kosulIsk3.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ?? "";
-          viewModel.kalemModel.iskonto3 = viewModel.model?.kosulIsk3;
-        }
-        if (snackBarText.isNotEmpty) {
-          snackBarText = "Koşul uygulandı:\n$snackBarText";
-          dialogManager.showInfoSnackBar(snackBarText);
-        }
-      }
     } else {
       final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
       if (result is StokListesiModel) {
         viewModel.setModel(result);
       }
       // var stokResult = await networkManager.dioGet(path: ApiUrls.getStokFiyatOzeti, bodyModel: bodyModel)
+    }
+    if (viewModel.model?.kosulUygulandiMi ?? false) {
+      String snackBarText = "";
+      if (viewModel.model?.kosulIsk1 case final value?) {
+        snackBarText += "Koşul İskonto 1: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        isk1Controller?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+        viewModel.setIskonto1(value);
+      }
+      if (viewModel.model?.kosulIsk2 case final value?) {
+        snackBarText += "Koşul İskonto 2: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        isk2YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+        viewModel.setIskonto2(value);
+      }
+      if (viewModel.model?.kosulIsk3 case final value?) {
+        snackBarText += "Koşul İskonto 3: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        isk3YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+        viewModel.setIskonto3(value);
+      }
+      if (viewModel.model?.kosulIsk4 case final value?) {
+        snackBarText += "Koşul İskonto 4: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        isk4YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+        viewModel.setIskonto4(value);
+      }
+      if (viewModel.model?.kosulIsk5 case final value?) {
+        snackBarText += "Koşul İskonto 5: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        isk5YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+        viewModel.setIskonto5(value);
+      }
+      if (viewModel.model?.kosulIsk6 case final value?) {
+        snackBarText += "Koşul İskonto 6: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        isk6YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+        viewModel.setIskonto6(value);
+      }
+      if (snackBarText.isNotEmpty) {
+        snackBarText = "Koşul uygulandı:\n$snackBarText";
+        dialogManager.showInfoSnackBar(snackBarText);
+      }
     }
   }
 

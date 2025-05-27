@@ -133,6 +133,29 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     this.netMiktar,
     this.miktar,
     this.yapacik,
+    this.kosulIsk1,
+    this.kosulUygulandi,
+    this.kosulIsk1Ot,
+    this.kosulIsk2,
+    this.kosulIsk3,
+    this.isk1o,
+    this.isk2o,
+    this.isk3o,
+    this.acikMussipMiktari,
+    this.stokSayimBakiye,
+    this.koliBilesenFiyatorandan,
+    this.koliBilesenKolikdv,
+    this.koliBilesenMiktari,
+    this.koliBilesenOrani,
+    this.bulunanDepo,
+    this.bulunanIsemri,
+    this.bulunanEkalan1,
+    this.bulunanEkalan2,
+    this.bulunanHucre,
+    this.bulunanMiktar,
+    this.bulunanSeriAcik3,
+    this.bulunanSeriAcik4,
+    this.bulunanSerilot5,
   });
 
   factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
@@ -296,16 +319,22 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? koliBilesenMiktari;
   double? koliBilesenOrani;
   String? kosulIsk1Ot;
-  @JsonKey(name: "KOSUL_UYGULANDI")
-  String? _kosulUygulandi;
+
+  String? kosulUygulandi;
   double? kosulIsk1;
   double? kosulIsk2;
   double? kosulIsk3;
+  double? kosulIsk4;
+  double? kosulIsk5;
+  double? kosulIsk6;
   double? isk1o;
   double? isk2o;
   double? isk3o;
+  double? isk4o;
+  double? isk5o;
+  double? isk6o;
 
-  bool get kosulUygulandiMi => _kosulUygulandi == "E";
+  bool get kosulUygulandiMi => kosulUygulandi == "E";
   double? get satilabilirMiktar {
     if ((bakiye ?? 0) - (acikMussipMiktari ?? 0) case <= 0) return 0;
     return (bakiye ?? 0) - (acikMussipMiktari ?? 0);

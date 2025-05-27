@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -630,7 +631,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
     final GenericResponseModel<StokListesiModel> response = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
-      data: viewModel.stokBottomSheetModel.toJsonWithList(),
+      data: StokRehberiRequestModel.fromStokBottomSheetModel(viewModel.stokBottomSheetModel).copyWith(kosulKodu: BaseSiparisEditModel.instance.kosulKodu),
       bodyModel: StokListesiModel(),
       showLoading: true,
     );

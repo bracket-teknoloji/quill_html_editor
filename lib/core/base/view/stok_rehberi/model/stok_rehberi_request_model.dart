@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
@@ -42,5 +43,18 @@ class StokRehberiRequestModel with _$StokRehberiRequestModel {
     belgeTipi: model.belgeTipi,
     cariKodu: model.cariKodu,
     stokKodu: model.stokKodu,
+  );
+
+  factory StokRehberiRequestModel.fromStokBottomSheetModel(StokBottomSheetModel model) => StokRehberiRequestModel(
+    stokKodu: model.stokKodu,
+    cariKodu: model.cariKodu,
+    belgeTipi: model.belgeTipi,
+    belgeNo: model.belgeNo,
+    belgeTarihi: model.belgeTarihi,
+    resimGoster: model.resimGoster,
+    ekranTipi: model.ekranTipi,
+    faturaDepoKodu: model.faturaDepoKodu,
+    ozelKod1: model.ozelKod1,
+    ozelKod2: model.ozelKod2,
   );
 }

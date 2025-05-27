@@ -239,6 +239,52 @@ abstract class _$StokListesiModelCWProxy {
 
   StokListesiModel yapacik(String? yapacik);
 
+  StokListesiModel kosulIsk1(double? kosulIsk1);
+
+  StokListesiModel kosulUygulandi(String? kosulUygulandi);
+
+  StokListesiModel kosulIsk1Ot(String? kosulIsk1Ot);
+
+  StokListesiModel kosulIsk2(double? kosulIsk2);
+
+  StokListesiModel kosulIsk3(double? kosulIsk3);
+
+  StokListesiModel isk1o(double? isk1o);
+
+  StokListesiModel isk2o(double? isk2o);
+
+  StokListesiModel isk3o(double? isk3o);
+
+  StokListesiModel acikMussipMiktari(double? acikMussipMiktari);
+
+  StokListesiModel stokSayimBakiye(double? stokSayimBakiye);
+
+  StokListesiModel koliBilesenFiyatorandan(String? koliBilesenFiyatorandan);
+
+  StokListesiModel koliBilesenKolikdv(String? koliBilesenKolikdv);
+
+  StokListesiModel koliBilesenMiktari(double? koliBilesenMiktari);
+
+  StokListesiModel koliBilesenOrani(double? koliBilesenOrani);
+
+  StokListesiModel bulunanDepo(int? bulunanDepo);
+
+  StokListesiModel bulunanIsemri(String? bulunanIsemri);
+
+  StokListesiModel bulunanEkalan1(String? bulunanEkalan1);
+
+  StokListesiModel bulunanEkalan2(String? bulunanEkalan2);
+
+  StokListesiModel bulunanHucre(String? bulunanHucre);
+
+  StokListesiModel bulunanMiktar(double? bulunanMiktar);
+
+  StokListesiModel bulunanSeriAcik3(String? bulunanSeriAcik3);
+
+  StokListesiModel bulunanSeriAcik4(String? bulunanSeriAcik4);
+
+  StokListesiModel bulunanSerilot5(String? bulunanSerilot5);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -362,6 +408,29 @@ abstract class _$StokListesiModelCWProxy {
     double? netMiktar,
     double? miktar,
     String? yapacik,
+    double? kosulIsk1,
+    String? kosulUygulandi,
+    String? kosulIsk1Ot,
+    double? kosulIsk2,
+    double? kosulIsk3,
+    double? isk1o,
+    double? isk2o,
+    double? isk3o,
+    double? acikMussipMiktari,
+    double? stokSayimBakiye,
+    String? koliBilesenFiyatorandan,
+    String? koliBilesenKolikdv,
+    double? koliBilesenMiktari,
+    double? koliBilesenOrani,
+    int? bulunanDepo,
+    String? bulunanIsemri,
+    String? bulunanEkalan1,
+    String? bulunanEkalan2,
+    String? bulunanHucre,
+    double? bulunanMiktar,
+    String? bulunanSeriAcik3,
+    String? bulunanSeriAcik4,
+    String? bulunanSerilot5,
   });
 }
 
@@ -782,6 +851,92 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel yapacik(String? yapacik) => this(yapacik: yapacik);
 
   @override
+  StokListesiModel kosulIsk1(double? kosulIsk1) => this(kosulIsk1: kosulIsk1);
+
+  @override
+  StokListesiModel kosulUygulandi(String? kosulUygulandi) =>
+      this(kosulUygulandi: kosulUygulandi);
+
+  @override
+  StokListesiModel kosulIsk1Ot(String? kosulIsk1Ot) =>
+      this(kosulIsk1Ot: kosulIsk1Ot);
+
+  @override
+  StokListesiModel kosulIsk2(double? kosulIsk2) => this(kosulIsk2: kosulIsk2);
+
+  @override
+  StokListesiModel kosulIsk3(double? kosulIsk3) => this(kosulIsk3: kosulIsk3);
+
+  @override
+  StokListesiModel isk1o(double? isk1o) => this(isk1o: isk1o);
+
+  @override
+  StokListesiModel isk2o(double? isk2o) => this(isk2o: isk2o);
+
+  @override
+  StokListesiModel isk3o(double? isk3o) => this(isk3o: isk3o);
+
+  @override
+  StokListesiModel acikMussipMiktari(double? acikMussipMiktari) =>
+      this(acikMussipMiktari: acikMussipMiktari);
+
+  @override
+  StokListesiModel stokSayimBakiye(double? stokSayimBakiye) =>
+      this(stokSayimBakiye: stokSayimBakiye);
+
+  @override
+  StokListesiModel koliBilesenFiyatorandan(String? koliBilesenFiyatorandan) =>
+      this(koliBilesenFiyatorandan: koliBilesenFiyatorandan);
+
+  @override
+  StokListesiModel koliBilesenKolikdv(String? koliBilesenKolikdv) =>
+      this(koliBilesenKolikdv: koliBilesenKolikdv);
+
+  @override
+  StokListesiModel koliBilesenMiktari(double? koliBilesenMiktari) =>
+      this(koliBilesenMiktari: koliBilesenMiktari);
+
+  @override
+  StokListesiModel koliBilesenOrani(double? koliBilesenOrani) =>
+      this(koliBilesenOrani: koliBilesenOrani);
+
+  @override
+  StokListesiModel bulunanDepo(int? bulunanDepo) =>
+      this(bulunanDepo: bulunanDepo);
+
+  @override
+  StokListesiModel bulunanIsemri(String? bulunanIsemri) =>
+      this(bulunanIsemri: bulunanIsemri);
+
+  @override
+  StokListesiModel bulunanEkalan1(String? bulunanEkalan1) =>
+      this(bulunanEkalan1: bulunanEkalan1);
+
+  @override
+  StokListesiModel bulunanEkalan2(String? bulunanEkalan2) =>
+      this(bulunanEkalan2: bulunanEkalan2);
+
+  @override
+  StokListesiModel bulunanHucre(String? bulunanHucre) =>
+      this(bulunanHucre: bulunanHucre);
+
+  @override
+  StokListesiModel bulunanMiktar(double? bulunanMiktar) =>
+      this(bulunanMiktar: bulunanMiktar);
+
+  @override
+  StokListesiModel bulunanSeriAcik3(String? bulunanSeriAcik3) =>
+      this(bulunanSeriAcik3: bulunanSeriAcik3);
+
+  @override
+  StokListesiModel bulunanSeriAcik4(String? bulunanSeriAcik4) =>
+      this(bulunanSeriAcik4: bulunanSeriAcik4);
+
+  @override
+  StokListesiModel bulunanSerilot5(String? bulunanSerilot5) =>
+      this(bulunanSerilot5: bulunanSerilot5);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -906,6 +1061,29 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
     Object? netMiktar = const $CopyWithPlaceholder(),
     Object? miktar = const $CopyWithPlaceholder(),
     Object? yapacik = const $CopyWithPlaceholder(),
+    Object? kosulIsk1 = const $CopyWithPlaceholder(),
+    Object? kosulUygulandi = const $CopyWithPlaceholder(),
+    Object? kosulIsk1Ot = const $CopyWithPlaceholder(),
+    Object? kosulIsk2 = const $CopyWithPlaceholder(),
+    Object? kosulIsk3 = const $CopyWithPlaceholder(),
+    Object? isk1o = const $CopyWithPlaceholder(),
+    Object? isk2o = const $CopyWithPlaceholder(),
+    Object? isk3o = const $CopyWithPlaceholder(),
+    Object? acikMussipMiktari = const $CopyWithPlaceholder(),
+    Object? stokSayimBakiye = const $CopyWithPlaceholder(),
+    Object? koliBilesenFiyatorandan = const $CopyWithPlaceholder(),
+    Object? koliBilesenKolikdv = const $CopyWithPlaceholder(),
+    Object? koliBilesenMiktari = const $CopyWithPlaceholder(),
+    Object? koliBilesenOrani = const $CopyWithPlaceholder(),
+    Object? bulunanDepo = const $CopyWithPlaceholder(),
+    Object? bulunanIsemri = const $CopyWithPlaceholder(),
+    Object? bulunanEkalan1 = const $CopyWithPlaceholder(),
+    Object? bulunanEkalan2 = const $CopyWithPlaceholder(),
+    Object? bulunanHucre = const $CopyWithPlaceholder(),
+    Object? bulunanMiktar = const $CopyWithPlaceholder(),
+    Object? bulunanSeriAcik3 = const $CopyWithPlaceholder(),
+    Object? bulunanSeriAcik4 = const $CopyWithPlaceholder(),
+    Object? bulunanSerilot5 = const $CopyWithPlaceholder(),
   }) {
     return StokListesiModel(
       seriBakiyeKontrolu: seriBakiyeKontrolu == const $CopyWithPlaceholder()
@@ -1374,6 +1552,99 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           ? _value.yapacik
           // ignore: cast_nullable_to_non_nullable
           : yapacik as String?,
+      kosulIsk1: kosulIsk1 == const $CopyWithPlaceholder()
+          ? _value.kosulIsk1
+          // ignore: cast_nullable_to_non_nullable
+          : kosulIsk1 as double?,
+      kosulUygulandi: kosulUygulandi == const $CopyWithPlaceholder()
+          ? _value.kosulUygulandi
+          // ignore: cast_nullable_to_non_nullable
+          : kosulUygulandi as String?,
+      kosulIsk1Ot: kosulIsk1Ot == const $CopyWithPlaceholder()
+          ? _value.kosulIsk1Ot
+          // ignore: cast_nullable_to_non_nullable
+          : kosulIsk1Ot as String?,
+      kosulIsk2: kosulIsk2 == const $CopyWithPlaceholder()
+          ? _value.kosulIsk2
+          // ignore: cast_nullable_to_non_nullable
+          : kosulIsk2 as double?,
+      kosulIsk3: kosulIsk3 == const $CopyWithPlaceholder()
+          ? _value.kosulIsk3
+          // ignore: cast_nullable_to_non_nullable
+          : kosulIsk3 as double?,
+      isk1o: isk1o == const $CopyWithPlaceholder()
+          ? _value.isk1o
+          // ignore: cast_nullable_to_non_nullable
+          : isk1o as double?,
+      isk2o: isk2o == const $CopyWithPlaceholder()
+          ? _value.isk2o
+          // ignore: cast_nullable_to_non_nullable
+          : isk2o as double?,
+      isk3o: isk3o == const $CopyWithPlaceholder()
+          ? _value.isk3o
+          // ignore: cast_nullable_to_non_nullable
+          : isk3o as double?,
+      acikMussipMiktari: acikMussipMiktari == const $CopyWithPlaceholder()
+          ? _value.acikMussipMiktari
+          // ignore: cast_nullable_to_non_nullable
+          : acikMussipMiktari as double?,
+      stokSayimBakiye: stokSayimBakiye == const $CopyWithPlaceholder()
+          ? _value.stokSayimBakiye
+          // ignore: cast_nullable_to_non_nullable
+          : stokSayimBakiye as double?,
+      koliBilesenFiyatorandan:
+          koliBilesenFiyatorandan == const $CopyWithPlaceholder()
+              ? _value.koliBilesenFiyatorandan
+              // ignore: cast_nullable_to_non_nullable
+              : koliBilesenFiyatorandan as String?,
+      koliBilesenKolikdv: koliBilesenKolikdv == const $CopyWithPlaceholder()
+          ? _value.koliBilesenKolikdv
+          // ignore: cast_nullable_to_non_nullable
+          : koliBilesenKolikdv as String?,
+      koliBilesenMiktari: koliBilesenMiktari == const $CopyWithPlaceholder()
+          ? _value.koliBilesenMiktari
+          // ignore: cast_nullable_to_non_nullable
+          : koliBilesenMiktari as double?,
+      koliBilesenOrani: koliBilesenOrani == const $CopyWithPlaceholder()
+          ? _value.koliBilesenOrani
+          // ignore: cast_nullable_to_non_nullable
+          : koliBilesenOrani as double?,
+      bulunanDepo: bulunanDepo == const $CopyWithPlaceholder()
+          ? _value.bulunanDepo
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanDepo as int?,
+      bulunanIsemri: bulunanIsemri == const $CopyWithPlaceholder()
+          ? _value.bulunanIsemri
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanIsemri as String?,
+      bulunanEkalan1: bulunanEkalan1 == const $CopyWithPlaceholder()
+          ? _value.bulunanEkalan1
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanEkalan1 as String?,
+      bulunanEkalan2: bulunanEkalan2 == const $CopyWithPlaceholder()
+          ? _value.bulunanEkalan2
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanEkalan2 as String?,
+      bulunanHucre: bulunanHucre == const $CopyWithPlaceholder()
+          ? _value.bulunanHucre
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanHucre as String?,
+      bulunanMiktar: bulunanMiktar == const $CopyWithPlaceholder()
+          ? _value.bulunanMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanMiktar as double?,
+      bulunanSeriAcik3: bulunanSeriAcik3 == const $CopyWithPlaceholder()
+          ? _value.bulunanSeriAcik3
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanSeriAcik3 as String?,
+      bulunanSeriAcik4: bulunanSeriAcik4 == const $CopyWithPlaceholder()
+          ? _value.bulunanSeriAcik4
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanSeriAcik4 as String?,
+      bulunanSerilot5: bulunanSerilot5 == const $CopyWithPlaceholder()
+          ? _value.bulunanSerilot5
+          // ignore: cast_nullable_to_non_nullable
+          : bulunanSerilot5 as String?,
     );
   }
 }
@@ -1522,29 +1793,36 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       netMiktar: (json['NET_MIKTAR'] as num?)?.toDouble(),
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
       yapacik: json['YAPACIK'] as String?,
+      kosulIsk1: (json['KOSUL_ISK1'] as num?)?.toDouble(),
+      kosulUygulandi: json['KOSUL_UYGULANDI'] as String?,
+      kosulIsk1Ot: json['KOSUL_ISK1_OT'] as String?,
+      kosulIsk2: (json['KOSUL_ISK2'] as num?)?.toDouble(),
+      kosulIsk3: (json['KOSUL_ISK3'] as num?)?.toDouble(),
+      isk1o: (json['ISK1O'] as num?)?.toDouble(),
+      isk2o: (json['ISK2O'] as num?)?.toDouble(),
+      isk3o: (json['ISK3O'] as num?)?.toDouble(),
+      acikMussipMiktari: (json['ACIK_MUSSIP_MIKTARI'] as num?)?.toDouble(),
+      stokSayimBakiye: (json['STOK_SAYIM_BAKIYE'] as num?)?.toDouble(),
+      koliBilesenFiyatorandan: json['KOLI_BILESEN_FIYATORANDAN'] as String?,
+      koliBilesenKolikdv: json['KOLI_BILESEN_KOLIKDV'] as String?,
+      koliBilesenMiktari: (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble(),
+      koliBilesenOrani: (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble(),
+      bulunanDepo: (json['BULUNAN_DEPO'] as num?)?.toInt(),
+      bulunanIsemri: json['BULUNAN_ISEMRI'] as String?,
+      bulunanEkalan1: json['BULUNAN_EKALAN1'] as String?,
+      bulunanEkalan2: json['BULUNAN_EKALAN2'] as String?,
+      bulunanHucre: json['BULUNAN_HUCRE'] as String?,
+      bulunanMiktar: (json['BULUNAN_MIKTAR'] as num?)?.toDouble(),
+      bulunanSeriAcik3: json['BULUNAN_SERI_ACIK3'] as String?,
+      bulunanSeriAcik4: json['BULUNAN_SERI_ACIK4'] as String?,
+      bulunanSerilot5: json['BULUNAN_SERILOT5'] as String?,
     )
-      ..bulunanSerilot5 = json['BULUNAN_SERILOT5'] as String?
-      ..bulunanSeriAcik3 = json['BULUNAN_SERI_ACIK3'] as String?
-      ..bulunanSeriAcik4 = json['BULUNAN_SERI_ACIK4'] as String?
-      ..bulunanMiktar = (json['BULUNAN_MIKTAR'] as num?)?.toDouble()
-      ..bulunanIsemri = json['BULUNAN_ISEMRI'] as String?
-      ..bulunanEkalan1 = json['BULUNAN_EKALAN1'] as String?
-      ..bulunanEkalan2 = json['BULUNAN_EKALAN2'] as String?
-      ..bulunanHucre = json['BULUNAN_HUCRE'] as String?
-      ..bulunanDepo = (json['BULUNAN_DEPO'] as num?)?.toInt()
-      ..acikMussipMiktari = (json['ACIK_MUSSIP_MIKTARI'] as num?)?.toDouble()
-      ..stokSayimBakiye = (json['STOK_SAYIM_BAKIYE'] as num?)?.toDouble()
-      ..koliBilesenFiyatorandan = json['KOLI_BILESEN_FIYATORANDAN'] as String?
-      ..koliBilesenKolikdv = json['KOLI_BILESEN_KOLIKDV'] as String?
-      ..koliBilesenMiktari = (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble()
-      ..koliBilesenOrani = (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble()
-      ..kosulIsk1Ot = json['KOSUL_ISK1_OT'] as String?
-      ..kosulIsk1 = (json['KOSUL_ISK1'] as num?)?.toDouble()
-      ..kosulIsk2 = (json['KOSUL_ISK2'] as num?)?.toDouble()
-      ..kosulIsk3 = (json['KOSUL_ISK3'] as num?)?.toDouble()
-      ..isk1o = (json['ISK1O'] as num?)?.toDouble()
-      ..isk2o = (json['ISK2O'] as num?)?.toDouble()
-      ..isk3o = (json['ISK3O'] as num?)?.toDouble();
+      ..kosulIsk4 = (json['KOSUL_ISK4'] as num?)?.toDouble()
+      ..kosulIsk5 = (json['KOSUL_ISK5'] as num?)?.toDouble()
+      ..kosulIsk6 = (json['KOSUL_ISK6'] as num?)?.toDouble()
+      ..isk4o = (json['ISK4O'] as num?)?.toDouble()
+      ..isk5o = (json['ISK5O'] as num?)?.toDouble()
+      ..isk6o = (json['ISK6O'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
     <String, dynamic>{
@@ -1712,12 +1990,19 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
       if (instance.koliBilesenOrani case final value?)
         'KOLI_BILESEN_ORANI': value,
       if (instance.kosulIsk1Ot case final value?) 'KOSUL_ISK1_OT': value,
+      if (instance.kosulUygulandi case final value?) 'KOSUL_UYGULANDI': value,
       if (instance.kosulIsk1 case final value?) 'KOSUL_ISK1': value,
       if (instance.kosulIsk2 case final value?) 'KOSUL_ISK2': value,
       if (instance.kosulIsk3 case final value?) 'KOSUL_ISK3': value,
+      if (instance.kosulIsk4 case final value?) 'KOSUL_ISK4': value,
+      if (instance.kosulIsk5 case final value?) 'KOSUL_ISK5': value,
+      if (instance.kosulIsk6 case final value?) 'KOSUL_ISK6': value,
       if (instance.isk1o case final value?) 'ISK1O': value,
       if (instance.isk2o case final value?) 'ISK2O': value,
       if (instance.isk3o case final value?) 'ISK3O': value,
+      if (instance.isk4o case final value?) 'ISK4O': value,
+      if (instance.isk5o case final value?) 'ISK5O': value,
+      if (instance.isk6o case final value?) 'ISK6O': value,
     };
 
 DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) =>
