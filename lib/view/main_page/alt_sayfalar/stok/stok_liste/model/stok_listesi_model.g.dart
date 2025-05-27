@@ -1537,7 +1537,14 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..koliBilesenFiyatorandan = json['KOLI_BILESEN_FIYATORANDAN'] as String?
       ..koliBilesenKolikdv = json['KOLI_BILESEN_KOLIKDV'] as String?
       ..koliBilesenMiktari = (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble()
-      ..koliBilesenOrani = (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble();
+      ..koliBilesenOrani = (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble()
+      ..kosulIsk1Ot = json['KOSUL_ISK1_OT'] as String?
+      ..kosulIsk1 = (json['KOSUL_ISK1'] as num?)?.toDouble()
+      ..kosulIsk2 = (json['KOSUL_ISK2'] as num?)?.toDouble()
+      ..kosulIsk3 = (json['KOSUL_ISK3'] as num?)?.toDouble()
+      ..isk1o = (json['ISK1O'] as num?)?.toDouble()
+      ..isk2o = (json['ISK2O'] as num?)?.toDouble()
+      ..isk3o = (json['ISK3O'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
     <String, dynamic>{
@@ -1704,6 +1711,13 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
         'KOLI_BILESEN_MIKTARI': value,
       if (instance.koliBilesenOrani case final value?)
         'KOLI_BILESEN_ORANI': value,
+      if (instance.kosulIsk1Ot case final value?) 'KOSUL_ISK1_OT': value,
+      if (instance.kosulIsk1 case final value?) 'KOSUL_ISK1': value,
+      if (instance.kosulIsk2 case final value?) 'KOSUL_ISK2': value,
+      if (instance.kosulIsk3 case final value?) 'KOSUL_ISK3': value,
+      if (instance.isk1o case final value?) 'ISK1O': value,
+      if (instance.isk2o case final value?) 'ISK2O': value,
+      if (instance.isk3o case final value?) 'ISK3O': value,
     };
 
 DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) =>

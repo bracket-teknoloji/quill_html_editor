@@ -29,6 +29,7 @@ class StokRehberiRequestModel with _$StokRehberiRequestModel {
     String? barkod2,
     int? faturaDepoKodu,
     int? faturaHedefDepo,
+    String? kosulKodu,
   }) = _StokRehberiRequestModel;
 
   factory StokRehberiRequestModel.fromJson(Map<String, dynamic> json) => _$StokRehberiRequestModelFromJson(json);

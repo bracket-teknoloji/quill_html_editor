@@ -1354,7 +1354,37 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       }
     } else if (widget.kalemModel != null || widget.stokListesiModel?.okutulanBarkod == null) {
       viewModel.setKalemModel(widget.kalemModel);
-      await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
+      await viewModel.getData(
+        StokRehberiRequestModel.fromKalemModel(widget.kalemModel!).copyWith(
+          ozelKod1: model.ozelKod1,
+          ozelKod2: model.ozelKod2,
+          kosulKodu: model.kosulKodu,
+        ),
+      );
+      if (viewModel.model?.kosulUygulandiMi ?? false) {
+        String snackBarText = "";
+        if (viewModel.model?.kosulIsk1 != null) {
+          snackBarText += "Koşul İskonto 1: ${viewModel.model?.kosulIsk1}\n";
+          isk1Controller?.text = viewModel.model?.kosulIsk1.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ?? "";
+          viewModel.kalemModel.iskonto1 = viewModel.model?.kosulIsk1;
+        }
+        if (viewModel.model?.kosulIsk2 != null) {
+          snackBarText += "Koşul İskonto 2: ${viewModel.model?.kosulIsk2}\n";
+          isk2YuzdeController?.text =
+              viewModel.model?.kosulIsk2.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ?? "";
+          viewModel.kalemModel.iskonto2 = viewModel.model?.kosulIsk2;
+        }
+        if (viewModel.model?.kosulIsk3 != null) {
+          snackBarText += "Koşul İskonto 3: ${viewModel.model?.kosulIsk3}\n";
+          isk3YuzdeController?.text =
+              viewModel.model?.kosulIsk3.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ?? "";
+          viewModel.kalemModel.iskonto3 = viewModel.model?.kosulIsk3;
+        }
+        if (snackBarText.isNotEmpty) {
+          snackBarText = "Koşul uygulandı:\n$snackBarText";
+          dialogManager.showInfoSnackBar(snackBarText);
+        }
+      }
     } else {
       final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
       if (result is StokListesiModel) {

@@ -295,6 +295,17 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   String? koliBilesenKolikdv;
   double? koliBilesenMiktari;
   double? koliBilesenOrani;
+  String? kosulIsk1Ot;
+  @JsonKey(name: "KOSUL_UYGULANDI")
+  String? _kosulUygulandi;
+  double? kosulIsk1;
+  double? kosulIsk2;
+  double? kosulIsk3;
+  double? isk1o;
+  double? isk2o;
+  double? isk3o;
+
+  bool get kosulUygulandiMi => _kosulUygulandi == "E";
   double? get satilabilirMiktar {
     if ((bakiye ?? 0) - (acikMussipMiktari ?? 0) case <= 0) return 0;
     return (bakiye ?? 0) - (acikMussipMiktari ?? 0);
