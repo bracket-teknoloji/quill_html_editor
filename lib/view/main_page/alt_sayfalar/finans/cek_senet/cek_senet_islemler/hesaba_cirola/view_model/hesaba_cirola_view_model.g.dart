@@ -9,7 +9,8 @@ part of 'hesaba_cirola_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
-  late final _$modelAtom = Atom(name: '_HesabaCirolaViewModelBase.model', context: context);
+  late final _$modelAtom =
+      Atom(name: '_HesabaCirolaViewModelBase.model', context: context);
 
   @override
   SaveCekSenetModel get model {
@@ -24,7 +25,8 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
     });
   }
 
-  late final _$cariListesiModelAtom = Atom(name: '_HesabaCirolaViewModelBase.cariListesiModel', context: context);
+  late final _$cariListesiModelAtom = Atom(
+      name: '_HesabaCirolaViewModelBase.cariListesiModel', context: context);
 
   @override
   CariListesiModel? get cariListesiModel {
@@ -39,23 +41,21 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
     });
   }
 
-  late final _$saveDataAsyncAction = AsyncAction('_HesabaCirolaViewModelBase.saveData', context: context);
+  late final _$saveDataAsyncAction =
+      AsyncAction('_HesabaCirolaViewModelBase.saveData', context: context);
 
   @override
   Future<GenericResponseModel<SaveCekSenetModel>> saveData() {
     return _$saveDataAsyncAction.run(() => super.saveData());
   }
 
-  late final _$_HesabaCirolaViewModelBaseActionController = ActionController(
-    name: '_HesabaCirolaViewModelBase',
-    context: context,
-  );
+  late final _$_HesabaCirolaViewModelBaseActionController =
+      ActionController(name: '_HesabaCirolaViewModelBase', context: context);
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController.startAction(
-      name: '_HesabaCirolaViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -65,9 +65,8 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
 
   @override
   void setIslemTarihi(DateTime? value) {
-    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController.startAction(
-      name: '_HesabaCirolaViewModelBase.setIslemTarihi',
-    );
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setIslemTarihi');
     try {
       return super.setIslemTarihi(value);
     } finally {
@@ -77,9 +76,8 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
 
   @override
   void setCariKodu(CariListesiModel? value) {
-    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController.startAction(
-      name: '_HesabaCirolaViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -89,9 +87,8 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
 
   @override
   void setTahsilHesabi(String? value) {
-    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController.startAction(
-      name: '_HesabaCirolaViewModelBase.setTahsilHesabi',
-    );
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setTahsilHesabi');
     try {
       return super.setTahsilHesabi(value);
     } finally {
@@ -101,9 +98,8 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
 
   @override
   void setProjekodu(String? value) {
-    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController.startAction(
-      name: '_HesabaCirolaViewModelBase.setProjekodu',
-    );
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setProjekodu');
     try {
       return super.setProjekodu(value);
     } finally {
@@ -113,9 +109,8 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(String? value) {
-    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController.startAction(
-      name: '_HesabaCirolaViewModelBase.setPlasiyerKodu',
-    );
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(value);
     } finally {

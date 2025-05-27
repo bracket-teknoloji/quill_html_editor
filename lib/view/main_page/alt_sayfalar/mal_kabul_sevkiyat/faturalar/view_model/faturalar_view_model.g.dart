@@ -14,51 +14,52 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod0 =>
       (_$getGrupKod0Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-        () => super.getGrupKod0,
-        name: '_FaturalarViewModelBase.getGrupKod0',
-      )).value;
+              () => super.getGrupKod0,
+              name: '_FaturalarViewModelBase.getGrupKod0'))
+          .value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod1Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod1 =>
       (_$getGrupKod1Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-        () => super.getGrupKod1,
-        name: '_FaturalarViewModelBase.getGrupKod1',
-      )).value;
+              () => super.getGrupKod1,
+              name: '_FaturalarViewModelBase.getGrupKod1'))
+          .value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod2Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod2 =>
       (_$getGrupKod2Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-        () => super.getGrupKod2,
-        name: '_FaturalarViewModelBase.getGrupKod2',
-      )).value;
+              () => super.getGrupKod2,
+              name: '_FaturalarViewModelBase.getGrupKod2'))
+          .value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod3Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod3 =>
       (_$getGrupKod3Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-        () => super.getGrupKod3,
-        name: '_FaturalarViewModelBase.getGrupKod3',
-      )).value;
+              () => super.getGrupKod3,
+              name: '_FaturalarViewModelBase.getGrupKod3'))
+          .value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod4Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod4 =>
       (_$getGrupKod4Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-        () => super.getGrupKod4,
-        name: '_FaturalarViewModelBase.getGrupKod4',
-      )).value;
+              () => super.getGrupKod4,
+              name: '_FaturalarViewModelBase.getGrupKod4'))
+          .value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod5Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod5 =>
       (_$getGrupKod5Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-        () => super.getGrupKod5,
-        name: '_FaturalarViewModelBase.getGrupKod5',
-      )).value;
+              () => super.getGrupKod5,
+              name: '_FaturalarViewModelBase.getGrupKod5'))
+          .value;
 
-  late final _$kodlariGosterAtom = Atom(name: '_FaturalarViewModelBase.kodlariGoster', context: context);
+  late final _$kodlariGosterAtom =
+      Atom(name: '_FaturalarViewModelBase.kodlariGoster', context: context);
 
   @override
   bool get kodlariGoster {
@@ -73,7 +74,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$editTipiEnumAtom = Atom(name: '_FaturalarViewModelBase.editTipiEnum', context: context);
+  late final _$editTipiEnumAtom =
+      Atom(name: '_FaturalarViewModelBase.editTipiEnum', context: context);
 
   @override
   EditTipiEnum get editTipiEnum {
@@ -85,13 +87,15 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
 
   @override
   set editTipiEnum(EditTipiEnum value) {
-    _$editTipiEnumAtom.reportWrite(value, _editTipiEnumIsInitialized ? super.editTipiEnum : null, () {
+    _$editTipiEnumAtom.reportWrite(
+        value, _editTipiEnumIsInitialized ? super.editTipiEnum : null, () {
       super.editTipiEnum = value;
       _editTipiEnumIsInitialized = true;
     });
   }
 
-  late final _$ekstraAlanlarMapAtom = Atom(name: '_FaturalarViewModelBase.ekstraAlanlarMap', context: context);
+  late final _$ekstraAlanlarMapAtom =
+      Atom(name: '_FaturalarViewModelBase.ekstraAlanlarMap', context: context);
 
   @override
   ObservableMap<String, bool> get ekstraAlanlarMap {
@@ -106,7 +110,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$faturaRequestModelAtom = Atom(name: '_FaturalarViewModelBase.faturaRequestModel', context: context);
+  late final _$faturaRequestModelAtom = Atom(
+      name: '_FaturalarViewModelBase.faturaRequestModel', context: context);
 
   @override
   SiparislerRequestModel get faturaRequestModel {
@@ -121,7 +126,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$paramDataAtom = Atom(name: '_FaturalarViewModelBase.paramData', context: context);
+  late final _$paramDataAtom =
+      Atom(name: '_FaturalarViewModelBase.paramData', context: context);
 
   @override
   ObservableMap<String, dynamic>? get paramData {
@@ -136,7 +142,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom = Atom(name: '_FaturalarViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_FaturalarViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -151,7 +158,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom = Atom(name: '_FaturalarViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom =
+      Atom(name: '_FaturalarViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -166,7 +174,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$grupKodlariGosterAtom = Atom(name: '_FaturalarViewModelBase.grupKodlariGoster', context: context);
+  late final _$grupKodlariGosterAtom =
+      Atom(name: '_FaturalarViewModelBase.grupKodlariGoster', context: context);
 
   @override
   bool get grupKodlariGoster {
@@ -181,7 +190,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom = Atom(name: '_FaturalarViewModelBase.observableList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_FaturalarViewModelBase.observableList', context: context);
 
   @override
   ObservableList<BaseSiparisEditModel>? get observableList {
@@ -197,9 +207,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   late final _$teslimatDurumuValueListAtom = Atom(
-    name: '_FaturalarViewModelBase.teslimatDurumuValueList',
-    context: context,
-  );
+      name: '_FaturalarViewModelBase.teslimatDurumuValueList',
+      context: context);
 
   @override
   List<String?> get teslimatDurumuValueList {
@@ -209,12 +218,14 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
 
   @override
   set teslimatDurumuValueList(List<String?> value) {
-    _$teslimatDurumuValueListAtom.reportWrite(value, super.teslimatDurumuValueList, () {
+    _$teslimatDurumuValueListAtom
+        .reportWrite(value, super.teslimatDurumuValueList, () {
       super.teslimatDurumuValueList = value;
     });
   }
 
-  late final _$grupKodListAtom = Atom(name: '_FaturalarViewModelBase.grupKodList', context: context);
+  late final _$grupKodListAtom =
+      Atom(name: '_FaturalarViewModelBase.grupKodList', context: context);
 
   @override
   List<BaseGrupKoduModel>? get grupKodList {
@@ -230,53 +241,54 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   late final _$changeScrollStatusAsyncAction = AsyncAction(
-    '_FaturalarViewModelBase.changeScrollStatus',
-    context: context,
-  );
+      '_FaturalarViewModelBase.changeScrollStatus',
+      context: context);
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction.run(() => super.changeScrollStatus(position));
+    return _$changeScrollStatusAsyncAction
+        .run(() => super.changeScrollStatus(position));
   }
 
-  late final _$changeSearchBarAsyncAction = AsyncAction('_FaturalarViewModelBase.changeSearchBar', context: context);
+  late final _$changeSearchBarAsyncAction =
+      AsyncAction('_FaturalarViewModelBase.changeSearchBar', context: context);
 
   @override
   Future<void> changeSearchBar() {
     return _$changeSearchBarAsyncAction.run(() => super.changeSearchBar());
   }
 
-  late final _$resetListAsyncAction = AsyncAction('_FaturalarViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction =
+      AsyncAction('_FaturalarViewModelBase.resetList', context: context);
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getKodAsyncAction = AsyncAction('_FaturalarViewModelBase.getKod', context: context);
+  late final _$getKodAsyncAction =
+      AsyncAction('_FaturalarViewModelBase.getKod', context: context);
 
   @override
   Future<void> getKod() {
     return _$getKodAsyncAction.run(() => super.getKod());
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_FaturalarViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_FaturalarViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_FaturalarViewModelBaseActionController = ActionController(
-    name: '_FaturalarViewModelBase',
-    context: context,
-  );
+  late final _$_FaturalarViewModelBaseActionController =
+      ActionController(name: '_FaturalarViewModelBase', context: context);
 
   @override
   void changeEkstraAlanlarMap(String key, bool value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeEkstraAlanlarMap',
-    );
+        name: '_FaturalarViewModelBase.changeEkstraAlanlarMap');
     try {
       return super.changeEkstraAlanlarMap(key, value);
     } finally {
@@ -287,8 +299,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void resetEkstraAlanlarMap() {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.resetEkstraAlanlarMap',
-    );
+        name: '_FaturalarViewModelBase.resetEkstraAlanlarMap');
     try {
       return super.resetEkstraAlanlarMap();
     } finally {
@@ -299,8 +310,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeArrKod0(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeArrKod0',
-    );
+        name: '_FaturalarViewModelBase.changeArrKod0');
     try {
       return super.changeArrKod0(value);
     } finally {
@@ -311,8 +321,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeArrKod1(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeArrKod1',
-    );
+        name: '_FaturalarViewModelBase.changeArrKod1');
     try {
       return super.changeArrKod1(value);
     } finally {
@@ -323,8 +332,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeArrKod2(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeArrKod2',
-    );
+        name: '_FaturalarViewModelBase.changeArrKod2');
     try {
       return super.changeArrKod2(value);
     } finally {
@@ -335,8 +343,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeArrKod3(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeArrKod3',
-    );
+        name: '_FaturalarViewModelBase.changeArrKod3');
     try {
       return super.changeArrKod3(value);
     } finally {
@@ -347,8 +354,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeArrKod4(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeArrKod4',
-    );
+        name: '_FaturalarViewModelBase.changeArrKod4');
     try {
       return super.changeArrKod4(value);
     } finally {
@@ -359,8 +365,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeArrKod5(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeArrKod5',
-    );
+        name: '_FaturalarViewModelBase.changeArrKod5');
     try {
       return super.changeArrKod5(value);
     } finally {
@@ -371,8 +376,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setKodlariGoster() {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setKodlariGoster',
-    );
+        name: '_FaturalarViewModelBase.setKodlariGoster');
     try {
       return super.setKodlariGoster();
     } finally {
@@ -383,8 +387,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setBelgeTipi(List<int>? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setBelgeTipi',
-    );
+        name: '_FaturalarViewModelBase.setBelgeTipi');
     try {
       return super.setBelgeTipi(value);
     } finally {
@@ -395,8 +398,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeGrupKodList(List<BaseGrupKoduModel> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeGrupKodList',
-    );
+        name: '_FaturalarViewModelBase.changeGrupKodList');
     try {
       return super.changeGrupKodList(value);
     } finally {
@@ -407,8 +409,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setParamData(Map<String, dynamic> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setParamData',
-    );
+        name: '_FaturalarViewModelBase.setParamData');
     try {
       return super.setParamData(value);
     } finally {
@@ -419,8 +420,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void changeGrupKodlariGoster() {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.changeGrupKodlariGoster',
-    );
+        name: '_FaturalarViewModelBase.changeGrupKodlariGoster');
     try {
       return super.changeGrupKodlariGoster();
     } finally {
@@ -431,8 +431,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void increaseSayfa() {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.increaseSayfa',
-    );
+        name: '_FaturalarViewModelBase.increaseSayfa');
     try {
       return super.increaseSayfa();
     } finally {
@@ -443,8 +442,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void resetSayfa() {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.resetSayfa',
-    );
+        name: '_FaturalarViewModelBase.resetSayfa');
     try {
       return super.resetSayfa();
     } finally {
@@ -455,8 +453,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setSearchText(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setSearchText',
-    );
+        name: '_FaturalarViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -467,8 +464,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setFaturalasmaGoster(bool value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setFaturalasmaGoster',
-    );
+        name: '_FaturalarViewModelBase.setFaturalasmaGoster');
     try {
       return super.setFaturalasmaGoster(value);
     } finally {
@@ -479,8 +475,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setKapaliBelgelerListelenmesin(bool value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setKapaliBelgelerListelenmesin',
-    );
+        name: '_FaturalarViewModelBase.setKapaliBelgelerListelenmesin');
     try {
       return super.setKapaliBelgelerListelenmesin(value);
     } finally {
@@ -491,8 +486,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setObservableList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setObservableList',
-    );
+        name: '_FaturalarViewModelBase.setObservableList');
     try {
       return super.setObservableList(value);
     } finally {
@@ -503,8 +497,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void addObservableList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.addObservableList',
-    );
+        name: '_FaturalarViewModelBase.addObservableList');
     try {
       return super.addObservableList(value);
     } finally {
@@ -515,8 +508,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setSiralama(String value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setSiralama',
-    );
+        name: '_FaturalarViewModelBase.setSiralama');
     try {
       return super.setSiralama(value);
     } finally {
@@ -527,8 +519,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setBaslamaTarihi(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setBaslamaTarihi',
-    );
+        name: '_FaturalarViewModelBase.setBaslamaTarihi');
     try {
       return super.setBaslamaTarihi(value);
     } finally {
@@ -539,8 +530,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setBitisTarihi(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setBitisTarihi',
-    );
+        name: '_FaturalarViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -551,8 +541,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setPlasiyerArr(List<String?> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setPlasiyerArr',
-    );
+        name: '_FaturalarViewModelBase.setPlasiyerArr');
     try {
       return super.setPlasiyerArr(value);
     } finally {
@@ -563,8 +552,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setProjeKodu(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setProjeKodu',
-    );
+        name: '_FaturalarViewModelBase.setProjeKodu');
     try {
       return super.setProjeKodu(value);
     } finally {
@@ -575,8 +563,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setOzelKod1(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setOzelKod1',
-    );
+        name: '_FaturalarViewModelBase.setOzelKod1');
     try {
       return super.setOzelKod1(value);
     } finally {
@@ -587,8 +574,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setOzelKod2(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setOzelKod2',
-    );
+        name: '_FaturalarViewModelBase.setOzelKod2');
     try {
       return super.setOzelKod2(value);
     } finally {
@@ -598,7 +584,8 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
 
   @override
   void setCari(String? value) {
-    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(name: '_FaturalarViewModelBase.setCari');
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.setCari');
     try {
       return super.setCari(value);
     } finally {
@@ -609,8 +596,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setTeslimCari(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setTeslimCari',
-    );
+        name: '_FaturalarViewModelBase.setTeslimCari');
     try {
       return super.setTeslimCari(value);
     } finally {
@@ -621,8 +607,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void setCariTipi(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.setCariTipi',
-    );
+        name: '_FaturalarViewModelBase.setCariTipi');
     try {
       return super.setCariTipi(value);
     } finally {
@@ -633,8 +618,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   @override
   void resetFilter() {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-      name: '_FaturalarViewModelBase.resetFilter',
-    );
+        name: '_FaturalarViewModelBase.resetFilter');
     try {
       return super.resetFilter();
     } finally {

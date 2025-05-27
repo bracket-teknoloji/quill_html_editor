@@ -6,7 +6,8 @@ part of 'finans_ozet_rapor_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FinansOzetRaporRequestModelImpl _$$FinansOzetRaporRequestModelImplFromJson(Map<String, dynamic> json) =>
+_$FinansOzetRaporRequestModelImpl _$$FinansOzetRaporRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$FinansOzetRaporRequestModelImpl(
       plasiyerKodu: json['PlasiyerKodu'] as String?,
       cariKodu: json['CariKodu'] as String?,
@@ -18,12 +19,14 @@ _$FinansOzetRaporRequestModelImpl _$$FinansOzetRaporRequestModelImplFromJson(Map
       iadeDurumu: json['IadeDurumu'] as String?,
     );
 
-Map<String, dynamic> _$$FinansOzetRaporRequestModelImplToJson(_$FinansOzetRaporRequestModelImpl instance) =>
+Map<String, dynamic> _$$FinansOzetRaporRequestModelImplToJson(
+        _$FinansOzetRaporRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.plasiyerKodu case final value?) 'PlasiyerKodu': value,
       if (instance.cariKodu case final value?) 'CariKodu': value,
       if (instance.tarihTipi case final value?) 'TarihTipi': value,
-      if (instance.cariKoduIleBaslar case final value?) 'CariKoduIleBaslar': value,
+      if (instance.cariKoduIleBaslar case final value?)
+        'CariKoduIleBaslar': value,
       if (instance.kdvDahil case final value?) 'KDVDahil': value,
       if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
       if (instance.bitisTarihi case final value?) 'BitisTarihi': value,

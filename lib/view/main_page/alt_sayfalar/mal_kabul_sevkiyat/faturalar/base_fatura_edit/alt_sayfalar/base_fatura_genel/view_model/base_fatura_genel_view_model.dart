@@ -112,6 +112,12 @@ abstract class _BaseFaturaGenelViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setKosulKodu(String? value) {
+    model = model.copyWith(kosulKodu: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
   void setTarih(DateTime? value) {
     model = model.copyWith(tarih: value.dateTimeWithoutTime);
     BaseSiparisEditModel.setInstance(model);

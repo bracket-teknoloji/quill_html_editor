@@ -9,7 +9,8 @@ part of 'barkod_tanimla_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BarkodTanimlaViewModel on _BarkodTanimlaViewModelBase, Store {
-  late final _$stokModelAtom = Atom(name: '_BarkodTanimlaViewModelBase.stokModel', context: context);
+  late final _$stokModelAtom =
+      Atom(name: '_BarkodTanimlaViewModelBase.stokModel', context: context);
 
   @override
   StokListesiModel? get stokModel {
@@ -24,30 +25,29 @@ mixin _$BarkodTanimlaViewModel on _BarkodTanimlaViewModelBase, Store {
     });
   }
 
-  late final _$getStokAsyncAction = AsyncAction('_BarkodTanimlaViewModelBase.getStok', context: context);
+  late final _$getStokAsyncAction =
+      AsyncAction('_BarkodTanimlaViewModelBase.getStok', context: context);
 
   @override
   Future<void> getStok(String? stokKodu) {
     return _$getStokAsyncAction.run(() => super.getStok(stokKodu));
   }
 
-  late final _$savesStokAsyncAction = AsyncAction('_BarkodTanimlaViewModelBase.savesStok', context: context);
+  late final _$savesStokAsyncAction =
+      AsyncAction('_BarkodTanimlaViewModelBase.savesStok', context: context);
 
   @override
   Future<bool> savesStok() {
     return _$savesStokAsyncAction.run(() => super.savesStok());
   }
 
-  late final _$_BarkodTanimlaViewModelBaseActionController = ActionController(
-    name: '_BarkodTanimlaViewModelBase',
-    context: context,
-  );
+  late final _$_BarkodTanimlaViewModelBaseActionController =
+      ActionController(name: '_BarkodTanimlaViewModelBase', context: context);
 
   @override
   void setStokModel(StokListesiModel? model) {
-    final _$actionInfo = _$_BarkodTanimlaViewModelBaseActionController.startAction(
-      name: '_BarkodTanimlaViewModelBase.setStokModel',
-    );
+    final _$actionInfo = _$_BarkodTanimlaViewModelBaseActionController
+        .startAction(name: '_BarkodTanimlaViewModelBase.setStokModel');
     try {
       return super.setStokModel(model);
     } finally {

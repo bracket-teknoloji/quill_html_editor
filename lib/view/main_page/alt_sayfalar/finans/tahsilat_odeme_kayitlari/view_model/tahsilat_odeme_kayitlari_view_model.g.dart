@@ -8,41 +8,44 @@ part of 'tahsilat_odeme_kayitlari_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$TahsilatOdemeKayitlariViewModel on _TahsilatOdemeKayitlariViewModelBase, Store {
+mixin _$TahsilatOdemeKayitlariViewModel
+    on _TahsilatOdemeKayitlariViewModelBase, Store {
   Computed<double>? _$toplamTahsilatComputed;
 
   @override
-  double get toplamTahsilat => (_$toplamTahsilatComputed ??= Computed<double>(
-    () => super.toplamTahsilat,
-    name: '_TahsilatOdemeKayitlariViewModelBase.toplamTahsilat',
-  )).value;
+  double get toplamTahsilat =>
+      (_$toplamTahsilatComputed ??= Computed<double>(() => super.toplamTahsilat,
+              name: '_TahsilatOdemeKayitlariViewModelBase.toplamTahsilat'))
+          .value;
   Computed<double>? _$toplamOdemeComputed;
 
   @override
-  double get toplamOdeme => (_$toplamOdemeComputed ??= Computed<double>(
-    () => super.toplamOdeme,
-    name: '_TahsilatOdemeKayitlariViewModelBase.toplamOdeme',
-  )).value;
-  Computed<ObservableList<CariHareketleriModel>?>? _$getCariHareketleriListesiComputed;
+  double get toplamOdeme =>
+      (_$toplamOdemeComputed ??= Computed<double>(() => super.toplamOdeme,
+              name: '_TahsilatOdemeKayitlariViewModelBase.toplamOdeme'))
+          .value;
+  Computed<ObservableList<CariHareketleriModel>?>?
+      _$getCariHareketleriListesiComputed;
 
   @override
   ObservableList<CariHareketleriModel>? get getCariHareketleriListesi =>
-      (_$getCariHareketleriListesiComputed ??= Computed<ObservableList<CariHareketleriModel>?>(
-        () => super.getCariHareketleriListesi,
-        name: '_TahsilatOdemeKayitlariViewModelBase.getCariHareketleriListesi',
-      )).value;
+      (_$getCariHareketleriListesiComputed ??= Computed<
+                  ObservableList<CariHareketleriModel>?>(
+              () => super.getCariHareketleriListesi,
+              name:
+                  '_TahsilatOdemeKayitlariViewModelBase.getCariHareketleriListesi'))
+          .value;
   Computed<bool>? _$getAnyFilterComputed;
 
   @override
-  bool get getAnyFilter => (_$getAnyFilterComputed ??= Computed<bool>(
-    () => super.getAnyFilter,
-    name: '_TahsilatOdemeKayitlariViewModelBase.getAnyFilter',
-  )).value;
+  bool get getAnyFilter =>
+      (_$getAnyFilterComputed ??= Computed<bool>(() => super.getAnyFilter,
+              name: '_TahsilatOdemeKayitlariViewModelBase.getAnyFilter'))
+          .value;
 
   late final _$cariHareketleriRequestModelAtom = Atom(
-    name: '_TahsilatOdemeKayitlariViewModelBase.cariHareketleriRequestModel',
-    context: context,
-  );
+      name: '_TahsilatOdemeKayitlariViewModelBase.cariHareketleriRequestModel',
+      context: context);
 
   @override
   CariHareketleriRequestModel get cariHareketleriRequestModel {
@@ -52,15 +55,15 @@ mixin _$TahsilatOdemeKayitlariViewModel on _TahsilatOdemeKayitlariViewModelBase,
 
   @override
   set cariHareketleriRequestModel(CariHareketleriRequestModel value) {
-    _$cariHareketleriRequestModelAtom.reportWrite(value, super.cariHareketleriRequestModel, () {
+    _$cariHareketleriRequestModelAtom
+        .reportWrite(value, super.cariHareketleriRequestModel, () {
       super.cariHareketleriRequestModel = value;
     });
   }
 
   late final _$hesapTipiGroupValueAtom = Atom(
-    name: '_TahsilatOdemeKayitlariViewModelBase.hesapTipiGroupValue',
-    context: context,
-  );
+      name: '_TahsilatOdemeKayitlariViewModelBase.hesapTipiGroupValue',
+      context: context);
 
   @override
   String? get hesapTipiGroupValue {
@@ -75,7 +78,9 @@ mixin _$TahsilatOdemeKayitlariViewModel on _TahsilatOdemeKayitlariViewModelBase,
     });
   }
 
-  late final _$isScrollDownAtom = Atom(name: '_TahsilatOdemeKayitlariViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+      name: '_TahsilatOdemeKayitlariViewModelBase.isScrollDown',
+      context: context);
 
   @override
   bool get isScrollDown {
@@ -91,9 +96,8 @@ mixin _$TahsilatOdemeKayitlariViewModel on _TahsilatOdemeKayitlariViewModelBase,
   }
 
   late final _$cariHareketleriListesiAtom = Atom(
-    name: '_TahsilatOdemeKayitlariViewModelBase.cariHareketleriListesi',
-    context: context,
-  );
+      name: '_TahsilatOdemeKayitlariViewModelBase.cariHareketleriListesi',
+      context: context);
 
   @override
   ObservableList<CariHareketleriModel>? get cariHareketleriListesi {
@@ -103,12 +107,14 @@ mixin _$TahsilatOdemeKayitlariViewModel on _TahsilatOdemeKayitlariViewModelBase,
 
   @override
   set cariHareketleriListesi(ObservableList<CariHareketleriModel>? value) {
-    _$cariHareketleriListesiAtom.reportWrite(value, super.cariHareketleriListesi, () {
+    _$cariHareketleriListesiAtom
+        .reportWrite(value, super.cariHareketleriListesi, () {
       super.cariHareketleriListesi = value;
     });
   }
 
-  late final _$searchBarAtom = Atom(name: '_TahsilatOdemeKayitlariViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+      name: '_TahsilatOdemeKayitlariViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -123,7 +129,9 @@ mixin _$TahsilatOdemeKayitlariViewModel on _TahsilatOdemeKayitlariViewModelBase,
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_TahsilatOdemeKayitlariViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+      name: '_TahsilatOdemeKayitlariViewModelBase.searchText',
+      context: context);
 
   @override
   String? get searchText {
@@ -138,154 +146,166 @@ mixin _$TahsilatOdemeKayitlariViewModel on _TahsilatOdemeKayitlariViewModelBase,
     });
   }
 
-  late final _$resetPageAsyncAction = AsyncAction('_TahsilatOdemeKayitlariViewModelBase.resetPage', context: context);
+  late final _$resetPageAsyncAction = AsyncAction(
+      '_TahsilatOdemeKayitlariViewModelBase.resetPage',
+      context: context);
 
   @override
   Future<void> resetPage() {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_TahsilatOdemeKayitlariViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+      '_TahsilatOdemeKayitlariViewModelBase.getData',
+      context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_TahsilatOdemeKayitlariViewModelBaseActionController = ActionController(
-    name: '_TahsilatOdemeKayitlariViewModelBase',
-    context: context,
-  );
+  late final _$_TahsilatOdemeKayitlariViewModelBaseActionController =
+      ActionController(
+          name: '_TahsilatOdemeKayitlariViewModelBase', context: context);
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setIsScrollDown',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name: '_TahsilatOdemeKayitlariViewModelBase.setIsScrollDown');
     try {
       return super.setIsScrollDown(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.changeSearchBar',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name: '_TahsilatOdemeKayitlariViewModelBase.changeSearchBar');
     try {
       return super.changeSearchBar();
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setSearchText',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name: '_TahsilatOdemeKayitlariViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setBaslamaTarihi(String? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setBaslamaTarihi',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name: '_TahsilatOdemeKayitlariViewModelBase.setBaslamaTarihi');
     try {
       return super.setBaslamaTarihi(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name: '_TahsilatOdemeKayitlariViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setIslemTuru(int? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setIslemTuru',
-    );
+    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController
+        .startAction(name: '_TahsilatOdemeKayitlariViewModelBase.setIslemTuru');
     try {
       return super.setIslemTuru(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController
+        .startAction(name: '_TahsilatOdemeKayitlariViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setHareketTuru(List<String>? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setHareketTuru',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name: '_TahsilatOdemeKayitlariViewModelBase.setHareketTuru');
     try {
       return super.setHareketTuru(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setPlasiyerKodu(List<String>? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setPlasiyerKodu',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name: '_TahsilatOdemeKayitlariViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void clearFilters() {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.clearFilters',
-    );
+    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController
+        .startAction(name: '_TahsilatOdemeKayitlariViewModelBase.clearFilters');
     try {
       return super.clearFilters();
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setcariHareketleriListesi(List<CariHareketleriModel>? value) {
-    final _$actionInfo = _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
-      name: '_TahsilatOdemeKayitlariViewModelBase.setcariHareketleriListesi',
-    );
+    final _$actionInfo =
+        _$_TahsilatOdemeKayitlariViewModelBaseActionController.startAction(
+            name:
+                '_TahsilatOdemeKayitlariViewModelBase.setcariHareketleriListesi');
     try {
       return super.setcariHareketleriListesi(value);
     } finally {
-      _$_TahsilatOdemeKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TahsilatOdemeKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

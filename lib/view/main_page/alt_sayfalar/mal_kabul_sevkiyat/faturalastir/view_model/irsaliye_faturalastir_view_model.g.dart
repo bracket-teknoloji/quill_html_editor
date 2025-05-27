@@ -8,8 +8,11 @@ part of 'irsaliye_faturalastir_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$IrsaliyeFaturalastirViewModel on _IrsaliyeFaturalastirViewModelBase, Store {
-  late final _$requestModelAtom = Atom(name: '_IrsaliyeFaturalastirViewModelBase.requestModel', context: context);
+mixin _$IrsaliyeFaturalastirViewModel
+    on _IrsaliyeFaturalastirViewModelBase, Store {
+  late final _$requestModelAtom = Atom(
+      name: '_IrsaliyeFaturalastirViewModelBase.requestModel',
+      context: context);
 
   @override
   EditFaturaModel get requestModel {
@@ -24,7 +27,8 @@ mixin _$IrsaliyeFaturalastirViewModel on _IrsaliyeFaturalastirViewModelBase, Sto
     });
   }
 
-  late final _$modelAtom = Atom(name: '_IrsaliyeFaturalastirViewModelBase.model', context: context);
+  late final _$modelAtom =
+      Atom(name: '_IrsaliyeFaturalastirViewModelBase.model', context: context);
 
   @override
   BaseSiparisEditModel? get model {
@@ -40,96 +44,100 @@ mixin _$IrsaliyeFaturalastirViewModel on _IrsaliyeFaturalastirViewModelBase, Sto
   }
 
   late final _$getSiradakiBelgeNoAsyncAction = AsyncAction(
-    '_IrsaliyeFaturalastirViewModelBase.getSiradakiBelgeNo',
-    context: context,
-  );
+      '_IrsaliyeFaturalastirViewModelBase.getSiradakiBelgeNo',
+      context: context);
 
   @override
   Future<String?> getSiradakiBelgeNo(EditTipiEnum value, String? seri) {
-    return _$getSiradakiBelgeNoAsyncAction.run(() => super.getSiradakiBelgeNo(value, seri));
+    return _$getSiradakiBelgeNoAsyncAction
+        .run(() => super.getSiradakiBelgeNo(value, seri));
   }
 
-  late final _$sendFaturaAsyncAction = AsyncAction('_IrsaliyeFaturalastirViewModelBase.sendFatura', context: context);
+  late final _$sendFaturaAsyncAction = AsyncAction(
+      '_IrsaliyeFaturalastirViewModelBase.sendFatura',
+      context: context);
 
   @override
   Future<GenericResponseModel<EditFaturaModel>> sendFatura() {
     return _$sendFaturaAsyncAction.run(() => super.sendFatura());
   }
 
-  late final _$_IrsaliyeFaturalastirViewModelBaseActionController = ActionController(
-    name: '_IrsaliyeFaturalastirViewModelBase',
-    context: context,
-  );
+  late final _$_IrsaliyeFaturalastirViewModelBaseActionController =
+      ActionController(
+          name: '_IrsaliyeFaturalastirViewModelBase', context: context);
 
   @override
   void setBasiSiparisEditModel(BaseSiparisEditModel? value) {
-    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
-      name: '_IrsaliyeFaturalastirViewModelBase.setBasiSiparisEditModel',
-    );
+    final _$actionInfo =
+        _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
+            name: '_IrsaliyeFaturalastirViewModelBase.setBasiSiparisEditModel');
     try {
       return super.setBasiSiparisEditModel(value);
     } finally {
-      _$_IrsaliyeFaturalastirViewModelBaseActionController.endAction(_$actionInfo);
+      _$_IrsaliyeFaturalastirViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setCari(String? value) {
-    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
-      name: '_IrsaliyeFaturalastirViewModelBase.setCari',
-    );
+    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController
+        .startAction(name: '_IrsaliyeFaturalastirViewModelBase.setCari');
     try {
       return super.setCari(value);
     } finally {
-      _$_IrsaliyeFaturalastirViewModelBaseActionController.endAction(_$actionInfo);
+      _$_IrsaliyeFaturalastirViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setIrsaliyeNo(String? value) {
-    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
-      name: '_IrsaliyeFaturalastirViewModelBase.setIrsaliyeNo',
-    );
+    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController
+        .startAction(name: '_IrsaliyeFaturalastirViewModelBase.setIrsaliyeNo');
     try {
       return super.setIrsaliyeNo(value);
     } finally {
-      _$_IrsaliyeFaturalastirViewModelBaseActionController.endAction(_$actionInfo);
+      _$_IrsaliyeFaturalastirViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setFaturaTarihi(DateTime? value) {
-    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
-      name: '_IrsaliyeFaturalastirViewModelBase.setFaturaTarihi',
-    );
+    final _$actionInfo =
+        _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
+            name: '_IrsaliyeFaturalastirViewModelBase.setFaturaTarihi');
     try {
       return super.setFaturaTarihi(value);
     } finally {
-      _$_IrsaliyeFaturalastirViewModelBaseActionController.endAction(_$actionInfo);
+      _$_IrsaliyeFaturalastirViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setFaturaNo(String? value) {
-    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
-      name: '_IrsaliyeFaturalastirViewModelBase.setFaturaNo',
-    );
+    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController
+        .startAction(name: '_IrsaliyeFaturalastirViewModelBase.setFaturaNo');
     try {
       return super.setFaturaNo(value);
     } finally {
-      _$_IrsaliyeFaturalastirViewModelBaseActionController.endAction(_$actionInfo);
+      _$_IrsaliyeFaturalastirViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setResmiFaturaNo(String? value) {
-    final _$actionInfo = _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
-      name: '_IrsaliyeFaturalastirViewModelBase.setResmiFaturaNo',
-    );
+    final _$actionInfo =
+        _$_IrsaliyeFaturalastirViewModelBaseActionController.startAction(
+            name: '_IrsaliyeFaturalastirViewModelBase.setResmiFaturaNo');
     try {
       return super.setResmiFaturaNo(value);
     } finally {
-      _$_IrsaliyeFaturalastirViewModelBaseActionController.endAction(_$actionInfo);
+      _$_IrsaliyeFaturalastirViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

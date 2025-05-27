@@ -448,6 +448,8 @@ extension EditTipiEnumExtension on EditTipiEnum {
   bool degistirilmeyecekAlanlar(String value) => switch (this) {
     EditTipiEnum.depoTransferi ||
     EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.musteri => yetkiController.musteriSiparisiDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.satici => yetkiController.saticiSiparisiDegistirilmeyecekAlanlar(value),
     EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgDegistirilmeyecekAlanlar(value),
     EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcDegistirilmeyecekAlanlar(value),
     EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDegistirilmeyecekAlanlar(value),

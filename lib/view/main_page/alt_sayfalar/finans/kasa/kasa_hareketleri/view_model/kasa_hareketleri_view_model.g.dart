@@ -13,12 +13,13 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   double get bakiye =>
-      (_$bakiyeComputed ??= Computed<double>(() => super.bakiye, name: '_KasaHareketleriViewModelBase.bakiye')).value;
+      (_$bakiyeComputed ??= Computed<double>(() => super.bakiye,
+              name: '_KasaHareketleriViewModelBase.bakiye'))
+          .value;
 
   late final _$kasaIslemleriRequestModelAtom = Atom(
-    name: '_KasaHareketleriViewModelBase.kasaIslemleriRequestModel',
-    context: context,
-  );
+      name: '_KasaHareketleriViewModelBase.kasaIslemleriRequestModel',
+      context: context);
 
   @override
   KasaIslemleriRequestModel get kasaIslemleriRequestModel {
@@ -28,12 +29,14 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   set kasaIslemleriRequestModel(KasaIslemleriRequestModel value) {
-    _$kasaIslemleriRequestModelAtom.reportWrite(value, super.kasaIslemleriRequestModel, () {
+    _$kasaIslemleriRequestModelAtom
+        .reportWrite(value, super.kasaIslemleriRequestModel, () {
       super.kasaIslemleriRequestModel = value;
     });
   }
 
-  late final _$paramDataAtom = Atom(name: '_KasaHareketleriViewModelBase.paramData', context: context);
+  late final _$paramDataAtom =
+      Atom(name: '_KasaHareketleriViewModelBase.paramData', context: context);
 
   @override
   ObservableMap<String, dynamic>? get paramData {
@@ -48,7 +51,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom = Atom(name: '_KasaHareketleriViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+      name: '_KasaHareketleriViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -63,7 +67,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom = Atom(name: '_KasaHareketleriViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+      name: '_KasaHareketleriViewModelBase.observableList', context: context);
 
   @override
   ObservableList<KasaIslemleriModel>? get observableList {
@@ -78,7 +83,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$dovizAdiAtom = Atom(name: '_KasaHareketleriViewModelBase.dovizAdi', context: context);
+  late final _$dovizAdiAtom =
+      Atom(name: '_KasaHareketleriViewModelBase.dovizAdi', context: context);
 
   @override
   String? get dovizAdi {
@@ -93,7 +99,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$resetListAsyncAction = AsyncAction('_KasaHareketleriViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction =
+      AsyncAction('_KasaHareketleriViewModelBase.resetList', context: context);
 
   @override
   Future<void> resetList() {
@@ -101,39 +108,38 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   }
 
   late final _$changeScrollStatusAsyncAction = AsyncAction(
-    '_KasaHareketleriViewModelBase.changeScrollStatus',
-    context: context,
-  );
+      '_KasaHareketleriViewModelBase.changeScrollStatus',
+      context: context);
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction.run(() => super.changeScrollStatus(position));
+    return _$changeScrollStatusAsyncAction
+        .run(() => super.changeScrollStatus(position));
   }
 
-  late final _$deleteDataAsyncAction = AsyncAction('_KasaHareketleriViewModelBase.deleteData', context: context);
+  late final _$deleteDataAsyncAction =
+      AsyncAction('_KasaHareketleriViewModelBase.deleteData', context: context);
 
   @override
   Future<GenericResponseModel<KasaIslemleriModel>> deleteData(int? inckeyNo) {
     return _$deleteDataAsyncAction.run(() => super.deleteData(inckeyNo));
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_KasaHareketleriViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_KasaHareketleriViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KasaHareketleriViewModelBaseActionController = ActionController(
-    name: '_KasaHareketleriViewModelBase',
-    context: context,
-  );
+  late final _$_KasaHareketleriViewModelBaseActionController =
+      ActionController(name: '_KasaHareketleriViewModelBase', context: context);
 
   @override
   void setDovizAdi(String? value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setDovizAdi',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setDovizAdi');
     try {
       return super.setDovizAdi(value);
     } finally {
@@ -143,9 +149,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setIsScrollDown',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setIsScrollDown');
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -155,9 +160,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void incrementSayfa() {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.incrementSayfa',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.incrementSayfa');
     try {
       return super.incrementSayfa();
     } finally {
@@ -167,9 +171,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void setKasaKodu(String? value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setKasaKodu',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setKasaKodu');
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -179,9 +182,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void setObservableList(List<KasaIslemleriModel>? value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setObservableList');
     try {
       return super.setObservableList(value);
     } finally {
@@ -191,9 +193,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void addObservableList(List<KasaIslemleriModel>? list) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.addObservableList',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.addObservableList');
     try {
       return super.addObservableList(list);
     } finally {

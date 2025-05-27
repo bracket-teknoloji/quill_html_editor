@@ -991,6 +991,8 @@ final class ProfilYetkiModel {
   List<String>? siparisMusteriSiparisiGizlenecekAlanlar;
   @JsonKey(name: "siparis_MusteriSiparisi_DegismeyecekAlanlar")
   List<String>? siparisMusteriSiparisiDegismeyecekAlanlar;
+  @JsonKey(name: "siparis_SaticiSiparisi_DegismeyecekAlanlar")
+  List<String>? siparisSaticiSiparisiDegismeyecekAlanlar;
   @JsonKey(name: "siparis_MusSip_EkstraAlanlar")
   List<String>? siparisMusSipEkstraAlanlar;
   @JsonKey(name: "siparis_MusteriSiparisi_SatirAciklamaAlanlari")

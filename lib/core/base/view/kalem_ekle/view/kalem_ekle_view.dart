@@ -665,6 +665,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     child: CustomTextField(
                       labelText: "Koşul",
                       readOnly: true,
+                      enabled: !(editTipi?.degistirilmeyecekAlanlar("kosul_kalem") ?? false),
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.kosulKodu ?? "")),
                       controller: kosulController,
@@ -1377,24 +1378,33 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
           },
         );
         if (dovizResult.isSuccess && viewModel.kalemModel.dovizTipi != null) {
-          final result = dovizResult.dataList.firstWhereOrNull(
-            (element) => element.dovizTipi == viewModel.kalemModel.dovizTipi,
-          );
-          if (result != null) {
-            viewModel.kalemModel.dovizKuru = switch (editTipi?.satisMi == true
-                ? parametreModel.satisDovizTakipHangiDeger
-                : parametreModel.alisDovizTakipHangiDeger) {
-              1 => result.dovAlis,
-              2 => result.dovSatis,
-              3 => result.effAlis,
-              4 => result.effSatis,
-              _ => null,
-            };
+          if (BaseSiparisEditModel.instance.kalemList?.any(
+                (element) =>
+                    element.dovizKodu == viewModel.kalemModel.dovizKodu && element.sira != viewModel.kalemModel.sira,
+              ) ??
+              false) {
+            viewModel.kalemModel.dovizKuru = BaseSiparisEditModel.instance.kalemList
+                ?.firstWhereOrNull((element) => element.dovizKodu == viewModel.kalemModel.dovizKodu)
+                ?.dovizKuru;
+          } else {
+            final result = dovizResult.dataList.firstWhereOrNull(
+              (element) => element.dovizTipi == viewModel.kalemModel.dovizTipi,
+            );
+            if (result != null) {
+              viewModel.kalemModel.dovizKuru = switch (editTipi?.satisMi == true
+                  ? parametreModel.satisDovizTakipHangiDeger
+                  : parametreModel.alisDovizTakipHangiDeger) {
+                1 => result.dovAlis,
+                2 => result.dovSatis,
+                3 => result.effAlis,
+                4 => result.effSatis,
+                _ => null,
+              };
+            }
+            viewModel.setDovizAdi(result?.dovizAdi);
+            dovizTipiController.text = result?.dovizAdi ?? mainCurrency;
+            viewModel.setShowDovizBilgileri((result?.dovizTipi ?? 0) > 0);
           }
-          viewModel.setDovizAdi(result?.dovizAdi);
-          dovizTipiController.text = result?.dovizAdi ?? mainCurrency;
-
-          viewModel.setShowDovizBilgileri((result?.dovizTipi ?? 0) > 0);
         }
       }
       if (viewModel.kalemModel.dovizliFiyat != null) {

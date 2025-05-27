@@ -646,6 +646,11 @@ final class YetkiController {
   bool alisFatDegistirilmeyecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.malKabulAlisFatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
 
+      bool musteriSiparisiDegistirilmeyecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      bool saticiSiparisiDegistirilmeyecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.siparisSaticiSiparisiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+
   bool satisIrsBosGecilmeyecekAlanlar(String? value) =>
       _isTrue(_profilYetkiModel?.sevkiyatSatisIrsBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
   bool satisFatBosGecilmeyecekAlanlar(String? value) =>

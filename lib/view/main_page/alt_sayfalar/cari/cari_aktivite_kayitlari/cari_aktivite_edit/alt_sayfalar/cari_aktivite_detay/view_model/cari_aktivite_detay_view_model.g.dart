@@ -9,7 +9,8 @@ part of 'cari_aktivite_detay_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
-  late final _$aktiviteListAtom = Atom(name: '_CariAktiviteDetayViewModelBase.aktiviteList', context: context);
+  late final _$aktiviteListAtom = Atom(
+      name: '_CariAktiviteDetayViewModelBase.aktiviteList', context: context);
 
   @override
   ObservableList<CariAktiviteListesiModel> get aktiviteList {
@@ -24,23 +25,23 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
     });
   }
 
-  late final _$deleteDetayAsyncAction = AsyncAction('_CariAktiviteDetayViewModelBase.deleteDetay', context: context);
+  late final _$deleteDetayAsyncAction = AsyncAction(
+      '_CariAktiviteDetayViewModelBase.deleteDetay',
+      context: context);
 
   @override
   Future<GenericResponseModel<NetworkManagerMixin>?> deleteDetay(int? id) {
     return _$deleteDetayAsyncAction.run(() => super.deleteDetay(id));
   }
 
-  late final _$_CariAktiviteDetayViewModelBaseActionController = ActionController(
-    name: '_CariAktiviteDetayViewModelBase',
-    context: context,
-  );
+  late final _$_CariAktiviteDetayViewModelBaseActionController =
+      ActionController(
+          name: '_CariAktiviteDetayViewModelBase', context: context);
 
   @override
   void addAktivite(CariAktiviteListesiModel value) {
-    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController.startAction(
-      name: '_CariAktiviteDetayViewModelBase.addAktivite',
-    );
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
+        .startAction(name: '_CariAktiviteDetayViewModelBase.addAktivite');
     try {
       return super.addAktivite(value);
     } finally {
@@ -50,9 +51,8 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
 
   @override
   void deleteAktivite(CariAktiviteListesiModel value) {
-    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController.startAction(
-      name: '_CariAktiviteDetayViewModelBase.deleteAktivite',
-    );
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
+        .startAction(name: '_CariAktiviteDetayViewModelBase.deleteAktivite');
     try {
       return super.deleteAktivite(value);
     } finally {
@@ -61,10 +61,10 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
   }
 
   @override
-  void replaceAktivite(CariAktiviteListesiModel oldItem, CariAktiviteListesiModel newItem) {
-    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController.startAction(
-      name: '_CariAktiviteDetayViewModelBase.replaceAktivite',
-    );
+  void replaceAktivite(
+      CariAktiviteListesiModel oldItem, CariAktiviteListesiModel newItem) {
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
+        .startAction(name: '_CariAktiviteDetayViewModelBase.replaceAktivite');
     try {
       return super.replaceAktivite(oldItem, newItem);
     } finally {

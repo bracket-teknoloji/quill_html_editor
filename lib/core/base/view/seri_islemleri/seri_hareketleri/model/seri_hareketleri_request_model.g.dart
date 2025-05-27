@@ -6,7 +6,8 @@ part of 'seri_hareketleri_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SeriHareketleriRequestModelImpl _$$SeriHareketleriRequestModelImplFromJson(Map<String, dynamic> json) =>
+_$SeriHareketleriRequestModelImpl _$$SeriHareketleriRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$SeriHareketleriRequestModelImpl(
       stokKodu: json['StokKodu'] as String?,
       seriNo: json['SeriNo'] as String?,
@@ -17,7 +18,8 @@ _$SeriHareketleriRequestModelImpl _$$SeriHareketleriRequestModelImplFromJson(Map
       tempGetir: json['TempGetir'] as String?,
     );
 
-Map<String, dynamic> _$$SeriHareketleriRequestModelImplToJson(_$SeriHareketleriRequestModelImpl instance) =>
+Map<String, dynamic> _$$SeriHareketleriRequestModelImplToJson(
+        _$SeriHareketleriRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.stokKodu case final value?) 'StokKodu': value,
       if (instance.seriNo case final value?) 'SeriNo': value,

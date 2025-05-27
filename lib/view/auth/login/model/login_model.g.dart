@@ -13,7 +13,9 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
   @override
   TokenModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
     return TokenModel()
       ..accessToken = fields[0] as String?
       ..tokenType = fields[1] as String?
@@ -53,7 +55,9 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TokenModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is TokenModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -70,13 +74,15 @@ TokenModel _$TokenModelFromJson(Map<String, dynamic> json) => TokenModel()
   ..error = json['error'] as String?
   ..errorDescription = json['error_description'] as String?;
 
-Map<String, dynamic> _$TokenModelToJson(TokenModel instance) => <String, dynamic>{
-  if (instance.accessToken case final value?) 'access_token': value,
-  if (instance.tokenType case final value?) 'token_type': value,
-  if (instance.expiresIn case final value?) 'expires_in': value,
-  if (instance.userJson?.toJson() case final value?) 'USER_JSON': value,
-  if (instance.issued case final value?) '.issued': value,
-  if (instance.expires case final value?) '.expires': value,
-  if (instance.error case final value?) 'error': value,
-  if (instance.errorDescription case final value?) 'error_description': value,
-};
+Map<String, dynamic> _$TokenModelToJson(TokenModel instance) =>
+    <String, dynamic>{
+      if (instance.accessToken case final value?) 'access_token': value,
+      if (instance.tokenType case final value?) 'token_type': value,
+      if (instance.expiresIn case final value?) 'expires_in': value,
+      if (instance.userJson?.toJson() case final value?) 'USER_JSON': value,
+      if (instance.issued case final value?) '.issued': value,
+      if (instance.expires case final value?) '.expires': value,
+      if (instance.error case final value?) 'error': value,
+      if (instance.errorDescription case final value?)
+        'error_description': value,
+    };

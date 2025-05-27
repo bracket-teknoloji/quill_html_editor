@@ -9,7 +9,8 @@ part of 'olcum_ekle_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
-  late final _$requestModelAtom = Atom(name: '_OlcumEkleViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom =
+      Atom(name: '_OlcumEkleViewModelBase.requestModel', context: context);
 
   @override
   OlcumEkleModel get requestModel {
@@ -24,23 +25,22 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
     });
   }
 
-  late final _$sendDataAsyncAction = AsyncAction('_OlcumEkleViewModelBase.sendData', context: context);
+  late final _$sendDataAsyncAction =
+      AsyncAction('_OlcumEkleViewModelBase.sendData', context: context);
 
   @override
-  Future<GenericResponseModel<OlcumEkleModel>> sendData(BaseEditEnum baseEditEnum) {
+  Future<GenericResponseModel<OlcumEkleModel>> sendData(
+      BaseEditEnum baseEditEnum) {
     return _$sendDataAsyncAction.run(() => super.sendData(baseEditEnum));
   }
 
-  late final _$_OlcumEkleViewModelBaseActionController = ActionController(
-    name: '_OlcumEkleViewModelBase',
-    context: context,
-  );
+  late final _$_OlcumEkleViewModelBaseActionController =
+      ActionController(name: '_OlcumEkleViewModelBase', context: context);
 
   @override
   void setRequestModel(OlcumEkleModel model) {
     final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
-      name: '_OlcumEkleViewModelBase.setRequestModel',
-    );
+        name: '_OlcumEkleViewModelBase.setRequestModel');
     try {
       return super.setRequestModel(model);
     } finally {
@@ -51,8 +51,7 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
   @override
   void setSeriNo(String? value) {
     final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
-      name: '_OlcumEkleViewModelBase.setSeriNo',
-    );
+        name: '_OlcumEkleViewModelBase.setSeriNo');
     try {
       return super.setSeriNo(value);
     } finally {
@@ -63,8 +62,7 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
   @override
   void setKayitOperatoru(String? value) {
     final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
-      name: '_OlcumEkleViewModelBase.setKayitOperatoru',
-    );
+        name: '_OlcumEkleViewModelBase.setKayitOperatoru');
     try {
       return super.setKayitOperatoru(value);
     } finally {
@@ -75,8 +73,7 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
   @override
   void addProsesModel(OlcumProsesModel model) {
     final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
-      name: '_OlcumEkleViewModelBase.addProsesModel',
-    );
+        name: '_OlcumEkleViewModelBase.addProsesModel');
     try {
       return super.addProsesModel(model);
     } finally {

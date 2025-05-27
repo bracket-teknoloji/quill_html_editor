@@ -14,11 +14,12 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
   @override
   ObservableList<BelgeKontrolModel>? get filteredList =>
       (_$filteredListComputed ??= Computed<ObservableList<BelgeKontrolModel>?>(
-        () => super.filteredList,
-        name: '_BelgeKontrolViewModelBase.filteredList',
-      )).value;
+              () => super.filteredList,
+              name: '_BelgeKontrolViewModelBase.filteredList'))
+          .value;
 
-  late final _$observableListAtom = Atom(name: '_BelgeKontrolViewModelBase.observableList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_BelgeKontrolViewModelBase.observableList', context: context);
 
   @override
   ObservableList<BelgeKontrolModel>? get observableList {
@@ -33,7 +34,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom = Atom(name: '_BelgeKontrolViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom =
+      Atom(name: '_BelgeKontrolViewModelBase.requestModel', context: context);
 
   @override
   BelgeKontrolRequestModel get requestModel {
@@ -48,7 +50,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     });
   }
 
-  late final _$isSearchBarOpenAtom = Atom(name: '_BelgeKontrolViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+      name: '_BelgeKontrolViewModelBase.isSearchBarOpen', context: context);
 
   @override
   bool get isSearchBarOpen {
@@ -63,7 +66,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_BelgeKontrolViewModelBase.searchText', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_BelgeKontrolViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -78,30 +82,29 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_BelgeKontrolViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_BelgeKontrolViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$deletekontrolAsyncAction = AsyncAction('_BelgeKontrolViewModelBase.deletekontrol', context: context);
+  late final _$deletekontrolAsyncAction =
+      AsyncAction('_BelgeKontrolViewModelBase.deletekontrol', context: context);
 
   @override
   Future<GenericResponseModel<BelgeKontrolModel>> deletekontrol(int id) {
     return _$deletekontrolAsyncAction.run(() => super.deletekontrol(id));
   }
 
-  late final _$_BelgeKontrolViewModelBaseActionController = ActionController(
-    name: '_BelgeKontrolViewModelBase',
-    context: context,
-  );
+  late final _$_BelgeKontrolViewModelBaseActionController =
+      ActionController(name: '_BelgeKontrolViewModelBase', context: context);
 
   @override
   void setFilterValue(String value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setFilterValue',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setFilterValue');
     try {
       return super.setFilterValue(value);
     } finally {
@@ -111,9 +114,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setBaslangicTarihi');
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -123,9 +125,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -135,9 +136,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setObservableList(List<BelgeKontrolModel>? list) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {
@@ -147,9 +147,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -159,9 +158,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {

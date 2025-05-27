@@ -350,6 +350,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                 ..teslimCari = cari?.tempCariModel?.cariKodu
                 ..teslimCariAdi = cari?.tempCariModel?.cariAdi
                 ..vadeGunu = cari?.vadeGunu
+                ..kosulKodu = cari?.kosulKodu
                 ..vadeTarihi = DateTime.now().add(Duration(days: cari?.vadeGunu ?? 0)).dateTimeWithoutTime;
               if (cari?.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance

@@ -9,7 +9,8 @@ part of 'stok_yeni_kayit_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
-  late final _$projeListesiAtom = Atom(name: '_StokYeniKayitViewModelBase.projeListesi', context: context);
+  late final _$projeListesiAtom =
+      Atom(name: '_StokYeniKayitViewModelBase.projeListesi', context: context);
 
   @override
   List<BaseProjeModel>? get projeListesi {
@@ -24,7 +25,8 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
     });
   }
 
-  late final _$anaVeriAtom = Atom(name: '_StokYeniKayitViewModelBase.anaVeri', context: context);
+  late final _$anaVeriAtom =
+      Atom(name: '_StokYeniKayitViewModelBase.anaVeri', context: context);
 
   @override
   MainPageModel? get anaVeri {
@@ -39,7 +41,8 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom = Atom(name: '_StokYeniKayitViewModelBase.model', context: context);
+  late final _$modelAtom =
+      Atom(name: '_StokYeniKayitViewModelBase.model', context: context);
 
   @override
   StokYeniKayitModel get model {
@@ -54,7 +57,8 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
     });
   }
 
-  late final _$isSelectedAtom = Atom(name: '_StokYeniKayitViewModelBase.isSelected', context: context);
+  late final _$isSelectedAtom =
+      Atom(name: '_StokYeniKayitViewModelBase.isSelected', context: context);
 
   @override
   ObservableList<bool> get isSelected {
@@ -69,16 +73,13 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
     });
   }
 
-  late final _$_StokYeniKayitViewModelBaseActionController = ActionController(
-    name: '_StokYeniKayitViewModelBase',
-    context: context,
-  );
+  late final _$_StokYeniKayitViewModelBaseActionController =
+      ActionController(name: '_StokYeniKayitViewModelBase', context: context);
 
   @override
   void setProjeListesi(List<BaseProjeModel>? model) {
-    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController.startAction(
-      name: '_StokYeniKayitViewModelBase.setProjeListesi',
-    );
+    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
+        .startAction(name: '_StokYeniKayitViewModelBase.setProjeListesi');
     try {
       return super.setProjeListesi(model);
     } finally {
@@ -88,9 +89,8 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController.startAction(
-      name: '_StokYeniKayitViewModelBase.setStokKodu',
-    );
+    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
+        .startAction(name: '_StokYeniKayitViewModelBase.setStokKodu');
     try {
       return super.setStokKodu(value);
     } finally {
@@ -100,9 +100,8 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
 
   @override
   void changeIsSelected(int index) {
-    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController.startAction(
-      name: '_StokYeniKayitViewModelBase.changeIsSelected',
-    );
+    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
+        .startAction(name: '_StokYeniKayitViewModelBase.changeIsSelected');
     try {
       return super.changeIsSelected(index);
     } finally {

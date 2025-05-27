@@ -12,20 +12,20 @@ mixin _$FiyatOzetiViewModel on _FiyatOzetiViewModelBase, Store {
   Computed<List<String?>?>? _$grupListComputed;
 
   @override
-  List<String?>? get grupList => (_$grupListComputed ??= Computed<List<String?>?>(
-    () => super.grupList,
-    name: '_FiyatOzetiViewModelBase.grupList',
-  )).value;
+  List<String?>? get grupList =>
+      (_$grupListComputed ??= Computed<List<String?>?>(() => super.grupList,
+              name: '_FiyatOzetiViewModelBase.grupList'))
+          .value;
   Computed<Map<String, List<StokFiyatOzetiModel>>>? _$grupMapComputed;
 
   @override
-  Map<String, List<StokFiyatOzetiModel>> get grupMap =>
-      (_$grupMapComputed ??= Computed<Map<String, List<StokFiyatOzetiModel>>>(
-        () => super.grupMap,
-        name: '_FiyatOzetiViewModelBase.grupMap',
-      )).value;
+  Map<String, List<StokFiyatOzetiModel>> get grupMap => (_$grupMapComputed ??=
+          Computed<Map<String, List<StokFiyatOzetiModel>>>(() => super.grupMap,
+              name: '_FiyatOzetiViewModelBase.grupMap'))
+      .value;
 
-  late final _$requestModelAtom = Atom(name: '_FiyatOzetiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom =
+      Atom(name: '_FiyatOzetiViewModelBase.requestModel', context: context);
 
   @override
   StokFiyatOzetiRequestModel get requestModel {
@@ -41,9 +41,7 @@ mixin _$FiyatOzetiViewModel on _FiyatOzetiViewModelBase, Store {
   }
 
   late final _$stokFiyatOzetiListesiAtom = Atom(
-    name: '_FiyatOzetiViewModelBase.stokFiyatOzetiListesi',
-    context: context,
-  );
+      name: '_FiyatOzetiViewModelBase.stokFiyatOzetiListesi', context: context);
 
   @override
   ObservableList<StokFiyatOzetiModel>? get stokFiyatOzetiListesi {
@@ -53,28 +51,27 @@ mixin _$FiyatOzetiViewModel on _FiyatOzetiViewModelBase, Store {
 
   @override
   set stokFiyatOzetiListesi(ObservableList<StokFiyatOzetiModel>? value) {
-    _$stokFiyatOzetiListesiAtom.reportWrite(value, super.stokFiyatOzetiListesi, () {
+    _$stokFiyatOzetiListesiAtom.reportWrite(value, super.stokFiyatOzetiListesi,
+        () {
       super.stokFiyatOzetiListesi = value;
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_FiyatOzetiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_FiyatOzetiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_FiyatOzetiViewModelBaseActionController = ActionController(
-    name: '_FiyatOzetiViewModelBase',
-    context: context,
-  );
+  late final _$_FiyatOzetiViewModelBaseActionController =
+      ActionController(name: '_FiyatOzetiViewModelBase', context: context);
 
   @override
   void setStokFiyatOzetiListesi(List<StokFiyatOzetiModel>? list) {
     final _$actionInfo = _$_FiyatOzetiViewModelBaseActionController.startAction(
-      name: '_FiyatOzetiViewModelBase.setStokFiyatOzetiListesi',
-    );
+        name: '_FiyatOzetiViewModelBase.setStokFiyatOzetiListesi');
     try {
       return super.setStokFiyatOzetiListesi(list);
     } finally {
@@ -85,8 +82,7 @@ mixin _$FiyatOzetiViewModel on _FiyatOzetiViewModelBase, Store {
   @override
   void setRequestModel(StokFiyatOzetiRequestModel model) {
     final _$actionInfo = _$_FiyatOzetiViewModelBaseActionController.startAction(
-      name: '_FiyatOzetiViewModelBase.setRequestModel',
-    );
+        name: '_FiyatOzetiViewModelBase.setRequestModel');
     try {
       return super.setRequestModel(model);
     } finally {

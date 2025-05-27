@@ -8,8 +8,10 @@ part of 'base_siparisler_diger_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BaseSiparislerDigerViewModel on _BaseSiparislerDigerViewModelBase, Store {
-  late final _$isInitAtom = Atom(name: '_BaseSiparislerDigerViewModelBase.isInit', context: context);
+mixin _$BaseSiparislerDigerViewModel
+    on _BaseSiparislerDigerViewModelBase, Store {
+  late final _$isInitAtom =
+      Atom(name: '_BaseSiparislerDigerViewModelBase.isInit', context: context);
 
   @override
   bool get isInit {
@@ -24,20 +26,19 @@ mixin _$BaseSiparislerDigerViewModel on _BaseSiparislerDigerViewModelBase, Store
     });
   }
 
-  late final _$_BaseSiparislerDigerViewModelBaseActionController = ActionController(
-    name: '_BaseSiparislerDigerViewModelBase',
-    context: context,
-  );
+  late final _$_BaseSiparislerDigerViewModelBaseActionController =
+      ActionController(
+          name: '_BaseSiparislerDigerViewModelBase', context: context);
 
   @override
   void init() {
-    final _$actionInfo = _$_BaseSiparislerDigerViewModelBaseActionController.startAction(
-      name: '_BaseSiparislerDigerViewModelBase.init',
-    );
+    final _$actionInfo = _$_BaseSiparislerDigerViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerDigerViewModelBase.init');
     try {
       return super.init();
     } finally {
-      _$_BaseSiparislerDigerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparislerDigerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

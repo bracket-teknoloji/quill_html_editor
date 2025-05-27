@@ -12,12 +12,13 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
   Computed<ObservableList<SeriList>?>? _$filteredListComputed;
 
   @override
-  ObservableList<SeriList>? get filteredList => (_$filteredListComputed ??= Computed<ObservableList<SeriList>?>(
-    () => super.filteredList,
-    name: '_SeriRehberiViewModelBase.filteredList',
-  )).value;
+  ObservableList<SeriList>? get filteredList => (_$filteredListComputed ??=
+          Computed<ObservableList<SeriList>?>(() => super.filteredList,
+              name: '_SeriRehberiViewModelBase.filteredList'))
+      .value;
 
-  late final _$observableListAtom = Atom(name: '_SeriRehberiViewModelBase.observableList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_SeriRehberiViewModelBase.observableList', context: context);
 
   @override
   ObservableList<SeriList>? get observableList {
@@ -32,7 +33,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom = Atom(name: '_SeriRehberiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom =
+      Atom(name: '_SeriRehberiViewModelBase.requestModel', context: context);
 
   @override
   StokRehberiRequestModel get requestModel {
@@ -47,7 +49,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_SeriRehberiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_SeriRehberiViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -62,7 +65,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$isSearchBarOpenAtom = Atom(name: '_SeriRehberiViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_SeriRehberiViewModelBase.isSearchBarOpen', context: context);
 
   @override
   bool get isSearchBarOpen {
@@ -77,23 +81,21 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_SeriRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_SeriRehberiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_SeriRehberiViewModelBaseActionController = ActionController(
-    name: '_SeriRehberiViewModelBase',
-    context: context,
-  );
+  late final _$_SeriRehberiViewModelBaseActionController =
+      ActionController(name: '_SeriRehberiViewModelBase', context: context);
 
   @override
   void setObservableList(List<SeriList>? list) {
-    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController.startAction(
-      name: '_SeriRehberiViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
+        .startAction(name: '_SeriRehberiViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {
@@ -103,9 +105,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController.startAction(
-      name: '_SeriRehberiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
+        .startAction(name: '_SeriRehberiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -115,9 +116,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController.startAction(
-      name: '_SeriRehberiViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
+        .startAction(name: '_SeriRehberiViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {

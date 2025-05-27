@@ -12,29 +12,28 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
   Computed<List<DekontKalemler>?>? _$kalemlerComputed;
 
   @override
-  List<DekontKalemler>? get kalemler => (_$kalemlerComputed ??= Computed<List<DekontKalemler>?>(
-    () => super.kalemler,
-    name: '_DekontEditKalemlerViewModelBase.kalemler',
-  )).value;
+  List<DekontKalemler>? get kalemler => (_$kalemlerComputed ??=
+          Computed<List<DekontKalemler>?>(() => super.kalemler,
+              name: '_DekontEditKalemlerViewModelBase.kalemler'))
+      .value;
   Computed<double>? _$toplamBorcComputed;
 
   @override
-  double get toplamBorc => (_$toplamBorcComputed ??= Computed<double>(
-    () => super.toplamBorc,
-    name: '_DekontEditKalemlerViewModelBase.toplamBorc',
-  )).value;
+  double get toplamBorc =>
+      (_$toplamBorcComputed ??= Computed<double>(() => super.toplamBorc,
+              name: '_DekontEditKalemlerViewModelBase.toplamBorc'))
+          .value;
   Computed<double>? _$toplamAlacakComputed;
 
   @override
-  double get toplamAlacak => (_$toplamAlacakComputed ??= Computed<double>(
-    () => super.toplamAlacak,
-    name: '_DekontEditKalemlerViewModelBase.toplamAlacak',
-  )).value;
+  double get toplamAlacak =>
+      (_$toplamAlacakComputed ??= Computed<double>(() => super.toplamAlacak,
+              name: '_DekontEditKalemlerViewModelBase.toplamAlacak'))
+          .value;
 
   late final _$dekontIslemlerRequestModelAtom = Atom(
-    name: '_DekontEditKalemlerViewModelBase.dekontIslemlerRequestModel',
-    context: context,
-  );
+      name: '_DekontEditKalemlerViewModelBase.dekontIslemlerRequestModel',
+      context: context);
 
   @override
   DekontIslemlerRequestModel get dekontIslemlerRequestModel {
@@ -44,61 +43,61 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
 
   @override
   set dekontIslemlerRequestModel(DekontIslemlerRequestModel value) {
-    _$dekontIslemlerRequestModelAtom.reportWrite(value, super.dekontIslemlerRequestModel, () {
+    _$dekontIslemlerRequestModelAtom
+        .reportWrite(value, super.dekontIslemlerRequestModel, () {
       super.dekontIslemlerRequestModel = value;
     });
   }
 
-  late final _$_DekontEditKalemlerViewModelBaseActionController = ActionController(
-    name: '_DekontEditKalemlerViewModelBase',
-    context: context,
-  );
+  late final _$_DekontEditKalemlerViewModelBaseActionController =
+      ActionController(
+          name: '_DekontEditKalemlerViewModelBase', context: context);
 
   @override
   void setSingleton() {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
-      name: '_DekontEditKalemlerViewModelBase.setSingleton',
-    );
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
+        .startAction(name: '_DekontEditKalemlerViewModelBase.setSingleton');
     try {
       return super.setSingleton();
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void addKalemler(DekontKalemler? model) {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
-      name: '_DekontEditKalemlerViewModelBase.addKalemler',
-    );
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
+        .startAction(name: '_DekontEditKalemlerViewModelBase.addKalemler');
     try {
       return super.addKalemler(model);
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void updateKalemler(int index, DekontKalemler model) {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
-      name: '_DekontEditKalemlerViewModelBase.updateKalemler',
-    );
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
+        .startAction(name: '_DekontEditKalemlerViewModelBase.updateKalemler');
     try {
       return super.updateKalemler(index, model);
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void removeKalemler(int index) {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
-      name: '_DekontEditKalemlerViewModelBase.removeKalemler',
-    );
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
+        .startAction(name: '_DekontEditKalemlerViewModelBase.removeKalemler');
     try {
       return super.removeKalemler(index);
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

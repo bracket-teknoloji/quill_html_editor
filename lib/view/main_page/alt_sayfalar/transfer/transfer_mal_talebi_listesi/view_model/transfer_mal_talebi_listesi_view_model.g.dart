@@ -8,20 +8,22 @@ part of 'transfer_mal_talebi_listesi_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelBase, Store {
+mixin _$TransferMalTalebiListesiViewModel
+    on _TransferMalTalebiListesiViewModelBase, Store {
   Computed<List<BaseSiparisEditModel>?>? _$filteredObservableListComputed;
 
   @override
   List<BaseSiparisEditModel>? get filteredObservableList =>
-      (_$filteredObservableListComputed ??= Computed<List<BaseSiparisEditModel>?>(
-        () => super.filteredObservableList,
-        name: '_TransferMalTalebiListesiViewModelBase.filteredObservableList',
-      )).value;
+      (_$filteredObservableListComputed ??= Computed<
+                  List<BaseSiparisEditModel>?>(
+              () => super.filteredObservableList,
+              name:
+                  '_TransferMalTalebiListesiViewModelBase.filteredObservableList'))
+          .value;
 
   late final _$observableListAtom = Atom(
-    name: '_TransferMalTalebiListesiViewModelBase.observableList',
-    context: context,
-  );
+      name: '_TransferMalTalebiListesiViewModelBase.observableList',
+      context: context);
 
   @override
   ObservableList<BaseSiparisEditModel>? get observableList {
@@ -36,7 +38,9 @@ mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelB
     });
   }
 
-  late final _$requestModelAtom = Atom(name: '_TransferMalTalebiListesiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+      name: '_TransferMalTalebiListesiViewModelBase.requestModel',
+      context: context);
 
   @override
   TransferMalTalebiListesiRequestModel get requestModel {
@@ -52,9 +56,8 @@ mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelB
   }
 
   late final _$isSearchBarOpenAtom = Atom(
-    name: '_TransferMalTalebiListesiViewModelBase.isSearchBarOpen',
-    context: context,
-  );
+      name: '_TransferMalTalebiListesiViewModelBase.isSearchBarOpen',
+      context: context);
 
   @override
   bool get isSearchBarOpen {
@@ -69,7 +72,9 @@ mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelB
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_TransferMalTalebiListesiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+      name: '_TransferMalTalebiListesiViewModelBase.searchText',
+      context: context);
 
   @override
   String? get searchText {
@@ -85,9 +90,8 @@ mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelB
   }
 
   late final _$selectedDepoMalToplamaEnumAtom = Atom(
-    name: '_TransferMalTalebiListesiViewModelBase.selectedDepoMalToplamaEnum',
-    context: context,
-  );
+      name: '_TransferMalTalebiListesiViewModelBase.selectedDepoMalToplamaEnum',
+      context: context);
 
   @override
   DepoMalToplamaEnum get selectedDepoMalToplamaEnum {
@@ -97,12 +101,15 @@ mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelB
 
   @override
   set selectedDepoMalToplamaEnum(DepoMalToplamaEnum value) {
-    _$selectedDepoMalToplamaEnumAtom.reportWrite(value, super.selectedDepoMalToplamaEnum, () {
+    _$selectedDepoMalToplamaEnumAtom
+        .reportWrite(value, super.selectedDepoMalToplamaEnum, () {
       super.selectedDepoMalToplamaEnum = value;
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_TransferMalTalebiListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+      '_TransferMalTalebiListesiViewModelBase.getData',
+      context: context);
 
   @override
   Future<void> getData() {
@@ -110,36 +117,38 @@ mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelB
   }
 
   late final _$setSelectedDepoMalToplamaEnumAsyncAction = AsyncAction(
-    '_TransferMalTalebiListesiViewModelBase.setSelectedDepoMalToplamaEnum',
-    context: context,
-  );
+      '_TransferMalTalebiListesiViewModelBase.setSelectedDepoMalToplamaEnum',
+      context: context);
 
   @override
   Future<void> setSelectedDepoMalToplamaEnum(DepoMalToplamaEnum value) {
-    return _$setSelectedDepoMalToplamaEnumAsyncAction.run(() => super.setSelectedDepoMalToplamaEnum(value));
+    return _$setSelectedDepoMalToplamaEnumAsyncAction
+        .run(() => super.setSelectedDepoMalToplamaEnum(value));
   }
 
-  late final _$resetListAsyncAction = AsyncAction('_TransferMalTalebiListesiViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+      '_TransferMalTalebiListesiViewModelBase.resetList',
+      context: context);
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$_TransferMalTalebiListesiViewModelBaseActionController = ActionController(
-    name: '_TransferMalTalebiListesiViewModelBase',
-    context: context,
-  );
+  late final _$_TransferMalTalebiListesiViewModelBaseActionController =
+      ActionController(
+          name: '_TransferMalTalebiListesiViewModelBase', context: context);
 
   @override
   void setObservableList(List<BaseSiparisEditModel>? list) {
-    final _$actionInfo = _$_TransferMalTalebiListesiViewModelBaseActionController.startAction(
-      name: '_TransferMalTalebiListesiViewModelBase.setObservableList',
-    );
+    final _$actionInfo =
+        _$_TransferMalTalebiListesiViewModelBaseActionController.startAction(
+            name: '_TransferMalTalebiListesiViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {
-      _$_TransferMalTalebiListesiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_TransferMalTalebiListesiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

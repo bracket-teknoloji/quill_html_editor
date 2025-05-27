@@ -12,19 +12,21 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
   Computed<String>? _$aciklamaStringComputed;
 
   @override
-  String get aciklamaString => (_$aciklamaStringComputed ??= Computed<String>(
-    () => super.aciklamaString,
-    name: '_KasaTransferiViewModelBase.aciklamaString',
-  )).value;
+  String get aciklamaString =>
+      (_$aciklamaStringComputed ??= Computed<String>(() => super.aciklamaString,
+              name: '_KasaTransferiViewModelBase.aciklamaString'))
+          .value;
   Computed<TahsilatRequestModel>? _$getStokYeniKayitModelComputed;
 
   @override
-  TahsilatRequestModel get getStokYeniKayitModel => (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
-    () => super.getStokYeniKayitModel,
-    name: '_KasaTransferiViewModelBase.getStokYeniKayitModel',
-  )).value;
+  TahsilatRequestModel get getStokYeniKayitModel =>
+      (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
+              () => super.getStokYeniKayitModel,
+              name: '_KasaTransferiViewModelBase.getStokYeniKayitModel'))
+          .value;
 
-  late final _$modelAtom = Atom(name: '_KasaTransferiViewModelBase.model', context: context);
+  late final _$modelAtom =
+      Atom(name: '_KasaTransferiViewModelBase.model', context: context);
 
   @override
   TahsilatRequestModel get model {
@@ -39,7 +41,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
     });
   }
 
-  late final _$girisKasaAtom = Atom(name: '_KasaTransferiViewModelBase.girisKasa', context: context);
+  late final _$girisKasaAtom =
+      Atom(name: '_KasaTransferiViewModelBase.girisKasa', context: context);
 
   @override
   KasaList? get girisKasa {
@@ -54,7 +57,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
     });
   }
 
-  late final _$cikisKasaAtom = Atom(name: '_KasaTransferiViewModelBase.cikisKasa', context: context);
+  late final _$cikisKasaAtom =
+      Atom(name: '_KasaTransferiViewModelBase.cikisKasa', context: context);
 
   @override
   KasaList? get cikisKasa {
@@ -70,9 +74,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-    name: '_KasaTransferiViewModelBase.dovizKurlariListesi',
-    context: context,
-  );
+      name: '_KasaTransferiViewModelBase.dovizKurlariListesi',
+      context: context);
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -87,58 +90,63 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
     });
   }
 
-  late final _$setGirisKasaAsyncAction = AsyncAction('_KasaTransferiViewModelBase.setGirisKasa', context: context);
+  late final _$setGirisKasaAsyncAction =
+      AsyncAction('_KasaTransferiViewModelBase.setGirisKasa', context: context);
 
   @override
   Future<void> setGirisKasa(KasaList value) {
     return _$setGirisKasaAsyncAction.run(() => super.setGirisKasa(value));
   }
 
-  late final _$setCikisKasaAsyncAction = AsyncAction('_KasaTransferiViewModelBase.setCikisKasa', context: context);
+  late final _$setCikisKasaAsyncAction =
+      AsyncAction('_KasaTransferiViewModelBase.setCikisKasa', context: context);
 
   @override
   Future<void> setCikisKasa(KasaList value) {
     return _$setCikisKasaAsyncAction.run(() => super.setCikisKasa(value));
   }
 
-  late final _$getSiradakiKodAsyncAction = AsyncAction('_KasaTransferiViewModelBase.getSiradakiKod', context: context);
+  late final _$getSiradakiKodAsyncAction = AsyncAction(
+      '_KasaTransferiViewModelBase.getSiradakiKod',
+      context: context);
 
   @override
   Future<void> getSiradakiKod() {
     return _$getSiradakiKodAsyncAction.run(() => super.getSiradakiKod());
   }
 
-  late final _$getKasalarAsyncAction = AsyncAction('_KasaTransferiViewModelBase.getKasalar', context: context);
+  late final _$getKasalarAsyncAction =
+      AsyncAction('_KasaTransferiViewModelBase.getKasalar', context: context);
 
   @override
   Future<KasaList?> getKasalar(String? kasaKodu) {
     return _$getKasalarAsyncAction.run(() => super.getKasalar(kasaKodu));
   }
 
-  late final _$getDovizlerAsyncAction = AsyncAction('_KasaTransferiViewModelBase.getDovizler', context: context);
+  late final _$getDovizlerAsyncAction =
+      AsyncAction('_KasaTransferiViewModelBase.getDovizler', context: context);
 
   @override
   Future<void> getDovizler() {
     return _$getDovizlerAsyncAction.run(() => super.getDovizler());
   }
 
-  late final _$postDataAsyncAction = AsyncAction('_KasaTransferiViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction =
+      AsyncAction('_KasaTransferiViewModelBase.postData', context: context);
 
   @override
   Future<GenericResponseModel<DovizKurlariModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$_KasaTransferiViewModelBaseActionController = ActionController(
-    name: '_KasaTransferiViewModelBase',
-    context: context,
-  );
+  late final _$_KasaTransferiViewModelBaseActionController =
+      ActionController(name: '_KasaTransferiViewModelBase', context: context);
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setDovizKurlariListesi',
-    );
+    final _$actionInfo =
+        _$_KasaTransferiViewModelBaseActionController.startAction(
+            name: '_KasaTransferiViewModelBase.setDovizKurlariListesi');
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
@@ -148,9 +156,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -160,9 +167,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setTarih',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setTarih');
     try {
       return super.setTarih(value);
     } finally {
@@ -172,9 +178,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setAciklama',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setAciklama');
     try {
       return super.setAciklama(value);
     } finally {
@@ -184,9 +189,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setTutar(double? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setTutar',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setTutar');
     try {
       return super.setTutar(value);
     } finally {
@@ -196,9 +200,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setDovizTutari(double? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setDovizTutari',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setDovizTutari');
     try {
       return super.setDovizTutari(value);
     } finally {
@@ -208,9 +211,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setProjekodu(String? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setProjekodu',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setProjekodu');
     try {
       return super.setProjekodu(value);
     } finally {
@@ -220,9 +222,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setPlasiyerKodu',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -232,9 +233,8 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 
   @override
   void setDovizTipi(int? value) {
-    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController.startAction(
-      name: '_KasaTransferiViewModelBase.setDovizTipi',
-    );
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setDovizTipi');
     try {
       return super.setDovizTipi(value);
     } finally {

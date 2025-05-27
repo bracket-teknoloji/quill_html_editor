@@ -6,7 +6,8 @@ part of 'hucredeki_stoklar_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HucredekiStoklarModelImpl _$$HucredekiStoklarModelImplFromJson(Map<String, dynamic> json) =>
+_$HucredekiStoklarModelImpl _$$HucredekiStoklarModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$HucredekiStoklarModelImpl(
       hucreKodu: json['HUCRE_KODU'] as String?,
       depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
@@ -20,15 +21,17 @@ _$HucredekiStoklarModelImpl _$$HucredekiStoklarModelImplFromJson(Map<String, dyn
       olcuBirimi: json['OLCU_BIRIMI'] as String?,
     );
 
-Map<String, dynamic> _$$HucredekiStoklarModelImplToJson(_$HucredekiStoklarModelImpl instance) => <String, dynamic>{
-  if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
-  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
-  if (instance.yapkod case final value?) 'YAPKOD': value,
-  if (instance.yapacik case final value?) 'YAPACIK': value,
-  if (instance.bakiye case final value?) 'BAKIYE': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
-};
+Map<String, dynamic> _$$HucredekiStoklarModelImplToJson(
+        _$HucredekiStoklarModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.yapacik case final value?) 'YAPACIK': value,
+      if (instance.bakiye case final value?) 'BAKIYE': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+    };

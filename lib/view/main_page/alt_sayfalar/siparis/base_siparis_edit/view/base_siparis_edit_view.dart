@@ -174,10 +174,10 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
             CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance),
           );
         }
-        if (cariModel case final CariListesiModel? value) {
-          if (value!.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
+        if (cariModel case final CariListesiModel value) {
+          if (value.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
             cariModel = await networkManager.getCariModel(
-              CariRequestModel.fromCariListesiModel(cariModel!.copyWith(cariKodu: value.bagliCari)),
+              CariRequestModel.fromCariListesiModel(value),
             );
             cariModel?.tempCariModel = value;
           }

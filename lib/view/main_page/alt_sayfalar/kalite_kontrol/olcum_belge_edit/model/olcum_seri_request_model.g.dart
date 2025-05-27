@@ -6,21 +6,26 @@ part of 'olcum_seri_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OlcumSeriRequestModelImpl _$$OlcumSeriRequestModelImplFromJson(Map<String, dynamic> json) =>
+_$OlcumSeriRequestModelImpl _$$OlcumSeriRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$OlcumSeriRequestModelImpl(
       stokKodu: json['STOK_KODU'] as String?,
       girisDepo: (json['GIRIS_DEPO'] as num?)?.toInt(),
       cikisDepo: (json['CIKIS_DEPO'] as num?)?.toInt(),
       redGirisDepo: (json['RED_GIRIS_DEPO'] as num?)?.toInt(),
       kabulGirisDepo: (json['KABUL_GIRIS_DEPO'] as num?)?.toInt(),
-      seriListe: (json['SERI_LISTE'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      seriListe: (json['SERI_LISTE'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
-Map<String, dynamic> _$$OlcumSeriRequestModelImplToJson(_$OlcumSeriRequestModelImpl instance) => <String, dynamic>{
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
-  if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
-  if (instance.redGirisDepo case final value?) 'RED_GIRIS_DEPO': value,
-  if (instance.kabulGirisDepo case final value?) 'KABUL_GIRIS_DEPO': value,
-  if (instance.seriListe case final value?) 'SERI_LISTE': value,
-};
+Map<String, dynamic> _$$OlcumSeriRequestModelImplToJson(
+        _$OlcumSeriRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
+      if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
+      if (instance.redGirisDepo case final value?) 'RED_GIRIS_DEPO': value,
+      if (instance.kabulGirisDepo case final value?) 'KABUL_GIRIS_DEPO': value,
+      if (instance.seriListe case final value?) 'SERI_LISTE': value,
+    };

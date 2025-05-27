@@ -8,17 +8,21 @@ part of 'belge_kontrol_kalemler_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BelgeKontrolKalemlerViewModel on _BelgeKontrolKalemlerViewModelBase, Store {
+mixin _$BelgeKontrolKalemlerViewModel
+    on _BelgeKontrolKalemlerViewModelBase, Store {
   Computed<ObservableList<BelgeKontrolKalemlerModel>?>? _$filteredListComputed;
 
   @override
   ObservableList<BelgeKontrolKalemlerModel>? get filteredList =>
-      (_$filteredListComputed ??= Computed<ObservableList<BelgeKontrolKalemlerModel>?>(
-        () => super.filteredList,
-        name: '_BelgeKontrolKalemlerViewModelBase.filteredList',
-      )).value;
+      (_$filteredListComputed ??=
+              Computed<ObservableList<BelgeKontrolKalemlerModel>?>(
+                  () => super.filteredList,
+                  name: '_BelgeKontrolKalemlerViewModelBase.filteredList'))
+          .value;
 
-  late final _$requestModelAtom = Atom(name: '_BelgeKontrolKalemlerViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+      name: '_BelgeKontrolKalemlerViewModelBase.requestModel',
+      context: context);
 
   @override
   BelgeKontrolModel get requestModel {
@@ -33,7 +37,9 @@ mixin _$BelgeKontrolKalemlerViewModel on _BelgeKontrolKalemlerViewModelBase, Sto
     });
   }
 
-  late final _$observableListAtom = Atom(name: '_BelgeKontrolKalemlerViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+      name: '_BelgeKontrolKalemlerViewModelBase.observableList',
+      context: context);
 
   @override
   ObservableList<BelgeKontrolKalemlerModel>? get observableList {
@@ -48,7 +54,9 @@ mixin _$BelgeKontrolKalemlerViewModel on _BelgeKontrolKalemlerViewModelBase, Sto
     });
   }
 
-  late final _$isSearchBarOpenAtom = Atom(name: '_BelgeKontrolKalemlerViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+      name: '_BelgeKontrolKalemlerViewModelBase.isSearchBarOpen',
+      context: context);
 
   @override
   bool get isSearchBarOpen {
@@ -63,7 +71,8 @@ mixin _$BelgeKontrolKalemlerViewModel on _BelgeKontrolKalemlerViewModelBase, Sto
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_BelgeKontrolKalemlerViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+      name: '_BelgeKontrolKalemlerViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -78,65 +87,72 @@ mixin _$BelgeKontrolKalemlerViewModel on _BelgeKontrolKalemlerViewModelBase, Sto
     });
   }
 
-  late final _$resetListAsyncAction = AsyncAction('_BelgeKontrolKalemlerViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+      '_BelgeKontrolKalemlerViewModelBase.resetList',
+      context: context);
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_BelgeKontrolKalemlerViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+      '_BelgeKontrolKalemlerViewModelBase.getData',
+      context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$deleteKalemAsyncAction = AsyncAction('_BelgeKontrolKalemlerViewModelBase.deleteKalem', context: context);
+  late final _$deleteKalemAsyncAction = AsyncAction(
+      '_BelgeKontrolKalemlerViewModelBase.deleteKalem',
+      context: context);
 
   @override
   Future<void> deleteKalem(BelgeKontrolKalemlerModel model) {
     return _$deleteKalemAsyncAction.run(() => super.deleteKalem(model));
   }
 
-  late final _$_BelgeKontrolKalemlerViewModelBaseActionController = ActionController(
-    name: '_BelgeKontrolKalemlerViewModelBase',
-    context: context,
-  );
+  late final _$_BelgeKontrolKalemlerViewModelBaseActionController =
+      ActionController(
+          name: '_BelgeKontrolKalemlerViewModelBase', context: context);
 
   @override
   void setObservableList(List<BelgeKontrolKalemlerModel>? list) {
-    final _$actionInfo = _$_BelgeKontrolKalemlerViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolKalemlerViewModelBase.setObservableList',
-    );
+    final _$actionInfo =
+        _$_BelgeKontrolKalemlerViewModelBaseActionController.startAction(
+            name: '_BelgeKontrolKalemlerViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {
-      _$_BelgeKontrolKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BelgeKontrolKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_BelgeKontrolKalemlerViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolKalemlerViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo =
+        _$_BelgeKontrolKalemlerViewModelBaseActionController.startAction(
+            name: '_BelgeKontrolKalemlerViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {
-      _$_BelgeKontrolKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BelgeKontrolKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_BelgeKontrolKalemlerViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolKalemlerViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_BelgeKontrolKalemlerViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolKalemlerViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
-      _$_BelgeKontrolKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BelgeKontrolKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

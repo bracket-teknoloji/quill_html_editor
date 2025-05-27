@@ -10,9 +10,8 @@ part of 'hucre_takibi_stoklar_view_model.dart';
 
 mixin _$HucreTakibiStoklarViewModel on _HucreTakibiStoklarViewModelBase, Store {
   late final _$hucreTakibiStoklarListesiAtom = Atom(
-    name: '_HucreTakibiStoklarViewModelBase.hucreTakibiStoklarListesi',
-    context: context,
-  );
+      name: '_HucreTakibiStoklarViewModelBase.hucreTakibiStoklarListesi',
+      context: context);
 
   @override
   ObservableList<HucreTakibiStoklarModel>? get hucreTakibiStoklarListesi {
@@ -21,13 +20,16 @@ mixin _$HucreTakibiStoklarViewModel on _HucreTakibiStoklarViewModelBase, Store {
   }
 
   @override
-  set hucreTakibiStoklarListesi(ObservableList<HucreTakibiStoklarModel>? value) {
-    _$hucreTakibiStoklarListesiAtom.reportWrite(value, super.hucreTakibiStoklarListesi, () {
+  set hucreTakibiStoklarListesi(
+      ObservableList<HucreTakibiStoklarModel>? value) {
+    _$hucreTakibiStoklarListesiAtom
+        .reportWrite(value, super.hucreTakibiStoklarListesi, () {
       super.hucreTakibiStoklarListesi = value;
     });
   }
 
-  late final _$requestModelAtom = Atom(name: '_HucreTakibiStoklarViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+      name: '_HucreTakibiStoklarViewModelBase.requestModel', context: context);
 
   @override
   HucreTakibiStoklarRequestModel get requestModel {
@@ -42,27 +44,29 @@ mixin _$HucreTakibiStoklarViewModel on _HucreTakibiStoklarViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_HucreTakibiStoklarViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_HucreTakibiStoklarViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_HucreTakibiStoklarViewModelBaseActionController = ActionController(
-    name: '_HucreTakibiStoklarViewModelBase',
-    context: context,
-  );
+  late final _$_HucreTakibiStoklarViewModelBaseActionController =
+      ActionController(
+          name: '_HucreTakibiStoklarViewModelBase', context: context);
 
   @override
   void setHucreTakibiStoklarListesi(List<HucreTakibiStoklarModel>? list) {
-    final _$actionInfo = _$_HucreTakibiStoklarViewModelBaseActionController.startAction(
-      name: '_HucreTakibiStoklarViewModelBase.setHucreTakibiStoklarListesi',
-    );
+    final _$actionInfo =
+        _$_HucreTakibiStoklarViewModelBaseActionController.startAction(
+            name:
+                '_HucreTakibiStoklarViewModelBase.setHucreTakibiStoklarListesi');
     try {
       return super.setHucreTakibiStoklarListesi(list);
     } finally {
-      _$_HucreTakibiStoklarViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HucreTakibiStoklarViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

@@ -8,17 +8,23 @@ part of 'hizli_tahsilat_kayitlari_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$HizliTahsilatKayitlariViewModel on _HizliTahsilatKayitlariViewModelBase, Store {
-  Computed<ObservableList<BankaHareketleriModel>?>? _$filteredObservableListComputed;
+mixin _$HizliTahsilatKayitlariViewModel
+    on _HizliTahsilatKayitlariViewModelBase, Store {
+  Computed<ObservableList<BankaHareketleriModel>?>?
+      _$filteredObservableListComputed;
 
   @override
   ObservableList<BankaHareketleriModel>? get filteredObservableList =>
-      (_$filteredObservableListComputed ??= Computed<ObservableList<BankaHareketleriModel>?>(
-        () => super.filteredObservableList,
-        name: '_HizliTahsilatKayitlariViewModelBase.filteredObservableList',
-      )).value;
+      (_$filteredObservableListComputed ??= Computed<
+                  ObservableList<BankaHareketleriModel>?>(
+              () => super.filteredObservableList,
+              name:
+                  '_HizliTahsilatKayitlariViewModelBase.filteredObservableList'))
+          .value;
 
-  late final _$observableListAtom = Atom(name: '_HizliTahsilatKayitlariViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+      name: '_HizliTahsilatKayitlariViewModelBase.observableList',
+      context: context);
 
   @override
   ObservableList<BankaHareketleriModel>? get observableList {
@@ -33,7 +39,9 @@ mixin _$HizliTahsilatKayitlariViewModel on _HizliTahsilatKayitlariViewModelBase,
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_HizliTahsilatKayitlariViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+      name: '_HizliTahsilatKayitlariViewModelBase.searchText',
+      context: context);
 
   @override
   String? get searchText {
@@ -49,9 +57,8 @@ mixin _$HizliTahsilatKayitlariViewModel on _HizliTahsilatKayitlariViewModelBase,
   }
 
   late final _$isSearchBarOpenAtom = Atom(
-    name: '_HizliTahsilatKayitlariViewModelBase.isSearchBarOpen',
-    context: context,
-  );
+      name: '_HizliTahsilatKayitlariViewModelBase.isSearchBarOpen',
+      context: context);
 
   @override
   bool get isSearchBarOpen {
@@ -66,7 +73,9 @@ mixin _$HizliTahsilatKayitlariViewModel on _HizliTahsilatKayitlariViewModelBase,
     });
   }
 
-  late final _$requestModelAtom = Atom(name: '_HizliTahsilatKayitlariViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+      name: '_HizliTahsilatKayitlariViewModelBase.requestModel',
+      context: context);
 
   @override
   HizliTahsilatKayitlariRequestModel get requestModel {
@@ -81,7 +90,9 @@ mixin _$HizliTahsilatKayitlariViewModel on _HizliTahsilatKayitlariViewModelBase,
     });
   }
 
-  late final _$resetListAsyncAction = AsyncAction('_HizliTahsilatKayitlariViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+      '_HizliTahsilatKayitlariViewModelBase.resetList',
+      context: context);
 
   @override
   Future<void> resetList() {
@@ -89,77 +100,82 @@ mixin _$HizliTahsilatKayitlariViewModel on _HizliTahsilatKayitlariViewModelBase,
   }
 
   late final _$deleteHizliTahsilatAsyncAction = AsyncAction(
-    '_HizliTahsilatKayitlariViewModelBase.deleteHizliTahsilat',
-    context: context,
-  );
+      '_HizliTahsilatKayitlariViewModelBase.deleteHizliTahsilat',
+      context: context);
 
   @override
-  Future<GenericResponseModel<BankaHareketleriModel>> deleteHizliTahsilat(int id) {
-    return _$deleteHizliTahsilatAsyncAction.run(() => super.deleteHizliTahsilat(id));
+  Future<GenericResponseModel<BankaHareketleriModel>> deleteHizliTahsilat(
+      int id) {
+    return _$deleteHizliTahsilatAsyncAction
+        .run(() => super.deleteHizliTahsilat(id));
   }
 
-  late final _$_HizliTahsilatKayitlariViewModelBaseActionController = ActionController(
-    name: '_HizliTahsilatKayitlariViewModelBase',
-    context: context,
-  );
+  late final _$_HizliTahsilatKayitlariViewModelBaseActionController =
+      ActionController(
+          name: '_HizliTahsilatKayitlariViewModelBase', context: context);
 
   @override
   void setObservableList(List<BankaHareketleriModel>? list) {
-    final _$actionInfo = _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
-      name: '_HizliTahsilatKayitlariViewModelBase.setObservableList',
-    );
+    final _$actionInfo =
+        _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
+            name: '_HizliTahsilatKayitlariViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {
-      _$_HizliTahsilatKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HizliTahsilatKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
-      name: '_HizliTahsilatKayitlariViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo =
+        _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
+            name: '_HizliTahsilatKayitlariViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {
-      _$_HizliTahsilatKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HizliTahsilatKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
-      name: '_HizliTahsilatKayitlariViewModelBase.setSearchText',
-    );
+    final _$actionInfo =
+        _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
+            name: '_HizliTahsilatKayitlariViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
-      _$_HizliTahsilatKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HizliTahsilatKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setBaslangicTarihi(String value) {
-    final _$actionInfo = _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
-      name: '_HizliTahsilatKayitlariViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo =
+        _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
+            name: '_HizliTahsilatKayitlariViewModelBase.setBaslangicTarihi');
     try {
       return super.setBaslangicTarihi(value);
     } finally {
-      _$_HizliTahsilatKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HizliTahsilatKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setBitisTarihi(String value) {
-    final _$actionInfo = _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
-      name: '_HizliTahsilatKayitlariViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo =
+        _$_HizliTahsilatKayitlariViewModelBaseActionController.startAction(
+            name: '_HizliTahsilatKayitlariViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
-      _$_HizliTahsilatKayitlariViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HizliTahsilatKayitlariViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

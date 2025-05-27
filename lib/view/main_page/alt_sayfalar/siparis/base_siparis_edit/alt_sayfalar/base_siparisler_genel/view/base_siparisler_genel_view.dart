@@ -163,19 +163,20 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   CariListesiModel? cariModel = await networkManager.getCariModel(
                     CariRequestModel.fromCariListesiModel(result),
                   );
-                  if (cariModel!.bagliMi && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)) {
-                    teslimCariController.text = cariModel.cariAdi ?? "";
+                  if (result.bagliMi && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)) {
+                    teslimCariController.text = result.cariAdi ?? "";
                     viewModel
-                      ..setTeslimCariAdi(cariModel.cariAdi)
-                      ..setTeslimCariKodu(cariModel.cariKodu);
-                    cariModel = await networkManager.getCariModel(CariRequestModel(kod: [cariModel.bagliCari ?? ""]));
+                      ..setTeslimCariAdi(result.cariAdi)
+                      ..setTeslimCariKodu(result.cariKodu);
+                    cariModel = await networkManager.getCariModel(CariRequestModel(kod: [result.bagliCari ?? ""]));
                     if (cariModel == null) {
                       dialogManager.showAlertDialog("Cari bulunamadı");
                       return;
                     }
                     cariModel.tempCariModel = result;
+                    kosulController.text = cariModel.kosulKodu ?? "";
                   }
-                  cariController.text = cariModel.cariAdi ?? "";
+                  cariController.text = cariModel!.cariAdi ?? "";
                   // _plasiyerController.text = result.plasiyerAciklama ?? "";
                   if (!result.bagliMi) {
                     viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
@@ -465,10 +466,10 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       },
                     ),
                   ),
-                if (yetkiController.siparisKosulAktifMi(model.getEditTipiEnum))
+                if (yetkiController.kosulAktif(model.getEditTipiEnum))
                   Expanded(
                     child: CustomTextField(
-                      enabled: enable,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kosul") ?? false),
                       labelText: "Koşul",
                       readOnly: true,
                       suffixMore: true,

@@ -9,7 +9,8 @@ part of 'aylik_mizan_raporu_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
-  late final _$pdfModelAtom = Atom(name: '_AylikMizanRaporuViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom =
+      Atom(name: '_AylikMizanRaporuViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -24,7 +25,9 @@ mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom = Atom(name: '_AylikMizanRaporuViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(
+      name: '_AylikMizanRaporuViewModelBase.futureController',
+      context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -39,16 +42,14 @@ mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_AylikMizanRaporuViewModelBaseActionController = ActionController(
-    name: '_AylikMizanRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_AylikMizanRaporuViewModelBaseActionController =
+      ActionController(
+          name: '_AylikMizanRaporuViewModelBase', context: context);
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController.startAction(
-      name: '_AylikMizanRaporuViewModelBase.setFuture',
-    );
+    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController
+        .startAction(name: '_AylikMizanRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -58,9 +59,8 @@ mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController.startAction(
-      name: '_AylikMizanRaporuViewModelBase.resetFuture',
-    );
+    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController
+        .startAction(name: '_AylikMizanRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {
@@ -70,9 +70,8 @@ mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
 
   @override
   void changeMuhasebeKodu(String? value) {
-    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController.startAction(
-      name: '_AylikMizanRaporuViewModelBase.changeMuhasebeKodu',
-    );
+    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController
+        .startAction(name: '_AylikMizanRaporuViewModelBase.changeMuhasebeKodu');
     try {
       return super.changeMuhasebeKodu(value);
     } finally {

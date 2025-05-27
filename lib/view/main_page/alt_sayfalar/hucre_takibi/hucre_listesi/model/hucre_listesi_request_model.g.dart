@@ -6,7 +6,8 @@ part of 'hucre_listesi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HucreListesiRequestModelImpl _$$HucreListesiRequestModelImplFromJson(Map<String, dynamic> json) =>
+_$HucreListesiRequestModelImpl _$$HucreListesiRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$HucreListesiRequestModelImpl(
       depoKodu: (json['DepoKodu'] as num?)?.toInt() ?? 0,
       hucreKodu: json['HucreKodu'] as String? ?? "",
@@ -23,7 +24,9 @@ _$HucreListesiRequestModelImpl _$$HucreListesiRequestModelImplFromJson(Map<Strin
       haracik: json['Haracik'] as String?,
       gckod: json['Gckod'] as String?,
       subeKodu: (json['SubeKodu'] as num?)?.toInt(),
-      tarih: json['Tarih'] == null ? null : DateTime.parse(json['Tarih'] as String),
+      tarih: json['Tarih'] == null
+          ? null
+          : DateTime.parse(json['Tarih'] as String),
       stharInc: (json['StharInc'] as num?)?.toInt(),
       yedek4: (json['Yedek4'] as num?)?.toInt(),
       yedek4Str: json['Yedek4Str'] as String?,
@@ -33,7 +36,8 @@ _$HucreListesiRequestModelImpl _$$HucreListesiRequestModelImplFromJson(Map<Strin
       cariKodu: json['CariKodu'] as String?,
     );
 
-Map<String, dynamic> _$$HucreListesiRequestModelImplToJson(_$HucreListesiRequestModelImpl instance) =>
+Map<String, dynamic> _$$HucreListesiRequestModelImplToJson(
+        _$HucreListesiRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.depoKodu case final value?) 'DepoKodu': value,
       if (instance.hucreKodu case final value?) 'HucreKodu': value,

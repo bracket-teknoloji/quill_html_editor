@@ -61,6 +61,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   late final TextEditingController _topluDepoController;
   late final TextEditingController _ozelKod1Controller;
   late final TextEditingController _ozelKod2Controller;
+  late final TextEditingController _kosulController;
   late final TextEditingController _aciklama1Controller;
   late final TextEditingController _aciklama2Controller;
   late final TextEditingController _aciklama3Controller;
@@ -104,6 +105,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
               ?.aciklama ??
           model.ozelKod2,
     );
+    _kosulController = TextEditingController(text: model.kosulKodu);
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
     _aciklama3Controller = TextEditingController(text: model.acik3);
@@ -148,6 +150,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _ozelKod1Controller.dispose();
     _ozelKod2Controller.dispose();
     _aciklama1Controller.dispose();
+    _kosulController.dispose();
     _aciklama2Controller.dispose();
     _aciklama3Controller.dispose();
     _aciklama4Controller.dispose();
@@ -613,6 +616,26 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   if (result != null) {
                     _topluDepoController.text = result.depoTanimi ?? "";
                     viewModel.setTopluDepoKodu(result.depoKodu);
+                  }
+                },
+              ),
+            if (yetkiController.kosulAktif(model.getEditTipiEnum))
+              CustomTextField(
+                enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kosul") ?? false),
+                labelText: "Koşul",
+                readOnly: true,
+                suffixMore: true,
+                controller: _kosulController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(
+                    context,
+                    viewModel.model.kosulKodu,
+                    null,
+                  );
+                  if (result != null) {
+                    viewModel.setKosulKodu(result.kosulKodu);
+                    _kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                   }
                 },
               ),

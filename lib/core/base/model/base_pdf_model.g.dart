@@ -13,10 +13,11 @@ BasePdfModel _$BasePdfModelFromJson(Map<String, dynamic> json) => BasePdfModel()
   ..reportHeight = (json['REPORT_HEIGHT'] as num?)?.toDouble()
   ..dosyaAdi = json['DOSYA_ADI'] as String?;
 
-Map<String, dynamic> _$BasePdfModelToJson(BasePdfModel instance) => <String, dynamic>{
-  if (instance.byteData case final value?) 'BYTE_DATA': value,
-  if (instance.uzanti case final value?) 'UZANTI': value,
-  if (instance.reportWidth case final value?) 'REPORT_WIDTH': value,
-  if (instance.reportHeight case final value?) 'REPORT_HEIGHT': value,
-  if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
-};
+Map<String, dynamic> _$BasePdfModelToJson(BasePdfModel instance) =>
+    <String, dynamic>{
+      if (instance.byteData case final value?) 'BYTE_DATA': value,
+      if (instance.uzanti case final value?) 'UZANTI': value,
+      if (instance.reportWidth case final value?) 'REPORT_WIDTH': value,
+      if (instance.reportHeight case final value?) 'REPORT_HEIGHT': value,
+      if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
+    };

@@ -6,7 +6,8 @@ part of 'paketleme_listesi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaketlemeListesiRequestModelImpl _$$PaketlemeListesiRequestModelImplFromJson(Map<String, dynamic> json) =>
+_$PaketlemeListesiRequestModelImpl _$$PaketlemeListesiRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$PaketlemeListesiRequestModelImpl(
       id: (json['ID'] as num?)?.toInt(),
       stokKodu: json['StokKodu'] as String?,
@@ -20,7 +21,8 @@ _$PaketlemeListesiRequestModelImpl _$$PaketlemeListesiRequestModelImplFromJson(M
       paketId: (json['PaketID'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$PaketlemeListesiRequestModelImplToJson(_$PaketlemeListesiRequestModelImpl instance) =>
+Map<String, dynamic> _$$PaketlemeListesiRequestModelImplToJson(
+        _$PaketlemeListesiRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.id case final value?) 'ID': value,
       if (instance.stokKodu case final value?) 'StokKodu': value,

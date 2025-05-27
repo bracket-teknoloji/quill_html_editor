@@ -9,7 +9,8 @@ part of 'base_fatura_kalemler_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseFaturaKalemlerViewModel on BaseFaturaKalemlerViewModelBase, Store {
-  late final _$kalemListAtom = Atom(name: 'BaseFaturaKalemlerViewModelBase.kalemList', context: context);
+  late final _$kalemListAtom =
+      Atom(name: 'BaseFaturaKalemlerViewModelBase.kalemList', context: context);
 
   @override
   ObservableList<KalemModel>? get kalemList {
@@ -24,16 +25,14 @@ mixin _$BaseFaturaKalemlerViewModel on BaseFaturaKalemlerViewModelBase, Store {
     });
   }
 
-  late final _$BaseFaturaKalemlerViewModelBaseActionController = ActionController(
-    name: 'BaseFaturaKalemlerViewModelBase',
-    context: context,
-  );
+  late final _$BaseFaturaKalemlerViewModelBaseActionController =
+      ActionController(
+          name: 'BaseFaturaKalemlerViewModelBase', context: context);
 
   @override
   void removeAtKalemList(int index) {
-    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController.startAction(
-      name: 'BaseFaturaKalemlerViewModelBase.removeAtKalemList',
-    );
+    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController
+        .startAction(name: 'BaseFaturaKalemlerViewModelBase.removeAtKalemList');
     try {
       return super.removeAtKalemList(index);
     } finally {
@@ -43,9 +42,8 @@ mixin _$BaseFaturaKalemlerViewModel on BaseFaturaKalemlerViewModelBase, Store {
 
   @override
   void updateKalemList() {
-    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController.startAction(
-      name: 'BaseFaturaKalemlerViewModelBase.updateKalemList',
-    );
+    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController
+        .startAction(name: 'BaseFaturaKalemlerViewModelBase.updateKalemList');
     try {
       return super.updateKalemList();
     } finally {

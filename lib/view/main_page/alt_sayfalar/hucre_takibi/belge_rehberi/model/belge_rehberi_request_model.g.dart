@@ -6,7 +6,8 @@ part of 'belge_rehberi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BelgeRehberiRequestModelImpl _$$BelgeRehberiRequestModelImplFromJson(Map<String, dynamic> json) =>
+_$BelgeRehberiRequestModelImpl _$$BelgeRehberiRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$BelgeRehberiRequestModelImpl(
       depoKodu: (json['DepoKodu'] as num?)?.toInt(),
       islemTuru: json['IslemTuru'] as String?,
@@ -14,7 +15,8 @@ _$BelgeRehberiRequestModelImpl _$$BelgeRehberiRequestModelImplFromJson(Map<Strin
       searchText: json['SearchText'] as String?,
     );
 
-Map<String, dynamic> _$$BelgeRehberiRequestModelImplToJson(_$BelgeRehberiRequestModelImpl instance) =>
+Map<String, dynamic> _$$BelgeRehberiRequestModelImplToJson(
+        _$BelgeRehberiRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.depoKodu case final value?) 'DepoKodu': value,
       if (instance.islemTuru case final value?) 'IslemTuru': value,

@@ -10,9 +10,8 @@ part of 'kullanici_haritasi_view_model.dart';
 
 mixin _$KullaniciHaritasiViewModel on _KullaniciHaritasiViewModelBase, Store {
   late final _$kullaniciHaritasiListAtom = Atom(
-    name: '_KullaniciHaritasiViewModelBase.kullaniciHaritasiList',
-    context: context,
-  );
+      name: '_KullaniciHaritasiViewModelBase.kullaniciHaritasiList',
+      context: context);
 
   @override
   ObservableList<KullaniciHaritasiModel>? get kullaniciHaritasiList {
@@ -22,12 +21,14 @@ mixin _$KullaniciHaritasiViewModel on _KullaniciHaritasiViewModelBase, Store {
 
   @override
   set kullaniciHaritasiList(ObservableList<KullaniciHaritasiModel>? value) {
-    _$kullaniciHaritasiListAtom.reportWrite(value, super.kullaniciHaritasiList, () {
+    _$kullaniciHaritasiListAtom.reportWrite(value, super.kullaniciHaritasiList,
+        () {
       super.kullaniciHaritasiList = value;
     });
   }
 
-  late final _$markerSetAtom = Atom(name: '_KullaniciHaritasiViewModelBase.markerSet', context: context);
+  late final _$markerSetAtom =
+      Atom(name: '_KullaniciHaritasiViewModelBase.markerSet', context: context);
 
   @override
   ObservableSet<Marker> get markerSet {
@@ -42,23 +43,22 @@ mixin _$KullaniciHaritasiViewModel on _KullaniciHaritasiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_KullaniciHaritasiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_KullaniciHaritasiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KullaniciHaritasiViewModelBaseActionController = ActionController(
-    name: '_KullaniciHaritasiViewModelBase',
-    context: context,
-  );
+  late final _$_KullaniciHaritasiViewModelBaseActionController =
+      ActionController(
+          name: '_KullaniciHaritasiViewModelBase', context: context);
 
   @override
   void addMarker(Marker marker) {
-    final _$actionInfo = _$_KullaniciHaritasiViewModelBaseActionController.startAction(
-      name: '_KullaniciHaritasiViewModelBase.addMarker',
-    );
+    final _$actionInfo = _$_KullaniciHaritasiViewModelBaseActionController
+        .startAction(name: '_KullaniciHaritasiViewModelBase.addMarker');
     try {
       return super.addMarker(marker);
     } finally {
@@ -68,9 +68,9 @@ mixin _$KullaniciHaritasiViewModel on _KullaniciHaritasiViewModelBase, Store {
 
   @override
   void setKullaniciHaritasiList(List<KullaniciHaritasiModel> value) {
-    final _$actionInfo = _$_KullaniciHaritasiViewModelBaseActionController.startAction(
-      name: '_KullaniciHaritasiViewModelBase.setKullaniciHaritasiList',
-    );
+    final _$actionInfo =
+        _$_KullaniciHaritasiViewModelBaseActionController.startAction(
+            name: '_KullaniciHaritasiViewModelBase.setKullaniciHaritasiList');
     try {
       return super.setKullaniciHaritasiList(value);
     } finally {

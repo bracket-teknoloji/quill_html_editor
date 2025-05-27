@@ -13,7 +13,9 @@ class MainPageModelAdapter extends TypeAdapter<MainPageModel> {
   @override
   MainPageModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
     return MainPageModel()
       ..userModel = fields[0] as UserModel?
       ..serviceVersion = fields[1] as String?
@@ -44,26 +46,36 @@ class MainPageModelAdapter extends TypeAdapter<MainPageModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MainPageModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is MainPageModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) => MainPageModel()
-  ..userModel = json['UserModel'] == null ? null : UserModel.fromJson(json['UserModel'] as Map<String, dynamic>)
-  ..serviceVersion = json['ServiceVersion'] as String?
-  ..langVersion = json['LangVersion'] as String?
-  ..sirketModel = SirketModel.fromJson(json['SirketModel'] as Map<String, dynamic>)
-  ..menuList = (json['MenuList'] as List<dynamic>?)?.map((e) => e as String).toList()
-  ..paramModel = ParamModel.fromJson(json['ParamModel'] as Map<String, dynamic>);
+MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
+    MainPageModel()
+      ..userModel = json['UserModel'] == null
+          ? null
+          : UserModel.fromJson(json['UserModel'] as Map<String, dynamic>)
+      ..serviceVersion = json['ServiceVersion'] as String?
+      ..langVersion = json['LangVersion'] as String?
+      ..sirketModel =
+          SirketModel.fromJson(json['SirketModel'] as Map<String, dynamic>)
+      ..menuList =
+          (json['MenuList'] as List<dynamic>?)?.map((e) => e as String).toList()
+      ..paramModel =
+          ParamModel.fromJson(json['ParamModel'] as Map<String, dynamic>);
 
-Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) => <String, dynamic>{
-  if (instance.userModel?.toJson() case final value?) 'UserModel': value,
-  if (instance.serviceVersion case final value?) 'ServiceVersion': value,
-  if (instance.langVersion case final value?) 'LangVersion': value,
-  if (instance.sirketModel?.toJson() case final value?) 'SirketModel': value,
-  if (instance.menuList case final value?) 'MenuList': value,
-  if (instance.paramModel?.toJson() case final value?) 'ParamModel': value,
-};
+Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) =>
+    <String, dynamic>{
+      if (instance.userModel?.toJson() case final value?) 'UserModel': value,
+      if (instance.serviceVersion case final value?) 'ServiceVersion': value,
+      if (instance.langVersion case final value?) 'LangVersion': value,
+      if (instance.sirketModel?.toJson() case final value?)
+        'SirketModel': value,
+      if (instance.menuList case final value?) 'MenuList': value,
+      if (instance.paramModel?.toJson() case final value?) 'ParamModel': value,
+    };

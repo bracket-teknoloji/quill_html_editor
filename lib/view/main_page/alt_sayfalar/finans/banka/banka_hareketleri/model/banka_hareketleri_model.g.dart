@@ -6,11 +6,14 @@ part of 'banka_hareketleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(Map<String, dynamic> json) =>
+_$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
+        Map<String, dynamic> json) =>
     _$BankaHareketleriModelImpl(
       inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       netheskodu: json['NETHESKODU'] as String?,
-      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
       harturu: (json['HARTURU'] as num?)?.toInt(),
       ba: json['BA'] as String?,
       tutar: (json['TUTAR'] as num?)?.toDouble(),
@@ -42,37 +45,40 @@ _$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(Map<String, dyn
       taksitSayisi: (json['TAKSIT_SAYISI'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$BankaHareketleriModelImplToJson(_$BankaHareketleriModelImpl instance) => <String, dynamic>{
-  if (instance.inckeyno case final value?) 'INCKEYNO': value,
-  if (instance.netheskodu case final value?) 'NETHESKODU': value,
-  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.harturu case final value?) 'HARTURU': value,
-  if (instance.ba case final value?) 'BA': value,
-  if (instance.tutar case final value?) 'TUTAR': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.entegrefkey case final value?) 'ENTEGREFKEY': value,
-  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-  if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
-  if (instance.hareketTipi case final value?) 'HAREKET_TIPI': value,
-  if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
-  if (instance.hareketAciklama case final value?) 'HAREKET_ACIKLAMA': value,
-  if (instance.bankaKodu case final value?) 'BANKA_KODU': value,
-  if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
-  if (instance.bankasubeKodu case final value?) 'BANKASUBE_KODU': value,
-  if (instance.subeAdi case final value?) 'SUBE_ADI': value,
-  if (instance.belgeno case final value?) 'BELGENO': value,
-  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-  if (instance.cariKodu case final value?) 'CARI_KODU': value,
-  if (instance.cariAdi case final value?) 'CARI_ADI': value,
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.kasaKodu case final value?) 'KASA_KODU': value,
-  if (instance.kasaAdi case final value?) 'KASA_ADI': value,
-  if (instance.entegreKasaKodu case final value?) 'ENTEGRE_KASA_KODU': value,
-  if (instance.sozlesmeKodu case final value?) 'SOZLESME_KODU': value,
-  if (instance.projeKodu case final value?) 'PROJE_KODU': value,
-  if (instance.projeAciklama case final value?) 'PROJE_ACIKLAMA': value,
-  if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
-  if (instance.plasiyerAdi case final value?) 'PLASIYER_ADI': value,
-  if (instance.nakitmi case final value?) 'NAKITMI': value,
-  if (instance.taksitSayisi case final value?) 'TAKSIT_SAYISI': value,
-};
+Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
+        _$BankaHareketleriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.netheskodu case final value?) 'NETHESKODU': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.harturu case final value?) 'HARTURU': value,
+      if (instance.ba case final value?) 'BA': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.entegrefkey case final value?) 'ENTEGREFKEY': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.hareketTipi case final value?) 'HAREKET_TIPI': value,
+      if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
+      if (instance.hareketAciklama case final value?) 'HAREKET_ACIKLAMA': value,
+      if (instance.bankaKodu case final value?) 'BANKA_KODU': value,
+      if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
+      if (instance.bankasubeKodu case final value?) 'BANKASUBE_KODU': value,
+      if (instance.subeAdi case final value?) 'SUBE_ADI': value,
+      if (instance.belgeno case final value?) 'BELGENO': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.kasaAdi case final value?) 'KASA_ADI': value,
+      if (instance.entegreKasaKodu case final value?)
+        'ENTEGRE_KASA_KODU': value,
+      if (instance.sozlesmeKodu case final value?) 'SOZLESME_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.projeAciklama case final value?) 'PROJE_ACIKLAMA': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.plasiyerAdi case final value?) 'PLASIYER_ADI': value,
+      if (instance.nakitmi case final value?) 'NAKITMI': value,
+      if (instance.taksitSayisi case final value?) 'TAKSIT_SAYISI': value,
+    };

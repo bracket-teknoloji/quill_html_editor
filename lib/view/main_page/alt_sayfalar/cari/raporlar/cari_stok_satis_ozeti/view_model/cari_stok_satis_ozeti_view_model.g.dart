@@ -13,12 +13,15 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   ObservableList<CariStokSatisOzetiModel>? get filteredList =>
-      (_$filteredListComputed ??= Computed<ObservableList<CariStokSatisOzetiModel>?>(
-        () => super.filteredList,
-        name: '_CariStokSatisOzetiViewModelBase.filteredList',
-      )).value;
+      (_$filteredListComputed ??=
+              Computed<ObservableList<CariStokSatisOzetiModel>?>(
+                  () => super.filteredList,
+                  name: '_CariStokSatisOzetiViewModelBase.filteredList'))
+          .value;
 
-  late final _$donemTipiIndexAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.donemTipiIndex', context: context);
+  late final _$donemTipiIndexAtom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.donemTipiIndex',
+      context: context);
 
   @override
   int get donemTipiIndex {
@@ -33,7 +36,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$irsDahilAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.irsDahil', context: context);
+  late final _$irsDahilAtom =
+      Atom(name: '_CariStokSatisOzetiViewModelBase.irsDahil', context: context);
 
   @override
   bool get irsDahil {
@@ -48,7 +52,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.searchText', context: context);
 
   @override
   String get searchText {
@@ -63,7 +68,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$arrStokGrupKoduAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.arrStokGrupKodu', context: context);
+  late final _$arrStokGrupKoduAtom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.arrStokGrupKodu',
+      context: context);
 
   @override
   ObservableList<String> get arrStokGrupKodu {
@@ -78,7 +85,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$arrStokKod1Atom = Atom(name: '_CariStokSatisOzetiViewModelBase.arrStokKod1', context: context);
+  late final _$arrStokKod1Atom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.arrStokKod1', context: context);
 
   @override
   ObservableList<String> get arrStokKod1 {
@@ -93,7 +101,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$arrStokKod2Atom = Atom(name: '_CariStokSatisOzetiViewModelBase.arrStokKod2', context: context);
+  late final _$arrStokKod2Atom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.arrStokKod2', context: context);
 
   @override
   ObservableList<String> get arrStokKod2 {
@@ -108,7 +117,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$arrStokKod3Atom = Atom(name: '_CariStokSatisOzetiViewModelBase.arrStokKod3', context: context);
+  late final _$arrStokKod3Atom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.arrStokKod3', context: context);
 
   @override
   ObservableList<String> get arrStokKod3 {
@@ -123,7 +133,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$arrStokKod4Atom = Atom(name: '_CariStokSatisOzetiViewModelBase.arrStokKod4', context: context);
+  late final _$arrStokKod4Atom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.arrStokKod4', context: context);
 
   @override
   ObservableList<String> get arrStokKod4 {
@@ -138,7 +149,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$arrStokKod5Atom = Atom(name: '_CariStokSatisOzetiViewModelBase.arrStokKod5', context: context);
+  late final _$arrStokKod5Atom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.arrStokKod5', context: context);
 
   @override
   ObservableList<String> get arrStokKod5 {
@@ -153,7 +165,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$siralaAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.sirala', context: context);
+  late final _$siralaAtom =
+      Atom(name: '_CariStokSatisOzetiViewModelBase.sirala', context: context);
 
   @override
   String get sirala {
@@ -168,7 +181,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -183,7 +197,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.model', context: context);
+  late final _$modelAtom =
+      Atom(name: '_CariStokSatisOzetiViewModelBase.model', context: context);
 
   @override
   CariListesiModel? get model {
@@ -198,7 +213,8 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$modelListAtom = Atom(name: '_CariStokSatisOzetiViewModelBase.modelList', context: context);
+  late final _$modelListAtom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.modelList', context: context);
 
   @override
   ObservableList<CariStokSatisOzetiModel>? get modelList {
@@ -213,188 +229,189 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$_CariStokSatisOzetiViewModelBaseActionController = ActionController(
-    name: '_CariStokSatisOzetiViewModelBase',
-    context: context,
-  );
+  late final _$_CariStokSatisOzetiViewModelBaseActionController =
+      ActionController(
+          name: '_CariStokSatisOzetiViewModelBase', context: context);
 
   @override
   void deleteAllArr() {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.deleteAllArr',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.deleteAllArr');
     try {
       return super.deleteAllArr();
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setIrsDahil(bool value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setIrsDahil',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setIrsDahil');
     try {
       return super.setIrsDahil(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setArrStokGrupKodu(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setArrStokGrupKodu',
-    );
+    final _$actionInfo =
+        _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+            name: '_CariStokSatisOzetiViewModelBase.setArrStokGrupKodu');
     try {
       return super.setArrStokGrupKodu(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setArrStokKod1(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod1',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod1');
     try {
       return super.setArrStokKod1(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setArrStokKod2(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod2',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod2');
     try {
       return super.setArrStokKod2(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setArrStokKod3(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod3',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod3');
     try {
       return super.setArrStokKod3(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setArrStokKod4(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod4',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod4');
     try {
       return super.setArrStokKod4(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setArrStokKod5(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod5',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod5');
     try {
       return super.setArrStokKod5(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setDonemTipiIndex(int value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setDonemTipiIndex',
-    );
+    final _$actionInfo =
+        _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+            name: '_CariStokSatisOzetiViewModelBase.setDonemTipiIndex');
     try {
       return super.setDonemTipiIndex(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setSirala(String? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setSirala',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setSirala');
     try {
       return super.setSirala(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setModel(CariListesiModel? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setModel',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setModel');
     try {
       return super.setModel(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setSearchBar',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setSearchBar');
     try {
       return super.setSearchBar();
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setModelList(List<CariStokSatisOzetiModel>? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
-      name: '_CariStokSatisOzetiViewModelBase.setModelList',
-    );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setModelList');
     try {
       return super.setModelList(value);
     } finally {
-      _$_CariStokSatisOzetiViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

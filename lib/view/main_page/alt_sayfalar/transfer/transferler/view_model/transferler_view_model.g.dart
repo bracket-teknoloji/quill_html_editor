@@ -9,7 +9,8 @@ part of 'transferler_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
-  late final _$editTipiEnumAtom = Atom(name: '_TransferlerViewModelBase.editTipiEnum', context: context);
+  late final _$editTipiEnumAtom =
+      Atom(name: '_TransferlerViewModelBase.editTipiEnum', context: context);
 
   @override
   EditTipiEnum get editTipiEnum {
@@ -21,13 +22,15 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   set editTipiEnum(EditTipiEnum value) {
-    _$editTipiEnumAtom.reportWrite(value, _editTipiEnumIsInitialized ? super.editTipiEnum : null, () {
+    _$editTipiEnumAtom.reportWrite(
+        value, _editTipiEnumIsInitialized ? super.editTipiEnum : null, () {
       super.editTipiEnum = value;
       _editTipiEnumIsInitialized = true;
     });
   }
 
-  late final _$isScrollDownAtom = Atom(name: '_TransferlerViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_TransferlerViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -42,7 +45,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$isSearchBarOpenAtom = Atom(name: '_TransferlerViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_TransferlerViewModelBase.isSearchBarOpen', context: context);
 
   @override
   bool get isSearchBarOpen {
@@ -57,7 +61,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$ekstraAlanlarMapAtom = Atom(name: '_TransferlerViewModelBase.ekstraAlanlarMap', context: context);
+  late final _$ekstraAlanlarMapAtom = Atom(
+      name: '_TransferlerViewModelBase.ekstraAlanlarMap', context: context);
 
   @override
   ObservableMap<String, bool> get ekstraAlanlarMap {
@@ -72,7 +77,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom = Atom(name: '_TransferlerViewModelBase.observableList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_TransferlerViewModelBase.observableList', context: context);
 
   @override
   ObservableList<BaseSiparisEditModel>? get observableList {
@@ -87,7 +93,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_TransferlerViewModelBase.searchText', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_TransferlerViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -102,7 +109,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$faturaRequestModelAtom = Atom(name: '_TransferlerViewModelBase.faturaRequestModel', context: context);
+  late final _$faturaRequestModelAtom = Atom(
+      name: '_TransferlerViewModelBase.faturaRequestModel', context: context);
 
   @override
   SiparislerRequestModel get faturaRequestModel {
@@ -118,32 +126,31 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
   }
 
   late final _$changeSearchBarStatusAsyncAction = AsyncAction(
-    '_TransferlerViewModelBase.changeSearchBarStatus',
-    context: context,
-  );
+      '_TransferlerViewModelBase.changeSearchBarStatus',
+      context: context);
 
   @override
   Future<void> changeSearchBarStatus() {
-    return _$changeSearchBarStatusAsyncAction.run(() => super.changeSearchBarStatus());
+    return _$changeSearchBarStatusAsyncAction
+        .run(() => super.changeSearchBarStatus());
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_TransferlerViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_TransferlerViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_TransferlerViewModelBaseActionController = ActionController(
-    name: '_TransferlerViewModelBase',
-    context: context,
-  );
+  late final _$_TransferlerViewModelBaseActionController =
+      ActionController(name: '_TransferlerViewModelBase', context: context);
 
   @override
-  void setObservableList(List<BaseSiparisEditModel>? list, [bool isFirst = false]) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setObservableList',
-    );
+  void setObservableList(List<BaseSiparisEditModel>? list,
+      [bool isFirst = false]) {
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setObservableList');
     try {
       return super.setObservableList(list, isFirst);
     } finally {
@@ -153,9 +160,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void changeEkstraAlanlarMap(String key, bool value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.changeEkstraAlanlarMap',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.changeEkstraAlanlarMap');
     try {
       return super.changeEkstraAlanlarMap(key, value);
     } finally {
@@ -165,9 +171,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void resetEkstraAlanlarMap() {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.resetEkstraAlanlarMap',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.resetEkstraAlanlarMap');
     try {
       return super.resetEkstraAlanlarMap();
     } finally {
@@ -177,9 +182,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setIsScrollDown',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setIsScrollDown');
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -189,9 +193,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void increaseSayfa() {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.increaseSayfa',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.increaseSayfa');
     try {
       return super.increaseSayfa();
     } finally {
@@ -201,9 +204,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void setSiralama(String value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setSiralama',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setSiralama');
     try {
       return super.setSiralama(value);
     } finally {
@@ -213,9 +215,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -225,9 +226,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void addObservableList(List<BaseSiparisEditModel>? value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.addObservableList',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.addObservableList');
     try {
       return super.addObservableList(value);
     } finally {
@@ -237,9 +237,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void setLokalDAT(String? value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setLokalDAT',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setLokalDAT');
     try {
       return super.setLokalDAT(value);
     } finally {
@@ -249,9 +248,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(String? date) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setBaslangicTarihi');
     try {
       return super.setBaslangicTarihi(date);
     } finally {
@@ -261,9 +259,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? date) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(date);
     } finally {
@@ -273,9 +270,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void setOzelKod2(String? value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.setOzelKod2',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setOzelKod2');
     try {
       return super.setOzelKod2(value);
     } finally {
@@ -285,9 +281,8 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
 
   @override
   void resetFilter() {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController.startAction(
-      name: '_TransferlerViewModelBase.resetFilter',
-    );
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.resetFilter');
     try {
       return super.resetFilter();
     } finally {

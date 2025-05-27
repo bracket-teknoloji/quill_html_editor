@@ -9,7 +9,8 @@ part of 'main_page_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
-  late final _$titleListAtom = Atom(name: '_MainPageViewModelBase.titleList', context: context);
+  late final _$titleListAtom =
+      Atom(name: '_MainPageViewModelBase.titleList', context: context);
 
   @override
   ObservableList<String> get titleList {
@@ -24,7 +25,8 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
     });
   }
 
-  late final _$itemsAtom = Atom(name: '_MainPageViewModelBase.items', context: context);
+  late final _$itemsAtom =
+      Atom(name: '_MainPageViewModelBase.items', context: context);
 
   @override
   ObservableList<GridItemModel> get items {
@@ -39,7 +41,8 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
     });
   }
 
-  late final _$lastItemsAtom = Atom(name: '_MainPageViewModelBase.lastItems', context: context);
+  late final _$lastItemsAtom =
+      Atom(name: '_MainPageViewModelBase.lastItems', context: context);
 
   @override
   ObservableList<ObservableList<GridItemModel>> get lastItems {
@@ -54,14 +57,13 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
     });
   }
 
-  late final _$_MainPageViewModelBaseActionController = ActionController(
-    name: '_MainPageViewModelBase',
-    context: context,
-  );
+  late final _$_MainPageViewModelBaseActionController =
+      ActionController(name: '_MainPageViewModelBase', context: context);
 
   @override
   void addTitle(String value) {
-    final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(name: '_MainPageViewModelBase.addTitle');
+    final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(
+        name: '_MainPageViewModelBase.addTitle');
     try {
       return super.addTitle(value);
     } finally {
@@ -72,8 +74,7 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
   @override
   void removeLastTitle() {
     final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(
-      name: '_MainPageViewModelBase.removeLastTitle',
-    );
+        name: '_MainPageViewModelBase.removeLastTitle');
     try {
       return super.removeLastTitle();
     } finally {
@@ -83,7 +84,8 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
 
   @override
   void setItems(List<GridItemModel> value) {
-    final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(name: '_MainPageViewModelBase.setItems');
+    final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(
+        name: '_MainPageViewModelBase.setItems');
     try {
       return super.setItems(value);
     } finally {
@@ -94,8 +96,7 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
   @override
   void addLastItem(ObservableList<GridItemModel> value) {
     final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(
-      name: '_MainPageViewModelBase.addLastItem',
-    );
+        name: '_MainPageViewModelBase.addLastItem');
     try {
       return super.addLastItem(value);
     } finally {
@@ -106,8 +107,7 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
   @override
   void removeLastItem(BuildContext context) {
     final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(
-      name: '_MainPageViewModelBase.removeLastItem',
-    );
+        name: '_MainPageViewModelBase.removeLastItem');
     try {
       return super.removeLastItem(context);
     } finally {
