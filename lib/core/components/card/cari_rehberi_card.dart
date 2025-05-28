@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/listener/mouse_right_click_listener.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../base/state/base_state.dart";
@@ -33,7 +36,20 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
               dialogManager.showAlertDialog("Cari tüm işlemler için kilitli durumda.");
               return;
             }
-            Get.back(result: widget.model);
+            final newItem = await networkManager.getCariModel(
+              CariRequestModel(
+                kod: [widget.model.cariKodu!],
+                secildi: "E",
+                kisitYok: true,
+                belgeTuru: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+                eFaturaGoster: yetkiController.eFaturaAktif,
+                plasiyerKisitiYok: true,
+              ),
+            );
+            if (newItem == null) {
+              return;
+            }
+            Get.back(result: newItem);
           } else {
             widget.onPressed!(model);
           }

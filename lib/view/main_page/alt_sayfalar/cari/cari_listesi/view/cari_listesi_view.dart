@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/listener/mouse_right_click_listener.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/model/menu_item/menu_item_constants.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -289,13 +290,26 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
     child: Card(
       child: ListTile(
         onLongPress: () => showCariGrid(item),
-        onTap: () {
+        onTap: () async {
           if (widget.isGetData ?? false) {
             if (item.kilitliMi) {
               dialogManager.showAlertDialog("Cari tüm işlemler için kilitli durumda.");
               return;
             }
-            Get.back(result: item);
+            final newItem = await networkManager.getCariModel(
+              CariRequestModel(
+                kod: [item.cariKodu!],
+                secildi: "E",
+                kisitYok: true,
+                belgeTuru: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+                eFaturaGoster: yetkiController.eFaturaAktif,
+                plasiyerKisitiYok: true,
+              ),
+            );
+            if (newItem == null) {
+              return;
+            }
+            Get.back(result: newItem);
           } else {
             cariBottomSheet(context, item);
           }
