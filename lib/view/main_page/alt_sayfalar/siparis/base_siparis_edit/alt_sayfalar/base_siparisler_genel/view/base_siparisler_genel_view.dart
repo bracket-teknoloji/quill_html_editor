@@ -217,7 +217,9 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   }
                   viewModel
                     ..setCariAdi(cariModel.cariAdi)
+                    ..setKosulKodu(cariModel.kosulKodu)
                     ..setCariKodu(cariModel.cariKodu);
+                    kosulController.text = cariModel.kosulKodu ?? "";
                   belgeNoController.clear();
                   await getBelgeNo();
                 }

@@ -631,7 +631,11 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
     final GenericResponseModel<StokListesiModel> response = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
-      data: StokRehberiRequestModel.fromStokBottomSheetModel(viewModel.stokBottomSheetModel).copyWith(kosulKodu: BaseSiparisEditModel.instance.kosulKodu),
+      data: StokRehberiRequestModel.fromStokBottomSheetModel(viewModel.stokBottomSheetModel).copyWith(
+        kosulKodu: BaseSiparisEditModel.instance.kosulKodu,
+        ozelKod1: BaseSiparisEditModel.instance.ozelKod1,
+        ozelKod2: BaseSiparisEditModel.instance.ozelKod2,
+      ),
       bodyModel: StokListesiModel(),
       showLoading: true,
     );

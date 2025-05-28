@@ -1368,15 +1368,17 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       }
       // var stokResult = await networkManager.dioGet(path: ApiUrls.getStokFiyatOzeti, bodyModel: bodyModel)
     }
-    if (viewModel.model?.kosulUygulandiMi ?? false) {
+    if ((viewModel.model?.kosulUygulandiMi ?? false) && widget.stokListesiModel != null) {
       String snackBarText = "";
+      viewModel.setIskonto1OranMi(viewModel.model?.kosulIsk1Ot == "O");
+
       if (viewModel.model?.kosulIsk1 case final value?) {
-        snackBarText += "Koşul İskonto 1: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        snackBarText += "Koşul İskonto 1: %${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
         isk1Controller?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
         viewModel.setIskonto1(value);
       }
       if (viewModel.model?.kosulIsk2 case final value?) {
-        snackBarText += "Koşul İskonto 2: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        snackBarText += "Koşul İskonto 2: %${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
         isk2YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
         viewModel.setIskonto2(value);
       }
@@ -1386,17 +1388,17 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         viewModel.setIskonto3(value);
       }
       if (viewModel.model?.kosulIsk4 case final value?) {
-        snackBarText += "Koşul İskonto 4: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        snackBarText += "Koşul İskonto 4: %${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
         isk4YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
         viewModel.setIskonto4(value);
       }
       if (viewModel.model?.kosulIsk5 case final value?) {
-        snackBarText += "Koşul İskonto 5: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        snackBarText += "Koşul İskonto 5: %${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
         isk5YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
         viewModel.setIskonto5(value);
       }
       if (viewModel.model?.kosulIsk6 case final value?) {
-        snackBarText += "Koşul İskonto 6: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
+        snackBarText += "Koşul İskonto 6: %${value.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}\n";
         isk6YuzdeController?.text = value.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
         viewModel.setIskonto6(value);
       }
@@ -1527,6 +1529,18 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
           ..dovizTipi ??= (editTipi?.satisMi == true ? stokListesiModel?.satDovTip : viewModel.model?.alisDovTip)
           ..dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
       }
+    }
+    if (viewModel.model?.bulunanOlcuBirimi != null) {
+      viewModel.kalemModel.olcuBirimAdi = viewModel.model?.olcuBirimiSelector(viewModel.model?.bulunanOlcuBirimi);
+      viewModel.kalemModel.olcuBirimi = viewModel.model?.bulunanOlcuBirimi;
+      viewModel.setOlcuBirimi(
+        MapEntry<Olculer, int>(
+          viewModel.olcuBirimiMap.firstWhere(
+            (element) => element.adi == viewModel.kalemModel.olcuBirimAdi,
+          ),
+          viewModel.model?.bulunanOlcuBirimi ?? 0,
+        ),
+      );
     }
     if (yetkiController.satirdaVade(editTipi!) && viewModel.kalemModel.vadeTarihi == null) {
       if (model.vadeTarihi != null) {

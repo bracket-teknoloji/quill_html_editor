@@ -333,6 +333,7 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? isk4o;
   double? isk5o;
   double? isk6o;
+  int? bulunanOlcuBirimi;
 
   bool get kosulUygulandiMi => kosulUygulandi == "E";
   double? get satilabilirMiktar {
