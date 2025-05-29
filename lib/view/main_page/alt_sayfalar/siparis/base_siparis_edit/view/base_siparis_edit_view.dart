@@ -188,6 +188,8 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
             ..siparisTipi = model.editTipiEnum
             ..cariKodu = cariModel?.cariKodu
             ..cariAdi = cariModel?.cariAdi
+            ..plasiyerKodu ??= cariModel?.plasiyerKodu
+            ..plasiyerAciklama ??= cariModel?.plasiyerAciklama
             ..teslimCari = cariModel?.tempCariModel?.cariKodu
             ..teslimCariAdi = cariModel?.tempCariModel?.cariAdi
             ..kosulKodu = cariModel?.kosulKodu
