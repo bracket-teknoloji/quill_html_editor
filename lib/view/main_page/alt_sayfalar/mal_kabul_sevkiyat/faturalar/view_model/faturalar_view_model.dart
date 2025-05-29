@@ -5,6 +5,7 @@ import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/pageable_mixin.dart";
 import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/listable_mixin.dart";
@@ -20,7 +21,13 @@ part "faturalar_view_model.g.dart";
 final class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
 
 abstract class _FaturalarViewModelBase
-    with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, ScrollControllableMixin, PageableMixin {
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<BaseSiparisEditModel>,
+        ScrollControllableMixin,
+        PageableMixin,
+        SearchableMixin {
   _FaturalarViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(
       pickerBelgeTuru: pickerBelgeTuru,
@@ -216,9 +223,6 @@ abstract class _FaturalarViewModelBase
   void resetSayfa() => faturaRequestModel = faturaRequestModel.copyWith(sayfa: 1);
 
   @action
-  void setSearchText(String? value) => faturaRequestModel = faturaRequestModel.copyWith(searchText: value);
-
-  @action
   void setFaturalasmaGoster(bool value) {
     CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(irsFaturalasanIrsaliyelerGelsin: value));
     faturaRequestModel = faturaRequestModel.copyWith(faturalanmisIrsaliyelerGelsin: value);
@@ -322,7 +326,7 @@ abstract class _FaturalarViewModelBase
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getFaturalar,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: faturaRequestModel.toJson(),
+      queryParameters: faturaRequestModel.copyWith(searchText: searchText, sayfa: page).toJson(),
     );
     if (result.isSuccess) {
       if (page > 1) {
@@ -341,4 +345,23 @@ abstract class _FaturalarViewModelBase
       }
     }
   }
+
+  @override
+  @action
+  void changeSearchBarStatus() {
+    isSearchBarOpen = !isSearchBarOpen;
+    if (!isSearchBarOpen) searchText = null;
+  }
+
+  @override
+  @observable
+  bool isSearchBarOpen = false;
+
+  @override
+  @observable
+  String? searchText;
+
+  @override
+  @action
+  void setSearchText(String? value) => searchText = value;
 }

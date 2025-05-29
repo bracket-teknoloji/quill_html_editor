@@ -145,9 +145,6 @@ abstract class _TransferlerViewModelBase
   void setIsScrollDown(bool value) => isScrollDown = value;
 
   @action
-  void increaseSayfa() => faturaRequestModel = faturaRequestModel.copyWith(sayfa: faturaRequestModel.sayfa! + 1);
-
-  @action
   void setSiralama(String value) => faturaRequestModel = faturaRequestModel.copyWith(siralama: value);
 
   @action

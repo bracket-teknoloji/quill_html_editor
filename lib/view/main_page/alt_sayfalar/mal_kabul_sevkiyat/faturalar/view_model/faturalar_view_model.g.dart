@@ -240,6 +240,38 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_FaturalarViewModelBase.isSearchBarOpen', context: context);
+
+  @override
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
+  }
+
+  @override
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
+    });
+  }
+
+  late final _$searchTextAtom =
+      Atom(name: '_FaturalarViewModelBase.searchText', context: context);
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
+    });
+  }
+
   late final _$changeScrollStatusAsyncAction = AsyncAction(
       '_FaturalarViewModelBase.changeScrollStatus',
       context: context);
@@ -451,17 +483,6 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void setSearchText(String? value) {
-    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.setSearchText');
-    try {
-      return super.setSearchText(value);
-    } finally {
-      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setFaturalasmaGoster(bool value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.setFaturalasmaGoster');
@@ -627,6 +648,28 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
+  void changeSearchBarStatus() {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.changeSearchBarStatus');
+    try {
+      return super.changeSearchBarStatus();
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSearchText(String? value) {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.setSearchText');
+    try {
+      return super.setSearchText(value);
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 kodlariGoster: ${kodlariGoster},
@@ -640,6 +683,8 @@ grupKodlariGoster: ${grupKodlariGoster},
 observableList: ${observableList},
 teslimatDurumuValueList: ${teslimatDurumuValueList},
 grupKodList: ${grupKodList},
+isSearchBarOpen: ${isSearchBarOpen},
+searchText: ${searchText},
 getGrupKod0: ${getGrupKod0},
 getGrupKod1: ${getGrupKod1},
 getGrupKod2: ${getGrupKod2},

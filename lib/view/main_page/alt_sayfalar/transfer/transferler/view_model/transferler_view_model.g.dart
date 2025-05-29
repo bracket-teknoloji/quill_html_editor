@@ -192,17 +192,6 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
   }
 
   @override
-  void increaseSayfa() {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController
-        .startAction(name: '_TransferlerViewModelBase.increaseSayfa');
-    try {
-      return super.increaseSayfa();
-    } finally {
-      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setSiralama(String value) {
     final _$actionInfo = _$_TransferlerViewModelBaseActionController
         .startAction(name: '_TransferlerViewModelBase.setSiralama');
