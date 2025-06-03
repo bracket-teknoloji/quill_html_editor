@@ -326,7 +326,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['transfer_DAT_KacGunlukKayitlarListelensin'] as num?)?.toInt()
       ..transferDatOnayIslemleri = json['transfer_DAT_OnayIslemleri'] as bool?
       ..transferDatOnayIslemleriDepolar =
-          json['transfer_DAT_OnayIslemleri_Depolar'] as List<dynamic>?
+          (json['transfer_DAT_OnayIslemleri_Depolar'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
       ..transferDatEkAlan2Hatirla = json['transfer_DAT_EkAlan2Hatirla'] as bool?
       ..transferDatEkAlan2Tablodan =
           json['transfer_DAT_EkAlan2Tablodan'] as bool?

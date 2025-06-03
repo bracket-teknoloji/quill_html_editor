@@ -29,7 +29,6 @@ import "../../../../../../../view/main_page/alt_sayfalar/siparis/siparisler/mode
 import "../../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../../../../view/main_page/model/grid_item_model.dart";
 import "../../../../../../../view/main_page/model/param_model.dart";
-import "../../../../../../../view/main_page/model/user_model/profil_yetki_model.dart";
 import "../../../../../../base/model/base_edit_model.dart";
 import "../../../../../../base/model/edit_fatura_model.dart";
 import "../../../../../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -41,7 +40,6 @@ import "../../../../../../constants/enum/islem_tipi_enum.dart";
 import "../../../../../../constants/extensions/list_extensions.dart";
 import "../../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../../../constants/yetki_controller/yetki_controller.dart";
-import "../../../../../../init/cache/cache_manager.dart";
 import "../../../../../../init/network/login/api_urls.dart";
 import "../../../../../../init/network/network_manager.dart";
 import "../../../../../../init/theme/app_theme_dark.dart";
