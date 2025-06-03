@@ -267,6 +267,8 @@ final class YetkiController {
   bool get seriIslemleri => _isTrue(_paramModel?.seriUygulamasiAcik);
   // bool get seriIslemEkle => _isTrue(_yetkiModel?.kaydet)
 
+  bool get stokSeriHareketleri => _isTrue(_profilYetkiModel?.stokSeriHar);
+
   //* Stok Kartı
   bool get stokKarti => _isTrue(_profilYetkiModel?.stokStokKarti);
   bool get stokDepoBakiyeDurumu => _isTrue(
@@ -537,6 +539,15 @@ final class YetkiController {
 
   //! FİNANS
   bool get hizliTahsilatSil => _isTrue(_profilYetkiModel?.finansHizliTahsilatKayitlariSil);
+  bool get krediKartiTahsilat => _isTrue(_profilYetkiModel?.finansKKartiTahsilati);
+  bool get nakitOdeme => _isTrue(_profilYetkiModel?.tahsilatNakitOdeme);
+  bool get nakitTahsilat => _isTrue(_profilYetkiModel?.tahsilatNakitTahsilat);
+  bool get cekTahsilat => _isTrue(_profilYetkiModel?.tahsilatCekTahsilat);
+  bool get senetTahsilat => _isTrue(_profilYetkiModel?.tahsilatSenetTahsilat);
+  bool get borcSenedi => _isTrue(_profilYetkiModel?.finansSenetBorc);
+  bool get borcCeki => _isTrue(_profilYetkiModel?.finansCekBorc);
+  bool get cariVirman => _isTrue(_profilYetkiModel?.cariVirman);
+
   bool referansKoduSorulsun(bool tahsilatMi) => tahsilatMi ? tahsilatReferansKoduSorulsun : odemeReferansKoduSorulsun;
   bool referansKodu(String? hesapTipi) {
     if (hesapTipi == null) return false;
@@ -646,9 +657,9 @@ final class YetkiController {
   bool alisFatDegistirilmeyecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.malKabulAlisFatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
 
-      bool musteriSiparisiDegistirilmeyecekAlanlar(String? index) =>
+  bool musteriSiparisiDegistirilmeyecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
-      bool saticiSiparisiDegistirilmeyecekAlanlar(String? index) =>
+  bool saticiSiparisiDegistirilmeyecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.siparisSaticiSiparisiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
 
   bool satisIrsBosGecilmeyecekAlanlar(String? value) =>
@@ -1145,6 +1156,14 @@ final class YetkiController {
   bool get transferDatCarininDepoGetir => _isTrue(_profilYetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
   bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_profilYetkiModel?.transferDatEIrsIsaretleyemesin);
   bool get transferDatOnay => _isTrue(_profilYetkiModel?.transferDatOnayIslemleri);
+  bool transferDatOnayIslemleriDepolar(int index) => _isTrue(
+    _profilYetkiModel?.transferDatOnayIslemleriDepolar == null
+        ? false
+        : (index < 1
+                  ? _profilYetkiModel?.transferDatOnayIslemleriDepolar?.isNotEmpty
+                  : _profilYetkiModel?.transferDatOnayIslemleriDepolar?.contains(index)) ??
+              false,
+  );
   // bool get transferDatKayittanSonraBasimYap => _isTrue(_yetkiModel?.transferkayit);
 
   //* Ambar Giriş Fişi
@@ -1275,6 +1294,8 @@ final class YetkiController {
   bool get kopyalaAlisTalebi => _isTrue(_profilYetkiModel?.taltekAtalBelgeKopyala);
   bool get kopyalaAmbarGirisi => _isTrue(_profilYetkiModel?.transferAgBelgeKopyala);
   bool get kopyalaAmbarCikisi => _isTrue(_profilYetkiModel?.transferAcBelgeKopyala);
+
+  bool get cariHarita => _isTrue(_profilYetkiModel?.cariHarita);
 
   //! Cari Kodu Değiştir
   bool get cariKoduDegistirMusSip => _isTrue(_profilYetkiModel?.siparisMusSipCariKoduDegistir);

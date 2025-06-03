@@ -331,7 +331,7 @@ final class IslemlerMenuItemConstants<T> {
           siparisModel.datOnayda == "E" &&
               (AccountModel.instance.adminMi ||
                   (_yetkiController.transferDatOnay &&
-                      (_userModel!.transferDatOnayIslemleriDepolar?.contains(siparisModel.topluDepo ?? -1) ?? false))),
+                      (_yetkiController.transferDatOnayIslemleriDepolar(siparisModel.topluDepo ?? -1)))),
           transferOnayla,
         )
         ..add(siparisPDFGoruntule)
@@ -352,7 +352,7 @@ final class IslemlerMenuItemConstants<T> {
   DialogManager get _dialogManager => DialogManager();
   NetworkManager get _networkManager => NetworkManager();
   YetkiController get _yetkiController => YetkiController();
-  ProfilYetkiModel? get _userModel => CacheManager.getAnaVeri?.userModel?.profilYetki;
+  // ProfilYetkiModel? get _userModel => CacheManager.getAnaVeri?.userModel?.profilYetki;
   BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
 
   GridItemModel get cariHareketleri => GridItemModel.islemler(
@@ -643,7 +643,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get seriHareketleri => GridItemModel.islemler(
     title: "Seri Hareketleri",
     isEnabled:
-        (_userModel?.stokSeriHar == true &&
+        (_yetkiController.stokSeriHareketleri &&
             ((model as StokListesiModel).seriCikislardaAcik == true ||
                 (model as StokListesiModel).seriGirislerdeAcik == true)) ||
         AccountModel.instance.adminMi,
@@ -656,7 +656,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get seriBakiyeleri => GridItemModel.islemler(
     title: "Seri Bakiye Durumu",
     isEnabled:
-        ((_yetkiController.stokDepoBakiyeDurumu || _userModel?.stokSeriHar == true) &&
+        ((_yetkiController.stokDepoBakiyeDurumu || _yetkiController.stokSeriHareketleri) &&
             ((model as StokListesiModel).seriCikislardaAcik == true ||
                 (model as StokListesiModel).seriGirislerdeAcik == true)) ||
         AccountModel.instance.adminMi,
@@ -900,25 +900,25 @@ final class IslemlerMenuItemConstants<T> {
 
   GridItemModel get borcCeki => GridItemModel.islemler(
     title: "Borç Çeki",
-    isEnabled: _userModel?.finansCekBorc,
+    isEnabled: _yetkiController.borcCeki,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/cekBorcTahsilat", arguments: model),
   );
   GridItemModel get borcSenedi => GridItemModel.islemler(
     title: "Borç Senedi",
-    isEnabled: _userModel?.finansSenetBorc,
+    isEnabled: _yetkiController.borcSenedi,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/senetBorcTahsilat", arguments: model),
   );
   GridItemModel get cekTahsilati => GridItemModel.islemler(
     title: "Senet tahsilatı",
-    isEnabled: _userModel?.tahsilatSenetTahsilat,
+    isEnabled: _yetkiController.senetTahsilat,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/senetMusteriTahsilat", arguments: model),
   );
   GridItemModel get tahsilatSenedi => GridItemModel.islemler(
     title: "Çek Tahsilatı",
-    isEnabled: _userModel?.tahsilatCekTahsilat,
+    isEnabled: _yetkiController.cekTahsilat,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/cekMusteriTahsilat", arguments: model),
   );
@@ -948,7 +948,7 @@ final class IslemlerMenuItemConstants<T> {
   );
   GridItemModel get cariVirman => GridItemModel.islemler(
     title: "Cari Virman",
-    isEnabled: _userModel?.cariVirman,
+    isEnabled: _yetkiController.cariVirman,
     iconData: Icons.sync_alt_outlined,
     onTap: () async => await Get.toNamed("/mainPage/cariVirman", arguments: model),
   );
@@ -976,19 +976,19 @@ final class IslemlerMenuItemConstants<T> {
   );
   GridItemModel krediKartiTahsilati(dynamic value) => GridItemModel.islemler(
     title: "Kredi Kartı Tahsilatı",
-    isEnabled: _userModel?.tahsilatKKartiTahsilat,
+    isEnabled: _yetkiController.krediKartiTahsilat,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/krediKartiTahsilati", arguments: value),
   );
   GridItemModel nakitTahsilat(dynamic value) => GridItemModel.islemler(
     title: "Nakit Tahsilat",
-    isEnabled: _userModel?.tahsilatNakitTahsilat,
+    isEnabled: _yetkiController.nakitTahsilat,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/nakitTahsilat", arguments: value),
   );
   GridItemModel nakitOdeme(dynamic value) => GridItemModel.islemler(
     title: "Nakit Ödeme",
-    isEnabled: _userModel?.tahsilatNakitOdeme,
+    isEnabled: _yetkiController.nakitOdeme,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/nakitOdeme", arguments: value),
   );
@@ -1165,7 +1165,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get konumGoster => GridItemModel.islemler(
     title: "Konum Göster",
     iconData: Icons.location_on_outlined,
-    isEnabled: _userModel?.cariHarita == true || AccountModel.instance.adminMi,
+    isEnabled: _yetkiController.cariHarita || AccountModel.instance.adminMi,
     onTap: () async {
       if (model is CariListesiModel) {
         final CariListesiModel cariModel = model as CariListesiModel;
@@ -1186,7 +1186,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get konumaGit => GridItemModel.islemler(
     title: "Konuma Git",
     iconData: Icons.location_on_outlined,
-    isEnabled: _userModel?.cariHarita == true || AccountModel.instance.adminMi,
+    isEnabled: _yetkiController.cariHarita || AccountModel.instance.adminMi,
     onTap: () async {
       if (model is CariListesiModel) {
         final CariListesiModel cariModel = model as CariListesiModel;
@@ -1212,7 +1212,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get konumAta => GridItemModel.islemler(
     title: "Konum Ata",
     iconData: Icons.location_on_outlined,
-    isEnabled: (_userModel?.cariHarita == true || AccountModel.instance.adminMi) && _yetkiController.cariKartiDuzenleme,
+    isEnabled: (_yetkiController.cariHarita || AccountModel.instance.adminMi) && _yetkiController.cariKartiDuzenleme,
     onTap: () async {
       if (model is CariListesiModel) {
         final CariListesiModel cariModel = model as CariListesiModel;

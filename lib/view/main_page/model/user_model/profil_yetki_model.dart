@@ -326,7 +326,7 @@ final class ProfilYetkiModel {
   @JsonKey(name: "transfer_DAT_OnayIslemleri")
   bool? transferDatOnayIslemleri;
   @JsonKey(name: "transfer_DAT_OnayIslemleri_Depolar")
-  List<dynamic>? transferDatOnayIslemleriDepolar;
+  List<int>? transferDatOnayIslemleriDepolar;
   @JsonKey(name: "transfer_DAT_EkAlan2Hatirla")
   bool? transferDatEkAlan2Hatirla;
   @JsonKey(name: "transfer_DAT_EkAlan2Tablodan")
