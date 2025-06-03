@@ -42,6 +42,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   late final TextEditingController _plasiyerController;
   late final TextEditingController _projekoduController;
   late final TextEditingController _referansKoduController;
+  late final TextEditingController _raporKodu2Controller;
   late final TextEditingController _kasaHareketiAciklamaController;
   late final TextEditingController _cariHareketiAciklamaController;
 
@@ -64,6 +65,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
     _projekoduController = TextEditingController(text: yetkiController.varsayilanProje?.projeAciklama ?? "");
     _referansKoduController = TextEditingController();
+    _raporKodu2Controller = TextEditingController();
     _kasaHareketiAciklamaController = TextEditingController();
     _cariHareketiAciklamaController = TextEditingController();
     if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
@@ -126,6 +128,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     _plasiyerController.dispose();
     _projekoduController.dispose();
     _referansKoduController.dispose();
+    _raporKodu2Controller.dispose();
     _kasaHareketiAciklamaController.dispose();
     _cariHareketiAciklamaController.dispose();
     super.dispose();
@@ -449,6 +452,12 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                 }
                 return const SizedBox.shrink();
               },
+            ),
+            CustomTextField(
+              labelText: "Rapor Kodu 2",
+              controller: _raporKodu2Controller,
+              maxLength: 15,
+              onChanged: (value) => viewModel.setRaporKodu2(value),
             ),
             CustomTextField(
               labelText: "Kasa Hareketi Açıklama",

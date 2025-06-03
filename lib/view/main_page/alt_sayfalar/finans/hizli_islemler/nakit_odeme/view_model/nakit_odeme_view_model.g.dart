@@ -276,6 +276,17 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   }
 
   @override
+  void setRaporKodu2(String? value) {
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setRaporKodu2');
+    try {
+      return super.setRaporKodu2(value);
+    } finally {
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAciklama(String? value) {
     final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
         name: '_NakitOdemeViewModelBase.setAciklama');

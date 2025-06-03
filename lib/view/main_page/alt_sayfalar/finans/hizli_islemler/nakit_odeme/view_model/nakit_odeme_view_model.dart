@@ -95,6 +95,8 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setRaporKodu2(String? value) => model = model.copyWith(raporKodu2: value);
+  @action
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);
 
   @action
