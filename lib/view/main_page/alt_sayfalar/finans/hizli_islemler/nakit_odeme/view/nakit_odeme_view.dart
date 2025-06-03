@@ -110,6 +110,10 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       if (viewModel.model.kasaKodu == null) return;
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
+      if (viewModel.model.tarih == null) {
+        _tarihController.text = DateTime.now().toDateString;
+        viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
+      }
     });
 
     super.initState();
@@ -457,6 +461,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
               labelText: "Rapor Kodu 2",
               controller: _raporKodu2Controller,
               maxLength: 15,
+              onClear: () => viewModel.setRaporKodu2(null),
               onChanged: (value) => viewModel.setRaporKodu2(value),
             ),
             CustomTextField(
