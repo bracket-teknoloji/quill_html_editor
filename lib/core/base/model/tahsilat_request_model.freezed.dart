@@ -53,6 +53,8 @@ mixin _$TahsilatRequestModel {
   set dovizTipi(int? value) => throw _privateConstructorUsedError;
   String? get kktYontemi => throw _privateConstructorUsedError;
   set kktYontemi(String? value) => throw _privateConstructorUsedError;
+  String? get raporKodu2 => throw _privateConstructorUsedError;
+  set raporKodu2(String? value) => throw _privateConstructorUsedError;
   String? get refKod => throw _privateConstructorUsedError;
   set refKod(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "PickerBelgeTuru")
@@ -155,6 +157,7 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
     double? dovizTutari,
     int? dovizTipi,
     String? kktYontemi,
+    String? raporKodu2,
     String? refKod,
     @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
     String? stokKodu,
@@ -222,6 +225,7 @@ class _$TahsilatRequestModelCopyWithImpl<$Res, $Val extends TahsilatRequestModel
     Object? dovizTutari = freezed,
     Object? dovizTipi = freezed,
     Object? kktYontemi = freezed,
+    Object? raporKodu2 = freezed,
     Object? refKod = freezed,
     Object? pickerBelgeTuru = freezed,
     Object? stokKodu = freezed,
@@ -321,6 +325,10 @@ class _$TahsilatRequestModelCopyWithImpl<$Res, $Val extends TahsilatRequestModel
             kktYontemi: freezed == kktYontemi
                 ? _value.kktYontemi
                 : kktYontemi // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            raporKodu2: freezed == raporKodu2
+                ? _value.raporKodu2
+                : raporKodu2 // ignore: cast_nullable_to_non_nullable
                       as String?,
             refKod: freezed == refKod
                 ? _value.refKod
@@ -485,6 +493,7 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res> implements $TahsilatReq
     double? dovizTutari,
     int? dovizTipi,
     String? kktYontemi,
+    String? raporKodu2,
     String? refKod,
     @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
     String? stokKodu,
@@ -551,6 +560,7 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? dovizTutari = freezed,
     Object? dovizTipi = freezed,
     Object? kktYontemi = freezed,
+    Object? raporKodu2 = freezed,
     Object? refKod = freezed,
     Object? pickerBelgeTuru = freezed,
     Object? stokKodu = freezed,
@@ -650,6 +660,10 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
         kktYontemi: freezed == kktYontemi
             ? _value.kktYontemi
             : kktYontemi // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        raporKodu2: freezed == raporKodu2
+            ? _value.raporKodu2
+            : raporKodu2 // ignore: cast_nullable_to_non_nullable
                   as String?,
         refKod: freezed == refKod
             ? _value.refKod
@@ -808,6 +822,7 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
     this.dovizTutari,
     this.dovizTipi,
     this.kktYontemi,
+    this.raporKodu2,
     this.refKod,
     @JsonKey(name: "PickerBelgeTuru") this.pickerBelgeTuru,
     this.stokKodu,
@@ -877,6 +892,8 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   int? dovizTipi;
   @override
   String? kktYontemi;
+  @override
+  String? raporKodu2;
   @override
   String? refKod;
   @override
@@ -978,6 +995,7 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
     double? dovizTutari,
     int? dovizTipi,
     String? kktYontemi,
+    String? raporKodu2,
     String? refKod,
     @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
     String? stokKodu,
@@ -1064,6 +1082,9 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   String? get kktYontemi;
   set kktYontemi(String? value);
+  @override
+  String? get raporKodu2;
+  set raporKodu2(String? value);
   @override
   String? get refKod;
   set refKod(String? value);

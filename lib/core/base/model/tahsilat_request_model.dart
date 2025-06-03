@@ -26,6 +26,7 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     double? dovizTutari,
     int? dovizTipi,
     String? kktYontemi,
+    String? raporKodu2,
     String? refKod,
     @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
     String? stokKodu,
