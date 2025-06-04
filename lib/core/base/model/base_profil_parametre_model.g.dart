@@ -76,6 +76,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
                   ?.map((e) => e as String)
                   .toList() ??
               const [],
+      sayimNqrOkutuldugundaQRAc:
+          json['SAYIM_NQR_OKUTULDUGUNDA_Q_R_AC'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -123,6 +125,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
       'STOKHAREKETLERI_DOVIZLI_GOSTER': instance.stokhareketleriDovizliGoster,
       'STOKHAREKETLERI_GIZLENECEK_ALANLAR':
           instance.stokhareketleriGizlenecekAlanlar,
+      'SAYIM_NQR_OKUTULDUGUNDA_Q_R_AC': instance.sayimNqrOkutuldugundaQRAc,
     };
 
 const _$ThemeModeEnumMap = {

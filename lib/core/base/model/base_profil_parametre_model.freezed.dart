@@ -59,6 +59,7 @@ mixin _$BaseProfilParametreModel {
   String get faturaKarlilikMaliyetTipi => throw _privateConstructorUsedError;
   bool get stokhareketleriDovizliGoster => throw _privateConstructorUsedError;
   List<String> get stokhareketleriGizlenecekAlanlar => throw _privateConstructorUsedError;
+  bool get sayimNqrOkutuldugundaQRAc => throw _privateConstructorUsedError;
 
   /// Serializes this BaseProfilParametreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -110,6 +111,7 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
     String faturaKarlilikMaliyetTipi,
     bool stokhareketleriDovizliGoster,
     List<String> stokhareketleriGizlenecekAlanlar,
+    bool sayimNqrOkutuldugundaQRAc,
   });
 }
 
@@ -161,6 +163,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res, $Val extends BaseProfilParame
     Object? faturaKarlilikMaliyetTipi = null,
     Object? stokhareketleriDovizliGoster = null,
     Object? stokhareketleriGizlenecekAlanlar = null,
+    Object? sayimNqrOkutuldugundaQRAc = null,
   }) {
     return _then(
       _value.copyWith(
@@ -296,6 +299,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res, $Val extends BaseProfilParame
                 ? _value.stokhareketleriGizlenecekAlanlar
                 : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
                       as List<String>,
+            sayimNqrOkutuldugundaQRAc: null == sayimNqrOkutuldugundaQRAc
+                ? _value.sayimNqrOkutuldugundaQRAc
+                : sayimNqrOkutuldugundaQRAc // ignore: cast_nullable_to_non_nullable
+                      as bool,
           )
           as $Val,
     );
@@ -344,6 +351,7 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res> implements $BasePro
     String faturaKarlilikMaliyetTipi,
     bool stokhareketleriDovizliGoster,
     List<String> stokhareketleriGizlenecekAlanlar,
+    bool sayimNqrOkutuldugundaQRAc,
   });
 }
 
@@ -394,6 +402,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? faturaKarlilikMaliyetTipi = null,
     Object? stokhareketleriDovizliGoster = null,
     Object? stokhareketleriGizlenecekAlanlar = null,
+    Object? sayimNqrOkutuldugundaQRAc = null,
   }) {
     return _then(
       _$BaseProfilParametreModelImpl(
@@ -529,6 +538,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
             ? _value._stokhareketleriGizlenecekAlanlar
             : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        sayimNqrOkutuldugundaQRAc: null == sayimNqrOkutuldugundaQRAc
+            ? _value.sayimNqrOkutuldugundaQRAc
+            : sayimNqrOkutuldugundaQRAc // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }
@@ -571,6 +584,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
     this.faturaKarlilikMaliyetTipi = "SGF",
     this.stokhareketleriDovizliGoster = false,
     final List<String> stokhareketleriGizlenecekAlanlar = const [],
+    this.sayimNqrOkutuldugundaQRAc = false,
   }) : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
        _stokhareketleriGizlenecekAlanlar = stokhareketleriGizlenecekAlanlar,
        super._();
@@ -692,6 +706,10 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
     return EqualUnmodifiableListView(_stokhareketleriGizlenecekAlanlar);
   }
 
+  @override
+  @JsonKey()
+  final bool sayimNqrOkutuldugundaQRAc;
+
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -741,6 +759,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
     final String faturaKarlilikMaliyetTipi,
     final bool stokhareketleriDovizliGoster,
     final List<String> stokhareketleriGizlenecekAlanlar,
+    final bool sayimNqrOkutuldugundaQRAc,
   }) = _$BaseProfilParametreModelImpl;
   const _BaseProfilParametreModel._() : super._();
 
@@ -817,6 +836,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get stokhareketleriDovizliGoster;
   @override
   List<String> get stokhareketleriGizlenecekAlanlar;
+  @override
+  bool get sayimNqrOkutuldugundaQRAc;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.

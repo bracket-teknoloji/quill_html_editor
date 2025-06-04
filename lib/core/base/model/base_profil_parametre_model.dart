@@ -46,8 +46,9 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(false) bool eIrsaliyeSeciliGelsin,
     @Default(null) DepoList? depoTalepDepoList,
     @Default("SGF") String faturaKarlilikMaliyetTipi,
-    @Default(false) bool stokhareketleriDovizliGoster,
     @Default([]) List<String> stokhareketleriGizlenecekAlanlar,
+    @Default(false) bool stokhareketleriDovizliGoster,
+    @Default(false) bool sayimNqrOkutuldugundaQRAc,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor
