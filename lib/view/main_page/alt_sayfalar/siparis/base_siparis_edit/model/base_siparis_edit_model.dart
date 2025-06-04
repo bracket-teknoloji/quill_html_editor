@@ -1517,6 +1517,7 @@ final class KalemModel with NetworkManagerMixin {
       ..ekalan1 = model.bulunanEkalan1
       ..ekalan2 = model.bulunanEkalan2
       ..isemriNo = model.bulunanIsemri
+      ..stokBakiye = model.stokSayimBakiye
       ..miktar = model.bulunanMiktar ?? model.varsayilanMiktar
       ..depoKodu = model.bulunanDepo
       ..brutFiyat = model.bulunanFiyat
