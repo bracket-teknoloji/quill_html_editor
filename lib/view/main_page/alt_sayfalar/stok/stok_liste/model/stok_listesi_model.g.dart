@@ -1823,7 +1823,10 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..isk4o = (json['ISK4O'] as num?)?.toDouble()
       ..isk5o = (json['ISK5O'] as num?)?.toDouble()
       ..isk6o = (json['ISK6O'] as num?)?.toDouble()
-      ..bulunanOlcuBirimi = (json['BULUNAN_OLCU_BIRIMI'] as num?)?.toInt();
+      ..bulunanOlcuBirimi = (json['BULUNAN_OLCU_BIRIMI'] as num?)?.toInt()
+      ..seriList = (json['SERI_LIST'] as List<dynamic>?)
+          ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
+          .toList();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
     <String, dynamic>{
@@ -2006,6 +2009,8 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
       if (instance.isk6o case final value?) 'ISK6O': value,
       if (instance.bulunanOlcuBirimi case final value?)
         'BULUNAN_OLCU_BIRIMI': value,
+      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+        'SERI_LIST': value,
     };
 
 DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) =>

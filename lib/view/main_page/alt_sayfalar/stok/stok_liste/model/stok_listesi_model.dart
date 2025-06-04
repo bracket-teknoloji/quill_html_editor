@@ -3,6 +3,7 @@ import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/kalem_ekle/model/stok_fiyati_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/base_stok_mixin.dart";
@@ -166,11 +167,15 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     ..paketMi = model.paketMi
     ..alisKdv = model.kdvOrani
     ..satisKdv = model.kdvOrani
+    ..stokSayimBakiye = model.stokBakiye
     ..alisDovTip = model.dovizTipi ?? 0
     ..satDovTip = model.dovizTipi ?? 0
+    ..okutulanBarkod = model.barkodList?.firstOrNull?.barkod
     ..alisDovizAdi = model.dovizAdi
     ..satisDovizAdi = model.dovizAdi
     ..alisFiat1 = model.brutFiyat
+    ..miktar = model.miktar
+    ..seriList = model.seriList
     ..satisFiat1 = model.brutFiyat
     ..seriCikislardaAcik = model.seriCikislardaAcik
     ..seriGirislerdeAcik = model.seriGirislerdeAcik
@@ -334,6 +339,8 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? isk5o;
   double? isk6o;
   int? bulunanOlcuBirimi;
+  @override
+  List<SeriList>? seriList;
 
   bool get kosulUygulandiMi => kosulUygulandi == "E";
   double? get satilabilirMiktar {
