@@ -253,7 +253,14 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
 
   void resetFiltreModel() {
     SayimGirisiView.onReset();
-    viewModel.setFiltreModel(model.filtre?.copyWith(belgeNo: model.fisno, islemKodu: 1));
+    viewModel.setFiltreModel(
+      model.filtre?.copyWith(
+        belgeNo: model.fisno,
+        islemKodu: 1,
+        projeAdi: viewModel.filtreModel.projeAdi,
+        projeKodu: viewModel.filtreModel.projeKodu,
+      ),
+    );
     // controller.animateTo(1);
   }
 

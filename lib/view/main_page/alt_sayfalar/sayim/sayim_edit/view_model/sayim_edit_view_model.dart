@@ -105,6 +105,9 @@ abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin implements I
   @observable
   bool otomatikEtiketYazdir = CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir;
 
+  @observable
+  bool nqrOkutuldugundaQRAc = CacheManager.getProfilParametre.sayimNqrOkutuldugundaQRAc;
+
   bool isStokValid(StokListesiModel? stokModel) {
     if (!(filtreModel.arrGrupKodu?.contains(stokModel?.grupKodu) ?? false) &&
         (filtreModel.arrGrupKodu?.ext.isNotNullOrEmpty ?? false)) {
@@ -173,6 +176,12 @@ abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin implements I
       setPrintModel(null);
     }
     CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(sayimOtomatikEtiketYazdir: value));
+  }
+
+  @action
+  void setNqrOkutuldugundaQRAc(bool value) {
+    nqrOkutuldugundaQRAc = value;
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(sayimNqrOkutuldugundaQRAc: value));
   }
 
   @action

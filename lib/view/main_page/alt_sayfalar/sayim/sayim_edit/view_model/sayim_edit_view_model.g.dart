@@ -138,6 +138,23 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
+  late final _$nqrOkutuldugundaQRAcAtom = Atom(
+      name: '_SayimEditViewModelBase.nqrOkutuldugundaQRAc', context: context);
+
+  @override
+  bool get nqrOkutuldugundaQRAc {
+    _$nqrOkutuldugundaQRAcAtom.reportRead();
+    return super.nqrOkutuldugundaQRAc;
+  }
+
+  @override
+  set nqrOkutuldugundaQRAc(bool value) {
+    _$nqrOkutuldugundaQRAcAtom.reportWrite(value, super.nqrOkutuldugundaQRAc,
+        () {
+      super.nqrOkutuldugundaQRAc = value;
+    });
+  }
+
   late final _$printModelAtom =
       Atom(name: '_SayimEditViewModelBase.printModel', context: context);
 
@@ -323,6 +340,17 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   }
 
   @override
+  void setNqrOkutuldugundaQRAc(bool value) {
+    final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
+        name: '_SayimEditViewModelBase.setNqrOkutuldugundaQRAc');
+    try {
+      return super.setNqrOkutuldugundaQRAc(value);
+    } finally {
+      _$_SayimEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setProjeKodu(BaseProjeModel? value) {
     final _$actionInfo = _$_SayimEditViewModelBaseActionController.startAction(
         name: '_SayimEditViewModelBase.setProjeKodu');
@@ -475,6 +503,7 @@ filtreModel: ${filtreModel},
 stokModel: ${stokModel},
 hemenKaydetsinMi: ${hemenKaydetsinMi},
 otomatikEtiketYazdir: ${otomatikEtiketYazdir},
+nqrOkutuldugundaQRAc: ${nqrOkutuldugundaQRAc},
 printModel: ${printModel},
 requestModel: ${requestModel},
 filterText: ${filterText},

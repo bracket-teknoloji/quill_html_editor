@@ -1,3 +1,5 @@
+import "dart:async";
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -62,7 +64,6 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
       viewModel.setStokModel(null);
       stokController.text = "";
       stokAdiController.text = "";
-      projeController.text = "";
       ekAlan1Controller.text = "";
       ekAlan2Controller.text = "";
       ekAlan3Controller.text = "";
@@ -208,20 +209,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
             suffixMore: true,
             controller: stokController,
             suffix: IconButton(
-              onPressed: () async {
-                final stokKodu = await Get.toNamed("qr");
-                if (stokKodu is String) {
-                  final StokListesiModel? stokModel = await networkManager.getStokModel(
-                    StokRehberiRequestModel(stokKodu: stokKodu),
-                  );
-                  if (stokModel != null) {
-                    await setStok(stokModel);
-                    stokFocusNode.requestFocus();
-                    return;
-                  }
-                  dialogManager.showErrorSnackBar("Stok bulunamadı");
-                }
-              },
+              onPressed: _getQr,
               icon: const Icon(Icons.qr_code_scanner),
             ).yetkiVarMi(!yetkiController.sayimGizlenecekAlanlar("barkod")),
             onTap: () async {
@@ -231,21 +219,19 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   ..belgeTipi = "SAYI"
                   ..faturaDepoKodu = viewModel.filtreModel.depoKodu,
               );
+              if (stokModel is! BaseStokMixin) return;
               await setStok(
                 await networkManager.getStokModel(
                   StokRehberiRequestModel(
-                    stokKodu: stokModel?.stokKodu,
+                    stokKodu: stokModel.stokKodu,
                     belgeTipi: "SAYI",
                     faturaDepoKodu: viewModel.filtreModel.depoKodu,
-                    belgeTarihi: DateTime.now().toDateString,
                     belgeNo: viewModel.filtreModel.id.toString(),
+                    belgeTarihi: DateTime.now().toDateString,
                     okutuldu: true,
                   ),
                 ),
               );
-              //    final stokModel = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(
-              //   arrGrupKodu: viewModel.filtreModel.arrGrupKodu
-              // ));
             },
           ),
           CustomTextField(
@@ -266,7 +252,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
           ),
           Row(
             children: [
-              if (yetkiController.projeUygulamasiAcikMi && !yetkiController.sayimGizlenecekAlanlar("proje"))
+              if (showProje)
                 Expanded(
                   child: CustomTextField(
                     labelText: "Proje",
@@ -276,16 +262,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     suffixMore: true,
                     controller: projeController,
                     valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.projeKodu ?? "")),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
-                        context,
-                        viewModel.filtreModel.projeKodu,
-                      );
-                      if (result is BaseProjeModel) {
-                        projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
-                        viewModel.setProjeKodu(result);
-                      }
-                    },
+                    onTap: () async => await _setProject(context),
                   ),
                 ),
               if (!yetkiController.sayimGizlenecekAlanlar("miktar"))
@@ -302,6 +279,19 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                     enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
                     controller: miktarController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) return "Bu alan boş bırakılamaz.";
+                      if (value.toDoubleWithFormattedString <= 0) {
+                        return "Miktar 0'dan büyük olmalıdır.";
+                      }
+                      if (viewModel.filtreModel.seriList != null && viewModel.stokModel?.seriList != null) {
+                        final double seriToplam = viewModel.filtreModel.seriList!.map((e) => e.miktar).sum;
+                        if (viewModel.filtreModel.miktar != seriToplam) {
+                          return "Seri miktarı ile miktar uyuşmuyor.";
+                        }
+                      }
+                      return null;
+                    },
                     suffix: (!yetkiController.sayimDegistirilmeyecekAlanlar("miktar"))
                         ? Wrap(
                             children: [
@@ -436,10 +426,55 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                 ),
               ),
             ),
+          Card(
+            child: Observer(
+              builder: (_) => SwitchListTile.adaptive(
+                value: viewModel.nqrOkutuldugundaQRAc,
+                onChanged: viewModel.setNqrOkutuldugundaQRAc,
+                title: const Text("NQR okutulduğunda tekrardan QR okut"),
+              ),
+            ),
+          ),
         ],
       ).paddingAll(UIHelper.lowSize),
     ),
   );
+
+  Future<void> _getQr() async {
+    final stokKodu = await Get.toNamed("qr");
+    if (stokKodu is String) {
+      final StokListesiModel? stokModel = await networkManager.getStokModel(
+        StokRehberiRequestModel(
+          stokKodu: stokKodu,
+          okutuldu: true,
+          belgeTipi: "SAYI",
+          resimGoster: "E",
+          belgeNo: viewModel.filtreModel.belgeNo,
+          faturaDepoKodu: viewModel.filtreModel.depoKodu,
+        ),
+      );
+      if (stokModel != null) {
+        await setStok(StokListesiModel.fromKalemModel(KalemModel.fromBarkodModel(stokModel)));
+        stokFocusNode.requestFocus();
+
+        return;
+      }
+      dialogManager.showErrorSnackBar("Stok bulunamadı");
+    }
+  }
+
+  bool get showProje => yetkiController.projeUygulamasiAcikMi && !yetkiController.sayimGizlenecekAlanlar("proje");
+
+  Future<void> _setProject(BuildContext context) async {
+    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+      context,
+      viewModel.filtreModel.projeKodu,
+    );
+    if (result is BaseProjeModel) {
+      projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+      viewModel.setProjeKodu(result);
+    }
+  }
 
   Future<void> changeOlcuBirimi() async {
     if (viewModel.stokModel == null) return;
@@ -482,16 +517,28 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     if (stokModel is! BaseStokMixin) return;
     viewModel
       ..setStokModel(stokModel)
+      ..setMiktar(stokModel?.miktar)
       ..setOlcuBirimi(yetkiController.sayimVarsayilanOlcuBirimi);
     stokController.text = stokModel?.stokKodu ?? "";
     stokAdiController.text = stokModel?.stokAdi ?? "";
+    miktarController.text = stokModel?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
+    if (stokModel?.seriList != null) {
+      viewModel.setSeriler(stokModel!.seriList);
+      serilerController.text =
+          "${stokModel.seriList?.length} adet seri. Miktar: ${stokModel.seriList?.map((element) => element.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+    } else {
+      serilerController.text = "";
+    }
     olcuBirimiController.text = stokModel?.olcuBirimiSelector(yetkiController.sayimVarsayilanOlcuBirimi) ?? "";
-    if (viewModel.hemenKaydetsinMi) {
+    if (viewModel.filtreModel.projeKodu == null && showProje) {
+      await _setProject(context);
+    }
+    if (viewModel.hemenKaydetsinMi ||
+        (viewModel.nqrOkutuldugundaQRAc && (stokModel?.okutulanBarkod?.startsWith("NQR") == true))) {
       final result = await widget.onStokSelected();
       if (result) {
         stokController.text = "";
         stokAdiController.text = "";
-        projeController.text = "";
         ekAlan1Controller.text = "";
         ekAlan2Controller.text = "";
         ekAlan3Controller.text = "";
@@ -500,6 +547,9 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
         miktarController.text = "";
         olcuBirimiController.text = "";
         serilerController.text = "";
+        if (viewModel.nqrOkutuldugundaQRAc) {
+          unawaited(_getQr());
+        }
       }
     }
   }
