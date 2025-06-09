@@ -426,9 +426,26 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
           );
           if (!devamMi) return;
         }
+        final stok = await Get.toNamed("/kalemEkle", arguments: stokModel);
+        if (isStokKoduExists && stok is KalemModel) {
+          if (model.getEditTipiEnum?.tekrarEdenBarkod?.endsWith("M") ?? false) {
+            kalemBirlestir(stokModel, stok);
+          }
+        }
       }
     }
     _searchTextController.clear();
     viewModel.updateKalemList();
+  }
+
+  void kalemBirlestir(StokListesiModel stokModel, KalemModel stok) {
+    final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == stokModel.stokKodu);
+    if (kalem != null) {
+      model.kalemList?.removeLast();
+      kalem.miktar = (kalem.miktar ?? 0) + (stok.miktar ?? 0);
+      kalem.seriList?.addAll(stok.seriList ?? []);
+      kalem.barkodList?.add(BarkodList(barkod: stok.barkod, miktar: stok.miktar, miktar2: stok.miktar2));
+    }
+    BaseSiparisEditModel.instance.kalemList = model.kalemList;
   }
 }
