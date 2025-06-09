@@ -646,7 +646,6 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                 enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kosul") ?? false),
                 labelText: "Koşul",
                 readOnly: true,
-                isMust: true,
                 suffixMore: true,
                 controller: _kosulController,
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
