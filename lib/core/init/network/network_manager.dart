@@ -853,15 +853,12 @@ final class NetworkManager {
       bodyModel: BaseEmptyModel(),
       showLoading: true,
       queryParameters: {
-        "firmID": cariKodu,
-        "value": amount,
+        "firmaId": cariKodu,
+        "value": amount?.toInt(),
       },
     );
     if (result.isSuccess) {
       // Handle successful retrieval of installments
-    } else {
-      // Handle error
-      await DialogManager().showAlertDialog(result.message ?? "Bilinmeyen bir hata oluştu.");
     }
   }
 
