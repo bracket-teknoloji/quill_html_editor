@@ -10,7 +10,9 @@ part of 'uretim_sonu_raporu_view_model.dart';
 
 mixin _$UretimSonuRaporuViewModel on _UretimSonuRaporuViewModelBase, Store {
   late final _$observableListAtom = Atom(
-      name: '_UretimSonuRaporuViewModelBase.observableList', context: context);
+    name: '_UretimSonuRaporuViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<StokHareketleriModel>? get observableList {
@@ -25,8 +27,10 @@ mixin _$UretimSonuRaporuViewModel on _UretimSonuRaporuViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_UretimSonuRaporuViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_UretimSonuRaporuViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -35,7 +39,9 @@ mixin _$UretimSonuRaporuViewModel on _UretimSonuRaporuViewModelBase, Store {
 
   late final _$_UretimSonuRaporuViewModelBaseActionController =
       ActionController(
-          name: '_UretimSonuRaporuViewModelBase', context: context);
+        name: '_UretimSonuRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<StokHareketleriModel>? list) {

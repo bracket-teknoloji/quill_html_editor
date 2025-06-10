@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,254 +10,149 @@ part of 'seri_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-SeriModel _$SeriModelFromJson(Map<String, dynamic> json) {
-  return _SeriModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SeriModel {
-  String? get seriNo => throw _privateConstructorUsedError;
-  String? get aciklama => throw _privateConstructorUsedError;
-  String? get stokKodu => throw _privateConstructorUsedError;
-  String? get stokAdi => throw _privateConstructorUsedError;
-  int? get depoKodu => throw _privateConstructorUsedError;
-  int? get miktar => throw _privateConstructorUsedError;
-  String? get depoTanimi => throw _privateConstructorUsedError;
+
+ String? get seriNo; String? get aciklama; String? get stokKodu; String? get stokAdi; int? get depoKodu; int? get miktar; String? get depoTanimi;
+/// Create a copy of SeriModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SeriModelCopyWith<SeriModel> get copyWith => _$SeriModelCopyWithImpl<SeriModel>(this as SeriModel, _$identity);
 
   /// Serializes this SeriModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SeriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SeriModelCopyWith<SeriModel> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SeriModel&&super == other&&(identical(other.seriNo, seriNo) || other.seriNo == seriNo)&&(identical(other.aciklama, aciklama) || other.aciklama == aciklama)&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.stokAdi, stokAdi) || other.stokAdi == stokAdi)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.miktar, miktar) || other.miktar == miktar)&&(identical(other.depoTanimi, depoTanimi) || other.depoTanimi == depoTanimi));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,seriNo,aciklama,stokKodu,stokAdi,depoKodu,miktar,depoTanimi);
+
+
+
 }
 
 /// @nodoc
-abstract class $SeriModelCopyWith<$Res> {
-  factory $SeriModelCopyWith(SeriModel value, $Res Function(SeriModel) then) = _$SeriModelCopyWithImpl<$Res, SeriModel>;
-  @useResult
-  $Res call({
-    String? seriNo,
-    String? aciklama,
-    String? stokKodu,
-    String? stokAdi,
-    int? depoKodu,
-    int? miktar,
-    String? depoTanimi,
-  });
-}
+abstract mixin class $SeriModelCopyWith<$Res>  {
+  factory $SeriModelCopyWith(SeriModel value, $Res Function(SeriModel) _then) = _$SeriModelCopyWithImpl;
+@useResult
+$Res call({
+ String? seriNo, String? aciklama, String? stokKodu, String? stokAdi, int? depoKodu, int? miktar, String? depoTanimi
+});
 
+
+
+
+}
 /// @nodoc
-class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel> implements $SeriModelCopyWith<$Res> {
-  _$SeriModelCopyWithImpl(this._value, this._then);
+class _$SeriModelCopyWithImpl<$Res>
+    implements $SeriModelCopyWith<$Res> {
+  _$SeriModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SeriModel _self;
+  final $Res Function(SeriModel) _then;
 
-  /// Create a copy of SeriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? seriNo = freezed,
-    Object? aciklama = freezed,
-    Object? stokKodu = freezed,
-    Object? stokAdi = freezed,
-    Object? depoKodu = freezed,
-    Object? miktar = freezed,
-    Object? depoTanimi = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            seriNo: freezed == seriNo
-                ? _value.seriNo
-                : seriNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            aciklama: freezed == aciklama
-                ? _value.aciklama
-                : aciklama // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            stokKodu: freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            stokAdi: freezed == stokAdi
-                ? _value.stokAdi
-                : stokAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            depoKodu: freezed == depoKodu
-                ? _value.depoKodu
-                : depoKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            miktar: freezed == miktar
-                ? _value.miktar
-                : miktar // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            depoTanimi: freezed == depoTanimi
-                ? _value.depoTanimi
-                : depoTanimi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of SeriModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? seriNo = freezed,Object? aciklama = freezed,Object? stokKodu = freezed,Object? stokAdi = freezed,Object? depoKodu = freezed,Object? miktar = freezed,Object? depoTanimi = freezed,}) {
+  return _then(_self.copyWith(
+seriNo: freezed == seriNo ? _self.seriNo : seriNo // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,stokAdi: freezed == stokAdi ? _self.stokAdi : stokAdi // ignore: cast_nullable_to_non_nullable
+as String?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,miktar: freezed == miktar ? _self.miktar : miktar // ignore: cast_nullable_to_non_nullable
+as int?,depoTanimi: freezed == depoTanimi ? _self.depoTanimi : depoTanimi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SeriModelImplCopyWith<$Res> implements $SeriModelCopyWith<$Res> {
-  factory _$$SeriModelImplCopyWith(_$SeriModelImpl value, $Res Function(_$SeriModelImpl) then) =
-      __$$SeriModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    String? seriNo,
-    String? aciklama,
-    String? stokKodu,
-    String? stokAdi,
-    int? depoKodu,
-    int? miktar,
-    String? depoTanimi,
-  });
 }
 
-/// @nodoc
-class __$$SeriModelImplCopyWithImpl<$Res> extends _$SeriModelCopyWithImpl<$Res, _$SeriModelImpl>
-    implements _$$SeriModelImplCopyWith<$Res> {
-  __$$SeriModelImplCopyWithImpl(_$SeriModelImpl _value, $Res Function(_$SeriModelImpl) _then) : super(_value, _then);
-
-  /// Create a copy of SeriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? seriNo = freezed,
-    Object? aciklama = freezed,
-    Object? stokKodu = freezed,
-    Object? stokAdi = freezed,
-    Object? depoKodu = freezed,
-    Object? miktar = freezed,
-    Object? depoTanimi = freezed,
-  }) {
-    return _then(
-      _$SeriModelImpl(
-        seriNo: freezed == seriNo
-            ? _value.seriNo
-            : seriNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        aciklama: freezed == aciklama
-            ? _value.aciklama
-            : aciklama // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        stokKodu: freezed == stokKodu
-            ? _value.stokKodu
-            : stokKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        stokAdi: freezed == stokAdi
-            ? _value.stokAdi
-            : stokAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        depoKodu: freezed == depoKodu
-            ? _value.depoKodu
-            : depoKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        miktar: freezed == miktar
-            ? _value.miktar
-            : miktar // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        depoTanimi: freezed == depoTanimi
-            ? _value.depoTanimi
-            : depoTanimi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$SeriModelImpl extends _SeriModel {
-  _$SeriModelImpl({
-    this.seriNo,
-    this.aciklama,
-    this.stokKodu,
-    this.stokAdi,
-    this.depoKodu,
-    this.miktar,
-    this.depoTanimi,
-  }) : super._();
 
-  factory _$SeriModelImpl.fromJson(Map<String, dynamic> json) => _$$SeriModelImplFromJson(json);
+class _SeriModel extends SeriModel {
+   _SeriModel({this.seriNo, this.aciklama, this.stokKodu, this.stokAdi, this.depoKodu, this.miktar, this.depoTanimi}): super._();
+  factory _SeriModel.fromJson(Map<String, dynamic> json) => _$SeriModelFromJson(json);
 
-  @override
-  final String? seriNo;
-  @override
-  final String? aciklama;
-  @override
-  final String? stokKodu;
-  @override
-  final String? stokAdi;
-  @override
-  final int? depoKodu;
-  @override
-  final int? miktar;
-  @override
-  final String? depoTanimi;
+@override final  String? seriNo;
+@override final  String? aciklama;
+@override final  String? stokKodu;
+@override final  String? stokAdi;
+@override final  int? depoKodu;
+@override final  int? miktar;
+@override final  String? depoTanimi;
 
-  /// Create a copy of SeriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>
-      __$$SeriModelImplCopyWithImpl<_$SeriModelImpl>(this, _$identity);
+/// Create a copy of SeriModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SeriModelCopyWith<_SeriModel> get copyWith => __$SeriModelCopyWithImpl<_SeriModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SeriModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SeriModelToJson(this, );
 }
 
-abstract class _SeriModel extends SeriModel {
-  factory _SeriModel({
-    final String? seriNo,
-    final String? aciklama,
-    final String? stokKodu,
-    final String? stokAdi,
-    final int? depoKodu,
-    final int? miktar,
-    final String? depoTanimi,
-  }) = _$SeriModelImpl;
-  _SeriModel._() : super._();
-
-  factory _SeriModel.fromJson(Map<String, dynamic> json) = _$SeriModelImpl.fromJson;
-
-  @override
-  String? get seriNo;
-  @override
-  String? get aciklama;
-  @override
-  String? get stokKodu;
-  @override
-  String? get stokAdi;
-  @override
-  int? get depoKodu;
-  @override
-  int? get miktar;
-  @override
-  String? get depoTanimi;
-
-  /// Create a copy of SeriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SeriModel&&super == other&&(identical(other.seriNo, seriNo) || other.seriNo == seriNo)&&(identical(other.aciklama, aciklama) || other.aciklama == aciklama)&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.stokAdi, stokAdi) || other.stokAdi == stokAdi)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.miktar, miktar) || other.miktar == miktar)&&(identical(other.depoTanimi, depoTanimi) || other.depoTanimi == depoTanimi));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,seriNo,aciklama,stokKodu,stokAdi,depoKodu,miktar,depoTanimi);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SeriModelCopyWith<$Res> implements $SeriModelCopyWith<$Res> {
+  factory _$SeriModelCopyWith(_SeriModel value, $Res Function(_SeriModel) _then) = __$SeriModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? seriNo, String? aciklama, String? stokKodu, String? stokAdi, int? depoKodu, int? miktar, String? depoTanimi
+});
+
+
+
+
+}
+/// @nodoc
+class __$SeriModelCopyWithImpl<$Res>
+    implements _$SeriModelCopyWith<$Res> {
+  __$SeriModelCopyWithImpl(this._self, this._then);
+
+  final _SeriModel _self;
+  final $Res Function(_SeriModel) _then;
+
+/// Create a copy of SeriModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? seriNo = freezed,Object? aciklama = freezed,Object? stokKodu = freezed,Object? stokAdi = freezed,Object? depoKodu = freezed,Object? miktar = freezed,Object? depoTanimi = freezed,}) {
+  return _then(_SeriModel(
+seriNo: freezed == seriNo ? _self.seriNo : seriNo // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,stokAdi: freezed == stokAdi ? _self.stokAdi : stokAdi // ignore: cast_nullable_to_non_nullable
+as String?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,miktar: freezed == miktar ? _self.miktar : miktar // ignore: cast_nullable_to_non_nullable
+as int?,depoTanimi: freezed == depoTanimi ? _self.depoTanimi : depoTanimi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

@@ -11,7 +11,9 @@ part of 'base_fatura_toplamlar_view_model.dart';
 mixin _$BaseFaturaToplamlarViewModel
     on _BaseFaturaToplamlarViewModelBase, Store {
   late final _$isGenIsk1TAtom = Atom(
-      name: '_BaseFaturaToplamlarViewModelBase.isGenIsk1T', context: context);
+    name: '_BaseFaturaToplamlarViewModelBase.isGenIsk1T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk1T {
@@ -27,7 +29,9 @@ mixin _$BaseFaturaToplamlarViewModel
   }
 
   late final _$isGenIsk2TAtom = Atom(
-      name: '_BaseFaturaToplamlarViewModelBase.isGenIsk2T', context: context);
+    name: '_BaseFaturaToplamlarViewModelBase.isGenIsk2T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk2T {
@@ -43,7 +47,9 @@ mixin _$BaseFaturaToplamlarViewModel
   }
 
   late final _$isGenIsk3TAtom = Atom(
-      name: '_BaseFaturaToplamlarViewModelBase.isGenIsk3T', context: context);
+    name: '_BaseFaturaToplamlarViewModelBase.isGenIsk3T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk3T {
@@ -58,8 +64,10 @@ mixin _$BaseFaturaToplamlarViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseFaturaToplamlarViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseFaturaToplamlarViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -76,7 +84,9 @@ mixin _$BaseFaturaToplamlarViewModel
 
   late final _$_BaseFaturaToplamlarViewModelBaseActionController =
       ActionController(
-          name: '_BaseFaturaToplamlarViewModelBase', context: context);
+        name: '_BaseFaturaToplamlarViewModelBase',
+        context: context,
+      );
 
   @override
   void setEkMal1(double? value) {
@@ -85,8 +95,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setEkMal1(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -97,8 +108,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setTevkifat(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -109,8 +121,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setEkMal3(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -121,8 +134,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setVadeTarihi(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -133,8 +147,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setIskTipi1(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -145,8 +160,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setIskTipi2(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -157,8 +173,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setIskTipi3(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -169,8 +186,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setGenIsk1(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -181,8 +199,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setGenIsk2(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -193,8 +212,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setGenIsk3(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -205,8 +225,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.changeGenIsk1O(controller);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -217,8 +238,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.changeGenIsk2O(controller);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -229,8 +251,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.changeGenIsk3O(controller);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -241,8 +264,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setSenaryo(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -253,8 +277,9 @@ mixin _$BaseFaturaToplamlarViewModel
     try {
       return super.setEfatOzelkod(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

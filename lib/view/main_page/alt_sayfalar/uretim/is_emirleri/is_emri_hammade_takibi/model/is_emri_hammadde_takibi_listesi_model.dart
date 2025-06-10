@@ -7,7 +7,8 @@ part "is_emri_hammadde_takibi_listesi_model.freezed.dart";
 part "is_emri_hammadde_takibi_listesi_model.g.dart";
 
 @unfreezed
-class IsEmriHammaddeTakibiListesiModel with _$IsEmriHammaddeTakibiListesiModel, NetworkManagerMixin, BaseStokMixin {
+sealed class IsEmriHammaddeTakibiListesiModel
+    with _$IsEmriHammaddeTakibiListesiModel, NetworkManagerMixin, BaseStokMixin {
   factory IsEmriHammaddeTakibiListesiModel({
     int? takipno,
     int? nfisemrino,

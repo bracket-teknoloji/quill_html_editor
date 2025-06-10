@@ -6,7 +6,7 @@ part "masraf_kodu_rehberi_model.freezed.dart";
 part "masraf_kodu_rehberi_model.g.dart";
 
 @unfreezed
-class MasrafKoduRehberiModel with _$MasrafKoduRehberiModel, NetworkManagerMixin {
+sealed class MasrafKoduRehberiModel with _$MasrafKoduRehberiModel, NetworkManagerMixin {
   factory MasrafKoduRehberiModel({String? masrafKodu, String? masrafAdi}) = _MasrafKoduRehberiModel;
   MasrafKoduRehberiModel._();
 

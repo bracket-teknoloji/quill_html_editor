@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,314 +10,135 @@ part of 'sayilan_kalemler_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-SayilanKalemlerRequestModel _$SayilanKalemlerRequestModelFromJson(Map<String, dynamic> json) {
-  return _SayilanKalemlerRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SayilanKalemlerRequestModel {
-  @JsonKey(name: "FiltreKodu")
-  int? get filtreKodu => throw _privateConstructorUsedError;
-  @JsonKey(name: "FiltreKodu")
-  set filtreKodu(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "DepoKodu")
-  int? get depoKodu => throw _privateConstructorUsedError;
-  @JsonKey(name: "DepoKodu")
-  set depoKodu(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "KullaniciAdi")
-  String? get kullaniciAdi => throw _privateConstructorUsedError;
-  @JsonKey(name: "KullaniciAdi")
-  set kullaniciAdi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "EkranTipi")
-  String? get ekranTipi => throw _privateConstructorUsedError;
-  @JsonKey(name: "EkranTipi")
-  set ekranTipi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "BelgeNo")
-  String? get belgeNo => throw _privateConstructorUsedError;
-  @JsonKey(name: "BelgeNo")
-  set belgeNo(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "seriBazinda")
-  String? get seriBazinda => throw _privateConstructorUsedError;
-  @JsonKey(name: "seriBazinda")
-  set seriBazinda(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "ID")
-  int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "ID")
-  set id(int? value) => throw _privateConstructorUsedError;
+
+@JsonKey(name: "FiltreKodu") int? get filtreKodu;@JsonKey(name: "FiltreKodu") set filtreKodu(int? value);@JsonKey(name: "DepoKodu") int? get depoKodu;@JsonKey(name: "DepoKodu") set depoKodu(int? value);@JsonKey(name: "KullaniciAdi") String? get kullaniciAdi;@JsonKey(name: "KullaniciAdi") set kullaniciAdi(String? value);@JsonKey(name: "EkranTipi") String? get ekranTipi;@JsonKey(name: "EkranTipi") set ekranTipi(String? value);@JsonKey(name: "BelgeNo") String? get belgeNo;@JsonKey(name: "BelgeNo") set belgeNo(String? value);@JsonKey(name: "seriBazinda") String? get seriBazinda;@JsonKey(name: "seriBazinda") set seriBazinda(String? value);@JsonKey(name: "ID") int? get id;@JsonKey(name: "ID") set id(int? value);
+/// Create a copy of SayilanKalemlerRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SayilanKalemlerRequestModelCopyWith<SayilanKalemlerRequestModel> get copyWith => _$SayilanKalemlerRequestModelCopyWithImpl<SayilanKalemlerRequestModel>(this as SayilanKalemlerRequestModel, _$identity);
 
   /// Serializes this SayilanKalemlerRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SayilanKalemlerRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SayilanKalemlerRequestModelCopyWith<SayilanKalemlerRequestModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $SayilanKalemlerRequestModelCopyWith<$Res> {
-  factory $SayilanKalemlerRequestModelCopyWith(
-    SayilanKalemlerRequestModel value,
-    $Res Function(SayilanKalemlerRequestModel) then,
-  ) = _$SayilanKalemlerRequestModelCopyWithImpl<$Res, SayilanKalemlerRequestModel>;
-  @useResult
-  $Res call({
-    @JsonKey(name: "FiltreKodu") int? filtreKodu,
-    @JsonKey(name: "DepoKodu") int? depoKodu,
-    @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
-    @JsonKey(name: "EkranTipi") String? ekranTipi,
-    @JsonKey(name: "BelgeNo") String? belgeNo,
-    @JsonKey(name: "seriBazinda") String? seriBazinda,
-    @JsonKey(name: "ID") int? id,
-  });
-}
+abstract mixin class $SayilanKalemlerRequestModelCopyWith<$Res>  {
+  factory $SayilanKalemlerRequestModelCopyWith(SayilanKalemlerRequestModel value, $Res Function(SayilanKalemlerRequestModel) _then) = _$SayilanKalemlerRequestModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: "FiltreKodu") int? filtreKodu,@JsonKey(name: "DepoKodu") int? depoKodu,@JsonKey(name: "KullaniciAdi") String? kullaniciAdi,@JsonKey(name: "EkranTipi") String? ekranTipi,@JsonKey(name: "BelgeNo") String? belgeNo,@JsonKey(name: "seriBazinda") String? seriBazinda,@JsonKey(name: "ID") int? id
+});
 
+
+
+
+}
 /// @nodoc
-class _$SayilanKalemlerRequestModelCopyWithImpl<$Res, $Val extends SayilanKalemlerRequestModel>
+class _$SayilanKalemlerRequestModelCopyWithImpl<$Res>
     implements $SayilanKalemlerRequestModelCopyWith<$Res> {
-  _$SayilanKalemlerRequestModelCopyWithImpl(this._value, this._then);
+  _$SayilanKalemlerRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SayilanKalemlerRequestModel _self;
+  final $Res Function(SayilanKalemlerRequestModel) _then;
 
-  /// Create a copy of SayilanKalemlerRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? filtreKodu = freezed,
-    Object? depoKodu = freezed,
-    Object? kullaniciAdi = freezed,
-    Object? ekranTipi = freezed,
-    Object? belgeNo = freezed,
-    Object? seriBazinda = freezed,
-    Object? id = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            filtreKodu: freezed == filtreKodu
-                ? _value.filtreKodu
-                : filtreKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            depoKodu: freezed == depoKodu
-                ? _value.depoKodu
-                : depoKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            kullaniciAdi: freezed == kullaniciAdi
-                ? _value.kullaniciAdi
-                : kullaniciAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            ekranTipi: freezed == ekranTipi
-                ? _value.ekranTipi
-                : ekranTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            belgeNo: freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            seriBazinda: freezed == seriBazinda
-                ? _value.seriBazinda
-                : seriBazinda // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            id: freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as int?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of SayilanKalemlerRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? filtreKodu = freezed,Object? depoKodu = freezed,Object? kullaniciAdi = freezed,Object? ekranTipi = freezed,Object? belgeNo = freezed,Object? seriBazinda = freezed,Object? id = freezed,}) {
+  return _then(_self.copyWith(
+filtreKodu: freezed == filtreKodu ? _self.filtreKodu : filtreKodu // ignore: cast_nullable_to_non_nullable
+as int?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,kullaniciAdi: freezed == kullaniciAdi ? _self.kullaniciAdi : kullaniciAdi // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,seriBazinda: freezed == seriBazinda ? _self.seriBazinda : seriBazinda // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SayilanKalemlerRequestModelImplCopyWith<$Res> implements $SayilanKalemlerRequestModelCopyWith<$Res> {
-  factory _$$SayilanKalemlerRequestModelImplCopyWith(
-    _$SayilanKalemlerRequestModelImpl value,
-    $Res Function(_$SayilanKalemlerRequestModelImpl) then,
-  ) = __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    @JsonKey(name: "FiltreKodu") int? filtreKodu,
-    @JsonKey(name: "DepoKodu") int? depoKodu,
-    @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
-    @JsonKey(name: "EkranTipi") String? ekranTipi,
-    @JsonKey(name: "BelgeNo") String? belgeNo,
-    @JsonKey(name: "seriBazinda") String? seriBazinda,
-    @JsonKey(name: "ID") int? id,
-  });
 }
 
-/// @nodoc
-class __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>
-    extends _$SayilanKalemlerRequestModelCopyWithImpl<$Res, _$SayilanKalemlerRequestModelImpl>
-    implements _$$SayilanKalemlerRequestModelImplCopyWith<$Res> {
-  __$$SayilanKalemlerRequestModelImplCopyWithImpl(
-    _$SayilanKalemlerRequestModelImpl _value,
-    $Res Function(_$SayilanKalemlerRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SayilanKalemlerRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? filtreKodu = freezed,
-    Object? depoKodu = freezed,
-    Object? kullaniciAdi = freezed,
-    Object? ekranTipi = freezed,
-    Object? belgeNo = freezed,
-    Object? seriBazinda = freezed,
-    Object? id = freezed,
-  }) {
-    return _then(
-      _$SayilanKalemlerRequestModelImpl(
-        filtreKodu: freezed == filtreKodu
-            ? _value.filtreKodu
-            : filtreKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        depoKodu: freezed == depoKodu
-            ? _value.depoKodu
-            : depoKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        kullaniciAdi: freezed == kullaniciAdi
-            ? _value.kullaniciAdi
-            : kullaniciAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        ekranTipi: freezed == ekranTipi
-            ? _value.ekranTipi
-            : ekranTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        belgeNo: freezed == belgeNo
-            ? _value.belgeNo
-            : belgeNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        seriBazinda: freezed == seriBazinda
-            ? _value.seriBazinda
-            : seriBazinda // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        id: freezed == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$SayilanKalemlerRequestModelImpl implements _SayilanKalemlerRequestModel {
-  _$SayilanKalemlerRequestModelImpl({
-    @JsonKey(name: "FiltreKodu") this.filtreKodu,
-    @JsonKey(name: "DepoKodu") this.depoKodu,
-    @JsonKey(name: "KullaniciAdi") this.kullaniciAdi,
-    @JsonKey(name: "EkranTipi") this.ekranTipi = "L",
-    @JsonKey(name: "BelgeNo") this.belgeNo,
-    @JsonKey(name: "seriBazinda") this.seriBazinda,
-    @JsonKey(name: "ID") this.id,
-  });
 
-  factory _$SayilanKalemlerRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SayilanKalemlerRequestModelImplFromJson(json);
+class _SayilanKalemlerRequestModel implements SayilanKalemlerRequestModel {
+   _SayilanKalemlerRequestModel({@JsonKey(name: "FiltreKodu") this.filtreKodu, @JsonKey(name: "DepoKodu") this.depoKodu, @JsonKey(name: "KullaniciAdi") this.kullaniciAdi, @JsonKey(name: "EkranTipi") this.ekranTipi = "L", @JsonKey(name: "BelgeNo") this.belgeNo, @JsonKey(name: "seriBazinda") this.seriBazinda, @JsonKey(name: "ID") this.id});
+  factory _SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) => _$SayilanKalemlerRequestModelFromJson(json);
 
-  @override
-  @JsonKey(name: "FiltreKodu")
-  int? filtreKodu;
-  @override
-  @JsonKey(name: "DepoKodu")
-  int? depoKodu;
-  @override
-  @JsonKey(name: "KullaniciAdi")
-  String? kullaniciAdi;
-  @override
-  @JsonKey(name: "EkranTipi")
-  String? ekranTipi;
-  @override
-  @JsonKey(name: "BelgeNo")
-  String? belgeNo;
-  @override
-  @JsonKey(name: "seriBazinda")
-  String? seriBazinda;
-  @override
-  @JsonKey(name: "ID")
-  int? id;
+@override@JsonKey(name: "FiltreKodu")  int? filtreKodu;
+@override@JsonKey(name: "DepoKodu")  int? depoKodu;
+@override@JsonKey(name: "KullaniciAdi")  String? kullaniciAdi;
+@override@JsonKey(name: "EkranTipi")  String? ekranTipi;
+@override@JsonKey(name: "BelgeNo")  String? belgeNo;
+@override@JsonKey(name: "seriBazinda")  String? seriBazinda;
+@override@JsonKey(name: "ID")  int? id;
 
-  /// Create a copy of SayilanKalemlerRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl> get copyWith =>
-      __$$SayilanKalemlerRequestModelImplCopyWithImpl<_$SayilanKalemlerRequestModelImpl>(this, _$identity);
+/// Create a copy of SayilanKalemlerRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SayilanKalemlerRequestModelCopyWith<_SayilanKalemlerRequestModel> get copyWith => __$SayilanKalemlerRequestModelCopyWithImpl<_SayilanKalemlerRequestModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SayilanKalemlerRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SayilanKalemlerRequestModelToJson(this, );
 }
 
-abstract class _SayilanKalemlerRequestModel implements SayilanKalemlerRequestModel {
-  factory _SayilanKalemlerRequestModel({
-    @JsonKey(name: "FiltreKodu") int? filtreKodu,
-    @JsonKey(name: "DepoKodu") int? depoKodu,
-    @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
-    @JsonKey(name: "EkranTipi") String? ekranTipi,
-    @JsonKey(name: "BelgeNo") String? belgeNo,
-    @JsonKey(name: "seriBazinda") String? seriBazinda,
-    @JsonKey(name: "ID") int? id,
-  }) = _$SayilanKalemlerRequestModelImpl;
 
-  factory _SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) = _$SayilanKalemlerRequestModelImpl.fromJson;
 
-  @override
-  @JsonKey(name: "FiltreKodu")
-  int? get filtreKodu;
-  @JsonKey(name: "FiltreKodu")
-  set filtreKodu(int? value);
-  @override
-  @JsonKey(name: "DepoKodu")
-  int? get depoKodu;
-  @JsonKey(name: "DepoKodu")
-  set depoKodu(int? value);
-  @override
-  @JsonKey(name: "KullaniciAdi")
-  String? get kullaniciAdi;
-  @JsonKey(name: "KullaniciAdi")
-  set kullaniciAdi(String? value);
-  @override
-  @JsonKey(name: "EkranTipi")
-  String? get ekranTipi;
-  @JsonKey(name: "EkranTipi")
-  set ekranTipi(String? value);
-  @override
-  @JsonKey(name: "BelgeNo")
-  String? get belgeNo;
-  @JsonKey(name: "BelgeNo")
-  set belgeNo(String? value);
-  @override
-  @JsonKey(name: "seriBazinda")
-  String? get seriBazinda;
-  @JsonKey(name: "seriBazinda")
-  set seriBazinda(String? value);
-  @override
-  @JsonKey(name: "ID")
-  int? get id;
-  @JsonKey(name: "ID")
-  set id(int? value);
 
-  /// Create a copy of SayilanKalemlerRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$SayilanKalemlerRequestModelCopyWith<$Res> implements $SayilanKalemlerRequestModelCopyWith<$Res> {
+  factory _$SayilanKalemlerRequestModelCopyWith(_SayilanKalemlerRequestModel value, $Res Function(_SayilanKalemlerRequestModel) _then) = __$SayilanKalemlerRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: "FiltreKodu") int? filtreKodu,@JsonKey(name: "DepoKodu") int? depoKodu,@JsonKey(name: "KullaniciAdi") String? kullaniciAdi,@JsonKey(name: "EkranTipi") String? ekranTipi,@JsonKey(name: "BelgeNo") String? belgeNo,@JsonKey(name: "seriBazinda") String? seriBazinda,@JsonKey(name: "ID") int? id
+});
+
+
+
+
+}
+/// @nodoc
+class __$SayilanKalemlerRequestModelCopyWithImpl<$Res>
+    implements _$SayilanKalemlerRequestModelCopyWith<$Res> {
+  __$SayilanKalemlerRequestModelCopyWithImpl(this._self, this._then);
+
+  final _SayilanKalemlerRequestModel _self;
+  final $Res Function(_SayilanKalemlerRequestModel) _then;
+
+/// Create a copy of SayilanKalemlerRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? filtreKodu = freezed,Object? depoKodu = freezed,Object? kullaniciAdi = freezed,Object? ekranTipi = freezed,Object? belgeNo = freezed,Object? seriBazinda = freezed,Object? id = freezed,}) {
+  return _then(_SayilanKalemlerRequestModel(
+filtreKodu: freezed == filtreKodu ? _self.filtreKodu : filtreKodu // ignore: cast_nullable_to_non_nullable
+as int?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,kullaniciAdi: freezed == kullaniciAdi ? _self.kullaniciAdi : kullaniciAdi // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,seriBazinda: freezed == seriBazinda ? _self.seriBazinda : seriBazinda // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+// dart format on

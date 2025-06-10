@@ -13,13 +13,15 @@ mixin _$KrediKartiTahsilatiViewModel
   Computed<String?>? _$getCariBakiyeComputed;
 
   @override
-  String? get getCariBakiye =>
-      (_$getCariBakiyeComputed ??= Computed<String?>(() => super.getCariBakiye,
-              name: '_KrediKartiTahsilatiViewModelBase.getCariBakiye'))
-          .value;
+  String? get getCariBakiye => (_$getCariBakiyeComputed ??= Computed<String?>(
+    () => super.getCariBakiye,
+    name: '_KrediKartiTahsilatiViewModelBase.getCariBakiye',
+  )).value;
 
   late final _$cariBakiyeAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.cariBakiye', context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.cariBakiye',
+    context: context,
+  );
 
   @override
   double? get cariBakiye {
@@ -35,8 +37,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$appBarSubTitleAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.appBarSubTitle',
-      context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.appBarSubTitle',
+    context: context,
+  );
 
   @override
   String? get appBarSubTitle {
@@ -52,7 +55,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$seriListAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.seriList', context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.seriList',
+    context: context,
+  );
 
   @override
   ObservableList<SeriModel>? get seriList {
@@ -68,7 +73,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$cariModelAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.cariModel', context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.cariModel',
+    context: context,
+  );
 
   @override
   CariListesiModel? get cariModel {
@@ -84,7 +91,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$bankModelAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.bankModel', context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.bankModel',
+    context: context,
+  );
 
   @override
   BankaListesiModel? get bankModel {
@@ -100,8 +109,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$sozlesmeModelAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.sozlesmeModel',
-      context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.sozlesmeModel',
+    context: context,
+  );
 
   @override
   BankaSozlesmesiModel? get sozlesmeModel {
@@ -117,8 +127,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$bankaSozlesmesiListAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.bankaSozlesmesiList',
-      context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.bankaSozlesmesiList',
+    context: context,
+  );
 
   @override
   ObservableList<BankaSozlesmesiModel>? get bankaSozlesmesiList {
@@ -134,8 +145,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$bankaHesaplariListAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.bankaHesaplariList',
-      context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.bankaHesaplariList',
+    context: context,
+  );
 
   @override
   ObservableList<BankaListesiModel>? get bankaHesaplariList {
@@ -151,7 +163,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$muhaRefListAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.muhaRefList', context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.muhaRefList',
+    context: context,
+  );
 
   @override
   ObservableList<MuhasebeReferansModel>? get muhaRefList {
@@ -167,8 +181,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$showReferansKoduAtom = Atom(
-      name: '_KrediKartiTahsilatiViewModelBase.showReferansKodu',
-      context: context);
+    name: '_KrediKartiTahsilatiViewModelBase.showReferansKodu',
+    context: context,
+  );
 
   @override
   bool? get showReferansKodu {
@@ -183,8 +198,10 @@ mixin _$KrediKartiTahsilatiViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_KrediKartiTahsilatiViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_KrediKartiTahsilatiViewModelBase.model',
+    context: context,
+  );
 
   @override
   TahsilatRequestModel get model {
@@ -200,8 +217,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$getSiradakiKodAsyncAction = AsyncAction(
-      '_KrediKartiTahsilatiViewModelBase.getSiradakiKod',
-      context: context);
+    '_KrediKartiTahsilatiViewModelBase.getSiradakiKod',
+    context: context,
+  );
 
   @override
   Future<void> getSiradakiKod() {
@@ -209,18 +227,21 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$getBankaSozlesmesiAsyncAction = AsyncAction(
-      '_KrediKartiTahsilatiViewModelBase.getBankaSozlesmesi',
-      context: context);
+    '_KrediKartiTahsilatiViewModelBase.getBankaSozlesmesi',
+    context: context,
+  );
 
   @override
   Future<void> getBankaSozlesmesi() {
-    return _$getBankaSozlesmesiAsyncAction
-        .run(() => super.getBankaSozlesmesi());
+    return _$getBankaSozlesmesiAsyncAction.run(
+      () => super.getBankaSozlesmesi(),
+    );
   }
 
   late final _$getMuhaRefListAsyncAction = AsyncAction(
-      '_KrediKartiTahsilatiViewModelBase.getMuhaRefList',
-      context: context);
+    '_KrediKartiTahsilatiViewModelBase.getMuhaRefList',
+    context: context,
+  );
 
   @override
   Future<void> getMuhaRefList() {
@@ -228,8 +249,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$getSeriAsyncAction = AsyncAction(
-      '_KrediKartiTahsilatiViewModelBase.getSeri',
-      context: context);
+    '_KrediKartiTahsilatiViewModelBase.getSeri',
+    context: context,
+  );
 
   @override
   Future<void> getSeri() {
@@ -237,8 +259,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$getBankaHesaplariAsyncAction = AsyncAction(
-      '_KrediKartiTahsilatiViewModelBase.getBankaHesaplari',
-      context: context);
+    '_KrediKartiTahsilatiViewModelBase.getBankaHesaplari',
+    context: context,
+  );
 
   @override
   Future<void> getBankaHesaplari() {
@@ -246,8 +269,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$getKasalarAsyncAction = AsyncAction(
-      '_KrediKartiTahsilatiViewModelBase.getKasalar',
-      context: context);
+    '_KrediKartiTahsilatiViewModelBase.getKasalar',
+    context: context,
+  );
 
   @override
   Future<KasaList?> getKasalar(String? kasaKodu) {
@@ -255,8 +279,9 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   late final _$postDataAsyncAction = AsyncAction(
-      '_KrediKartiTahsilatiViewModelBase.postData',
-      context: context);
+    '_KrediKartiTahsilatiViewModelBase.postData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<DovizKurlariModel>> postData() {
@@ -265,7 +290,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   late final _$_KrediKartiTahsilatiViewModelBaseActionController =
       ActionController(
-          name: '_KrediKartiTahsilatiViewModelBase', context: context);
+        name: '_KrediKartiTahsilatiViewModelBase',
+        context: context,
+      );
 
   @override
   void setCariModel(CariListesiModel? value) {
@@ -274,8 +301,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setCariModel(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -286,8 +314,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setBankModel(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -298,34 +327,39 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setCariBakiye(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setShowReferansKodu(bool? value) {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.setShowReferansKodu');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.setShowReferansKodu',
+        );
     try {
       return super.setShowReferansKodu(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setAppBarSubTitle(String? value) {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.setAppBarSubTitle');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.setAppBarSubTitle',
+        );
     try {
       return super.setAppBarSubTitle(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -336,8 +370,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -348,8 +383,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setTarih(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -360,8 +396,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setAciklama(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -372,8 +409,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setKasaKodu(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -384,34 +422,39 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setHesapKodu(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setHedefAciklama(String? value) {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.setHedefAciklama');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.setHedefAciklama',
+        );
     try {
       return super.setHedefAciklama(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setPickerBelgeTuru(String? value) {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.setPickerBelgeTuru');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.setPickerBelgeTuru',
+        );
     try {
       return super.setPickerBelgeTuru(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -422,8 +465,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setKrediKartiNo(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -434,8 +478,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setTutar(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -446,34 +491,39 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setTaksitSayisi(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void increaseTaksitSayisi() {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.increaseTaksitSayisi');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.increaseTaksitSayisi',
+        );
     try {
       return super.increaseTaksitSayisi();
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void decreaseTaksitSayisi() {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.decreaseTaksitSayisi');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.decreaseTaksitSayisi',
+        );
     try {
       return super.decreaseTaksitSayisi();
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -484,8 +534,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setSeriList(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -496,8 +547,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -508,8 +560,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setSeri(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -520,8 +573,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setDovizTutari(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -532,21 +586,24 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setProjekodu(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setBankaSozlesmesiList(List<BankaSozlesmesiModel>? value) {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.setBankaSozlesmesiList');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.setBankaSozlesmesiList',
+        );
     try {
       return super.setBankaSozlesmesiList(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -557,21 +614,24 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setMuhaRefList(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setBankaHesaplariList(List<BankaListesiModel>? value) {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.setBankaHesaplariList');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_KrediKartiTahsilatiViewModelBase.setBankaHesaplariList',
+        );
     try {
       return super.setBankaHesaplariList(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -582,8 +642,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setPlasiyerKodu(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -594,8 +655,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setKktYontemi(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -606,8 +668,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setHesapTipi(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -618,8 +681,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setSozlesme(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -630,8 +694,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setReferansKodu(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -642,8 +707,9 @@ mixin _$KrediKartiTahsilatiViewModel
     try {
       return super.setDovizTipi(value);
     } finally {
-      _$_KrediKartiTahsilatiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -7,7 +7,7 @@ part "cari_aktivite_listesi_model.freezed.dart";
 part "cari_aktivite_listesi_model.g.dart";
 
 @unfreezed
-class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMixin {
+sealed class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMixin {
   factory CariAktiviteListesiModel({
     int? id,
     int? islemKodu,

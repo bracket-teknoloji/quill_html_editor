@@ -6,7 +6,7 @@ part "yapilandirma_rehberi_model.freezed.dart";
 part "yapilandirma_rehberi_model.g.dart";
 
 @unfreezed
-class YapilandirmaRehberiModel with _$YapilandirmaRehberiModel, NetworkManagerMixin {
+sealed class YapilandirmaRehberiModel with _$YapilandirmaRehberiModel, NetworkManagerMixin {
   factory YapilandirmaRehberiModel({
     String? yapkod,
     String? yapacik,

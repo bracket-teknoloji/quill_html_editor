@@ -11,7 +11,9 @@ part of 'siparis_teslim_raporu_view_model.dart';
 mixin _$SiparisTeslimRaporuViewModel
     on _SiparisTeslimRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
-      name: '_SiparisTeslimRaporuViewModelBase.pdfModel', context: context);
+    name: '_SiparisTeslimRaporuViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -27,7 +29,9 @@ mixin _$SiparisTeslimRaporuViewModel
   }
 
   late final _$kapaliMiAtom = Atom(
-      name: '_SiparisTeslimRaporuViewModelBase.kapaliMi', context: context);
+    name: '_SiparisTeslimRaporuViewModelBase.kapaliMi',
+    context: context,
+  );
 
   @override
   bool get kapaliMi {
@@ -42,8 +46,10 @@ mixin _$SiparisTeslimRaporuViewModel
     });
   }
 
-  late final _$durumAtom =
-      Atom(name: '_SiparisTeslimRaporuViewModelBase.durum', context: context);
+  late final _$durumAtom = Atom(
+    name: '_SiparisTeslimRaporuViewModelBase.durum',
+    context: context,
+  );
 
   @override
   bool get durum {
@@ -59,8 +65,9 @@ mixin _$SiparisTeslimRaporuViewModel
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_SiparisTeslimRaporuViewModelBase.futureController',
-      context: context);
+    name: '_SiparisTeslimRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -77,7 +84,9 @@ mixin _$SiparisTeslimRaporuViewModel
 
   late final _$_SiparisTeslimRaporuViewModelBaseActionController =
       ActionController(
-          name: '_SiparisTeslimRaporuViewModelBase', context: context);
+        name: '_SiparisTeslimRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setStokKodu(String? value) {
@@ -86,8 +95,9 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setStokKodu(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -98,21 +108,24 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo =
-        _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisTeslimRaporuViewModelBase.setTeslimCariKodu');
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisTeslimRaporuViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -123,8 +136,9 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -135,8 +149,9 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setVergiNo(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -147,8 +162,9 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setKapali(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -159,21 +175,24 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setDurum(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo =
-        _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisTeslimRaporuViewModelBase.setBaslangicTarihi');
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisTeslimRaporuViewModelBase.setBaslangicTarihi',
+        );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -184,8 +203,9 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setBitisTarihi(value);
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -196,8 +216,9 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.setFuture();
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -208,8 +229,9 @@ mixin _$SiparisTeslimRaporuViewModel
     try {
       return super.resetFuture();
     } finally {
-      _$_SiparisTeslimRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisTeslimRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

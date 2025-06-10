@@ -6,22 +6,21 @@ part of 'print_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PrintModelImpl _$$PrintModelImplFromJson(Map<String, dynamic> json) =>
-    _$PrintModelImpl(
-      raporOzelKod: json['RAPOR_OZEL_KOD'] as String,
-      dizaynId: (json['DIZAYN_ID'] as num?)?.toInt(),
-      etiketSayisi: (json['ETIKET_SAYISI'] as num?)?.toInt(),
-      yazdir: json['YAZDIR'] as bool? ?? true,
-      yaziciAdi: json['YAZICI_ADI'] as String?,
-      yaziciTipi: json['YAZICI_TIPI'] as String?,
-      dicParams: json['DIC_PARAMS'] == null
-          ? null
-          : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
-      standart: json['STANDART'] as bool?,
-      exportTipi: json['EXPORT_TIPI'] as String?,
-    );
+_PrintModel _$PrintModelFromJson(Map<String, dynamic> json) => _PrintModel(
+  raporOzelKod: json['RAPOR_OZEL_KOD'] as String,
+  dizaynId: (json['DIZAYN_ID'] as num?)?.toInt(),
+  etiketSayisi: (json['ETIKET_SAYISI'] as num?)?.toInt(),
+  yazdir: json['YAZDIR'] as bool? ?? true,
+  yaziciAdi: json['YAZICI_ADI'] as String?,
+  yaziciTipi: json['YAZICI_TIPI'] as String?,
+  dicParams: json['DIC_PARAMS'] == null
+      ? null
+      : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
+  standart: json['STANDART'] as bool?,
+  exportTipi: json['EXPORT_TIPI'] as String?,
+);
 
-Map<String, dynamic> _$$PrintModelImplToJson(_$PrintModelImpl instance) =>
+Map<String, dynamic> _$PrintModelToJson(_PrintModel instance) =>
     <String, dynamic>{
       'RAPOR_OZEL_KOD': instance.raporOzelKod,
       if (instance.dizaynId case final value?) 'DIZAYN_ID': value,

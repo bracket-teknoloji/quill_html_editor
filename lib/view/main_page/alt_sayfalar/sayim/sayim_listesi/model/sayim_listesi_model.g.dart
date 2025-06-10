@@ -6,9 +6,8 @@ part of 'sayim_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SayimListesiModelImpl(
+_SayimListesiModel _$SayimListesiModelFromJson(Map<String, dynamic> json) =>
+    _SayimListesiModel(
       fisno: json['FISNO'] as String?,
       baslangicTarihi: json['BASLANGIC_TARIHI'] == null
           ? null
@@ -56,53 +55,52 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
       stokModel: json['STOK_MODEL'] == null
           ? null
           : StokListesiModel.fromJson(
-              json['STOK_MODEL'] as Map<String, dynamic>),
+              json['STOK_MODEL'] as Map<String, dynamic>,
+            ),
     );
 
-Map<String, dynamic> _$$SayimListesiModelImplToJson(
-        _$SayimListesiModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.fisno case final value?) 'FISNO': value,
-      if (instance.baslangicTarihi?.toIso8601String() case final value?)
-        'BASLANGIC_TARIHI': value,
-      if (instance.depo case final value?) 'DEPO': value,
-      if (instance.aktif case final value?) 'AKTIF': value,
-      if (instance.kullanicilarJson case final value?)
-        'KULLANICILAR_JSON': value,
-      if (instance.depoList case final value?) 'DEPO_LIST': value,
-      if (instance.kullaniciList case final value?) 'KULLANICI_LIST': value,
-      if (instance.kullanicilar case final value?) 'KULLANICILAR': value,
-      if (instance.miktar case final value?) 'MIKTAR': value,
-      if (instance.depoMiktari case final value?) 'DEPO_MIKTARI': value,
-      if (instance.tipi case final value?) 'TIPI': value,
-      if (instance.filtre?.toJson() case final value?) 'FILTRE': value,
-      if (instance.filtreStr case final value?) 'FILTRE_STR': value,
-      if (instance.bitisTarihi?.toIso8601String() case final value?)
-        'BITIS_TARIHI': value,
-      if (instance.id case final value?) 'ID': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.cevrim case final value?) 'CEVRIM': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
-      if (instance.kayittarihi?.toIso8601String() case final value?)
-        'KAYITTARIHI': value,
-      if (instance.barkod case final value?) 'BARKOD': value,
-      if (instance.stokBakiye case final value?) 'STOK_BAKIYE': value,
-      if (instance.seriNo case final value?) 'SERI_NO': value,
-      if (instance.seri2 case final value?) 'SERI2': value,
-      if (instance.seri3 case final value?) 'SERI3': value,
-      if (instance.seri4 case final value?) 'SERI4': value,
-      if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
-        'SON_KULLANMA_TARIHI': value,
-      if (instance.stokModel?.toJson() case final value?) 'STOK_MODEL': value,
-    };
+Map<String, dynamic> _$SayimListesiModelToJson(
+  _SayimListesiModel instance,
+) => <String, dynamic>{
+  if (instance.fisno case final value?) 'FISNO': value,
+  if (instance.baslangicTarihi?.toIso8601String() case final value?)
+    'BASLANGIC_TARIHI': value,
+  if (instance.depo case final value?) 'DEPO': value,
+  if (instance.aktif case final value?) 'AKTIF': value,
+  if (instance.kullanicilarJson case final value?) 'KULLANICILAR_JSON': value,
+  if (instance.depoList case final value?) 'DEPO_LIST': value,
+  if (instance.kullaniciList case final value?) 'KULLANICI_LIST': value,
+  if (instance.kullanicilar case final value?) 'KULLANICILAR': value,
+  if (instance.miktar case final value?) 'MIKTAR': value,
+  if (instance.depoMiktari case final value?) 'DEPO_MIKTARI': value,
+  if (instance.tipi case final value?) 'TIPI': value,
+  if (instance.filtre?.toJson() case final value?) 'FILTRE': value,
+  if (instance.filtreStr case final value?) 'FILTRE_STR': value,
+  if (instance.bitisTarihi?.toIso8601String() case final value?)
+    'BITIS_TARIHI': value,
+  if (instance.id case final value?) 'ID': value,
+  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+  if (instance.cevrim case final value?) 'CEVRIM': value,
+  if (instance.stokKodu case final value?) 'STOK_KODU': value,
+  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+  if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+  if (instance.stokAdi case final value?) 'STOK_ADI': value,
+  if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?)
+    'KAYITTARIHI': value,
+  if (instance.barkod case final value?) 'BARKOD': value,
+  if (instance.stokBakiye case final value?) 'STOK_BAKIYE': value,
+  if (instance.seriNo case final value?) 'SERI_NO': value,
+  if (instance.seri2 case final value?) 'SERI2': value,
+  if (instance.seri3 case final value?) 'SERI3': value,
+  if (instance.seri4 case final value?) 'SERI4': value,
+  if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
+    'SON_KULLANMA_TARIHI': value,
+  if (instance.stokModel?.toJson() case final value?) 'STOK_MODEL': value,
+};
 
-_$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SayimFiltreModelImpl(
+_SayimFiltreModel _$SayimFiltreModelFromJson(Map<String, dynamic> json) =>
+    _SayimFiltreModel(
       arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -113,16 +111,21 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
       islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       belgeNo: json['BELGE_NO'] as String?,
       tipi: json['TIPI'] as String?,
-      arrKod1:
-          (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod2:
-          (json['ArrKod2'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod3:
-          (json['ArrKod3'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod4:
-          (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod5:
-          (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod1: (json['ArrKod1'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod2: (json['ArrKod2'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod3: (json['ArrKod3'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod4: (json['ArrKod4'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod5: (json['ArrKod5'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       miktar: (json['MIKTAR'] as num?)?.toDouble() ?? 1,
       olcuBirimKodu: (json['OLCU_BIRIM_KODU'] as num?)?.toInt(),
       projeKodu: json['PROJE_KODU'] as String?,
@@ -144,8 +147,7 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
           : DateTime.parse(json['KAYITTARIHI'] as String),
     );
 
-Map<String, dynamic> _$$SayimFiltreModelImplToJson(
-        _$SayimFiltreModelImpl instance) =>
+Map<String, dynamic> _$SayimFiltreModelToJson(_SayimFiltreModel instance) =>
     <String, dynamic>{
       if (instance.arrGrupKodu case final value?) 'ArrGrupKodu': value,
       if (instance.depoKodu case final value?) 'DEPO_KODU': value,

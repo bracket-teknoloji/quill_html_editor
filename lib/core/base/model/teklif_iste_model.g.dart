@@ -6,15 +6,13 @@ part of 'teklif_iste_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TeklifIsteModelImpl _$$TeklifIsteModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$TeklifIsteModelImpl(
+_TeklifIsteModel _$TeklifIsteModelFromJson(Map<String, dynamic> json) =>
+    _TeklifIsteModel(
       tip: json['TIP'] as String?,
       mesaj: json['MESAJ'] as String?,
     );
 
-Map<String, dynamic> _$$TeklifIsteModelImplToJson(
-        _$TeklifIsteModelImpl instance) =>
+Map<String, dynamic> _$TeklifIsteModelToJson(_TeklifIsteModel instance) =>
     <String, dynamic>{
       if (instance.tip case final value?) 'TIP': value,
       if (instance.mesaj case final value?) 'MESAJ': value,

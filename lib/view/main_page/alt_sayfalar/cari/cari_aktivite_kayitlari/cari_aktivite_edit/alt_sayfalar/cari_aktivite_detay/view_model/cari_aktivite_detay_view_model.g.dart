@@ -10,7 +10,9 @@ part of 'cari_aktivite_detay_view_model.dart';
 
 mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
   late final _$aktiviteListAtom = Atom(
-      name: '_CariAktiviteDetayViewModelBase.aktiviteList', context: context);
+    name: '_CariAktiviteDetayViewModelBase.aktiviteList',
+    context: context,
+  );
 
   @override
   ObservableList<CariAktiviteListesiModel> get aktiviteList {
@@ -26,8 +28,9 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
   }
 
   late final _$deleteDetayAsyncAction = AsyncAction(
-      '_CariAktiviteDetayViewModelBase.deleteDetay',
-      context: context);
+    '_CariAktiviteDetayViewModelBase.deleteDetay',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<NetworkManagerMixin>?> deleteDetay(int? id) {
@@ -36,7 +39,9 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
 
   late final _$_CariAktiviteDetayViewModelBaseActionController =
       ActionController(
-          name: '_CariAktiviteDetayViewModelBase', context: context);
+        name: '_CariAktiviteDetayViewModelBase',
+        context: context,
+      );
 
   @override
   void addAktivite(CariAktiviteListesiModel value) {
@@ -62,7 +67,9 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
 
   @override
   void replaceAktivite(
-      CariAktiviteListesiModel oldItem, CariAktiviteListesiModel newItem) {
+    CariAktiviteListesiModel oldItem,
+    CariAktiviteListesiModel newItem,
+  ) {
     final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
         .startAction(name: '_CariAktiviteDetayViewModelBase.replaceAktivite');
     try {

@@ -90,8 +90,12 @@ class $AssetsLottiesGen {
       const LottieGenImage('assets/lotties/woman_lottie.json');
 
   /// List of all assets
-  List<LottieGenImage> get values =>
-      [imageProcessingLottie, locationLottie, personLottie, womanLottie];
+  List<LottieGenImage> get values => [
+    imageProcessingLottie,
+    locationLottie,
+    personLottie,
+    womanLottie,
+  ];
 }
 
 class $AssetsSplashGen {
@@ -115,11 +119,11 @@ class $AssetsSplashGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        pickerLogoTuruncuPng,
-        pickerLogoTuruncuSvg,
-        pickerLogoTuruncu1024,
-        mapMarker
-      ];
+    pickerLogoTuruncuPng,
+    pickerLogoTuruncuSvg,
+    pickerLogoTuruncu1024,
+    mapMarker,
+  ];
 }
 
 class $AssetsTranslationsGen {
@@ -203,7 +207,8 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg
   SvgGenImage get qualityControl => const SvgGenImage(
-      'assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg');
+    'assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg',
+  );
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/settings.svg
   SvgGenImage get settings =>
@@ -227,24 +232,24 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        atmDollar,
-        counter,
-        eBelge,
-        factory2,
-        forklift,
-        inventory,
-        monitoring,
-        offer,
-        order,
-        pallet,
-        profile,
-        qualityControl,
-        settings,
-        shelves,
-        supervisor,
-        trolley,
-        wallet
-      ];
+    atmDollar,
+    counter,
+    eBelge,
+    factory2,
+    forklift,
+    inventory,
+    monitoring,
+    offer,
+    order,
+    pallet,
+    profile,
+    qualityControl,
+    settings,
+    shelves,
+    supervisor,
+    trolley,
+    wallet,
+  ];
 }
 
 class Assets {
@@ -260,11 +265,7 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
 
@@ -324,15 +325,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
@@ -341,17 +335,11 @@ class AssetGenImage {
 }
 
 class SvgGenImage {
-  const SvgGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = false;
+  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = false;
 
-  const SvgGenImage.vec(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = true;
+  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -405,7 +393,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ??
+      colorFilter:
+          colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
@@ -418,10 +407,7 @@ class SvgGenImage {
 }
 
 class LottieGenImage {
-  const LottieGenImage(
-    this._assetName, {
-    this.flavors = const {},
-  });
+  const LottieGenImage(this._assetName, {this.flavors = const {}});
 
   final String _assetName;
   final Set<String> flavors;
@@ -438,11 +424,8 @@ class LottieGenImage {
     _lottie.LottieImageProviderFactory? imageProviderFactory,
     Key? key,
     AssetBundle? bundle,
-    Widget Function(
-      BuildContext,
-      Widget,
-      _lottie.LottieComposition?,
-    )? frameBuilder,
+    Widget Function(BuildContext, Widget, _lottie.LottieComposition?)?
+    frameBuilder,
     ImageErrorWidgetBuilder? errorBuilder,
     double? width,
     double? height,

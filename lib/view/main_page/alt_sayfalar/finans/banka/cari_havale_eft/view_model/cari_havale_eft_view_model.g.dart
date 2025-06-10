@@ -9,8 +9,10 @@ part of 'cari_havale_eft_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_CariHavaleEftViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_CariHavaleEftViewModelBase.model',
+    context: context,
+  );
 
   @override
   TahsilatRequestModel get model {
@@ -26,8 +28,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_CariHavaleEftViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_CariHavaleEftViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -43,8 +46,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
   }
 
   late final _$bankaListesiRequestModelAtom = Atom(
-      name: '_CariHavaleEftViewModelBase.bankaListesiRequestModel',
-      context: context);
+    name: '_CariHavaleEftViewModelBase.bankaListesiRequestModel',
+    context: context,
+  );
 
   @override
   BankaListesiRequestModel get bankaListesiRequestModel {
@@ -54,14 +58,19 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   set bankaListesiRequestModel(BankaListesiRequestModel value) {
-    _$bankaListesiRequestModelAtom
-        .reportWrite(value, super.bankaListesiRequestModel, () {
-      super.bankaListesiRequestModel = value;
-    });
+    _$bankaListesiRequestModelAtom.reportWrite(
+      value,
+      super.bankaListesiRequestModel,
+      () {
+        super.bankaListesiRequestModel = value;
+      },
+    );
   }
 
-  late final _$cariModelAtom =
-      Atom(name: '_CariHavaleEftViewModelBase.cariModel', context: context);
+  late final _$cariModelAtom = Atom(
+    name: '_CariHavaleEftViewModelBase.cariModel',
+    context: context,
+  );
 
   @override
   CariListesiModel? get cariModel {
@@ -76,8 +85,10 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
     });
   }
 
-  late final _$bankaModelAtom =
-      Atom(name: '_CariHavaleEftViewModelBase.bankaModel', context: context);
+  late final _$bankaModelAtom = Atom(
+    name: '_CariHavaleEftViewModelBase.bankaModel',
+    context: context,
+  );
 
   @override
   BankaListesiModel? get bankaModel {
@@ -93,7 +104,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
   }
 
   late final _$bankaDovizliMiAtom = Atom(
-      name: '_CariHavaleEftViewModelBase.bankaDovizliMi', context: context);
+    name: '_CariHavaleEftViewModelBase.bankaDovizliMi',
+    context: context,
+  );
 
   @override
   bool get bankaDovizliMi {
@@ -108,16 +121,20 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
     });
   }
 
-  late final _$getDovizlerAsyncAction =
-      AsyncAction('_CariHavaleEftViewModelBase.getDovizler', context: context);
+  late final _$getDovizlerAsyncAction = AsyncAction(
+    '_CariHavaleEftViewModelBase.getDovizler',
+    context: context,
+  );
 
   @override
   Future<void> getDovizler() {
     return _$getDovizlerAsyncAction.run(() => super.getDovizler());
   }
 
-  late final _$_CariHavaleEftViewModelBaseActionController =
-      ActionController(name: '_CariHavaleEftViewModelBase', context: context);
+  late final _$_CariHavaleEftViewModelBaseActionController = ActionController(
+    name: '_CariHavaleEftViewModelBase',
+    context: context,
+  );
 
   @override
   void setCariModel(CariListesiModel? model) {
@@ -341,9 +358,10 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_CariHavaleEftViewModelBaseActionController.startAction(
-            name: '_CariHavaleEftViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
+        .startAction(
+          name: '_CariHavaleEftViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {

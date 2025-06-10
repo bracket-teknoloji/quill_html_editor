@@ -11,8 +11,9 @@ KalemListModel _$KalemListModelFromJson(Map<String, dynamic> json) =>
       ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
       ..sira = (json['SIRA'] as num?)?.toInt()
       ..belgeNo = json['BELGE_NO'] as String?
-      ..tarih =
-          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+      ..tarih = json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String)
       ..teslimTarihi = json['TESLIM_TARIHI'] == null
           ? null
           : DateTime.parse(json['TESLIM_TARIHI'] as String)

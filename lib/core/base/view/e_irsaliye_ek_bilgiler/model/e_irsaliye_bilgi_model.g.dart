@@ -6,9 +6,8 @@ part of 'e_irsaliye_bilgi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EIrsaliyeBilgiModelImpl _$$EIrsaliyeBilgiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EIrsaliyeBilgiModelImpl(
+_EIrsaliyeBilgiModel _$EIrsaliyeBilgiModelFromJson(Map<String, dynamic> json) =>
+    _EIrsaliyeBilgiModel(
       dorsePlaka1: json['DORSE_PLAKA1'] as String?,
       dorsePlaka2: json['DORSE_PLAKA2'] as String?,
       dorsePlaka3: json['DORSE_PLAKA3'] as String?,
@@ -37,33 +36,31 @@ _$EIrsaliyeBilgiModelImpl _$$EIrsaliyeBilgiModelImplFromJson(
       sablonKodu: json['SABLON_KODU'] as String?,
     );
 
-Map<String, dynamic> _$$EIrsaliyeBilgiModelImplToJson(
-        _$EIrsaliyeBilgiModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.dorsePlaka1 case final value?) 'DORSE_PLAKA1': value,
-      if (instance.dorsePlaka2 case final value?) 'DORSE_PLAKA2': value,
-      if (instance.dorsePlaka3 case final value?) 'DORSE_PLAKA3': value,
-      if (instance.plaka case final value?) 'PLAKA': value,
-      if (instance.sevktar?.toIso8601String() case final value?)
-        'SEVKTAR': value,
-      if (instance.sofor1Aciklama case final value?) 'SOFOR_1_ACIKLAMA': value,
-      if (instance.sofor1Adi case final value?) 'SOFOR_1_ADI': value,
-      if (instance.sofor1KimlikNo case final value?) 'SOFOR_1_KIMLIK_NO': value,
-      if (instance.sofor1Soyadi case final value?) 'SOFOR_1_SOYADI': value,
-      if (instance.sofor2Aciklama case final value?) 'SOFOR_2_ACIKLAMA': value,
-      if (instance.sofor2Adi case final value?) 'SOFOR_2_ADI': value,
-      if (instance.sofor2KimlikNo case final value?) 'SOFOR_2_KIMLIK_NO': value,
-      if (instance.sofor2Soyadi case final value?) 'SOFOR_2_SOYADI': value,
-      if (instance.sofor3Aciklama case final value?) 'SOFOR_3_ACIKLAMA': value,
-      if (instance.sofor3Adi case final value?) 'SOFOR_3_ADI': value,
-      if (instance.sofor3KimlikNo case final value?) 'SOFOR_3_KIMLIK_NO': value,
-      if (instance.sofor3Soyadi case final value?) 'SOFOR_3_SOYADI': value,
-      if (instance.tasiyiciIl case final value?) 'TASIYICI_IL': value,
-      if (instance.tasiyiciIlce case final value?) 'TASIYICI_ILCE': value,
-      if (instance.tasiyiciPostakodu case final value?)
-        'TASIYICI_POSTAKODU': value,
-      if (instance.tasiyiciUlke case final value?) 'TASIYICI_ULKE': value,
-      if (instance.tasiyiciUnvan case final value?) 'TASIYICI_UNVAN': value,
-      if (instance.tasiyiciVkn case final value?) 'TASIYICI_VKN': value,
-      if (instance.sablonKodu case final value?) 'SABLON_KODU': value,
-    };
+Map<String, dynamic> _$EIrsaliyeBilgiModelToJson(
+  _EIrsaliyeBilgiModel instance,
+) => <String, dynamic>{
+  if (instance.dorsePlaka1 case final value?) 'DORSE_PLAKA1': value,
+  if (instance.dorsePlaka2 case final value?) 'DORSE_PLAKA2': value,
+  if (instance.dorsePlaka3 case final value?) 'DORSE_PLAKA3': value,
+  if (instance.plaka case final value?) 'PLAKA': value,
+  if (instance.sevktar?.toIso8601String() case final value?) 'SEVKTAR': value,
+  if (instance.sofor1Aciklama case final value?) 'SOFOR_1_ACIKLAMA': value,
+  if (instance.sofor1Adi case final value?) 'SOFOR_1_ADI': value,
+  if (instance.sofor1KimlikNo case final value?) 'SOFOR_1_KIMLIK_NO': value,
+  if (instance.sofor1Soyadi case final value?) 'SOFOR_1_SOYADI': value,
+  if (instance.sofor2Aciklama case final value?) 'SOFOR_2_ACIKLAMA': value,
+  if (instance.sofor2Adi case final value?) 'SOFOR_2_ADI': value,
+  if (instance.sofor2KimlikNo case final value?) 'SOFOR_2_KIMLIK_NO': value,
+  if (instance.sofor2Soyadi case final value?) 'SOFOR_2_SOYADI': value,
+  if (instance.sofor3Aciklama case final value?) 'SOFOR_3_ACIKLAMA': value,
+  if (instance.sofor3Adi case final value?) 'SOFOR_3_ADI': value,
+  if (instance.sofor3KimlikNo case final value?) 'SOFOR_3_KIMLIK_NO': value,
+  if (instance.sofor3Soyadi case final value?) 'SOFOR_3_SOYADI': value,
+  if (instance.tasiyiciIl case final value?) 'TASIYICI_IL': value,
+  if (instance.tasiyiciIlce case final value?) 'TASIYICI_ILCE': value,
+  if (instance.tasiyiciPostakodu case final value?) 'TASIYICI_POSTAKODU': value,
+  if (instance.tasiyiciUlke case final value?) 'TASIYICI_ULKE': value,
+  if (instance.tasiyiciUnvan case final value?) 'TASIYICI_UNVAN': value,
+  if (instance.tasiyiciVkn case final value?) 'TASIYICI_VKN': value,
+  if (instance.sablonKodu case final value?) 'SABLON_KODU': value,
+};

@@ -11,8 +11,9 @@ part of 'cari_borc_alacak_dokumu_raporu_view_model.dart';
 mixin _$CariBorcAlacakDokumuRaporuViewModel
     on _CariBorcAlacakDokumuRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
-      name: '_CariBorcAlacakDokumuRaporuViewModelBase.pdfModel',
-      context: context);
+    name: '_CariBorcAlacakDokumuRaporuViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -28,8 +29,9 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_CariBorcAlacakDokumuRaporuViewModelBase.futureController',
-      context: context);
+    name: '_CariBorcAlacakDokumuRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -46,18 +48,22 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
 
   late final _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController =
       ActionController(
-          name: '_CariBorcAlacakDokumuRaporuViewModelBase', context: context);
+        name: '_CariBorcAlacakDokumuRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setFuture() {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setFuture');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.setFuture',
+        );
     try {
       return super.setFuture();
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -65,12 +71,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void resetFuture() {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.resetFuture');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.resetFuture',
+        );
     try {
       return super.resetFuture();
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -78,12 +86,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void isDovizli(bool value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.isDovizli');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.isDovizli',
+        );
     try {
       return super.isDovizli(value);
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -91,12 +101,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void setDovizTipleri(List<int>? dovizTipleri) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setDovizTipleri');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.setDovizTipleri',
+        );
     try {
       return super.setDovizTipleri(dovizTipleri);
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -104,12 +116,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void setSirala(String? value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setSirala');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.setSirala',
+        );
     try {
       return super.setSirala(value);
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -117,12 +131,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void setPlasiyer(String? value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setPlasiyer');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.setPlasiyer',
+        );
     try {
       return super.setPlasiyer(value);
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -130,12 +146,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void setBastar(String? value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setBastar');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.setBastar',
+        );
     try {
       return super.setBastar(value);
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -143,12 +161,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void setBittar(String? value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setBittar');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.setBittar',
+        );
     try {
       return super.setBittar(value);
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -156,12 +176,14 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   void setSifirHaric(bool value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
-            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setSifirHaric');
+          name: '_CariBorcAlacakDokumuRaporuViewModelBase.setSifirHaric',
+        );
     try {
       return super.setSifirHaric(value);
     } finally {
-      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

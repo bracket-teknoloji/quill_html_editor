@@ -6,7 +6,7 @@ part "base_grup_kodu_model.freezed.dart";
 part "base_grup_kodu_model.g.dart";
 
 @unfreezed
-class BaseGrupKoduModel with _$BaseGrupKoduModel, NetworkManagerMixin {
+sealed class BaseGrupKoduModel with _$BaseGrupKoduModel, NetworkManagerMixin {
   @JsonSerializable(createFactory: true)
   factory BaseGrupKoduModel({
     String? modul,

@@ -12,13 +12,15 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
   Computed<bool>? _$onlyOneItemComputed;
 
   @override
-  bool get onlyOneItem =>
-      (_$onlyOneItemComputed ??= Computed<bool>(() => super.onlyOneItem,
-              name: '_ImageCarouselViewModelBase.onlyOneItem'))
-          .value;
+  bool get onlyOneItem => (_$onlyOneItemComputed ??= Computed<bool>(
+    () => super.onlyOneItem,
+    name: '_ImageCarouselViewModelBase.onlyOneItem',
+  )).value;
 
   late final _$observableListAtom = Atom(
-      name: '_ImageCarouselViewModelBase.observableList', context: context);
+    name: '_ImageCarouselViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<EvraklarModel>? get observableList {
@@ -33,8 +35,10 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
     });
   }
 
-  late final _$selectedImageAtom =
-      Atom(name: '_ImageCarouselViewModelBase.selectedImage', context: context);
+  late final _$selectedImageAtom = Atom(
+    name: '_ImageCarouselViewModelBase.selectedImage',
+    context: context,
+  );
 
   @override
   String? get selectedImage {
@@ -49,8 +53,10 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_ImageCarouselViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_ImageCarouselViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   EvraklarRequestModel? get requestModel {
@@ -65,8 +71,10 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
     });
   }
 
-  late final _$_ImageCarouselViewModelBaseActionController =
-      ActionController(name: '_ImageCarouselViewModelBase', context: context);
+  late final _$_ImageCarouselViewModelBaseActionController = ActionController(
+    name: '_ImageCarouselViewModelBase',
+    context: context,
+  );
 
   @override
   void setObservableList(List<EvraklarModel>? list) {

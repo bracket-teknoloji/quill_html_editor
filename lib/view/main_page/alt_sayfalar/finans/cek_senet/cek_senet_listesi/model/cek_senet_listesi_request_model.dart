@@ -4,7 +4,7 @@ part "cek_senet_listesi_request_model.freezed.dart";
 part "cek_senet_listesi_request_model.g.dart";
 
 @unfreezed
-class CekSenetListesiRequestModel with _$CekSenetListesiRequestModel {
+sealed class CekSenetListesiRequestModel with _$CekSenetListesiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory CekSenetListesiRequestModel({
     String? verenKodu,

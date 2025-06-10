@@ -9,8 +9,10 @@ part of 'splash_auth_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
-  late final _$titleAtom =
-      Atom(name: '_SplashAuthViewModelBase.title', context: context);
+  late final _$titleAtom = Atom(
+    name: '_SplashAuthViewModelBase.title',
+    context: context,
+  );
 
   @override
   String get title {
@@ -25,8 +27,10 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
     });
   }
 
-  late final _$isErrorAtom =
-      Atom(name: '_SplashAuthViewModelBase.isError', context: context);
+  late final _$isErrorAtom = Atom(
+    name: '_SplashAuthViewModelBase.isError',
+    context: context,
+  );
 
   @override
   bool get isError {
@@ -42,7 +46,9 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
   }
 
   late final _$accountResponseModelAtom = Atom(
-      name: '_SplashAuthViewModelBase.accountResponseModel', context: context);
+    name: '_SplashAuthViewModelBase.accountResponseModel',
+    context: context,
+  );
 
   @override
   AccountResponseModel? get accountResponseModel {
@@ -52,19 +58,25 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
 
   @override
   set accountResponseModel(AccountResponseModel? value) {
-    _$accountResponseModelAtom.reportWrite(value, super.accountResponseModel,
-        () {
-      super.accountResponseModel = value;
-    });
+    _$accountResponseModelAtom.reportWrite(
+      value,
+      super.accountResponseModel,
+      () {
+        super.accountResponseModel = value;
+      },
+    );
   }
 
-  late final _$_SplashAuthViewModelBaseActionController =
-      ActionController(name: '_SplashAuthViewModelBase', context: context);
+  late final _$_SplashAuthViewModelBaseActionController = ActionController(
+    name: '_SplashAuthViewModelBase',
+    context: context,
+  );
 
   @override
   void setTitle(String value) {
     final _$actionInfo = _$_SplashAuthViewModelBaseActionController.startAction(
-        name: '_SplashAuthViewModelBase.setTitle');
+      name: '_SplashAuthViewModelBase.setTitle',
+    );
     try {
       return super.setTitle(value);
     } finally {
@@ -75,7 +87,8 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
   @override
   void setAccountResponseModel(AccountResponseModel? value) {
     final _$actionInfo = _$_SplashAuthViewModelBaseActionController.startAction(
-        name: '_SplashAuthViewModelBase.setAccountResponseModel');
+      name: '_SplashAuthViewModelBase.setAccountResponseModel',
+    );
     try {
       return super.setAccountResponseModel(value);
     } finally {
@@ -86,7 +99,8 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
   @override
   void setIsError(bool value) {
     final _$actionInfo = _$_SplashAuthViewModelBaseActionController.startAction(
-        name: '_SplashAuthViewModelBase.setIsError');
+      name: '_SplashAuthViewModelBase.setIsError',
+    );
     try {
       return super.setIsError(value);
     } finally {

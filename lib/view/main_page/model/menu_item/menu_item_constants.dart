@@ -738,13 +738,14 @@ abstract final class MenuItemConstants {
         ),
       ],
     ),
-    if (AccountModel.instance.isDebug)
+    if (_yetkiController.tahsilatPayker)
       GridItemModel.anamenu(
-        name: null,
+        name: MenuItemsEnum.payker,
         title: "Payker",
         iconData: Icons.add_card_outlined,
         color: ColorPalette.carminePink,
         altMenuler: <GridItemModel>[
+          if (_yetkiController.tahsilatPayker)
           GridItemModel.item(name: null, title: "Ödeme Al", route: "/mainPage/paykerTahsilat"),
         ],
       ),

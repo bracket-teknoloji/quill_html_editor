@@ -10,7 +10,9 @@ part of 'is_emri_rehberi_view_model.dart';
 
 mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   late final _$isSearchBarOpenAtom = Atom(
-      name: '_IsEmriRehberiViewModelBase.isSearchBarOpen', context: context);
+    name: '_IsEmriRehberiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -25,8 +27,10 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+    name: '_IsEmriRehberiViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -41,8 +45,10 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_IsEmriRehberiViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -57,8 +63,10 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$stokKoduAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.stokKodu', context: context);
+  late final _$stokKoduAtom = Atom(
+    name: '_IsEmriRehberiViewModelBase.stokKodu',
+    context: context,
+  );
 
   @override
   String? get stokKodu {
@@ -74,7 +82,9 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   }
 
   late final _$observableListAtom = Atom(
-      name: '_IsEmriRehberiViewModelBase.observableList', context: context);
+    name: '_IsEmriRehberiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<IsEmirleriModel>? get observableList {
@@ -90,33 +100,41 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   }
 
   late final _$changeSearchBarStatusAsyncAction = AsyncAction(
-      '_IsEmriRehberiViewModelBase.changeSearchBarStatus',
-      context: context);
+    '_IsEmriRehberiViewModelBase.changeSearchBarStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeSearchBarStatus() {
-    return _$changeSearchBarStatusAsyncAction
-        .run(() => super.changeSearchBarStatus());
+    return _$changeSearchBarStatusAsyncAction.run(
+      () => super.changeSearchBarStatus(),
+    );
   }
 
-  late final _$resetListAsyncAction =
-      AsyncAction('_IsEmriRehberiViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+    '_IsEmriRehberiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_IsEmriRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_IsEmriRehberiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_IsEmriRehberiViewModelBaseActionController =
-      ActionController(name: '_IsEmriRehberiViewModelBase', context: context);
+  late final _$_IsEmriRehberiViewModelBaseActionController = ActionController(
+    name: '_IsEmriRehberiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchText(String? value) {

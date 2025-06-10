@@ -12,13 +12,15 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   Computed<String?>? _$getCariBakiyeComputed;
 
   @override
-  String? get getCariBakiye =>
-      (_$getCariBakiyeComputed ??= Computed<String?>(() => super.getCariBakiye,
-              name: '_MuhtelifOdemeViewModelBase.getCariBakiye'))
-          .value;
+  String? get getCariBakiye => (_$getCariBakiyeComputed ??= Computed<String?>(
+    () => super.getCariBakiye,
+    name: '_MuhtelifOdemeViewModelBase.getCariBakiye',
+  )).value;
 
-  late final _$cariBakiyeAtom =
-      Atom(name: '_MuhtelifOdemeViewModelBase.cariBakiye', context: context);
+  late final _$cariBakiyeAtom = Atom(
+    name: '_MuhtelifOdemeViewModelBase.cariBakiye',
+    context: context,
+  );
 
   @override
   double? get cariBakiye {
@@ -34,7 +36,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   late final _$appBarSubTitleAtom = Atom(
-      name: '_MuhtelifOdemeViewModelBase.appBarSubTitle', context: context);
+    name: '_MuhtelifOdemeViewModelBase.appBarSubTitle',
+    context: context,
+  );
 
   @override
   String? get appBarSubTitle {
@@ -49,8 +53,10 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
     });
   }
 
-  late final _$kasaAtom =
-      Atom(name: '_MuhtelifOdemeViewModelBase.kasa', context: context);
+  late final _$kasaAtom = Atom(
+    name: '_MuhtelifOdemeViewModelBase.kasa',
+    context: context,
+  );
 
   @override
   KasaList? get kasa {
@@ -65,8 +71,10 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
     });
   }
 
-  late final _$seriListAtom =
-      Atom(name: '_MuhtelifOdemeViewModelBase.seriList', context: context);
+  late final _$seriListAtom = Atom(
+    name: '_MuhtelifOdemeViewModelBase.seriList',
+    context: context,
+  );
 
   @override
   ObservableList<SeriModel>? get seriList {
@@ -82,8 +90,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   late final _$bankaSozlesmesiListAtom = Atom(
-      name: '_MuhtelifOdemeViewModelBase.bankaSozlesmesiList',
-      context: context);
+    name: '_MuhtelifOdemeViewModelBase.bankaSozlesmesiList',
+    context: context,
+  );
 
   @override
   ObservableList<BankaSozlesmesiModel>? get bankaSozlesmesiList {
@@ -99,8 +108,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_MuhtelifOdemeViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_MuhtelifOdemeViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -116,7 +126,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   late final _$bankaHesaplariListAtom = Atom(
-      name: '_MuhtelifOdemeViewModelBase.bankaHesaplariList', context: context);
+    name: '_MuhtelifOdemeViewModelBase.bankaHesaplariList',
+    context: context,
+  );
 
   @override
   ObservableList<BankaListesiModel>? get bankaHesaplariList {
@@ -131,8 +143,10 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
     });
   }
 
-  late final _$muhaRefListAtom =
-      Atom(name: '_MuhtelifOdemeViewModelBase.muhaRefList', context: context);
+  late final _$muhaRefListAtom = Atom(
+    name: '_MuhtelifOdemeViewModelBase.muhaRefList',
+    context: context,
+  );
 
   @override
   ObservableList<MuhasebeReferansModel>? get muhaRefList {
@@ -147,8 +161,10 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_MuhtelifOdemeViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_MuhtelifOdemeViewModelBase.model',
+    context: context,
+  );
 
   @override
   TahsilatRequestModel get model {
@@ -164,7 +180,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   late final _$showReferansKoduAtom = Atom(
-      name: '_MuhtelifOdemeViewModelBase.showReferansKodu', context: context);
+    name: '_MuhtelifOdemeViewModelBase.showReferansKodu',
+    context: context,
+  );
 
   @override
   String? get showReferansKodu {
@@ -180,8 +198,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   late final _$getMuhaRefListAsyncAction = AsyncAction(
-      '_MuhtelifOdemeViewModelBase.getMuhaRefList',
-      context: context);
+    '_MuhtelifOdemeViewModelBase.getMuhaRefList',
+    context: context,
+  );
 
   @override
   Future<void> getMuhaRefList() {
@@ -189,32 +208,39 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   late final _$getSiradakiKodAsyncAction = AsyncAction(
-      '_MuhtelifOdemeViewModelBase.getSiradakiKod',
-      context: context);
+    '_MuhtelifOdemeViewModelBase.getSiradakiKod',
+    context: context,
+  );
 
   @override
   Future<void> getSiradakiKod() {
     return _$getSiradakiKodAsyncAction.run(() => super.getSiradakiKod());
   }
 
-  late final _$getDovizlerAsyncAction =
-      AsyncAction('_MuhtelifOdemeViewModelBase.getDovizler', context: context);
+  late final _$getDovizlerAsyncAction = AsyncAction(
+    '_MuhtelifOdemeViewModelBase.getDovizler',
+    context: context,
+  );
 
   @override
   Future<void> getDovizler() {
     return _$getDovizlerAsyncAction.run(() => super.getDovizler());
   }
 
-  late final _$postDataAsyncAction =
-      AsyncAction('_MuhtelifOdemeViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction = AsyncAction(
+    '_MuhtelifOdemeViewModelBase.postData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<DovizKurlariModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$_MuhtelifOdemeViewModelBaseActionController =
-      ActionController(name: '_MuhtelifOdemeViewModelBase', context: context);
+  late final _$_MuhtelifOdemeViewModelBaseActionController = ActionController(
+    name: '_MuhtelifOdemeViewModelBase',
+    context: context,
+  );
 
   @override
   void setShowReferansKodu(String? value) {
@@ -405,9 +431,10 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_MuhtelifOdemeViewModelBaseActionController.startAction(
-            name: '_MuhtelifOdemeViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
+        .startAction(
+          name: '_MuhtelifOdemeViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {

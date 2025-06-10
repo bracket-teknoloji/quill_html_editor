@@ -10,7 +10,9 @@ part of 'cari_aktivite_edit_view_model.dart';
 
 mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
   late final _$baseEditEnumAtom = Atom(
-      name: '_CariAktiviteEditViewModelBase.baseEditEnum', context: context);
+    name: '_CariAktiviteEditViewModelBase.baseEditEnum',
+    context: context,
+  );
 
   @override
   BaseEditEnum? get baseEditEnum {
@@ -26,8 +28,9 @@ mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
   }
 
   late final _$saveCariAktiviteAsyncAction = AsyncAction(
-      '_CariAktiviteEditViewModelBase.saveCariAktivite',
-      context: context);
+    '_CariAktiviteEditViewModelBase.saveCariAktivite',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<CariAktiviteListesiModel>> saveCariAktivite() {

@@ -11,7 +11,9 @@ part of 'base_transfer_toplamlar_view_model.dart';
 mixin _$BaseTransferToplamlarViewModel
     on _BaseTransferToplamlarViewModelBase, Store {
   late final _$isGenIsk1TAtom = Atom(
-      name: '_BaseTransferToplamlarViewModelBase.isGenIsk1T', context: context);
+    name: '_BaseTransferToplamlarViewModelBase.isGenIsk1T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk1T {
@@ -27,7 +29,9 @@ mixin _$BaseTransferToplamlarViewModel
   }
 
   late final _$isGenIsk2TAtom = Atom(
-      name: '_BaseTransferToplamlarViewModelBase.isGenIsk2T', context: context);
+    name: '_BaseTransferToplamlarViewModelBase.isGenIsk2T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk2T {
@@ -43,7 +47,9 @@ mixin _$BaseTransferToplamlarViewModel
   }
 
   late final _$isGenIsk3TAtom = Atom(
-      name: '_BaseTransferToplamlarViewModelBase.isGenIsk3T', context: context);
+    name: '_BaseTransferToplamlarViewModelBase.isGenIsk3T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk3T {
@@ -58,8 +64,10 @@ mixin _$BaseTransferToplamlarViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseTransferToplamlarViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseTransferToplamlarViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -76,7 +84,9 @@ mixin _$BaseTransferToplamlarViewModel
 
   late final _$_BaseTransferToplamlarViewModelBaseActionController =
       ActionController(
-          name: '_BaseTransferToplamlarViewModelBase', context: context);
+        name: '_BaseTransferToplamlarViewModelBase',
+        context: context,
+      );
 
   @override
   void setEkMal1(double? value) {
@@ -85,8 +95,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setEkMal1(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -97,8 +108,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setTevkifat(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -109,8 +121,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setEkMal3(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -121,8 +134,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setVadeTarihi(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -133,8 +147,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setIskTipi1(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -145,8 +160,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setIskTipi2(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -157,8 +173,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setIskTipi3(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -169,8 +186,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setGenIsk1(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -181,8 +199,9 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setGenIsk2(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -193,47 +212,54 @@ mixin _$BaseTransferToplamlarViewModel
     try {
       return super.setGenIsk3(value);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeGenIsk1O(TextEditingController controller) {
-    final _$actionInfo =
-        _$_BaseTransferToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTransferToplamlarViewModelBase.changeGenIsk1O');
+    final _$actionInfo = _$_BaseTransferToplamlarViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferToplamlarViewModelBase.changeGenIsk1O',
+        );
     try {
       return super.changeGenIsk1O(controller);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeGenIsk2O(TextEditingController controller) {
-    final _$actionInfo =
-        _$_BaseTransferToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTransferToplamlarViewModelBase.changeGenIsk2O');
+    final _$actionInfo = _$_BaseTransferToplamlarViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferToplamlarViewModelBase.changeGenIsk2O',
+        );
     try {
       return super.changeGenIsk2O(controller);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeGenIsk3O(TextEditingController controller) {
-    final _$actionInfo =
-        _$_BaseTransferToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTransferToplamlarViewModelBase.changeGenIsk3O');
+    final _$actionInfo = _$_BaseTransferToplamlarViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferToplamlarViewModelBase.changeGenIsk3O',
+        );
     try {
       return super.changeGenIsk3O(controller);
     } finally {
-      _$_BaseTransferToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -14,53 +14,55 @@ mixin _$OrtalamaVadeTarihiHesaplamaViewModel
 
   @override
   int get toplamKayitSayisi => (_$toplamKayitSayisiComputed ??= Computed<int>(
-          () => super.toplamKayitSayisi,
-          name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.toplamKayitSayisi'))
-      .value;
+    () => super.toplamKayitSayisi,
+    name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.toplamKayitSayisi',
+  )).value;
   Computed<double>? _$toplamTutarComputed;
 
   @override
-  double get toplamTutar =>
-      (_$toplamTutarComputed ??= Computed<double>(() => super.toplamTutar,
-              name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.toplamTutar'))
-          .value;
+  double get toplamTutar => (_$toplamTutarComputed ??= Computed<double>(
+    () => super.toplamTutar,
+    name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.toplamTutar',
+  )).value;
   Computed<double>? _$ortalamaVadeTarihiComputed;
 
   @override
-  double get ortalamaVadeTarihi => (_$ortalamaVadeTarihiComputed ??= Computed<
-              double>(() => super.ortalamaVadeTarihi,
-          name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihi'))
-      .value;
+  double get ortalamaVadeTarihi =>
+      (_$ortalamaVadeTarihiComputed ??= Computed<double>(
+        () => super.ortalamaVadeTarihi,
+        name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihi',
+      )).value;
   Computed<double>? _$ortalamaVadeTarihi2Computed;
 
   @override
-  double get ortalamaVadeTarihi2 => (_$ortalamaVadeTarihi2Computed ??= Computed<
-              double>(() => super.ortalamaVadeTarihi2,
-          name:
-              '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihi2'))
-      .value;
+  double get ortalamaVadeTarihi2 =>
+      (_$ortalamaVadeTarihi2Computed ??= Computed<double>(
+        () => super.ortalamaVadeTarihi2,
+        name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihi2',
+      )).value;
   Computed<DateTime>? _$ortalamaVadeTarihiDateTimeComputed;
 
   @override
   DateTime get ortalamaVadeTarihiDateTime =>
       (_$ortalamaVadeTarihiDateTimeComputed ??= Computed<DateTime>(
-              () => super.ortalamaVadeTarihiDateTime,
-              name:
-                  '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihiDateTime'))
-          .value;
+        () => super.ortalamaVadeTarihiDateTime,
+        name:
+            '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihiDateTime',
+      )).value;
   Computed<String>? _$ortalamaVadeTarihiStringComputed;
 
   @override
-  String get ortalamaVadeTarihiString => (_$ortalamaVadeTarihiStringComputed ??=
-          Computed<String>(() => super.ortalamaVadeTarihiString,
-              name:
-                  '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihiString'))
-      .value;
+  String get ortalamaVadeTarihiString =>
+      (_$ortalamaVadeTarihiStringComputed ??= Computed<String>(
+        () => super.ortalamaVadeTarihiString,
+        name:
+            '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihiString',
+      )).value;
 
   late final _$ortalamaVadeTarihiListesiAtom = Atom(
-      name:
-          '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihiListesi',
-      context: context);
+    name: '_OrtalamaVadeTarihiHesaplamaViewModelBase.ortalamaVadeTarihiListesi',
+    context: context,
+  );
 
   @override
   ObservableList<OrtalamaVadeTarihiModel> get ortalamaVadeTarihiListesi {
@@ -70,27 +72,34 @@ mixin _$OrtalamaVadeTarihiHesaplamaViewModel
 
   @override
   set ortalamaVadeTarihiListesi(ObservableList<OrtalamaVadeTarihiModel> value) {
-    _$ortalamaVadeTarihiListesiAtom
-        .reportWrite(value, super.ortalamaVadeTarihiListesi, () {
-      super.ortalamaVadeTarihiListesi = value;
-    });
+    _$ortalamaVadeTarihiListesiAtom.reportWrite(
+      value,
+      super.ortalamaVadeTarihiListesi,
+      () {
+        super.ortalamaVadeTarihiListesi = value;
+      },
+    );
   }
 
   late final _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController =
       ActionController(
-          name: '_OrtalamaVadeTarihiHesaplamaViewModelBase', context: context);
+        name: '_OrtalamaVadeTarihiHesaplamaViewModelBase',
+        context: context,
+      );
 
   @override
   void addOrtalamaVadeTarihiListesi(OrtalamaVadeTarihiModel value) {
     final _$actionInfo =
         _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController.startAction(
-            name:
-                '_OrtalamaVadeTarihiHesaplamaViewModelBase.addOrtalamaVadeTarihiListesi');
+          name:
+              '_OrtalamaVadeTarihiHesaplamaViewModelBase.addOrtalamaVadeTarihiListesi',
+        );
     try {
       return super.addOrtalamaVadeTarihiListesi(value);
     } finally {
-      _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -98,13 +107,15 @@ mixin _$OrtalamaVadeTarihiHesaplamaViewModel
   void removeOrtalamaVadeTarihiListesi(int index) {
     final _$actionInfo =
         _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController.startAction(
-            name:
-                '_OrtalamaVadeTarihiHesaplamaViewModelBase.removeOrtalamaVadeTarihiListesi');
+          name:
+              '_OrtalamaVadeTarihiHesaplamaViewModelBase.removeOrtalamaVadeTarihiListesi',
+        );
     try {
       return super.removeOrtalamaVadeTarihiListesi(index);
     } finally {
-      _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -112,13 +123,15 @@ mixin _$OrtalamaVadeTarihiHesaplamaViewModel
   void clearOrtalamaVadeTarihiListesi() {
     final _$actionInfo =
         _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController.startAction(
-            name:
-                '_OrtalamaVadeTarihiHesaplamaViewModelBase.clearOrtalamaVadeTarihiListesi');
+          name:
+              '_OrtalamaVadeTarihiHesaplamaViewModelBase.clearOrtalamaVadeTarihiListesi',
+        );
     try {
       return super.clearOrtalamaVadeTarihiListesi();
     } finally {
-      _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OrtalamaVadeTarihiHesaplamaViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

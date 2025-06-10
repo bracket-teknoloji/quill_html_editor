@@ -13,20 +13,22 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   String get pickerBelgeTuru => (_$pickerBelgeTuruComputed ??= Computed<String>(
-          () => super.pickerBelgeTuru,
-          name: '_SiparisDurumRaporuViewModelBase.pickerBelgeTuru'))
-      .value;
+    () => super.pickerBelgeTuru,
+    name: '_SiparisDurumRaporuViewModelBase.pickerBelgeTuru',
+  )).value;
   Computed<ObservableList<KalemModel?>?>? _$kalemListComputedComputed;
 
   @override
   ObservableList<KalemModel?>? get kalemListComputed =>
       (_$kalemListComputedComputed ??= Computed<ObservableList<KalemModel?>?>(
-              () => super.kalemListComputed,
-              name: '_SiparisDurumRaporuViewModelBase.kalemListComputed'))
-          .value;
+        () => super.kalemListComputed,
+        name: '_SiparisDurumRaporuViewModelBase.kalemListComputed',
+      )).value;
 
   late final _$searchBarAtom = Atom(
-      name: '_SiparisDurumRaporuViewModelBase.searchBar', context: context);
+    name: '_SiparisDurumRaporuViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -42,7 +44,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
   }
 
   late final _$searchKeyAtom = Atom(
-      name: '_SiparisDurumRaporuViewModelBase.searchKey', context: context);
+    name: '_SiparisDurumRaporuViewModelBase.searchKey',
+    context: context,
+  );
 
   @override
   String? get searchKey {
@@ -58,7 +62,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
   }
 
   late final _$dahaVarMiAtom = Atom(
-      name: '_SiparisDurumRaporuViewModelBase.dahaVarMi', context: context);
+    name: '_SiparisDurumRaporuViewModelBase.dahaVarMi',
+    context: context,
+  );
 
   @override
   bool get dahaVarMi {
@@ -74,8 +80,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
   }
 
   late final _$karsilanmaGroupValueAtom = Atom(
-      name: '_SiparisDurumRaporuViewModelBase.karsilanmaGroupValue',
-      context: context);
+    name: '_SiparisDurumRaporuViewModelBase.karsilanmaGroupValue',
+    context: context,
+  );
 
   @override
   int get karsilanmaGroupValue {
@@ -85,15 +92,19 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   set karsilanmaGroupValue(int value) {
-    _$karsilanmaGroupValueAtom.reportWrite(value, super.karsilanmaGroupValue,
-        () {
-      super.karsilanmaGroupValue = value;
-    });
+    _$karsilanmaGroupValueAtom.reportWrite(
+      value,
+      super.karsilanmaGroupValue,
+      () {
+        super.karsilanmaGroupValue = value;
+      },
+    );
   }
 
   late final _$durumGroupValueAtom = Atom(
-      name: '_SiparisDurumRaporuViewModelBase.durumGroupValue',
-      context: context);
+    name: '_SiparisDurumRaporuViewModelBase.durumGroupValue',
+    context: context,
+  );
 
   @override
   int get durumGroupValue {
@@ -109,8 +120,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
   }
 
   late final _$siparislerRequestModelAtom = Atom(
-      name: '_SiparisDurumRaporuViewModelBase.siparislerRequestModel',
-      context: context);
+    name: '_SiparisDurumRaporuViewModelBase.siparislerRequestModel',
+    context: context,
+  );
 
   @override
   SiparislerRequestModel get siparislerRequestModel {
@@ -120,14 +132,19 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   set siparislerRequestModel(SiparislerRequestModel value) {
-    _$siparislerRequestModelAtom
-        .reportWrite(value, super.siparislerRequestModel, () {
-      super.siparislerRequestModel = value;
-    });
+    _$siparislerRequestModelAtom.reportWrite(
+      value,
+      super.siparislerRequestModel,
+      () {
+        super.siparislerRequestModel = value;
+      },
+    );
   }
 
   late final _$kalemListAtom = Atom(
-      name: '_SiparisDurumRaporuViewModelBase.kalemList', context: context);
+    name: '_SiparisDurumRaporuViewModelBase.kalemList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemModel?>? get kalemList {
@@ -144,7 +161,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   late final _$_SiparisDurumRaporuViewModelBaseActionController =
       ActionController(
-          name: '_SiparisDurumRaporuViewModelBase', context: context);
+        name: '_SiparisDurumRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setSearchBar() {
@@ -153,8 +172,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setSearchBar();
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -165,8 +185,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setSearchKey(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -177,34 +198,39 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setDahaVarMi(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setKarsilanmaGroupValue(int value) {
-    final _$actionInfo =
-        _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisDurumRaporuViewModelBase.setKarsilanmaGroupValue');
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisDurumRaporuViewModelBase.setKarsilanmaGroupValue',
+        );
     try {
       return super.setKarsilanmaGroupValue(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDurumGroupValue(int value) {
-    final _$actionInfo =
-        _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisDurumRaporuViewModelBase.setDurumGroupValue');
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisDurumRaporuViewModelBase.setDurumGroupValue',
+        );
     try {
       return super.setDurumGroupValue(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -215,8 +241,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setKalemList(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -227,8 +254,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.addKalemList(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -239,8 +267,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setSiralama(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -251,8 +280,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setStokKodu(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -263,21 +293,24 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo =
-        _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisDurumRaporuViewModelBase.setTeslimCariKodu');
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisDurumRaporuViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -288,8 +321,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -300,8 +334,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setBaslamaTarihi(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -312,8 +347,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.setBitisTarihi(value);
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -324,8 +360,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.increaseSayfa();
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -336,8 +373,9 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     try {
       return super.resetSayfa();
     } finally {
-      _$_SiparisDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -11,8 +11,9 @@ part of 'barkod_tanimla_kayitlari_view_model.dart';
 mixin _$BarkodTanimlaKayitlariViewModel
     on _BarkodTanimlaKayitlariViewModelBase, Store {
   late final _$barkodTanimlaKayitlariAtom = Atom(
-      name: '_BarkodTanimlaKayitlariViewModelBase.barkodTanimlaKayitlari',
-      context: context);
+    name: '_BarkodTanimlaKayitlariViewModelBase.barkodTanimlaKayitlari',
+    context: context,
+  );
 
   @override
   ObservableList<BarkodTanimlaKayitlariModel>? get barkodTanimlaKayitlari {
@@ -22,16 +23,21 @@ mixin _$BarkodTanimlaKayitlariViewModel
 
   @override
   set barkodTanimlaKayitlari(
-      ObservableList<BarkodTanimlaKayitlariModel>? value) {
-    _$barkodTanimlaKayitlariAtom
-        .reportWrite(value, super.barkodTanimlaKayitlari, () {
-      super.barkodTanimlaKayitlari = value;
-    });
+    ObservableList<BarkodTanimlaKayitlariModel>? value,
+  ) {
+    _$barkodTanimlaKayitlariAtom.reportWrite(
+      value,
+      super.barkodTanimlaKayitlari,
+      () {
+        super.barkodTanimlaKayitlari = value;
+      },
+    );
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_BarkodTanimlaKayitlariViewModelBase.requestModel',
-      context: context);
+    name: '_BarkodTanimlaKayitlariViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   BarkodTanimlaKayitlariRequestModel get requestModel {
@@ -47,8 +53,9 @@ mixin _$BarkodTanimlaKayitlariViewModel
   }
 
   late final _$deleteItemAsyncAction = AsyncAction(
-      '_BarkodTanimlaKayitlariViewModelBase.deleteItem',
-      context: context);
+    '_BarkodTanimlaKayitlariViewModelBase.deleteItem',
+    context: context,
+  );
 
   @override
   Future<bool> deleteItem(BarkodTanimlaKayitlariModel model) {
@@ -56,8 +63,9 @@ mixin _$BarkodTanimlaKayitlariViewModel
   }
 
   late final _$getDataAsyncAction = AsyncAction(
-      '_BarkodTanimlaKayitlariViewModelBase.getData',
-      context: context);
+    '_BarkodTanimlaKayitlariViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -66,7 +74,9 @@ mixin _$BarkodTanimlaKayitlariViewModel
 
   late final _$_BarkodTanimlaKayitlariViewModelBaseActionController =
       ActionController(
-          name: '_BarkodTanimlaKayitlariViewModelBase', context: context);
+        name: '_BarkodTanimlaKayitlariViewModelBase',
+        context: context,
+      );
 
   @override
   void setStokKodu(String? stokKodu) {
@@ -75,22 +85,25 @@ mixin _$BarkodTanimlaKayitlariViewModel
     try {
       return super.setStokKodu(stokKodu);
     } finally {
-      _$_BarkodTanimlaKayitlariViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BarkodTanimlaKayitlariViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setBarkodTanimlaKayitlari(List<BarkodTanimlaKayitlariModel>? list) {
-    final _$actionInfo =
-        _$_BarkodTanimlaKayitlariViewModelBaseActionController.startAction(
-            name:
-                '_BarkodTanimlaKayitlariViewModelBase.setBarkodTanimlaKayitlari');
+    final _$actionInfo = _$_BarkodTanimlaKayitlariViewModelBaseActionController
+        .startAction(
+          name:
+              '_BarkodTanimlaKayitlariViewModelBase.setBarkodTanimlaKayitlari',
+        );
     try {
       return super.setBarkodTanimlaKayitlari(list);
     } finally {
-      _$_BarkodTanimlaKayitlariViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BarkodTanimlaKayitlariViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

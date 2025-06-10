@@ -10,7 +10,7 @@ part "olcum_belge_edit_model.freezed.dart";
 part "olcum_belge_edit_model.g.dart";
 
 @unfreezed
-class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
+sealed class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
   factory OlcumBelgeEditModel({
     String? belgeNo,
     String? belgeTipi,
@@ -34,7 +34,7 @@ class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
+sealed class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
   factory OlcumBelgeModel({
     String? belgeNo,
     String? belgeTipi,
@@ -80,7 +80,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
+sealed class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
   factory OlcumOlcumlerModel({
     int? id,
     int? belgeSira,
@@ -106,7 +106,7 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
+sealed class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
   factory OlcumProsesModel({
     int? id,
     int? sira,
@@ -150,7 +150,7 @@ class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
+sealed class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
   factory OlcumEkleDetayModel({double? deger, int? detayId, DateTime? zaman}) = _OlcumEkleDetayModel;
 
   factory OlcumEkleDetayModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleDetayModelFromJson(json);

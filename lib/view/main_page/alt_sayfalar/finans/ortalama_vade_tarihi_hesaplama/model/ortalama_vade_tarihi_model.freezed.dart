@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,154 +10,120 @@ part of 'ortalama_vade_tarihi_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-OrtalamaVadeTarihiModel _$OrtalamaVadeTarihiModelFromJson(Map<String, dynamic> json) {
-  return _OrtalamaVadeTarihiModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$OrtalamaVadeTarihiModel {
-  DateTime? get vadeTarihi => throw _privateConstructorUsedError;
-  set vadeTarihi(DateTime? value) => throw _privateConstructorUsedError;
-  double? get tutar => throw _privateConstructorUsedError;
-  set tutar(double? value) => throw _privateConstructorUsedError;
+
+ DateTime? get vadeTarihi; set vadeTarihi(DateTime? value); double? get tutar; set tutar(double? value);
+/// Create a copy of OrtalamaVadeTarihiModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OrtalamaVadeTarihiModelCopyWith<OrtalamaVadeTarihiModel> get copyWith => _$OrtalamaVadeTarihiModelCopyWithImpl<OrtalamaVadeTarihiModel>(this as OrtalamaVadeTarihiModel, _$identity);
 
   /// Serializes this OrtalamaVadeTarihiModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of OrtalamaVadeTarihiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrtalamaVadeTarihiModelCopyWith<OrtalamaVadeTarihiModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $OrtalamaVadeTarihiModelCopyWith<$Res> {
-  factory $OrtalamaVadeTarihiModelCopyWith(OrtalamaVadeTarihiModel value, $Res Function(OrtalamaVadeTarihiModel) then) =
-      _$OrtalamaVadeTarihiModelCopyWithImpl<$Res, OrtalamaVadeTarihiModel>;
-  @useResult
-  $Res call({DateTime? vadeTarihi, double? tutar});
-}
+abstract mixin class $OrtalamaVadeTarihiModelCopyWith<$Res>  {
+  factory $OrtalamaVadeTarihiModelCopyWith(OrtalamaVadeTarihiModel value, $Res Function(OrtalamaVadeTarihiModel) _then) = _$OrtalamaVadeTarihiModelCopyWithImpl;
+@useResult
+$Res call({
+ DateTime? vadeTarihi, double? tutar
+});
 
+
+
+
+}
 /// @nodoc
-class _$OrtalamaVadeTarihiModelCopyWithImpl<$Res, $Val extends OrtalamaVadeTarihiModel>
+class _$OrtalamaVadeTarihiModelCopyWithImpl<$Res>
     implements $OrtalamaVadeTarihiModelCopyWith<$Res> {
-  _$OrtalamaVadeTarihiModelCopyWithImpl(this._value, this._then);
+  _$OrtalamaVadeTarihiModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OrtalamaVadeTarihiModel _self;
+  final $Res Function(OrtalamaVadeTarihiModel) _then;
 
-  /// Create a copy of OrtalamaVadeTarihiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? vadeTarihi = freezed, Object? tutar = freezed}) {
-    return _then(
-      _value.copyWith(
-            vadeTarihi: freezed == vadeTarihi
-                ? _value.vadeTarihi
-                : vadeTarihi // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            tutar: freezed == tutar
-                ? _value.tutar
-                : tutar // ignore: cast_nullable_to_non_nullable
-                      as double?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of OrtalamaVadeTarihiModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? vadeTarihi = freezed,Object? tutar = freezed,}) {
+  return _then(_self.copyWith(
+vadeTarihi: freezed == vadeTarihi ? _self.vadeTarihi : vadeTarihi // ignore: cast_nullable_to_non_nullable
+as DateTime?,tutar: freezed == tutar ? _self.tutar : tutar // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$OrtalamaVadeTarihiModelImplCopyWith<$Res> implements $OrtalamaVadeTarihiModelCopyWith<$Res> {
-  factory _$$OrtalamaVadeTarihiModelImplCopyWith(
-    _$OrtalamaVadeTarihiModelImpl value,
-    $Res Function(_$OrtalamaVadeTarihiModelImpl) then,
-  ) = __$$OrtalamaVadeTarihiModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({DateTime? vadeTarihi, double? tutar});
 }
 
-/// @nodoc
-class __$$OrtalamaVadeTarihiModelImplCopyWithImpl<$Res>
-    extends _$OrtalamaVadeTarihiModelCopyWithImpl<$Res, _$OrtalamaVadeTarihiModelImpl>
-    implements _$$OrtalamaVadeTarihiModelImplCopyWith<$Res> {
-  __$$OrtalamaVadeTarihiModelImplCopyWithImpl(
-    _$OrtalamaVadeTarihiModelImpl _value,
-    $Res Function(_$OrtalamaVadeTarihiModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of OrtalamaVadeTarihiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? vadeTarihi = freezed, Object? tutar = freezed}) {
-    return _then(
-      _$OrtalamaVadeTarihiModelImpl(
-        vadeTarihi: freezed == vadeTarihi
-            ? _value.vadeTarihi
-            : vadeTarihi // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        tutar: freezed == tutar
-            ? _value.tutar
-            : tutar // ignore: cast_nullable_to_non_nullable
-                  as double?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$OrtalamaVadeTarihiModelImpl implements _OrtalamaVadeTarihiModel {
-  _$OrtalamaVadeTarihiModelImpl({this.vadeTarihi, this.tutar});
 
-  factory _$OrtalamaVadeTarihiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrtalamaVadeTarihiModelImplFromJson(json);
+class _OrtalamaVadeTarihiModel implements OrtalamaVadeTarihiModel {
+   _OrtalamaVadeTarihiModel({this.vadeTarihi, this.tutar});
+  factory _OrtalamaVadeTarihiModel.fromJson(Map<String, dynamic> json) => _$OrtalamaVadeTarihiModelFromJson(json);
 
-  @override
-  DateTime? vadeTarihi;
-  @override
-  double? tutar;
+@override  DateTime? vadeTarihi;
+@override  double? tutar;
 
-  /// Create a copy of OrtalamaVadeTarihiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrtalamaVadeTarihiModelImplCopyWith<_$OrtalamaVadeTarihiModelImpl> get copyWith =>
-      __$$OrtalamaVadeTarihiModelImplCopyWithImpl<_$OrtalamaVadeTarihiModelImpl>(this, _$identity);
+/// Create a copy of OrtalamaVadeTarihiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OrtalamaVadeTarihiModelCopyWith<_OrtalamaVadeTarihiModel> get copyWith => __$OrtalamaVadeTarihiModelCopyWithImpl<_OrtalamaVadeTarihiModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OrtalamaVadeTarihiModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$OrtalamaVadeTarihiModelToJson(this, );
 }
 
-abstract class _OrtalamaVadeTarihiModel implements OrtalamaVadeTarihiModel {
-  factory _OrtalamaVadeTarihiModel({DateTime? vadeTarihi, double? tutar}) = _$OrtalamaVadeTarihiModelImpl;
 
-  factory _OrtalamaVadeTarihiModel.fromJson(Map<String, dynamic> json) = _$OrtalamaVadeTarihiModelImpl.fromJson;
 
-  @override
-  DateTime? get vadeTarihi;
-  set vadeTarihi(DateTime? value);
-  @override
-  double? get tutar;
-  set tutar(double? value);
 
-  /// Create a copy of OrtalamaVadeTarihiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrtalamaVadeTarihiModelImplCopyWith<_$OrtalamaVadeTarihiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$OrtalamaVadeTarihiModelCopyWith<$Res> implements $OrtalamaVadeTarihiModelCopyWith<$Res> {
+  factory _$OrtalamaVadeTarihiModelCopyWith(_OrtalamaVadeTarihiModel value, $Res Function(_OrtalamaVadeTarihiModel) _then) = __$OrtalamaVadeTarihiModelCopyWithImpl;
+@override @useResult
+$Res call({
+ DateTime? vadeTarihi, double? tutar
+});
+
+
+
+
+}
+/// @nodoc
+class __$OrtalamaVadeTarihiModelCopyWithImpl<$Res>
+    implements _$OrtalamaVadeTarihiModelCopyWith<$Res> {
+  __$OrtalamaVadeTarihiModelCopyWithImpl(this._self, this._then);
+
+  final _OrtalamaVadeTarihiModel _self;
+  final $Res Function(_OrtalamaVadeTarihiModel) _then;
+
+/// Create a copy of OrtalamaVadeTarihiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? vadeTarihi = freezed,Object? tutar = freezed,}) {
+  return _then(_OrtalamaVadeTarihiModel(
+vadeTarihi: freezed == vadeTarihi ? _self.vadeTarihi : vadeTarihi // ignore: cast_nullable_to_non_nullable
+as DateTime?,tutar: freezed == tutar ? _self.tutar : tutar // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
+}
+
+
+}
+
+// dart format on

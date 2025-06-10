@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,243 +10,143 @@ part of 'delete_cek_senet_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-DeleteCekSenetModel _$DeleteCekSenetModelFromJson(Map<String, dynamic> json) {
-  return _DeleteCekSenetModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$DeleteCekSenetModel {
-  String? get belgeNo => throw _privateConstructorUsedError;
-  String? get belgeTipi => throw _privateConstructorUsedError;
-  int? get islemKodu => throw _privateConstructorUsedError;
-  @JsonKey(name: "PickerTahsilatTuru")
-  String? get pickerTahsilatTuru => throw _privateConstructorUsedError;
-  String? get tag => throw _privateConstructorUsedError;
+
+ String? get belgeNo; String? get belgeTipi; int? get islemKodu;@JsonKey(name: "PickerTahsilatTuru") String? get pickerTahsilatTuru; String? get tag;
+/// Create a copy of DeleteCekSenetModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DeleteCekSenetModelCopyWith<DeleteCekSenetModel> get copyWith => _$DeleteCekSenetModelCopyWithImpl<DeleteCekSenetModel>(this as DeleteCekSenetModel, _$identity);
 
   /// Serializes this DeleteCekSenetModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of DeleteCekSenetModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DeleteCekSenetModelCopyWith<DeleteCekSenetModel> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DeleteCekSenetModel&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo)&&(identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi)&&(identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu)&&(identical(other.pickerTahsilatTuru, pickerTahsilatTuru) || other.pickerTahsilatTuru == pickerTahsilatTuru)&&(identical(other.tag, tag) || other.tag == tag));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,belgeNo,belgeTipi,islemKodu,pickerTahsilatTuru,tag);
+
+
+
 }
 
 /// @nodoc
-abstract class $DeleteCekSenetModelCopyWith<$Res> {
-  factory $DeleteCekSenetModelCopyWith(DeleteCekSenetModel value, $Res Function(DeleteCekSenetModel) then) =
-      _$DeleteCekSenetModelCopyWithImpl<$Res, DeleteCekSenetModel>;
-  @useResult
-  $Res call({
-    String? belgeNo,
-    String? belgeTipi,
-    int? islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
-    String? tag,
-  });
-}
+abstract mixin class $DeleteCekSenetModelCopyWith<$Res>  {
+  factory $DeleteCekSenetModelCopyWith(DeleteCekSenetModel value, $Res Function(DeleteCekSenetModel) _then) = _$DeleteCekSenetModelCopyWithImpl;
+@useResult
+$Res call({
+ String? belgeNo, String? belgeTipi, int? islemKodu,@JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru, String? tag
+});
 
+
+
+
+}
 /// @nodoc
-class _$DeleteCekSenetModelCopyWithImpl<$Res, $Val extends DeleteCekSenetModel>
+class _$DeleteCekSenetModelCopyWithImpl<$Res>
     implements $DeleteCekSenetModelCopyWith<$Res> {
-  _$DeleteCekSenetModelCopyWithImpl(this._value, this._then);
+  _$DeleteCekSenetModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final DeleteCekSenetModel _self;
+  final $Res Function(DeleteCekSenetModel) _then;
 
-  /// Create a copy of DeleteCekSenetModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? belgeNo = freezed,
-    Object? belgeTipi = freezed,
-    Object? islemKodu = freezed,
-    Object? pickerTahsilatTuru = freezed,
-    Object? tag = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            belgeNo: freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            belgeTipi: freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            islemKodu: freezed == islemKodu
-                ? _value.islemKodu
-                : islemKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            pickerTahsilatTuru: freezed == pickerTahsilatTuru
-                ? _value.pickerTahsilatTuru
-                : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            tag: freezed == tag
-                ? _value.tag
-                : tag // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of DeleteCekSenetModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? belgeNo = freezed,Object? belgeTipi = freezed,Object? islemKodu = freezed,Object? pickerTahsilatTuru = freezed,Object? tag = freezed,}) {
+  return _then(_self.copyWith(
+belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,islemKodu: freezed == islemKodu ? _self.islemKodu : islemKodu // ignore: cast_nullable_to_non_nullable
+as int?,pickerTahsilatTuru: freezed == pickerTahsilatTuru ? _self.pickerTahsilatTuru : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
+as String?,tag: freezed == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$DeleteCekSenetModelImplCopyWith<$Res> implements $DeleteCekSenetModelCopyWith<$Res> {
-  factory _$$DeleteCekSenetModelImplCopyWith(
-    _$DeleteCekSenetModelImpl value,
-    $Res Function(_$DeleteCekSenetModelImpl) then,
-  ) = __$$DeleteCekSenetModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    String? belgeNo,
-    String? belgeTipi,
-    int? islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
-    String? tag,
-  });
 }
 
-/// @nodoc
-class __$$DeleteCekSenetModelImplCopyWithImpl<$Res>
-    extends _$DeleteCekSenetModelCopyWithImpl<$Res, _$DeleteCekSenetModelImpl>
-    implements _$$DeleteCekSenetModelImplCopyWith<$Res> {
-  __$$DeleteCekSenetModelImplCopyWithImpl(
-    _$DeleteCekSenetModelImpl _value,
-    $Res Function(_$DeleteCekSenetModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of DeleteCekSenetModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? belgeNo = freezed,
-    Object? belgeTipi = freezed,
-    Object? islemKodu = freezed,
-    Object? pickerTahsilatTuru = freezed,
-    Object? tag = freezed,
-  }) {
-    return _then(
-      _$DeleteCekSenetModelImpl(
-        belgeNo: freezed == belgeNo
-            ? _value.belgeNo
-            : belgeNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        belgeTipi: freezed == belgeTipi
-            ? _value.belgeTipi
-            : belgeTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        islemKodu: freezed == islemKodu
-            ? _value.islemKodu
-            : islemKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        pickerTahsilatTuru: freezed == pickerTahsilatTuru
-            ? _value.pickerTahsilatTuru
-            : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        tag: freezed == tag
-            ? _value.tag
-            : tag // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
-  const _$DeleteCekSenetModelImpl({
-    this.belgeNo,
-    this.belgeTipi,
-    this.islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") this.pickerTahsilatTuru,
-    this.tag,
-  });
 
-  factory _$DeleteCekSenetModelImpl.fromJson(Map<String, dynamic> json) => _$$DeleteCekSenetModelImplFromJson(json);
+class _DeleteCekSenetModel implements DeleteCekSenetModel {
+  const _DeleteCekSenetModel({this.belgeNo, this.belgeTipi, this.islemKodu, @JsonKey(name: "PickerTahsilatTuru") this.pickerTahsilatTuru, this.tag});
+  factory _DeleteCekSenetModel.fromJson(Map<String, dynamic> json) => _$DeleteCekSenetModelFromJson(json);
 
-  @override
-  final String? belgeNo;
-  @override
-  final String? belgeTipi;
-  @override
-  final int? islemKodu;
-  @override
-  @JsonKey(name: "PickerTahsilatTuru")
-  final String? pickerTahsilatTuru;
-  @override
-  final String? tag;
+@override final  String? belgeNo;
+@override final  String? belgeTipi;
+@override final  int? islemKodu;
+@override@JsonKey(name: "PickerTahsilatTuru") final  String? pickerTahsilatTuru;
+@override final  String? tag;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteCekSenetModelImpl &&
-            (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo) &&
-            (identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi) &&
-            (identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu) &&
-            (identical(other.pickerTahsilatTuru, pickerTahsilatTuru) ||
-                other.pickerTahsilatTuru == pickerTahsilatTuru) &&
-            (identical(other.tag, tag) || other.tag == tag));
-  }
+/// Create a copy of DeleteCekSenetModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DeleteCekSenetModelCopyWith<_DeleteCekSenetModel> get copyWith => __$DeleteCekSenetModelCopyWithImpl<_DeleteCekSenetModel>(this, _$identity);
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, belgeNo, belgeTipi, islemKodu, pickerTahsilatTuru, tag);
-
-  /// Create a copy of DeleteCekSenetModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith =>
-      __$$DeleteCekSenetModelImplCopyWithImpl<_$DeleteCekSenetModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeleteCekSenetModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$DeleteCekSenetModelToJson(this, );
 }
 
-abstract class _DeleteCekSenetModel implements DeleteCekSenetModel {
-  const factory _DeleteCekSenetModel({
-    final String? belgeNo,
-    final String? belgeTipi,
-    final int? islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") final String? pickerTahsilatTuru,
-    final String? tag,
-  }) = _$DeleteCekSenetModelImpl;
-
-  factory _DeleteCekSenetModel.fromJson(Map<String, dynamic> json) = _$DeleteCekSenetModelImpl.fromJson;
-
-  @override
-  String? get belgeNo;
-  @override
-  String? get belgeTipi;
-  @override
-  int? get islemKodu;
-  @override
-  @JsonKey(name: "PickerTahsilatTuru")
-  String? get pickerTahsilatTuru;
-  @override
-  String? get tag;
-
-  /// Create a copy of DeleteCekSenetModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DeleteCekSenetModel&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo)&&(identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi)&&(identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu)&&(identical(other.pickerTahsilatTuru, pickerTahsilatTuru) || other.pickerTahsilatTuru == pickerTahsilatTuru)&&(identical(other.tag, tag) || other.tag == tag));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,belgeNo,belgeTipi,islemKodu,pickerTahsilatTuru,tag);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DeleteCekSenetModelCopyWith<$Res> implements $DeleteCekSenetModelCopyWith<$Res> {
+  factory _$DeleteCekSenetModelCopyWith(_DeleteCekSenetModel value, $Res Function(_DeleteCekSenetModel) _then) = __$DeleteCekSenetModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? belgeNo, String? belgeTipi, int? islemKodu,@JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru, String? tag
+});
+
+
+
+
+}
+/// @nodoc
+class __$DeleteCekSenetModelCopyWithImpl<$Res>
+    implements _$DeleteCekSenetModelCopyWith<$Res> {
+  __$DeleteCekSenetModelCopyWithImpl(this._self, this._then);
+
+  final _DeleteCekSenetModel _self;
+  final $Res Function(_DeleteCekSenetModel) _then;
+
+/// Create a copy of DeleteCekSenetModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? belgeNo = freezed,Object? belgeTipi = freezed,Object? islemKodu = freezed,Object? pickerTahsilatTuru = freezed,Object? tag = freezed,}) {
+  return _then(_DeleteCekSenetModel(
+belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,islemKodu: freezed == islemKodu ? _self.islemKodu : islemKodu // ignore: cast_nullable_to_non_nullable
+as int?,pickerTahsilatTuru: freezed == pickerTahsilatTuru ? _self.pickerTahsilatTuru : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
+as String?,tag: freezed == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

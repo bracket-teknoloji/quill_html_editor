@@ -14,20 +14,22 @@ mixin _$BaseTransferEditingViewModel
 
   @override
   BaseSiparisEditModel get model =>
-      (_$modelComputed ??= Computed<BaseSiparisEditModel>(() => super.model,
-              name: '_BaseTransferEditingViewModelBase.model'))
-          .value;
+      (_$modelComputed ??= Computed<BaseSiparisEditModel>(
+        () => super.model,
+        name: '_BaseTransferEditingViewModelBase.model',
+      )).value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
-  int get getKalemCount =>
-      (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount,
-              name: '_BaseTransferEditingViewModelBase.getKalemCount'))
-          .value;
+  int get getKalemCount => (_$getKalemCountComputed ??= Computed<int>(
+    () => super.getKalemCount,
+    name: '_BaseTransferEditingViewModelBase.getKalemCount',
+  )).value;
 
   late final _$updateKalemlerAtom = Atom(
-      name: '_BaseTransferEditingViewModelBase.updateKalemler',
-      context: context);
+    name: '_BaseTransferEditingViewModelBase.updateKalemler',
+    context: context,
+  );
 
   @override
   bool get updateKalemler {
@@ -43,7 +45,9 @@ mixin _$BaseTransferEditingViewModel
   }
 
   late final _$pageIndexAtom = Atom(
-      name: '_BaseTransferEditingViewModelBase.pageIndex', context: context);
+    name: '_BaseTransferEditingViewModelBase.pageIndex',
+    context: context,
+  );
 
   @override
   int get pageIndex {
@@ -58,8 +62,10 @@ mixin _$BaseTransferEditingViewModel
     });
   }
 
-  late final _$isValidAtom =
-      Atom(name: '_BaseTransferEditingViewModelBase.isValid', context: context);
+  late final _$isValidAtom = Atom(
+    name: '_BaseTransferEditingViewModelBase.isValid',
+    context: context,
+  );
 
   @override
   bool get isValid {
@@ -75,7 +81,9 @@ mixin _$BaseTransferEditingViewModel
   }
 
   late final _$isLastPageAtom = Atom(
-      name: '_BaseTransferEditingViewModelBase.isLastPage', context: context);
+    name: '_BaseTransferEditingViewModelBase.isLastPage',
+    context: context,
+  );
 
   @override
   bool get isLastPage {
@@ -91,7 +99,9 @@ mixin _$BaseTransferEditingViewModel
   }
 
   late final _$showLoadingAtom = Atom(
-      name: '_BaseTransferEditingViewModelBase.showLoading', context: context);
+    name: '_BaseTransferEditingViewModelBase.showLoading',
+    context: context,
+  );
 
   @override
   bool get showLoading {
@@ -107,8 +117,9 @@ mixin _$BaseTransferEditingViewModel
   }
 
   late final _$yeniKaydaHazirlaMiAtom = Atom(
-      name: '_BaseTransferEditingViewModelBase.yeniKaydaHazirlaMi',
-      context: context);
+    name: '_BaseTransferEditingViewModelBase.yeniKaydaHazirlaMi',
+    context: context,
+  );
 
   @override
   bool get yeniKaydaHazirlaMi {
@@ -124,8 +135,9 @@ mixin _$BaseTransferEditingViewModel
   }
 
   late final _$baseSiparisEditModelAtom = Atom(
-      name: '_BaseTransferEditingViewModelBase.baseSiparisEditModel',
-      context: context);
+    name: '_BaseTransferEditingViewModelBase.baseSiparisEditModel',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get baseSiparisEditModel {
@@ -135,26 +147,33 @@ mixin _$BaseTransferEditingViewModel
 
   @override
   set baseSiparisEditModel(BaseSiparisEditModel value) {
-    _$baseSiparisEditModelAtom.reportWrite(value, super.baseSiparisEditModel,
-        () {
-      super.baseSiparisEditModel = value;
-    });
+    _$baseSiparisEditModelAtom.reportWrite(
+      value,
+      super.baseSiparisEditModel,
+      () {
+        super.baseSiparisEditModel = value;
+      },
+    );
   }
 
   late final _$_BaseTransferEditingViewModelBaseActionController =
       ActionController(
-          name: '_BaseTransferEditingViewModelBase', context: context);
+        name: '_BaseTransferEditingViewModelBase',
+        context: context,
+      );
 
   @override
   void changeUpdateKalemler() {
-    final _$actionInfo =
-        _$_BaseTransferEditingViewModelBaseActionController.startAction(
-            name: '_BaseTransferEditingViewModelBase.changeUpdateKalemler');
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferEditingViewModelBase.changeUpdateKalemler',
+        );
     try {
       return super.changeUpdateKalemler();
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -165,8 +184,9 @@ mixin _$BaseTransferEditingViewModel
     try {
       return super.changeIsValid();
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -177,21 +197,24 @@ mixin _$BaseTransferEditingViewModel
     try {
       return super.changePageIndex(value);
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeIsLastPage(bool value) {
-    final _$actionInfo =
-        _$_BaseTransferEditingViewModelBaseActionController.startAction(
-            name: '_BaseTransferEditingViewModelBase.changeIsLastPage');
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferEditingViewModelBase.changeIsLastPage',
+        );
     try {
       return super.changeIsLastPage(value);
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -202,8 +225,9 @@ mixin _$BaseTransferEditingViewModel
     try {
       return super.setLoading(value);
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -214,21 +238,24 @@ mixin _$BaseTransferEditingViewModel
     try {
       return super.changeFuture();
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo =
-        _$_BaseTransferEditingViewModelBaseActionController.startAction(
-            name: '_BaseTransferEditingViewModelBase.changeYeniKaydaHazirlaMi');
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferEditingViewModelBase.changeYeniKaydaHazirlaMi',
+        );
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -239,8 +266,9 @@ mixin _$BaseTransferEditingViewModel
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -251,8 +279,9 @@ mixin _$BaseTransferEditingViewModel
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -263,8 +292,9 @@ mixin _$BaseTransferEditingViewModel
     try {
       return super.setKalemList(value);
     } finally {
-      _$_BaseTransferEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTransferEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

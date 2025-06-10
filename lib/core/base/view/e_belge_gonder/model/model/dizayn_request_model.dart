@@ -4,7 +4,7 @@ part "dizayn_request_model.freezed.dart";
 part "dizayn_request_model.g.dart";
 
 @freezed
-class DizaynRequestModel with _$DizaynRequestModel {
+sealed class DizaynRequestModel with _$DizaynRequestModel {
   const factory DizaynRequestModel({
     @JsonKey(name: "ModulID") int? modulId,
     @JsonKey(name: "ERPDizaynlari") bool? erpDizaynlari,

@@ -13,7 +13,7 @@ part "cari_request_model.freezed.dart";
 part "cari_request_model.g.dart";
 
 @unfreezed
-class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
+sealed class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory CariRequestModel({
     @Default("") String? filterText,
@@ -53,7 +53,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
   );
 
   factory CariRequestModel.fromCariListesiModel(CariListesiModel model) => CariRequestModel(
-    kod: [ model.bagliCari ?? model.cariKodu ?? ""],
+    kod: [model.bagliCari ?? model.cariKodu ?? ""],
     // sayfa: 1,
     eFaturaGoster: true,
     secildi: "E",

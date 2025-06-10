@@ -6,9 +6,8 @@ part of 'stok_fiyati_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StokFiyatiModelImpl _$$StokFiyatiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$StokFiyatiModelImpl(
+_StokFiyatiModel _$StokFiyatiModelFromJson(Map<String, dynamic> json) =>
+    _StokFiyatiModel(
       fiyat: (json['FIYAT'] as num?)?.toDouble(),
       yer: json['YER'] as String?,
       fiyatSirasi: (json['FIYAT_SIRASI'] as num?)?.toInt(),
@@ -19,8 +18,7 @@ _$StokFiyatiModelImpl _$$StokFiyatiModelImplFromJson(
           : DateTime.parse(json['TARIH'] as String),
     );
 
-Map<String, dynamic> _$$StokFiyatiModelImplToJson(
-        _$StokFiyatiModelImpl instance) =>
+Map<String, dynamic> _$StokFiyatiModelToJson(_StokFiyatiModel instance) =>
     <String, dynamic>{
       if (instance.fiyat case final value?) 'FIYAT': value,
       if (instance.yer case final value?) 'YER': value,

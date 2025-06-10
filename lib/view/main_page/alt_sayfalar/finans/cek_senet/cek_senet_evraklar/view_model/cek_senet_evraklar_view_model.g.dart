@@ -10,7 +10,9 @@ part of 'cek_senet_evraklar_view_model.dart';
 
 mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
   late final _$evraklarListesiAtom = Atom(
-      name: '_CekSenetEvraklarViewModelBase.evraklarListesi', context: context);
+    name: '_CekSenetEvraklarViewModelBase.evraklarListesi',
+    context: context,
+  );
 
   @override
   ObservableList<EvraklarModel>? get evraklarListesi {
@@ -26,7 +28,9 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_CekSenetEvraklarViewModelBase.requestModel', context: context);
+    name: '_CekSenetEvraklarViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   EvraklarRequestModel get requestModel {
@@ -39,14 +43,19 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
   @override
   set requestModel(EvraklarRequestModel value) {
     _$requestModelAtom.reportWrite(
-        value, _requestModelIsInitialized ? super.requestModel : null, () {
-      super.requestModel = value;
-      _requestModelIsInitialized = true;
-    });
+      value,
+      _requestModelIsInitialized ? super.requestModel : null,
+      () {
+        super.requestModel = value;
+        _requestModelIsInitialized = true;
+      },
+    );
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_CekSenetEvraklarViewModelBase.resetPage', context: context);
+  late final _$resetPageAsyncAction = AsyncAction(
+    '_CekSenetEvraklarViewModelBase.resetPage',
+    context: context,
+  );
 
   @override
   Future<void> resetPage() {
@@ -54,8 +63,9 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
   }
 
   late final _$deleteEvrakAsyncAction = AsyncAction(
-      '_CekSenetEvraklarViewModelBase.deleteEvrak',
-      context: context);
+    '_CekSenetEvraklarViewModelBase.deleteEvrak',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<EvraklarModel>> deleteEvrak(EvraklarModel model) {
@@ -63,16 +73,19 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
   }
 
   late final _$uploadEvrakAsyncAction = AsyncAction(
-      '_CekSenetEvraklarViewModelBase.uploadEvrak',
-      context: context);
+    '_CekSenetEvraklarViewModelBase.uploadEvrak',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<EvraklarModel>> uploadEvrak(EvraklarModel model) {
     return _$uploadEvrakAsyncAction.run(() => super.uploadEvrak(model));
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_CekSenetEvraklarViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_CekSenetEvraklarViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -81,7 +94,9 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
 
   late final _$_CekSenetEvraklarViewModelBaseActionController =
       ActionController(
-          name: '_CekSenetEvraklarViewModelBase', context: context);
+        name: '_CekSenetEvraklarViewModelBase',
+        context: context,
+      );
 
   @override
   void setEvraklarListesi(List<EvraklarModel>? value) {

@@ -10,7 +10,9 @@ part of 'seri_girisi_view_model.dart';
 
 mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   late final _$seriHareketleriModelAtom = Atom(
-      name: '_SeriGirisiViewModelBase.seriHareketleriModel', context: context);
+    name: '_SeriGirisiViewModelBase.seriHareketleriModel',
+    context: context,
+  );
 
   @override
   SeriHareketleriModel get seriHareketleriModel {
@@ -20,27 +22,35 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
 
   @override
   set seriHareketleriModel(SeriHareketleriModel value) {
-    _$seriHareketleriModelAtom.reportWrite(value, super.seriHareketleriModel,
-        () {
-      super.seriHareketleriModel = value;
-    });
+    _$seriHareketleriModelAtom.reportWrite(
+      value,
+      super.seriHareketleriModel,
+      () {
+        super.seriHareketleriModel = value;
+      },
+    );
   }
 
-  late final _$postDataAsyncAction =
-      AsyncAction('_SeriGirisiViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction = AsyncAction(
+    '_SeriGirisiViewModelBase.postData',
+    context: context,
+  );
 
   @override
   Future<bool> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$_SeriGirisiViewModelBaseActionController =
-      ActionController(name: '_SeriGirisiViewModelBase', context: context);
+  late final _$_SeriGirisiViewModelBaseActionController = ActionController(
+    name: '_SeriGirisiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSeriHareketleriModel(SeriHareketleriModel model) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setSeriHareketleriModel');
+      name: '_SeriGirisiViewModelBase.setSeriHareketleriModel',
+    );
     try {
       return super.setSeriHareketleriModel(model);
     } finally {
@@ -51,7 +61,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setStokKodu(String? stokKodu) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setStokKodu');
+      name: '_SeriGirisiViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(stokKodu);
     } finally {
@@ -62,7 +73,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setDepoKodu(int? depoKodu) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setDepoKodu');
+      name: '_SeriGirisiViewModelBase.setDepoKodu',
+    );
     try {
       return super.setDepoKodu(depoKodu);
     } finally {
@@ -73,7 +85,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setSeri1(String? seri1) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setSeri1');
+      name: '_SeriGirisiViewModelBase.setSeri1',
+    );
     try {
       return super.setSeri1(seri1);
     } finally {
@@ -84,7 +97,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setSeri2(String? seri2) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setSeri2');
+      name: '_SeriGirisiViewModelBase.setSeri2',
+    );
     try {
       return super.setSeri2(seri2);
     } finally {
@@ -95,7 +109,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setGcKod(String? gckod) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setGcKod');
+      name: '_SeriGirisiViewModelBase.setGcKod',
+    );
     try {
       return super.setGcKod(gckod);
     } finally {
@@ -106,7 +121,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setAciklama1(String? aciklama1) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setAciklama1');
+      name: '_SeriGirisiViewModelBase.setAciklama1',
+    );
     try {
       return super.setAciklama1(aciklama1);
     } finally {
@@ -117,7 +133,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setAciklama2(String? aciklama2) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setAciklama2');
+      name: '_SeriGirisiViewModelBase.setAciklama2',
+    );
     try {
       return super.setAciklama2(aciklama2);
     } finally {
@@ -128,7 +145,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setMiktar(double? miktar) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setMiktar');
+      name: '_SeriGirisiViewModelBase.setMiktar',
+    );
     try {
       return super.setMiktar(miktar);
     } finally {
@@ -139,7 +157,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setHareketAciklama(String? hareketAciklama) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setHareketAciklama');
+      name: '_SeriGirisiViewModelBase.setHareketAciklama',
+    );
     try {
       return super.setHareketAciklama(hareketAciklama);
     } finally {
@@ -150,7 +169,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void setBelgeNo(String? belgeNo) {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.setBelgeNo');
+      name: '_SeriGirisiViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(belgeNo);
     } finally {
@@ -161,7 +181,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void increaseMiktar() {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.increaseMiktar');
+      name: '_SeriGirisiViewModelBase.increaseMiktar',
+    );
     try {
       return super.increaseMiktar();
     } finally {
@@ -172,7 +193,8 @@ mixin _$SeriGirisiViewModel on _SeriGirisiViewModelBase, Store {
   @override
   void decreaseMiktar() {
     final _$actionInfo = _$_SeriGirisiViewModelBaseActionController.startAction(
-        name: '_SeriGirisiViewModelBase.decreaseMiktar');
+      name: '_SeriGirisiViewModelBase.decreaseMiktar',
+    );
     try {
       return super.decreaseMiktar();
     } finally {

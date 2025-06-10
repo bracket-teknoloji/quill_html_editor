@@ -4,7 +4,7 @@ part "uretim_sonu_kaydi_listesi_request_model.freezed.dart";
 part "uretim_sonu_kaydi_listesi_request_model.g.dart";
 
 @unfreezed
-class UretimSonuKaydiListesiRequestModel with _$UretimSonuKaydiListesiRequestModel {
+sealed class UretimSonuKaydiListesiRequestModel with _$UretimSonuKaydiListesiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory UretimSonuKaydiListesiRequestModel({int? sayfa, String? ekranTipi, String? belgeNo, String? searchText}) =
       _UretimSonuKaydiListesiRequestModel;

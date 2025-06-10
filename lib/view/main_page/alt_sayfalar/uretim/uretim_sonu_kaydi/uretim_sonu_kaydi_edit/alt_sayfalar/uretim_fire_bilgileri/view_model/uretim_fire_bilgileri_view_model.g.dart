@@ -10,8 +10,10 @@ part of 'uretim_fire_bilgileri_view_model.dart';
 
 mixin _$UretimFireBilgileriViewModel
     on _UretimFireBilgileriViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_UretimFireBilgileriViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_UretimFireBilgileriViewModelBase.model',
+    context: context,
+  );
 
   @override
   KalemModel get model {
@@ -23,15 +25,20 @@ mixin _$UretimFireBilgileriViewModel
 
   @override
   set model(KalemModel value) {
-    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
-        () {
-      super.model = value;
-      _modelIsInitialized = true;
-    });
+    _$modelAtom.reportWrite(
+      value,
+      _modelIsInitialized ? super.model : null,
+      () {
+        super.model = value;
+        _modelIsInitialized = true;
+      },
+    );
   }
 
   late final _$fireModelAtom = Atom(
-      name: '_UretimFireBilgileriViewModelBase.fireModel', context: context);
+    name: '_UretimFireBilgileriViewModelBase.fireModel',
+    context: context,
+  );
 
   @override
   KalemFireModel get fireModel {
@@ -47,8 +54,9 @@ mixin _$UretimFireBilgileriViewModel
   }
 
   late final _$observableListAtom = Atom(
-      name: '_UretimFireBilgileriViewModelBase.observableList',
-      context: context);
+    name: '_UretimFireBilgileriViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemFireModel>? get observableList {
@@ -64,8 +72,9 @@ mixin _$UretimFireBilgileriViewModel
   }
 
   late final _$getDataAsyncAction = AsyncAction(
-      '_UretimFireBilgileriViewModelBase.getData',
-      context: context);
+    '_UretimFireBilgileriViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -74,7 +83,9 @@ mixin _$UretimFireBilgileriViewModel
 
   late final _$_UretimFireBilgileriViewModelBaseActionController =
       ActionController(
-          name: '_UretimFireBilgileriViewModelBase', context: context);
+        name: '_UretimFireBilgileriViewModelBase',
+        context: context,
+      );
 
   @override
   void addFireModel(KalemFireModel value) {
@@ -83,8 +94,9 @@ mixin _$UretimFireBilgileriViewModel
     try {
       return super.addFireModel(value);
     } finally {
-      _$_UretimFireBilgileriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimFireBilgileriViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -95,8 +107,9 @@ mixin _$UretimFireBilgileriViewModel
     try {
       return super.removeFireModel(value);
     } finally {
-      _$_UretimFireBilgileriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimFireBilgileriViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -107,8 +120,9 @@ mixin _$UretimFireBilgileriViewModel
     try {
       return super.setFireModel(value);
     } finally {
-      _$_UretimFireBilgileriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimFireBilgileriViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -119,21 +133,24 @@ mixin _$UretimFireBilgileriViewModel
     try {
       return super.clearFireModel();
     } finally {
-      _$_UretimFireBilgileriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimFireBilgileriViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setObservableList(List<KalemFireModel>? list) {
-    final _$actionInfo =
-        _$_UretimFireBilgileriViewModelBaseActionController.startAction(
-            name: '_UretimFireBilgileriViewModelBase.setObservableList');
+    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController
+        .startAction(
+          name: '_UretimFireBilgileriViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {
-      _$_UretimFireBilgileriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimFireBilgileriViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -8,7 +8,7 @@ part "hucre_transferi_model.freezed.dart";
 part "hucre_transferi_model.g.dart";
 
 @unfreezed
-class HucreTransferiModel with _$HucreTransferiModel {
+sealed class HucreTransferiModel with _$HucreTransferiModel {
   factory HucreTransferiModel({
     int? depoKodu,
     @JsonKey(includeFromJson: false, includeToJson: false) String? depoTanimi,

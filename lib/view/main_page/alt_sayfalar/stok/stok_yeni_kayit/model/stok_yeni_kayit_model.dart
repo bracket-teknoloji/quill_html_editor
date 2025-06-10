@@ -37,7 +37,7 @@ part "stok_yeni_kayit_model.freezed.dart";
 part "stok_yeni_kayit_model.g.dart";
 
 @unfreezed
-class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
+sealed class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
   factory StokYeniKayitModel({
     String? aciklama,
     String? belgeNo,

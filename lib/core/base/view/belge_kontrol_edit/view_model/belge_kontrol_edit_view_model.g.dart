@@ -10,8 +10,9 @@ part of 'belge_kontrol_edit_view_model.dart';
 
 mixin _$BelgeKontrolEditViewModel on _BelgeKontrolEditViewModelBase, Store {
   late final _$belgeKontrolModelAtom = Atom(
-      name: '_BelgeKontrolEditViewModelBase.belgeKontrolModel',
-      context: context);
+    name: '_BelgeKontrolEditViewModelBase.belgeKontrolModel',
+    context: context,
+  );
 
   @override
   BelgeKontrolModel get belgeKontrolModel {
@@ -26,8 +27,10 @@ mixin _$BelgeKontrolEditViewModel on _BelgeKontrolEditViewModelBase, Store {
     });
   }
 
-  late final _$saveDataAsyncAction =
-      AsyncAction('_BelgeKontrolEditViewModelBase.saveData', context: context);
+  late final _$saveDataAsyncAction = AsyncAction(
+    '_BelgeKontrolEditViewModelBase.saveData',
+    context: context,
+  );
 
   @override
   Future<bool> saveData() {
@@ -36,7 +39,9 @@ mixin _$BelgeKontrolEditViewModel on _BelgeKontrolEditViewModelBase, Store {
 
   late final _$_BelgeKontrolEditViewModelBaseActionController =
       ActionController(
-          name: '_BelgeKontrolEditViewModelBase', context: context);
+        name: '_BelgeKontrolEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setBelgeTuru(String value) {

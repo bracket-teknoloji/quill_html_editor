@@ -4,7 +4,7 @@ part "hizli_tahsilat_kayitlari_request_model.freezed.dart";
 part "hizli_tahsilat_kayitlari_request_model.g.dart";
 
 @unfreezed
-class HizliTahsilatKayitlariRequestModel with _$HizliTahsilatKayitlariRequestModel {
+sealed class HizliTahsilatKayitlariRequestModel with _$HizliTahsilatKayitlariRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory HizliTahsilatKayitlariRequestModel({
     String? baslamaTarihi,

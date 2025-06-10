@@ -13,7 +13,7 @@ part "siparis_edit_request_model.freezed.dart";
 part "siparis_edit_request_model.g.dart";
 
 @unfreezed
-class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestModel {
+sealed class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory SiparisEditRequestModel({
     @JsonKey(defaultValue: "D") String? ekranTipi,

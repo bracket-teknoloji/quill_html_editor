@@ -11,7 +11,9 @@ part of 'base_talep_teklif_kalemler_view_model.dart';
 mixin _$BaseTalepTeklifKalemlerViewModel
     on BaseTalepTeklifKalemlerViewModelBase, Store {
   late final _$kalemListAtom = Atom(
-      name: 'BaseTalepTeklifKalemlerViewModelBase.kalemList', context: context);
+    name: 'BaseTalepTeklifKalemlerViewModelBase.kalemList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemModel>? get kalemList {
@@ -28,31 +30,37 @@ mixin _$BaseTalepTeklifKalemlerViewModel
 
   late final _$BaseTalepTeklifKalemlerViewModelBaseActionController =
       ActionController(
-          name: 'BaseTalepTeklifKalemlerViewModelBase', context: context);
+        name: 'BaseTalepTeklifKalemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void removeAtKalemList(int index) {
-    final _$actionInfo =
-        _$BaseTalepTeklifKalemlerViewModelBaseActionController.startAction(
-            name: 'BaseTalepTeklifKalemlerViewModelBase.removeAtKalemList');
+    final _$actionInfo = _$BaseTalepTeklifKalemlerViewModelBaseActionController
+        .startAction(
+          name: 'BaseTalepTeklifKalemlerViewModelBase.removeAtKalemList',
+        );
     try {
       return super.removeAtKalemList(index);
     } finally {
-      _$BaseTalepTeklifKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$BaseTalepTeklifKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void updateKalemList() {
-    final _$actionInfo =
-        _$BaseTalepTeklifKalemlerViewModelBaseActionController.startAction(
-            name: 'BaseTalepTeklifKalemlerViewModelBase.updateKalemList');
+    final _$actionInfo = _$BaseTalepTeklifKalemlerViewModelBaseActionController
+        .startAction(
+          name: 'BaseTalepTeklifKalemlerViewModelBase.updateKalemList',
+        );
     try {
       return super.updateKalemList();
     } finally {
-      _$BaseTalepTeklifKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$BaseTalepTeklifKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

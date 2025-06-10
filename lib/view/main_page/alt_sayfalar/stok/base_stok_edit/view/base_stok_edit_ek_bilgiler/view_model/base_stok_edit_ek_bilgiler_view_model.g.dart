@@ -11,8 +11,9 @@ part of 'base_stok_edit_ek_bilgiler_view_model.dart';
 mixin _$BaseStokEditEkBilgilerViewModel
     on _BaseStokEditEkBilgilerViewModelBase, Store {
   late final _$stokListesiModelAtom = Atom(
-      name: '_BaseStokEditEkBilgilerViewModelBase.stokListesiModel',
-      context: context);
+    name: '_BaseStokEditEkBilgilerViewModelBase.stokListesiModel',
+    context: context,
+  );
 
   @override
   StokListesiModel get stokListesiModel {
@@ -29,7 +30,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
 
   late final _$_BaseStokEditEkBilgilerViewModelBaseActionController =
       ActionController(
-          name: '_BaseStokEditEkBilgilerViewModelBase', context: context);
+        name: '_BaseStokEditEkBilgilerViewModelBase',
+        context: context,
+      );
 
   @override
   void set1s(String? value) {
@@ -38,8 +41,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set1s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -50,8 +54,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set2s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -62,8 +67,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set3s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -74,8 +80,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set4s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -86,8 +93,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set5s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -98,8 +106,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set6s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -110,8 +119,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set7s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -122,8 +132,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set8s(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -134,8 +145,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set1n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -146,8 +158,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set2n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -158,8 +171,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set3n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -170,8 +184,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set4n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -182,8 +197,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set5n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -194,8 +210,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set6n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -206,8 +223,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set7n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -218,8 +236,9 @@ mixin _$BaseStokEditEkBilgilerViewModel
     try {
       return super.set8n(value);
     } finally {
-      _$_BaseStokEditEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseStokEditEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

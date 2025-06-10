@@ -9,8 +9,10 @@ part of 'aciklama_duzenle_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
-  late final _$editModelAtom =
-      Atom(name: 'AciklamaDuzenleViewModelBase.editModel', context: context);
+  late final _$editModelAtom = Atom(
+    name: 'AciklamaDuzenleViewModelBase.editModel',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel? get editModel {
@@ -25,16 +27,20 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
     });
   }
 
-  late final _$postDataAsyncAction =
-      AsyncAction('AciklamaDuzenleViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction = AsyncAction(
+    'AciklamaDuzenleViewModelBase.postData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<BaseSiparisEditModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$AciklamaDuzenleViewModelBaseActionController =
-      ActionController(name: 'AciklamaDuzenleViewModelBase', context: context);
+  late final _$AciklamaDuzenleViewModelBaseActionController = ActionController(
+    name: 'AciklamaDuzenleViewModelBase',
+    context: context,
+  );
 
   @override
   void setAciklama1(String? value) {
@@ -214,9 +220,10 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setTalepTeklifListesiModel(BaseSiparisEditModel value) {
-    final _$actionInfo =
-        _$AciklamaDuzenleViewModelBaseActionController.startAction(
-            name: 'AciklamaDuzenleViewModelBase.setTalepTeklifListesiModel');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
+        .startAction(
+          name: 'AciklamaDuzenleViewModelBase.setTalepTeklifListesiModel',
+        );
     try {
       return super.setTalepTeklifListesiModel(value);
     } finally {

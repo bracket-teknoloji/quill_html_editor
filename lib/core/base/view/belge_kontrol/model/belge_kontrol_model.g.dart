@@ -6,9 +6,8 @@ part of 'belge_kontrol_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BelgeKontrolModelImpl _$$BelgeKontrolModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$BelgeKontrolModelImpl(
+_BelgeKontrolModel _$BelgeKontrolModelFromJson(Map<String, dynamic> json) =>
+    _BelgeKontrolModel(
       id: (json['ID'] as num?)?.toInt(),
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
@@ -29,24 +28,23 @@ _$BelgeKontrolModelImpl _$$BelgeKontrolModelImplFromJson(
       stokKodu: json['STOK_KODU'] as String?,
     );
 
-Map<String, dynamic> _$$BelgeKontrolModelImplToJson(
-        _$BelgeKontrolModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-      if (instance.belgeNo case final value?) 'BELGE_NO': value,
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-      if (instance.sira case final value?) 'SIRA': value,
-      if (instance.belgeTarihi?.toIso8601String() case final value?)
-        'BELGE_TARIHI': value,
-      if (instance.miktar case final value?) 'MIKTAR': value,
-      if (instance.tamamlananMiktar case final value?)
-        'TAMAMLANAN_MIKTAR': value,
-      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-      if (instance.kayittarihi?.toIso8601String() case final value?)
-        'KAYITTARIHI': value,
-      if (instance.cariAdi case final value?) 'CARI_ADI': value,
-      if (instance.kalanMiktar case final value?) 'KALAN_MIKTAR': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-    };
+Map<String, dynamic> _$BelgeKontrolModelToJson(
+  _BelgeKontrolModel instance,
+) => <String, dynamic>{
+  if (instance.id case final value?) 'ID': value,
+  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+  if (instance.belgeNo case final value?) 'BELGE_NO': value,
+  if (instance.cariKodu case final value?) 'CARI_KODU': value,
+  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+  if (instance.sira case final value?) 'SIRA': value,
+  if (instance.belgeTarihi?.toIso8601String() case final value?)
+    'BELGE_TARIHI': value,
+  if (instance.miktar case final value?) 'MIKTAR': value,
+  if (instance.tamamlananMiktar case final value?) 'TAMAMLANAN_MIKTAR': value,
+  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?)
+    'KAYITTARIHI': value,
+  if (instance.cariAdi case final value?) 'CARI_ADI': value,
+  if (instance.kalanMiktar case final value?) 'KALAN_MIKTAR': value,
+  if (instance.stokKodu case final value?) 'STOK_KODU': value,
+};

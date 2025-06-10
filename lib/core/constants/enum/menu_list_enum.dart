@@ -18,7 +18,8 @@ enum MenuItemsEnum {
   transfer("TRNS"),
   uretim("URET"),
   uetds("EUTD"),
-  kalkon("KALKON");
+  kalkon("KALKON"),
+  payker("PAYKER");
 
   const MenuItemsEnum(this.yetkiName);
 

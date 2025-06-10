@@ -6,7 +6,7 @@ part "e_irsaliye_bilgi_model.freezed.dart";
 part "e_irsaliye_bilgi_model.g.dart";
 
 @unfreezed
-class EIrsaliyeBilgiModel with _$EIrsaliyeBilgiModel, NetworkManagerMixin {
+sealed class EIrsaliyeBilgiModel with _$EIrsaliyeBilgiModel, NetworkManagerMixin {
   factory EIrsaliyeBilgiModel({
     String? dorsePlaka1,
     String? dorsePlaka2,

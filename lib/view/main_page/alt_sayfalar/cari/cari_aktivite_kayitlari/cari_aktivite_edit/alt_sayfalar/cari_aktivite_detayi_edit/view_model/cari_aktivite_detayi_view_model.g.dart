@@ -9,8 +9,10 @@ part of 'cari_aktivite_detayi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_CariAktiviteDetayiViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_CariAktiviteDetayiViewModelBase.model',
+    context: context,
+  );
 
   @override
   CariAktiviteListesiModel get model {
@@ -25,8 +27,10 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_CariAktiviteDetayiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_CariAktiviteDetayiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<CariAktiviteListesiModel>> getData() {
@@ -35,7 +39,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
 
   late final _$_CariAktiviteDetayiViewModelBaseActionController =
       ActionController(
-          name: '_CariAktiviteDetayiViewModelBase', context: context);
+        name: '_CariAktiviteDetayiViewModelBase',
+        context: context,
+      );
 
   @override
   void setModel(CariAktiviteListesiModel value) {
@@ -44,8 +50,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     try {
       return super.setModel(value);
     } finally {
-      _$_CariAktiviteDetayiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariAktiviteDetayiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -56,8 +63,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     try {
       return super.setTarih(value);
     } finally {
-      _$_CariAktiviteDetayiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariAktiviteDetayiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -68,8 +76,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     try {
       return super.setAktiviteTipi(value);
     } finally {
-      _$_CariAktiviteDetayiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariAktiviteDetayiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -80,8 +89,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     try {
       return super.setBolum(value);
     } finally {
-      _$_CariAktiviteDetayiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariAktiviteDetayiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -92,8 +102,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     try {
       return super.setIlgiliKisi(value);
     } finally {
-      _$_CariAktiviteDetayiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariAktiviteDetayiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -104,8 +115,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     try {
       return super.setAciklama(value);
     } finally {
-      _$_CariAktiviteDetayiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariAktiviteDetayiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

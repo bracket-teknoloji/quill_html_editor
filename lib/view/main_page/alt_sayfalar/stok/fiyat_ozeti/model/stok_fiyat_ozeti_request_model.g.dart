@@ -6,18 +6,18 @@ part of 'stok_fiyat_ozeti_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StokFiyatOzetiRequestModelImpl _$$StokFiyatOzetiRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$StokFiyatOzetiRequestModelImpl(
-      yapKod: json['YapKod'] as String?,
-      cariKodu: json['CariKodu'] as String?,
-      stokKodu: json['StokKodu'] as String?,
-    );
+_StokFiyatOzetiRequestModel _$StokFiyatOzetiRequestModelFromJson(
+  Map<String, dynamic> json,
+) => _StokFiyatOzetiRequestModel(
+  yapKod: json['YapKod'] as String?,
+  cariKodu: json['CariKodu'] as String?,
+  stokKodu: json['StokKodu'] as String?,
+);
 
-Map<String, dynamic> _$$StokFiyatOzetiRequestModelImplToJson(
-        _$StokFiyatOzetiRequestModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.yapKod case final value?) 'YapKod': value,
-      if (instance.cariKodu case final value?) 'CariKodu': value,
-      if (instance.stokKodu case final value?) 'StokKodu': value,
-    };
+Map<String, dynamic> _$StokFiyatOzetiRequestModelToJson(
+  _StokFiyatOzetiRequestModel instance,
+) => <String, dynamic>{
+  if (instance.yapKod case final value?) 'YapKod': value,
+  if (instance.cariKodu case final value?) 'CariKodu': value,
+  if (instance.stokKodu case final value?) 'StokKodu': value,
+};

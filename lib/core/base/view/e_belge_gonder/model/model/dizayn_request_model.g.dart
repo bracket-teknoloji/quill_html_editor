@@ -6,15 +6,13 @@ part of 'dizayn_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DizaynRequestModelImpl _$$DizaynRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DizaynRequestModelImpl(
+_DizaynRequestModel _$DizaynRequestModelFromJson(Map<String, dynamic> json) =>
+    _DizaynRequestModel(
       modulId: (json['ModulID'] as num?)?.toInt(),
       erpDizaynlari: json['ERPDizaynlari'] as bool?,
     );
 
-Map<String, dynamic> _$$DizaynRequestModelImplToJson(
-        _$DizaynRequestModelImpl instance) =>
+Map<String, dynamic> _$DizaynRequestModelToJson(_DizaynRequestModel instance) =>
     <String, dynamic>{
       if (instance.modulId case final value?) 'ModulID': value,
       if (instance.erpDizaynlari case final value?) 'ERPDizaynlari': value,

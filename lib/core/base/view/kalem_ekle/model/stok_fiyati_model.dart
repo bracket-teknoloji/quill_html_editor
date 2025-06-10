@@ -5,7 +5,7 @@ part "stok_fiyati_model.freezed.dart";
 part "stok_fiyati_model.g.dart";
 
 @freezed
-class StokFiyatiModel with _$StokFiyatiModel, NetworkManagerMixin {
+sealed class StokFiyatiModel with _$StokFiyatiModel, NetworkManagerMixin {
   factory StokFiyatiModel({
     double? fiyat,
     String? yer,

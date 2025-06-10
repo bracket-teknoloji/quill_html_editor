@@ -10,8 +10,9 @@ part of 'doviz_kuru_girisi_view_model.dart';
 
 mixin _$DovizKuruGirisiViewModel on _DovizKuruGirisiViewModelBase, Store {
   late final _$dovizKurlariModelAtom = Atom(
-      name: '_DovizKuruGirisiViewModelBase.dovizKurlariModel',
-      context: context);
+    name: '_DovizKuruGirisiViewModelBase.dovizKurlariModel',
+    context: context,
+  );
 
   @override
   DovizKurlariModel? get dovizKurlariModel {
@@ -26,14 +27,17 @@ mixin _$DovizKuruGirisiViewModel on _DovizKuruGirisiViewModelBase, Store {
     });
   }
 
-  late final _$_DovizKuruGirisiViewModelBaseActionController =
-      ActionController(name: '_DovizKuruGirisiViewModelBase', context: context);
+  late final _$_DovizKuruGirisiViewModelBaseActionController = ActionController(
+    name: '_DovizKuruGirisiViewModelBase',
+    context: context,
+  );
 
   @override
   void changeDovizKurlariModel(DovizKurlariModel? value) {
-    final _$actionInfo =
-        _$_DovizKuruGirisiViewModelBaseActionController.startAction(
-            name: '_DovizKuruGirisiViewModelBase.changeDovizKurlariModel');
+    final _$actionInfo = _$_DovizKuruGirisiViewModelBaseActionController
+        .startAction(
+          name: '_DovizKuruGirisiViewModelBase.changeDovizKurlariModel',
+        );
     try {
       return super.changeDovizKurlariModel(value);
     } finally {

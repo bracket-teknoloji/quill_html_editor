@@ -6,7 +6,7 @@ part "belge_rehberi_model.freezed.dart";
 part "belge_rehberi_model.g.dart";
 
 @freezed
-class BelgeRehberiModel with _$BelgeRehberiModel, NetworkManagerMixin {
+sealed class BelgeRehberiModel with _$BelgeRehberiModel, NetworkManagerMixin {
   factory BelgeRehberiModel({
     String? belgeNo,
     String? belgeTipi,

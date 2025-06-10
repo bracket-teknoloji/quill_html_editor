@@ -10,26 +10,28 @@ part of 'kasa_islemleri_view_model.dart';
 
 mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
   Computed<ObservableList<KasaIslemleriModel>?>?
-      _$getKasaIslemleriListesiComputed;
+  _$getKasaIslemleriListesiComputed;
 
   @override
   ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi =>
       (_$getKasaIslemleriListesiComputed ??=
               Computed<ObservableList<KasaIslemleriModel>?>(
-                  () => super.getKasaIslemleriListesi,
-                  name: '_KasaIslemleriViewModelBase.getKasaIslemleriListesi'))
+                () => super.getKasaIslemleriListesi,
+                name: '_KasaIslemleriViewModelBase.getKasaIslemleriListesi',
+              ))
           .value;
   Computed<bool>? _$getAnyFilterComputed;
 
   @override
-  bool get getAnyFilter =>
-      (_$getAnyFilterComputed ??= Computed<bool>(() => super.getAnyFilter,
-              name: '_KasaIslemleriViewModelBase.getAnyFilter'))
-          .value;
+  bool get getAnyFilter => (_$getAnyFilterComputed ??= Computed<bool>(
+    () => super.getAnyFilter,
+    name: '_KasaIslemleriViewModelBase.getAnyFilter',
+  )).value;
 
   late final _$kasaIslemleriRequestModelAtom = Atom(
-      name: '_KasaIslemleriViewModelBase.kasaIslemleriRequestModel',
-      context: context);
+    name: '_KasaIslemleriViewModelBase.kasaIslemleriRequestModel',
+    context: context,
+  );
 
   @override
   KasaIslemleriRequestModel get kasaIslemleriRequestModel {
@@ -39,14 +41,19 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   set kasaIslemleriRequestModel(KasaIslemleriRequestModel value) {
-    _$kasaIslemleriRequestModelAtom
-        .reportWrite(value, super.kasaIslemleriRequestModel, () {
-      super.kasaIslemleriRequestModel = value;
-    });
+    _$kasaIslemleriRequestModelAtom.reportWrite(
+      value,
+      super.kasaIslemleriRequestModel,
+      () {
+        super.kasaIslemleriRequestModel = value;
+      },
+    );
   }
 
-  late final _$paramDataAtom =
-      Atom(name: '_KasaIslemleriViewModelBase.paramData', context: context);
+  late final _$paramDataAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.paramData',
+    context: context,
+  );
 
   @override
   ObservableMap<String, dynamic>? get paramData {
@@ -62,8 +69,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
   }
 
   late final _$hesapTipiGroupValueAtom = Atom(
-      name: '_KasaIslemleriViewModelBase.hesapTipiGroupValue',
-      context: context);
+    name: '_KasaIslemleriViewModelBase.hesapTipiGroupValue',
+    context: context,
+  );
 
   @override
   String? get hesapTipiGroupValue {
@@ -78,8 +86,10 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom =
-      Atom(name: '_KasaIslemleriViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -94,8 +104,10 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_KasaIslemleriViewModelBase.dahaVarMi', context: context);
+  late final _$dahaVarMiAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.dahaVarMi',
+    context: context,
+  );
 
   @override
   bool get dahaVarMi {
@@ -111,8 +123,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
   }
 
   late final _$kasaIslemleriListesiAtom = Atom(
-      name: '_KasaIslemleriViewModelBase.kasaIslemleriListesi',
-      context: context);
+    name: '_KasaIslemleriViewModelBase.kasaIslemleriListesi',
+    context: context,
+  );
 
   @override
   ObservableList<KasaIslemleriModel>? get kasaIslemleriListesi {
@@ -122,14 +135,19 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   set kasaIslemleriListesi(ObservableList<KasaIslemleriModel>? value) {
-    _$kasaIslemleriListesiAtom.reportWrite(value, super.kasaIslemleriListesi,
-        () {
-      super.kasaIslemleriListesi = value;
-    });
+    _$kasaIslemleriListesiAtom.reportWrite(
+      value,
+      super.kasaIslemleriListesi,
+      () {
+        super.kasaIslemleriListesi = value;
+      },
+    );
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_KasaIslemleriViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -144,8 +162,10 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_KasaIslemleriViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -160,24 +180,30 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_KasaIslemleriViewModelBase.resetPage', context: context);
+  late final _$resetPageAsyncAction = AsyncAction(
+    '_KasaIslemleriViewModelBase.resetPage',
+    context: context,
+  );
 
   @override
   Future<void> resetPage() {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_KasaIslemleriViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_KasaIslemleriViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KasaIslemleriViewModelBaseActionController =
-      ActionController(name: '_KasaIslemleriViewModelBase', context: context);
+  late final _$_KasaIslemleriViewModelBaseActionController = ActionController(
+    name: '_KasaIslemleriViewModelBase',
+    context: context,
+  );
 
   @override
   void setDahaVarMi(bool value) {
@@ -269,9 +295,10 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setKasaIslemleriListesi(List<KasaIslemleriModel>? value) {
-    final _$actionInfo =
-        _$_KasaIslemleriViewModelBaseActionController.startAction(
-            name: '_KasaIslemleriViewModelBase.setKasaIslemleriListesi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController
+        .startAction(
+          name: '_KasaIslemleriViewModelBase.setKasaIslemleriListesi',
+        );
     try {
       return super.setKasaIslemleriListesi(value);
     } finally {
@@ -281,9 +308,10 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) {
-    final _$actionInfo =
-        _$_KasaIslemleriViewModelBaseActionController.startAction(
-            name: '_KasaIslemleriViewModelBase.addKasaIslemleriListesi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController
+        .startAction(
+          name: '_KasaIslemleriViewModelBase.addKasaIslemleriListesi',
+        );
     try {
       return super.addKasaIslemleriListesi(value);
     } finally {

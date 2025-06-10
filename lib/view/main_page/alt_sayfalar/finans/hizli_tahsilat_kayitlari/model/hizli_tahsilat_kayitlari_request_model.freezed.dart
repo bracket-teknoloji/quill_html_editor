@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,209 +10,126 @@ part of 'hizli_tahsilat_kayitlari_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-HizliTahsilatKayitlariRequestModel _$HizliTahsilatKayitlariRequestModelFromJson(Map<String, dynamic> json) {
-  return _HizliTahsilatKayitlariRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$HizliTahsilatKayitlariRequestModel {
-  String? get baslamaTarihi => throw _privateConstructorUsedError;
-  set baslamaTarihi(String? value) => throw _privateConstructorUsedError;
-  String? get bitisTarihi => throw _privateConstructorUsedError;
-  set bitisTarihi(String? value) => throw _privateConstructorUsedError;
-  String? get ekranTipi => throw _privateConstructorUsedError;
-  set ekranTipi(String? value) => throw _privateConstructorUsedError;
-  int? get sayfa => throw _privateConstructorUsedError;
-  set sayfa(int? value) => throw _privateConstructorUsedError;
+
+ String? get baslamaTarihi; set baslamaTarihi(String? value); String? get bitisTarihi; set bitisTarihi(String? value); String? get ekranTipi; set ekranTipi(String? value); int? get sayfa; set sayfa(int? value);
+/// Create a copy of HizliTahsilatKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$HizliTahsilatKayitlariRequestModelCopyWith<HizliTahsilatKayitlariRequestModel> get copyWith => _$HizliTahsilatKayitlariRequestModelCopyWithImpl<HizliTahsilatKayitlariRequestModel>(this as HizliTahsilatKayitlariRequestModel, _$identity);
 
   /// Serializes this HizliTahsilatKayitlariRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of HizliTahsilatKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $HizliTahsilatKayitlariRequestModelCopyWith<HizliTahsilatKayitlariRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $HizliTahsilatKayitlariRequestModelCopyWith<$Res> {
-  factory $HizliTahsilatKayitlariRequestModelCopyWith(
-    HizliTahsilatKayitlariRequestModel value,
-    $Res Function(HizliTahsilatKayitlariRequestModel) then,
-  ) = _$HizliTahsilatKayitlariRequestModelCopyWithImpl<$Res, HizliTahsilatKayitlariRequestModel>;
-  @useResult
-  $Res call({String? baslamaTarihi, String? bitisTarihi, String? ekranTipi, int? sayfa});
-}
+abstract mixin class $HizliTahsilatKayitlariRequestModelCopyWith<$Res>  {
+  factory $HizliTahsilatKayitlariRequestModelCopyWith(HizliTahsilatKayitlariRequestModel value, $Res Function(HizliTahsilatKayitlariRequestModel) _then) = _$HizliTahsilatKayitlariRequestModelCopyWithImpl;
+@useResult
+$Res call({
+ String? baslamaTarihi, String? bitisTarihi, String? ekranTipi, int? sayfa
+});
 
+
+
+
+}
 /// @nodoc
-class _$HizliTahsilatKayitlariRequestModelCopyWithImpl<$Res, $Val extends HizliTahsilatKayitlariRequestModel>
+class _$HizliTahsilatKayitlariRequestModelCopyWithImpl<$Res>
     implements $HizliTahsilatKayitlariRequestModelCopyWith<$Res> {
-  _$HizliTahsilatKayitlariRequestModelCopyWithImpl(this._value, this._then);
+  _$HizliTahsilatKayitlariRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final HizliTahsilatKayitlariRequestModel _self;
+  final $Res Function(HizliTahsilatKayitlariRequestModel) _then;
 
-  /// Create a copy of HizliTahsilatKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? baslamaTarihi = freezed,
-    Object? bitisTarihi = freezed,
-    Object? ekranTipi = freezed,
-    Object? sayfa = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            baslamaTarihi: freezed == baslamaTarihi
-                ? _value.baslamaTarihi
-                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            bitisTarihi: freezed == bitisTarihi
-                ? _value.bitisTarihi
-                : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            ekranTipi: freezed == ekranTipi
-                ? _value.ekranTipi
-                : ekranTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sayfa: freezed == sayfa
-                ? _value.sayfa
-                : sayfa // ignore: cast_nullable_to_non_nullable
-                      as int?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of HizliTahsilatKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? ekranTipi = freezed,Object? sayfa = freezed,}) {
+  return _then(_self.copyWith(
+baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,sayfa: freezed == sayfa ? _self.sayfa : sayfa // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$HizliTahsilatKayitlariRequestModelImplCopyWith<$Res>
-    implements $HizliTahsilatKayitlariRequestModelCopyWith<$Res> {
-  factory _$$HizliTahsilatKayitlariRequestModelImplCopyWith(
-    _$HizliTahsilatKayitlariRequestModelImpl value,
-    $Res Function(_$HizliTahsilatKayitlariRequestModelImpl) then,
-  ) = __$$HizliTahsilatKayitlariRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? baslamaTarihi, String? bitisTarihi, String? ekranTipi, int? sayfa});
 }
 
-/// @nodoc
-class __$$HizliTahsilatKayitlariRequestModelImplCopyWithImpl<$Res>
-    extends _$HizliTahsilatKayitlariRequestModelCopyWithImpl<$Res, _$HizliTahsilatKayitlariRequestModelImpl>
-    implements _$$HizliTahsilatKayitlariRequestModelImplCopyWith<$Res> {
-  __$$HizliTahsilatKayitlariRequestModelImplCopyWithImpl(
-    _$HizliTahsilatKayitlariRequestModelImpl _value,
-    $Res Function(_$HizliTahsilatKayitlariRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of HizliTahsilatKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? baslamaTarihi = freezed,
-    Object? bitisTarihi = freezed,
-    Object? ekranTipi = freezed,
-    Object? sayfa = freezed,
-  }) {
-    return _then(
-      _$HizliTahsilatKayitlariRequestModelImpl(
-        baslamaTarihi: freezed == baslamaTarihi
-            ? _value.baslamaTarihi
-            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        bitisTarihi: freezed == bitisTarihi
-            ? _value.bitisTarihi
-            : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        ekranTipi: freezed == ekranTipi
-            ? _value.ekranTipi
-            : ekranTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sayfa: freezed == sayfa
-            ? _value.sayfa
-            : sayfa // ignore: cast_nullable_to_non_nullable
-                  as int?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$HizliTahsilatKayitlariRequestModelImpl implements _HizliTahsilatKayitlariRequestModel {
-  _$HizliTahsilatKayitlariRequestModelImpl({this.baslamaTarihi, this.bitisTarihi, this.ekranTipi, this.sayfa = 1});
+class _HizliTahsilatKayitlariRequestModel implements HizliTahsilatKayitlariRequestModel {
+   _HizliTahsilatKayitlariRequestModel({this.baslamaTarihi, this.bitisTarihi, this.ekranTipi, this.sayfa = 1});
+  factory _HizliTahsilatKayitlariRequestModel.fromJson(Map<String, dynamic> json) => _$HizliTahsilatKayitlariRequestModelFromJson(json);
 
-  factory _$HizliTahsilatKayitlariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HizliTahsilatKayitlariRequestModelImplFromJson(json);
+@override  String? baslamaTarihi;
+@override  String? bitisTarihi;
+@override  String? ekranTipi;
+@override@JsonKey()  int? sayfa;
 
-  @override
-  String? baslamaTarihi;
-  @override
-  String? bitisTarihi;
-  @override
-  String? ekranTipi;
-  @override
-  @JsonKey()
-  int? sayfa;
+/// Create a copy of HizliTahsilatKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$HizliTahsilatKayitlariRequestModelCopyWith<_HizliTahsilatKayitlariRequestModel> get copyWith => __$HizliTahsilatKayitlariRequestModelCopyWithImpl<_HizliTahsilatKayitlariRequestModel>(this, _$identity);
 
-  /// Create a copy of HizliTahsilatKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$HizliTahsilatKayitlariRequestModelImplCopyWith<_$HizliTahsilatKayitlariRequestModelImpl> get copyWith =>
-      __$$HizliTahsilatKayitlariRequestModelImplCopyWithImpl<_$HizliTahsilatKayitlariRequestModelImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$HizliTahsilatKayitlariRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$HizliTahsilatKayitlariRequestModelToJson(this, );
 }
 
-abstract class _HizliTahsilatKayitlariRequestModel implements HizliTahsilatKayitlariRequestModel {
-  factory _HizliTahsilatKayitlariRequestModel({
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    String? ekranTipi,
-    int? sayfa,
-  }) = _$HizliTahsilatKayitlariRequestModelImpl;
 
-  factory _HizliTahsilatKayitlariRequestModel.fromJson(Map<String, dynamic> json) =
-      _$HizliTahsilatKayitlariRequestModelImpl.fromJson;
 
-  @override
-  String? get baslamaTarihi;
-  set baslamaTarihi(String? value);
-  @override
-  String? get bitisTarihi;
-  set bitisTarihi(String? value);
-  @override
-  String? get ekranTipi;
-  set ekranTipi(String? value);
-  @override
-  int? get sayfa;
-  set sayfa(int? value);
 
-  /// Create a copy of HizliTahsilatKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HizliTahsilatKayitlariRequestModelImplCopyWith<_$HizliTahsilatKayitlariRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$HizliTahsilatKayitlariRequestModelCopyWith<$Res> implements $HizliTahsilatKayitlariRequestModelCopyWith<$Res> {
+  factory _$HizliTahsilatKayitlariRequestModelCopyWith(_HizliTahsilatKayitlariRequestModel value, $Res Function(_HizliTahsilatKayitlariRequestModel) _then) = __$HizliTahsilatKayitlariRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? baslamaTarihi, String? bitisTarihi, String? ekranTipi, int? sayfa
+});
+
+
+
+
+}
+/// @nodoc
+class __$HizliTahsilatKayitlariRequestModelCopyWithImpl<$Res>
+    implements _$HizliTahsilatKayitlariRequestModelCopyWith<$Res> {
+  __$HizliTahsilatKayitlariRequestModelCopyWithImpl(this._self, this._then);
+
+  final _HizliTahsilatKayitlariRequestModel _self;
+  final $Res Function(_HizliTahsilatKayitlariRequestModel) _then;
+
+/// Create a copy of HizliTahsilatKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? ekranTipi = freezed,Object? sayfa = freezed,}) {
+  return _then(_HizliTahsilatKayitlariRequestModel(
+baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,sayfa: freezed == sayfa ? _self.sayfa : sayfa // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+// dart format on

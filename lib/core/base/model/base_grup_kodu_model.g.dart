@@ -6,9 +6,8 @@ part of 'base_grup_kodu_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BaseGrupKoduModelImpl _$$BaseGrupKoduModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$BaseGrupKoduModelImpl(
+_BaseGrupKoduModel _$BaseGrupKoduModelFromJson(Map<String, dynamic> json) =>
+    _BaseGrupKoduModel(
       modul: json['MODUL'] as String?,
       grupNo: (json['GRUP_NO'] as num?)?.toInt(),
       grupKodu: json['GRUP_KODU'] as String?,
@@ -26,8 +25,7 @@ _$BaseGrupKoduModelImpl _$$BaseGrupKoduModelImplFromJson(
       kod5Adi: json['KOD5_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$BaseGrupKoduModelImplToJson(
-        _$BaseGrupKoduModelImpl instance) =>
+Map<String, dynamic> _$BaseGrupKoduModelToJson(_BaseGrupKoduModel instance) =>
     <String, dynamic>{
       if (instance.modul case final value?) 'MODUL': value,
       if (instance.grupNo case final value?) 'GRUP_NO': value,

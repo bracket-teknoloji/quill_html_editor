@@ -4,7 +4,7 @@ part "cari_hareketleri_request_model.freezed.dart";
 part "cari_hareketleri_request_model.g.dart";
 
 @unfreezed
-class CariHareketleriRequestModel with _$CariHareketleriRequestModel {
+sealed class CariHareketleriRequestModel with _$CariHareketleriRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory CariHareketleriRequestModel({
     @JsonKey(name: "SIRALAMA") String? siralama,

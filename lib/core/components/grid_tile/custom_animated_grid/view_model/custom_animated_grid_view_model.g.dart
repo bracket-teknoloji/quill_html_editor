@@ -10,8 +10,9 @@ part of 'custom_animated_grid_view_model.dart';
 
 mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
   late final _$gridItemModelListAtom = Atom(
-      name: '_CustomAnimatedGridViewModelBase.gridItemModelList',
-      context: context);
+    name: '_CustomAnimatedGridViewModelBase.gridItemModelList',
+    context: context,
+  );
 
   @override
   ObservableList<GridItemModel> get gridItemModelList {
@@ -27,8 +28,9 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
   }
 
   late final _$returnGridItemModelAtom = Atom(
-      name: '_CustomAnimatedGridViewModelBase.returnGridItemModel',
-      context: context);
+    name: '_CustomAnimatedGridViewModelBase.returnGridItemModel',
+    context: context,
+  );
 
   @override
   ObservableList<ObservableList<GridItemModel>> get returnGridItemModel {
@@ -45,7 +47,9 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
 
   late final _$_CustomAnimatedGridViewModelBaseActionController =
       ActionController(
-          name: '_CustomAnimatedGridViewModelBase', context: context);
+        name: '_CustomAnimatedGridViewModelBase',
+        context: context,
+      );
 
   @override
   void setGridItemModel(List<GridItemModel> value) {
@@ -54,35 +58,40 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
     try {
       return super.setGridItemModel(value);
     } finally {
-      _$_CustomAnimatedGridViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CustomAnimatedGridViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void addReturnGridItemModel(List<GridItemModel>? value) {
-    final _$actionInfo =
-        _$_CustomAnimatedGridViewModelBaseActionController.startAction(
-            name: '_CustomAnimatedGridViewModelBase.addReturnGridItemModel');
+    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController
+        .startAction(
+          name: '_CustomAnimatedGridViewModelBase.addReturnGridItemModel',
+        );
     try {
       return super.addReturnGridItemModel(value);
     } finally {
-      _$_CustomAnimatedGridViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CustomAnimatedGridViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void deleteLastReturnGridItemModel() {
-    final _$actionInfo =
-        _$_CustomAnimatedGridViewModelBaseActionController.startAction(
-            name:
-                '_CustomAnimatedGridViewModelBase.deleteLastReturnGridItemModel');
+    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController
+        .startAction(
+          name:
+              '_CustomAnimatedGridViewModelBase.deleteLastReturnGridItemModel',
+        );
     try {
       return super.deleteLastReturnGridItemModel();
     } finally {
-      _$_CustomAnimatedGridViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CustomAnimatedGridViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

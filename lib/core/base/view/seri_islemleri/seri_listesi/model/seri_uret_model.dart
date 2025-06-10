@@ -6,7 +6,7 @@ part "seri_uret_model.freezed.dart";
 part "seri_uret_model.g.dart";
 
 @unfreezed
-class SeriUretModel with _$SeriUretModel, NetworkManagerMixin {
+sealed class SeriUretModel with _$SeriUretModel, NetworkManagerMixin {
   factory SeriUretModel({String? seriNo, String? stokKodu, int? sonNo}) = _SeriUretModel;
   SeriUretModel._();
 

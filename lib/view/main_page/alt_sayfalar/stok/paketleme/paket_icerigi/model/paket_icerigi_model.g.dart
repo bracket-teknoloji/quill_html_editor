@@ -6,9 +6,8 @@ part of 'paket_icerigi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaketIcerigiModelImpl _$$PaketIcerigiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PaketIcerigiModelImpl(
+_PaketIcerigiModel _$PaketIcerigiModelFromJson(Map<String, dynamic> json) =>
+    _PaketIcerigiModel(
       id: (json['ID'] as num?)?.toInt(),
       paketId: (json['PAKET_ID'] as num?)?.toInt(),
       paketKodu: json['PAKET_KODU'] as String?,
@@ -26,24 +25,23 @@ _$PaketIcerigiModelImpl _$$PaketIcerigiModelImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$PaketIcerigiModelImplToJson(
-        _$PaketIcerigiModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.paketId case final value?) 'PAKET_ID': value,
-      if (instance.paketKodu case final value?) 'PAKET_KODU': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.depoAdi case final value?) 'DEPO_ADI': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.miktar case final value?) 'MIKTAR': value,
-      if (instance.cikistaSeri case final value?) 'CIKISTA_SERI': value,
-      if (instance.seriMiktarKadar case final value?)
-        'SERI_MIKTAR_KADAR': value,
-      if (instance.seriBakiyeKontrol case final value?)
-        'SERI_BAKIYE_KONTROL': value,
-      if (instance.seriCikistaOtomatik case final value?)
-        'SERI_CIKISTA_OTOMATIK': value,
-      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
-        'SERI_LIST': value,
-    };
+Map<String, dynamic> _$PaketIcerigiModelToJson(
+  _PaketIcerigiModel instance,
+) => <String, dynamic>{
+  if (instance.id case final value?) 'ID': value,
+  if (instance.paketId case final value?) 'PAKET_ID': value,
+  if (instance.paketKodu case final value?) 'PAKET_KODU': value,
+  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+  if (instance.depoAdi case final value?) 'DEPO_ADI': value,
+  if (instance.stokKodu case final value?) 'STOK_KODU': value,
+  if (instance.stokAdi case final value?) 'STOK_ADI': value,
+  if (instance.miktar case final value?) 'MIKTAR': value,
+  if (instance.cikistaSeri case final value?) 'CIKISTA_SERI': value,
+  if (instance.seriMiktarKadar case final value?) 'SERI_MIKTAR_KADAR': value,
+  if (instance.seriBakiyeKontrol case final value?)
+    'SERI_BAKIYE_KONTROL': value,
+  if (instance.seriCikistaOtomatik case final value?)
+    'SERI_CIKISTA_OTOMATIK': value,
+  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+    'SERI_LIST': value,
+};

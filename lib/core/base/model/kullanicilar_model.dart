@@ -6,7 +6,7 @@ part "kullanicilar_model.freezed.dart";
 part "kullanicilar_model.g.dart";
 
 @freezed
-class KullanicilarModel with _$KullanicilarModel, NetworkManagerMixin {
+sealed class KullanicilarModel with _$KullanicilarModel, NetworkManagerMixin {
   const factory KullanicilarModel({String? kodu, String? adi}) = _KullanicilarModel;
   const KullanicilarModel._();
 

@@ -11,7 +11,9 @@ part of 'base_siparisler_genel_view_model.dart';
 mixin _$BaseSiparislerGenelViewModel
     on _BaseSiparislerGenelViewModelBase, Store {
   late final _$kdvDahilAtom = Atom(
-      name: '_BaseSiparislerGenelViewModelBase.kdvDahil', context: context);
+    name: '_BaseSiparislerGenelViewModelBase.kdvDahil',
+    context: context,
+  );
 
   @override
   bool get kdvDahil {
@@ -26,8 +28,10 @@ mixin _$BaseSiparislerGenelViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseSiparislerGenelViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseSiparislerGenelViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -43,8 +47,9 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   late final _$fiyatGuncelleAsyncAction = AsyncAction(
-      '_BaseSiparislerGenelViewModelBase.fiyatGuncelle',
-      context: context);
+    '_BaseSiparislerGenelViewModelBase.fiyatGuncelle',
+    context: context,
+  );
 
   @override
   Future<bool> fiyatGuncelle() {
@@ -53,7 +58,9 @@ mixin _$BaseSiparislerGenelViewModel
 
   late final _$_BaseSiparislerGenelViewModelBaseActionController =
       ActionController(
-          name: '_BaseSiparislerGenelViewModelBase', context: context);
+        name: '_BaseSiparislerGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void changeKdvDahil(bool value) {
@@ -62,8 +69,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.changeKdvDahil(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -74,8 +82,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setProjeKodu(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -86,8 +95,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setKosulKodu(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -98,8 +108,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setOzelKod1(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -110,8 +121,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setOzelKod2(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -122,8 +134,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setOdemeKodu(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -134,8 +147,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setCariAdi(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -146,34 +160,39 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setTeslimCariAdi(String? value) {
-    final _$actionInfo =
-        _$_BaseSiparislerGenelViewModelBaseActionController.startAction(
-            name: '_BaseSiparislerGenelViewModelBase.setTeslimCariAdi');
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseSiparislerGenelViewModelBase.setTeslimCariAdi',
+        );
     try {
       return super.setTeslimCariAdi(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo =
-        _$_BaseSiparislerGenelViewModelBaseActionController.startAction(
-            name: '_BaseSiparislerGenelViewModelBase.setTeslimCariKodu');
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseSiparislerGenelViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -184,21 +203,24 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setPlasiyer(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setTopluDepoKodu(int? value) {
-    final _$actionInfo =
-        _$_BaseSiparislerGenelViewModelBaseActionController.startAction(
-            name: '_BaseSiparislerGenelViewModelBase.setTopluDepoKodu');
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseSiparislerGenelViewModelBase.setTopluDepoKodu',
+        );
     try {
       return super.setTopluDepoKodu(value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -209,8 +231,9 @@ mixin _$BaseSiparislerGenelViewModel
     try {
       return super.setAciklama(index, value);
     } finally {
-      _$_BaseSiparislerGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

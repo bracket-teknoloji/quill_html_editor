@@ -9,8 +9,10 @@ part of 'hesaplar_arasi_islem_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_HesaplarArasiIslemViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_HesaplarArasiIslemViewModelBase.model',
+    context: context,
+  );
 
   @override
   TahsilatRequestModel get model {
@@ -26,8 +28,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
   }
 
   late final _$cikisBankaListesiRequestModelAtom = Atom(
-      name: '_HesaplarArasiIslemViewModelBase.cikisBankaListesiRequestModel',
-      context: context);
+    name: '_HesaplarArasiIslemViewModelBase.cikisBankaListesiRequestModel',
+    context: context,
+  );
 
   @override
   BankaListesiRequestModel get cikisBankaListesiRequestModel {
@@ -37,15 +40,19 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   set cikisBankaListesiRequestModel(BankaListesiRequestModel value) {
-    _$cikisBankaListesiRequestModelAtom
-        .reportWrite(value, super.cikisBankaListesiRequestModel, () {
-      super.cikisBankaListesiRequestModel = value;
-    });
+    _$cikisBankaListesiRequestModelAtom.reportWrite(
+      value,
+      super.cikisBankaListesiRequestModel,
+      () {
+        super.cikisBankaListesiRequestModel = value;
+      },
+    );
   }
 
   late final _$girisBankaListesiRequestModelAtom = Atom(
-      name: '_HesaplarArasiIslemViewModelBase.girisBankaListesiRequestModel',
-      context: context);
+    name: '_HesaplarArasiIslemViewModelBase.girisBankaListesiRequestModel',
+    context: context,
+  );
 
   @override
   BankaListesiRequestModel get girisBankaListesiRequestModel {
@@ -55,15 +62,19 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   set girisBankaListesiRequestModel(BankaListesiRequestModel value) {
-    _$girisBankaListesiRequestModelAtom
-        .reportWrite(value, super.girisBankaListesiRequestModel, () {
-      super.girisBankaListesiRequestModel = value;
-    });
+    _$girisBankaListesiRequestModelAtom.reportWrite(
+      value,
+      super.girisBankaListesiRequestModel,
+      () {
+        super.girisBankaListesiRequestModel = value;
+      },
+    );
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_HesaplarArasiIslemViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_HesaplarArasiIslemViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -79,8 +90,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
   }
 
   late final _$bankaDovizliMiAtom = Atom(
-      name: '_HesaplarArasiIslemViewModelBase.bankaDovizliMi',
-      context: context);
+    name: '_HesaplarArasiIslemViewModelBase.bankaDovizliMi',
+    context: context,
+  );
 
   @override
   bool get bankaDovizliMi {
@@ -96,8 +108,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
   }
 
   late final _$getDovizlerAsyncAction = AsyncAction(
-      '_HesaplarArasiIslemViewModelBase.getDovizler',
-      context: context);
+    '_HesaplarArasiIslemViewModelBase.getDovizler',
+    context: context,
+  );
 
   @override
   Future<void> getDovizler() {
@@ -105,8 +118,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
   }
 
   late final _$saveTahsilatAsyncAction = AsyncAction(
-      '_HesaplarArasiIslemViewModelBase.saveTahsilat',
-      context: context);
+    '_HesaplarArasiIslemViewModelBase.saveTahsilat',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<BankaListesiModel>> saveTahsilat() {
@@ -115,18 +129,22 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   late final _$_HesaplarArasiIslemViewModelBaseActionController =
       ActionController(
-          name: '_HesaplarArasiIslemViewModelBase', context: context);
+        name: '_HesaplarArasiIslemViewModelBase',
+        context: context,
+      );
 
   @override
   void setBankaDovizliMi(bool value) {
-    final _$actionInfo =
-        _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
-            name: '_HesaplarArasiIslemViewModelBase.setBankaDovizliMi');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
+        .startAction(
+          name: '_HesaplarArasiIslemViewModelBase.setBankaDovizliMi',
+        );
     try {
       return super.setBankaDovizliMi(value);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -137,8 +155,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.changeBelgeTipi(value);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -149,8 +168,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setTarih(tarih);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -161,8 +181,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setDekontNo(dekontNo);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -173,8 +194,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setGuid(value);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -185,8 +207,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setCikisHesabi(bankaListesiModel);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -197,8 +220,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setGirisHesabi(bankaListesiModel);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -209,8 +233,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setDovizTipi(dovizTipi);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -221,8 +246,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setDovizTutari(dovizTutari);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -233,22 +259,24 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setTutar(tutar);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setMasrafCikisHesabindanMi(double? masraf) {
-    final _$actionInfo =
-        _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
-            name:
-                '_HesaplarArasiIslemViewModelBase.setMasrafCikisHesabindanMi');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
+        .startAction(
+          name: '_HesaplarArasiIslemViewModelBase.setMasrafCikisHesabindanMi',
+        );
     try {
       return super.setMasrafCikisHesabindanMi(masraf);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -259,8 +287,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setBSMV(bsmv);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -271,8 +300,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setMasrafMuhKodu(masrafMuhKodu);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -283,8 +313,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setPlasiyerKodu(plasiyerKodu);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -295,8 +326,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setProjeKodu(projeKodu);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -307,21 +339,24 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     try {
       return super.setAciklama(aciklama);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
-            name: '_HesaplarArasiIslemViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
+        .startAction(
+          name: '_HesaplarArasiIslemViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
-      _$_HesaplarArasiIslemViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_HesaplarArasiIslemViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

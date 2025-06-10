@@ -6,7 +6,7 @@ part "seri_model.freezed.dart";
 part "seri_model.g.dart";
 
 @freezed
-class SeriModel with _$SeriModel, NetworkManagerMixin {
+sealed class SeriModel with _$SeriModel, NetworkManagerMixin {
   factory SeriModel({
     String? seriNo,
     String? aciklama,

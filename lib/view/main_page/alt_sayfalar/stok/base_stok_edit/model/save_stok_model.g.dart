@@ -57,7 +57,8 @@ SaveStokModel _$SaveStokModelFromJson(Map<String, dynamic> json) =>
       ..stokBarkodModel = json['StokBarkodModel'] == null
           ? null
           : BarkodTanimlaKayitlariModel.fromJson(
-              json['StokBarkodModel'] as Map<String, dynamic>)
+              json['StokBarkodModel'] as Map<String, dynamic>,
+            )
       ..kull1s = json['KULL1S'] as String?
       ..kull2s = json['KULL2S'] as String?
       ..kull3s = json['KULL3S'] as String?
@@ -75,80 +76,74 @@ SaveStokModel _$SaveStokModelFromJson(Map<String, dynamic> json) =>
       ..kull7n = (json['KULL7N'] as num?)?.toDouble()
       ..kull8n = (json['KULL8N'] as num?)?.toDouble();
 
-Map<String, dynamic> _$SaveStokModelToJson(SaveStokModel instance) =>
-    <String, dynamic>{
-      if (instance.adi case final value?) 'ADI': value,
-      if (instance.alisDovizFiyati case final value?)
-        'ALIS_DOVIZ_FIYATI': value,
-      if (instance.alisDovizTipi case final value?) 'ALIS_DOVIZ_TIPI': value,
-      if (instance.alisFiyati1 case final value?) 'ALIS_FIYATI1': value,
-      if (instance.alisFiyati2 case final value?) 'ALIS_FIYATI2': value,
-      if (instance.alisFiyati3 case final value?) 'ALIS_FIYATI3': value,
-      if (instance.alisFiyati4 case final value?) 'ALIS_FIYATI4': value,
-      if (instance.alisKdvOrani case final value?) 'ALIS_KDV_ORANI': value,
-      if (instance.barkod1 case final value?) 'BARKOD1': value,
-      if (instance.barkod2 case final value?) 'BARKOD2': value,
-      if (instance.barkod3 case final value?) 'BARKOD3': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
-      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-      if (instance.kod1 case final value?) 'KOD1': value,
-      if (instance.kod2 case final value?) 'KOD2': value,
-      if (instance.kod3 case final value?) 'KOD3': value,
-      if (instance.kod4 case final value?) 'KOD4': value,
-      if (instance.kod5 case final value?) 'KOD5': value,
-      if (instance.kodu case final value?) 'KODU': value,
-      if (instance.muhdetayKodu case final value?) 'MUHDETAY_KODU': value,
-      if (instance.olcuBirimi1 case final value?) 'OLCU_BIRIMI1': value,
-      if (instance.olcuBirimi2 case final value?) 'OLCU_BIRIMI2': value,
-      if (instance.olcuBirimi2Pay case final value?) 'OLCU_BIRIMI2_PAY': value,
-      if (instance.olcuBirimi2Payda case final value?)
-        'OLCU_BIRIMI2_PAYDA': value,
-      if (instance.olcuBirimi3 case final value?) 'OLCU_BIRIMI3': value,
-      if (instance.olcuBirimi3Pay case final value?) 'OLCU_BIRIMI3_PAY': value,
-      if (instance.olcuBirimi3Payda case final value?)
-        'OLCU_BIRIMI3_PAYDA': value,
-      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
-      if (instance.satisDovizFiyati case final value?)
-        'SATIS_DOVIZ_FIYATI': value,
-      if (instance.satisDovizTipi case final value?) 'SATIS_DOVIZ_TIPI': value,
-      if (instance.satisFiyati1 case final value?) 'SATIS_FIYATI1': value,
-      if (instance.satisFiyati2 case final value?) 'SATIS_FIYATI2': value,
-      if (instance.satisFiyati3 case final value?) 'SATIS_FIYATI3': value,
-      if (instance.satisFiyati4 case final value?) 'SATIS_FIYATI4': value,
-      if (instance.satisKdvOrani case final value?) 'SATIS_KDV_ORANI': value,
-      if (instance.resimBase64 case final value?) 'RESIM_BASE64': value,
-      if (instance.seriGiristeOtomatik case final value?)
-        'SERI_GIRISTE_OTOMATIK': value,
-      if (instance.seriCikistaAktif case final value?)
-        'SERI_CIKISTA_AKTIF': value,
-      if (instance.seriCikistaOtomatik case final value?)
-        'SERI_CIKISTA_OTOMATIK': value,
-      if (instance.seriGiristeAktif case final value?)
-        'SERI_GIRISTE_AKTIF': value,
-      if (instance.seriMiktarKadar case final value?)
-        'SERI_MIKTAR_KADAR': value,
-      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-      if (instance.ureticiKodu case final value?) 'URETICI_KODU': value,
-      if (instance.barkodTanimlamaIslemi case final value?)
-        'BARKOD_TANIMLAMA_ISLEMI': value,
-      if (instance.yeniKayit case final value?) '_YeniKayit': value,
-      if (instance.stokBarkodModel?.toJson() case final value?)
-        'StokBarkodModel': value,
-      if (instance.kull1s case final value?) 'KULL1S': value,
-      if (instance.kull2s case final value?) 'KULL2S': value,
-      if (instance.kull3s case final value?) 'KULL3S': value,
-      if (instance.kull4s case final value?) 'KULL4S': value,
-      if (instance.kull5s case final value?) 'KULL5S': value,
-      if (instance.kull6s case final value?) 'KULL6S': value,
-      if (instance.kull7s case final value?) 'KULL7S': value,
-      if (instance.kull8s case final value?) 'KULL8S': value,
-      if (instance.kull1n case final value?) 'KULL1N': value,
-      if (instance.kull2n case final value?) 'KULL2N': value,
-      if (instance.kull3n case final value?) 'KULL3N': value,
-      if (instance.kull4n case final value?) 'KULL4N': value,
-      if (instance.kull5n case final value?) 'KULL5N': value,
-      if (instance.kull6n case final value?) 'KULL6N': value,
-      if (instance.kull7n case final value?) 'KULL7N': value,
-      if (instance.kull8n case final value?) 'KULL8N': value,
-    };
+Map<String, dynamic> _$SaveStokModelToJson(
+  SaveStokModel instance,
+) => <String, dynamic>{
+  if (instance.adi case final value?) 'ADI': value,
+  if (instance.alisDovizFiyati case final value?) 'ALIS_DOVIZ_FIYATI': value,
+  if (instance.alisDovizTipi case final value?) 'ALIS_DOVIZ_TIPI': value,
+  if (instance.alisFiyati1 case final value?) 'ALIS_FIYATI1': value,
+  if (instance.alisFiyati2 case final value?) 'ALIS_FIYATI2': value,
+  if (instance.alisFiyati3 case final value?) 'ALIS_FIYATI3': value,
+  if (instance.alisFiyati4 case final value?) 'ALIS_FIYATI4': value,
+  if (instance.alisKdvOrani case final value?) 'ALIS_KDV_ORANI': value,
+  if (instance.barkod1 case final value?) 'BARKOD1': value,
+  if (instance.barkod2 case final value?) 'BARKOD2': value,
+  if (instance.barkod3 case final value?) 'BARKOD3': value,
+  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+  if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+  if (instance.kod1 case final value?) 'KOD1': value,
+  if (instance.kod2 case final value?) 'KOD2': value,
+  if (instance.kod3 case final value?) 'KOD3': value,
+  if (instance.kod4 case final value?) 'KOD4': value,
+  if (instance.kod5 case final value?) 'KOD5': value,
+  if (instance.kodu case final value?) 'KODU': value,
+  if (instance.muhdetayKodu case final value?) 'MUHDETAY_KODU': value,
+  if (instance.olcuBirimi1 case final value?) 'OLCU_BIRIMI1': value,
+  if (instance.olcuBirimi2 case final value?) 'OLCU_BIRIMI2': value,
+  if (instance.olcuBirimi2Pay case final value?) 'OLCU_BIRIMI2_PAY': value,
+  if (instance.olcuBirimi2Payda case final value?) 'OLCU_BIRIMI2_PAYDA': value,
+  if (instance.olcuBirimi3 case final value?) 'OLCU_BIRIMI3': value,
+  if (instance.olcuBirimi3Pay case final value?) 'OLCU_BIRIMI3_PAY': value,
+  if (instance.olcuBirimi3Payda case final value?) 'OLCU_BIRIMI3_PAYDA': value,
+  if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+  if (instance.satisDovizFiyati case final value?) 'SATIS_DOVIZ_FIYATI': value,
+  if (instance.satisDovizTipi case final value?) 'SATIS_DOVIZ_TIPI': value,
+  if (instance.satisFiyati1 case final value?) 'SATIS_FIYATI1': value,
+  if (instance.satisFiyati2 case final value?) 'SATIS_FIYATI2': value,
+  if (instance.satisFiyati3 case final value?) 'SATIS_FIYATI3': value,
+  if (instance.satisFiyati4 case final value?) 'SATIS_FIYATI4': value,
+  if (instance.satisKdvOrani case final value?) 'SATIS_KDV_ORANI': value,
+  if (instance.resimBase64 case final value?) 'RESIM_BASE64': value,
+  if (instance.seriGiristeOtomatik case final value?)
+    'SERI_GIRISTE_OTOMATIK': value,
+  if (instance.seriCikistaAktif case final value?) 'SERI_CIKISTA_AKTIF': value,
+  if (instance.seriCikistaOtomatik case final value?)
+    'SERI_CIKISTA_OTOMATIK': value,
+  if (instance.seriGiristeAktif case final value?) 'SERI_GIRISTE_AKTIF': value,
+  if (instance.seriMiktarKadar case final value?) 'SERI_MIKTAR_KADAR': value,
+  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+  if (instance.ureticiKodu case final value?) 'URETICI_KODU': value,
+  if (instance.barkodTanimlamaIslemi case final value?)
+    'BARKOD_TANIMLAMA_ISLEMI': value,
+  if (instance.yeniKayit case final value?) '_YeniKayit': value,
+  if (instance.stokBarkodModel?.toJson() case final value?)
+    'StokBarkodModel': value,
+  if (instance.kull1s case final value?) 'KULL1S': value,
+  if (instance.kull2s case final value?) 'KULL2S': value,
+  if (instance.kull3s case final value?) 'KULL3S': value,
+  if (instance.kull4s case final value?) 'KULL4S': value,
+  if (instance.kull5s case final value?) 'KULL5S': value,
+  if (instance.kull6s case final value?) 'KULL6S': value,
+  if (instance.kull7s case final value?) 'KULL7S': value,
+  if (instance.kull8s case final value?) 'KULL8S': value,
+  if (instance.kull1n case final value?) 'KULL1N': value,
+  if (instance.kull2n case final value?) 'KULL2N': value,
+  if (instance.kull3n case final value?) 'KULL3N': value,
+  if (instance.kull4n case final value?) 'KULL4N': value,
+  if (instance.kull5n case final value?) 'KULL5N': value,
+  if (instance.kull6n case final value?) 'KULL6N': value,
+  if (instance.kull7n case final value?) 'KULL7N': value,
+  if (instance.kull8n case final value?) 'KULL8N': value,
+};

@@ -10,7 +10,9 @@ part of 'ozel_hesap_kapatma_view_model.dart';
 
 mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
   late final _$observableListAtom = Atom(
-      name: '_OzelHesapKapatmaViewModelBase.observableList', context: context);
+    name: '_OzelHesapKapatmaViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<CariHareketleriModel>? get observableList {
@@ -26,7 +28,9 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
   }
 
   late final _$selectedListAtom = Atom(
-      name: '_OzelHesapKapatmaViewModelBase.selectedList', context: context);
+    name: '_OzelHesapKapatmaViewModelBase.selectedList',
+    context: context,
+  );
 
   @override
   ObservableList<CariHareketleriModel> get selectedList {
@@ -42,8 +46,9 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
   }
 
   late final _$cariHareketleriRequestModelAtom = Atom(
-      name: '_OzelHesapKapatmaViewModelBase.cariHareketleriRequestModel',
-      context: context);
+    name: '_OzelHesapKapatmaViewModelBase.cariHareketleriRequestModel',
+    context: context,
+  );
 
   @override
   CariHareketleriRequestModel get cariHareketleriRequestModel {
@@ -53,15 +58,19 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
 
   @override
   set cariHareketleriRequestModel(CariHareketleriRequestModel value) {
-    _$cariHareketleriRequestModelAtom
-        .reportWrite(value, super.cariHareketleriRequestModel, () {
-      super.cariHareketleriRequestModel = value;
-    });
+    _$cariHareketleriRequestModelAtom.reportWrite(
+      value,
+      super.cariHareketleriRequestModel,
+      () {
+        super.cariHareketleriRequestModel = value;
+      },
+    );
   }
 
   late final _$ozelHesapKapatmaSaveModelAtom = Atom(
-      name: '_OzelHesapKapatmaViewModelBase.ozelHesapKapatmaSaveModel',
-      context: context);
+    name: '_OzelHesapKapatmaViewModelBase.ozelHesapKapatmaSaveModel',
+    context: context,
+  );
 
   @override
   OzelHesapKapatmaSaveModel get ozelHesapKapatmaSaveModel {
@@ -71,14 +80,19 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
 
   @override
   set ozelHesapKapatmaSaveModel(OzelHesapKapatmaSaveModel value) {
-    _$ozelHesapKapatmaSaveModelAtom
-        .reportWrite(value, super.ozelHesapKapatmaSaveModel, () {
-      super.ozelHesapKapatmaSaveModel = value;
-    });
+    _$ozelHesapKapatmaSaveModelAtom.reportWrite(
+      value,
+      super.ozelHesapKapatmaSaveModel,
+      () {
+        super.ozelHesapKapatmaSaveModel = value;
+      },
+    );
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_OzelHesapKapatmaViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_OzelHesapKapatmaViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -87,7 +101,9 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
 
   late final _$_OzelHesapKapatmaViewModelBaseActionController =
       ActionController(
-          name: '_OzelHesapKapatmaViewModelBase', context: context);
+        name: '_OzelHesapKapatmaViewModelBase',
+        context: context,
+      );
 
   @override
   void checkSelectedList(bool value, CariHareketleriModel model) {

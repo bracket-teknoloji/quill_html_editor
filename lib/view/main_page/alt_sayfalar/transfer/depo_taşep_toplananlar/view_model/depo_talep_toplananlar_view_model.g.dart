@@ -11,7 +11,9 @@ part of 'depo_talep_toplananlar_view_model.dart';
 mixin _$DepoTalepToplananlarViewModel
     on _DepoTalepToplananlarViewModelBase, Store {
   late final _$kalemListAtom = Atom(
-      name: '_DepoTalepToplananlarViewModelBase.kalemList', context: context);
+    name: '_DepoTalepToplananlarViewModelBase.kalemList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemModel>? get kalemList {
@@ -27,8 +29,9 @@ mixin _$DepoTalepToplananlarViewModel
   }
 
   late final _$getKalemlerAsyncAction = AsyncAction(
-      '_DepoTalepToplananlarViewModelBase.getKalemler',
-      context: context);
+    '_DepoTalepToplananlarViewModelBase.getKalemler',
+    context: context,
+  );
 
   @override
   Future<void> getKalemler(int id) {
@@ -36,8 +39,9 @@ mixin _$DepoTalepToplananlarViewModel
   }
 
   late final _$deleteKalemAsyncAction = AsyncAction(
-      '_DepoTalepToplananlarViewModelBase.deleteKalem',
-      context: context);
+    '_DepoTalepToplananlarViewModelBase.deleteKalem',
+    context: context,
+  );
 
   @override
   Future<bool> deleteKalem(int id) {
@@ -46,7 +50,9 @@ mixin _$DepoTalepToplananlarViewModel
 
   late final _$_DepoTalepToplananlarViewModelBaseActionController =
       ActionController(
-          name: '_DepoTalepToplananlarViewModelBase', context: context);
+        name: '_DepoTalepToplananlarViewModelBase',
+        context: context,
+      );
 
   @override
   void setKalemList(List<KalemModel>? value) {
@@ -55,8 +61,9 @@ mixin _$DepoTalepToplananlarViewModel
     try {
       return super.setKalemList(value);
     } finally {
-      _$_DepoTalepToplananlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DepoTalepToplananlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

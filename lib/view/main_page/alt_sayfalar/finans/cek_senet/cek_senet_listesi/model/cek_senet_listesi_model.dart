@@ -6,7 +6,7 @@ part "cek_senet_listesi_model.freezed.dart";
 part "cek_senet_listesi_model.g.dart";
 
 @unfreezed
-class CekSenetListesiModel with _$CekSenetListesiModel, NetworkManagerMixin {
+sealed class CekSenetListesiModel with _$CekSenetListesiModel, NetworkManagerMixin {
   factory CekSenetListesiModel({
     bool? isCiroTipli,
     DateTime? cikisTarihi,

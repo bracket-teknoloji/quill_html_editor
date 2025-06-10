@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,300 +10,155 @@ part of 'depo_bakiye_durumu_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-DepoBakiyeDurumuModel _$DepoBakiyeDurumuModelFromJson(Map<String, dynamic> json) {
-  return _DepoBakiyeDurumuModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$DepoBakiyeDurumuModel {
-  int? get subeKodu => throw _privateConstructorUsedError;
-  int? get depoKodu => throw _privateConstructorUsedError;
-  String? get stokKodu => throw _privateConstructorUsedError;
-  double? get giris => throw _privateConstructorUsedError;
-  double? get cikis => throw _privateConstructorUsedError;
-  double? get bakiye => throw _privateConstructorUsedError;
-  String? get subeAdi => throw _privateConstructorUsedError;
-  String? get stokAdi => throw _privateConstructorUsedError;
-  String? get depoAdi => throw _privateConstructorUsedError;
+
+ int? get subeKodu; int? get depoKodu; String? get stokKodu; double? get giris; double? get cikis; double? get bakiye; String? get subeAdi; String? get stokAdi; String? get depoAdi;
+/// Create a copy of DepoBakiyeDurumuModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DepoBakiyeDurumuModelCopyWith<DepoBakiyeDurumuModel> get copyWith => _$DepoBakiyeDurumuModelCopyWithImpl<DepoBakiyeDurumuModel>(this as DepoBakiyeDurumuModel, _$identity);
 
   /// Serializes this DepoBakiyeDurumuModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of DepoBakiyeDurumuModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DepoBakiyeDurumuModelCopyWith<DepoBakiyeDurumuModel> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DepoBakiyeDurumuModel&&super == other&&(identical(other.subeKodu, subeKodu) || other.subeKodu == subeKodu)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.giris, giris) || other.giris == giris)&&(identical(other.cikis, cikis) || other.cikis == cikis)&&(identical(other.bakiye, bakiye) || other.bakiye == bakiye)&&(identical(other.subeAdi, subeAdi) || other.subeAdi == subeAdi)&&(identical(other.stokAdi, stokAdi) || other.stokAdi == stokAdi)&&(identical(other.depoAdi, depoAdi) || other.depoAdi == depoAdi));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,subeKodu,depoKodu,stokKodu,giris,cikis,bakiye,subeAdi,stokAdi,depoAdi);
+
+
+
 }
 
 /// @nodoc
-abstract class $DepoBakiyeDurumuModelCopyWith<$Res> {
-  factory $DepoBakiyeDurumuModelCopyWith(DepoBakiyeDurumuModel value, $Res Function(DepoBakiyeDurumuModel) then) =
-      _$DepoBakiyeDurumuModelCopyWithImpl<$Res, DepoBakiyeDurumuModel>;
-  @useResult
-  $Res call({
-    int? subeKodu,
-    int? depoKodu,
-    String? stokKodu,
-    double? giris,
-    double? cikis,
-    double? bakiye,
-    String? subeAdi,
-    String? stokAdi,
-    String? depoAdi,
-  });
-}
+abstract mixin class $DepoBakiyeDurumuModelCopyWith<$Res>  {
+  factory $DepoBakiyeDurumuModelCopyWith(DepoBakiyeDurumuModel value, $Res Function(DepoBakiyeDurumuModel) _then) = _$DepoBakiyeDurumuModelCopyWithImpl;
+@useResult
+$Res call({
+ int? subeKodu, int? depoKodu, String? stokKodu, double? giris, double? cikis, double? bakiye, String? subeAdi, String? stokAdi, String? depoAdi
+});
 
+
+
+
+}
 /// @nodoc
-class _$DepoBakiyeDurumuModelCopyWithImpl<$Res, $Val extends DepoBakiyeDurumuModel>
+class _$DepoBakiyeDurumuModelCopyWithImpl<$Res>
     implements $DepoBakiyeDurumuModelCopyWith<$Res> {
-  _$DepoBakiyeDurumuModelCopyWithImpl(this._value, this._then);
+  _$DepoBakiyeDurumuModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final DepoBakiyeDurumuModel _self;
+  final $Res Function(DepoBakiyeDurumuModel) _then;
 
-  /// Create a copy of DepoBakiyeDurumuModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? subeKodu = freezed,
-    Object? depoKodu = freezed,
-    Object? stokKodu = freezed,
-    Object? giris = freezed,
-    Object? cikis = freezed,
-    Object? bakiye = freezed,
-    Object? subeAdi = freezed,
-    Object? stokAdi = freezed,
-    Object? depoAdi = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            subeKodu: freezed == subeKodu
-                ? _value.subeKodu
-                : subeKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            depoKodu: freezed == depoKodu
-                ? _value.depoKodu
-                : depoKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            stokKodu: freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            giris: freezed == giris
-                ? _value.giris
-                : giris // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            cikis: freezed == cikis
-                ? _value.cikis
-                : cikis // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            bakiye: freezed == bakiye
-                ? _value.bakiye
-                : bakiye // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            subeAdi: freezed == subeAdi
-                ? _value.subeAdi
-                : subeAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            stokAdi: freezed == stokAdi
-                ? _value.stokAdi
-                : stokAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            depoAdi: freezed == depoAdi
-                ? _value.depoAdi
-                : depoAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of DepoBakiyeDurumuModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? subeKodu = freezed,Object? depoKodu = freezed,Object? stokKodu = freezed,Object? giris = freezed,Object? cikis = freezed,Object? bakiye = freezed,Object? subeAdi = freezed,Object? stokAdi = freezed,Object? depoAdi = freezed,}) {
+  return _then(_self.copyWith(
+subeKodu: freezed == subeKodu ? _self.subeKodu : subeKodu // ignore: cast_nullable_to_non_nullable
+as int?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,giris: freezed == giris ? _self.giris : giris // ignore: cast_nullable_to_non_nullable
+as double?,cikis: freezed == cikis ? _self.cikis : cikis // ignore: cast_nullable_to_non_nullable
+as double?,bakiye: freezed == bakiye ? _self.bakiye : bakiye // ignore: cast_nullable_to_non_nullable
+as double?,subeAdi: freezed == subeAdi ? _self.subeAdi : subeAdi // ignore: cast_nullable_to_non_nullable
+as String?,stokAdi: freezed == stokAdi ? _self.stokAdi : stokAdi // ignore: cast_nullable_to_non_nullable
+as String?,depoAdi: freezed == depoAdi ? _self.depoAdi : depoAdi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$DepoBakiyeDurumuModelImplCopyWith<$Res> implements $DepoBakiyeDurumuModelCopyWith<$Res> {
-  factory _$$DepoBakiyeDurumuModelImplCopyWith(
-    _$DepoBakiyeDurumuModelImpl value,
-    $Res Function(_$DepoBakiyeDurumuModelImpl) then,
-  ) = __$$DepoBakiyeDurumuModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    int? subeKodu,
-    int? depoKodu,
-    String? stokKodu,
-    double? giris,
-    double? cikis,
-    double? bakiye,
-    String? subeAdi,
-    String? stokAdi,
-    String? depoAdi,
-  });
 }
 
-/// @nodoc
-class __$$DepoBakiyeDurumuModelImplCopyWithImpl<$Res>
-    extends _$DepoBakiyeDurumuModelCopyWithImpl<$Res, _$DepoBakiyeDurumuModelImpl>
-    implements _$$DepoBakiyeDurumuModelImplCopyWith<$Res> {
-  __$$DepoBakiyeDurumuModelImplCopyWithImpl(
-    _$DepoBakiyeDurumuModelImpl _value,
-    $Res Function(_$DepoBakiyeDurumuModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of DepoBakiyeDurumuModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? subeKodu = freezed,
-    Object? depoKodu = freezed,
-    Object? stokKodu = freezed,
-    Object? giris = freezed,
-    Object? cikis = freezed,
-    Object? bakiye = freezed,
-    Object? subeAdi = freezed,
-    Object? stokAdi = freezed,
-    Object? depoAdi = freezed,
-  }) {
-    return _then(
-      _$DepoBakiyeDurumuModelImpl(
-        subeKodu: freezed == subeKodu
-            ? _value.subeKodu
-            : subeKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        depoKodu: freezed == depoKodu
-            ? _value.depoKodu
-            : depoKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        stokKodu: freezed == stokKodu
-            ? _value.stokKodu
-            : stokKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        giris: freezed == giris
-            ? _value.giris
-            : giris // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        cikis: freezed == cikis
-            ? _value.cikis
-            : cikis // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        bakiye: freezed == bakiye
-            ? _value.bakiye
-            : bakiye // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        subeAdi: freezed == subeAdi
-            ? _value.subeAdi
-            : subeAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        stokAdi: freezed == stokAdi
-            ? _value.stokAdi
-            : stokAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        depoAdi: freezed == depoAdi
-            ? _value.depoAdi
-            : depoAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$DepoBakiyeDurumuModelImpl extends _DepoBakiyeDurumuModel {
-  const _$DepoBakiyeDurumuModelImpl({
-    this.subeKodu,
-    this.depoKodu,
-    this.stokKodu,
-    this.giris,
-    this.cikis,
-    this.bakiye,
-    this.subeAdi,
-    this.stokAdi,
-    this.depoAdi,
-  }) : super._();
 
-  factory _$DepoBakiyeDurumuModelImpl.fromJson(Map<String, dynamic> json) => _$$DepoBakiyeDurumuModelImplFromJson(json);
+class _DepoBakiyeDurumuModel extends DepoBakiyeDurumuModel {
+  const _DepoBakiyeDurumuModel({this.subeKodu, this.depoKodu, this.stokKodu, this.giris, this.cikis, this.bakiye, this.subeAdi, this.stokAdi, this.depoAdi}): super._();
+  factory _DepoBakiyeDurumuModel.fromJson(Map<String, dynamic> json) => _$DepoBakiyeDurumuModelFromJson(json);
 
-  @override
-  final int? subeKodu;
-  @override
-  final int? depoKodu;
-  @override
-  final String? stokKodu;
-  @override
-  final double? giris;
-  @override
-  final double? cikis;
-  @override
-  final double? bakiye;
-  @override
-  final String? subeAdi;
-  @override
-  final String? stokAdi;
-  @override
-  final String? depoAdi;
+@override final  int? subeKodu;
+@override final  int? depoKodu;
+@override final  String? stokKodu;
+@override final  double? giris;
+@override final  double? cikis;
+@override final  double? bakiye;
+@override final  String? subeAdi;
+@override final  String? stokAdi;
+@override final  String? depoAdi;
 
-  /// Create a copy of DepoBakiyeDurumuModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl> get copyWith =>
-      __$$DepoBakiyeDurumuModelImplCopyWithImpl<_$DepoBakiyeDurumuModelImpl>(this, _$identity);
+/// Create a copy of DepoBakiyeDurumuModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DepoBakiyeDurumuModelCopyWith<_DepoBakiyeDurumuModel> get copyWith => __$DepoBakiyeDurumuModelCopyWithImpl<_DepoBakiyeDurumuModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DepoBakiyeDurumuModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$DepoBakiyeDurumuModelToJson(this, );
 }
 
-abstract class _DepoBakiyeDurumuModel extends DepoBakiyeDurumuModel {
-  const factory _DepoBakiyeDurumuModel({
-    final int? subeKodu,
-    final int? depoKodu,
-    final String? stokKodu,
-    final double? giris,
-    final double? cikis,
-    final double? bakiye,
-    final String? subeAdi,
-    final String? stokAdi,
-    final String? depoAdi,
-  }) = _$DepoBakiyeDurumuModelImpl;
-  const _DepoBakiyeDurumuModel._() : super._();
-
-  factory _DepoBakiyeDurumuModel.fromJson(Map<String, dynamic> json) = _$DepoBakiyeDurumuModelImpl.fromJson;
-
-  @override
-  int? get subeKodu;
-  @override
-  int? get depoKodu;
-  @override
-  String? get stokKodu;
-  @override
-  double? get giris;
-  @override
-  double? get cikis;
-  @override
-  double? get bakiye;
-  @override
-  String? get subeAdi;
-  @override
-  String? get stokAdi;
-  @override
-  String? get depoAdi;
-
-  /// Create a copy of DepoBakiyeDurumuModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl> get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DepoBakiyeDurumuModel&&super == other&&(identical(other.subeKodu, subeKodu) || other.subeKodu == subeKodu)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.giris, giris) || other.giris == giris)&&(identical(other.cikis, cikis) || other.cikis == cikis)&&(identical(other.bakiye, bakiye) || other.bakiye == bakiye)&&(identical(other.subeAdi, subeAdi) || other.subeAdi == subeAdi)&&(identical(other.stokAdi, stokAdi) || other.stokAdi == stokAdi)&&(identical(other.depoAdi, depoAdi) || other.depoAdi == depoAdi));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,subeKodu,depoKodu,stokKodu,giris,cikis,bakiye,subeAdi,stokAdi,depoAdi);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DepoBakiyeDurumuModelCopyWith<$Res> implements $DepoBakiyeDurumuModelCopyWith<$Res> {
+  factory _$DepoBakiyeDurumuModelCopyWith(_DepoBakiyeDurumuModel value, $Res Function(_DepoBakiyeDurumuModel) _then) = __$DepoBakiyeDurumuModelCopyWithImpl;
+@override @useResult
+$Res call({
+ int? subeKodu, int? depoKodu, String? stokKodu, double? giris, double? cikis, double? bakiye, String? subeAdi, String? stokAdi, String? depoAdi
+});
+
+
+
+
+}
+/// @nodoc
+class __$DepoBakiyeDurumuModelCopyWithImpl<$Res>
+    implements _$DepoBakiyeDurumuModelCopyWith<$Res> {
+  __$DepoBakiyeDurumuModelCopyWithImpl(this._self, this._then);
+
+  final _DepoBakiyeDurumuModel _self;
+  final $Res Function(_DepoBakiyeDurumuModel) _then;
+
+/// Create a copy of DepoBakiyeDurumuModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? subeKodu = freezed,Object? depoKodu = freezed,Object? stokKodu = freezed,Object? giris = freezed,Object? cikis = freezed,Object? bakiye = freezed,Object? subeAdi = freezed,Object? stokAdi = freezed,Object? depoAdi = freezed,}) {
+  return _then(_DepoBakiyeDurumuModel(
+subeKodu: freezed == subeKodu ? _self.subeKodu : subeKodu // ignore: cast_nullable_to_non_nullable
+as int?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,giris: freezed == giris ? _self.giris : giris // ignore: cast_nullable_to_non_nullable
+as double?,cikis: freezed == cikis ? _self.cikis : cikis // ignore: cast_nullable_to_non_nullable
+as double?,bakiye: freezed == bakiye ? _self.bakiye : bakiye // ignore: cast_nullable_to_non_nullable
+as double?,subeAdi: freezed == subeAdi ? _self.subeAdi : subeAdi // ignore: cast_nullable_to_non_nullable
+as String?,stokAdi: freezed == stokAdi ? _self.stokAdi : stokAdi // ignore: cast_nullable_to_non_nullable
+as String?,depoAdi: freezed == depoAdi ? _self.depoAdi : depoAdi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

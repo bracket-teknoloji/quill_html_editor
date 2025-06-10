@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,276 +10,152 @@ part of 'belge_rehberi_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-BelgeRehberiModel _$BelgeRehberiModelFromJson(Map<String, dynamic> json) {
-  return _BelgeRehberiModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BelgeRehberiModel {
-  String? get belgeNo => throw _privateConstructorUsedError;
-  String? get belgeTipi => throw _privateConstructorUsedError;
-  String? get cariKodu => throw _privateConstructorUsedError;
-  String? get cariAdi => throw _privateConstructorUsedError;
-  DateTime? get tarih => throw _privateConstructorUsedError;
-  int? get depoKodu => throw _privateConstructorUsedError;
-  String? get depoTanimi => throw _privateConstructorUsedError;
-  double? get kalemSayisi => throw _privateConstructorUsedError;
+
+ String? get belgeNo; String? get belgeTipi; String? get cariKodu; String? get cariAdi; DateTime? get tarih; int? get depoKodu; String? get depoTanimi; double? get kalemSayisi;
+/// Create a copy of BelgeRehberiModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BelgeRehberiModelCopyWith<BelgeRehberiModel> get copyWith => _$BelgeRehberiModelCopyWithImpl<BelgeRehberiModel>(this as BelgeRehberiModel, _$identity);
 
   /// Serializes this BelgeRehberiModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BelgeRehberiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BelgeRehberiModelCopyWith<BelgeRehberiModel> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BelgeRehberiModel&&super == other&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo)&&(identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi)&&(identical(other.cariKodu, cariKodu) || other.cariKodu == cariKodu)&&(identical(other.cariAdi, cariAdi) || other.cariAdi == cariAdi)&&(identical(other.tarih, tarih) || other.tarih == tarih)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.depoTanimi, depoTanimi) || other.depoTanimi == depoTanimi)&&(identical(other.kalemSayisi, kalemSayisi) || other.kalemSayisi == kalemSayisi));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,belgeNo,belgeTipi,cariKodu,cariAdi,tarih,depoKodu,depoTanimi,kalemSayisi);
+
+
+
 }
 
 /// @nodoc
-abstract class $BelgeRehberiModelCopyWith<$Res> {
-  factory $BelgeRehberiModelCopyWith(BelgeRehberiModel value, $Res Function(BelgeRehberiModel) then) =
-      _$BelgeRehberiModelCopyWithImpl<$Res, BelgeRehberiModel>;
-  @useResult
-  $Res call({
-    String? belgeNo,
-    String? belgeTipi,
-    String? cariKodu,
-    String? cariAdi,
-    DateTime? tarih,
-    int? depoKodu,
-    String? depoTanimi,
-    double? kalemSayisi,
-  });
-}
+abstract mixin class $BelgeRehberiModelCopyWith<$Res>  {
+  factory $BelgeRehberiModelCopyWith(BelgeRehberiModel value, $Res Function(BelgeRehberiModel) _then) = _$BelgeRehberiModelCopyWithImpl;
+@useResult
+$Res call({
+ String? belgeNo, String? belgeTipi, String? cariKodu, String? cariAdi, DateTime? tarih, int? depoKodu, String? depoTanimi, double? kalemSayisi
+});
 
+
+
+
+}
 /// @nodoc
-class _$BelgeRehberiModelCopyWithImpl<$Res, $Val extends BelgeRehberiModel>
+class _$BelgeRehberiModelCopyWithImpl<$Res>
     implements $BelgeRehberiModelCopyWith<$Res> {
-  _$BelgeRehberiModelCopyWithImpl(this._value, this._then);
+  _$BelgeRehberiModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BelgeRehberiModel _self;
+  final $Res Function(BelgeRehberiModel) _then;
 
-  /// Create a copy of BelgeRehberiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? belgeNo = freezed,
-    Object? belgeTipi = freezed,
-    Object? cariKodu = freezed,
-    Object? cariAdi = freezed,
-    Object? tarih = freezed,
-    Object? depoKodu = freezed,
-    Object? depoTanimi = freezed,
-    Object? kalemSayisi = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            belgeNo: freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            belgeTipi: freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            cariKodu: freezed == cariKodu
-                ? _value.cariKodu
-                : cariKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            cariAdi: freezed == cariAdi
-                ? _value.cariAdi
-                : cariAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            tarih: freezed == tarih
-                ? _value.tarih
-                : tarih // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            depoKodu: freezed == depoKodu
-                ? _value.depoKodu
-                : depoKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            depoTanimi: freezed == depoTanimi
-                ? _value.depoTanimi
-                : depoTanimi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            kalemSayisi: freezed == kalemSayisi
-                ? _value.kalemSayisi
-                : kalemSayisi // ignore: cast_nullable_to_non_nullable
-                      as double?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of BelgeRehberiModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? belgeNo = freezed,Object? belgeTipi = freezed,Object? cariKodu = freezed,Object? cariAdi = freezed,Object? tarih = freezed,Object? depoKodu = freezed,Object? depoTanimi = freezed,Object? kalemSayisi = freezed,}) {
+  return _then(_self.copyWith(
+belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,cariAdi: freezed == cariAdi ? _self.cariAdi : cariAdi // ignore: cast_nullable_to_non_nullable
+as String?,tarih: freezed == tarih ? _self.tarih : tarih // ignore: cast_nullable_to_non_nullable
+as DateTime?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,depoTanimi: freezed == depoTanimi ? _self.depoTanimi : depoTanimi // ignore: cast_nullable_to_non_nullable
+as String?,kalemSayisi: freezed == kalemSayisi ? _self.kalemSayisi : kalemSayisi // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$BelgeRehberiModelImplCopyWith<$Res> implements $BelgeRehberiModelCopyWith<$Res> {
-  factory _$$BelgeRehberiModelImplCopyWith(_$BelgeRehberiModelImpl value, $Res Function(_$BelgeRehberiModelImpl) then) =
-      __$$BelgeRehberiModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    String? belgeNo,
-    String? belgeTipi,
-    String? cariKodu,
-    String? cariAdi,
-    DateTime? tarih,
-    int? depoKodu,
-    String? depoTanimi,
-    double? kalemSayisi,
-  });
 }
 
-/// @nodoc
-class __$$BelgeRehberiModelImplCopyWithImpl<$Res> extends _$BelgeRehberiModelCopyWithImpl<$Res, _$BelgeRehberiModelImpl>
-    implements _$$BelgeRehberiModelImplCopyWith<$Res> {
-  __$$BelgeRehberiModelImplCopyWithImpl(_$BelgeRehberiModelImpl _value, $Res Function(_$BelgeRehberiModelImpl) _then)
-    : super(_value, _then);
-
-  /// Create a copy of BelgeRehberiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? belgeNo = freezed,
-    Object? belgeTipi = freezed,
-    Object? cariKodu = freezed,
-    Object? cariAdi = freezed,
-    Object? tarih = freezed,
-    Object? depoKodu = freezed,
-    Object? depoTanimi = freezed,
-    Object? kalemSayisi = freezed,
-  }) {
-    return _then(
-      _$BelgeRehberiModelImpl(
-        belgeNo: freezed == belgeNo
-            ? _value.belgeNo
-            : belgeNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        belgeTipi: freezed == belgeTipi
-            ? _value.belgeTipi
-            : belgeTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        cariKodu: freezed == cariKodu
-            ? _value.cariKodu
-            : cariKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        cariAdi: freezed == cariAdi
-            ? _value.cariAdi
-            : cariAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        tarih: freezed == tarih
-            ? _value.tarih
-            : tarih // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        depoKodu: freezed == depoKodu
-            ? _value.depoKodu
-            : depoKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        depoTanimi: freezed == depoTanimi
-            ? _value.depoTanimi
-            : depoTanimi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        kalemSayisi: freezed == kalemSayisi
-            ? _value.kalemSayisi
-            : kalemSayisi // ignore: cast_nullable_to_non_nullable
-                  as double?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$BelgeRehberiModelImpl extends _BelgeRehberiModel {
-  _$BelgeRehberiModelImpl({
-    this.belgeNo,
-    this.belgeTipi,
-    this.cariKodu,
-    this.cariAdi,
-    this.tarih,
-    this.depoKodu,
-    this.depoTanimi,
-    this.kalemSayisi,
-  }) : super._();
 
-  factory _$BelgeRehberiModelImpl.fromJson(Map<String, dynamic> json) => _$$BelgeRehberiModelImplFromJson(json);
+class _BelgeRehberiModel extends BelgeRehberiModel {
+   _BelgeRehberiModel({this.belgeNo, this.belgeTipi, this.cariKodu, this.cariAdi, this.tarih, this.depoKodu, this.depoTanimi, this.kalemSayisi}): super._();
+  factory _BelgeRehberiModel.fromJson(Map<String, dynamic> json) => _$BelgeRehberiModelFromJson(json);
 
-  @override
-  final String? belgeNo;
-  @override
-  final String? belgeTipi;
-  @override
-  final String? cariKodu;
-  @override
-  final String? cariAdi;
-  @override
-  final DateTime? tarih;
-  @override
-  final int? depoKodu;
-  @override
-  final String? depoTanimi;
-  @override
-  final double? kalemSayisi;
+@override final  String? belgeNo;
+@override final  String? belgeTipi;
+@override final  String? cariKodu;
+@override final  String? cariAdi;
+@override final  DateTime? tarih;
+@override final  int? depoKodu;
+@override final  String? depoTanimi;
+@override final  double? kalemSayisi;
 
-  /// Create a copy of BelgeRehberiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BelgeRehberiModelImplCopyWith<_$BelgeRehberiModelImpl> get copyWith =>
-      __$$BelgeRehberiModelImplCopyWithImpl<_$BelgeRehberiModelImpl>(this, _$identity);
+/// Create a copy of BelgeRehberiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BelgeRehberiModelCopyWith<_BelgeRehberiModel> get copyWith => __$BelgeRehberiModelCopyWithImpl<_BelgeRehberiModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BelgeRehberiModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$BelgeRehberiModelToJson(this, );
 }
 
-abstract class _BelgeRehberiModel extends BelgeRehberiModel {
-  factory _BelgeRehberiModel({
-    final String? belgeNo,
-    final String? belgeTipi,
-    final String? cariKodu,
-    final String? cariAdi,
-    final DateTime? tarih,
-    final int? depoKodu,
-    final String? depoTanimi,
-    final double? kalemSayisi,
-  }) = _$BelgeRehberiModelImpl;
-  _BelgeRehberiModel._() : super._();
-
-  factory _BelgeRehberiModel.fromJson(Map<String, dynamic> json) = _$BelgeRehberiModelImpl.fromJson;
-
-  @override
-  String? get belgeNo;
-  @override
-  String? get belgeTipi;
-  @override
-  String? get cariKodu;
-  @override
-  String? get cariAdi;
-  @override
-  DateTime? get tarih;
-  @override
-  int? get depoKodu;
-  @override
-  String? get depoTanimi;
-  @override
-  double? get kalemSayisi;
-
-  /// Create a copy of BelgeRehberiModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BelgeRehberiModelImplCopyWith<_$BelgeRehberiModelImpl> get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BelgeRehberiModel&&super == other&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo)&&(identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi)&&(identical(other.cariKodu, cariKodu) || other.cariKodu == cariKodu)&&(identical(other.cariAdi, cariAdi) || other.cariAdi == cariAdi)&&(identical(other.tarih, tarih) || other.tarih == tarih)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.depoTanimi, depoTanimi) || other.depoTanimi == depoTanimi)&&(identical(other.kalemSayisi, kalemSayisi) || other.kalemSayisi == kalemSayisi));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,belgeNo,belgeTipi,cariKodu,cariAdi,tarih,depoKodu,depoTanimi,kalemSayisi);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$BelgeRehberiModelCopyWith<$Res> implements $BelgeRehberiModelCopyWith<$Res> {
+  factory _$BelgeRehberiModelCopyWith(_BelgeRehberiModel value, $Res Function(_BelgeRehberiModel) _then) = __$BelgeRehberiModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? belgeNo, String? belgeTipi, String? cariKodu, String? cariAdi, DateTime? tarih, int? depoKodu, String? depoTanimi, double? kalemSayisi
+});
+
+
+
+
+}
+/// @nodoc
+class __$BelgeRehberiModelCopyWithImpl<$Res>
+    implements _$BelgeRehberiModelCopyWith<$Res> {
+  __$BelgeRehberiModelCopyWithImpl(this._self, this._then);
+
+  final _BelgeRehberiModel _self;
+  final $Res Function(_BelgeRehberiModel) _then;
+
+/// Create a copy of BelgeRehberiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? belgeNo = freezed,Object? belgeTipi = freezed,Object? cariKodu = freezed,Object? cariAdi = freezed,Object? tarih = freezed,Object? depoKodu = freezed,Object? depoTanimi = freezed,Object? kalemSayisi = freezed,}) {
+  return _then(_BelgeRehberiModel(
+belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,cariAdi: freezed == cariAdi ? _self.cariAdi : cariAdi // ignore: cast_nullable_to_non_nullable
+as String?,tarih: freezed == tarih ? _self.tarih : tarih // ignore: cast_nullable_to_non_nullable
+as DateTime?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,depoTanimi: freezed == depoTanimi ? _self.depoTanimi : depoTanimi // ignore: cast_nullable_to_non_nullable
+as String?,kalemSayisi: freezed == kalemSayisi ? _self.kalemSayisi : kalemSayisi // ignore: cast_nullable_to_non_nullable
+as double?,
+  ));
+}
+
+
+}
+
+// dart format on

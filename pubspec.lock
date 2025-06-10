@@ -1303,10 +1303,10 @@ packages:
     dependency: "direct dev"
     description:
       name: mobx_codegen
-      sha256: "990da80722f7d7c0017dec92040b31545d625b15d40204c36a1e63d167c73cdc"
+      sha256: e0abbbc651a69550440f6b65c99ec222a1e2a4afd7baec8ba0f3088c7ca582a8
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.0"
+    version: "2.7.1"
   nested:
     dependency: transitive
     description:

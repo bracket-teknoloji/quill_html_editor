@@ -12,13 +12,15 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   Computed<double>? _$toplamTutarComputed;
 
   @override
-  double get toplamTutar =>
-      (_$toplamTutarComputed ??= Computed<double>(() => super.toplamTutar,
-              name: '_CekSenetListesiViewModelBase.toplamTutar'))
-          .value;
+  double get toplamTutar => (_$toplamTutarComputed ??= Computed<double>(
+    () => super.toplamTutar,
+    name: '_CekSenetListesiViewModelBase.toplamTutar',
+  )).value;
 
-  late final _$searchBarAtom =
-      Atom(name: '_CekSenetListesiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_CekSenetListesiViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -34,7 +36,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   }
 
   late final _$isScrollDownAtom = Atom(
-      name: '_CekSenetListesiViewModelBase.isScrollDown', context: context);
+    name: '_CekSenetListesiViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -50,8 +54,9 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   }
 
   late final _$cekSenetListesiListesiAtom = Atom(
-      name: '_CekSenetListesiViewModelBase.cekSenetListesiListesi',
-      context: context);
+    name: '_CekSenetListesiViewModelBase.cekSenetListesiListesi',
+    context: context,
+  );
 
   @override
   ObservableList<CekSenetListesiModel>? get cekSenetListesiListesi {
@@ -61,15 +66,19 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   set cekSenetListesiListesi(ObservableList<CekSenetListesiModel>? value) {
-    _$cekSenetListesiListesiAtom
-        .reportWrite(value, super.cekSenetListesiListesi, () {
-      super.cekSenetListesiListesi = value;
-    });
+    _$cekSenetListesiListesiAtom.reportWrite(
+      value,
+      super.cekSenetListesiListesi,
+      () {
+        super.cekSenetListesiListesi = value;
+      },
+    );
   }
 
   late final _$cekSenetListesiRequestModelAtom = Atom(
-      name: '_CekSenetListesiViewModelBase.cekSenetListesiRequestModel',
-      context: context);
+    name: '_CekSenetListesiViewModelBase.cekSenetListesiRequestModel',
+    context: context,
+  );
 
   @override
   CekSenetListesiRequestModel get cekSenetListesiRequestModel {
@@ -79,22 +88,29 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   set cekSenetListesiRequestModel(CekSenetListesiRequestModel value) {
-    _$cekSenetListesiRequestModelAtom
-        .reportWrite(value, super.cekSenetListesiRequestModel, () {
-      super.cekSenetListesiRequestModel = value;
-    });
+    _$cekSenetListesiRequestModelAtom.reportWrite(
+      value,
+      super.cekSenetListesiRequestModel,
+      () {
+        super.cekSenetListesiRequestModel = value;
+      },
+    );
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_CekSenetListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_CekSenetListesiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_CekSenetListesiViewModelBaseActionController =
-      ActionController(name: '_CekSenetListesiViewModelBase', context: context);
+  late final _$_CekSenetListesiViewModelBaseActionController = ActionController(
+    name: '_CekSenetListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchBar() {
@@ -241,9 +257,10 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setCekSenetListesiListesi(List<CekSenetListesiModel>? value) {
-    final _$actionInfo =
-        _$_CekSenetListesiViewModelBaseActionController.startAction(
-            name: '_CekSenetListesiViewModelBase.setCekSenetListesiListesi');
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetListesiViewModelBase.setCekSenetListesiListesi',
+        );
     try {
       return super.setCekSenetListesiListesi(value);
     } finally {

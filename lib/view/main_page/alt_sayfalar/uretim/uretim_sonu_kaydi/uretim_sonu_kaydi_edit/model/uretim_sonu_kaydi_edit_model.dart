@@ -8,7 +8,7 @@ part "uretim_sonu_kaydi_edit_model.freezed.dart";
 part "uretim_sonu_kaydi_edit_model.g.dart";
 
 @unfreezed
-class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMixin {
+sealed class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMixin {
   factory UretimSonuKaydiEditModel({
     String? belgeNo,
     DateTime? belgeTarihi,
@@ -38,7 +38,7 @@ class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMi
 }
 
 @unfreezed
-class EkAlanlar with _$EkAlanlar {
+sealed class EkAlanlar with _$EkAlanlar {
   factory EkAlanlar({String? ktAlan1, String? ktAlan3, String? ktAlan4}) = _EkAlanlar;
   EkAlanlar._();
 

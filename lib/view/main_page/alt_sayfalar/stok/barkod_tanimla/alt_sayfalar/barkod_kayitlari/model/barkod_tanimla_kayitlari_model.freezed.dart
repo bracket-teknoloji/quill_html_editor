@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,342 +10,161 @@ part of 'barkod_tanimla_kayitlari_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-BarkodTanimlaKayitlariModel _$BarkodTanimlaKayitlariModelFromJson(Map<String, dynamic> json) {
-  return _BarkodTanimlaKayitlariModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BarkodTanimlaKayitlariModel {
-  String? get stokKodu => throw _privateConstructorUsedError;
-  String? get barkod => throw _privateConstructorUsedError;
-  int? get birim => throw _privateConstructorUsedError;
-  String? get kilit => throw _privateConstructorUsedError;
-  String? get aciklama => throw _privateConstructorUsedError;
-  String? get birimAdi => throw _privateConstructorUsedError;
-  String? get barkodTipi => throw _privateConstructorUsedError;
-  String? get barkodTipiAdi => throw _privateConstructorUsedError;
-  double? get birimPay => throw _privateConstructorUsedError;
-  double? get birimPayda => throw _privateConstructorUsedError;
-  String? get stokBirim1Adi => throw _privateConstructorUsedError;
+
+ String? get stokKodu; String? get barkod; int? get birim; String? get kilit; String? get aciklama; String? get birimAdi; String? get barkodTipi; String? get barkodTipiAdi; double? get birimPay; double? get birimPayda; String? get stokBirim1Adi;
+/// Create a copy of BarkodTanimlaKayitlariModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BarkodTanimlaKayitlariModelCopyWith<BarkodTanimlaKayitlariModel> get copyWith => _$BarkodTanimlaKayitlariModelCopyWithImpl<BarkodTanimlaKayitlariModel>(this as BarkodTanimlaKayitlariModel, _$identity);
 
   /// Serializes this BarkodTanimlaKayitlariModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BarkodTanimlaKayitlariModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BarkodTanimlaKayitlariModelCopyWith<BarkodTanimlaKayitlariModel> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BarkodTanimlaKayitlariModel&&super == other&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.barkod, barkod) || other.barkod == barkod)&&(identical(other.birim, birim) || other.birim == birim)&&(identical(other.kilit, kilit) || other.kilit == kilit)&&(identical(other.aciklama, aciklama) || other.aciklama == aciklama)&&(identical(other.birimAdi, birimAdi) || other.birimAdi == birimAdi)&&(identical(other.barkodTipi, barkodTipi) || other.barkodTipi == barkodTipi)&&(identical(other.barkodTipiAdi, barkodTipiAdi) || other.barkodTipiAdi == barkodTipiAdi)&&(identical(other.birimPay, birimPay) || other.birimPay == birimPay)&&(identical(other.birimPayda, birimPayda) || other.birimPayda == birimPayda)&&(identical(other.stokBirim1Adi, stokBirim1Adi) || other.stokBirim1Adi == stokBirim1Adi));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,stokKodu,barkod,birim,kilit,aciklama,birimAdi,barkodTipi,barkodTipiAdi,birimPay,birimPayda,stokBirim1Adi);
+
+
+
 }
 
 /// @nodoc
-abstract class $BarkodTanimlaKayitlariModelCopyWith<$Res> {
-  factory $BarkodTanimlaKayitlariModelCopyWith(
-    BarkodTanimlaKayitlariModel value,
-    $Res Function(BarkodTanimlaKayitlariModel) then,
-  ) = _$BarkodTanimlaKayitlariModelCopyWithImpl<$Res, BarkodTanimlaKayitlariModel>;
-  @useResult
-  $Res call({
-    String? stokKodu,
-    String? barkod,
-    int? birim,
-    String? kilit,
-    String? aciklama,
-    String? birimAdi,
-    String? barkodTipi,
-    String? barkodTipiAdi,
-    double? birimPay,
-    double? birimPayda,
-    String? stokBirim1Adi,
-  });
-}
+abstract mixin class $BarkodTanimlaKayitlariModelCopyWith<$Res>  {
+  factory $BarkodTanimlaKayitlariModelCopyWith(BarkodTanimlaKayitlariModel value, $Res Function(BarkodTanimlaKayitlariModel) _then) = _$BarkodTanimlaKayitlariModelCopyWithImpl;
+@useResult
+$Res call({
+ String? stokKodu, String? barkod, int? birim, String? kilit, String? aciklama, String? birimAdi, String? barkodTipi, String? barkodTipiAdi, double? birimPay, double? birimPayda, String? stokBirim1Adi
+});
 
+
+
+
+}
 /// @nodoc
-class _$BarkodTanimlaKayitlariModelCopyWithImpl<$Res, $Val extends BarkodTanimlaKayitlariModel>
+class _$BarkodTanimlaKayitlariModelCopyWithImpl<$Res>
     implements $BarkodTanimlaKayitlariModelCopyWith<$Res> {
-  _$BarkodTanimlaKayitlariModelCopyWithImpl(this._value, this._then);
+  _$BarkodTanimlaKayitlariModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BarkodTanimlaKayitlariModel _self;
+  final $Res Function(BarkodTanimlaKayitlariModel) _then;
 
-  /// Create a copy of BarkodTanimlaKayitlariModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? stokKodu = freezed,
-    Object? barkod = freezed,
-    Object? birim = freezed,
-    Object? kilit = freezed,
-    Object? aciklama = freezed,
-    Object? birimAdi = freezed,
-    Object? barkodTipi = freezed,
-    Object? barkodTipiAdi = freezed,
-    Object? birimPay = freezed,
-    Object? birimPayda = freezed,
-    Object? stokBirim1Adi = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            stokKodu: freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            barkod: freezed == barkod
-                ? _value.barkod
-                : barkod // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            birim: freezed == birim
-                ? _value.birim
-                : birim // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            kilit: freezed == kilit
-                ? _value.kilit
-                : kilit // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            aciklama: freezed == aciklama
-                ? _value.aciklama
-                : aciklama // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            birimAdi: freezed == birimAdi
-                ? _value.birimAdi
-                : birimAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            barkodTipi: freezed == barkodTipi
-                ? _value.barkodTipi
-                : barkodTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            barkodTipiAdi: freezed == barkodTipiAdi
-                ? _value.barkodTipiAdi
-                : barkodTipiAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            birimPay: freezed == birimPay
-                ? _value.birimPay
-                : birimPay // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            birimPayda: freezed == birimPayda
-                ? _value.birimPayda
-                : birimPayda // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            stokBirim1Adi: freezed == stokBirim1Adi
-                ? _value.stokBirim1Adi
-                : stokBirim1Adi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of BarkodTanimlaKayitlariModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? stokKodu = freezed,Object? barkod = freezed,Object? birim = freezed,Object? kilit = freezed,Object? aciklama = freezed,Object? birimAdi = freezed,Object? barkodTipi = freezed,Object? barkodTipiAdi = freezed,Object? birimPay = freezed,Object? birimPayda = freezed,Object? stokBirim1Adi = freezed,}) {
+  return _then(_self.copyWith(
+stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,barkod: freezed == barkod ? _self.barkod : barkod // ignore: cast_nullable_to_non_nullable
+as String?,birim: freezed == birim ? _self.birim : birim // ignore: cast_nullable_to_non_nullable
+as int?,kilit: freezed == kilit ? _self.kilit : kilit // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,birimAdi: freezed == birimAdi ? _self.birimAdi : birimAdi // ignore: cast_nullable_to_non_nullable
+as String?,barkodTipi: freezed == barkodTipi ? _self.barkodTipi : barkodTipi // ignore: cast_nullable_to_non_nullable
+as String?,barkodTipiAdi: freezed == barkodTipiAdi ? _self.barkodTipiAdi : barkodTipiAdi // ignore: cast_nullable_to_non_nullable
+as String?,birimPay: freezed == birimPay ? _self.birimPay : birimPay // ignore: cast_nullable_to_non_nullable
+as double?,birimPayda: freezed == birimPayda ? _self.birimPayda : birimPayda // ignore: cast_nullable_to_non_nullable
+as double?,stokBirim1Adi: freezed == stokBirim1Adi ? _self.stokBirim1Adi : stokBirim1Adi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$BarkodTanimlaKayitlariModelImplCopyWith<$Res> implements $BarkodTanimlaKayitlariModelCopyWith<$Res> {
-  factory _$$BarkodTanimlaKayitlariModelImplCopyWith(
-    _$BarkodTanimlaKayitlariModelImpl value,
-    $Res Function(_$BarkodTanimlaKayitlariModelImpl) then,
-  ) = __$$BarkodTanimlaKayitlariModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    String? stokKodu,
-    String? barkod,
-    int? birim,
-    String? kilit,
-    String? aciklama,
-    String? birimAdi,
-    String? barkodTipi,
-    String? barkodTipiAdi,
-    double? birimPay,
-    double? birimPayda,
-    String? stokBirim1Adi,
-  });
 }
 
-/// @nodoc
-class __$$BarkodTanimlaKayitlariModelImplCopyWithImpl<$Res>
-    extends _$BarkodTanimlaKayitlariModelCopyWithImpl<$Res, _$BarkodTanimlaKayitlariModelImpl>
-    implements _$$BarkodTanimlaKayitlariModelImplCopyWith<$Res> {
-  __$$BarkodTanimlaKayitlariModelImplCopyWithImpl(
-    _$BarkodTanimlaKayitlariModelImpl _value,
-    $Res Function(_$BarkodTanimlaKayitlariModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of BarkodTanimlaKayitlariModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? stokKodu = freezed,
-    Object? barkod = freezed,
-    Object? birim = freezed,
-    Object? kilit = freezed,
-    Object? aciklama = freezed,
-    Object? birimAdi = freezed,
-    Object? barkodTipi = freezed,
-    Object? barkodTipiAdi = freezed,
-    Object? birimPay = freezed,
-    Object? birimPayda = freezed,
-    Object? stokBirim1Adi = freezed,
-  }) {
-    return _then(
-      _$BarkodTanimlaKayitlariModelImpl(
-        stokKodu: freezed == stokKodu
-            ? _value.stokKodu
-            : stokKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        barkod: freezed == barkod
-            ? _value.barkod
-            : barkod // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        birim: freezed == birim
-            ? _value.birim
-            : birim // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        kilit: freezed == kilit
-            ? _value.kilit
-            : kilit // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        aciklama: freezed == aciklama
-            ? _value.aciklama
-            : aciklama // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        birimAdi: freezed == birimAdi
-            ? _value.birimAdi
-            : birimAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        barkodTipi: freezed == barkodTipi
-            ? _value.barkodTipi
-            : barkodTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        barkodTipiAdi: freezed == barkodTipiAdi
-            ? _value.barkodTipiAdi
-            : barkodTipiAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        birimPay: freezed == birimPay
-            ? _value.birimPay
-            : birimPay // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        birimPayda: freezed == birimPayda
-            ? _value.birimPayda
-            : birimPayda // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        stokBirim1Adi: freezed == stokBirim1Adi
-            ? _value.stokBirim1Adi
-            : stokBirim1Adi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$BarkodTanimlaKayitlariModelImpl extends _BarkodTanimlaKayitlariModel {
-  _$BarkodTanimlaKayitlariModelImpl({
-    this.stokKodu,
-    this.barkod,
-    this.birim,
-    this.kilit,
-    this.aciklama,
-    this.birimAdi,
-    this.barkodTipi,
-    this.barkodTipiAdi,
-    this.birimPay,
-    this.birimPayda,
-    this.stokBirim1Adi,
-  }) : super._();
 
-  factory _$BarkodTanimlaKayitlariModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BarkodTanimlaKayitlariModelImplFromJson(json);
+class _BarkodTanimlaKayitlariModel extends BarkodTanimlaKayitlariModel {
+   _BarkodTanimlaKayitlariModel({this.stokKodu, this.barkod, this.birim, this.kilit, this.aciklama, this.birimAdi, this.barkodTipi, this.barkodTipiAdi, this.birimPay, this.birimPayda, this.stokBirim1Adi}): super._();
+  factory _BarkodTanimlaKayitlariModel.fromJson(Map<String, dynamic> json) => _$BarkodTanimlaKayitlariModelFromJson(json);
 
-  @override
-  final String? stokKodu;
-  @override
-  final String? barkod;
-  @override
-  final int? birim;
-  @override
-  final String? kilit;
-  @override
-  final String? aciklama;
-  @override
-  final String? birimAdi;
-  @override
-  final String? barkodTipi;
-  @override
-  final String? barkodTipiAdi;
-  @override
-  final double? birimPay;
-  @override
-  final double? birimPayda;
-  @override
-  final String? stokBirim1Adi;
+@override final  String? stokKodu;
+@override final  String? barkod;
+@override final  int? birim;
+@override final  String? kilit;
+@override final  String? aciklama;
+@override final  String? birimAdi;
+@override final  String? barkodTipi;
+@override final  String? barkodTipiAdi;
+@override final  double? birimPay;
+@override final  double? birimPayda;
+@override final  String? stokBirim1Adi;
 
-  /// Create a copy of BarkodTanimlaKayitlariModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BarkodTanimlaKayitlariModelImplCopyWith<_$BarkodTanimlaKayitlariModelImpl> get copyWith =>
-      __$$BarkodTanimlaKayitlariModelImplCopyWithImpl<_$BarkodTanimlaKayitlariModelImpl>(this, _$identity);
+/// Create a copy of BarkodTanimlaKayitlariModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BarkodTanimlaKayitlariModelCopyWith<_BarkodTanimlaKayitlariModel> get copyWith => __$BarkodTanimlaKayitlariModelCopyWithImpl<_BarkodTanimlaKayitlariModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BarkodTanimlaKayitlariModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$BarkodTanimlaKayitlariModelToJson(this, );
 }
 
-abstract class _BarkodTanimlaKayitlariModel extends BarkodTanimlaKayitlariModel {
-  factory _BarkodTanimlaKayitlariModel({
-    final String? stokKodu,
-    final String? barkod,
-    final int? birim,
-    final String? kilit,
-    final String? aciklama,
-    final String? birimAdi,
-    final String? barkodTipi,
-    final String? barkodTipiAdi,
-    final double? birimPay,
-    final double? birimPayda,
-    final String? stokBirim1Adi,
-  }) = _$BarkodTanimlaKayitlariModelImpl;
-  _BarkodTanimlaKayitlariModel._() : super._();
-
-  factory _BarkodTanimlaKayitlariModel.fromJson(Map<String, dynamic> json) = _$BarkodTanimlaKayitlariModelImpl.fromJson;
-
-  @override
-  String? get stokKodu;
-  @override
-  String? get barkod;
-  @override
-  int? get birim;
-  @override
-  String? get kilit;
-  @override
-  String? get aciklama;
-  @override
-  String? get birimAdi;
-  @override
-  String? get barkodTipi;
-  @override
-  String? get barkodTipiAdi;
-  @override
-  double? get birimPay;
-  @override
-  double? get birimPayda;
-  @override
-  String? get stokBirim1Adi;
-
-  /// Create a copy of BarkodTanimlaKayitlariModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BarkodTanimlaKayitlariModelImplCopyWith<_$BarkodTanimlaKayitlariModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BarkodTanimlaKayitlariModel&&super == other&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.barkod, barkod) || other.barkod == barkod)&&(identical(other.birim, birim) || other.birim == birim)&&(identical(other.kilit, kilit) || other.kilit == kilit)&&(identical(other.aciklama, aciklama) || other.aciklama == aciklama)&&(identical(other.birimAdi, birimAdi) || other.birimAdi == birimAdi)&&(identical(other.barkodTipi, barkodTipi) || other.barkodTipi == barkodTipi)&&(identical(other.barkodTipiAdi, barkodTipiAdi) || other.barkodTipiAdi == barkodTipiAdi)&&(identical(other.birimPay, birimPay) || other.birimPay == birimPay)&&(identical(other.birimPayda, birimPayda) || other.birimPayda == birimPayda)&&(identical(other.stokBirim1Adi, stokBirim1Adi) || other.stokBirim1Adi == stokBirim1Adi));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,stokKodu,barkod,birim,kilit,aciklama,birimAdi,barkodTipi,barkodTipiAdi,birimPay,birimPayda,stokBirim1Adi);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$BarkodTanimlaKayitlariModelCopyWith<$Res> implements $BarkodTanimlaKayitlariModelCopyWith<$Res> {
+  factory _$BarkodTanimlaKayitlariModelCopyWith(_BarkodTanimlaKayitlariModel value, $Res Function(_BarkodTanimlaKayitlariModel) _then) = __$BarkodTanimlaKayitlariModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? stokKodu, String? barkod, int? birim, String? kilit, String? aciklama, String? birimAdi, String? barkodTipi, String? barkodTipiAdi, double? birimPay, double? birimPayda, String? stokBirim1Adi
+});
+
+
+
+
+}
+/// @nodoc
+class __$BarkodTanimlaKayitlariModelCopyWithImpl<$Res>
+    implements _$BarkodTanimlaKayitlariModelCopyWith<$Res> {
+  __$BarkodTanimlaKayitlariModelCopyWithImpl(this._self, this._then);
+
+  final _BarkodTanimlaKayitlariModel _self;
+  final $Res Function(_BarkodTanimlaKayitlariModel) _then;
+
+/// Create a copy of BarkodTanimlaKayitlariModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? stokKodu = freezed,Object? barkod = freezed,Object? birim = freezed,Object? kilit = freezed,Object? aciklama = freezed,Object? birimAdi = freezed,Object? barkodTipi = freezed,Object? barkodTipiAdi = freezed,Object? birimPay = freezed,Object? birimPayda = freezed,Object? stokBirim1Adi = freezed,}) {
+  return _then(_BarkodTanimlaKayitlariModel(
+stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,barkod: freezed == barkod ? _self.barkod : barkod // ignore: cast_nullable_to_non_nullable
+as String?,birim: freezed == birim ? _self.birim : birim // ignore: cast_nullable_to_non_nullable
+as int?,kilit: freezed == kilit ? _self.kilit : kilit // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,birimAdi: freezed == birimAdi ? _self.birimAdi : birimAdi // ignore: cast_nullable_to_non_nullable
+as String?,barkodTipi: freezed == barkodTipi ? _self.barkodTipi : barkodTipi // ignore: cast_nullable_to_non_nullable
+as String?,barkodTipiAdi: freezed == barkodTipiAdi ? _self.barkodTipiAdi : barkodTipiAdi // ignore: cast_nullable_to_non_nullable
+as String?,birimPay: freezed == birimPay ? _self.birimPay : birimPay // ignore: cast_nullable_to_non_nullable
+as double?,birimPayda: freezed == birimPayda ? _self.birimPayda : birimPayda // ignore: cast_nullable_to_non_nullable
+as double?,stokBirim1Adi: freezed == stokBirim1Adi ? _self.stokBirim1Adi : stokBirim1Adi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

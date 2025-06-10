@@ -6,9 +6,8 @@ part of 'kullanici_yetki_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$KullaniciYetkiModelImpl(
+_KullaniciYetkiModel _$KullaniciYetkiModelFromJson(Map<String, dynamic> json) =>
+    _KullaniciYetkiModel(
       bagliPlasiyerler: (json['bagliPlasiyerler'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
@@ -98,100 +97,94 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
       dekSeriCariVirman: json['dekSeri_CariVirman'] as String?,
     );
 
-Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
-        _$KullaniciYetkiModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.bagliPlasiyerler case final value?)
-        'bagliPlasiyerler': value,
-      if (instance.eIrsOnEki case final value?) 'eIrsOnEki': value,
-      if (instance.eIrsAmbarOnEki case final value?) 'eIrsAmbarOnEki': value,
-      if (instance.yetkiliKasalar case final value?) 'yetkiliKasalar': value,
-      if (instance.kkartiHesaplar case final value?) 'kkartiHesaplar': value,
-      if (instance.kkartiKasalar case final value?) 'kkartiKasalar': value,
-      if (instance.acikHesapLimiti case final value?) 'acikHesapLimiti': value,
-      if (instance.acikHesapTolerans case final value?)
-        'acikHesapTolerans': value,
-      if (instance.acikHesapLimitiBelgeTipleri case final value?)
-        'acikHesapLimitiBelgeTipleri': value,
-      if (instance.stokFiltreSQLTipi case final value?)
-        'stok_FiltreSQLTipi': value,
-      if (instance.cariFiltreSQLTipi case final value?)
-        'cari_FiltreSQLTipi': value,
-      if (instance.hizliTahsilatSozlesmeKodlari case final value?)
-        'hizliTahsilat_SozlesmeKodlari': value,
-      if (instance.siparisMusSipEkstraAlanlar case final value?)
-        'siparis_MusSip_EkstraAlanlar': value,
-      if (instance.sirketAlisDepo case final value?) 'sirket_alisDepo': value,
-      if (instance.sirketSatisDepo case final value?) 'sirket_satisDepo': value,
-      if (instance.transferDATVarsayilanCikisDepo case final value?)
-        'transfer_DAT_VarsayilanCikisDepo': value,
-      if (instance.transferDATVarsayilanGirisDepo case final value?)
-        'transfer_DAT_VarsayilanGirisDepo': value,
-      if (instance.cariRehPlaEslesmesinBelgeTipleri case final value?)
-        'cariRehPlaEslesmesinBelgeTipleri': value,
-      if (instance.profilKodu case final value?) 'profilKodu': value,
-      if (instance.sirketAktifDepolar case final value?)
-        'sirket_aktifDepolar': value,
-      if (instance.sirketDatYetkiliDepolar case final value?)
-        'sirket_DAT_YetkiliDepolar': value,
-      if (instance.adminMi case final value?) 'ADMIN_MI': value,
-      if (instance.varsayilanPlasiyerTanimi case final value?)
-        'varsayilan_PlasiyerTanimi': value,
-      if (instance.siparisMusSipBakiyesizStokSecilmesin case final value?)
-        'siparis_MusSip_BakiyesizStokSecilmesin': value,
-      if (instance.sevkiyatSatisIrsBakiyesizStokSecilmesin case final value?)
-        'sevkiyat_SatisIrs_BakiyesizStokSecilmesin': value,
-      if (instance.sevkiyatSatisFatBakiyesizStokSecilmesin case final value?)
-        'sevkiyat_SatisFat_BakiyesizStokSecilmesin': value,
-      if (instance.plasiyerKodu case final value?) 'plasiyerKodu': value,
-      if (instance.varsayilanPlasiyerKodu case final value?)
-        'varsayilan_PlasiyerKodu': value,
-      if (instance.kkartiTahsilatYontemi case final value?)
-        'kkartiTahsilatYontemi': value,
-      if (instance.satIrsOnEki case final value?) 'satIrsOnEki': value,
-      if (instance.varsayilanNakitKasa case final value?)
-        'varsayilanNakitKasa': value,
-      if (instance.sirketDepoYetkiTuru case final value?)
-        'sirket_Depo_YetkiTuru': value,
-      if (instance.varsayilanProjeTanimi case final value?)
-        'varsayilan_ProjeTanimi': value,
-      if (instance.varsayilanProjeKodu case final value?)
-        'varsayilan_ProjeKodu': value,
-      if (instance.varsayilanKrediKartiKasa case final value?)
-        'varsayilanKrediKartiKasa': value,
-      if (instance.varsayilanMuhasebeReferansTanimi case final value?)
-        'varsayilan_MuhasebeReferansTanimi': value,
-      if (instance.varsayilanMuhasebeReferansKodu case final value?)
-        'varsayilan_MuhasebeReferansKodu': value,
-      if (instance.satSipOnEki case final value?) 'satSipOnEki': value,
-      if (instance.musSipOnEki case final value?) 'musSipOnEki': value,
-      if (instance.alIrsOnEki case final value?) 'alIrsOnEki': value,
-      if (instance.eFatOnEki case final value?) 'eFatOnEki': value,
-      if (instance.eArvOnEki case final value?) 'eArvOnEki': value,
-      if (instance.satAlmTalOnEki case final value?) 'satAlmTalOnEki': value,
-      if (instance.satisTalOnEki case final value?) 'satisTalOnEki': value,
-      if (instance.satAlmTekOnEki case final value?) 'satAlmTekOnEki': value,
-      if (instance.satisTekOnEki case final value?) 'satisTekOnEki': value,
-      if (instance.tahsilatOnEki case final value?) 'tahsilatOnEki': value,
-      if (instance.sevkEmriOnEki case final value?) 'sevkEmriOnEki': value,
-      if (instance.kkTahsilatOnEki case final value?) 'kkTahsilatOnEki': value,
-      if (instance.eIrsDatOnEki case final value?) 'eIrsDATOnEki': value,
-      if (instance.datOnEki case final value?) 'DATOnEki': value,
-      if (instance.ambarCikisOnEki case final value?) 'ambarCikisOnEki': value,
-      if (instance.ambarGirisOnEki case final value?) 'ambarGirisOnEki': value,
-      if (instance.cariOnEki case final value?) 'cariOnEki': value,
-      if (instance.uskOnEki case final value?) 'uskOnEki': value,
-      if (instance.alisFatOnEki case final value?) 'alisFatOnEki': value,
-      if (instance.satisFatOnEki case final value?) 'satisFatOnEki': value,
-      if (instance.dekSeriCekTahsil case final value?)
-        'dekSeri_CekTahsil': value,
-      if (instance.dekSeriKKartiTahsilati case final value?)
-        'dekSeri_KKartiTahsilati': value,
-      if (instance.dekSeriCariEft case final value?) 'dekSeri_CariEFT': value,
-      if (instance.dekSeriHesArasiVirman case final value?)
-        'dekSeri_HesArasiVirman': value,
-      if (instance.dekSeriHesArasiEft case final value?)
-        'dekSeri_HesArasiEFT': value,
-      if (instance.dekSeriCariVirman case final value?)
-        'dekSeri_CariVirman': value,
-    };
+Map<String, dynamic> _$KullaniciYetkiModelToJson(
+  _KullaniciYetkiModel instance,
+) => <String, dynamic>{
+  if (instance.bagliPlasiyerler case final value?) 'bagliPlasiyerler': value,
+  if (instance.eIrsOnEki case final value?) 'eIrsOnEki': value,
+  if (instance.eIrsAmbarOnEki case final value?) 'eIrsAmbarOnEki': value,
+  if (instance.yetkiliKasalar case final value?) 'yetkiliKasalar': value,
+  if (instance.kkartiHesaplar case final value?) 'kkartiHesaplar': value,
+  if (instance.kkartiKasalar case final value?) 'kkartiKasalar': value,
+  if (instance.acikHesapLimiti case final value?) 'acikHesapLimiti': value,
+  if (instance.acikHesapTolerans case final value?) 'acikHesapTolerans': value,
+  if (instance.acikHesapLimitiBelgeTipleri case final value?)
+    'acikHesapLimitiBelgeTipleri': value,
+  if (instance.stokFiltreSQLTipi case final value?) 'stok_FiltreSQLTipi': value,
+  if (instance.cariFiltreSQLTipi case final value?) 'cari_FiltreSQLTipi': value,
+  if (instance.hizliTahsilatSozlesmeKodlari case final value?)
+    'hizliTahsilat_SozlesmeKodlari': value,
+  if (instance.siparisMusSipEkstraAlanlar case final value?)
+    'siparis_MusSip_EkstraAlanlar': value,
+  if (instance.sirketAlisDepo case final value?) 'sirket_alisDepo': value,
+  if (instance.sirketSatisDepo case final value?) 'sirket_satisDepo': value,
+  if (instance.transferDATVarsayilanCikisDepo case final value?)
+    'transfer_DAT_VarsayilanCikisDepo': value,
+  if (instance.transferDATVarsayilanGirisDepo case final value?)
+    'transfer_DAT_VarsayilanGirisDepo': value,
+  if (instance.cariRehPlaEslesmesinBelgeTipleri case final value?)
+    'cariRehPlaEslesmesinBelgeTipleri': value,
+  if (instance.profilKodu case final value?) 'profilKodu': value,
+  if (instance.sirketAktifDepolar case final value?)
+    'sirket_aktifDepolar': value,
+  if (instance.sirketDatYetkiliDepolar case final value?)
+    'sirket_DAT_YetkiliDepolar': value,
+  if (instance.adminMi case final value?) 'ADMIN_MI': value,
+  if (instance.varsayilanPlasiyerTanimi case final value?)
+    'varsayilan_PlasiyerTanimi': value,
+  if (instance.siparisMusSipBakiyesizStokSecilmesin case final value?)
+    'siparis_MusSip_BakiyesizStokSecilmesin': value,
+  if (instance.sevkiyatSatisIrsBakiyesizStokSecilmesin case final value?)
+    'sevkiyat_SatisIrs_BakiyesizStokSecilmesin': value,
+  if (instance.sevkiyatSatisFatBakiyesizStokSecilmesin case final value?)
+    'sevkiyat_SatisFat_BakiyesizStokSecilmesin': value,
+  if (instance.plasiyerKodu case final value?) 'plasiyerKodu': value,
+  if (instance.varsayilanPlasiyerKodu case final value?)
+    'varsayilan_PlasiyerKodu': value,
+  if (instance.kkartiTahsilatYontemi case final value?)
+    'kkartiTahsilatYontemi': value,
+  if (instance.satIrsOnEki case final value?) 'satIrsOnEki': value,
+  if (instance.varsayilanNakitKasa case final value?)
+    'varsayilanNakitKasa': value,
+  if (instance.sirketDepoYetkiTuru case final value?)
+    'sirket_Depo_YetkiTuru': value,
+  if (instance.varsayilanProjeTanimi case final value?)
+    'varsayilan_ProjeTanimi': value,
+  if (instance.varsayilanProjeKodu case final value?)
+    'varsayilan_ProjeKodu': value,
+  if (instance.varsayilanKrediKartiKasa case final value?)
+    'varsayilanKrediKartiKasa': value,
+  if (instance.varsayilanMuhasebeReferansTanimi case final value?)
+    'varsayilan_MuhasebeReferansTanimi': value,
+  if (instance.varsayilanMuhasebeReferansKodu case final value?)
+    'varsayilan_MuhasebeReferansKodu': value,
+  if (instance.satSipOnEki case final value?) 'satSipOnEki': value,
+  if (instance.musSipOnEki case final value?) 'musSipOnEki': value,
+  if (instance.alIrsOnEki case final value?) 'alIrsOnEki': value,
+  if (instance.eFatOnEki case final value?) 'eFatOnEki': value,
+  if (instance.eArvOnEki case final value?) 'eArvOnEki': value,
+  if (instance.satAlmTalOnEki case final value?) 'satAlmTalOnEki': value,
+  if (instance.satisTalOnEki case final value?) 'satisTalOnEki': value,
+  if (instance.satAlmTekOnEki case final value?) 'satAlmTekOnEki': value,
+  if (instance.satisTekOnEki case final value?) 'satisTekOnEki': value,
+  if (instance.tahsilatOnEki case final value?) 'tahsilatOnEki': value,
+  if (instance.sevkEmriOnEki case final value?) 'sevkEmriOnEki': value,
+  if (instance.kkTahsilatOnEki case final value?) 'kkTahsilatOnEki': value,
+  if (instance.eIrsDatOnEki case final value?) 'eIrsDATOnEki': value,
+  if (instance.datOnEki case final value?) 'DATOnEki': value,
+  if (instance.ambarCikisOnEki case final value?) 'ambarCikisOnEki': value,
+  if (instance.ambarGirisOnEki case final value?) 'ambarGirisOnEki': value,
+  if (instance.cariOnEki case final value?) 'cariOnEki': value,
+  if (instance.uskOnEki case final value?) 'uskOnEki': value,
+  if (instance.alisFatOnEki case final value?) 'alisFatOnEki': value,
+  if (instance.satisFatOnEki case final value?) 'satisFatOnEki': value,
+  if (instance.dekSeriCekTahsil case final value?) 'dekSeri_CekTahsil': value,
+  if (instance.dekSeriKKartiTahsilati case final value?)
+    'dekSeri_KKartiTahsilati': value,
+  if (instance.dekSeriCariEft case final value?) 'dekSeri_CariEFT': value,
+  if (instance.dekSeriHesArasiVirman case final value?)
+    'dekSeri_HesArasiVirman': value,
+  if (instance.dekSeriHesArasiEft case final value?)
+    'dekSeri_HesArasiEFT': value,
+  if (instance.dekSeriCariVirman case final value?) 'dekSeri_CariVirman': value,
+};

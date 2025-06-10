@@ -11,8 +11,9 @@ part of 'uretim_sonu_kaydi_seri_listesi_view_model.dart';
 mixin _$UretimSonuKaydiSeriListesiViewModel
     on _UretimSonuKaydiSeriListesiViewModelBase, Store {
   late final _$observableListAtom = Atom(
-      name: '_UretimSonuKaydiSeriListesiViewModelBase.observableList',
-      context: context);
+    name: '_UretimSonuKaydiSeriListesiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<UskReceteModel>? get observableList {
@@ -28,8 +29,9 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
   }
 
   late final _$kalemModelAtom = Atom(
-      name: '_UretimSonuKaydiSeriListesiViewModelBase.kalemModel',
-      context: context);
+    name: '_UretimSonuKaydiSeriListesiViewModelBase.kalemModel',
+    context: context,
+  );
 
   @override
   KalemModel? get kalemModel {
@@ -45,8 +47,9 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_UretimSonuKaydiSeriListesiViewModelBase.requestModel',
-      context: context);
+    name: '_UretimSonuKaydiSeriListesiViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   UretimSonuRaporuRequestModel get requestModel {
@@ -62,8 +65,9 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
   }
 
   late final _$resetListAsyncAction = AsyncAction(
-      '_UretimSonuKaydiSeriListesiViewModelBase.resetList',
-      context: context);
+    '_UretimSonuKaydiSeriListesiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
@@ -71,8 +75,9 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
   }
 
   late final _$getDataAsyncAction = AsyncAction(
-      '_UretimSonuKaydiSeriListesiViewModelBase.getData',
-      context: context);
+    '_UretimSonuKaydiSeriListesiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -81,18 +86,22 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
 
   late final _$_UretimSonuKaydiSeriListesiViewModelBaseActionController =
       ActionController(
-          name: '_UretimSonuKaydiSeriListesiViewModelBase', context: context);
+        name: '_UretimSonuKaydiSeriListesiViewModelBase',
+        context: context,
+      );
 
   @override
   void setKalem(KalemModel? value) {
     final _$actionInfo =
         _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiSeriListesiViewModelBase.setKalem');
+          name: '_UretimSonuKaydiSeriListesiViewModelBase.setKalem',
+        );
     try {
       return super.setKalem(value);
     } finally {
-      _$_UretimSonuKaydiSeriListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -100,12 +109,14 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
   void setObservableList(List<UskReceteModel>? list) {
     final _$actionInfo =
         _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiSeriListesiViewModelBase.setObservableList');
+          name: '_UretimSonuKaydiSeriListesiViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {
-      _$_UretimSonuKaydiSeriListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -113,12 +124,14 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
   void updateCard(UskReceteModel model) {
     final _$actionInfo =
         _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiSeriListesiViewModelBase.updateCard');
+          name: '_UretimSonuKaydiSeriListesiViewModelBase.updateCard',
+        );
     try {
       return super.updateCard(model);
     } finally {
-      _$_UretimSonuKaydiSeriListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

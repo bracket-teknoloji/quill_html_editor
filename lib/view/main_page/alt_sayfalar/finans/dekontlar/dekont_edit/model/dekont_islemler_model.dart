@@ -6,7 +6,7 @@ part "dekont_islemler_model.freezed.dart";
 part "dekont_islemler_model.g.dart";
 
 @unfreezed
-class DekontIslemlerModel with _$DekontIslemlerModel, NetworkManagerMixin {
+sealed class DekontIslemlerModel with _$DekontIslemlerModel, NetworkManagerMixin {
   factory DekontIslemlerModel({
     int? inckeyno,
     DateTime? tarih,

@@ -9,8 +9,10 @@ part of 'base_fatura_genel_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
-  late final _$kdvDahilAtom =
-      Atom(name: '_BaseFaturaGenelViewModelBase.kdvDahil', context: context);
+  late final _$kdvDahilAtom = Atom(
+    name: '_BaseFaturaGenelViewModelBase.kdvDahil',
+    context: context,
+  );
 
   @override
   bool get kdvDahil {
@@ -26,7 +28,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   late final _$ebelgeCheckboxAtom = Atom(
-      name: '_BaseFaturaGenelViewModelBase.ebelgeCheckbox', context: context);
+    name: '_BaseFaturaGenelViewModelBase.ebelgeCheckbox',
+    context: context,
+  );
 
   @override
   bool get ebelgeCheckbox {
@@ -41,8 +45,10 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseFaturaGenelViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseFaturaGenelViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -58,16 +64,19 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   late final _$fiyatGuncelleAsyncAction = AsyncAction(
-      '_BaseFaturaGenelViewModelBase.fiyatGuncelle',
-      context: context);
+    '_BaseFaturaGenelViewModelBase.fiyatGuncelle',
+    context: context,
+  );
 
   @override
   Future<bool> fiyatGuncelle() {
     return _$fiyatGuncelleAsyncAction.run(() => super.fiyatGuncelle());
   }
 
-  late final _$_BaseFaturaGenelViewModelBaseActionController =
-      ActionController(name: '_BaseFaturaGenelViewModelBase', context: context);
+  late final _$_BaseFaturaGenelViewModelBaseActionController = ActionController(
+    name: '_BaseFaturaGenelViewModelBase',
+    context: context,
+  );
 
   @override
   void setCariAdi(String? value) {
@@ -137,9 +146,10 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void changeEbelgeCheckBox(bool value) {
-    final _$actionInfo =
-        _$_BaseFaturaGenelViewModelBaseActionController.startAction(
-            name: '_BaseFaturaGenelViewModelBase.changeEbelgeCheckBox');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseFaturaGenelViewModelBase.changeEbelgeCheckBox',
+        );
     try {
       return super.changeEbelgeCheckBox(value);
     } finally {

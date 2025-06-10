@@ -1285,6 +1285,8 @@ final class ProfilYetkiModel {
   bool? cariRapDovizliEkstre;
   @JsonKey(name: "tahsilat_Tahsilatlar")
   bool? tahsilatTahsilatlar;
+  @JsonKey(name: "tahsilat_Payker")
+  bool? tahsilatPayker;
   @JsonKey(name: "tahsilat_NakitTahsilat")
   bool? tahsilatNakitTahsilat;
   @JsonKey(name: "tahsilat_NakitTahsilat_Kaydet")

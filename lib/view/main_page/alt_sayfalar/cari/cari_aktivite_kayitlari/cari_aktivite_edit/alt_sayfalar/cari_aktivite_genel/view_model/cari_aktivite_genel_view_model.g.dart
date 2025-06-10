@@ -9,8 +9,10 @@ part of 'cari_aktivite_genel_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: 'CariAktiviteGenelViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: 'CariAktiviteGenelViewModelBase.model',
+    context: context,
+  );
 
   @override
   CariAktiviteListesiModel get model {
@@ -26,7 +28,9 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
   }
 
   late final _$baseEditEnumAtom = Atom(
-      name: 'CariAktiviteGenelViewModelBase.baseEditEnum', context: context);
+    name: 'CariAktiviteGenelViewModelBase.baseEditEnum',
+    context: context,
+  );
 
   @override
   BaseEditEnum? get baseEditEnum {
@@ -42,8 +46,9 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
   }
 
   late final _$aktiviteBitirilsinMiAtom = Atom(
-      name: 'CariAktiviteGenelViewModelBase.aktiviteBitirilsinMi',
-      context: context);
+    name: 'CariAktiviteGenelViewModelBase.aktiviteBitirilsinMi',
+    context: context,
+  );
 
   @override
   bool get aktiviteBitirilsinMi {
@@ -53,15 +58,19 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   set aktiviteBitirilsinMi(bool value) {
-    _$aktiviteBitirilsinMiAtom.reportWrite(value, super.aktiviteBitirilsinMi,
-        () {
-      super.aktiviteBitirilsinMi = value;
-    });
+    _$aktiviteBitirilsinMiAtom.reportWrite(
+      value,
+      super.aktiviteBitirilsinMi,
+      () {
+        super.aktiviteBitirilsinMi = value;
+      },
+    );
   }
 
   late final _$saveCariAktiviteAsyncAction = AsyncAction(
-      'CariAktiviteGenelViewModelBase.saveCariAktivite',
-      context: context);
+    'CariAktiviteGenelViewModelBase.saveCariAktivite',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<CariAktiviteListesiModel>> saveCariAktivite() {
@@ -70,7 +79,9 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   late final _$CariAktiviteGenelViewModelBaseActionController =
       ActionController(
-          name: 'CariAktiviteGenelViewModelBase', context: context);
+        name: 'CariAktiviteGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void setBaseEditEnum(BaseEditEnum? value) {
@@ -85,9 +96,10 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setAktiviteBitirilsinMi(bool value) {
-    final _$actionInfo =
-        _$CariAktiviteGenelViewModelBaseActionController.startAction(
-            name: 'CariAktiviteGenelViewModelBase.setAktiviteBitirilsinMi');
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(
+          name: 'CariAktiviteGenelViewModelBase.setAktiviteBitirilsinMi',
+        );
     try {
       return super.setAktiviteBitirilsinMi(value);
     } finally {

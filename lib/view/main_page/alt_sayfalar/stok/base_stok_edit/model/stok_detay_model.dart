@@ -59,7 +59,7 @@ final class FiyatList {
 }
 
 @unfreezed
-class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
+sealed class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
   @HiveType(typeId: 196)
   factory SeriList({
     @HiveField(0) String? stokKodu,

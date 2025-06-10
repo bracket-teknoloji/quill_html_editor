@@ -9,8 +9,10 @@ part of 'barkod_tanimla_edit_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_BarkodTanimlaEditViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BarkodTanimlaEditViewModelBase.model',
+    context: context,
+  );
 
   @override
   BarkodTanimlaKayitlariModel get model {
@@ -25,8 +27,10 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
     });
   }
 
-  late final _$sendDataAsyncAction =
-      AsyncAction('_BarkodTanimlaEditViewModelBase.sendData', context: context);
+  late final _$sendDataAsyncAction = AsyncAction(
+    '_BarkodTanimlaEditViewModelBase.sendData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<BarkodTanimlaKayitlariModel>> sendData() {
@@ -34,8 +38,9 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
   }
 
   late final _$getBarkodAsyncAction = AsyncAction(
-      '_BarkodTanimlaEditViewModelBase.getBarkod',
-      context: context);
+    '_BarkodTanimlaEditViewModelBase.getBarkod',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<StokOlcuBirimleriModel>> getBarkod() {
@@ -44,7 +49,9 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
 
   late final _$_BarkodTanimlaEditViewModelBaseActionController =
       ActionController(
-          name: '_BarkodTanimlaEditViewModelBase', context: context);
+        name: '_BarkodTanimlaEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setStokKodu(String? value) {

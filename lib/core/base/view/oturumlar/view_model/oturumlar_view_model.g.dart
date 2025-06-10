@@ -12,13 +12,16 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
   Computed<ObservableList<AccountModel>?>? _$filteredListComputed;
 
   @override
-  ObservableList<AccountModel>? get filteredList => (_$filteredListComputed ??=
-          Computed<ObservableList<AccountModel>?>(() => super.filteredList,
-              name: '_OturumlarViewModelBase.filteredList'))
-      .value;
+  ObservableList<AccountModel>? get filteredList =>
+      (_$filteredListComputed ??= Computed<ObservableList<AccountModel>?>(
+        () => super.filteredList,
+        name: '_OturumlarViewModelBase.filteredList',
+      )).value;
 
-  late final _$observableListAtom =
-      Atom(name: '_OturumlarViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+    name: '_OturumlarViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<AccountModel>? get observableList {
@@ -33,8 +36,10 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_OturumlarViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_OturumlarViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -49,8 +54,10 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
     });
   }
 
-  late final _$isSearchBarOpenAtom =
-      Atom(name: '_OturumlarViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+    name: '_OturumlarViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -65,29 +72,36 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_OturumlarViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_OturumlarViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$logoutAsyncAction =
-      AsyncAction('_OturumlarViewModelBase.logout', context: context);
+  late final _$logoutAsyncAction = AsyncAction(
+    '_OturumlarViewModelBase.logout',
+    context: context,
+  );
 
   @override
   Future<void> logout(AccountModel user) {
     return _$logoutAsyncAction.run(() => super.logout(user));
   }
 
-  late final _$_OturumlarViewModelBaseActionController =
-      ActionController(name: '_OturumlarViewModelBase', context: context);
+  late final _$_OturumlarViewModelBaseActionController = ActionController(
+    name: '_OturumlarViewModelBase',
+    context: context,
+  );
 
   @override
   void changeSearchBarStatus() {
     final _$actionInfo = _$_OturumlarViewModelBaseActionController.startAction(
-        name: '_OturumlarViewModelBase.changeSearchBarStatus');
+      name: '_OturumlarViewModelBase.changeSearchBarStatus',
+    );
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -98,7 +112,8 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
   @override
   void setSearchText(String? value) {
     final _$actionInfo = _$_OturumlarViewModelBaseActionController.startAction(
-        name: '_OturumlarViewModelBase.setSearchText');
+      name: '_OturumlarViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -109,7 +124,8 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
   @override
   void setObservableList(List<AccountModel>? value) {
     final _$actionInfo = _$_OturumlarViewModelBaseActionController.startAction(
-        name: '_OturumlarViewModelBase.setObservableList');
+      name: '_OturumlarViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(value);
     } finally {

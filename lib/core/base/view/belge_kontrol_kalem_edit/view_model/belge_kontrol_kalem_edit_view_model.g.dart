@@ -11,8 +11,9 @@ part of 'belge_kontrol_kalem_edit_view_model.dart';
 mixin _$BelgeKontrolKalemEditViewModel
     on _BelgeKontrolKalemEditViewModelBase, Store {
   late final _$requestModelAtom = Atom(
-      name: '_BelgeKontrolKalemEditViewModelBase.requestModel',
-      context: context);
+    name: '_BelgeKontrolKalemEditViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   BelgeKontrolModel get requestModel {
@@ -28,8 +29,9 @@ mixin _$BelgeKontrolKalemEditViewModel
   }
 
   late final _$saveKalemAsyncAction = AsyncAction(
-      '_BelgeKontrolKalemEditViewModelBase.saveKalem',
-      context: context);
+    '_BelgeKontrolKalemEditViewModelBase.saveKalem',
+    context: context,
+  );
 
   @override
   Future<bool> saveKalem() {
@@ -38,18 +40,22 @@ mixin _$BelgeKontrolKalemEditViewModel
 
   late final _$_BelgeKontrolKalemEditViewModelBaseActionController =
       ActionController(
-          name: '_BelgeKontrolKalemEditViewModelBase', context: context);
+        name: '_BelgeKontrolKalemEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setRequestModel(BelgeKontrolKalemlerModel value) {
-    final _$actionInfo =
-        _$_BelgeKontrolKalemEditViewModelBaseActionController.startAction(
-            name: '_BelgeKontrolKalemEditViewModelBase.setRequestModel');
+    final _$actionInfo = _$_BelgeKontrolKalemEditViewModelBaseActionController
+        .startAction(
+          name: '_BelgeKontrolKalemEditViewModelBase.setRequestModel',
+        );
     try {
       return super.setRequestModel(value);
     } finally {
-      _$_BelgeKontrolKalemEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BelgeKontrolKalemEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -60,8 +66,9 @@ mixin _$BelgeKontrolKalemEditViewModel
     try {
       return super.setMiktar(value);
     } finally {
-      _$_BelgeKontrolKalemEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BelgeKontrolKalemEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

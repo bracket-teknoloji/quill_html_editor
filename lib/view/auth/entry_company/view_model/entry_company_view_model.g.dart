@@ -9,8 +9,10 @@ part of 'entry_company_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
-  late final _$selectedAtom =
-      Atom(name: '_EntryCompanyViewModelBase.selected', context: context);
+  late final _$selectedAtom = Atom(
+    name: '_EntryCompanyViewModelBase.selected',
+    context: context,
+  );
 
   @override
   ObservableMap<dynamic, dynamic> get selected {
@@ -25,8 +27,10 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
     });
   }
 
-  late final _$userDataAtom =
-      Atom(name: '_EntryCompanyViewModelBase.userData', context: context);
+  late final _$userDataAtom = Atom(
+    name: '_EntryCompanyViewModelBase.userData',
+    context: context,
+  );
 
   @override
   ObservableMap<dynamic, dynamic> get userData {
@@ -41,8 +45,10 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
     });
   }
 
-  late final _$sirketListAtom =
-      Atom(name: '_EntryCompanyViewModelBase.sirketList', context: context);
+  late final _$sirketListAtom = Atom(
+    name: '_EntryCompanyViewModelBase.sirketList',
+    context: context,
+  );
 
   @override
   List<CompanyModel>? get sirketList {
@@ -57,8 +63,10 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
     });
   }
 
-  late final _$isletmeListAtom =
-      Atom(name: '_EntryCompanyViewModelBase.isletmeList', context: context);
+  late final _$isletmeListAtom = Atom(
+    name: '_EntryCompanyViewModelBase.isletmeList',
+    context: context,
+  );
 
   @override
   List<IsletmeModel>? get isletmeList {
@@ -73,8 +81,10 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
     });
   }
 
-  late final _$subeListAtom =
-      Atom(name: '_EntryCompanyViewModelBase.subeList', context: context);
+  late final _$subeListAtom = Atom(
+    name: '_EntryCompanyViewModelBase.subeList',
+    context: context,
+  );
 
   @override
   List<IsletmeModel>? get subeList {
@@ -89,24 +99,30 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_EntryCompanyViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_EntryCompanyViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<bool> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$getSubeAsyncAction =
-      AsyncAction('_EntryCompanyViewModelBase.getSube', context: context);
+  late final _$getSubeAsyncAction = AsyncAction(
+    '_EntryCompanyViewModelBase.getSube',
+    context: context,
+  );
 
   @override
   Future<void> getSube() {
     return _$getSubeAsyncAction.run(() => super.getSube());
   }
 
-  late final _$_EntryCompanyViewModelBaseActionController =
-      ActionController(name: '_EntryCompanyViewModelBase', context: context);
+  late final _$_EntryCompanyViewModelBaseActionController = ActionController(
+    name: '_EntryCompanyViewModelBase',
+    context: context,
+  );
 
   @override
   void setSirket(List<CompanyModel>? value) {

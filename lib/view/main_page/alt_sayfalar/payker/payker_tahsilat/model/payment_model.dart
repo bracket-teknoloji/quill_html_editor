@@ -10,7 +10,7 @@ PaymentModel paymentModelFromJson(String str) => PaymentModel.fromJson(json.deco
 String paymentModelToJson(PaymentModel data) => json.encode(data.toJson());
 
 @freezed
-class PaymentModel with _$PaymentModel {
+sealed class PaymentModel with _$PaymentModel {
   const factory PaymentModel({
     @JsonKey(name: "CustomerIPAddress") String? customerIpAddress,
     @JsonKey(name: "CustomerMailAddress") String? customerMailAddress,
@@ -24,7 +24,7 @@ class PaymentModel with _$PaymentModel {
 }
 
 @freezed
-class CustomerInfo with _$CustomerInfo {
+sealed class CustomerInfo with _$CustomerInfo {
   const factory CustomerInfo({
     @JsonKey(name: "CustomerId") String? customerId,
     @JsonKey(name: "Name") String? name,
@@ -44,7 +44,7 @@ class CustomerInfo with _$CustomerInfo {
 }
 
 @freezed
-class Order with _$Order {
+sealed class Order with _$Order {
   const factory Order({
     @JsonKey(name: "OrderID") String? orderId,
     @JsonKey(name: "GroupID") String? groupId,
@@ -58,7 +58,7 @@ class Order with _$Order {
 }
 
 @freezed
-class Payment3D with _$Payment3D {
+sealed class Payment3D with _$Payment3D {
   const factory Payment3D({
     @JsonKey(name: "Confirm") bool? confirm,
     @JsonKey(name: "ReturnURL") String? returnUrl,
@@ -69,7 +69,7 @@ class Payment3D with _$Payment3D {
 }
 
 @freezed
-class SaleInfo with _$SaleInfo {
+sealed class SaleInfo with _$SaleInfo {
   const factory SaleInfo({
     @JsonKey(name: "CardNameSurname") String? cardNameSurname,
     @JsonKey(name: "CardNumber") String? cardNumber,

@@ -6,7 +6,7 @@ part "barkod_tanimla_kayitlari_model.freezed.dart";
 part "barkod_tanimla_kayitlari_model.g.dart";
 
 @freezed
-class BarkodTanimlaKayitlariModel with _$BarkodTanimlaKayitlariModel, NetworkManagerMixin {
+sealed class BarkodTanimlaKayitlariModel with _$BarkodTanimlaKayitlariModel, NetworkManagerMixin {
   factory BarkodTanimlaKayitlariModel({
     String? stokKodu,
     String? barkod,

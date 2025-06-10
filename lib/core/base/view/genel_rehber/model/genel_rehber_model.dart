@@ -5,7 +5,7 @@ part "genel_rehber_model.freezed.dart";
 part "genel_rehber_model.g.dart";
 
 @unfreezed
-class GenelRehberModel with _$GenelRehberModel, NetworkManagerMixin {
+sealed class GenelRehberModel with _$GenelRehberModel, NetworkManagerMixin {
   factory GenelRehberModel({String? kodu, String? aciklama, String? adi}) = _GenelRehberModel;
   GenelRehberModel._();
 

@@ -12,14 +12,15 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
   Computed<int>? _$getKalemCountComputed;
 
   @override
-  int get getKalemCount =>
-      (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount,
-              name: '_BaseFaturaEditViewModelBase.getKalemCount'))
-          .value;
+  int get getKalemCount => (_$getKalemCountComputed ??= Computed<int>(
+    () => super.getKalemCount,
+    name: '_BaseFaturaEditViewModelBase.getKalemCount',
+  )).value;
 
   late final _$baseSiparisEditModelAtom = Atom(
-      name: '_BaseFaturaEditViewModelBase.baseSiparisEditModel',
-      context: context);
+    name: '_BaseFaturaEditViewModelBase.baseSiparisEditModel',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get baseSiparisEditModel {
@@ -29,14 +30,19 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   set baseSiparisEditModel(BaseSiparisEditModel value) {
-    _$baseSiparisEditModelAtom.reportWrite(value, super.baseSiparisEditModel,
-        () {
-      super.baseSiparisEditModel = value;
-    });
+    _$baseSiparisEditModelAtom.reportWrite(
+      value,
+      super.baseSiparisEditModel,
+      () {
+        super.baseSiparisEditModel = value;
+      },
+    );
   }
 
   late final _$updateKalemlerAtom = Atom(
-      name: '_BaseFaturaEditViewModelBase.updateKalemler', context: context);
+    name: '_BaseFaturaEditViewModelBase.updateKalemler',
+    context: context,
+  );
 
   @override
   bool get updateKalemler {
@@ -51,8 +57,10 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
     });
   }
 
-  late final _$pageIndexAtom =
-      Atom(name: '_BaseFaturaEditViewModelBase.pageIndex', context: context);
+  late final _$pageIndexAtom = Atom(
+    name: '_BaseFaturaEditViewModelBase.pageIndex',
+    context: context,
+  );
 
   @override
   int get pageIndex {
@@ -67,8 +75,10 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
     });
   }
 
-  late final _$isValidAtom =
-      Atom(name: '_BaseFaturaEditViewModelBase.isValid', context: context);
+  late final _$isValidAtom = Atom(
+    name: '_BaseFaturaEditViewModelBase.isValid',
+    context: context,
+  );
 
   @override
   bool get isValid {
@@ -83,8 +93,10 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
     });
   }
 
-  late final _$isLastPageAtom =
-      Atom(name: '_BaseFaturaEditViewModelBase.isLastPage', context: context);
+  late final _$isLastPageAtom = Atom(
+    name: '_BaseFaturaEditViewModelBase.isLastPage',
+    context: context,
+  );
 
   @override
   bool get isLastPage {
@@ -99,8 +111,10 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
     });
   }
 
-  late final _$showLoadingAtom =
-      Atom(name: '_BaseFaturaEditViewModelBase.showLoading', context: context);
+  late final _$showLoadingAtom = Atom(
+    name: '_BaseFaturaEditViewModelBase.showLoading',
+    context: context,
+  );
 
   @override
   bool get showLoading {
@@ -116,8 +130,9 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
   }
 
   late final _$yeniKaydaHazirlaMiAtom = Atom(
-      name: '_BaseFaturaEditViewModelBase.yeniKaydaHazirlaMi',
-      context: context);
+    name: '_BaseFaturaEditViewModelBase.yeniKaydaHazirlaMi',
+    context: context,
+  );
 
   @override
   bool get yeniKaydaHazirlaMi {
@@ -132,8 +147,10 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
     });
   }
 
-  late final _$_BaseFaturaEditViewModelBaseActionController =
-      ActionController(name: '_BaseFaturaEditViewModelBase', context: context);
+  late final _$_BaseFaturaEditViewModelBaseActionController = ActionController(
+    name: '_BaseFaturaEditViewModelBase',
+    context: context,
+  );
 
   @override
   void setCariKodu(CariListesiModel? value) {
@@ -236,9 +253,10 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo =
-        _$_BaseFaturaEditViewModelBaseActionController.startAction(
-            name: '_BaseFaturaEditViewModelBase.changeYeniKaydaHazirlaMi');
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(
+          name: '_BaseFaturaEditViewModelBase.changeYeniKaydaHazirlaMi',
+        );
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {

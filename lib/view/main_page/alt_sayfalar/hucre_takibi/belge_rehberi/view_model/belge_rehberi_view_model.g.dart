@@ -10,7 +10,9 @@ part of 'belge_rehberi_view_model.dart';
 
 mixin _$BelgeRehberiViewModel on _BelgeRehberiViewModelBase, Store {
   late final _$belgeRehberiListAtom = Atom(
-      name: '_BelgeRehberiViewModelBase.belgeRehberiList', context: context);
+    name: '_BelgeRehberiViewModelBase.belgeRehberiList',
+    context: context,
+  );
 
   @override
   ObservableList<BelgeRehberiModel>? get belgeRehberiList {
@@ -25,8 +27,10 @@ mixin _$BelgeRehberiViewModel on _BelgeRehberiViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_BelgeRehberiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_BelgeRehberiViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   BelgeRehberiRequestModel get requestModel {
@@ -41,16 +45,20 @@ mixin _$BelgeRehberiViewModel on _BelgeRehberiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_BelgeRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_BelgeRehberiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_BelgeRehberiViewModelBaseActionController =
-      ActionController(name: '_BelgeRehberiViewModelBase', context: context);
+  late final _$_BelgeRehberiViewModelBaseActionController = ActionController(
+    name: '_BelgeRehberiViewModelBase',
+    context: context,
+  );
 
   @override
   void setHucreTransferiModel(BelgeRehberiRequestModel model) {

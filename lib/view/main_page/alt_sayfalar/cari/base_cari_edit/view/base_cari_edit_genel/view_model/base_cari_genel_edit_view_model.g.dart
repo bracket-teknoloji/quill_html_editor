@@ -9,8 +9,10 @@ part of 'base_cari_genel_edit_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_BaseCariGenelEditViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseCariGenelEditViewModelBase.model',
+    context: context,
+  );
 
   @override
   CariSaveRequestModel? get model {
@@ -25,8 +27,10 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
     });
   }
 
-  late final _$isDovizliAtom =
-      Atom(name: '_BaseCariGenelEditViewModelBase.isDovizli', context: context);
+  late final _$isDovizliAtom = Atom(
+    name: '_BaseCariGenelEditViewModelBase.isDovizli',
+    context: context,
+  );
 
   @override
   bool get isDovizli {
@@ -42,7 +46,9 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
   }
 
   late final _$isSahisFirmasiAtom = Atom(
-      name: '_BaseCariGenelEditViewModelBase.isSahisFirmasi', context: context);
+    name: '_BaseCariGenelEditViewModelBase.isSahisFirmasi',
+    context: context,
+  );
 
   @override
   bool get isSahisFirmasi {
@@ -57,8 +63,10 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
     });
   }
 
-  late final _$sehirlerAtom =
-      Atom(name: '_BaseCariGenelEditViewModelBase.sehirler', context: context);
+  late final _$sehirlerAtom = Atom(
+    name: '_BaseCariGenelEditViewModelBase.sehirler',
+    context: context,
+  );
 
   @override
   List<CariSehirlerModel>? get sehirler {
@@ -73,8 +81,10 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
     });
   }
 
-  late final _$ulkelerAtom =
-      Atom(name: '_BaseCariGenelEditViewModelBase.ulkeler', context: context);
+  late final _$ulkelerAtom = Atom(
+    name: '_BaseCariGenelEditViewModelBase.ulkeler',
+    context: context,
+  );
 
   @override
   List<UlkeModel>? get ulkeler {
@@ -90,8 +100,9 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
   }
 
   late final _$getFilterDataAsyncAction = AsyncAction(
-      '_BaseCariGenelEditViewModelBase.getFilterData',
-      context: context);
+    '_BaseCariGenelEditViewModelBase.getFilterData',
+    context: context,
+  );
 
   @override
   Future<void> getFilterData() {
@@ -99,8 +110,9 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
   }
 
   late final _$getUlkeDataAsyncAction = AsyncAction(
-      '_BaseCariGenelEditViewModelBase.getUlkeData',
-      context: context);
+    '_BaseCariGenelEditViewModelBase.getUlkeData',
+    context: context,
+  );
 
   @override
   Future<void> getUlkeData() {
@@ -109,7 +121,9 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
 
   late final _$_BaseCariGenelEditViewModelBaseActionController =
       ActionController(
-          name: '_BaseCariGenelEditViewModelBase', context: context);
+        name: '_BaseCariGenelEditViewModelBase',
+        context: context,
+      );
 
   @override
   void changeIslemKodu(int? value) {
@@ -124,9 +138,10 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
 
   @override
   void changeIsSahisFirmasi(bool value) {
-    final _$actionInfo =
-        _$_BaseCariGenelEditViewModelBaseActionController.startAction(
-            name: '_BaseCariGenelEditViewModelBase.changeIsSahisFirmasi');
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(
+          name: '_BaseCariGenelEditViewModelBase.changeIsSahisFirmasi',
+        );
     try {
       return super.changeIsSahisFirmasi(value);
     } finally {
@@ -213,9 +228,10 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
 
   @override
   void changeVergiDairesi(String? value) {
-    final _$actionInfo =
-        _$_BaseCariGenelEditViewModelBaseActionController.startAction(
-            name: '_BaseCariGenelEditViewModelBase.changeVergiDairesi');
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(
+          name: '_BaseCariGenelEditViewModelBase.changeVergiDairesi',
+        );
     try {
       return super.changeVergiDairesi(value);
     } finally {

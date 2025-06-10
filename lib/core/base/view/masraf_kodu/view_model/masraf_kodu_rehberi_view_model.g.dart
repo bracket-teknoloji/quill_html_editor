@@ -10,7 +10,9 @@ part of 'masraf_kodu_rehberi_view_model.dart';
 
 mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
   late final _$observableListAtom = Atom(
-      name: '_MasrafKoduRehberiViewModelBase.observableList', context: context);
+    name: '_MasrafKoduRehberiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<MasrafKoduRehberiModel>? get observableList {
@@ -26,7 +28,9 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_MasrafKoduRehberiViewModelBase.requestModel', context: context);
+    name: '_MasrafKoduRehberiViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   SiparisEditRequestModel get requestModel {
@@ -42,8 +46,9 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
   }
 
   late final _$isSearchBarOpenAtom = Atom(
-      name: '_MasrafKoduRehberiViewModelBase.isSearchBarOpen',
-      context: context);
+    name: '_MasrafKoduRehberiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -59,36 +64,43 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
   }
 
   late final _$changeScrollStatusAsyncAction = AsyncAction(
-      '_MasrafKoduRehberiViewModelBase.changeScrollStatus',
-      context: context);
+    '_MasrafKoduRehberiViewModelBase.changeScrollStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction
-        .run(() => super.changeScrollStatus(position));
+    return _$changeScrollStatusAsyncAction.run(
+      () => super.changeScrollStatus(position),
+    );
   }
 
   late final _$changeSearchBarStatusAsyncAction = AsyncAction(
-      '_MasrafKoduRehberiViewModelBase.changeSearchBarStatus',
-      context: context);
+    '_MasrafKoduRehberiViewModelBase.changeSearchBarStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeSearchBarStatus() {
-    return _$changeSearchBarStatusAsyncAction
-        .run(() => super.changeSearchBarStatus());
+    return _$changeSearchBarStatusAsyncAction.run(
+      () => super.changeSearchBarStatus(),
+    );
   }
 
   late final _$resetListAsyncAction = AsyncAction(
-      '_MasrafKoduRehberiViewModelBase.resetList',
-      context: context);
+    '_MasrafKoduRehberiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_MasrafKoduRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_MasrafKoduRehberiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -97,7 +109,9 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
 
   late final _$_MasrafKoduRehberiViewModelBaseActionController =
       ActionController(
-          name: '_MasrafKoduRehberiViewModelBase', context: context);
+        name: '_MasrafKoduRehberiViewModelBase',
+        context: context,
+      );
 
   @override
   void changeSearchBar() {

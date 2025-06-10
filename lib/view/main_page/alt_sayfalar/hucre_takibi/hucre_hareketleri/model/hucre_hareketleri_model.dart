@@ -6,7 +6,7 @@ part "hucre_hareketleri_model.freezed.dart";
 part "hucre_hareketleri_model.g.dart";
 
 @freezed
-class HucreHareketleriModel with _$HucreHareketleriModel, NetworkManagerMixin {
+sealed class HucreHareketleriModel with _$HucreHareketleriModel, NetworkManagerMixin {
   factory HucreHareketleriModel({
     int? inckeyno,
     String? stokKodu,

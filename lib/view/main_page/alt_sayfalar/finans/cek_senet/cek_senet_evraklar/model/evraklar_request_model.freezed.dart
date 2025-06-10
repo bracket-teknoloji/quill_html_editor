@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,169 +10,123 @@ part of 'evraklar_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-EvraklarRequestModel _$EvraklarRequestModelFromJson(Map<String, dynamic> json) {
-  return _EvraklarRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$EvraklarRequestModel {
-  String? get belgeTipi => throw _privateConstructorUsedError;
-  set belgeTipi(String? value) => throw _privateConstructorUsedError;
-  String? get urlGetir => throw _privateConstructorUsedError;
-  set urlGetir(String? value) => throw _privateConstructorUsedError;
-  String? get belgeNo => throw _privateConstructorUsedError;
-  set belgeNo(String? value) => throw _privateConstructorUsedError;
+
+ String? get belgeTipi; set belgeTipi(String? value); String? get urlGetir; set urlGetir(String? value); String? get belgeNo; set belgeNo(String? value);
+/// Create a copy of EvraklarRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EvraklarRequestModelCopyWith<EvraklarRequestModel> get copyWith => _$EvraklarRequestModelCopyWithImpl<EvraklarRequestModel>(this as EvraklarRequestModel, _$identity);
 
   /// Serializes this EvraklarRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of EvraklarRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $EvraklarRequestModelCopyWith<EvraklarRequestModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $EvraklarRequestModelCopyWith<$Res> {
-  factory $EvraklarRequestModelCopyWith(EvraklarRequestModel value, $Res Function(EvraklarRequestModel) then) =
-      _$EvraklarRequestModelCopyWithImpl<$Res, EvraklarRequestModel>;
-  @useResult
-  $Res call({String? belgeTipi, String? urlGetir, String? belgeNo});
-}
+abstract mixin class $EvraklarRequestModelCopyWith<$Res>  {
+  factory $EvraklarRequestModelCopyWith(EvraklarRequestModel value, $Res Function(EvraklarRequestModel) _then) = _$EvraklarRequestModelCopyWithImpl;
+@useResult
+$Res call({
+ String? belgeTipi, String? urlGetir, String? belgeNo
+});
 
+
+
+
+}
 /// @nodoc
-class _$EvraklarRequestModelCopyWithImpl<$Res, $Val extends EvraklarRequestModel>
+class _$EvraklarRequestModelCopyWithImpl<$Res>
     implements $EvraklarRequestModelCopyWith<$Res> {
-  _$EvraklarRequestModelCopyWithImpl(this._value, this._then);
+  _$EvraklarRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final EvraklarRequestModel _self;
+  final $Res Function(EvraklarRequestModel) _then;
 
-  /// Create a copy of EvraklarRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? belgeTipi = freezed, Object? urlGetir = freezed, Object? belgeNo = freezed}) {
-    return _then(
-      _value.copyWith(
-            belgeTipi: freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            urlGetir: freezed == urlGetir
-                ? _value.urlGetir
-                : urlGetir // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            belgeNo: freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of EvraklarRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? belgeTipi = freezed,Object? urlGetir = freezed,Object? belgeNo = freezed,}) {
+  return _then(_self.copyWith(
+belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,urlGetir: freezed == urlGetir ? _self.urlGetir : urlGetir // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$EvraklarRequestModelImplCopyWith<$Res> implements $EvraklarRequestModelCopyWith<$Res> {
-  factory _$$EvraklarRequestModelImplCopyWith(
-    _$EvraklarRequestModelImpl value,
-    $Res Function(_$EvraklarRequestModelImpl) then,
-  ) = __$$EvraklarRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? belgeTipi, String? urlGetir, String? belgeNo});
 }
 
-/// @nodoc
-class __$$EvraklarRequestModelImplCopyWithImpl<$Res>
-    extends _$EvraklarRequestModelCopyWithImpl<$Res, _$EvraklarRequestModelImpl>
-    implements _$$EvraklarRequestModelImplCopyWith<$Res> {
-  __$$EvraklarRequestModelImplCopyWithImpl(
-    _$EvraklarRequestModelImpl _value,
-    $Res Function(_$EvraklarRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EvraklarRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? belgeTipi = freezed, Object? urlGetir = freezed, Object? belgeNo = freezed}) {
-    return _then(
-      _$EvraklarRequestModelImpl(
-        belgeTipi: freezed == belgeTipi
-            ? _value.belgeTipi
-            : belgeTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        urlGetir: freezed == urlGetir
-            ? _value.urlGetir
-            : urlGetir // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        belgeNo: freezed == belgeNo
-            ? _value.belgeNo
-            : belgeNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$EvraklarRequestModelImpl extends _EvraklarRequestModel {
-  _$EvraklarRequestModelImpl({this.belgeTipi, this.urlGetir, this.belgeNo}) : super._();
+class _EvraklarRequestModel extends EvraklarRequestModel {
+   _EvraklarRequestModel({this.belgeTipi, this.urlGetir, this.belgeNo}): super._();
+  factory _EvraklarRequestModel.fromJson(Map<String, dynamic> json) => _$EvraklarRequestModelFromJson(json);
 
-  factory _$EvraklarRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$EvraklarRequestModelImplFromJson(json);
+@override  String? belgeTipi;
+@override  String? urlGetir;
+@override  String? belgeNo;
 
-  @override
-  String? belgeTipi;
-  @override
-  String? urlGetir;
-  @override
-  String? belgeNo;
+/// Create a copy of EvraklarRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EvraklarRequestModelCopyWith<_EvraklarRequestModel> get copyWith => __$EvraklarRequestModelCopyWithImpl<_EvraklarRequestModel>(this, _$identity);
 
-  /// Create a copy of EvraklarRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl> get copyWith =>
-      __$$EvraklarRequestModelImplCopyWithImpl<_$EvraklarRequestModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EvraklarRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$EvraklarRequestModelToJson(this, );
 }
 
-abstract class _EvraklarRequestModel extends EvraklarRequestModel {
-  factory _EvraklarRequestModel({String? belgeTipi, String? urlGetir, String? belgeNo}) = _$EvraklarRequestModelImpl;
-  _EvraklarRequestModel._() : super._();
 
-  factory _EvraklarRequestModel.fromJson(Map<String, dynamic> json) = _$EvraklarRequestModelImpl.fromJson;
 
-  @override
-  String? get belgeTipi;
-  set belgeTipi(String? value);
-  @override
-  String? get urlGetir;
-  set urlGetir(String? value);
-  @override
-  String? get belgeNo;
-  set belgeNo(String? value);
 
-  /// Create a copy of EvraklarRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$EvraklarRequestModelCopyWith<$Res> implements $EvraklarRequestModelCopyWith<$Res> {
+  factory _$EvraklarRequestModelCopyWith(_EvraklarRequestModel value, $Res Function(_EvraklarRequestModel) _then) = __$EvraklarRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? belgeTipi, String? urlGetir, String? belgeNo
+});
+
+
+
+
+}
+/// @nodoc
+class __$EvraklarRequestModelCopyWithImpl<$Res>
+    implements _$EvraklarRequestModelCopyWith<$Res> {
+  __$EvraklarRequestModelCopyWithImpl(this._self, this._then);
+
+  final _EvraklarRequestModel _self;
+  final $Res Function(_EvraklarRequestModel) _then;
+
+/// Create a copy of EvraklarRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? belgeTipi = freezed,Object? urlGetir = freezed,Object? belgeNo = freezed,}) {
+  return _then(_EvraklarRequestModel(
+belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,urlGetir: freezed == urlGetir ? _self.urlGetir : urlGetir // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

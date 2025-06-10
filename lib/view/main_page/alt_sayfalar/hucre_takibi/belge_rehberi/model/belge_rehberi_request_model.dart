@@ -5,7 +5,7 @@ part "belge_rehberi_request_model.freezed.dart";
 part "belge_rehberi_request_model.g.dart";
 
 @freezed
-class BelgeRehberiRequestModel with _$BelgeRehberiRequestModel {
+sealed class BelgeRehberiRequestModel with _$BelgeRehberiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   const factory BelgeRehberiRequestModel({
     int? depoKodu,

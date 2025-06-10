@@ -7,7 +7,7 @@ part "yapilandirma_profil_model.freezed.dart";
 part "yapilandirma_profil_model.g.dart";
 
 @unfreezed
-class YapilandirmaProfilModel with _$YapilandirmaProfilModel, NetworkManagerMixin {
+sealed class YapilandirmaProfilModel with _$YapilandirmaProfilModel, NetworkManagerMixin {
   factory YapilandirmaProfilModel({
     int? sira,
     String? ozellikKodu,

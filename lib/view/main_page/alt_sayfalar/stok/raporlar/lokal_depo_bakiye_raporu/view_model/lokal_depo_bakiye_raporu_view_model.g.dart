@@ -11,7 +11,9 @@ part of 'lokal_depo_bakiye_raporu_view_model.dart';
 mixin _$LokalDepoBakiyeRaporuViewModel
     on _LokalDepoBakiyeRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
-      name: '_LokalDepoBakiyeRaporuViewModelBase.pdfModel', context: context);
+    name: '_LokalDepoBakiyeRaporuViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -27,8 +29,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
   }
 
   late final _$sifirHaricValueAtom = Atom(
-      name: '_LokalDepoBakiyeRaporuViewModelBase.sifirHaricValue',
-      context: context);
+    name: '_LokalDepoBakiyeRaporuViewModelBase.sifirHaricValue',
+    context: context,
+  );
 
   @override
   bool get sifirHaricValue {
@@ -44,8 +47,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_LokalDepoBakiyeRaporuViewModelBase.futureController',
-      context: context);
+    name: '_LokalDepoBakiyeRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -62,7 +66,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
 
   late final _$_LokalDepoBakiyeRaporuViewModelBaseActionController =
       ActionController(
-          name: '_LokalDepoBakiyeRaporuViewModelBase', context: context);
+        name: '_LokalDepoBakiyeRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setSifirHaric(bool value) {
@@ -71,8 +77,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
     try {
       return super.setSifirHaric(value);
     } finally {
-      _$_LokalDepoBakiyeRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_LokalDepoBakiyeRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -83,8 +90,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
     try {
       return super.setFuture();
     } finally {
-      _$_LokalDepoBakiyeRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_LokalDepoBakiyeRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -95,8 +103,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
     try {
       return super.resetFuture();
     } finally {
-      _$_LokalDepoBakiyeRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_LokalDepoBakiyeRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

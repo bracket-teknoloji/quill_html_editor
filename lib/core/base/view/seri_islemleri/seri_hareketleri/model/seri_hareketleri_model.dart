@@ -6,7 +6,7 @@ part "seri_hareketleri_model.freezed.dart";
 part "seri_hareketleri_model.g.dart";
 
 @unfreezed
-class SeriHareketleriModel with _$SeriHareketleriModel, NetworkManagerMixin {
+sealed class SeriHareketleriModel with _$SeriHareketleriModel, NetworkManagerMixin {
   factory SeriHareketleriModel({
     String? stokKodu,
     String? stokAdi,

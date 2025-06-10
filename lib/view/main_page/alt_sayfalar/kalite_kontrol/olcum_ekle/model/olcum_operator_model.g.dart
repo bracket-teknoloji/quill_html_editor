@@ -6,9 +6,8 @@ part of 'olcum_operator_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OlcumOperatorModelImpl _$$OlcumOperatorModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OlcumOperatorModelImpl(
+_OlcumOperatorModel _$OlcumOperatorModelFromJson(Map<String, dynamic> json) =>
+    _OlcumOperatorModel(
       id: (json['ID'] as num?)?.toInt(),
       isyeri: json['ISYERI'] as String?,
       adi: json['ADI'] as String?,
@@ -23,8 +22,7 @@ _$OlcumOperatorModelImpl _$$OlcumOperatorModelImplFromJson(
       resim: json['RESIM'] as String?,
     );
 
-Map<String, dynamic> _$$OlcumOperatorModelImplToJson(
-        _$OlcumOperatorModelImpl instance) =>
+Map<String, dynamic> _$OlcumOperatorModelToJson(_OlcumOperatorModel instance) =>
     <String, dynamic>{
       if (instance.id case final value?) 'ID': value,
       if (instance.isyeri case final value?) 'ISYERI': value,

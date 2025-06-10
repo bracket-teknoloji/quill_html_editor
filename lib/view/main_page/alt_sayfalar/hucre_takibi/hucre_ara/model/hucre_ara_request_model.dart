@@ -6,7 +6,7 @@ part "hucre_ara_request_model.freezed.dart";
 part "hucre_ara_request_model.g.dart";
 
 @unfreezed
-class HucreAraRequestModel with _$HucreAraRequestModel, NetworkManagerMixin {
+sealed class HucreAraRequestModel with _$HucreAraRequestModel, NetworkManagerMixin {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory HucreAraRequestModel({
     String? barkod,

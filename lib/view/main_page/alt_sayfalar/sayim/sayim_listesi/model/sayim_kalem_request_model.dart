@@ -6,7 +6,7 @@ part "sayim_kalem_request_model.freezed.dart";
 part "sayim_kalem_request_model.g.dart";
 
 @freezed
-class SayimKalemRequestModel with _$SayimKalemRequestModel {
+sealed class SayimKalemRequestModel with _$SayimKalemRequestModel {
   const factory SayimKalemRequestModel({int? id, int? depoKodu, String? belgeNo}) = _SayimKalemRequestModel;
 
   factory SayimKalemRequestModel.fromJson(Map<String, dynamic> json) => _$SayimKalemRequestModelFromJson(json);

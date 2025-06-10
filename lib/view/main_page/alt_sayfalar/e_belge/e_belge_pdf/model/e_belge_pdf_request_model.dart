@@ -6,7 +6,7 @@ part "e_belge_pdf_request_model.freezed.dart";
 part "e_belge_pdf_request_model.g.dart";
 
 @freezed
-class EBelgePdfRequestModel with _$EBelgePdfRequestModel {
+sealed class EBelgePdfRequestModel with _$EBelgePdfRequestModel {
   const factory EBelgePdfRequestModel({String? belgeTuru, String? ebelgeTuru, int? islemKodu, String? resmiBelgeNo}) =
       _EBelgePdfRequestModel;
 

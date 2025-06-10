@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,374 +10,147 @@ part of 'cari_hareketleri_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-CariHareketleriRequestModel _$CariHareketleriRequestModelFromJson(Map<String, dynamic> json) {
-  return _CariHareketleriRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$CariHareketleriRequestModel {
-  @JsonKey(name: "SIRALAMA")
-  String? get siralama => throw _privateConstructorUsedError;
-  @JsonKey(name: "SIRALAMA")
-  set siralama(String? value) => throw _privateConstructorUsedError;
-  bool? get sadeceTahsilatlarOdemeler => throw _privateConstructorUsedError;
-  set sadeceTahsilatlarOdemeler(bool? value) => throw _privateConstructorUsedError;
-  String? get cariKodu => throw _privateConstructorUsedError;
-  set cariKodu(String? value) => throw _privateConstructorUsedError;
-  String? get ekranTipi => throw _privateConstructorUsedError;
-  set ekranTipi(String? value) => throw _privateConstructorUsedError;
-  String? get arrPlasiyerKodu => throw _privateConstructorUsedError;
-  set arrPlasiyerKodu(String? value) => throw _privateConstructorUsedError;
-  String? get arrHareketTuru => throw _privateConstructorUsedError;
-  set arrHareketTuru(String? value) => throw _privateConstructorUsedError;
-  String? get baslamaTarihi => throw _privateConstructorUsedError;
-  set baslamaTarihi(String? value) => throw _privateConstructorUsedError;
-  String? get bitisTarihi => throw _privateConstructorUsedError;
-  set bitisTarihi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "BA")
-  String? get ba => throw _privateConstructorUsedError;
-  @JsonKey(name: "BA")
-  set ba(String? value) => throw _privateConstructorUsedError;
-  String? get menuKodu => throw _privateConstructorUsedError;
-  set menuKodu(String? value) => throw _privateConstructorUsedError;
-  String? get kapatilmis => throw _privateConstructorUsedError;
-  set kapatilmis(String? value) => throw _privateConstructorUsedError;
+
+@JsonKey(name: "SIRALAMA") String? get siralama;@JsonKey(name: "SIRALAMA") set siralama(String? value); bool? get sadeceTahsilatlarOdemeler; set sadeceTahsilatlarOdemeler(bool? value); String? get cariKodu; set cariKodu(String? value); String? get ekranTipi; set ekranTipi(String? value); String? get arrPlasiyerKodu; set arrPlasiyerKodu(String? value); String? get arrHareketTuru; set arrHareketTuru(String? value); String? get baslamaTarihi; set baslamaTarihi(String? value); String? get bitisTarihi; set bitisTarihi(String? value);@JsonKey(name: "BA") String? get ba;@JsonKey(name: "BA") set ba(String? value); String? get menuKodu; set menuKodu(String? value); String? get kapatilmis; set kapatilmis(String? value);
+/// Create a copy of CariHareketleriRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CariHareketleriRequestModelCopyWith<CariHareketleriRequestModel> get copyWith => _$CariHareketleriRequestModelCopyWithImpl<CariHareketleriRequestModel>(this as CariHareketleriRequestModel, _$identity);
 
   /// Serializes this CariHareketleriRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of CariHareketleriRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CariHareketleriRequestModelCopyWith<CariHareketleriRequestModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $CariHareketleriRequestModelCopyWith<$Res> {
-  factory $CariHareketleriRequestModelCopyWith(
-    CariHareketleriRequestModel value,
-    $Res Function(CariHareketleriRequestModel) then,
-  ) = _$CariHareketleriRequestModelCopyWithImpl<$Res, CariHareketleriRequestModel>;
-  @useResult
-  $Res call({
-    @JsonKey(name: "SIRALAMA") String? siralama,
-    bool? sadeceTahsilatlarOdemeler,
-    String? cariKodu,
-    String? ekranTipi,
-    String? arrPlasiyerKodu,
-    String? arrHareketTuru,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    @JsonKey(name: "BA") String? ba,
-    String? menuKodu,
-    String? kapatilmis,
-  });
-}
+abstract mixin class $CariHareketleriRequestModelCopyWith<$Res>  {
+  factory $CariHareketleriRequestModelCopyWith(CariHareketleriRequestModel value, $Res Function(CariHareketleriRequestModel) _then) = _$CariHareketleriRequestModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: "SIRALAMA") String? siralama, bool? sadeceTahsilatlarOdemeler, String? cariKodu, String? ekranTipi, String? arrPlasiyerKodu, String? arrHareketTuru, String? baslamaTarihi, String? bitisTarihi,@JsonKey(name: "BA") String? ba, String? menuKodu, String? kapatilmis
+});
 
+
+
+
+}
 /// @nodoc
-class _$CariHareketleriRequestModelCopyWithImpl<$Res, $Val extends CariHareketleriRequestModel>
+class _$CariHareketleriRequestModelCopyWithImpl<$Res>
     implements $CariHareketleriRequestModelCopyWith<$Res> {
-  _$CariHareketleriRequestModelCopyWithImpl(this._value, this._then);
+  _$CariHareketleriRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CariHareketleriRequestModel _self;
+  final $Res Function(CariHareketleriRequestModel) _then;
 
-  /// Create a copy of CariHareketleriRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? siralama = freezed,
-    Object? sadeceTahsilatlarOdemeler = freezed,
-    Object? cariKodu = freezed,
-    Object? ekranTipi = freezed,
-    Object? arrPlasiyerKodu = freezed,
-    Object? arrHareketTuru = freezed,
-    Object? baslamaTarihi = freezed,
-    Object? bitisTarihi = freezed,
-    Object? ba = freezed,
-    Object? menuKodu = freezed,
-    Object? kapatilmis = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            siralama: freezed == siralama
-                ? _value.siralama
-                : siralama // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler
-                ? _value.sadeceTahsilatlarOdemeler
-                : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
-                      as bool?,
-            cariKodu: freezed == cariKodu
-                ? _value.cariKodu
-                : cariKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            ekranTipi: freezed == ekranTipi
-                ? _value.ekranTipi
-                : ekranTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            arrPlasiyerKodu: freezed == arrPlasiyerKodu
-                ? _value.arrPlasiyerKodu
-                : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            arrHareketTuru: freezed == arrHareketTuru
-                ? _value.arrHareketTuru
-                : arrHareketTuru // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            baslamaTarihi: freezed == baslamaTarihi
-                ? _value.baslamaTarihi
-                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            bitisTarihi: freezed == bitisTarihi
-                ? _value.bitisTarihi
-                : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            ba: freezed == ba
-                ? _value.ba
-                : ba // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            menuKodu: freezed == menuKodu
-                ? _value.menuKodu
-                : menuKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            kapatilmis: freezed == kapatilmis
-                ? _value.kapatilmis
-                : kapatilmis // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of CariHareketleriRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? siralama = freezed,Object? sadeceTahsilatlarOdemeler = freezed,Object? cariKodu = freezed,Object? ekranTipi = freezed,Object? arrPlasiyerKodu = freezed,Object? arrHareketTuru = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? ba = freezed,Object? menuKodu = freezed,Object? kapatilmis = freezed,}) {
+  return _then(_self.copyWith(
+siralama: freezed == siralama ? _self.siralama : siralama // ignore: cast_nullable_to_non_nullable
+as String?,sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler ? _self.sadeceTahsilatlarOdemeler : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
+as bool?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,arrPlasiyerKodu: freezed == arrPlasiyerKodu ? _self.arrPlasiyerKodu : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+as String?,arrHareketTuru: freezed == arrHareketTuru ? _self.arrHareketTuru : arrHareketTuru // ignore: cast_nullable_to_non_nullable
+as String?,baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,ba: freezed == ba ? _self.ba : ba // ignore: cast_nullable_to_non_nullable
+as String?,menuKodu: freezed == menuKodu ? _self.menuKodu : menuKodu // ignore: cast_nullable_to_non_nullable
+as String?,kapatilmis: freezed == kapatilmis ? _self.kapatilmis : kapatilmis // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$CariHareketleriRequestModelImplCopyWith<$Res> implements $CariHareketleriRequestModelCopyWith<$Res> {
-  factory _$$CariHareketleriRequestModelImplCopyWith(
-    _$CariHareketleriRequestModelImpl value,
-    $Res Function(_$CariHareketleriRequestModelImpl) then,
-  ) = __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    @JsonKey(name: "SIRALAMA") String? siralama,
-    bool? sadeceTahsilatlarOdemeler,
-    String? cariKodu,
-    String? ekranTipi,
-    String? arrPlasiyerKodu,
-    String? arrHareketTuru,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    @JsonKey(name: "BA") String? ba,
-    String? menuKodu,
-    String? kapatilmis,
-  });
 }
 
-/// @nodoc
-class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
-    extends _$CariHareketleriRequestModelCopyWithImpl<$Res, _$CariHareketleriRequestModelImpl>
-    implements _$$CariHareketleriRequestModelImplCopyWith<$Res> {
-  __$$CariHareketleriRequestModelImplCopyWithImpl(
-    _$CariHareketleriRequestModelImpl _value,
-    $Res Function(_$CariHareketleriRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of CariHareketleriRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? siralama = freezed,
-    Object? sadeceTahsilatlarOdemeler = freezed,
-    Object? cariKodu = freezed,
-    Object? ekranTipi = freezed,
-    Object? arrPlasiyerKodu = freezed,
-    Object? arrHareketTuru = freezed,
-    Object? baslamaTarihi = freezed,
-    Object? bitisTarihi = freezed,
-    Object? ba = freezed,
-    Object? menuKodu = freezed,
-    Object? kapatilmis = freezed,
-  }) {
-    return _then(
-      _$CariHareketleriRequestModelImpl(
-        siralama: freezed == siralama
-            ? _value.siralama
-            : siralama // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler
-            ? _value.sadeceTahsilatlarOdemeler
-            : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
-                  as bool?,
-        cariKodu: freezed == cariKodu
-            ? _value.cariKodu
-            : cariKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        ekranTipi: freezed == ekranTipi
-            ? _value.ekranTipi
-            : ekranTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        arrPlasiyerKodu: freezed == arrPlasiyerKodu
-            ? _value.arrPlasiyerKodu
-            : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        arrHareketTuru: freezed == arrHareketTuru
-            ? _value.arrHareketTuru
-            : arrHareketTuru // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        baslamaTarihi: freezed == baslamaTarihi
-            ? _value.baslamaTarihi
-            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        bitisTarihi: freezed == bitisTarihi
-            ? _value.bitisTarihi
-            : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        ba: freezed == ba
-            ? _value.ba
-            : ba // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        menuKodu: freezed == menuKodu
-            ? _value.menuKodu
-            : menuKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        kapatilmis: freezed == kapatilmis
-            ? _value.kapatilmis
-            : kapatilmis // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$CariHareketleriRequestModelImpl implements _CariHareketleriRequestModel {
-  _$CariHareketleriRequestModelImpl({
-    @JsonKey(name: "SIRALAMA") this.siralama,
-    this.sadeceTahsilatlarOdemeler,
-    this.cariKodu,
-    this.ekranTipi,
-    this.arrPlasiyerKodu,
-    this.arrHareketTuru,
-    this.baslamaTarihi,
-    this.bitisTarihi,
-    @JsonKey(name: "BA") this.ba,
-    this.menuKodu,
-    this.kapatilmis,
-  });
+class _CariHareketleriRequestModel implements CariHareketleriRequestModel {
+   _CariHareketleriRequestModel({@JsonKey(name: "SIRALAMA") this.siralama, this.sadeceTahsilatlarOdemeler, this.cariKodu, this.ekranTipi, this.arrPlasiyerKodu, this.arrHareketTuru, this.baslamaTarihi, this.bitisTarihi, @JsonKey(name: "BA") this.ba, this.menuKodu, this.kapatilmis});
+  factory _CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) => _$CariHareketleriRequestModelFromJson(json);
 
-  factory _$CariHareketleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CariHareketleriRequestModelImplFromJson(json);
+@override@JsonKey(name: "SIRALAMA")  String? siralama;
+@override  bool? sadeceTahsilatlarOdemeler;
+@override  String? cariKodu;
+@override  String? ekranTipi;
+@override  String? arrPlasiyerKodu;
+@override  String? arrHareketTuru;
+@override  String? baslamaTarihi;
+@override  String? bitisTarihi;
+@override@JsonKey(name: "BA")  String? ba;
+@override  String? menuKodu;
+@override  String? kapatilmis;
 
-  @override
-  @JsonKey(name: "SIRALAMA")
-  String? siralama;
-  @override
-  bool? sadeceTahsilatlarOdemeler;
-  @override
-  String? cariKodu;
-  @override
-  String? ekranTipi;
-  @override
-  String? arrPlasiyerKodu;
-  @override
-  String? arrHareketTuru;
-  @override
-  String? baslamaTarihi;
-  @override
-  String? bitisTarihi;
-  @override
-  @JsonKey(name: "BA")
-  String? ba;
-  @override
-  String? menuKodu;
-  @override
-  String? kapatilmis;
+/// Create a copy of CariHareketleriRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CariHareketleriRequestModelCopyWith<_CariHareketleriRequestModel> get copyWith => __$CariHareketleriRequestModelCopyWithImpl<_CariHareketleriRequestModel>(this, _$identity);
 
-  /// Create a copy of CariHareketleriRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl> get copyWith =>
-      __$$CariHareketleriRequestModelImplCopyWithImpl<_$CariHareketleriRequestModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CariHareketleriRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$CariHareketleriRequestModelToJson(this, );
 }
 
-abstract class _CariHareketleriRequestModel implements CariHareketleriRequestModel {
-  factory _CariHareketleriRequestModel({
-    @JsonKey(name: "SIRALAMA") String? siralama,
-    bool? sadeceTahsilatlarOdemeler,
-    String? cariKodu,
-    String? ekranTipi,
-    String? arrPlasiyerKodu,
-    String? arrHareketTuru,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    @JsonKey(name: "BA") String? ba,
-    String? menuKodu,
-    String? kapatilmis,
-  }) = _$CariHareketleriRequestModelImpl;
 
-  factory _CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) = _$CariHareketleriRequestModelImpl.fromJson;
 
-  @override
-  @JsonKey(name: "SIRALAMA")
-  String? get siralama;
-  @JsonKey(name: "SIRALAMA")
-  set siralama(String? value);
-  @override
-  bool? get sadeceTahsilatlarOdemeler;
-  set sadeceTahsilatlarOdemeler(bool? value);
-  @override
-  String? get cariKodu;
-  set cariKodu(String? value);
-  @override
-  String? get ekranTipi;
-  set ekranTipi(String? value);
-  @override
-  String? get arrPlasiyerKodu;
-  set arrPlasiyerKodu(String? value);
-  @override
-  String? get arrHareketTuru;
-  set arrHareketTuru(String? value);
-  @override
-  String? get baslamaTarihi;
-  set baslamaTarihi(String? value);
-  @override
-  String? get bitisTarihi;
-  set bitisTarihi(String? value);
-  @override
-  @JsonKey(name: "BA")
-  String? get ba;
-  @JsonKey(name: "BA")
-  set ba(String? value);
-  @override
-  String? get menuKodu;
-  set menuKodu(String? value);
-  @override
-  String? get kapatilmis;
-  set kapatilmis(String? value);
 
-  /// Create a copy of CariHareketleriRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$CariHareketleriRequestModelCopyWith<$Res> implements $CariHareketleriRequestModelCopyWith<$Res> {
+  factory _$CariHareketleriRequestModelCopyWith(_CariHareketleriRequestModel value, $Res Function(_CariHareketleriRequestModel) _then) = __$CariHareketleriRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: "SIRALAMA") String? siralama, bool? sadeceTahsilatlarOdemeler, String? cariKodu, String? ekranTipi, String? arrPlasiyerKodu, String? arrHareketTuru, String? baslamaTarihi, String? bitisTarihi,@JsonKey(name: "BA") String? ba, String? menuKodu, String? kapatilmis
+});
+
+
+
+
+}
+/// @nodoc
+class __$CariHareketleriRequestModelCopyWithImpl<$Res>
+    implements _$CariHareketleriRequestModelCopyWith<$Res> {
+  __$CariHareketleriRequestModelCopyWithImpl(this._self, this._then);
+
+  final _CariHareketleriRequestModel _self;
+  final $Res Function(_CariHareketleriRequestModel) _then;
+
+/// Create a copy of CariHareketleriRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? siralama = freezed,Object? sadeceTahsilatlarOdemeler = freezed,Object? cariKodu = freezed,Object? ekranTipi = freezed,Object? arrPlasiyerKodu = freezed,Object? arrHareketTuru = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? ba = freezed,Object? menuKodu = freezed,Object? kapatilmis = freezed,}) {
+  return _then(_CariHareketleriRequestModel(
+siralama: freezed == siralama ? _self.siralama : siralama // ignore: cast_nullable_to_non_nullable
+as String?,sadeceTahsilatlarOdemeler: freezed == sadeceTahsilatlarOdemeler ? _self.sadeceTahsilatlarOdemeler : sadeceTahsilatlarOdemeler // ignore: cast_nullable_to_non_nullable
+as bool?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,arrPlasiyerKodu: freezed == arrPlasiyerKodu ? _self.arrPlasiyerKodu : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+as String?,arrHareketTuru: freezed == arrHareketTuru ? _self.arrHareketTuru : arrHareketTuru // ignore: cast_nullable_to_non_nullable
+as String?,baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,ba: freezed == ba ? _self.ba : ba // ignore: cast_nullable_to_non_nullable
+as String?,menuKodu: freezed == menuKodu ? _self.menuKodu : menuKodu // ignore: cast_nullable_to_non_nullable
+as String?,kapatilmis: freezed == kapatilmis ? _self.kapatilmis : kapatilmis // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

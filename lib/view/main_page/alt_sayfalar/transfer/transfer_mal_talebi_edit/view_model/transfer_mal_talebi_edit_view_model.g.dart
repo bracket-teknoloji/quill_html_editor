@@ -10,8 +10,10 @@ part of 'transfer_mal_talebi_edit_view_model.dart';
 
 mixin _$TransferMalTalebiEditViewModel
     on _TransferMalTalebiEditViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_TransferMalTalebiEditViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_TransferMalTalebiEditViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel? get model {
@@ -26,8 +28,10 @@ mixin _$TransferMalTalebiEditViewModel
     });
   }
 
-  late final _$saveAsyncAction =
-      AsyncAction('_TransferMalTalebiEditViewModelBase.save', context: context);
+  late final _$saveAsyncAction = AsyncAction(
+    '_TransferMalTalebiEditViewModelBase.save',
+    context: context,
+  );
 
   @override
   Future<bool> save(bool isEkle) {
@@ -36,7 +40,9 @@ mixin _$TransferMalTalebiEditViewModel
 
   late final _$_TransferMalTalebiEditViewModelBaseActionController =
       ActionController(
-          name: '_TransferMalTalebiEditViewModelBase', context: context);
+        name: '_TransferMalTalebiEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setModel(BaseSiparisEditModel value) {
@@ -45,8 +51,9 @@ mixin _$TransferMalTalebiEditViewModel
     try {
       return super.setModel(value);
     } finally {
-      _$_TransferMalTalebiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

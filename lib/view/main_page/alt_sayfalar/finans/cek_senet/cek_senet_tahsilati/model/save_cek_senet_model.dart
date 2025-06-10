@@ -9,7 +9,7 @@ part "save_cek_senet_model.freezed.dart";
 part "save_cek_senet_model.g.dart";
 
 @unfreezed
-class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
+sealed class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
   factory SaveCekSenetModel({
     String? belgeTipi,
     String? cariAdi,
@@ -55,7 +55,7 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class CekSenetKalemlerModel with _$CekSenetKalemlerModel {
+sealed class CekSenetKalemlerModel with _$CekSenetKalemlerModel {
   factory CekSenetKalemlerModel({
     String? cariRaporKodu,
     String? cekBanka,

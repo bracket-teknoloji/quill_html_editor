@@ -14,12 +14,14 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
   @override
   ObservableList<BelgeKontrolModel>? get filteredList =>
       (_$filteredListComputed ??= Computed<ObservableList<BelgeKontrolModel>?>(
-              () => super.filteredList,
-              name: '_BelgeKontrolViewModelBase.filteredList'))
-          .value;
+        () => super.filteredList,
+        name: '_BelgeKontrolViewModelBase.filteredList',
+      )).value;
 
-  late final _$observableListAtom =
-      Atom(name: '_BelgeKontrolViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+    name: '_BelgeKontrolViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<BelgeKontrolModel>? get observableList {
@@ -34,8 +36,10 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_BelgeKontrolViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_BelgeKontrolViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   BelgeKontrolRequestModel get requestModel {
@@ -51,7 +55,9 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
   }
 
   late final _$isSearchBarOpenAtom = Atom(
-      name: '_BelgeKontrolViewModelBase.isSearchBarOpen', context: context);
+    name: '_BelgeKontrolViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -66,8 +72,10 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_BelgeKontrolViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_BelgeKontrolViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -82,24 +90,30 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_BelgeKontrolViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_BelgeKontrolViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$deletekontrolAsyncAction =
-      AsyncAction('_BelgeKontrolViewModelBase.deletekontrol', context: context);
+  late final _$deletekontrolAsyncAction = AsyncAction(
+    '_BelgeKontrolViewModelBase.deletekontrol',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<BelgeKontrolModel>> deletekontrol(int id) {
     return _$deletekontrolAsyncAction.run(() => super.deletekontrol(id));
   }
 
-  late final _$_BelgeKontrolViewModelBaseActionController =
-      ActionController(name: '_BelgeKontrolViewModelBase', context: context);
+  late final _$_BelgeKontrolViewModelBaseActionController = ActionController(
+    name: '_BelgeKontrolViewModelBase',
+    context: context,
+  );
 
   @override
   void setFilterValue(String value) {

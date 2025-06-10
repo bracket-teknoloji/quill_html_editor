@@ -12,77 +12,85 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   Computed<String>? _$getKdvHaricComputed;
 
   @override
-  String get getKdvHaric =>
-      (_$getKdvHaricComputed ??= Computed<String>(() => super.getKdvHaric,
-              name: '_TalepTeklifListesiViewModelBase.getKdvHaric'))
-          .value;
+  String get getKdvHaric => (_$getKdvHaricComputed ??= Computed<String>(
+    () => super.getKdvHaric,
+    name: '_TalepTeklifListesiViewModelBase.getKdvHaric',
+  )).value;
   Computed<String>? _$getKdvComputed;
 
   @override
-  String get getKdv =>
-      (_$getKdvComputed ??= Computed<String>(() => super.getKdv,
-              name: '_TalepTeklifListesiViewModelBase.getKdv'))
-          .value;
+  String get getKdv => (_$getKdvComputed ??= Computed<String>(
+    () => super.getKdv,
+    name: '_TalepTeklifListesiViewModelBase.getKdv',
+  )).value;
   Computed<String>? _$getKdvDahilToplamComputed;
 
   @override
-  String get getKdvDahilToplam => (_$getKdvDahilToplamComputed ??=
-          Computed<String>(() => super.getKdvDahilToplam,
-              name: '_TalepTeklifListesiViewModelBase.getKdvDahilToplam'))
-      .value;
+  String get getKdvDahilToplam =>
+      (_$getKdvDahilToplamComputed ??= Computed<String>(
+        () => super.getKdvDahilToplam,
+        name: '_TalepTeklifListesiViewModelBase.getKdvDahilToplam',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$getGrupKodlari0Computed;
 
   @override
-  List<BaseGrupKoduModel>? get getGrupKodlari0 => (_$getGrupKodlari0Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.getGrupKodlari0,
-              name: '_TalepTeklifListesiViewModelBase.getGrupKodlari0'))
-      .value;
+  List<BaseGrupKoduModel>? get getGrupKodlari0 =>
+      (_$getGrupKodlari0Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.getGrupKodlari0,
+        name: '_TalepTeklifListesiViewModelBase.getGrupKodlari0',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$getGrupKodlari1Computed;
 
   @override
-  List<BaseGrupKoduModel>? get getGrupKodlari1 => (_$getGrupKodlari1Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.getGrupKodlari1,
-              name: '_TalepTeklifListesiViewModelBase.getGrupKodlari1'))
-      .value;
+  List<BaseGrupKoduModel>? get getGrupKodlari1 =>
+      (_$getGrupKodlari1Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.getGrupKodlari1,
+        name: '_TalepTeklifListesiViewModelBase.getGrupKodlari1',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$getGrupKodlari2Computed;
 
   @override
-  List<BaseGrupKoduModel>? get getGrupKodlari2 => (_$getGrupKodlari2Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.getGrupKodlari2,
-              name: '_TalepTeklifListesiViewModelBase.getGrupKodlari2'))
-      .value;
+  List<BaseGrupKoduModel>? get getGrupKodlari2 =>
+      (_$getGrupKodlari2Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.getGrupKodlari2,
+        name: '_TalepTeklifListesiViewModelBase.getGrupKodlari2',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$getGrupKodlari3Computed;
 
   @override
-  List<BaseGrupKoduModel>? get getGrupKodlari3 => (_$getGrupKodlari3Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.getGrupKodlari3,
-              name: '_TalepTeklifListesiViewModelBase.getGrupKodlari3'))
-      .value;
+  List<BaseGrupKoduModel>? get getGrupKodlari3 =>
+      (_$getGrupKodlari3Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.getGrupKodlari3,
+        name: '_TalepTeklifListesiViewModelBase.getGrupKodlari3',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$getGrupKodlari4Computed;
 
   @override
-  List<BaseGrupKoduModel>? get getGrupKodlari4 => (_$getGrupKodlari4Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.getGrupKodlari4,
-              name: '_TalepTeklifListesiViewModelBase.getGrupKodlari4'))
-      .value;
+  List<BaseGrupKoduModel>? get getGrupKodlari4 =>
+      (_$getGrupKodlari4Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.getGrupKodlari4,
+        name: '_TalepTeklifListesiViewModelBase.getGrupKodlari4',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$getGrupKodlari5Computed;
 
   @override
-  List<BaseGrupKoduModel>? get getGrupKodlari5 => (_$getGrupKodlari5Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.getGrupKodlari5,
-              name: '_TalepTeklifListesiViewModelBase.getGrupKodlari5'))
-      .value;
+  List<BaseGrupKoduModel>? get getGrupKodlari5 =>
+      (_$getGrupKodlari5Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.getGrupKodlari5,
+        name: '_TalepTeklifListesiViewModelBase.getGrupKodlari5',
+      )).value;
   Computed<bool>? _$hasFilterComputed;
 
   @override
-  bool get hasFilter =>
-      (_$hasFilterComputed ??= Computed<bool>(() => super.hasFilter,
-              name: '_TalepTeklifListesiViewModelBase.hasFilter'))
-          .value;
+  bool get hasFilter => (_$hasFilterComputed ??= Computed<bool>(
+    () => super.hasFilter,
+    name: '_TalepTeklifListesiViewModelBase.hasFilter',
+  )).value;
 
   late final _$teslimatDurumuValueListAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.teslimatDurumuValueList',
-      context: context);
+    name: '_TalepTeklifListesiViewModelBase.teslimatDurumuValueList',
+    context: context,
+  );
 
   @override
   List<String?> get teslimatDurumuValueList {
@@ -92,15 +100,19 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
 
   @override
   set teslimatDurumuValueList(List<String?> value) {
-    _$teslimatDurumuValueListAtom
-        .reportWrite(value, super.teslimatDurumuValueList, () {
-      super.teslimatDurumuValueList = value;
-    });
+    _$teslimatDurumuValueListAtom.reportWrite(
+      value,
+      super.teslimatDurumuValueList,
+      () {
+        super.teslimatDurumuValueList = value;
+      },
+    );
   }
 
   late final _$ekstraAlanlarMapAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.ekstraAlanlarMap',
-      context: context);
+    name: '_TalepTeklifListesiViewModelBase.ekstraAlanlarMap',
+    context: context,
+  );
 
   @override
   ObservableMap<String, bool> get ekstraAlanlarMap {
@@ -116,8 +128,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$grupKodlariGosterAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.grupKodlariGoster',
-      context: context);
+    name: '_TalepTeklifListesiViewModelBase.grupKodlariGoster',
+    context: context,
+  );
 
   @override
   bool get grupKodlariGoster {
@@ -133,8 +146,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$isSearchBarOpenAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.isSearchBarOpen',
-      context: context);
+    name: '_TalepTeklifListesiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -150,7 +164,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$searchTextAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.searchText', context: context);
+    name: '_TalepTeklifListesiViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -166,8 +182,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$siparislerRequestModelAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.siparislerRequestModel',
-      context: context);
+    name: '_TalepTeklifListesiViewModelBase.siparislerRequestModel',
+    context: context,
+  );
 
   @override
   SiparislerRequestModel get siparislerRequestModel {
@@ -177,15 +194,19 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
 
   @override
   set siparislerRequestModel(SiparislerRequestModel value) {
-    _$siparislerRequestModelAtom
-        .reportWrite(value, super.siparislerRequestModel, () {
-      super.siparislerRequestModel = value;
-    });
+    _$siparislerRequestModelAtom.reportWrite(
+      value,
+      super.siparislerRequestModel,
+      () {
+        super.siparislerRequestModel = value;
+      },
+    );
   }
 
   late final _$observableListAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.observableList',
-      context: context);
+    name: '_TalepTeklifListesiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<BaseSiparisEditModel>? get observableList {
@@ -201,8 +222,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$grupKodlariListAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.grupKodlariList',
-      context: context);
+    name: '_TalepTeklifListesiViewModelBase.grupKodlariList',
+    context: context,
+  );
 
   @override
   ObservableList<BaseGrupKoduModel>? get grupKodlariList {
@@ -218,7 +240,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$isScrollDownAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.isScrollDown', context: context);
+    name: '_TalepTeklifListesiViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -234,7 +258,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$paramDataAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.paramData', context: context);
+    name: '_TalepTeklifListesiViewModelBase.paramData',
+    context: context,
+  );
 
   @override
   ObservableMap<String, dynamic>? get paramData {
@@ -250,18 +276,21 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$changeSearchBarStatusAsyncAction = AsyncAction(
-      '_TalepTeklifListesiViewModelBase.changeSearchBarStatus',
-      context: context);
+    '_TalepTeklifListesiViewModelBase.changeSearchBarStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeSearchBarStatus() {
-    return _$changeSearchBarStatusAsyncAction
-        .run(() => super.changeSearchBarStatus());
+    return _$changeSearchBarStatusAsyncAction.run(
+      () => super.changeSearchBarStatus(),
+    );
   }
 
   late final _$resetFilterAsyncAction = AsyncAction(
-      '_TalepTeklifListesiViewModelBase.resetFilter',
-      context: context);
+    '_TalepTeklifListesiViewModelBase.resetFilter',
+    context: context,
+  );
 
   @override
   Future<void> resetFilter() {
@@ -269,26 +298,31 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$changeGrupKodlariGosterAsyncAction = AsyncAction(
-      '_TalepTeklifListesiViewModelBase.changeGrupKodlariGoster',
-      context: context);
+    '_TalepTeklifListesiViewModelBase.changeGrupKodlariGoster',
+    context: context,
+  );
 
   @override
   Future<void> changeGrupKodlariGoster() {
-    return _$changeGrupKodlariGosterAsyncAction
-        .run(() => super.changeGrupKodlariGoster());
+    return _$changeGrupKodlariGosterAsyncAction.run(
+      () => super.changeGrupKodlariGoster(),
+    );
   }
 
   late final _$resetListAsyncAction = AsyncAction(
-      '_TalepTeklifListesiViewModelBase.resetList',
-      context: context);
+    '_TalepTeklifListesiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_TalepTeklifListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_TalepTeklifListesiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -296,8 +330,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   late final _$getGrupKodlariAsyncAction = AsyncAction(
-      '_TalepTeklifListesiViewModelBase.getGrupKodlari',
-      context: context);
+    '_TalepTeklifListesiViewModelBase.getGrupKodlari',
+    context: context,
+  );
 
   @override
   Future<void> getGrupKodlari() {
@@ -306,31 +341,37 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
 
   late final _$_TalepTeklifListesiViewModelBaseActionController =
       ActionController(
-          name: '_TalepTeklifListesiViewModelBase', context: context);
+        name: '_TalepTeklifListesiViewModelBase',
+        context: context,
+      );
 
   @override
   void changeEkstraAlanlarMap(String key, bool value) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name: '_TalepTeklifListesiViewModelBase.changeEkstraAlanlarMap');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.changeEkstraAlanlarMap',
+        );
     try {
       return super.changeEkstraAlanlarMap(key, value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void resetEkstraAlanlarMap() {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name: '_TalepTeklifListesiViewModelBase.resetEkstraAlanlarMap');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.resetEkstraAlanlarMap',
+        );
     try {
       return super.resetEkstraAlanlarMap();
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -341,34 +382,39 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setSearchText(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setIsScrolledDown(bool value) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name: '_TalepTeklifListesiViewModelBase.setIsScrolledDown');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.setIsScrolledDown',
+        );
     try {
       return super.setIsScrolledDown(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setPickerBelgeTuru(String value) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name: '_TalepTeklifListesiViewModelBase.setPickerBelgeTuru');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.setPickerBelgeTuru',
+        );
     try {
       return super.setPickerBelgeTuru(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -379,47 +425,54 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setSiralama(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setObservableList(List<BaseSiparisEditModel>? list) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name: '_TalepTeklifListesiViewModelBase.setObservableList');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void addObservableList(List<BaseSiparisEditModel>? list) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name: '_TalepTeklifListesiViewModelBase.addObservableList');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.addObservableList',
+        );
     try {
       return super.addObservableList(list);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setArrPlasiyerKodu(List<String>? value) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name: '_TalepTeklifListesiViewModelBase.setArrPlasiyerKodu');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.setArrPlasiyerKodu',
+        );
     try {
       return super.setArrPlasiyerKodu(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -430,8 +483,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setArrKod0(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -442,8 +496,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setArrKod1(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -454,8 +509,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setArrKod2(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -466,8 +522,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setArrKod3(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -478,8 +535,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setArrKod4(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -490,8 +548,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setArrKod5(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -502,8 +561,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -514,36 +574,40 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setCariTipi(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setTeslimatDurumuGroupValue(int? value) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name:
-                '_TalepTeklifListesiViewModelBase.setTeslimatDurumuGroupValue');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name: '_TalepTeklifListesiViewModelBase.setTeslimatDurumuGroupValue',
+        );
     try {
       return super.setTeslimatDurumuGroupValue(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setKapaliBelgelerListelenmesin(bool? value) {
-    final _$actionInfo =
-        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name:
-                '_TalepTeklifListesiViewModelBase.setKapaliBelgelerListelenmesin');
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(
+          name:
+              '_TalepTeklifListesiViewModelBase.setKapaliBelgelerListelenmesin',
+        );
     try {
       return super.setKapaliBelgelerListelenmesin(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -554,8 +618,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setBaslamaTarihi(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -566,8 +631,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setBitisTarihi(value);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -578,8 +644,9 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     try {
       return super.setParamData(paramData);
     } finally {
-      _$_TalepTeklifListesiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TalepTeklifListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -6,7 +6,7 @@ part "e_belge_islem_model.freezed.dart";
 part "e_belge_islem_model.g.dart";
 
 @unfreezed
-class EBelgeIslemModel with _$EBelgeIslemModel {
+sealed class EBelgeIslemModel with _$EBelgeIslemModel {
   factory EBelgeIslemModel({
     String? aciklama,
     String? belgeTuru,

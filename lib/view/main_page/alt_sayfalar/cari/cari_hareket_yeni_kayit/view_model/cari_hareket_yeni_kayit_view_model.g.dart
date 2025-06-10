@@ -13,13 +13,15 @@ mixin _$CariHareketYeniKayitViewModel
   Computed<String>? _$getHareketKoduComputed;
 
   @override
-  String get getHareketKodu =>
-      (_$getHareketKoduComputed ??= Computed<String>(() => super.getHareketKodu,
-              name: '_CariHareketYeniKayitViewModelBase.getHareketKodu'))
-          .value;
+  String get getHareketKodu => (_$getHareketKoduComputed ??= Computed<String>(
+    () => super.getHareketKodu,
+    name: '_CariHareketYeniKayitViewModelBase.getHareketKodu',
+  )).value;
 
   late final _$projeListAtom = Atom(
-      name: '_CariHareketYeniKayitViewModelBase.projeList', context: context);
+    name: '_CariHareketYeniKayitViewModelBase.projeList',
+    context: context,
+  );
 
   @override
   List<BaseProjeModel> get projeList {
@@ -34,8 +36,10 @@ mixin _$CariHareketYeniKayitViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_CariHareketYeniKayitViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_CariHareketYeniKayitViewModelBase.model',
+    context: context,
+  );
 
   @override
   CariHareketYeniKayitModel get model {
@@ -51,7 +55,9 @@ mixin _$CariHareketYeniKayitViewModel
   }
 
   late final _$isSelectedAtom = Atom(
-      name: '_CariHareketYeniKayitViewModelBase.isSelected', context: context);
+    name: '_CariHareketYeniKayitViewModelBase.isSelected',
+    context: context,
+  );
 
   @override
   List<bool> get isSelected {
@@ -68,7 +74,9 @@ mixin _$CariHareketYeniKayitViewModel
 
   late final _$_CariHareketYeniKayitViewModelBaseActionController =
       ActionController(
-          name: '_CariHareketYeniKayitViewModelBase', context: context);
+        name: '_CariHareketYeniKayitViewModelBase',
+        context: context,
+      );
 
   @override
   void setProjeList(List<BaseProjeModel>? value) {
@@ -77,21 +85,24 @@ mixin _$CariHareketYeniKayitViewModel
     try {
       return super.setProjeList(value);
     } finally {
-      _$_CariHareketYeniKayitViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariHareketYeniKayitViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setModelHareketKodu(String value) {
-    final _$actionInfo =
-        _$_CariHareketYeniKayitViewModelBaseActionController.startAction(
-            name: '_CariHareketYeniKayitViewModelBase.setModelHareketKodu');
+    final _$actionInfo = _$_CariHareketYeniKayitViewModelBaseActionController
+        .startAction(
+          name: '_CariHareketYeniKayitViewModelBase.setModelHareketKodu',
+        );
     try {
       return super.setModelHareketKodu(value);
     } finally {
-      _$_CariHareketYeniKayitViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariHareketYeniKayitViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -102,8 +113,9 @@ mixin _$CariHareketYeniKayitViewModel
     try {
       return super.setIsSelected(index);
     } finally {
-      _$_CariHareketYeniKayitViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CariHareketYeniKayitViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

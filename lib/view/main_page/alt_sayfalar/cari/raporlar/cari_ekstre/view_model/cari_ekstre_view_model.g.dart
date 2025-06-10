@@ -9,8 +9,10 @@ part of 'cari_ekstre_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
-  late final _$dovizValueAtom =
-      Atom(name: '_CariEkstreViewModelBase.dovizValue', context: context);
+  late final _$dovizValueAtom = Atom(
+    name: '_CariEkstreViewModelBase.dovizValue',
+    context: context,
+  );
 
   @override
   String? get dovizValue {
@@ -25,8 +27,10 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
     });
   }
 
-  late final _$pdfModelAtom =
-      Atom(name: '_CariEkstreViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(
+    name: '_CariEkstreViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -41,8 +45,10 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom =
-      Atom(name: '_CariEkstreViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(
+    name: '_CariEkstreViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -57,13 +63,16 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
     });
   }
 
-  late final _$_CariEkstreViewModelBaseActionController =
-      ActionController(name: '_CariEkstreViewModelBase', context: context);
+  late final _$_CariEkstreViewModelBaseActionController = ActionController(
+    name: '_CariEkstreViewModelBase',
+    context: context,
+  );
 
   @override
   void changeDovizValue(String value) {
     final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
-        name: '_CariEkstreViewModelBase.changeDovizValue');
+      name: '_CariEkstreViewModelBase.changeDovizValue',
+    );
     try {
       return super.changeDovizValue(value);
     } finally {
@@ -74,7 +83,8 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
   @override
   void changeCariKodu(String? value) {
     final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
-        name: '_CariEkstreViewModelBase.changeCariKodu');
+      name: '_CariEkstreViewModelBase.changeCariKodu',
+    );
     try {
       return super.changeCariKodu(value);
     } finally {
@@ -85,7 +95,8 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
   @override
   void changeDovizTipi(int value) {
     final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
-        name: '_CariEkstreViewModelBase.changeDovizTipi');
+      name: '_CariEkstreViewModelBase.changeDovizTipi',
+    );
     try {
       return super.changeDovizTipi(value);
     } finally {
@@ -96,7 +107,8 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
   @override
   void setFuture() {
     final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
-        name: '_CariEkstreViewModelBase.setFuture');
+      name: '_CariEkstreViewModelBase.setFuture',
+    );
     try {
       return super.setFuture();
     } finally {
@@ -107,7 +119,8 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
   @override
   void resetFuture() {
     final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
-        name: '_CariEkstreViewModelBase.resetFuture');
+      name: '_CariEkstreViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

@@ -6,7 +6,7 @@ part "paket_icerigi_model.freezed.dart";
 part "paket_icerigi_model.g.dart";
 
 @freezed
-class PaketIcerigiModel with _$PaketIcerigiModel, NetworkManagerMixin {
+sealed class PaketIcerigiModel with _$PaketIcerigiModel, NetworkManagerMixin {
   factory PaketIcerigiModel({
     int? id,
     int? paketId,

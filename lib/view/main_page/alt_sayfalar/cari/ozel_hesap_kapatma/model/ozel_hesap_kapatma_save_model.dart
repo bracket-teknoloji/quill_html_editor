@@ -5,7 +5,7 @@ part "ozel_hesap_kapatma_save_model.freezed.dart";
 part "ozel_hesap_kapatma_save_model.g.dart";
 
 @unfreezed
-class OzelHesapKapatmaSaveModel with _$OzelHesapKapatmaSaveModel, NetworkManagerMixin {
+sealed class OzelHesapKapatmaSaveModel with _$OzelHesapKapatmaSaveModel, NetworkManagerMixin {
   factory OzelHesapKapatmaSaveModel({List<int>? arrHedefInckeyno, String? cariKodu, int? kaynakInckeyno}) =
       _OzelHesapKapatmaSaveModel;
   OzelHesapKapatmaSaveModel._();

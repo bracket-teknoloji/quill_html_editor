@@ -16,14 +16,15 @@ mixin _$UretimSonuKaydiEditViewModel
   UretimSonuKaydiListesiRequestModel get kalemlerRequestModel =>
       (_$kalemlerRequestModelComputed ??=
               Computed<UretimSonuKaydiListesiRequestModel>(
-                  () => super.kalemlerRequestModel,
-                  name:
-                      '_UretimSonuKaydiEditViewModelBase.kalemlerRequestModel'))
+                () => super.kalemlerRequestModel,
+                name: '_UretimSonuKaydiEditViewModelBase.kalemlerRequestModel',
+              ))
           .value;
 
   late final _$showSaveButtonAtom = Atom(
-      name: '_UretimSonuKaydiEditViewModelBase.showSaveButton',
-      context: context);
+    name: '_UretimSonuKaydiEditViewModelBase.showSaveButton',
+    context: context,
+  );
 
   @override
   bool get showSaveButton {
@@ -38,8 +39,10 @@ mixin _$UretimSonuKaydiEditViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_UretimSonuKaydiEditViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_UretimSonuKaydiEditViewModelBase.model',
+    context: context,
+  );
 
   @override
   KalemModel? get model {
@@ -55,7 +58,9 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_UretimSonuKaydiEditViewModelBase.requestModel', context: context);
+    name: '_UretimSonuKaydiEditViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   UretimSonuKaydiEditModel get requestModel {
@@ -71,7 +76,9 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   late final _$kalemListAtom = Atom(
-      name: '_UretimSonuKaydiEditViewModelBase.kalemList', context: context);
+    name: '_UretimSonuKaydiEditViewModelBase.kalemList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemModel>? get kalemList {
@@ -87,8 +94,9 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   late final _$ekAlanlarListAtom = Atom(
-      name: '_UretimSonuKaydiEditViewModelBase.ekAlanlarList',
-      context: context);
+    name: '_UretimSonuKaydiEditViewModelBase.ekAlanlarList',
+    context: context,
+  );
 
   @override
   ObservableList<EkAlanlarModel>? get ekAlanlarList {
@@ -104,8 +112,9 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   late final _$getKalemlerAsyncAction = AsyncAction(
-      '_UretimSonuKaydiEditViewModelBase.getKalemler',
-      context: context);
+    '_UretimSonuKaydiEditViewModelBase.getKalemler',
+    context: context,
+  );
 
   @override
   Future<void> getKalemler() {
@@ -113,8 +122,9 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   late final _$getEkAlanlarAsyncAction = AsyncAction(
-      '_UretimSonuKaydiEditViewModelBase.getEkAlanlar',
-      context: context);
+    '_UretimSonuKaydiEditViewModelBase.getEkAlanlar',
+    context: context,
+  );
 
   @override
   Future<void> getEkAlanlar() {
@@ -122,8 +132,9 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   late final _$saveUSKAsyncAction = AsyncAction(
-      '_UretimSonuKaydiEditViewModelBase.saveUSK',
-      context: context);
+    '_UretimSonuKaydiEditViewModelBase.saveUSK',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<UretimSonuKaydiEditModel>> saveUSK() {
@@ -132,7 +143,9 @@ mixin _$UretimSonuKaydiEditViewModel
 
   late final _$_UretimSonuKaydiEditViewModelBaseActionController =
       ActionController(
-          name: '_UretimSonuKaydiEditViewModelBase', context: context);
+        name: '_UretimSonuKaydiEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setBelgeNo(String? belgeNo) {
@@ -141,8 +154,9 @@ mixin _$UretimSonuKaydiEditViewModel
     try {
       return super.setBelgeNo(belgeNo);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -153,21 +167,24 @@ mixin _$UretimSonuKaydiEditViewModel
     try {
       return super.setKalemList(list);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setShowSaveButton(bool value) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiEditViewModelBase.setShowSaveButton');
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(
+          name: '_UretimSonuKaydiEditViewModelBase.setShowSaveButton',
+        );
     try {
       return super.setShowSaveButton(value);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -178,8 +195,9 @@ mixin _$UretimSonuKaydiEditViewModel
     try {
       return super.setRequestModel(value);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -190,8 +208,9 @@ mixin _$UretimSonuKaydiEditViewModel
     try {
       return super.setModel(item);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

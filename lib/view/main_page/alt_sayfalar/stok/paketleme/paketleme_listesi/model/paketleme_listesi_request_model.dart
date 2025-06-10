@@ -4,7 +4,7 @@ part "paketleme_listesi_request_model.freezed.dart";
 part "paketleme_listesi_request_model.g.dart";
 
 @freezed
-class PaketlemeListesiRequestModel with _$PaketlemeListesiRequestModel {
+sealed class PaketlemeListesiRequestModel with _$PaketlemeListesiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory PaketlemeListesiRequestModel({
     @JsonKey(name: "ID") int? id,

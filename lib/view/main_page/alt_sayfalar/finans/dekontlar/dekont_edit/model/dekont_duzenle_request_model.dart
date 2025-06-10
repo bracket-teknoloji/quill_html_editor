@@ -6,7 +6,7 @@ part "dekont_duzenle_request_model.freezed.dart";
 part "dekont_duzenle_request_model.g.dart";
 
 @unfreezed
-class DekontDuzenleRequestModel with _$DekontDuzenleRequestModel, NetworkManagerMixin {
+sealed class DekontDuzenleRequestModel with _$DekontDuzenleRequestModel, NetworkManagerMixin {
   factory DekontDuzenleRequestModel({
     int? inckeyno,
     DateTime? tarih,

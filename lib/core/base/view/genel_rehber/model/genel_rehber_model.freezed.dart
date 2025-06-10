@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,162 +10,123 @@ part of 'genel_rehber_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-GenelRehberModel _$GenelRehberModelFromJson(Map<String, dynamic> json) {
-  return _GenelRehberModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$GenelRehberModel {
-  String? get kodu => throw _privateConstructorUsedError;
-  set kodu(String? value) => throw _privateConstructorUsedError;
-  String? get aciklama => throw _privateConstructorUsedError;
-  set aciklama(String? value) => throw _privateConstructorUsedError;
-  String? get adi => throw _privateConstructorUsedError;
-  set adi(String? value) => throw _privateConstructorUsedError;
+
+ String? get kodu; set kodu(String? value); String? get aciklama; set aciklama(String? value); String? get adi; set adi(String? value);
+/// Create a copy of GenelRehberModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GenelRehberModelCopyWith<GenelRehberModel> get copyWith => _$GenelRehberModelCopyWithImpl<GenelRehberModel>(this as GenelRehberModel, _$identity);
 
   /// Serializes this GenelRehberModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of GenelRehberModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $GenelRehberModelCopyWith<GenelRehberModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $GenelRehberModelCopyWith<$Res> {
-  factory $GenelRehberModelCopyWith(GenelRehberModel value, $Res Function(GenelRehberModel) then) =
-      _$GenelRehberModelCopyWithImpl<$Res, GenelRehberModel>;
-  @useResult
-  $Res call({String? kodu, String? aciklama, String? adi});
-}
+abstract mixin class $GenelRehberModelCopyWith<$Res>  {
+  factory $GenelRehberModelCopyWith(GenelRehberModel value, $Res Function(GenelRehberModel) _then) = _$GenelRehberModelCopyWithImpl;
+@useResult
+$Res call({
+ String? kodu, String? aciklama, String? adi
+});
 
+
+
+
+}
 /// @nodoc
-class _$GenelRehberModelCopyWithImpl<$Res, $Val extends GenelRehberModel> implements $GenelRehberModelCopyWith<$Res> {
-  _$GenelRehberModelCopyWithImpl(this._value, this._then);
+class _$GenelRehberModelCopyWithImpl<$Res>
+    implements $GenelRehberModelCopyWith<$Res> {
+  _$GenelRehberModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final GenelRehberModel _self;
+  final $Res Function(GenelRehberModel) _then;
 
-  /// Create a copy of GenelRehberModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? kodu = freezed, Object? aciklama = freezed, Object? adi = freezed}) {
-    return _then(
-      _value.copyWith(
-            kodu: freezed == kodu
-                ? _value.kodu
-                : kodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            aciklama: freezed == aciklama
-                ? _value.aciklama
-                : aciklama // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            adi: freezed == adi
-                ? _value.adi
-                : adi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of GenelRehberModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? kodu = freezed,Object? aciklama = freezed,Object? adi = freezed,}) {
+  return _then(_self.copyWith(
+kodu: freezed == kodu ? _self.kodu : kodu // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,adi: freezed == adi ? _self.adi : adi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$GenelRehberModelImplCopyWith<$Res> implements $GenelRehberModelCopyWith<$Res> {
-  factory _$$GenelRehberModelImplCopyWith(_$GenelRehberModelImpl value, $Res Function(_$GenelRehberModelImpl) then) =
-      __$$GenelRehberModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? kodu, String? aciklama, String? adi});
 }
 
-/// @nodoc
-class __$$GenelRehberModelImplCopyWithImpl<$Res> extends _$GenelRehberModelCopyWithImpl<$Res, _$GenelRehberModelImpl>
-    implements _$$GenelRehberModelImplCopyWith<$Res> {
-  __$$GenelRehberModelImplCopyWithImpl(_$GenelRehberModelImpl _value, $Res Function(_$GenelRehberModelImpl) _then)
-    : super(_value, _then);
-
-  /// Create a copy of GenelRehberModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? kodu = freezed, Object? aciklama = freezed, Object? adi = freezed}) {
-    return _then(
-      _$GenelRehberModelImpl(
-        kodu: freezed == kodu
-            ? _value.kodu
-            : kodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        aciklama: freezed == aciklama
-            ? _value.aciklama
-            : aciklama // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        adi: freezed == adi
-            ? _value.adi
-            : adi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$GenelRehberModelImpl extends _GenelRehberModel {
-  _$GenelRehberModelImpl({this.kodu, this.aciklama, this.adi}) : super._();
 
-  factory _$GenelRehberModelImpl.fromJson(Map<String, dynamic> json) => _$$GenelRehberModelImplFromJson(json);
+class _GenelRehberModel extends GenelRehberModel {
+   _GenelRehberModel({this.kodu, this.aciklama, this.adi}): super._();
+  factory _GenelRehberModel.fromJson(Map<String, dynamic> json) => _$GenelRehberModelFromJson(json);
 
-  @override
-  String? kodu;
-  @override
-  String? aciklama;
-  @override
-  String? adi;
+@override  String? kodu;
+@override  String? aciklama;
+@override  String? adi;
 
-  /// Create a copy of GenelRehberModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GenelRehberModelImplCopyWith<_$GenelRehberModelImpl> get copyWith =>
-      __$$GenelRehberModelImplCopyWithImpl<_$GenelRehberModelImpl>(this, _$identity);
+/// Create a copy of GenelRehberModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GenelRehberModelCopyWith<_GenelRehberModel> get copyWith => __$GenelRehberModelCopyWithImpl<_GenelRehberModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GenelRehberModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$GenelRehberModelToJson(this, );
 }
 
-abstract class _GenelRehberModel extends GenelRehberModel {
-  factory _GenelRehberModel({String? kodu, String? aciklama, String? adi}) = _$GenelRehberModelImpl;
-  _GenelRehberModel._() : super._();
 
-  factory _GenelRehberModel.fromJson(Map<String, dynamic> json) = _$GenelRehberModelImpl.fromJson;
 
-  @override
-  String? get kodu;
-  set kodu(String? value);
-  @override
-  String? get aciklama;
-  set aciklama(String? value);
-  @override
-  String? get adi;
-  set adi(String? value);
 
-  /// Create a copy of GenelRehberModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GenelRehberModelImplCopyWith<_$GenelRehberModelImpl> get copyWith => throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$GenelRehberModelCopyWith<$Res> implements $GenelRehberModelCopyWith<$Res> {
+  factory _$GenelRehberModelCopyWith(_GenelRehberModel value, $Res Function(_GenelRehberModel) _then) = __$GenelRehberModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? kodu, String? aciklama, String? adi
+});
+
+
+
+
+}
+/// @nodoc
+class __$GenelRehberModelCopyWithImpl<$Res>
+    implements _$GenelRehberModelCopyWith<$Res> {
+  __$GenelRehberModelCopyWithImpl(this._self, this._then);
+
+  final _GenelRehberModel _self;
+  final $Res Function(_GenelRehberModel) _then;
+
+/// Create a copy of GenelRehberModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? kodu = freezed,Object? aciklama = freezed,Object? adi = freezed,}) {
+  return _then(_GenelRehberModel(
+kodu: freezed == kodu ? _self.kodu : kodu // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,adi: freezed == adi ? _self.adi : adi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

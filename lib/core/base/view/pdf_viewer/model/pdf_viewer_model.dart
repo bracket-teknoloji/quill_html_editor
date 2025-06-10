@@ -111,7 +111,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
 //   toString() => toJson().toString();
 // }
 @unfreezed
-class DicParams with _$DicParams {
+sealed class DicParams with _$DicParams {
   factory DicParams({
     required String belgeNo,
     String? cariKodu,

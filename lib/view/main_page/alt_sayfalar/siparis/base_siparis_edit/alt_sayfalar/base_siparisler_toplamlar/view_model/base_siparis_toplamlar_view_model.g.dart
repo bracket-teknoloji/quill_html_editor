@@ -11,7 +11,9 @@ part of 'base_siparis_toplamlar_view_model.dart';
 mixin _$BaseSiparisToplamlarViewModel
     on _BaseSiparisToplamlarViewModelBase, Store {
   late final _$isGenIsk1TAtom = Atom(
-      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk1T', context: context);
+    name: '_BaseSiparisToplamlarViewModelBase.isGenIsk1T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk1T {
@@ -27,7 +29,9 @@ mixin _$BaseSiparisToplamlarViewModel
   }
 
   late final _$isGenIsk2TAtom = Atom(
-      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk2T', context: context);
+    name: '_BaseSiparisToplamlarViewModelBase.isGenIsk2T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk2T {
@@ -43,7 +47,9 @@ mixin _$BaseSiparisToplamlarViewModel
   }
 
   late final _$isGenIsk3TAtom = Atom(
-      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk3T', context: context);
+    name: '_BaseSiparisToplamlarViewModelBase.isGenIsk3T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk3T {
@@ -58,8 +64,10 @@ mixin _$BaseSiparisToplamlarViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseSiparisToplamlarViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseSiparisToplamlarViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -76,7 +84,9 @@ mixin _$BaseSiparisToplamlarViewModel
 
   late final _$_BaseSiparisToplamlarViewModelBaseActionController =
       ActionController(
-          name: '_BaseSiparisToplamlarViewModelBase', context: context);
+        name: '_BaseSiparisToplamlarViewModelBase',
+        context: context,
+      );
 
   @override
   void setEkMal1(double? value) {
@@ -85,8 +95,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setEkMal1(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -97,8 +108,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setTevkifat(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -109,8 +121,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setEkMal3(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -121,8 +134,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setVadeTarihi(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -133,8 +147,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setIskTipi1(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -145,8 +160,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setIskTipi2(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -157,8 +173,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setIskTipi3(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -169,8 +186,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setGenIsk1(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -181,8 +199,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setGenIsk2(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -193,8 +212,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.setGenIsk3(value);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -205,8 +225,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.changeGenIsk1O(controller);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -217,8 +238,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.changeGenIsk2O(controller);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -229,8 +251,9 @@ mixin _$BaseSiparisToplamlarViewModel
     try {
       return super.changeGenIsk3O(controller);
     } finally {
-      _$_BaseSiparisToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

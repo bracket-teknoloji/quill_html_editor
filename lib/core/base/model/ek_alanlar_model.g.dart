@@ -6,8 +6,8 @@ part of 'ek_alanlar_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EkAlanlarModelImpl _$$EkAlanlarModelImplFromJson(Map<String, dynamic> json) =>
-    _$EkAlanlarModelImpl(
+_EkAlanlarModel _$EkAlanlarModelFromJson(Map<String, dynamic> json) =>
+    _EkAlanlarModel(
       tabloAdi: json['TABLO_ADI'] as String?,
       alanKodu: json['ALAN_KODU'] as String?,
       alanAciklama: json['ALAN_ACIKLAMA'] as String?,
@@ -23,8 +23,7 @@ _$EkAlanlarModelImpl _$$EkAlanlarModelImplFromJson(Map<String, dynamic> json) =>
       ondeger: json['ONDEGER'] as String?,
     );
 
-Map<String, dynamic> _$$EkAlanlarModelImplToJson(
-        _$EkAlanlarModelImpl instance) =>
+Map<String, dynamic> _$EkAlanlarModelToJson(_EkAlanlarModel instance) =>
     <String, dynamic>{
       if (instance.tabloAdi case final value?) 'TABLO_ADI': value,
       if (instance.alanKodu case final value?) 'ALAN_KODU': value,

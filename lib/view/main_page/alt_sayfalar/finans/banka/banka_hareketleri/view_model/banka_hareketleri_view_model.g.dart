@@ -12,48 +12,50 @@ mixin _$BankaHareketleriViewModel on _BankaHareketleriViewModelBase, Store {
   Computed<double>? _$gelenTutarComputed;
 
   @override
-  double get gelenTutar =>
-      (_$gelenTutarComputed ??= Computed<double>(() => super.gelenTutar,
-              name: '_BankaHareketleriViewModelBase.gelenTutar'))
-          .value;
+  double get gelenTutar => (_$gelenTutarComputed ??= Computed<double>(
+    () => super.gelenTutar,
+    name: '_BankaHareketleriViewModelBase.gelenTutar',
+  )).value;
   Computed<double>? _$dovizGelenTutarComputed;
 
   @override
   double get dovizGelenTutar => (_$dovizGelenTutarComputed ??= Computed<double>(
-          () => super.dovizGelenTutar,
-          name: '_BankaHareketleriViewModelBase.dovizGelenTutar'))
-      .value;
+    () => super.dovizGelenTutar,
+    name: '_BankaHareketleriViewModelBase.dovizGelenTutar',
+  )).value;
   Computed<double>? _$gidenTutarComputed;
 
   @override
-  double get gidenTutar =>
-      (_$gidenTutarComputed ??= Computed<double>(() => super.gidenTutar,
-              name: '_BankaHareketleriViewModelBase.gidenTutar'))
-          .value;
+  double get gidenTutar => (_$gidenTutarComputed ??= Computed<double>(
+    () => super.gidenTutar,
+    name: '_BankaHareketleriViewModelBase.gidenTutar',
+  )).value;
   Computed<double>? _$dovizGidenTutarComputed;
 
   @override
   double get dovizGidenTutar => (_$dovizGidenTutarComputed ??= Computed<double>(
-          () => super.dovizGidenTutar,
-          name: '_BankaHareketleriViewModelBase.dovizGidenTutar'))
-      .value;
+    () => super.dovizGidenTutar,
+    name: '_BankaHareketleriViewModelBase.dovizGidenTutar',
+  )).value;
   Computed<double>? _$bakiyeComputed;
 
   @override
-  double get bakiye =>
-      (_$bakiyeComputed ??= Computed<double>(() => super.bakiye,
-              name: '_BankaHareketleriViewModelBase.bakiye'))
-          .value;
+  double get bakiye => (_$bakiyeComputed ??= Computed<double>(
+    () => super.bakiye,
+    name: '_BankaHareketleriViewModelBase.bakiye',
+  )).value;
   Computed<double>? _$dovizBakiyeComputed;
 
   @override
-  double get dovizBakiye =>
-      (_$dovizBakiyeComputed ??= Computed<double>(() => super.dovizBakiye,
-              name: '_BankaHareketleriViewModelBase.dovizBakiye'))
-          .value;
+  double get dovizBakiye => (_$dovizBakiyeComputed ??= Computed<double>(
+    () => super.dovizBakiye,
+    name: '_BankaHareketleriViewModelBase.dovizBakiye',
+  )).value;
 
   late final _$requestModelAtom = Atom(
-      name: '_BankaHareketleriViewModelBase.requestModel', context: context);
+    name: '_BankaHareketleriViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   BankaIslemleriRequestModel get requestModel {
@@ -69,8 +71,9 @@ mixin _$BankaHareketleriViewModel on _BankaHareketleriViewModelBase, Store {
   }
 
   late final _$bankaHareketleriListesiAtom = Atom(
-      name: '_BankaHareketleriViewModelBase.bankaHareketleriListesi',
-      context: context);
+    name: '_BankaHareketleriViewModelBase.bankaHareketleriListesi',
+    context: context,
+  );
 
   @override
   ObservableList<BankaHareketleriModel>? get bankaHareketleriListesi {
@@ -80,14 +83,19 @@ mixin _$BankaHareketleriViewModel on _BankaHareketleriViewModelBase, Store {
 
   @override
   set bankaHareketleriListesi(ObservableList<BankaHareketleriModel>? value) {
-    _$bankaHareketleriListesiAtom
-        .reportWrite(value, super.bankaHareketleriListesi, () {
-      super.bankaHareketleriListesi = value;
-    });
+    _$bankaHareketleriListesiAtom.reportWrite(
+      value,
+      super.bankaHareketleriListesi,
+      () {
+        super.bankaHareketleriListesi = value;
+      },
+    );
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_BankaHareketleriViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_BankaHareketleriViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -96,7 +104,9 @@ mixin _$BankaHareketleriViewModel on _BankaHareketleriViewModelBase, Store {
 
   late final _$_BankaHareketleriViewModelBaseActionController =
       ActionController(
-          name: '_BankaHareketleriViewModelBase', context: context);
+        name: '_BankaHareketleriViewModelBase',
+        context: context,
+      );
 
   @override
   void setHesapKodu(String? value) {
@@ -111,9 +121,10 @@ mixin _$BankaHareketleriViewModel on _BankaHareketleriViewModelBase, Store {
 
   @override
   void setBankaHareketleriListesi(List<BankaHareketleriModel>? value) {
-    final _$actionInfo =
-        _$_BankaHareketleriViewModelBaseActionController.startAction(
-            name: '_BankaHareketleriViewModelBase.setBankaHareketleriListesi');
+    final _$actionInfo = _$_BankaHareketleriViewModelBaseActionController
+        .startAction(
+          name: '_BankaHareketleriViewModelBase.setBankaHareketleriListesi',
+        );
     try {
       return super.setBankaHareketleriListesi(value);
     } finally {

@@ -6,15 +6,13 @@ part of 'kullanicilar_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KullanicilarModelImpl _$$KullanicilarModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$KullanicilarModelImpl(
+_KullanicilarModel _$KullanicilarModelFromJson(Map<String, dynamic> json) =>
+    _KullanicilarModel(
       kodu: json['KODU'] as String?,
       adi: json['ADI'] as String?,
     );
 
-Map<String, dynamic> _$$KullanicilarModelImplToJson(
-        _$KullanicilarModelImpl instance) =>
+Map<String, dynamic> _$KullanicilarModelToJson(_KullanicilarModel instance) =>
     <String, dynamic>{
       if (instance.kodu case final value?) 'KODU': value,
       if (instance.adi case final value?) 'ADI': value,

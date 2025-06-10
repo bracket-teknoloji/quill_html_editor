@@ -9,8 +9,10 @@ part of 'olcum_girisi_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
-  late final _$searchBarAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_OlcumGirisiViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -25,8 +27,10 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$appBarTitleAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.appBarTitle', context: context);
+  late final _$appBarTitleAtom = Atom(
+    name: '_OlcumGirisiViewModelBase.appBarTitle',
+    context: context,
+  );
 
   @override
   String? get appBarTitle {
@@ -41,8 +45,10 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.dahaVarMi', context: context);
+  late final _$dahaVarMiAtom = Atom(
+    name: '_OlcumGirisiViewModelBase.dahaVarMi',
+    context: context,
+  );
 
   @override
   bool get dahaVarMi {
@@ -57,8 +63,10 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_OlcumGirisiViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   OlcumGirisiRequestModel get requestModel {
@@ -73,8 +81,10 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$olcumListAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.olcumList', context: context);
+  late final _$olcumListAtom = Atom(
+    name: '_OlcumGirisiViewModelBase.olcumList',
+    context: context,
+  );
 
   @override
   ObservableList<OlcumBelgeModel>? get olcumList {
@@ -89,8 +99,10 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$qrOlcumListAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.qrOlcumList', context: context);
+  late final _$qrOlcumListAtom = Atom(
+    name: '_OlcumGirisiViewModelBase.qrOlcumList',
+    context: context,
+  );
 
   @override
   ObservableList<OlcumBelgeModel>? get qrOlcumList {
@@ -105,24 +117,30 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$resetSayfaAsyncAction =
-      AsyncAction('_OlcumGirisiViewModelBase.resetSayfa', context: context);
+  late final _$resetSayfaAsyncAction = AsyncAction(
+    '_OlcumGirisiViewModelBase.resetSayfa',
+    context: context,
+  );
 
   @override
   Future<void> resetSayfa() {
     return _$resetSayfaAsyncAction.run(() => super.resetSayfa());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_OlcumGirisiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_OlcumGirisiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_OlcumGirisiViewModelBaseActionController =
-      ActionController(name: '_OlcumGirisiViewModelBase', context: context);
+  late final _$_OlcumGirisiViewModelBaseActionController = ActionController(
+    name: '_OlcumGirisiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchBar() {

@@ -12,20 +12,23 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
   Computed<double>? _$toplamTutarComputed;
 
   @override
-  double get toplamTutar =>
-      (_$toplamTutarComputed ??= Computed<double>(() => super.toplamTutar,
-              name: '_CekSenetTahsilatiViewModelBase.toplamTutar'))
-          .value;
+  double get toplamTutar => (_$toplamTutarComputed ??= Computed<double>(
+    () => super.toplamTutar,
+    name: '_CekSenetTahsilatiViewModelBase.toplamTutar',
+  )).value;
   Computed<double>? _$ortalamaVadeGunuComputed;
 
   @override
-  double get ortalamaVadeGunu => (_$ortalamaVadeGunuComputed ??=
-          Computed<double>(() => super.ortalamaVadeGunu,
-              name: '_CekSenetTahsilatiViewModelBase.ortalamaVadeGunu'))
-      .value;
+  double get ortalamaVadeGunu =>
+      (_$ortalamaVadeGunuComputed ??= Computed<double>(
+        () => super.ortalamaVadeGunu,
+        name: '_CekSenetTahsilatiViewModelBase.ortalamaVadeGunu',
+      )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_CekSenetTahsilatiViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_CekSenetTahsilatiViewModelBase.model',
+    context: context,
+  );
 
   @override
   SaveCekSenetModel get model {
@@ -41,8 +44,9 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
   }
 
   late final _$cariListesiModelAtom = Atom(
-      name: '_CekSenetTahsilatiViewModelBase.cariListesiModel',
-      context: context);
+    name: '_CekSenetTahsilatiViewModelBase.cariListesiModel',
+    context: context,
+  );
 
   @override
   CariListesiModel? get cariListesiModel {
@@ -57,8 +61,10 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
     });
   }
 
-  late final _$postDataAsyncAction =
-      AsyncAction('_CekSenetTahsilatiViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction = AsyncAction(
+    '_CekSenetTahsilatiViewModelBase.postData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<SaveCekSenetModel>> postData() {
@@ -67,7 +73,9 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
 
   late final _$_CekSenetTahsilatiViewModelBaseActionController =
       ActionController(
-          name: '_CekSenetTahsilatiViewModelBase', context: context);
+        name: '_CekSenetTahsilatiViewModelBase',
+        context: context,
+      );
 
   @override
   void setGirisTarihi(DateTime? value) {
@@ -115,9 +123,10 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
 
   @override
   void addCekSenetKalemlerModel(CekSenetKalemlerModel? value) {
-    final _$actionInfo =
-        _$_CekSenetTahsilatiViewModelBaseActionController.startAction(
-            name: '_CekSenetTahsilatiViewModelBase.addCekSenetKalemlerModel');
+    final _$actionInfo = _$_CekSenetTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetTahsilatiViewModelBase.addCekSenetKalemlerModel',
+        );
     try {
       return super.addCekSenetKalemlerModel(value);
     } finally {
@@ -127,10 +136,10 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
 
   @override
   void removeCekSenetKalemlerModel(CekSenetKalemlerModel? value) {
-    final _$actionInfo =
-        _$_CekSenetTahsilatiViewModelBaseActionController.startAction(
-            name:
-                '_CekSenetTahsilatiViewModelBase.removeCekSenetKalemlerModel');
+    final _$actionInfo = _$_CekSenetTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetTahsilatiViewModelBase.removeCekSenetKalemlerModel',
+        );
     try {
       return super.removeCekSenetKalemlerModel(value);
     } finally {
@@ -140,11 +149,13 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
 
   @override
   void replaceCekSenetKalemlerModel(
-      CekSenetKalemlerModel? oldValue, CekSenetKalemlerModel? newValue) {
-    final _$actionInfo =
-        _$_CekSenetTahsilatiViewModelBaseActionController.startAction(
-            name:
-                '_CekSenetTahsilatiViewModelBase.replaceCekSenetKalemlerModel');
+    CekSenetKalemlerModel? oldValue,
+    CekSenetKalemlerModel? newValue,
+  ) {
+    final _$actionInfo = _$_CekSenetTahsilatiViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetTahsilatiViewModelBase.replaceCekSenetKalemlerModel',
+        );
     try {
       return super.replaceCekSenetKalemlerModel(oldValue, newValue);
     } finally {

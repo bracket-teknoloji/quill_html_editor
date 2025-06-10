@@ -12,20 +12,24 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
   Computed<List<bool>>? _$selectedBorcTipiComputed;
 
   @override
-  List<bool> get selectedBorcTipi => (_$selectedBorcTipiComputed ??=
-          Computed<List<bool>>(() => super.selectedBorcTipi,
-              name: '_DekontKalemEkleViewModelBase.selectedBorcTipi'))
-      .value;
+  List<bool> get selectedBorcTipi =>
+      (_$selectedBorcTipiComputed ??= Computed<List<bool>>(
+        () => super.selectedBorcTipi,
+        name: '_DekontKalemEkleViewModelBase.selectedBorcTipi',
+      )).value;
   Computed<List<bool>>? _$selectedHesapTipiComputed;
 
   @override
-  List<bool> get selectedHesapTipi => (_$selectedHesapTipiComputed ??=
-          Computed<List<bool>>(() => super.selectedHesapTipi,
-              name: '_DekontKalemEkleViewModelBase.selectedHesapTipi'))
-      .value;
+  List<bool> get selectedHesapTipi =>
+      (_$selectedHesapTipiComputed ??= Computed<List<bool>>(
+        () => super.selectedHesapTipi,
+        name: '_DekontKalemEkleViewModelBase.selectedHesapTipi',
+      )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_DekontKalemEkleViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_DekontKalemEkleViewModelBase.model',
+    context: context,
+  );
 
   @override
   DekontKalemler get model {
@@ -37,16 +41,20 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   set model(DekontKalemler value) {
-    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
-        () {
-      super.model = value;
-      _modelIsInitialized = true;
-    });
+    _$modelAtom.reportWrite(
+      value,
+      _modelIsInitialized ? super.model : null,
+      () {
+        super.model = value;
+        _modelIsInitialized = true;
+      },
+    );
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_DekontKalemEkleViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_DekontKalemEkleViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -62,16 +70,19 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
   }
 
   late final _$getDovizlerAsyncAction = AsyncAction(
-      '_DekontKalemEkleViewModelBase.getDovizler',
-      context: context);
+    '_DekontKalemEkleViewModelBase.getDovizler',
+    context: context,
+  );
 
   @override
   Future<void> getDovizler() {
     return _$getDovizlerAsyncAction.run(() => super.getDovizler());
   }
 
-  late final _$_DekontKalemEkleViewModelBaseActionController =
-      ActionController(name: '_DekontKalemEkleViewModelBase', context: context);
+  late final _$_DekontKalemEkleViewModelBaseActionController = ActionController(
+    name: '_DekontKalemEkleViewModelBase',
+    context: context,
+  );
 
   @override
   void setModel(DekontKalemler value) {
@@ -229,9 +240,10 @@ mixin _$DekontKalemEkleViewModel on _DekontKalemEkleViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_DekontKalemEkleViewModelBaseActionController.startAction(
-            name: '_DekontKalemEkleViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_DekontKalemEkleViewModelBaseActionController
+        .startAction(
+          name: '_DekontKalemEkleViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {

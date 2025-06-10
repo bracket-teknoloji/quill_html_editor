@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,203 +10,123 @@ part of 'belge_kontrol_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-BelgeKontrolRequestModel _$BelgeKontrolRequestModelFromJson(Map<String, dynamic> json) {
-  return _BelgeKontrolRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BelgeKontrolRequestModel {
-  @JsonKey(name: "BaslamaTarihi")
-  String? get baslamaTarihi => throw _privateConstructorUsedError;
-  @JsonKey(name: "BaslamaTarihi")
-  set baslamaTarihi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "BitisTarihi")
-  String? get bitisTarihi => throw _privateConstructorUsedError;
-  @JsonKey(name: "BitisTarihi")
-  set bitisTarihi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "Durum")
-  String? get durum => throw _privateConstructorUsedError;
-  @JsonKey(name: "Durum")
-  set durum(String? value) => throw _privateConstructorUsedError;
+
+@JsonKey(name: "BaslamaTarihi") String? get baslamaTarihi;@JsonKey(name: "BaslamaTarihi") set baslamaTarihi(String? value);@JsonKey(name: "BitisTarihi") String? get bitisTarihi;@JsonKey(name: "BitisTarihi") set bitisTarihi(String? value);@JsonKey(name: "Durum") String? get durum;@JsonKey(name: "Durum") set durum(String? value);
+/// Create a copy of BelgeKontrolRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BelgeKontrolRequestModelCopyWith<BelgeKontrolRequestModel> get copyWith => _$BelgeKontrolRequestModelCopyWithImpl<BelgeKontrolRequestModel>(this as BelgeKontrolRequestModel, _$identity);
 
   /// Serializes this BelgeKontrolRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BelgeKontrolRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BelgeKontrolRequestModelCopyWith<BelgeKontrolRequestModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $BelgeKontrolRequestModelCopyWith<$Res> {
-  factory $BelgeKontrolRequestModelCopyWith(
-    BelgeKontrolRequestModel value,
-    $Res Function(BelgeKontrolRequestModel) then,
-  ) = _$BelgeKontrolRequestModelCopyWithImpl<$Res, BelgeKontrolRequestModel>;
-  @useResult
-  $Res call({
-    @JsonKey(name: "BaslamaTarihi") String? baslamaTarihi,
-    @JsonKey(name: "BitisTarihi") String? bitisTarihi,
-    @JsonKey(name: "Durum") String? durum,
-  });
-}
+abstract mixin class $BelgeKontrolRequestModelCopyWith<$Res>  {
+  factory $BelgeKontrolRequestModelCopyWith(BelgeKontrolRequestModel value, $Res Function(BelgeKontrolRequestModel) _then) = _$BelgeKontrolRequestModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: "BaslamaTarihi") String? baslamaTarihi,@JsonKey(name: "BitisTarihi") String? bitisTarihi,@JsonKey(name: "Durum") String? durum
+});
 
+
+
+
+}
 /// @nodoc
-class _$BelgeKontrolRequestModelCopyWithImpl<$Res, $Val extends BelgeKontrolRequestModel>
+class _$BelgeKontrolRequestModelCopyWithImpl<$Res>
     implements $BelgeKontrolRequestModelCopyWith<$Res> {
-  _$BelgeKontrolRequestModelCopyWithImpl(this._value, this._then);
+  _$BelgeKontrolRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BelgeKontrolRequestModel _self;
+  final $Res Function(BelgeKontrolRequestModel) _then;
 
-  /// Create a copy of BelgeKontrolRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? baslamaTarihi = freezed, Object? bitisTarihi = freezed, Object? durum = freezed}) {
-    return _then(
-      _value.copyWith(
-            baslamaTarihi: freezed == baslamaTarihi
-                ? _value.baslamaTarihi
-                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            bitisTarihi: freezed == bitisTarihi
-                ? _value.bitisTarihi
-                : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            durum: freezed == durum
-                ? _value.durum
-                : durum // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of BelgeKontrolRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? durum = freezed,}) {
+  return _then(_self.copyWith(
+baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,durum: freezed == durum ? _self.durum : durum // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$BelgeKontrolRequestModelImplCopyWith<$Res> implements $BelgeKontrolRequestModelCopyWith<$Res> {
-  factory _$$BelgeKontrolRequestModelImplCopyWith(
-    _$BelgeKontrolRequestModelImpl value,
-    $Res Function(_$BelgeKontrolRequestModelImpl) then,
-  ) = __$$BelgeKontrolRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    @JsonKey(name: "BaslamaTarihi") String? baslamaTarihi,
-    @JsonKey(name: "BitisTarihi") String? bitisTarihi,
-    @JsonKey(name: "Durum") String? durum,
-  });
 }
 
-/// @nodoc
-class __$$BelgeKontrolRequestModelImplCopyWithImpl<$Res>
-    extends _$BelgeKontrolRequestModelCopyWithImpl<$Res, _$BelgeKontrolRequestModelImpl>
-    implements _$$BelgeKontrolRequestModelImplCopyWith<$Res> {
-  __$$BelgeKontrolRequestModelImplCopyWithImpl(
-    _$BelgeKontrolRequestModelImpl _value,
-    $Res Function(_$BelgeKontrolRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of BelgeKontrolRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? baslamaTarihi = freezed, Object? bitisTarihi = freezed, Object? durum = freezed}) {
-    return _then(
-      _$BelgeKontrolRequestModelImpl(
-        baslamaTarihi: freezed == baslamaTarihi
-            ? _value.baslamaTarihi
-            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        bitisTarihi: freezed == bitisTarihi
-            ? _value.bitisTarihi
-            : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        durum: freezed == durum
-            ? _value.durum
-            : durum // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$BelgeKontrolRequestModelImpl extends _BelgeKontrolRequestModel {
-  _$BelgeKontrolRequestModelImpl({
-    @JsonKey(name: "BaslamaTarihi") this.baslamaTarihi,
-    @JsonKey(name: "BitisTarihi") this.bitisTarihi,
-    @JsonKey(name: "Durum") this.durum,
-  }) : super._();
 
-  factory _$BelgeKontrolRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BelgeKontrolRequestModelImplFromJson(json);
+class _BelgeKontrolRequestModel extends BelgeKontrolRequestModel {
+   _BelgeKontrolRequestModel({@JsonKey(name: "BaslamaTarihi") this.baslamaTarihi, @JsonKey(name: "BitisTarihi") this.bitisTarihi, @JsonKey(name: "Durum") this.durum}): super._();
+  factory _BelgeKontrolRequestModel.fromJson(Map<String, dynamic> json) => _$BelgeKontrolRequestModelFromJson(json);
 
-  @override
-  @JsonKey(name: "BaslamaTarihi")
-  String? baslamaTarihi;
-  @override
-  @JsonKey(name: "BitisTarihi")
-  String? bitisTarihi;
-  @override
-  @JsonKey(name: "Durum")
-  String? durum;
+@override@JsonKey(name: "BaslamaTarihi")  String? baslamaTarihi;
+@override@JsonKey(name: "BitisTarihi")  String? bitisTarihi;
+@override@JsonKey(name: "Durum")  String? durum;
 
-  /// Create a copy of BelgeKontrolRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BelgeKontrolRequestModelImplCopyWith<_$BelgeKontrolRequestModelImpl> get copyWith =>
-      __$$BelgeKontrolRequestModelImplCopyWithImpl<_$BelgeKontrolRequestModelImpl>(this, _$identity);
+/// Create a copy of BelgeKontrolRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BelgeKontrolRequestModelCopyWith<_BelgeKontrolRequestModel> get copyWith => __$BelgeKontrolRequestModelCopyWithImpl<_BelgeKontrolRequestModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BelgeKontrolRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$BelgeKontrolRequestModelToJson(this, );
 }
 
-abstract class _BelgeKontrolRequestModel extends BelgeKontrolRequestModel {
-  factory _BelgeKontrolRequestModel({
-    @JsonKey(name: "BaslamaTarihi") String? baslamaTarihi,
-    @JsonKey(name: "BitisTarihi") String? bitisTarihi,
-    @JsonKey(name: "Durum") String? durum,
-  }) = _$BelgeKontrolRequestModelImpl;
-  _BelgeKontrolRequestModel._() : super._();
 
-  factory _BelgeKontrolRequestModel.fromJson(Map<String, dynamic> json) = _$BelgeKontrolRequestModelImpl.fromJson;
 
-  @override
-  @JsonKey(name: "BaslamaTarihi")
-  String? get baslamaTarihi;
-  @JsonKey(name: "BaslamaTarihi")
-  set baslamaTarihi(String? value);
-  @override
-  @JsonKey(name: "BitisTarihi")
-  String? get bitisTarihi;
-  @JsonKey(name: "BitisTarihi")
-  set bitisTarihi(String? value);
-  @override
-  @JsonKey(name: "Durum")
-  String? get durum;
-  @JsonKey(name: "Durum")
-  set durum(String? value);
 
-  /// Create a copy of BelgeKontrolRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BelgeKontrolRequestModelImplCopyWith<_$BelgeKontrolRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$BelgeKontrolRequestModelCopyWith<$Res> implements $BelgeKontrolRequestModelCopyWith<$Res> {
+  factory _$BelgeKontrolRequestModelCopyWith(_BelgeKontrolRequestModel value, $Res Function(_BelgeKontrolRequestModel) _then) = __$BelgeKontrolRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: "BaslamaTarihi") String? baslamaTarihi,@JsonKey(name: "BitisTarihi") String? bitisTarihi,@JsonKey(name: "Durum") String? durum
+});
+
+
+
+
+}
+/// @nodoc
+class __$BelgeKontrolRequestModelCopyWithImpl<$Res>
+    implements _$BelgeKontrolRequestModelCopyWith<$Res> {
+  __$BelgeKontrolRequestModelCopyWithImpl(this._self, this._then);
+
+  final _BelgeKontrolRequestModel _self;
+  final $Res Function(_BelgeKontrolRequestModel) _then;
+
+/// Create a copy of BelgeKontrolRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? durum = freezed,}) {
+  return _then(_BelgeKontrolRequestModel(
+baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,durum: freezed == durum ? _self.durum : durum // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

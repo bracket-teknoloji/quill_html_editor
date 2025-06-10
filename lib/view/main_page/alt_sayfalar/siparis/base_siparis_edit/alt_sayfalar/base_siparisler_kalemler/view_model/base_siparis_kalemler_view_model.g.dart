@@ -11,7 +11,9 @@ part of 'base_siparis_kalemler_view_model.dart';
 mixin _$BaseSiparisKalemlerViewModel
     on _BaseSiparisKalemlerViewModelBase, Store {
   late final _$kalemListAtom = Atom(
-      name: '_BaseSiparisKalemlerViewModelBase.kalemList', context: context);
+    name: '_BaseSiparisKalemlerViewModelBase.kalemList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemModel>? get kalemList {
@@ -28,18 +30,22 @@ mixin _$BaseSiparisKalemlerViewModel
 
   late final _$_BaseSiparisKalemlerViewModelBaseActionController =
       ActionController(
-          name: '_BaseSiparisKalemlerViewModelBase', context: context);
+        name: '_BaseSiparisKalemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void removeAtKalemList(int index) {
-    final _$actionInfo =
-        _$_BaseSiparisKalemlerViewModelBaseActionController.startAction(
-            name: '_BaseSiparisKalemlerViewModelBase.removeAtKalemList');
+    final _$actionInfo = _$_BaseSiparisKalemlerViewModelBaseActionController
+        .startAction(
+          name: '_BaseSiparisKalemlerViewModelBase.removeAtKalemList',
+        );
     try {
       return super.removeAtKalemList(index);
     } finally {
-      _$_BaseSiparisKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -50,8 +56,9 @@ mixin _$BaseSiparisKalemlerViewModel
     try {
       return super.updateKalemList();
     } finally {
-      _$_BaseSiparisKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparisKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

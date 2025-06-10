@@ -6,18 +6,17 @@ part of 'seri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SeriModelImpl _$$SeriModelImplFromJson(Map<String, dynamic> json) =>
-    _$SeriModelImpl(
-      seriNo: json['SERI_NO'] as String?,
-      aciklama: json['ACIKLAMA'] as String?,
-      stokKodu: json['STOK_KODU'] as String?,
-      stokAdi: json['STOK_ADI'] as String?,
-      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
-      miktar: (json['MIKTAR'] as num?)?.toInt(),
-      depoTanimi: json['DEPO_TANIMI'] as String?,
-    );
+_SeriModel _$SeriModelFromJson(Map<String, dynamic> json) => _SeriModel(
+  seriNo: json['SERI_NO'] as String?,
+  aciklama: json['ACIKLAMA'] as String?,
+  stokKodu: json['STOK_KODU'] as String?,
+  stokAdi: json['STOK_ADI'] as String?,
+  depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+  miktar: (json['MIKTAR'] as num?)?.toInt(),
+  depoTanimi: json['DEPO_TANIMI'] as String?,
+);
 
-Map<String, dynamic> _$$SeriModelImplToJson(_$SeriModelImpl instance) =>
+Map<String, dynamic> _$SeriModelToJson(_SeriModel instance) =>
     <String, dynamic>{
       if (instance.seriNo case final value?) 'SERI_NO': value,
       if (instance.aciklama case final value?) 'ACIKLAMA': value,

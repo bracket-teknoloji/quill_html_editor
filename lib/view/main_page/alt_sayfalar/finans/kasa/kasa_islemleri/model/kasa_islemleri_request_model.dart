@@ -6,7 +6,7 @@ part "kasa_islemleri_request_model.freezed.dart";
 part "kasa_islemleri_request_model.g.dart";
 
 @unfreezed
-class KasaIslemleriRequestModel with _$KasaIslemleriRequestModel {
+sealed class KasaIslemleriRequestModel with _$KasaIslemleriRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory KasaIslemleriRequestModel({
     String? baslamaTarihi,

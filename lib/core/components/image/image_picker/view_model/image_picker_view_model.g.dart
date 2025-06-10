@@ -9,8 +9,10 @@ part of 'image_picker_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
-  late final _$requestModelAtom =
-      Atom(name: '_ImagePickerViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_ImagePickerViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   EvrakEditModel? get requestModel {
@@ -25,8 +27,10 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
     });
   }
 
-  late final _$isProcessingAtom =
-      Atom(name: '_ImagePickerViewModelBase.isProcessing', context: context);
+  late final _$isProcessingAtom = Atom(
+    name: '_ImagePickerViewModelBase.isProcessing',
+    context: context,
+  );
 
   @override
   bool get isProcessing {
@@ -41,8 +45,10 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
     });
   }
 
-  late final _$imageAtom =
-      Atom(name: '_ImagePickerViewModelBase.image', context: context);
+  late final _$imageAtom = Atom(
+    name: '_ImagePickerViewModelBase.image',
+    context: context,
+  );
 
   @override
   Uint8List? get image {
@@ -57,16 +63,20 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
     });
   }
 
-  late final _$uploadEvrakAsyncAction =
-      AsyncAction('_ImagePickerViewModelBase.uploadEvrak', context: context);
+  late final _$uploadEvrakAsyncAction = AsyncAction(
+    '_ImagePickerViewModelBase.uploadEvrak',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<EvraklarRequestModel>> uploadEvrak() {
     return _$uploadEvrakAsyncAction.run(() => super.uploadEvrak());
   }
 
-  late final _$_ImagePickerViewModelBaseActionController =
-      ActionController(name: '_ImagePickerViewModelBase', context: context);
+  late final _$_ImagePickerViewModelBaseActionController = ActionController(
+    name: '_ImagePickerViewModelBase',
+    context: context,
+  );
 
   @override
   void setRequestModel(EvraklarRequestModel? model) {

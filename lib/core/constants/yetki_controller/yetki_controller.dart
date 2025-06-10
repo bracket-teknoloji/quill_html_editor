@@ -539,6 +539,7 @@ final class YetkiController {
 
   //! FİNANS
   bool get hizliTahsilatSil => _isTrue(_profilYetkiModel?.finansHizliTahsilatKayitlariSil);
+  bool get tahsilatPayker => _isTrue(_profilYetkiModel?.tahsilatPayker);
   bool get krediKartiTahsilat => _isTrue(_profilYetkiModel?.finansKKartiTahsilati);
   bool get nakitOdeme => _isTrue(_profilYetkiModel?.tahsilatNakitOdeme);
   bool get nakitTahsilat => _isTrue(_profilYetkiModel?.tahsilatNakitTahsilat);

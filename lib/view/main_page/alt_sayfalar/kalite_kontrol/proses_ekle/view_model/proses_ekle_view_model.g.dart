@@ -12,41 +12,44 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   Computed<double>? _$ortalamaDegerComputed;
 
   @override
-  double get ortalamaDeger =>
-      (_$ortalamaDegerComputed ??= Computed<double>(() => super.ortalamaDeger,
-              name: '_ProsesEkleViewModelBase.ortalamaDeger'))
-          .value;
+  double get ortalamaDeger => (_$ortalamaDegerComputed ??= Computed<double>(
+    () => super.ortalamaDeger,
+    name: '_ProsesEkleViewModelBase.ortalamaDeger',
+  )).value;
   Computed<double>? _$enKucukDegerComputed;
 
   @override
-  double get enKucukDeger =>
-      (_$enKucukDegerComputed ??= Computed<double>(() => super.enKucukDeger,
-              name: '_ProsesEkleViewModelBase.enKucukDeger'))
-          .value;
+  double get enKucukDeger => (_$enKucukDegerComputed ??= Computed<double>(
+    () => super.enKucukDeger,
+    name: '_ProsesEkleViewModelBase.enKucukDeger',
+  )).value;
   Computed<double>? _$enBuyukDegerComputed;
 
   @override
-  double get enBuyukDeger =>
-      (_$enBuyukDegerComputed ??= Computed<double>(() => super.enBuyukDeger,
-              name: '_ProsesEkleViewModelBase.enBuyukDeger'))
-          .value;
+  double get enBuyukDeger => (_$enBuyukDegerComputed ??= Computed<double>(
+    () => super.enBuyukDeger,
+    name: '_ProsesEkleViewModelBase.enBuyukDeger',
+  )).value;
   Computed<ObservableList<OlcumEkleDetayModel>?>? _$olcumlerComputed;
 
   @override
-  ObservableList<OlcumEkleDetayModel>? get olcumler => (_$olcumlerComputed ??=
-          Computed<ObservableList<OlcumEkleDetayModel>?>(() => super.olcumler,
-              name: '_ProsesEkleViewModelBase.olcumler'))
-      .value;
+  ObservableList<OlcumEkleDetayModel>? get olcumler =>
+      (_$olcumlerComputed ??= Computed<ObservableList<OlcumEkleDetayModel>?>(
+        () => super.olcumler,
+        name: '_ProsesEkleViewModelBase.olcumler',
+      )).value;
   Computed<bool>? _$sartliKabulMuComputed;
 
   @override
-  bool get sartliKabulMu =>
-      (_$sartliKabulMuComputed ??= Computed<bool>(() => super.sartliKabulMu,
-              name: '_ProsesEkleViewModelBase.sartliKabulMu'))
-          .value;
+  bool get sartliKabulMu => (_$sartliKabulMuComputed ??= Computed<bool>(
+    () => super.sartliKabulMu,
+    name: '_ProsesEkleViewModelBase.sartliKabulMu',
+  )).value;
 
   late final _$sonucTuruValueListAtom = Atom(
-      name: '_ProsesEkleViewModelBase.sonucTuruValueList', context: context);
+    name: '_ProsesEkleViewModelBase.sonucTuruValueList',
+    context: context,
+  );
 
   @override
   ObservableList<String> get sonucTuruValueList {
@@ -62,7 +65,9 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   }
 
   late final _$sonucTuruGroupValueAtom = Atom(
-      name: '_ProsesEkleViewModelBase.sonucTuruGroupValue', context: context);
+    name: '_ProsesEkleViewModelBase.sonucTuruGroupValue',
+    context: context,
+  );
 
   @override
   String get sonucTuruGroupValue {
@@ -77,8 +82,10 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
     });
   }
 
-  late final _$ekleModelAtom =
-      Atom(name: '_ProsesEkleViewModelBase.ekleModel', context: context);
+  late final _$ekleModelAtom = Atom(
+    name: '_ProsesEkleViewModelBase.ekleModel',
+    context: context,
+  );
 
   @override
   OlcumProsesModel get ekleModel {
@@ -93,13 +100,16 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
     });
   }
 
-  late final _$_ProsesEkleViewModelBaseActionController =
-      ActionController(name: '_ProsesEkleViewModelBase', context: context);
+  late final _$_ProsesEkleViewModelBaseActionController = ActionController(
+    name: '_ProsesEkleViewModelBase',
+    context: context,
+  );
 
   @override
   void setEkleModel(OlcumProsesModel model) {
     final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
-        name: '_ProsesEkleViewModelBase.setEkleModel');
+      name: '_ProsesEkleViewModelBase.setEkleModel',
+    );
     try {
       return super.setEkleModel(model);
     } finally {
@@ -110,7 +120,8 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   @override
   void setSonucTuruGroupValue(int index) {
     final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
-        name: '_ProsesEkleViewModelBase.setSonucTuruGroupValue');
+      name: '_ProsesEkleViewModelBase.setSonucTuruGroupValue',
+    );
     try {
       return super.setSonucTuruGroupValue(index);
     } finally {
@@ -121,7 +132,8 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   @override
   void setAciklama(String? value) {
     final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
-        name: '_ProsesEkleViewModelBase.setAciklama');
+      name: '_ProsesEkleViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {
@@ -132,7 +144,8 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   @override
   void setOperator(String? value) {
     final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
-        name: '_ProsesEkleViewModelBase.setOperator');
+      name: '_ProsesEkleViewModelBase.setOperator',
+    );
     try {
       return super.setOperator(value);
     } finally {
@@ -143,7 +156,8 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   @override
   void setSartliKabul(String? value) {
     final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
-        name: '_ProsesEkleViewModelBase.setSartliKabul');
+      name: '_ProsesEkleViewModelBase.setSartliKabul',
+    );
     try {
       return super.setSartliKabul(value);
     } finally {
@@ -154,7 +168,8 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   @override
   void setProsesDetayListesi(int index) {
     final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
-        name: '_ProsesEkleViewModelBase.setProsesDetayListesi');
+      name: '_ProsesEkleViewModelBase.setProsesDetayListesi',
+    );
     try {
       return super.setProsesDetayListesi(index);
     } finally {
@@ -165,7 +180,8 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   @override
   void setIndexedItem(int index, OlcumEkleDetayModel item) {
     final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
-        name: '_ProsesEkleViewModelBase.setIndexedItem');
+      name: '_ProsesEkleViewModelBase.setIndexedItem',
+    );
     try {
       return super.setIndexedItem(index, item);
     } finally {

@@ -12,13 +12,16 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   Computed<String>? _$efaturaButonAciklamaComputed;
 
   @override
-  String get efaturaButonAciklama => (_$efaturaButonAciklamaComputed ??=
-          Computed<String>(() => super.efaturaButonAciklama,
-              name: '_BaseEditCariDigerViewModelBase.efaturaButonAciklama'))
-      .value;
+  String get efaturaButonAciklama =>
+      (_$efaturaButonAciklamaComputed ??= Computed<String>(
+        () => super.efaturaButonAciklama,
+        name: '_BaseEditCariDigerViewModelBase.efaturaButonAciklama',
+      )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_BaseEditCariDigerViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseEditCariDigerViewModelBase.model',
+    context: context,
+  );
 
   @override
   CariSaveRequestModel? get model {
@@ -34,8 +37,9 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   }
 
   late final _$postFaturaTipiAsyncAction = AsyncAction(
-      '_BaseEditCariDigerViewModelBase.postFaturaTipi',
-      context: context);
+    '_BaseEditCariDigerViewModelBase.postFaturaTipi',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<CariListesiModel>> postFaturaTipi() {
@@ -44,7 +48,9 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   late final _$_BaseEditCariDigerViewModelBaseActionController =
       ActionController(
-          name: '_BaseEditCariDigerViewModelBase', context: context);
+        name: '_BaseEditCariDigerViewModelBase',
+        context: context,
+      );
 
   @override
   void changeModel(CariSaveRequestModel? value) {
@@ -114,9 +120,10 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKurFarkiBorc(StokMuhasebeKoduModel? value) {
-    final _$actionInfo =
-        _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-            name: '_BaseEditCariDigerViewModelBase.changeKurFarkiBorc');
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(
+          name: '_BaseEditCariDigerViewModelBase.changeKurFarkiBorc',
+        );
     try {
       return super.changeKurFarkiBorc(value);
     } finally {
@@ -126,9 +133,10 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKurFarkiAlacak(StokMuhasebeKoduModel? value) {
-    final _$actionInfo =
-        _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-            name: '_BaseEditCariDigerViewModelBase.changeKurFarkiAlacak');
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(
+          name: '_BaseEditCariDigerViewModelBase.changeKurFarkiAlacak',
+        );
     try {
       return super.changeKurFarkiAlacak(value);
     } finally {

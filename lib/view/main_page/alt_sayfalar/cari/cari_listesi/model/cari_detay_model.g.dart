@@ -242,7 +242,6 @@ class _$CariDetayModelCWProxyImpl implements _$CariDetayModelCWProxy {
       this(bakiyeList: bakiyeList);
 
   @override
-
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariDetayModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -470,52 +469,49 @@ CariDetayModel _$CariDetayModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$CariDetayModelToJson(CariDetayModel instance) =>
-    <String, dynamic>{
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.cariAdi case final value?) 'CARI_ADI': value,
-      if (instance.riskBorcToplami case final value?)
-        'RISK_BORC_TOPLAMI': value,
-      if (instance.riskAlacakToplami case final value?)
-        'RISK_ALACAK_TOPLAMI': value,
-      if (instance.riskBakiye case final value?) 'RISK_BAKIYE': value,
-      if (instance.teminatRiski case final value?) 'TEMINAT_RISKI': value,
-      if (instance.cekAsilRiski case final value?) 'CEK_ASIL_RISKI': value,
-      if (instance.cekCiroRiski case final value?) 'CEK_CIRO_RISKI': value,
-      if (instance.senetAsilRiski case final value?) 'SENET_ASIL_RISKI': value,
-      if (instance.senetCiroRiski case final value?) 'SENET_CIRO_RISKI': value,
-      if (instance.irsaliyeRiski case final value?) 'IRSALIYE_RISKI': value,
-      if (instance.siparisRiski case final value?) 'SIPARIS_RISKI': value,
-      if (instance.sevkRiski case final value?) 'SEVK_RISKI': value,
-      if (instance.yuklemeRiski case final value?) 'YUKLEME_RISKI': value,
-      if (instance.bilinmeyenRiskField case final value?)
-        'BILINMEYEN_RISK_FIELD': value,
-      if (instance.brutRiskToplami case final value?)
-        'BRUT_RISK_TOPLAMI': value,
-      if (instance.hareketBakiyeRiskO case final value?)
-        'HAREKET_BAKIYE_RISK_O': value,
-      if (instance.teminatRiskO case final value?) 'TEMINAT_RISK_O': value,
-      if (instance.senetAsilRiskO case final value?) 'SENET_ASIL_RISK_O': value,
-      if (instance.senetCiroRiskO case final value?) 'SENET_CIRO_RISK_O': value,
-      if (instance.cekAsilRiskO case final value?) 'CEK_ASIL_RISK_O': value,
-      if (instance.cekCiroRiskO case final value?) 'CEK_CIRO_RISK_O': value,
-      if (instance.siparisRiskO case final value?) 'SIPARIS_RISK_O': value,
-      if (instance.sevkRiskO case final value?) 'SEVK_RISK_O': value,
-      if (instance.yuklemeRiskO case final value?) 'YUKLEME_RISK_O': value,
-      if (instance.irsaliyeRiskO case final value?) 'IRSALIYE_RISK_O': value,
-      if (instance.riskLimiti case final value?) 'RISK_LIMITI': value,
-      if (instance.teminatTutari case final value?) 'TEMINAT_TUTARI': value,
-      if (instance.irtibatList?.map((e) => e.toJson()).toList()
-          case final value?)
-        'IrtibatList': value,
-      if (instance.bankaList?.map((e) => e.toJson()).toList() case final value?)
-        'BankaList': value,
-      if (instance.cariList?.map((e) => e.toJson()).toList() case final value?)
-        'CariList': value,
-      if (instance.bakiyeList?.map((e) => e.toJson()).toList()
-          case final value?)
-        'BakiyeList': value,
-    };
+Map<String, dynamic> _$CariDetayModelToJson(
+  CariDetayModel instance,
+) => <String, dynamic>{
+  if (instance.cariKodu case final value?) 'CARI_KODU': value,
+  if (instance.cariAdi case final value?) 'CARI_ADI': value,
+  if (instance.riskBorcToplami case final value?) 'RISK_BORC_TOPLAMI': value,
+  if (instance.riskAlacakToplami case final value?)
+    'RISK_ALACAK_TOPLAMI': value,
+  if (instance.riskBakiye case final value?) 'RISK_BAKIYE': value,
+  if (instance.teminatRiski case final value?) 'TEMINAT_RISKI': value,
+  if (instance.cekAsilRiski case final value?) 'CEK_ASIL_RISKI': value,
+  if (instance.cekCiroRiski case final value?) 'CEK_CIRO_RISKI': value,
+  if (instance.senetAsilRiski case final value?) 'SENET_ASIL_RISKI': value,
+  if (instance.senetCiroRiski case final value?) 'SENET_CIRO_RISKI': value,
+  if (instance.irsaliyeRiski case final value?) 'IRSALIYE_RISKI': value,
+  if (instance.siparisRiski case final value?) 'SIPARIS_RISKI': value,
+  if (instance.sevkRiski case final value?) 'SEVK_RISKI': value,
+  if (instance.yuklemeRiski case final value?) 'YUKLEME_RISKI': value,
+  if (instance.bilinmeyenRiskField case final value?)
+    'BILINMEYEN_RISK_FIELD': value,
+  if (instance.brutRiskToplami case final value?) 'BRUT_RISK_TOPLAMI': value,
+  if (instance.hareketBakiyeRiskO case final value?)
+    'HAREKET_BAKIYE_RISK_O': value,
+  if (instance.teminatRiskO case final value?) 'TEMINAT_RISK_O': value,
+  if (instance.senetAsilRiskO case final value?) 'SENET_ASIL_RISK_O': value,
+  if (instance.senetCiroRiskO case final value?) 'SENET_CIRO_RISK_O': value,
+  if (instance.cekAsilRiskO case final value?) 'CEK_ASIL_RISK_O': value,
+  if (instance.cekCiroRiskO case final value?) 'CEK_CIRO_RISK_O': value,
+  if (instance.siparisRiskO case final value?) 'SIPARIS_RISK_O': value,
+  if (instance.sevkRiskO case final value?) 'SEVK_RISK_O': value,
+  if (instance.yuklemeRiskO case final value?) 'YUKLEME_RISK_O': value,
+  if (instance.irsaliyeRiskO case final value?) 'IRSALIYE_RISK_O': value,
+  if (instance.riskLimiti case final value?) 'RISK_LIMITI': value,
+  if (instance.teminatTutari case final value?) 'TEMINAT_TUTARI': value,
+  if (instance.irtibatList?.map((e) => e.toJson()).toList() case final value?)
+    'IrtibatList': value,
+  if (instance.bankaList?.map((e) => e.toJson()).toList() case final value?)
+    'BankaList': value,
+  if (instance.cariList?.map((e) => e.toJson()).toList() case final value?)
+    'CariList': value,
+  if (instance.bakiyeList?.map((e) => e.toJson()).toList() case final value?)
+    'BakiyeList': value,
+};
 
 BakiyeList _$BakiyeListFromJson(Map<String, dynamic> json) => BakiyeList()
   ..cariKodu = json['CARI_KODU'] as String?
@@ -550,19 +546,19 @@ BankaList _$BankaListFromJson(Map<String, dynamic> json) => BankaList()
   ..bakiye = (json['BAKIYE'] as num?)?.toDouble();
 
 Map<String, dynamic> _$BankaListToJson(BankaList instance) => <String, dynamic>{
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.ibanno case final value?) 'IBANNO': value,
-      if (instance.bankakodu case final value?) 'BANKAKODU': value,
-      if (instance.subekodu case final value?) 'SUBEKODU': value,
-      if (instance.bankahesno case final value?) 'BANKAHESNO': value,
-      if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
-      if (instance.subeAdi case final value?) 'SUBE_ADI': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-      if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
-      if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-    };
+  if (instance.cariKodu case final value?) 'CARI_KODU': value,
+  if (instance.ibanno case final value?) 'IBANNO': value,
+  if (instance.bankakodu case final value?) 'BANKAKODU': value,
+  if (instance.subekodu case final value?) 'SUBEKODU': value,
+  if (instance.bankahesno case final value?) 'BANKAHESNO': value,
+  if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
+  if (instance.subeAdi case final value?) 'SUBE_ADI': value,
+  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+  if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
+  if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
+  if (instance.bakiye case final value?) 'BAKIYE': value,
+};
 
 IrtibatList _$IrtibatListFromJson(Map<String, dynamic> json) => IrtibatList()
   ..cariKodu = json['CARI_KODU'] as String?

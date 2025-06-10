@@ -6,7 +6,7 @@ part "olcum_dat_response_model.freezed.dart";
 part "olcum_dat_response_model.g.dart";
 
 @freezed
-class OlcumDatResponseModel with _$OlcumDatResponseModel, NetworkManagerMixin {
+sealed class OlcumDatResponseModel with _$OlcumDatResponseModel, NetworkManagerMixin {
   const factory OlcumDatResponseModel({
     String? girisDepo,
     String? cikisDepo,

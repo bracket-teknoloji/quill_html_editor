@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,179 +10,142 @@ part of 'transfer_mal_talebi_listesi_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-TransferMalTalebiListesiRequestModel _$TransferMalTalebiListesiRequestModelFromJson(Map<String, dynamic> json) {
-  return _TransferMalTalebiListesiRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$TransferMalTalebiListesiRequestModel {
-  String? get durum => throw _privateConstructorUsedError;
-  List<int>? get filtreler => throw _privateConstructorUsedError;
+
+ String? get durum; List<int>? get filtreler;
+/// Create a copy of TransferMalTalebiListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransferMalTalebiListesiRequestModelCopyWith<TransferMalTalebiListesiRequestModel> get copyWith => _$TransferMalTalebiListesiRequestModelCopyWithImpl<TransferMalTalebiListesiRequestModel>(this as TransferMalTalebiListesiRequestModel, _$identity);
 
   /// Serializes this TransferMalTalebiListesiRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of TransferMalTalebiListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TransferMalTalebiListesiRequestModelCopyWith<TransferMalTalebiListesiRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferMalTalebiListesiRequestModel&&(identical(other.durum, durum) || other.durum == durum)&&const DeepCollectionEquality().equals(other.filtreler, filtreler));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,durum,const DeepCollectionEquality().hash(filtreler));
+
+
+
 }
 
 /// @nodoc
-abstract class $TransferMalTalebiListesiRequestModelCopyWith<$Res> {
-  factory $TransferMalTalebiListesiRequestModelCopyWith(
-    TransferMalTalebiListesiRequestModel value,
-    $Res Function(TransferMalTalebiListesiRequestModel) then,
-  ) = _$TransferMalTalebiListesiRequestModelCopyWithImpl<$Res, TransferMalTalebiListesiRequestModel>;
-  @useResult
-  $Res call({String? durum, List<int>? filtreler});
-}
+abstract mixin class $TransferMalTalebiListesiRequestModelCopyWith<$Res>  {
+  factory $TransferMalTalebiListesiRequestModelCopyWith(TransferMalTalebiListesiRequestModel value, $Res Function(TransferMalTalebiListesiRequestModel) _then) = _$TransferMalTalebiListesiRequestModelCopyWithImpl;
+@useResult
+$Res call({
+ String? durum, List<int>? filtreler
+});
 
+
+
+
+}
 /// @nodoc
-class _$TransferMalTalebiListesiRequestModelCopyWithImpl<$Res, $Val extends TransferMalTalebiListesiRequestModel>
+class _$TransferMalTalebiListesiRequestModelCopyWithImpl<$Res>
     implements $TransferMalTalebiListesiRequestModelCopyWith<$Res> {
-  _$TransferMalTalebiListesiRequestModelCopyWithImpl(this._value, this._then);
+  _$TransferMalTalebiListesiRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final TransferMalTalebiListesiRequestModel _self;
+  final $Res Function(TransferMalTalebiListesiRequestModel) _then;
 
-  /// Create a copy of TransferMalTalebiListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? durum = freezed, Object? filtreler = freezed}) {
-    return _then(
-      _value.copyWith(
-            durum: freezed == durum
-                ? _value.durum
-                : durum // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            filtreler: freezed == filtreler
-                ? _value.filtreler
-                : filtreler // ignore: cast_nullable_to_non_nullable
-                      as List<int>?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of TransferMalTalebiListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? durum = freezed,Object? filtreler = freezed,}) {
+  return _then(_self.copyWith(
+durum: freezed == durum ? _self.durum : durum // ignore: cast_nullable_to_non_nullable
+as String?,filtreler: freezed == filtreler ? _self.filtreler : filtreler // ignore: cast_nullable_to_non_nullable
+as List<int>?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$TransferMalTalebiListesiRequestModelImplCopyWith<$Res>
-    implements $TransferMalTalebiListesiRequestModelCopyWith<$Res> {
-  factory _$$TransferMalTalebiListesiRequestModelImplCopyWith(
-    _$TransferMalTalebiListesiRequestModelImpl value,
-    $Res Function(_$TransferMalTalebiListesiRequestModelImpl) then,
-  ) = __$$TransferMalTalebiListesiRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? durum, List<int>? filtreler});
 }
 
-/// @nodoc
-class __$$TransferMalTalebiListesiRequestModelImplCopyWithImpl<$Res>
-    extends _$TransferMalTalebiListesiRequestModelCopyWithImpl<$Res, _$TransferMalTalebiListesiRequestModelImpl>
-    implements _$$TransferMalTalebiListesiRequestModelImplCopyWith<$Res> {
-  __$$TransferMalTalebiListesiRequestModelImplCopyWithImpl(
-    _$TransferMalTalebiListesiRequestModelImpl _value,
-    $Res Function(_$TransferMalTalebiListesiRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of TransferMalTalebiListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? durum = freezed, Object? filtreler = freezed}) {
-    return _then(
-      _$TransferMalTalebiListesiRequestModelImpl(
-        durum: freezed == durum
-            ? _value.durum
-            : durum // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        filtreler: freezed == filtreler
-            ? _value._filtreler
-            : filtreler // ignore: cast_nullable_to_non_nullable
-                  as List<int>?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$TransferMalTalebiListesiRequestModelImpl implements _TransferMalTalebiListesiRequestModel {
-  const _$TransferMalTalebiListesiRequestModelImpl({this.durum, final List<int>? filtreler}) : _filtreler = filtreler;
 
-  factory _$TransferMalTalebiListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TransferMalTalebiListesiRequestModelImplFromJson(json);
+class _TransferMalTalebiListesiRequestModel implements TransferMalTalebiListesiRequestModel {
+  const _TransferMalTalebiListesiRequestModel({this.durum, final  List<int>? filtreler}): _filtreler = filtreler;
+  factory _TransferMalTalebiListesiRequestModel.fromJson(Map<String, dynamic> json) => _$TransferMalTalebiListesiRequestModelFromJson(json);
 
-  @override
-  final String? durum;
-  final List<int>? _filtreler;
-  @override
-  List<int>? get filtreler {
-    final value = _filtreler;
-    if (value == null) return null;
-    if (_filtreler is EqualUnmodifiableListView) return _filtreler;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TransferMalTalebiListesiRequestModelImpl &&
-            (identical(other.durum, durum) || other.durum == durum) &&
-            const DeepCollectionEquality().equals(other._filtreler, _filtreler));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, durum, const DeepCollectionEquality().hash(_filtreler));
-
-  /// Create a copy of TransferMalTalebiListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TransferMalTalebiListesiRequestModelImplCopyWith<_$TransferMalTalebiListesiRequestModelImpl> get copyWith =>
-      __$$TransferMalTalebiListesiRequestModelImplCopyWithImpl<_$TransferMalTalebiListesiRequestModelImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TransferMalTalebiListesiRequestModelImplToJson(this);
-  }
+@override final  String? durum;
+ final  List<int>? _filtreler;
+@override List<int>? get filtreler {
+  final value = _filtreler;
+  if (value == null) return null;
+  if (_filtreler is EqualUnmodifiableListView) return _filtreler;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-abstract class _TransferMalTalebiListesiRequestModel implements TransferMalTalebiListesiRequestModel {
-  const factory _TransferMalTalebiListesiRequestModel({final String? durum, final List<int>? filtreler}) =
-      _$TransferMalTalebiListesiRequestModelImpl;
 
-  factory _TransferMalTalebiListesiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$TransferMalTalebiListesiRequestModelImpl.fromJson;
+/// Create a copy of TransferMalTalebiListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TransferMalTalebiListesiRequestModelCopyWith<_TransferMalTalebiListesiRequestModel> get copyWith => __$TransferMalTalebiListesiRequestModelCopyWithImpl<_TransferMalTalebiListesiRequestModel>(this, _$identity);
 
-  @override
-  String? get durum;
-  @override
-  List<int>? get filtreler;
-
-  /// Create a copy of TransferMalTalebiListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TransferMalTalebiListesiRequestModelImplCopyWith<_$TransferMalTalebiListesiRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$TransferMalTalebiListesiRequestModelToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TransferMalTalebiListesiRequestModel&&(identical(other.durum, durum) || other.durum == durum)&&const DeepCollectionEquality().equals(other._filtreler, _filtreler));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,durum,const DeepCollectionEquality().hash(_filtreler));
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$TransferMalTalebiListesiRequestModelCopyWith<$Res> implements $TransferMalTalebiListesiRequestModelCopyWith<$Res> {
+  factory _$TransferMalTalebiListesiRequestModelCopyWith(_TransferMalTalebiListesiRequestModel value, $Res Function(_TransferMalTalebiListesiRequestModel) _then) = __$TransferMalTalebiListesiRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? durum, List<int>? filtreler
+});
+
+
+
+
+}
+/// @nodoc
+class __$TransferMalTalebiListesiRequestModelCopyWithImpl<$Res>
+    implements _$TransferMalTalebiListesiRequestModelCopyWith<$Res> {
+  __$TransferMalTalebiListesiRequestModelCopyWithImpl(this._self, this._then);
+
+  final _TransferMalTalebiListesiRequestModel _self;
+  final $Res Function(_TransferMalTalebiListesiRequestModel) _then;
+
+/// Create a copy of TransferMalTalebiListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? durum = freezed,Object? filtreler = freezed,}) {
+  return _then(_TransferMalTalebiListesiRequestModel(
+durum: freezed == durum ? _self.durum : durum // ignore: cast_nullable_to_non_nullable
+as String?,filtreler: freezed == filtreler ? _self._filtreler : filtreler // ignore: cast_nullable_to_non_nullable
+as List<int>?,
+  ));
+}
+
+
+}
+
+// dart format on

@@ -5,7 +5,7 @@ part "kullanici_haritasi_model.freezed.dart";
 part "kullanici_haritasi_model.g.dart";
 
 @unfreezed
-class KullaniciHaritasiModel with _$KullaniciHaritasiModel, NetworkManagerMixin {
+sealed class KullaniciHaritasiModel with _$KullaniciHaritasiModel, NetworkManagerMixin {
   factory KullaniciHaritasiModel({
     String? kullanici,
     String? kullaniciAdsoyad,

@@ -10,7 +10,7 @@ part "is_emirleri_model.freezed.dart";
 part "is_emirleri_model.g.dart";
 
 @unfreezed
-class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin {
+sealed class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin {
   factory IsEmirleriModel({
     DateTime? tarih,
     DateTime? teslimTarihi,

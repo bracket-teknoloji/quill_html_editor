@@ -12,13 +12,15 @@ mixin _$QRViewModel on _QRViewModelBase, Store {
   Computed<bool>? _$isValueEmptyComputed;
 
   @override
-  bool get isValueEmpty =>
-      (_$isValueEmptyComputed ??= Computed<bool>(() => super.isValueEmpty,
-              name: '_QRViewModelBase.isValueEmpty'))
-          .value;
+  bool get isValueEmpty => (_$isValueEmptyComputed ??= Computed<bool>(
+    () => super.isValueEmpty,
+    name: '_QRViewModelBase.isValueEmpty',
+  )).value;
 
-  late final _$isFlashOpenAtom =
-      Atom(name: '_QRViewModelBase.isFlashOpen', context: context);
+  late final _$isFlashOpenAtom = Atom(
+    name: '_QRViewModelBase.isFlashOpen',
+    context: context,
+  );
 
   @override
   bool get isFlashOpen {
@@ -33,8 +35,10 @@ mixin _$QRViewModel on _QRViewModelBase, Store {
     });
   }
 
-  late final _$isCameraReverseAtom =
-      Atom(name: '_QRViewModelBase.isCameraReverse', context: context);
+  late final _$isCameraReverseAtom = Atom(
+    name: '_QRViewModelBase.isCameraReverse',
+    context: context,
+  );
 
   @override
   bool get isCameraReverse {
@@ -49,8 +53,10 @@ mixin _$QRViewModel on _QRViewModelBase, Store {
     });
   }
 
-  late final _$valueAtom =
-      Atom(name: '_QRViewModelBase.value', context: context);
+  late final _$valueAtom = Atom(
+    name: '_QRViewModelBase.value',
+    context: context,
+  );
 
   @override
   String? get value {
@@ -65,13 +71,16 @@ mixin _$QRViewModel on _QRViewModelBase, Store {
     });
   }
 
-  late final _$_QRViewModelBaseActionController =
-      ActionController(name: '_QRViewModelBase', context: context);
+  late final _$_QRViewModelBaseActionController = ActionController(
+    name: '_QRViewModelBase',
+    context: context,
+  );
 
   @override
   void setValue(String? result) {
     final _$actionInfo = _$_QRViewModelBaseActionController.startAction(
-        name: '_QRViewModelBase.setValue');
+      name: '_QRViewModelBase.setValue',
+    );
     try {
       return super.setValue(result);
     } finally {
@@ -82,7 +91,8 @@ mixin _$QRViewModel on _QRViewModelBase, Store {
   @override
   void changeFlash() {
     final _$actionInfo = _$_QRViewModelBaseActionController.startAction(
-        name: '_QRViewModelBase.changeFlash');
+      name: '_QRViewModelBase.changeFlash',
+    );
     try {
       return super.changeFlash();
     } finally {
@@ -93,7 +103,8 @@ mixin _$QRViewModel on _QRViewModelBase, Store {
   @override
   void changeCameraReverse() {
     final _$actionInfo = _$_QRViewModelBaseActionController.startAction(
-        name: '_QRViewModelBase.changeCameraReverse');
+      name: '_QRViewModelBase.changeCameraReverse',
+    );
     try {
       return super.changeCameraReverse();
     } finally {

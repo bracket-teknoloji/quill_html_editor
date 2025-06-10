@@ -7,7 +7,7 @@ part "yazici_model.g.dart";
 
 @unfreezed
 @HiveType(typeId: 5)
-class YaziciModel with _$YaziciModel, NetworkManagerMixin {
+sealed class YaziciModel with _$YaziciModel, NetworkManagerMixin {
   factory YaziciModel({
     @HiveField(0) String? yaziciAdi,
     @HiveField(1) @Default("") String macAdresi,

@@ -13,14 +13,17 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
 
   @override
   List<PaketlemeListesiModel>? get filteredPaketlemeListesi =>
-      (_$filteredPaketlemeListesiComputed ??= Computed<
-                  List<PaketlemeListesiModel>?>(
-              () => super.filteredPaketlemeListesi,
-              name: '_PaketlemeListesiViewModelBase.filteredPaketlemeListesi'))
+      (_$filteredPaketlemeListesiComputed ??=
+              Computed<List<PaketlemeListesiModel>?>(
+                () => super.filteredPaketlemeListesi,
+                name: '_PaketlemeListesiViewModelBase.filteredPaketlemeListesi',
+              ))
           .value;
 
   late final _$observableListAtom = Atom(
-      name: '_PaketlemeListesiViewModelBase.observableList', context: context);
+    name: '_PaketlemeListesiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<PaketlemeListesiModel>? get observableList {
@@ -35,8 +38,10 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_PaketlemeListesiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_PaketlemeListesiViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String get searchText {
@@ -52,7 +57,9 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
   }
 
   late final _$isSearchBarOpenAtom = Atom(
-      name: '_PaketlemeListesiViewModelBase.isSearchBarOpen', context: context);
+    name: '_PaketlemeListesiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -68,7 +75,9 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_PaketlemeListesiViewModelBase.requestModel', context: context);
+    name: '_PaketlemeListesiViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   PaketlemeListesiRequestModel get requestModel {
@@ -83,8 +92,10 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_PaketlemeListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_PaketlemeListesiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -92,8 +103,9 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
   }
 
   late final _$deleteItemAsyncAction = AsyncAction(
-      '_PaketlemeListesiViewModelBase.deleteItem',
-      context: context);
+    '_PaketlemeListesiViewModelBase.deleteItem',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<PaketlemeListesiModel>> deleteItem(int? paketID) {
@@ -102,7 +114,9 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
 
   late final _$_PaketlemeListesiViewModelBaseActionController =
       ActionController(
-          name: '_PaketlemeListesiViewModelBase', context: context);
+        name: '_PaketlemeListesiViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<PaketlemeListesiModel>? value) {
@@ -128,9 +142,10 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo =
-        _$_PaketlemeListesiViewModelBaseActionController.startAction(
-            name: '_PaketlemeListesiViewModelBase.changeSearchBarStatus');
+    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaketlemeListesiViewModelBase.changeSearchBarStatus',
+        );
     try {
       return super.changeSearchBarStatus();
     } finally {

@@ -6,7 +6,7 @@ part "muhasebe_referans_model.freezed.dart";
 part "muhasebe_referans_model.g.dart";
 
 @unfreezed
-class MuhasebeReferansModel with _$MuhasebeReferansModel, NetworkManagerMixin {
+sealed class MuhasebeReferansModel with _$MuhasebeReferansModel, NetworkManagerMixin {
   factory MuhasebeReferansModel({String? kodu, String? tanimi}) = _MuhasebeReferansModel;
   MuhasebeReferansModel._();
 

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,350 +10,144 @@ part of 'urun_grubuna_gore_satis_grafigi_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-UrunGrubunaGoreSatisGrafigiRequestModel _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(Map<String, dynamic> json) {
-  return _UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$UrunGrubunaGoreSatisGrafigiRequestModel {
-  List<String>? get arrPlasiyerKodu => throw _privateConstructorUsedError;
-  set arrPlasiyerKodu(List<String>? value) => throw _privateConstructorUsedError;
-  String? get baslamaTarihi => throw _privateConstructorUsedError;
-  set baslamaTarihi(String? value) => throw _privateConstructorUsedError;
-  String? get bitisTarihi => throw _privateConstructorUsedError;
-  set bitisTarihi(String? value) => throw _privateConstructorUsedError;
-  String? get cariKodu => throw _privateConstructorUsedError;
-  set cariKodu(String? value) => throw _privateConstructorUsedError;
-  String? get donemTipi => throw _privateConstructorUsedError;
-  set donemTipi(String? value) => throw _privateConstructorUsedError;
-  int? get grupNo => throw _privateConstructorUsedError;
-  set grupNo(int? value) => throw _privateConstructorUsedError;
-  String? get irsDahil => throw _privateConstructorUsedError;
-  set irsDahil(String? value) => throw _privateConstructorUsedError;
-  String? get grupla => throw _privateConstructorUsedError;
-  set grupla(String? value) => throw _privateConstructorUsedError;
-  String? get projeKodu => throw _privateConstructorUsedError;
-  set projeKodu(String? value) => throw _privateConstructorUsedError;
-  String? get tipi => throw _privateConstructorUsedError;
-  set tipi(String? value) => throw _privateConstructorUsedError;
+
+ List<String>? get arrPlasiyerKodu; set arrPlasiyerKodu(List<String>? value); String? get baslamaTarihi; set baslamaTarihi(String? value); String? get bitisTarihi; set bitisTarihi(String? value); String? get cariKodu; set cariKodu(String? value); String? get donemTipi; set donemTipi(String? value); int? get grupNo; set grupNo(int? value); String? get irsDahil; set irsDahil(String? value); String? get grupla; set grupla(String? value); String? get projeKodu; set projeKodu(String? value); String? get tipi; set tipi(String? value);
+/// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<UrunGrubunaGoreSatisGrafigiRequestModel> get copyWith => _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<UrunGrubunaGoreSatisGrafigiRequestModel>(this as UrunGrubunaGoreSatisGrafigiRequestModel, _$identity);
 
   /// Serializes this UrunGrubunaGoreSatisGrafigiRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<UrunGrubunaGoreSatisGrafigiRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
-  factory $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith(
-    UrunGrubunaGoreSatisGrafigiRequestModel value,
-    $Res Function(UrunGrubunaGoreSatisGrafigiRequestModel) then,
-  ) = _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res, UrunGrubunaGoreSatisGrafigiRequestModel>;
-  @useResult
-  $Res call({
-    List<String>? arrPlasiyerKodu,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    String? cariKodu,
-    String? donemTipi,
-    int? grupNo,
-    String? irsDahil,
-    String? grupla,
-    String? projeKodu,
-    String? tipi,
-  });
-}
+abstract mixin class $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res>  {
+  factory $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith(UrunGrubunaGoreSatisGrafigiRequestModel value, $Res Function(UrunGrubunaGoreSatisGrafigiRequestModel) _then) = _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl;
+@useResult
+$Res call({
+ List<String>? arrPlasiyerKodu, String? baslamaTarihi, String? bitisTarihi, String? cariKodu, String? donemTipi, int? grupNo, String? irsDahil, String? grupla, String? projeKodu, String? tipi
+});
 
+
+
+
+}
 /// @nodoc
-class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res, $Val extends UrunGrubunaGoreSatisGrafigiRequestModel>
+class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res>
     implements $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
-  _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl(this._value, this._then);
+  _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final UrunGrubunaGoreSatisGrafigiRequestModel _self;
+  final $Res Function(UrunGrubunaGoreSatisGrafigiRequestModel) _then;
 
-  /// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? arrPlasiyerKodu = freezed,
-    Object? baslamaTarihi = freezed,
-    Object? bitisTarihi = freezed,
-    Object? cariKodu = freezed,
-    Object? donemTipi = freezed,
-    Object? grupNo = freezed,
-    Object? irsDahil = freezed,
-    Object? grupla = freezed,
-    Object? projeKodu = freezed,
-    Object? tipi = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            arrPlasiyerKodu: freezed == arrPlasiyerKodu
-                ? _value.arrPlasiyerKodu
-                : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
-            baslamaTarihi: freezed == baslamaTarihi
-                ? _value.baslamaTarihi
-                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            bitisTarihi: freezed == bitisTarihi
-                ? _value.bitisTarihi
-                : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            cariKodu: freezed == cariKodu
-                ? _value.cariKodu
-                : cariKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            donemTipi: freezed == donemTipi
-                ? _value.donemTipi
-                : donemTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            grupNo: freezed == grupNo
-                ? _value.grupNo
-                : grupNo // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            irsDahil: freezed == irsDahil
-                ? _value.irsDahil
-                : irsDahil // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            grupla: freezed == grupla
-                ? _value.grupla
-                : grupla // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            projeKodu: freezed == projeKodu
-                ? _value.projeKodu
-                : projeKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            tipi: freezed == tipi
-                ? _value.tipi
-                : tipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? arrPlasiyerKodu = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? cariKodu = freezed,Object? donemTipi = freezed,Object? grupNo = freezed,Object? irsDahil = freezed,Object? grupla = freezed,Object? projeKodu = freezed,Object? tipi = freezed,}) {
+  return _then(_self.copyWith(
+arrPlasiyerKodu: freezed == arrPlasiyerKodu ? _self.arrPlasiyerKodu : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+as List<String>?,baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,donemTipi: freezed == donemTipi ? _self.donemTipi : donemTipi // ignore: cast_nullable_to_non_nullable
+as String?,grupNo: freezed == grupNo ? _self.grupNo : grupNo // ignore: cast_nullable_to_non_nullable
+as int?,irsDahil: freezed == irsDahil ? _self.irsDahil : irsDahil // ignore: cast_nullable_to_non_nullable
+as String?,grupla: freezed == grupla ? _self.grupla : grupla // ignore: cast_nullable_to_non_nullable
+as String?,projeKodu: freezed == projeKodu ? _self.projeKodu : projeKodu // ignore: cast_nullable_to_non_nullable
+as String?,tipi: freezed == tipi ? _self.tipi : tipi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<$Res>
-    implements $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
-  factory _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith(
-    _$UrunGrubunaGoreSatisGrafigiRequestModelImpl value,
-    $Res Function(_$UrunGrubunaGoreSatisGrafigiRequestModelImpl) then,
-  ) = __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    List<String>? arrPlasiyerKodu,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    String? cariKodu,
-    String? donemTipi,
-    int? grupNo,
-    String? irsDahil,
-    String? grupla,
-    String? projeKodu,
-    String? tipi,
-  });
 }
 
-/// @nodoc
-class __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>
-    extends _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res, _$UrunGrubunaGoreSatisGrafigiRequestModelImpl>
-    implements _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<$Res> {
-  __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl(
-    _$UrunGrubunaGoreSatisGrafigiRequestModelImpl _value,
-    $Res Function(_$UrunGrubunaGoreSatisGrafigiRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? arrPlasiyerKodu = freezed,
-    Object? baslamaTarihi = freezed,
-    Object? bitisTarihi = freezed,
-    Object? cariKodu = freezed,
-    Object? donemTipi = freezed,
-    Object? grupNo = freezed,
-    Object? irsDahil = freezed,
-    Object? grupla = freezed,
-    Object? projeKodu = freezed,
-    Object? tipi = freezed,
-  }) {
-    return _then(
-      _$UrunGrubunaGoreSatisGrafigiRequestModelImpl(
-        arrPlasiyerKodu: freezed == arrPlasiyerKodu
-            ? _value.arrPlasiyerKodu
-            : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
-        baslamaTarihi: freezed == baslamaTarihi
-            ? _value.baslamaTarihi
-            : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        bitisTarihi: freezed == bitisTarihi
-            ? _value.bitisTarihi
-            : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        cariKodu: freezed == cariKodu
-            ? _value.cariKodu
-            : cariKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        donemTipi: freezed == donemTipi
-            ? _value.donemTipi
-            : donemTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        grupNo: freezed == grupNo
-            ? _value.grupNo
-            : grupNo // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        irsDahil: freezed == irsDahil
-            ? _value.irsDahil
-            : irsDahil // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        grupla: freezed == grupla
-            ? _value.grupla
-            : grupla // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        projeKodu: freezed == projeKodu
-            ? _value.projeKodu
-            : projeKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        tipi: freezed == tipi
-            ? _value.tipi
-            : tipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$UrunGrubunaGoreSatisGrafigiRequestModelImpl extends _UrunGrubunaGoreSatisGrafigiRequestModel {
-  _$UrunGrubunaGoreSatisGrafigiRequestModelImpl({
-    this.arrPlasiyerKodu,
-    this.baslamaTarihi,
-    this.bitisTarihi,
-    this.cariKodu,
-    this.donemTipi,
-    this.grupNo,
-    this.irsDahil,
-    this.grupla,
-    this.projeKodu,
-    this.tipi,
-  }) : super._();
+class _UrunGrubunaGoreSatisGrafigiRequestModel extends UrunGrubunaGoreSatisGrafigiRequestModel {
+   _UrunGrubunaGoreSatisGrafigiRequestModel({this.arrPlasiyerKodu, this.baslamaTarihi, this.bitisTarihi, this.cariKodu, this.donemTipi, this.grupNo, this.irsDahil, this.grupla, this.projeKodu, this.tipi}): super._();
+  factory _UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);
 
-  factory _$UrunGrubunaGoreSatisGrafigiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UrunGrubunaGoreSatisGrafigiRequestModelImplFromJson(json);
+@override  List<String>? arrPlasiyerKodu;
+@override  String? baslamaTarihi;
+@override  String? bitisTarihi;
+@override  String? cariKodu;
+@override  String? donemTipi;
+@override  int? grupNo;
+@override  String? irsDahil;
+@override  String? grupla;
+@override  String? projeKodu;
+@override  String? tipi;
 
-  @override
-  List<String>? arrPlasiyerKodu;
-  @override
-  String? baslamaTarihi;
-  @override
-  String? bitisTarihi;
-  @override
-  String? cariKodu;
-  @override
-  String? donemTipi;
-  @override
-  int? grupNo;
-  @override
-  String? irsDahil;
-  @override
-  String? grupla;
-  @override
-  String? projeKodu;
-  @override
-  String? tipi;
+/// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<_UrunGrubunaGoreSatisGrafigiRequestModel> get copyWith => __$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<_UrunGrubunaGoreSatisGrafigiRequestModel>(this, _$identity);
 
-  /// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<_$UrunGrubunaGoreSatisGrafigiRequestModelImpl> get copyWith =>
-      __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<_$UrunGrubunaGoreSatisGrafigiRequestModelImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UrunGrubunaGoreSatisGrafigiRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$UrunGrubunaGoreSatisGrafigiRequestModelToJson(this, );
 }
 
-abstract class _UrunGrubunaGoreSatisGrafigiRequestModel extends UrunGrubunaGoreSatisGrafigiRequestModel {
-  factory _UrunGrubunaGoreSatisGrafigiRequestModel({
-    List<String>? arrPlasiyerKodu,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    String? cariKodu,
-    String? donemTipi,
-    int? grupNo,
-    String? irsDahil,
-    String? grupla,
-    String? projeKodu,
-    String? tipi,
-  }) = _$UrunGrubunaGoreSatisGrafigiRequestModelImpl;
-  _UrunGrubunaGoreSatisGrafigiRequestModel._() : super._();
 
-  factory _UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$UrunGrubunaGoreSatisGrafigiRequestModelImpl.fromJson;
 
-  @override
-  List<String>? get arrPlasiyerKodu;
-  set arrPlasiyerKodu(List<String>? value);
-  @override
-  String? get baslamaTarihi;
-  set baslamaTarihi(String? value);
-  @override
-  String? get bitisTarihi;
-  set bitisTarihi(String? value);
-  @override
-  String? get cariKodu;
-  set cariKodu(String? value);
-  @override
-  String? get donemTipi;
-  set donemTipi(String? value);
-  @override
-  int? get grupNo;
-  set grupNo(int? value);
-  @override
-  String? get irsDahil;
-  set irsDahil(String? value);
-  @override
-  String? get grupla;
-  set grupla(String? value);
-  @override
-  String? get projeKodu;
-  set projeKodu(String? value);
-  @override
-  String? get tipi;
-  set tipi(String? value);
 
-  /// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<_$UrunGrubunaGoreSatisGrafigiRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> implements $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
+  factory _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWith(_UrunGrubunaGoreSatisGrafigiRequestModel value, $Res Function(_UrunGrubunaGoreSatisGrafigiRequestModel) _then) = __$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+ List<String>? arrPlasiyerKodu, String? baslamaTarihi, String? bitisTarihi, String? cariKodu, String? donemTipi, int? grupNo, String? irsDahil, String? grupla, String? projeKodu, String? tipi
+});
+
+
+
+
+}
+/// @nodoc
+class __$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res>
+    implements _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
+  __$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl(this._self, this._then);
+
+  final _UrunGrubunaGoreSatisGrafigiRequestModel _self;
+  final $Res Function(_UrunGrubunaGoreSatisGrafigiRequestModel) _then;
+
+/// Create a copy of UrunGrubunaGoreSatisGrafigiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? arrPlasiyerKodu = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? cariKodu = freezed,Object? donemTipi = freezed,Object? grupNo = freezed,Object? irsDahil = freezed,Object? grupla = freezed,Object? projeKodu = freezed,Object? tipi = freezed,}) {
+  return _then(_UrunGrubunaGoreSatisGrafigiRequestModel(
+arrPlasiyerKodu: freezed == arrPlasiyerKodu ? _self.arrPlasiyerKodu : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+as List<String>?,baslamaTarihi: freezed == baslamaTarihi ? _self.baslamaTarihi : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+as String?,bitisTarihi: freezed == bitisTarihi ? _self.bitisTarihi : bitisTarihi // ignore: cast_nullable_to_non_nullable
+as String?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,donemTipi: freezed == donemTipi ? _self.donemTipi : donemTipi // ignore: cast_nullable_to_non_nullable
+as String?,grupNo: freezed == grupNo ? _self.grupNo : grupNo // ignore: cast_nullable_to_non_nullable
+as int?,irsDahil: freezed == irsDahil ? _self.irsDahil : irsDahil // ignore: cast_nullable_to_non_nullable
+as String?,grupla: freezed == grupla ? _self.grupla : grupla // ignore: cast_nullable_to_non_nullable
+as String?,projeKodu: freezed == projeKodu ? _self.projeKodu : projeKodu // ignore: cast_nullable_to_non_nullable
+as String?,tipi: freezed == tipi ? _self.tipi : tipi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

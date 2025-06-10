@@ -12,28 +12,30 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
   Computed<List<DekontKalemler>?>? _$kalemlerComputed;
 
   @override
-  List<DekontKalemler>? get kalemler => (_$kalemlerComputed ??=
-          Computed<List<DekontKalemler>?>(() => super.kalemler,
-              name: '_DekontEditKalemlerViewModelBase.kalemler'))
-      .value;
+  List<DekontKalemler>? get kalemler =>
+      (_$kalemlerComputed ??= Computed<List<DekontKalemler>?>(
+        () => super.kalemler,
+        name: '_DekontEditKalemlerViewModelBase.kalemler',
+      )).value;
   Computed<double>? _$toplamBorcComputed;
 
   @override
-  double get toplamBorc =>
-      (_$toplamBorcComputed ??= Computed<double>(() => super.toplamBorc,
-              name: '_DekontEditKalemlerViewModelBase.toplamBorc'))
-          .value;
+  double get toplamBorc => (_$toplamBorcComputed ??= Computed<double>(
+    () => super.toplamBorc,
+    name: '_DekontEditKalemlerViewModelBase.toplamBorc',
+  )).value;
   Computed<double>? _$toplamAlacakComputed;
 
   @override
-  double get toplamAlacak =>
-      (_$toplamAlacakComputed ??= Computed<double>(() => super.toplamAlacak,
-              name: '_DekontEditKalemlerViewModelBase.toplamAlacak'))
-          .value;
+  double get toplamAlacak => (_$toplamAlacakComputed ??= Computed<double>(
+    () => super.toplamAlacak,
+    name: '_DekontEditKalemlerViewModelBase.toplamAlacak',
+  )).value;
 
   late final _$dekontIslemlerRequestModelAtom = Atom(
-      name: '_DekontEditKalemlerViewModelBase.dekontIslemlerRequestModel',
-      context: context);
+    name: '_DekontEditKalemlerViewModelBase.dekontIslemlerRequestModel',
+    context: context,
+  );
 
   @override
   DekontIslemlerRequestModel get dekontIslemlerRequestModel {
@@ -43,15 +45,20 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
 
   @override
   set dekontIslemlerRequestModel(DekontIslemlerRequestModel value) {
-    _$dekontIslemlerRequestModelAtom
-        .reportWrite(value, super.dekontIslemlerRequestModel, () {
-      super.dekontIslemlerRequestModel = value;
-    });
+    _$dekontIslemlerRequestModelAtom.reportWrite(
+      value,
+      super.dekontIslemlerRequestModel,
+      () {
+        super.dekontIslemlerRequestModel = value;
+      },
+    );
   }
 
   late final _$_DekontEditKalemlerViewModelBaseActionController =
       ActionController(
-          name: '_DekontEditKalemlerViewModelBase', context: context);
+        name: '_DekontEditKalemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void setSingleton() {
@@ -60,8 +67,9 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
     try {
       return super.setSingleton();
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -72,8 +80,9 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
     try {
       return super.addKalemler(model);
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -84,8 +93,9 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
     try {
       return super.updateKalemler(index, model);
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -96,8 +106,9 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
     try {
       return super.removeKalemler(index);
     } finally {
-      _$_DekontEditKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DekontEditKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

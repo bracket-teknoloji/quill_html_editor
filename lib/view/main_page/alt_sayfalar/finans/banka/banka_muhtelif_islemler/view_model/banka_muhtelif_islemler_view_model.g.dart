@@ -11,8 +11,9 @@ part of 'banka_muhtelif_islemler_view_model.dart';
 mixin _$BankaMuhtelifIslemlerViewModel
     on _BankaMuhtelifIslemlerViewModelBase, Store {
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_BankaMuhtelifIslemlerViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_BankaMuhtelifIslemlerViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -27,8 +28,10 @@ mixin _$BankaMuhtelifIslemlerViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BankaMuhtelifIslemlerViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BankaMuhtelifIslemlerViewModelBase.model',
+    context: context,
+  );
 
   @override
   TahsilatRequestModel get model {
@@ -44,8 +47,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
   }
 
   late final _$bankaListesiRequestModelAtom = Atom(
-      name: '_BankaMuhtelifIslemlerViewModelBase.bankaListesiRequestModel',
-      context: context);
+    name: '_BankaMuhtelifIslemlerViewModelBase.bankaListesiRequestModel',
+    context: context,
+  );
 
   @override
   BankaListesiRequestModel get bankaListesiRequestModel {
@@ -55,14 +59,19 @@ mixin _$BankaMuhtelifIslemlerViewModel
 
   @override
   set bankaListesiRequestModel(BankaListesiRequestModel value) {
-    _$bankaListesiRequestModelAtom
-        .reportWrite(value, super.bankaListesiRequestModel, () {
-      super.bankaListesiRequestModel = value;
-    });
+    _$bankaListesiRequestModelAtom.reportWrite(
+      value,
+      super.bankaListesiRequestModel,
+      () {
+        super.bankaListesiRequestModel = value;
+      },
+    );
   }
 
   late final _$seriListAtom = Atom(
-      name: '_BankaMuhtelifIslemlerViewModelBase.seriList', context: context);
+    name: '_BankaMuhtelifIslemlerViewModelBase.seriList',
+    context: context,
+  );
 
   @override
   ObservableList<SeriModel>? get seriList {
@@ -78,8 +87,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
   }
 
   late final _$getSeriAsyncAction = AsyncAction(
-      '_BankaMuhtelifIslemlerViewModelBase.getSeri',
-      context: context);
+    '_BankaMuhtelifIslemlerViewModelBase.getSeri',
+    context: context,
+  );
 
   @override
   Future<void> getSeri() {
@@ -87,8 +97,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
   }
 
   late final _$getDovizlerAsyncAction = AsyncAction(
-      '_BankaMuhtelifIslemlerViewModelBase.getDovizler',
-      context: context);
+    '_BankaMuhtelifIslemlerViewModelBase.getDovizler',
+    context: context,
+  );
 
   @override
   Future<void> getDovizler() {
@@ -97,7 +108,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
 
   late final _$_BankaMuhtelifIslemlerViewModelBaseActionController =
       ActionController(
-          name: '_BankaMuhtelifIslemlerViewModelBase', context: context);
+        name: '_BankaMuhtelifIslemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void setBelgeTuru(String? belgeTuru) {
@@ -106,8 +119,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setBelgeTuru(belgeTuru);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -118,8 +132,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setTarih(tarih);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -130,8 +145,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setSeriNo(seriNo);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -142,21 +158,24 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setHesapNo(hesapNo);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setMuhasebeKodu(String? muhasebeKodu) {
-    final _$actionInfo =
-        _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-            name: '_BankaMuhtelifIslemlerViewModelBase.setMuhasebeKodu');
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setMuhasebeKodu',
+        );
     try {
       return super.setMuhasebeKodu(muhasebeKodu);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -167,8 +186,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setDovizTipi(dovizTipi);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -179,34 +199,39 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setTutar(tutar);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDovizTutari(double? dovizTutari) {
-    final _$actionInfo =
-        _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-            name: '_BankaMuhtelifIslemlerViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setDovizTutari',
+        );
     try {
       return super.setDovizTutari(dovizTutari);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setPlasiyerKodu(String? plasiyerKodu) {
-    final _$actionInfo =
-        _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-            name: '_BankaMuhtelifIslemlerViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setPlasiyerKodu',
+        );
     try {
       return super.setPlasiyerKodu(plasiyerKodu);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -217,8 +242,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setProjeKodu(projeKodu);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -229,21 +255,24 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setAciklama(aciklama);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-            name: '_BankaMuhtelifIslemlerViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -254,8 +283,9 @@ mixin _$BankaMuhtelifIslemlerViewModel
     try {
       return super.setSeriList(value);
     } finally {
-      _$_BankaMuhtelifIslemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaMuhtelifIslemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

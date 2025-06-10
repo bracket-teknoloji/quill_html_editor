@@ -6,7 +6,7 @@ part "transfer_mal_talebi_listesi_model.freezed.dart";
 part "transfer_mal_talebi_listesi_model.g.dart";
 
 @unfreezed
-class TransferMalTalebiListesiModel with _$TransferMalTalebiListesiModel, NetworkManagerMixin {
+sealed class TransferMalTalebiListesiModel with _$TransferMalTalebiListesiModel, NetworkManagerMixin {
   factory TransferMalTalebiListesiModel({
     @JsonKey(name: "ID") @Default(-1) int id,
     @JsonKey(name: "TARIH") DateTime? tarih,

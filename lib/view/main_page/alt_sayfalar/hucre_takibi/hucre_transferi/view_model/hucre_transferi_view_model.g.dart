@@ -12,13 +12,15 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
   Computed<List<bool>>? _$isStokListComputed;
 
   @override
-  List<bool> get isStokList =>
-      (_$isStokListComputed ??= Computed<List<bool>>(() => super.isStokList,
-              name: '_HucreTransferiViewModelBase.isStokList'))
-          .value;
+  List<bool> get isStokList => (_$isStokListComputed ??= Computed<List<bool>>(
+    () => super.isStokList,
+    name: '_HucreTransferiViewModelBase.isStokList',
+  )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_HucreTransferiViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_HucreTransferiViewModelBase.model',
+    context: context,
+  );
 
   @override
   HucreTransferiModel get model {
@@ -33,8 +35,10 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
     });
   }
 
-  late final _$isStokAtom =
-      Atom(name: '_HucreTransferiViewModelBase.isStok', context: context);
+  late final _$isStokAtom = Atom(
+    name: '_HucreTransferiViewModelBase.isStok',
+    context: context,
+  );
 
   @override
   bool get isStok {
@@ -50,7 +54,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
   }
 
   late final _$paketRequestModelAtom = Atom(
-      name: '_HucreTransferiViewModelBase.paketRequestModel', context: context);
+    name: '_HucreTransferiViewModelBase.paketRequestModel',
+    context: context,
+  );
 
   @override
   PaketlemeListesiRequestModel get paketRequestModel {
@@ -65,24 +71,30 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
     });
   }
 
-  late final _$getPaketAsyncAction =
-      AsyncAction('_HucreTransferiViewModelBase.getPaket', context: context);
+  late final _$getPaketAsyncAction = AsyncAction(
+    '_HucreTransferiViewModelBase.getPaket',
+    context: context,
+  );
 
   @override
   Future<String?> getPaket(String? paketKodu) {
     return _$getPaketAsyncAction.run(() => super.getPaket(paketKodu));
   }
 
-  late final _$sendDataAsyncAction =
-      AsyncAction('_HucreTransferiViewModelBase.sendData', context: context);
+  late final _$sendDataAsyncAction = AsyncAction(
+    '_HucreTransferiViewModelBase.sendData',
+    context: context,
+  );
 
   @override
   Future<bool> sendData() {
     return _$sendDataAsyncAction.run(() => super.sendData());
   }
 
-  late final _$_HucreTransferiViewModelBaseActionController =
-      ActionController(name: '_HucreTransferiViewModelBase', context: context);
+  late final _$_HucreTransferiViewModelBaseActionController = ActionController(
+    name: '_HucreTransferiViewModelBase',
+    context: context,
+  );
 
   @override
   void setIsStok(bool value) {

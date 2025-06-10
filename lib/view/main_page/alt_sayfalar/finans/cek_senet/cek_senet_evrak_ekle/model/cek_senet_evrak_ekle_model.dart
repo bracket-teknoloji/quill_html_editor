@@ -6,7 +6,7 @@ part "cek_senet_evrak_ekle_model.freezed.dart";
 part "cek_senet_evrak_ekle_model.g.dart";
 
 @unfreezed
-class CekSenetEvrakEkleModel with _$CekSenetEvrakEkleModel {
+sealed class CekSenetEvrakEkleModel with _$CekSenetEvrakEkleModel {
   factory CekSenetEvrakEkleModel({
     String? aciklama,
     String? base64Data,

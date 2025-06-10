@@ -10,29 +10,32 @@ part of 'banka_listesi_view_model.dart';
 
 mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
   Computed<ObservableList<List<BankaListesiModel>>>?
-      _$groupedWithHesapTipiAdiListComputed;
+  _$groupedWithHesapTipiAdiListComputed;
 
   @override
   ObservableList<List<BankaListesiModel>> get groupedWithHesapTipiAdiList =>
       (_$groupedWithHesapTipiAdiListComputed ??=
               Computed<ObservableList<List<BankaListesiModel>>>(
-                  () => super.groupedWithHesapTipiAdiList,
-                  name:
-                      '_BankaListesiViewModelBase.groupedWithHesapTipiAdiList'))
+                () => super.groupedWithHesapTipiAdiList,
+                name: '_BankaListesiViewModelBase.groupedWithHesapTipiAdiList',
+              ))
           .value;
   Computed<ObservableList<List<BankaListesiModel>>>?
-      _$groupedWithBankNameComputed;
+  _$groupedWithBankNameComputed;
 
   @override
   ObservableList<List<BankaListesiModel>> get groupedWithBankName =>
       (_$groupedWithBankNameComputed ??=
               Computed<ObservableList<List<BankaListesiModel>>>(
-                  () => super.groupedWithBankName,
-                  name: '_BankaListesiViewModelBase.groupedWithBankName'))
+                () => super.groupedWithBankName,
+                name: '_BankaListesiViewModelBase.groupedWithBankName',
+              ))
           .value;
 
-  late final _$searchBarAtom =
-      Atom(name: '_BankaListesiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_BankaListesiViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -47,8 +50,10 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
     });
   }
 
-  late final _$errorTextAtom =
-      Atom(name: '_BankaListesiViewModelBase.errorText', context: context);
+  late final _$errorTextAtom = Atom(
+    name: '_BankaListesiViewModelBase.errorText',
+    context: context,
+  );
 
   @override
   String? get errorText {
@@ -63,8 +68,10 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchValueAtom =
-      Atom(name: '_BankaListesiViewModelBase.searchValue', context: context);
+  late final _$searchValueAtom = Atom(
+    name: '_BankaListesiViewModelBase.searchValue',
+    context: context,
+  );
 
   @override
   String? get searchValue {
@@ -79,8 +86,10 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
     });
   }
 
-  late final _$bankaListesiAtom =
-      Atom(name: '_BankaListesiViewModelBase.bankaListesi', context: context);
+  late final _$bankaListesiAtom = Atom(
+    name: '_BankaListesiViewModelBase.bankaListesi',
+    context: context,
+  );
 
   @override
   ObservableList<BankaListesiModel>? get bankaListesi {
@@ -95,8 +104,10 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BankaListesiViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BankaListesiViewModelBase.model',
+    context: context,
+  );
 
   @override
   BankaListesiRequestModel get model {
@@ -111,24 +122,30 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_BankaListesiViewModelBase.resetPage', context: context);
+  late final _$resetPageAsyncAction = AsyncAction(
+    '_BankaListesiViewModelBase.resetPage',
+    context: context,
+  );
 
   @override
   Future<void> resetPage() {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_BankaListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_BankaListesiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_BankaListesiViewModelBaseActionController =
-      ActionController(name: '_BankaListesiViewModelBase', context: context);
+  late final _$_BankaListesiViewModelBaseActionController = ActionController(
+    name: '_BankaListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchBar() {

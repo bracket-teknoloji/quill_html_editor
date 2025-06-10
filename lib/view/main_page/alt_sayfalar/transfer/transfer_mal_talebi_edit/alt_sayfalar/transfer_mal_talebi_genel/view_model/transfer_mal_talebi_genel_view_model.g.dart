@@ -11,7 +11,9 @@ part of 'transfer_mal_talebi_genel_view_model.dart';
 mixin _$TransferMalTalebiGenelViewModel
     on _TransferMalTalebiGenelViewModelBase, Store {
   late final _$modelAtom = Atom(
-      name: '_TransferMalTalebiGenelViewModelBase.model', context: context);
+    name: '_TransferMalTalebiGenelViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -28,7 +30,9 @@ mixin _$TransferMalTalebiGenelViewModel
 
   late final _$_TransferMalTalebiGenelViewModelBaseActionController =
       ActionController(
-          name: '_TransferMalTalebiGenelViewModelBase', context: context);
+        name: '_TransferMalTalebiGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void setModel(BaseSiparisEditModel value) {
@@ -37,8 +41,9 @@ mixin _$TransferMalTalebiGenelViewModel
     try {
       return super.setModel(value);
     } finally {
-      _$_TransferMalTalebiGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -49,8 +54,9 @@ mixin _$TransferMalTalebiGenelViewModel
     try {
       return super.setAciklama(value);
     } finally {
-      _$_TransferMalTalebiGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -61,8 +67,9 @@ mixin _$TransferMalTalebiGenelViewModel
     try {
       return super.setHedefSube(value);
     } finally {
-      _$_TransferMalTalebiGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -73,8 +80,9 @@ mixin _$TransferMalTalebiGenelViewModel
     try {
       return super.setDepoKodu(value);
     } finally {
-      _$_TransferMalTalebiGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -85,8 +93,9 @@ mixin _$TransferMalTalebiGenelViewModel
     try {
       return super.setIsEmri(value);
     } finally {
-      _$_TransferMalTalebiGenelViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

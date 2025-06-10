@@ -10,17 +10,21 @@ part of 'servis_islemleri_view_model.dart';
 
 mixin _$ServisIslemleriViewModel on _ServisIslemleriViewModelBase, Store {
   late final _$webServisleriCalistirAsyncAction = AsyncAction(
-      '_ServisIslemleriViewModelBase.webServisleriCalistir',
-      context: context);
+    '_ServisIslemleriViewModelBase.webServisleriCalistir',
+    context: context,
+  );
 
   @override
   Future<void> webServisleriCalistir() {
-    return _$webServisleriCalistirAsyncAction
-        .run(() => super.webServisleriCalistir());
+    return _$webServisleriCalistirAsyncAction.run(
+      () => super.webServisleriCalistir(),
+    );
   }
 
-  late final _$dbUpdateAsyncAction =
-      AsyncAction('_ServisIslemleriViewModelBase.dbUpdate', context: context);
+  late final _$dbUpdateAsyncAction = AsyncAction(
+    '_ServisIslemleriViewModelBase.dbUpdate',
+    context: context,
+  );
 
   @override
   Future<void> dbUpdate() {
@@ -28,18 +32,21 @@ mixin _$ServisIslemleriViewModel on _ServisIslemleriViewModelBase, Store {
   }
 
   late final _$netOpenXCreateKernelAsyncAction = AsyncAction(
-      '_ServisIslemleriViewModelBase.netOpenXCreateKernel',
-      context: context);
+    '_ServisIslemleriViewModelBase.netOpenXCreateKernel',
+    context: context,
+  );
 
   @override
   Future<void> netOpenXCreateKernel() {
-    return _$netOpenXCreateKernelAsyncAction
-        .run(() => super.netOpenXCreateKernel());
+    return _$netOpenXCreateKernelAsyncAction.run(
+      () => super.netOpenXCreateKernel(),
+    );
   }
 
   late final _$netOpenXStatusAsyncAction = AsyncAction(
-      '_ServisIslemleriViewModelBase.netOpenXStatus',
-      context: context);
+    '_ServisIslemleriViewModelBase.netOpenXStatus',
+    context: context,
+  );
 
   @override
   Future<void> netOpenXStatus() {
@@ -47,8 +54,9 @@ mixin _$ServisIslemleriViewModel on _ServisIslemleriViewModelBase, Store {
   }
 
   late final _$eFaturaDLLKayitlaAsyncAction = AsyncAction(
-      '_ServisIslemleriViewModelBase.eFaturaDLLKayitla',
-      context: context);
+    '_ServisIslemleriViewModelBase.eFaturaDLLKayitla',
+    context: context,
+  );
 
   @override
   Future<void> eFaturaDLLKayitla() {
@@ -56,13 +64,15 @@ mixin _$ServisIslemleriViewModel on _ServisIslemleriViewModelBase, Store {
   }
 
   late final _$netFectWinServiceRestartAsyncAction = AsyncAction(
-      '_ServisIslemleriViewModelBase.netFectWinServiceRestart',
-      context: context);
+    '_ServisIslemleriViewModelBase.netFectWinServiceRestart',
+    context: context,
+  );
 
   @override
   Future<void> netFectWinServiceRestart() {
-    return _$netFectWinServiceRestartAsyncAction
-        .run(() => super.netFectWinServiceRestart());
+    return _$netFectWinServiceRestartAsyncAction.run(
+      () => super.netFectWinServiceRestart(),
+    );
   }
 
   @override

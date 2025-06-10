@@ -15,33 +15,39 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
   ObservableList<SayimListesiModel>? get filteredSayimListesi =>
       (_$filteredSayimListesiComputed ??=
               Computed<ObservableList<SayimListesiModel>?>(
-                  () => super.filteredSayimListesi,
-                  name: '_DepoFarkRaporuViewModelBase.filteredSayimListesi'))
+                () => super.filteredSayimListesi,
+                name: '_DepoFarkRaporuViewModelBase.filteredSayimListesi',
+              ))
           .value;
   Computed<double>? _$toplamDepoMiktariComputed;
 
   @override
-  double get toplamDepoMiktari => (_$toplamDepoMiktariComputed ??=
-          Computed<double>(() => super.toplamDepoMiktari,
-              name: '_DepoFarkRaporuViewModelBase.toplamDepoMiktari'))
-      .value;
+  double get toplamDepoMiktari =>
+      (_$toplamDepoMiktariComputed ??= Computed<double>(
+        () => super.toplamDepoMiktari,
+        name: '_DepoFarkRaporuViewModelBase.toplamDepoMiktari',
+      )).value;
   Computed<double>? _$toplamSayimMiktariComputed;
 
   @override
-  double get toplamSayimMiktari => (_$toplamSayimMiktariComputed ??=
-          Computed<double>(() => super.toplamSayimMiktari,
-              name: '_DepoFarkRaporuViewModelBase.toplamSayimMiktari'))
-      .value;
+  double get toplamSayimMiktari =>
+      (_$toplamSayimMiktariComputed ??= Computed<double>(
+        () => super.toplamSayimMiktari,
+        name: '_DepoFarkRaporuViewModelBase.toplamSayimMiktari',
+      )).value;
   Computed<double>? _$toplamFarkMiktariComputed;
 
   @override
-  double get toplamFarkMiktari => (_$toplamFarkMiktariComputed ??=
-          Computed<double>(() => super.toplamFarkMiktari,
-              name: '_DepoFarkRaporuViewModelBase.toplamFarkMiktari'))
-      .value;
+  double get toplamFarkMiktari =>
+      (_$toplamFarkMiktariComputed ??= Computed<double>(
+        () => super.toplamFarkMiktari,
+        name: '_DepoFarkRaporuViewModelBase.toplamFarkMiktari',
+      )).value;
 
-  late final _$sayimListesiAtom =
-      Atom(name: '_DepoFarkRaporuViewModelBase.sayimListesi', context: context);
+  late final _$sayimListesiAtom = Atom(
+    name: '_DepoFarkRaporuViewModelBase.sayimListesi',
+    context: context,
+  );
 
   @override
   ObservableList<SayimListesiModel>? get sayimListesi {
@@ -56,8 +62,10 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_DepoFarkRaporuViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_DepoFarkRaporuViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -72,8 +80,10 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_DepoFarkRaporuViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_DepoFarkRaporuViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String get searchText {
@@ -88,8 +98,10 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
     });
   }
 
-  late final _$filtreTuruAtom =
-      Atom(name: '_DepoFarkRaporuViewModelBase.filtreTuru', context: context);
+  late final _$filtreTuruAtom = Atom(
+    name: '_DepoFarkRaporuViewModelBase.filtreTuru',
+    context: context,
+  );
 
   @override
   DepoFarkRaporuFiltreEnum get filtreTuru {
@@ -104,8 +116,10 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_DepoFarkRaporuViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_DepoFarkRaporuViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   SayilanKalemlerRequestModel get requestModel {
@@ -120,16 +134,20 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_DepoFarkRaporuViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_DepoFarkRaporuViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_DepoFarkRaporuViewModelBaseActionController =
-      ActionController(name: '_DepoFarkRaporuViewModelBase', context: context);
+  late final _$_DepoFarkRaporuViewModelBaseActionController = ActionController(
+    name: '_DepoFarkRaporuViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchBar(bool value) {

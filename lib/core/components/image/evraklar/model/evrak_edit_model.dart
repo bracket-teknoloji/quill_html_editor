@@ -4,7 +4,7 @@ part "evrak_edit_model.freezed.dart";
 part "evrak_edit_model.g.dart";
 
 @unfreezed
-class EvrakEditModel with _$EvrakEditModel {
+sealed class EvrakEditModel with _$EvrakEditModel {
   factory EvrakEditModel({
     String? aciklama,
     String? base64Data,

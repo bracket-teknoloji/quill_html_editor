@@ -6,7 +6,7 @@ part "ek_alanlar_model.freezed.dart";
 part "ek_alanlar_model.g.dart";
 
 @unfreezed
-class EkAlanlarModel with _$EkAlanlarModel, NetworkManagerMixin {
+sealed class EkAlanlarModel with _$EkAlanlarModel, NetworkManagerMixin {
   factory EkAlanlarModel({
     String? tabloAdi,
     String? alanKodu,

@@ -9,8 +9,10 @@ part of 'ambar_maliyet_raporu_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
-  late final _$pdfModelAtom =
-      Atom(name: '_AmbarMaliyetRaporuViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(
+    name: '_AmbarMaliyetRaporuViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -26,8 +28,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
   }
 
   late final _$sifirHaricValueAtom = Atom(
-      name: '_AmbarMaliyetRaporuViewModelBase.sifirHaricValue',
-      context: context);
+    name: '_AmbarMaliyetRaporuViewModelBase.sifirHaricValue',
+    context: context,
+  );
 
   @override
   bool get sifirHaricValue {
@@ -43,8 +46,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_AmbarMaliyetRaporuViewModelBase.futureController',
-      context: context);
+    name: '_AmbarMaliyetRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -61,7 +65,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
 
   late final _$_AmbarMaliyetRaporuViewModelBaseActionController =
       ActionController(
-          name: '_AmbarMaliyetRaporuViewModelBase', context: context);
+        name: '_AmbarMaliyetRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setSifirHaric(bool value) {
@@ -70,8 +76,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
     try {
       return super.setSifirHaric(value);
     } finally {
-      _$_AmbarMaliyetRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_AmbarMaliyetRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -82,8 +89,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
     try {
       return super.setFuture();
     } finally {
-      _$_AmbarMaliyetRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_AmbarMaliyetRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -94,8 +102,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
     try {
       return super.resetFuture();
     } finally {
-      _$_AmbarMaliyetRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_AmbarMaliyetRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

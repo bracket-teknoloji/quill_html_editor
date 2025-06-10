@@ -6,7 +6,7 @@ part "kasa_islemleri_model.freezed.dart";
 part "kasa_islemleri_model.g.dart";
 
 @unfreezed
-class KasaIslemleriModel with _$KasaIslemleriModel, NetworkManagerMixin {
+sealed class KasaIslemleriModel with _$KasaIslemleriModel, NetworkManagerMixin {
   factory KasaIslemleriModel({
     int? inckeyno,
     int? caharInckeyno,

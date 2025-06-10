@@ -6,7 +6,7 @@ part "siparisler_request_model.freezed.dart";
 part "siparisler_request_model.g.dart";
 
 @unfreezed
-class SiparislerRequestModel with _$SiparislerRequestModel {
+sealed class SiparislerRequestModel with _$SiparislerRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory SiparislerRequestModel({
     String? pickerBelgeTuru,

@@ -6,7 +6,7 @@ part "evraklar_model.freezed.dart";
 part "evraklar_model.g.dart";
 
 @unfreezed
-class EvraklarModel with _$EvraklarModel, NetworkManagerMixin {
+sealed class EvraklarModel with _$EvraklarModel, NetworkManagerMixin {
   factory EvraklarModel({
     int? id,
     String? belgeNo,

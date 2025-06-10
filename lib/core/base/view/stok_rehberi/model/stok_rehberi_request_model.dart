@@ -8,7 +8,7 @@ part "stok_rehberi_request_model.freezed.dart";
 part "stok_rehberi_request_model.g.dart";
 
 @unfreezed
-class StokRehberiRequestModel with _$StokRehberiRequestModel {
+sealed class StokRehberiRequestModel with _$StokRehberiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory StokRehberiRequestModel({
     String? belgeNo,

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,162 +10,123 @@ part of 'seri_uret_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-SeriUretModel _$SeriUretModelFromJson(Map<String, dynamic> json) {
-  return _SeriUretModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SeriUretModel {
-  String? get seriNo => throw _privateConstructorUsedError;
-  set seriNo(String? value) => throw _privateConstructorUsedError;
-  String? get stokKodu => throw _privateConstructorUsedError;
-  set stokKodu(String? value) => throw _privateConstructorUsedError;
-  int? get sonNo => throw _privateConstructorUsedError;
-  set sonNo(int? value) => throw _privateConstructorUsedError;
+
+ String? get seriNo; set seriNo(String? value); String? get stokKodu; set stokKodu(String? value); int? get sonNo; set sonNo(int? value);
+/// Create a copy of SeriUretModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SeriUretModelCopyWith<SeriUretModel> get copyWith => _$SeriUretModelCopyWithImpl<SeriUretModel>(this as SeriUretModel, _$identity);
 
   /// Serializes this SeriUretModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SeriUretModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SeriUretModelCopyWith<SeriUretModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $SeriUretModelCopyWith<$Res> {
-  factory $SeriUretModelCopyWith(SeriUretModel value, $Res Function(SeriUretModel) then) =
-      _$SeriUretModelCopyWithImpl<$Res, SeriUretModel>;
-  @useResult
-  $Res call({String? seriNo, String? stokKodu, int? sonNo});
-}
+abstract mixin class $SeriUretModelCopyWith<$Res>  {
+  factory $SeriUretModelCopyWith(SeriUretModel value, $Res Function(SeriUretModel) _then) = _$SeriUretModelCopyWithImpl;
+@useResult
+$Res call({
+ String? seriNo, String? stokKodu, int? sonNo
+});
 
+
+
+
+}
 /// @nodoc
-class _$SeriUretModelCopyWithImpl<$Res, $Val extends SeriUretModel> implements $SeriUretModelCopyWith<$Res> {
-  _$SeriUretModelCopyWithImpl(this._value, this._then);
+class _$SeriUretModelCopyWithImpl<$Res>
+    implements $SeriUretModelCopyWith<$Res> {
+  _$SeriUretModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SeriUretModel _self;
+  final $Res Function(SeriUretModel) _then;
 
-  /// Create a copy of SeriUretModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? seriNo = freezed, Object? stokKodu = freezed, Object? sonNo = freezed}) {
-    return _then(
-      _value.copyWith(
-            seriNo: freezed == seriNo
-                ? _value.seriNo
-                : seriNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            stokKodu: freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sonNo: freezed == sonNo
-                ? _value.sonNo
-                : sonNo // ignore: cast_nullable_to_non_nullable
-                      as int?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of SeriUretModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? seriNo = freezed,Object? stokKodu = freezed,Object? sonNo = freezed,}) {
+  return _then(_self.copyWith(
+seriNo: freezed == seriNo ? _self.seriNo : seriNo // ignore: cast_nullable_to_non_nullable
+as String?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,sonNo: freezed == sonNo ? _self.sonNo : sonNo // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SeriUretModelImplCopyWith<$Res> implements $SeriUretModelCopyWith<$Res> {
-  factory _$$SeriUretModelImplCopyWith(_$SeriUretModelImpl value, $Res Function(_$SeriUretModelImpl) then) =
-      __$$SeriUretModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? seriNo, String? stokKodu, int? sonNo});
 }
 
-/// @nodoc
-class __$$SeriUretModelImplCopyWithImpl<$Res> extends _$SeriUretModelCopyWithImpl<$Res, _$SeriUretModelImpl>
-    implements _$$SeriUretModelImplCopyWith<$Res> {
-  __$$SeriUretModelImplCopyWithImpl(_$SeriUretModelImpl _value, $Res Function(_$SeriUretModelImpl) _then)
-    : super(_value, _then);
-
-  /// Create a copy of SeriUretModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? seriNo = freezed, Object? stokKodu = freezed, Object? sonNo = freezed}) {
-    return _then(
-      _$SeriUretModelImpl(
-        seriNo: freezed == seriNo
-            ? _value.seriNo
-            : seriNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        stokKodu: freezed == stokKodu
-            ? _value.stokKodu
-            : stokKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sonNo: freezed == sonNo
-            ? _value.sonNo
-            : sonNo // ignore: cast_nullable_to_non_nullable
-                  as int?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$SeriUretModelImpl extends _SeriUretModel {
-  _$SeriUretModelImpl({this.seriNo, this.stokKodu, this.sonNo}) : super._();
 
-  factory _$SeriUretModelImpl.fromJson(Map<String, dynamic> json) => _$$SeriUretModelImplFromJson(json);
+class _SeriUretModel extends SeriUretModel {
+   _SeriUretModel({this.seriNo, this.stokKodu, this.sonNo}): super._();
+  factory _SeriUretModel.fromJson(Map<String, dynamic> json) => _$SeriUretModelFromJson(json);
 
-  @override
-  String? seriNo;
-  @override
-  String? stokKodu;
-  @override
-  int? sonNo;
+@override  String? seriNo;
+@override  String? stokKodu;
+@override  int? sonNo;
 
-  /// Create a copy of SeriUretModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SeriUretModelImplCopyWith<_$SeriUretModelImpl> get copyWith =>
-      __$$SeriUretModelImplCopyWithImpl<_$SeriUretModelImpl>(this, _$identity);
+/// Create a copy of SeriUretModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SeriUretModelCopyWith<_SeriUretModel> get copyWith => __$SeriUretModelCopyWithImpl<_SeriUretModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SeriUretModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SeriUretModelToJson(this, );
 }
 
-abstract class _SeriUretModel extends SeriUretModel {
-  factory _SeriUretModel({String? seriNo, String? stokKodu, int? sonNo}) = _$SeriUretModelImpl;
-  _SeriUretModel._() : super._();
 
-  factory _SeriUretModel.fromJson(Map<String, dynamic> json) = _$SeriUretModelImpl.fromJson;
 
-  @override
-  String? get seriNo;
-  set seriNo(String? value);
-  @override
-  String? get stokKodu;
-  set stokKodu(String? value);
-  @override
-  int? get sonNo;
-  set sonNo(int? value);
 
-  /// Create a copy of SeriUretModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SeriUretModelImplCopyWith<_$SeriUretModelImpl> get copyWith => throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$SeriUretModelCopyWith<$Res> implements $SeriUretModelCopyWith<$Res> {
+  factory _$SeriUretModelCopyWith(_SeriUretModel value, $Res Function(_SeriUretModel) _then) = __$SeriUretModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? seriNo, String? stokKodu, int? sonNo
+});
+
+
+
+
+}
+/// @nodoc
+class __$SeriUretModelCopyWithImpl<$Res>
+    implements _$SeriUretModelCopyWith<$Res> {
+  __$SeriUretModelCopyWithImpl(this._self, this._then);
+
+  final _SeriUretModel _self;
+  final $Res Function(_SeriUretModel) _then;
+
+/// Create a copy of SeriUretModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? seriNo = freezed,Object? stokKodu = freezed,Object? sonNo = freezed,}) {
+  return _then(_SeriUretModel(
+seriNo: freezed == seriNo ? _self.seriNo : seriNo // ignore: cast_nullable_to_non_nullable
+as String?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,sonNo: freezed == sonNo ? _self.sonNo : sonNo // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+// dart format on

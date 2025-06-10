@@ -12,14 +12,16 @@ mixin _$CariDovizliEkstreViewModel on _CariDovizliEkstreViewModelBase, Store {
   Computed<bool>? _$getTlHareketleriDokulsunComputed;
 
   @override
-  bool get getTlHareketleriDokulsun => (_$getTlHareketleriDokulsunComputed ??=
-          Computed<bool>(() => super.getTlHareketleriDokulsun,
-              name: '_CariDovizliEkstreViewModelBase.getTlHareketleriDokulsun'))
-      .value;
+  bool get getTlHareketleriDokulsun =>
+      (_$getTlHareketleriDokulsunComputed ??= Computed<bool>(
+        () => super.getTlHareketleriDokulsun,
+        name: '_CariDovizliEkstreViewModelBase.getTlHareketleriDokulsun',
+      )).value;
 
   late final _$tlHareketleriDokulsunAtom = Atom(
-      name: '_CariDovizliEkstreViewModelBase.tlHareketleriDokulsun',
-      context: context);
+    name: '_CariDovizliEkstreViewModelBase.tlHareketleriDokulsun',
+    context: context,
+  );
 
   @override
   bool get tlHareketleriDokulsun {
@@ -29,14 +31,19 @@ mixin _$CariDovizliEkstreViewModel on _CariDovizliEkstreViewModelBase, Store {
 
   @override
   set tlHareketleriDokulsun(bool value) {
-    _$tlHareketleriDokulsunAtom.reportWrite(value, super.tlHareketleriDokulsun,
-        () {
-      super.tlHareketleriDokulsun = value;
-    });
+    _$tlHareketleriDokulsunAtom.reportWrite(
+      value,
+      super.tlHareketleriDokulsun,
+      () {
+        super.tlHareketleriDokulsun = value;
+      },
+    );
   }
 
   late final _$dovizValueAtom = Atom(
-      name: '_CariDovizliEkstreViewModelBase.dovizValue', context: context);
+    name: '_CariDovizliEkstreViewModelBase.dovizValue',
+    context: context,
+  );
 
   @override
   String? get dovizValue {
@@ -51,8 +58,10 @@ mixin _$CariDovizliEkstreViewModel on _CariDovizliEkstreViewModelBase, Store {
     });
   }
 
-  late final _$pdfModelAtom =
-      Atom(name: '_CariDovizliEkstreViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(
+    name: '_CariDovizliEkstreViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -68,8 +77,9 @@ mixin _$CariDovizliEkstreViewModel on _CariDovizliEkstreViewModelBase, Store {
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_CariDovizliEkstreViewModelBase.futureController',
-      context: context);
+    name: '_CariDovizliEkstreViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -86,14 +96,16 @@ mixin _$CariDovizliEkstreViewModel on _CariDovizliEkstreViewModelBase, Store {
 
   late final _$_CariDovizliEkstreViewModelBaseActionController =
       ActionController(
-          name: '_CariDovizliEkstreViewModelBase', context: context);
+        name: '_CariDovizliEkstreViewModelBase',
+        context: context,
+      );
 
   @override
   void changeTlHareketleriDokulsun() {
-    final _$actionInfo =
-        _$_CariDovizliEkstreViewModelBaseActionController.startAction(
-            name:
-                '_CariDovizliEkstreViewModelBase.changeTlHareketleriDokulsun');
+    final _$actionInfo = _$_CariDovizliEkstreViewModelBaseActionController
+        .startAction(
+          name: '_CariDovizliEkstreViewModelBase.changeTlHareketleriDokulsun',
+        );
     try {
       return super.changeTlHareketleriDokulsun();
     } finally {

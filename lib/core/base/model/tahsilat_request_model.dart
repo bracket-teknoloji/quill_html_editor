@@ -8,7 +8,7 @@ part "tahsilat_request_model.freezed.dart";
 part "tahsilat_request_model.g.dart";
 
 @unfreezed
-class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
+sealed class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
   factory TahsilatRequestModel({
     String? aciklama,
     String? belgeNo,
@@ -77,7 +77,7 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
+sealed class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
   factory DekontKalemler({
     String? aciklama,
     String? belgeNo,

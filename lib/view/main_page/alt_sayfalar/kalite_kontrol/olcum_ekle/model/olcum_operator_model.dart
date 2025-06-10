@@ -6,7 +6,7 @@ part "olcum_operator_model.freezed.dart";
 part "olcum_operator_model.g.dart";
 
 @unfreezed
-class OlcumOperatorModel with _$OlcumOperatorModel, NetworkManagerMixin {
+sealed class OlcumOperatorModel with _$OlcumOperatorModel, NetworkManagerMixin {
   factory OlcumOperatorModel({
     int? id,
     String? isyeri,

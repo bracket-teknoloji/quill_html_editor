@@ -13,14 +13,15 @@ mixin _$RaporFiltreDateTimeBottomSheetViewModel
   Computed<int>? _$groupValueComputed;
 
   @override
-  int get groupValue =>
-      (_$groupValueComputed ??= Computed<int>(() => super.groupValue,
-              name: '_RaporFiltreDateTimeBottomSheetViewModelBase.groupValue'))
-          .value;
+  int get groupValue => (_$groupValueComputed ??= Computed<int>(
+    () => super.groupValue,
+    name: '_RaporFiltreDateTimeBottomSheetViewModelBase.groupValue',
+  )).value;
 
   late final _$selectedValueListAtom = Atom(
-      name: '_RaporFiltreDateTimeBottomSheetViewModelBase.selectedValueList',
-      context: context);
+    name: '_RaporFiltreDateTimeBottomSheetViewModelBase.selectedValueList',
+    context: context,
+  );
 
   @override
   ObservableList<bool> get selectedValueList {
@@ -37,34 +38,41 @@ mixin _$RaporFiltreDateTimeBottomSheetViewModel
 
   late final _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController =
       ActionController(
-          name: '_RaporFiltreDateTimeBottomSheetViewModelBase',
-          context: context);
+        name: '_RaporFiltreDateTimeBottomSheetViewModelBase',
+        context: context,
+      );
 
   @override
   void changeGroupValue(int value) {
     final _$actionInfo =
-        _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController.startAction(
-            name:
-                '_RaporFiltreDateTimeBottomSheetViewModelBase.changeGroupValue');
+        _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController
+            .startAction(
+              name:
+                  '_RaporFiltreDateTimeBottomSheetViewModelBase.changeGroupValue',
+            );
     try {
       return super.changeGroupValue(value);
     } finally {
-      _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void resetGroupValue() {
     final _$actionInfo =
-        _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController.startAction(
-            name:
-                '_RaporFiltreDateTimeBottomSheetViewModelBase.resetGroupValue');
+        _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController
+            .startAction(
+              name:
+                  '_RaporFiltreDateTimeBottomSheetViewModelBase.resetGroupValue',
+            );
     try {
       return super.resetGroupValue();
     } finally {
-      _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -72,13 +80,15 @@ mixin _$RaporFiltreDateTimeBottomSheetViewModel
   void changeSelectedValue(int index) {
     final _$actionInfo =
         _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController.startAction(
-            name:
-                '_RaporFiltreDateTimeBottomSheetViewModelBase.changeSelectedValue');
+          name:
+              '_RaporFiltreDateTimeBottomSheetViewModelBase.changeSelectedValue',
+        );
     try {
       return super.changeSelectedValue(index);
     } finally {
-      _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_RaporFiltreDateTimeBottomSheetViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

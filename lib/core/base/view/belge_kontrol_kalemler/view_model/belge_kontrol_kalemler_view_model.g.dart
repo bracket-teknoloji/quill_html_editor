@@ -16,13 +16,15 @@ mixin _$BelgeKontrolKalemlerViewModel
   ObservableList<BelgeKontrolKalemlerModel>? get filteredList =>
       (_$filteredListComputed ??=
               Computed<ObservableList<BelgeKontrolKalemlerModel>?>(
-                  () => super.filteredList,
-                  name: '_BelgeKontrolKalemlerViewModelBase.filteredList'))
+                () => super.filteredList,
+                name: '_BelgeKontrolKalemlerViewModelBase.filteredList',
+              ))
           .value;
 
   late final _$requestModelAtom = Atom(
-      name: '_BelgeKontrolKalemlerViewModelBase.requestModel',
-      context: context);
+    name: '_BelgeKontrolKalemlerViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   BelgeKontrolModel get requestModel {
@@ -38,8 +40,9 @@ mixin _$BelgeKontrolKalemlerViewModel
   }
 
   late final _$observableListAtom = Atom(
-      name: '_BelgeKontrolKalemlerViewModelBase.observableList',
-      context: context);
+    name: '_BelgeKontrolKalemlerViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<BelgeKontrolKalemlerModel>? get observableList {
@@ -55,8 +58,9 @@ mixin _$BelgeKontrolKalemlerViewModel
   }
 
   late final _$isSearchBarOpenAtom = Atom(
-      name: '_BelgeKontrolKalemlerViewModelBase.isSearchBarOpen',
-      context: context);
+    name: '_BelgeKontrolKalemlerViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -72,7 +76,9 @@ mixin _$BelgeKontrolKalemlerViewModel
   }
 
   late final _$searchTextAtom = Atom(
-      name: '_BelgeKontrolKalemlerViewModelBase.searchText', context: context);
+    name: '_BelgeKontrolKalemlerViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -88,8 +94,9 @@ mixin _$BelgeKontrolKalemlerViewModel
   }
 
   late final _$resetListAsyncAction = AsyncAction(
-      '_BelgeKontrolKalemlerViewModelBase.resetList',
-      context: context);
+    '_BelgeKontrolKalemlerViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
@@ -97,8 +104,9 @@ mixin _$BelgeKontrolKalemlerViewModel
   }
 
   late final _$getDataAsyncAction = AsyncAction(
-      '_BelgeKontrolKalemlerViewModelBase.getData',
-      context: context);
+    '_BelgeKontrolKalemlerViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -106,8 +114,9 @@ mixin _$BelgeKontrolKalemlerViewModel
   }
 
   late final _$deleteKalemAsyncAction = AsyncAction(
-      '_BelgeKontrolKalemlerViewModelBase.deleteKalem',
-      context: context);
+    '_BelgeKontrolKalemlerViewModelBase.deleteKalem',
+    context: context,
+  );
 
   @override
   Future<void> deleteKalem(BelgeKontrolKalemlerModel model) {
@@ -116,31 +125,37 @@ mixin _$BelgeKontrolKalemlerViewModel
 
   late final _$_BelgeKontrolKalemlerViewModelBaseActionController =
       ActionController(
-          name: '_BelgeKontrolKalemlerViewModelBase', context: context);
+        name: '_BelgeKontrolKalemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<BelgeKontrolKalemlerModel>? list) {
-    final _$actionInfo =
-        _$_BelgeKontrolKalemlerViewModelBaseActionController.startAction(
-            name: '_BelgeKontrolKalemlerViewModelBase.setObservableList');
+    final _$actionInfo = _$_BelgeKontrolKalemlerViewModelBaseActionController
+        .startAction(
+          name: '_BelgeKontrolKalemlerViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {
-      _$_BelgeKontrolKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BelgeKontrolKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo =
-        _$_BelgeKontrolKalemlerViewModelBaseActionController.startAction(
-            name: '_BelgeKontrolKalemlerViewModelBase.changeSearchBarStatus');
+    final _$actionInfo = _$_BelgeKontrolKalemlerViewModelBaseActionController
+        .startAction(
+          name: '_BelgeKontrolKalemlerViewModelBase.changeSearchBarStatus',
+        );
     try {
       return super.changeSearchBarStatus();
     } finally {
-      _$_BelgeKontrolKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BelgeKontrolKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -151,8 +166,9 @@ mixin _$BelgeKontrolKalemlerViewModel
     try {
       return super.setSearchText(value);
     } finally {
-      _$_BelgeKontrolKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BelgeKontrolKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

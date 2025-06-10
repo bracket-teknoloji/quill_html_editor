@@ -11,7 +11,7 @@ part "e_belge_listesi_model.freezed.dart";
 part "e_belge_listesi_model.g.dart";
 
 @unfreezed
-class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
+sealed class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
   factory EBelgeListesiModel({
     String? ebelgeTuru,
     int? inckeyno,

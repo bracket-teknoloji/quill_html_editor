@@ -10,8 +10,10 @@ part of 'e_irsaliye_ek_bilgiler_view_model.dart';
 
 mixin _$EIrsaliyeEkBilgilerViewModel
     on _EIrsaliyeEkBilgilerViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_EIrsaliyeEkBilgilerViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_EIrsaliyeEkBilgilerViewModelBase.model',
+    context: context,
+  );
 
   @override
   EIrsaliyeBilgiModel get model {
@@ -28,7 +30,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
 
   late final _$_EIrsaliyeEkBilgilerViewModelBaseActionController =
       ActionController(
-          name: '_EIrsaliyeEkBilgilerViewModelBase', context: context);
+        name: '_EIrsaliyeEkBilgilerViewModelBase',
+        context: context,
+      );
 
   @override
   void setModel(EIrsaliyeBilgiModel model) {
@@ -37,8 +41,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setModel(model);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -49,8 +54,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setPlaka(plaka);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -61,8 +67,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSevkTarihi(sevkTarihi);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -73,8 +80,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSevkSaati(sevkSaati);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -85,8 +93,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setUnvan(model);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -97,8 +106,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setVergiNo(vergiNo);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -109,8 +119,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setIl(il);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -121,8 +132,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setIlce(ilce);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -133,8 +145,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setUlke(ulke);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -145,8 +158,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setPostaKodu(postaKodu);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -157,8 +171,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSofor1Adi(sofor1Adi);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -169,34 +184,39 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSofor1Soyadi(sofor1Soyadi);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setSofor1Aciklama(String? sofor1Aciklama) {
-    final _$actionInfo =
-        _$_EIrsaliyeEkBilgilerViewModelBaseActionController.startAction(
-            name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor1Aciklama');
+    final _$actionInfo = _$_EIrsaliyeEkBilgilerViewModelBaseActionController
+        .startAction(
+          name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor1Aciklama',
+        );
     try {
       return super.setSofor1Aciklama(sofor1Aciklama);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setSofor1TcKimlikNo(String? sofor1TcKimlikNo) {
-    final _$actionInfo =
-        _$_EIrsaliyeEkBilgilerViewModelBaseActionController.startAction(
-            name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor1TcKimlikNo');
+    final _$actionInfo = _$_EIrsaliyeEkBilgilerViewModelBaseActionController
+        .startAction(
+          name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor1TcKimlikNo',
+        );
     try {
       return super.setSofor1TcKimlikNo(sofor1TcKimlikNo);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -207,8 +227,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSofor2Adi(sofor2Adi);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -219,34 +240,39 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSofor2Soyadi(sofor2Soyadi);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setSofor2Aciklama(String? sofor2Aciklama) {
-    final _$actionInfo =
-        _$_EIrsaliyeEkBilgilerViewModelBaseActionController.startAction(
-            name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor2Aciklama');
+    final _$actionInfo = _$_EIrsaliyeEkBilgilerViewModelBaseActionController
+        .startAction(
+          name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor2Aciklama',
+        );
     try {
       return super.setSofor2Aciklama(sofor2Aciklama);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setSofor2TcKimlikNo(String? sofor2TcKimlikNo) {
-    final _$actionInfo =
-        _$_EIrsaliyeEkBilgilerViewModelBaseActionController.startAction(
-            name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor2TcKimlikNo');
+    final _$actionInfo = _$_EIrsaliyeEkBilgilerViewModelBaseActionController
+        .startAction(
+          name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor2TcKimlikNo',
+        );
     try {
       return super.setSofor2TcKimlikNo(sofor2TcKimlikNo);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -257,8 +283,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSofor3Adi(sofor3Adi);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -269,34 +296,39 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setSofor3Soyadi(sofor3Soyadi);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setSofor3Aciklama(String? sofor3Aciklama) {
-    final _$actionInfo =
-        _$_EIrsaliyeEkBilgilerViewModelBaseActionController.startAction(
-            name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor3Aciklama');
+    final _$actionInfo = _$_EIrsaliyeEkBilgilerViewModelBaseActionController
+        .startAction(
+          name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor3Aciklama',
+        );
     try {
       return super.setSofor3Aciklama(sofor3Aciklama);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setSofor3TcKimlikNo(String? sofor3TcKimlikNo) {
-    final _$actionInfo =
-        _$_EIrsaliyeEkBilgilerViewModelBaseActionController.startAction(
-            name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor3TcKimlikNo');
+    final _$actionInfo = _$_EIrsaliyeEkBilgilerViewModelBaseActionController
+        .startAction(
+          name: '_EIrsaliyeEkBilgilerViewModelBase.setSofor3TcKimlikNo',
+        );
     try {
       return super.setSofor3TcKimlikNo(sofor3TcKimlikNo);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -307,8 +339,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setDorsePlaka1(dorsePlaka1);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -319,8 +352,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setDorsePlaka2(dorsePlaka2);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -331,8 +365,9 @@ mixin _$EIrsaliyeEkBilgilerViewModel
     try {
       return super.setDorsePlaka3(dorsePlaka3);
     } finally {
-      _$_EIrsaliyeEkBilgilerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_EIrsaliyeEkBilgilerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

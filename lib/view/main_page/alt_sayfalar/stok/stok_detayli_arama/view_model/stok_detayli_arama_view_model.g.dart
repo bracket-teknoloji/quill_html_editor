@@ -10,7 +10,9 @@ part of 'stok_detayli_arama_view_model.dart';
 
 mixin _$StokDetayliAramaViewModel on _StokDetayliAramaViewModelBase, Store {
   late final _$observableListAtom = Atom(
-      name: '_StokDetayliAramaViewModelBase.observableList', context: context);
+    name: '_StokDetayliAramaViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<StokDetayliAramaAlanlar>? get observableList {
@@ -27,7 +29,9 @@ mixin _$StokDetayliAramaViewModel on _StokDetayliAramaViewModelBase, Store {
 
   late final _$_StokDetayliAramaViewModelBaseActionController =
       ActionController(
-          name: '_StokDetayliAramaViewModelBase', context: context);
+        name: '_StokDetayliAramaViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<StokDetayliAramaAlanlar>? list) {

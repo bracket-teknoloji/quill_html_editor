@@ -11,7 +11,9 @@ part of 'finansal_durum_raporu_view_model.dart';
 mixin _$FinansalDurumRaporuViewModel
     on _FinansalDurumRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
-      name: '_FinansalDurumRaporuViewModelBase.pdfModel', context: context);
+    name: '_FinansalDurumRaporuViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -27,8 +29,9 @@ mixin _$FinansalDurumRaporuViewModel
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_FinansalDurumRaporuViewModelBase.futureController',
-      context: context);
+    name: '_FinansalDurumRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -45,7 +48,9 @@ mixin _$FinansalDurumRaporuViewModel
 
   late final _$_FinansalDurumRaporuViewModelBaseActionController =
       ActionController(
-          name: '_FinansalDurumRaporuViewModelBase', context: context);
+        name: '_FinansalDurumRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setFuture() {
@@ -54,8 +59,9 @@ mixin _$FinansalDurumRaporuViewModel
     try {
       return super.setFuture();
     } finally {
-      _$_FinansalDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_FinansalDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -66,21 +72,24 @@ mixin _$FinansalDurumRaporuViewModel
     try {
       return super.resetFuture();
     } finally {
-      _$_FinansalDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_FinansalDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeGorunecekAlanlar(String? value) {
-    final _$actionInfo =
-        _$_FinansalDurumRaporuViewModelBaseActionController.startAction(
-            name: '_FinansalDurumRaporuViewModelBase.changeGorunecekAlanlar');
+    final _$actionInfo = _$_FinansalDurumRaporuViewModelBaseActionController
+        .startAction(
+          name: '_FinansalDurumRaporuViewModelBase.changeGorunecekAlanlar',
+        );
     try {
       return super.changeGorunecekAlanlar(value);
     } finally {
-      _$_FinansalDurumRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_FinansalDurumRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

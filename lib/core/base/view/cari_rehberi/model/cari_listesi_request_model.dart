@@ -8,7 +8,7 @@ part "cari_listesi_request_model.freezed.dart";
 part "cari_listesi_request_model.g.dart";
 
 @freezed
-class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixin {
+sealed class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixin {
   @JsonSerializable(fieldRename: FieldRename.pascal, createToJson: true)
   factory CariListesiRequestModel({
     bool? eFaturaGoster,

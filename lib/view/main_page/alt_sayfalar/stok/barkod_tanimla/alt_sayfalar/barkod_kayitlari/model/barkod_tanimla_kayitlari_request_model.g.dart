@@ -6,17 +6,16 @@ part of 'barkod_tanimla_kayitlari_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BarkodTanimlaKayitlariRequestModelImpl
-    _$$BarkodTanimlaKayitlariRequestModelImplFromJson(
-            Map<String, dynamic> json) =>
-        _$BarkodTanimlaKayitlariRequestModelImpl(
-          stokKodu: json['StokKodu'] as String?,
-          kayitTipi: json['KayitTipi'] as String?,
-        );
+_BarkodTanimlaKayitlariRequestModel
+_$BarkodTanimlaKayitlariRequestModelFromJson(Map<String, dynamic> json) =>
+    _BarkodTanimlaKayitlariRequestModel(
+      stokKodu: json['StokKodu'] as String?,
+      kayitTipi: json['KayitTipi'] as String?,
+    );
 
-Map<String, dynamic> _$$BarkodTanimlaKayitlariRequestModelImplToJson(
-        _$BarkodTanimlaKayitlariRequestModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.stokKodu case final value?) 'StokKodu': value,
-      if (instance.kayitTipi case final value?) 'KayitTipi': value,
-    };
+Map<String, dynamic> _$BarkodTanimlaKayitlariRequestModelToJson(
+  _BarkodTanimlaKayitlariRequestModel instance,
+) => <String, dynamic>{
+  if (instance.stokKodu case final value?) 'StokKodu': value,
+  if (instance.kayitTipi case final value?) 'KayitTipi': value,
+};

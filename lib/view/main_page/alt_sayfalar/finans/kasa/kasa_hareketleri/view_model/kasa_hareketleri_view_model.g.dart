@@ -12,14 +12,15 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   Computed<double>? _$bakiyeComputed;
 
   @override
-  double get bakiye =>
-      (_$bakiyeComputed ??= Computed<double>(() => super.bakiye,
-              name: '_KasaHareketleriViewModelBase.bakiye'))
-          .value;
+  double get bakiye => (_$bakiyeComputed ??= Computed<double>(
+    () => super.bakiye,
+    name: '_KasaHareketleriViewModelBase.bakiye',
+  )).value;
 
   late final _$kasaIslemleriRequestModelAtom = Atom(
-      name: '_KasaHareketleriViewModelBase.kasaIslemleriRequestModel',
-      context: context);
+    name: '_KasaHareketleriViewModelBase.kasaIslemleriRequestModel',
+    context: context,
+  );
 
   @override
   KasaIslemleriRequestModel get kasaIslemleriRequestModel {
@@ -29,14 +30,19 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   set kasaIslemleriRequestModel(KasaIslemleriRequestModel value) {
-    _$kasaIslemleriRequestModelAtom
-        .reportWrite(value, super.kasaIslemleriRequestModel, () {
-      super.kasaIslemleriRequestModel = value;
-    });
+    _$kasaIslemleriRequestModelAtom.reportWrite(
+      value,
+      super.kasaIslemleriRequestModel,
+      () {
+        super.kasaIslemleriRequestModel = value;
+      },
+    );
   }
 
-  late final _$paramDataAtom =
-      Atom(name: '_KasaHareketleriViewModelBase.paramData', context: context);
+  late final _$paramDataAtom = Atom(
+    name: '_KasaHareketleriViewModelBase.paramData',
+    context: context,
+  );
 
   @override
   ObservableMap<String, dynamic>? get paramData {
@@ -52,7 +58,9 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   }
 
   late final _$isScrollDownAtom = Atom(
-      name: '_KasaHareketleriViewModelBase.isScrollDown', context: context);
+    name: '_KasaHareketleriViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -68,7 +76,9 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   }
 
   late final _$observableListAtom = Atom(
-      name: '_KasaHareketleriViewModelBase.observableList', context: context);
+    name: '_KasaHareketleriViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<KasaIslemleriModel>? get observableList {
@@ -83,8 +93,10 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$dovizAdiAtom =
-      Atom(name: '_KasaHareketleriViewModelBase.dovizAdi', context: context);
+  late final _$dovizAdiAtom = Atom(
+    name: '_KasaHareketleriViewModelBase.dovizAdi',
+    context: context,
+  );
 
   @override
   String? get dovizAdi {
@@ -99,8 +111,10 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$resetListAsyncAction =
-      AsyncAction('_KasaHareketleriViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+    '_KasaHareketleriViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
@@ -108,33 +122,41 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   }
 
   late final _$changeScrollStatusAsyncAction = AsyncAction(
-      '_KasaHareketleriViewModelBase.changeScrollStatus',
-      context: context);
+    '_KasaHareketleriViewModelBase.changeScrollStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction
-        .run(() => super.changeScrollStatus(position));
+    return _$changeScrollStatusAsyncAction.run(
+      () => super.changeScrollStatus(position),
+    );
   }
 
-  late final _$deleteDataAsyncAction =
-      AsyncAction('_KasaHareketleriViewModelBase.deleteData', context: context);
+  late final _$deleteDataAsyncAction = AsyncAction(
+    '_KasaHareketleriViewModelBase.deleteData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<KasaIslemleriModel>> deleteData(int? inckeyNo) {
     return _$deleteDataAsyncAction.run(() => super.deleteData(inckeyNo));
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_KasaHareketleriViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_KasaHareketleriViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KasaHareketleriViewModelBaseActionController =
-      ActionController(name: '_KasaHareketleriViewModelBase', context: context);
+  late final _$_KasaHareketleriViewModelBaseActionController = ActionController(
+    name: '_KasaHareketleriViewModelBase',
+    context: context,
+  );
 
   @override
   void setDovizAdi(String? value) {

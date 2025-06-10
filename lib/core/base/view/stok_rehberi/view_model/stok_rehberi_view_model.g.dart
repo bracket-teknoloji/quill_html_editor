@@ -9,8 +9,10 @@ part of 'stok_rehberi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
-  late final _$isSearchBarOpenAtom =
-      Atom(name: '_StokRehberiViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+    name: '_StokRehberiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -25,8 +27,10 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom =
-      Atom(name: '_StokRehberiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+    name: '_StokRehberiViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -41,8 +45,10 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_StokRehberiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_StokRehberiViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -57,8 +63,10 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$kategoriMiAtom =
-      Atom(name: '_StokRehberiViewModelBase.kategoriMi', context: context);
+  late final _$kategoriMiAtom = Atom(
+    name: '_StokRehberiViewModelBase.kategoriMi',
+    context: context,
+  );
 
   @override
   bool get kategoriMi {
@@ -73,8 +81,10 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$grupNoAtom =
-      Atom(name: '_StokRehberiViewModelBase.grupNo', context: context);
+  late final _$grupNoAtom = Atom(
+    name: '_StokRehberiViewModelBase.grupNo',
+    context: context,
+  );
 
   @override
   int get grupNo {
@@ -89,8 +99,10 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$grupKodlariAtom =
-      Atom(name: '_StokRehberiViewModelBase.grupKodlari', context: context);
+  late final _$grupKodlariAtom = Atom(
+    name: '_StokRehberiViewModelBase.grupKodlari',
+    context: context,
+  );
 
   @override
   ObservableList<BaseGrupKoduModel>? get grupKodlari {
@@ -106,7 +118,9 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   late final _$kategoriGrupKodlariAtom = Atom(
-      name: '_StokRehberiViewModelBase.kategoriGrupKodlari', context: context);
+    name: '_StokRehberiViewModelBase.kategoriGrupKodlari',
+    context: context,
+  );
 
   @override
   ObservableList<BaseGrupKoduModel>? get kategoriGrupKodlari {
@@ -121,8 +135,10 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom =
-      Atom(name: '_StokRehberiViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+    name: '_StokRehberiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<StokListesiModel>? get observableList {
@@ -137,24 +153,30 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$resetListAsyncAction =
-      AsyncAction('_StokRehberiViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+    '_StokRehberiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_StokRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_StokRehberiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$getGrupKodlariAsyncAction =
-      AsyncAction('_StokRehberiViewModelBase.getGrupKodlari', context: context);
+  late final _$getGrupKodlariAsyncAction = AsyncAction(
+    '_StokRehberiViewModelBase.getGrupKodlari',
+    context: context,
+  );
 
   @override
   Future<void> getGrupKodlari() {
@@ -162,17 +184,21 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   late final _$getKategoriGrupKodlariAsyncAction = AsyncAction(
-      '_StokRehberiViewModelBase.getKategoriGrupKodlari',
-      context: context);
+    '_StokRehberiViewModelBase.getKategoriGrupKodlari',
+    context: context,
+  );
 
   @override
   Future<void> getKategoriGrupKodlari() {
-    return _$getKategoriGrupKodlariAsyncAction
-        .run(() => super.getKategoriGrupKodlari());
+    return _$getKategoriGrupKodlariAsyncAction.run(
+      () => super.getKategoriGrupKodlari(),
+    );
   }
 
-  late final _$_StokRehberiViewModelBaseActionController =
-      ActionController(name: '_StokRehberiViewModelBase', context: context);
+  late final _$_StokRehberiViewModelBaseActionController = ActionController(
+    name: '_StokRehberiViewModelBase',
+    context: context,
+  );
 
   @override
   void setGrupKodlari(List<BaseGrupKoduModel> value) {

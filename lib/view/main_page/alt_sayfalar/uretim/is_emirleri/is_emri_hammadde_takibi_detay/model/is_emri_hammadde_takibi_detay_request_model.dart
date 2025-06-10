@@ -4,7 +4,7 @@ part "is_emri_hammadde_takibi_detay_request_model.freezed.dart";
 part "is_emri_hammadde_takibi_detay_request_model.g.dart";
 
 @unfreezed
-class IsEmriHammaddeTakibiDetayRequestModel with _$IsEmriHammaddeTakibiDetayRequestModel {
+sealed class IsEmriHammaddeTakibiDetayRequestModel with _$IsEmriHammaddeTakibiDetayRequestModel {
   factory IsEmriHammaddeTakibiDetayRequestModel({
     int? takipno,
     String? tip,

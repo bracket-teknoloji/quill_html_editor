@@ -4,7 +4,7 @@ part "olcum_seri_request_model.freezed.dart";
 part "olcum_seri_request_model.g.dart";
 
 @freezed
-class OlcumSeriRequestModel with _$OlcumSeriRequestModel {
+sealed class OlcumSeriRequestModel with _$OlcumSeriRequestModel {
   const factory OlcumSeriRequestModel({
     String? stokKodu,
     int? girisDepo,

@@ -6,8 +6,8 @@ part of 'olcum_pdf_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OlcumPdfModelImpl _$$OlcumPdfModelImplFromJson(Map<String, dynamic> json) =>
-    _$OlcumPdfModelImpl(
+_OlcumPdfModel _$OlcumPdfModelFromJson(Map<String, dynamic> json) =>
+    _OlcumPdfModel(
       stokKodu: json['STOK_KODU'] as String?,
       yapkod: json['YAPKOD'] as String?,
       revno: json['REVNO'] as String?,
@@ -17,7 +17,7 @@ _$OlcumPdfModelImpl _$$OlcumPdfModelImplFromJson(Map<String, dynamic> json) =>
       tur: json['TUR'] as String?,
     );
 
-Map<String, dynamic> _$$OlcumPdfModelImplToJson(_$OlcumPdfModelImpl instance) =>
+Map<String, dynamic> _$OlcumPdfModelToJson(_OlcumPdfModel instance) =>
     <String, dynamic>{
       if (instance.stokKodu case final value?) 'STOK_KODU': value,
       if (instance.yapkod case final value?) 'YAPKOD': value,

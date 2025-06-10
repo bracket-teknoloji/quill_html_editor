@@ -10,7 +10,9 @@ part of 'custom_text_field_view_model.dart';
 
 mixin _$CustomTextFieldViewModel on _CustomTextFieldViewModelBase, Store {
   late final _$showClearButtonAtom = Atom(
-      name: '_CustomTextFieldViewModelBase.showClearButton', context: context);
+    name: '_CustomTextFieldViewModelBase.showClearButton',
+    context: context,
+  );
 
   @override
   bool get showClearButton {
@@ -25,8 +27,10 @@ mixin _$CustomTextFieldViewModel on _CustomTextFieldViewModelBase, Store {
     });
   }
 
-  late final _$_CustomTextFieldViewModelBaseActionController =
-      ActionController(name: '_CustomTextFieldViewModelBase', context: context);
+  late final _$_CustomTextFieldViewModelBaseActionController = ActionController(
+    name: '_CustomTextFieldViewModelBase',
+    context: context,
+  );
 
   @override
   void setShowClearButton(bool value) {

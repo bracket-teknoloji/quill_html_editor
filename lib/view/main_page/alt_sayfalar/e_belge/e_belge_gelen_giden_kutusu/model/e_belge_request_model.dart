@@ -4,7 +4,7 @@ part "e_belge_request_model.freezed.dart";
 part "e_belge_request_model.g.dart";
 
 @unfreezed
-class EBelgeRequestModel with _$EBelgeRequestModel {
+sealed class EBelgeRequestModel with _$EBelgeRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory EBelgeRequestModel({
     String? basimDurumu,

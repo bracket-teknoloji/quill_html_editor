@@ -7,7 +7,7 @@ part "banka_listesi_model.freezed.dart";
 part "banka_listesi_model.g.dart";
 
 @unfreezed
-class BankaListesiModel with _$BankaListesiModel, NetworkManagerMixin {
+sealed class BankaListesiModel with _$BankaListesiModel, NetworkManagerMixin {
   factory BankaListesiModel({
     String? bankaKodu,
     String? bankasubeKodu,

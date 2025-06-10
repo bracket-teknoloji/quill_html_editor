@@ -13,21 +13,22 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   Computed<String>? _$toplamMiktarComputed;
 
   @override
-  String get toplamMiktar =>
-      (_$toplamMiktarComputed ??= Computed<String>(() => super.toplamMiktar,
-              name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.toplamMiktar'))
-          .value;
+  String get toplamMiktar => (_$toplamMiktarComputed ??= Computed<String>(
+    () => super.toplamMiktar,
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.toplamMiktar',
+  )).value;
   Computed<String>? _$toplamNetTutarComputed;
 
   @override
-  String get toplamNetTutar =>
-      (_$toplamNetTutarComputed ??= Computed<String>(() => super.toplamNetTutar,
-              name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.toplamNetTutar'))
-          .value;
+  String get toplamNetTutar => (_$toplamNetTutarComputed ??= Computed<String>(
+    () => super.toplamNetTutar,
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.toplamNetTutar',
+  )).value;
 
   late final _$modelAtom = Atom(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.model',
-      context: context);
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.model',
+    context: context,
+  );
 
   @override
   UrunGrubunaGoreSatisGrafigiRequestModel get model {
@@ -43,8 +44,9 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   }
 
   late final _$projeListAtom = Atom(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.projeList',
-      context: context);
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.projeList',
+    context: context,
+  );
 
   @override
   List<BaseProjeModel>? get projeList {
@@ -60,8 +62,9 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   }
 
   late final _$irsDahilValueAtom = Atom(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.irsDahilValue',
-      context: context);
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.irsDahilValue',
+    context: context,
+  );
 
   @override
   bool get irsDahilValue {
@@ -77,8 +80,9 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   }
 
   late final _$gruplansinValueAtom = Atom(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.gruplansinValue',
-      context: context);
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.gruplansinValue',
+    context: context,
+  );
 
   @override
   bool get gruplansinValue {
@@ -94,8 +98,9 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   }
 
   late final _$donemTipiIndexAtom = Atom(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.donemTipiIndex',
-      context: context);
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.donemTipiIndex',
+    context: context,
+  );
 
   @override
   int get donemTipiIndex {
@@ -111,8 +116,9 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   }
 
   late final _$modelListAtom = Atom(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.modelList',
-      context: context);
+    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.modelList',
+    context: context,
+  );
 
   @override
   ObservableList<UrunGrubunaGoreSatisGrafigiModel>? get modelList {
@@ -129,18 +135,22 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
 
   late final _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController =
       ActionController(
-          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase', context: context);
+        name: '_UrunGrubunaGoreSatisGrafigiViewModelBase',
+        context: context,
+      );
 
   @override
   void setProjeList(List<BaseProjeModel>? value) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-            name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProjeList');
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProjeList',
+        );
     try {
       return super.setProjeList(value);
     } finally {
-      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -148,12 +158,14 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   void setRaporTipi(String value) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-            name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setRaporTipi');
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setRaporTipi',
+        );
     try {
       return super.setRaporTipi(value);
     } finally {
-      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -161,12 +173,14 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   void setProje(BaseProjeModel? proje) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-            name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProje');
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProje',
+        );
     try {
       return super.setProje(proje);
     } finally {
-      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -174,12 +188,14 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   void setIrsDahilValue(bool value) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-            name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setIrsDahilValue');
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setIrsDahilValue',
+        );
     try {
       return super.setIrsDahilValue(value);
     } finally {
-      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -187,13 +203,14 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   void setGruplansinValue(bool value) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-            name:
-                '_UrunGrubunaGoreSatisGrafigiViewModelBase.setGruplansinValue');
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setGruplansinValue',
+        );
     try {
       return super.setGruplansinValue(value);
     } finally {
-      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -201,12 +218,14 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   void setModelList(List<UrunGrubunaGoreSatisGrafigiModel>? value) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-            name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setModelList');
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setModelList',
+        );
     try {
       return super.setModelList(value);
     } finally {
-      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

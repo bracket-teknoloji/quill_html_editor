@@ -4,7 +4,7 @@ part "delete_cek_senet_model.freezed.dart";
 part "delete_cek_senet_model.g.dart";
 
 @freezed
-class DeleteCekSenetModel with _$DeleteCekSenetModel {
+sealed class DeleteCekSenetModel with _$DeleteCekSenetModel {
   const factory DeleteCekSenetModel({
     String? belgeNo,
     String? belgeTipi,

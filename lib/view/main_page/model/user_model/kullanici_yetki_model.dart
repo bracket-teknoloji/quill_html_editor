@@ -6,7 +6,7 @@ part "kullanici_yetki_model.freezed.dart";
 part "kullanici_yetki_model.g.dart";
 
 @unfreezed
-class KullaniciYetkiModel with _$KullaniciYetkiModel {
+sealed class KullaniciYetkiModel with _$KullaniciYetkiModel {
   @JsonSerializable(createFactory: true)
   factory KullaniciYetkiModel({
     @JsonKey(name: "bagliPlasiyerler") List<String?>? bagliPlasiyerler,

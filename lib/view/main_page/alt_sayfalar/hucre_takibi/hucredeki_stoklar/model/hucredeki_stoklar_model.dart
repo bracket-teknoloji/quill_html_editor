@@ -7,7 +7,7 @@ part "hucredeki_stoklar_model.freezed.dart";
 part "hucredeki_stoklar_model.g.dart";
 
 @freezed
-class HucredekiStoklarModel with _$HucredekiStoklarModel, NetworkManagerMixin, BaseStokMixin {
+sealed class HucredekiStoklarModel with _$HucredekiStoklarModel, NetworkManagerMixin, BaseStokMixin {
   factory HucredekiStoklarModel({
     String? hucreKodu,
     int? depoKodu,

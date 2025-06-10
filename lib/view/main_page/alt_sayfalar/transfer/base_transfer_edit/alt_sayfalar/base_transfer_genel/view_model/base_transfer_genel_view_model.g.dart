@@ -9,8 +9,10 @@ part of 'base_transfer_genel_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
-  late final _$kdvDahilAtom =
-      Atom(name: '_BaseTransferGenelViewModelBase.kdvDahil', context: context);
+  late final _$kdvDahilAtom = Atom(
+    name: '_BaseTransferGenelViewModelBase.kdvDahil',
+    context: context,
+  );
 
   @override
   bool get kdvDahil {
@@ -25,8 +27,10 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseTransferGenelViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseTransferGenelViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -42,8 +46,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   late final _$fiyatGuncelleAsyncAction = AsyncAction(
-      '_BaseTransferGenelViewModelBase.fiyatGuncelle',
-      context: context);
+    '_BaseTransferGenelViewModelBase.fiyatGuncelle',
+    context: context,
+  );
 
   @override
   Future<bool> fiyatGuncelle() {
@@ -52,7 +57,9 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   late final _$_BaseTransferGenelViewModelBaseActionController =
       ActionController(
-          name: '_BaseTransferGenelViewModelBase', context: context);
+        name: '_BaseTransferGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void setCariAdi(String? value) {
@@ -254,9 +261,10 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setTopluGirisDepoKodu(DepoList? value) {
-    final _$actionInfo =
-        _$_BaseTransferGenelViewModelBaseActionController.startAction(
-            name: '_BaseTransferGenelViewModelBase.setTopluGirisDepoKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferGenelViewModelBase.setTopluGirisDepoKodu',
+        );
     try {
       return super.setTopluGirisDepoKodu(value);
     } finally {
@@ -266,9 +274,10 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
 
   @override
   void setTopluCikisDepoKodu(DepoList? value) {
-    final _$actionInfo =
-        _$_BaseTransferGenelViewModelBaseActionController.startAction(
-            name: '_BaseTransferGenelViewModelBase.setTopluCikisDepoKodu');
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferGenelViewModelBase.setTopluCikisDepoKodu',
+        );
     try {
       return super.setTopluCikisDepoKodu(value);
     } finally {

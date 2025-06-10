@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,185 +10,140 @@ part of 'ek_rehberler_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-EkRehberlerModel _$EkRehberlerModelFromJson(Map<String, dynamic> json) {
-  return _EkRehberlerModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$EkRehberlerModel {
-  int? get id => throw _privateConstructorUsedError;
-  String? get baslik => throw _privateConstructorUsedError;
-  String? get ekran => throw _privateConstructorUsedError;
-  String? get alan => throw _privateConstructorUsedError;
+
+ int? get id; String? get baslik; String? get ekran; String? get alan;
+/// Create a copy of EkRehberlerModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EkRehberlerModelCopyWith<EkRehberlerModel> get copyWith => _$EkRehberlerModelCopyWithImpl<EkRehberlerModel>(this as EkRehberlerModel, _$identity);
 
   /// Serializes this EkRehberlerModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of EkRehberlerModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $EkRehberlerModelCopyWith<EkRehberlerModel> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EkRehberlerModel&&(identical(other.id, id) || other.id == id)&&(identical(other.baslik, baslik) || other.baslik == baslik)&&(identical(other.ekran, ekran) || other.ekran == ekran)&&(identical(other.alan, alan) || other.alan == alan));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,baslik,ekran,alan);
+
+
+
 }
 
 /// @nodoc
-abstract class $EkRehberlerModelCopyWith<$Res> {
-  factory $EkRehberlerModelCopyWith(EkRehberlerModel value, $Res Function(EkRehberlerModel) then) =
-      _$EkRehberlerModelCopyWithImpl<$Res, EkRehberlerModel>;
-  @useResult
-  $Res call({int? id, String? baslik, String? ekran, String? alan});
-}
+abstract mixin class $EkRehberlerModelCopyWith<$Res>  {
+  factory $EkRehberlerModelCopyWith(EkRehberlerModel value, $Res Function(EkRehberlerModel) _then) = _$EkRehberlerModelCopyWithImpl;
+@useResult
+$Res call({
+ int? id, String? baslik, String? ekran, String? alan
+});
 
+
+
+
+}
 /// @nodoc
-class _$EkRehberlerModelCopyWithImpl<$Res, $Val extends EkRehberlerModel> implements $EkRehberlerModelCopyWith<$Res> {
-  _$EkRehberlerModelCopyWithImpl(this._value, this._then);
+class _$EkRehberlerModelCopyWithImpl<$Res>
+    implements $EkRehberlerModelCopyWith<$Res> {
+  _$EkRehberlerModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final EkRehberlerModel _self;
+  final $Res Function(EkRehberlerModel) _then;
 
-  /// Create a copy of EkRehberlerModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? id = freezed, Object? baslik = freezed, Object? ekran = freezed, Object? alan = freezed}) {
-    return _then(
-      _value.copyWith(
-            id: freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            baslik: freezed == baslik
-                ? _value.baslik
-                : baslik // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            ekran: freezed == ekran
-                ? _value.ekran
-                : ekran // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            alan: freezed == alan
-                ? _value.alan
-                : alan // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of EkRehberlerModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? baslik = freezed,Object? ekran = freezed,Object? alan = freezed,}) {
+  return _then(_self.copyWith(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,baslik: freezed == baslik ? _self.baslik : baslik // ignore: cast_nullable_to_non_nullable
+as String?,ekran: freezed == ekran ? _self.ekran : ekran // ignore: cast_nullable_to_non_nullable
+as String?,alan: freezed == alan ? _self.alan : alan // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$EkRehberlerModelImplCopyWith<$Res> implements $EkRehberlerModelCopyWith<$Res> {
-  factory _$$EkRehberlerModelImplCopyWith(_$EkRehberlerModelImpl value, $Res Function(_$EkRehberlerModelImpl) then) =
-      __$$EkRehberlerModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? id, String? baslik, String? ekran, String? alan});
 }
 
-/// @nodoc
-class __$$EkRehberlerModelImplCopyWithImpl<$Res> extends _$EkRehberlerModelCopyWithImpl<$Res, _$EkRehberlerModelImpl>
-    implements _$$EkRehberlerModelImplCopyWith<$Res> {
-  __$$EkRehberlerModelImplCopyWithImpl(_$EkRehberlerModelImpl _value, $Res Function(_$EkRehberlerModelImpl) _then)
-    : super(_value, _then);
-
-  /// Create a copy of EkRehberlerModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? id = freezed, Object? baslik = freezed, Object? ekran = freezed, Object? alan = freezed}) {
-    return _then(
-      _$EkRehberlerModelImpl(
-        id: freezed == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        baslik: freezed == baslik
-            ? _value.baslik
-            : baslik // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        ekran: freezed == ekran
-            ? _value.ekran
-            : ekran // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        alan: freezed == alan
-            ? _value.alan
-            : alan // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(createFactory: true)
-class _$EkRehberlerModelImpl implements _EkRehberlerModel {
-  const _$EkRehberlerModelImpl({this.id, this.baslik, this.ekran, this.alan});
+class _EkRehberlerModel implements EkRehberlerModel {
+  const _EkRehberlerModel({this.id, this.baslik, this.ekran, this.alan});
+  factory _EkRehberlerModel.fromJson(Map<String, dynamic> json) => _$EkRehberlerModelFromJson(json);
 
-  factory _$EkRehberlerModelImpl.fromJson(Map<String, dynamic> json) => _$$EkRehberlerModelImplFromJson(json);
+@override final  int? id;
+@override final  String? baslik;
+@override final  String? ekran;
+@override final  String? alan;
 
-  @override
-  final int? id;
-  @override
-  final String? baslik;
-  @override
-  final String? ekran;
-  @override
-  final String? alan;
+/// Create a copy of EkRehberlerModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EkRehberlerModelCopyWith<_EkRehberlerModel> get copyWith => __$EkRehberlerModelCopyWithImpl<_EkRehberlerModel>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EkRehberlerModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.baslik, baslik) || other.baslik == baslik) &&
-            (identical(other.ekran, ekran) || other.ekran == ekran) &&
-            (identical(other.alan, alan) || other.alan == alan));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, baslik, ekran, alan);
-
-  /// Create a copy of EkRehberlerModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EkRehberlerModelImplCopyWith<_$EkRehberlerModelImpl> get copyWith =>
-      __$$EkRehberlerModelImplCopyWithImpl<_$EkRehberlerModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EkRehberlerModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$EkRehberlerModelToJson(this, );
 }
 
-abstract class _EkRehberlerModel implements EkRehberlerModel {
-  const factory _EkRehberlerModel({final int? id, final String? baslik, final String? ekran, final String? alan}) =
-      _$EkRehberlerModelImpl;
-
-  factory _EkRehberlerModel.fromJson(Map<String, dynamic> json) = _$EkRehberlerModelImpl.fromJson;
-
-  @override
-  int? get id;
-  @override
-  String? get baslik;
-  @override
-  String? get ekran;
-  @override
-  String? get alan;
-
-  /// Create a copy of EkRehberlerModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EkRehberlerModelImplCopyWith<_$EkRehberlerModelImpl> get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EkRehberlerModel&&(identical(other.id, id) || other.id == id)&&(identical(other.baslik, baslik) || other.baslik == baslik)&&(identical(other.ekran, ekran) || other.ekran == ekran)&&(identical(other.alan, alan) || other.alan == alan));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,baslik,ekran,alan);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$EkRehberlerModelCopyWith<$Res> implements $EkRehberlerModelCopyWith<$Res> {
+  factory _$EkRehberlerModelCopyWith(_EkRehberlerModel value, $Res Function(_EkRehberlerModel) _then) = __$EkRehberlerModelCopyWithImpl;
+@override @useResult
+$Res call({
+ int? id, String? baslik, String? ekran, String? alan
+});
+
+
+
+
+}
+/// @nodoc
+class __$EkRehberlerModelCopyWithImpl<$Res>
+    implements _$EkRehberlerModelCopyWith<$Res> {
+  __$EkRehberlerModelCopyWithImpl(this._self, this._then);
+
+  final _EkRehberlerModel _self;
+  final $Res Function(_EkRehberlerModel) _then;
+
+/// Create a copy of EkRehberlerModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? baslik = freezed,Object? ekran = freezed,Object? alan = freezed,}) {
+  return _then(_EkRehberlerModel(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,baslik: freezed == baslik ? _self.baslik : baslik // ignore: cast_nullable_to_non_nullable
+as String?,ekran: freezed == ekran ? _self.ekran : ekran // ignore: cast_nullable_to_non_nullable
+as String?,alan: freezed == alan ? _self.alan : alan // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

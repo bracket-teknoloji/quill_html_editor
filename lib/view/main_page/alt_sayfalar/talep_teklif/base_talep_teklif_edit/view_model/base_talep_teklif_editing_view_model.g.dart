@@ -14,20 +14,22 @@ mixin _$BaseTalepTeklifEditingViewModel
 
   @override
   BaseSiparisEditModel get model =>
-      (_$modelComputed ??= Computed<BaseSiparisEditModel>(() => super.model,
-              name: '_BaseTalepTeklifEditingViewModelBase.model'))
-          .value;
+      (_$modelComputed ??= Computed<BaseSiparisEditModel>(
+        () => super.model,
+        name: '_BaseTalepTeklifEditingViewModelBase.model',
+      )).value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
-  int get getKalemCount =>
-      (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount,
-              name: '_BaseTalepTeklifEditingViewModelBase.getKalemCount'))
-          .value;
+  int get getKalemCount => (_$getKalemCountComputed ??= Computed<int>(
+    () => super.getKalemCount,
+    name: '_BaseTalepTeklifEditingViewModelBase.getKalemCount',
+  )).value;
 
   late final _$updateKalemlerAtom = Atom(
-      name: '_BaseTalepTeklifEditingViewModelBase.updateKalemler',
-      context: context);
+    name: '_BaseTalepTeklifEditingViewModelBase.updateKalemler',
+    context: context,
+  );
 
   @override
   bool get updateKalemler {
@@ -43,7 +45,9 @@ mixin _$BaseTalepTeklifEditingViewModel
   }
 
   late final _$pageIndexAtom = Atom(
-      name: '_BaseTalepTeklifEditingViewModelBase.pageIndex', context: context);
+    name: '_BaseTalepTeklifEditingViewModelBase.pageIndex',
+    context: context,
+  );
 
   @override
   int get pageIndex {
@@ -59,7 +63,9 @@ mixin _$BaseTalepTeklifEditingViewModel
   }
 
   late final _$isValidAtom = Atom(
-      name: '_BaseTalepTeklifEditingViewModelBase.isValid', context: context);
+    name: '_BaseTalepTeklifEditingViewModelBase.isValid',
+    context: context,
+  );
 
   @override
   bool get isValid {
@@ -75,8 +81,9 @@ mixin _$BaseTalepTeklifEditingViewModel
   }
 
   late final _$isLastPageAtom = Atom(
-      name: '_BaseTalepTeklifEditingViewModelBase.isLastPage',
-      context: context);
+    name: '_BaseTalepTeklifEditingViewModelBase.isLastPage',
+    context: context,
+  );
 
   @override
   bool get isLastPage {
@@ -92,8 +99,9 @@ mixin _$BaseTalepTeklifEditingViewModel
   }
 
   late final _$showLoadingAtom = Atom(
-      name: '_BaseTalepTeklifEditingViewModelBase.showLoading',
-      context: context);
+    name: '_BaseTalepTeklifEditingViewModelBase.showLoading',
+    context: context,
+  );
 
   @override
   bool get showLoading {
@@ -109,8 +117,9 @@ mixin _$BaseTalepTeklifEditingViewModel
   }
 
   late final _$yeniKaydaHazirlaMiAtom = Atom(
-      name: '_BaseTalepTeklifEditingViewModelBase.yeniKaydaHazirlaMi',
-      context: context);
+    name: '_BaseTalepTeklifEditingViewModelBase.yeniKaydaHazirlaMi',
+    context: context,
+  );
 
   @override
   bool get yeniKaydaHazirlaMi {
@@ -127,57 +136,67 @@ mixin _$BaseTalepTeklifEditingViewModel
 
   late final _$_BaseTalepTeklifEditingViewModelBaseActionController =
       ActionController(
-          name: '_BaseTalepTeklifEditingViewModelBase', context: context);
+        name: '_BaseTalepTeklifEditingViewModelBase',
+        context: context,
+      );
 
   @override
   void changeUpdateKalemler() {
-    final _$actionInfo =
-        _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifEditingViewModelBase.changeUpdateKalemler');
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeUpdateKalemler',
+        );
     try {
       return super.changeUpdateKalemler();
     } finally {
-      _$_BaseTalepTeklifEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeIsValid() {
-    final _$actionInfo =
-        _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifEditingViewModelBase.changeIsValid');
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeIsValid',
+        );
     try {
       return super.changeIsValid();
     } finally {
-      _$_BaseTalepTeklifEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changePageIndex(int value) {
-    final _$actionInfo =
-        _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifEditingViewModelBase.changePageIndex');
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changePageIndex',
+        );
     try {
       return super.changePageIndex(value);
     } finally {
-      _$_BaseTalepTeklifEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeIsLastPage(bool value) {
-    final _$actionInfo =
-        _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifEditingViewModelBase.changeIsLastPage');
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeIsLastPage',
+        );
     try {
       return super.changeIsLastPage(value);
     } finally {
-      _$_BaseTalepTeklifEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -188,8 +207,9 @@ mixin _$BaseTalepTeklifEditingViewModel
     try {
       return super.setLoading(value);
     } finally {
-      _$_BaseTalepTeklifEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -200,22 +220,24 @@ mixin _$BaseTalepTeklifEditingViewModel
     try {
       return super.changeFuture();
     } finally {
-      _$_BaseTalepTeklifEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo =
-        _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-            name:
-                '_BaseTalepTeklifEditingViewModelBase.changeYeniKaydaHazirlaMi');
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeYeniKaydaHazirlaMi',
+        );
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {
-      _$_BaseTalepTeklifEditingViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifEditingViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

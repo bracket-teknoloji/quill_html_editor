@@ -12,13 +12,16 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
   Computed<String>? _$bankaHarAciklamaComputed;
 
   @override
-  String get bankaHarAciklama => (_$bankaHarAciklamaComputed ??=
-          Computed<String>(() => super.bankaHarAciklama,
-              name: '_BankaKasaTransferiViewModelBase.bankaHarAciklama'))
-      .value;
+  String get bankaHarAciklama =>
+      (_$bankaHarAciklamaComputed ??= Computed<String>(
+        () => super.bankaHarAciklama,
+        name: '_BankaKasaTransferiViewModelBase.bankaHarAciklama',
+      )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_BankaKasaTransferiViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BankaKasaTransferiViewModelBase.model',
+    context: context,
+  );
 
   @override
   TahsilatRequestModel get model {
@@ -34,8 +37,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
   }
 
   late final _$bankaDovizliMiAtom = Atom(
-      name: '_BankaKasaTransferiViewModelBase.bankaDovizliMi',
-      context: context);
+    name: '_BankaKasaTransferiViewModelBase.bankaDovizliMi',
+    context: context,
+  );
 
   @override
   bool get bankaDovizliMi {
@@ -51,8 +55,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
   }
 
   late final _$bankaListesiRequestModelAtom = Atom(
-      name: '_BankaKasaTransferiViewModelBase.bankaListesiRequestModel',
-      context: context);
+    name: '_BankaKasaTransferiViewModelBase.bankaListesiRequestModel',
+    context: context,
+  );
 
   @override
   BankaListesiRequestModel get bankaListesiRequestModel {
@@ -62,15 +67,19 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   set bankaListesiRequestModel(BankaListesiRequestModel value) {
-    _$bankaListesiRequestModelAtom
-        .reportWrite(value, super.bankaListesiRequestModel, () {
-      super.bankaListesiRequestModel = value;
-    });
+    _$bankaListesiRequestModelAtom.reportWrite(
+      value,
+      super.bankaListesiRequestModel,
+      () {
+        super.bankaListesiRequestModel = value;
+      },
+    );
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_BankaKasaTransferiViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_BankaKasaTransferiViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -86,8 +95,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
   }
 
   late final _$getSiradakiKodAsyncAction = AsyncAction(
-      '_BankaKasaTransferiViewModelBase.getSiradakiKod',
-      context: context);
+    '_BankaKasaTransferiViewModelBase.getSiradakiKod',
+    context: context,
+  );
 
   @override
   Future<void> getSiradakiKod() {
@@ -95,8 +105,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
   }
 
   late final _$getDovizlerAsyncAction = AsyncAction(
-      '_BankaKasaTransferiViewModelBase.getDovizler',
-      context: context);
+    '_BankaKasaTransferiViewModelBase.getDovizler',
+    context: context,
+  );
 
   @override
   Future<void> getDovizler() {
@@ -104,8 +115,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
   }
 
   late final _$saveTahsilatAsyncAction = AsyncAction(
-      '_BankaKasaTransferiViewModelBase.saveTahsilat',
-      context: context);
+    '_BankaKasaTransferiViewModelBase.saveTahsilat',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<BankaListesiModel>> saveTahsilat() {
@@ -114,18 +126,22 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   late final _$_BankaKasaTransferiViewModelBaseActionController =
       ActionController(
-          name: '_BankaKasaTransferiViewModelBase', context: context);
+        name: '_BankaKasaTransferiViewModelBase',
+        context: context,
+      );
 
   @override
   void setBankaDovizliMi(bool value) {
-    final _$actionInfo =
-        _$_BankaKasaTransferiViewModelBaseActionController.startAction(
-            name: '_BankaKasaTransferiViewModelBase.setBankaDovizliMi');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
+        .startAction(
+          name: '_BankaKasaTransferiViewModelBase.setBankaDovizliMi',
+        );
     try {
       return super.setBankaDovizliMi(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -136,8 +152,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setGc(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -148,8 +165,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -160,8 +178,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setTarih(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -172,8 +191,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setHesapKodu(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -184,8 +204,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setGuid(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -196,8 +217,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setKasaKodu(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -208,8 +230,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setTutar(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -220,8 +243,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setDovizTipi(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -232,8 +256,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setDovizTutari(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -244,8 +269,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setPlasiyerKodu(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -256,8 +282,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setProjeKodu(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -268,8 +295,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setVadeGunu(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -280,8 +308,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setAciklama(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -292,21 +321,24 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     try {
       return super.setHedefAciklama(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_BankaKasaTransferiViewModelBaseActionController.startAction(
-            name: '_BankaKasaTransferiViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
+        .startAction(
+          name: '_BankaKasaTransferiViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
-      _$_BankaKasaTransferiViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BankaKasaTransferiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

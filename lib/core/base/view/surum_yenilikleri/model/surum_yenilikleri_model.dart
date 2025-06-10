@@ -6,7 +6,7 @@ part "surum_yenilikleri_model.freezed.dart";
 part "surum_yenilikleri_model.g.dart";
 
 @unfreezed
-class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
+sealed class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
   factory SurumYenilikleriModel({
     int? surumKodu,
     String? versiyon,
@@ -25,7 +25,7 @@ class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
 }
 
 @freezed
-class ValueList with _$ValueList {
+sealed class ValueList with _$ValueList {
   const factory ValueList({int? id, String? aciklama, bool? talepEden}) = _ValueList;
 
   factory ValueList.fromJson(Map<String, dynamic> json) => _$ValueListFromJson(json);

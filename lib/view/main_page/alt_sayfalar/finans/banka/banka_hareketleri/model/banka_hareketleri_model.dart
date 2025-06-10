@@ -6,7 +6,7 @@ part "banka_hareketleri_model.freezed.dart";
 part "banka_hareketleri_model.g.dart";
 
 @unfreezed
-class BankaHareketleriModel with _$BankaHareketleriModel, NetworkManagerMixin {
+sealed class BankaHareketleriModel with _$BankaHareketleriModel, NetworkManagerMixin {
   factory BankaHareketleriModel({
     int? inckeyno,
     String? netheskodu,

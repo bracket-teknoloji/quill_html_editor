@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,178 +10,137 @@ part of 'sayim_kalem_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-SayimKalemRequestModel _$SayimKalemRequestModelFromJson(Map<String, dynamic> json) {
-  return _SayimKalemRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SayimKalemRequestModel {
-  int? get id => throw _privateConstructorUsedError;
-  int? get depoKodu => throw _privateConstructorUsedError;
-  String? get belgeNo => throw _privateConstructorUsedError;
+
+ int? get id; int? get depoKodu; String? get belgeNo;
+/// Create a copy of SayimKalemRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SayimKalemRequestModelCopyWith<SayimKalemRequestModel> get copyWith => _$SayimKalemRequestModelCopyWithImpl<SayimKalemRequestModel>(this as SayimKalemRequestModel, _$identity);
 
   /// Serializes this SayimKalemRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SayimKalemRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SayimKalemRequestModelCopyWith<SayimKalemRequestModel> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SayimKalemRequestModel&&(identical(other.id, id) || other.id == id)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,depoKodu,belgeNo);
+
+
+
 }
 
 /// @nodoc
-abstract class $SayimKalemRequestModelCopyWith<$Res> {
-  factory $SayimKalemRequestModelCopyWith(SayimKalemRequestModel value, $Res Function(SayimKalemRequestModel) then) =
-      _$SayimKalemRequestModelCopyWithImpl<$Res, SayimKalemRequestModel>;
-  @useResult
-  $Res call({int? id, int? depoKodu, String? belgeNo});
-}
+abstract mixin class $SayimKalemRequestModelCopyWith<$Res>  {
+  factory $SayimKalemRequestModelCopyWith(SayimKalemRequestModel value, $Res Function(SayimKalemRequestModel) _then) = _$SayimKalemRequestModelCopyWithImpl;
+@useResult
+$Res call({
+ int? id, int? depoKodu, String? belgeNo
+});
 
+
+
+
+}
 /// @nodoc
-class _$SayimKalemRequestModelCopyWithImpl<$Res, $Val extends SayimKalemRequestModel>
+class _$SayimKalemRequestModelCopyWithImpl<$Res>
     implements $SayimKalemRequestModelCopyWith<$Res> {
-  _$SayimKalemRequestModelCopyWithImpl(this._value, this._then);
+  _$SayimKalemRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SayimKalemRequestModel _self;
+  final $Res Function(SayimKalemRequestModel) _then;
 
-  /// Create a copy of SayimKalemRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? id = freezed, Object? depoKodu = freezed, Object? belgeNo = freezed}) {
-    return _then(
-      _value.copyWith(
-            id: freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            depoKodu: freezed == depoKodu
-                ? _value.depoKodu
-                : depoKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            belgeNo: freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of SayimKalemRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? depoKodu = freezed,Object? belgeNo = freezed,}) {
+  return _then(_self.copyWith(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SayimKalemRequestModelImplCopyWith<$Res> implements $SayimKalemRequestModelCopyWith<$Res> {
-  factory _$$SayimKalemRequestModelImplCopyWith(
-    _$SayimKalemRequestModelImpl value,
-    $Res Function(_$SayimKalemRequestModelImpl) then,
-  ) = __$$SayimKalemRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? id, int? depoKodu, String? belgeNo});
 }
 
-/// @nodoc
-class __$$SayimKalemRequestModelImplCopyWithImpl<$Res>
-    extends _$SayimKalemRequestModelCopyWithImpl<$Res, _$SayimKalemRequestModelImpl>
-    implements _$$SayimKalemRequestModelImplCopyWith<$Res> {
-  __$$SayimKalemRequestModelImplCopyWithImpl(
-    _$SayimKalemRequestModelImpl _value,
-    $Res Function(_$SayimKalemRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SayimKalemRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? id = freezed, Object? depoKodu = freezed, Object? belgeNo = freezed}) {
-    return _then(
-      _$SayimKalemRequestModelImpl(
-        id: freezed == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        depoKodu: freezed == depoKodu
-            ? _value.depoKodu
-            : depoKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        belgeNo: freezed == belgeNo
-            ? _value.belgeNo
-            : belgeNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$SayimKalemRequestModelImpl implements _SayimKalemRequestModel {
-  const _$SayimKalemRequestModelImpl({this.id, this.depoKodu, this.belgeNo});
 
-  factory _$SayimKalemRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SayimKalemRequestModelImplFromJson(json);
+class _SayimKalemRequestModel implements SayimKalemRequestModel {
+  const _SayimKalemRequestModel({this.id, this.depoKodu, this.belgeNo});
+  factory _SayimKalemRequestModel.fromJson(Map<String, dynamic> json) => _$SayimKalemRequestModelFromJson(json);
 
-  @override
-  final int? id;
-  @override
-  final int? depoKodu;
-  @override
-  final String? belgeNo;
+@override final  int? id;
+@override final  int? depoKodu;
+@override final  String? belgeNo;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SayimKalemRequestModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu) &&
-            (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
-  }
+/// Create a copy of SayimKalemRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SayimKalemRequestModelCopyWith<_SayimKalemRequestModel> get copyWith => __$SayimKalemRequestModelCopyWithImpl<_SayimKalemRequestModel>(this, _$identity);
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, depoKodu, belgeNo);
-
-  /// Create a copy of SayimKalemRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SayimKalemRequestModelImplCopyWith<_$SayimKalemRequestModelImpl> get copyWith =>
-      __$$SayimKalemRequestModelImplCopyWithImpl<_$SayimKalemRequestModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SayimKalemRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SayimKalemRequestModelToJson(this, );
 }
 
-abstract class _SayimKalemRequestModel implements SayimKalemRequestModel {
-  const factory _SayimKalemRequestModel({final int? id, final int? depoKodu, final String? belgeNo}) =
-      _$SayimKalemRequestModelImpl;
-
-  factory _SayimKalemRequestModel.fromJson(Map<String, dynamic> json) = _$SayimKalemRequestModelImpl.fromJson;
-
-  @override
-  int? get id;
-  @override
-  int? get depoKodu;
-  @override
-  String? get belgeNo;
-
-  /// Create a copy of SayimKalemRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SayimKalemRequestModelImplCopyWith<_$SayimKalemRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SayimKalemRequestModel&&(identical(other.id, id) || other.id == id)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,depoKodu,belgeNo);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SayimKalemRequestModelCopyWith<$Res> implements $SayimKalemRequestModelCopyWith<$Res> {
+  factory _$SayimKalemRequestModelCopyWith(_SayimKalemRequestModel value, $Res Function(_SayimKalemRequestModel) _then) = __$SayimKalemRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+ int? id, int? depoKodu, String? belgeNo
+});
+
+
+
+
+}
+/// @nodoc
+class __$SayimKalemRequestModelCopyWithImpl<$Res>
+    implements _$SayimKalemRequestModelCopyWith<$Res> {
+  __$SayimKalemRequestModelCopyWithImpl(this._self, this._then);
+
+  final _SayimKalemRequestModel _self;
+  final $Res Function(_SayimKalemRequestModel) _then;
+
+/// Create a copy of SayimKalemRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? depoKodu = freezed,Object? belgeNo = freezed,}) {
+  return _then(_SayimKalemRequestModel(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

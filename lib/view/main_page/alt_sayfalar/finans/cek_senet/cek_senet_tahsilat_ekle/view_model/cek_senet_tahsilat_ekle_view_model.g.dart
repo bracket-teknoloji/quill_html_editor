@@ -10,8 +10,10 @@ part of 'cek_senet_tahsilat_ekle_view_model.dart';
 
 mixin _$CekSenetTahsilatEkleViewModel
     on _CekSenetTahsilatEkleViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_CekSenetTahsilatEkleViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_CekSenetTahsilatEkleViewModelBase.model',
+    context: context,
+  );
 
   @override
   CekSenetKalemlerModel get model {
@@ -27,8 +29,9 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_CekSenetTahsilatEkleViewModelBase.dovizKurlariListesi',
-      context: context);
+    name: '_CekSenetTahsilatEkleViewModelBase.dovizKurlariListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -44,7 +47,9 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   late final _$bankModelAtom = Atom(
-      name: '_CekSenetTahsilatEkleViewModelBase.bankModel', context: context);
+    name: '_CekSenetTahsilatEkleViewModelBase.bankModel',
+    context: context,
+  );
 
   @override
   BankaListesiModel? get bankModel {
@@ -60,7 +65,9 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   late final _$cariModelAtom = Atom(
-      name: '_CekSenetTahsilatEkleViewModelBase.cariModel', context: context);
+    name: '_CekSenetTahsilatEkleViewModelBase.cariModel',
+    context: context,
+  );
 
   @override
   CariListesiModel? get cariModel {
@@ -76,7 +83,9 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   late final _$muhaRefListAtom = Atom(
-      name: '_CekSenetTahsilatEkleViewModelBase.muhaRefList', context: context);
+    name: '_CekSenetTahsilatEkleViewModelBase.muhaRefList',
+    context: context,
+  );
 
   @override
   ObservableList<MuhasebeReferansModel>? get muhaRefList {
@@ -92,8 +101,9 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   late final _$getMuhaRefListAsyncAction = AsyncAction(
-      '_CekSenetTahsilatEkleViewModelBase.getMuhaRefList',
-      context: context);
+    '_CekSenetTahsilatEkleViewModelBase.getMuhaRefList',
+    context: context,
+  );
 
   @override
   Future<void> getMuhaRefList() {
@@ -101,8 +111,9 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   late final _$getDovizlerAsyncAction = AsyncAction(
-      '_CekSenetTahsilatEkleViewModelBase.getDovizler',
-      context: context);
+    '_CekSenetTahsilatEkleViewModelBase.getDovizler',
+    context: context,
+  );
 
   @override
   Future<void> getDovizler() {
@@ -111,7 +122,9 @@ mixin _$CekSenetTahsilatEkleViewModel
 
   late final _$_CekSenetTahsilatEkleViewModelBaseActionController =
       ActionController(
-          name: '_CekSenetTahsilatEkleViewModelBase', context: context);
+        name: '_CekSenetTahsilatEkleViewModelBase',
+        context: context,
+      );
 
   @override
   void setModel(CekSenetKalemlerModel value) {
@@ -120,8 +133,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setModel(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -132,8 +146,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setBankModel(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -144,21 +159,24 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setCariModel(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setBankaHesapKodu(String? value) {
-    final _$actionInfo =
-        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
-            name: '_CekSenetTahsilatEkleViewModelBase.setBankaHesapKodu');
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetTahsilatEkleViewModelBase.setBankaHesapKodu',
+        );
     try {
       return super.setBankaHesapKodu(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -169,21 +187,24 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setAsilCari(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDuzenlendigiYer(String? value) {
-    final _$actionInfo =
-        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
-            name: '_CekSenetTahsilatEkleViewModelBase.setDuzenlendigiYer');
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetTahsilatEkleViewModelBase.setDuzenlendigiYer',
+        );
     try {
       return super.setDuzenlendigiYer(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -194,8 +215,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setCiroTipi(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -206,8 +228,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setVadeTarihi(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -218,8 +241,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setDovizTipi(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -230,8 +254,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setDovizAdi(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -242,8 +267,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setDovizTutari(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -254,8 +280,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setTutar(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -266,8 +293,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setSeriNo(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -278,8 +306,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setBanka(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -290,8 +319,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setSube(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -302,8 +332,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setHesapNo(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -314,8 +345,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setIBAN(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -326,8 +358,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setIl(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -338,8 +371,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setIlce(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -350,34 +384,39 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setRaporKodu(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setCariRaporKodu(String? value) {
-    final _$actionInfo =
-        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
-            name: '_CekSenetTahsilatEkleViewModelBase.setCariRaporKodu');
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetTahsilatEkleViewModelBase.setCariRaporKodu',
+        );
     try {
       return super.setCariRaporKodu(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
-            name: '_CekSenetTahsilatEkleViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetTahsilatEkleViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -388,8 +427,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setAciklama1(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -400,8 +440,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setAciklama2(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -412,8 +453,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setAciklama3(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -424,8 +466,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setReferans(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -436,8 +479,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setPhotoFront(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -448,8 +492,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setPhotoBack(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -460,8 +505,9 @@ mixin _$CekSenetTahsilatEkleViewModel
     try {
       return super.setMuhaRefList(value);
     } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_CekSenetTahsilatEkleViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

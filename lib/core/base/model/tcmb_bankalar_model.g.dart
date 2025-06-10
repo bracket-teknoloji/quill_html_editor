@@ -6,9 +6,8 @@ part of 'tcmb_bankalar_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TcmbBankalarModelImpl _$$TcmbBankalarModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$TcmbBankalarModelImpl(
+_TcmbBankalarModel _$TcmbBankalarModelFromJson(Map<String, dynamic> json) =>
+    _TcmbBankalarModel(
       bankakodu: json['BANKAKODU'] as String?,
       bankaadi: json['BANKAADI'] as String?,
       subekodu: json['SUBEKODU'] as String?,
@@ -16,8 +15,7 @@ _$TcmbBankalarModelImpl _$$TcmbBankalarModelImplFromJson(
       sehiradi: json['SEHIRADI'] as String?,
     );
 
-Map<String, dynamic> _$$TcmbBankalarModelImplToJson(
-        _$TcmbBankalarModelImpl instance) =>
+Map<String, dynamic> _$TcmbBankalarModelToJson(_TcmbBankalarModel instance) =>
     <String, dynamic>{
       if (instance.bankakodu case final value?) 'BANKAKODU': value,
       if (instance.bankaadi case final value?) 'BANKAADI': value,

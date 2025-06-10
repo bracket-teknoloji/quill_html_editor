@@ -6,8 +6,8 @@ part of 'evraklar_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EvraklarModelImpl _$$EvraklarModelImplFromJson(Map<String, dynamic> json) =>
-    _$EvraklarModelImpl(
+_EvraklarModel _$EvraklarModelFromJson(Map<String, dynamic> json) =>
+    _EvraklarModel(
       id: (json['ID'] as num?)?.toInt(),
       belgeNo: json['BELGE_NO'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
@@ -18,7 +18,7 @@ _$EvraklarModelImpl _$$EvraklarModelImplFromJson(Map<String, dynamic> json) =>
       islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$EvraklarModelImplToJson(_$EvraklarModelImpl instance) =>
+Map<String, dynamic> _$EvraklarModelToJson(_EvraklarModel instance) =>
     <String, dynamic>{
       if (instance.id case final value?) 'ID': value,
       if (instance.belgeNo case final value?) 'BELGE_NO': value,

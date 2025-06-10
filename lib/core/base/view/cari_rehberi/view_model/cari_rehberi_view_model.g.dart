@@ -12,41 +12,48 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari1Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari1 => (_$grupKodlari1Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.grupKodlari1,
-              name: '_CariRehberiViewModelBase.grupKodlari1'))
-      .value;
+  List<BaseGrupKoduModel>? get grupKodlari1 =>
+      (_$grupKodlari1Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari1,
+        name: '_CariRehberiViewModelBase.grupKodlari1',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari2Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari2 => (_$grupKodlari2Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.grupKodlari2,
-              name: '_CariRehberiViewModelBase.grupKodlari2'))
-      .value;
+  List<BaseGrupKoduModel>? get grupKodlari2 =>
+      (_$grupKodlari2Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari2,
+        name: '_CariRehberiViewModelBase.grupKodlari2',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari3Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari3 => (_$grupKodlari3Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.grupKodlari3,
-              name: '_CariRehberiViewModelBase.grupKodlari3'))
-      .value;
+  List<BaseGrupKoduModel>? get grupKodlari3 =>
+      (_$grupKodlari3Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari3,
+        name: '_CariRehberiViewModelBase.grupKodlari3',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari4Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari4 => (_$grupKodlari4Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.grupKodlari4,
-              name: '_CariRehberiViewModelBase.grupKodlari4'))
-      .value;
+  List<BaseGrupKoduModel>? get grupKodlari4 =>
+      (_$grupKodlari4Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari4,
+        name: '_CariRehberiViewModelBase.grupKodlari4',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari5Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari5 => (_$grupKodlari5Computed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.grupKodlari5,
-              name: '_CariRehberiViewModelBase.grupKodlari5'))
-      .value;
+  List<BaseGrupKoduModel>? get grupKodlari5 =>
+      (_$grupKodlari5Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari5,
+        name: '_CariRehberiViewModelBase.grupKodlari5',
+      )).value;
 
-  late final _$isSearchBarOpenAtom =
-      Atom(name: '_CariRehberiViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+    name: '_CariRehberiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -61,8 +68,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_CariRehberiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_CariRehberiViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -77,8 +86,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom =
-      Atom(name: '_CariRehberiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+    name: '_CariRehberiViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -93,8 +104,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom =
-      Atom(name: '_CariRehberiViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+    name: '_CariRehberiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<CariListesiModel>? get observableList {
@@ -109,8 +122,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
-  late final _$sehirlerAtom =
-      Atom(name: '_CariRehberiViewModelBase.sehirler', context: context);
+  late final _$sehirlerAtom = Atom(
+    name: '_CariRehberiViewModelBase.sehirler',
+    context: context,
+  );
 
   @override
   ObservableList<CariSehirlerModel>? get sehirler {
@@ -125,8 +140,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
-  late final _$grupKodlariAtom =
-      Atom(name: '_CariRehberiViewModelBase.grupKodlari', context: context);
+  late final _$grupKodlariAtom = Atom(
+    name: '_CariRehberiViewModelBase.grupKodlari',
+    context: context,
+  );
 
   @override
   ObservableList<BaseGrupKoduModel>? get grupKodlari {
@@ -142,8 +159,9 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   }
 
   late final _$cariListesiRequestModelAtom = Atom(
-      name: '_CariRehberiViewModelBase.cariListesiRequestModel',
-      context: context);
+    name: '_CariRehberiViewModelBase.cariListesiRequestModel',
+    context: context,
+  );
 
   @override
   CariListesiRequestModel? get cariListesiRequestModel {
@@ -153,32 +171,41 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   set cariListesiRequestModel(CariListesiRequestModel? value) {
-    _$cariListesiRequestModelAtom
-        .reportWrite(value, super.cariListesiRequestModel, () {
-      super.cariListesiRequestModel = value;
-    });
+    _$cariListesiRequestModelAtom.reportWrite(
+      value,
+      super.cariListesiRequestModel,
+      () {
+        super.cariListesiRequestModel = value;
+      },
+    );
   }
 
   late final _$changeScrollStatusAsyncAction = AsyncAction(
-      '_CariRehberiViewModelBase.changeScrollStatus',
-      context: context);
+    '_CariRehberiViewModelBase.changeScrollStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction
-        .run(() => super.changeScrollStatus(position));
+    return _$changeScrollStatusAsyncAction.run(
+      () => super.changeScrollStatus(position),
+    );
   }
 
-  late final _$resetListAsyncAction =
-      AsyncAction('_CariRehberiViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+    '_CariRehberiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_CariRehberiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_CariRehberiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -186,24 +213,29 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   }
 
   late final _$getSehirBilgileriAsyncAction = AsyncAction(
-      '_CariRehberiViewModelBase.getSehirBilgileri',
-      context: context);
+    '_CariRehberiViewModelBase.getSehirBilgileri',
+    context: context,
+  );
 
   @override
   Future<void> getSehirBilgileri() {
     return _$getSehirBilgileriAsyncAction.run(() => super.getSehirBilgileri());
   }
 
-  late final _$getGrupKodlariAsyncAction =
-      AsyncAction('_CariRehberiViewModelBase.getGrupKodlari', context: context);
+  late final _$getGrupKodlariAsyncAction = AsyncAction(
+    '_CariRehberiViewModelBase.getGrupKodlari',
+    context: context,
+  );
 
   @override
   Future<void> getGrupKodlari() {
     return _$getGrupKodlariAsyncAction.run(() => super.getGrupKodlari());
   }
 
-  late final _$_CariRehberiViewModelBaseActionController =
-      ActionController(name: '_CariRehberiViewModelBase', context: context);
+  late final _$_CariRehberiViewModelBaseActionController = ActionController(
+    name: '_CariRehberiViewModelBase',
+    context: context,
+  );
 
   @override
   void changeSearchBarStatus() {
@@ -240,9 +272,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void setSiparisKarsilanmaDurumu(String? value) {
-    final _$actionInfo =
-        _$_CariRehberiViewModelBaseActionController.startAction(
-            name: '_CariRehberiViewModelBase.setSiparisKarsilanmaDurumu');
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(
+          name: '_CariRehberiViewModelBase.setSiparisKarsilanmaDurumu',
+        );
     try {
       return super.setSiparisKarsilanmaDurumu(value);
     } finally {

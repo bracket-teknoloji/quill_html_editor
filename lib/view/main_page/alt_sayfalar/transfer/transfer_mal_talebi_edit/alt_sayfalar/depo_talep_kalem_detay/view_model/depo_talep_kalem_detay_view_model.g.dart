@@ -10,8 +10,10 @@ part of 'depo_talep_kalem_detay_view_model.dart';
 
 mixin _$DepoTalepKalemDetayViewModel
     on _DepoTalepKalemDetayViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_DepoTalepKalemDetayViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_DepoTalepKalemDetayViewModelBase.model',
+    context: context,
+  );
 
   @override
   KalemModel get model {
@@ -26,8 +28,10 @@ mixin _$DepoTalepKalemDetayViewModel
     });
   }
 
-  late final _$saveAsyncAction =
-      AsyncAction('_DepoTalepKalemDetayViewModelBase.save', context: context);
+  late final _$saveAsyncAction = AsyncAction(
+    '_DepoTalepKalemDetayViewModelBase.save',
+    context: context,
+  );
 
   @override
   Future<bool> save() {
@@ -36,7 +40,9 @@ mixin _$DepoTalepKalemDetayViewModel
 
   late final _$_DepoTalepKalemDetayViewModelBaseActionController =
       ActionController(
-          name: '_DepoTalepKalemDetayViewModelBase', context: context);
+        name: '_DepoTalepKalemDetayViewModelBase',
+        context: context,
+      );
 
   @override
   void setModel(KalemModel value) {
@@ -45,8 +51,9 @@ mixin _$DepoTalepKalemDetayViewModel
     try {
       return super.setModel(value);
     } finally {
-      _$_DepoTalepKalemDetayViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DepoTalepKalemDetayViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -57,8 +64,9 @@ mixin _$DepoTalepKalemDetayViewModel
     try {
       return super.setOlcuBirimi(value);
     } finally {
-      _$_DepoTalepKalemDetayViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DepoTalepKalemDetayViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -69,8 +77,9 @@ mixin _$DepoTalepKalemDetayViewModel
     try {
       return super.setMiktar(value);
     } finally {
-      _$_DepoTalepKalemDetayViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DepoTalepKalemDetayViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -81,8 +90,9 @@ mixin _$DepoTalepKalemDetayViewModel
     try {
       return super.setAciklama(value);
     } finally {
-      _$_DepoTalepKalemDetayViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_DepoTalepKalemDetayViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,435 +10,266 @@ part of 'surum_yenilikleri_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-SurumYenilikleriModel _$SurumYenilikleriModelFromJson(Map<String, dynamic> json) {
-  return _SurumYenilikleriModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SurumYenilikleriModel {
-  int? get surumKodu => throw _privateConstructorUsedError;
-  set surumKodu(int? value) => throw _privateConstructorUsedError;
-  String? get versiyon => throw _privateConstructorUsedError;
-  set versiyon(String? value) => throw _privateConstructorUsedError;
-  String? get surumAdi => throw _privateConstructorUsedError;
-  set surumAdi(String? value) => throw _privateConstructorUsedError;
-  String? get yer => throw _privateConstructorUsedError;
-  set yer(String? value) => throw _privateConstructorUsedError;
-  List<ValueList>? get liste => throw _privateConstructorUsedError;
-  set liste(List<ValueList>? value) => throw _privateConstructorUsedError;
-  List<String>? get listAciklama => throw _privateConstructorUsedError;
-  set listAciklama(List<String>? value) => throw _privateConstructorUsedError;
-  DateTime? get tarih => throw _privateConstructorUsedError;
-  set tarih(DateTime? value) => throw _privateConstructorUsedError;
+
+ int? get surumKodu; set surumKodu(int? value); String? get versiyon; set versiyon(String? value); String? get surumAdi; set surumAdi(String? value); String? get yer; set yer(String? value); List<ValueList>? get liste; set liste(List<ValueList>? value); List<String>? get listAciklama; set listAciklama(List<String>? value); DateTime? get tarih; set tarih(DateTime? value);
+/// Create a copy of SurumYenilikleriModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SurumYenilikleriModelCopyWith<SurumYenilikleriModel> get copyWith => _$SurumYenilikleriModelCopyWithImpl<SurumYenilikleriModel>(this as SurumYenilikleriModel, _$identity);
 
   /// Serializes this SurumYenilikleriModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SurumYenilikleriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SurumYenilikleriModelCopyWith<SurumYenilikleriModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $SurumYenilikleriModelCopyWith<$Res> {
-  factory $SurumYenilikleriModelCopyWith(SurumYenilikleriModel value, $Res Function(SurumYenilikleriModel) then) =
-      _$SurumYenilikleriModelCopyWithImpl<$Res, SurumYenilikleriModel>;
-  @useResult
-  $Res call({
-    int? surumKodu,
-    String? versiyon,
-    String? surumAdi,
-    String? yer,
-    List<ValueList>? liste,
-    List<String>? listAciklama,
-    DateTime? tarih,
-  });
-}
+abstract mixin class $SurumYenilikleriModelCopyWith<$Res>  {
+  factory $SurumYenilikleriModelCopyWith(SurumYenilikleriModel value, $Res Function(SurumYenilikleriModel) _then) = _$SurumYenilikleriModelCopyWithImpl;
+@useResult
+$Res call({
+ int? surumKodu, String? versiyon, String? surumAdi, String? yer, List<ValueList>? liste, List<String>? listAciklama, DateTime? tarih
+});
 
+
+
+
+}
 /// @nodoc
-class _$SurumYenilikleriModelCopyWithImpl<$Res, $Val extends SurumYenilikleriModel>
+class _$SurumYenilikleriModelCopyWithImpl<$Res>
     implements $SurumYenilikleriModelCopyWith<$Res> {
-  _$SurumYenilikleriModelCopyWithImpl(this._value, this._then);
+  _$SurumYenilikleriModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SurumYenilikleriModel _self;
+  final $Res Function(SurumYenilikleriModel) _then;
 
-  /// Create a copy of SurumYenilikleriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? surumKodu = freezed,
-    Object? versiyon = freezed,
-    Object? surumAdi = freezed,
-    Object? yer = freezed,
-    Object? liste = freezed,
-    Object? listAciklama = freezed,
-    Object? tarih = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            surumKodu: freezed == surumKodu
-                ? _value.surumKodu
-                : surumKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            versiyon: freezed == versiyon
-                ? _value.versiyon
-                : versiyon // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            surumAdi: freezed == surumAdi
-                ? _value.surumAdi
-                : surumAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            yer: freezed == yer
-                ? _value.yer
-                : yer // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            liste: freezed == liste
-                ? _value.liste
-                : liste // ignore: cast_nullable_to_non_nullable
-                      as List<ValueList>?,
-            listAciklama: freezed == listAciklama
-                ? _value.listAciklama
-                : listAciklama // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
-            tarih: freezed == tarih
-                ? _value.tarih
-                : tarih // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of SurumYenilikleriModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? surumKodu = freezed,Object? versiyon = freezed,Object? surumAdi = freezed,Object? yer = freezed,Object? liste = freezed,Object? listAciklama = freezed,Object? tarih = freezed,}) {
+  return _then(_self.copyWith(
+surumKodu: freezed == surumKodu ? _self.surumKodu : surumKodu // ignore: cast_nullable_to_non_nullable
+as int?,versiyon: freezed == versiyon ? _self.versiyon : versiyon // ignore: cast_nullable_to_non_nullable
+as String?,surumAdi: freezed == surumAdi ? _self.surumAdi : surumAdi // ignore: cast_nullable_to_non_nullable
+as String?,yer: freezed == yer ? _self.yer : yer // ignore: cast_nullable_to_non_nullable
+as String?,liste: freezed == liste ? _self.liste : liste // ignore: cast_nullable_to_non_nullable
+as List<ValueList>?,listAciklama: freezed == listAciklama ? _self.listAciklama : listAciklama // ignore: cast_nullable_to_non_nullable
+as List<String>?,tarih: freezed == tarih ? _self.tarih : tarih // ignore: cast_nullable_to_non_nullable
+as DateTime?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SurumYenilikleriModelImplCopyWith<$Res> implements $SurumYenilikleriModelCopyWith<$Res> {
-  factory _$$SurumYenilikleriModelImplCopyWith(
-    _$SurumYenilikleriModelImpl value,
-    $Res Function(_$SurumYenilikleriModelImpl) then,
-  ) = __$$SurumYenilikleriModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    int? surumKodu,
-    String? versiyon,
-    String? surumAdi,
-    String? yer,
-    List<ValueList>? liste,
-    List<String>? listAciklama,
-    DateTime? tarih,
-  });
 }
 
-/// @nodoc
-class __$$SurumYenilikleriModelImplCopyWithImpl<$Res>
-    extends _$SurumYenilikleriModelCopyWithImpl<$Res, _$SurumYenilikleriModelImpl>
-    implements _$$SurumYenilikleriModelImplCopyWith<$Res> {
-  __$$SurumYenilikleriModelImplCopyWithImpl(
-    _$SurumYenilikleriModelImpl _value,
-    $Res Function(_$SurumYenilikleriModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SurumYenilikleriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? surumKodu = freezed,
-    Object? versiyon = freezed,
-    Object? surumAdi = freezed,
-    Object? yer = freezed,
-    Object? liste = freezed,
-    Object? listAciklama = freezed,
-    Object? tarih = freezed,
-  }) {
-    return _then(
-      _$SurumYenilikleriModelImpl(
-        surumKodu: freezed == surumKodu
-            ? _value.surumKodu
-            : surumKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        versiyon: freezed == versiyon
-            ? _value.versiyon
-            : versiyon // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        surumAdi: freezed == surumAdi
-            ? _value.surumAdi
-            : surumAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        yer: freezed == yer
-            ? _value.yer
-            : yer // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        liste: freezed == liste
-            ? _value.liste
-            : liste // ignore: cast_nullable_to_non_nullable
-                  as List<ValueList>?,
-        listAciklama: freezed == listAciklama
-            ? _value.listAciklama
-            : listAciklama // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
-        tarih: freezed == tarih
-            ? _value.tarih
-            : tarih // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$SurumYenilikleriModelImpl extends _SurumYenilikleriModel {
-  _$SurumYenilikleriModelImpl({
-    this.surumKodu,
-    this.versiyon,
-    this.surumAdi,
-    this.yer,
-    this.liste,
-    this.listAciklama,
-    this.tarih,
-  }) : super._();
 
-  factory _$SurumYenilikleriModelImpl.fromJson(Map<String, dynamic> json) => _$$SurumYenilikleriModelImplFromJson(json);
+class _SurumYenilikleriModel extends SurumYenilikleriModel {
+   _SurumYenilikleriModel({this.surumKodu, this.versiyon, this.surumAdi, this.yer, this.liste, this.listAciklama, this.tarih}): super._();
+  factory _SurumYenilikleriModel.fromJson(Map<String, dynamic> json) => _$SurumYenilikleriModelFromJson(json);
 
-  @override
-  int? surumKodu;
-  @override
-  String? versiyon;
-  @override
-  String? surumAdi;
-  @override
-  String? yer;
-  @override
-  List<ValueList>? liste;
-  @override
-  List<String>? listAciklama;
-  @override
-  DateTime? tarih;
+@override  int? surumKodu;
+@override  String? versiyon;
+@override  String? surumAdi;
+@override  String? yer;
+@override  List<ValueList>? liste;
+@override  List<String>? listAciklama;
+@override  DateTime? tarih;
 
-  /// Create a copy of SurumYenilikleriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SurumYenilikleriModelImplCopyWith<_$SurumYenilikleriModelImpl> get copyWith =>
-      __$$SurumYenilikleriModelImplCopyWithImpl<_$SurumYenilikleriModelImpl>(this, _$identity);
+/// Create a copy of SurumYenilikleriModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SurumYenilikleriModelCopyWith<_SurumYenilikleriModel> get copyWith => __$SurumYenilikleriModelCopyWithImpl<_SurumYenilikleriModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SurumYenilikleriModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SurumYenilikleriModelToJson(this, );
 }
 
-abstract class _SurumYenilikleriModel extends SurumYenilikleriModel {
-  factory _SurumYenilikleriModel({
-    int? surumKodu,
-    String? versiyon,
-    String? surumAdi,
-    String? yer,
-    List<ValueList>? liste,
-    List<String>? listAciklama,
-    DateTime? tarih,
-  }) = _$SurumYenilikleriModelImpl;
-  _SurumYenilikleriModel._() : super._();
 
-  factory _SurumYenilikleriModel.fromJson(Map<String, dynamic> json) = _$SurumYenilikleriModelImpl.fromJson;
 
-  @override
-  int? get surumKodu;
-  set surumKodu(int? value);
-  @override
-  String? get versiyon;
-  set versiyon(String? value);
-  @override
-  String? get surumAdi;
-  set surumAdi(String? value);
-  @override
-  String? get yer;
-  set yer(String? value);
-  @override
-  List<ValueList>? get liste;
-  set liste(List<ValueList>? value);
-  @override
-  List<String>? get listAciklama;
-  set listAciklama(List<String>? value);
-  @override
-  DateTime? get tarih;
-  set tarih(DateTime? value);
 
-  /// Create a copy of SurumYenilikleriModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SurumYenilikleriModelImplCopyWith<_$SurumYenilikleriModelImpl> get copyWith => throw _privateConstructorUsedError;
+
 }
 
-ValueList _$ValueListFromJson(Map<String, dynamic> json) {
-  return _ValueList.fromJson(json);
+/// @nodoc
+abstract mixin class _$SurumYenilikleriModelCopyWith<$Res> implements $SurumYenilikleriModelCopyWith<$Res> {
+  factory _$SurumYenilikleriModelCopyWith(_SurumYenilikleriModel value, $Res Function(_SurumYenilikleriModel) _then) = __$SurumYenilikleriModelCopyWithImpl;
+@override @useResult
+$Res call({
+ int? surumKodu, String? versiyon, String? surumAdi, String? yer, List<ValueList>? liste, List<String>? listAciklama, DateTime? tarih
+});
+
+
+
+
 }
+/// @nodoc
+class __$SurumYenilikleriModelCopyWithImpl<$Res>
+    implements _$SurumYenilikleriModelCopyWith<$Res> {
+  __$SurumYenilikleriModelCopyWithImpl(this._self, this._then);
+
+  final _SurumYenilikleriModel _self;
+  final $Res Function(_SurumYenilikleriModel) _then;
+
+/// Create a copy of SurumYenilikleriModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? surumKodu = freezed,Object? versiyon = freezed,Object? surumAdi = freezed,Object? yer = freezed,Object? liste = freezed,Object? listAciklama = freezed,Object? tarih = freezed,}) {
+  return _then(_SurumYenilikleriModel(
+surumKodu: freezed == surumKodu ? _self.surumKodu : surumKodu // ignore: cast_nullable_to_non_nullable
+as int?,versiyon: freezed == versiyon ? _self.versiyon : versiyon // ignore: cast_nullable_to_non_nullable
+as String?,surumAdi: freezed == surumAdi ? _self.surumAdi : surumAdi // ignore: cast_nullable_to_non_nullable
+as String?,yer: freezed == yer ? _self.yer : yer // ignore: cast_nullable_to_non_nullable
+as String?,liste: freezed == liste ? _self.liste : liste // ignore: cast_nullable_to_non_nullable
+as List<ValueList>?,listAciklama: freezed == listAciklama ? _self.listAciklama : listAciklama // ignore: cast_nullable_to_non_nullable
+as List<String>?,tarih: freezed == tarih ? _self.tarih : tarih // ignore: cast_nullable_to_non_nullable
+as DateTime?,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ValueList {
-  int? get id => throw _privateConstructorUsedError;
-  String? get aciklama => throw _privateConstructorUsedError;
-  bool? get talepEden => throw _privateConstructorUsedError;
+
+ int? get id; String? get aciklama; bool? get talepEden;
+/// Create a copy of ValueList
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ValueListCopyWith<ValueList> get copyWith => _$ValueListCopyWithImpl<ValueList>(this as ValueList, _$identity);
 
   /// Serializes this ValueList to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ValueList
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ValueListCopyWith<ValueList> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValueList&&(identical(other.id, id) || other.id == id)&&(identical(other.aciklama, aciklama) || other.aciklama == aciklama)&&(identical(other.talepEden, talepEden) || other.talepEden == talepEden));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,aciklama,talepEden);
+
+
+
 }
 
 /// @nodoc
-abstract class $ValueListCopyWith<$Res> {
-  factory $ValueListCopyWith(ValueList value, $Res Function(ValueList) then) = _$ValueListCopyWithImpl<$Res, ValueList>;
-  @useResult
-  $Res call({int? id, String? aciklama, bool? talepEden});
-}
+abstract mixin class $ValueListCopyWith<$Res>  {
+  factory $ValueListCopyWith(ValueList value, $Res Function(ValueList) _then) = _$ValueListCopyWithImpl;
+@useResult
+$Res call({
+ int? id, String? aciklama, bool? talepEden
+});
 
+
+
+
+}
 /// @nodoc
-class _$ValueListCopyWithImpl<$Res, $Val extends ValueList> implements $ValueListCopyWith<$Res> {
-  _$ValueListCopyWithImpl(this._value, this._then);
+class _$ValueListCopyWithImpl<$Res>
+    implements $ValueListCopyWith<$Res> {
+  _$ValueListCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ValueList _self;
+  final $Res Function(ValueList) _then;
 
-  /// Create a copy of ValueList
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? id = freezed, Object? aciklama = freezed, Object? talepEden = freezed}) {
-    return _then(
-      _value.copyWith(
-            id: freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            aciklama: freezed == aciklama
-                ? _value.aciklama
-                : aciklama // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            talepEden: freezed == talepEden
-                ? _value.talepEden
-                : talepEden // ignore: cast_nullable_to_non_nullable
-                      as bool?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of ValueList
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? aciklama = freezed,Object? talepEden = freezed,}) {
+  return _then(_self.copyWith(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,talepEden: freezed == talepEden ? _self.talepEden : talepEden // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ValueListImplCopyWith<$Res> implements $ValueListCopyWith<$Res> {
-  factory _$$ValueListImplCopyWith(_$ValueListImpl value, $Res Function(_$ValueListImpl) then) =
-      __$$ValueListImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? id, String? aciklama, bool? talepEden});
 }
 
-/// @nodoc
-class __$$ValueListImplCopyWithImpl<$Res> extends _$ValueListCopyWithImpl<$Res, _$ValueListImpl>
-    implements _$$ValueListImplCopyWith<$Res> {
-  __$$ValueListImplCopyWithImpl(_$ValueListImpl _value, $Res Function(_$ValueListImpl) _then) : super(_value, _then);
-
-  /// Create a copy of ValueList
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? id = freezed, Object? aciklama = freezed, Object? talepEden = freezed}) {
-    return _then(
-      _$ValueListImpl(
-        id: freezed == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        aciklama: freezed == aciklama
-            ? _value.aciklama
-            : aciklama // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        talepEden: freezed == talepEden
-            ? _value.talepEden
-            : talepEden // ignore: cast_nullable_to_non_nullable
-                  as bool?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$ValueListImpl implements _ValueList {
-  const _$ValueListImpl({this.id, this.aciklama, this.talepEden});
 
-  factory _$ValueListImpl.fromJson(Map<String, dynamic> json) => _$$ValueListImplFromJson(json);
+class _ValueList implements ValueList {
+  const _ValueList({this.id, this.aciklama, this.talepEden});
+  factory _ValueList.fromJson(Map<String, dynamic> json) => _$ValueListFromJson(json);
 
-  @override
-  final int? id;
-  @override
-  final String? aciklama;
-  @override
-  final bool? talepEden;
+@override final  int? id;
+@override final  String? aciklama;
+@override final  bool? talepEden;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ValueListImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.aciklama, aciklama) || other.aciklama == aciklama) &&
-            (identical(other.talepEden, talepEden) || other.talepEden == talepEden));
-  }
+/// Create a copy of ValueList
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ValueListCopyWith<_ValueList> get copyWith => __$ValueListCopyWithImpl<_ValueList>(this, _$identity);
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, aciklama, talepEden);
-
-  /// Create a copy of ValueList
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ValueListImplCopyWith<_$ValueListImpl> get copyWith =>
-      __$$ValueListImplCopyWithImpl<_$ValueListImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ValueListImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ValueListToJson(this, );
 }
 
-abstract class _ValueList implements ValueList {
-  const factory _ValueList({final int? id, final String? aciklama, final bool? talepEden}) = _$ValueListImpl;
-
-  factory _ValueList.fromJson(Map<String, dynamic> json) = _$ValueListImpl.fromJson;
-
-  @override
-  int? get id;
-  @override
-  String? get aciklama;
-  @override
-  bool? get talepEden;
-
-  /// Create a copy of ValueList
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ValueListImplCopyWith<_$ValueListImpl> get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ValueList&&(identical(other.id, id) || other.id == id)&&(identical(other.aciklama, aciklama) || other.aciklama == aciklama)&&(identical(other.talepEden, talepEden) || other.talepEden == talepEden));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,aciklama,talepEden);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ValueListCopyWith<$Res> implements $ValueListCopyWith<$Res> {
+  factory _$ValueListCopyWith(_ValueList value, $Res Function(_ValueList) _then) = __$ValueListCopyWithImpl;
+@override @useResult
+$Res call({
+ int? id, String? aciklama, bool? talepEden
+});
+
+
+
+
+}
+/// @nodoc
+class __$ValueListCopyWithImpl<$Res>
+    implements _$ValueListCopyWith<$Res> {
+  __$ValueListCopyWithImpl(this._self, this._then);
+
+  final _ValueList _self;
+  final $Res Function(_ValueList) _then;
+
+/// Create a copy of ValueList
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? aciklama = freezed,Object? talepEden = freezed,}) {
+  return _then(_ValueList(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,talepEden: freezed == talepEden ? _self.talepEden : talepEden // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
+
+
+}
+
+// dart format on

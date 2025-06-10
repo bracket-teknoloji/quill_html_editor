@@ -6,7 +6,7 @@ part "stok_fiyat_ozeti_model.freezed.dart";
 part "stok_fiyat_ozeti_model.g.dart";
 
 @freezed
-class StokFiyatOzetiModel with _$StokFiyatOzetiModel, NetworkManagerMixin {
+sealed class StokFiyatOzetiModel with _$StokFiyatOzetiModel, NetworkManagerMixin {
   const factory StokFiyatOzetiModel({
     int? sira,
     String? grup,

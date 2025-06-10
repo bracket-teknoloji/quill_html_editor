@@ -9,7 +9,7 @@ part "dekont_listesi_model.freezed.dart";
 part "dekont_listesi_model.g.dart";
 
 @unfreezed
-class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
+sealed class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
   factory DekontListesiModel({
     int? inckeyno,
     String? seri,

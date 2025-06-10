@@ -10,8 +10,9 @@ part of 'dekont_edit_genel_view_model.dart';
 
 mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
   late final _$dekontIslemlerRequestModelAtom = Atom(
-      name: '_DekontEditGenelViewModelBase.dekontIslemlerRequestModel',
-      context: context);
+    name: '_DekontEditGenelViewModelBase.dekontIslemlerRequestModel',
+    context: context,
+  );
 
   @override
   DekontIslemlerRequestModel get dekontIslemlerRequestModel {
@@ -21,14 +22,19 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   set dekontIslemlerRequestModel(DekontIslemlerRequestModel value) {
-    _$dekontIslemlerRequestModelAtom
-        .reportWrite(value, super.dekontIslemlerRequestModel, () {
-      super.dekontIslemlerRequestModel = value;
-    });
+    _$dekontIslemlerRequestModelAtom.reportWrite(
+      value,
+      super.dekontIslemlerRequestModel,
+      () {
+        super.dekontIslemlerRequestModel = value;
+      },
+    );
   }
 
-  late final _$_DekontEditGenelViewModelBaseActionController =
-      ActionController(name: '_DekontEditGenelViewModelBase', context: context);
+  late final _$_DekontEditGenelViewModelBaseActionController = ActionController(
+    name: '_DekontEditGenelViewModelBase',
+    context: context,
+  );
 
   @override
   void setSingleton() {

@@ -10,7 +10,9 @@ part of 'base_stok_edit_view_model.dart';
 
 mixin _$BaseStokEditingViewModel on _BaseStokEditingViewModelBase, Store {
   late final _$stokListesiModelAtom = Atom(
-      name: '_BaseStokEditingViewModelBase.stokListesiModel', context: context);
+    name: '_BaseStokEditingViewModelBase.stokListesiModel',
+    context: context,
+  );
 
   @override
   StokListesiModel? get stokListesiModel {
@@ -25,8 +27,10 @@ mixin _$BaseStokEditingViewModel on _BaseStokEditingViewModelBase, Store {
     });
   }
 
-  late final _$isSuccessAtom =
-      Atom(name: '_BaseStokEditingViewModelBase.isSuccess', context: context);
+  late final _$isSuccessAtom = Atom(
+    name: '_BaseStokEditingViewModelBase.isSuccess',
+    context: context,
+  );
 
   @override
   bool get isSuccess {
@@ -41,16 +45,20 @@ mixin _$BaseStokEditingViewModel on _BaseStokEditingViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_BaseStokEditingViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_BaseStokEditingViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_BaseStokEditingViewModelBaseActionController =
-      ActionController(name: '_BaseStokEditingViewModelBase', context: context);
+  late final _$_BaseStokEditingViewModelBaseActionController = ActionController(
+    name: '_BaseStokEditingViewModelBase',
+    context: context,
+  );
 
   @override
   void setStokListesiModel(StokListesiModel? value) {

@@ -9,8 +9,10 @@ part of 'cek_senet_evrak_ekle_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
-  late final _$modelAtom =
-      Atom(name: '_CekSenetEvrakEkleViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_CekSenetEvrakEkleViewModelBase.model',
+    context: context,
+  );
 
   @override
   CekSenetEvrakEkleModel get model {
@@ -22,15 +24,20 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
 
   @override
   set model(CekSenetEvrakEkleModel value) {
-    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
-        () {
-      super.model = value;
-      _modelIsInitialized = true;
-    });
+    _$modelAtom.reportWrite(
+      value,
+      _modelIsInitialized ? super.model : null,
+      () {
+        super.model = value;
+        _modelIsInitialized = true;
+      },
+    );
   }
 
   late final _$base64DataAtom = Atom(
-      name: '_CekSenetEvrakEkleViewModelBase.base64Data', context: context);
+    name: '_CekSenetEvrakEkleViewModelBase.base64Data',
+    context: context,
+  );
 
   @override
   String? get base64Data {
@@ -45,8 +52,10 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
     });
   }
 
-  late final _$saveDataAsyncAction =
-      AsyncAction('_CekSenetEvrakEkleViewModelBase.saveData', context: context);
+  late final _$saveDataAsyncAction = AsyncAction(
+    '_CekSenetEvrakEkleViewModelBase.saveData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<CekSenetListesiModel>> saveData() {
@@ -55,7 +64,9 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
 
   late final _$_CekSenetEvrakEkleViewModelBaseActionController =
       ActionController(
-          name: '_CekSenetEvrakEkleViewModelBase', context: context);
+        name: '_CekSenetEvrakEkleViewModelBase',
+        context: context,
+      );
 
   @override
   void setBase64Data(String? base64Data) {

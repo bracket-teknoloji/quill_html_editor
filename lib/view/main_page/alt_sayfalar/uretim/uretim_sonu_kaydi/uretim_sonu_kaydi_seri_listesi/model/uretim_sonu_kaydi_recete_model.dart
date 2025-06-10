@@ -10,7 +10,7 @@ part "uretim_sonu_kaydi_recete_model.freezed.dart";
 part "uretim_sonu_kaydi_recete_model.g.dart";
 
 @unfreezed
-class UskReceteModel with _$UskReceteModel, NetworkManagerMixin, BaseStokMixin {
+sealed class UskReceteModel with _$UskReceteModel, NetworkManagerMixin, BaseStokMixin {
   factory UskReceteModel({
     String? mamulKodu,
     String? stokKodu,

@@ -10,19 +10,22 @@ part of 'surum_yenilikleri_view_model.dart';
 
 mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
   Computed<ObservableList<SurumYenilikleriModel>?>?
-      _$getSurumYenilikleriModelListComputed;
+  _$getSurumYenilikleriModelListComputed;
 
   @override
   ObservableList<SurumYenilikleriModel>? get getSurumYenilikleriModelList =>
-      (_$getSurumYenilikleriModelListComputed ??= Computed<
-                  ObservableList<SurumYenilikleriModel>?>(
-              () => super.getSurumYenilikleriModelList,
-              name:
-                  '_SurumYenilikleriViewModelBase.getSurumYenilikleriModelList'))
+      (_$getSurumYenilikleriModelListComputed ??=
+              Computed<ObservableList<SurumYenilikleriModel>?>(
+                () => super.getSurumYenilikleriModelList,
+                name:
+                    '_SurumYenilikleriViewModelBase.getSurumYenilikleriModelList',
+              ))
           .value;
 
-  late final _$searchBarAtom =
-      Atom(name: '_SurumYenilikleriViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_SurumYenilikleriViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -37,8 +40,10 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_SurumYenilikleriViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_SurumYenilikleriViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -54,7 +59,9 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
   }
 
   late final _$observableListAtom = Atom(
-      name: '_SurumYenilikleriViewModelBase.observableList', context: context);
+    name: '_SurumYenilikleriViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<SurumYenilikleriModel>? get observableList {
@@ -69,8 +76,10 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_SurumYenilikleriViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_SurumYenilikleriViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -79,7 +88,9 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
 
   late final _$_SurumYenilikleriViewModelBaseActionController =
       ActionController(
-          name: '_SurumYenilikleriViewModelBase', context: context);
+        name: '_SurumYenilikleriViewModelBase',
+        context: context,
+      );
 
   @override
   void setSearchText(String? value) {

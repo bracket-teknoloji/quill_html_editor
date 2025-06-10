@@ -6,9 +6,8 @@ part of 'belge_rehberi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BelgeRehberiModelImpl _$$BelgeRehberiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$BelgeRehberiModelImpl(
+_BelgeRehberiModel _$BelgeRehberiModelFromJson(Map<String, dynamic> json) =>
+    _BelgeRehberiModel(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
@@ -21,8 +20,7 @@ _$BelgeRehberiModelImpl _$$BelgeRehberiModelImplFromJson(
       kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$BelgeRehberiModelImplToJson(
-        _$BelgeRehberiModelImpl instance) =>
+Map<String, dynamic> _$BelgeRehberiModelToJson(_BelgeRehberiModel instance) =>
     <String, dynamic>{
       if (instance.belgeNo case final value?) 'BELGE_NO': value,
       if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,

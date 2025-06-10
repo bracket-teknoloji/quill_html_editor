@@ -11,8 +11,9 @@ part of 'base_talep_teklif_toplamlar_view_model.dart';
 mixin _$BaseTalepTeklifToplamlarViewModel
     on _BaseTalepTeklifToplamlarViewModelBase, Store {
   late final _$isGenIsk1TAtom = Atom(
-      name: '_BaseTalepTeklifToplamlarViewModelBase.isGenIsk1T',
-      context: context);
+    name: '_BaseTalepTeklifToplamlarViewModelBase.isGenIsk1T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk1T {
@@ -28,8 +29,9 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   }
 
   late final _$isGenIsk2TAtom = Atom(
-      name: '_BaseTalepTeklifToplamlarViewModelBase.isGenIsk2T',
-      context: context);
+    name: '_BaseTalepTeklifToplamlarViewModelBase.isGenIsk2T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk2T {
@@ -45,8 +47,9 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   }
 
   late final _$isGenIsk3TAtom = Atom(
-      name: '_BaseTalepTeklifToplamlarViewModelBase.isGenIsk3T',
-      context: context);
+    name: '_BaseTalepTeklifToplamlarViewModelBase.isGenIsk3T',
+    context: context,
+  );
 
   @override
   bool get isGenIsk3T {
@@ -62,7 +65,9 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   }
 
   late final _$modelAtom = Atom(
-      name: '_BaseTalepTeklifToplamlarViewModelBase.model', context: context);
+    name: '_BaseTalepTeklifToplamlarViewModelBase.model',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get model {
@@ -79,18 +84,22 @@ mixin _$BaseTalepTeklifToplamlarViewModel
 
   late final _$_BaseTalepTeklifToplamlarViewModelBaseActionController =
       ActionController(
-          name: '_BaseTalepTeklifToplamlarViewModelBase', context: context);
+        name: '_BaseTalepTeklifToplamlarViewModelBase',
+        context: context,
+      );
 
   @override
   void setEkMal1(double? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setEkMal1');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setEkMal1',
+        );
     try {
       return super.setEkMal1(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -98,12 +107,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setTevkifat(double? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setTevkifat');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setTevkifat',
+        );
     try {
       return super.setTevkifat(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -111,12 +122,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setEkMal3(double? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setEkMal3');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setEkMal3',
+        );
     try {
       return super.setEkMal3(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -124,12 +137,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setVadeTarihi(DateTime? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setVadeTarihi');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setVadeTarihi',
+        );
     try {
       return super.setVadeTarihi(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -137,12 +152,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setIskTipi1(int? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setIskTipi1');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setIskTipi1',
+        );
     try {
       return super.setIskTipi1(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -150,12 +167,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setIskTipi2(int? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setIskTipi2');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setIskTipi2',
+        );
     try {
       return super.setIskTipi2(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -163,12 +182,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setIskTipi3(int? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setIskTipi3');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setIskTipi3',
+        );
     try {
       return super.setIskTipi3(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -176,12 +197,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setGenIsk1(double? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setGenIsk1');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setGenIsk1',
+        );
     try {
       return super.setGenIsk1(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -189,12 +212,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setGenIsk2(double? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setGenIsk2');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setGenIsk2',
+        );
     try {
       return super.setGenIsk2(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -202,12 +227,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void setGenIsk3(double? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.setGenIsk3');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.setGenIsk3',
+        );
     try {
       return super.setGenIsk3(value);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -215,12 +242,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void changeGenIsk1O(TextEditingController controller) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.changeGenIsk1O');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.changeGenIsk1O',
+        );
     try {
       return super.changeGenIsk1O(controller);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -228,12 +257,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void changeGenIsk2O(TextEditingController controller) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.changeGenIsk2O');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.changeGenIsk2O',
+        );
     try {
       return super.changeGenIsk2O(controller);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -241,12 +272,14 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   void changeGenIsk3O(TextEditingController controller) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
-            name: '_BaseTalepTeklifToplamlarViewModelBase.changeGenIsk3O');
+          name: '_BaseTalepTeklifToplamlarViewModelBase.changeGenIsk3O',
+        );
     try {
       return super.changeGenIsk3O(controller);
     } finally {
-      _$_BaseTalepTeklifToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseTalepTeklifToplamlarViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

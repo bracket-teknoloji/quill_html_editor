@@ -937,7 +937,6 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       this(bulunanSerilot5: bulunanSerilot5);
 
   @override
-
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1096,18 +1095,18 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           : seriCikislardaAcik as bool?,
       seriCikistaOtomatikMi:
           seriCikistaOtomatikMi == const $CopyWithPlaceholder()
-              ? _value.seriCikistaOtomatikMi
-              // ignore: cast_nullable_to_non_nullable
-              : seriCikistaOtomatikMi as bool?,
+          ? _value.seriCikistaOtomatikMi
+          // ignore: cast_nullable_to_non_nullable
+          : seriCikistaOtomatikMi as bool?,
       seriGirislerdeAcik: seriGirislerdeAcik == const $CopyWithPlaceholder()
           ? _value.seriGirislerdeAcik
           // ignore: cast_nullable_to_non_nullable
           : seriGirislerdeAcik as bool?,
       seriGiristeOtomatikMi:
           seriGiristeOtomatikMi == const $CopyWithPlaceholder()
-              ? _value.seriGiristeOtomatikMi
-              // ignore: cast_nullable_to_non_nullable
-              : seriGiristeOtomatikMi as bool?,
+          ? _value.seriGiristeOtomatikMi
+          // ignore: cast_nullable_to_non_nullable
+          : seriGiristeOtomatikMi as bool?,
       seriMiktarKadarSor: seriMiktarKadarSor == const $CopyWithPlaceholder()
           ? _value.seriMiktarKadarSor
           // ignore: cast_nullable_to_non_nullable
@@ -1594,9 +1593,9 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           : stokSayimBakiye as double?,
       koliBilesenFiyatorandan:
           koliBilesenFiyatorandan == const $CopyWithPlaceholder()
-              ? _value.koliBilesenFiyatorandan
-              // ignore: cast_nullable_to_non_nullable
-              : koliBilesenFiyatorandan as String?,
+          ? _value.koliBilesenFiyatorandan
+          // ignore: cast_nullable_to_non_nullable
+          : koliBilesenFiyatorandan as String?,
       koliBilesenKolikdv: koliBilesenKolikdv == const $CopyWithPlaceholder()
           ? _value.koliBilesenKolikdv
           // ignore: cast_nullable_to_non_nullable
@@ -1661,162 +1660,162 @@ extension $StokListesiModelCopyWith on StokListesiModel {
 
 StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
     StokListesiModel(
-      seriBakiyeKontrolu: json['SERI_BAKIYE_KONTROLU'] as bool?,
-      seriCikislardaAcik: json['SERI_CIKISLARDA_ACIK'] as bool?,
-      seriCikistaOtomatikMi: json['SERI_CIKISTA_OTOMATIK_MI'] as bool?,
-      seriGirislerdeAcik: json['SERI_GIRISLERDE_ACIK'] as bool?,
-      seriGiristeOtomatikMi: json['SERI_GIRISTE_OTOMATIK_MI'] as bool?,
-      seriMiktarKadarSor: json['SERI_MIKTAR_KADAR_SOR'] as bool?,
-      duzeltmetarihi: json['DUZELTMETARIHI'] == null
-          ? null
-          : DateTime.parse(json['DUZELTMETARIHI'] as String),
-      alisFiat1: (json['ALIS_FIAT1'] as num?)?.toDouble(),
-      alisFiat2: (json['ALIS_FIAT2'] as num?)?.toDouble(),
-      alisFiat3: (json['ALIS_FIAT3'] as num?)?.toDouble(),
-      alisFiat4: (json['ALIS_FIAT4'] as num?)?.toDouble(),
-      alisKdv: (json['ALIS_KDV'] as num?)?.toDouble(),
-      bakiye: (json['BAKIYE'] as num?)?.toDouble(),
-      birimAgirlik: (json['BIRIM_AGIRLIK'] as num?)?.toDouble(),
-      dovAlisFiat: (json['DOV_ALIS_FIAT'] as num?)?.toDouble(),
-      dovSatisFiat: (json['DOV_SATIS_FIAT'] as num?)?.toDouble(),
-      olcuBirimi2Pay: (json['OLCU_BIRIMI2_PAY'] as num?)?.toDouble(),
-      olcuBirimi2Payda: (json['OLCU_BIRIMI2_PAYDA'] as num?)?.toDouble(),
-      olcuBirimi3Pay: (json['OLCU_BIRIMI3_PAY'] as num?)?.toDouble(),
-      olcuBirimi3Payda: (json['OLCU_BIRIMI3_PAYDA'] as num?)?.toDouble(),
-      satisFiat1: (json['SATIS_FIAT1'] as num?)?.toDouble(),
-      satisFiat2: (json['SATIS_FIAT2'] as num?)?.toDouble(),
-      satisFiat3: (json['SATIS_FIAT3'] as num?)?.toDouble(),
-      satisFiat4: (json['SATIS_FIAT4'] as num?)?.toDouble(),
-      satisKdv: (json['SATIS_KDV'] as num?)?.toDouble(),
-      alisDovTip: (json['ALIS_DOV_TIP'] as num?)?.toInt(),
-      bulunanFiyat: (json['BULUNAN_FIYAT'] as num?)?.toDouble(),
-      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
-      fiatBirimi: (json['FIAT_BIRIMI'] as num?)?.toInt(),
-      muhdetayKodu: (json['MUHDETAY_KODU'] as num?)?.toInt(),
-      satDovTip: (json['SAT_DOV_TIP'] as num?)?.toInt(),
-      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
-      stokFiyatList: json['STOK_FIYAT_LIST'] as List<dynamic>?,
-      stokList: (json['STOK_LIST'] as List<dynamic>?)
-          ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      alisDovizAdi: json['ALIS_DOVIZ_ADI'] as String?,
-      barkod1: json['BARKOD1'] as String?,
-      barkod2: json['BARKOD2'] as String?,
-      barkod3: json['BARKOD3'] as String?,
-      duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
-      grupKodu: json['GRUP_KODU'] as String?,
-      grupTanimi: json['GRUP_TANIMI'] as String?,
-      kayittarihi: json['KAYITTARIHI'] as String?,
-      kayityapankul: json['KAYITYAPANKUL'] as String?,
-      kilitAlis: json['KILIT_ALIS'] as String?,
-      kilitGenel: json['KILIT_GENEL'] as String?,
-      kilitMussip: json['KILIT_MUSSIP'] as String?,
-      kilitSaticisip: json['KILIT_SATICISIP'] as String?,
-      kilitSatis: json['KILIT_SATIS'] as String?,
-      kod1: json['KOD1'] as String?,
-      kod1Tanimi: json['KOD1_TANIMI'] as String?,
-      kod2: json['KOD2'] as String?,
-      kod2Tanimi: json['KOD2_TANIMI'] as String?,
-      kod3: json['KOD3'] as String?,
-      kod3Tanimi: json['KOD3_TANIMI'] as String?,
-      kod4: json['KOD4'] as String?,
-      kod4Tanimi: json['KOD4_TANIMI'] as String?,
-      kod5: json['KOD5'] as String?,
-      kod5Tanimi: json['KOD5_TANIMI'] as String?,
-      muhdetayAdi: json['MUHDETAY_ADI'] as String?,
-      olcuBirimi: json['OLCU_BIRIMI'] as String?,
-      olcuBirimi2: json['OLCU_BIRIMI2'] as String?,
-      olcuBirimi3: json['OLCU_BIRIMI3'] as String?,
-      paketMi: json['PAKET_MI'] as String?,
-      resimBase64: json['RESIM_BASE64'] as String?,
-      resimUrl: json['RESIM_URL'] as String?,
-      resimUrlKucuk: json['RESIM_URL_KUCUK'] as String?,
-      satisDovizAdi: json['SATIS_DOVIZ_ADI'] as String?,
-      stokAdi: json['STOK_ADI'] as String?,
-      stokKodu: json['STOK_KODU'] as String?,
-      ureticiKodu: json['URETICI_KODU'] as String?,
-      yapilandirmaAktif: json['YAPILANDIRMA_AKTIF'] as bool?,
-      yapkod: json['YAPKOD'] as String?,
-      yapkodAciklama: json['YAPKOD_ACIKLAMA'] as String?,
-      idx: (json['IDX'] as num?)?.toInt(),
-      alisKuru: (json['ALIS_KURU'] as num?)?.toDouble(),
-      alisKurTarihi: json['ALIS_KUR_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['ALIS_KUR_TARIHI'] as String),
-      satisKuru: (json['SATIS_KURU'] as num?)?.toDouble(),
-      satisKurTarihi: json['SATIS_KUR_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
-      bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
-      bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt() ?? 0,
-      kull1n: (json['KULL1N'] as num?)?.toDouble(),
-      kull2n: (json['KULL2N'] as num?)?.toDouble(),
-      kull3n: (json['KULL3N'] as num?)?.toDouble(),
-      kull4n: (json['KULL4N'] as num?)?.toDouble(),
-      kull5n: (json['KULL5N'] as num?)?.toDouble(),
-      kull6n: (json['KULL6N'] as num?)?.toDouble(),
-      kull7n: (json['KULL7N'] as num?)?.toDouble(),
-      kull8n: (json['KULL8N'] as num?)?.toDouble(),
-      kull1s: json['KULL1S'] as String?,
-      kull2s: json['KULL2S'] as String?,
-      kull3s: json['KULL3S'] as String?,
-      kull4s: json['KULL4S'] as String?,
-      kull5s: json['KULL5S'] as String?,
-      kull6s: json['KULL6S'] as String?,
-      kull7s: json['KULL7S'] as String?,
-      kull8s: json['KULL8S'] as String?,
-      belgeTarihi: json['BELGE_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['BELGE_TARIHI'] as String),
-      otvUygula: json['OTV_UYGULA'] as String?,
-      otvOranmi: json['OTV_ORANMI'] as String?,
-      otvKodu: json['OTV_KODU'] as String?,
-      otvAralik: (json['OTV_ARALIK'] as List<dynamic>?)
-          ?.map((e) => OtvAralikModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      otvDeger: (json['OTV_DEGER'] as num?)?.toDouble(),
-      varsayilanMiktar: (json['VARSAYILAN_MIKTAR'] as num?)?.toDouble(),
-      miktar2: (json['MIKTAR2'] as num?)?.toDouble(),
-      bulunanSerilot: json['BULUNAN_SERILOT'] as String?,
-      bulunanSerilot2: json['BULUNAN_SERILOT2'] as String?,
-      bulunanSerilot3: json['BULUNAN_SERILOT3'] as String?,
-      bulunanSerilot4: json['BULUNAN_SERILOT4'] as String?,
-      bulunanSeriAcik1: json['BULUNAN_SERI_ACIK1'] as String?,
-      bulunanSeriAcik2: json['BULUNAN_SERI_ACIK2'] as String?,
-      okutulanBarkod: json['OKUTULAN_BARKOD'] as String?,
-      bulunanSeriSkt: json['BULUNAN_SERI_SKT'] == null
-          ? null
-          : DateTime.parse(json['BULUNAN_SERI_SKT'] as String),
-      depoBakiyeListe: (json['DEPO_BAKIYE_LISTE'] as List<dynamic>?)
-          ?.map((e) => DepoBakiyeListe.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      netMiktar: (json['NET_MIKTAR'] as num?)?.toDouble(),
-      miktar: (json['MIKTAR'] as num?)?.toDouble(),
-      yapacik: json['YAPACIK'] as String?,
-      kosulIsk1: (json['KOSUL_ISK1'] as num?)?.toDouble(),
-      kosulUygulandi: json['KOSUL_UYGULANDI'] as String?,
-      kosulIsk1Ot: json['KOSUL_ISK1_OT'] as String?,
-      kosulIsk2: (json['KOSUL_ISK2'] as num?)?.toDouble(),
-      kosulIsk3: (json['KOSUL_ISK3'] as num?)?.toDouble(),
-      isk1o: (json['ISK1O'] as num?)?.toDouble(),
-      isk2o: (json['ISK2O'] as num?)?.toDouble(),
-      isk3o: (json['ISK3O'] as num?)?.toDouble(),
-      acikMussipMiktari: (json['ACIK_MUSSIP_MIKTARI'] as num?)?.toDouble(),
-      stokSayimBakiye: (json['STOK_SAYIM_BAKIYE'] as num?)?.toDouble(),
-      koliBilesenFiyatorandan: json['KOLI_BILESEN_FIYATORANDAN'] as String?,
-      koliBilesenKolikdv: json['KOLI_BILESEN_KOLIKDV'] as String?,
-      koliBilesenMiktari: (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble(),
-      koliBilesenOrani: (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble(),
-      bulunanDepo: (json['BULUNAN_DEPO'] as num?)?.toInt(),
-      bulunanIsemri: json['BULUNAN_ISEMRI'] as String?,
-      bulunanEkalan1: json['BULUNAN_EKALAN1'] as String?,
-      bulunanEkalan2: json['BULUNAN_EKALAN2'] as String?,
-      bulunanHucre: json['BULUNAN_HUCRE'] as String?,
-      bulunanMiktar: (json['BULUNAN_MIKTAR'] as num?)?.toDouble(),
-      bulunanSeriAcik3: json['BULUNAN_SERI_ACIK3'] as String?,
-      bulunanSeriAcik4: json['BULUNAN_SERI_ACIK4'] as String?,
-      bulunanSerilot5: json['BULUNAN_SERILOT5'] as String?,
-    )
+        seriBakiyeKontrolu: json['SERI_BAKIYE_KONTROLU'] as bool?,
+        seriCikislardaAcik: json['SERI_CIKISLARDA_ACIK'] as bool?,
+        seriCikistaOtomatikMi: json['SERI_CIKISTA_OTOMATIK_MI'] as bool?,
+        seriGirislerdeAcik: json['SERI_GIRISLERDE_ACIK'] as bool?,
+        seriGiristeOtomatikMi: json['SERI_GIRISTE_OTOMATIK_MI'] as bool?,
+        seriMiktarKadarSor: json['SERI_MIKTAR_KADAR_SOR'] as bool?,
+        duzeltmetarihi: json['DUZELTMETARIHI'] == null
+            ? null
+            : DateTime.parse(json['DUZELTMETARIHI'] as String),
+        alisFiat1: (json['ALIS_FIAT1'] as num?)?.toDouble(),
+        alisFiat2: (json['ALIS_FIAT2'] as num?)?.toDouble(),
+        alisFiat3: (json['ALIS_FIAT3'] as num?)?.toDouble(),
+        alisFiat4: (json['ALIS_FIAT4'] as num?)?.toDouble(),
+        alisKdv: (json['ALIS_KDV'] as num?)?.toDouble(),
+        bakiye: (json['BAKIYE'] as num?)?.toDouble(),
+        birimAgirlik: (json['BIRIM_AGIRLIK'] as num?)?.toDouble(),
+        dovAlisFiat: (json['DOV_ALIS_FIAT'] as num?)?.toDouble(),
+        dovSatisFiat: (json['DOV_SATIS_FIAT'] as num?)?.toDouble(),
+        olcuBirimi2Pay: (json['OLCU_BIRIMI2_PAY'] as num?)?.toDouble(),
+        olcuBirimi2Payda: (json['OLCU_BIRIMI2_PAYDA'] as num?)?.toDouble(),
+        olcuBirimi3Pay: (json['OLCU_BIRIMI3_PAY'] as num?)?.toDouble(),
+        olcuBirimi3Payda: (json['OLCU_BIRIMI3_PAYDA'] as num?)?.toDouble(),
+        satisFiat1: (json['SATIS_FIAT1'] as num?)?.toDouble(),
+        satisFiat2: (json['SATIS_FIAT2'] as num?)?.toDouble(),
+        satisFiat3: (json['SATIS_FIAT3'] as num?)?.toDouble(),
+        satisFiat4: (json['SATIS_FIAT4'] as num?)?.toDouble(),
+        satisKdv: (json['SATIS_KDV'] as num?)?.toDouble(),
+        alisDovTip: (json['ALIS_DOV_TIP'] as num?)?.toInt(),
+        bulunanFiyat: (json['BULUNAN_FIYAT'] as num?)?.toDouble(),
+        depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+        fiatBirimi: (json['FIAT_BIRIMI'] as num?)?.toInt(),
+        muhdetayKodu: (json['MUHDETAY_KODU'] as num?)?.toInt(),
+        satDovTip: (json['SAT_DOV_TIP'] as num?)?.toInt(),
+        subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
+        stokFiyatList: json['STOK_FIYAT_LIST'] as List<dynamic>?,
+        stokList: (json['STOK_LIST'] as List<dynamic>?)
+            ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        alisDovizAdi: json['ALIS_DOVIZ_ADI'] as String?,
+        barkod1: json['BARKOD1'] as String?,
+        barkod2: json['BARKOD2'] as String?,
+        barkod3: json['BARKOD3'] as String?,
+        duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
+        grupKodu: json['GRUP_KODU'] as String?,
+        grupTanimi: json['GRUP_TANIMI'] as String?,
+        kayittarihi: json['KAYITTARIHI'] as String?,
+        kayityapankul: json['KAYITYAPANKUL'] as String?,
+        kilitAlis: json['KILIT_ALIS'] as String?,
+        kilitGenel: json['KILIT_GENEL'] as String?,
+        kilitMussip: json['KILIT_MUSSIP'] as String?,
+        kilitSaticisip: json['KILIT_SATICISIP'] as String?,
+        kilitSatis: json['KILIT_SATIS'] as String?,
+        kod1: json['KOD1'] as String?,
+        kod1Tanimi: json['KOD1_TANIMI'] as String?,
+        kod2: json['KOD2'] as String?,
+        kod2Tanimi: json['KOD2_TANIMI'] as String?,
+        kod3: json['KOD3'] as String?,
+        kod3Tanimi: json['KOD3_TANIMI'] as String?,
+        kod4: json['KOD4'] as String?,
+        kod4Tanimi: json['KOD4_TANIMI'] as String?,
+        kod5: json['KOD5'] as String?,
+        kod5Tanimi: json['KOD5_TANIMI'] as String?,
+        muhdetayAdi: json['MUHDETAY_ADI'] as String?,
+        olcuBirimi: json['OLCU_BIRIMI'] as String?,
+        olcuBirimi2: json['OLCU_BIRIMI2'] as String?,
+        olcuBirimi3: json['OLCU_BIRIMI3'] as String?,
+        paketMi: json['PAKET_MI'] as String?,
+        resimBase64: json['RESIM_BASE64'] as String?,
+        resimUrl: json['RESIM_URL'] as String?,
+        resimUrlKucuk: json['RESIM_URL_KUCUK'] as String?,
+        satisDovizAdi: json['SATIS_DOVIZ_ADI'] as String?,
+        stokAdi: json['STOK_ADI'] as String?,
+        stokKodu: json['STOK_KODU'] as String?,
+        ureticiKodu: json['URETICI_KODU'] as String?,
+        yapilandirmaAktif: json['YAPILANDIRMA_AKTIF'] as bool?,
+        yapkod: json['YAPKOD'] as String?,
+        yapkodAciklama: json['YAPKOD_ACIKLAMA'] as String?,
+        idx: (json['IDX'] as num?)?.toInt(),
+        alisKuru: (json['ALIS_KURU'] as num?)?.toDouble(),
+        alisKurTarihi: json['ALIS_KUR_TARIHI'] == null
+            ? null
+            : DateTime.parse(json['ALIS_KUR_TARIHI'] as String),
+        satisKuru: (json['SATIS_KURU'] as num?)?.toDouble(),
+        satisKurTarihi: json['SATIS_KUR_TARIHI'] == null
+            ? null
+            : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
+        bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
+        bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt() ?? 0,
+        kull1n: (json['KULL1N'] as num?)?.toDouble(),
+        kull2n: (json['KULL2N'] as num?)?.toDouble(),
+        kull3n: (json['KULL3N'] as num?)?.toDouble(),
+        kull4n: (json['KULL4N'] as num?)?.toDouble(),
+        kull5n: (json['KULL5N'] as num?)?.toDouble(),
+        kull6n: (json['KULL6N'] as num?)?.toDouble(),
+        kull7n: (json['KULL7N'] as num?)?.toDouble(),
+        kull8n: (json['KULL8N'] as num?)?.toDouble(),
+        kull1s: json['KULL1S'] as String?,
+        kull2s: json['KULL2S'] as String?,
+        kull3s: json['KULL3S'] as String?,
+        kull4s: json['KULL4S'] as String?,
+        kull5s: json['KULL5S'] as String?,
+        kull6s: json['KULL6S'] as String?,
+        kull7s: json['KULL7S'] as String?,
+        kull8s: json['KULL8S'] as String?,
+        belgeTarihi: json['BELGE_TARIHI'] == null
+            ? null
+            : DateTime.parse(json['BELGE_TARIHI'] as String),
+        otvUygula: json['OTV_UYGULA'] as String?,
+        otvOranmi: json['OTV_ORANMI'] as String?,
+        otvKodu: json['OTV_KODU'] as String?,
+        otvAralik: (json['OTV_ARALIK'] as List<dynamic>?)
+            ?.map((e) => OtvAralikModel.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        otvDeger: (json['OTV_DEGER'] as num?)?.toDouble(),
+        varsayilanMiktar: (json['VARSAYILAN_MIKTAR'] as num?)?.toDouble(),
+        miktar2: (json['MIKTAR2'] as num?)?.toDouble(),
+        bulunanSerilot: json['BULUNAN_SERILOT'] as String?,
+        bulunanSerilot2: json['BULUNAN_SERILOT2'] as String?,
+        bulunanSerilot3: json['BULUNAN_SERILOT3'] as String?,
+        bulunanSerilot4: json['BULUNAN_SERILOT4'] as String?,
+        bulunanSeriAcik1: json['BULUNAN_SERI_ACIK1'] as String?,
+        bulunanSeriAcik2: json['BULUNAN_SERI_ACIK2'] as String?,
+        okutulanBarkod: json['OKUTULAN_BARKOD'] as String?,
+        bulunanSeriSkt: json['BULUNAN_SERI_SKT'] == null
+            ? null
+            : DateTime.parse(json['BULUNAN_SERI_SKT'] as String),
+        depoBakiyeListe: (json['DEPO_BAKIYE_LISTE'] as List<dynamic>?)
+            ?.map((e) => DepoBakiyeListe.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        netMiktar: (json['NET_MIKTAR'] as num?)?.toDouble(),
+        miktar: (json['MIKTAR'] as num?)?.toDouble(),
+        yapacik: json['YAPACIK'] as String?,
+        kosulIsk1: (json['KOSUL_ISK1'] as num?)?.toDouble(),
+        kosulUygulandi: json['KOSUL_UYGULANDI'] as String?,
+        kosulIsk1Ot: json['KOSUL_ISK1_OT'] as String?,
+        kosulIsk2: (json['KOSUL_ISK2'] as num?)?.toDouble(),
+        kosulIsk3: (json['KOSUL_ISK3'] as num?)?.toDouble(),
+        isk1o: (json['ISK1O'] as num?)?.toDouble(),
+        isk2o: (json['ISK2O'] as num?)?.toDouble(),
+        isk3o: (json['ISK3O'] as num?)?.toDouble(),
+        acikMussipMiktari: (json['ACIK_MUSSIP_MIKTARI'] as num?)?.toDouble(),
+        stokSayimBakiye: (json['STOK_SAYIM_BAKIYE'] as num?)?.toDouble(),
+        koliBilesenFiyatorandan: json['KOLI_BILESEN_FIYATORANDAN'] as String?,
+        koliBilesenKolikdv: json['KOLI_BILESEN_KOLIKDV'] as String?,
+        koliBilesenMiktari: (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble(),
+        koliBilesenOrani: (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble(),
+        bulunanDepo: (json['BULUNAN_DEPO'] as num?)?.toInt(),
+        bulunanIsemri: json['BULUNAN_ISEMRI'] as String?,
+        bulunanEkalan1: json['BULUNAN_EKALAN1'] as String?,
+        bulunanEkalan2: json['BULUNAN_EKALAN2'] as String?,
+        bulunanHucre: json['BULUNAN_HUCRE'] as String?,
+        bulunanMiktar: (json['BULUNAN_MIKTAR'] as num?)?.toDouble(),
+        bulunanSeriAcik3: json['BULUNAN_SERI_ACIK3'] as String?,
+        bulunanSeriAcik4: json['BULUNAN_SERI_ACIK4'] as String?,
+        bulunanSerilot5: json['BULUNAN_SERILOT5'] as String?,
+      )
       ..kosulIsk4 = (json['KOSUL_ISK4'] as num?)?.toDouble()
       ..kosulIsk5 = (json['KOSUL_ISK5'] as num?)?.toDouble()
       ..kosulIsk6 = (json['KOSUL_ISK6'] as num?)?.toDouble()
@@ -1828,190 +1827,179 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
           ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
           .toList();
 
-Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
-    <String, dynamic>{
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.seriBakiyeKontrolu case final value?)
-        'SERI_BAKIYE_KONTROLU': value,
-      if (instance.seriCikislardaAcik case final value?)
-        'SERI_CIKISLARDA_ACIK': value,
-      if (instance.seriCikistaOtomatikMi case final value?)
-        'SERI_CIKISTA_OTOMATIK_MI': value,
-      if (instance.seriGirislerdeAcik case final value?)
-        'SERI_GIRISLERDE_ACIK': value,
-      if (instance.seriGiristeOtomatikMi case final value?)
-        'SERI_GIRISTE_OTOMATIK_MI': value,
-      if (instance.seriMiktarKadarSor case final value?)
-        'SERI_MIKTAR_KADAR_SOR': value,
-      if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-        'DUZELTMETARIHI': value,
-      if (instance.alisFiat1 case final value?) 'ALIS_FIAT1': value,
-      if (instance.alisFiat2 case final value?) 'ALIS_FIAT2': value,
-      if (instance.alisFiat3 case final value?) 'ALIS_FIAT3': value,
-      if (instance.alisFiat4 case final value?) 'ALIS_FIAT4': value,
-      if (instance.alisKdv case final value?) 'ALIS_KDV': value,
-      if (instance.miktar case final value?) 'MIKTAR': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-      if (instance.birimAgirlik case final value?) 'BIRIM_AGIRLIK': value,
-      if (instance.dovAlisFiat case final value?) 'DOV_ALIS_FIAT': value,
-      if (instance.dovSatisFiat case final value?) 'DOV_SATIS_FIAT': value,
-      if (instance.olcuBirimi2Pay case final value?) 'OLCU_BIRIMI2_PAY': value,
-      if (instance.olcuBirimi2Payda case final value?)
-        'OLCU_BIRIMI2_PAYDA': value,
-      if (instance.olcuBirimi3Pay case final value?) 'OLCU_BIRIMI3_PAY': value,
-      if (instance.olcuBirimi3Payda case final value?)
-        'OLCU_BIRIMI3_PAYDA': value,
-      if (instance.satisFiat1 case final value?) 'SATIS_FIAT1': value,
-      if (instance.satisFiat2 case final value?) 'SATIS_FIAT2': value,
-      if (instance.satisFiat3 case final value?) 'SATIS_FIAT3': value,
-      if (instance.satisFiat4 case final value?) 'SATIS_FIAT4': value,
-      if (instance.satisKdv case final value?) 'SATIS_KDV': value,
-      if (instance.alisDovTip case final value?) 'ALIS_DOV_TIP': value,
-      if (instance.bulunanFiyat case final value?) 'BULUNAN_FIYAT': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.fiatBirimi case final value?) 'FIAT_BIRIMI': value,
-      if (instance.muhdetayKodu case final value?) 'MUHDETAY_KODU': value,
-      if (instance.satDovTip case final value?) 'SAT_DOV_TIP': value,
-      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-      if (instance.stokFiyatList case final value?) 'STOK_FIYAT_LIST': value,
-      if (instance.stokList?.map((e) => e.toJson()).toList() case final value?)
-        'STOK_LIST': value,
-      if (instance.alisDovizAdi case final value?) 'ALIS_DOVIZ_ADI': value,
-      if (instance.barkod1 case final value?) 'BARKOD1': value,
-      if (instance.barkod2 case final value?) 'BARKOD2': value,
-      if (instance.barkod3 case final value?) 'BARKOD3': value,
-      if (instance.duzeltmeyapankul case final value?)
-        'DUZELTMEYAPANKUL': value,
-      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
-      if (instance.grupTanimi case final value?) 'GRUP_TANIMI': value,
-      if (instance.kayittarihi case final value?) 'KAYITTARIHI': value,
-      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-      if (instance.kilitAlis case final value?) 'KILIT_ALIS': value,
-      if (instance.kilitGenel case final value?) 'KILIT_GENEL': value,
-      if (instance.kilitMussip case final value?) 'KILIT_MUSSIP': value,
-      if (instance.kilitSaticisip case final value?) 'KILIT_SATICISIP': value,
-      if (instance.kilitSatis case final value?) 'KILIT_SATIS': value,
-      if (instance.kod1 case final value?) 'KOD1': value,
-      if (instance.kod1Tanimi case final value?) 'KOD1_TANIMI': value,
-      if (instance.kod2 case final value?) 'KOD2': value,
-      if (instance.kod2Tanimi case final value?) 'KOD2_TANIMI': value,
-      if (instance.kod3 case final value?) 'KOD3': value,
-      if (instance.kod3Tanimi case final value?) 'KOD3_TANIMI': value,
-      if (instance.kod4 case final value?) 'KOD4': value,
-      if (instance.kod4Tanimi case final value?) 'KOD4_TANIMI': value,
-      if (instance.kod5 case final value?) 'KOD5': value,
-      if (instance.kod5Tanimi case final value?) 'KOD5_TANIMI': value,
-      if (instance.muhdetayAdi case final value?) 'MUHDETAY_ADI': value,
-      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
-      if (instance.olcuBirimi2 case final value?) 'OLCU_BIRIMI2': value,
-      if (instance.olcuBirimi3 case final value?) 'OLCU_BIRIMI3': value,
-      if (instance.paketMi case final value?) 'PAKET_MI': value,
-      if (instance.resimBase64 case final value?) 'RESIM_BASE64': value,
-      if (instance.resimUrl case final value?) 'RESIM_URL': value,
-      if (instance.resimUrlKucuk case final value?) 'RESIM_URL_KUCUK': value,
-      if (instance.satisDovizAdi case final value?) 'SATIS_DOVIZ_ADI': value,
-      if (instance.ureticiKodu case final value?) 'URETICI_KODU': value,
-      if (instance.yapilandirmaAktif case final value?)
-        'YAPILANDIRMA_AKTIF': value,
-      if (instance.yapkod case final value?) 'YAPKOD': value,
-      if (instance.yapkodAciklama case final value?) 'YAPKOD_ACIKLAMA': value,
-      if (instance.idx case final value?) 'IDX': value,
-      if (instance.alisKuru case final value?) 'ALIS_KURU': value,
-      if (instance.alisKurTarihi?.toIso8601String() case final value?)
-        'ALIS_KUR_TARIHI': value,
-      if (instance.satisKuru case final value?) 'SATIS_KURU': value,
-      if (instance.satisKurTarihi?.toIso8601String() case final value?)
-        'SATIS_KUR_TARIHI': value,
-      if (instance.bulunanDovizFiyati case final value?)
-        'BULUNAN_DOVIZ_FIYATI': value,
-      if (instance.bulunanDovizTipi case final value?)
-        'BULUNAN_DOVIZ_TIPI': value,
-      if (instance.yapacik case final value?) 'YAPACIK': value,
-      if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
-      if (instance.depoBakiyeListe?.map((e) => e.toJson()).toList()
-          case final value?)
-        'DEPO_BAKIYE_LISTE': value,
-      if (instance.belgeTarihi?.toIso8601String() case final value?)
-        'BELGE_TARIHI': value,
-      if (instance.otvUygula case final value?) 'OTV_UYGULA': value,
-      if (instance.otvOranmi case final value?) 'OTV_ORANMI': value,
-      if (instance.otvKodu case final value?) 'OTV_KODU': value,
-      if (instance.otvAralik?.map((e) => e.toJson()).toList() case final value?)
-        'OTV_ARALIK': value,
-      if (instance.otvDeger case final value?) 'OTV_DEGER': value,
-      if (instance.kull1s case final value?) 'KULL1S': value,
-      if (instance.kull2s case final value?) 'KULL2S': value,
-      if (instance.kull3s case final value?) 'KULL3S': value,
-      if (instance.kull4s case final value?) 'KULL4S': value,
-      if (instance.kull5s case final value?) 'KULL5S': value,
-      if (instance.kull6s case final value?) 'KULL6S': value,
-      if (instance.kull7s case final value?) 'KULL7S': value,
-      if (instance.kull8s case final value?) 'KULL8S': value,
-      if (instance.kull1n case final value?) 'KULL1N': value,
-      if (instance.kull2n case final value?) 'KULL2N': value,
-      if (instance.kull3n case final value?) 'KULL3N': value,
-      if (instance.kull4n case final value?) 'KULL4N': value,
-      if (instance.kull5n case final value?) 'KULL5N': value,
-      if (instance.kull6n case final value?) 'KULL6N': value,
-      if (instance.kull7n case final value?) 'KULL7N': value,
-      if (instance.kull8n case final value?) 'KULL8N': value,
-      if (instance.varsayilanMiktar case final value?)
-        'VARSAYILAN_MIKTAR': value,
-      if (instance.miktar2 case final value?) 'MIKTAR2': value,
-      if (instance.bulunanSerilot case final value?) 'BULUNAN_SERILOT': value,
-      if (instance.bulunanSerilot2 case final value?) 'BULUNAN_SERILOT2': value,
-      if (instance.bulunanSerilot3 case final value?) 'BULUNAN_SERILOT3': value,
-      if (instance.bulunanSerilot4 case final value?) 'BULUNAN_SERILOT4': value,
-      if (instance.bulunanSerilot5 case final value?) 'BULUNAN_SERILOT5': value,
-      if (instance.bulunanSeriAcik1 case final value?)
-        'BULUNAN_SERI_ACIK1': value,
-      if (instance.bulunanSeriAcik2 case final value?)
-        'BULUNAN_SERI_ACIK2': value,
-      if (instance.bulunanSeriAcik3 case final value?)
-        'BULUNAN_SERI_ACIK3': value,
-      if (instance.bulunanSeriAcik4 case final value?)
-        'BULUNAN_SERI_ACIK4': value,
-      if (instance.okutulanBarkod case final value?) 'OKUTULAN_BARKOD': value,
-      if (instance.bulunanMiktar case final value?) 'BULUNAN_MIKTAR': value,
-      if (instance.bulunanSeriSkt?.toIso8601String() case final value?)
-        'BULUNAN_SERI_SKT': value,
-      if (instance.bulunanIsemri case final value?) 'BULUNAN_ISEMRI': value,
-      if (instance.bulunanEkalan1 case final value?) 'BULUNAN_EKALAN1': value,
-      if (instance.bulunanEkalan2 case final value?) 'BULUNAN_EKALAN2': value,
-      if (instance.bulunanHucre case final value?) 'BULUNAN_HUCRE': value,
-      if (instance.bulunanDepo case final value?) 'BULUNAN_DEPO': value,
-      if (instance.acikMussipMiktari case final value?)
-        'ACIK_MUSSIP_MIKTARI': value,
-      if (instance.stokSayimBakiye case final value?)
-        'STOK_SAYIM_BAKIYE': value,
-      if (instance.koliBilesenFiyatorandan case final value?)
-        'KOLI_BILESEN_FIYATORANDAN': value,
-      if (instance.koliBilesenKolikdv case final value?)
-        'KOLI_BILESEN_KOLIKDV': value,
-      if (instance.koliBilesenMiktari case final value?)
-        'KOLI_BILESEN_MIKTARI': value,
-      if (instance.koliBilesenOrani case final value?)
-        'KOLI_BILESEN_ORANI': value,
-      if (instance.kosulIsk1Ot case final value?) 'KOSUL_ISK1_OT': value,
-      if (instance.kosulUygulandi case final value?) 'KOSUL_UYGULANDI': value,
-      if (instance.kosulIsk1 case final value?) 'KOSUL_ISK1': value,
-      if (instance.kosulIsk2 case final value?) 'KOSUL_ISK2': value,
-      if (instance.kosulIsk3 case final value?) 'KOSUL_ISK3': value,
-      if (instance.kosulIsk4 case final value?) 'KOSUL_ISK4': value,
-      if (instance.kosulIsk5 case final value?) 'KOSUL_ISK5': value,
-      if (instance.kosulIsk6 case final value?) 'KOSUL_ISK6': value,
-      if (instance.isk1o case final value?) 'ISK1O': value,
-      if (instance.isk2o case final value?) 'ISK2O': value,
-      if (instance.isk3o case final value?) 'ISK3O': value,
-      if (instance.isk4o case final value?) 'ISK4O': value,
-      if (instance.isk5o case final value?) 'ISK5O': value,
-      if (instance.isk6o case final value?) 'ISK6O': value,
-      if (instance.bulunanOlcuBirimi case final value?)
-        'BULUNAN_OLCU_BIRIMI': value,
-      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
-        'SERI_LIST': value,
-    };
+Map<String, dynamic> _$StokListesiModelToJson(
+  StokListesiModel instance,
+) => <String, dynamic>{
+  if (instance.stokAdi case final value?) 'STOK_ADI': value,
+  if (instance.stokKodu case final value?) 'STOK_KODU': value,
+  if (instance.seriBakiyeKontrolu case final value?)
+    'SERI_BAKIYE_KONTROLU': value,
+  if (instance.seriCikislardaAcik case final value?)
+    'SERI_CIKISLARDA_ACIK': value,
+  if (instance.seriCikistaOtomatikMi case final value?)
+    'SERI_CIKISTA_OTOMATIK_MI': value,
+  if (instance.seriGirislerdeAcik case final value?)
+    'SERI_GIRISLERDE_ACIK': value,
+  if (instance.seriGiristeOtomatikMi case final value?)
+    'SERI_GIRISTE_OTOMATIK_MI': value,
+  if (instance.seriMiktarKadarSor case final value?)
+    'SERI_MIKTAR_KADAR_SOR': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
+    'DUZELTMETARIHI': value,
+  if (instance.alisFiat1 case final value?) 'ALIS_FIAT1': value,
+  if (instance.alisFiat2 case final value?) 'ALIS_FIAT2': value,
+  if (instance.alisFiat3 case final value?) 'ALIS_FIAT3': value,
+  if (instance.alisFiat4 case final value?) 'ALIS_FIAT4': value,
+  if (instance.alisKdv case final value?) 'ALIS_KDV': value,
+  if (instance.miktar case final value?) 'MIKTAR': value,
+  if (instance.bakiye case final value?) 'BAKIYE': value,
+  if (instance.birimAgirlik case final value?) 'BIRIM_AGIRLIK': value,
+  if (instance.dovAlisFiat case final value?) 'DOV_ALIS_FIAT': value,
+  if (instance.dovSatisFiat case final value?) 'DOV_SATIS_FIAT': value,
+  if (instance.olcuBirimi2Pay case final value?) 'OLCU_BIRIMI2_PAY': value,
+  if (instance.olcuBirimi2Payda case final value?) 'OLCU_BIRIMI2_PAYDA': value,
+  if (instance.olcuBirimi3Pay case final value?) 'OLCU_BIRIMI3_PAY': value,
+  if (instance.olcuBirimi3Payda case final value?) 'OLCU_BIRIMI3_PAYDA': value,
+  if (instance.satisFiat1 case final value?) 'SATIS_FIAT1': value,
+  if (instance.satisFiat2 case final value?) 'SATIS_FIAT2': value,
+  if (instance.satisFiat3 case final value?) 'SATIS_FIAT3': value,
+  if (instance.satisFiat4 case final value?) 'SATIS_FIAT4': value,
+  if (instance.satisKdv case final value?) 'SATIS_KDV': value,
+  if (instance.alisDovTip case final value?) 'ALIS_DOV_TIP': value,
+  if (instance.bulunanFiyat case final value?) 'BULUNAN_FIYAT': value,
+  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+  if (instance.fiatBirimi case final value?) 'FIAT_BIRIMI': value,
+  if (instance.muhdetayKodu case final value?) 'MUHDETAY_KODU': value,
+  if (instance.satDovTip case final value?) 'SAT_DOV_TIP': value,
+  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+  if (instance.stokFiyatList case final value?) 'STOK_FIYAT_LIST': value,
+  if (instance.stokList?.map((e) => e.toJson()).toList() case final value?)
+    'STOK_LIST': value,
+  if (instance.alisDovizAdi case final value?) 'ALIS_DOVIZ_ADI': value,
+  if (instance.barkod1 case final value?) 'BARKOD1': value,
+  if (instance.barkod2 case final value?) 'BARKOD2': value,
+  if (instance.barkod3 case final value?) 'BARKOD3': value,
+  if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
+  if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+  if (instance.grupTanimi case final value?) 'GRUP_TANIMI': value,
+  if (instance.kayittarihi case final value?) 'KAYITTARIHI': value,
+  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+  if (instance.kilitAlis case final value?) 'KILIT_ALIS': value,
+  if (instance.kilitGenel case final value?) 'KILIT_GENEL': value,
+  if (instance.kilitMussip case final value?) 'KILIT_MUSSIP': value,
+  if (instance.kilitSaticisip case final value?) 'KILIT_SATICISIP': value,
+  if (instance.kilitSatis case final value?) 'KILIT_SATIS': value,
+  if (instance.kod1 case final value?) 'KOD1': value,
+  if (instance.kod1Tanimi case final value?) 'KOD1_TANIMI': value,
+  if (instance.kod2 case final value?) 'KOD2': value,
+  if (instance.kod2Tanimi case final value?) 'KOD2_TANIMI': value,
+  if (instance.kod3 case final value?) 'KOD3': value,
+  if (instance.kod3Tanimi case final value?) 'KOD3_TANIMI': value,
+  if (instance.kod4 case final value?) 'KOD4': value,
+  if (instance.kod4Tanimi case final value?) 'KOD4_TANIMI': value,
+  if (instance.kod5 case final value?) 'KOD5': value,
+  if (instance.kod5Tanimi case final value?) 'KOD5_TANIMI': value,
+  if (instance.muhdetayAdi case final value?) 'MUHDETAY_ADI': value,
+  if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+  if (instance.olcuBirimi2 case final value?) 'OLCU_BIRIMI2': value,
+  if (instance.olcuBirimi3 case final value?) 'OLCU_BIRIMI3': value,
+  if (instance.paketMi case final value?) 'PAKET_MI': value,
+  if (instance.resimBase64 case final value?) 'RESIM_BASE64': value,
+  if (instance.resimUrl case final value?) 'RESIM_URL': value,
+  if (instance.resimUrlKucuk case final value?) 'RESIM_URL_KUCUK': value,
+  if (instance.satisDovizAdi case final value?) 'SATIS_DOVIZ_ADI': value,
+  if (instance.ureticiKodu case final value?) 'URETICI_KODU': value,
+  if (instance.yapilandirmaAktif case final value?) 'YAPILANDIRMA_AKTIF': value,
+  if (instance.yapkod case final value?) 'YAPKOD': value,
+  if (instance.yapkodAciklama case final value?) 'YAPKOD_ACIKLAMA': value,
+  if (instance.idx case final value?) 'IDX': value,
+  if (instance.alisKuru case final value?) 'ALIS_KURU': value,
+  if (instance.alisKurTarihi?.toIso8601String() case final value?)
+    'ALIS_KUR_TARIHI': value,
+  if (instance.satisKuru case final value?) 'SATIS_KURU': value,
+  if (instance.satisKurTarihi?.toIso8601String() case final value?)
+    'SATIS_KUR_TARIHI': value,
+  if (instance.bulunanDovizFiyati case final value?)
+    'BULUNAN_DOVIZ_FIYATI': value,
+  if (instance.bulunanDovizTipi case final value?) 'BULUNAN_DOVIZ_TIPI': value,
+  if (instance.yapacik case final value?) 'YAPACIK': value,
+  if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
+  if (instance.depoBakiyeListe?.map((e) => e.toJson()).toList()
+      case final value?)
+    'DEPO_BAKIYE_LISTE': value,
+  if (instance.belgeTarihi?.toIso8601String() case final value?)
+    'BELGE_TARIHI': value,
+  if (instance.otvUygula case final value?) 'OTV_UYGULA': value,
+  if (instance.otvOranmi case final value?) 'OTV_ORANMI': value,
+  if (instance.otvKodu case final value?) 'OTV_KODU': value,
+  if (instance.otvAralik?.map((e) => e.toJson()).toList() case final value?)
+    'OTV_ARALIK': value,
+  if (instance.otvDeger case final value?) 'OTV_DEGER': value,
+  if (instance.kull1s case final value?) 'KULL1S': value,
+  if (instance.kull2s case final value?) 'KULL2S': value,
+  if (instance.kull3s case final value?) 'KULL3S': value,
+  if (instance.kull4s case final value?) 'KULL4S': value,
+  if (instance.kull5s case final value?) 'KULL5S': value,
+  if (instance.kull6s case final value?) 'KULL6S': value,
+  if (instance.kull7s case final value?) 'KULL7S': value,
+  if (instance.kull8s case final value?) 'KULL8S': value,
+  if (instance.kull1n case final value?) 'KULL1N': value,
+  if (instance.kull2n case final value?) 'KULL2N': value,
+  if (instance.kull3n case final value?) 'KULL3N': value,
+  if (instance.kull4n case final value?) 'KULL4N': value,
+  if (instance.kull5n case final value?) 'KULL5N': value,
+  if (instance.kull6n case final value?) 'KULL6N': value,
+  if (instance.kull7n case final value?) 'KULL7N': value,
+  if (instance.kull8n case final value?) 'KULL8N': value,
+  if (instance.varsayilanMiktar case final value?) 'VARSAYILAN_MIKTAR': value,
+  if (instance.miktar2 case final value?) 'MIKTAR2': value,
+  if (instance.bulunanSerilot case final value?) 'BULUNAN_SERILOT': value,
+  if (instance.bulunanSerilot2 case final value?) 'BULUNAN_SERILOT2': value,
+  if (instance.bulunanSerilot3 case final value?) 'BULUNAN_SERILOT3': value,
+  if (instance.bulunanSerilot4 case final value?) 'BULUNAN_SERILOT4': value,
+  if (instance.bulunanSerilot5 case final value?) 'BULUNAN_SERILOT5': value,
+  if (instance.bulunanSeriAcik1 case final value?) 'BULUNAN_SERI_ACIK1': value,
+  if (instance.bulunanSeriAcik2 case final value?) 'BULUNAN_SERI_ACIK2': value,
+  if (instance.bulunanSeriAcik3 case final value?) 'BULUNAN_SERI_ACIK3': value,
+  if (instance.bulunanSeriAcik4 case final value?) 'BULUNAN_SERI_ACIK4': value,
+  if (instance.okutulanBarkod case final value?) 'OKUTULAN_BARKOD': value,
+  if (instance.bulunanMiktar case final value?) 'BULUNAN_MIKTAR': value,
+  if (instance.bulunanSeriSkt?.toIso8601String() case final value?)
+    'BULUNAN_SERI_SKT': value,
+  if (instance.bulunanIsemri case final value?) 'BULUNAN_ISEMRI': value,
+  if (instance.bulunanEkalan1 case final value?) 'BULUNAN_EKALAN1': value,
+  if (instance.bulunanEkalan2 case final value?) 'BULUNAN_EKALAN2': value,
+  if (instance.bulunanHucre case final value?) 'BULUNAN_HUCRE': value,
+  if (instance.bulunanDepo case final value?) 'BULUNAN_DEPO': value,
+  if (instance.acikMussipMiktari case final value?)
+    'ACIK_MUSSIP_MIKTARI': value,
+  if (instance.stokSayimBakiye case final value?) 'STOK_SAYIM_BAKIYE': value,
+  if (instance.koliBilesenFiyatorandan case final value?)
+    'KOLI_BILESEN_FIYATORANDAN': value,
+  if (instance.koliBilesenKolikdv case final value?)
+    'KOLI_BILESEN_KOLIKDV': value,
+  if (instance.koliBilesenMiktari case final value?)
+    'KOLI_BILESEN_MIKTARI': value,
+  if (instance.koliBilesenOrani case final value?) 'KOLI_BILESEN_ORANI': value,
+  if (instance.kosulIsk1Ot case final value?) 'KOSUL_ISK1_OT': value,
+  if (instance.kosulUygulandi case final value?) 'KOSUL_UYGULANDI': value,
+  if (instance.kosulIsk1 case final value?) 'KOSUL_ISK1': value,
+  if (instance.kosulIsk2 case final value?) 'KOSUL_ISK2': value,
+  if (instance.kosulIsk3 case final value?) 'KOSUL_ISK3': value,
+  if (instance.kosulIsk4 case final value?) 'KOSUL_ISK4': value,
+  if (instance.kosulIsk5 case final value?) 'KOSUL_ISK5': value,
+  if (instance.kosulIsk6 case final value?) 'KOSUL_ISK6': value,
+  if (instance.isk1o case final value?) 'ISK1O': value,
+  if (instance.isk2o case final value?) 'ISK2O': value,
+  if (instance.isk3o case final value?) 'ISK3O': value,
+  if (instance.isk4o case final value?) 'ISK4O': value,
+  if (instance.isk5o case final value?) 'ISK5O': value,
+  if (instance.isk6o case final value?) 'ISK6O': value,
+  if (instance.bulunanOlcuBirimi case final value?)
+    'BULUNAN_OLCU_BIRIMI': value,
+  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+    'SERI_LIST': value,
+};
 
 DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) =>
     DepoBakiyeListe(

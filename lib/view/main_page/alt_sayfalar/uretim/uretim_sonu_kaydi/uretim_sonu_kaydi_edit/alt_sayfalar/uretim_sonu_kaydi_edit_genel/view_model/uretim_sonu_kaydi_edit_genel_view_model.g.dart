@@ -11,7 +11,9 @@ part of 'uretim_sonu_kaydi_edit_genel_view_model.dart';
 mixin _$UretimSonuKaydiEditGenelViewModel
     on _UretimSonuKaydiEditViewModelBase, Store {
   late final _$stokModelAtom = Atom(
-      name: '_UretimSonuKaydiEditViewModelBase.stokModel', context: context);
+    name: '_UretimSonuKaydiEditViewModelBase.stokModel',
+    context: context,
+  );
 
   @override
   StokListesiModel? get stokModel {
@@ -27,7 +29,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_UretimSonuKaydiEditViewModelBase.requestModel', context: context);
+    name: '_UretimSonuKaydiEditViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   UretimSonuKaydiEditModel get requestModel {
@@ -43,8 +47,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
   }
 
   late final _$ekAlanlarListAtom = Atom(
-      name: '_UretimSonuKaydiEditViewModelBase.ekAlanlarList',
-      context: context);
+    name: '_UretimSonuKaydiEditViewModelBase.ekAlanlarList',
+    context: context,
+  );
 
   @override
   ObservableList<EkAlanlarModel>? get ekAlanlarList {
@@ -59,8 +64,10 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     });
   }
 
-  late final _$kalemAtom =
-      Atom(name: '_UretimSonuKaydiEditViewModelBase.kalem', context: context);
+  late final _$kalemAtom = Atom(
+    name: '_UretimSonuKaydiEditViewModelBase.kalem',
+    context: context,
+  );
 
   @override
   KalemModel? get kalem {
@@ -76,8 +83,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
   }
 
   late final _$getSiradakiKodAsyncAction = AsyncAction(
-      '_UretimSonuKaydiEditViewModelBase.getSiradakiKod',
-      context: context);
+    '_UretimSonuKaydiEditViewModelBase.getSiradakiKod',
+    context: context,
+  );
 
   @override
   Future<String?> getSiradakiKod(String? kod) {
@@ -86,7 +94,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
 
   late final _$_UretimSonuKaydiEditViewModelBaseActionController =
       ActionController(
-          name: '_UretimSonuKaydiEditViewModelBase', context: context);
+        name: '_UretimSonuKaydiEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setOnSave(void Function(UretimSonuKaydiEditModel) onSave) {
@@ -95,8 +105,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setOnSave(onSave);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -107,8 +118,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setBelgeNo(belgeNo);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -119,8 +131,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setTarih(date);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -131,8 +144,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setCikisDepo(depo);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -143,8 +157,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setGirisDepo(depo);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -155,8 +170,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setRequestModel(model);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -167,21 +183,24 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setMiktar(miktar);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setKalemFireList(List<KalemFireModel>? list) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiEditViewModelBase.setKalemFireList');
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(
+          name: '_UretimSonuKaydiEditViewModelBase.setKalemFireList',
+        );
     try {
       return super.setKalemFireList(list);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -192,21 +211,24 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setHurdaMiktari(miktar);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setMaliyetFiyati(double? maliyet) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiEditViewModelBase.setMaliyetFiyati');
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(
+          name: '_UretimSonuKaydiEditViewModelBase.setMaliyetFiyati',
+        );
     try {
       return super.setMaliyetFiyati(maliyet);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -217,8 +239,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setAciklama(aciklama);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -229,8 +252,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setEkAlan1(aciklama);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -241,8 +265,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setSeriList(seri);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -253,8 +278,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setEkAlan2(aciklama);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -265,8 +291,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setEkAlanlar(index, value);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -277,8 +304,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setStokModel(stok);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -289,8 +317,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setOlcuBirimi(olcuBirimi);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -301,8 +330,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setProje(proje);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -313,8 +343,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setDepoOnceligi(depoOnceligi);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -325,8 +356,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setMamulKodu(stok);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -337,21 +369,24 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     try {
       return super.setModel(item);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setEkAlanlarList(List<EkAlanlarModel>? list) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-            name: '_UretimSonuKaydiEditViewModelBase.setEkAlanlarList');
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(
+          name: '_UretimSonuKaydiEditViewModelBase.setEkAlanlarList',
+        );
     try {
       return super.setEkAlanlarList(list);
     } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_UretimSonuKaydiEditViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

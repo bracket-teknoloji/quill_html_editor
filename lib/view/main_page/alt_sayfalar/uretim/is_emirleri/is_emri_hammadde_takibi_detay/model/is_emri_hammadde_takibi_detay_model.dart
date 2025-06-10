@@ -6,7 +6,7 @@ part "is_emri_hammadde_takibi_detay_model.freezed.dart";
 part "is_emri_hammadde_takibi_detay_model.g.dart";
 
 @unfreezed
-class IsEmriHammaddeTakibiDetayModel with _$IsEmriHammaddeTakibiDetayModel, NetworkManagerMixin {
+sealed class IsEmriHammaddeTakibiDetayModel with _$IsEmriHammaddeTakibiDetayModel, NetworkManagerMixin {
   factory IsEmriHammaddeTakibiDetayModel({
     String? hamKodu,
     String? hamAdi,
@@ -23,7 +23,7 @@ class IsEmriHammaddeTakibiDetayModel with _$IsEmriHammaddeTakibiDetayModel, Netw
 }
 
 @unfreezed
-class Referanslar with _$Referanslar {
+sealed class Referanslar with _$Referanslar {
   factory Referanslar({
     int? id,
     String? hammaddeNo,

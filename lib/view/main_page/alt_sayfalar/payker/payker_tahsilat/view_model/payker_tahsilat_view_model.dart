@@ -1,5 +1,6 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
 
 part "payker_tahsilat_view_model.g.dart";
 
@@ -76,4 +77,17 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
   void setIsExtended(bool value) {
     isExpanded = value;
   }
+
+  PaymentModel getPaymentModel() => PaymentModel(
+    customerInfo: CustomerInfo(
+      name: cardHolderName,
+    ),
+    saleInfo: SaleInfo(
+      cardNumber: cardNumber,
+      cardExpiryDateMonth: int.tryParse(expiryDate.split("/")[0]) ?? 0,
+      cardExpiryDateYear: int.tryParse(expiryDate.split("/")[1]) ?? 0,
+      cardCvv: cvvCode,
+      currency: 0,
+    ),
+  );
 }

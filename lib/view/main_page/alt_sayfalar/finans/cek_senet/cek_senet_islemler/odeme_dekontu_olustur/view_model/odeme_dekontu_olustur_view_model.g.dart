@@ -13,13 +13,15 @@ mixin _$OdemeDekontuOlusturViewModel
   Computed<String>? _$aciklamaComputed;
 
   @override
-  String get aciklama =>
-      (_$aciklamaComputed ??= Computed<String>(() => super.aciklama,
-              name: '_OdemeDekontuOlusturViewModelBase.aciklama'))
-          .value;
+  String get aciklama => (_$aciklamaComputed ??= Computed<String>(
+    () => super.aciklama,
+    name: '_OdemeDekontuOlusturViewModelBase.aciklama',
+  )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_OdemeDekontuOlusturViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_OdemeDekontuOlusturViewModelBase.model',
+    context: context,
+  );
 
   @override
   TahsilatRequestModel get model {
@@ -31,16 +33,21 @@ mixin _$OdemeDekontuOlusturViewModel
 
   @override
   set model(TahsilatRequestModel value) {
-    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
-        () {
-      super.model = value;
-      _modelIsInitialized = true;
-    });
+    _$modelAtom.reportWrite(
+      value,
+      _modelIsInitialized ? super.model : null,
+      () {
+        super.model = value;
+        _modelIsInitialized = true;
+      },
+    );
   }
 
   late final _$_OdemeDekontuOlusturViewModelBaseActionController =
       ActionController(
-          name: '_OdemeDekontuOlusturViewModelBase', context: context);
+        name: '_OdemeDekontuOlusturViewModelBase',
+        context: context,
+      );
 
   @override
   void setTarih(DateTime? tarih) {
@@ -49,8 +56,9 @@ mixin _$OdemeDekontuOlusturViewModel
     try {
       return super.setTarih(tarih);
     } finally {
-      _$_OdemeDekontuOlusturViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OdemeDekontuOlusturViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -61,8 +69,9 @@ mixin _$OdemeDekontuOlusturViewModel
     try {
       return super.setSerino(serino);
     } finally {
-      _$_OdemeDekontuOlusturViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OdemeDekontuOlusturViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -73,8 +82,9 @@ mixin _$OdemeDekontuOlusturViewModel
     try {
       return super.setOdemeHesabi(odemeHesabi);
     } finally {
-      _$_OdemeDekontuOlusturViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OdemeDekontuOlusturViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -85,8 +95,9 @@ mixin _$OdemeDekontuOlusturViewModel
     try {
       return super.setProjeKodu(projeKodu);
     } finally {
-      _$_OdemeDekontuOlusturViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OdemeDekontuOlusturViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -97,8 +108,9 @@ mixin _$OdemeDekontuOlusturViewModel
     try {
       return super.setPlasiyerKodu(plasiyerKodu);
     } finally {
-      _$_OdemeDekontuOlusturViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OdemeDekontuOlusturViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -109,8 +121,9 @@ mixin _$OdemeDekontuOlusturViewModel
     try {
       return super.setAciklama(aciklama);
     } finally {
-      _$_OdemeDekontuOlusturViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_OdemeDekontuOlusturViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

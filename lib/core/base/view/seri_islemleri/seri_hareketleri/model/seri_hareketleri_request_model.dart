@@ -4,7 +4,7 @@ part "seri_hareketleri_request_model.freezed.dart";
 part "seri_hareketleri_request_model.g.dart";
 
 @unfreezed
-class SeriHareketleriRequestModel with _$SeriHareketleriRequestModel {
+sealed class SeriHareketleriRequestModel with _$SeriHareketleriRequestModel {
   factory SeriHareketleriRequestModel({
     @JsonKey(name: "StokKodu") String? stokKodu,
     @JsonKey(name: "SeriNo") String? seriNo,

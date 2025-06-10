@@ -6,7 +6,8 @@ part "urun_grubuna_gore_satis_grafigi_request_model.freezed.dart";
 part "urun_grubuna_gore_satis_grafigi_request_model.g.dart";
 
 @unfreezed
-class UrunGrubunaGoreSatisGrafigiRequestModel with _$UrunGrubunaGoreSatisGrafigiRequestModel, NetworkManagerMixin {
+sealed class UrunGrubunaGoreSatisGrafigiRequestModel
+    with _$UrunGrubunaGoreSatisGrafigiRequestModel, NetworkManagerMixin {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory UrunGrubunaGoreSatisGrafigiRequestModel({
     List<String>? arrPlasiyerKodu,

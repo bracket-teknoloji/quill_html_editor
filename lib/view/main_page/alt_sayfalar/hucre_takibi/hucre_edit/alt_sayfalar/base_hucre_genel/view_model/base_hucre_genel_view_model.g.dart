@@ -12,13 +12,15 @@ mixin _$BaseHucreGenelViewModel on _BaseHucreGenelViewModelBase, Store {
   Computed<bool>? _$isBelgeVisibleComputed;
 
   @override
-  bool get isBelgeVisible =>
-      (_$isBelgeVisibleComputed ??= Computed<bool>(() => super.isBelgeVisible,
-              name: '_BaseHucreGenelViewModelBase.isBelgeVisible'))
-          .value;
+  bool get isBelgeVisible => (_$isBelgeVisibleComputed ??= Computed<bool>(
+    () => super.isBelgeVisible,
+    name: '_BaseHucreGenelViewModelBase.isBelgeVisible',
+  )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_BaseHucreGenelViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_BaseHucreGenelViewModelBase.model',
+    context: context,
+  );
 
   @override
   HucreTransferiModel get model {
@@ -34,7 +36,9 @@ mixin _$BaseHucreGenelViewModel on _BaseHucreGenelViewModelBase, Store {
   }
 
   late final _$selectedEditTipiAtom = Atom(
-      name: '_BaseHucreGenelViewModelBase.selectedEditTipi', context: context);
+    name: '_BaseHucreGenelViewModelBase.selectedEditTipi',
+    context: context,
+  );
 
   @override
   EditTipiEnum? get selectedEditTipi {
@@ -49,8 +53,10 @@ mixin _$BaseHucreGenelViewModel on _BaseHucreGenelViewModelBase, Store {
     });
   }
 
-  late final _$_BaseHucreGenelViewModelBaseActionController =
-      ActionController(name: '_BaseHucreGenelViewModelBase', context: context);
+  late final _$_BaseHucreGenelViewModelBaseActionController = ActionController(
+    name: '_BaseHucreGenelViewModelBase',
+    context: context,
+  );
 
   @override
   void setSelectedEditTipi(int? index) {

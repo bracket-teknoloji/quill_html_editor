@@ -12,13 +12,15 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
   Computed<String>? _$aciklamaComputed;
 
   @override
-  String get aciklama =>
-      (_$aciklamaComputed ??= Computed<String>(() => super.aciklama,
-              name: '_KasadanTahsilEtViewModelBase.aciklama'))
-          .value;
+  String get aciklama => (_$aciklamaComputed ??= Computed<String>(
+    () => super.aciklama,
+    name: '_KasadanTahsilEtViewModelBase.aciklama',
+  )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_KasadanTahsilEtViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_KasadanTahsilEtViewModelBase.model',
+    context: context,
+  );
 
   @override
   SaveCekSenetModel get model {
@@ -30,23 +32,30 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   set model(SaveCekSenetModel value) {
-    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
-        () {
-      super.model = value;
-      _modelIsInitialized = true;
-    });
+    _$modelAtom.reportWrite(
+      value,
+      _modelIsInitialized ? super.model : null,
+      () {
+        super.model = value;
+        _modelIsInitialized = true;
+      },
+    );
   }
 
-  late final _$postDataAsyncAction =
-      AsyncAction('_KasadanTahsilEtViewModelBase.postData', context: context);
+  late final _$postDataAsyncAction = AsyncAction(
+    '_KasadanTahsilEtViewModelBase.postData',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<SaveCekSenetModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$_KasadanTahsilEtViewModelBaseActionController =
-      ActionController(name: '_KasadanTahsilEtViewModelBase', context: context);
+  late final _$_KasadanTahsilEtViewModelBaseActionController = ActionController(
+    name: '_KasadanTahsilEtViewModelBase',
+    context: context,
+  );
 
   @override
   void setTarih(DateTime value) {

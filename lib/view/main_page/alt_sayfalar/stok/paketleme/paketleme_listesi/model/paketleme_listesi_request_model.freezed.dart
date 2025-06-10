@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,365 +10,158 @@ part of 'paketleme_listesi_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-PaketlemeListesiRequestModel _$PaketlemeListesiRequestModelFromJson(Map<String, dynamic> json) {
-  return _PaketlemeListesiRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PaketlemeListesiRequestModel {
-  @JsonKey(name: "ID")
-  int? get id => throw _privateConstructorUsedError;
-  String? get stokKodu => throw _privateConstructorUsedError;
-  String? get belgeNo => throw _privateConstructorUsedError;
-  String? get menuKodu => throw _privateConstructorUsedError;
-  int? get depoKodu => throw _privateConstructorUsedError;
-  String? get paketKodu => throw _privateConstructorUsedError;
-  int? get islemKodu => throw _privateConstructorUsedError;
-  String? get kisitYok => throw _privateConstructorUsedError;
-  String? get ekranTipi => throw _privateConstructorUsedError;
-  @JsonKey(name: "PaketID")
-  int? get paketId => throw _privateConstructorUsedError;
+
+@JsonKey(name: "ID") int? get id; String? get stokKodu; String? get belgeNo; String? get menuKodu; int? get depoKodu; String? get paketKodu; int? get islemKodu; String? get kisitYok; String? get ekranTipi;@JsonKey(name: "PaketID") int? get paketId;
+/// Create a copy of PaketlemeListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaketlemeListesiRequestModelCopyWith<PaketlemeListesiRequestModel> get copyWith => _$PaketlemeListesiRequestModelCopyWithImpl<PaketlemeListesiRequestModel>(this as PaketlemeListesiRequestModel, _$identity);
 
   /// Serializes this PaketlemeListesiRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PaketlemeListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaketlemeListesiRequestModelCopyWith<PaketlemeListesiRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaketlemeListesiRequestModel&&(identical(other.id, id) || other.id == id)&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo)&&(identical(other.menuKodu, menuKodu) || other.menuKodu == menuKodu)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.paketKodu, paketKodu) || other.paketKodu == paketKodu)&&(identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu)&&(identical(other.kisitYok, kisitYok) || other.kisitYok == kisitYok)&&(identical(other.ekranTipi, ekranTipi) || other.ekranTipi == ekranTipi)&&(identical(other.paketId, paketId) || other.paketId == paketId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,stokKodu,belgeNo,menuKodu,depoKodu,paketKodu,islemKodu,kisitYok,ekranTipi,paketId);
+
+
+
 }
 
 /// @nodoc
-abstract class $PaketlemeListesiRequestModelCopyWith<$Res> {
-  factory $PaketlemeListesiRequestModelCopyWith(
-    PaketlemeListesiRequestModel value,
-    $Res Function(PaketlemeListesiRequestModel) then,
-  ) = _$PaketlemeListesiRequestModelCopyWithImpl<$Res, PaketlemeListesiRequestModel>;
-  @useResult
-  $Res call({
-    @JsonKey(name: "ID") int? id,
-    String? stokKodu,
-    String? belgeNo,
-    String? menuKodu,
-    int? depoKodu,
-    String? paketKodu,
-    int? islemKodu,
-    String? kisitYok,
-    String? ekranTipi,
-    @JsonKey(name: "PaketID") int? paketId,
-  });
-}
+abstract mixin class $PaketlemeListesiRequestModelCopyWith<$Res>  {
+  factory $PaketlemeListesiRequestModelCopyWith(PaketlemeListesiRequestModel value, $Res Function(PaketlemeListesiRequestModel) _then) = _$PaketlemeListesiRequestModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: "ID") int? id, String? stokKodu, String? belgeNo, String? menuKodu, int? depoKodu, String? paketKodu, int? islemKodu, String? kisitYok, String? ekranTipi,@JsonKey(name: "PaketID") int? paketId
+});
 
+
+
+
+}
 /// @nodoc
-class _$PaketlemeListesiRequestModelCopyWithImpl<$Res, $Val extends PaketlemeListesiRequestModel>
+class _$PaketlemeListesiRequestModelCopyWithImpl<$Res>
     implements $PaketlemeListesiRequestModelCopyWith<$Res> {
-  _$PaketlemeListesiRequestModelCopyWithImpl(this._value, this._then);
+  _$PaketlemeListesiRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PaketlemeListesiRequestModel _self;
+  final $Res Function(PaketlemeListesiRequestModel) _then;
 
-  /// Create a copy of PaketlemeListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? stokKodu = freezed,
-    Object? belgeNo = freezed,
-    Object? menuKodu = freezed,
-    Object? depoKodu = freezed,
-    Object? paketKodu = freezed,
-    Object? islemKodu = freezed,
-    Object? kisitYok = freezed,
-    Object? ekranTipi = freezed,
-    Object? paketId = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            id: freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            stokKodu: freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            belgeNo: freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            menuKodu: freezed == menuKodu
-                ? _value.menuKodu
-                : menuKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            depoKodu: freezed == depoKodu
-                ? _value.depoKodu
-                : depoKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            paketKodu: freezed == paketKodu
-                ? _value.paketKodu
-                : paketKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            islemKodu: freezed == islemKodu
-                ? _value.islemKodu
-                : islemKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            kisitYok: freezed == kisitYok
-                ? _value.kisitYok
-                : kisitYok // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            ekranTipi: freezed == ekranTipi
-                ? _value.ekranTipi
-                : ekranTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            paketId: freezed == paketId
-                ? _value.paketId
-                : paketId // ignore: cast_nullable_to_non_nullable
-                      as int?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of PaketlemeListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? stokKodu = freezed,Object? belgeNo = freezed,Object? menuKodu = freezed,Object? depoKodu = freezed,Object? paketKodu = freezed,Object? islemKodu = freezed,Object? kisitYok = freezed,Object? ekranTipi = freezed,Object? paketId = freezed,}) {
+  return _then(_self.copyWith(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,menuKodu: freezed == menuKodu ? _self.menuKodu : menuKodu // ignore: cast_nullable_to_non_nullable
+as String?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,paketKodu: freezed == paketKodu ? _self.paketKodu : paketKodu // ignore: cast_nullable_to_non_nullable
+as String?,islemKodu: freezed == islemKodu ? _self.islemKodu : islemKodu // ignore: cast_nullable_to_non_nullable
+as int?,kisitYok: freezed == kisitYok ? _self.kisitYok : kisitYok // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,paketId: freezed == paketId ? _self.paketId : paketId // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PaketlemeListesiRequestModelImplCopyWith<$Res>
-    implements $PaketlemeListesiRequestModelCopyWith<$Res> {
-  factory _$$PaketlemeListesiRequestModelImplCopyWith(
-    _$PaketlemeListesiRequestModelImpl value,
-    $Res Function(_$PaketlemeListesiRequestModelImpl) then,
-  ) = __$$PaketlemeListesiRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    @JsonKey(name: "ID") int? id,
-    String? stokKodu,
-    String? belgeNo,
-    String? menuKodu,
-    int? depoKodu,
-    String? paketKodu,
-    int? islemKodu,
-    String? kisitYok,
-    String? ekranTipi,
-    @JsonKey(name: "PaketID") int? paketId,
-  });
 }
 
-/// @nodoc
-class __$$PaketlemeListesiRequestModelImplCopyWithImpl<$Res>
-    extends _$PaketlemeListesiRequestModelCopyWithImpl<$Res, _$PaketlemeListesiRequestModelImpl>
-    implements _$$PaketlemeListesiRequestModelImplCopyWith<$Res> {
-  __$$PaketlemeListesiRequestModelImplCopyWithImpl(
-    _$PaketlemeListesiRequestModelImpl _value,
-    $Res Function(_$PaketlemeListesiRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of PaketlemeListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? stokKodu = freezed,
-    Object? belgeNo = freezed,
-    Object? menuKodu = freezed,
-    Object? depoKodu = freezed,
-    Object? paketKodu = freezed,
-    Object? islemKodu = freezed,
-    Object? kisitYok = freezed,
-    Object? ekranTipi = freezed,
-    Object? paketId = freezed,
-  }) {
-    return _then(
-      _$PaketlemeListesiRequestModelImpl(
-        id: freezed == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        stokKodu: freezed == stokKodu
-            ? _value.stokKodu
-            : stokKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        belgeNo: freezed == belgeNo
-            ? _value.belgeNo
-            : belgeNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        menuKodu: freezed == menuKodu
-            ? _value.menuKodu
-            : menuKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        depoKodu: freezed == depoKodu
-            ? _value.depoKodu
-            : depoKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        paketKodu: freezed == paketKodu
-            ? _value.paketKodu
-            : paketKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        islemKodu: freezed == islemKodu
-            ? _value.islemKodu
-            : islemKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        kisitYok: freezed == kisitYok
-            ? _value.kisitYok
-            : kisitYok // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        ekranTipi: freezed == ekranTipi
-            ? _value.ekranTipi
-            : ekranTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        paketId: freezed == paketId
-            ? _value.paketId
-            : paketId // ignore: cast_nullable_to_non_nullable
-                  as int?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$PaketlemeListesiRequestModelImpl implements _PaketlemeListesiRequestModel {
-  _$PaketlemeListesiRequestModelImpl({
-    @JsonKey(name: "ID") this.id,
-    this.stokKodu,
-    this.belgeNo,
-    this.menuKodu,
-    this.depoKodu,
-    this.paketKodu,
-    this.islemKodu,
-    this.kisitYok,
-    this.ekranTipi,
-    @JsonKey(name: "PaketID") this.paketId,
-  });
+class _PaketlemeListesiRequestModel implements PaketlemeListesiRequestModel {
+   _PaketlemeListesiRequestModel({@JsonKey(name: "ID") this.id, this.stokKodu, this.belgeNo, this.menuKodu, this.depoKodu, this.paketKodu, this.islemKodu, this.kisitYok, this.ekranTipi, @JsonKey(name: "PaketID") this.paketId});
+  factory _PaketlemeListesiRequestModel.fromJson(Map<String, dynamic> json) => _$PaketlemeListesiRequestModelFromJson(json);
 
-  factory _$PaketlemeListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaketlemeListesiRequestModelImplFromJson(json);
+@override@JsonKey(name: "ID") final  int? id;
+@override final  String? stokKodu;
+@override final  String? belgeNo;
+@override final  String? menuKodu;
+@override final  int? depoKodu;
+@override final  String? paketKodu;
+@override final  int? islemKodu;
+@override final  String? kisitYok;
+@override final  String? ekranTipi;
+@override@JsonKey(name: "PaketID") final  int? paketId;
 
-  @override
-  @JsonKey(name: "ID")
-  final int? id;
-  @override
-  final String? stokKodu;
-  @override
-  final String? belgeNo;
-  @override
-  final String? menuKodu;
-  @override
-  final int? depoKodu;
-  @override
-  final String? paketKodu;
-  @override
-  final int? islemKodu;
-  @override
-  final String? kisitYok;
-  @override
-  final String? ekranTipi;
-  @override
-  @JsonKey(name: "PaketID")
-  final int? paketId;
+/// Create a copy of PaketlemeListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaketlemeListesiRequestModelCopyWith<_PaketlemeListesiRequestModel> get copyWith => __$PaketlemeListesiRequestModelCopyWithImpl<_PaketlemeListesiRequestModel>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaketlemeListesiRequestModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu) &&
-            (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo) &&
-            (identical(other.menuKodu, menuKodu) || other.menuKodu == menuKodu) &&
-            (identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu) &&
-            (identical(other.paketKodu, paketKodu) || other.paketKodu == paketKodu) &&
-            (identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu) &&
-            (identical(other.kisitYok, kisitYok) || other.kisitYok == kisitYok) &&
-            (identical(other.ekranTipi, ekranTipi) || other.ekranTipi == ekranTipi) &&
-            (identical(other.paketId, paketId) || other.paketId == paketId));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    stokKodu,
-    belgeNo,
-    menuKodu,
-    depoKodu,
-    paketKodu,
-    islemKodu,
-    kisitYok,
-    ekranTipi,
-    paketId,
-  );
-
-  /// Create a copy of PaketlemeListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaketlemeListesiRequestModelImplCopyWith<_$PaketlemeListesiRequestModelImpl> get copyWith =>
-      __$$PaketlemeListesiRequestModelImplCopyWithImpl<_$PaketlemeListesiRequestModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaketlemeListesiRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PaketlemeListesiRequestModelToJson(this, );
 }
 
-abstract class _PaketlemeListesiRequestModel implements PaketlemeListesiRequestModel {
-  factory _PaketlemeListesiRequestModel({
-    @JsonKey(name: "ID") final int? id,
-    final String? stokKodu,
-    final String? belgeNo,
-    final String? menuKodu,
-    final int? depoKodu,
-    final String? paketKodu,
-    final int? islemKodu,
-    final String? kisitYok,
-    final String? ekranTipi,
-    @JsonKey(name: "PaketID") final int? paketId,
-  }) = _$PaketlemeListesiRequestModelImpl;
-
-  factory _PaketlemeListesiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$PaketlemeListesiRequestModelImpl.fromJson;
-
-  @override
-  @JsonKey(name: "ID")
-  int? get id;
-  @override
-  String? get stokKodu;
-  @override
-  String? get belgeNo;
-  @override
-  String? get menuKodu;
-  @override
-  int? get depoKodu;
-  @override
-  String? get paketKodu;
-  @override
-  int? get islemKodu;
-  @override
-  String? get kisitYok;
-  @override
-  String? get ekranTipi;
-  @override
-  @JsonKey(name: "PaketID")
-  int? get paketId;
-
-  /// Create a copy of PaketlemeListesiRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaketlemeListesiRequestModelImplCopyWith<_$PaketlemeListesiRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaketlemeListesiRequestModel&&(identical(other.id, id) || other.id == id)&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo)&&(identical(other.menuKodu, menuKodu) || other.menuKodu == menuKodu)&&(identical(other.depoKodu, depoKodu) || other.depoKodu == depoKodu)&&(identical(other.paketKodu, paketKodu) || other.paketKodu == paketKodu)&&(identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu)&&(identical(other.kisitYok, kisitYok) || other.kisitYok == kisitYok)&&(identical(other.ekranTipi, ekranTipi) || other.ekranTipi == ekranTipi)&&(identical(other.paketId, paketId) || other.paketId == paketId));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,stokKodu,belgeNo,menuKodu,depoKodu,paketKodu,islemKodu,kisitYok,ekranTipi,paketId);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaketlemeListesiRequestModelCopyWith<$Res> implements $PaketlemeListesiRequestModelCopyWith<$Res> {
+  factory _$PaketlemeListesiRequestModelCopyWith(_PaketlemeListesiRequestModel value, $Res Function(_PaketlemeListesiRequestModel) _then) = __$PaketlemeListesiRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: "ID") int? id, String? stokKodu, String? belgeNo, String? menuKodu, int? depoKodu, String? paketKodu, int? islemKodu, String? kisitYok, String? ekranTipi,@JsonKey(name: "PaketID") int? paketId
+});
+
+
+
+
+}
+/// @nodoc
+class __$PaketlemeListesiRequestModelCopyWithImpl<$Res>
+    implements _$PaketlemeListesiRequestModelCopyWith<$Res> {
+  __$PaketlemeListesiRequestModelCopyWithImpl(this._self, this._then);
+
+  final _PaketlemeListesiRequestModel _self;
+  final $Res Function(_PaketlemeListesiRequestModel) _then;
+
+/// Create a copy of PaketlemeListesiRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? stokKodu = freezed,Object? belgeNo = freezed,Object? menuKodu = freezed,Object? depoKodu = freezed,Object? paketKodu = freezed,Object? islemKodu = freezed,Object? kisitYok = freezed,Object? ekranTipi = freezed,Object? paketId = freezed,}) {
+  return _then(_PaketlemeListesiRequestModel(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,menuKodu: freezed == menuKodu ? _self.menuKodu : menuKodu // ignore: cast_nullable_to_non_nullable
+as String?,depoKodu: freezed == depoKodu ? _self.depoKodu : depoKodu // ignore: cast_nullable_to_non_nullable
+as int?,paketKodu: freezed == paketKodu ? _self.paketKodu : paketKodu // ignore: cast_nullable_to_non_nullable
+as String?,islemKodu: freezed == islemKodu ? _self.islemKodu : islemKodu // ignore: cast_nullable_to_non_nullable
+as int?,kisitYok: freezed == kisitYok ? _self.kisitYok : kisitYok // ignore: cast_nullable_to_non_nullable
+as String?,ekranTipi: freezed == ekranTipi ? _self.ekranTipi : ekranTipi // ignore: cast_nullable_to_non_nullable
+as String?,paketId: freezed == paketId ? _self.paketId : paketId // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+// dart format on

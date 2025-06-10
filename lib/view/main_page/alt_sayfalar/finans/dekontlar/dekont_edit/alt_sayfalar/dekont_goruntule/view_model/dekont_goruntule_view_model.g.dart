@@ -10,7 +10,9 @@ part of 'dekont_goruntule_view_model.dart';
 
 mixin _$DekontGoruntuleViewModel on _DekontGoruntuleViewModelBase, Store {
   late final _$dekontListesiAtom = Atom(
-      name: '_DekontGoruntuleViewModelBase.dekontListesi', context: context);
+    name: '_DekontGoruntuleViewModelBase.dekontListesi',
+    context: context,
+  );
 
   @override
   ObservableList<DekontDuzenleRequestModel> get dekontListesi {
@@ -25,8 +27,10 @@ mixin _$DekontGoruntuleViewModel on _DekontGoruntuleViewModelBase, Store {
     });
   }
 
-  late final _$dekontMapAtom =
-      Atom(name: '_DekontGoruntuleViewModelBase.dekontMap', context: context);
+  late final _$dekontMapAtom = Atom(
+    name: '_DekontGoruntuleViewModelBase.dekontMap',
+    context: context,
+  );
 
   @override
   ObservableMap<String, dynamic>? get dekontMap {
@@ -41,16 +45,20 @@ mixin _$DekontGoruntuleViewModel on _DekontGoruntuleViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_DekontGoruntuleViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_DekontGoruntuleViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData(DekontListesiModel? model, String? refkey) {
     return _$getDataAsyncAction.run(() => super.getData(model, refkey));
   }
 
-  late final _$_DekontGoruntuleViewModelBaseActionController =
-      ActionController(name: '_DekontGoruntuleViewModelBase', context: context);
+  late final _$_DekontGoruntuleViewModelBaseActionController = ActionController(
+    name: '_DekontGoruntuleViewModelBase',
+    context: context,
+  );
 
   @override
   void setDekontListesi(List<DekontDuzenleRequestModel> value) {

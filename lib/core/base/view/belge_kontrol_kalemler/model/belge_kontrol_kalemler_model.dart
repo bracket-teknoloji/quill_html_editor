@@ -7,7 +7,7 @@ part "belge_kontrol_kalemler_model.freezed.dart";
 part "belge_kontrol_kalemler_model.g.dart";
 
 @freezed
-class BelgeKontrolKalemlerModel with _$BelgeKontrolKalemlerModel, NetworkManagerMixin {
+sealed class BelgeKontrolKalemlerModel with _$BelgeKontrolKalemlerModel, NetworkManagerMixin {
   factory BelgeKontrolKalemlerModel({
     @JsonKey(name: "KONTROL_ID") int? kontrolId,
     @JsonKey(name: "BELGE_TIPI") String? belgeTipi,

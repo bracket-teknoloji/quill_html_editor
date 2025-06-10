@@ -13,12 +13,15 @@ mixin _$BaseStokEditFiyatViewModel on _BaseStokEditFiyatViewModelBase, Store {
 
   @override
   Map<int, String> get dovizList =>
-      (_$dovizListComputed ??= Computed<Map<int, String>>(() => super.dovizList,
-              name: '_BaseStokEditFiyatViewModelBase.dovizList'))
-          .value;
+      (_$dovizListComputed ??= Computed<Map<int, String>>(
+        () => super.dovizList,
+        name: '_BaseStokEditFiyatViewModelBase.dovizList',
+      )).value;
 
   late final _$kdvOraniListAtom = Atom(
-      name: '_BaseStokEditFiyatViewModelBase.kdvOraniList', context: context);
+    name: '_BaseStokEditFiyatViewModelBase.kdvOraniList',
+    context: context,
+  );
 
   @override
   ObservableList<double>? get kdvOraniList {
@@ -35,7 +38,9 @@ mixin _$BaseStokEditFiyatViewModel on _BaseStokEditFiyatViewModelBase, Store {
 
   late final _$_BaseStokEditFiyatViewModelBaseActionController =
       ActionController(
-          name: '_BaseStokEditFiyatViewModelBase', context: context);
+        name: '_BaseStokEditFiyatViewModelBase',
+        context: context,
+      );
 
   @override
   void setKdvOraniList(List<double> value) {

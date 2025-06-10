@@ -6,7 +6,7 @@ part "sayilan_kalemler_request_model.freezed.dart";
 part "sayilan_kalemler_request_model.g.dart";
 
 @unfreezed
-class SayilanKalemlerRequestModel with _$SayilanKalemlerRequestModel {
+sealed class SayilanKalemlerRequestModel with _$SayilanKalemlerRequestModel {
   factory SayilanKalemlerRequestModel({
     @JsonKey(name: "FiltreKodu") int? filtreKodu,
     @JsonKey(name: "DepoKodu") int? depoKodu,

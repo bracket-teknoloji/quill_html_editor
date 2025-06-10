@@ -6,7 +6,7 @@ part "hucre_takibi_stoklar_request_model.freezed.dart";
 part "hucre_takibi_stoklar_request_model.g.dart";
 
 @freezed
-class HucreTakibiStoklarRequestModel with _$HucreTakibiStoklarRequestModel {
+sealed class HucreTakibiStoklarRequestModel with _$HucreTakibiStoklarRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   const factory HucreTakibiStoklarRequestModel({
     int? depoKodu,

@@ -6,7 +6,7 @@ part "kasa_listesi_model.freezed.dart";
 part "kasa_listesi_model.g.dart";
 
 @freezed
-class KasaListesiModel with _$KasaListesiModel, NetworkManagerMixin {
+sealed class KasaListesiModel with _$KasaListesiModel, NetworkManagerMixin {
   factory KasaListesiModel({
     String? kasaKodu,
     String? kasaTanimi,

@@ -11,8 +11,9 @@ part of 'islemler_menu_item_constants_view_model.dart';
 mixin _$IslemlerMenuItemConstantsViewModel
     on _IslemlerMenuItemConstantsViewModelBase, Store {
   late final _$cariKodDegistirSwitchAtom = Atom(
-      name: '_IslemlerMenuItemConstantsViewModelBase.cariKodDegistirSwitch',
-      context: context);
+    name: '_IslemlerMenuItemConstantsViewModelBase.cariKodDegistirSwitch',
+    context: context,
+  );
 
   @override
   bool get cariKodDegistirSwitch {
@@ -22,27 +23,34 @@ mixin _$IslemlerMenuItemConstantsViewModel
 
   @override
   set cariKodDegistirSwitch(bool value) {
-    _$cariKodDegistirSwitchAtom.reportWrite(value, super.cariKodDegistirSwitch,
-        () {
-      super.cariKodDegistirSwitch = value;
-    });
+    _$cariKodDegistirSwitchAtom.reportWrite(
+      value,
+      super.cariKodDegistirSwitch,
+      () {
+        super.cariKodDegistirSwitch = value;
+      },
+    );
   }
 
   late final _$_IslemlerMenuItemConstantsViewModelBaseActionController =
       ActionController(
-          name: '_IslemlerMenuItemConstantsViewModelBase', context: context);
+        name: '_IslemlerMenuItemConstantsViewModelBase',
+        context: context,
+      );
 
   @override
   void changeCariKodDegistirSwitch(bool value) {
     final _$actionInfo =
         _$_IslemlerMenuItemConstantsViewModelBaseActionController.startAction(
-            name:
-                '_IslemlerMenuItemConstantsViewModelBase.changeCariKodDegistirSwitch');
+          name:
+              '_IslemlerMenuItemConstantsViewModelBase.changeCariKodDegistirSwitch',
+        );
     try {
       return super.changeCariKodDegistirSwitch(value);
     } finally {
-      _$_IslemlerMenuItemConstantsViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_IslemlerMenuItemConstantsViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -6,9 +6,8 @@ part of 'dekont_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DekontListesiModelImpl _$$DekontListesiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DekontListesiModelImpl(
+_DekontListesiModel _$DekontListesiModelFromJson(Map<String, dynamic> json) =>
+    _DekontListesiModel(
       inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       seri: json['SERI'] as String?,
       dekontNo: (json['DEKONT_NO'] as num?)?.toInt(),
@@ -20,8 +19,7 @@ _$DekontListesiModelImpl _$$DekontListesiModelImplFromJson(
       seriAdi: json['SERI_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$DekontListesiModelImplToJson(
-        _$DekontListesiModelImpl instance) =>
+Map<String, dynamic> _$DekontListesiModelToJson(_DekontListesiModel instance) =>
     <String, dynamic>{
       if (instance.inckeyno case final value?) 'INCKEYNO': value,
       if (instance.seri case final value?) 'SERI': value,

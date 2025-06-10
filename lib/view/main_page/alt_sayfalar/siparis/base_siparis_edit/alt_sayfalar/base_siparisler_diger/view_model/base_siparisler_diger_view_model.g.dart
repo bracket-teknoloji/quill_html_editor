@@ -10,8 +10,10 @@ part of 'base_siparisler_diger_view_model.dart';
 
 mixin _$BaseSiparislerDigerViewModel
     on _BaseSiparislerDigerViewModelBase, Store {
-  late final _$isInitAtom =
-      Atom(name: '_BaseSiparislerDigerViewModelBase.isInit', context: context);
+  late final _$isInitAtom = Atom(
+    name: '_BaseSiparislerDigerViewModelBase.isInit',
+    context: context,
+  );
 
   @override
   bool get isInit {
@@ -28,7 +30,9 @@ mixin _$BaseSiparislerDigerViewModel
 
   late final _$_BaseSiparislerDigerViewModelBaseActionController =
       ActionController(
-          name: '_BaseSiparislerDigerViewModelBase', context: context);
+        name: '_BaseSiparislerDigerViewModelBase',
+        context: context,
+      );
 
   @override
   void init() {
@@ -37,8 +41,9 @@ mixin _$BaseSiparislerDigerViewModel
     try {
       return super.init();
     } finally {
-      _$_BaseSiparislerDigerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseSiparislerDigerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

@@ -11,7 +11,9 @@ part of 'siparis_karlilik_raporu_view_model.dart';
 mixin _$SiparisKarlilikRaporuViewModel
     on _SiparisKarlilikRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
-      name: '_SiparisKarlilikRaporuViewModelBase.pdfModel', context: context);
+    name: '_SiparisKarlilikRaporuViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -27,8 +29,9 @@ mixin _$SiparisKarlilikRaporuViewModel
   }
 
   late final _$uretimFiyatiDahilMiAtom = Atom(
-      name: '_SiparisKarlilikRaporuViewModelBase.uretimFiyatiDahilMi',
-      context: context);
+    name: '_SiparisKarlilikRaporuViewModelBase.uretimFiyatiDahilMi',
+    context: context,
+  );
 
   @override
   bool get uretimFiyatiDahilMi {
@@ -44,8 +47,9 @@ mixin _$SiparisKarlilikRaporuViewModel
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_SiparisKarlilikRaporuViewModelBase.futureController',
-      context: context);
+    name: '_SiparisKarlilikRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -62,7 +66,9 @@ mixin _$SiparisKarlilikRaporuViewModel
 
   late final _$_SiparisKarlilikRaporuViewModelBaseActionController =
       ActionController(
-          name: '_SiparisKarlilikRaporuViewModelBase', context: context);
+        name: '_SiparisKarlilikRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setCariKodu(String? value) {
@@ -71,21 +77,24 @@ mixin _$SiparisKarlilikRaporuViewModel
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo =
-        _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisKarlilikRaporuViewModelBase.setTeslimCariKodu');
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -96,8 +105,9 @@ mixin _$SiparisKarlilikRaporuViewModel
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -108,60 +118,69 @@ mixin _$SiparisKarlilikRaporuViewModel
     try {
       return super.setPlasiyer(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setMaliyetTipi(String? value) {
-    final _$actionInfo =
-        _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisKarlilikRaporuViewModelBase.setMaliyetTipi');
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setMaliyetTipi',
+        );
     try {
       return super.setMaliyetTipi(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setUretimFiyatiDahilMi(String? value) {
-    final _$actionInfo =
-        _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisKarlilikRaporuViewModelBase.setUretimFiyatiDahilMi');
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setUretimFiyatiDahilMi',
+        );
     try {
       return super.setUretimFiyatiDahilMi(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo =
-        _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisKarlilikRaporuViewModelBase.setBaslangicTarihi');
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setBaslangicTarihi',
+        );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo =
-        _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-            name: '_SiparisKarlilikRaporuViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setBitisTarihi',
+        );
     try {
       return super.setBitisTarihi(value);
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -172,8 +191,9 @@ mixin _$SiparisKarlilikRaporuViewModel
     try {
       return super.setFuture();
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -184,8 +204,9 @@ mixin _$SiparisKarlilikRaporuViewModel
     try {
       return super.resetFuture();
     } finally {
-      _$_SiparisKarlilikRaporuViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparisKarlilikRaporuViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

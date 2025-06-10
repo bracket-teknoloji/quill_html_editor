@@ -6,8 +6,8 @@ part of 'olcum_ekle_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
-    _$OlcumEkleModelImpl(
+_OlcumEkleModel _$OlcumEkleModelFromJson(Map<String, dynamic> json) =>
+    _OlcumEkleModel(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeSira: (json['BELGE_SIRA'] as num?)?.toInt(),
@@ -29,8 +29,7 @@ _$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$OlcumEkleModelImplToJson(
-        _$OlcumEkleModelImpl instance) =>
+Map<String, dynamic> _$OlcumEkleModelToJson(_OlcumEkleModel instance) =>
     <String, dynamic>{
       if (instance.belgeNo case final value?) 'BELGE_NO': value,
       if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,

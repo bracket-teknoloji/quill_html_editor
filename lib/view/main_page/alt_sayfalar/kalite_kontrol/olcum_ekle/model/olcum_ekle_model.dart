@@ -7,7 +7,7 @@ part "olcum_ekle_model.freezed.dart";
 part "olcum_ekle_model.g.dart";
 
 @unfreezed
-class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
+sealed class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
   factory OlcumEkleModel({
     String? belgeNo,
     String? belgeTipi,

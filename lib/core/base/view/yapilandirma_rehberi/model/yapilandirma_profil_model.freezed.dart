@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,200 +10,126 @@ part of 'yapilandirma_profil_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-YapilandirmaProfilModel _$YapilandirmaProfilModelFromJson(Map<String, dynamic> json) {
-  return _YapilandirmaProfilModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$YapilandirmaProfilModel {
-  int? get sira => throw _privateConstructorUsedError;
-  set sira(int? value) => throw _privateConstructorUsedError;
-  String? get ozellikKodu => throw _privateConstructorUsedError;
-  set ozellikKodu(String? value) => throw _privateConstructorUsedError;
-  String? get aciklama => throw _privateConstructorUsedError;
-  set aciklama(String? value) => throw _privateConstructorUsedError;
-  List<YapilandirmaRehberiModel?>? get deger => throw _privateConstructorUsedError;
-  set deger(List<YapilandirmaRehberiModel?>? value) => throw _privateConstructorUsedError;
+
+ int? get sira; set sira(int? value); String? get ozellikKodu; set ozellikKodu(String? value); String? get aciklama; set aciklama(String? value); List<YapilandirmaRehberiModel?>? get deger; set deger(List<YapilandirmaRehberiModel?>? value);
+/// Create a copy of YapilandirmaProfilModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$YapilandirmaProfilModelCopyWith<YapilandirmaProfilModel> get copyWith => _$YapilandirmaProfilModelCopyWithImpl<YapilandirmaProfilModel>(this as YapilandirmaProfilModel, _$identity);
 
   /// Serializes this YapilandirmaProfilModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of YapilandirmaProfilModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $YapilandirmaProfilModelCopyWith<YapilandirmaProfilModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $YapilandirmaProfilModelCopyWith<$Res> {
-  factory $YapilandirmaProfilModelCopyWith(YapilandirmaProfilModel value, $Res Function(YapilandirmaProfilModel) then) =
-      _$YapilandirmaProfilModelCopyWithImpl<$Res, YapilandirmaProfilModel>;
-  @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger});
-}
+abstract mixin class $YapilandirmaProfilModelCopyWith<$Res>  {
+  factory $YapilandirmaProfilModelCopyWith(YapilandirmaProfilModel value, $Res Function(YapilandirmaProfilModel) _then) = _$YapilandirmaProfilModelCopyWithImpl;
+@useResult
+$Res call({
+ int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger
+});
 
+
+
+
+}
 /// @nodoc
-class _$YapilandirmaProfilModelCopyWithImpl<$Res, $Val extends YapilandirmaProfilModel>
+class _$YapilandirmaProfilModelCopyWithImpl<$Res>
     implements $YapilandirmaProfilModelCopyWith<$Res> {
-  _$YapilandirmaProfilModelCopyWithImpl(this._value, this._then);
+  _$YapilandirmaProfilModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final YapilandirmaProfilModel _self;
+  final $Res Function(YapilandirmaProfilModel) _then;
 
-  /// Create a copy of YapilandirmaProfilModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sira = freezed,
-    Object? ozellikKodu = freezed,
-    Object? aciklama = freezed,
-    Object? deger = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            sira: freezed == sira
-                ? _value.sira
-                : sira // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            ozellikKodu: freezed == ozellikKodu
-                ? _value.ozellikKodu
-                : ozellikKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            aciklama: freezed == aciklama
-                ? _value.aciklama
-                : aciklama // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            deger: freezed == deger
-                ? _value.deger
-                : deger // ignore: cast_nullable_to_non_nullable
-                      as List<YapilandirmaRehberiModel?>?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of YapilandirmaProfilModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? sira = freezed,Object? ozellikKodu = freezed,Object? aciklama = freezed,Object? deger = freezed,}) {
+  return _then(_self.copyWith(
+sira: freezed == sira ? _self.sira : sira // ignore: cast_nullable_to_non_nullable
+as int?,ozellikKodu: freezed == ozellikKodu ? _self.ozellikKodu : ozellikKodu // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,deger: freezed == deger ? _self.deger : deger // ignore: cast_nullable_to_non_nullable
+as List<YapilandirmaRehberiModel?>?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$YapilandirmaProfilModelImplCopyWith<$Res> implements $YapilandirmaProfilModelCopyWith<$Res> {
-  factory _$$YapilandirmaProfilModelImplCopyWith(
-    _$YapilandirmaProfilModelImpl value,
-    $Res Function(_$YapilandirmaProfilModelImpl) then,
-  ) = __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger});
 }
 
-/// @nodoc
-class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>
-    extends _$YapilandirmaProfilModelCopyWithImpl<$Res, _$YapilandirmaProfilModelImpl>
-    implements _$$YapilandirmaProfilModelImplCopyWith<$Res> {
-  __$$YapilandirmaProfilModelImplCopyWithImpl(
-    _$YapilandirmaProfilModelImpl _value,
-    $Res Function(_$YapilandirmaProfilModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of YapilandirmaProfilModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sira = freezed,
-    Object? ozellikKodu = freezed,
-    Object? aciklama = freezed,
-    Object? deger = freezed,
-  }) {
-    return _then(
-      _$YapilandirmaProfilModelImpl(
-        sira: freezed == sira
-            ? _value.sira
-            : sira // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        ozellikKodu: freezed == ozellikKodu
-            ? _value.ozellikKodu
-            : ozellikKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        aciklama: freezed == aciklama
-            ? _value.aciklama
-            : aciklama // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        deger: freezed == deger
-            ? _value.deger
-            : deger // ignore: cast_nullable_to_non_nullable
-                  as List<YapilandirmaRehberiModel?>?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
-  _$YapilandirmaProfilModelImpl({this.sira, this.ozellikKodu, this.aciklama, this.deger}) : super._();
 
-  factory _$YapilandirmaProfilModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$YapilandirmaProfilModelImplFromJson(json);
+class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
+   _YapilandirmaProfilModel({this.sira, this.ozellikKodu, this.aciklama, this.deger}): super._();
+  factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);
 
-  @override
-  int? sira;
-  @override
-  String? ozellikKodu;
-  @override
-  String? aciklama;
-  @override
-  List<YapilandirmaRehberiModel?>? deger;
+@override  int? sira;
+@override  String? ozellikKodu;
+@override  String? aciklama;
+@override  List<YapilandirmaRehberiModel?>? deger;
 
-  /// Create a copy of YapilandirmaProfilModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl> get copyWith =>
-      __$$YapilandirmaProfilModelImplCopyWithImpl<_$YapilandirmaProfilModelImpl>(this, _$identity);
+/// Create a copy of YapilandirmaProfilModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$YapilandirmaProfilModelCopyWith<_YapilandirmaProfilModel> get copyWith => __$YapilandirmaProfilModelCopyWithImpl<_YapilandirmaProfilModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$YapilandirmaProfilModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$YapilandirmaProfilModelToJson(this, );
 }
 
-abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
-  factory _YapilandirmaProfilModel({
-    int? sira,
-    String? ozellikKodu,
-    String? aciklama,
-    List<YapilandirmaRehberiModel?>? deger,
-  }) = _$YapilandirmaProfilModelImpl;
-  _YapilandirmaProfilModel._() : super._();
 
-  factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) = _$YapilandirmaProfilModelImpl.fromJson;
 
-  @override
-  int? get sira;
-  set sira(int? value);
-  @override
-  String? get ozellikKodu;
-  set ozellikKodu(String? value);
-  @override
-  String? get aciklama;
-  set aciklama(String? value);
-  @override
-  List<YapilandirmaRehberiModel?>? get deger;
-  set deger(List<YapilandirmaRehberiModel?>? value);
 
-  /// Create a copy of YapilandirmaProfilModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$YapilandirmaProfilModelCopyWith<$Res> implements $YapilandirmaProfilModelCopyWith<$Res> {
+  factory _$YapilandirmaProfilModelCopyWith(_YapilandirmaProfilModel value, $Res Function(_YapilandirmaProfilModel) _then) = __$YapilandirmaProfilModelCopyWithImpl;
+@override @useResult
+$Res call({
+ int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger
+});
+
+
+
+
+}
+/// @nodoc
+class __$YapilandirmaProfilModelCopyWithImpl<$Res>
+    implements _$YapilandirmaProfilModelCopyWith<$Res> {
+  __$YapilandirmaProfilModelCopyWithImpl(this._self, this._then);
+
+  final _YapilandirmaProfilModel _self;
+  final $Res Function(_YapilandirmaProfilModel) _then;
+
+/// Create a copy of YapilandirmaProfilModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? sira = freezed,Object? ozellikKodu = freezed,Object? aciklama = freezed,Object? deger = freezed,}) {
+  return _then(_YapilandirmaProfilModel(
+sira: freezed == sira ? _self.sira : sira // ignore: cast_nullable_to_non_nullable
+as int?,ozellikKodu: freezed == ozellikKodu ? _self.ozellikKodu : ozellikKodu // ignore: cast_nullable_to_non_nullable
+as String?,aciklama: freezed == aciklama ? _self.aciklama : aciklama // ignore: cast_nullable_to_non_nullable
+as String?,deger: freezed == deger ? _self.deger : deger // ignore: cast_nullable_to_non_nullable
+as List<YapilandirmaRehberiModel?>?,
+  ));
+}
+
+
+}
+
+// dart format on

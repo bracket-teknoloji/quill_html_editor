@@ -4,7 +4,7 @@ part "finans_ozet_rapor_request_model.freezed.dart";
 part "finans_ozet_rapor_request_model.g.dart";
 
 @unfreezed
-class FinansOzetRaporRequestModel with _$FinansOzetRaporRequestModel {
+sealed class FinansOzetRaporRequestModel with _$FinansOzetRaporRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory FinansOzetRaporRequestModel({
     String? plasiyerKodu,

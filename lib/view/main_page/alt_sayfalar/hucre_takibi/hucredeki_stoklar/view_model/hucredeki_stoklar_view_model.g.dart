@@ -15,13 +15,15 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
   List<HucredekiStoklarModel>? get filteredStoklarListesi =>
       (_$filteredStoklarListesiComputed ??=
               Computed<List<HucredekiStoklarModel>?>(
-                  () => super.filteredStoklarListesi,
-                  name:
-                      '_HucredekiStoklarViewModelBase.filteredStoklarListesi'))
+                () => super.filteredStoklarListesi,
+                name: '_HucredekiStoklarViewModelBase.filteredStoklarListesi',
+              ))
           .value;
 
   late final _$observableListAtom = Atom(
-      name: '_HucredekiStoklarViewModelBase.observableList', context: context);
+    name: '_HucredekiStoklarViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<HucredekiStoklarModel>? get observableList {
@@ -37,7 +39,9 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
   }
 
   late final _$requestModelAtom = Atom(
-      name: '_HucredekiStoklarViewModelBase.requestModel', context: context);
+    name: '_HucredekiStoklarViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   HucreListesiRequestModel? get requestModel {
@@ -52,8 +56,10 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_HucredekiStoklarViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_HucredekiStoklarViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String get searchText {
@@ -68,8 +74,10 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_HucredekiStoklarViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_HucredekiStoklarViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -78,7 +86,9 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
 
   late final _$_HucredekiStoklarViewModelBaseActionController =
       ActionController(
-          name: '_HucredekiStoklarViewModelBase', context: context);
+        name: '_HucredekiStoklarViewModelBase',
+        context: context,
+      );
 
   @override
   void setSearchText(String value) {

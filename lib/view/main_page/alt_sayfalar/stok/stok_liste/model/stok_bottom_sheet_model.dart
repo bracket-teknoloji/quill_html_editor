@@ -10,7 +10,7 @@ part "stok_bottom_sheet_model.freezed.dart";
 part "stok_bottom_sheet_model.g.dart";
 
 @unfreezed
-class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
+sealed class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory StokBottomSheetModel({
     int? sayfa,

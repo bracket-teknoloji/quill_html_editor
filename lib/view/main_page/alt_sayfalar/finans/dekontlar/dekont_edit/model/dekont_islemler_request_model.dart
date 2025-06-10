@@ -9,7 +9,7 @@ part "dekont_islemler_request_model.freezed.dart";
 part "dekont_islemler_request_model.g.dart";
 
 @unfreezed
-class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManagerMixin {
+sealed class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManagerMixin {
   // factory DekontIslemlerRequestModel.singleton();
   factory DekontIslemlerRequestModel({
     String? dekontIslemTuru,

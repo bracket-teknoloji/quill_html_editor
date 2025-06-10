@@ -5,7 +5,7 @@ part "belge_kontrol_request_model.freezed.dart";
 part "belge_kontrol_request_model.g.dart";
 
 @unfreezed
-class BelgeKontrolRequestModel with _$BelgeKontrolRequestModel, NetworkManagerMixin {
+sealed class BelgeKontrolRequestModel with _$BelgeKontrolRequestModel, NetworkManagerMixin {
   factory BelgeKontrolRequestModel({
     @JsonKey(name: "BaslamaTarihi") String? baslamaTarihi,
     @JsonKey(name: "BitisTarihi") String? bitisTarihi,

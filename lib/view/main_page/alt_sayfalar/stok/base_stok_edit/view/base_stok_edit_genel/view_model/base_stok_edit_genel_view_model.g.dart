@@ -10,8 +10,9 @@ part of 'base_stok_edit_genel_view_model.dart';
 
 mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
   late final _$stokListesiModelAtom = Atom(
-      name: '_BaseStokEditGenelViewModelBase.stokListesiModel',
-      context: context);
+    name: '_BaseStokEditGenelViewModelBase.stokListesiModel',
+    context: context,
+  );
 
   @override
   StokListesiModel get stokListesiModel {
@@ -27,7 +28,9 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
   }
 
   late final _$stokDetayModelAtom = Atom(
-      name: '_BaseStokEditGenelViewModelBase.stokDetayModel', context: context);
+    name: '_BaseStokEditGenelViewModelBase.stokDetayModel',
+    context: context,
+  );
 
   @override
   StokDetayModel get stokDetayModel {
@@ -43,7 +46,9 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
   }
 
   late final _$grupKodlariMapAtom = Atom(
-      name: '_BaseStokEditGenelViewModelBase.grupKodlariMap', context: context);
+    name: '_BaseStokEditGenelViewModelBase.grupKodlariMap',
+    context: context,
+  );
 
   @override
   ObservableMap<int, List<BaseGrupKoduModel>?>? get grupKodlariMap {
@@ -58,8 +63,10 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_BaseStokEditGenelViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_BaseStokEditGenelViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
@@ -68,13 +75,16 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
 
   late final _$_BaseStokEditGenelViewModelBaseActionController =
       ActionController(
-          name: '_BaseStokEditGenelViewModelBase', context: context);
+        name: '_BaseStokEditGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void changeGrupKoduListesi(int grupkodu, List<BaseGrupKoduModel>? value) {
-    final _$actionInfo =
-        _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-            name: '_BaseStokEditGenelViewModelBase.changeGrupKoduListesi');
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseStokEditGenelViewModelBase.changeGrupKoduListesi',
+        );
     try {
       return super.changeGrupKoduListesi(grupkodu, value);
     } finally {

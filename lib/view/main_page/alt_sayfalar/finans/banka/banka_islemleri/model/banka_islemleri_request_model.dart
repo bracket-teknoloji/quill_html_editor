@@ -4,7 +4,7 @@ part "banka_islemleri_request_model.freezed.dart";
 part "banka_islemleri_request_model.g.dart";
 
 @unfreezed
-class BankaIslemleriRequestModel with _$BankaIslemleriRequestModel {
+sealed class BankaIslemleriRequestModel with _$BankaIslemleriRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory BankaIslemleriRequestModel({
     String? baslamaTarihi,

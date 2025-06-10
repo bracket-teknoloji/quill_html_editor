@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,488 +10,156 @@ part of 'belge_kontrol_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-BelgeKontrolModel _$BelgeKontrolModelFromJson(Map<String, dynamic> json) {
-  return _BelgeKontrolModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BelgeKontrolModel {
-  @JsonKey(name: "ID")
-  int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "ID")
-  set id(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "BELGE_TIPI")
-  String? get belgeTipi => throw _privateConstructorUsedError;
-  @JsonKey(name: "BELGE_TIPI")
-  set belgeTipi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "BELGE_NO")
-  String? get belgeNo => throw _privateConstructorUsedError;
-  @JsonKey(name: "BELGE_NO")
-  set belgeNo(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "CARI_KODU")
-  String? get cariKodu => throw _privateConstructorUsedError;
-  @JsonKey(name: "CARI_KODU")
-  set cariKodu(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "ISLEM_KODU")
-  int? get islemKodu => throw _privateConstructorUsedError;
-  @JsonKey(name: "ISLEM_KODU")
-  set islemKodu(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "SIRA")
-  int? get sira => throw _privateConstructorUsedError;
-  @JsonKey(name: "SIRA")
-  set sira(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "BELGE_TARIHI")
-  DateTime? get belgeTarihi => throw _privateConstructorUsedError;
-  @JsonKey(name: "BELGE_TARIHI")
-  set belgeTarihi(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "MIKTAR")
-  double? get miktar => throw _privateConstructorUsedError;
-  @JsonKey(name: "MIKTAR")
-  set miktar(double? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "TAMAMLANAN_MIKTAR")
-  double? get tamamlananMiktar => throw _privateConstructorUsedError;
-  @JsonKey(name: "TAMAMLANAN_MIKTAR")
-  set tamamlananMiktar(double? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "KAYITYAPANKUL")
-  String? get kayityapankul => throw _privateConstructorUsedError;
-  @JsonKey(name: "KAYITYAPANKUL")
-  set kayityapankul(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "KAYITTARIHI")
-  DateTime? get kayittarihi => throw _privateConstructorUsedError;
-  @JsonKey(name: "KAYITTARIHI")
-  set kayittarihi(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "CARI_ADI")
-  String? get cariAdi => throw _privateConstructorUsedError;
-  @JsonKey(name: "CARI_ADI")
-  set cariAdi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "KALAN_MIKTAR")
-  double? get kalanMiktar => throw _privateConstructorUsedError;
-  @JsonKey(name: "KALAN_MIKTAR")
-  set kalanMiktar(double? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "STOK_KODU")
-  String? get stokKodu => throw _privateConstructorUsedError;
-  @JsonKey(name: "STOK_KODU")
-  set stokKodu(String? value) => throw _privateConstructorUsedError;
+
+@JsonKey(name: "ID") int? get id;@JsonKey(name: "ID") set id(int? value);@JsonKey(name: "BELGE_TIPI") String? get belgeTipi;@JsonKey(name: "BELGE_TIPI") set belgeTipi(String? value);@JsonKey(name: "BELGE_NO") String? get belgeNo;@JsonKey(name: "BELGE_NO") set belgeNo(String? value);@JsonKey(name: "CARI_KODU") String? get cariKodu;@JsonKey(name: "CARI_KODU") set cariKodu(String? value);@JsonKey(name: "ISLEM_KODU") int? get islemKodu;@JsonKey(name: "ISLEM_KODU") set islemKodu(int? value);@JsonKey(name: "SIRA") int? get sira;@JsonKey(name: "SIRA") set sira(int? value);@JsonKey(name: "BELGE_TARIHI") DateTime? get belgeTarihi;@JsonKey(name: "BELGE_TARIHI") set belgeTarihi(DateTime? value);@JsonKey(name: "MIKTAR") double? get miktar;@JsonKey(name: "MIKTAR") set miktar(double? value);@JsonKey(name: "TAMAMLANAN_MIKTAR") double? get tamamlananMiktar;@JsonKey(name: "TAMAMLANAN_MIKTAR") set tamamlananMiktar(double? value);@JsonKey(name: "KAYITYAPANKUL") String? get kayityapankul;@JsonKey(name: "KAYITYAPANKUL") set kayityapankul(String? value);@JsonKey(name: "KAYITTARIHI") DateTime? get kayittarihi;@JsonKey(name: "KAYITTARIHI") set kayittarihi(DateTime? value);@JsonKey(name: "CARI_ADI") String? get cariAdi;@JsonKey(name: "CARI_ADI") set cariAdi(String? value);@JsonKey(name: "KALAN_MIKTAR") double? get kalanMiktar;@JsonKey(name: "KALAN_MIKTAR") set kalanMiktar(double? value);@JsonKey(name: "STOK_KODU") String? get stokKodu;@JsonKey(name: "STOK_KODU") set stokKodu(String? value);
+/// Create a copy of BelgeKontrolModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BelgeKontrolModelCopyWith<BelgeKontrolModel> get copyWith => _$BelgeKontrolModelCopyWithImpl<BelgeKontrolModel>(this as BelgeKontrolModel, _$identity);
 
   /// Serializes this BelgeKontrolModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BelgeKontrolModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BelgeKontrolModelCopyWith<BelgeKontrolModel> get copyWith => throw _privateConstructorUsedError;
+
+
+
+
+
 }
 
 /// @nodoc
-abstract class $BelgeKontrolModelCopyWith<$Res> {
-  factory $BelgeKontrolModelCopyWith(BelgeKontrolModel value, $Res Function(BelgeKontrolModel) then) =
-      _$BelgeKontrolModelCopyWithImpl<$Res, BelgeKontrolModel>;
-  @useResult
-  $Res call({
-    @JsonKey(name: "ID") int? id,
-    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-    @JsonKey(name: "BELGE_NO") String? belgeNo,
-    @JsonKey(name: "CARI_KODU") String? cariKodu,
-    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-    @JsonKey(name: "SIRA") int? sira,
-    @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
-    @JsonKey(name: "MIKTAR") double? miktar,
-    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-    @JsonKey(name: "CARI_ADI") String? cariAdi,
-    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-    @JsonKey(name: "STOK_KODU") String? stokKodu,
-  });
-}
+abstract mixin class $BelgeKontrolModelCopyWith<$Res>  {
+  factory $BelgeKontrolModelCopyWith(BelgeKontrolModel value, $Res Function(BelgeKontrolModel) _then) = _$BelgeKontrolModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: "ID") int? id,@JsonKey(name: "BELGE_TIPI") String? belgeTipi,@JsonKey(name: "BELGE_NO") String? belgeNo,@JsonKey(name: "CARI_KODU") String? cariKodu,@JsonKey(name: "ISLEM_KODU") int? islemKodu,@JsonKey(name: "SIRA") int? sira,@JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,@JsonKey(name: "MIKTAR") double? miktar,@JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,@JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,@JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,@JsonKey(name: "CARI_ADI") String? cariAdi,@JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,@JsonKey(name: "STOK_KODU") String? stokKodu
+});
 
+
+
+
+}
 /// @nodoc
-class _$BelgeKontrolModelCopyWithImpl<$Res, $Val extends BelgeKontrolModel>
+class _$BelgeKontrolModelCopyWithImpl<$Res>
     implements $BelgeKontrolModelCopyWith<$Res> {
-  _$BelgeKontrolModelCopyWithImpl(this._value, this._then);
+  _$BelgeKontrolModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BelgeKontrolModel _self;
+  final $Res Function(BelgeKontrolModel) _then;
 
-  /// Create a copy of BelgeKontrolModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? belgeTipi = freezed,
-    Object? belgeNo = freezed,
-    Object? cariKodu = freezed,
-    Object? islemKodu = freezed,
-    Object? sira = freezed,
-    Object? belgeTarihi = freezed,
-    Object? miktar = freezed,
-    Object? tamamlananMiktar = freezed,
-    Object? kayityapankul = freezed,
-    Object? kayittarihi = freezed,
-    Object? cariAdi = freezed,
-    Object? kalanMiktar = freezed,
-    Object? stokKodu = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            id: freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            belgeTipi: freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            belgeNo: freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            cariKodu: freezed == cariKodu
-                ? _value.cariKodu
-                : cariKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            islemKodu: freezed == islemKodu
-                ? _value.islemKodu
-                : islemKodu // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            sira: freezed == sira
-                ? _value.sira
-                : sira // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            belgeTarihi: freezed == belgeTarihi
-                ? _value.belgeTarihi
-                : belgeTarihi // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            miktar: freezed == miktar
-                ? _value.miktar
-                : miktar // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            tamamlananMiktar: freezed == tamamlananMiktar
-                ? _value.tamamlananMiktar
-                : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            kayityapankul: freezed == kayityapankul
-                ? _value.kayityapankul
-                : kayityapankul // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            kayittarihi: freezed == kayittarihi
-                ? _value.kayittarihi
-                : kayittarihi // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            cariAdi: freezed == cariAdi
-                ? _value.cariAdi
-                : cariAdi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            kalanMiktar: freezed == kalanMiktar
-                ? _value.kalanMiktar
-                : kalanMiktar // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            stokKodu: freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of BelgeKontrolModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? belgeTipi = freezed,Object? belgeNo = freezed,Object? cariKodu = freezed,Object? islemKodu = freezed,Object? sira = freezed,Object? belgeTarihi = freezed,Object? miktar = freezed,Object? tamamlananMiktar = freezed,Object? kayityapankul = freezed,Object? kayittarihi = freezed,Object? cariAdi = freezed,Object? kalanMiktar = freezed,Object? stokKodu = freezed,}) {
+  return _then(_self.copyWith(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,islemKodu: freezed == islemKodu ? _self.islemKodu : islemKodu // ignore: cast_nullable_to_non_nullable
+as int?,sira: freezed == sira ? _self.sira : sira // ignore: cast_nullable_to_non_nullable
+as int?,belgeTarihi: freezed == belgeTarihi ? _self.belgeTarihi : belgeTarihi // ignore: cast_nullable_to_non_nullable
+as DateTime?,miktar: freezed == miktar ? _self.miktar : miktar // ignore: cast_nullable_to_non_nullable
+as double?,tamamlananMiktar: freezed == tamamlananMiktar ? _self.tamamlananMiktar : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+as double?,kayityapankul: freezed == kayityapankul ? _self.kayityapankul : kayityapankul // ignore: cast_nullable_to_non_nullable
+as String?,kayittarihi: freezed == kayittarihi ? _self.kayittarihi : kayittarihi // ignore: cast_nullable_to_non_nullable
+as DateTime?,cariAdi: freezed == cariAdi ? _self.cariAdi : cariAdi // ignore: cast_nullable_to_non_nullable
+as String?,kalanMiktar: freezed == kalanMiktar ? _self.kalanMiktar : kalanMiktar // ignore: cast_nullable_to_non_nullable
+as double?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$BelgeKontrolModelImplCopyWith<$Res> implements $BelgeKontrolModelCopyWith<$Res> {
-  factory _$$BelgeKontrolModelImplCopyWith(_$BelgeKontrolModelImpl value, $Res Function(_$BelgeKontrolModelImpl) then) =
-      __$$BelgeKontrolModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    @JsonKey(name: "ID") int? id,
-    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-    @JsonKey(name: "BELGE_NO") String? belgeNo,
-    @JsonKey(name: "CARI_KODU") String? cariKodu,
-    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-    @JsonKey(name: "SIRA") int? sira,
-    @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
-    @JsonKey(name: "MIKTAR") double? miktar,
-    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-    @JsonKey(name: "CARI_ADI") String? cariAdi,
-    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-    @JsonKey(name: "STOK_KODU") String? stokKodu,
-  });
 }
 
-/// @nodoc
-class __$$BelgeKontrolModelImplCopyWithImpl<$Res> extends _$BelgeKontrolModelCopyWithImpl<$Res, _$BelgeKontrolModelImpl>
-    implements _$$BelgeKontrolModelImplCopyWith<$Res> {
-  __$$BelgeKontrolModelImplCopyWithImpl(_$BelgeKontrolModelImpl _value, $Res Function(_$BelgeKontrolModelImpl) _then)
-    : super(_value, _then);
-
-  /// Create a copy of BelgeKontrolModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? belgeTipi = freezed,
-    Object? belgeNo = freezed,
-    Object? cariKodu = freezed,
-    Object? islemKodu = freezed,
-    Object? sira = freezed,
-    Object? belgeTarihi = freezed,
-    Object? miktar = freezed,
-    Object? tamamlananMiktar = freezed,
-    Object? kayityapankul = freezed,
-    Object? kayittarihi = freezed,
-    Object? cariAdi = freezed,
-    Object? kalanMiktar = freezed,
-    Object? stokKodu = freezed,
-  }) {
-    return _then(
-      _$BelgeKontrolModelImpl(
-        id: freezed == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        belgeTipi: freezed == belgeTipi
-            ? _value.belgeTipi
-            : belgeTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        belgeNo: freezed == belgeNo
-            ? _value.belgeNo
-            : belgeNo // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        cariKodu: freezed == cariKodu
-            ? _value.cariKodu
-            : cariKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        islemKodu: freezed == islemKodu
-            ? _value.islemKodu
-            : islemKodu // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        sira: freezed == sira
-            ? _value.sira
-            : sira // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        belgeTarihi: freezed == belgeTarihi
-            ? _value.belgeTarihi
-            : belgeTarihi // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        miktar: freezed == miktar
-            ? _value.miktar
-            : miktar // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        tamamlananMiktar: freezed == tamamlananMiktar
-            ? _value.tamamlananMiktar
-            : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        kayityapankul: freezed == kayityapankul
-            ? _value.kayityapankul
-            : kayityapankul // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        kayittarihi: freezed == kayittarihi
-            ? _value.kayittarihi
-            : kayittarihi // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        cariAdi: freezed == cariAdi
-            ? _value.cariAdi
-            : cariAdi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        kalanMiktar: freezed == kalanMiktar
-            ? _value.kalanMiktar
-            : kalanMiktar // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        stokKodu: freezed == stokKodu
-            ? _value.stokKodu
-            : stokKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$BelgeKontrolModelImpl extends _BelgeKontrolModel {
-  _$BelgeKontrolModelImpl({
-    @JsonKey(name: "ID") this.id,
-    @JsonKey(name: "BELGE_TIPI") this.belgeTipi,
-    @JsonKey(name: "BELGE_NO") this.belgeNo,
-    @JsonKey(name: "CARI_KODU") this.cariKodu,
-    @JsonKey(name: "ISLEM_KODU") this.islemKodu,
-    @JsonKey(name: "SIRA") this.sira,
-    @JsonKey(name: "BELGE_TARIHI") this.belgeTarihi,
-    @JsonKey(name: "MIKTAR") this.miktar,
-    @JsonKey(name: "TAMAMLANAN_MIKTAR") this.tamamlananMiktar,
-    @JsonKey(name: "KAYITYAPANKUL") this.kayityapankul,
-    @JsonKey(name: "KAYITTARIHI") this.kayittarihi,
-    @JsonKey(name: "CARI_ADI") this.cariAdi,
-    @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar,
-    @JsonKey(name: "STOK_KODU") this.stokKodu,
-  }) : super._();
 
-  factory _$BelgeKontrolModelImpl.fromJson(Map<String, dynamic> json) => _$$BelgeKontrolModelImplFromJson(json);
+class _BelgeKontrolModel extends BelgeKontrolModel {
+   _BelgeKontrolModel({@JsonKey(name: "ID") this.id, @JsonKey(name: "BELGE_TIPI") this.belgeTipi, @JsonKey(name: "BELGE_NO") this.belgeNo, @JsonKey(name: "CARI_KODU") this.cariKodu, @JsonKey(name: "ISLEM_KODU") this.islemKodu, @JsonKey(name: "SIRA") this.sira, @JsonKey(name: "BELGE_TARIHI") this.belgeTarihi, @JsonKey(name: "MIKTAR") this.miktar, @JsonKey(name: "TAMAMLANAN_MIKTAR") this.tamamlananMiktar, @JsonKey(name: "KAYITYAPANKUL") this.kayityapankul, @JsonKey(name: "KAYITTARIHI") this.kayittarihi, @JsonKey(name: "CARI_ADI") this.cariAdi, @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar, @JsonKey(name: "STOK_KODU") this.stokKodu}): super._();
+  factory _BelgeKontrolModel.fromJson(Map<String, dynamic> json) => _$BelgeKontrolModelFromJson(json);
 
-  @override
-  @JsonKey(name: "ID")
-  int? id;
-  @override
-  @JsonKey(name: "BELGE_TIPI")
-  String? belgeTipi;
-  @override
-  @JsonKey(name: "BELGE_NO")
-  String? belgeNo;
-  @override
-  @JsonKey(name: "CARI_KODU")
-  String? cariKodu;
-  @override
-  @JsonKey(name: "ISLEM_KODU")
-  int? islemKodu;
-  @override
-  @JsonKey(name: "SIRA")
-  int? sira;
-  @override
-  @JsonKey(name: "BELGE_TARIHI")
-  DateTime? belgeTarihi;
-  @override
-  @JsonKey(name: "MIKTAR")
-  double? miktar;
-  @override
-  @JsonKey(name: "TAMAMLANAN_MIKTAR")
-  double? tamamlananMiktar;
-  @override
-  @JsonKey(name: "KAYITYAPANKUL")
-  String? kayityapankul;
-  @override
-  @JsonKey(name: "KAYITTARIHI")
-  DateTime? kayittarihi;
-  @override
-  @JsonKey(name: "CARI_ADI")
-  String? cariAdi;
-  @override
-  @JsonKey(name: "KALAN_MIKTAR")
-  double? kalanMiktar;
-  @override
-  @JsonKey(name: "STOK_KODU")
-  String? stokKodu;
+@override@JsonKey(name: "ID")  int? id;
+@override@JsonKey(name: "BELGE_TIPI")  String? belgeTipi;
+@override@JsonKey(name: "BELGE_NO")  String? belgeNo;
+@override@JsonKey(name: "CARI_KODU")  String? cariKodu;
+@override@JsonKey(name: "ISLEM_KODU")  int? islemKodu;
+@override@JsonKey(name: "SIRA")  int? sira;
+@override@JsonKey(name: "BELGE_TARIHI")  DateTime? belgeTarihi;
+@override@JsonKey(name: "MIKTAR")  double? miktar;
+@override@JsonKey(name: "TAMAMLANAN_MIKTAR")  double? tamamlananMiktar;
+@override@JsonKey(name: "KAYITYAPANKUL")  String? kayityapankul;
+@override@JsonKey(name: "KAYITTARIHI")  DateTime? kayittarihi;
+@override@JsonKey(name: "CARI_ADI")  String? cariAdi;
+@override@JsonKey(name: "KALAN_MIKTAR")  double? kalanMiktar;
+@override@JsonKey(name: "STOK_KODU")  String? stokKodu;
 
-  /// Create a copy of BelgeKontrolModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BelgeKontrolModelImplCopyWith<_$BelgeKontrolModelImpl> get copyWith =>
-      __$$BelgeKontrolModelImplCopyWithImpl<_$BelgeKontrolModelImpl>(this, _$identity);
+/// Create a copy of BelgeKontrolModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BelgeKontrolModelCopyWith<_BelgeKontrolModel> get copyWith => __$BelgeKontrolModelCopyWithImpl<_BelgeKontrolModel>(this, _$identity);
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BelgeKontrolModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$BelgeKontrolModelToJson(this, );
 }
 
-abstract class _BelgeKontrolModel extends BelgeKontrolModel {
-  factory _BelgeKontrolModel({
-    @JsonKey(name: "ID") int? id,
-    @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-    @JsonKey(name: "BELGE_NO") String? belgeNo,
-    @JsonKey(name: "CARI_KODU") String? cariKodu,
-    @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-    @JsonKey(name: "SIRA") int? sira,
-    @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
-    @JsonKey(name: "MIKTAR") double? miktar,
-    @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-    @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-    @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-    @JsonKey(name: "CARI_ADI") String? cariAdi,
-    @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
-    @JsonKey(name: "STOK_KODU") String? stokKodu,
-  }) = _$BelgeKontrolModelImpl;
-  _BelgeKontrolModel._() : super._();
 
-  factory _BelgeKontrolModel.fromJson(Map<String, dynamic> json) = _$BelgeKontrolModelImpl.fromJson;
 
-  @override
-  @JsonKey(name: "ID")
-  int? get id;
-  @JsonKey(name: "ID")
-  set id(int? value);
-  @override
-  @JsonKey(name: "BELGE_TIPI")
-  String? get belgeTipi;
-  @JsonKey(name: "BELGE_TIPI")
-  set belgeTipi(String? value);
-  @override
-  @JsonKey(name: "BELGE_NO")
-  String? get belgeNo;
-  @JsonKey(name: "BELGE_NO")
-  set belgeNo(String? value);
-  @override
-  @JsonKey(name: "CARI_KODU")
-  String? get cariKodu;
-  @JsonKey(name: "CARI_KODU")
-  set cariKodu(String? value);
-  @override
-  @JsonKey(name: "ISLEM_KODU")
-  int? get islemKodu;
-  @JsonKey(name: "ISLEM_KODU")
-  set islemKodu(int? value);
-  @override
-  @JsonKey(name: "SIRA")
-  int? get sira;
-  @JsonKey(name: "SIRA")
-  set sira(int? value);
-  @override
-  @JsonKey(name: "BELGE_TARIHI")
-  DateTime? get belgeTarihi;
-  @JsonKey(name: "BELGE_TARIHI")
-  set belgeTarihi(DateTime? value);
-  @override
-  @JsonKey(name: "MIKTAR")
-  double? get miktar;
-  @JsonKey(name: "MIKTAR")
-  set miktar(double? value);
-  @override
-  @JsonKey(name: "TAMAMLANAN_MIKTAR")
-  double? get tamamlananMiktar;
-  @JsonKey(name: "TAMAMLANAN_MIKTAR")
-  set tamamlananMiktar(double? value);
-  @override
-  @JsonKey(name: "KAYITYAPANKUL")
-  String? get kayityapankul;
-  @JsonKey(name: "KAYITYAPANKUL")
-  set kayityapankul(String? value);
-  @override
-  @JsonKey(name: "KAYITTARIHI")
-  DateTime? get kayittarihi;
-  @JsonKey(name: "KAYITTARIHI")
-  set kayittarihi(DateTime? value);
-  @override
-  @JsonKey(name: "CARI_ADI")
-  String? get cariAdi;
-  @JsonKey(name: "CARI_ADI")
-  set cariAdi(String? value);
-  @override
-  @JsonKey(name: "KALAN_MIKTAR")
-  double? get kalanMiktar;
-  @JsonKey(name: "KALAN_MIKTAR")
-  set kalanMiktar(double? value);
-  @override
-  @JsonKey(name: "STOK_KODU")
-  String? get stokKodu;
-  @JsonKey(name: "STOK_KODU")
-  set stokKodu(String? value);
 
-  /// Create a copy of BelgeKontrolModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BelgeKontrolModelImplCopyWith<_$BelgeKontrolModelImpl> get copyWith => throw _privateConstructorUsedError;
+
 }
+
+/// @nodoc
+abstract mixin class _$BelgeKontrolModelCopyWith<$Res> implements $BelgeKontrolModelCopyWith<$Res> {
+  factory _$BelgeKontrolModelCopyWith(_BelgeKontrolModel value, $Res Function(_BelgeKontrolModel) _then) = __$BelgeKontrolModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: "ID") int? id,@JsonKey(name: "BELGE_TIPI") String? belgeTipi,@JsonKey(name: "BELGE_NO") String? belgeNo,@JsonKey(name: "CARI_KODU") String? cariKodu,@JsonKey(name: "ISLEM_KODU") int? islemKodu,@JsonKey(name: "SIRA") int? sira,@JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,@JsonKey(name: "MIKTAR") double? miktar,@JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,@JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,@JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,@JsonKey(name: "CARI_ADI") String? cariAdi,@JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,@JsonKey(name: "STOK_KODU") String? stokKodu
+});
+
+
+
+
+}
+/// @nodoc
+class __$BelgeKontrolModelCopyWithImpl<$Res>
+    implements _$BelgeKontrolModelCopyWith<$Res> {
+  __$BelgeKontrolModelCopyWithImpl(this._self, this._then);
+
+  final _BelgeKontrolModel _self;
+  final $Res Function(_BelgeKontrolModel) _then;
+
+/// Create a copy of BelgeKontrolModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? belgeTipi = freezed,Object? belgeNo = freezed,Object? cariKodu = freezed,Object? islemKodu = freezed,Object? sira = freezed,Object? belgeTarihi = freezed,Object? miktar = freezed,Object? tamamlananMiktar = freezed,Object? kayityapankul = freezed,Object? kayittarihi = freezed,Object? cariAdi = freezed,Object? kalanMiktar = freezed,Object? stokKodu = freezed,}) {
+  return _then(_BelgeKontrolModel(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,belgeTipi: freezed == belgeTipi ? _self.belgeTipi : belgeTipi // ignore: cast_nullable_to_non_nullable
+as String?,belgeNo: freezed == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
+as String?,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
+as String?,islemKodu: freezed == islemKodu ? _self.islemKodu : islemKodu // ignore: cast_nullable_to_non_nullable
+as int?,sira: freezed == sira ? _self.sira : sira // ignore: cast_nullable_to_non_nullable
+as int?,belgeTarihi: freezed == belgeTarihi ? _self.belgeTarihi : belgeTarihi // ignore: cast_nullable_to_non_nullable
+as DateTime?,miktar: freezed == miktar ? _self.miktar : miktar // ignore: cast_nullable_to_non_nullable
+as double?,tamamlananMiktar: freezed == tamamlananMiktar ? _self.tamamlananMiktar : tamamlananMiktar // ignore: cast_nullable_to_non_nullable
+as double?,kayityapankul: freezed == kayityapankul ? _self.kayityapankul : kayityapankul // ignore: cast_nullable_to_non_nullable
+as String?,kayittarihi: freezed == kayittarihi ? _self.kayittarihi : kayittarihi // ignore: cast_nullable_to_non_nullable
+as DateTime?,cariAdi: freezed == cariAdi ? _self.cariAdi : cariAdi // ignore: cast_nullable_to_non_nullable
+as String?,kalanMiktar: freezed == kalanMiktar ? _self.kalanMiktar : kalanMiktar // ignore: cast_nullable_to_non_nullable
+as double?,stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

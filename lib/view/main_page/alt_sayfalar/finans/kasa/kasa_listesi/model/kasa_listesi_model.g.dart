@@ -6,9 +6,8 @@ part of 'kasa_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KasaListesiModelImpl _$$KasaListesiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$KasaListesiModelImpl(
+_KasaListesiModel _$KasaListesiModelFromJson(Map<String, dynamic> json) =>
+    _KasaListesiModel(
       kasaKodu: json['KASA_KODU'] as String?,
       kasaTanimi: json['KASA_TANIMI'] as String?,
       subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
@@ -28,28 +27,25 @@ _$KasaListesiModelImpl _$$KasaListesiModelImplFromJson(
       dovizAdi: json['DOVIZ_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$KasaListesiModelImplToJson(
-        _$KasaListesiModelImpl instance) =>
-    <String, dynamic>{
-      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
-      if (instance.kasaTanimi case final value?) 'KASA_TANIMI': value,
-      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-      if (instance.dovizli case final value?) 'DOVIZLI': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.kkartKasasi case final value?) 'KKART_KASASI': value,
-      if (instance.toplamGiris case final value?) 'TOPLAM_GIRIS': value,
-      if (instance.toplamCikis case final value?) 'TOPLAM_CIKIS': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-      if (instance.devirliBakiye case final value?) 'DEVIRLI_BAKIYE': value,
-      if (instance.devirTutari case final value?) 'DEVIR_TUTARI': value,
-      if (instance.dovizToplamGiris case final value?)
-        'DOVIZ_TOPLAM_GIRIS': value,
-      if (instance.dovizToplamCikis case final value?)
-        'DOVIZ_TOPLAM_CIKIS': value,
-      if (instance.dovizBakiye case final value?) 'DOVIZ_BAKIYE': value,
-      if (instance.devirliDovizBakiye case final value?)
-        'DEVIRLI_DOVIZ_BAKIYE': value,
-      if (instance.dovizDevirTutari case final value?)
-        'DOVIZ_DEVIR_TUTARI': value,
-      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-    };
+Map<String, dynamic> _$KasaListesiModelToJson(
+  _KasaListesiModel instance,
+) => <String, dynamic>{
+  if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+  if (instance.kasaTanimi case final value?) 'KASA_TANIMI': value,
+  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+  if (instance.dovizli case final value?) 'DOVIZLI': value,
+  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+  if (instance.kkartKasasi case final value?) 'KKART_KASASI': value,
+  if (instance.toplamGiris case final value?) 'TOPLAM_GIRIS': value,
+  if (instance.toplamCikis case final value?) 'TOPLAM_CIKIS': value,
+  if (instance.bakiye case final value?) 'BAKIYE': value,
+  if (instance.devirliBakiye case final value?) 'DEVIRLI_BAKIYE': value,
+  if (instance.devirTutari case final value?) 'DEVIR_TUTARI': value,
+  if (instance.dovizToplamGiris case final value?) 'DOVIZ_TOPLAM_GIRIS': value,
+  if (instance.dovizToplamCikis case final value?) 'DOVIZ_TOPLAM_CIKIS': value,
+  if (instance.dovizBakiye case final value?) 'DOVIZ_BAKIYE': value,
+  if (instance.devirliDovizBakiye case final value?)
+    'DEVIRLI_DOVIZ_BAKIYE': value,
+  if (instance.dovizDevirTutari case final value?) 'DOVIZ_DEVIR_TUTARI': value,
+  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+};

@@ -6,9 +6,8 @@ part of 'is_emirleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IsEmirleriModelImpl _$$IsEmirleriModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$IsEmirleriModelImpl(
+_IsEmirleriModel _$IsEmirleriModelFromJson(Map<String, dynamic> json) =>
+    _IsEmirleriModel(
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
@@ -41,8 +40,7 @@ _$IsEmirleriModelImpl _$$IsEmirleriModelImplFromJson(
       tamamlanan: (json['TAMAMLANAN'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$IsEmirleriModelImplToJson(
-        _$IsEmirleriModelImpl instance) =>
+Map<String, dynamic> _$IsEmirleriModelToJson(_IsEmirleriModel instance) =>
     <String, dynamic>{
       if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
       if (instance.teslimTarihi?.toIso8601String() case final value?)

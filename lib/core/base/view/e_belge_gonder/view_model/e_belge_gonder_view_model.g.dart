@@ -12,13 +12,16 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
   Computed<Future<CariListesiModel?>>? _$getCariModelComputed;
 
   @override
-  Future<CariListesiModel?> get getCariModel => (_$getCariModelComputed ??=
-          Computed<Future<CariListesiModel?>>(() => super.getCariModel,
-              name: '_EBelgeGonderViewModelBase.getCariModel'))
-      .value;
+  Future<CariListesiModel?> get getCariModel =>
+      (_$getCariModelComputed ??= Computed<Future<CariListesiModel?>>(
+        () => super.getCariModel,
+        name: '_EBelgeGonderViewModelBase.getCariModel',
+      )).value;
 
-  late final _$modelAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_EBelgeGonderViewModelBase.model',
+    context: context,
+  );
 
   @override
   EBelgeListesiModel get model {
@@ -33,8 +36,10 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$cariModelAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.cariModel', context: context);
+  late final _$cariModelAtom = Atom(
+    name: '_EBelgeGonderViewModelBase.cariModel',
+    context: context,
+  );
 
   @override
   CariListesiModel? get cariModel {
@@ -49,8 +54,10 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$eIrsaliyeModelAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.eIrsaliyeModel', context: context);
+  late final _$eIrsaliyeModelAtom = Atom(
+    name: '_EBelgeGonderViewModelBase.eIrsaliyeModel',
+    context: context,
+  );
 
   @override
   EIrsaliyeBilgiModel? get eIrsaliyeModel {
@@ -66,7 +73,9 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
   }
 
   late final _$siparisEditModelAtom = Atom(
-      name: '_EBelgeGonderViewModelBase.siparisEditModel', context: context);
+    name: '_EBelgeGonderViewModelBase.siparisEditModel',
+    context: context,
+  );
 
   @override
   BaseSiparisEditModel get siparisEditModel {
@@ -81,8 +90,10 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$dizaynListAtom =
-      Atom(name: '_EBelgeGonderViewModelBase.dizaynList', context: context);
+  late final _$dizaynListAtom = Atom(
+    name: '_EBelgeGonderViewModelBase.dizaynList',
+    context: context,
+  );
 
   @override
   ObservableList<DizaynModel>? get dizaynList {
@@ -97,56 +108,70 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
-  late final _$getDizaynAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.getDizayn', context: context);
+  late final _$getDizaynAsyncAction = AsyncAction(
+    '_EBelgeGonderViewModelBase.getDizayn',
+    context: context,
+  );
 
   @override
   Future<List<DizaynModel>> getDizayn() {
     return _$getDizaynAsyncAction.run(() => super.getDizayn());
   }
 
-  late final _$getCariAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.getCari', context: context);
+  late final _$getCariAsyncAction = AsyncAction(
+    '_EBelgeGonderViewModelBase.getCari',
+    context: context,
+  );
 
   @override
   Future<CariListesiModel?> getCari() {
     return _$getCariAsyncAction.run(() => super.getCari());
   }
 
-  late final _$sendTaslakAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.sendTaslak', context: context);
+  late final _$sendTaslakAsyncAction = AsyncAction(
+    '_EBelgeGonderViewModelBase.sendTaslak',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> sendTaslak() {
     return _$sendTaslakAsyncAction.run(() => super.sendTaslak());
   }
 
-  late final _$sendSenaryoAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.sendSenaryo', context: context);
+  late final _$sendSenaryoAsyncAction = AsyncAction(
+    '_EBelgeGonderViewModelBase.sendSenaryo',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> sendSenaryo() {
     return _$sendSenaryoAsyncAction.run(() => super.sendSenaryo());
   }
 
-  late final _$sendEBelgeAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.sendEBelge', context: context);
+  late final _$sendEBelgeAsyncAction = AsyncAction(
+    '_EBelgeGonderViewModelBase.sendEBelge',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> sendEBelge() {
     return _$sendEBelgeAsyncAction.run(() => super.sendEBelge());
   }
 
-  late final _$deleteTaslakAsyncAction =
-      AsyncAction('_EBelgeGonderViewModelBase.deleteTaslak', context: context);
+  late final _$deleteTaslakAsyncAction = AsyncAction(
+    '_EBelgeGonderViewModelBase.deleteTaslak',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<EBelgeListesiModel>> deleteTaslak() {
     return _$deleteTaslakAsyncAction.run(() => super.deleteTaslak());
   }
 
-  late final _$_EBelgeGonderViewModelBaseActionController =
-      ActionController(name: '_EBelgeGonderViewModelBase', context: context);
+  late final _$_EBelgeGonderViewModelBaseActionController = ActionController(
+    name: '_EBelgeGonderViewModelBase',
+    context: context,
+  );
 
   @override
   void setEIrsaliyeModel(EIrsaliyeBilgiModel? value) {

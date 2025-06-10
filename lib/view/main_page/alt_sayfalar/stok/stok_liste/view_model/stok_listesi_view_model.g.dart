@@ -12,62 +12,70 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   Computed<List<BaseGrupKoduModel>?>? _$grupKoduComputed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodu => (_$grupKoduComputed ??=
-          Computed<List<BaseGrupKoduModel>?>(() => super.grupKodu,
-              name: '_StokListesiViewModelBase.grupKodu'))
-      .value;
+  List<BaseGrupKoduModel>? get grupKodu =>
+      (_$grupKoduComputed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodu,
+        name: '_StokListesiViewModelBase.grupKodu',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod1Computed;
 
   @override
   List<BaseGrupKoduModel>? get kod1 =>
-      (_$kod1Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod1,
-              name: '_StokListesiViewModelBase.kod1'))
-          .value;
+      (_$kod1Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.kod1,
+        name: '_StokListesiViewModelBase.kod1',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod2Computed;
 
   @override
   List<BaseGrupKoduModel>? get kod2 =>
-      (_$kod2Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod2,
-              name: '_StokListesiViewModelBase.kod2'))
-          .value;
+      (_$kod2Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.kod2,
+        name: '_StokListesiViewModelBase.kod2',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod3Computed;
 
   @override
   List<BaseGrupKoduModel>? get kod3 =>
-      (_$kod3Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod3,
-              name: '_StokListesiViewModelBase.kod3'))
-          .value;
+      (_$kod3Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.kod3,
+        name: '_StokListesiViewModelBase.kod3',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod4Computed;
 
   @override
   List<BaseGrupKoduModel>? get kod4 =>
-      (_$kod4Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod4,
-              name: '_StokListesiViewModelBase.kod4'))
-          .value;
+      (_$kod4Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.kod4,
+        name: '_StokListesiViewModelBase.kod4',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod5Computed;
 
   @override
   List<BaseGrupKoduModel>? get kod5 =>
-      (_$kod5Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod5,
-              name: '_StokListesiViewModelBase.kod5'))
-          .value;
+      (_$kod5Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.kod5,
+        name: '_StokListesiViewModelBase.kod5',
+      )).value;
   Computed<String?>? _$bakiyeComputed;
 
   @override
-  String? get bakiye =>
-      (_$bakiyeComputed ??= Computed<String?>(() => super.bakiye,
-              name: '_StokListesiViewModelBase.bakiye'))
-          .value;
+  String? get bakiye => (_$bakiyeComputed ??= Computed<String?>(
+    () => super.bakiye,
+    name: '_StokListesiViewModelBase.bakiye',
+  )).value;
   Computed<bool>? _$hasAnyFiltersComputed;
 
   @override
-  bool get hasAnyFilters =>
-      (_$hasAnyFiltersComputed ??= Computed<bool>(() => super.hasAnyFilters,
-              name: '_StokListesiViewModelBase.hasAnyFilters'))
-          .value;
+  bool get hasAnyFilters => (_$hasAnyFiltersComputed ??= Computed<bool>(
+    () => super.hasAnyFilters,
+    name: '_StokListesiViewModelBase.hasAnyFilters',
+  )).value;
 
   late final _$bakiyeGroupValueAtom = Atom(
-      name: '_StokListesiViewModelBase.bakiyeGroupValue', context: context);
+    name: '_StokListesiViewModelBase.bakiyeGroupValue',
+    context: context,
+  );
 
   @override
   String? get bakiyeGroupValue {
@@ -82,8 +90,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$kategoriMiAtom =
-      Atom(name: '_StokListesiViewModelBase.kategoriMi', context: context);
+  late final _$kategoriMiAtom = Atom(
+    name: '_StokListesiViewModelBase.kategoriMi',
+    context: context,
+  );
 
   @override
   bool get kategoriMi {
@@ -98,8 +108,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$gridSayisiAtom =
-      Atom(name: '_StokListesiViewModelBase.gridSayisi', context: context);
+  late final _$gridSayisiAtom = Atom(
+    name: '_StokListesiViewModelBase.gridSayisi',
+    context: context,
+  );
 
   @override
   int get gridSayisi {
@@ -114,8 +126,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$grupNoAtom =
-      Atom(name: '_StokListesiViewModelBase.grupNo', context: context);
+  late final _$grupNoAtom = Atom(
+    name: '_StokListesiViewModelBase.grupNo',
+    context: context,
+  );
 
   @override
   int get grupNo {
@@ -130,8 +144,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$resimleriGosterAtom =
-      Atom(name: '_StokListesiViewModelBase.resimleriGoster', context: context);
+  late final _$resimleriGosterAtom = Atom(
+    name: '_StokListesiViewModelBase.resimleriGoster',
+    context: context,
+  );
 
   @override
   String get resimleriGoster {
@@ -146,8 +162,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$isSearchBarOpenAtom =
-      Atom(name: '_StokListesiViewModelBase.isSearchBarOpen', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+    name: '_StokListesiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
 
   @override
   bool get isSearchBarOpen {
@@ -162,8 +180,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_StokListesiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_StokListesiViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -179,7 +199,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   late final _$bottomSheetModelAtom = Atom(
-      name: '_StokListesiViewModelBase.bottomSheetModel', context: context);
+    name: '_StokListesiViewModelBase.bottomSheetModel',
+    context: context,
+  );
 
   @override
   StokBottomSheetModel get bottomSheetModel {
@@ -195,7 +217,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   late final _$bottomSheetModelTempAtom = Atom(
-      name: '_StokListesiViewModelBase.bottomSheetModelTemp', context: context);
+    name: '_StokListesiViewModelBase.bottomSheetModelTemp',
+    context: context,
+  );
 
   @override
   StokBottomSheetModel get bottomSheetModelTemp {
@@ -205,14 +229,19 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   set bottomSheetModelTemp(StokBottomSheetModel value) {
-    _$bottomSheetModelTempAtom.reportWrite(value, super.bottomSheetModelTemp,
-        () {
-      super.bottomSheetModelTemp = value;
-    });
+    _$bottomSheetModelTempAtom.reportWrite(
+      value,
+      super.bottomSheetModelTemp,
+      () {
+        super.bottomSheetModelTemp = value;
+      },
+    );
   }
 
-  late final _$grupKodlariAtom =
-      Atom(name: '_StokListesiViewModelBase.grupKodlari', context: context);
+  late final _$grupKodlariAtom = Atom(
+    name: '_StokListesiViewModelBase.grupKodlari',
+    context: context,
+  );
 
   @override
   ObservableList<BaseGrupKoduModel> get grupKodlari {
@@ -228,7 +257,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   late final _$kategoriGrupKodlariAtom = Atom(
-      name: '_StokListesiViewModelBase.kategoriGrupKodlari', context: context);
+    name: '_StokListesiViewModelBase.kategoriGrupKodlari',
+    context: context,
+  );
 
   @override
   ObservableList<BaseGrupKoduModel>? get kategoriGrupKodlari {
@@ -243,8 +274,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom =
-      Atom(name: '_StokListesiViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+    name: '_StokListesiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<StokListesiModel>? get observableList {
@@ -259,8 +292,10 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom =
-      Atom(name: '_StokListesiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+    name: '_StokListesiViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -276,25 +311,31 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   late final _$changeScrollStatusAsyncAction = AsyncAction(
-      '_StokListesiViewModelBase.changeScrollStatus',
-      context: context);
+    '_StokListesiViewModelBase.changeScrollStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction
-        .run(() => super.changeScrollStatus(position));
+    return _$changeScrollStatusAsyncAction.run(
+      () => super.changeScrollStatus(position),
+    );
   }
 
-  late final _$resetListAsyncAction =
-      AsyncAction('_StokListesiViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+    '_StokListesiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getGrupKodlariAsyncAction =
-      AsyncAction('_StokListesiViewModelBase.getGrupKodlari', context: context);
+  late final _$getGrupKodlariAsyncAction = AsyncAction(
+    '_StokListesiViewModelBase.getGrupKodlari',
+    context: context,
+  );
 
   @override
   Future<void> getGrupKodlari() {
@@ -302,25 +343,31 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   late final _$getKategoriGrupKodlariAsyncAction = AsyncAction(
-      '_StokListesiViewModelBase.getKategoriGrupKodlari',
-      context: context);
+    '_StokListesiViewModelBase.getKategoriGrupKodlari',
+    context: context,
+  );
 
   @override
   Future<void> getKategoriGrupKodlari() {
-    return _$getKategoriGrupKodlariAsyncAction
-        .run(() => super.getKategoriGrupKodlari());
+    return _$getKategoriGrupKodlariAsyncAction.run(
+      () => super.getKategoriGrupKodlari(),
+    );
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_StokListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_StokListesiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_StokListesiViewModelBaseActionController =
-      ActionController(name: '_StokListesiViewModelBase', context: context);
+  late final _$_StokListesiViewModelBaseActionController = ActionController(
+    name: '_StokListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void changeSearchBarStatus() {

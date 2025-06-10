@@ -10,7 +10,7 @@ part "sayim_listesi_model.freezed.dart";
 part "sayim_listesi_model.g.dart";
 
 @unfreezed
-class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
+sealed class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
   factory SayimListesiModel({
     String? fisno,
     DateTime? baslangicTarihi,
@@ -53,7 +53,7 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin, BaseStokMixin {
+sealed class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin, BaseStokMixin {
   factory SayimFiltreModel({
     @JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
     int? depoKodu,

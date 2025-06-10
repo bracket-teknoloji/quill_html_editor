@@ -4,7 +4,7 @@ part "hucre_listesi_request_model.freezed.dart";
 part "hucre_listesi_request_model.g.dart";
 
 @freezed
-class HucreListesiRequestModel with _$HucreListesiRequestModel {
+sealed class HucreListesiRequestModel with _$HucreListesiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory HucreListesiRequestModel({
     @Default(0) int? depoKodu,

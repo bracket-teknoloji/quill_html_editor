@@ -6,7 +6,7 @@ part "cek_senet_hareketleri_model.freezed.dart";
 part "cek_senet_hareketleri_model.g.dart";
 
 @unfreezed
-class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMixin {
+sealed class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMixin {
   factory CekSenetHareketleriModel({
     int? inckeyno,
     String? belgeTipi,

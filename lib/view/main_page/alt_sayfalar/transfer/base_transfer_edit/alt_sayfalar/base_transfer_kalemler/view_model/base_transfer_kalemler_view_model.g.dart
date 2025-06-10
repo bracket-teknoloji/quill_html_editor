@@ -11,7 +11,9 @@ part of 'base_transfer_kalemler_view_model.dart';
 mixin _$BaseTransferKalemlerViewModel
     on BaseTransferKalemlerViewModelBase, Store {
   late final _$kalemListAtom = Atom(
-      name: 'BaseTransferKalemlerViewModelBase.kalemList', context: context);
+    name: 'BaseTransferKalemlerViewModelBase.kalemList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemModel>? get kalemList {
@@ -28,18 +30,22 @@ mixin _$BaseTransferKalemlerViewModel
 
   late final _$BaseTransferKalemlerViewModelBaseActionController =
       ActionController(
-          name: 'BaseTransferKalemlerViewModelBase', context: context);
+        name: 'BaseTransferKalemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void removeAtKalemList(int index) {
-    final _$actionInfo =
-        _$BaseTransferKalemlerViewModelBaseActionController.startAction(
-            name: 'BaseTransferKalemlerViewModelBase.removeAtKalemList');
+    final _$actionInfo = _$BaseTransferKalemlerViewModelBaseActionController
+        .startAction(
+          name: 'BaseTransferKalemlerViewModelBase.removeAtKalemList',
+        );
     try {
       return super.removeAtKalemList(index);
     } finally {
-      _$BaseTransferKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$BaseTransferKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -50,8 +56,9 @@ mixin _$BaseTransferKalemlerViewModel
     try {
       return super.updateKalemList();
     } finally {
-      _$BaseTransferKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$BaseTransferKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

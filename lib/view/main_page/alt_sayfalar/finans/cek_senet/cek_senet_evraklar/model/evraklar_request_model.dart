@@ -8,7 +8,7 @@ part "evraklar_request_model.freezed.dart";
 part "evraklar_request_model.g.dart";
 
 @unfreezed
-class EvraklarRequestModel with _$EvraklarRequestModel, NetworkManagerMixin {
+sealed class EvraklarRequestModel with _$EvraklarRequestModel, NetworkManagerMixin {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory EvraklarRequestModel({String? belgeTipi, String? urlGetir, String? belgeNo}) = _EvraklarRequestModel;
 

@@ -6,7 +6,7 @@ part "paketleme_listesi_model.freezed.dart";
 part "paketleme_listesi_model.g.dart";
 
 @freezed
-class PaketlemeListesiModel with _$PaketlemeListesiModel, NetworkManagerMixin {
+sealed class PaketlemeListesiModel with _$PaketlemeListesiModel, NetworkManagerMixin {
   factory PaketlemeListesiModel({
     int? id,
     String? kodu,

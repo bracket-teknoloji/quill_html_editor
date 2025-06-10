@@ -6,7 +6,7 @@ part "tcmb_bankalar_model.freezed.dart";
 part "tcmb_bankalar_model.g.dart";
 
 @unfreezed
-class TcmbBankalarModel with _$TcmbBankalarModel, NetworkManagerMixin {
+sealed class TcmbBankalarModel with _$TcmbBankalarModel, NetworkManagerMixin {
   factory TcmbBankalarModel({
     String? bankakodu,
     String? bankaadi,

@@ -6,7 +6,7 @@ part "depo_bakiye_durumu_model.freezed.dart";
 part "depo_bakiye_durumu_model.g.dart";
 
 @freezed
-class DepoBakiyeDurumuModel with _$DepoBakiyeDurumuModel, NetworkManagerMixin {
+sealed class DepoBakiyeDurumuModel with _$DepoBakiyeDurumuModel, NetworkManagerMixin {
   const factory DepoBakiyeDurumuModel({
     int? subeKodu,
     int? depoKodu,

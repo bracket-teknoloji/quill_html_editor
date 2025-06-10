@@ -10,7 +10,9 @@ part of 'olcum_kalem_sec_view_model.dart';
 
 mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
   late final _$olcumGirisiListesiAtom = Atom(
-      name: '_OlcumKalemSecViewModelBase.olcumGirisiListesi', context: context);
+    name: '_OlcumKalemSecViewModelBase.olcumGirisiListesi',
+    context: context,
+  );
 
   @override
   ObservableList<OlcumBelgeModel>? get olcumGirisiListesi {
@@ -25,8 +27,10 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
     });
   }
 
-  late final _$requestModelAtom =
-      Atom(name: '_OlcumKalemSecViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_OlcumKalemSecViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   OlcumBelgeModel? get requestModel {
@@ -41,8 +45,10 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_OlcumKalemSecViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_OlcumKalemSecViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -57,8 +63,10 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_OlcumKalemSecViewModelBase.dahaVarMi', context: context);
+  late final _$dahaVarMiAtom = Atom(
+    name: '_OlcumKalemSecViewModelBase.dahaVarMi',
+    context: context,
+  );
 
   @override
   bool get dahaVarMi {
@@ -73,16 +81,20 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_OlcumKalemSecViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_OlcumKalemSecViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_OlcumKalemSecViewModelBaseActionController =
-      ActionController(name: '_OlcumKalemSecViewModelBase', context: context);
+  late final _$_OlcumKalemSecViewModelBaseActionController = ActionController(
+    name: '_OlcumKalemSecViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchBar() {

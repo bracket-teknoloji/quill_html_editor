@@ -7,7 +7,7 @@ part "talep_teklif_listesi_model.freezed.dart";
 part "talep_teklif_listesi_model.g.dart";
 
 @unfreezed
-class TalepTeklifListesiModel with _$TalepTeklifListesiModel, NetworkManagerMixin {
+sealed class TalepTeklifListesiModel with _$TalepTeklifListesiModel, NetworkManagerMixin {
   factory TalepTeklifListesiModel({
     bool? cariDovizli,
     DateTime? kayittarihi,

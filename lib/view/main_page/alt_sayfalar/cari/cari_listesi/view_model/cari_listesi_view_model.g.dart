@@ -12,75 +12,78 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   Computed<bool>? _$getRotaComputed;
 
   @override
-  bool get getRota => (_$getRotaComputed ??= Computed<bool>(() => super.getRota,
-          name: '_CariListesiViewModelBase.getRota'))
-      .value;
+  bool get getRota => (_$getRotaComputed ??= Computed<bool>(
+    () => super.getRota,
+    name: '_CariListesiViewModelBase.getRota',
+  )).value;
   Computed<Map<String, dynamic>>? _$getCariRequestModelComputed;
 
   @override
   Map<String, dynamic> get getCariRequestModel =>
       (_$getCariRequestModelComputed ??= Computed<Map<String, dynamic>>(
-              () => super.getCariRequestModel,
-              name: '_CariListesiViewModelBase.getCariRequestModel'))
-          .value;
+        () => super.getCariRequestModel,
+        name: '_CariListesiViewModelBase.getCariRequestModel',
+      )).value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod0Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod0 =>
       (_$getGrupKod0Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-              () => super.getGrupKod0,
-              name: '_CariListesiViewModelBase.getGrupKod0'))
-          .value;
+        () => super.getGrupKod0,
+        name: '_CariListesiViewModelBase.getGrupKod0',
+      )).value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod1Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod1 =>
       (_$getGrupKod1Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-              () => super.getGrupKod1,
-              name: '_CariListesiViewModelBase.getGrupKod1'))
-          .value;
+        () => super.getGrupKod1,
+        name: '_CariListesiViewModelBase.getGrupKod1',
+      )).value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod2Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod2 =>
       (_$getGrupKod2Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-              () => super.getGrupKod2,
-              name: '_CariListesiViewModelBase.getGrupKod2'))
-          .value;
+        () => super.getGrupKod2,
+        name: '_CariListesiViewModelBase.getGrupKod2',
+      )).value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod3Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod3 =>
       (_$getGrupKod3Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-              () => super.getGrupKod3,
-              name: '_CariListesiViewModelBase.getGrupKod3'))
-          .value;
+        () => super.getGrupKod3,
+        name: '_CariListesiViewModelBase.getGrupKod3',
+      )).value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod4Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod4 =>
       (_$getGrupKod4Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-              () => super.getGrupKod4,
-              name: '_CariListesiViewModelBase.getGrupKod4'))
-          .value;
+        () => super.getGrupKod4,
+        name: '_CariListesiViewModelBase.getGrupKod4',
+      )).value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod5Computed;
 
   @override
   ObservableList<BaseGrupKoduModel>? get getGrupKod5 =>
       (_$getGrupKod5Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
-              () => super.getGrupKod5,
-              name: '_CariListesiViewModelBase.getGrupKod5'))
-          .value;
+        () => super.getGrupKod5,
+        name: '_CariListesiViewModelBase.getGrupKod5',
+      )).value;
   Computed<bool>? _$hasAnyFiltersComputed;
 
   @override
-  bool get hasAnyFilters =>
-      (_$hasAnyFiltersComputed ??= Computed<bool>(() => super.hasAnyFilters,
-              name: '_CariListesiViewModelBase.hasAnyFilters'))
-          .value;
+  bool get hasAnyFilters => (_$hasAnyFiltersComputed ??= Computed<bool>(
+    () => super.hasAnyFilters,
+    name: '_CariListesiViewModelBase.hasAnyFilters',
+  )).value;
 
-  late final _$paramDataAtom =
-      Atom(name: '_CariListesiViewModelBase.paramData', context: context);
+  late final _$paramDataAtom = Atom(
+    name: '_CariListesiViewModelBase.paramData',
+    context: context,
+  );
 
   @override
   ObservableMap<String, dynamic>? get paramData {
@@ -95,8 +98,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$errorTextAtom =
-      Atom(name: '_CariListesiViewModelBase.errorText', context: context);
+  late final _$errorTextAtom = Atom(
+    name: '_CariListesiViewModelBase.errorText',
+    context: context,
+  );
 
   @override
   String? get errorText {
@@ -111,8 +116,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom =
-      Atom(name: '_CariListesiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+    name: '_CariListesiViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -127,8 +134,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_CariListesiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_CariListesiViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -143,8 +152,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$aramaAtom =
-      Atom(name: '_CariListesiViewModelBase.arama', context: context);
+  late final _$aramaAtom = Atom(
+    name: '_CariListesiViewModelBase.arama',
+    context: context,
+  );
 
   @override
   String get arama {
@@ -159,8 +170,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$observableListAtom =
-      Atom(name: '_CariListesiViewModelBase.observableList', context: context);
+  late final _$observableListAtom = Atom(
+    name: '_CariListesiViewModelBase.observableList',
+    context: context,
+  );
 
   @override
   ObservableList<CariListesiModel>? get observableList {
@@ -175,8 +188,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$kodlariGosterAtom =
-      Atom(name: '_CariListesiViewModelBase.kodlariGoster', context: context);
+  late final _$kodlariGosterAtom = Atom(
+    name: '_CariListesiViewModelBase.kodlariGoster',
+    context: context,
+  );
 
   @override
   bool get kodlariGoster {
@@ -191,8 +206,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$grupKodlariAtom =
-      Atom(name: '_CariListesiViewModelBase.grupKodlari', context: context);
+  late final _$grupKodlariAtom = Atom(
+    name: '_CariListesiViewModelBase.grupKodlari',
+    context: context,
+  );
 
   @override
   List<BaseGrupKoduModel>? get grupKodlari {
@@ -207,8 +224,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$sehirlerAtom =
-      Atom(name: '_CariListesiViewModelBase.sehirler', context: context);
+  late final _$sehirlerAtom = Atom(
+    name: '_CariListesiViewModelBase.sehirler',
+    context: context,
+  );
 
   @override
   List<CariSehirlerModel>? get sehirler {
@@ -224,7 +243,9 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   late final _$cariRequestModelAtom = Atom(
-      name: '_CariListesiViewModelBase.cariRequestModel', context: context);
+    name: '_CariListesiViewModelBase.cariRequestModel',
+    context: context,
+  );
 
   @override
   CariRequestModel get cariRequestModel {
@@ -240,7 +261,9 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   late final _$cariRequestModelTempAtom = Atom(
-      name: '_CariListesiViewModelBase.cariRequestModelTemp', context: context);
+    name: '_CariListesiViewModelBase.cariRequestModelTemp',
+    context: context,
+  );
 
   @override
   CariRequestModel get cariRequestModelTemp {
@@ -250,56 +273,71 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
 
   @override
   set cariRequestModelTemp(CariRequestModel value) {
-    _$cariRequestModelTempAtom.reportWrite(value, super.cariRequestModelTemp,
-        () {
-      super.cariRequestModelTemp = value;
-    });
+    _$cariRequestModelTempAtom.reportWrite(
+      value,
+      super.cariRequestModelTemp,
+      () {
+        super.cariRequestModelTemp = value;
+      },
+    );
   }
 
   late final _$changeScrollStatusAsyncAction = AsyncAction(
-      '_CariListesiViewModelBase.changeScrollStatus',
-      context: context);
+    '_CariListesiViewModelBase.changeScrollStatus',
+    context: context,
+  );
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction
-        .run(() => super.changeScrollStatus(position));
+    return _$changeScrollStatusAsyncAction.run(
+      () => super.changeScrollStatus(position),
+    );
   }
 
-  late final _$resetListAsyncAction =
-      AsyncAction('_CariListesiViewModelBase.resetList', context: context);
+  late final _$resetListAsyncAction = AsyncAction(
+    '_CariListesiViewModelBase.resetList',
+    context: context,
+  );
 
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$getKodAsyncAction =
-      AsyncAction('_CariListesiViewModelBase.getKod', context: context);
+  late final _$getKodAsyncAction = AsyncAction(
+    '_CariListesiViewModelBase.getKod',
+    context: context,
+  );
 
   @override
   Future<void> getKod() {
     return _$getKodAsyncAction.run(() => super.getKod());
   }
 
-  late final _$getFilterDataAsyncAction =
-      AsyncAction('_CariListesiViewModelBase.getFilterData', context: context);
+  late final _$getFilterDataAsyncAction = AsyncAction(
+    '_CariListesiViewModelBase.getFilterData',
+    context: context,
+  );
 
   @override
   Future<void> getFilterData() {
     return _$getFilterDataAsyncAction.run(() => super.getFilterData());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_CariListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_CariListesiViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_CariListesiViewModelBaseActionController =
-      ActionController(name: '_CariListesiViewModelBase', context: context);
+  late final _$_CariListesiViewModelBaseActionController = ActionController(
+    name: '_CariListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void changeKodlariGoster() {
@@ -600,9 +638,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
 
   @override
   void changeArrPlasiyerKoduTemp(List<String>? value) {
-    final _$actionInfo =
-        _$_CariListesiViewModelBaseActionController.startAction(
-            name: '_CariListesiViewModelBase.changeArrPlasiyerKoduTemp');
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(
+          name: '_CariListesiViewModelBase.changeArrPlasiyerKoduTemp',
+        );
     try {
       return super.changeArrPlasiyerKoduTemp(value);
     } finally {

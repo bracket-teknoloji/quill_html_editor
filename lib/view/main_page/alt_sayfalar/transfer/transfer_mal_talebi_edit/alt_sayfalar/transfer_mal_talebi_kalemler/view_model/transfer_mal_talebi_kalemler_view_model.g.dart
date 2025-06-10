@@ -11,8 +11,9 @@ part of 'transfer_mal_talebi_kalemler_view_model.dart';
 mixin _$TransferMalTalebiKalemlerViewModel
     on _TransferMalTalebiKalemlerViewModelBase, Store {
   late final _$kalemListAtom = Atom(
-      name: '_TransferMalTalebiKalemlerViewModelBase.kalemList',
-      context: context);
+    name: '_TransferMalTalebiKalemlerViewModelBase.kalemList',
+    context: context,
+  );
 
   @override
   ObservableList<KalemModel> get kalemList {
@@ -28,8 +29,9 @@ mixin _$TransferMalTalebiKalemlerViewModel
   }
 
   late final _$removeKalemAsyncAction = AsyncAction(
-      '_TransferMalTalebiKalemlerViewModelBase.removeKalem',
-      context: context);
+    '_TransferMalTalebiKalemlerViewModelBase.removeKalem',
+    context: context,
+  );
 
   @override
   Future<bool> removeKalem(KalemModel value) {
@@ -37,8 +39,9 @@ mixin _$TransferMalTalebiKalemlerViewModel
   }
 
   late final _$saveKalemAsyncAction = AsyncAction(
-      '_TransferMalTalebiKalemlerViewModelBase.saveKalem',
-      context: context);
+    '_TransferMalTalebiKalemlerViewModelBase.saveKalem',
+    context: context,
+  );
 
   @override
   Future<bool> saveKalem(KalemModel model) {
@@ -47,18 +50,22 @@ mixin _$TransferMalTalebiKalemlerViewModel
 
   late final _$_TransferMalTalebiKalemlerViewModelBaseActionController =
       ActionController(
-          name: '_TransferMalTalebiKalemlerViewModelBase', context: context);
+        name: '_TransferMalTalebiKalemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void setKalemList(List<KalemModel> value) {
     final _$actionInfo =
         _$_TransferMalTalebiKalemlerViewModelBaseActionController.startAction(
-            name: '_TransferMalTalebiKalemlerViewModelBase.setKalemList');
+          name: '_TransferMalTalebiKalemlerViewModelBase.setKalemList',
+        );
     try {
       return super.setKalemList(value);
     } finally {
-      _$_TransferMalTalebiKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -66,12 +73,14 @@ mixin _$TransferMalTalebiKalemlerViewModel
   void addKalem(KalemModel value) {
     final _$actionInfo =
         _$_TransferMalTalebiKalemlerViewModelBaseActionController.startAction(
-            name: '_TransferMalTalebiKalemlerViewModelBase.addKalem');
+          name: '_TransferMalTalebiKalemlerViewModelBase.addKalem',
+        );
     try {
       return super.addKalem(value);
     } finally {
-      _$_TransferMalTalebiKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 
@@ -79,12 +88,14 @@ mixin _$TransferMalTalebiKalemlerViewModel
   void updateKalem(KalemModel value) {
     final _$actionInfo =
         _$_TransferMalTalebiKalemlerViewModelBaseActionController.startAction(
-            name: '_TransferMalTalebiKalemlerViewModelBase.updateKalem');
+          name: '_TransferMalTalebiKalemlerViewModelBase.updateKalem',
+        );
     try {
       return super.updateKalem(value);
     } finally {
-      _$_TransferMalTalebiKalemlerViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_TransferMalTalebiKalemlerViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
     }
   }
 

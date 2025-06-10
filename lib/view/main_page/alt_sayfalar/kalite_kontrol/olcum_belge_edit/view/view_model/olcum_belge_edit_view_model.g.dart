@@ -12,20 +12,23 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   Computed<OlcumBelgeModel?>? _$belgeModelComputed;
 
   @override
-  OlcumBelgeModel? get belgeModel => (_$belgeModelComputed ??=
-          Computed<OlcumBelgeModel?>(() => super.belgeModel,
-              name: '_OlcumBelgeEditViewModelBase.belgeModel'))
-      .value;
+  OlcumBelgeModel? get belgeModel =>
+      (_$belgeModelComputed ??= Computed<OlcumBelgeModel?>(
+        () => super.belgeModel,
+        name: '_OlcumBelgeEditViewModelBase.belgeModel',
+      )).value;
   Computed<bool>? _$depolarValidationComputed;
 
   @override
   bool get depolarValidation => (_$depolarValidationComputed ??= Computed<bool>(
-          () => super.depolarValidation,
-          name: '_OlcumBelgeEditViewModelBase.depolarValidation'))
-      .value;
+    () => super.depolarValidation,
+    name: '_OlcumBelgeEditViewModelBase.depolarValidation',
+  )).value;
 
-  late final _$requestModelAtom =
-      Atom(name: '_OlcumBelgeEditViewModelBase.requestModel', context: context);
+  late final _$requestModelAtom = Atom(
+    name: '_OlcumBelgeEditViewModelBase.requestModel',
+    context: context,
+  );
 
   @override
   OlcumBelgeModel? get requestModel {
@@ -40,8 +43,10 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_OlcumBelgeEditViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(
+    name: '_OlcumBelgeEditViewModelBase.model',
+    context: context,
+  );
 
   @override
   OlcumBelgeEditModel? get model {
@@ -57,7 +62,9 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   late final _$olcumDatListesiAtom = Atom(
-      name: '_OlcumBelgeEditViewModelBase.olcumDatListesi', context: context);
+    name: '_OlcumBelgeEditViewModelBase.olcumDatListesi',
+    context: context,
+  );
 
   @override
   ObservableList<OlcumBelgeModel>? get olcumDatListesi {
@@ -73,7 +80,9 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   late final _$seriRequestModelAtom = Atom(
-      name: '_OlcumBelgeEditViewModelBase.seriRequestModel', context: context);
+    name: '_OlcumBelgeEditViewModelBase.seriRequestModel',
+    context: context,
+  );
 
   @override
   OlcumSeriRequestModel get seriRequestModel {
@@ -89,8 +98,9 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   late final _$olcumDatResponseListesiAtom = Atom(
-      name: '_OlcumBelgeEditViewModelBase.olcumDatResponseListesi',
-      context: context);
+    name: '_OlcumBelgeEditViewModelBase.olcumDatResponseListesi',
+    context: context,
+  );
 
   @override
   ObservableList<SeriList>? get olcumDatResponseListesi {
@@ -100,31 +110,39 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   set olcumDatResponseListesi(ObservableList<SeriList>? value) {
-    _$olcumDatResponseListesiAtom
-        .reportWrite(value, super.olcumDatResponseListesi, () {
-      super.olcumDatResponseListesi = value;
-    });
+    _$olcumDatResponseListesiAtom.reportWrite(
+      value,
+      super.olcumDatResponseListesi,
+      () {
+        super.olcumDatResponseListesi = value;
+      },
+    );
   }
 
   late final _$getDatMiktarAsyncAction = AsyncAction(
-      '_OlcumBelgeEditViewModelBase.getDatMiktar',
-      context: context);
+    '_OlcumBelgeEditViewModelBase.getDatMiktar',
+    context: context,
+  );
 
   @override
   Future<void> getDatMiktar() {
     return _$getDatMiktarAsyncAction.run(() => super.getDatMiktar());
   }
 
-  late final _$getDataAsyncAction =
-      AsyncAction('_OlcumBelgeEditViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction = AsyncAction(
+    '_OlcumBelgeEditViewModelBase.getData',
+    context: context,
+  );
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$getOlcumlerAsyncAction =
-      AsyncAction('_OlcumBelgeEditViewModelBase.getOlcumler', context: context);
+  late final _$getOlcumlerAsyncAction = AsyncAction(
+    '_OlcumBelgeEditViewModelBase.getOlcumler',
+    context: context,
+  );
 
   @override
   Future<List<OlcumOlcumlerModel>?> getOlcumler() {
@@ -132,8 +150,9 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   late final _$getProseslerAsyncAction = AsyncAction(
-      '_OlcumBelgeEditViewModelBase.getProsesler',
-      context: context);
+    '_OlcumBelgeEditViewModelBase.getProsesler',
+    context: context,
+  );
 
   @override
   Future<List<OlcumProsesModel>?> getProsesler(int? id) {
@@ -141,25 +160,31 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   late final _$getOlcumDatListesiAsyncAction = AsyncAction(
-      '_OlcumBelgeEditViewModelBase.getOlcumDatListesi',
-      context: context);
+    '_OlcumBelgeEditViewModelBase.getOlcumDatListesi',
+    context: context,
+  );
 
   @override
   Future<bool> getOlcumDatListesi() {
-    return _$getOlcumDatListesiAsyncAction
-        .run(() => super.getOlcumDatListesi());
+    return _$getOlcumDatListesiAsyncAction.run(
+      () => super.getOlcumDatListesi(),
+    );
   }
 
-  late final _$deleteOlcumAsyncAction =
-      AsyncAction('_OlcumBelgeEditViewModelBase.deleteOlcum', context: context);
+  late final _$deleteOlcumAsyncAction = AsyncAction(
+    '_OlcumBelgeEditViewModelBase.deleteOlcum',
+    context: context,
+  );
 
   @override
   Future<GenericResponseModel<OlcumBelgeEditModel>> deleteOlcum(int? id) {
     return _$deleteOlcumAsyncAction.run(() => super.deleteOlcum(id));
   }
 
-  late final _$_OlcumBelgeEditViewModelBaseActionController =
-      ActionController(name: '_OlcumBelgeEditViewModelBase', context: context);
+  late final _$_OlcumBelgeEditViewModelBaseActionController = ActionController(
+    name: '_OlcumBelgeEditViewModelBase',
+    context: context,
+  );
 
   @override
   void setGirisDepo(DepoList? value) {
@@ -207,9 +232,10 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setOlcumDatResponseListesi(List<SeriList>? list) {
-    final _$actionInfo =
-        _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-            name: '_OlcumBelgeEditViewModelBase.setOlcumDatResponseListesi');
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(
+          name: '_OlcumBelgeEditViewModelBase.setOlcumDatResponseListesi',
+        );
     try {
       return super.setOlcumDatResponseListesi(list);
     } finally {

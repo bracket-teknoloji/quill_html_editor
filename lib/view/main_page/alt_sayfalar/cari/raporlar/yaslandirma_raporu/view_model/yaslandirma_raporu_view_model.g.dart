@@ -12,21 +12,24 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
   Computed<String>? _$sureAraligiGroupValueComputed;
 
   @override
-  String get sureAraligiGroupValue => (_$sureAraligiGroupValueComputed ??=
-          Computed<String>(() => super.sureAraligiGroupValue,
-              name: '_YaslandirmaRaporuViewModelBase.sureAraligiGroupValue'))
-      .value;
+  String get sureAraligiGroupValue =>
+      (_$sureAraligiGroupValueComputed ??= Computed<String>(
+        () => super.sureAraligiGroupValue,
+        name: '_YaslandirmaRaporuViewModelBase.sureAraligiGroupValue',
+      )).value;
   Computed<String>? _$odemeTipiGroupValueComputed;
 
   @override
-  String get odemeTipiGroupValue => (_$odemeTipiGroupValueComputed ??=
-          Computed<String>(() => super.odemeTipiGroupValue,
-              name: '_YaslandirmaRaporuViewModelBase.odemeTipiGroupValue'))
-      .value;
+  String get odemeTipiGroupValue =>
+      (_$odemeTipiGroupValueComputed ??= Computed<String>(
+        () => super.odemeTipiGroupValue,
+        name: '_YaslandirmaRaporuViewModelBase.odemeTipiGroupValue',
+      )).value;
 
   late final _$_sureAraligiGroupValueAtom = Atom(
-      name: '_YaslandirmaRaporuViewModelBase._sureAraligiGroupValue',
-      context: context);
+    name: '_YaslandirmaRaporuViewModelBase._sureAraligiGroupValue',
+    context: context,
+  );
 
   @override
   String get _sureAraligiGroupValue {
@@ -36,15 +39,19 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   @override
   set _sureAraligiGroupValue(String value) {
-    _$_sureAraligiGroupValueAtom
-        .reportWrite(value, super._sureAraligiGroupValue, () {
-      super._sureAraligiGroupValue = value;
-    });
+    _$_sureAraligiGroupValueAtom.reportWrite(
+      value,
+      super._sureAraligiGroupValue,
+      () {
+        super._sureAraligiGroupValue = value;
+      },
+    );
   }
 
   late final _$_odemeTipiGroupValueAtom = Atom(
-      name: '_YaslandirmaRaporuViewModelBase._odemeTipiGroupValue',
-      context: context);
+    name: '_YaslandirmaRaporuViewModelBase._odemeTipiGroupValue',
+    context: context,
+  );
 
   @override
   String get _odemeTipiGroupValue {
@@ -54,14 +61,19 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   @override
   set _odemeTipiGroupValue(String value) {
-    _$_odemeTipiGroupValueAtom.reportWrite(value, super._odemeTipiGroupValue,
-        () {
-      super._odemeTipiGroupValue = value;
-    });
+    _$_odemeTipiGroupValueAtom.reportWrite(
+      value,
+      super._odemeTipiGroupValue,
+      () {
+        super._odemeTipiGroupValue = value;
+      },
+    );
   }
 
   late final _$odemeTipiValueAtom = Atom(
-      name: '_YaslandirmaRaporuViewModelBase.odemeTipiValue', context: context);
+    name: '_YaslandirmaRaporuViewModelBase.odemeTipiValue',
+    context: context,
+  );
 
   @override
   ObservableList<String> get odemeTipiValue {
@@ -76,8 +88,10 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
     });
   }
 
-  late final _$pdfModelAtom =
-      Atom(name: '_YaslandirmaRaporuViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(
+    name: '_YaslandirmaRaporuViewModelBase.pdfModel',
+    context: context,
+  );
 
   @override
   PdfModel get pdfModel {
@@ -93,8 +107,9 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
   }
 
   late final _$futureControllerAtom = Atom(
-      name: '_YaslandirmaRaporuViewModelBase.futureController',
-      context: context);
+    name: '_YaslandirmaRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -111,7 +126,9 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   late final _$_YaslandirmaRaporuViewModelBaseActionController =
       ActionController(
-          name: '_YaslandirmaRaporuViewModelBase', context: context);
+        name: '_YaslandirmaRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void changeSureAraligi(int? index) {

@@ -12,111 +12,113 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   Computed<bool>? _$grupKodList0Computed;
 
   @override
-  bool get grupKodList0 =>
-      (_$grupKodList0Computed ??= Computed<bool>(() => super.grupKodList0,
-              name: '_SiparislerViewModelBase.grupKodList0'))
-          .value;
+  bool get grupKodList0 => (_$grupKodList0Computed ??= Computed<bool>(
+    () => super.grupKodList0,
+    name: '_SiparislerViewModelBase.grupKodList0',
+  )).value;
   Computed<bool>? _$grupKodList1Computed;
 
   @override
-  bool get grupKodList1 =>
-      (_$grupKodList1Computed ??= Computed<bool>(() => super.grupKodList1,
-              name: '_SiparislerViewModelBase.grupKodList1'))
-          .value;
+  bool get grupKodList1 => (_$grupKodList1Computed ??= Computed<bool>(
+    () => super.grupKodList1,
+    name: '_SiparislerViewModelBase.grupKodList1',
+  )).value;
   Computed<bool>? _$grupKodList2Computed;
 
   @override
-  bool get grupKodList2 =>
-      (_$grupKodList2Computed ??= Computed<bool>(() => super.grupKodList2,
-              name: '_SiparislerViewModelBase.grupKodList2'))
-          .value;
+  bool get grupKodList2 => (_$grupKodList2Computed ??= Computed<bool>(
+    () => super.grupKodList2,
+    name: '_SiparislerViewModelBase.grupKodList2',
+  )).value;
   Computed<bool>? _$grupKodList3Computed;
 
   @override
-  bool get grupKodList3 =>
-      (_$grupKodList3Computed ??= Computed<bool>(() => super.grupKodList3,
-              name: '_SiparislerViewModelBase.grupKodList3'))
-          .value;
+  bool get grupKodList3 => (_$grupKodList3Computed ??= Computed<bool>(
+    () => super.grupKodList3,
+    name: '_SiparislerViewModelBase.grupKodList3',
+  )).value;
   Computed<bool>? _$grupKodList4Computed;
 
   @override
-  bool get grupKodList4 =>
-      (_$grupKodList4Computed ??= Computed<bool>(() => super.grupKodList4,
-              name: '_SiparislerViewModelBase.grupKodList4'))
-          .value;
+  bool get grupKodList4 => (_$grupKodList4Computed ??= Computed<bool>(
+    () => super.grupKodList4,
+    name: '_SiparislerViewModelBase.grupKodList4',
+  )).value;
   Computed<bool>? _$grupKodList5Computed;
 
   @override
-  bool get grupKodList5 =>
-      (_$grupKodList5Computed ??= Computed<bool>(() => super.grupKodList5,
-              name: '_SiparislerViewModelBase.grupKodList5'))
-          .value;
+  bool get grupKodList5 => (_$grupKodList5Computed ??= Computed<bool>(
+    () => super.grupKodList5,
+    name: '_SiparislerViewModelBase.grupKodList5',
+  )).value;
   Computed<bool>? _$hasFilterComputed;
 
   @override
-  bool get hasFilter =>
-      (_$hasFilterComputed ??= Computed<bool>(() => super.hasFilter,
-              name: '_SiparislerViewModelBase.hasFilter'))
-          .value;
+  bool get hasFilter => (_$hasFilterComputed ??= Computed<bool>(
+    () => super.hasFilter,
+    name: '_SiparislerViewModelBase.hasFilter',
+  )).value;
   Computed<String>? _$getQueryParamsComputed;
 
   @override
-  String get getQueryParams =>
-      (_$getQueryParamsComputed ??= Computed<String>(() => super.getQueryParams,
-              name: '_SiparislerViewModelBase.getQueryParams'))
-          .value;
+  String get getQueryParams => (_$getQueryParamsComputed ??= Computed<String>(
+    () => super.getQueryParams,
+    name: '_SiparislerViewModelBase.getQueryParams',
+  )).value;
   Computed<String?>? _$getPlasiyerComputed;
 
   @override
-  String? get getPlasiyer =>
-      (_$getPlasiyerComputed ??= Computed<String?>(() => super.getPlasiyer,
-              name: '_SiparislerViewModelBase.getPlasiyer'))
-          .value;
+  String? get getPlasiyer => (_$getPlasiyerComputed ??= Computed<String?>(
+    () => super.getPlasiyer,
+    name: '_SiparislerViewModelBase.getPlasiyer',
+  )).value;
   Computed<String?>? _$getGrupKodlariComputed;
 
   @override
   String? get getGrupKodlari => (_$getGrupKodlariComputed ??= Computed<String?>(
-          () => super.getGrupKodlari,
-          name: '_SiparislerViewModelBase.getGrupKodlari'))
-      .value;
+    () => super.getGrupKodlari,
+    name: '_SiparislerViewModelBase.getGrupKodlari',
+  )).value;
   Computed<String?>? _$getKod1Computed;
 
   @override
-  String? get getKod1 =>
-      (_$getKod1Computed ??= Computed<String?>(() => super.getKod1,
-              name: '_SiparislerViewModelBase.getKod1'))
-          .value;
+  String? get getKod1 => (_$getKod1Computed ??= Computed<String?>(
+    () => super.getKod1,
+    name: '_SiparislerViewModelBase.getKod1',
+  )).value;
   Computed<String?>? _$getKod2Computed;
 
   @override
-  String? get getKod2 =>
-      (_$getKod2Computed ??= Computed<String?>(() => super.getKod2,
-              name: '_SiparislerViewModelBase.getKod2'))
-          .value;
+  String? get getKod2 => (_$getKod2Computed ??= Computed<String?>(
+    () => super.getKod2,
+    name: '_SiparislerViewModelBase.getKod2',
+  )).value;
   Computed<String?>? _$getKod3Computed;
 
   @override
-  String? get getKod3 =>
-      (_$getKod3Computed ??= Computed<String?>(() => super.getKod3,
-              name: '_SiparislerViewModelBase.getKod3'))
-          .value;
+  String? get getKod3 => (_$getKod3Computed ??= Computed<String?>(
+    () => super.getKod3,
+    name: '_SiparislerViewModelBase.getKod3',
+  )).value;
   Computed<String?>? _$getKod4Computed;
 
   @override
-  String? get getKod4 =>
-      (_$getKod4Computed ??= Computed<String?>(() => super.getKod4,
-              name: '_SiparislerViewModelBase.getKod4'))
-          .value;
+  String? get getKod4 => (_$getKod4Computed ??= Computed<String?>(
+    () => super.getKod4,
+    name: '_SiparislerViewModelBase.getKod4',
+  )).value;
   Computed<String?>? _$getKod5Computed;
 
   @override
-  String? get getKod5 =>
-      (_$getKod5Computed ??= Computed<String?>(() => super.getKod5,
-              name: '_SiparislerViewModelBase.getKod5'))
-          .value;
+  String? get getKod5 => (_$getKod5Computed ??= Computed<String?>(
+    () => super.getKod5,
+    name: '_SiparislerViewModelBase.getKod5',
+  )).value;
 
-  late final _$ekstraAlanlarMapAtom =
-      Atom(name: '_SiparislerViewModelBase.ekstraAlanlarMap', context: context);
+  late final _$ekstraAlanlarMapAtom = Atom(
+    name: '_SiparislerViewModelBase.ekstraAlanlarMap',
+    context: context,
+  );
 
   @override
   ObservableMap<String, bool> get ekstraAlanlarMap {
@@ -132,8 +134,9 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   late final _$teslimatDurumuValueListAtom = Atom(
-      name: '_SiparislerViewModelBase.teslimatDurumuValueList',
-      context: context);
+    name: '_SiparislerViewModelBase.teslimatDurumuValueList',
+    context: context,
+  );
 
   @override
   List<String?> get teslimatDurumuValueList {
@@ -143,14 +146,19 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
 
   @override
   set teslimatDurumuValueList(List<String?> value) {
-    _$teslimatDurumuValueListAtom
-        .reportWrite(value, super.teslimatDurumuValueList, () {
-      super.teslimatDurumuValueList = value;
-    });
+    _$teslimatDurumuValueListAtom.reportWrite(
+      value,
+      super.teslimatDurumuValueList,
+      () {
+        super.teslimatDurumuValueList = value;
+      },
+    );
   }
 
-  late final _$grupKodListAtom =
-      Atom(name: '_SiparislerViewModelBase.grupKodList', context: context);
+  late final _$grupKodListAtom = Atom(
+    name: '_SiparislerViewModelBase.grupKodList',
+    context: context,
+  );
 
   @override
   ObservableList<BaseGrupKoduModel> get grupKodList {
@@ -166,8 +174,9 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   late final _$teslimatDurumuGroupValueAtom = Atom(
-      name: '_SiparislerViewModelBase.teslimatDurumuGroupValue',
-      context: context);
+    name: '_SiparislerViewModelBase.teslimatDurumuGroupValue',
+    context: context,
+  );
 
   @override
   String? get teslimatDurumuGroupValue {
@@ -177,14 +186,19 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
 
   @override
   set teslimatDurumuGroupValue(String? value) {
-    _$teslimatDurumuGroupValueAtom
-        .reportWrite(value, super.teslimatDurumuGroupValue, () {
-      super.teslimatDurumuGroupValue = value;
-    });
+    _$teslimatDurumuGroupValueAtom.reportWrite(
+      value,
+      super.teslimatDurumuGroupValue,
+      () {
+        super.teslimatDurumuGroupValue = value;
+      },
+    );
   }
 
-  late final _$paramDataAtom =
-      Atom(name: '_SiparislerViewModelBase.paramData', context: context);
+  late final _$paramDataAtom = Atom(
+    name: '_SiparislerViewModelBase.paramData',
+    context: context,
+  );
 
   @override
   ObservableMap<String, dynamic>? get paramData {
@@ -199,8 +213,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$isScrolledDownAtom =
-      Atom(name: '_SiparislerViewModelBase.isScrolledDown', context: context);
+  late final _$isScrolledDownAtom = Atom(
+    name: '_SiparislerViewModelBase.isScrolledDown',
+    context: context,
+  );
 
   @override
   bool get isScrolledDown {
@@ -215,8 +231,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_SiparislerViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom = Atom(
+    name: '_SiparislerViewModelBase.searchBar',
+    context: context,
+  );
 
   @override
   bool get searchBar {
@@ -231,8 +249,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_SiparislerViewModelBase.dahaVarMi', context: context);
+  late final _$dahaVarMiAtom = Atom(
+    name: '_SiparislerViewModelBase.dahaVarMi',
+    context: context,
+  );
 
   @override
   bool get dahaVarMi {
@@ -248,7 +268,9 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   late final _$grupKodlariGosterAtom = Atom(
-      name: '_SiparislerViewModelBase.grupKodlariGoster', context: context);
+    name: '_SiparislerViewModelBase.grupKodlariGoster',
+    context: context,
+  );
 
   @override
   bool get grupKodlariGoster {
@@ -264,8 +286,9 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   late final _$musteriSiparisleriListAtom = Atom(
-      name: '_SiparislerViewModelBase.musteriSiparisleriList',
-      context: context);
+    name: '_SiparislerViewModelBase.musteriSiparisleriList',
+    context: context,
+  );
 
   @override
   ObservableList<BaseSiparisEditModel?>? get musteriSiparisleriList {
@@ -275,15 +298,19 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
 
   @override
   set musteriSiparisleriList(ObservableList<BaseSiparisEditModel?>? value) {
-    _$musteriSiparisleriListAtom
-        .reportWrite(value, super.musteriSiparisleriList, () {
-      super.musteriSiparisleriList = value;
-    });
+    _$musteriSiparisleriListAtom.reportWrite(
+      value,
+      super.musteriSiparisleriList,
+      () {
+        super.musteriSiparisleriList = value;
+      },
+    );
   }
 
   late final _$kapaliBelgelerListelenmesinAtom = Atom(
-      name: '_SiparislerViewModelBase.kapaliBelgelerListelenmesin',
-      context: context);
+    name: '_SiparislerViewModelBase.kapaliBelgelerListelenmesin',
+    context: context,
+  );
 
   @override
   bool get kapaliBelgelerListelenmesin {
@@ -293,14 +320,19 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
 
   @override
   set kapaliBelgelerListelenmesin(bool value) {
-    _$kapaliBelgelerListelenmesinAtom
-        .reportWrite(value, super.kapaliBelgelerListelenmesin, () {
-      super.kapaliBelgelerListelenmesin = value;
-    });
+    _$kapaliBelgelerListelenmesinAtom.reportWrite(
+      value,
+      super.kapaliBelgelerListelenmesin,
+      () {
+        super.kapaliBelgelerListelenmesin = value;
+      },
+    );
   }
 
-  late final _$ozelKod1Atom =
-      Atom(name: '_SiparislerViewModelBase.ozelKod1', context: context);
+  late final _$ozelKod1Atom = Atom(
+    name: '_SiparislerViewModelBase.ozelKod1',
+    context: context,
+  );
 
   @override
   String? get ozelKod1 {
@@ -315,8 +347,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$ozelKod2Atom =
-      Atom(name: '_SiparislerViewModelBase.ozelKod2', context: context);
+  late final _$ozelKod2Atom = Atom(
+    name: '_SiparislerViewModelBase.ozelKod2',
+    context: context,
+  );
 
   @override
   String? get ozelKod2 {
@@ -331,8 +365,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$sayfaAtom =
-      Atom(name: '_SiparislerViewModelBase.sayfa', context: context);
+  late final _$sayfaAtom = Atom(
+    name: '_SiparislerViewModelBase.sayfa',
+    context: context,
+  );
 
   @override
   int get sayfa {
@@ -347,8 +383,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$siralamaAtom =
-      Atom(name: '_SiparislerViewModelBase.siralama', context: context);
+  late final _$siralamaAtom = Atom(
+    name: '_SiparislerViewModelBase.siralama',
+    context: context,
+  );
 
   @override
   String get siralama {
@@ -363,8 +401,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_SiparislerViewModelBase.searchText', context: context);
+  late final _$searchTextAtom = Atom(
+    name: '_SiparislerViewModelBase.searchText',
+    context: context,
+  );
 
   @override
   String? get searchText {
@@ -379,8 +419,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$projeKoduAtom =
-      Atom(name: '_SiparislerViewModelBase.projeKodu', context: context);
+  late final _$projeKoduAtom = Atom(
+    name: '_SiparislerViewModelBase.projeKodu',
+    context: context,
+  );
 
   @override
   String? get projeKodu {
@@ -395,8 +437,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$arrPlasiyerKoduAtom =
-      Atom(name: '_SiparislerViewModelBase.arrPlasiyerKodu', context: context);
+  late final _$arrPlasiyerKoduAtom = Atom(
+    name: '_SiparislerViewModelBase.arrPlasiyerKodu',
+    context: context,
+  );
 
   @override
   List<String>? get arrPlasiyerKodu {
@@ -411,8 +455,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$arrGrupKoduAtom =
-      Atom(name: '_SiparislerViewModelBase.arrGrupKodu', context: context);
+  late final _$arrGrupKoduAtom = Atom(
+    name: '_SiparislerViewModelBase.arrGrupKodu',
+    context: context,
+  );
 
   @override
   List<String>? get arrGrupKodu {
@@ -427,8 +473,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$arrKod1Atom =
-      Atom(name: '_SiparislerViewModelBase.arrKod1', context: context);
+  late final _$arrKod1Atom = Atom(
+    name: '_SiparislerViewModelBase.arrKod1',
+    context: context,
+  );
 
   @override
   List<String>? get arrKod1 {
@@ -443,8 +491,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$arrKod2Atom =
-      Atom(name: '_SiparislerViewModelBase.arrKod2', context: context);
+  late final _$arrKod2Atom = Atom(
+    name: '_SiparislerViewModelBase.arrKod2',
+    context: context,
+  );
 
   @override
   List<String>? get arrKod2 {
@@ -459,8 +509,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$arrKod3Atom =
-      Atom(name: '_SiparislerViewModelBase.arrKod3', context: context);
+  late final _$arrKod3Atom = Atom(
+    name: '_SiparislerViewModelBase.arrKod3',
+    context: context,
+  );
 
   @override
   List<String>? get arrKod3 {
@@ -475,8 +527,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$arrKod4Atom =
-      Atom(name: '_SiparislerViewModelBase.arrKod4', context: context);
+  late final _$arrKod4Atom = Atom(
+    name: '_SiparislerViewModelBase.arrKod4',
+    context: context,
+  );
 
   @override
   List<String>? get arrKod4 {
@@ -491,8 +545,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$arrKod5Atom =
-      Atom(name: '_SiparislerViewModelBase.arrKod5', context: context);
+  late final _$arrKod5Atom = Atom(
+    name: '_SiparislerViewModelBase.arrKod5',
+    context: context,
+  );
 
   @override
   List<String>? get arrKod5 {
@@ -507,8 +563,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$cariKoduAtom =
-      Atom(name: '_SiparislerViewModelBase.cariKodu', context: context);
+  late final _$cariKoduAtom = Atom(
+    name: '_SiparislerViewModelBase.cariKodu',
+    context: context,
+  );
 
   @override
   String? get cariKodu {
@@ -523,8 +581,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$cariTipiAtom =
-      Atom(name: '_SiparislerViewModelBase.cariTipi', context: context);
+  late final _$cariTipiAtom = Atom(
+    name: '_SiparislerViewModelBase.cariTipi',
+    context: context,
+  );
 
   @override
   String? get cariTipi {
@@ -539,8 +599,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$baslamaTarihiAtom =
-      Atom(name: '_SiparislerViewModelBase.baslamaTarihi', context: context);
+  late final _$baslamaTarihiAtom = Atom(
+    name: '_SiparislerViewModelBase.baslamaTarihi',
+    context: context,
+  );
 
   @override
   String? get baslamaTarihi {
@@ -555,8 +617,10 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$bitisTarihiAtom =
-      Atom(name: '_SiparislerViewModelBase.bitisTarihi', context: context);
+  late final _$bitisTarihiAtom = Atom(
+    name: '_SiparislerViewModelBase.bitisTarihi',
+    context: context,
+  );
 
   @override
   String? get bitisTarihi {
@@ -571,13 +635,16 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
-  late final _$_SiparislerViewModelBaseActionController =
-      ActionController(name: '_SiparislerViewModelBase', context: context);
+  late final _$_SiparislerViewModelBaseActionController = ActionController(
+    name: '_SiparislerViewModelBase',
+    context: context,
+  );
 
   @override
   void changeEkstraAlanlarMap(String key, bool value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.changeEkstraAlanlarMap');
+      name: '_SiparislerViewModelBase.changeEkstraAlanlarMap',
+    );
     try {
       return super.changeEkstraAlanlarMap(key, value);
     } finally {
@@ -588,7 +655,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void resetEkstraAlanlarMap() {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.resetEkstraAlanlarMap');
+      name: '_SiparislerViewModelBase.resetEkstraAlanlarMap',
+    );
     try {
       return super.resetEkstraAlanlarMap();
     } finally {
@@ -599,7 +667,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void changeGrupKodList(List<BaseGrupKoduModel> value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.changeGrupKodList');
+      name: '_SiparislerViewModelBase.changeGrupKodList',
+    );
     try {
       return super.changeGrupKodList(value);
     } finally {
@@ -610,7 +679,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setTeslimatDurumuGroupValue(int? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setTeslimatDurumuGroupValue');
+      name: '_SiparislerViewModelBase.setTeslimatDurumuGroupValue',
+    );
     try {
       return super.setTeslimatDurumuGroupValue(value);
     } finally {
@@ -621,7 +691,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void changeIsScrolledDown(bool value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.changeIsScrolledDown');
+      name: '_SiparislerViewModelBase.changeIsScrolledDown',
+    );
     try {
       return super.changeIsScrolledDown(value);
     } finally {
@@ -632,7 +703,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setParamData(Map<String, dynamic> value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setParamData');
+      name: '_SiparislerViewModelBase.setParamData',
+    );
     try {
       return super.setParamData(value);
     } finally {
@@ -643,7 +715,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void changeGrupKodlariGoster() {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.changeGrupKodlariGoster');
+      name: '_SiparislerViewModelBase.changeGrupKodlariGoster',
+    );
     try {
       return super.changeGrupKodlariGoster();
     } finally {
@@ -654,7 +727,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setDahaVarMi(bool value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setDahaVarMi');
+      name: '_SiparislerViewModelBase.setDahaVarMi',
+    );
     try {
       return super.setDahaVarMi(value);
     } finally {
@@ -665,7 +739,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setOzelKod1(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setOzelKod1');
+      name: '_SiparislerViewModelBase.setOzelKod1',
+    );
     try {
       return super.setOzelKod1(value);
     } finally {
@@ -676,7 +751,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setOzelKod2(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setOzelKod2');
+      name: '_SiparislerViewModelBase.setOzelKod2',
+    );
     try {
       return super.setOzelKod2(value);
     } finally {
@@ -687,7 +763,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void increaseSayfa() {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.increaseSayfa');
+      name: '_SiparislerViewModelBase.increaseSayfa',
+    );
     try {
       return super.increaseSayfa();
     } finally {
@@ -698,7 +775,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void resetSayfa() {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.resetSayfa');
+      name: '_SiparislerViewModelBase.resetSayfa',
+    );
     try {
       return super.resetSayfa();
     } finally {
@@ -709,7 +787,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void changeSearchBar() {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.changeSearchBar');
+      name: '_SiparislerViewModelBase.changeSearchBar',
+    );
     try {
       return super.changeSearchBar();
     } finally {
@@ -720,7 +799,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setSiparislerList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setSiparislerList');
+      name: '_SiparislerViewModelBase.setSiparislerList',
+    );
     try {
       return super.setSiparislerList(value);
     } finally {
@@ -731,7 +811,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void addSiparislerList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.addSiparislerList');
+      name: '_SiparislerViewModelBase.addSiparislerList',
+    );
     try {
       return super.addSiparislerList(value);
     } finally {
@@ -742,7 +823,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void removeSiparislerList(int index) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.removeSiparislerList');
+      name: '_SiparislerViewModelBase.removeSiparislerList',
+    );
     try {
       return super.removeSiparislerList(index);
     } finally {
@@ -753,7 +835,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setSiralama(String value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setSiralama');
+      name: '_SiparislerViewModelBase.setSiralama',
+    );
     try {
       return super.setSiralama(value);
     } finally {
@@ -764,7 +847,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setKapaliBelgelerListelenmesin(bool value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setKapaliBelgelerListelenmesin');
+      name: '_SiparislerViewModelBase.setKapaliBelgelerListelenmesin',
+    );
     try {
       return super.setKapaliBelgelerListelenmesin(value);
     } finally {
@@ -775,7 +859,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setSearchText(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setSearchText');
+      name: '_SiparislerViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -786,7 +871,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setProjeKodu(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setProjeKodu');
+      name: '_SiparislerViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(value);
     } finally {
@@ -797,7 +883,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setArrPlasiyerKodu(List<String>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setArrPlasiyerKodu');
+      name: '_SiparislerViewModelBase.setArrPlasiyerKodu',
+    );
     try {
       return super.setArrPlasiyerKodu(value);
     } finally {
@@ -808,7 +895,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setArrGrupKodu(List<String>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setArrGrupKodu');
+      name: '_SiparislerViewModelBase.setArrGrupKodu',
+    );
     try {
       return super.setArrGrupKodu(value);
     } finally {
@@ -819,7 +907,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setArrKod1(List<String>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setArrKod1');
+      name: '_SiparislerViewModelBase.setArrKod1',
+    );
     try {
       return super.setArrKod1(value);
     } finally {
@@ -830,7 +919,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setArrKod2(List<String>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setArrKod2');
+      name: '_SiparislerViewModelBase.setArrKod2',
+    );
     try {
       return super.setArrKod2(value);
     } finally {
@@ -841,7 +931,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setArrKod3(List<String>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setArrKod3');
+      name: '_SiparislerViewModelBase.setArrKod3',
+    );
     try {
       return super.setArrKod3(value);
     } finally {
@@ -852,7 +943,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setArrKod4(List<String>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setArrKod4');
+      name: '_SiparislerViewModelBase.setArrKod4',
+    );
     try {
       return super.setArrKod4(value);
     } finally {
@@ -863,7 +955,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setArrKod5(List<String>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setArrKod5');
+      name: '_SiparislerViewModelBase.setArrKod5',
+    );
     try {
       return super.setArrKod5(value);
     } finally {
@@ -874,7 +967,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setCariKodu(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setCariKodu');
+      name: '_SiparislerViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -885,7 +979,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setCariTipi(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setCariTipi');
+      name: '_SiparislerViewModelBase.setCariTipi',
+    );
     try {
       return super.setCariTipi(value);
     } finally {
@@ -896,7 +991,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setBaslamaTarihi(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setBaslamaTarihi');
+      name: '_SiparislerViewModelBase.setBaslamaTarihi',
+    );
     try {
       return super.setBaslamaTarihi(value);
     } finally {
@@ -907,7 +1003,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void setBitisTarihi(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.setBitisTarihi');
+      name: '_SiparislerViewModelBase.setBitisTarihi',
+    );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -918,7 +1015,8 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   void resetFilter() {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
-        name: '_SiparislerViewModelBase.resetFilter');
+      name: '_SiparislerViewModelBase.resetFilter',
+    );
     try {
       return super.resetFilter();
     } finally {

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,173 +10,134 @@ part of 'barkod_tanimla_kayitlari_request_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-BarkodTanimlaKayitlariRequestModel _$BarkodTanimlaKayitlariRequestModelFromJson(Map<String, dynamic> json) {
-  return _BarkodTanimlaKayitlariRequestModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BarkodTanimlaKayitlariRequestModel {
-  String? get stokKodu => throw _privateConstructorUsedError;
-  String? get kayitTipi => throw _privateConstructorUsedError;
+
+ String? get stokKodu; String? get kayitTipi;
+/// Create a copy of BarkodTanimlaKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BarkodTanimlaKayitlariRequestModelCopyWith<BarkodTanimlaKayitlariRequestModel> get copyWith => _$BarkodTanimlaKayitlariRequestModelCopyWithImpl<BarkodTanimlaKayitlariRequestModel>(this as BarkodTanimlaKayitlariRequestModel, _$identity);
 
   /// Serializes this BarkodTanimlaKayitlariRequestModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BarkodTanimlaKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BarkodTanimlaKayitlariRequestModelCopyWith<BarkodTanimlaKayitlariRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BarkodTanimlaKayitlariRequestModel&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.kayitTipi, kayitTipi) || other.kayitTipi == kayitTipi));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,stokKodu,kayitTipi);
+
+
+
 }
 
 /// @nodoc
-abstract class $BarkodTanimlaKayitlariRequestModelCopyWith<$Res> {
-  factory $BarkodTanimlaKayitlariRequestModelCopyWith(
-    BarkodTanimlaKayitlariRequestModel value,
-    $Res Function(BarkodTanimlaKayitlariRequestModel) then,
-  ) = _$BarkodTanimlaKayitlariRequestModelCopyWithImpl<$Res, BarkodTanimlaKayitlariRequestModel>;
-  @useResult
-  $Res call({String? stokKodu, String? kayitTipi});
-}
+abstract mixin class $BarkodTanimlaKayitlariRequestModelCopyWith<$Res>  {
+  factory $BarkodTanimlaKayitlariRequestModelCopyWith(BarkodTanimlaKayitlariRequestModel value, $Res Function(BarkodTanimlaKayitlariRequestModel) _then) = _$BarkodTanimlaKayitlariRequestModelCopyWithImpl;
+@useResult
+$Res call({
+ String? stokKodu, String? kayitTipi
+});
 
+
+
+
+}
 /// @nodoc
-class _$BarkodTanimlaKayitlariRequestModelCopyWithImpl<$Res, $Val extends BarkodTanimlaKayitlariRequestModel>
+class _$BarkodTanimlaKayitlariRequestModelCopyWithImpl<$Res>
     implements $BarkodTanimlaKayitlariRequestModelCopyWith<$Res> {
-  _$BarkodTanimlaKayitlariRequestModelCopyWithImpl(this._value, this._then);
+  _$BarkodTanimlaKayitlariRequestModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BarkodTanimlaKayitlariRequestModel _self;
+  final $Res Function(BarkodTanimlaKayitlariRequestModel) _then;
 
-  /// Create a copy of BarkodTanimlaKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? stokKodu = freezed, Object? kayitTipi = freezed}) {
-    return _then(
-      _value.copyWith(
-            stokKodu: freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            kayitTipi: freezed == kayitTipi
-                ? _value.kayitTipi
-                : kayitTipi // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of BarkodTanimlaKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? stokKodu = freezed,Object? kayitTipi = freezed,}) {
+  return _then(_self.copyWith(
+stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,kayitTipi: freezed == kayitTipi ? _self.kayitTipi : kayitTipi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$BarkodTanimlaKayitlariRequestModelImplCopyWith<$Res>
-    implements $BarkodTanimlaKayitlariRequestModelCopyWith<$Res> {
-  factory _$$BarkodTanimlaKayitlariRequestModelImplCopyWith(
-    _$BarkodTanimlaKayitlariRequestModelImpl value,
-    $Res Function(_$BarkodTanimlaKayitlariRequestModelImpl) then,
-  ) = __$$BarkodTanimlaKayitlariRequestModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? stokKodu, String? kayitTipi});
 }
 
-/// @nodoc
-class __$$BarkodTanimlaKayitlariRequestModelImplCopyWithImpl<$Res>
-    extends _$BarkodTanimlaKayitlariRequestModelCopyWithImpl<$Res, _$BarkodTanimlaKayitlariRequestModelImpl>
-    implements _$$BarkodTanimlaKayitlariRequestModelImplCopyWith<$Res> {
-  __$$BarkodTanimlaKayitlariRequestModelImplCopyWithImpl(
-    _$BarkodTanimlaKayitlariRequestModelImpl _value,
-    $Res Function(_$BarkodTanimlaKayitlariRequestModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of BarkodTanimlaKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? stokKodu = freezed, Object? kayitTipi = freezed}) {
-    return _then(
-      _$BarkodTanimlaKayitlariRequestModelImpl(
-        stokKodu: freezed == stokKodu
-            ? _value.stokKodu
-            : stokKodu // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        kayitTipi: freezed == kayitTipi
-            ? _value.kayitTipi
-            : kayitTipi // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$BarkodTanimlaKayitlariRequestModelImpl implements _BarkodTanimlaKayitlariRequestModel {
-  _$BarkodTanimlaKayitlariRequestModelImpl({this.stokKodu, this.kayitTipi});
+class _BarkodTanimlaKayitlariRequestModel implements BarkodTanimlaKayitlariRequestModel {
+   _BarkodTanimlaKayitlariRequestModel({this.stokKodu, this.kayitTipi});
+  factory _BarkodTanimlaKayitlariRequestModel.fromJson(Map<String, dynamic> json) => _$BarkodTanimlaKayitlariRequestModelFromJson(json);
 
-  factory _$BarkodTanimlaKayitlariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BarkodTanimlaKayitlariRequestModelImplFromJson(json);
+@override final  String? stokKodu;
+@override final  String? kayitTipi;
 
-  @override
-  final String? stokKodu;
-  @override
-  final String? kayitTipi;
+/// Create a copy of BarkodTanimlaKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BarkodTanimlaKayitlariRequestModelCopyWith<_BarkodTanimlaKayitlariRequestModel> get copyWith => __$BarkodTanimlaKayitlariRequestModelCopyWithImpl<_BarkodTanimlaKayitlariRequestModel>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BarkodTanimlaKayitlariRequestModelImpl &&
-            (identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu) &&
-            (identical(other.kayitTipi, kayitTipi) || other.kayitTipi == kayitTipi));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, stokKodu, kayitTipi);
-
-  /// Create a copy of BarkodTanimlaKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BarkodTanimlaKayitlariRequestModelImplCopyWith<_$BarkodTanimlaKayitlariRequestModelImpl> get copyWith =>
-      __$$BarkodTanimlaKayitlariRequestModelImplCopyWithImpl<_$BarkodTanimlaKayitlariRequestModelImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BarkodTanimlaKayitlariRequestModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$BarkodTanimlaKayitlariRequestModelToJson(this, );
 }
 
-abstract class _BarkodTanimlaKayitlariRequestModel implements BarkodTanimlaKayitlariRequestModel {
-  factory _BarkodTanimlaKayitlariRequestModel({final String? stokKodu, final String? kayitTipi}) =
-      _$BarkodTanimlaKayitlariRequestModelImpl;
-
-  factory _BarkodTanimlaKayitlariRequestModel.fromJson(Map<String, dynamic> json) =
-      _$BarkodTanimlaKayitlariRequestModelImpl.fromJson;
-
-  @override
-  String? get stokKodu;
-  @override
-  String? get kayitTipi;
-
-  /// Create a copy of BarkodTanimlaKayitlariRequestModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BarkodTanimlaKayitlariRequestModelImplCopyWith<_$BarkodTanimlaKayitlariRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BarkodTanimlaKayitlariRequestModel&&(identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu)&&(identical(other.kayitTipi, kayitTipi) || other.kayitTipi == kayitTipi));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,stokKodu,kayitTipi);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$BarkodTanimlaKayitlariRequestModelCopyWith<$Res> implements $BarkodTanimlaKayitlariRequestModelCopyWith<$Res> {
+  factory _$BarkodTanimlaKayitlariRequestModelCopyWith(_BarkodTanimlaKayitlariRequestModel value, $Res Function(_BarkodTanimlaKayitlariRequestModel) _then) = __$BarkodTanimlaKayitlariRequestModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? stokKodu, String? kayitTipi
+});
+
+
+
+
+}
+/// @nodoc
+class __$BarkodTanimlaKayitlariRequestModelCopyWithImpl<$Res>
+    implements _$BarkodTanimlaKayitlariRequestModelCopyWith<$Res> {
+  __$BarkodTanimlaKayitlariRequestModelCopyWithImpl(this._self, this._then);
+
+  final _BarkodTanimlaKayitlariRequestModel _self;
+  final $Res Function(_BarkodTanimlaKayitlariRequestModel) _then;
+
+/// Create a copy of BarkodTanimlaKayitlariRequestModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? stokKodu = freezed,Object? kayitTipi = freezed,}) {
+  return _then(_BarkodTanimlaKayitlariRequestModel(
+stokKodu: freezed == stokKodu ? _self.stokKodu : stokKodu // ignore: cast_nullable_to_non_nullable
+as String?,kayitTipi: freezed == kayitTipi ? _self.kayitTipi : kayitTipi // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

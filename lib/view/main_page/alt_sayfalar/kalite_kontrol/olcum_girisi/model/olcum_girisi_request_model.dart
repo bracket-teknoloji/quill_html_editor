@@ -4,7 +4,7 @@ part "olcum_girisi_request_model.freezed.dart";
 part "olcum_girisi_request_model.g.dart";
 
 @unfreezed
-class OlcumGirisiRequestModel with _$OlcumGirisiRequestModel {
+sealed class OlcumGirisiRequestModel with _$OlcumGirisiRequestModel {
   factory OlcumGirisiRequestModel({
     int? durum,
     String? belgeTipi,
