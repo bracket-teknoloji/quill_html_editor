@@ -28,11 +28,11 @@ mixin _$StokFiyatOzetiModel {
   String? get cariAdi => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
   double? get fiyat => throw _privateConstructorUsedError;
-  int? get dovizFiyati => throw _privateConstructorUsedError;
+  double? get dovizFiyati => throw _privateConstructorUsedError;
   String? get dovizAdi => throw _privateConstructorUsedError;
   int? get dovizTipi => throw _privateConstructorUsedError;
-  int? get brutFiyat => throw _privateConstructorUsedError;
-  int? get brutDovizFiyati => throw _privateConstructorUsedError;
+  double? get brutFiyat => throw _privateConstructorUsedError;
+  double? get brutDovizFiyati => throw _privateConstructorUsedError;
 
   /// Serializes this StokFiyatOzetiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,11 +56,11 @@ abstract class $StokFiyatOzetiModelCopyWith<$Res> {
     String? cariAdi,
     DateTime? tarih,
     double? fiyat,
-    int? dovizFiyati,
+    double? dovizFiyati,
     String? dovizAdi,
     int? dovizTipi,
-    int? brutFiyat,
-    int? brutDovizFiyati,
+    double? brutFiyat,
+    double? brutDovizFiyati,
   });
 }
 
@@ -125,7 +125,7 @@ class _$StokFiyatOzetiModelCopyWithImpl<$Res, $Val extends StokFiyatOzetiModel>
             dovizFiyati: freezed == dovizFiyati
                 ? _value.dovizFiyati
                 : dovizFiyati // ignore: cast_nullable_to_non_nullable
-                      as int?,
+                      as double?,
             dovizAdi: freezed == dovizAdi
                 ? _value.dovizAdi
                 : dovizAdi // ignore: cast_nullable_to_non_nullable
@@ -137,11 +137,11 @@ class _$StokFiyatOzetiModelCopyWithImpl<$Res, $Val extends StokFiyatOzetiModel>
             brutFiyat: freezed == brutFiyat
                 ? _value.brutFiyat
                 : brutFiyat // ignore: cast_nullable_to_non_nullable
-                      as int?,
+                      as double?,
             brutDovizFiyati: freezed == brutDovizFiyati
                 ? _value.brutDovizFiyati
                 : brutDovizFiyati // ignore: cast_nullable_to_non_nullable
-                      as int?,
+                      as double?,
           )
           as $Val,
     );
@@ -164,11 +164,11 @@ abstract class _$$StokFiyatOzetiModelImplCopyWith<$Res> implements $StokFiyatOze
     String? cariAdi,
     DateTime? tarih,
     double? fiyat,
-    int? dovizFiyati,
+    double? dovizFiyati,
     String? dovizAdi,
     int? dovizTipi,
-    int? brutFiyat,
-    int? brutDovizFiyati,
+    double? brutFiyat,
+    double? brutDovizFiyati,
   });
 }
 
@@ -232,7 +232,7 @@ class __$$StokFiyatOzetiModelImplCopyWithImpl<$Res>
         dovizFiyati: freezed == dovizFiyati
             ? _value.dovizFiyati
             : dovizFiyati // ignore: cast_nullable_to_non_nullable
-                  as int?,
+                  as double?,
         dovizAdi: freezed == dovizAdi
             ? _value.dovizAdi
             : dovizAdi // ignore: cast_nullable_to_non_nullable
@@ -244,11 +244,11 @@ class __$$StokFiyatOzetiModelImplCopyWithImpl<$Res>
         brutFiyat: freezed == brutFiyat
             ? _value.brutFiyat
             : brutFiyat // ignore: cast_nullable_to_non_nullable
-                  as int?,
+                  as double?,
         brutDovizFiyati: freezed == brutDovizFiyati
             ? _value.brutDovizFiyati
             : brutDovizFiyati // ignore: cast_nullable_to_non_nullable
-                  as int?,
+                  as double?,
       ),
     );
   }
@@ -289,15 +289,15 @@ class _$StokFiyatOzetiModelImpl extends _StokFiyatOzetiModel {
   @override
   final double? fiyat;
   @override
-  final int? dovizFiyati;
+  final double? dovizFiyati;
   @override
   final String? dovizAdi;
   @override
   final int? dovizTipi;
   @override
-  final int? brutFiyat;
+  final double? brutFiyat;
   @override
-  final int? brutDovizFiyati;
+  final double? brutDovizFiyati;
 
   /// Create a copy of StokFiyatOzetiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -322,11 +322,11 @@ abstract class _StokFiyatOzetiModel extends StokFiyatOzetiModel {
     final String? cariAdi,
     final DateTime? tarih,
     final double? fiyat,
-    final int? dovizFiyati,
+    final double? dovizFiyati,
     final String? dovizAdi,
     final int? dovizTipi,
-    final int? brutFiyat,
-    final int? brutDovizFiyati,
+    final double? brutFiyat,
+    final double? brutDovizFiyati,
   }) = _$StokFiyatOzetiModelImpl;
   const _StokFiyatOzetiModel._() : super._();
 
@@ -347,15 +347,15 @@ abstract class _StokFiyatOzetiModel extends StokFiyatOzetiModel {
   @override
   double? get fiyat;
   @override
-  int? get dovizFiyati;
+  double? get dovizFiyati;
   @override
   String? get dovizAdi;
   @override
   int? get dovizTipi;
   @override
-  int? get brutFiyat;
+  double? get brutFiyat;
   @override
-  int? get brutDovizFiyati;
+  double? get brutDovizFiyati;
 
   /// Create a copy of StokFiyatOzetiModel
   /// with the given fields replaced by the non-null parameter values.

@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/kalem_ekle/model/stok_fiyati_model.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/model/stok_fiyat_ozeti_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/model/stok_fiyat_ozeti_request_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
@@ -29,6 +31,14 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   StokListesiModel? model;
+
+  @observable
+  ObservableList<StokFiyatOzetiModel>? stokFiyatlari;
+
+  @action
+  void setStokFiyatOzetiListesi(List<StokFiyatOzetiModel>? list) {
+    stokFiyatlari = list?.asObservable();
+  }
 
   @action
   void setModel(StokListesiModel? value) {
@@ -293,5 +303,18 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
       return result.dataList;
     }
     return null;
+  }
+
+  @action
+  Future<void> getFiyatOzeti() async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getStokFiyatOzeti,
+      bodyModel: const StokFiyatOzetiModel(),
+      queryParameters: StokFiyatOzetiRequestModel.fromStokListesiModel(
+        model ?? StokListesiModel(stokKodu: kalemModel.stokKodu, stokAdi: kalemModel.stokAdi),
+      ).copyWith(cariKodu: BaseSiparisEditModel.instance.cariKodu).toJson(),
+    );
+    if (!result.isSuccess) return;
+    setStokFiyatOzetiListesi(result.dataList);
   }
 }

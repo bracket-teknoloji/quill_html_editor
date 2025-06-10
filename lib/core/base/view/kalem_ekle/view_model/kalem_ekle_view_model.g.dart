@@ -79,6 +79,22 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
     });
   }
 
+  late final _$stokFiyatlariAtom =
+      Atom(name: '_KalemEkleViewModelBase.stokFiyatlari', context: context);
+
+  @override
+  ObservableList<StokFiyatOzetiModel>? get stokFiyatlari {
+    _$stokFiyatlariAtom.reportRead();
+    return super.stokFiyatlari;
+  }
+
+  @override
+  set stokFiyatlari(ObservableList<StokFiyatOzetiModel>? value) {
+    _$stokFiyatlariAtom.reportWrite(value, super.stokFiyatlari, () {
+      super.stokFiyatlari = value;
+    });
+  }
+
   late final _$kalemModelAtom =
       Atom(name: '_KalemEkleViewModelBase.kalemModel', context: context);
 
@@ -95,6 +111,14 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
     });
   }
 
+  late final _$getFiyatOzetiAsyncAction =
+      AsyncAction('_KalemEkleViewModelBase.getFiyatOzeti', context: context);
+
+  @override
+  Future<void> getFiyatOzeti() {
+    return _$getFiyatOzetiAsyncAction.run(() => super.getFiyatOzeti());
+  }
+
   late final _$_KalemEkleViewModelBaseActionController =
       ActionController(name: '_KalemEkleViewModelBase', context: context);
 
@@ -104,6 +128,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
         name: '_KalemEkleViewModelBase.setShowDovizBilgileri');
     try {
       return super.setShowDovizBilgileri(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setStokFiyatOzetiListesi(List<StokFiyatOzetiModel>? list) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setStokFiyatOzetiListesi');
+    try {
+      return super.setStokFiyatOzetiListesi(list);
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -643,6 +678,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
     return '''
 showDovizBilgileri: ${showDovizBilgileri},
 model: ${model},
+stokFiyatlari: ${stokFiyatlari},
 kalemModel: ${kalemModel},
 dovizliMi: ${dovizliMi},
 dovizAdi: ${dovizAdi},

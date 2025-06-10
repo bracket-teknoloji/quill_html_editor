@@ -15,11 +15,11 @@ class StokFiyatOzetiModel with _$StokFiyatOzetiModel, NetworkManagerMixin {
     String? cariAdi,
     DateTime? tarih,
     double? fiyat,
-    int? dovizFiyati,
+    double? dovizFiyati,
     String? dovizAdi,
     int? dovizTipi,
-    int? brutFiyat,
-    int? brutDovizFiyati,
+    double? brutFiyat,
+    double? brutDovizFiyati,
   }) = _StokFiyatOzetiModel;
   const StokFiyatOzetiModel._();
 

@@ -18,11 +18,11 @@ _$StokFiyatOzetiModelImpl _$$StokFiyatOzetiModelImplFromJson(
           ? null
           : DateTime.parse(json['TARIH'] as String),
       fiyat: (json['FIYAT'] as num?)?.toDouble(),
-      dovizFiyati: (json['DOVIZ_FIYATI'] as num?)?.toInt(),
+      dovizFiyati: (json['DOVIZ_FIYATI'] as num?)?.toDouble(),
       dovizAdi: json['DOVIZ_ADI'] as String?,
       dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
-      brutFiyat: (json['BRUT_FIYAT'] as num?)?.toInt(),
-      brutDovizFiyati: (json['BRUT_DOVIZ_FIYATI'] as num?)?.toInt(),
+      brutFiyat: (json['BRUT_FIYAT'] as num?)?.toDouble(),
+      brutDovizFiyati: (json['BRUT_DOVIZ_FIYATI'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$StokFiyatOzetiModelImplToJson(

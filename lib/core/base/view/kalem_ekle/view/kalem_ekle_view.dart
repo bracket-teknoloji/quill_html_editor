@@ -400,22 +400,28 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             ),
                         ].where((element) => element is! SizedBox).toList(),
                       ),
-                      Card(
-                        color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                        child: Center(
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                const TextSpan(text: "Son Fiyat: "),
+                      if (yetkiController.siparisMSSonFiyatGoster &&
+                          editTipi.musteriMi &&
+                          viewModel.stokFiyatlari != null)
+                        Card(
+                          color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                          child: Center(
+                            child: Observer(
+                              builder: (_) => Text.rich(
                                 TextSpan(
-                                  text: "0,00 $mainCurrency",
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                  children: [
+                                    const TextSpan(text: "Son Fiyat: "),
+                                    TextSpan(
+                                      text:
+                                          "${(viewModel.stokFiyatlari?.firstWhereOrNull((element) => element.tip == "Satış 1")?.fiyat ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency",
+                                      style: const TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ).paddingOnly(top: UIHelper.lowSize),
                             ),
-                          ).paddingOnly(top: UIHelper.lowSize),
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 ),
@@ -1406,6 +1412,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         snackBarText = "Koşul uygulandı:\n$snackBarText";
         dialogManager.showInfoSnackBar(snackBarText);
       }
+    }
+
+    if (yetkiController.siparisMSSonFiyatGoster && editTipi.musteriMi) {
+      await viewModel.getFiyatOzeti();
     }
   }
 
