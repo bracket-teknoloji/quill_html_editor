@@ -559,6 +559,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
                           context,
                           viewModel.model.ozelKod1,
+                          model.getEditTipiEnum,
                         );
                         if (result != null) {
                           _ozelKod1Controller.text = result.aciklama ?? "";
@@ -578,6 +579,9 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       },
                     ),
                   ),
+
+                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                    widget.model.baseEditEnum != BaseEditEnum.taslak)
                 Expanded(
                   child: CustomTextField(
                     labelText: "Özel Kod 2",

@@ -1123,10 +1123,14 @@ final class BottomSheetDialogManager {
     );
   }
 
-  Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(BuildContext context, String? groupValue) async {
+  Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(
+    BuildContext context,
+    String? groupValue,
+    EditTipiEnum? editTipi,
+  ) async {
     final List<ListOzelKodTum> list =
         _paramModel?.listOzelKodTum
-            ?.where((element) => element.belgeTipi == "S" && element.fiyatSirasi != 0)
+            ?.where((element) => element.belgeTipi == (editTipi?.satisMi == true ? "S" : "A") && element.fiyatSirasi != 0)
             .toList() ??
         <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(

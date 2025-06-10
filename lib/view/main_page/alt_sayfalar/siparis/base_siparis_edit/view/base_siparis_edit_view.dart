@@ -183,6 +183,8 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
           }
           BaseSiparisEditModel.instance
             ..tag = "FaturaModel"
+            ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
+            ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
             ..vadeGunu = cariModel?.vadeGunu
             ..vadeTarihi = DateTime.now().add(Duration(days: cariModel?.vadeGunu ?? 0)).dateTimeWithoutTime
             ..siparisTipi = model.editTipiEnum
@@ -195,6 +197,18 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
             ..kosulKodu = cariModel?.kosulKodu
             ..belgeTipi = int.tryParse(cariModel?.odemeTipi ?? "0");
         }
+      }
+      if (!yetkiController.ozelKod1TablodanMi(widget.model.editTipiEnum)) {
+        final List<ListOzelKodTum> list =
+            parametreModel.listOzelKodTum
+                ?.where(
+                  (element) =>
+                      element.belgeTipi == (widget.model.editTipiEnum?.satisMi == true ? "S" : "A") &&
+                      element.fiyatSirasi != 0,
+                )
+                .toList() ??
+            <ListOzelKodTum>[];
+        BaseSiparisEditModel.instance.ozelKod1 = list.firstOrNull?.kod;
       }
       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
         BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
@@ -214,6 +228,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
         ..pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
     });
+
     super.initState();
   }
 

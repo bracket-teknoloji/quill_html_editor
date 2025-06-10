@@ -678,6 +678,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
                         context,
                         viewModel.model.ozelKod1,
+                        model.getEditTipiEnum,
                       );
                       if (result != null) {
                         _ozelKod1Controller.text = result.aciklama ?? "";

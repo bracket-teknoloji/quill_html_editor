@@ -219,7 +219,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     ..setCariAdi(cariModel.cariAdi)
                     ..setKosulKodu(cariModel.kosulKodu)
                     ..setCariKodu(cariModel.cariKodu);
-                    kosulController.text = cariModel.kosulKodu ?? "";
+                  kosulController.text = cariModel.kosulKodu ?? "";
                   belgeNoController.clear();
                   await getBelgeNo();
                 }
@@ -495,7 +495,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (yetkiController.satisOzelKod1AktifMi)
+                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false))
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,
@@ -510,6 +510,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
                           context,
                           viewModel.model.ozelKod1,
+                          model.getEditTipiEnum,
                         );
                         if (result != null) {
                           ozelKod1Controller.text = result.aciklama ?? "";
@@ -529,7 +530,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       },
                     ),
                   ),
-                if (yetkiController.satisOzelKod2AktifMi)
+                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false))
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,

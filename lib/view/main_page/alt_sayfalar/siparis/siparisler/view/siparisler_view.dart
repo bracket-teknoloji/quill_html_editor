@@ -305,6 +305,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                               final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
                                 context,
                                 viewModel.ozelKod1,
+                                widget.widgetModel.editTipiEnum,
                               );
                               if (result != null) {
                                 ozelKod1Controller.text = result.aciklama ?? "";

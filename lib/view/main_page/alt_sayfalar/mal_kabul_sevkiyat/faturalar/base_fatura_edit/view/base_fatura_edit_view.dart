@@ -289,7 +289,11 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
         if (!yetkiController.ozelKod1TablodanMi(widget.model.editTipiEnum)) {
           final List<ListOzelKodTum> list =
               parametreModel.listOzelKodTum
-                  ?.where((element) => element.belgeTipi == "S" && element.fiyatSirasi != 0)
+                  ?.where(
+                    (element) =>
+                        element.belgeTipi == (widget.model.editTipiEnum?.satisMi == true ? "S" : "A") &&
+                        element.fiyatSirasi != 0,
+                  )
                   .toList() ??
               <ListOzelKodTum>[];
           BaseSiparisEditModel.instance.ozelKod1 = list.firstOrNull?.kod;
