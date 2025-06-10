@@ -9,8 +9,10 @@ part of 'payker_tahsilat_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
-  late final _$isScrollDownAtom =
-      Atom(name: '_PaykerTahsilatViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.isScrollDown',
+    context: context,
+  );
 
   @override
   bool get isScrollDown {
@@ -25,8 +27,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$cardNumberAtom =
-      Atom(name: '_PaykerTahsilatViewModelBase.cardNumber', context: context);
+  late final _$cardNumberAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.cardNumber',
+    context: context,
+  );
 
   @override
   String get cardNumber {
@@ -41,8 +45,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$expiryDateAtom =
-      Atom(name: '_PaykerTahsilatViewModelBase.expiryDate', context: context);
+  late final _$expiryDateAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.expiryDate',
+    context: context,
+  );
 
   @override
   String get expiryDate {
@@ -58,7 +64,9 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
   }
 
   late final _$cardHolderNameAtom = Atom(
-      name: '_PaykerTahsilatViewModelBase.cardHolderName', context: context);
+    name: '_PaykerTahsilatViewModelBase.cardHolderName',
+    context: context,
+  );
 
   @override
   String get cardHolderName {
@@ -73,8 +81,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$cvvCodeAtom =
-      Atom(name: '_PaykerTahsilatViewModelBase.cvvCode', context: context);
+  late final _$cvvCodeAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.cvvCode',
+    context: context,
+  );
 
   @override
   String get cvvCode {
@@ -89,8 +99,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$showBackViewAtom =
-      Atom(name: '_PaykerTahsilatViewModelBase.showBackView', context: context);
+  late final _$showBackViewAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.showBackView',
+    context: context,
+  );
 
   @override
   bool get showBackView {
@@ -105,8 +117,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$isExpandedAtom =
-      Atom(name: '_PaykerTahsilatViewModelBase.isExpanded', context: context);
+  late final _$isExpandedAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.isExpanded',
+    context: context,
+  );
 
   @override
   bool get isExpanded {
@@ -121,8 +135,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$_PaykerTahsilatViewModelBaseActionController =
-      ActionController(name: '_PaykerTahsilatViewModelBase', context: context);
+  late final _$_PaykerTahsilatViewModelBaseActionController = ActionController(
+    name: '_PaykerTahsilatViewModelBase',
+    context: context,
+  );
 
   @override
   void setScrollDown(bool value) {
