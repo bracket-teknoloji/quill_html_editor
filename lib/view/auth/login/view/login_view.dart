@@ -6,7 +6,7 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/login_dialog_model.dart";
 import "package:picker/core/components/wave/login_wave_widget.dart";

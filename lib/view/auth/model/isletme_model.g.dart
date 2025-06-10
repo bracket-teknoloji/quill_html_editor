@@ -8,7 +8,7 @@ part of 'isletme_model.dart';
 
 class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
   @override
-  final int typeId = 107;
+  final typeId = 107;
 
   @override
   IsletmeModel read(BinaryReader reader) {
@@ -18,8 +18,8 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
     };
     return IsletmeModel(
       sirket: fields[0] as String?,
-      isletmeKodu: fields[1] as int?,
-      subeKodu: fields[2] as int?,
+      isletmeKodu: (fields[1] as num?)?.toInt(),
+      subeKodu: (fields[2] as num?)?.toInt(),
       subeAdi: fields[3] as String?,
       isletmeAdi: fields[4] as String?,
       lokalDepoAktif: fields[5] as bool?,
@@ -87,22 +87,22 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
 // **************************************************************************
 
 IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) => IsletmeModel(
-      sirket: json['SIRKET'] as String?,
-      isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
-      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
-      subeAdi: json['SUBE_ADI'] as String?,
-      isletmeAdi: json['ISLETME_ADI'] as String?,
-      lokalDepoAktif: json['LOKAL_DEPO_AKTIF'] as bool?,
-      merkezmi: json['MERKEZMI'] as String?,
-      adres: json['ADRES'] as String?,
-      telefon: json['TELEFON'] as String?,
-      faks: json['FAKS'] as String?,
-      email: json['EMAIL'] as String?,
-      ilAdi: json['IL_ADI'] as String?,
-      ilce: json['ILCE'] as String?,
-      vergiNumarasi: json['VERGI_NUMARASI'] as String?,
-      vergiDairesi: json['VERGI_DAIRESI'] as String?,
-    );
+  sirket: json['SIRKET'] as String?,
+  isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
+  subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
+  subeAdi: json['SUBE_ADI'] as String?,
+  isletmeAdi: json['ISLETME_ADI'] as String?,
+  lokalDepoAktif: json['LOKAL_DEPO_AKTIF'] as bool?,
+  merkezmi: json['MERKEZMI'] as String?,
+  adres: json['ADRES'] as String?,
+  telefon: json['TELEFON'] as String?,
+  faks: json['FAKS'] as String?,
+  email: json['EMAIL'] as String?,
+  ilAdi: json['IL_ADI'] as String?,
+  ilce: json['ILCE'] as String?,
+  vergiNumarasi: json['VERGI_NUMARASI'] as String?,
+  vergiDairesi: json['VERGI_DAIRESI'] as String?,
+);
 
 Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) =>
     <String, dynamic>{

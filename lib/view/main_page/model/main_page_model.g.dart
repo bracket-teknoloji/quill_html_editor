@@ -8,7 +8,7 @@ part of 'main_page_model.dart';
 
 class MainPageModelAdapter extends TypeAdapter<MainPageModel> {
   @override
-  final int typeId = 100;
+  final typeId = 100;
 
   @override
   MainPageModel read(BinaryReader reader) {
@@ -62,20 +62,23 @@ MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
           : UserModel.fromJson(json['UserModel'] as Map<String, dynamic>)
       ..serviceVersion = json['ServiceVersion'] as String?
       ..langVersion = json['LangVersion'] as String?
-      ..sirketModel =
-          SirketModel.fromJson(json['SirketModel'] as Map<String, dynamic>)
-      ..menuList =
-          (json['MenuList'] as List<dynamic>?)?.map((e) => e as String).toList()
-      ..paramModel =
-          ParamModel.fromJson(json['ParamModel'] as Map<String, dynamic>);
+      ..sirketModel = SirketModel.fromJson(
+        json['SirketModel'] as Map<String, dynamic>,
+      )
+      ..menuList = (json['MenuList'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+      ..paramModel = ParamModel.fromJson(
+        json['ParamModel'] as Map<String, dynamic>,
+      );
 
-Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) =>
-    <String, dynamic>{
-      if (instance.userModel?.toJson() case final value?) 'UserModel': value,
-      if (instance.serviceVersion case final value?) 'ServiceVersion': value,
-      if (instance.langVersion case final value?) 'LangVersion': value,
-      if (instance.sirketModel?.toJson() case final value?)
-        'SirketModel': value,
-      if (instance.menuList case final value?) 'MenuList': value,
-      if (instance.paramModel?.toJson() case final value?) 'ParamModel': value,
-    };
+Map<String, dynamic> _$MainPageModelToJson(
+  MainPageModel instance,
+) => <String, dynamic>{
+  if (instance.userModel?.toJson() case final value?) 'UserModel': value,
+  if (instance.serviceVersion case final value?) 'ServiceVersion': value,
+  if (instance.langVersion case final value?) 'LangVersion': value,
+  if (instance.sirketModel?.toJson() case final value?) 'SirketModel': value,
+  if (instance.menuList case final value?) 'MenuList': value,
+  if (instance.paramModel?.toJson() case final value?) 'ParamModel': value,
+};

@@ -1,6 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:get/get.dart";
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../kalite_kontrol/olcum_belge_edit/model/olcum_dat_response_model.dart";

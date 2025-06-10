@@ -6,7 +6,7 @@ import "package:awesome_dialog/awesome_dialog.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:location/location.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";

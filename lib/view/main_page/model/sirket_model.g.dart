@@ -8,7 +8,7 @@ part of 'sirket_model.dart';
 
 class SirketModelAdapter extends TypeAdapter<SirketModel> {
   @override
-  final int typeId = 102;
+  final typeId = 102;
 
   @override
   SirketModel read(BinaryReader reader) {
@@ -19,7 +19,7 @@ class SirketModelAdapter extends TypeAdapter<SirketModel> {
     return SirketModel()
       ..sirket = fields[0] as String?
       ..devsirket = fields[1] as String?
-      ..yil = fields[2] as int?
+      ..yil = (fields[2] as num?)?.toInt()
       ..isDevredilmis = fields[3] as bool?;
   }
 

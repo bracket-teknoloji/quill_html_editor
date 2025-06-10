@@ -1,5 +1,5 @@
 import "package:get/get.dart";
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 

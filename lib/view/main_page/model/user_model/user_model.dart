@@ -1,4 +1,4 @@
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 

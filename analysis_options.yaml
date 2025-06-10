@@ -10,7 +10,6 @@
 include: package:flutter_lints/flutter.yaml
 analyzer:
   enable-experiment:
-    - macros
     - null-aware-elements
   exclude:
     - "**/*.g.dart"

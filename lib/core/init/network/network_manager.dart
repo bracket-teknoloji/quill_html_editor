@@ -847,6 +847,24 @@ final class NetworkManager {
     }
   }
 
+  Future<void> getInstallments({String? cariKodu, double? amount}) async {
+    final result = await dioGet<BaseEmptyModel>(
+      path: ApiUrls.getBankInstallments,
+      bodyModel: BaseEmptyModel(),
+      showLoading: true,
+      queryParameters: {
+        "firmID": cariKodu,
+        "value": amount,
+      },
+    );
+    if (result.isSuccess) {
+      // Handle successful retrieval of installments
+    } else {
+      // Handle error
+      await DialogManager().showAlertDialog(result.message ?? "Bilinmeyen bir hata oluştu.");
+    }
+  }
+
   static String get getBaseUrl {
     final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
     return "${CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? (account?.wsWan ?? account?.wsLan ?? "https://bracket.brckt.net/Picker/api") : account?.wsLan}/";

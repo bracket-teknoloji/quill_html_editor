@@ -8,7 +8,7 @@ part of 'yazici_model.dart';
 
 class YaziciModelAdapter extends TypeAdapter<YaziciModel> {
   @override
-  final int typeId = 5;
+  final typeId = 5;
 
   @override
   YaziciModel read(BinaryReader reader) {
@@ -18,7 +18,7 @@ class YaziciModelAdapter extends TypeAdapter<YaziciModel> {
     };
     return YaziciModel(
       yaziciAdi: fields[0] as String?,
-      macAdresi: fields[1] as String,
+      macAdresi: fields[1] == null ? '' : fields[1] as String,
       yaziciTipi: fields[2] as YaziciTipi?,
       aciklama: fields[3] as String?,
       yazdirmaTipi: fields[4] as String?,
@@ -54,7 +54,7 @@ class YaziciModelAdapter extends TypeAdapter<YaziciModel> {
 
 class YaziciTipiAdapter extends TypeAdapter<YaziciTipi> {
   @override
-  final int typeId = 6;
+  final typeId = 6;
 
   @override
   YaziciTipi read(BinaryReader reader) {
@@ -85,28 +85,20 @@ class YaziciTipiAdapter extends TypeAdapter<YaziciTipi> {
     switch (obj) {
       case YaziciTipi.sewooEtiket:
         writer.writeByte(0);
-        break;
       case YaziciTipi.sewooFis:
         writer.writeByte(1);
-        break;
       case YaziciTipi.tscEtiket:
         writer.writeByte(2);
-        break;
       case YaziciTipi.tscFis:
         writer.writeByte(3);
-        break;
       case YaziciTipi.genelBTYazici:
         writer.writeByte(4);
-        break;
       case YaziciTipi.genelEscPosDestekliYazici:
         writer.writeByte(5);
-        break;
       case YaziciTipi.genelCPCLDestekliYazici:
         writer.writeByte(6);
-        break;
       case YaziciTipi.zebraFisYazici:
         writer.writeByte(7);
-        break;
     }
   }
 

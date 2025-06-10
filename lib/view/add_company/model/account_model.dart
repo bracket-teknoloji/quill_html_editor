@@ -7,7 +7,7 @@ import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:device_info_plus/device_info_plus.dart";
 import "package:flutter/foundation.dart" hide Key;
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:location/location.dart";

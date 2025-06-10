@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";

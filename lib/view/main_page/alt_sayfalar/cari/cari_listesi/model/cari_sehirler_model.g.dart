@@ -8,7 +8,7 @@ part of 'cari_sehirler_model.dart';
 
 class CariSehirlerModelAdapter extends TypeAdapter<CariSehirlerModel> {
   @override
-  final int typeId = 7;
+  final typeId = 7;
 
   @override
   CariSehirlerModel read(BinaryReader reader) {

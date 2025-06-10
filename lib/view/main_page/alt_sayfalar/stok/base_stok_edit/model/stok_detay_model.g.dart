@@ -8,7 +8,7 @@ part of 'stok_detay_model.dart';
 
 class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
   @override
-  final int typeId = 196;
+  final typeId = 196;
 
   @override
   _$SeriListImpl read(BinaryReader reader) {
@@ -18,16 +18,16 @@ class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
     };
     return _$SeriListImpl(
       stokKodu: fields[0] as String?,
-      depoKodu: fields[1] as int?,
-      miktar: fields[2] as double?,
+      depoKodu: (fields[1] as num?)?.toInt(),
+      miktar: (fields[2] as num?)?.toDouble(),
       seriNo: fields[3] as String?,
-      inckeyno: fields[4] as int?,
+      inckeyno: (fields[4] as num?)?.toInt(),
       depoTanimi: fields[5] as String?,
-      hareketId: fields[6] as int?,
+      hareketId: (fields[6] as num?)?.toInt(),
       barkod: fields[7] as String?,
       gckod: fields[8] as String?,
       seri1: fields[9] as String?,
-      requestVersion: fields[10] as int?,
+      requestVersion: (fields[10] as num?)?.toInt(),
       tempBarkod: fields[11] as String?,
       seri2: fields[12] as String?,
       seri3: fields[13] as String?,
@@ -40,7 +40,7 @@ class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
       stokAdi: fields[20] as String?,
       hucreKodu: fields[21] as String?,
       tarih: fields[22] as DateTime?,
-      refId: fields[23] as int?,
+      refId: (fields[23] as num?)?.toInt(),
       aciklama1: fields[24] as String?,
     );
   }
@@ -149,10 +149,12 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..stokKodu = json['STOK_KODU'] as String?
   ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..dovizKodu = json['DOVIZ_KODU'] as String?
-  ..bastar =
-      json['BASTAR'] == null ? null : DateTime.parse(json['BASTAR'] as String)
-  ..bittar =
-      json['BITTAR'] == null ? null : DateTime.parse(json['BITTAR'] as String)
+  ..bastar = json['BASTAR'] == null
+      ? null
+      : DateTime.parse(json['BASTAR'] as String)
+  ..bittar = json['BITTAR'] == null
+      ? null
+      : DateTime.parse(json['BITTAR'] as String)
   ..gecerli = json['GECERLI'] as String?
   ..fiyat1 = (json['FIYAT1'] as num?)?.toDouble()
   ..fiyat2 = (json['FIYAT2'] as num?)?.toDouble()
@@ -160,18 +162,18 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..fiyat4 = (json['FIYAT4'] as num?)?.toDouble();
 
 Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
-      if (instance.aS case final value?) 'A_S': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
-      if (instance.bastar?.toIso8601String() case final value?) 'BASTAR': value,
-      if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
-      if (instance.gecerli case final value?) 'GECERLI': value,
-      if (instance.fiyat1 case final value?) 'FIYAT1': value,
-      if (instance.fiyat2 case final value?) 'FIYAT2': value,
-      if (instance.fiyat3 case final value?) 'FIYAT3': value,
-      if (instance.fiyat4 case final value?) 'FIYAT4': value,
-    };
+  if (instance.aS case final value?) 'A_S': value,
+  if (instance.stokKodu case final value?) 'STOK_KODU': value,
+  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+  if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
+  if (instance.bastar?.toIso8601String() case final value?) 'BASTAR': value,
+  if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
+  if (instance.gecerli case final value?) 'GECERLI': value,
+  if (instance.fiyat1 case final value?) 'FIYAT1': value,
+  if (instance.fiyat2 case final value?) 'FIYAT2': value,
+  if (instance.fiyat3 case final value?) 'FIYAT3': value,
+  if (instance.fiyat4 case final value?) 'FIYAT4': value,
+};
 
 _$SeriListImpl _$$SeriListImplFromJson(Map<String, dynamic> json) =>
     _$SeriListImpl(

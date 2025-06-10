@@ -8,7 +8,7 @@ part of 'login_dialog_model.dart';
 
 class LoginDialogModelAdapter extends TypeAdapter<LoginDialogModel> {
   @override
-  final int typeId = 68;
+  final typeId = 68;
 
   @override
   LoginDialogModel read(BinaryReader reader) {

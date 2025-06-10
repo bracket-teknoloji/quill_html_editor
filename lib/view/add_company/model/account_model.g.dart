@@ -8,7 +8,7 @@ part of 'account_model.dart';
 
 class AccountModelAdapter extends TypeAdapter<AccountModel> {
   @override
-  final int typeId = 73;
+  final typeId = 73;
 
   @override
   AccountModel read(BinaryReader reader) {
@@ -19,8 +19,8 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
     return AccountModel()
       ..isim = fields[0] as String?
       ..admin = fields[1] as String?
-      ..aktifIsletmeKodu = fields[2] as int?
-      ..aktifSubeKodu = fields[3] as int?
+      ..aktifIsletmeKodu = (fields[2] as num?)?.toInt()
+      ..aktifSubeKodu = (fields[3] as num?)?.toInt()
       ..aktifVeritabani = fields[4] as String?
       ..cihazSistemVersiyonu = fields[5] as String?
       ..apkDerlemeTarihi = fields[6] as DateTime?
@@ -32,7 +32,7 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..gDsn = fields[12] as String?
       ..cihazTarihi = fields[13] as String?
       ..cihazTarihiUtc = fields[14] as DateTime?
-      ..cihazTimeZoneDakika = fields[15] as int?
+      ..cihazTimeZoneDakika = (fields[15] as num?)?.toInt()
       ..fcmToken = fields[16] as String?
       ..uyeEmail = fields[17] as String?
       ..uyeSifre = fields[18] as String?
@@ -50,14 +50,14 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..paketAdi = fields[30] as String?
       ..paramMap = (fields[31] as Map?)?.cast<String, dynamic>()
       ..platform = fields[32] as String?
-      ..requestVersion = fields[33] as int?
+      ..requestVersion = (fields[33] as num?)?.toInt()
       ..soyadi = fields[34] as String?
       ..serviceVersion = fields[35] as String?
       ..tzInfo = fields[36] as String?
       ..uygulamaDili = fields[37] as String?
       ..uygulamaGuncellemeTarihi = fields[38] as String?
       ..uygulamaSurumu = fields[39] as String?
-      ..uygulamaSurumKodu = fields[40] as int?
+      ..uygulamaSurumKodu = (fields[40] as num?)?.toInt()
       ..uzakErisim = fields[41] as String?
       ..wifidenBagli = fields[42] as String?
       ..qrData = fields[43] as String?
@@ -264,70 +264,69 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..konumEnlem = json['KONUM_ENLEM'] as String?
   ..konumBoylam = json['KONUM_BOYLAM'] as String?;
 
-Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
-    <String, dynamic>{
-      if (instance.isim case final value?) 'ISIM': value,
-      if (instance.admin case final value?) 'ADMIN': value,
-      if (instance.aktifIsletmeKodu case final value?)
-        'AKTIF_ISLETME_KODU': value,
-      if (instance.aktifSubeKodu case final value?) 'AKTIF_SUBE_KODU': value,
-      if (instance.aktifVeritabani case final value?) 'AKTIF_VERITABANI': value,
-      if (instance.cihazSistemVersiyonu case final value?)
-        'CIHAZ_SISTEM_VERSIYONU': value,
-      if (instance.apkDerlemeTarihi?.toIso8601String() case final value?)
-        'APK_DERLEME_TARIHI': value,
-      if (instance.cihazDili case final value?) 'CIHAZ_DILI': value,
-      if (instance.gCid case final value?) 'G_CID': value,
-      if (instance.cihazMarkasi case final value?) 'CIHAZ_MARKASI': value,
-      if (instance.cihazKimligi case final value?) 'CIHAZ_KIMLIGI': value,
-      if (instance.cihazModeli case final value?) 'CIHAZ_MODELI': value,
-      if (instance.gDsn case final value?) 'G_DSN': value,
-      if (instance.cihazTarihi case final value?) 'CIHAZ_TARIHI': value,
-      if (instance.cihazTarihiUtc?.toIso8601String() case final value?)
-        'CIHAZ_TARIHI_UTC': value,
-      if (instance.cihazTimeZoneDakika case final value?)
-        'CIHAZ_TIME_ZONE_DAKIKA': value,
-      if (instance.fcmToken case final value?) 'FCM_TOKEN': value,
-      if (instance.uyeEmail case final value?) 'UYE_EMAIL': value,
-      if (instance.uyeSifre case final value?) 'UYE_SIFRE': value,
-      if (instance.konumDate?.toIso8601String() case final value?)
-        'KONUM_DATE': value,
-      if (instance.konumTarihi case final value?) 'KONUM_TARIHI': value,
-      if (instance.gKa case final value?) 'G_KA': value,
-      if (instance.gBo case final value?) 'G_BO': value,
-      if (instance.gEn case final value?) 'G_EN': value,
-      if (instance.kullaniciAdi case final value?) 'KULLANICI_ADI': value,
-      if (instance.kuruluHesaplar case final value?) 'KURULU_HESAPLAR': value,
-      if (instance.localIp case final value?) 'LOCAL_IP': value,
-      if (instance.ozelCihazKimligi case final value?)
-        'OZEL_CIHAZ_KIMLIGI': value,
-      if (instance.offline case final value?) 'OFFLINE': value,
-      if (instance.simOperator case final value?) 'SIM_OPERATOR': value,
-      if (instance.paketAdi case final value?) 'PAKET_ADI': value,
-      if (instance.paramMap case final value?) 'PARAM_MAP': value,
-      if (instance.platform case final value?) 'PLATFORM': value,
-      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
-      if (instance.soyadi case final value?) 'SOYADI': value,
-      if (instance.serviceVersion case final value?) 'SERVICE_VERSION': value,
-      if (instance.tzInfo case final value?) 'TZ_INFO': value,
-      if (instance.uygulamaDili case final value?) 'UYGULAMA_DILI': value,
-      if (instance.uygulamaGuncellemeTarihi case final value?)
-        'UYGULAMA_GUNCELLEME_TARIHI': value,
-      if (instance.uygulamaSurumu case final value?) 'UYGULAMA_SURUMU': value,
-      if (instance.uygulamaSurumKodu case final value?)
-        'UYGULAMA_SURUM_KODU': value,
-      if (instance.uzakErisim case final value?) 'UZAK_ERISIM': value,
-      if (instance.wifidenBagli case final value?) 'WIFIDEN_BAGLI': value,
-      if (instance.qrData case final value?) 'QR_DATA': value,
-      if (instance.debugMu case final value?) 'DEBUG_MU': value,
-      if (instance.adi case final value?) 'ADI': value,
-      if (instance.wifiAdi case final value?) 'WIFI_ADI': value,
-      if (instance.debug case final value?) 'DEBUG': value,
-      if (instance.girisTarihi?.toIso8601String() case final value?)
-        'GIRIS_TARIHI': value,
-      if (instance.sonKullanimTarihi?.toIso8601String() case final value?)
-        'SON_KULLANIM_TARIHI': value,
-      if (instance.onayli case final value?) 'ONAYLI': value,
-      if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
-      if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
-    };
+Map<String, dynamic> _$AccountModelToJson(
+  AccountModel instance,
+) => <String, dynamic>{
+  if (instance.isim case final value?) 'ISIM': value,
+  if (instance.admin case final value?) 'ADMIN': value,
+  if (instance.aktifIsletmeKodu case final value?) 'AKTIF_ISLETME_KODU': value,
+  if (instance.aktifSubeKodu case final value?) 'AKTIF_SUBE_KODU': value,
+  if (instance.aktifVeritabani case final value?) 'AKTIF_VERITABANI': value,
+  if (instance.cihazSistemVersiyonu case final value?)
+    'CIHAZ_SISTEM_VERSIYONU': value,
+  if (instance.apkDerlemeTarihi?.toIso8601String() case final value?)
+    'APK_DERLEME_TARIHI': value,
+  if (instance.cihazDili case final value?) 'CIHAZ_DILI': value,
+  if (instance.gCid case final value?) 'G_CID': value,
+  if (instance.cihazMarkasi case final value?) 'CIHAZ_MARKASI': value,
+  if (instance.cihazKimligi case final value?) 'CIHAZ_KIMLIGI': value,
+  if (instance.cihazModeli case final value?) 'CIHAZ_MODELI': value,
+  if (instance.gDsn case final value?) 'G_DSN': value,
+  if (instance.cihazTarihi case final value?) 'CIHAZ_TARIHI': value,
+  if (instance.cihazTarihiUtc?.toIso8601String() case final value?)
+    'CIHAZ_TARIHI_UTC': value,
+  if (instance.cihazTimeZoneDakika case final value?)
+    'CIHAZ_TIME_ZONE_DAKIKA': value,
+  if (instance.fcmToken case final value?) 'FCM_TOKEN': value,
+  if (instance.uyeEmail case final value?) 'UYE_EMAIL': value,
+  if (instance.uyeSifre case final value?) 'UYE_SIFRE': value,
+  if (instance.konumDate?.toIso8601String() case final value?)
+    'KONUM_DATE': value,
+  if (instance.konumTarihi case final value?) 'KONUM_TARIHI': value,
+  if (instance.gKa case final value?) 'G_KA': value,
+  if (instance.gBo case final value?) 'G_BO': value,
+  if (instance.gEn case final value?) 'G_EN': value,
+  if (instance.kullaniciAdi case final value?) 'KULLANICI_ADI': value,
+  if (instance.kuruluHesaplar case final value?) 'KURULU_HESAPLAR': value,
+  if (instance.localIp case final value?) 'LOCAL_IP': value,
+  if (instance.ozelCihazKimligi case final value?) 'OZEL_CIHAZ_KIMLIGI': value,
+  if (instance.offline case final value?) 'OFFLINE': value,
+  if (instance.simOperator case final value?) 'SIM_OPERATOR': value,
+  if (instance.paketAdi case final value?) 'PAKET_ADI': value,
+  if (instance.paramMap case final value?) 'PARAM_MAP': value,
+  if (instance.platform case final value?) 'PLATFORM': value,
+  if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+  if (instance.soyadi case final value?) 'SOYADI': value,
+  if (instance.serviceVersion case final value?) 'SERVICE_VERSION': value,
+  if (instance.tzInfo case final value?) 'TZ_INFO': value,
+  if (instance.uygulamaDili case final value?) 'UYGULAMA_DILI': value,
+  if (instance.uygulamaGuncellemeTarihi case final value?)
+    'UYGULAMA_GUNCELLEME_TARIHI': value,
+  if (instance.uygulamaSurumu case final value?) 'UYGULAMA_SURUMU': value,
+  if (instance.uygulamaSurumKodu case final value?)
+    'UYGULAMA_SURUM_KODU': value,
+  if (instance.uzakErisim case final value?) 'UZAK_ERISIM': value,
+  if (instance.wifidenBagli case final value?) 'WIFIDEN_BAGLI': value,
+  if (instance.qrData case final value?) 'QR_DATA': value,
+  if (instance.debugMu case final value?) 'DEBUG_MU': value,
+  if (instance.adi case final value?) 'ADI': value,
+  if (instance.wifiAdi case final value?) 'WIFI_ADI': value,
+  if (instance.debug case final value?) 'DEBUG': value,
+  if (instance.girisTarihi?.toIso8601String() case final value?)
+    'GIRIS_TARIHI': value,
+  if (instance.sonKullanimTarihi?.toIso8601String() case final value?)
+    'SON_KULLANIM_TARIHI': value,
+  if (instance.onayli case final value?) 'ONAYLI': value,
+  if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
+  if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
+};

@@ -1,6 +1,7 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
+import "package:uuid/uuid.dart";
 
 part "payker_tahsilat_view_model.g.dart";
 
@@ -78,16 +79,25 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
     isExpanded = value;
   }
 
-  PaymentModel getPaymentModel() => PaymentModel(
+  PaymentModel get paymentModel => PaymentModel(
     customerInfo: CustomerInfo(
       name: cardHolderName,
+      customerId: "120.0004",
     ),
     saleInfo: SaleInfo(
       cardNumber: cardNumber,
       cardExpiryDateMonth: int.tryParse(expiryDate.split("/")[0]) ?? 0,
       cardExpiryDateYear: int.tryParse(expiryDate.split("/")[1]) ?? 0,
       cardCvv: cvvCode,
-      currency: 0,
+      currency: 949, // TRY sabit,
+    ),
+    order: Order(
+      orderId: const Uuid().v4(),
     ),
   );
+
+  @action
+  Future<void> getInstallments() async {
+    networkManager.getInstallments(cariKodu: paymentModel.customerInfo?.customerId ?? "", amount: 1);
+  }
 }

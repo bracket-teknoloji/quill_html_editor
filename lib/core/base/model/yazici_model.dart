@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:hive/hive.dart";
+import "package:hive_ce/hive.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 
 part "yazici_model.freezed.dart";

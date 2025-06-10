@@ -1,4 +1,4 @@
-import "package:hive_flutter/hive_flutter.dart";
+import "package:hive_ce_flutter/hive_flutter.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
 

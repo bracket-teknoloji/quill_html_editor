@@ -135,6 +135,16 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
+  late final _$getInstallmentsAsyncAction = AsyncAction(
+    '_PaykerTahsilatViewModelBase.getInstallments',
+    context: context,
+  );
+
+  @override
+  Future<void> getInstallments() {
+    return _$getInstallmentsAsyncAction.run(() => super.getInstallments());
+  }
+
   late final _$_PaykerTahsilatViewModelBaseActionController = ActionController(
     name: '_PaykerTahsilatViewModelBase',
     context: context,

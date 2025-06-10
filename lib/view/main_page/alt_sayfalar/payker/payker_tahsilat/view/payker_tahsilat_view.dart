@@ -311,7 +311,9 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
             controller: _amountController,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             inputFormatter: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(10)],
-            onChanged: (value) {},
+            onChanged: (value) {
+              _viewModel.getInstallments();
+            },
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return "Tutar boş olamaz";

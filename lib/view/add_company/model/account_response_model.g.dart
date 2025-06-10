@@ -8,7 +8,7 @@ part of 'account_response_model.dart';
 
 class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
   @override
-  final int typeId = 123;
+  final typeId = 123;
 
   @override
   AccountResponseModel read(BinaryReader reader) {
@@ -25,15 +25,15 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..wsWan = fields[5] as String?
       ..webServis = fields[6] as String?
       ..lisansBitisTarihi = fields[7] as dynamic
-      ..kullaniciSayisi = fields[8] as int?
+      ..kullaniciSayisi = (fields[8] as num?)?.toInt()
       ..firmaKisaAdi = fields[9] as String?
       ..sozlesmeBitisTarihi = fields[10] as dynamic
-      ..sozlesmeBitisKalanGun = fields[11] as int?
+      ..sozlesmeBitisKalanGun = (fields[11] as num?)?.toInt()
       ..karsilamaMesaji = fields[12] as String?
       ..karsilamaResimUrl = fields[13] as String?
-      ..karsilamaSaniye = fields[14] as int?
+      ..karsilamaSaniye = (fields[14] as num?)?.toInt()
       ..guncellemeVarmi = fields[15] as bool?
-      ..maxApkVersion = fields[16] as int?
+      ..maxApkVersion = (fields[16] as num?)?.toInt()
       ..maxWsVersion = fields[17] as String?
       ..demoBitisTarihi = fields[18] as dynamic
       ..uzaktanMi = fields[19] as bool?
@@ -128,77 +128,74 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
 // **************************************************************************
 
 AccountResponseModel _$AccountResponseModelFromJson(
-        Map<String, dynamic> json) =>
-    AccountResponseModel()
-      ..firma = json['FIRMA'] as String?
-      ..email = json['EMAIL'] as String?
-      ..parola = json['PAROLA'] as String?
-      ..pickerLisansiVar = json['PICKER_LISANSI_VAR'] as String?
-      ..wsLan = json['WS_LAN'] as String?
-      ..wsWan = json['WS_WAN'] as String?
-      ..webServis = json['WEB_SERVIS'] as String?
-      ..lisansBitisTarihi = json['LISANS_BITIS_TARIHI']
-      ..kullaniciSayisi = (json['KULLANICI_SAYISI'] as num?)?.toInt()
-      ..firmaKisaAdi = json['FIRMA_KISA_ADI'] as String?
-      ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
-      ..sozlesmeBitisKalanGun =
-          (json['SOZLESME_BITIS_KALAN_GUN'] as num?)?.toInt()
-      ..karsilamaMesaji = json['KARSILAMA_MESAJI'] as String?
-      ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL'] as String?
-      ..karsilamaSaniye = (json['KARSILAMA_SANIYE'] as num?)?.toInt()
-      ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
-      ..maxApkVersion = (json['MAX_APK_VERSION'] as num?)?.toInt()
-      ..maxWsVersion = json['MAX_WS_VERSION'] as String?
-      ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
-      ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true
-      ..serviceDebug = json['SERVICE_DEBUG'] as bool?
-      ..bayiKodu = json['BAYI_KODU']
-      ..bayiEmail = json['BAYI_EMAIL'] as String?
-      ..bayiUnvan = json['BAYI_UNVAN'] as String?
-      ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?
-      ..sozlesmeUyarisi = json['SOZLESME_UYARISI'] as bool?
-      ..sozlesmeUyarisiGoster = json['SOZLESME_UYARISI_GOSTER'] as bool?
-      ..karsilamaBaslik = json['KARSILAMA_BASLIK'] as String?
-      ..sozlesmeTeklifGoster = json['SOZLESME_TEKLIF_GOSTER'] as bool?;
+  Map<String, dynamic> json,
+) => AccountResponseModel()
+  ..firma = json['FIRMA'] as String?
+  ..email = json['EMAIL'] as String?
+  ..parola = json['PAROLA'] as String?
+  ..pickerLisansiVar = json['PICKER_LISANSI_VAR'] as String?
+  ..wsLan = json['WS_LAN'] as String?
+  ..wsWan = json['WS_WAN'] as String?
+  ..webServis = json['WEB_SERVIS'] as String?
+  ..lisansBitisTarihi = json['LISANS_BITIS_TARIHI']
+  ..kullaniciSayisi = (json['KULLANICI_SAYISI'] as num?)?.toInt()
+  ..firmaKisaAdi = json['FIRMA_KISA_ADI'] as String?
+  ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
+  ..sozlesmeBitisKalanGun = (json['SOZLESME_BITIS_KALAN_GUN'] as num?)?.toInt()
+  ..karsilamaMesaji = json['KARSILAMA_MESAJI'] as String?
+  ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL'] as String?
+  ..karsilamaSaniye = (json['KARSILAMA_SANIYE'] as num?)?.toInt()
+  ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
+  ..maxApkVersion = (json['MAX_APK_VERSION'] as num?)?.toInt()
+  ..maxWsVersion = json['MAX_WS_VERSION'] as String?
+  ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
+  ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true
+  ..serviceDebug = json['SERVICE_DEBUG'] as bool?
+  ..bayiKodu = json['BAYI_KODU']
+  ..bayiEmail = json['BAYI_EMAIL'] as String?
+  ..bayiUnvan = json['BAYI_UNVAN'] as String?
+  ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?
+  ..sozlesmeUyarisi = json['SOZLESME_UYARISI'] as bool?
+  ..sozlesmeUyarisiGoster = json['SOZLESME_UYARISI_GOSTER'] as bool?
+  ..karsilamaBaslik = json['KARSILAMA_BASLIK'] as String?
+  ..sozlesmeTeklifGoster = json['SOZLESME_TEKLIF_GOSTER'] as bool?;
 
 Map<String, dynamic> _$AccountResponseModelToJson(
-        AccountResponseModel instance) =>
-    <String, dynamic>{
-      if (instance.firma case final value?) 'FIRMA': value,
-      if (instance.email case final value?) 'EMAIL': value,
-      if (instance.parola case final value?) 'PAROLA': value,
-      if (instance.pickerLisansiVar case final value?)
-        'PICKER_LISANSI_VAR': value,
-      if (instance.wsLan case final value?) 'WS_LAN': value,
-      if (instance.wsWan case final value?) 'WS_WAN': value,
-      if (instance.webServis case final value?) 'WEB_SERVIS': value,
-      if (instance.lisansBitisTarihi case final value?)
-        'LISANS_BITIS_TARIHI': value,
-      if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
-      if (instance.firmaKisaAdi case final value?) 'FIRMA_KISA_ADI': value,
-      if (instance.sozlesmeBitisTarihi case final value?)
-        'SOZLESME_BITIS_TARIHI': value,
-      if (instance.sozlesmeBitisKalanGun case final value?)
-        'SOZLESME_BITIS_KALAN_GUN': value,
-      if (instance.karsilamaMesaji case final value?) 'KARSILAMA_MESAJI': value,
-      if (instance.karsilamaResimUrl case final value?)
-        'KARSILAMA_RESIM_URL': value,
-      if (instance.karsilamaSaniye case final value?) 'KARSILAMA_SANIYE': value,
-      if (instance.guncellemeVarmi case final value?) 'GUNCELLEME_VARMI': value,
-      if (instance.maxApkVersion case final value?) 'MAX_APK_VERSION': value,
-      if (instance.maxWsVersion case final value?) 'MAX_WS_VERSION': value,
-      if (instance.demoBitisTarihi case final value?)
-        'DEMO_BITIS_TARIHI': value,
-      if (instance.uzaktanMi case final value?) 'UZAKTAN_MI': value,
-      if (instance.serviceDebug case final value?) 'SERVICE_DEBUG': value,
-      if (instance.bayiKodu case final value?) 'BAYI_KODU': value,
-      if (instance.bayiEmail case final value?) 'BAYI_EMAIL': value,
-      if (instance.bayiUnvan case final value?) 'BAYI_UNVAN': value,
-      if (instance.bracketCihazi case final value?) 'BRACKET_CIHAZI': value,
-      if (instance.sozlesmeUyarisi case final value?) 'SOZLESME_UYARISI': value,
-      if (instance.sozlesmeUyarisiGoster case final value?)
-        'SOZLESME_UYARISI_GOSTER': value,
-      if (instance.karsilamaBaslik case final value?) 'KARSILAMA_BASLIK': value,
-      if (instance.sozlesmeTeklifGoster case final value?)
-        'SOZLESME_TEKLIF_GOSTER': value,
-    };
+  AccountResponseModel instance,
+) => <String, dynamic>{
+  if (instance.firma case final value?) 'FIRMA': value,
+  if (instance.email case final value?) 'EMAIL': value,
+  if (instance.parola case final value?) 'PAROLA': value,
+  if (instance.pickerLisansiVar case final value?) 'PICKER_LISANSI_VAR': value,
+  if (instance.wsLan case final value?) 'WS_LAN': value,
+  if (instance.wsWan case final value?) 'WS_WAN': value,
+  if (instance.webServis case final value?) 'WEB_SERVIS': value,
+  if (instance.lisansBitisTarihi case final value?)
+    'LISANS_BITIS_TARIHI': value,
+  if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
+  if (instance.firmaKisaAdi case final value?) 'FIRMA_KISA_ADI': value,
+  if (instance.sozlesmeBitisTarihi case final value?)
+    'SOZLESME_BITIS_TARIHI': value,
+  if (instance.sozlesmeBitisKalanGun case final value?)
+    'SOZLESME_BITIS_KALAN_GUN': value,
+  if (instance.karsilamaMesaji case final value?) 'KARSILAMA_MESAJI': value,
+  if (instance.karsilamaResimUrl case final value?)
+    'KARSILAMA_RESIM_URL': value,
+  if (instance.karsilamaSaniye case final value?) 'KARSILAMA_SANIYE': value,
+  if (instance.guncellemeVarmi case final value?) 'GUNCELLEME_VARMI': value,
+  if (instance.maxApkVersion case final value?) 'MAX_APK_VERSION': value,
+  if (instance.maxWsVersion case final value?) 'MAX_WS_VERSION': value,
+  if (instance.demoBitisTarihi case final value?) 'DEMO_BITIS_TARIHI': value,
+  if (instance.uzaktanMi case final value?) 'UZAKTAN_MI': value,
+  if (instance.serviceDebug case final value?) 'SERVICE_DEBUG': value,
+  if (instance.bayiKodu case final value?) 'BAYI_KODU': value,
+  if (instance.bayiEmail case final value?) 'BAYI_EMAIL': value,
+  if (instance.bayiUnvan case final value?) 'BAYI_UNVAN': value,
+  if (instance.bracketCihazi case final value?) 'BRACKET_CIHAZI': value,
+  if (instance.sozlesmeUyarisi case final value?) 'SOZLESME_UYARISI': value,
+  if (instance.sozlesmeUyarisiGoster case final value?)
+    'SOZLESME_UYARISI_GOSTER': value,
+  if (instance.karsilamaBaslik case final value?) 'KARSILAMA_BASLIK': value,
+  if (instance.sozlesmeTeklifGoster case final value?)
+    'SOZLESME_TEKLIF_GOSTER': value,
+};

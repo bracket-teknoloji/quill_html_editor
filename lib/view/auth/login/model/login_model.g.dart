@@ -3,6 +3,64 @@
 part of 'login_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class TokenModelAdapter extends TypeAdapter<TokenModel> {
+  @override
+  final typeId = 99;
+
+  @override
+  TokenModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TokenModel()
+      ..accessToken = fields[0] as String?
+      ..tokenType = fields[1] as String?
+      ..expiresIn = (fields[2] as num?)?.toInt()
+      ..userJson = fields[3] as UserJson?
+      ..issued = fields[4] as String?
+      ..expires = fields[5] as String?
+      ..error = fields[6] as String?
+      ..errorDescription = fields[7] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, TokenModel obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.accessToken)
+      ..writeByte(1)
+      ..write(obj.tokenType)
+      ..writeByte(2)
+      ..write(obj.expiresIn)
+      ..writeByte(3)
+      ..write(obj.userJson)
+      ..writeByte(4)
+      ..write(obj.issued)
+      ..writeByte(5)
+      ..write(obj.expires)
+      ..writeByte(6)
+      ..write(obj.error)
+      ..writeByte(7)
+      ..write(obj.errorDescription);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TokenModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
