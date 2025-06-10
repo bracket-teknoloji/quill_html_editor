@@ -504,7 +504,6 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       readOnly: true,
                       suffixMore: true,
                       controller: ozelKod1Controller,
-                      onClear: () => model.ozelKod2 = null,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
                       onTap: () async {
                         final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
