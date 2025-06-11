@@ -117,16 +117,15 @@ class YaziciTipiAdapter extends TypeAdapter<YaziciTipi> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$YaziciModelImpl _$$YaziciModelImplFromJson(Map<String, dynamic> json) =>
-    _$YaziciModelImpl(
-      yaziciAdi: json['YAZICI_ADI'] as String?,
-      macAdresi: json['MAC_ADRESI'] as String? ?? "",
-      yaziciTipi: $enumDecodeNullable(_$YaziciTipiEnumMap, json['YAZICI_TIPI']),
-      aciklama: json['ACIKLAMA'] as String?,
-      yazdirmaTipi: json['YAZDIRMA_TIPI'] as String?,
-    );
+_YaziciModel _$YaziciModelFromJson(Map<String, dynamic> json) => _YaziciModel(
+  yaziciAdi: json['YAZICI_ADI'] as String?,
+  macAdresi: json['MAC_ADRESI'] as String? ?? "",
+  yaziciTipi: $enumDecodeNullable(_$YaziciTipiEnumMap, json['YAZICI_TIPI']),
+  aciklama: json['ACIKLAMA'] as String?,
+  yazdirmaTipi: json['YAZDIRMA_TIPI'] as String?,
+);
 
-Map<String, dynamic> _$$YaziciModelImplToJson(_$YaziciModelImpl instance) =>
+Map<String, dynamic> _$YaziciModelToJson(_YaziciModel instance) =>
     <String, dynamic>{
       if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
       'MAC_ADRESI': instance.macAdresi,

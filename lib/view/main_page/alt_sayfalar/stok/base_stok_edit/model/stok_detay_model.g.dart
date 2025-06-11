@@ -6,17 +6,17 @@ part of 'stok_detay_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
+class SeriListAdapter extends TypeAdapter<_SeriList> {
   @override
   final typeId = 196;
 
   @override
-  _$SeriListImpl read(BinaryReader reader) {
+  _SeriList read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$SeriListImpl(
+    return _SeriList(
       stokKodu: fields[0] as String?,
       depoKodu: (fields[1] as num?)?.toInt(),
       miktar: (fields[2] as num?)?.toDouble(),
@@ -46,7 +46,7 @@ class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
   }
 
   @override
-  void write(BinaryWriter writer, _$SeriListImpl obj) {
+  void write(BinaryWriter writer, _SeriList obj) {
     writer
       ..writeByte(25)
       ..writeByte(0)
@@ -107,7 +107,7 @@ class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SeriListImplAdapter &&
+      other is SeriListAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -175,65 +175,61 @@ Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
   if (instance.fiyat4 case final value?) 'FIYAT4': value,
 };
 
-_$SeriListImpl _$$SeriListImplFromJson(Map<String, dynamic> json) =>
-    _$SeriListImpl(
-      stokKodu: json['STOK_KODU'] as String?,
-      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
-      miktar: (json['MIKTAR'] as num?)?.toDouble(),
-      seriNo: json['SERI_NO'] as String?,
-      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
-      depoTanimi: json['DEPO_TANIMI'] as String?,
-      hareketId: (json['HAREKET_ID'] as num?)?.toInt(),
-      barkod: json['BARKOD'] as String?,
-      gckod: json['GCKOD'] as String?,
-      seri1: json['SERI1'] as String?,
-      requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
-      tempBarkod: json['TEMP_BARKOD'] as String?,
-      seri2: json['SERI2'] as String?,
-      seri3: json['SERI3'] as String?,
-      seri4: json['SERI4'] as String?,
-      acik1: json['ACIK1'] as String?,
-      acik2: json['ACIK2'] as String?,
-      acik3: json['ACIK3'] as String?,
-      acik4: json['ACIK4'] as String?,
-      sonKullanmaTarihi: json['SON_KULLANMA_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['SON_KULLANMA_TARIHI'] as String),
-      stokAdi: json['STOK_ADI'] as String?,
-      hucreKodu: json['HUCRE_KODU'] as String?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
-      refId: (json['REF_ID'] as num?)?.toInt(),
-      aciklama1: json['ACIKLAMA1'] as String?,
-    );
+_SeriList _$SeriListFromJson(Map<String, dynamic> json) => _SeriList(
+  stokKodu: json['STOK_KODU'] as String?,
+  depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+  miktar: (json['MIKTAR'] as num?)?.toDouble(),
+  seriNo: json['SERI_NO'] as String?,
+  inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
+  depoTanimi: json['DEPO_TANIMI'] as String?,
+  hareketId: (json['HAREKET_ID'] as num?)?.toInt(),
+  barkod: json['BARKOD'] as String?,
+  gckod: json['GCKOD'] as String?,
+  seri1: json['SERI1'] as String?,
+  requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
+  tempBarkod: json['TEMP_BARKOD'] as String?,
+  seri2: json['SERI2'] as String?,
+  seri3: json['SERI3'] as String?,
+  seri4: json['SERI4'] as String?,
+  acik1: json['ACIK1'] as String?,
+  acik2: json['ACIK2'] as String?,
+  acik3: json['ACIK3'] as String?,
+  acik4: json['ACIK4'] as String?,
+  sonKullanmaTarihi: json['SON_KULLANMA_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['SON_KULLANMA_TARIHI'] as String),
+  stokAdi: json['STOK_ADI'] as String?,
+  hucreKodu: json['HUCRE_KODU'] as String?,
+  tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
+  refId: (json['REF_ID'] as num?)?.toInt(),
+  aciklama1: json['ACIKLAMA1'] as String?,
+);
 
-Map<String, dynamic> _$$SeriListImplToJson(_$SeriListImpl instance) =>
-    <String, dynamic>{
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.miktar case final value?) 'MIKTAR': value,
-      if (instance.seriNo case final value?) 'SERI_NO': value,
-      if (instance.inckeyno case final value?) 'INCKEYNO': value,
-      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
-      if (instance.hareketId case final value?) 'HAREKET_ID': value,
-      if (instance.barkod case final value?) 'BARKOD': value,
-      if (instance.gckod case final value?) 'GCKOD': value,
-      if (instance.seri1 case final value?) 'SERI1': value,
-      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
-      if (instance.tempBarkod case final value?) 'TEMP_BARKOD': value,
-      if (instance.seri2 case final value?) 'SERI2': value,
-      if (instance.seri3 case final value?) 'SERI3': value,
-      if (instance.seri4 case final value?) 'SERI4': value,
-      if (instance.acik1 case final value?) 'ACIK1': value,
-      if (instance.acik2 case final value?) 'ACIK2': value,
-      if (instance.acik3 case final value?) 'ACIK3': value,
-      if (instance.acik4 case final value?) 'ACIK4': value,
-      if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
-        'SON_KULLANMA_TARIHI': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
-      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-      if (instance.refId case final value?) 'REF_ID': value,
-      if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
-    };
+Map<String, dynamic> _$SeriListToJson(_SeriList instance) => <String, dynamic>{
+  if (instance.stokKodu case final value?) 'STOK_KODU': value,
+  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+  if (instance.miktar case final value?) 'MIKTAR': value,
+  if (instance.seriNo case final value?) 'SERI_NO': value,
+  if (instance.inckeyno case final value?) 'INCKEYNO': value,
+  if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+  if (instance.hareketId case final value?) 'HAREKET_ID': value,
+  if (instance.barkod case final value?) 'BARKOD': value,
+  if (instance.gckod case final value?) 'GCKOD': value,
+  if (instance.seri1 case final value?) 'SERI1': value,
+  if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+  if (instance.tempBarkod case final value?) 'TEMP_BARKOD': value,
+  if (instance.seri2 case final value?) 'SERI2': value,
+  if (instance.seri3 case final value?) 'SERI3': value,
+  if (instance.seri4 case final value?) 'SERI4': value,
+  if (instance.acik1 case final value?) 'ACIK1': value,
+  if (instance.acik2 case final value?) 'ACIK2': value,
+  if (instance.acik3 case final value?) 'ACIK3': value,
+  if (instance.acik4 case final value?) 'ACIK4': value,
+  if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
+    'SON_KULLANMA_TARIHI': value,
+  if (instance.stokAdi case final value?) 'STOK_ADI': value,
+  if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+  if (instance.refId case final value?) 'REF_ID': value,
+  if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
+};

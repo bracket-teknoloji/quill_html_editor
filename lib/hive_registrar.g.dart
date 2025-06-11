@@ -37,7 +37,7 @@ extension HiveRegistrar on HiveInterface {
     registerAdapter(LoginDialogModelAdapter());
     registerAdapter(MainPageModelAdapter());
     registerAdapter(NetFectDizaynListAdapter());
-    registerAdapter(SeriListImplAdapter());
+    registerAdapter(SeriListAdapter());
     registerAdapter(SirketModelAdapter());
     registerAdapter(TokenModelAdapter());
     registerAdapter(UserModelAdapter());
@@ -64,7 +64,7 @@ extension IsolatedHiveRegistrar on IsolatedHiveInterface {
     registerAdapter(LoginDialogModelAdapter());
     registerAdapter(MainPageModelAdapter());
     registerAdapter(NetFectDizaynListAdapter());
-    registerAdapter(SeriListImplAdapter());
+    registerAdapter(SeriListAdapter());
     registerAdapter(SirketModelAdapter());
     registerAdapter(TokenModelAdapter());
     registerAdapter(UserModelAdapter());

@@ -751,8 +751,8 @@ as String?,
 /// @nodoc
 @JsonSerializable()
 
-class _SaleInfo implements SaleInfo {
-  const _SaleInfo({@JsonKey(name: "CardNameSurname") this.cardNameSurname, @JsonKey(name: "CardNumber") this.cardNumber, @JsonKey(name: "CardExpiryDateMonth") this.cardExpiryDateMonth, @JsonKey(name: "CardExpiryDateYear") this.cardExpiryDateYear, @JsonKey(name: "CardCVV") this.cardCvv, @JsonKey(name: "Currency") this.currency, @JsonKey(name: "Amount") this.amount, @JsonKey(name: "Point") this.point, @JsonKey(name: "Installment") this.installment, @JsonKey(name: "CampaignCode") this.campaignCode, @JsonKey(name: "BankCode") this.bankCode, @JsonKey(name: "Description") this.description});
+class _SaleInfo extends SaleInfo {
+   _SaleInfo({@JsonKey(name: "CardNameSurname") this.cardNameSurname, @JsonKey(name: "CardNumber") this.cardNumber, @JsonKey(name: "CardExpiryDateMonth") this.cardExpiryDateMonth, @JsonKey(name: "CardExpiryDateYear") this.cardExpiryDateYear, @JsonKey(name: "CardCVV") this.cardCvv, @JsonKey(name: "Currency") this.currency, @JsonKey(name: "Amount") this.amount, @JsonKey(name: "Point") this.point, @JsonKey(name: "Installment") this.installment, @JsonKey(name: "CampaignCode") this.campaignCode, @JsonKey(name: "BankCode") this.bankCode, @JsonKey(name: "Description") this.description}): super._();
   factory _SaleInfo.fromJson(Map<String, dynamic> json) => _$SaleInfoFromJson(json);
 
 @override@JsonKey(name: "CardNameSurname") final  String? cardNameSurname;

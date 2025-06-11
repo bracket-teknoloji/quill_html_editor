@@ -27,78 +27,6 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$cardNumberAtom = Atom(
-    name: '_PaykerTahsilatViewModelBase.cardNumber',
-    context: context,
-  );
-
-  @override
-  String get cardNumber {
-    _$cardNumberAtom.reportRead();
-    return super.cardNumber;
-  }
-
-  @override
-  set cardNumber(String value) {
-    _$cardNumberAtom.reportWrite(value, super.cardNumber, () {
-      super.cardNumber = value;
-    });
-  }
-
-  late final _$expiryDateAtom = Atom(
-    name: '_PaykerTahsilatViewModelBase.expiryDate',
-    context: context,
-  );
-
-  @override
-  String get expiryDate {
-    _$expiryDateAtom.reportRead();
-    return super.expiryDate;
-  }
-
-  @override
-  set expiryDate(String value) {
-    _$expiryDateAtom.reportWrite(value, super.expiryDate, () {
-      super.expiryDate = value;
-    });
-  }
-
-  late final _$cardHolderNameAtom = Atom(
-    name: '_PaykerTahsilatViewModelBase.cardHolderName',
-    context: context,
-  );
-
-  @override
-  String get cardHolderName {
-    _$cardHolderNameAtom.reportRead();
-    return super.cardHolderName;
-  }
-
-  @override
-  set cardHolderName(String value) {
-    _$cardHolderNameAtom.reportWrite(value, super.cardHolderName, () {
-      super.cardHolderName = value;
-    });
-  }
-
-  late final _$cvvCodeAtom = Atom(
-    name: '_PaykerTahsilatViewModelBase.cvvCode',
-    context: context,
-  );
-
-  @override
-  String get cvvCode {
-    _$cvvCodeAtom.reportRead();
-    return super.cvvCode;
-  }
-
-  @override
-  set cvvCode(String value) {
-    _$cvvCodeAtom.reportWrite(value, super.cvvCode, () {
-      super.cvvCode = value;
-    });
-  }
-
   late final _$showBackViewAtom = Atom(
     name: '_PaykerTahsilatViewModelBase.showBackView',
     context: context,
@@ -135,6 +63,60 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
+  late final _$selectedBankIdAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.selectedBankId',
+    context: context,
+  );
+
+  @override
+  int? get selectedBankId {
+    _$selectedBankIdAtom.reportRead();
+    return super.selectedBankId;
+  }
+
+  @override
+  set selectedBankId(int? value) {
+    _$selectedBankIdAtom.reportWrite(value, super.selectedBankId, () {
+      super.selectedBankId = value;
+    });
+  }
+
+  late final _$paymentModelAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.paymentModel',
+    context: context,
+  );
+
+  @override
+  PaymentModel get paymentModel {
+    _$paymentModelAtom.reportRead();
+    return super.paymentModel;
+  }
+
+  @override
+  set paymentModel(PaymentModel value) {
+    _$paymentModelAtom.reportWrite(value, super.paymentModel, () {
+      super.paymentModel = value;
+    });
+  }
+
+  late final _$taksitResponseModelAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.taksitResponseModel',
+    context: context,
+  );
+
+  @override
+  ObservableList<TaksitResponseModel>? get taksitResponseModel {
+    _$taksitResponseModelAtom.reportRead();
+    return super.taksitResponseModel;
+  }
+
+  @override
+  set taksitResponseModel(ObservableList<TaksitResponseModel>? value) {
+    _$taksitResponseModelAtom.reportWrite(value, super.taksitResponseModel, () {
+      super.taksitResponseModel = value;
+    });
+  }
+
   late final _$getInstallmentsAsyncAction = AsyncAction(
     '_PaykerTahsilatViewModelBase.getInstallments',
     context: context,
@@ -151,11 +133,46 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
   );
 
   @override
+  void setTaksitResponseModel(List<TaksitResponseModel>? value) {
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(
+          name: '_PaykerTahsilatViewModelBase.setTaksitResponseModel',
+        );
+    try {
+      return super.setTaksitResponseModel(value);
+    } finally {
+      _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setScrollDown(bool value) {
     final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
         .startAction(name: '_PaykerTahsilatViewModelBase.setScrollDown');
     try {
       return super.setScrollDown(value);
+    } finally {
+      _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAmount(double? value) {
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setAmount');
+    try {
+      return super.setAmount(value);
+    } finally {
+      _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSelectedBankId(int? value) {
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setSelectedBankId');
+    try {
+      return super.setSelectedBankId(value);
     } finally {
       _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -231,12 +248,11 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
   String toString() {
     return '''
 isScrollDown: ${isScrollDown},
-cardNumber: ${cardNumber},
-expiryDate: ${expiryDate},
-cardHolderName: ${cardHolderName},
-cvvCode: ${cvvCode},
 showBackView: ${showBackView},
-isExpanded: ${isExpanded}
+isExpanded: ${isExpanded},
+selectedBankId: ${selectedBankId},
+paymentModel: ${paymentModel},
+taksitResponseModel: ${taksitResponseModel}
     ''';
   }
 }
