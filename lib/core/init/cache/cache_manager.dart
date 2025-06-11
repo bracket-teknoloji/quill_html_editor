@@ -7,47 +7,23 @@ import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:picker/core/base/model/yazici_model.dart";
 import "package:uuid/uuid.dart";
 
+import "../../../hive_registrar.g.dart";
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
-import "../../../view/auth/model/isletme_model.dart";
-import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "../../../view/main_page/model/main_page_model.dart";
-import "../../../view/main_page/model/param_model.dart";
-import "../../../view/main_page/model/sirket_model.dart";
-import "../../../view/main_page/model/user_model/user_model.dart";
 import "../../base/model/base_profil_parametre_model.dart";
 import "../../base/model/login_dialog_model.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/static_variables/static_variables.dart";
 import "favorites_model.dart";
 
+
 final class CacheManager {
   CacheManager._init() {
     WidgetsFlutterBinding.ensureInitialized();
-    Hive
-      ..registerAdapter(UserModelAdapter())
-      ..registerAdapter(SirketModelAdapter())
-      ..registerAdapter(AccountResponseModelAdapter())
-      ..registerAdapter(MainPageModelAdapter())
-      ..registerAdapter(FavoritesModelAdapter())
-      ..registerAdapter(AccountModelAdapter())
-      ..registerAdapter(CariSehirlerModelAdapter())
-      ..registerAdapter(IsletmeModelAdapter())
-      ..registerAdapter(NetFectDizaynListAdapter())
-      ..registerAdapter(LoginDialogModelAdapter())
-      ..registerAdapter(BaseSiparisEditModelAdapter())
-      ..registerAdapter(KalemModelAdapter())
-      ..registerAdapter(CariListesiModelAdapter())
-      ..registerAdapter(EditTipiEnumAdapter())
-      ..registerAdapter(ListSiparisEditModelAdapter())
-      ..registerAdapter(SeriListImplAdapter())
-      ..registerAdapter(BarkodListAdapter())
-      ..registerAdapter(DepoListAdapter())
-      ..registerAdapter(YaziciModelAdapter())
-      ..registerAdapter(YaziciTipiAdapter());
+    Hive.registerAdapters();
     initHiveBoxes();
   }
 
