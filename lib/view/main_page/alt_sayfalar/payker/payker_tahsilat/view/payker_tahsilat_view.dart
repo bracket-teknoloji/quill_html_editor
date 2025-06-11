@@ -3,13 +3,15 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_credit_card/flutter_credit_card.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
-import "package:picker/core/base/view/base_scaffold.dart";
+import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/gen/assets.gen.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/view_model/payker_tahsilat_view_model.dart";
 
 final class PaykerTahsilatView extends StatefulWidget {
@@ -19,7 +21,7 @@ final class PaykerTahsilatView extends StatefulWidget {
   State<PaykerTahsilatView> createState() => _PaykerTahsilatViewState();
 }
 
-final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
+final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
   final PaykerTahsilatViewModel _viewModel = PaykerTahsilatViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController _cardNumberController;
@@ -68,6 +70,128 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
 
   List<ExpansionPanelRadio> _generateItems() => [
     ExpansionPanelRadio(
+      value: "taksit_sec",
+      canTapOnHeader: true,
+      headerBuilder: (context, isExpanded) =>
+          const ListTile(leading: Icon(Icons.payment_outlined), title: Text("Taksit Seçenekleri")),
+      body: Observer(
+        builder: (_) => _viewModel.taksitResponseModel == null
+            ? const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Center(child: Text("Taksit seçenekleri için tutar giriniz.")),
+              )
+            : _viewModel.taksitResponseModel!.isEmpty
+            ? const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Center(child: Text("Taksit seçeneği bulunmamaktadır.")),
+              )
+            : ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minHeight: 200,
+                  maxHeight: 400,
+                ),
+                child: PageView.builder(
+                  controller: PageController(viewportFraction: 0.7),
+                  itemCount: _viewModel.taksitResponseModel?.length ?? 0,
+                  itemBuilder: (context, index) => Card(
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            foregroundImage: Image.network(
+                              ApiUrls.basePaykerURL +
+                                  (_viewModel.taksitResponseModel![index].taksitler?.firstOrNull?.banka?.logoUrl ?? ""),
+                            ).image,
+                          ),
+                          title: Text(
+                            _viewModel.taksitResponseModel![index].bankaAdi ?? "",
+                            style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                          ),
+                          subtitle: Text(
+                            "Tutar: ${_viewModel.taksitResponseModel![index].tutar?.toString() ?? "0"} $mainCurrency",
+                            style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                          ),
+                        ),
+                        const Divider(),
+                        ...List.generate(
+                          _viewModel.taksitResponseModel![index].taksitler?.length ?? 0,
+                          (index2) => Padding(
+                            padding: UIHelper.lowPadding,
+                            child: Observer(
+                              builder: (_) => RadioListTile.adaptive(
+                                groupValue: _viewModel.selectedBankId,
+                                value: _viewModel.taksitResponseModel![index].taksitler?[index2].id,
+                                onChanged: (value) => _viewModel.setSelectedBankId(
+                                  _viewModel.taksitResponseModel![index].taksitler?[index2].id,
+                                ),
+                                title: Text(
+                                  "${_viewModel.taksitResponseModel![index].taksitler?[index2].odemeMetni}",
+                                  style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                                ),
+                                subtitle: Text(
+                                  "${_viewModel.taksitResponseModel![index].taksitler?[index2].taksit}"
+                                  " x ${(_viewModel.taksitResponseModel![index].taksitler?[index2].vadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
+                                  "  $mainCurrency ="
+                                  " ${(_viewModel.taksitResponseModel![index].taksitler?[index2].toplamVadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}  $mainCurrency",
+                                  style: const TextStyle(overflow: TextOverflow.ellipsis),
+                                  // children: List.generate(
+                                  //   _viewModel.taksitResponseModel!.length,
+                                  //   (index) {
+                                  //     final taksit = _viewModel.taksitResponseModel![index];
+                                  //     return Card(
+                                  //       child: Column(
+                                  //         children: [
+                                  //           ListTile(
+                                  //             leading: CircleAvatar(
+                                  //               foregroundImage: Image.network(
+                                  //                 ApiUrls.basePaykerURL + (taksit.taksitler?.firstOrNull?.banka?.logoUrl ?? ""),
+                                  //               ).image,
+                                  //             ),
+                                  //             title: Text(
+                                  //               taksit.bankaAdi ?? "",
+                                  //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                                  //             ),
+                                  //             subtitle: Text(
+                                  //               "Tutar: ${taksit.tutar?.toString() ?? "0"} TL)",
+                                  //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                                  //             ),
+                                  //           ),
+                                  //           ...List.generate(
+                                  //             taksit.taksitler?.length ?? 0,
+                                  //             (index2) => CheckboxListTile.adaptive(
+                                  //               value: _viewModel.selectedBankId == taksit.taksitler?[index2].id,
+                                  //               onChanged: (value) => _viewModel.setSelectedBankId(taksit.taksitler?[index2].id),
+                                  //               title: Text(
+                                  //                 "${taksit.taksitler?[index2].odemeMetni}",
+                                  //                 style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                                  //               ),
+                                  //               subtitle: Text(
+                                  //                 "${taksit.taksitler?[index2].taksit}"
+                                  //                 " x ${(taksit.taksitler?[index2].vadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble())).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
+                                  //                 " TL ="
+                                  //                 " ${taksit.taksitler?[index2].toplamVadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble()).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} TL",
+                                  //                 style: const TextStyle(overflow: TextOverflow.ellipsis),
+                                  //               ),
+                                  //             ),
+                                  //           ),
+                                  //         ],
+                                  //       ),
+                                  //     );
+                                  //   },
+                                  // ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+      ),
+    ),
+    ExpansionPanelRadio(
       value: "bilgilendirme",
       canTapOnHeader: true,
       headerBuilder: (context, isExpanded) =>
@@ -84,7 +208,10 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
             child: Card(
               child: ListTile(
                 title: Text(
-                  "• Şirketimiz kredi kartı taksit sayılarında herhangi bir ek kısıtlama uygulamamaktadır. Kredi kartı ile ödeme yaparken taksit sayıları, ilgili banka kaynaklı anlık değişkenlik gösterebilir. Ödeme yapmadan önce kart sahibinin geçerli taksit sayılarını bankası ile kontrol etmesini rica ederiz.",
+                  "• Şirketimiz kredi kartı taksit sayılarında herhangi bir ek kısıtlama uygulamamaktadır."
+                  " Kredi kartı ile ödeme yaparken taksit sayıları, ilgili banka kaynaklı anlık değişkenlik"
+                  " gösterebilir. Ödeme yapmadan önce kart sahibinin geçerli taksit sayılarını bankası"
+                  " ile kontrol etmesini rica ederiz.",
                 ),
               ),
             ),
@@ -102,7 +229,38 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
         child: Card(
           child: ListTile(
             title: Text(
-              "BRACKET TEKNOLOJİ https://odeme.bracket.com.tr web sitesine hoş geldiniz. Bu web sitesinde sunulan hizmetlerin kullanım şartlarını, sitemize üye olarak veya hizmetlerimizden yararlanma aşamasında, bu sözleşmeyi kabul ettiğinizi beyan eden kutucuğu işaretleyerek kabul etmiş bulunmaktasınız. BRACKET TEKNOLOJİ https://odeme.bracket.com.tr web sitesinde bulunan hizmetlerde kullanım özellik ve şartlarında önceden bir bildirimde bulunmaksızın, herhangi bir zamanda değişiklik yapma, yürürlükten kaldırma ve güncelleme haklarını saklı tutar. \n\nÜYELİK İŞLEMLERİ\nhttps://odeme.bracket.com.tr web sitesinde sağlanan hizmetler için siteye üye olmanız ve kayıt sırasında kayıt formunda istenen bilgileri tam ve doğru olarak sağlamanız gerekmektedir. Bilgilerinizdeki değişiklik olduğu zaman, üyelik profilinize girerek ilgili bölümleri güncellemek kullanıcının sorumluluğundadır. Güncellenmemiş bilgilerden dolayı size ulaşamadığımız zaman sorumluluk size aittir. Eğer bu hizmetlerden işvereniniz hesabına kullanıyorsanız, bu kullanım şartlarını onun adına kabul etmeye yetkili olduğunuz anlamına gelmektedir. Kayıt esnasında tarafınızca belirlenen şifreniz yalnızca sizin kullanımınız içindir. Sizin hesabınız ile yapılan bütün işlemlerin sorumluluğu tamamıyla size aittir. Bu sözleşmeyi onaylanarak bunu kabul ve teyit etmiş oluyorsunuz. Bu sözleşmeyi onaylayarak şifrenizin veya hesabınızın haksız kullanımı durumunda https://odeme.bracket.com.tr personelini hemen bilgilendirmeyi de peşinen kabul ediyorsunuz. https://odeme.bracket.com.tr, hesabınızın veya şifrenizin başkası tarafından kullanımı nedeniyle, bilginiz olsun veya olmasın, oluşacak zararınızla ilgili herhangi bir yükümlülük kabul etmez. Ancak, hesabınızın veya şifrenizin başka bir kişi tarafından kullanımından https://odeme.bracket.com.tr veya başka bir kişi veya kuruluş zarar görürse, bu zarardan siz sorumlu tutulabilirsiniz. Hesap sahibinin izni olmaksızın başka bir hesabı kullanmanız yasaktır. \n\nGARANTİ VE FERAGAT\nhttps://odeme.bracket.com.tr ve sizin aranızda yapılan ayrı bir sözleşme ile açıkça belirlenmediği sürece, bu web sitesinden edinilen bütün hizmetler size olduğu haliyle sağlanmış olup, herhangi bir amaca uygunluk açısından veya başka bir açıdan herhangi bir garantiye tabi değildir. https://odeme.bracket.com.tr hiçbir şekilde tarafınız veya başka bir üçüncü kişi tarafından bu web sitesine erişimden, bu web sitesinin veya bu web sitesinden linkle yönlendirilmiş başka bir web sitesine erişimden veya bu web sitesinde yer alan hizmetlerin kullanımı vasıtasıyla uğranılmış dolaysız veya dolaylı bir zarardan, gelir veya veri kaybından veya başka bir zarardan sorumlu değildir. BU WEB SİTESİNDE SAĞLANAN ÜÇÜNCÜ KİŞİLERE AİT İÇERİK Bu web sitesi üçüncü kişiler tarafından sağlanmış içerik veya yazılımlar bulunmaktadır. Bu web sitesinde yer alan bütün üçüncü kişilere ait içerik ve yazılımlar için de yukarıda yer alan “GARANTİ VE FERAGAT” bölümü hükümleri geçerlidir.",
+              "BRACKET TEKNOLOJİ https://odeme.bracket.com.tr web sitesine hoş geldiniz. Bu web sitesinde"
+              " sunulan hizmetlerin kullanım şartlarını, sitemize üye olarak veya hizmetlerimizden yararlanma"
+              " aşamasında, bu sözleşmeyi kabul ettiğinizi beyan eden kutucuğu işaretleyerek kabul etmiş"
+              " bulunmaktasınız. BRACKET TEKNOLOJİ https://odeme.bracket.com.tr web sitesinde bulunan"
+              " hizmetlerde kullanım özellik ve şartlarında önceden bir bildirimde bulunmaksızın, herhangi"
+              " bir zamanda değişiklik yapma, yürürlükten kaldırma ve güncelleme haklarını saklı tutar."
+              " \n\nÜYELİK İŞLEMLERİ\nhttps://odeme.bracket.com.tr web sitesinde sağlanan hizmetler için siteye"
+              " üye olmanız ve kayıt sırasında kayıt formunda istenen bilgileri tam ve doğru olarak sağlamanız"
+              " gerekmektedir. Bilgilerinizdeki değişiklik olduğu zaman, üyelik profilinize girerek ilgili"
+              " bölümleri güncellemek kullanıcının sorumluluğundadır. Güncellenmemiş bilgilerden dolayı size"
+              " ulaşamadığımız zaman sorumluluk size aittir. Eğer bu hizmetlerden işvereniniz hesabına"
+              " kullanıyorsanız, bu kullanım şartlarını onun adına kabul etmeye yetkili olduğunuz anlamına"
+              " gelmektedir. Kayıt esnasında tarafınızca belirlenen şifreniz yalnızca sizin kullanımınız içindir."
+              " Sizin hesabınız ile yapılan bütün işlemlerin sorumluluğu tamamıyla size aittir. Bu sözleşmeyi"
+              " onaylanarak bunu kabul ve teyit etmiş oluyorsunuz. Bu sözleşmeyi onaylayarak şifrenizin veya"
+              " hesabınızın haksız kullanımı durumunda https://odeme.bracket.com.tr personelini hemen bilgilendirmeyi"
+              " de peşinen kabul ediyorsunuz. https://odeme.bracket.com.tr, hesabınızın veya şifrenizin başkası"
+              " tarafından kullanımı nedeniyle, bilginiz olsun veya olmasın, oluşacak zararınızla ilgili herhangi"
+              " bir yükümlülük kabul etmez. Ancak, hesabınızın veya şifrenizin başka bir kişi tarafından"
+              " kullanımından https://odeme.bracket.com.tr veya başka bir kişi veya kuruluş zarar görürse, bu"
+              " zarardan siz sorumlu tutulabilirsiniz. Hesap sahibinin izni olmaksızın başka bir hesabı"
+              " kullanmanız yasaktır. \n\nGARANTİ VE FERAGAT\nhttps://odeme.bracket.com.tr ve sizin aranızda"
+              " yapılan ayrı bir sözleşme ile açıkça belirlenmediği sürece, bu web sitesinden edinilen bütün"
+              " hizmetler size olduğu haliyle sağlanmış olup, herhangi bir amaca uygunluk açısından veya başka"
+              " bir açıdan herhangi bir garantiye tabi değildir. https://odeme.bracket.com.tr hiçbir şekilde"
+              " tarafınız veya başka bir üçüncü kişi tarafından bu web sitesine erişimden, bu web sitesinin veya"
+              " bu web sitesinden linkle yönlendirilmiş başka bir web sitesine erişimden veya bu web sitesinde"
+              " yer alan hizmetlerin kullanımı vasıtasıyla uğranılmış dolaysız veya dolaylı bir zarardan, gelir"
+              " veya veri kaybından veya başka bir zarardan sorumlu değildir. BU WEB SİTESİNDE SAĞLANAN ÜÇÜNCÜ"
+              " KİŞİLERE AİT İÇERİK Bu web sitesi üçüncü kişiler tarafından sağlanmış içerik veya yazılımlar"
+              " bulunmaktadır. Bu web sitesinde yer alan bütün üçüncü kişilere ait içerik ve yazılımlar için de"
+              " yukarıda yer alan “GARANTİ VE FERAGAT” bölümü hükümleri geçerlidir.",
             ),
           ),
         ),
@@ -119,10 +277,7 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
   Widget _fab(BuildContext context) => Observer(
     builder: (_) => FloatingActionButton.extended(
       onPressed: () {
-        if (_viewModel.cardNumber.isEmpty ||
-            _viewModel.expiryDate.isEmpty ||
-            _viewModel.cardHolderName.isEmpty ||
-            _viewModel.cvvCode.isEmpty) {
+        if (!(_viewModel.paymentModel.saleInfo?.isValid ?? false)) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Lütfen tüm alanları doldurun")));
           return;
         }
@@ -147,12 +302,14 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
           Observer(
             builder: (_) => CreditCardWidget(
               padding: 25,
-              cardNumber: _viewModel.cardNumber,
-              expiryDate: _viewModel.expiryDate,
+              cardNumber: _viewModel.paymentModel.saleInfo?.cardNumber ?? _viewModel.cardNumberMask,
+              expiryDate: _viewModel.paymentModel.saleInfo?.expiryDate ?? _viewModel.expiryDateMask,
               backgroundImage: Assets.background.paykerCard2Background.path,
-              cardHolderName: _viewModel.cardHolderName,
-              cvvCode: _viewModel.cvvCode,
-              cardBgColor: ColorPalette.mantis,
+              cardHolderName: _viewModel.paymentModel.saleInfo?.cardNameSurname ?? _viewModel.cardHolderNameMask,
+              cvvCode: _viewModel.paymentModel.saleInfo?.cardCvv ?? _viewModel.cvvCodeMask,
+              cardBgColor: ColorPalette.outerSpace,
+              frontCardBorder: Border.all(color: ColorPalette.outerSpace),
+              backCardBorder: Border.all(color: ColorPalette.outerSpace),
               showBackView: _viewModel.showBackView,
               enableFloatingCard: true,
               labelCardHolder: "Kart Sahibi",
@@ -312,7 +469,9 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             inputFormatter: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(10)],
             onChanged: (value) {
-              _viewModel.getInstallments();
+              _viewModel
+                ..setAmount(value.toDoubleWithFormattedString)
+                ..getInstallments();
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
