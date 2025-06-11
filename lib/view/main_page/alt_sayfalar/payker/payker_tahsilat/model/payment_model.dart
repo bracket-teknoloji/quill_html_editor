@@ -70,7 +70,7 @@ sealed class Payment3D with _$Payment3D {
 
 @freezed
 sealed class SaleInfo with _$SaleInfo {
-  const factory SaleInfo({
+  factory SaleInfo({
     @JsonKey(name: "CardNameSurname") String? cardNameSurname,
     @JsonKey(name: "CardNumber") String? cardNumber,
     @JsonKey(name: "CardExpiryDateMonth") int? cardExpiryDateMonth,
@@ -85,5 +85,21 @@ sealed class SaleInfo with _$SaleInfo {
     @JsonKey(name: "Description") String? description,
   }) = _SaleInfo;
 
+  SaleInfo._();
+
   factory SaleInfo.fromJson(Map<String, dynamic> json) => _$SaleInfoFromJson(json);
+
+  bool get isValid =>
+      cardNameSurname != null &&
+      cardNumber != null &&
+      cardExpiryDateMonth != null &&
+      cardExpiryDateYear != null &&
+      cardCvv != null &&
+      amount != null;
+
+  String get expiryDate {
+    final month = cardExpiryDateMonth?.toString().padLeft(2, "0") ?? "";
+    final year = cardExpiryDateYear?.toString().substring(2) ?? "";
+    return "$month/$year";
+  }
 }
