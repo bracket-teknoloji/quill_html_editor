@@ -35,6 +35,7 @@ import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/mo
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/taksit_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
@@ -288,6 +289,7 @@ final class NetworkManager {
         options: Options(headers: head, contentType: kIsWeb ? null : Headers.jsonContentType),
         data: data,
       );
+      log("Response: ${jsonEncode(response.data)}");
       responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
     } catch (e) {
       if (showLoading) {
@@ -836,16 +838,17 @@ final class NetworkManager {
     return null;
   }
 
-  Future<void> createPayment(PaymentModel paymentModel) async {
-    final result = await dioPost(
+  Future<PaymentResponseModel?> createPayment(PaymentModel paymentModel) async {
+    final result = await dioPost<PaymentResponseModel>(
       path: ApiUrls.createPayment,
-      bodyModel: BaseEmptyModel(),
+      bodyModel: const PaymentResponseModel(),
       showLoading: true,
       data: paymentModel.toJson(),
     );
     if (result.isSuccess) {
-      // Handle successful payment creation
+      return result.dataItem;
     }
+    return null;
   }
 
   Future<List<TaksitResponseModel>?> getInstallments({String? cariKodu, double? amount}) async {
