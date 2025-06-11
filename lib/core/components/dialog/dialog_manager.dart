@@ -40,7 +40,12 @@ import "../grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
 import "logout_model.dart";
 
 final class DialogManager {
-  DialogManager();
+  factory DialogManager() => _instance;
+
+  DialogManager._internal();
+
+  static final DialogManager _instance = DialogManager._internal();
+
   BuildContext get context => Get.context!;
 
   YetkiController get _yetkiController => YetkiController();
