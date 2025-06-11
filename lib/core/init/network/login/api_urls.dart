@@ -24,8 +24,9 @@ abstract final class ApiUrls {
   static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
   static const String surumYenilikleri = "https://storews.netfect.com/api/Picker/GetSurumYenilikleri";
   static const String teklifIste = "https://storews.netfect.com/api/Picker/PickerTeklifIste";
-  static const String createPayment = "https://odeme.bracket.com.tr/api/Payments/CreatePayment";
-  static const String getBankInstallments = "https://odeme.bracket.com.tr/api/payments/getbankinstallments";
+  static const String basePaykerURL = "https://pay.payker.com.tr";
+  static const String createPayment = "$basePaykerURL/api/Payments/CreatePayment";
+  static const String getBankInstallments = "$basePaykerURL/api/payments/getbankinstallments";
   // static const String surumYenilikleri = "http://ofis.bracket.com.tr:7575/NetStore/api/Picker/GetSurumYenilikleri";
   static const String token = "token";
   static const String veriTabanlari = "General/GetVeritabanlari";
