@@ -63,24 +63,6 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$selectedBankIdAtom = Atom(
-    name: '_PaykerTahsilatViewModelBase.selectedBankId',
-    context: context,
-  );
-
-  @override
-  int? get selectedBankId {
-    _$selectedBankIdAtom.reportRead();
-    return super.selectedBankId;
-  }
-
-  @override
-  set selectedBankId(int? value) {
-    _$selectedBankIdAtom.reportWrite(value, super.selectedBankId, () {
-      super.selectedBankId = value;
-    });
-  }
-
   late final _$paymentModelAtom = Atom(
     name: '_PaykerTahsilatViewModelBase.paymentModel',
     context: context,
@@ -97,6 +79,28 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     _$paymentModelAtom.reportWrite(value, super.paymentModel, () {
       super.paymentModel = value;
     });
+  }
+
+  late final _$paymentResponseModelAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.paymentResponseModel',
+    context: context,
+  );
+
+  @override
+  PaymentResponseModel? get paymentResponseModel {
+    _$paymentResponseModelAtom.reportRead();
+    return super.paymentResponseModel;
+  }
+
+  @override
+  set paymentResponseModel(PaymentResponseModel? value) {
+    _$paymentResponseModelAtom.reportWrite(
+      value,
+      super.paymentResponseModel,
+      () {
+        super.paymentResponseModel = value;
+      },
+    );
   }
 
   late final _$taksitResponseModelAtom = Atom(
@@ -125,6 +129,16 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
   @override
   Future<void> getInstallments() {
     return _$getInstallmentsAsyncAction.run(() => super.getInstallments());
+  }
+
+  late final _$createPaymentAsyncAction = AsyncAction(
+    '_PaykerTahsilatViewModelBase.createPayment',
+    context: context,
+  );
+
+  @override
+  Future<void> createPayment() {
+    return _$createPaymentAsyncAction.run(() => super.createPayment());
   }
 
   late final _$_PaykerTahsilatViewModelBaseActionController = ActionController(
@@ -168,11 +182,35 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
   }
 
   @override
-  void setSelectedBankId(int? value) {
+  void setPaymentResponseModel(PaymentResponseModel? value) {
     final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
-        .startAction(name: '_PaykerTahsilatViewModelBase.setSelectedBankId');
+        .startAction(
+          name: '_PaykerTahsilatViewModelBase.setPaymentResponseModel',
+        );
     try {
-      return super.setSelectedBankId(value);
+      return super.setPaymentResponseModel(value);
+    } finally {
+      _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setInstallment(int? value) {
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setInstallment');
+    try {
+      return super.setInstallment(value);
+    } finally {
+      _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBankId(String? value) {
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setBankId');
+    try {
+      return super.setBankId(value);
     } finally {
       _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -250,8 +288,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 isScrollDown: ${isScrollDown},
 showBackView: ${showBackView},
 isExpanded: ${isExpanded},
-selectedBankId: ${selectedBankId},
 paymentModel: ${paymentModel},
+paymentResponseModel: ${paymentResponseModel},
 taksitResponseModel: ${taksitResponseModel}
     ''';
   }

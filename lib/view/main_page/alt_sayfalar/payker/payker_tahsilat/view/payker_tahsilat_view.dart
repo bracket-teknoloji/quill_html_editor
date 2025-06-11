@@ -13,6 +13,7 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/view_model/payker_tahsilat_view_model.dart";
+import "package:webview_flutter/webview_flutter.dart";
 
 final class PaykerTahsilatView extends StatefulWidget {
   const PaykerTahsilatView({super.key});
@@ -33,8 +34,23 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
 
   late final FocusNode _cvvFocusNode;
 
+  late final WebViewController _webViewController;
+
   @override
   void initState() {
+    _webViewController = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          
+          onNavigationRequest: (request) {
+            if (request.url.startsWith("https://www.youtube.com/")) {
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ),
+      );
     _scrollController = ScrollController();
     _scrollController.addListener(() {
       _viewModel.setScrollDown(_scrollController.position.pixels > 0);
@@ -87,7 +103,7 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
               )
             : ConstrainedBox(
                 constraints: const BoxConstraints(
-                  minHeight: 200,
+                  minHeight: 100,
                   maxHeight: 400,
                 ),
                 child: PageView.builder(
@@ -113,77 +129,113 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
                           ),
                         ),
                         const Divider(),
-                        ...List.generate(
-                          _viewModel.taksitResponseModel![index].taksitler?.length ?? 0,
-                          (index2) => Padding(
+                        ListView.separated(
+                          separatorBuilder: (context, index2) => const Divider(),
+                          itemCount: _viewModel.taksitResponseModel![index].taksitler?.length ?? 0,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index2) => Padding(
                             padding: UIHelper.lowPadding,
                             child: Observer(
-                              builder: (_) => RadioListTile.adaptive(
-                                groupValue: _viewModel.selectedBankId,
-                                value: _viewModel.taksitResponseModel![index].taksitler?[index2].id,
-                                onChanged: (value) => _viewModel.setSelectedBankId(
-                                  _viewModel.taksitResponseModel![index].taksitler?[index2].id,
-                                ),
-                                title: Text(
-                                  "${_viewModel.taksitResponseModel![index].taksitler?[index2].odemeMetni}",
-                                  style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                                ),
-                                subtitle: Text(
-                                  "${_viewModel.taksitResponseModel![index].taksitler?[index2].taksit}"
-                                  " x ${(_viewModel.taksitResponseModel![index].taksitler?[index2].vadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
-                                  "  $mainCurrency ="
-                                  " ${(_viewModel.taksitResponseModel![index].taksitler?[index2].toplamVadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}  $mainCurrency",
-                                  style: const TextStyle(overflow: TextOverflow.ellipsis),
-                                  // children: List.generate(
-                                  //   _viewModel.taksitResponseModel!.length,
-                                  //   (index) {
-                                  //     final taksit = _viewModel.taksitResponseModel![index];
-                                  //     return Card(
-                                  //       child: Column(
-                                  //         children: [
-                                  //           ListTile(
-                                  //             leading: CircleAvatar(
-                                  //               foregroundImage: Image.network(
-                                  //                 ApiUrls.basePaykerURL + (taksit.taksitler?.firstOrNull?.banka?.logoUrl ?? ""),
-                                  //               ).image,
-                                  //             ),
-                                  //             title: Text(
-                                  //               taksit.bankaAdi ?? "",
-                                  //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                                  //             ),
-                                  //             subtitle: Text(
-                                  //               "Tutar: ${taksit.tutar?.toString() ?? "0"} TL)",
-                                  //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                                  //             ),
-                                  //           ),
-                                  //           ...List.generate(
-                                  //             taksit.taksitler?.length ?? 0,
-                                  //             (index2) => CheckboxListTile.adaptive(
-                                  //               value: _viewModel.selectedBankId == taksit.taksitler?[index2].id,
-                                  //               onChanged: (value) => _viewModel.setSelectedBankId(taksit.taksitler?[index2].id),
-                                  //               title: Text(
-                                  //                 "${taksit.taksitler?[index2].odemeMetni}",
-                                  //                 style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                                  //               ),
-                                  //               subtitle: Text(
-                                  //                 "${taksit.taksitler?[index2].taksit}"
-                                  //                 " x ${(taksit.taksitler?[index2].vadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble())).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
-                                  //                 " TL ="
-                                  //                 " ${taksit.taksitler?[index2].toplamVadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble()).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} TL",
-                                  //                 style: const TextStyle(overflow: TextOverflow.ellipsis),
-                                  //               ),
-                                  //             ),
-                                  //           ),
-                                  //         ],
-                                  //       ),
-                                  //     );
-                                  //   },
-                                  // ),
-                                ),
-                              ),
+                              builder: (_) {
+                                final item = _viewModel.taksitResponseModel![index].taksitler?[index2];
+                                return RadioListTile.adaptive(
+                                  groupValue: _viewModel.paymentModel.saleInfo?.installment,
+                                  value: item?.id,
+                                  onChanged: (value) {
+                                    _viewModel
+                                      ..setBankId(item?.banka?.id.toStringIfNotNull)
+                                      ..setInstallment(item?.id);
+                                  },
+                                  title: Text(
+                                    "${item?.odemeMetni}",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    "${item?.taksit}"
+                                    " × ${(item?.vadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"
+                                    "  $mainCurrency ="
+                                    " ${(item?.toplamVadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}  $mainCurrency",
+                                    style: const TextStyle(overflow: TextOverflow.ellipsis),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ),
+                        // ...List.generate(
+                        //   _viewModel.taksitResponseModel![index].taksitler?.length ?? 0,
+                        //   (index2) => Padding(
+                        //     padding: UIHelper.lowPadding,
+                        //     child: Observer(
+                        //       builder: (_) => RadioListTile.adaptive(
+                        //         groupValue: _viewModel.selectedBankId,
+                        //         value: _viewModel.taksitResponseModel![index].taksitler?[index2].id,
+                        //         onChanged: (value) => _viewModel.setSelectedBankId(
+                        //           _viewModel.taksitResponseModel![index].taksitler?[index2].id,
+                        //         ),
+                        //         title: Text(
+                        //           "${_viewModel.taksitResponseModel![index].taksitler?[index2].odemeMetni}",
+                        //           style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                        //         ),
+                        //         subtitle: Text(
+                        //           "${_viewModel.taksitResponseModel![index].taksitler?[index2].taksit}"
+                        //           " x ${(_viewModel.taksitResponseModel![index].taksitler?[index2].vadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
+                        //           "  $mainCurrency ="
+                        //           " ${(_viewModel.taksitResponseModel![index].taksitler?[index2].toplamVadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}  $mainCurrency",
+                        //           style: const TextStyle(overflow: TextOverflow.ellipsis),
+                        //           // children: List.generate(
+                        //           //   _viewModel.taksitResponseModel!.length,
+                        //           //   (index) {
+                        //           //     final taksit = _viewModel.taksitResponseModel![index];
+                        //           //     return Card(
+                        //           //       child: Column(
+                        //           //         children: [
+                        //           //           ListTile(
+                        //           //             leading: CircleAvatar(
+                        //           //               foregroundImage: Image.network(
+                        //           //                 ApiUrls.basePaykerURL + (taksit.taksitler?.firstOrNull?.banka?.logoUrl ?? ""),
+                        //           //               ).image,
+                        //           //             ),
+                        //           //             title: Text(
+                        //           //               taksit.bankaAdi ?? "",
+                        //           //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                        //           //             ),
+                        //           //             subtitle: Text(
+                        //           //               "Tutar: ${taksit.tutar?.toString() ?? "0"} TL)",
+                        //           //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                        //           //             ),
+                        //           //           ),
+                        //           //           ...List.generate(
+                        //           //             taksit.taksitler?.length ?? 0,
+                        //           //             (index2) => CheckboxListTile.adaptive(
+                        //           //               value: _viewModel.selectedBankId == taksit.taksitler?[index2].id,
+                        //           //               onChanged: (value) => _viewModel.setSelectedBankId(taksit.taksitler?[index2].id),
+                        //           //               title: Text(
+                        //           //                 "${taksit.taksitler?[index2].odemeMetni}",
+                        //           //                 style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                        //           //               ),
+                        //           //               subtitle: Text(
+                        //           //                 "${taksit.taksitler?[index2].taksit}"
+                        //           //                 " x ${(taksit.taksitler?[index2].vadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble())).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
+                        //           //                 " TL ="
+                        //           //                 " ${taksit.taksitler?[index2].toplamVadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble()).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} TL",
+                        //           //                 style: const TextStyle(overflow: TextOverflow.ellipsis),
+                        //           //               ),
+                        //           //             ),
+                        //           //           ),
+                        //           //         ],
+                        //           //       ),
+                        //           //     );
+                        //           //   },
+                        //           // ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -276,11 +328,16 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
 
   Widget _fab(BuildContext context) => Observer(
     builder: (_) => FloatingActionButton.extended(
-      onPressed: () {
+      onPressed: () async {
         if (!(_viewModel.paymentModel.saleInfo?.isValid ?? false)) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Lütfen tüm alanları doldurun")));
           return;
         }
+        if (_viewModel.taksitResponseModel == null || _viewModel.taksitResponseModel!.isEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Lütfen taksit seçiniz")));
+          return;
+        }
+        await _viewModel.createPayment();
       },
       label: AnimatedSize(
         duration: const Duration(milliseconds: 200),
@@ -299,6 +356,19 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
       child: Column(
         spacing: UIHelper.midSize,
         children: [
+          Observer(
+            builder: (_) {
+              if (_viewModel.paymentResponseModel == null) {
+                return const SizedBox.shrink();
+              }
+              final html = _viewModel.paymentResponseModel?.message ?? "";
+              _webViewController.loadHtmlString(html);
+              return SizedBox(
+                height: 400,
+                child: WebViewWidget(controller: _webViewController),
+              );
+            },
+          ),
           Observer(
             builder: (_) => CreditCardWidget(
               padding: 25,
@@ -394,7 +464,7 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
                         hintText: _viewModel.expiryDateMask,
                         controller: _expiryDateController,
                         keyboardType: TextInputType.number,
-                        inputFormatter: [LengthLimitingTextInputFormatter(4)],
+                        inputFormatter: [LengthLimitingTextInputFormatter(5)],
                         onChanged: (value) {
                           // format as MM/YY
                           final formattedValue = value

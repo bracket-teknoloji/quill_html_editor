@@ -1,6 +1,9 @@
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/taksit_response_model.dart";
 import "package:uuid/uuid.dart";
 
@@ -38,9 +41,6 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
   bool isExpanded = false;
 
   @observable
-  int? selectedBankId;
-
-  @observable
   PaymentModel paymentModel = PaymentModel(
     customerInfo: const CustomerInfo(
       customerId: "120.0004",
@@ -53,6 +53,9 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
       orderId: const Uuid().v4(),
     ),
   );
+
+  @observable
+  PaymentResponseModel? paymentResponseModel;
 
   @observable
   ObservableList<TaksitResponseModel>? taksitResponseModel;
@@ -83,11 +86,28 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setSelectedBankId(int? value) {
-    if (value == selectedBankId) return;
-    if (value != selectedBankId) {
-      selectedBankId = value;
-    }
+  void setPaymentResponseModel(PaymentResponseModel? value) {
+    paymentResponseModel = value;
+  }
+
+  @action
+  void setInstallment(int? value) {
+    if (value == paymentModel.saleInfo?.installment) return;
+    paymentModel = paymentModel.copyWith(
+      saleInfo: paymentModel.saleInfo?.copyWith(
+        installment: value,
+      ),
+    );
+  }
+
+  @action
+  void setBankId(String? value) {
+    if (value == paymentModel.saleInfo?.bankCode) return;
+    paymentModel = paymentModel.copyWith(
+      saleInfo: paymentModel.saleInfo?.copyWith(
+        bankCode: value,
+      ),
+    );
   }
 
   @action
@@ -144,6 +164,7 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getInstallments() async {
+    setTaksitResponseModel(null);
     final result = await networkManager.getInstallments(
       cariKodu: paymentModel.customerInfo?.customerId ?? "",
       amount: (paymentModel.saleInfo?.amount ?? 0).toDouble(),
@@ -153,5 +174,28 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
     } else {
       setTaksitResponseModel(null);
     }
+  }
+
+  @action
+  Future<void> createPayment() async {
+
+    final result = await networkManager.createPayment(
+      paymentModel.copyWith(
+        saleInfo: paymentModel.saleInfo?.copyWith(
+          cardNumber: paymentModel.saleInfo?.cardNumber?.replaceAll(" ", ""),
+          cardExpiryDateYear: 2000 + (paymentModel.saleInfo?.cardExpiryDateYear ?? 0),
+          installment:
+              taksitResponseModel
+                  ?.firstWhereOrNull((element) => element.bankaId.toStringIfNotNull == paymentModel.saleInfo?.bankCode)
+                  ?.taksitler
+                  ?.firstWhereOrNull(
+                    (element) => element.id == paymentModel.saleInfo?.installment,
+                  )
+                  ?.taksit ??
+              paymentModel.saleInfo?.installment,
+        ),
+      ),
+    );
+    setPaymentResponseModel(result);
   }
 }
