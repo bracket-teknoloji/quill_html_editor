@@ -98,8 +98,8 @@ sealed class SaleInfo with _$SaleInfo {
       amount != null;
 
   String get expiryDate {
-    final month = cardExpiryDateMonth?.toString().padLeft(2, "0") ?? "";
-    final year = cardExpiryDateYear?.toString().substring(2) ?? "";
+    final month = cardExpiryDateMonth.toString().padLeft(2, "0");
+    final year = cardExpiryDateYear.toString().padLeft(2, "0");
     return "$month/$year";
   }
 }
