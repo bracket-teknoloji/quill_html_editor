@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [
+      "GRRV3JTTZ8.com.bracket23.picker"
+    ],
+    "details": [
+      {
+        "appIDs": [
+          "GRRV3JTTZ8.com.bracket23.picker"
+        ],
+        "paths": [
+          "*",
+          "/"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "GRRV3JTTZ8.com.bracket23.picker"
+    ]
+  }
+}

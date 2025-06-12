@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.bracket23.picker",
+      "sha256_cert_fingerprints": [
+        "39:F1:81:77:DC:8D:47:0B:D8:D7:C7:C9:A8:CC:3A:C6:89:D1:A8:80:A1:00:6C:A2:3A:3E:AB:03:1A:A8:52:1C"
+      ]
+    }
+  }
+]

@@ -19,4 +19,4 @@ final class XDPathUrlStrategy extends HashUrlStrategy {
   }
 }
 
-void setUrl() => setUrlStrategy(XDPathUrlStrategy());
+void setUrl() => setUrlStrategy(PathUrlStrategy());
