@@ -97,10 +97,14 @@ dependencies:
   animated_text_kit: ^4.2.2
   text_scroll: ^0.2.0
   package_info_plus: ^8.1.0
-  webview_flutter: ^4.9.0
   geolocator: ^14.0.0
   get_it: ^8.0.3
+  app_links: ^6.4.0
+
+  webview_flutter: ^4.9.0
   web: ^1.1.0
+  webview_flutter_web: ^0.2.3+4
+  
 # dependency_overrides:
 # google_maps_flutter_ios: 2.3.0
 # rive: 0.13.15
