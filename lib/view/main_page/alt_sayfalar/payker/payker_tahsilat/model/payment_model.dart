@@ -97,9 +97,10 @@ sealed class SaleInfo with _$SaleInfo {
       cardCvv != null &&
       amount != null;
 
-  String get expiryDate {
-    final month = cardExpiryDateMonth.toString().padLeft(2, "0");
-    final year = cardExpiryDateYear.toString().padLeft(2, "0");
-    return "$month/$year";
+  String? get expiryDate {
+    final month = cardExpiryDateMonth?.toString().padLeft(2, "0");
+    final year = cardExpiryDateYear?.toString().padLeft(2, "0");
+    if (month != null && year != null) return "$month/$year";
+    return null;
   }
 }
