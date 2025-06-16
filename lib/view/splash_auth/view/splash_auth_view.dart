@@ -32,6 +32,9 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
   @override
   void initState() {
     super.initState();
+    if (kDebugMode) {
+      Get.testMode = true;
+    }
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
       await DIManager.init();
       try {
@@ -204,7 +207,7 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
       viewModel.setTitle("Lisans bilgileri alınıyor...");
       final lisansResponse = await networkManager.getUyeBilgileri(
         CacheManager.getVerifiedUser.account?.email ?? "",
-        password: CacheManager.getVerifiedUser.account?.parola,
+        // password: CacheManager.getVerifiedUser.account?.parola,
       );
       viewModel.setAccountResponseModel(lisansResponse.dataList.firstOrNull);
       if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
