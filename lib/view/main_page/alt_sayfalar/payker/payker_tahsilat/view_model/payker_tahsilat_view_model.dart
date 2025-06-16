@@ -2,6 +2,8 @@ import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/taksit_response_model.dart";
@@ -14,14 +16,7 @@ class PaykerTahsilatViewModel = _PaykerTahsilatViewModelBase with _$PaykerTahsil
 abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
   _PaykerTahsilatViewModelBase() {
     paymentModel = paymentModel.copyWith(
-      saleInfo: paymentModel.saleInfo?.copyWith(
-        amount: 0, // Başlangıçta tutar 0 olarak ayarlanır
-        cardCvv: cvvCodeMask,
-        cardNameSurname: cardHolderNameMask,
-        cardNumber: cardNumberMask,
-        cardExpiryDateMonth: int.tryParse(expiryDateMask.split("/")[0]),
-        cardExpiryDateYear: int.tryParse(expiryDateMask.split("/")[1]),
-      ),
+      saleInfo: paymentModel.saleInfo?.copyWith(),
     );
   }
 
@@ -42,6 +37,7 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   PaymentModel paymentModel = PaymentModel(
+    customerIpAddress: AccountModel.instance.localIp,
     customerInfo: const CustomerInfo(
       customerId: "120.0004",
     ),
@@ -49,9 +45,7 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
       currency: 949, // TRY sabit,
     ),
     payment3D: const Payment3D(),
-    order: Order(
-      orderId: const Uuid().v4(),
-    ),
+    order: const Order(),
   );
 
   @observable
@@ -59,6 +53,16 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   ObservableList<TaksitResponseModel>? taksitResponseModel;
+
+  @observable
+  bool isInstallmentLoading = false;
+
+  @action
+  void setIsInstallmentLoading(bool value) {
+    if (value != isInstallmentLoading) {
+      isInstallmentLoading = value;
+    }
+  }
 
   @action
   void setTaksitResponseModel(List<TaksitResponseModel>? value) {
@@ -165,10 +169,12 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getInstallments() async {
     setTaksitResponseModel(null);
+    setIsInstallmentLoading(true);
     final result = await networkManager.getInstallments(
       cariKodu: paymentModel.customerInfo?.customerId ?? "",
       amount: (paymentModel.saleInfo?.amount ?? 0).toDouble(),
     );
+    setIsInstallmentLoading(false);
     if (result != null) {
       setTaksitResponseModel(result);
     } else {
@@ -178,9 +184,18 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> createPayment() async {
-
+    paymentModel = paymentModel.copyWith(
+      order: paymentModel.order?.copyWith(
+        orderId: const Uuid().v4(),
+      ),
+    );
     final result = await networkManager.createPayment(
       paymentModel.copyWith(
+        payment3D: Payment3D(
+          isDesktop: false,
+          returnUrl: "${ApiUrls.paymentCallback}?orderId=${paymentModel.order?.orderId ?? ""}",
+          confirm: true,
+        ),
         saleInfo: paymentModel.saleInfo?.copyWith(
           cardNumber: paymentModel.saleInfo?.cardNumber?.replaceAll(" ", ""),
           cardExpiryDateYear: 2000 + (paymentModel.saleInfo?.cardExpiryDateYear ?? 0),

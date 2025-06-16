@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_credit_card/flutter_credit_card.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
@@ -12,8 +13,10 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/view/payker_web_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/view_model/payker_tahsilat_view_model.dart";
-import "package:webview_flutter/webview_flutter.dart";
 
 final class PaykerTahsilatView extends StatefulWidget {
   const PaykerTahsilatView({super.key});
@@ -25,6 +28,7 @@ final class PaykerTahsilatView extends StatefulWidget {
 final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
   final PaykerTahsilatViewModel _viewModel = PaykerTahsilatViewModel();
   late final ScrollController _scrollController;
+  late final TextEditingController _cariController;
   late final TextEditingController _cardNumberController;
   late final TextEditingController _expiryDateController;
   late final TextEditingController _cardHolderNameController;
@@ -32,29 +36,17 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
   late final TextEditingController _descriptionController;
   late final TextEditingController _amountController;
 
-  late final FocusNode _cvvFocusNode;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  late final WebViewController _webViewController;
+  late final FocusNode _cvvFocusNode;
 
   @override
   void initState() {
-    _webViewController = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          
-          onNavigationRequest: (request) {
-            if (request.url.startsWith("https://www.youtube.com/")) {
-              return NavigationDecision.prevent;
-            }
-            return NavigationDecision.navigate;
-          },
-        ),
-      );
     _scrollController = ScrollController();
     _scrollController.addListener(() {
       _viewModel.setScrollDown(_scrollController.position.pixels > 0);
     });
+    _cariController = TextEditingController();
     _cardNumberController = TextEditingController();
     _expiryDateController = TextEditingController();
     _cardHolderNameController = TextEditingController();
@@ -74,6 +66,8 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
 
   @override
   void dispose() {
+    _scrollController.dispose();
+    _cariController.dispose();
     _cardNumberController.dispose();
     _expiryDateController.dispose();
     _cardHolderNameController.dispose();
@@ -91,12 +85,12 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
       headerBuilder: (context, isExpanded) =>
           const ListTile(leading: Icon(Icons.payment_outlined), title: Text("Taksit Seçenekleri")),
       body: Observer(
-        builder: (_) => _viewModel.taksitResponseModel == null
+        builder: (_) => _viewModel.isInstallmentLoading
             ? const Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Center(child: Text("Taksit seçenekleri için tutar giriniz.")),
+                child: Center(child: CircularProgressIndicator.adaptive()),
               )
-            : _viewModel.taksitResponseModel!.isEmpty
+            : _viewModel.taksitResponseModel?.isEmpty ?? true
             ? const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Center(child: Text("Taksit seçeneği bulunmamaktadır.")),
@@ -329,15 +323,30 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
   Widget _fab(BuildContext context) => Observer(
     builder: (_) => FloatingActionButton.extended(
       onPressed: () async {
+        if (!_formKey.currentState!.validate()) {
+          return;
+        }
         if (!(_viewModel.paymentModel.saleInfo?.isValid ?? false)) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Lütfen tüm alanları doldurun")));
           return;
         }
-        if (_viewModel.taksitResponseModel == null || _viewModel.taksitResponseModel!.isEmpty) {
+        if ((_viewModel.taksitResponseModel == null || _viewModel.taksitResponseModel!.isEmpty) &&
+            _viewModel.paymentModel.saleInfo?.installment == null) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Lütfen taksit seçiniz")));
           return;
         }
         await _viewModel.createPayment();
+        if (_viewModel.paymentResponseModel?.message != null) {
+          final result = await Get.to(
+            () => PaykerWebView(
+              html: _viewModel.paymentResponseModel!.message!,
+            ),
+            fullscreenDialog: true,
+          );
+          if (result == true) {
+            Get.back(result: true);
+          }
+        }
       },
       label: AnimatedSize(
         duration: const Duration(milliseconds: 200),
@@ -353,217 +362,235 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
     physics: const AlwaysScrollableScrollPhysics(),
     child: Padding(
       padding: UIHelper.lowPaddingHorizontal,
-      child: Column(
-        spacing: UIHelper.midSize,
-        children: [
-          Observer(
-            builder: (_) {
-              if (_viewModel.paymentResponseModel == null) {
-                return const SizedBox.shrink();
-              }
-              final html = _viewModel.paymentResponseModel?.message ?? "";
-              _webViewController.loadHtmlString(html);
-              return SizedBox(
-                height: 400,
-                child: WebViewWidget(controller: _webViewController),
-              );
-            },
-          ),
-          Observer(
-            builder: (_) => CreditCardWidget(
-              padding: 25,
-              cardNumber: _viewModel.paymentModel.saleInfo?.cardNumber ?? _viewModel.cardNumberMask,
-              expiryDate: _viewModel.paymentModel.saleInfo?.expiryDate ?? _viewModel.expiryDateMask,
-              backgroundImage: Assets.background.paykerCard2Background.path,
-              cardHolderName: _viewModel.paymentModel.saleInfo?.cardNameSurname ?? _viewModel.cardHolderNameMask,
-              cvvCode: _viewModel.paymentModel.saleInfo?.cardCvv ?? _viewModel.cvvCodeMask,
-              cardBgColor: ColorPalette.outerSpace,
-              frontCardBorder: Border.all(color: ColorPalette.outerSpace),
-              backCardBorder: Border.all(color: ColorPalette.outerSpace),
-              showBackView: _viewModel.showBackView,
-              enableFloatingCard: true,
-              labelCardHolder: "Kart Sahibi",
-              labelExpiredDate:
-                  "${DateTime.now().month.toString().padLeft(2, '0')}/${DateTime.now().year.toString().substring(2)}",
-              labelValidThru: "SKT",
-              isHolderNameVisible: true,
-              onCreditCardWidgetChange: (p0) {},
-              obscureCardCvv: false,
-              obscureCardNumber: false,
+      child: Form(
+        key: _formKey,
+        child: Column(
+          spacing: UIHelper.midSize,
+          children: [
+            Observer(
+              builder: (_) => CreditCardWidget(
+                padding: 25,
+                cardNumber: _viewModel.paymentModel.saleInfo?.cardNumber ?? _viewModel.cardNumberMask,
+                expiryDate: _viewModel.paymentModel.saleInfo?.expiryDate ?? _viewModel.expiryDateMask,
+                backgroundImage: Assets.background.paykerCard2Background.path,
+                cardHolderName: _viewModel.paymentModel.saleInfo?.cardNameSurname ?? _viewModel.cardHolderNameMask,
+                cvvCode: _viewModel.paymentModel.saleInfo?.cardCvv ?? _viewModel.cvvCodeMask,
+                cardBgColor: ColorPalette.outerSpace,
+                frontCardBorder: Border.all(color: ColorPalette.outerSpace),
+                backCardBorder: Border.all(color: ColorPalette.outerSpace),
+                showBackView: _viewModel.showBackView,
+                enableFloatingCard: true,
+                labelCardHolder: "Kart Sahibi",
+                labelExpiredDate:
+                    "${DateTime.now().month.toString().padLeft(2, '0')}/${DateTime.now().year.toString().substring(2)}",
+                labelValidThru: "SKT",
+                isHolderNameVisible: true,
+                onCreditCardWidgetChange: (p0) {},
+                obscureCardCvv: false,
+                obscureCardNumber: false,
+              ),
             ),
-          ),
 
-          AutofillGroup(
-            child: Column(
-              children: [
-                CustomTextField(
-                  labelText: "Kart Numarası",
-                  autofillHints: AutofillHints.creditCardNumber,
-                  isMust: true,
-                  hintText: _viewModel.cardNumberMask,
-                  controller: _cardNumberController,
-                  keyboardType: TextInputType.number,
-                  // inputFormatter: [LengthLimitingTextInputFormatter(16)],
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Kart numarası boş olamaz";
-                    }
-                    if (value.length < 16) {
-                      return "Kart numarası 16 haneli olmalıdır";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    if (value.replaceAll(RegExp(r"\s+"), "").length > 16) {
-                      return;
-                    }
-                    final String formattedValue = value
-                        .replaceAll(RegExp(r"\s+"), "") // Önce tüm boşlukları kaldır
-                        .replaceAllMapped(
-                          RegExp(r"(\d{4})"),
-                          (match) => "${match.group(1)} ",
-                        ); // Her 4 karakterde bir boşluk ekle
-                    if (kIsWeb) {
-                      _cardNumberController.value = TextEditingValue(
-                        text: formattedValue,
-                        selection: TextSelection.collapsed(offset: formattedValue.length),
-                      );
-                    } else {
-                      _cardNumberController.text = formattedValue;
-                    }
-                    // _cardNumberController.text = formattedValue.trim(); // Sonundaki boşluğu kaldır
-
-                    _viewModel.setCardNumber(value);
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Kart Sahibi",
-
-                  autofillHints: AutofillHints.creditCardName,
-                  isMust: true,
-                  hintText: _viewModel.cardHolderNameMask,
-                  controller: _cardHolderNameController,
-                  keyboardType: TextInputType.name,
-                  inputFormatter: [LengthLimitingTextInputFormatter(30)],
-                  onChanged: _viewModel.setCardHolderName,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Kart sahibi boş olamaz";
-                    }
-                    return null;
-                  },
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Son Kullanma Tarihi",
-                        autofillHints: AutofillHints.creditCardExpirationDate,
-                        isMust: true,
-                        hintText: _viewModel.expiryDateMask,
-                        controller: _expiryDateController,
-                        keyboardType: TextInputType.number,
-                        inputFormatter: [LengthLimitingTextInputFormatter(5)],
-                        onChanged: (value) {
-                          // format as MM/YY
-                          final formattedValue = value
-                              .replaceAll(RegExp(r"\s+"), "")
-                              .replaceAllMapped(RegExp(r"(\d{2})(?=\d)"), (match) => "${match.group(1)}/");
-                          if (kIsWeb) {
-                            _expiryDateController.value = TextEditingValue(
-                              text: formattedValue,
-                              selection: TextSelection.collapsed(offset: value.length),
-                            );
-                          } else {
-                            _expiryDateController.text = formattedValue;
-                          }
-                          // _expiryDateController.text = value
-                          //     .replaceAll(RegExp(r"\s+"), "")
-                          //     .replaceAllMapped(RegExp(r"(\d{2})(?=\d)"), (match) => "${match.group(1)}/");
-                          _viewModel.setExpiryDate(value);
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Son kullanma tarihi boş olamaz";
-                          }
-                          if (value.length < 4) {
-                            return "Son kullanma tarihi 4 haneli olmalıdır";
-                          }
-                          final dateParts = value.split("/");
-                          final DateTime now = DateTime.now();
-                          final int month = int.parse(dateParts[0]);
-                          final int year = int.parse(dateParts[1]);
-                          if (month < 1 || month > 12) {
-                            return "Geçersiz ay";
-                          }
-                          if (year < now.year % 100 || (year == now.year % 100 && month < now.month)) {
-                            return "Kart süresi geçmiş";
-                          }
-                          return null;
-                        },
-                      ),
+            AutofillGroup(
+              child: Column(
+                children: [
+                  CustomTextField(
+                    labelText: "Cari",
+                    controller: _cariController,
+                    // TODO : Cari kodunu view model'e set et
+                    valueWidget: Observer(
+                      builder: (_) => const Text(""),
                     ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "CVV",
-                        autofillHints: AutofillHints.creditCardSecurityCode,
-                        isMust: true,
-                        hintText: _viewModel.cvvCodeMask,
-                        controller: _cvvCodeController,
-                        focusNode: _cvvFocusNode,
-                        keyboardType: TextInputType.number,
-                        inputFormatter: [LengthLimitingTextInputFormatter(3)],
-                        onChanged: _viewModel.setCvvCode,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "CVV kodu boş olamaz";
+                    suffixMore: true,
+                    readOnly: true,
+                    suffix: IconButton(
+                      icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                      onPressed: () async {
+                        if (_cariController.text.isNotEmpty) {
+                          if (await networkManager.getCariModel(CariRequestModel()) case final value?) {
+                            dialogManager.showCariGridViewDialog(value);
                           }
-                          if (value.length < 3) {
-                            return "CVV kodu 3 haneli olmalıdır";
-                          }
-                          return null;
-                        },
-                      ),
+                        }
+                      },
                     ),
-                  ],
-                ),
-              ],
+                    onTap: () async {
+                      final result = await Get.toNamed("/mainPage/cariListesiOzel");
+                      if (result is CariListesiModel) {
+                        _cariController.text = result.cariAdi ?? "";
+                        // TODO: Cari kodunu view model'e set et
+                        // _viewModel.setCariKodu(result.cariKodu);
+                      }
+                    },
+                  ),
+                  CustomTextField(
+                    labelText: "Kart Numarası",
+                    autofillHints: AutofillHints.creditCardNumber,
+                    isMust: true,
+                    hintText: _viewModel.cardNumberMask,
+                    controller: _cardNumberController,
+                    keyboardType: TextInputType.number,
+                    // inputFormatter: [LengthLimitingTextInputFormatter(16)],
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Kart numarası boş olamaz";
+                      }
+                      if (value.length < 16) {
+                        return "Kart numarası 16 haneli olmalıdır";
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                      if (value.replaceAll(RegExp(r"\s+"), "").length > 16) {
+                        return;
+                      }
+                      final String formattedValue = value
+                          .replaceAll(RegExp(r"\s+"), "") // Önce tüm boşlukları kaldır
+                          .replaceAllMapped(
+                            RegExp(r"(\d{4})"),
+                            (match) => "${match.group(1)} ",
+                          ); // Her 4 karakterde bir boşluk ekle
+                      if (kIsWeb) {
+                        _cardNumberController.value = TextEditingValue(
+                          text: formattedValue,
+                          selection: TextSelection.collapsed(offset: formattedValue.length),
+                        );
+                      } else {
+                        _cardNumberController.text = formattedValue;
+                      }
+                      // _cardNumberController.text = formattedValue.trim(); // Sonundaki boşluğu kaldır
+
+                      _viewModel.setCardNumber(value);
+                    },
+                  ),
+                  CustomTextField(
+                    labelText: "Kart Sahibi",
+
+                    autofillHints: AutofillHints.creditCardName,
+                    isMust: true,
+                    hintText: _viewModel.cardHolderNameMask,
+                    controller: _cardHolderNameController,
+                    keyboardType: TextInputType.name,
+                    inputFormatter: [LengthLimitingTextInputFormatter(30)],
+                    onChanged: _viewModel.setCardHolderName,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Kart sahibi boş olamaz";
+                      }
+                      return null;
+                    },
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Son Kullanma Tarihi",
+                          autofillHints: AutofillHints.creditCardExpirationDate,
+                          isMust: true,
+                          hintText: _viewModel.expiryDateMask,
+                          controller: _expiryDateController,
+                          keyboardType: TextInputType.number,
+                          inputFormatter: [LengthLimitingTextInputFormatter(5)],
+                          onChanged: (value) {
+                            // format as MM/YY
+                            final formattedValue = value
+                                .replaceAll(RegExp(r"\s+"), "")
+                                .replaceAllMapped(RegExp(r"(\d{2})(?=\d)"), (match) => "${match.group(1)}/");
+                            if (kIsWeb) {
+                              _expiryDateController.value = TextEditingValue(
+                                text: formattedValue,
+                                selection: TextSelection.collapsed(offset: value.length),
+                              );
+                            } else {
+                              _expiryDateController.text = formattedValue;
+                            }
+                            // _expiryDateController.text = value
+                            //     .replaceAll(RegExp(r"\s+"), "")
+                            //     .replaceAllMapped(RegExp(r"(\d{2})(?=\d)"), (match) => "${match.group(1)}/");
+                            _viewModel.setExpiryDate(value);
+                          },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Son kullanma tarihi boş olamaz";
+                            }
+                            if (value.length < 4) {
+                              return "Son kullanma tarihi 4 haneli olmalıdır";
+                            }
+                            final dateParts = value.split("/");
+                            final DateTime now = DateTime.now();
+                            final int month = int.parse(dateParts[0]);
+                            final int year = int.parse(dateParts[1]);
+                            if (month < 1 || month > 12) {
+                              return "Geçersiz ay";
+                            }
+                            if (year < now.year % 100 || (year == now.year % 100 && month < now.month)) {
+                              return "Kart süresi geçmiş";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "CVV",
+                          autofillHints: AutofillHints.creditCardSecurityCode,
+                          isMust: true,
+                          hintText: _viewModel.cvvCodeMask,
+                          controller: _cvvCodeController,
+                          focusNode: _cvvFocusNode,
+                          keyboardType: TextInputType.number,
+                          inputFormatter: [LengthLimitingTextInputFormatter(3)],
+                          onChanged: _viewModel.setCvvCode,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "CVV kodu boş olamaz";
+                            }
+                            if (value.length < 3) {
+                              return "CVV kodu 3 haneli olmalıdır";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          CustomTextField(
-            labelText: "Tutar",
-            isMust: true,
-            isFormattedString: true,
-            controller: _amountController,
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            inputFormatter: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(10)],
-            onChanged: (value) {
-              _viewModel
-                ..setAmount(value.toDoubleWithFormattedString)
-                ..getInstallments();
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Tutar boş olamaz";
-              }
-              if (value.toDoubleWithFormattedString <= 0) {
-                return "Tutar 0'dan büyük olmalıdır";
-              }
-              return null;
-            },
-          ),
-          CustomTextField(
-            labelText: "Açıklama",
-            controller: _descriptionController,
-            keyboardType: TextInputType.text,
-            inputFormatter: [LengthLimitingTextInputFormatter(50)],
-            onChanged: (value) {},
-          ),
-          ExpansionPanelList.radio(children: _generateItems(), initialOpenPanelValue: "bilgilendirme"),
+            CustomTextField(
+              labelText: "Tutar",
+              isMust: true,
+              isFormattedString: true,
+              controller: _amountController,
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              inputFormatter: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(10)],
+              onChanged: (value) {
+                _viewModel
+                  ..setAmount(value.toDoubleWithFormattedString)
+                  ..getInstallments();
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Tutar boş olamaz";
+                }
+                if (value.toDoubleWithFormattedString <= 0) {
+                  return "Tutar 0'dan büyük olmalıdır";
+                }
+                return null;
+              },
+            ),
+            CustomTextField(
+              labelText: "Açıklama",
+              controller: _descriptionController,
+              keyboardType: TextInputType.text,
+              inputFormatter: [LengthLimitingTextInputFormatter(50)],
+              onChanged: (value) {},
+            ),
+            ExpansionPanelList.radio(children: _generateItems(), initialOpenPanelValue: "taksit_sec"),
 
-          const SizedBox(height: 100),
-        ],
+            const SizedBox(height: 100),
+          ],
+        ),
       ),
     ),
   );

@@ -37,6 +37,7 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/mod
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/taksit_response_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/module_info_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -862,6 +863,23 @@ final class NetworkManager {
     );
     if (result.isSuccess) {
       return result.dataList;
+    }
+    return null;
+  }
+
+  Future<ModuleInfoModel?> checkPaykerPermission() async {
+    final result = await dioPost<ModuleInfoModel>(
+      path: ApiUrls.getModulInfo,
+      bodyModel: const ModuleInfoModel(),
+      data: {
+        "Email": AccountModel.instance.uyeEmail ?? "",
+        "Parola": AccountModel.instance.uyeSifre ?? "",
+        "ParolaMD5" : true,
+        "Moduller": ["Payker"],
+      },
+    );
+    if (result.isSuccess) {
+      return result.dataItem;
     }
     return null;
   }

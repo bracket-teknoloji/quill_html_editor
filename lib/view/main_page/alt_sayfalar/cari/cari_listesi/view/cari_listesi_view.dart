@@ -292,10 +292,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
         onLongPress: () => showCariGrid(item),
         onTap: () async {
           if (widget.isGetData ?? false) {
-            if (item.kilitliMi) {
-              dialogManager.showAlertDialog("Cari tüm işlemler için kilitli durumda.");
-              return;
-            }
+            if (item.kilitliMi) return dialogManager.showAlertDialog("Cari tüm işlemler için kilitli durumda.");
             final newItem = await networkManager.getCariModel(
               CariRequestModel(
                 kod: [item.cariKodu!],
@@ -306,9 +303,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 plasiyerKisitiYok: true,
               ),
             );
-            if (newItem == null) {
-              return;
-            }
+            if (newItem == null) return;
             Get.back(result: newItem);
           } else {
             cariBottomSheet(context, item);

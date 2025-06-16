@@ -121,6 +121,28 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     });
   }
 
+  late final _$isInstallmentLoadingAtom = Atom(
+    name: '_PaykerTahsilatViewModelBase.isInstallmentLoading',
+    context: context,
+  );
+
+  @override
+  bool get isInstallmentLoading {
+    _$isInstallmentLoadingAtom.reportRead();
+    return super.isInstallmentLoading;
+  }
+
+  @override
+  set isInstallmentLoading(bool value) {
+    _$isInstallmentLoadingAtom.reportWrite(
+      value,
+      super.isInstallmentLoading,
+      () {
+        super.isInstallmentLoading = value;
+      },
+    );
+  }
+
   late final _$getInstallmentsAsyncAction = AsyncAction(
     '_PaykerTahsilatViewModelBase.getInstallments',
     context: context,
@@ -145,6 +167,19 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
     name: '_PaykerTahsilatViewModelBase',
     context: context,
   );
+
+  @override
+  void setIsInstallmentLoading(bool value) {
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(
+          name: '_PaykerTahsilatViewModelBase.setIsInstallmentLoading',
+        );
+    try {
+      return super.setIsInstallmentLoading(value);
+    } finally {
+      _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setTaksitResponseModel(List<TaksitResponseModel>? value) {
@@ -290,7 +325,8 @@ showBackView: ${showBackView},
 isExpanded: ${isExpanded},
 paymentModel: ${paymentModel},
 paymentResponseModel: ${paymentResponseModel},
-taksitResponseModel: ${taksitResponseModel}
+taksitResponseModel: ${taksitResponseModel},
+isInstallmentLoading: ${isInstallmentLoading}
     ''';
   }
 }
