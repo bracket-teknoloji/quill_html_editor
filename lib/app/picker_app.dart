@@ -44,7 +44,6 @@ final class PickerMaterialApp extends StatelessWidget {
     popGesture: true,
     debugShowCheckedModeBanner: false,
     locale: Get.deviceLocale,
-
     fallbackLocale: const Locale("en"),
     supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
     localizationsDelegates: const <LocalizationsDelegate>[
@@ -63,17 +62,16 @@ final class PickerMaterialApp extends StatelessWidget {
         PointerDeviceKind.trackpad,
       },
     ),
-
     opaqueRoute: false,
     color: UIHelper.primaryColor,
     theme: AppThemeLight.instance?.theme,
     darkTheme: AppThemeDark.instance?.theme,
     themeMode: CacheManager.getProfilParametre.temaModu,
-    initialRoute: "/",
-    onUnknownRoute: (settings) => GetPageRoute(
-      settings: const RouteSettings(name: "/"),
-      page: SplashAuthView.new,
-    ),
+    // initialRoute: "/",
+    // onUnknownRoute: (settings) => GetPageRoute(
+    //   settings: const RouteSettings(name: "/"),
+    //   page: SplashAuthView.new,
+    // ),
     getPages: <GetPage>[
       GetPage(name: "/", page: SplashAuthView.new),
       GetPage(name: "/login", page: () => const LoginView()),
@@ -946,6 +944,7 @@ final class PickerMaterialApp extends StatelessWidget {
 
           //* Payker
           GetPage(name: "/paykerTahsilat", page: PaykerTahsilatView.new),
+          GetPage(name: "/paykerOdemeListesiOzel", page: () => PaykerOdemeListesiView(isGetData: Get.arguments)),
 
           //* Serbest Raporlar
           //*
