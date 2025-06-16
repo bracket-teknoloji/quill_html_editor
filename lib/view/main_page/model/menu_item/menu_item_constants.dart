@@ -746,7 +746,9 @@ abstract final class MenuItemConstants {
         color: ColorPalette.carminePink,
         altMenuler: <GridItemModel>[
           if (_yetkiController.tahsilatPayker)
-          GridItemModel.item(name: null, title: "Ödeme Al", route: "/mainPage/paykerTahsilat"),
+          GridItemModel.item(name: null, title: "Ödeme Listesi", route: "/mainPage/paykerOdemeListesiOzel", arguments: false),
+          // if (_yetkiController.tahsilatPayker)
+          // GridItemModel.item(name: null, title: "Ödeme Al", route: "/mainPage/paykerTahsilat"),
         ],
       ),
   ];
