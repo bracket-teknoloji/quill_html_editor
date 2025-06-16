@@ -8,3 +8,9 @@
 -keep class com.google.firebase.** { *; }
 -dontwarn io.flutter.embedding.**
 -ignorewarnings
+-keep class androidx.window.** { *; }
+-keep interface androidx.window.** { *; }
+-dontwarn androidx.window.**
+-keep class com.google.android.gms.safetynet.** { *; }
+-dontwarn com.google.android.gms.safetynet.**
+-keepattributes InnerClasses, EnclosingMethod
