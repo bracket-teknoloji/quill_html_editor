@@ -42,6 +42,21 @@ void main() async {
       DeviceOrientation.landscapeLeft,
     ]);
   }
+  // final appLinks = AppLinks();
+  // Get.addListener(() {
+  //   log("Get.rootController: ${Get.rootController}", name: "GetRootController");
+  // });
+  // appLinks.uriLinkStream.listen(
+  //   (link) {
+  //     log("App Link: $link", name: "AppLink");
+  //     // Get.toNamed(
+  //     //   "/${link.path}",
+  //     //   arguments: link.queryParameters.isNotEmpty ? link.queryParameters : null,
+  //     // );
+  //   },
+  //   onDone: () => log("App Link Stream Done", name: "AppLinkDone"),
+  //   onError: (Object error) => log("App Link Error: $error", name: "AppLinkError"),
+  // );
   runApp(const PickerApp());
   //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
   NetworkDependencyInjection.init();
