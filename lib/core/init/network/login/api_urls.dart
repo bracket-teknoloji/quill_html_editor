@@ -13,7 +13,6 @@ abstract final class ApiUrls {
   static const String getSiradakiBelgeNo = "General/GetSiradakiBelgeNo";
   static const String getSiradakiKod = "General/GetSiradakiKod";
   static const String getUlkeler = "General/GetUlkeler";
-  static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
   static const String isletmelerSubeler = "General/GetIsletmelerSubeler";
   static const String logoutUser = "User/LogoutUser";
   static const String saveKonum = "User/SaveKonum";
@@ -21,17 +20,25 @@ abstract final class ApiUrls {
   static const String getDizaynlar = "Print/GetDizaynlar";
   static const String saveDovizKuru = "General/SaveDovizKuru";
   static const String saveEvrak = "General/SaveEvrak";
-  static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
-  static const String surumYenilikleri = "https://storews.netfect.com/api/Picker/GetSurumYenilikleri";
-  static const String teklifIste = "https://storews.netfect.com/api/Picker/PickerTeklifIste";
-  static const String basePaykerURL = "https://pay.payker.com.tr";
-  static const String createPayment = "$basePaykerURL/api/Payments/CreatePayment";
-  static const String getBankInstallments = "$basePaykerURL/api/payments/getbankinstallments";
-  // static const String surumYenilikleri = "http://ofis.bracket.com.tr:7575/NetStore/api/Picker/GetSurumYenilikleri";
   static const String token = "token";
   static const String veriTabanlari = "General/GetVeritabanlari";
   static const String getGenelRehber = "General/GetGenelRehber";
   static const String getEkAlanlar = "General/GetEkAlanlar";
+
+  //* StoreWS
+  static const String _baseStoreWSUrl = "https://storews.netfect.com/api";
+  static const String saveUyeBilgileri = "$_baseStoreWSUrl/Picker/SaveUyeBilgileri";
+  static const String surumYenilikleri = "$_baseStoreWSUrl/Picker/GetSurumYenilikleri";
+  static const String teklifIste = "$_baseStoreWSUrl/Picker/PickerTeklifIste";
+  static const String getModulInfo = "$_baseStoreWSUrl/Partner/GetModulInfo";
+  static const String getUyeBilgileri = "$_baseStoreWSUrl/Picker/GetUyeBilgileri";
+
+  //* Payker
+  static const String basePaykerURL = "https://pay.payker.com.tr";
+  static const String createPayment = "$basePaykerURL/api/Payments/CreatePayment";
+  static const String getBankInstallments = "$basePaykerURL/api/payments/getbankinstallments";
+  static const String getPayments = "$basePaykerURL/api/Payments/GetPayments";
+  static const String paymentCallback = "$basePaykerURL/callback";
 
   //* Cariler
   static const String deleteCari = "Cari/DeleteCari";
