@@ -19,17 +19,20 @@ class ModuleInfoModelAdapter extends TypeAdapter<ModuleInfoModel> {
     return ModuleInfoModel(
       hesap: fields[0] as Hesap?,
       moduller: (fields[1] as List?)?.cast<Moduller>(),
+      kayitTarihi: fields[2] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ModuleInfoModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.hesap)
       ..writeByte(1)
-      ..write(obj.moduller);
+      ..write(obj.moduller)
+      ..writeByte(2)
+      ..write(obj.kayitTarihi);
   }
 
   @override
@@ -496,19 +499,24 @@ class EkLisanslarAdapter extends TypeAdapter<EkLisanslar> {
 
 ModuleInfoModel _$ModuleInfoModelFromJson(Map<String, dynamic> json) =>
     ModuleInfoModel(
-      hesap: json['HESAP'] == null
+      hesap: json['hesap'] == null
           ? null
-          : Hesap.fromJson(json['HESAP'] as Map<String, dynamic>),
-      moduller: (json['MODULLER'] as List<dynamic>?)
+          : Hesap.fromJson(json['hesap'] as Map<String, dynamic>),
+      moduller: (json['moduller'] as List<dynamic>?)
           ?.map((e) => Moduller.fromJson(e as Map<String, dynamic>))
           .toList(),
+      kayitTarihi: json['kayitTarihi'] == null
+          ? null
+          : DateTime.parse(json['kayitTarihi'] as String),
     );
 
 Map<String, dynamic> _$ModuleInfoModelToJson(ModuleInfoModel instance) =>
     <String, dynamic>{
-      if (instance.hesap?.toJson() case final value?) 'HESAP': value,
+      if (instance.hesap?.toJson() case final value?) 'hesap': value,
       if (instance.moduller?.map((e) => e.toJson()).toList() case final value?)
-        'MODULLER': value,
+        'moduller': value,
+      if (instance.kayitTarihi?.toIso8601String() case final value?)
+        'kayitTarihi': value,
     };
 
 _Hesap _$HesapFromJson(Map<String, dynamic> json) => _Hesap(

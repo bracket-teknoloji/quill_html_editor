@@ -874,12 +874,13 @@ final class NetworkManager {
       data: {
         "Email": AccountModel.instance.uyeEmail ?? "",
         "Parola": AccountModel.instance.uyeSifre ?? "",
-        "ParolaMD5" : true,
+        "ParolaMD5": true,
         "Moduller": ["Payker"],
       },
     );
     if (result.isSuccess) {
-      return result.dataItem;
+      CacheManager.instance.setModuleInfo(result.dataItem);
+      return result.dataItem.copyWith(kayitTarihi: DateTime.now());
     }
     return null;
   }

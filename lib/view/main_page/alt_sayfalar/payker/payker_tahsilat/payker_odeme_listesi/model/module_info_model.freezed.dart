@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ModuleInfoModel {
 
- Hesap? get hesap; List<Moduller>? get moduller;
+ Hesap? get hesap; List<Moduller>? get moduller; DateTime? get kayitTarihi;
 /// Create a copy of ModuleInfoModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -36,7 +36,7 @@ abstract mixin class $ModuleInfoModelCopyWith<$Res>  {
   factory $ModuleInfoModelCopyWith(ModuleInfoModel value, $Res Function(ModuleInfoModel) _then) = _$ModuleInfoModelCopyWithImpl;
 @useResult
 $Res call({
- Hesap? hesap, List<Moduller>? moduller
+ Hesap? hesap, List<Moduller>? moduller, DateTime? kayitTarihi
 });
 
 
@@ -53,11 +53,12 @@ class _$ModuleInfoModelCopyWithImpl<$Res>
 
 /// Create a copy of ModuleInfoModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? hesap = freezed,Object? moduller = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? hesap = freezed,Object? moduller = freezed,Object? kayitTarihi = freezed,}) {
   return _then(ModuleInfoModel(
 hesap: freezed == hesap ? _self.hesap : hesap // ignore: cast_nullable_to_non_nullable
 as Hesap?,moduller: freezed == moduller ? _self.moduller : moduller // ignore: cast_nullable_to_non_nullable
-as List<Moduller>?,
+as List<Moduller>?,kayitTarihi: freezed == kayitTarihi ? _self.kayitTarihi : kayitTarihi // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 

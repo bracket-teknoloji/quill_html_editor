@@ -5,6 +5,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:picker/core/base/model/yazici_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/module_info_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../hive_registrar.g.dart";
@@ -18,7 +19,6 @@ import "../../base/model/login_dialog_model.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/static_variables/static_variables.dart";
 import "favorites_model.dart";
-
 
 final class CacheManager {
   CacheManager._init() {
@@ -49,6 +49,7 @@ final class CacheManager {
   static late Box<String> webCihazKimligiBox;
   static late Box<YaziciModel> yaziciBox;
   static late Box<Map> profilParametreBox;
+  static late Box<ModuleInfoModel> moduleInfoBox;
 
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
@@ -77,6 +78,7 @@ final class CacheManager {
     finansOzelRaporOrderBox = await Hive.openBox<int>("finansOzelRaporOrder");
     webCihazKimligiBox = await Hive.openBox<String>("webCihazKimligi");
     yaziciBox = await Hive.openBox<YaziciModel>("yazici");
+    moduleInfoBox = await Hive.openBox<ModuleInfoModel>("moduleInfo");
     if (profilParametreBox.isEmpty) {
       await profilParametreBox.put("value", const BaseProfilParametreModel().toJson());
     }
@@ -375,4 +377,14 @@ final class CacheManager {
   }
 
   List<YaziciModel> getYazicilar() => yaziciBox.values.toList();
+
+  void setModuleInfo(ModuleInfoModel value) =>
+      moduleInfoBox.put("moduleInfo", value.copyWith(kayitTarihi: DateTime.now()));
+
+  ModuleInfoModel? getModuleInfo() => moduleInfoBox.get("moduleInfo");
+
+  void clearModuleInfo() {
+    moduleInfoBox.delete("moduleInfo");
+    log("Module info cleared");
+  }
 }

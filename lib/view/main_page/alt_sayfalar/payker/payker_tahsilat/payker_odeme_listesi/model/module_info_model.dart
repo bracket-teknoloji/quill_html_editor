@@ -1,17 +1,19 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/init/dependency_injection/intectable_interface.dart";
 
 part "module_info_model.freezed.dart";
 part "module_info_model.g.dart";
 
 @HiveType(typeId: 153)
 @unfreezed
-@JsonSerializable()
-final class ModuleInfoModel with _$ModuleInfoModel, NetworkManagerMixin {
+@JsonSerializable(fieldRename: FieldRename.none)
+final class ModuleInfoModel with _$ModuleInfoModel, NetworkManagerMixin implements InjectableInterface {
   const ModuleInfoModel({
     this.hesap,
     this.moduller,
+    this.kayitTarihi,
   });
 
   factory ModuleInfoModel.fromJson(Map<String, dynamic> json) => _$ModuleInfoModelFromJson(json);
@@ -22,12 +24,18 @@ final class ModuleInfoModel with _$ModuleInfoModel, NetworkManagerMixin {
   @override
   @HiveField(1)
   final List<Moduller>? moduller;
+  @override
+  @HiveField(2)
+  final DateTime? kayitTarihi;
 
   @override
   ModuleInfoModel fromJson(Map<String, dynamic> json) => ModuleInfoModel.fromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ModuleInfoModelToJson(this);
+
+  @override
+  Future<void> load() async {}
 }
 
 @HiveType(typeId: 154)

@@ -2,7 +2,10 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/module_info_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
 
 part "payker_odeme_listesi_view_model.g.dart";
@@ -66,11 +69,19 @@ abstract class _PaykerOdemeListesiViewModelBase
     }
   }
 
-  Future<bool> checkPermissions() async {
-    final result = await networkManager.checkPaykerPermission();
-    if (result?.moduller?.firstWhere((element) => element.modulBaslik == "Payker").ekLisanslar?.any((element) => element.sira == 2) ?? false) {
-      return true;
+  Future<ModuleInfoModel?> checkPermissions() async {
+    ModuleInfoModel? moduleInfo = DIManager.isRegistered<ModuleInfoModel>() ? DIManager.read<ModuleInfoModel>() : null;
+    if (moduleInfo != null) {
+      return moduleInfo;
     }
-    return false;
+    moduleInfo = await networkManager.checkPaykerPermission() ?? CacheManager.instance.getModuleInfo();
+    if (moduleInfo == null) {
+      return null;
+    }
+    if (DIManager.isRegistered<ModuleInfoModel>()) {
+      DIManager.reset<ModuleInfoModel>();
+    }
+    DIManager.lazyRegisterer<ModuleInfoModel>(moduleInfo);
+    return moduleInfo;
   }
 }

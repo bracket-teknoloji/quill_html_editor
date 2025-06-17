@@ -30,8 +30,33 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await _viewModel.checkPermissions();
-      await _viewModel.getData();
+      final result = await _viewModel.checkPermissions();
+      // eğer result'ın kayıtTarihi geçtiğimiz 7 günden daha eskiyse, verileri güncelle
+      if (result == null) {
+        dialogManager.showAlertDialog(
+          "Payker Ödeme Listesi verilerine erişim izni verilmedi.",
+        );
+        Get.back();
+        return;
+      }
+      if (result.kayitTarihi != null && result.kayitTarihi!.isAfter(DateTime.now().subtract(const Duration(days: 7)))) {
+        await _viewModel.getData();
+      } else {
+        return dialogManager.showAlertDialog(
+          "Payker Ödeme Listesi verileri güncel değil. Lütfen verileri güncelleyin.",
+        );
+      }
+      if (result.moduller
+              ?.firstWhereOrNull((element) => element.modulBaslik == "Payker")
+              ?.ekLisanslar
+              ?.firstWhereOrNull((element) => element.sira == 2) ==
+          null) {
+        dialogManager.showAlertDialog(
+          "Payker için gerekli ek lisanslar bulunamadı. Lütfen Payker modülünü kontrol edin.",
+        );
+        Get.back();
+        return;
+      }
       if (_viewModel.observableList == null) {
         Get.back();
       }
