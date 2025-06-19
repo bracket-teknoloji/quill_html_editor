@@ -264,6 +264,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     this.kalemSayisi,
     this.kapali,
     this.tamamlananMiktar,
+    this.faturalasmayacak,
   });
 
   BaseSiparisEditModel._init();
@@ -831,12 +832,21 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   String? cikisSubeAciklama;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? girisSubeAciklama;
+  @HiveField(188)
+  bool? faturalasmayacak;
+  @HiveField(189)
   int? id;
+  @HiveField(190)
   int? depoKodu;
+  @HiveField(191)
   String? durumAdi;
+  @HiveField(192)
   int? kalemSayisi;
+  @HiveField(193)
   double? tamamlananMiktar;
+  @HiveField(194)
   bool? kapali;
+  @HiveField(195)
   int? hedefSube;
 
   bool get isTamamlandi => (tamamlananMiktar ?? 0) == (miktar ?? 0);

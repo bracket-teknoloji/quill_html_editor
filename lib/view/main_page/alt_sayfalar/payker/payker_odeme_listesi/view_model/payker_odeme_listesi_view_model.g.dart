@@ -74,6 +74,24 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
     });
   }
 
+  late final _$isScrollDownAtom = Atom(
+    name: '_PaykerOdemeListesiViewModelBase.isScrollDown',
+    context: context,
+  );
+
+  @override
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
+  }
+
+  @override
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
+    });
+  }
+
   late final _$getDataAsyncAction = AsyncAction(
     '_PaykerOdemeListesiViewModelBase.getData',
     context: context,
@@ -82,6 +100,18 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
+  }
+
+  late final _$changeScrollStatusAsyncAction = AsyncAction(
+    '_PaykerOdemeListesiViewModelBase.changeScrollStatus',
+    context: context,
+  );
+
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) {
+    return _$changeScrollStatusAsyncAction.run(
+      () => super.changeScrollStatus(position),
+    );
   }
 
   late final _$_PaykerOdemeListesiViewModelBaseActionController =
@@ -139,6 +169,7 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 isSearchBarOpen: ${isSearchBarOpen},
 observableList: ${observableList},
 searchText: ${searchText},
+isScrollDown: ${isScrollDown},
 filteredList: ${filteredList}
     ''';
   }

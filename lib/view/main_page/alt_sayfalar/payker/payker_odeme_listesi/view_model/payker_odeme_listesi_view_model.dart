@@ -1,19 +1,21 @@
+import "package:flutter/widgets.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/module_info_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/module_info_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
 
 part "payker_odeme_listesi_view_model.g.dart";
 
 class PaykerOdemeListesiViewModel = _PaykerOdemeListesiViewModelBase with _$PaykerOdemeListesiViewModel;
 
 abstract class _PaykerOdemeListesiViewModelBase
-    with Store, MobxNetworkMixin, ListableMixin<PaykerOdemeListesiModel>, SearchableMixin {
+    with Store, MobxNetworkMixin, ListableMixin<PaykerOdemeListesiModel>, SearchableMixin, ScrollControllableMixin {
   @override
   @action
   void changeSearchBarStatus() {
@@ -83,5 +85,15 @@ abstract class _PaykerOdemeListesiViewModelBase
     }
     DIManager.lazyRegisterer<ModuleInfoModel>(moduleInfo);
     return moduleInfo;
+  }
+
+  @override
+  @observable
+  bool isScrollDown = true;
+
+  @override
+  @action
+  Future<void> changeScrollStatus(ScrollPosition position) async {
+    super.changeScrollStatus(position);
   }
 }

@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
@@ -36,6 +37,8 @@ final class ModuleInfoModel with _$ModuleInfoModel, NetworkManagerMixin implemen
 
   @override
   Future<void> load() async {}
+
+  Moduller? get paykerModule => moduller?.firstWhereOrNull((element) => element.modulBaslik == "Payker");
 }
 
 @HiveType(typeId: 154)
