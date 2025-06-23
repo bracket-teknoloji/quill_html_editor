@@ -56,7 +56,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
   @override
   void initState() {
     if (widget.tahsilatRequestModel != null) {
-      viewModel.setModel(widget.tahsilatRequestModel!);
+      viewModel.model.fromPaykerOdemeListesiModel(widget.tahsilatRequestModel!);
     }
     _belgeNoController = TextEditingController(text: viewModel.model.belgeNo ?? "");
     _tarihController = TextEditingController(
@@ -69,7 +69,9 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _hesapController = TextEditingController();
     _taksitController = TextEditingController();
     _tutarController = TextEditingController(
-      text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+      text: (viewModel.model.tutar ?? widget.cariListesiModel?.bakiye?.abs()).commaSeparatedWithDecimalDigits(
+        OndalikEnum.tutar,
+      ),
     );
     _krediKartiNoController = TextEditingController();
     _referansKoduController = TextEditingController();
@@ -90,8 +92,10 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         Get.back();
         return;
       }
+      if (viewModel.model.tutar == null) {
+        viewModel.setTutar(widget.cariListesiModel?.bakiye?.abs() ?? 0.0);
+      }
       viewModel
-        ..setTutar(widget.cariListesiModel?.bakiye?.abs())
         ..setSeri(SeriModel(seriNo: userModel.kullaniciYetki?.dekSeriKKartiTahsilati))
         ..setKktYontemi(userModel.kullaniciYetki?.kkartiTahsilatYontemi);
       if (AccountModel.instance.adminMi) {
@@ -497,12 +501,21 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
   );
 
   Future<void> getCari() async {
-    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+    final result = viewModel.model.cariKodu != null
+        ? await networkManager.getCariModel(CariRequestModel(kod: [viewModel.model.cariKodu!]))
+        : await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
       viewModel.setShowReferansKodu(yetkiController.referansKodu(result.muhHesapTipi));
-      _aciklamaController.text = result.cariAdi ?? "";
+      if (viewModel.model.aciklama == null) {
+        viewModel.setAciklama(result.cariAdi);
+      }
+      _aciklamaController.text = viewModel.model.aciklama ?? "";
       _cariController.text = result.cariAdi ?? "";
       _plasiyerController.text = result.plasiyerAciklama ?? "";
+      if (viewModel.model.tutar == null) {
+        viewModel.setTutar(result.bakiye?.abs() ?? 0.0);
+      }
+      _tutarController.text = viewModel.model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
       viewModel
         ..setCariModel(result)
         ..setAciklama(result.cariAdi)
@@ -589,7 +602,11 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         title: "Banka Hesapları",
         groupValue: viewModel.model.hesapKodu,
         children: viewModel.bankaHesaplariList
-            ?.where((e) => userModel.kullaniciYetki?.kkartiHesaplar?.contains(e.hesapKodu) ?? false)
+            ?.where(
+              (e) => AccountModel.instance.adminMi
+                  ? true
+                  : (userModel.kullaniciYetki?.kkartiHesaplar?.contains(e.hesapKodu) ?? false),
+            )
             .toList()
             .map(
               (e) => BottomSheetModel(

@@ -132,7 +132,7 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
                             child: Observer(
                               builder: (_) {
                                 final item = _viewModel.taksitResponseModel![index].taksitler?[index2];
-                                return RadioListTile.adaptive(
+                                return RadioListTile(
                                   groupValue: _viewModel.paymentModel.saleInfo?.installment,
                                   value: item?.id,
                                   onChanged: (value) {

@@ -379,7 +379,7 @@ final class BottomSheetDialogManager {
                                             return Observer(
                                               builder: (_) => Wrap(
                                                 children: [
-                                                  RadioListTile.adaptive(
+                                                  RadioListTile(
                                                     toggleable: true,
                                                     activeColor: UIHelper.primaryColor,
                                                     onChanged: (value) {
@@ -1130,7 +1130,9 @@ final class BottomSheetDialogManager {
   ) async {
     final List<ListOzelKodTum> list =
         _paramModel?.listOzelKodTum
-            ?.where((element) => element.belgeTipi == (editTipi?.satisMi == true ? "S" : "A") && element.fiyatSirasi != 0)
+            ?.where(
+              (element) => element.belgeTipi == (editTipi?.satisMi == true ? "S" : "A") && element.fiyatSirasi != 0,
+            )
             .toList() ??
         <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(
@@ -1371,7 +1373,11 @@ final class BottomSheetDialogManager {
     if (tahsilatMi) {
       list.addAll(
         _paramModel?.kasaList
-                ?.where((element) => _kullaniciYetkiModel?.kkartiKasalar?.contains(element.kasaKodu) ?? false)
+                ?.where(
+                  (element) =>
+                      (_kullaniciYetkiModel?.kkartiKasalar?.contains(element.kasaKodu) ?? false) ||
+                      AccountModel.instance.adminMi,
+                )
                 .toList() ??
             [],
       );

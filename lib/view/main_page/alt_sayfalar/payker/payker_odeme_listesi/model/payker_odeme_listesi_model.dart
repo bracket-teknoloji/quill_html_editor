@@ -64,6 +64,7 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
     this.odemeLink,
     this.silindi,
     this.siparisNo,
+    this.firmaKodu,
     this.kayittarihi,
     this.kayityapankul,
     this.duzeltmetarihi,
@@ -159,6 +160,9 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
   @override
   @JsonKey(name: "SIPARIS_NO")
   String? siparisNo;
+  @override
+  @JsonKey(name: "FIRMA_KODU")
+  String? firmaKodu;
 
   BadgeColorEnum get badgeColor => switch (durum) {
     "ONAYDA" => BadgeColorEnum.cari,

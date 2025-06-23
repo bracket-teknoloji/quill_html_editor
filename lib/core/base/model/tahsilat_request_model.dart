@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_duzenle_request_model.dart";
@@ -72,8 +73,19 @@ sealed class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMix
     projeKodu: model.projeKodu,
   );
 
-  factory TahsilatRequestModel.fromPaykerOdemeListesiModel(PaykerOdemeListesiModel model) => PaykerOdemeListesiModel(
+  factory TahsilatRequestModel.fromPaykerOdemeListesiModel(PaykerOdemeListesiModel model) => TahsilatRequestModel(
+    aciklama: model.aciklama,
+    cariKodu: model.firmaKodu,
+    tutar: model.tutar,
+    taksitSayisi: int.tryParse(model.odemeTuru ?? "0"),
   );
+
+  void fromPaykerOdemeListesiModel(TahsilatRequestModel model) {
+    cariKodu = model.cariKodu;
+    aciklama = model.aciklama;
+    tutar = model.tutar;
+    taksitSayisi = model.taksitSayisi;
+  }
 
   @override
   TahsilatRequestModel fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);

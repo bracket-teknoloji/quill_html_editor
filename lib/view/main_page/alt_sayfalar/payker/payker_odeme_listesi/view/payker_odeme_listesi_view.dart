@@ -256,14 +256,19 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
             ),
 
             if (item.durum == "ALINDI") ...[
-              BottomSheetModel(title: "Tahsilat Oluştur",
-                iconWidget: Icons.picture_as_pdf_outlined,
-                onTap: () {
-                  Get
-                    ..back()
-                    ..toNamed("/mainPage/paykerTahsilatWithRequest", arguments: TahsilatRequestModel.fromPaykerOdemeListesiModel(item));
-                },
-              ),
+              if (item.firmaKodu != null)
+                BottomSheetModel(
+                  title: "Tahsilat Oluştur",
+                  iconWidget: Icons.add_outlined,
+                  onTap: () {
+                    Get
+                      ..back()
+                      ..toNamed(
+                        "/mainPage/krediKartiTahsilatiWithRequest",
+                        arguments: TahsilatRequestModel.fromPaykerOdemeListesiModel(item),
+                      );
+                  },
+                ),
               BottomSheetModel(
                 title: "Tahsilat Makbuzu",
                 iconWidget: Icons.picture_as_pdf_outlined,

@@ -55,6 +55,7 @@ PaykerOdemeListesiModel _$PaykerOdemeListesiModelFromJson(
   odemeLink: json['ODEME_LINK'],
   silindi: json['SILINDI'],
   siparisNo: json['SIPARIS_NO'] as String?,
+  firmaKodu: json['FIRMA_KODU'] as String?,
   kayittarihi: json['KAYITTARIHI'] == null
       ? null
       : DateTime.parse(json['KAYITTARIHI'] as String),
@@ -97,4 +98,5 @@ Map<String, dynamic> _$PaykerOdemeListesiModelToJson(
     'DUZELTMETARIHI': value,
   if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
   if (instance.siparisNo case final value?) 'SIPARIS_NO': value,
+  if (instance.firmaKodu case final value?) 'FIRMA_KODU': value,
 };
