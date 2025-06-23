@@ -62,8 +62,12 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
     hesapTipi: "T",
   );
 
+
   @computed
   String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+
+  @action
+  void setModel(TahsilatRequestModel value) => model = value;
 
   @action
   void setCariModel(CariListesiModel? value) => cariModel = value;

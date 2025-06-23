@@ -231,7 +231,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                     _bitisTarihiController.text = viewModel.eBelgeRequestModel.bitisTarihi ?? "";
                     _eArsivTarihiController.text = viewModel.eArsivDateString;
                   },
-                  icon: const Icon(Icons.arrow_back_ios_outlined),
+                  icon: Icon(Icons.adaptive.arrow_back_outlined),
                 ),
                 Expanded(
                   child: CustomTextField(labelText: "Dönem", controller: _eArsivTarihiController, readOnly: true),
@@ -243,7 +243,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                     _bitisTarihiController.text = viewModel.eBelgeRequestModel.bitisTarihi ?? "";
                     _eArsivTarihiController.text = viewModel.eArsivDateString;
                   },
-                  icon: const Icon(Icons.arrow_forward_ios_outlined),
+                  icon: Icon(Icons.adaptive.arrow_forward_outlined),
                 ),
               ],
             ),

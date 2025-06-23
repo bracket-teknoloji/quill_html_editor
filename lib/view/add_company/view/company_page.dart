@@ -25,7 +25,7 @@ final class _AccountsViewState extends BaseState<AccountsView> {
   Widget build(BuildContext context) => BaseScaffold(floatingActionButton: fab(), appBar: appBar(), body: body());
 
   AppBar appBar() => AppBar(
-    leading: IconButton(onPressed: Get.back, icon: const Icon(Icons.arrow_back)),
+    leading: IconButton(onPressed: Get.back, icon:Icon(Icons.adaptive.arrow_back_outlined)),
     title: const AppBarTitle(title: "Hesaplar"),
   );
 

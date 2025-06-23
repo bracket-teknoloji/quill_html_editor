@@ -1,6 +1,7 @@
 import "dart:convert";
 
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 part "payment_model.freezed.dart";
 part "payment_model.g.dart";
@@ -18,6 +19,7 @@ sealed class PaymentModel with _$PaymentModel {
     @JsonKey(name: "Order") Order? order,
     @JsonKey(name: "SaleInfo") SaleInfo? saleInfo,
     @JsonKey(name: "Payment3D") Payment3D? payment3D,
+    @JsonKey(name: "ERPInfo") ERPInfo? erpInfo,
   }) = _PaymentModel;
 
   factory PaymentModel.fromJson(Map<String, dynamic> json) => _$PaymentModelFromJson(json);
@@ -41,6 +43,20 @@ sealed class CustomerInfo with _$CustomerInfo {
   }) = _CustomerInfo;
 
   factory CustomerInfo.fromJson(Map<String, dynamic> json) => _$CustomerInfoFromJson(json);
+
+  factory CustomerInfo.fromCariListesiModel(CariListesiModel model) => CustomerInfo(
+      // customerId: model.cariKodu,
+      customerId: "120.0004",
+      name: model.cariAdi,
+      emailAddress: model.email,
+      phoneNumber: model.telefon,
+      taxNumber: model.vergiNumarasi,
+      taxOffice: model.vergiDairesi,
+      cityName: model.sehir,
+      townName: model.ilce,
+      postCode: model.postaKodu,
+      addressDesc: model.adres,
+    );
 }
 
 @freezed
@@ -103,4 +119,29 @@ sealed class SaleInfo with _$SaleInfo {
     if (month != null && year != null) return "$month/$year";
     return null;
   }
+}
+
+@freezed
+sealed class ERPInfo with _$ERPInfo {
+  const factory ERPInfo({
+    /// Ödemenin yapıldığı ERP sisteminin şirket kodu
+    String? companyCode,
+
+    /// Ödemenin yapıldığı ERP sisteminin işletme kodu
+    String? businessUnitCode,
+
+    /// Ödemenin yapıldığı ERP sisteminin şube kodu
+    String? branchCode,
+
+    /// Ödemenin yapıldığı ERP sisteminde kayıtlı dekont numarası
+    String? receiptNumber,
+
+    /// Ödemenin yapıldığı ERP sisteminde kayıtlı dekont serisi
+    String? receiptSeries,
+
+    /// Ödemenin yapıldığı ERP sistemine kayıt yapan kullanıcı
+    String? operatorUser,
+  }) = _ERPInfo;
+
+  factory ERPInfo.fromJson(Map<String, dynamic> json) => _$ERPInfoFromJson(json);
 }

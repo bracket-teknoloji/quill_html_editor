@@ -286,7 +286,14 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
     }
     final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
-        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e, groupValue: e.grupKodu))
+        .map(
+          (e) => BottomSheetModel(
+            title: e.grupAdi ?? e.grupKodu ?? "",
+            value: e,
+            description: e.grupKodu ?? "",
+            groupValue: e.grupKodu,
+          ),
+        )
         .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
@@ -296,7 +303,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
       children: bottomSheetList,
     );
     if (result != null) {
-      controller?.text = result.grupKodu ?? "";
+      controller?.text = result.grupAdi ?? result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";

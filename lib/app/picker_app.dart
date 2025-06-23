@@ -496,6 +496,10 @@ final class PickerMaterialApp extends StatelessWidget {
             page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments),
           ),
           GetPage(
+            name: "/krediKartiTahsilatiWithRequest",
+            page: () => KrediKartiTahsilatiView(tahsilatRequestModel: Get.arguments),
+          ),
+          GetPage(
             name: "/nakitTahsilat",
             page: () => NakitOdemeView(tahsilatMi: true, cariListesiModel: Get.arguments),
           ),

@@ -64,7 +64,7 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
       title: Row(
         children: [
           if (_cokluSecim)
-            Checkbox(
+            Checkbox.adaptive(
               value: widget.value,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               onChanged: (value) {

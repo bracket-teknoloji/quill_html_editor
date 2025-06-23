@@ -15,7 +15,6 @@ import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bo
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
-import "../../../../../model/param_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/urun_grubuna_gore_satis_grafigi_view_model.dart";
 
@@ -124,14 +123,15 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                 viewModel.getData();
               },
               onTap: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
+                  groupValue: viewModel.model.grupNo,
                   title: "Grup No",
                   children: viewModel.grupNoBottomSheetList,
                 );
                 if (result != null) {
                   grupNoController.text = result;
-                  viewModel.model.grupNo = int.tryParse(result.split("").last);
+                  viewModel.model.grupNo = int.tryParse(result.split("").last) ?? 0;
                   viewModel.getData();
                 }
               },
@@ -165,20 +165,14 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                   viewModel.getData();
                 },
                 onTap: () async {
-                  final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
-                  if (plasiyerList != null) {
-                    final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Plasiyer",
-                      children: plasiyerList
-                          .map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e))
-                          .toList(),
-                    );
-                    if (result != null) {
-                      plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.model.arrPlasiyerKodu = [result.plasiyerKodu ?? ""];
-                      viewModel.getData();
-                    }
+                  final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
+                    context,
+                    groupValues: viewModel.model.arrPlasiyerKodu,
+                  );
+                  if (result != null) {
+                    plasiyerController.text = result.map((e) => e.plasiyerAciklama ?? "").join(", ");
+                    viewModel.model.arrPlasiyerKodu = result.map((e) => e.plasiyerKodu ?? "").toList();
+                    viewModel.getData();
                   }
                 },
               ),

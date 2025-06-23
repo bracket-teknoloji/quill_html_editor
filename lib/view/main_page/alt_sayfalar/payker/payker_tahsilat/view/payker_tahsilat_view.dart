@@ -109,7 +109,7 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
                         ListTile(
                           leading: CircleAvatar(
                             foregroundImage: Image.network(
-                              ApiUrls.basePaykerURL +
+                              ApiUrls.basePaykerURLWithoutApi +
                                   (_viewModel.taksitResponseModel![index].taksitler?.firstOrNull?.banka?.logoUrl ?? ""),
                             ).image,
                           ),
@@ -159,77 +159,6 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
                             ),
                           ),
                         ),
-                        // ...List.generate(
-                        //   _viewModel.taksitResponseModel![index].taksitler?.length ?? 0,
-                        //   (index2) => Padding(
-                        //     padding: UIHelper.lowPadding,
-                        //     child: Observer(
-                        //       builder: (_) => RadioListTile.adaptive(
-                        //         groupValue: _viewModel.selectedBankId,
-                        //         value: _viewModel.taksitResponseModel![index].taksitler?[index2].id,
-                        //         onChanged: (value) => _viewModel.setSelectedBankId(
-                        //           _viewModel.taksitResponseModel![index].taksitler?[index2].id,
-                        //         ),
-                        //         title: Text(
-                        //           "${_viewModel.taksitResponseModel![index].taksitler?[index2].odemeMetni}",
-                        //           style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                        //         ),
-                        //         subtitle: Text(
-                        //           "${_viewModel.taksitResponseModel![index].taksitler?[index2].taksit}"
-                        //           " x ${(_viewModel.taksitResponseModel![index].taksitler?[index2].vadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
-                        //           "  $mainCurrency ="
-                        //           " ${(_viewModel.taksitResponseModel![index].taksitler?[index2].toplamVadeFarkliTaksitTutari((_viewModel.taksitResponseModel![index].tutar ?? 0).toDouble()) ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}  $mainCurrency",
-                        //           style: const TextStyle(overflow: TextOverflow.ellipsis),
-                        //           // children: List.generate(
-                        //           //   _viewModel.taksitResponseModel!.length,
-                        //           //   (index) {
-                        //           //     final taksit = _viewModel.taksitResponseModel![index];
-                        //           //     return Card(
-                        //           //       child: Column(
-                        //           //         children: [
-                        //           //           ListTile(
-                        //           //             leading: CircleAvatar(
-                        //           //               foregroundImage: Image.network(
-                        //           //                 ApiUrls.basePaykerURL + (taksit.taksitler?.firstOrNull?.banka?.logoUrl ?? ""),
-                        //           //               ).image,
-                        //           //             ),
-                        //           //             title: Text(
-                        //           //               taksit.bankaAdi ?? "",
-                        //           //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                        //           //             ),
-                        //           //             subtitle: Text(
-                        //           //               "Tutar: ${taksit.tutar?.toString() ?? "0"} TL)",
-                        //           //               style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                        //           //             ),
-                        //           //           ),
-                        //           //           ...List.generate(
-                        //           //             taksit.taksitler?.length ?? 0,
-                        //           //             (index2) => CheckboxListTile.adaptive(
-                        //           //               value: _viewModel.selectedBankId == taksit.taksitler?[index2].id,
-                        //           //               onChanged: (value) => _viewModel.setSelectedBankId(taksit.taksitler?[index2].id),
-                        //           //               title: Text(
-                        //           //                 "${taksit.taksitler?[index2].odemeMetni}",
-                        //           //                 style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                        //           //               ),
-                        //           //               subtitle: Text(
-                        //           //                 "${taksit.taksitler?[index2].taksit}"
-                        //           //                 " x ${(taksit.taksitler?[index2].vadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble())).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"
-                        //           //                 " TL ="
-                        //           //                 " ${taksit.taksitler?[index2].toplamVadeFarkliTaksitTutari((taksit.tutar ?? 0).toDouble()).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} TL",
-                        //           //                 style: const TextStyle(overflow: TextOverflow.ellipsis),
-                        //           //               ),
-                        //           //             ),
-                        //           //           ),
-                        //           //         ],
-                        //           //       ),
-                        //           //     );
-                        //           //   },
-                        //           // ),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -399,15 +328,26 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
                     controller: _cariController,
                     // TODO : Cari kodunu view model'e set et
                     valueWidget: Observer(
-                      builder: (_) => const Text(""),
+                      builder: (_) => Text(_viewModel.paymentModel.customerInfo?.customerId ?? ""),
                     ),
                     suffixMore: true,
                     readOnly: true,
+                    onClear: () => _viewModel.setCari(null),
                     suffix: IconButton(
                       icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                       onPressed: () async {
+                        if (_viewModel.paymentModel.customerInfo?.customerId == null) {
+                          dialogManager.showErrorSnackBar(
+                            "Cari seçiniz.",
+                          );
+                        }
                         if (_cariController.text.isNotEmpty) {
-                          if (await networkManager.getCariModel(CariRequestModel()) case final value?) {
+                          if (await networkManager.getCariModel(
+                                CariRequestModel(
+                                  kod: [_viewModel.paymentModel.customerInfo?.customerId ?? ""],
+                                ),
+                              )
+                              case final value?) {
                             dialogManager.showCariGridViewDialog(value);
                           }
                         }
@@ -417,8 +357,7 @@ final class _PaykerTahsilatViewState extends BaseState<PaykerTahsilatView> {
                       final result = await Get.toNamed("/mainPage/cariListesiOzel");
                       if (result is CariListesiModel) {
                         _cariController.text = result.cariAdi ?? "";
-                        // TODO: Cari kodunu view model'e set et
-                        // _viewModel.setCariKodu(result.cariKodu);
+                        _viewModel.setCari(result);
                       }
                     },
                   ),

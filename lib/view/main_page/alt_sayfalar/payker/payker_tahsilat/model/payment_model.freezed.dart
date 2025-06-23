@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PaymentModel {
 
-@JsonKey(name: "CustomerIPAddress") String? get customerIpAddress;@JsonKey(name: "CustomerMailAddress") String? get customerMailAddress;@JsonKey(name: "CustomerInfo") CustomerInfo? get customerInfo;@JsonKey(name: "Order") Order? get order;@JsonKey(name: "SaleInfo") SaleInfo? get saleInfo;@JsonKey(name: "Payment3D") Payment3D? get payment3D;
+@JsonKey(name: "CustomerIPAddress") String? get customerIpAddress;@JsonKey(name: "CustomerMailAddress") String? get customerMailAddress;@JsonKey(name: "CustomerInfo") CustomerInfo? get customerInfo;@JsonKey(name: "Order") Order? get order;@JsonKey(name: "SaleInfo") SaleInfo? get saleInfo;@JsonKey(name: "Payment3D") Payment3D? get payment3D;@JsonKey(name: "ERPInfo") ERPInfo? get erpInfo;
 /// Create a copy of PaymentModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,12 +29,12 @@ $PaymentModelCopyWith<PaymentModel> get copyWith => _$PaymentModelCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentModel&&(identical(other.customerIpAddress, customerIpAddress) || other.customerIpAddress == customerIpAddress)&&(identical(other.customerMailAddress, customerMailAddress) || other.customerMailAddress == customerMailAddress)&&(identical(other.customerInfo, customerInfo) || other.customerInfo == customerInfo)&&(identical(other.order, order) || other.order == order)&&(identical(other.saleInfo, saleInfo) || other.saleInfo == saleInfo)&&(identical(other.payment3D, payment3D) || other.payment3D == payment3D));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentModel&&(identical(other.customerIpAddress, customerIpAddress) || other.customerIpAddress == customerIpAddress)&&(identical(other.customerMailAddress, customerMailAddress) || other.customerMailAddress == customerMailAddress)&&(identical(other.customerInfo, customerInfo) || other.customerInfo == customerInfo)&&(identical(other.order, order) || other.order == order)&&(identical(other.saleInfo, saleInfo) || other.saleInfo == saleInfo)&&(identical(other.payment3D, payment3D) || other.payment3D == payment3D)&&(identical(other.erpInfo, erpInfo) || other.erpInfo == erpInfo));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,customerIpAddress,customerMailAddress,customerInfo,order,saleInfo,payment3D);
+int get hashCode => Object.hash(runtimeType,customerIpAddress,customerMailAddress,customerInfo,order,saleInfo,payment3D,erpInfo);
 
 
 
@@ -45,11 +45,11 @@ abstract mixin class $PaymentModelCopyWith<$Res>  {
   factory $PaymentModelCopyWith(PaymentModel value, $Res Function(PaymentModel) _then) = _$PaymentModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: "CustomerIPAddress") String? customerIpAddress,@JsonKey(name: "CustomerMailAddress") String? customerMailAddress,@JsonKey(name: "CustomerInfo") CustomerInfo? customerInfo,@JsonKey(name: "Order") Order? order,@JsonKey(name: "SaleInfo") SaleInfo? saleInfo,@JsonKey(name: "Payment3D") Payment3D? payment3D
+@JsonKey(name: "CustomerIPAddress") String? customerIpAddress,@JsonKey(name: "CustomerMailAddress") String? customerMailAddress,@JsonKey(name: "CustomerInfo") CustomerInfo? customerInfo,@JsonKey(name: "Order") Order? order,@JsonKey(name: "SaleInfo") SaleInfo? saleInfo,@JsonKey(name: "Payment3D") Payment3D? payment3D,@JsonKey(name: "ERPInfo") ERPInfo? erpInfo
 });
 
 
-$CustomerInfoCopyWith<$Res>? get customerInfo;$OrderCopyWith<$Res>? get order;$SaleInfoCopyWith<$Res>? get saleInfo;$Payment3DCopyWith<$Res>? get payment3D;
+$CustomerInfoCopyWith<$Res>? get customerInfo;$OrderCopyWith<$Res>? get order;$SaleInfoCopyWith<$Res>? get saleInfo;$Payment3DCopyWith<$Res>? get payment3D;$ERPInfoCopyWith<$Res>? get erpInfo;
 
 }
 /// @nodoc
@@ -62,7 +62,7 @@ class _$PaymentModelCopyWithImpl<$Res>
 
 /// Create a copy of PaymentModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? customerIpAddress = freezed,Object? customerMailAddress = freezed,Object? customerInfo = freezed,Object? order = freezed,Object? saleInfo = freezed,Object? payment3D = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? customerIpAddress = freezed,Object? customerMailAddress = freezed,Object? customerInfo = freezed,Object? order = freezed,Object? saleInfo = freezed,Object? payment3D = freezed,Object? erpInfo = freezed,}) {
   return _then(_self.copyWith(
 customerIpAddress: freezed == customerIpAddress ? _self.customerIpAddress : customerIpAddress // ignore: cast_nullable_to_non_nullable
 as String?,customerMailAddress: freezed == customerMailAddress ? _self.customerMailAddress : customerMailAddress // ignore: cast_nullable_to_non_nullable
@@ -70,7 +70,8 @@ as String?,customerInfo: freezed == customerInfo ? _self.customerInfo : customer
 as CustomerInfo?,order: freezed == order ? _self.order : order // ignore: cast_nullable_to_non_nullable
 as Order?,saleInfo: freezed == saleInfo ? _self.saleInfo : saleInfo // ignore: cast_nullable_to_non_nullable
 as SaleInfo?,payment3D: freezed == payment3D ? _self.payment3D : payment3D // ignore: cast_nullable_to_non_nullable
-as Payment3D?,
+as Payment3D?,erpInfo: freezed == erpInfo ? _self.erpInfo : erpInfo // ignore: cast_nullable_to_non_nullable
+as ERPInfo?,
   ));
 }
 /// Create a copy of PaymentModel
@@ -121,6 +122,18 @@ $Payment3DCopyWith<$Res>? get payment3D {
   return $Payment3DCopyWith<$Res>(_self.payment3D!, (value) {
     return _then(_self.copyWith(payment3D: value));
   });
+}/// Create a copy of PaymentModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ERPInfoCopyWith<$Res>? get erpInfo {
+    if (_self.erpInfo == null) {
+    return null;
+  }
+
+  return $ERPInfoCopyWith<$Res>(_self.erpInfo!, (value) {
+    return _then(_self.copyWith(erpInfo: value));
+  });
 }
 }
 
@@ -129,7 +142,7 @@ $Payment3DCopyWith<$Res>? get payment3D {
 @JsonSerializable()
 
 class _PaymentModel implements PaymentModel {
-  const _PaymentModel({@JsonKey(name: "CustomerIPAddress") this.customerIpAddress, @JsonKey(name: "CustomerMailAddress") this.customerMailAddress, @JsonKey(name: "CustomerInfo") this.customerInfo, @JsonKey(name: "Order") this.order, @JsonKey(name: "SaleInfo") this.saleInfo, @JsonKey(name: "Payment3D") this.payment3D});
+  const _PaymentModel({@JsonKey(name: "CustomerIPAddress") this.customerIpAddress, @JsonKey(name: "CustomerMailAddress") this.customerMailAddress, @JsonKey(name: "CustomerInfo") this.customerInfo, @JsonKey(name: "Order") this.order, @JsonKey(name: "SaleInfo") this.saleInfo, @JsonKey(name: "Payment3D") this.payment3D, @JsonKey(name: "ERPInfo") this.erpInfo});
   factory _PaymentModel.fromJson(Map<String, dynamic> json) => _$PaymentModelFromJson(json);
 
 @override@JsonKey(name: "CustomerIPAddress") final  String? customerIpAddress;
@@ -138,6 +151,7 @@ class _PaymentModel implements PaymentModel {
 @override@JsonKey(name: "Order") final  Order? order;
 @override@JsonKey(name: "SaleInfo") final  SaleInfo? saleInfo;
 @override@JsonKey(name: "Payment3D") final  Payment3D? payment3D;
+@override@JsonKey(name: "ERPInfo") final  ERPInfo? erpInfo;
 
 /// Create a copy of PaymentModel
 /// with the given fields replaced by the non-null parameter values.
@@ -152,12 +166,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentModel&&(identical(other.customerIpAddress, customerIpAddress) || other.customerIpAddress == customerIpAddress)&&(identical(other.customerMailAddress, customerMailAddress) || other.customerMailAddress == customerMailAddress)&&(identical(other.customerInfo, customerInfo) || other.customerInfo == customerInfo)&&(identical(other.order, order) || other.order == order)&&(identical(other.saleInfo, saleInfo) || other.saleInfo == saleInfo)&&(identical(other.payment3D, payment3D) || other.payment3D == payment3D));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentModel&&(identical(other.customerIpAddress, customerIpAddress) || other.customerIpAddress == customerIpAddress)&&(identical(other.customerMailAddress, customerMailAddress) || other.customerMailAddress == customerMailAddress)&&(identical(other.customerInfo, customerInfo) || other.customerInfo == customerInfo)&&(identical(other.order, order) || other.order == order)&&(identical(other.saleInfo, saleInfo) || other.saleInfo == saleInfo)&&(identical(other.payment3D, payment3D) || other.payment3D == payment3D)&&(identical(other.erpInfo, erpInfo) || other.erpInfo == erpInfo));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,customerIpAddress,customerMailAddress,customerInfo,order,saleInfo,payment3D);
+int get hashCode => Object.hash(runtimeType,customerIpAddress,customerMailAddress,customerInfo,order,saleInfo,payment3D,erpInfo);
 
 
 
@@ -168,11 +182,11 @@ abstract mixin class _$PaymentModelCopyWith<$Res> implements $PaymentModelCopyWi
   factory _$PaymentModelCopyWith(_PaymentModel value, $Res Function(_PaymentModel) _then) = __$PaymentModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: "CustomerIPAddress") String? customerIpAddress,@JsonKey(name: "CustomerMailAddress") String? customerMailAddress,@JsonKey(name: "CustomerInfo") CustomerInfo? customerInfo,@JsonKey(name: "Order") Order? order,@JsonKey(name: "SaleInfo") SaleInfo? saleInfo,@JsonKey(name: "Payment3D") Payment3D? payment3D
+@JsonKey(name: "CustomerIPAddress") String? customerIpAddress,@JsonKey(name: "CustomerMailAddress") String? customerMailAddress,@JsonKey(name: "CustomerInfo") CustomerInfo? customerInfo,@JsonKey(name: "Order") Order? order,@JsonKey(name: "SaleInfo") SaleInfo? saleInfo,@JsonKey(name: "Payment3D") Payment3D? payment3D,@JsonKey(name: "ERPInfo") ERPInfo? erpInfo
 });
 
 
-@override $CustomerInfoCopyWith<$Res>? get customerInfo;@override $OrderCopyWith<$Res>? get order;@override $SaleInfoCopyWith<$Res>? get saleInfo;@override $Payment3DCopyWith<$Res>? get payment3D;
+@override $CustomerInfoCopyWith<$Res>? get customerInfo;@override $OrderCopyWith<$Res>? get order;@override $SaleInfoCopyWith<$Res>? get saleInfo;@override $Payment3DCopyWith<$Res>? get payment3D;@override $ERPInfoCopyWith<$Res>? get erpInfo;
 
 }
 /// @nodoc
@@ -185,7 +199,7 @@ class __$PaymentModelCopyWithImpl<$Res>
 
 /// Create a copy of PaymentModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? customerIpAddress = freezed,Object? customerMailAddress = freezed,Object? customerInfo = freezed,Object? order = freezed,Object? saleInfo = freezed,Object? payment3D = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? customerIpAddress = freezed,Object? customerMailAddress = freezed,Object? customerInfo = freezed,Object? order = freezed,Object? saleInfo = freezed,Object? payment3D = freezed,Object? erpInfo = freezed,}) {
   return _then(_PaymentModel(
 customerIpAddress: freezed == customerIpAddress ? _self.customerIpAddress : customerIpAddress // ignore: cast_nullable_to_non_nullable
 as String?,customerMailAddress: freezed == customerMailAddress ? _self.customerMailAddress : customerMailAddress // ignore: cast_nullable_to_non_nullable
@@ -193,7 +207,8 @@ as String?,customerInfo: freezed == customerInfo ? _self.customerInfo : customer
 as CustomerInfo?,order: freezed == order ? _self.order : order // ignore: cast_nullable_to_non_nullable
 as Order?,saleInfo: freezed == saleInfo ? _self.saleInfo : saleInfo // ignore: cast_nullable_to_non_nullable
 as SaleInfo?,payment3D: freezed == payment3D ? _self.payment3D : payment3D // ignore: cast_nullable_to_non_nullable
-as Payment3D?,
+as Payment3D?,erpInfo: freezed == erpInfo ? _self.erpInfo : erpInfo // ignore: cast_nullable_to_non_nullable
+as ERPInfo?,
   ));
 }
 
@@ -244,6 +259,18 @@ $Payment3DCopyWith<$Res>? get payment3D {
 
   return $Payment3DCopyWith<$Res>(_self.payment3D!, (value) {
     return _then(_self.copyWith(payment3D: value));
+  });
+}/// Create a copy of PaymentModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ERPInfoCopyWith<$Res>? get erpInfo {
+    if (_self.erpInfo == null) {
+    return null;
+  }
+
+  return $ERPInfoCopyWith<$Res>(_self.erpInfo!, (value) {
+    return _then(_self.copyWith(erpInfo: value));
   });
 }
 }
@@ -828,6 +855,158 @@ as String?,installment: freezed == installment ? _self.installment : installment
 as int?,campaignCode: freezed == campaignCode ? _self.campaignCode : campaignCode // ignore: cast_nullable_to_non_nullable
 as String?,bankCode: freezed == bankCode ? _self.bankCode : bankCode // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ERPInfo {
+
+/// Ödemenin yapıldığı ERP sisteminin şirket kodu
+ String? get companyCode;/// Ödemenin yapıldığı ERP sisteminin işletme kodu
+ String? get businessUnitCode;/// Ödemenin yapıldığı ERP sisteminin şube kodu
+ String? get branchCode;/// Ödemenin yapıldığı ERP sisteminde kayıtlı dekont numarası
+ String? get receiptNumber;/// Ödemenin yapıldığı ERP sisteminde kayıtlı dekont serisi
+ String? get receiptSeries;/// Ödemenin yapıldığı ERP sistemine kayıt yapan kullanıcı
+ String? get operatorUser;
+/// Create a copy of ERPInfo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ERPInfoCopyWith<ERPInfo> get copyWith => _$ERPInfoCopyWithImpl<ERPInfo>(this as ERPInfo, _$identity);
+
+  /// Serializes this ERPInfo to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ERPInfo&&(identical(other.companyCode, companyCode) || other.companyCode == companyCode)&&(identical(other.businessUnitCode, businessUnitCode) || other.businessUnitCode == businessUnitCode)&&(identical(other.branchCode, branchCode) || other.branchCode == branchCode)&&(identical(other.receiptNumber, receiptNumber) || other.receiptNumber == receiptNumber)&&(identical(other.receiptSeries, receiptSeries) || other.receiptSeries == receiptSeries)&&(identical(other.operatorUser, operatorUser) || other.operatorUser == operatorUser));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,companyCode,businessUnitCode,branchCode,receiptNumber,receiptSeries,operatorUser);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class $ERPInfoCopyWith<$Res>  {
+  factory $ERPInfoCopyWith(ERPInfo value, $Res Function(ERPInfo) _then) = _$ERPInfoCopyWithImpl;
+@useResult
+$Res call({
+ String? companyCode, String? businessUnitCode, String? branchCode, String? receiptNumber, String? receiptSeries, String? operatorUser
+});
+
+
+
+
+}
+/// @nodoc
+class _$ERPInfoCopyWithImpl<$Res>
+    implements $ERPInfoCopyWith<$Res> {
+  _$ERPInfoCopyWithImpl(this._self, this._then);
+
+  final ERPInfo _self;
+  final $Res Function(ERPInfo) _then;
+
+/// Create a copy of ERPInfo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? companyCode = freezed,Object? businessUnitCode = freezed,Object? branchCode = freezed,Object? receiptNumber = freezed,Object? receiptSeries = freezed,Object? operatorUser = freezed,}) {
+  return _then(_self.copyWith(
+companyCode: freezed == companyCode ? _self.companyCode : companyCode // ignore: cast_nullable_to_non_nullable
+as String?,businessUnitCode: freezed == businessUnitCode ? _self.businessUnitCode : businessUnitCode // ignore: cast_nullable_to_non_nullable
+as String?,branchCode: freezed == branchCode ? _self.branchCode : branchCode // ignore: cast_nullable_to_non_nullable
+as String?,receiptNumber: freezed == receiptNumber ? _self.receiptNumber : receiptNumber // ignore: cast_nullable_to_non_nullable
+as String?,receiptSeries: freezed == receiptSeries ? _self.receiptSeries : receiptSeries // ignore: cast_nullable_to_non_nullable
+as String?,operatorUser: freezed == operatorUser ? _self.operatorUser : operatorUser // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// @nodoc
+@JsonSerializable()
+
+class _ERPInfo implements ERPInfo {
+  const _ERPInfo({this.companyCode, this.businessUnitCode, this.branchCode, this.receiptNumber, this.receiptSeries, this.operatorUser});
+  factory _ERPInfo.fromJson(Map<String, dynamic> json) => _$ERPInfoFromJson(json);
+
+/// Ödemenin yapıldığı ERP sisteminin şirket kodu
+@override final  String? companyCode;
+/// Ödemenin yapıldığı ERP sisteminin işletme kodu
+@override final  String? businessUnitCode;
+/// Ödemenin yapıldığı ERP sisteminin şube kodu
+@override final  String? branchCode;
+/// Ödemenin yapıldığı ERP sisteminde kayıtlı dekont numarası
+@override final  String? receiptNumber;
+/// Ödemenin yapıldığı ERP sisteminde kayıtlı dekont serisi
+@override final  String? receiptSeries;
+/// Ödemenin yapıldığı ERP sistemine kayıt yapan kullanıcı
+@override final  String? operatorUser;
+
+/// Create a copy of ERPInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ERPInfoCopyWith<_ERPInfo> get copyWith => __$ERPInfoCopyWithImpl<_ERPInfo>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ERPInfoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ERPInfo&&(identical(other.companyCode, companyCode) || other.companyCode == companyCode)&&(identical(other.businessUnitCode, businessUnitCode) || other.businessUnitCode == businessUnitCode)&&(identical(other.branchCode, branchCode) || other.branchCode == branchCode)&&(identical(other.receiptNumber, receiptNumber) || other.receiptNumber == receiptNumber)&&(identical(other.receiptSeries, receiptSeries) || other.receiptSeries == receiptSeries)&&(identical(other.operatorUser, operatorUser) || other.operatorUser == operatorUser));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,companyCode,businessUnitCode,branchCode,receiptNumber,receiptSeries,operatorUser);
+
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ERPInfoCopyWith<$Res> implements $ERPInfoCopyWith<$Res> {
+  factory _$ERPInfoCopyWith(_ERPInfo value, $Res Function(_ERPInfo) _then) = __$ERPInfoCopyWithImpl;
+@override @useResult
+$Res call({
+ String? companyCode, String? businessUnitCode, String? branchCode, String? receiptNumber, String? receiptSeries, String? operatorUser
+});
+
+
+
+
+}
+/// @nodoc
+class __$ERPInfoCopyWithImpl<$Res>
+    implements _$ERPInfoCopyWith<$Res> {
+  __$ERPInfoCopyWithImpl(this._self, this._then);
+
+  final _ERPInfo _self;
+  final $Res Function(_ERPInfo) _then;
+
+/// Create a copy of ERPInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? companyCode = freezed,Object? businessUnitCode = freezed,Object? branchCode = freezed,Object? receiptNumber = freezed,Object? receiptSeries = freezed,Object? operatorUser = freezed,}) {
+  return _then(_ERPInfo(
+companyCode: freezed == companyCode ? _self.companyCode : companyCode // ignore: cast_nullable_to_non_nullable
+as String?,businessUnitCode: freezed == businessUnitCode ? _self.businessUnitCode : businessUnitCode // ignore: cast_nullable_to_non_nullable
+as String?,branchCode: freezed == branchCode ? _self.branchCode : branchCode // ignore: cast_nullable_to_non_nullable
+as String?,receiptNumber: freezed == receiptNumber ? _self.receiptNumber : receiptNumber // ignore: cast_nullable_to_non_nullable
+as String?,receiptSeries: freezed == receiptSeries ? _self.receiptSeries : receiptSeries // ignore: cast_nullable_to_non_nullable
+as String?,operatorUser: freezed == operatorUser ? _self.operatorUser : operatorUser // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

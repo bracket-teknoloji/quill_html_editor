@@ -116,7 +116,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
     leading: Observer(
       builder: (_) => anaSayfaMi
           ? IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: Icon(Icons.adaptive.arrow_back_outlined),
               onPressed: () {
                 viewModel
                   ..setItems(viewModel.lastItems.last)

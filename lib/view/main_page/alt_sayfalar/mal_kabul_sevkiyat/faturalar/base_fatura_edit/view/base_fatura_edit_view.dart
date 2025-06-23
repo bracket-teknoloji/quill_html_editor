@@ -301,7 +301,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         if (widget.model.editTipiEnum?.siparisBaglantisiVarMi ?? false) {
           final result = await getSiparisBaglantisi();
-          if (model.editTipiEnum.irsaliyeMi) {
+          if (model.editTipiEnum.irsaliyeMi && yetkiController.eIrsaliyeAktif) {
             BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
           }
           if (result != true) {

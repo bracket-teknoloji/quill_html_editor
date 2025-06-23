@@ -551,6 +551,8 @@ final class ParamModel {
   String? netOpenXLog;
   @JsonKey(name: "SayfalamaKayitSayisi")
   int? sayfalamaKayitSayisi;
+  @JsonKey(name: "FieldVar_SatisIrsaliyeFaturalasmayacak")
+  bool? fieldVarSatisIrsaliyeFaturalasmayacak;
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
 }
 

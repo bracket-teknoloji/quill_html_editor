@@ -6,43 +6,64 @@ part of 'payker_odeme_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+BasePaykerOdemeListesiModel _$BasePaykerOdemeListesiModelFromJson(
+  Map<String, dynamic> json,
+) => BasePaykerOdemeListesiModel(
+  draw: (json['DRAW'] as num?)?.toInt(),
+  recordsTotal: (json['recordsTotal'] as num?)?.toInt(),
+  recordsFiltered: (json['recordsFiltered'] as num?)?.toInt(),
+  data: (json['data'] as List<dynamic>?)
+      ?.map((e) => PaykerOdemeListesiModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
+
+Map<String, dynamic> _$BasePaykerOdemeListesiModelToJson(
+  BasePaykerOdemeListesiModel instance,
+) => <String, dynamic>{
+  if (instance.draw case final value?) 'DRAW': value,
+  if (instance.recordsTotal case final value?) 'recordsTotal': value,
+  if (instance.recordsFiltered case final value?) 'recordsFiltered': value,
+  if (instance.data?.map((e) => e.toJson()).toList() case final value?)
+    'data': value,
+};
+
 PaykerOdemeListesiModel _$PaykerOdemeListesiModelFromJson(
   Map<String, dynamic> json,
-) =>
-    PaykerOdemeListesiModel(
-        id: (json['ID'] as num?)?.toInt(),
-        firmaId: (json['FIRMA_ID'] as num?)?.toInt(),
-        kartIsim: json['KART_ISIM'] as String?,
-        kartNo: json['KART_NO'] as String?,
-        enrollmentId: json['ENROLLMENT_ID'] as String?,
-        transactionId: json['TRANSACTION_ID'] as String?,
-        tutar: (json['TUTAR'] as num?)?.toDouble(),
-        aciklama: json['ACIKLAMA'] as String?,
-        odemeTuru: json['ODEME_TURU'] as String?,
-        ipAdres: json['IP_ADRES'] as String?,
-        bankaId: (json['BANKA_ID'] as num?)?.toInt(),
-        bayiId: json['BAYI_ID'],
-        durum: json['DURUM'] as String?,
-        durumKodu: json['DURUM_KODU'] as String?,
-        durumAciklama: json['DURUM_ACIKLAMA'] as String?,
-        odemelinkId: json['ODEMELINK_ID'],
-        responsedata: json['RESPONSEDATA'] as String?,
-        banka: json['BANKA'] == null
-            ? null
-            : Banka.fromJson(json['BANKA'] as Map<String, dynamic>),
-        bayi: json['BAYI'],
-        firma: json['FIRMA'],
-        odemeLink: json['ODEME_LINK'],
-      )
-      ..silindi = json['SILINDI']
-      ..kayittarihi = json['KAYITTARIHI'] == null
-          ? null
-          : DateTime.parse(json['KAYITTARIHI'] as String)
-      ..kayityapankul = json['KAYITYAPANKUL']
-      ..duzeltmetarihi = json['DUZELTMETARIHI'] == null
-          ? null
-          : DateTime.parse(json['DUZELTMETARIHI'] as String)
-      ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'];
+) => PaykerOdemeListesiModel(
+  id: (json['ID'] as num?)?.toInt(),
+  firmaId: (json['FIRMA_ID'] as num?)?.toInt(),
+  kartIsim: json['KART_ISIM'] as String?,
+  kartNo: json['KART_NO'] as String?,
+  enrollmentId: json['ENROLLMENT_ID'] as String?,
+  transactionId: json['TRANSACTION_ID'] as String?,
+  tutar: (json['TUTAR'] as num?)?.toDouble(),
+  aciklama: json['ACIKLAMA'] as String?,
+  odemeTuru: json['ODEME_TURU'] as String?,
+  ipAdres: json['IP_ADRES'] as String?,
+  bankaId: (json['BANKA_ID'] as num?)?.toInt(),
+  bayiId: json['BAYI_ID'],
+  durum: json['DURUM'] as String?,
+  durumKodu: json['DURUM_KODU'] as String?,
+  durumAciklama: json['DURUM_ACIKLAMA'] as String?,
+  odemelinkId: json['ODEMELINK_ID'],
+  responsedata: json['RESPONSEDATA'] as String?,
+  banka: json['BANKA'] == null
+      ? null
+      : Banka.fromJson(json['BANKA'] as Map<String, dynamic>),
+  bayi: json['BAYI'],
+  firma: json['FIRMA'],
+  odemeLink: json['ODEME_LINK'],
+  silindi: json['SILINDI'],
+  siparisNo: json['SIPARIS_NO'] as String?,
+  kayittarihi: json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayityapankul: json['KAYITYAPANKUL'],
+  duzeltmetarihi: json['DUZELTMETARIHI'] == null
+      ? null
+      : DateTime.parse(json['DUZELTMETARIHI'] as String),
+  duzeltmeyapankul: json['DUZELTMEYAPANKUL'],
+);
 
 Map<String, dynamic> _$PaykerOdemeListesiModelToJson(
   PaykerOdemeListesiModel instance,
@@ -75,4 +96,5 @@ Map<String, dynamic> _$PaykerOdemeListesiModelToJson(
   if (instance.duzeltmetarihi?.toIso8601String() case final value?)
     'DUZELTMETARIHI': value,
   if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
+  if (instance.siparisNo case final value?) 'SIPARIS_NO': value,
 };

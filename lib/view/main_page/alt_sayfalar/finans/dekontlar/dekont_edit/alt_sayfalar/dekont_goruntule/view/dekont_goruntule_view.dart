@@ -94,11 +94,11 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                       children: [
                         Text(item.hesapAdi ?? "", maxLines: 1),
                         if (index != viewModel.dekontListesi.length - 1)
-                          const Icon(Icons.arrow_forward_ios, size: UIHelper.highSize),
+                          Icon(Icons.adaptive.arrow_forward_outlined, size: UIHelper.highSize),
                         if (index != viewModel.dekontListesi.length - 1)
                           Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                         if (index != viewModel.dekontListesi.length - 1)
-                          const Icon(Icons.arrow_forward_ios, size: UIHelper.highSize),
+                          Icon(Icons.adaptive.arrow_forward_outlined, size: UIHelper.highSize),
                       ],
                     ).paddingAll(UIHelper.lowSize);
                   }).nullCheckWithGeneric,

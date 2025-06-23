@@ -20,6 +20,24 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
               ))
           .value;
 
+  late final _$filterModelAtom = Atom(
+    name: '_PaykerOdemeListesiViewModelBase.filterModel',
+    context: context,
+  );
+
+  @override
+  PaykerFilterModel get filterModel {
+    _$filterModelAtom.reportRead();
+    return super.filterModel;
+  }
+
+  @override
+  set filterModel(PaykerFilterModel value) {
+    _$filterModelAtom.reportWrite(value, super.filterModel, () {
+      super.filterModel = value;
+    });
+  }
+
   late final _$isSearchBarOpenAtom = Atom(
     name: '_PaykerOdemeListesiViewModelBase.isSearchBarOpen',
     context: context,
@@ -92,6 +110,16 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
     });
   }
 
+  late final _$resetListAsyncAction = AsyncAction(
+    '_PaykerOdemeListesiViewModelBase.resetList',
+    context: context,
+  );
+
+  @override
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
+  }
+
   late final _$getDataAsyncAction = AsyncAction(
     '_PaykerOdemeListesiViewModelBase.getData',
     context: context,
@@ -102,16 +130,14 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$changeScrollStatusAsyncAction = AsyncAction(
-    '_PaykerOdemeListesiViewModelBase.changeScrollStatus',
+  late final _$checkPermissionsAsyncAction = AsyncAction(
+    '_PaykerOdemeListesiViewModelBase.checkPermissions',
     context: context,
   );
 
   @override
-  Future<void> changeScrollStatus(ScrollPosition position) {
-    return _$changeScrollStatusAsyncAction.run(
-      () => super.changeScrollStatus(position),
-    );
+  Future<ModuleInfoModel?> checkPermissions() {
+    return _$checkPermissionsAsyncAction.run(() => super.checkPermissions());
   }
 
   late final _$_PaykerOdemeListesiViewModelBaseActionController =
@@ -128,6 +154,84 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
         );
     try {
       return super.changeSearchBarStatus();
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setDurum(bool? durum) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setDurum');
+    try {
+      return super.setDurum(durum);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setBasTar(DateTime? basTar) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setBasTar');
+    try {
+      return super.setBasTar(basTar);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setBitTar(DateTime? bitTar) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setBitTar');
+    try {
+      return super.setBitTar(bitTar);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setBankaId(int? bankaId) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setBankaId');
+    try {
+      return super.setBankaId(bankaId);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setFirmaId(int? firmaId) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setFirmaId');
+    try {
+      return super.setFirmaId(firmaId);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setOrder(Order newOrder) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setOrder');
+    try {
+      return super.setOrder(newOrder);
     } finally {
       _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
         _$actionInfo,
@@ -164,8 +268,24 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
   }
 
   @override
+  void addObservableList(List<PaykerOdemeListesiModel>? list) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerOdemeListesiViewModelBase.addObservableList',
+        );
+    try {
+      return super.addObservableList(list);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
   String toString() {
     return '''
+filterModel: ${filterModel},
 isSearchBarOpen: ${isSearchBarOpen},
 observableList: ${observableList},
 searchText: ${searchText},

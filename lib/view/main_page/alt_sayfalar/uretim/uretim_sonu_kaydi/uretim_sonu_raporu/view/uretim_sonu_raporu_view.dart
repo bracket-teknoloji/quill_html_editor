@@ -73,7 +73,7 @@ final class _UretimSonuRaporuViewState extends BaseState<UretimSonuRaporuView> {
               children: [
                 Expanded(child: Text(item.stokAdi ?? "")),
                 Icon(
-                  item.cikisIslemi == true ? Icons.arrow_forward : Icons.arrow_back,
+                  item.cikisIslemi == true ? Icons.adaptive.arrow_forward_outlined : Icons.adaptive.arrow_back_outlined,
                   color: item.cikisIslemi == true ? ColorPalette.persianRed : ColorPalette.mantis,
                 ),
               ],

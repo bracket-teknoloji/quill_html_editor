@@ -747,6 +747,7 @@ abstract final class MenuItemConstants {
         altMenuler: <GridItemModel>[
           if (_yetkiController.tahsilatPayker)
           GridItemModel.item(name: null, title: "Ödeme Listesi", route: "/mainPage/paykerOdemeListesiOzel", arguments: false),
+          GridItemModel.item(name: null, title: "Ödeme Link Listesi", route: "/mainPage/paykerOdemeLinkListesi"),
           // if (_yetkiController.tahsilatPayker)
           // GridItemModel.item(name: null, title: "Ödeme Al", route: "/mainPage/paykerTahsilat"),
         ],

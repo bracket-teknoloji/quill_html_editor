@@ -668,7 +668,7 @@ final class DialogManager {
     );
   }
 
-  double _snackBarWidth() => kIsWeb ? Get.width * 0.5 : double.maxFinite;
+  double? _snackBarWidth() => kIsWeb ? Get.width * 0.5 : null;
 
   SnackBar _snackBarColorful(String message, Color color) => SnackBar(
     content: Text(message, style: const TextStyle(color: Colors.white)),
@@ -682,6 +682,7 @@ final class DialogManager {
     behavior: SnackBarBehavior.floating,
     backgroundColor: ColorPalette.persianRed,
     width: _snackBarWidth(),
+    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
   );
 
   SnackBar _snackBarSuccess(String message) => SnackBar(

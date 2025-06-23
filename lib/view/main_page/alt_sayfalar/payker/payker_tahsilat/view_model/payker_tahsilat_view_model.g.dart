@@ -182,6 +182,17 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
   }
 
   @override
+  void setCari(CariListesiModel? value) {
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setCari');
+    try {
+      return super.setCari(value);
+    } finally {
+      _$_PaykerTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTaksitResponseModel(List<TaksitResponseModel>? value) {
     final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
         .startAction(

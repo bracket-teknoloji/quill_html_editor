@@ -582,27 +582,27 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
 
                 if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
                     widget.model.baseEditEnum != BaseEditEnum.taslak)
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Özel Kod 2",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: _ozelKod2Controller,
-                    enabled: enable,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
-                    onClear: () => viewModel.setOzelKod2(null),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(
-                        context,
-                        viewModel.model.ozelKod2,
-                      );
-                      if (result != null) {
-                        _ozelKod2Controller.text = result.aciklama ?? "";
-                        viewModel.setOzelKod2(result.kod);
-                      }
-                    },
-                  ),
-                ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Özel Kod 2",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: _ozelKod2Controller,
+                      enabled: enable,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                      onClear: () => viewModel.setOzelKod2(null),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(
+                          context,
+                          viewModel.model.ozelKod2,
+                        );
+                        if (result != null) {
+                          _ozelKod2Controller.text = result.aciklama ?? "";
+                          viewModel.setOzelKod2(result.kod);
+                        }
+                      },
+                    ),
+                  ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
               ],
             ),
             if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false) &&
@@ -666,7 +666,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                 },
               ),
             CustomLayoutBuilder(
-              splitCount: 2,
+              splitCount: 3,
               children: [
                 CustomWidgetWithLabel(
                   text: "KDV Dahil",
@@ -681,6 +681,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ),
                   ),
                 ).yetkiVarMi(!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false)),
+
                 if (yetkiController.eIrsaliyeAktif)
                   CustomWidgetWithLabel(
                     text: "E-İrsaliye",
@@ -701,17 +702,34 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       ),
                     ),
                   ).yetkiVarMi(model.getEditTipiEnum.irsaliyeMi),
-                if (yetkiController.aciklamaAlaniGorunsun(model.getEditTipiEnum))
-                  CustomTextField(
-                    labelText: "Açıklama",
-                    enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
-                    isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
-                    controllerText: viewModel.model.aciklama,
-                    maxLength: StaticVariables.maxAciklamaLength,
-                    onChanged: (value) => viewModel.model.aciklama = value,
-                  ),
+                if ((model.getEditTipiEnum?.satisIrsaliyesiMi ?? false) && yetkiController.irsaliyeFaturalasmayacak)
+                  CustomWidgetWithLabel(
+                    text: "Faturalaşmayacak",
+                    isVertical: true,
+                    child: Observer(
+                      builder: (_) => Switch.adaptive(
+                        value: viewModel.faturalasmayacakCheckbox,
+                        onChanged:
+                            enable &&
+                                !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("satisIrsFaturalasmayacak") ?? false)
+                            ? (value) async {
+                                viewModel.changeFaturalasmayacakCheckBox(value);
+                              }
+                            : null,
+                      ),
+                    ),
+                  ).yetkiVarMi(model.getEditTipiEnum.irsaliyeMi),
               ],
             ),
+            if (yetkiController.aciklamaAlaniGorunsun(model.getEditTipiEnum))
+              CustomTextField(
+                labelText: "Açıklama",
+                enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
+                isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
+                controllerText: viewModel.model.aciklama,
+                maxLength: StaticVariables.maxAciklamaLength,
+                onChanged: (value) => viewModel.model.aciklama = value,
+              ),
             if (model.getEditTipiEnum?.aciklamalarGorunecekMi(0) ?? false)
               CustomWidgetWithLabel(
                 text: "Ek Açıklamalar",

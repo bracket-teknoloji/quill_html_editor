@@ -56,5 +56,8 @@ sealed class StokRehberiRequestModel with _$StokRehberiRequestModel {
     faturaDepoKodu: model.faturaDepoKodu,
     ozelKod1: model.ozelKod1,
     ozelKod2: model.ozelKod2,
+    okutuldu: model.okutuldu,
+    menuKodu: model.menuKodu,
+    faturaTipi: model.faturaTipi,
   );
 }

@@ -8,6 +8,7 @@ import "package:picker/core/base/model/banka_sozlesmesi_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/seri_model.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -26,8 +27,9 @@ import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_k
 import "package:picker/view/main_page/model/param_model.dart";
 
 final class KrediKartiTahsilatiView extends StatefulWidget {
-  const KrediKartiTahsilatiView({super.key, this.cariListesiModel});
+  const KrediKartiTahsilatiView({super.key, this.cariListesiModel, this.tahsilatRequestModel});
   final CariListesiModel? cariListesiModel;
+  final TahsilatRequestModel? tahsilatRequestModel;
 
   @override
   State<KrediKartiTahsilatiView> createState() => _KrediKartiTahsilatiViewState();
@@ -53,8 +55,13 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
 
   @override
   void initState() {
-    _belgeNoController = TextEditingController();
-    _tarihController = TextEditingController();
+    if (widget.tahsilatRequestModel != null) {
+      viewModel.setModel(widget.tahsilatRequestModel!);
+    }
+    _belgeNoController = TextEditingController(text: viewModel.model.belgeNo ?? "");
+    _tarihController = TextEditingController(
+      text: viewModel.model.tarih?.toDateString ?? DateTime.now().dateTimeWithoutTime.toDateString,
+    );
     _cariController = TextEditingController(text: widget.cariListesiModel?.cariAdi ?? "");
     _kasaController = TextEditingController();
     _sozlesmeController = TextEditingController();

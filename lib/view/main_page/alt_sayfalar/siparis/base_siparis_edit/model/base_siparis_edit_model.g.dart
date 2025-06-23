@@ -435,6 +435,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel tamamlananMiktar(double? tamamlananMiktar);
 
+  BaseSiparisEditModel faturalasmayacak(bool? faturalasmayacak);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -656,6 +658,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? kalemSayisi,
     bool? kapali,
     double? tamamlananMiktar,
+    bool? faturalasmayacak,
   });
 }
 
@@ -1446,6 +1449,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(tamamlananMiktar: tamamlananMiktar);
 
   @override
+  BaseSiparisEditModel faturalasmayacak(bool? faturalasmayacak) =>
+      this(faturalasmayacak: faturalasmayacak);
+
+  @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1667,6 +1674,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? kalemSayisi = const $CopyWithPlaceholder(),
     Object? kapali = const $CopyWithPlaceholder(),
     Object? tamamlananMiktar = const $CopyWithPlaceholder(),
+    Object? faturalasmayacak = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2529,6 +2537,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.tamamlananMiktar
           // ignore: cast_nullable_to_non_nullable
           : tamamlananMiktar as double?,
+      faturalasmayacak: faturalasmayacak == const $CopyWithPlaceholder()
+          ? _value.faturalasmayacak
+          // ignore: cast_nullable_to_non_nullable
+          : faturalasmayacak as bool?,
     );
   }
 }
@@ -4640,13 +4652,21 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       dovizListesi: (fields[185] as Map?)?.cast<int, double>(),
       hedefDepoAdi: fields[186] as String?,
       otvTutari: (fields[187] as num?)?.toDouble(),
+      id: (fields[189] as num?)?.toInt(),
+      hedefSube: (fields[195] as num?)?.toInt(),
+      depoKodu: (fields[190] as num?)?.toInt(),
+      durumAdi: fields[191] as String?,
+      kalemSayisi: (fields[192] as num?)?.toInt(),
+      kapali: fields[194] as bool?,
+      tamamlananMiktar: (fields[193] as num?)?.toDouble(),
+      faturalasmayacak: fields[188] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(188)
+      ..writeByte(196)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -5022,7 +5042,23 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(186)
       ..write(obj.hedefDepoAdi)
       ..writeByte(187)
-      ..write(obj.otvTutari);
+      ..write(obj.otvTutari)
+      ..writeByte(188)
+      ..write(obj.faturalasmayacak)
+      ..writeByte(189)
+      ..write(obj.id)
+      ..writeByte(190)
+      ..write(obj.depoKodu)
+      ..writeByte(191)
+      ..write(obj.durumAdi)
+      ..writeByte(192)
+      ..write(obj.kalemSayisi)
+      ..writeByte(193)
+      ..write(obj.tamamlananMiktar)
+      ..writeByte(194)
+      ..write(obj.kapali)
+      ..writeByte(195)
+      ..write(obj.hedefSube);
   }
 
   @override
@@ -5802,6 +5838,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toInt(),
   kapali: json['KAPALI'] as bool?,
   tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
+  faturalasmayacak: json['FATURALASMAYACAK'] as bool?,
 );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -6019,6 +6056,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.hedefDepoAdi case final value?) 'HEDEF_DEPO_ADI': value,
   if (instance.otvTutari case final value?) 'OTV_TUTARI': value,
   if (instance.index case final value?) 'INDEX': value,
+  if (instance.faturalasmayacak case final value?) 'FATURALASMAYACAK': value,
   if (instance.id case final value?) 'ID': value,
   if (instance.depoKodu case final value?) 'DEPO_KODU': value,
   if (instance.durumAdi case final value?) 'DURUM_ADI': value,

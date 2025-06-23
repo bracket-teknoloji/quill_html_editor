@@ -22,6 +22,9 @@ _PaymentModel _$PaymentModelFromJson(Map<String, dynamic> json) =>
       payment3D: json['Payment3D'] == null
           ? null
           : Payment3D.fromJson(json['Payment3D'] as Map<String, dynamic>),
+      erpInfo: json['ERPInfo'] == null
+          ? null
+          : ERPInfo.fromJson(json['ERPInfo'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PaymentModelToJson(
@@ -34,6 +37,7 @@ Map<String, dynamic> _$PaymentModelToJson(
   if (instance.order?.toJson() case final value?) 'Order': value,
   if (instance.saleInfo?.toJson() case final value?) 'SaleInfo': value,
   if (instance.payment3D?.toJson() case final value?) 'Payment3D': value,
+  if (instance.erpInfo?.toJson() case final value?) 'ERPInfo': value,
 };
 
 _CustomerInfo _$CustomerInfoFromJson(Map<String, dynamic> json) =>
@@ -129,4 +133,22 @@ Map<String, dynamic> _$SaleInfoToJson(_SaleInfo instance) => <String, dynamic>{
   if (instance.campaignCode case final value?) 'CampaignCode': value,
   if (instance.bankCode case final value?) 'BankCode': value,
   if (instance.description case final value?) 'Description': value,
+};
+
+_ERPInfo _$ERPInfoFromJson(Map<String, dynamic> json) => _ERPInfo(
+  companyCode: json['COMPANY_CODE'] as String?,
+  businessUnitCode: json['BUSINESS_UNIT_CODE'] as String?,
+  branchCode: json['BRANCH_CODE'] as String?,
+  receiptNumber: json['RECEIPT_NUMBER'] as String?,
+  receiptSeries: json['RECEIPT_SERIES'] as String?,
+  operatorUser: json['OPERATOR_USER'] as String?,
+);
+
+Map<String, dynamic> _$ERPInfoToJson(_ERPInfo instance) => <String, dynamic>{
+  if (instance.companyCode case final value?) 'COMPANY_CODE': value,
+  if (instance.businessUnitCode case final value?) 'BUSINESS_UNIT_CODE': value,
+  if (instance.branchCode case final value?) 'BRANCH_CODE': value,
+  if (instance.receiptNumber case final value?) 'RECEIPT_NUMBER': value,
+  if (instance.receiptSeries case final value?) 'RECEIPT_SERIES': value,
+  if (instance.operatorUser case final value?) 'OPERATOR_USER': value,
 };

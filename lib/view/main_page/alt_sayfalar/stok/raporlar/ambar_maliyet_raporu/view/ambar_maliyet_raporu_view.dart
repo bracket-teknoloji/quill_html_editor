@@ -221,24 +221,27 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
     }
-    final List<BottomSheetModel> bottomSheetList = grupKodList
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
         .map(
           (e) => BottomSheetModel(
-            title: e.grupKodu ?? "",
-            onTap: () => Get.back(result: e),
+            title: e.grupAdi ?? e.grupKodu ?? "",
+            value: e,
+            groupValue: e.grupKodu,
+            description: e.grupKodu ?? "",
           ),
         )
         .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<BaseGrupKoduModel>(
       context,
+      groupValue: _getGrupKodu(grupNo),
       title: "Grup Kodu",
       children: bottomSheetList,
     );
     if (result != null) {
-      controller?.text = result.grupKodu ?? "";
+      controller?.text = result.grupAdi ?? result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
@@ -255,5 +258,24 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
       }
     }
     return null;
+  }
+
+  String? _getGrupKodu(int grupNo) {
+    switch (grupNo) {
+      case 0:
+        return viewModel.pdfModel.dicParams?.grupKodu;
+      case 1:
+        return viewModel.pdfModel.dicParams?.kod1;
+      case 2:
+        return viewModel.pdfModel.dicParams?.kod2;
+      case 3:
+        return viewModel.pdfModel.dicParams?.kod3;
+      case 4:
+        return viewModel.pdfModel.dicParams?.kod4;
+      case 5:
+        return viewModel.pdfModel.dicParams?.kod5;
+      default:
+        return null;
+    }
   }
 }

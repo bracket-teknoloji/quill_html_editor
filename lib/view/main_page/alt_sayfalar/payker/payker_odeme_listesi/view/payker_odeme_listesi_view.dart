@@ -2,21 +2,28 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_pdf_model.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_detay/view/payker_odeme_detay_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/view_model/payker_odeme_listesi_view_model.dart";
 
@@ -31,12 +38,11 @@ class PaykerOdemeListesiView extends StatefulWidget {
 class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
   final PaykerOdemeListesiViewModel _viewModel = PaykerOdemeListesiViewModel();
   final ScrollController _scrollController = ScrollController();
+  final TextEditingController _basTarController = TextEditingController();
+  final TextEditingController _bitTarController = TextEditingController();
 
   @override
   void initState() {
-    _scrollController.addListener(() async {
-      _viewModel.changeScrollStatus(_scrollController.position);
-    });
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final result = await _viewModel.checkPermissions();
       // eğer result'ın kayıtTarihi geçtiğimiz 7 günden daha eskiyse, verileri güncelle
@@ -47,26 +53,34 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
         Get.back();
         return;
       }
+      if (result.paykerModule == null) {
+        dialogManager.showAlertDialog(
+          "Payker modülü bulunamadı. Lütfen Payker modülünü etkinleştirin.",
+        );
+        Get.back();
+        return;
+      }
+      if (!(result.paykerModule!.sozlesmeAktif ?? false)) {
+        dialogManager.showAlertDialog(
+          result.paykerModule?.sozlesmeUyari ?? "Payker modülü sözleşmesi aktif değil. Lütfen sözleşmeyi kontrol edin.",
+        );
+        Get.back();
+        return;
+      }
+      if (result.paykerModule?.sozlesmeUyari != null) {
+        dialogManager.showAlertDialog(result.paykerModule!.sozlesmeUyari!);
+      }
       if (result.kayitTarihi != null && result.kayitTarihi!.isAfter(DateTime.now().subtract(const Duration(days: 7)))) {
+        _scrollController.addListener(() async => _viewModel.changeScrollStatus(_scrollController.position));
         await _viewModel.getData();
       } else {
         return dialogManager.showAlertDialog(
           "Payker Ödeme Listesi verileri güncel değil. Lütfen verileri güncelleyin.",
         );
       }
-      if (result.moduller
-              ?.firstWhereOrNull((element) => element.modulBaslik == "Payker")
-              ?.ekLisanslar
-              ?.firstWhereOrNull((element) => element.sira == 2) ==
-          null) {
-        dialogManager.showAlertDialog(
-          "Payker için gerekli ek lisanslar bulunamadı. Lütfen Payker modülünü kontrol edin.",
-        );
-        Get.back();
-        return;
-      }
       if (_viewModel.observableList == null) {
         Get.back();
+        return;
       }
     });
     super.initState();
@@ -75,72 +89,129 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
   @override
   void dispose() {
     _scrollController.dispose();
+    _basTarController.dispose();
+    _bitTarController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: Observer(
-        builder: (_) => _viewModel.isSearchBarOpen
-            ? CustomAppBarTextField(
-                onChanged: _viewModel.setSearchText,
-              )
-            : AppBarTitle(
-                title: "Payker Ödeme Listesi",
-                subtitle: (_viewModel.filteredList?.length ?? 0).toStringIfNotNull,
-              ),
-      ),
-      actions: [
-        IconButton(
-          icon: Observer(
-            builder: (_) => Icon(_viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
-          ),
-          onPressed: _viewModel.changeSearchBarStatus,
+    appBar: _appBar(),
+    floatingActionButton: _fab(),
+    body: _body(),
+    bottomNavigationBar: _bottomNavigationBar(),
+  );
+
+  AppBar _appBar() => AppBar(
+    title: Observer(
+      builder: (_) => _viewModel.isSearchBarOpen
+          ? CustomAppBarTextField(
+              onChanged: _viewModel.setSearchText,
+            )
+          : AppBarTitle(
+              title: "Payker Ödeme Listesi",
+              subtitle: (_viewModel.filteredList?.length ?? 0).toStringIfNotNull,
+            ),
+    ),
+    actions: [
+      IconButton(
+        icon: Observer(
+          builder: (_) => Icon(_viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-      ],
-      bottom: AppBarPreferedSizedBottom(
-        children: [
-          AppBarButton(
-            icon: Icons.filter_alt_outlined,
-            onPressed: () async {
-              bottomSheetDialogManager.showBottomSheetDialog(
-                context,
-                title: loc.generalStrings.filter,
-                body: Column(
+        onPressed: _viewModel.changeSearchBarStatus,
+      ),
+    ],
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        AppBarButton(
+          icon: Icons.filter_alt_outlined,
+          onPressed: () async {
+            bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.filter,
+              body: Padding(
+                padding: UIHelper.lowPadding,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    FilledButton.icon(
-                      onPressed: () {
-                        _viewModel.setSearchText(null);
-                        Get.back();
-                      },
-                      icon: const Icon(Icons.clear_all_outlined),
-                      label: Text(loc.generalStrings.apply),
+                    CustomLayoutBuilder.divideInHalf(
+                      children: [
+                        CustomTextField(
+                          isDateTime: true,
+                          labelText: "Başlangıç Tarihi",
+                          controller: _basTarController,
+                          onTap: () async {
+                            final result = await dialogManager.showDateTimePicker(
+                              initialDate: _basTarController.text.isNotEmpty
+                                  ? _basTarController.text.toDateTimeDDMMYYYY()
+                                  : null,
+                            );
+                            if (result != null) {
+                              _basTarController.text = result.toDateString;
+                              _viewModel.setBasTar(result);
+                            }
+                          },
+                        ),
+                        CustomTextField(
+                          isDateTime: true,
+                          labelText: "Bitiş Tarihi",
+                          controller: _bitTarController,
+                          onTap: () async {
+                            final result = await dialogManager.showDateTimePicker(
+                              initialDate: _bitTarController.text.isNotEmpty
+                                  ? _bitTarController.text.toDateTimeDDMMYYYY()
+                                  : null,
+                            );
+                            if (result != null) {
+                              _bitTarController.text = result.toDateString;
+                              _viewModel.setBitTar(result);
+                            }
+                          },
+                        ),
+                      ],
                     ),
-                    OutlinedButton.icon(
+                    ElevatedButton.icon(
                       onPressed: () {
-                        _viewModel.setSearchText(null);
                         Get.back();
+                        _viewModel.resetList();
                       },
                       icon: const Icon(Icons.clear_all_outlined),
                       label: Text(loc.generalStrings.apply),
                     ),
                   ],
                 ),
-              );
-            },
-            child: Text(loc.generalStrings.filter),
-          ),
-          AppBarButton(
-            icon: Icons.sort_by_alpha_outlined,
-            onPressed: () async {},
-            child: Text(loc.generalStrings.sort),
-          ),
-        ],
-      ),
+              ),
+            );
+          },
+          child: Text(loc.generalStrings.filter),
+        ),
+        AppBarButton(
+          icon: Icons.sort_by_alpha_outlined,
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              groupValue: _viewModel.filterModel.order?.firstOrNull?.columnName,
+              title: "Sıralama",
+              children: _viewModel.order
+                  .map(
+                    (e) => BottomSheetModel(
+                      title: e.columnName ?? "",
+                      groupValue: e.columnName,
+                      value: e,
+                    ),
+                  )
+                  .toList(),
+            );
+            if (result != null) {
+              _viewModel
+                ..setOrder(result)
+                ..resetList();
+            }
+          },
+          child: Text(loc.generalStrings.sort),
+        ),
+      ],
     ),
-    floatingActionButton: _fab(),
-    body: _body(),
   );
 
   Widget _fab() => Observer(
@@ -158,115 +229,211 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
   );
 
   Observer _body() => Observer(
-    builder: (_) => RefreshableListView<PaykerOdemeListesiModel>(
-      onRefresh: () async => _viewModel.getData(),
-      items: _viewModel.filteredList,
-      itemBuilder: (item) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: UIHelper.lowSize),
-        child: ExpansionTile(
-          tilePadding: const EdgeInsets.only(top: UIHelper.lowSize, bottom: UIHelper.lowSize, left: UIHelper.midSize),
-          backgroundColor: theme.cardTheme.color,
-          collapsedBackgroundColor: theme.cardTheme.color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(UIHelper.highSize * 2),
-          ),
-          expansionAnimationStyle: const AnimationStyle(
-            curve: Curves.easeInOutCubicEmphasized,
-            duration: Duration(milliseconds: 300),
-            reverseCurve: Curves.easeInOutCubicEmphasized,
-            reverseDuration: Duration(milliseconds: 300),
-          ),
-          collapsedShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(UIHelper.midSize),
-          ),
-          title: ListTile(
-            leading: CircleAvatar(
-              foregroundImage: Image.network(
-                ApiUrls.basePaykerURLWithoutApi + (item.banka?.logoUrl ?? ""),
-              ).image,
-              child: Text(item.kartNo?.substring(0, 1) ?? "N"),
-            ),
-            title: Text(
-              item.kartIsim ?? "",
-              style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (item.tutar case final value?)
-                  Text("Tutar: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-
-                Text(item.kayittarihi?.toDateTimeString() ?? ""),
-                const SizedBox(height: UIHelper.lowSize),
-                ColorfulBadge(
-                  label: Text(item.durum ?? "", style: const TextStyle(fontWeight: FontWeight.w500)),
-                  badgeColorEnum: item.badgeColor,
-                  onTap: () async {
-                    if (item.durumAciklama case final value?) {
-                      dialogManager.showInfoSnackBar(value);
-                    }
-                  },
-                ),
-              ],
-            ),
-            trailing: IconButton.filledTonal(
-              tooltip: "Tahsilat Makbuzunu görüntüle",
-              onPressed: () async {
-                Get.to(
-                  () => GenelPdfView(
-                    model: BasePdfModel(
-                      byteData: "${ApiUrls.paykerTahsilatMakbuzu}/${item.enrollmentId}",
-                      fromMemory: true,
-                      uzanti: ".pdf",
-                      dosyaAdi: "Payker Tahsilat Makbuzu - ${item.enrollmentId ?? ""}",
-                    ),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.picture_as_pdf_outlined),
-            ),
-          ),
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(UIHelper.highSize),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: UIHelper.midSize),
-                    child: Divider(
-                      endIndent: 0,
-                      indent: 0,
-                    ),
-                  ),
-                  CustomLayoutBuilder.divideInHalf(
-                    children: [
-                      Text("Kart No: ${item.kartNo ?? ""}"),
-                      if (item.banka?.adi case final value?) Text("Banka: $value"),
-                    ],
-                  ),
-                  if (detailsWidgets(item).isNotEmpty)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: UIHelper.midSize),
-                      child: Divider(
-                        endIndent: 0,
-                        indent: 0,
-                      ),
-                    ),
-
-                  ...detailsWidgets(item),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+    builder: (_) => RefreshableListView<PaykerOdemeListesiModel>.pageable(
+      scrollController: _scrollController,
+      onRefresh: _viewModel.resetList,
+      dahaVarMi: _viewModel.dahaVarMi,
+      items: _viewModel.observableList,
+      itemBuilder: _paykerOdemeCard,
     ),
   );
 
+  Card _paykerOdemeCard(PaykerOdemeListesiModel item) => Card(
+    child: ListTile(
+      onTap: () async {
+        bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: "Ödeme Detayları",
+          children: [
+            BottomSheetModel(
+              title: "Detay görüntüle",
+              iconWidget: Icons.preview_outlined,
+              onTap: () {
+                Get
+                  ..back()
+                  ..to(() => PaykerOdemeDetayView(model: item));
+              },
+            ),
+
+            if (item.durum == "ALINDI") ...[
+              BottomSheetModel(title: "Tahsilat Oluştur",
+                iconWidget: Icons.picture_as_pdf_outlined,
+                onTap: () {
+                  Get
+                    ..back()
+                    ..toNamed("/mainPage/paykerTahsilatWithRequest", arguments: TahsilatRequestModel.fromPaykerOdemeListesiModel(item));
+                },
+              ),
+              BottomSheetModel(
+                title: "Tahsilat Makbuzu",
+                iconWidget: Icons.picture_as_pdf_outlined,
+                onTap: () {
+                  final id = item.siparisNo;
+                  Get
+                    ..back()
+                    ..to(
+                      () => GenelPdfView(
+                        model: BasePdfModel(
+                          byteData: "${ApiUrls.paykerTahsilatMakbuzu}/${id ?? ""}",
+                          fromMemory: true,
+                          uzanti: ".pdf",
+                          dosyaAdi: "Payker Tahsilat Makbuzu - ${id ?? ""}",
+                        ),
+                      ),
+                    );
+                },
+              ),
+            ],
+          ],
+        );
+      },
+      leading: Hero(
+        tag: item.id ?? "",
+        child: CircleAvatar(
+          foregroundImage: Image.network(
+            ApiUrls.basePaykerURLWithoutApi + (item.banka?.logoUrl ?? ""),
+          ).image,
+          child: Text(item.kartIsim?.substring(0, 1) ?? ""),
+        ),
+      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            item.kartIsim ?? "",
+            style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+          ),
+          Text("${item.kayittarihi?.toDateString ?? ""} ${item.kayittarihi?.toTimeString ?? ""}"),
+        ],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (item.tutar case final value?)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Tutar: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                    Text("Taksit: ${item.odemeTuru}"),
+                  ],
+                ),
+              ColorfulBadge(
+                label: Text(item.durum ?? "", style: const TextStyle(fontWeight: FontWeight.w500)),
+                badgeColorEnum: item.badgeColor,
+                onTap: () async {
+                  if (item.durumAciklama case final value?) {
+                    dialogManager.showInfoSnackBar(value);
+                  }
+                },
+              ),
+            ],
+          ),
+
+          const SizedBox(height: UIHelper.lowSize),
+
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: UIHelper.midSize),
+            child: Divider(
+              endIndent: 0,
+              indent: 0,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Kart No: ${item.kartNo ?? ""}"),
+              if (item.banka?.adi case final value?) Text("Banka: $value"),
+            ],
+          ),
+          if (detailsWidgets(item).isNotEmpty)
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: UIHelper.midSize),
+              child: Divider(
+                endIndent: 0,
+                indent: 0,
+              ),
+            ),
+
+          ...detailsWidgets(item),
+        ],
+      ),
+      // trailing: IconButton.filledTonal(
+      //   tooltip: "Tahsilat Makbuzunu görüntüle",
+      //   onPressed: () async {
+      //     Get.to(
+      //       () => GenelPdfView(
+      //         model: BasePdfModel(
+      //           byteData: "${ApiUrls.paykerTahsilatMakbuzu}/${item.enrollmentId}",
+      //           fromMemory: true,
+      //           uzanti: ".pdf",
+      //           dosyaAdi: "Payker Tahsilat Makbuzu - ${item.enrollmentId ?? ""}",
+      //         ),
+      //       ),
+      //     );
+      //   },
+      //   icon: const Icon(Icons.picture_as_pdf_outlined),
+      // ),
+    ),
+  );
+
+  Widget _bottomNavigationBar() => BottomBarWidget(
+    isScrolledDown: true,
+    children: [
+      FooterButton(
+        onPressed: () async {
+          _viewModel
+            ..setDurum(true)
+            ..resetList();
+        },
+        children: [
+          const Icon(
+            Icons.check_circle_outline_outlined,
+            color: ColorPalette.mantis,
+          ),
+          const Text(
+            "Tamamlandı",
+            style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.mantis),
+          ),
+        ],
+      ),
+      FooterButton(
+        onPressed: () async {
+          _viewModel
+            ..setDurum(false)
+            ..resetList();
+        },
+        children: [
+          const Icon(
+            Icons.cancel_outlined,
+            color: ColorPalette.persianRed,
+          ),
+          const Text(
+            "Tamamlanmadı",
+            style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.persianRed),
+          ),
+        ],
+      ),
+      FooterButton(
+        onPressed: () async {
+          _viewModel
+            ..setDurum(null)
+            ..resetList();
+        },
+        children: [
+          const Icon(
+            Icons.refresh_outlined,
+          ),
+          const Text("Tümü", style: TextStyle(fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ],
+  );
+
   List<Widget> detailsWidgets(PaykerOdemeListesiModel item) => [
-    if (item.enrollmentId case final value?) SelectableText("Kayıt ID: $value"),
     if (item.aciklama case final value?) Text("Açıklama: $value"),
-    if (item.durumAciklama case final value?) Text("Durum açıklama: $value"),
+    if (item.durumAciklama case final value?) Text("Durum: $value"),
   ];
 }

@@ -146,6 +146,8 @@ final class YetkiController {
 
   //! Şirket
 
+  bool get irsaliyeFaturalasmayacak => _isTrue(_paramModel?.fieldVarSatisIrsaliyeFaturalasmayacak, skipAdmin: true);
+
   bool kosulAktif(EditTipiEnum? editTipi) =>
       _isTrue(editTipi?.satisMi == true ? _paramModel?.satisKosulAktif : _paramModel?.alisKosulAktif, skipAdmin: true);
 

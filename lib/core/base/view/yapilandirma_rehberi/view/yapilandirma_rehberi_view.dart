@@ -83,8 +83,10 @@ final class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiV
                                         await Future.delayed(const Duration(milliseconds: 50));
                                         viewModel.decrementPage();
                                       },
-                                      child: const GridTile(
-                                        child: Center(child: Icon(Icons.arrow_back_ios, size: UIHelper.highSize)),
+                                      child: GridTile(
+                                        child: Center(
+                                          child: Icon(Icons.adaptive.arrow_back_outlined, size: UIHelper.highSize),
+                                        ),
                                       ),
                                     ),
                                   )
@@ -116,7 +118,10 @@ final class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiV
                                           visible: !viewModel.isLastPage,
                                           child: Container(
                                             alignment: Alignment.centerRight,
-                                            child: const Icon(Icons.arrow_forward_ios, size: UIHelper.highSize),
+                                            child: Icon(
+                                              Icons.adaptive.arrow_forward_outlined,
+                                              size: UIHelper.highSize,
+                                            ),
                                           ),
                                         ),
                                       ),

@@ -282,7 +282,7 @@ final class BottomSheetDialogManager {
           separatorBuilder: (context, index) => const Padding(padding: UIHelper.lowPaddingVertical, child: Divider()),
           itemCount: children?.length ?? 0,
           itemBuilder: (context, index) => Observer(
-            builder: (_) => CheckboxListTile(
+            builder: (_) => CheckboxListTile.adaptive(
               controlAffinity: ListTileControlAffinity.leading,
               value: _viewModel.isSelectedListMap?[title]?[index] ?? false,
               title: Text(children?[index].title ?? ""),
@@ -379,7 +379,7 @@ final class BottomSheetDialogManager {
                                             return Observer(
                                               builder: (_) => Wrap(
                                                 children: [
-                                                  RadioListTile(
+                                                  RadioListTile.adaptive(
                                                     toggleable: true,
                                                     activeColor: UIHelper.primaryColor,
                                                     onChanged: (value) {

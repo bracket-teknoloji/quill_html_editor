@@ -108,7 +108,7 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
                     ..setGridItemModel(viewModel.returnGridItemModel.last.toList())
                     ..deleteLastReturnGridItemModel();
                 },
-                icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
+                icon: Icon(Icons.adaptive.arrow_back_outlined, color: theme.colorScheme.primary),
               ),
             ),
           ),

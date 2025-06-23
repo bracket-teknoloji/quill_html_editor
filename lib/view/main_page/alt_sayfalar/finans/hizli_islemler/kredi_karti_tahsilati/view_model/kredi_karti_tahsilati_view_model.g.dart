@@ -295,6 +295,19 @@ mixin _$KrediKartiTahsilatiViewModel
       );
 
   @override
+  void setModel(TahsilatRequestModel value) {
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setModel');
+    try {
+      return super.setModel(value);
+    } finally {
+      _$_KrediKartiTahsilatiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
   void setCariModel(CariListesiModel? value) {
     final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
         .startAction(name: '_KrediKartiTahsilatiViewModelBase.setCariModel');

@@ -63,7 +63,7 @@ final class _BaseHucreGenelViewState extends BaseState<BaseHucreGenelView> {
           ...List.generate(viewModel.valueList.length, (index) {
             final item = viewModel.valueList[index];
             return Observer(
-              builder: (_) => RadioListTile(
+              builder: (_) => RadioListTile.adaptive(
                 value: item.rawValue,
                 title: Text(item.getName),
                 groupValue: viewModel.selectedEditTipi?.rawValue,

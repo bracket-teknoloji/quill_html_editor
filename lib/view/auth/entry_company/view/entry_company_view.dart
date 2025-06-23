@@ -187,7 +187,7 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
             Get.back();
           }
         },
-        icon: const Icon(Icons.arrow_back_outlined),
+        icon: Icon(Icons.adaptive.arrow_back_outlined),
       ),
       title: const AppBarTitle(title: "Şirkete Giriş"),
       actions: [

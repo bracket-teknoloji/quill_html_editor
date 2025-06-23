@@ -45,6 +45,28 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
     });
   }
 
+  late final _$faturalasmayacakCheckboxAtom = Atom(
+    name: '_BaseFaturaGenelViewModelBase.faturalasmayacakCheckbox',
+    context: context,
+  );
+
+  @override
+  bool get faturalasmayacakCheckbox {
+    _$faturalasmayacakCheckboxAtom.reportRead();
+    return super.faturalasmayacakCheckbox;
+  }
+
+  @override
+  set faturalasmayacakCheckbox(bool value) {
+    _$faturalasmayacakCheckboxAtom.reportWrite(
+      value,
+      super.faturalasmayacakCheckbox,
+      () {
+        super.faturalasmayacakCheckbox = value;
+      },
+    );
+  }
+
   late final _$modelAtom = Atom(
     name: '_BaseFaturaGenelViewModelBase.model',
     context: context,
@@ -152,6 +174,19 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
         );
     try {
       return super.changeEbelgeCheckBox(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeFaturalasmayacakCheckBox(bool value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseFaturaGenelViewModelBase.changeFaturalasmayacakCheckBox',
+        );
+    try {
+      return super.changeFaturalasmayacakCheckBox(value);
     } finally {
       _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -283,6 +318,7 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
     return '''
 kdvDahil: ${kdvDahil},
 ebelgeCheckbox: ${ebelgeCheckbox},
+faturalasmayacakCheckbox: ${faturalasmayacakCheckbox},
 model: ${model}
     ''';
   }

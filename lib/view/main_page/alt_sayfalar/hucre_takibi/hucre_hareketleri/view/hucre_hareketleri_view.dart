@@ -96,7 +96,7 @@ final class _HucreHareketleriViewState extends State<HucreHareketleriView> {
                           style: TextStyle(color: UIHelper.getColorWithValue(item.gc == "G" ? 1 : -1)),
                         ),
                         Icon(
-                          item.gc == "G" ? Icons.arrow_back : Icons.arrow_forward,
+                          item.gc == "G" ? Icons.adaptive.arrow_back_outlined : Icons.adaptive.arrow_forward_outlined,
                           color: UIHelper.getColorWithValue(item.gc == "G" ? 1 : -1),
                         ),
                       ],

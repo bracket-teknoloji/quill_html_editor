@@ -31,6 +31,8 @@ abstract class _BaseFaturaGenelViewModelBase with Store, MobxNetworkMixin {
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;
   @observable
   bool ebelgeCheckbox = BaseSiparisEditModel.instance.eBelgeCheckBoxMi ? true : false;
+  @observable
+  bool faturalasmayacakCheckbox = BaseSiparisEditModel.instance.faturalasmayacak ?? false;
 
   @observable
   BaseSiparisEditModel model = BaseSiparisEditModel.instance;
@@ -79,6 +81,13 @@ abstract class _BaseFaturaGenelViewModelBase with Store, MobxNetworkMixin {
     ebelgeCheckbox = value;
     BaseSiparisEditModel.instance.ebelgeCheckbox = value ? "E" : "H";
     CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(eIrsaliyeSeciliGelsin: value));
+  }
+
+  @action
+  void changeFaturalasmayacakCheckBox(bool value) {
+    faturalasmayacakCheckbox = value;
+    model.faturalasmayacak = value;
+    BaseSiparisEditModel.setInstance(model);
   }
 
   @action

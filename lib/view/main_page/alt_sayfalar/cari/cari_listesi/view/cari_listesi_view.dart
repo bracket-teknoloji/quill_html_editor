@@ -153,7 +153,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
           Get.back();
         }
       },
-      icon: const Icon(Icons.arrow_back),
+      icon: Icon(Icons.adaptive.arrow_back_outlined),
     ),
     bottom: AppBarPreferedSizedBottom(
       children: [

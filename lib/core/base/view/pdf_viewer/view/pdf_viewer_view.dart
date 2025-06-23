@@ -92,7 +92,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
         onPressed: () async {
           await fileChecker();
         },
-        icon: const Icon(Icons.share_outlined),
+        icon: Icon(Icons.adaptive.share_outlined),
       ),
       // IconButton(
       //     onPressed: () async {
@@ -280,12 +280,12 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
         FloatingActionButton(
           heroTag: 2,
           onPressed: () => pdfViewerController.previousPage(),
-          child: const Icon(Icons.arrow_back_outlined),
+          child: Icon(Icons.adaptive.arrow_back_outlined),
         ),
         FloatingActionButton(
           heroTag: 3,
           onPressed: () => pdfViewerController.nextPage(),
-          child: const Icon(Icons.arrow_forward_outlined),
+          child: Icon(Icons.adaptive.arrow_forward_outlined),
         ),
         FloatingActionButton(
           heroTag: 4,

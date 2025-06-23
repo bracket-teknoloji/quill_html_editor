@@ -1,5 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
+import "dart:io";
+
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
@@ -52,7 +55,11 @@ final class CustomGridTileState extends BaseState<CustomGridTile> {
       }
     },
     child: Card(
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.midBorderRadius,
+            )
+          : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
       color: widget.model?.color,
       child: GridTile(
         header: header(),

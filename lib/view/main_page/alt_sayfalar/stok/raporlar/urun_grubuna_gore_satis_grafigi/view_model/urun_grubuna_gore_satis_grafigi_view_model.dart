@@ -1,5 +1,4 @@
 import "package:collection/collection.dart";
-import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
@@ -38,7 +37,8 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetwork
           .mapIndexed(
             (index, element) => BottomSheetModel(
               title: element,
-              onTap: () => Get.back(result: element),
+              value: element,
+              groupValue: int.tryParse(element.split("").last) ?? 0,
             ),
           )
           .toList();

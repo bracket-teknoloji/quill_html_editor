@@ -547,7 +547,9 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisSatirBazindaVade = json['SatisSatirBazindaVade'] as bool?
   ..netOpenXePosta = json['NetOpenXEPosta'] as String?
   ..netOpenXLog = json['NetOpenXLog'] as String?
-  ..sayfalamaKayitSayisi = (json['SayfalamaKayitSayisi'] as num?)?.toInt();
+  ..sayfalamaKayitSayisi = (json['SayfalamaKayitSayisi'] as num?)?.toInt()
+  ..fieldVarSatisIrsaliyeFaturalasmayacak =
+      json['FieldVar_SatisIrsaliyeFaturalasmayacak'] as bool?;
 
 Map<String, dynamic> _$ParamModelToJson(
   ParamModel instance,
@@ -1026,6 +1028,8 @@ Map<String, dynamic> _$ParamModelToJson(
   if (instance.netOpenXLog case final value?) 'NetOpenXLog': value,
   if (instance.sayfalamaKayitSayisi case final value?)
     'SayfalamaKayitSayisi': value,
+  if (instance.fieldVarSatisIrsaliyeFaturalasmayacak case final value?)
+    'FieldVar_SatisIrsaliyeFaturalasmayacak': value,
 };
 
 CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>

@@ -5,6 +5,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:kartal/kartal.dart";
 import "package:path_provider/path_provider.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:share_plus/share_plus.dart";
@@ -34,6 +35,9 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
     super.initState();
     pdfViewerController = PdfViewerController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.model?.fromMemory == true) {
+        return;
+      }
       viewModel.changePdfFile(await getFile);
     });
   }
@@ -61,7 +65,7 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
           //! EKLENECEK
           await fileChecker();
         },
-        icon: const Icon(Icons.share_outlined),
+        icon: Icon(Icons.adaptive.share_outlined),
       ),
       // IconButton(
       //     onPressed: () async {
@@ -100,11 +104,32 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
     // ),
   );
 
-  Observer body() => Observer(
-    builder: (_) {
-      if (viewModel.pdfFile != null) {
-        return Observer(
-          builder: (_) => SfPdfViewer.file(
+  Widget body() {
+    if (widget.model?.fromMemory == true) {
+      return SfPdfViewer.network(
+        widget.model?.byteData ?? "",
+        controller: pdfViewerController,
+        onTextSelectionChanged: (details) {
+          if (kIsWeb) {
+            return;
+          }
+          if (Platform.isAndroid || Platform.isIOS) {
+            if (details.selectedText == null && overlayEntry != null) {
+              overlayEntry?.remove();
+              overlayEntry = null;
+            } else if (details.selectedText != null && overlayEntry == null) {
+              showContextMenu(context, details);
+            }
+          }
+        },
+        onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+        onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+      );
+    }
+    return Observer(
+      builder: (_) {
+        if (viewModel.pdfFile != null) {
+          return SfPdfViewer.file(
             viewModel.pdfFile!,
             controller: pdfViewerController,
             onTextSelectionChanged: (details) {
@@ -122,13 +147,13 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
             },
             onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
             onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
-          ),
-        );
-      } else {
-        return const Center(child: CircularProgressIndicator.adaptive());
-      }
-    },
-  );
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator.adaptive());
+        }
+      },
+    );
+  }
 
   BottomAppBar bottomAppBar() => BottomAppBar(
     child: Row(
@@ -145,12 +170,12 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
         FloatingActionButton(
           heroTag: 2,
           onPressed: () => pdfViewerController.previousPage(),
-          child: const Icon(Icons.arrow_back_outlined),
+          child: Icon(Icons.adaptive.arrow_back_outlined),
         ),
         FloatingActionButton(
           heroTag: 3,
           onPressed: () => pdfViewerController.nextPage(),
-          child: const Icon(Icons.arrow_forward_outlined),
+          child: Icon(Icons.adaptive.arrow_forward_outlined),
         ),
         FloatingActionButton(
           heroTag: 4,
@@ -162,8 +187,16 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
   );
 
   Future<void> fileChecker() async {
-    if (await getFile != null) {
-      await Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
+    if ((await pdfViewerController.saveDocument()).ext.isNotNullOrEmpty) {
+      final doc = await pdfViewerController.saveDocument();
+      await Share.shareXFiles([
+        XFile.fromData(
+          Uint8List.fromList(doc),
+          mimeType: "application/pdf",
+          name: "${widget.model?.dosyaAdi ?? "document"}${widget.model?.uzanti ?? ".pdf"}",
+        ),
+      ], subject: "Pdf Paylaşımı");
+      return;
     } else {
       dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
     }

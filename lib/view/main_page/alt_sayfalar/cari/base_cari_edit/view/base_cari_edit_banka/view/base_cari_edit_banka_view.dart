@@ -50,7 +50,7 @@ final class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView>
                             dialogManager.showInfoSnackBar("IBAN numarası kopyalandı.");
                             Share.share(cariDetayModel.bankaList?[index].ibanno ?? "");
                           },
-                          icon: const Icon(Icons.share_outlined),
+                          icon: Icon(Icons.adaptive.share_outlined),
                         ),
                       ],
                     ),

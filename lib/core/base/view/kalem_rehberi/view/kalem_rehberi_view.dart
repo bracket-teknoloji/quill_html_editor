@@ -116,7 +116,7 @@ final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                 ),
                 visualDensity: VisualDensity.compact,
                 leading: Observer(
-                  builder: (_) => Checkbox(
+                  builder: (_) => Checkbox.adaptive(
                     visualDensity: VisualDensity.compact,
                     value: viewModel.selectedKalemList.any(
                       (element) => element.belgeNo == model.belgeNo && element.sira == model.sira,

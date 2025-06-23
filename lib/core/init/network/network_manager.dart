@@ -34,10 +34,11 @@ import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/mo
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/module_info_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/taksit_response_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/module_info_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -290,7 +291,6 @@ final class NetworkManager {
         options: Options(headers: head, contentType: kIsWeb ? null : Headers.jsonContentType),
         data: data,
       );
-      log("Response: ${jsonEncode(response.data)}");
       responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
     } catch (e) {
       if (showLoading) {
@@ -874,7 +874,9 @@ final class NetworkManager {
       data: {
         "Email": AccountModel.instance.uyeEmail ?? "",
         "Parola": AccountModel.instance.uyeSifre ?? "",
+        "PaketAdi": AccountModel.instance.paketAdi ?? "",
         "ParolaMD5": true,
+        "Platform": "flutter-${AccountModel.instance.platform ?? ""}",
         "Moduller": ["Payker"],
       },
     );
@@ -883,6 +885,17 @@ final class NetworkManager {
       return result.dataItem.copyWith(kayitTarihi: DateTime.now());
     }
     return null;
+  }
+
+  Future<String?> getPaykerTahsilatMakbuzu(PaykerOdemeListesiModel item) async {
+    final result = await _dio.get<String>(
+      "${ApiUrls.paykerTahsilatMakbuzu}/${item.siparisNo}",
+    );
+    if (result.statusCode == 200) {
+      return result.data ?? "";
+    } else {
+      return null;
+    }
   }
 
   static String get getBaseUrl {

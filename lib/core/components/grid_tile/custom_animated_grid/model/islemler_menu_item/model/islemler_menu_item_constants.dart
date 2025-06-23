@@ -104,10 +104,10 @@ final class IslemlerMenuItemConstants<T> {
         }
         if (_yetkiController.menuCheck(MenuItemsEnum.finans)) {
           islemlerList
-            ..add(bankaCariEFTHavale(model: model as CariListesiModel))
+            ..add(bankaCariEFTHavale(model: model as CariListesiModel?))
             ..add(nakitTahsilat(model))
             ..add(nakitOdeme(model))
-            ..add(krediKartiTahsilati(model))
+            ..add(krediKartiTahsilati(model as CariListesiModel?))
             ..add(borcCeki)
             ..add(borcSenedi)
             ..add(cekTahsilati)
@@ -191,7 +191,7 @@ final class IslemlerMenuItemConstants<T> {
         islemlerList
           ..add(nakitOdeme(model))
           ..add(nakitTahsilat(model))
-          ..add(krediKartiTahsilati(model))
+          ..add(krediKartiTahsilati(model as CariListesiModel?))
           ..add(tahsilatSenedi)
           ..add(cekTahsilati)
           ..add(borcCeki)
@@ -231,7 +231,7 @@ final class IslemlerMenuItemConstants<T> {
         islemlerList
           ..add(nakitOdeme(model))
           ..add(nakitTahsilat(model))
-          ..add(krediKartiTahsilati(model))
+          ..add(krediKartiTahsilati(model as CariListesiModel?))
           ..add(tahsilatSenedi)
           ..add(cekTahsilati)
           ..add(borcSenedi)
@@ -686,7 +686,7 @@ final class IslemlerMenuItemConstants<T> {
   //* Cari
   GridItemModel get paylas => GridItemModel.islemler(
     title: "Paylaş",
-    iconData: Icons.share_outlined,
+    iconData: Icons.adaptive.share_outlined,
     onTap: () async {
       final CariListesiModel newModel = model as CariListesiModel;
       final result = await _bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
@@ -972,7 +972,7 @@ final class IslemlerMenuItemConstants<T> {
     iconData: Icons.list_alt_rounded,
     onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"),
   );
-  GridItemModel krediKartiTahsilati(dynamic value) => GridItemModel.islemler(
+  GridItemModel krediKartiTahsilati(CariListesiModel? value) => GridItemModel.islemler(
     title: "Kredi Kartı Tahsilatı",
     isEnabled: _yetkiController.krediKartiTahsilat,
     iconData: Icons.local_atm_outlined,

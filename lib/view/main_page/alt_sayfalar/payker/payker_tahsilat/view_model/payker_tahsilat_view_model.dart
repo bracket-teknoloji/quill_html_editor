@@ -2,12 +2,13 @@ import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/taksit_response_model.dart";
-import "package:uuid/uuid.dart";
 
 part "payker_tahsilat_view_model.g.dart";
 
@@ -38,14 +39,17 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
   @observable
   PaymentModel paymentModel = PaymentModel(
     customerIpAddress: AccountModel.instance.localIp,
-    customerInfo: const CustomerInfo(
-      customerId: "120.0004",
-    ),
+    customerInfo: const CustomerInfo(),
     saleInfo: SaleInfo(
       currency: 949, // TRY sabit,
     ),
     payment3D: const Payment3D(),
     order: const Order(),
+    erpInfo: ERPInfo(
+      branchCode: (CacheManager.getVeriTabani["Şube"] as int?)?.toString(),
+      companyCode: CacheManager.getVeriTabani["Şirket"],
+      operatorUser: CacheManager.getAnaVeri!.userModel?.kuladi,
+    ),
   );
 
   @observable
@@ -62,6 +66,13 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
     if (value != isInstallmentLoading) {
       isInstallmentLoading = value;
     }
+  }
+
+  @action
+  void setCari(CariListesiModel? value) {
+    paymentModel = paymentModel.copyWith(
+      customerInfo: CustomerInfo.fromCariListesiModel(value ?? CariListesiModel())
+    );
   }
 
   @action
@@ -184,16 +195,12 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> createPayment() async {
-    paymentModel = paymentModel.copyWith(
-      order: paymentModel.order?.copyWith(
-        orderId: const Uuid().v4(),
-      ),
-    );
+    paymentModel = paymentModel.copyWith(order: null);
     final result = await networkManager.createPayment(
       paymentModel.copyWith(
         payment3D: Payment3D(
           isDesktop: false,
-          returnUrl: "${ApiUrls.paymentCallback}?orderId=${paymentModel.order?.orderId ?? ""}",
+          returnUrl: ApiUrls.paymentCallback,
           confirm: true,
         ),
         saleInfo: paymentModel.saleInfo?.copyWith(

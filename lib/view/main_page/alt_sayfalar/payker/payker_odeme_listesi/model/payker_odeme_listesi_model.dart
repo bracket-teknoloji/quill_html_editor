@@ -8,6 +8,37 @@ part "payker_odeme_listesi_model.g.dart";
 
 @freezed
 @JsonSerializable()
+final class BasePaykerOdemeListesiModel with _$BasePaykerOdemeListesiModel, NetworkManagerMixin {
+  BasePaykerOdemeListesiModel({
+    this.draw,
+    this.recordsTotal,
+    this.recordsFiltered,
+    this.data,
+  });
+  factory BasePaykerOdemeListesiModel.fromJson(Map<String, dynamic> json) =>
+      _$BasePaykerOdemeListesiModelFromJson(json);
+
+  @override
+  final int? draw;
+  @override
+  @JsonKey(name: "recordsTotal")
+  final int? recordsTotal;
+  @override
+  @JsonKey(name: "recordsFiltered")
+  final int? recordsFiltered;
+  @override
+  @JsonKey(name: "data")
+  final List<PaykerOdemeListesiModel>? data;
+
+  @override
+  Map<String, dynamic> toJson() => _$BasePaykerOdemeListesiModelToJson(this);
+
+  @override
+  BasePaykerOdemeListesiModel fromJson(Map<String, dynamic> json) => BasePaykerOdemeListesiModel.fromJson(json);
+}
+
+@freezed
+@JsonSerializable()
 final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManagerMixin {
   PaykerOdemeListesiModel({
     this.id,
@@ -31,6 +62,12 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
     this.bayi,
     this.firma,
     this.odemeLink,
+    this.silindi,
+    this.siparisNo,
+    this.kayittarihi,
+    this.kayityapankul,
+    this.duzeltmetarihi,
+    this.duzeltmeyapankul,
   });
 
   factory PaykerOdemeListesiModel.fromJson(Map<String, dynamic> json) => _$PaykerOdemeListesiModelFromJson(json);
@@ -53,6 +90,7 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
   @JsonKey(name: "KART_NO")
   String? kartNo;
   @override
+  @Deprecated("Use enrollmentId instead")
   @JsonKey(name: "ENROLLMENT_ID")
   String? enrollmentId;
   @override
@@ -118,6 +156,9 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
   @override
   @JsonKey(name: "DUZELTMEYAPANKUL")
   dynamic duzeltmeyapankul;
+  @override
+  @JsonKey(name: "SIPARIS_NO")
+  String? siparisNo;
 
   BadgeColorEnum get badgeColor => switch (durum) {
     "ONAYDA" => BadgeColorEnum.cari,

@@ -67,7 +67,7 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
       builder: (_) => AppBarTitle(title: widget.model.getTitle, subtitle: viewModel.model.resmiBelgeNo),
     ),
     actions: [
-      IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
+      IconButton(onPressed: fileChecker, icon: Icon(Icons.adaptive.share_outlined)),
       if (widget.model.taslakMi)
         IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.send_outlined)),
       IconButton(onPressed: secenekler, icon: const Icon(Icons.more_vert_outlined)),
@@ -117,11 +117,11 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
                 ),
                 FloatingActionButton.small(
                   onPressed: () => pdfViewerController.previousPage(),
-                  child: const Icon(Icons.arrow_back_outlined),
+                  child: Icon(Icons.adaptive.arrow_back_outlined),
                 ),
                 FloatingActionButton.small(
                   onPressed: () => pdfViewerController.nextPage(),
-                  child: const Icon(Icons.arrow_forward_outlined),
+                  child: Icon(Icons.adaptive.arrow_forward_outlined),
                 ),
                 FloatingActionButton.small(
                   onPressed: () => pdfViewerController.lastPage(),

@@ -26,7 +26,7 @@ final class _ImageViewState extends BaseState<ImageView> {
       //       xfile = await
       //       await Share.shareXFiles([xfile].nullCheckWithGeneric, subject: "Resim Paylaşımı");
       //     },
-      //     icon: const Icon(Icons.share_outlined),
+      //     icon: const Icon(Icons.adaptive.share_outlined),
       //   ),
       // ],
     ),

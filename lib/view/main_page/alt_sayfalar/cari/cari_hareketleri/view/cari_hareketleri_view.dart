@@ -101,7 +101,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
             ),
     ),
     leading: viewModel.isSearchBarOpen
-        ? IconButton(onPressed: viewModel.changeSearchBarStatus, icon: const Icon(Icons.arrow_back))
+        ? IconButton(onPressed: viewModel.changeSearchBarStatus, icon: Icon(Icons.adaptive.arrow_back_outlined))
         : null,
     actions: [
       IconButton(

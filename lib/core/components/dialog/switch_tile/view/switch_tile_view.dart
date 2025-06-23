@@ -16,7 +16,7 @@ final class _DialogSwitchTileState extends BaseState<DialogSwitchTile> {
   DialogSwitchTileViewModel viewModel = DialogSwitchTileViewModel();
 
   @override
-  Widget build(BuildContext context) => CheckboxListTile(
+  Widget build(BuildContext context) => CheckboxListTile.adaptive(
     controlAffinity: ListTileControlAffinity.leading,
     title: Text(widget.title.toString()),
     value: widget.value,

@@ -5,7 +5,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:picker/core/base/model/yazici_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/payker_odeme_listesi/model/module_info_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/module_info_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../hive_registrar.g.dart";

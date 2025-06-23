@@ -106,9 +106,9 @@ abstract class _StokRehberiViewModelBase
     belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
     resimGoster: "E",
     faturaTipi: 2,
-    okutuldu: true,
     cariKodu: BaseSiparisEditModel.instance.cariKodu,
     menuKodu: "STOK_SREH",
+    
   );
 
   StokBottomSheetModel get getRequestModel => stokBottomSheetModel.copyWith(sayfa: page, searchText: searchText);

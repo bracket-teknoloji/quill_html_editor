@@ -105,7 +105,7 @@ class _OzelHesapKapatmaViewState extends BaseState<OzelHesapKapatmaView> {
             items: viewModel.observableList,
             itemBuilder: (item) => Card(
               child: Observer(
-                builder: (_) => CheckboxListTile(
+                builder: (_) => CheckboxListTile.adaptive(
                   value: viewModel.isSelected(item),
                   controlAffinity: ListTileControlAffinity.platform,
                   onChanged: (value) => viewModel.checkSelectedList(value ?? false, item),

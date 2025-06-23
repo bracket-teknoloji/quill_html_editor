@@ -192,7 +192,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
     onPressed: () async {
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: loc.generalStrings.options,
+        title: loc.generalStrings.view,
         children: [
           BottomSheetModel(
             title: "Muhtelif Cari Oluştur",

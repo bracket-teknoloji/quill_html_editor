@@ -72,6 +72,9 @@ sealed class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMix
     projeKodu: model.projeKodu,
   );
 
+  factory TahsilatRequestModel.fromPaykerOdemeListesiModel(PaykerOdemeListesiModel model) => PaykerOdemeListesiModel(
+  );
+
   @override
   TahsilatRequestModel fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 }

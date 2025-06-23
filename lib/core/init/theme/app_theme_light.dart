@@ -18,7 +18,8 @@ final class AppThemeLight extends AppTheme {
   ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withValues(alpha: 0.2));
   @override
   ThemeData get theme => ThemeData(
-    cupertinoOverrideTheme: const CupertinoThemeData(primaryColor: UIHelper.primaryColor, applyThemeToAll: true),
+    
+    cupertinoOverrideTheme: CupertinoThemeData(primaryColor: UIHelper.primaryColor, applyThemeToAll: true, scaffoldBackgroundColor: colorManager.surface),
     platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
     datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
     radioTheme: RadioThemeData(
@@ -31,7 +32,9 @@ final class AppThemeLight extends AppTheme {
       builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder()},
     ),
     colorSchemeSeed: UIHelper.primaryColor,
-    actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (context) => Icon(Icons.adaptive.arrow_back_outlined),
+    ),
     tabBarTheme: const TabBarThemeData(
       indicatorColor: UIHelper.primaryColor,
       labelColor: UIHelper.primaryColor,
