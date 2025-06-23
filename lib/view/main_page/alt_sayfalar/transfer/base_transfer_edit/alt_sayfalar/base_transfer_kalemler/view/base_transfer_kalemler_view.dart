@@ -143,7 +143,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
   );
 
   ListTile kalemListTile(BuildContext context, int index, KalemModel kalemModel) => ListTile(
-    onTap: () async => await listTileBottomSheet(context, index, model: kalemModel),
+    onTap: () async => await listTileBottomSheet(context, index, kalemModel: kalemModel),
     contentPadding: UIHelper.lowPadding.copyWith(left: UIHelper.highSize, bottom: UIHelper.lowSize),
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -314,18 +314,18 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
     // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
   );
 
-  Future<void> listTileBottomSheet(BuildContext context, int index, {required KalemModel model}) async {
+  Future<void> listTileBottomSheet(BuildContext context, int index, {required KalemModel kalemModel}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: viewModel.kalemList?[index].stokAdi ?? viewModel.kalemList?[index].kalemAdi ?? "",
+      title:kalemModel.kalemAdi ?? kalemModel.stokAdi ?? "",
       children: [
-        if (!widget.model.isGoruntule && ((model.siparisNo == null || model.siparisNo == "") || model.siparisNo == ""))
+        if (!widget.model.isGoruntule && ((kalemModel.siparisNo == null || kalemModel.siparisNo == "") || kalemModel.siparisNo == ""))
           BottomSheetModel(
             title: loc.generalStrings.edit,
             iconWidget: Icons.edit_outlined,
             onTap: () async {
               Get.back();
-              final result = await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
+              final result = await Get.toNamed("/kalemEkle", arguments: kalemModel);
               if (result is KalemModel) {
                 BaseSiparisEditModel.instance.kalemList?[index] = result;
               }
@@ -333,7 +333,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
             },
           ),
         if (!widget.model.isGoruntule &&
-            (model.siparisNo == null || model.siparisNo == "") &&
+            (kalemModel.siparisNo == null || kalemModel.siparisNo == "") &&
             !(widget.model.editTipiEnum?.olcumdenDepoTransferiMi ?? false))
           BottomSheetModel(
             title: loc.generalStrings.delete,
@@ -347,14 +347,14 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
               );
             },
           ),
-        if (model.seriTamamMi)
+        if (kalemModel.seriTamamMi)
           BottomSheetModel(
             title: "Seri Listesi",
             iconWidget: Icons.dynamic_form_outlined,
             onTap: () {
               Get
                 ..back()
-                ..toNamed("/seriListesiOzel", arguments: model);
+                ..toNamed("/seriListesiOzel", arguments: kalemModel);
             },
           ),
         BottomSheetModel(
@@ -363,7 +363,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
           onTap: () {
             Get.back();
             return dialogManager.showStokGridViewDialog(
-              StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "",
+              StokListesiModel()..stokKodu = kalemModel.stokKodu ?? "",
               cariModel: CariListesiModel(
                 cariKodu: BaseSiparisEditModel.instance.cariKodu,
                 cariAdi: BaseSiparisEditModel.instance.cariAdi,

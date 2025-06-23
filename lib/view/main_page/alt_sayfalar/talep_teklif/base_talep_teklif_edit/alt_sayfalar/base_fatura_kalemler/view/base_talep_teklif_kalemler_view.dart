@@ -308,7 +308,7 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
   Future<void> listTileBottomSheet(BuildContext context, int index, {required KalemModel model}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: viewModel.kalemList?[index].stokAdi ?? "",
+      title: model.kalemAdi ?? model.stokAdi ?? "",
       children: [
         if (!widget.model.isGoruntule && model.siparisNo == null)
           BottomSheetModel(

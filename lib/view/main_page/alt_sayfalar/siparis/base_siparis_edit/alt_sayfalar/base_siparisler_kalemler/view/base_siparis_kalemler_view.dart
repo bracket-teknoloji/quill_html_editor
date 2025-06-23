@@ -293,9 +293,10 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
   );
 
   Future<void> listTileBottomSheet(BuildContext context, int index) async {
+    final kalemModel = viewModel.kalemList?[index];
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: viewModel.kalemList?[index].stokAdi ?? "",
+      title: kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? "",
       children: [
         if (!widget.model.isGoruntule)
           BottomSheetModel(

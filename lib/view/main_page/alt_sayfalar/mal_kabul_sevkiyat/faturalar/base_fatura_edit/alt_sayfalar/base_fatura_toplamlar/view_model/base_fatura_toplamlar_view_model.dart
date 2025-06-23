@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
@@ -142,9 +143,9 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
   void changeGenIsk1O(TextEditingController controller) {
     isGenIsk1T = !isGenIsk1T;
     if (isGenIsk1T) {
-      controller.text = (model.genIsk1t ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
     } else {
-      controller.text = (model.genIsk1o ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     }
     // model = model.copyWith(genisk1OranMi: isGenIsk1T);
   }
@@ -153,9 +154,9 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
   void changeGenIsk2O(TextEditingController controller) {
     isGenIsk2T = !isGenIsk2T;
     if (isGenIsk2T) {
-      controller.text = (model.genIsk2t ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
     } else {
-      controller.text = (model.genIsk2o ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     }
   }
 
@@ -163,9 +164,9 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
   void changeGenIsk3O(TextEditingController controller) {
     isGenIsk3T = !isGenIsk3T;
     if (isGenIsk3T) {
-      controller.text = (model.genIsk3t ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
     } else {
-      controller.text = (model.genIsk3o ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk3o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     }
   }
 
