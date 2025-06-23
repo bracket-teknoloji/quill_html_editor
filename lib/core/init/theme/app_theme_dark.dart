@@ -1,4 +1,7 @@
+import "dart:io";
+
 import "package:flutter/cupertino.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
@@ -18,9 +21,7 @@ final class AppThemeDark extends AppTheme {
   @override
   ThemeData get theme => ThemeData(
     cupertinoOverrideTheme: const CupertinoThemeData(primaryColor: UIHelper.primaryColor, applyThemeToAll: true),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.highBorderRadius),
-    ),
+
     platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
     datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
     radioTheme: RadioThemeData(
@@ -109,9 +110,14 @@ final class AppThemeDark extends AppTheme {
         splashFactory: InkRipple.splashFactory,
         backgroundColor: UIHelper.primaryColor,
         foregroundColor: colorManager.onPrimaryContainer,
-        shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+        shape: (!kIsWeb && Platform.isIOS)
+            ? RoundedSuperellipseBorder(
+                borderRadius: UIHelper.midBorderRadius,
+              )
+            : RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
       ),
     ),
+
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         elevation: 0.4,
@@ -130,12 +136,20 @@ final class AppThemeDark extends AppTheme {
     cardTheme: CardThemeData(
       elevation: 0.4,
       color: colorManager.surfaceContainer,
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
     ),
     listTileTheme: ListTileThemeData(
       style: ListTileStyle.list,
       visualDensity: const VisualDensity(vertical: -2),
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
       dense: true,
     ),
     drawerTheme: DrawerThemeData(
@@ -151,13 +165,24 @@ final class AppThemeDark extends AppTheme {
         textStyle: WidgetStateProperty.all(TextStyle(fontFamily: GoogleFonts.dmSans().fontFamily, fontSize: 15)),
       ),
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : null,
+    ),
     snackBarTheme: SnackBarThemeData(
       showCloseIcon: true,
       closeIconColor: colorManager.onSurface,
       backgroundColor: UIHelper.primaryColor,
       contentTextStyle: TextStyle(color: colorManager.onSurface),
       insetPadding: UIHelper.lowPadding,
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
       behavior: SnackBarBehavior.floating,
     ),
     inputDecorationTheme: InputDecorationTheme(

@@ -1,4 +1,7 @@
+import "dart:io";
+
 import "package:flutter/cupertino.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get_utils/src/platform/platform.dart";
@@ -128,12 +131,20 @@ final class AppThemeLight extends AppTheme {
     cardTheme: CardThemeData(
       elevation: 0.4,
       color: colorManager.surfaceContainer,
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
     ),
     listTileTheme: ListTileThemeData(
       style: ListTileStyle.list,
       visualDensity: const VisualDensity(vertical: -2),
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
       dense: true,
     ),
     drawerTheme: DrawerThemeData(
@@ -148,13 +159,23 @@ final class AppThemeLight extends AppTheme {
         textStyle: WidgetStateProperty.all(TextStyle(fontFamily: GoogleFonts.dmSans().fontFamily, fontSize: 15)),
       ),
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : null,
+    ),
     snackBarTheme: SnackBarThemeData(
       showCloseIcon: true,
-      // closeIconColor: colorManager.onBackground,
       backgroundColor: UIHelper.primaryColor,
       contentTextStyle: TextStyle(color: colorManager.onSurface),
       insetPadding: UIHelper.lowPadding,
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
+      shape: (!kIsWeb && Platform.isIOS)
+          ? RoundedSuperellipseBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            )
+          : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
       behavior: SnackBarBehavior.floating,
     ),
     inputDecorationTheme: InputDecorationTheme(
