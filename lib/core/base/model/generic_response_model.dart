@@ -17,7 +17,6 @@ final class GenericResponseModel<T extends NetworkManagerMixin> {
   GenericResponseModel.fromJson(Map<String, dynamic> json, this.model) {
     message = json["Message"];
     messageDetail = json["MessageDetail"];
-    _success = json["Success"];
     exceptionName = json["ExceptionName"];
     errorDetails = json["ErrorDetails"];
     exceptionStackTrace = json["ExceptionStackTrace"];
@@ -33,6 +32,7 @@ final class GenericResponseModel<T extends NetworkManagerMixin> {
     } else {
       _data = json["Data"];
     }
+    _success = json["Success"] ?? (_data != null);
   }
   String? message;
   String? messageDetail;
