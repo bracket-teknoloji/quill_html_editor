@@ -16,7 +16,7 @@ final class CustomFloatingActionButton extends StatelessWidget {
     child: AnimatedScale(
       duration: DurationHelper.durationLow,
       scale: kIsWeb || isScrolledDown ? 1 : 0,
-      child: FloatingActionButton(onPressed: onPressed, child: const Icon(Icons.add)),
+      child: FloatingActionButton(onPressed: onPressed, tooltip: "Ekle", child: const Icon(Icons.add)),
     ),
   );
 }
