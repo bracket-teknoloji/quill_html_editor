@@ -944,7 +944,11 @@ final class PickerMaterialApp extends StatelessWidget {
 
           //* Payker
           GetPage(name: "/paykerTahsilat", page: PaykerTahsilatView.new),
-          GetPage(name: "/paykerOdemeListesiOzel", page: () => PaykerOdemeListesiView(isGetData: Get.arguments)),
+          GetPage(
+            name: "/paykerOdemeListesiOzel",
+            page: () => PaykerOdemeListesiView(isGetData: Get.arguments),
+          ),
+          GetPage(name: "/paykerOdemeLinkListesi", page: PaykerOdemeLinkListesiView.new),
 
           //* Serbest Raporlar
           //*
