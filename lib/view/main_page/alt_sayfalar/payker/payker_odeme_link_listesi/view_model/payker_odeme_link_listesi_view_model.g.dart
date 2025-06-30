@@ -10,6 +10,18 @@ part of 'payker_odeme_link_listesi_view_model.dart';
 
 mixin _$PaykerOdemeLinkListesiViewModel
     on _PaykerOdemeLinkListesiViewModelBase, Store {
+  Computed<ObservableList<PaykerOdemeLinkListesiModel>?>?
+  _$filteredListComputed;
+
+  @override
+  ObservableList<PaykerOdemeLinkListesiModel>? get filteredList =>
+      (_$filteredListComputed ??=
+              Computed<ObservableList<PaykerOdemeLinkListesiModel>?>(
+                () => super.filteredList,
+                name: '_PaykerOdemeLinkListesiViewModelBase.filteredList',
+              ))
+          .value;
+
   late final _$observableListAtom = Atom(
     name: '_PaykerOdemeLinkListesiViewModelBase.observableList',
     context: context,
@@ -28,6 +40,42 @@ mixin _$PaykerOdemeLinkListesiViewModel
     });
   }
 
+  late final _$isSearchBarOpenAtom = Atom(
+    name: '_PaykerOdemeLinkListesiViewModelBase.isSearchBarOpen',
+    context: context,
+  );
+
+  @override
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
+  }
+
+  @override
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
+    });
+  }
+
+  late final _$searchTextAtom = Atom(
+    name: '_PaykerOdemeLinkListesiViewModelBase.searchText',
+    context: context,
+  );
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
+    });
+  }
+
   late final _$checkPermissionsAsyncAction = AsyncAction(
     '_PaykerOdemeLinkListesiViewModelBase.checkPermissions',
     context: context,
@@ -36,6 +84,26 @@ mixin _$PaykerOdemeLinkListesiViewModel
   @override
   Future<ModuleInfoModel?> checkPermissions() {
     return _$checkPermissionsAsyncAction.run(() => super.checkPermissions());
+  }
+
+  late final _$resetListAsyncAction = AsyncAction(
+    '_PaykerOdemeLinkListesiViewModelBase.resetList',
+    context: context,
+  );
+
+  @override
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
+  }
+
+  late final _$deleteLinkAsyncAction = AsyncAction(
+    '_PaykerOdemeLinkListesiViewModelBase.deleteLink',
+    context: context,
+  );
+
+  @override
+  Future<bool> deleteLink(String id) {
+    return _$deleteLinkAsyncAction.run(() => super.deleteLink(id));
   }
 
   late final _$_PaykerOdemeLinkListesiViewModelBaseActionController =
@@ -60,9 +128,27 @@ mixin _$PaykerOdemeLinkListesiViewModel
   }
 
   @override
+  void setSearchText(String? value) {
+    final _$actionInfo = _$_PaykerOdemeLinkListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerOdemeLinkListesiViewModelBase.setSearchText',
+        );
+    try {
+      return super.setSearchText(value);
+    } finally {
+      _$_PaykerOdemeLinkListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
   String toString() {
     return '''
-observableList: ${observableList}
+observableList: ${observableList},
+isSearchBarOpen: ${isSearchBarOpen},
+searchText: ${searchText},
+filteredList: ${filteredList}
     ''';
   }
 }

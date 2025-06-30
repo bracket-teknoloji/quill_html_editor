@@ -91,7 +91,10 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
                 viewModel.changeCameraReverse();
                 qrViewController.switchCamera();
               },
-              icon: Icon(Icons.flip_camera_ios, color: viewModel.isCameraReverse ? ColorPalette.gamboge : null),
+              icon: Icon(
+                Icons.adaptive.flip_camera_outlined,
+                color: viewModel.isCameraReverse ? ColorPalette.gamboge : null,
+              ),
             ),
           ),
       ],

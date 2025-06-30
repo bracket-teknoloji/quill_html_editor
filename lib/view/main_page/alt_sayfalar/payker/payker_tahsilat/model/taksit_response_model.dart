@@ -111,8 +111,6 @@ sealed class Banka with _$Banka {
     String? adi,
     String? odemeLink,
     String? logoUrl,
-    // List<Sanalpos>? sanalpos,
-    // List<dynamic>? bankaTaksitler,
     String? silindi,
     DateTime? kayittarihi,
     String? kayityapankul,

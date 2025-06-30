@@ -150,8 +150,8 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
             cariModel = await networkManager.getCariModel(
               CariRequestModel.fromCariListesiModel(result)
                 ..secildi = "E"
-                ..kisitYok = true
                 ..teslimCari = "E"
+                ..kisitYok = true
                 ..eFaturaGoster = true,
             );
           } else {
@@ -161,8 +161,8 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
           cariModel = await networkManager.getCariModel(
             CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)
               ..secildi = "E"
-              ..kisitYok = true
               ..teslimCari = "E"
+              ..kisitYok = true
               ..eFaturaGoster = true,
           );
         }

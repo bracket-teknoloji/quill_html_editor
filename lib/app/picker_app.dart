@@ -953,6 +953,20 @@ final class PickerMaterialApp extends StatelessWidget {
             page: () => PaykerOdemeListesiView(isGetData: Get.arguments),
           ),
           GetPage(name: "/paykerOdemeLinkListesi", page: PaykerOdemeLinkListesiView.new),
+          GetPage(name: "/paykerFirmaBayiListesi", page: PaykerFirmaBayiListesiView.new),
+          GetPage(name: "/paykerBankaListesi", page: PaykerBankaListesiView.new),
+          GetPage(
+            name: "/paykerFirmaBayiListesiOzel",
+            page: () => const PaykerFirmaBayiListesiView(isGetData: true),
+          ),
+          GetPage(
+            name: "/paykerLinkEditEkle",
+            page: PaykerLinkEditView.ekle,
+          ),
+          GetPage(
+            name: "/paykerLinkEditDuzenle",
+            page: () => PaykerLinkEditView.duzenle(model: Get.arguments),
+          ),
 
           //* Serbest Raporlar
           //*

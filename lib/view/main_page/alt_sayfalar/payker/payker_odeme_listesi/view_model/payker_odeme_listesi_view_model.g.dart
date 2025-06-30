@@ -38,6 +38,24 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
     });
   }
 
+  late final _$selectedSortAtom = Atom(
+    name: '_PaykerOdemeListesiViewModelBase.selectedSort',
+    context: context,
+  );
+
+  @override
+  MapEntry<String, String>? get selectedSort {
+    _$selectedSortAtom.reportRead();
+    return super.selectedSort;
+  }
+
+  @override
+  set selectedSort(MapEntry<String, String>? value) {
+    _$selectedSortAtom.reportWrite(value, super.selectedSort, () {
+      super.selectedSort = value;
+    });
+  }
+
   late final _$isSearchBarOpenAtom = Atom(
     name: '_PaykerOdemeListesiViewModelBase.isSearchBarOpen',
     context: context,
@@ -175,11 +193,37 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
   }
 
   @override
+  void setSelectedSort(MapEntry<String, String>? value) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setSelectedSort');
+    try {
+      return super.setSelectedSort(value);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
   void setBasTar(DateTime? basTar) {
     final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
         .startAction(name: '_PaykerOdemeListesiViewModelBase.setBasTar');
     try {
       return super.setBasTar(basTar);
+    } finally {
+      _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setFirma(PaykerFirmaModel? model) {
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setFirma');
+    try {
+      return super.setFirma(model);
     } finally {
       _$_PaykerOdemeListesiViewModelBaseActionController.endAction(
         _$actionInfo,
@@ -286,6 +330,7 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
   String toString() {
     return '''
 filterModel: ${filterModel},
+selectedSort: ${selectedSort},
 isSearchBarOpen: ${isSearchBarOpen},
 observableList: ${observableList},
 searchText: ${searchText},

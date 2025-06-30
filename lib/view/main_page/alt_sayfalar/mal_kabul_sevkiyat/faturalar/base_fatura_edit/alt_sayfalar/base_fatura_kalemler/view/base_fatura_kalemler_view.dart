@@ -170,6 +170,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         if (kalemModel.dovizliMi) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+
         if (kalemModel.paketMi == "K")
           const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli),
         Text(

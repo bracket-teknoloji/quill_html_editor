@@ -108,7 +108,7 @@ _SaleInfo _$SaleInfoFromJson(Map<String, dynamic> json) => _SaleInfo(
   cardNumber: json['CardNumber'] as String?,
   cardExpiryDateMonth: (json['CardExpiryDateMonth'] as num?)?.toInt(),
   cardExpiryDateYear: (json['CardExpiryDateYear'] as num?)?.toInt(),
-  cardCvv: json['CardCVV'] as String?,
+  cardCvv: json['CardCvv'] as String?,
   currency: (json['Currency'] as num?)?.toInt(),
   amount: (json['Amount'] as num?)?.toInt(),
   point: json['Point'] as String?,
@@ -125,7 +125,7 @@ Map<String, dynamic> _$SaleInfoToJson(_SaleInfo instance) => <String, dynamic>{
     'CardExpiryDateMonth': value,
   if (instance.cardExpiryDateYear case final value?)
     'CardExpiryDateYear': value,
-  if (instance.cardCvv case final value?) 'CardCVV': value,
+  if (instance.cardCvv case final value?) 'CardCvv': value,
   if (instance.currency case final value?) 'Currency': value,
   if (instance.amount case final value?) 'Amount': value,
   if (instance.point case final value?) 'Point': value,
@@ -136,19 +136,19 @@ Map<String, dynamic> _$SaleInfoToJson(_SaleInfo instance) => <String, dynamic>{
 };
 
 _ERPInfo _$ERPInfoFromJson(Map<String, dynamic> json) => _ERPInfo(
-  companyCode: json['COMPANY_CODE'] as String?,
-  businessUnitCode: json['BUSINESS_UNIT_CODE'] as String?,
-  branchCode: json['BRANCH_CODE'] as String?,
-  receiptNumber: json['RECEIPT_NUMBER'] as String?,
-  receiptSeries: json['RECEIPT_SERIES'] as String?,
-  operatorUser: json['OPERATOR_USER'] as String?,
+  companyCode: json['CompanyCode'] as String?,
+  businessUnitCode: json['BusinessUnitCode'] as String?,
+  branchCode: json['BranchCode'] as String?,
+  receiptNumber: json['ReceiptNumber'] as String?,
+  receiptSeries: json['ReceiptSeries'] as String?,
+  operatorUser: json['OperatorUser'] as String?,
 );
 
 Map<String, dynamic> _$ERPInfoToJson(_ERPInfo instance) => <String, dynamic>{
-  if (instance.companyCode case final value?) 'COMPANY_CODE': value,
-  if (instance.businessUnitCode case final value?) 'BUSINESS_UNIT_CODE': value,
-  if (instance.branchCode case final value?) 'BRANCH_CODE': value,
-  if (instance.receiptNumber case final value?) 'RECEIPT_NUMBER': value,
-  if (instance.receiptSeries case final value?) 'RECEIPT_SERIES': value,
-  if (instance.operatorUser case final value?) 'OPERATOR_USER': value,
+  if (instance.companyCode case final value?) 'CompanyCode': value,
+  if (instance.businessUnitCode case final value?) 'BusinessUnitCode': value,
+  if (instance.branchCode case final value?) 'BranchCode': value,
+  if (instance.receiptNumber case final value?) 'ReceiptNumber': value,
+  if (instance.receiptSeries case final value?) 'ReceiptSeries': value,
+  if (instance.operatorUser case final value?) 'OperatorUser': value,
 };

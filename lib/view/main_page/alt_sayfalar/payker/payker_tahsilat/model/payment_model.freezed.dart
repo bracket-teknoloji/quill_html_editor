@@ -708,7 +708,7 @@ as bool?,
 /// @nodoc
 mixin _$SaleInfo {
 
-@JsonKey(name: "CardNameSurname") String? get cardNameSurname;@JsonKey(name: "CardNumber") String? get cardNumber;@JsonKey(name: "CardExpiryDateMonth") int? get cardExpiryDateMonth;@JsonKey(name: "CardExpiryDateYear") int? get cardExpiryDateYear;@JsonKey(name: "CardCVV") String? get cardCvv;@JsonKey(name: "Currency") int? get currency;@JsonKey(name: "Amount") int? get amount;@JsonKey(name: "Point") String? get point;@JsonKey(name: "Installment") int? get installment;@JsonKey(name: "CampaignCode") String? get campaignCode;@JsonKey(name: "BankCode") String? get bankCode;@JsonKey(name: "Description") String? get description;
+ String? get cardNameSurname; String? get cardNumber; int? get cardExpiryDateMonth; int? get cardExpiryDateYear; String? get cardCvv; int? get currency; int? get amount; String? get point; int? get installment; String? get campaignCode; String? get bankCode; String? get description;
 /// Create a copy of SaleInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -737,7 +737,7 @@ abstract mixin class $SaleInfoCopyWith<$Res>  {
   factory $SaleInfoCopyWith(SaleInfo value, $Res Function(SaleInfo) _then) = _$SaleInfoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: "CardNameSurname") String? cardNameSurname,@JsonKey(name: "CardNumber") String? cardNumber,@JsonKey(name: "CardExpiryDateMonth") int? cardExpiryDateMonth,@JsonKey(name: "CardExpiryDateYear") int? cardExpiryDateYear,@JsonKey(name: "CardCVV") String? cardCvv,@JsonKey(name: "Currency") int? currency,@JsonKey(name: "Amount") int? amount,@JsonKey(name: "Point") String? point,@JsonKey(name: "Installment") int? installment,@JsonKey(name: "CampaignCode") String? campaignCode,@JsonKey(name: "BankCode") String? bankCode,@JsonKey(name: "Description") String? description
+ String? cardNameSurname, String? cardNumber, int? cardExpiryDateMonth, int? cardExpiryDateYear, String? cardCvv, int? currency, int? amount, String? point, int? installment, String? campaignCode, String? bankCode, String? description
 });
 
 
@@ -776,24 +776,24 @@ as String?,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class _SaleInfo extends SaleInfo {
-   _SaleInfo({@JsonKey(name: "CardNameSurname") this.cardNameSurname, @JsonKey(name: "CardNumber") this.cardNumber, @JsonKey(name: "CardExpiryDateMonth") this.cardExpiryDateMonth, @JsonKey(name: "CardExpiryDateYear") this.cardExpiryDateYear, @JsonKey(name: "CardCVV") this.cardCvv, @JsonKey(name: "Currency") this.currency, @JsonKey(name: "Amount") this.amount, @JsonKey(name: "Point") this.point, @JsonKey(name: "Installment") this.installment, @JsonKey(name: "CampaignCode") this.campaignCode, @JsonKey(name: "BankCode") this.bankCode, @JsonKey(name: "Description") this.description}): super._();
+   _SaleInfo({this.cardNameSurname, this.cardNumber, this.cardExpiryDateMonth, this.cardExpiryDateYear, this.cardCvv, this.currency, this.amount, this.point, this.installment, this.campaignCode, this.bankCode, this.description}): super._();
   factory _SaleInfo.fromJson(Map<String, dynamic> json) => _$SaleInfoFromJson(json);
 
-@override@JsonKey(name: "CardNameSurname") final  String? cardNameSurname;
-@override@JsonKey(name: "CardNumber") final  String? cardNumber;
-@override@JsonKey(name: "CardExpiryDateMonth") final  int? cardExpiryDateMonth;
-@override@JsonKey(name: "CardExpiryDateYear") final  int? cardExpiryDateYear;
-@override@JsonKey(name: "CardCVV") final  String? cardCvv;
-@override@JsonKey(name: "Currency") final  int? currency;
-@override@JsonKey(name: "Amount") final  int? amount;
-@override@JsonKey(name: "Point") final  String? point;
-@override@JsonKey(name: "Installment") final  int? installment;
-@override@JsonKey(name: "CampaignCode") final  String? campaignCode;
-@override@JsonKey(name: "BankCode") final  String? bankCode;
-@override@JsonKey(name: "Description") final  String? description;
+@override final  String? cardNameSurname;
+@override final  String? cardNumber;
+@override final  int? cardExpiryDateMonth;
+@override final  int? cardExpiryDateYear;
+@override final  String? cardCvv;
+@override final  int? currency;
+@override final  int? amount;
+@override final  String? point;
+@override final  int? installment;
+@override final  String? campaignCode;
+@override final  String? bankCode;
+@override final  String? description;
 
 /// Create a copy of SaleInfo
 /// with the given fields replaced by the non-null parameter values.
@@ -824,7 +824,7 @@ abstract mixin class _$SaleInfoCopyWith<$Res> implements $SaleInfoCopyWith<$Res>
   factory _$SaleInfoCopyWith(_SaleInfo value, $Res Function(_SaleInfo) _then) = __$SaleInfoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: "CardNameSurname") String? cardNameSurname,@JsonKey(name: "CardNumber") String? cardNumber,@JsonKey(name: "CardExpiryDateMonth") int? cardExpiryDateMonth,@JsonKey(name: "CardExpiryDateYear") int? cardExpiryDateYear,@JsonKey(name: "CardCVV") String? cardCvv,@JsonKey(name: "Currency") int? currency,@JsonKey(name: "Amount") int? amount,@JsonKey(name: "Point") String? point,@JsonKey(name: "Installment") int? installment,@JsonKey(name: "CampaignCode") String? campaignCode,@JsonKey(name: "BankCode") String? bankCode,@JsonKey(name: "Description") String? description
+ String? cardNameSurname, String? cardNumber, int? cardExpiryDateMonth, int? cardExpiryDateYear, String? cardCvv, int? currency, int? amount, String? point, int? installment, String? campaignCode, String? bankCode, String? description
 });
 
 
@@ -934,8 +934,8 @@ as String?,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class _ERPInfo implements ERPInfo {
   const _ERPInfo({this.companyCode, this.businessUnitCode, this.branchCode, this.receiptNumber, this.receiptSeries, this.operatorUser});
   factory _ERPInfo.fromJson(Map<String, dynamic> json) => _$ERPInfoFromJson(json);

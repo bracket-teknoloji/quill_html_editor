@@ -299,6 +299,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 secildi: "E",
                 kisitYok: true,
                 belgeTuru: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+                teslimCari: widget.cariRequestModel?.teslimCari,
                 eFaturaGoster: yetkiController.eFaturaAktif,
                 plasiyerKisitiYok: true,
               ),

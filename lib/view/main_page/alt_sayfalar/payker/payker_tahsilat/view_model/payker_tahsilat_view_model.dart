@@ -48,6 +48,7 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
     erpInfo: ERPInfo(
       branchCode: (CacheManager.getVeriTabani["Şube"] as int?)?.toString(),
       companyCode: CacheManager.getVeriTabani["Şirket"],
+      businessUnitCode: CacheManager.getVeriTabani["İşletme"].toString(),
       operatorUser: CacheManager.getAnaVeri!.userModel?.kuladi,
     ),
   );

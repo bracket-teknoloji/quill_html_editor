@@ -18,8 +18,11 @@ final class AppThemeLight extends AppTheme {
   ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withValues(alpha: 0.2));
   @override
   ThemeData get theme => ThemeData(
-    
-    cupertinoOverrideTheme: CupertinoThemeData(primaryColor: UIHelper.primaryColor, applyThemeToAll: true, scaffoldBackgroundColor: colorManager.surface),
+    cupertinoOverrideTheme: CupertinoThemeData(
+      primaryColor: UIHelper.primaryColor,
+      applyThemeToAll: true,
+      scaffoldBackgroundColor: colorManager.surface,
+    ),
     platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
     datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
     radioTheme: RadioThemeData(
@@ -114,7 +117,11 @@ final class AppThemeLight extends AppTheme {
         splashFactory: InkRipple.splashFactory,
         backgroundColor: UIHelper.primaryColor,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
+        shape: (!kIsWeb && Platform.isIOS)
+            ? RoundedSuperellipseBorder(
+                borderRadius: UIHelper.highBorderRadius,
+              )
+            : RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(

@@ -1460,6 +1460,7 @@ final class KalemModel with NetworkManagerMixin {
     this.detayId,
     this.kayityapankul,
     this.fireListe,
+    this.fiyatYuzde,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) =>
@@ -1865,7 +1866,41 @@ final class KalemModel with NetworkManagerMixin {
   int? detayId;
   @HiveField(152)
   String? kayityapankul;
+  @HiveField(153)
+  double? fiyatYuzde;
   List<KalemFireModel>? fireListe;
+
+  double get yuzdeHesaplanmamisFiyat {
+    if (fiyatYuzde != null && fiyatYuzde! > 0) {
+      return (brutFiyat ?? 0) * (fiyatYuzde! / 100);
+    } else {
+      return 0;
+    }
+  }
+
+  double get yuzdeEklenmisFiyat {
+    if (fiyatYuzde != null && fiyatYuzde! > 0) {
+      return (brutFiyat ?? 0) + yuzdeHesaplanmamisFiyat;
+    } else {
+      return brutFiyat ?? 0;
+    }
+  }
+
+  double get _yuzdeEksilmisFiyat {
+    if (fiyatYuzde != null && fiyatYuzde! > 0) {
+      return (brutFiyat ?? 0) - yuzdeHesaplanmamisFiyat;
+    } else {
+      return brutFiyat ?? 0;
+    }
+  }
+
+  double get yuzdeEksilmisFiyat {
+    if (_yuzdeEksilmisFiyat > 0) {
+      return _yuzdeEksilmisFiyat;
+    } else {
+      return 0;
+    }
+  }
 
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().sum ?? 0;

@@ -40,6 +40,7 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _basTarController = TextEditingController();
   final TextEditingController _bitTarController = TextEditingController();
+  final TextEditingController _firmaController = TextEditingController();
 
   @override
   void initState() {
@@ -91,6 +92,7 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
     _scrollController.dispose();
     _basTarController.dispose();
     _bitTarController.dispose();
+    _firmaController.dispose();
     super.dispose();
   }
 
@@ -106,7 +108,12 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
     title: Observer(
       builder: (_) => _viewModel.isSearchBarOpen
           ? CustomAppBarTextField(
-              onChanged: _viewModel.setSearchText,
+              onFieldSubmitted: (value) {
+                _viewModel
+                  ..setSearchText(value)
+                  ..setObservableList(null)
+                  ..resetList();
+              },
             )
           : AppBarTitle(
               title: "Payker Ödeme Listesi",
@@ -136,6 +143,27 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
                   children: [
                     CustomLayoutBuilder.divideInHalf(
                       children: [
+                        // CustomTextField(
+                        //   labelText: "Firma",
+                        //   controller: _firmaController,
+                        //   valueWidget: Observer(
+                        //     builder: (_) {
+                        //       final firma = _viewModel.filterModel.filterModels?.firstWhereOrNull(
+                        //         (element) => element.name == "FirmaId",
+                        //       );
+                        //       return firma != null ? Text(firma.value ?? "") : const SizedBox.shrink();
+                        //     },
+                        //   ),
+                        //   readOnly: true,
+                        //   suffixMore: true,
+                        //   onTap: () async {
+                        //     final result = await Get.toNamed("/mainPage/paykerFirmaBayiListesiOzel");
+                        //     if (result is PaykerFirmaModel) {
+                        //       _firmaController.text = result.text ?? "";
+                        //       // _viewModel.setFirmaKodu(result.id);
+                        //     }
+                        //   },
+                        // ),
                         CustomTextField(
                           isDateTime: true,
                           labelText: "Başlangıç Tarihi",
@@ -188,23 +216,18 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
         AppBarButton(
           icon: Icons.sort_by_alpha_outlined,
           onPressed: () async {
+            final bottomSheetList = _viewModel.sortValues.entries
+                .map((e) => BottomSheetModel(title: e.key, value: e, groupValue: e.value))
+                .toList();
             final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
               context,
-              groupValue: _viewModel.filterModel.order?.firstOrNull?.columnName,
+              groupValue: _viewModel.selectedSort,
               title: "Sıralama",
-              children: _viewModel.order
-                  .map(
-                    (e) => BottomSheetModel(
-                      title: e.columnName ?? "",
-                      groupValue: e.columnName,
-                      value: e,
-                    ),
-                  )
-                  .toList(),
+              children: bottomSheetList,
             );
             if (result != null) {
               _viewModel
-                ..setOrder(result)
+                ..setSelectedSort(result)
                 ..resetList();
             }
           },
@@ -229,10 +252,10 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
   );
 
   Observer _body() => Observer(
-    builder: (_) => RefreshableListView<PaykerOdemeListesiModel>.pageable(
-      scrollController: _scrollController,
+    builder: (_) => RefreshableListView<PaykerOdemeListesiModel>(
+      // scrollController: _scrollController,
+      // dahaVarMi: _viewModel.dahaVarMi,
       onRefresh: _viewModel.resetList,
-      dahaVarMi: _viewModel.dahaVarMi,
       items: _viewModel.observableList,
       itemBuilder: _paykerOdemeCard,
     ),
@@ -299,6 +322,7 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
             ApiUrls.basePaykerURLWithoutApi + (item.banka?.logoUrl ?? ""),
           ).image,
           child: Text(item.kartIsim?.substring(0, 1) ?? ""),
+          onForegroundImageError: (_, _) => const Icon(Icons.credit_card_outlined),
         ),
       ),
       title: Row(
@@ -322,7 +346,7 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Tutar: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Taksit: ${item.odemeTuru}"),
+                    Text("Taksit: ${item.taksitSayisi ?? 1}"),
                   ],
                 ),
               ColorfulBadge(
@@ -353,6 +377,7 @@ class _PaykerOdemeListesiViewState extends BaseState<PaykerOdemeListesiView> {
               if (item.banka?.adi case final value?) Text("Banka: $value"),
             ],
           ),
+          if (item.belgeNo case final value?) Text("Belge No: $value"),
           if (detailsWidgets(item).isNotEmpty)
             const Padding(
               padding: EdgeInsets.symmetric(vertical: UIHelper.midSize),

@@ -185,7 +185,7 @@ final class _LoginViewState extends BaseState<LoginView> {
                           CacheManager.setUzaktanMi(selectedUser.account?.email ?? "", false);
                         }
                       },
-                      decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
+                      decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)),
                       controller: companyController,
                       textInputAction: TextInputAction.next,
                     ),

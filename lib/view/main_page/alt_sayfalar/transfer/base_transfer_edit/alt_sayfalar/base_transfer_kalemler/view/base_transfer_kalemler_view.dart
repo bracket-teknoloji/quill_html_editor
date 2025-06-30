@@ -317,9 +317,10 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
   Future<void> listTileBottomSheet(BuildContext context, int index, {required KalemModel kalemModel}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title:kalemModel.kalemAdi ?? kalemModel.stokAdi ?? "",
+      title: kalemModel.kalemAdi ?? kalemModel.stokAdi ?? "",
       children: [
-        if (!widget.model.isGoruntule && ((kalemModel.siparisNo == null || kalemModel.siparisNo == "") || kalemModel.siparisNo == ""))
+        if (!widget.model.isGoruntule &&
+            ((kalemModel.siparisNo == null || kalemModel.siparisNo == "") || kalemModel.siparisNo == ""))
           BottomSheetModel(
             title: loc.generalStrings.edit,
             iconWidget: Icons.edit_outlined,

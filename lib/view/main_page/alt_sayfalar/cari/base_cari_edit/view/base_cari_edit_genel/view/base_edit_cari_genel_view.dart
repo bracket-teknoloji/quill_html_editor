@@ -276,32 +276,35 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                   enabled: enabled,
                   labelText: "Şehir",
                   controller: ilController,
-                  readOnly: true,
-                  suffixMore: true,
                   onClear: () => viewModel.changeIl(null),
-                  onTap: () async {
-                    if (viewModel.sehirler == null) {
-                      await viewModel.getFilterData();
-                    }
-                    // ignore: use_build_context_synchronously
-                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                      context,
-                      title: "Şehirler",
-                      groupValue: viewModel.model?.sehir,
-                      children: List.generate(
-                        viewModel.sehirler?.length ?? 0,
-                        (index) => BottomSheetModel(
-                          title: viewModel.sehirler?[index].sehirAdi ?? "",
-                          value: viewModel.sehirler?[index],
-                          groupValue: viewModel.sehirler?[index].sehirAdi ?? "",
+                  onChanged: viewModel.changeIl,
+                  suffix: IconButton(
+                    icon: const Icon(Icons.more_horiz_outlined),
+                    tooltip: "Şehir Seç",
+                    onPressed: () async {
+                      if (viewModel.sehirler == null) {
+                        await viewModel.getFilterData();
+                      }
+                      // ignore: use_build_context_synchronously
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                        context,
+                        title: "Şehirler",
+                        groupValue: viewModel.model?.sehir,
+                        children: List.generate(
+                          viewModel.sehirler?.length ?? 0,
+                          (index) => BottomSheetModel(
+                            title: viewModel.sehirler?[index].sehirAdi ?? "",
+                            value: viewModel.sehirler?[index],
+                            groupValue: viewModel.sehirler?[index].sehirAdi ?? "",
+                          ),
                         ),
-                      ),
-                    );
-                    if (result is CariSehirlerModel) {
-                      ilController.text = result.sehirAdi ?? "";
-                      viewModel.changeIl(result.sehirAdi);
-                    }
-                  },
+                      );
+                      if (result is CariSehirlerModel) {
+                        ilController.text = result.sehirAdi ?? "";
+                        viewModel.changeIl(result.sehirAdi);
+                      }
+                    },
+                  ),
                 ),
               ),
               Expanded(

@@ -7,6 +7,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/ek_rehber_request_model.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
 import "package:picker/core/base/view/kalem_ekle/model/stok_fiyati_model.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
@@ -69,6 +70,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController olcuBirimiController;
   late final TextEditingController kdvOraniController;
   late final TextEditingController fiyatController;
+  late final TextEditingController fiyatYuzdeController;
   late final TextEditingController muhKoduController;
   late final TextEditingController muhRefKoduController;
   late final TextEditingController serilerController;
@@ -271,7 +273,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 const TextSpan(text: "Stok Bakiye: "),
                                 TextSpan(
                                   text:
-                                      "${viewModel.model?.bakiye.toIntIfDouble.toStringIfNotNull ?? "0"} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? ""}",
+                                      "${viewModel.model?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} "
+                                      "${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -944,101 +947,199 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
               ),
 
             Observer(
-              builder: (_) => (editTipi?.fiyatGor == true && viewModel.kalemModel.dovizliMi && !transferMi)
-                  ? CustomTextField(
-                      labelText: "Döviz Fiyatı",
-                      isMust: true,
-                      controller: dovizFiyatiController,
-                      enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      isFormattedString: true,
-                      suffix: fiyatRehberiGorebilir() && (viewModel.model?.dovizliMi ?? false)
-                          ? IconButton(
-                              onPressed: () => _fiyatListesi(true),
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            )
-                          : null,
-                      onChanged: (p0) {
-                        viewModel
-                          ..setDovizFiyati(p0.toDoubleWithFormattedString)
-                          ..setBrutFiyat(
-                            (viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1),
-                          );
-                        log(viewModel.kalemModel.brutFiyat.toString());
-                        log(viewModel.kalemModel.dovizliFiyat.toString());
-                        fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(
-                          OndalikEnum.dovizFiyati,
-                        );
-                      },
-                    )
-                  : const SizedBox.shrink(),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (!editTipi.talepKalemlerFiltrele &&
-                    !transferMi &&
-                    !(editTipi?.gizlenecekAlanlar("kdv_orani") ?? false) &&
-                    yetkiController.siparisSatirdaKDVSor(editTipi))
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: !(editTipi?.degistirilmeyecekAlanlar("kdv_orani") ?? false),
-                      labelText: "KDV Oranı",
-                      controller: kdvOraniController,
-                      isMust: editTipi?.bosGecilmeyecekAlanlar("kdv_orani"),
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      isFormattedString: true,
-                      onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
-                      suffix: IconButton(
-                        icon: const Icon(Icons.more_horiz_outlined),
-                        onPressed: () async {
-                          final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(
-                            context,
-                            viewModel.kalemModel.kdvOrani,
-                          );
-                          if (result != null) {
-                            viewModel.setKdvOrani(result);
-                            kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
-                            // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNotNull ?? "");
-                            // kdvOraniController.buildTextSpan(context: context, withComposing: true);
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                if (editTipi?.stokTipineBakmadanFiyatGor == true && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false))
-                  Expanded(
-                    child: Observer(
-                      builder: (_) => CustomTextField(
-                        labelText: "Fiyat",
-                        controller: fiyatController,
-                        enabled:
-                            !(editTipi?.fiyatDegistirilmesin ?? false) &&
-                            !(editTipi?.gizlenecekAlanlar("fiyat") ?? false),
+              builder: (_) => Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (!editTipi.talepKalemlerFiltrele &&
+                      !transferMi &&
+                      !(editTipi?.gizlenecekAlanlar("kdv_orani") ?? false) &&
+                      yetkiController.siparisSatirdaKDVSor(editTipi))
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: !(editTipi?.degistirilmeyecekAlanlar("kdv_orani") ?? false),
+                        labelText: "KDV Oranı",
+                        controller: kdvOraniController,
+                        isMust: editTipi?.bosGecilmeyecekAlanlar("kdv_orani"),
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isMust: editTipi?.bosGecilmeyecekAlanlar("fiyat"),
                         isFormattedString: true,
-                        suffix: fiyatRehberiGorebilir() && !(viewModel.model?.dovizliMi ?? false)
-                            ? IconButton(
-                                onPressed: () => _fiyatListesi(false),
-                                icon: const Icon(Icons.more_horiz_outlined),
-                              )
-                            : null,
-                        onChanged: (p0) {
-                          viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
-                          if (viewModel.model?.dovizliMi ?? false) {
-                            viewModel.setDovizFiyati(
-                              (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1),
+                        onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
+                        suffix: IconButton(
+                          icon: const Icon(Icons.more_horiz_outlined),
+                          onPressed: () async {
+                            final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(
+                              context,
+                              viewModel.kalemModel.kdvOrani,
                             );
-                            dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat
-                                .commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-                          }
-                        },
+                            if (result != null) {
+                              viewModel.setKdvOrani(result);
+                              kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
+                              // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNotNull ?? "");
+                              // kdvOraniController.buildTextSpan(context: context, withComposing: true);
+                            }
+                          },
+                        ),
                       ),
                     ),
-                  ),
-              ],
+                  if (editTipi?.fiyatGor == true && viewModel.kalemModel.dovizliMi && !transferMi)
+                    Expanded(
+                      child: Observer(
+                        builder: (_) => CustomTextField(
+                          labelText: "Döviz Fiyatı",
+                          isMust: true,
+                          controller: dovizFiyatiController,
+                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          isFormattedString: true,
+                          suffix: fiyatRehberiGorebilir() && (viewModel.model?.dovizliMi ?? false)
+                              ? IconButton(
+                                  onPressed: () => _fiyatListesi(true),
+                                  icon: const Icon(Icons.more_horiz_outlined),
+                                )
+                              : null,
+                          onChanged: (p0) {
+                            viewModel
+                              ..setDovizFiyati(p0.toDoubleWithFormattedString)
+                              ..setBrutFiyat(
+                                (viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1),
+                              );
+                            log(viewModel.kalemModel.brutFiyat.toString());
+                            log(viewModel.kalemModel.dovizliFiyat.toString());
+                            fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(
+                              OndalikEnum.dovizFiyati,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
+            if (editTipi?.stokTipineBakmadanFiyatGor == true && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false))
+              Observer(
+                builder: (_) {
+                  final fiyatSuffix = [
+                    // yüzde olarak artır bottom sheeti gösteren ve girilen sayıyı yüzde olarak artıran buton
+                    IconButton(
+                      onPressed: () async {
+                        double? fiyatYuzde = viewModel.kalemModel.fiyatYuzde;
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog<bool>(
+                          context,
+                          title: "Yüzde Olarak Artır",
+                          body: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              CustomTextField(
+                                labelText: "Yüzde",
+                                focusNode: FocusNode()..requestFocus(),
+                                controller: fiyatYuzdeController,
+                                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                isFormattedString: true,
+                                onChanged: (p0) {
+                                  fiyatYuzde = p0.toDoubleWithFormattedString;
+                                  viewModel.setFiyatYuzde(p0.toDoubleWithFormattedString);
+                                },
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(UIHelper.lowSize),
+                                child: Row(
+                                  spacing: UIHelper.lowSize,
+                                  children: [
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        onPressed: () => _fiyatYuzdeDegistir((fiyatYuzde?.abs() ?? 0) * -1),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: ColorPalette.carminePink,
+                                        ),
+                                        child: Observer(
+                                          builder: (_) => Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                const TextSpan(text: "Düşür"),
+                                                if (viewModel.kalemModel.fiyatYuzde != null)
+                                                  TextSpan(
+                                                    text:
+                                                        " (${viewModel.kalemModel.yuzdeEksilmisFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency)",
+                                                  ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        onPressed: () => _fiyatYuzdeDegistir(fiyatYuzde),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: ColorPalette.mantis,
+                                        ),
+                                        child: Observer(
+                                          builder: (_) => Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                const TextSpan(text: "Artır "),
+                                                if (viewModel.kalemModel.fiyatYuzde != null)
+                                                  TextSpan(
+                                                    text:
+                                                        " (${viewModel.kalemModel.yuzdeEklenmisFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency)",
+                                                  ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                        if (result != true) {
+                          viewModel.setFiyatYuzde(null);
+                          fiyatYuzdeController.clear();
+                        }
+                      },
+                      icon: const Icon(Icons.percent_outlined),
+                    ),
+                    if (fiyatRehberiGorebilir() && !(viewModel.model?.dovizliMi ?? false))
+                      IconButton(
+                        onPressed: () => _fiyatListesi(false),
+                        icon: const Icon(Icons.more_horiz_outlined),
+                      ),
+                  ];
+                  return CustomTextField(
+                    labelText: "Fiyat",
+                    controller: fiyatController,
+                    enabled:
+                        !(editTipi?.fiyatDegistirilmesin ?? false) && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false),
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    isMust: editTipi?.bosGecilmeyecekAlanlar("fiyat"),
+                    isFormattedString: true,
+                    valueWidget: Observer(
+                      builder: (_) => viewModel.kalemModel.fiyatYuzde != null
+                          ? Text(
+                              " (%${viewModel.kalemModel.fiyatYuzde?.commaSeparatedWithDecimalDigits(OndalikEnum.oran)})",
+                            )
+                          : const SizedBox.shrink(),
+                    ),
+                    suffix: fiyatSuffix.ext.isNotNullOrEmpty ? Wrap(children: fiyatSuffix) : null,
+                    onChanged: (p0) {
+                      viewModel
+                        ..setFiyatYuzde(null)
+                        ..setBrutFiyat(p0.toDoubleWithFormattedString);
+                      if (viewModel.model?.dovizliMi ?? false) {
+                        viewModel.setDovizFiyati(
+                          (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1),
+                        );
+                        dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(
+                          OndalikEnum.fiyat,
+                        );
+                      }
+                    },
+                  );
+                },
+              ),
             Observer(
               builder: (_) => seriliMi
                   ? CustomTextField(
@@ -1277,6 +1378,22 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     ),
   );
 
+  void _fiyatYuzdeDegistir(double? fiyatYuzde) {
+    viewModel.setBrutFiyat(
+      fiyatYuzde?.isNegative ?? false
+          ? viewModel.kalemModel.yuzdeEksilmisFiyat
+          : viewModel.kalemModel.yuzdeEklenmisFiyat,
+    );
+    if (viewModel.model?.dovizliMi ?? false) {
+      viewModel.setDovizFiyati(
+        (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1),
+      );
+    }
+    fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+    dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+    Get.back(result: fiyatYuzdeController.text.isNotEmpty);
+  }
+
   bool fiyatRehberiGorebilir() =>
       AccountModel.instance.adminMi ||
       (editTipi?.fiyatGor == true &&
@@ -1330,6 +1447,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     olcuBirimiController = TextEditingController();
     kdvOraniController = TextEditingController();
     fiyatController = TextEditingController();
+    fiyatYuzdeController = TextEditingController();
     muhKoduController = TextEditingController();
     muhRefKoduController = TextEditingController();
     serilerController = TextEditingController();
@@ -1594,6 +1712,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
             .toStringIfNotNull ??
         "";
     olcuBirimiController.text = viewModel.kalemModel.olcuBirimAdi ?? viewModel.model?.olcuBirimi ?? "";
+    fiyatYuzdeController.text = viewModel.kalemModel.fiyatYuzde.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     kdvOraniController.text = editTipi?.ambarFisiMi == true
         ? ""
         : viewModel.kalemModel.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
@@ -1723,6 +1842,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     olcuBirimiController.dispose();
     kdvOraniController.dispose();
     fiyatController.dispose();
+    fiyatYuzdeController.dispose();
     isk1Controller?.dispose();
     isk1TipiController?.dispose();
     isk2TipiController?.dispose();

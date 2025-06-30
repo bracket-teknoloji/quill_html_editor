@@ -230,14 +230,14 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                 ),
                 validator: (value) {
                   if (value case (null || "")) return "Belge No Boş Olamaz";
-                  if (model.eBelgeCheckBoxMi && !value.startsWith("EIR")) {
-                    return "E-Fatura Belge No EIR ile başlamalıdır";
+                  if (model.eBelgeCheckBoxMi &&
+                      !value.startsWith(parametreModel.seriEIrsaliye ?? "EIR") &&
+                      model.getEditTipiEnum?.irsaliyeMi == true) {
+                    return "E-Fatura Belge No ${parametreModel.seriEIrsaliye ?? "EIR"} ile başlamalıdır";
                   }
                   return null;
                 },
-                onChanged: (value) {
-                  model.belgeNo = value;
-                },
+                onChanged: (value) => model.belgeNo = value,
               ),
             if (widget.model.baseEditEnum.goruntuleMi || widget.model.baseEditEnum == BaseEditEnum.taslak)
               CustomTextField(

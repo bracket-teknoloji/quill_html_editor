@@ -18,6 +18,7 @@ sealed class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkMa
     int? islemKodu,
     String? islemAdi,
     String? alinanBordroNo,
+    String? verilenBordroNo,
     String? devir,
     String? nereye,
     String? kayityapankul,

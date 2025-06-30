@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../../../../../core/base/view/base_scaffold.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
@@ -57,19 +58,18 @@ final class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [Text(model.belgeNo ?? ""), Text(model.tarih.toDateString)],
                     ),
-                    Text(widget.model.cariAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                    Text(model.hesapKodu ?? ""),
+                    Text(model.hesapKodu ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
                     Text(model.islemAdi ?? ""),
                   ],
                 ),
-                subtitle: LayoutBuilder(
-                  builder: (context, constraints) => Wrap(
-                    children: [
-                      Text("Yeri:\n${model.yerAdi}"),
-                      Text("Durumu:\n${model.durumAdi}"),
-                      Text("Kayıt Yapan Kul:\n${model.kayityapankul ?? ""}"),
-                    ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
-                  ),
+                subtitle: CustomLayoutBuilder.divideInHalf(
+                  children: [
+                    Text("Yeri:\n${model.yerAdi}"),
+                    Text("Durumu:\n${model.durumAdi}"),
+                    Text("Alınan Bordro No:\n${model.alinanBordroNo ?? ""}"),
+                    Text("Verilen Bordro No:\n${model.verilenBordroNo ?? ""}"),
+                    Text("Kayıt Yapan Kul:\n${model.kayityapankul ?? ""}"),
+                  ],
                 ),
               ),
             );

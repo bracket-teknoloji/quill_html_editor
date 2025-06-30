@@ -34,8 +34,11 @@ import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/mo
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_firma_bayi_listesi/model/payker_drop_down_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_link_edit/model/payker_link_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/module_info_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/client_metadata_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/payment_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/model/taksit_response_model.dart";
@@ -224,6 +227,7 @@ final class NetworkManager {
         options: Options(headers: head, contentType: Headers.jsonContentType),
         data: data,
       );
+      log("Response: ${response.data}");
       responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
     } catch (e) {
       String errorText = e.toString();
@@ -844,6 +848,9 @@ final class NetworkManager {
       path: ApiUrls.createPayment,
       bodyModel: const PaymentResponseModel(),
       showLoading: true,
+      headers: {
+        "X-Client-Metadata": jsonEncode(ClientMetadataModel.fromAccountModel().toJson()),
+      },
       data: paymentModel.toJson(),
     );
     if (result.isSuccess) {
@@ -896,6 +903,82 @@ final class NetworkManager {
     } else {
       return null;
     }
+  }
+
+  Future<DropdownResult?> getPaykerFirmalar() async {
+    final result = await dioPost<DropdownResult>(
+      path: ApiUrls.getFirmalar,
+      bodyModel: const DropdownResult(),
+      data: {
+        "Status": null,
+      },
+    );
+    if (result.isSuccess) {
+      return result.dataItem;
+    }
+    return null;
+  }
+
+  Future<DropdownResult?> getPaykerBankalar() async {
+    final result = await dioPost<DropdownResult>(
+      path: ApiUrls.getBankalar,
+      bodyModel: const DropdownResult(),
+      showLoading: true,
+      data: {
+        "Status": null,
+      },
+    );
+    if (result.isSuccess) {
+      return result.dataItem;
+    }
+    return null;
+  }
+
+  Future<GenericResponseModel> addPaykerPaymentLink(PaykerLinkEditModel model) async {
+    final result = await dioPost<BaseEmptyModel>(
+      path: ApiUrls.addPaymentLink,
+      bodyModel: BaseEmptyModel(),
+      showLoading: true,
+      data: model.toJson(),
+    );
+    return result;
+  }
+
+  Future<GenericResponseModel> updatePaykerPaymentLink(PaykerLinkEditModel model) async {
+    final result = await dioPost<BaseEmptyModel>(
+      path: ApiUrls.updatePaymentLink,
+      bodyModel: BaseEmptyModel(),
+      showLoading: true,
+      data: model.toJson(),
+    );
+    return result;
+  }
+
+  Future<GenericResponseModel> deletePaykerPaymentLink(List<String> ids) async {
+    final result = await dioPost<BaseEmptyModel>(
+      path: ApiUrls.deletePaymentLink,
+      bodyModel: BaseEmptyModel(),
+      showLoading: true,
+      data: ids,
+    );
+    return result;
+  }
+
+  Future<Uint8List?> getPaykerPaymentLinkQrCode(String guid) async {
+    final Map<String, String> head = getStandardHeader(true, true, true);
+    final response = await _dio.get(
+      "${ApiUrls.generateQR}/$guid",
+      options: Options(headers: head, responseType: ResponseType.json),
+    );
+    // response is a png file
+    if (response.data is Map) {
+      try {
+        return base64Decode(response.data!["Data"]);
+      } catch (e) {
+        log("QR Kod Decode Hatası: $e");
+      }
+    }
+    return null;
   }
 
   static String get getBaseUrl {

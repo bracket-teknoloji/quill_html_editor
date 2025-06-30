@@ -69,6 +69,13 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
     this.kayityapankul,
     this.duzeltmetarihi,
     this.duzeltmeyapankul,
+    this.belgeNo,
+    this.uygulama,
+    this.platform,
+    this.erpSirket,
+    this.erpIsletmeKodu,
+    this.alinmaTarihi,
+    this.taksitSayisi,
   });
 
   factory PaykerOdemeListesiModel.fromJson(Map<String, dynamic> json) => _$PaykerOdemeListesiModelFromJson(json);
@@ -106,6 +113,9 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
   @override
   @JsonKey(name: "ODEME_TURU")
   String? odemeTuru;
+  @override
+  @JsonKey(name: "TAKSIT_SAYISI")
+  int? taksitSayisi;
   @override
   @JsonKey(name: "IP_ADRES")
   String? ipAdres;
@@ -163,6 +173,24 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
   @override
   @JsonKey(name: "FIRMA_KODU")
   String? firmaKodu;
+  @override
+  @JsonKey(name: "BELGE_NO")
+  String? belgeNo;
+  @override
+  @JsonKey(name: "UYGULAMA")
+  String? uygulama;
+  @override
+  @JsonKey(name: "PLATFORM")
+  String? platform;
+  @override
+  @JsonKey(name: "ERP_SIRKET")
+  String? erpSirket;
+  @override
+  @JsonKey(name: "ERP_ISLETME_KODU")
+  int? erpIsletmeKodu;
+  @override
+  @JsonKey(name: "ALINMA_TARIHI")
+  DateTime? alinmaTarihi;
 
   BadgeColorEnum get badgeColor => switch (durum) {
     "ONAYDA" => BadgeColorEnum.cari,

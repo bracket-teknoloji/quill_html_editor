@@ -38,19 +38,25 @@ abstract final class ApiUrls {
   static const String getUyeBilgileri = "$_baseStoreWSUrl/Picker/GetUyeBilgileri";
 
   //* Payker
-  static String basePaykerURL = kDebugMode ?"https://pay.payker.com.tr/api" :
-      (DIManager.isRegistered<ModuleInfoModel>() ? DIManager.read<ModuleInfoModel>() : null)
-          ?.paykerModule
-          ?.webServisAdresi ??
-      "";
+  static String basePaykerURL = kDebugMode
+      ? "https://pay.payker.com.tr/api"
+      : (DIManager.isRegistered<ModuleInfoModel>() ? DIManager.read<ModuleInfoModel>() : null)
+                ?.paykerModule
+                ?.webServisAdresi ??
+            "";
 
   static String basePaykerURLWithoutApi = (basePaykerURL.split("/")..removeLast()).join("/");
   static String createPayment = "$basePaykerURL/Payments/CreatePayment";
   static String getBankInstallments = "$basePaykerURL/payments/getbankinstallments";
-  static String getPayments = "$basePaykerURL/Payments/GetPayments";
   static String paymentCallback = "$basePaykerURLWithoutApi/callback";
   static String paykerTahsilatMakbuzu = "$basePaykerURL/Payments/GetTahsilatMakbuz";
-  static String getPaymentLinks = "$basePaykerURL/Payments/GetPaymentLinks";
+  static String getPaymentLinks = "$basePaykerURL/PaymentLinks";
+  static String addPaymentLink = "$basePaykerURL/PaymentLinks/add";
+  static String updatePaymentLink = "$basePaykerURL/PaymentLinks/update";
+  static String generateQR = "$basePaykerURL/PaymentLinks/GenerateQr";
+  static String getFirmalar = "$basePaykerURL/Payments/GetFirmalar";
+  static String getBankalar = "$basePaykerURL/Payments/GetBankalar";
+  static String deletePaymentLink = "$basePaykerURL/PaymentLinks/delete";
 
   //* Cariler
   static const String deleteCari = "Cari/DeleteCari";
@@ -110,6 +116,8 @@ abstract final class ApiUrls {
   static const String deleteBankaHareket = "Banka/DeleteBankaHar";
   static const String deleteCekSenet = "Finans/DeleteCekSenet";
   static const String deleteDekont = "Banka/DeleteDekont";
+  static String getPayments = "Finans/GetPayments";
+
   static const String deleteKasaHareket = "Finans/DeleteKasaHareket";
   static const String getBankaHareketleri = "Banka/GetBankaHareketleri";
   static const String getBankaHesaplari = "Banka/GetBankaHesaplari";

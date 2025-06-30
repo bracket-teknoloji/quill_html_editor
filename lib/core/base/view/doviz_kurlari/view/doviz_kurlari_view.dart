@@ -117,23 +117,27 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                 _controller.text = viewModel.tarih.toDateString;
                 viewModel.getData();
               },
-              icon: const Icon(Icons.chevron_left_outlined),
+              icon: const Icon(Icons.arrow_circle_left_outlined),
             ),
             Expanded(
-              child: CustomTextField(
-                labelText: "Tarih",
-                readOnly: true,
-                isMust: true,
-                controller: _controller,
-                isDateTime: true,
-                onTap: () async {
-                  final result = await dialogManager.showDateTimePicker();
-                  if (result != null) {
-                    viewModel.changeTarih(result);
-                    _controller.text = viewModel.tarih.toDateString;
-                    await viewModel.getData();
-                  }
-                },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: UIHelper.midSize),
+                child: CustomTextField(
+                  labelText: "Tarih",
+                  readOnly: true,
+                  isMust: true,
+                  controller: _controller,
+                  
+                  isDateTime: true,
+                  onTap: () async {
+                    final result = await dialogManager.showDateTimePicker();
+                    if (result != null) {
+                      viewModel.changeTarih(result);
+                      _controller.text = viewModel.tarih.toDateString;
+                      await viewModel.getData();
+                    }
+                  },
+                ),
               ),
             ),
             IconButton(
@@ -142,7 +146,7 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                 _controller.text = viewModel.tarih.toDateString;
                 viewModel.getData();
               },
-              icon: const Icon(Icons.chevron_right_outlined),
+              icon: const Icon(Icons.arrow_circle_right_outlined),
             ),
           ],
         ),
@@ -178,24 +182,28 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
             isVertical: true,
             addPadding: false,
             text: "Alış",
+            isTitleSmall: true,
             child: Text(item.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
           ),
           CustomWidgetWithLabel(
             isVertical: true,
             addPadding: false,
             text: "Satış",
+            isTitleSmall: true,
             child: Text(item.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
           ),
           CustomWidgetWithLabel(
             isVertical: true,
             addPadding: false,
             text: "Ef. Alış",
+            isTitleSmall: true,
             child: Text(item.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
           ),
           CustomWidgetWithLabel(
             isVertical: true,
             addPadding: false,
             text: "Ef. Satış",
+            isTitleSmall: true,
             child: Text(item.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
           ),
         ].map((e) => Expanded(child: e)).toList(),

@@ -37,7 +37,7 @@ class _YaziciRehberiViewState extends State<YaziciRehberiView> {
             },
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator.adaptive());
         }
       },
     ).paddingAll(UIHelper.lowSize),

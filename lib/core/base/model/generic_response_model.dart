@@ -3,6 +3,7 @@ import "base_network_mixin.dart";
 final class GenericResponseModel<T extends NetworkManagerMixin> {
   GenericResponseModel({
     this.message,
+    this.messageModel,
     this.messageDetail,
     bool? success,
     this.exceptionName,
@@ -15,7 +16,8 @@ final class GenericResponseModel<T extends NetworkManagerMixin> {
   }) : _success = success;
 
   GenericResponseModel.fromJson(Map<String, dynamic> json, this.model) {
-    message = json["Message"];
+    if (json["Message"] case final Map value?) messageModel = value.map((key, value) => MapEntry(key, value));
+    if (json["Message"] case final String value?) message = value;
     messageDetail = json["MessageDetail"];
     exceptionName = json["ExceptionName"];
     errorDetails = json["ErrorDetails"];
@@ -46,6 +48,7 @@ final class GenericResponseModel<T extends NetworkManagerMixin> {
   String? serviceVersion;
   int? errorCode;
   Map<String, dynamic>? ex;
+  Map<String, dynamic>? messageModel;
 
   bool get isSuccess => _success == true;
 

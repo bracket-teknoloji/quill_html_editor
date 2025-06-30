@@ -4,6 +4,8 @@
 
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_link_edit/model/payker_link_edit_model.dart";
 
 part "payker_odeme_link_listesi_model.freezed.dart";
 part "payker_odeme_link_listesi_model.g.dart";
@@ -24,7 +26,6 @@ final class PaykerOdemeLinkListesiModel with _$PaykerOdemeLinkListesiModel, Netw
     this.taksitlerJson,
     this.kullanimSayisi,
     this.odemeler,
-    this.silindi,
     this.kayittarihi,
     this.kayityapankul,
     this.duzeltmetarihi,
@@ -40,7 +41,7 @@ final class PaykerOdemeLinkListesiModel with _$PaykerOdemeLinkListesiModel, Netw
   @override
   final int? firmaId;
   @override
-  final dynamic bayiId;
+  final int? bayiId;
   @override
   final int? tutar;
   @override
@@ -54,11 +55,9 @@ final class PaykerOdemeLinkListesiModel with _$PaykerOdemeLinkListesiModel, Netw
   @override
   final String? taksitlerJson;
   @override
-  final dynamic kullanimSayisi;
+  final int? kullanimSayisi;
   @override
-  final List<Odemeler>? odemeler;
-  @override
-  final dynamic silindi;
+  final List<PaykerOdemeLinkListesiModel>? odemeler;
   @override
   final DateTime? kayittarihi;
   @override
@@ -73,38 +72,20 @@ final class PaykerOdemeLinkListesiModel with _$PaykerOdemeLinkListesiModel, Netw
 
   @override
   Map<String, dynamic> toJson() => _$PaykerOdemeLinkListesiModelToJson(this);
-}
 
-@freezed
-sealed class Odemeler with _$Odemeler {
-  const factory Odemeler({
-    int? id,
-    int? firmaId,
-    String? kartIsim,
-    String? kartNo,
-    int? tutar,
-    dynamic aciklama,
-    String? odemeTuru,
-    String? ipAdres,
-    int? bankaId,
-    dynamic bayiId,
-    String? durum,
-    dynamic durumKodu,
-    String? durumAciklama,
-    String? odemelinkId,
-    String? responsedata,
-    dynamic requestdata,
-    String? belgeNo,
-    String? siparisNo,
-    dynamic banka,
-    dynamic bayi,
-    dynamic firma,
-    dynamic silindi,
-    DateTime? kayittarihi,
-    String? kayityapankul,
-    DateTime? duzeltmetarihi,
-    String? duzeltmeyapankul,
-  }) = _Odemeler;
+  bool get alindiMi => alindi == true;
 
-  factory Odemeler.fromJson(Map<String, dynamic> json) => _$OdemelerFromJson(json);
+
+  String? get url => "${ApiUrls.basePaykerURLWithoutApi}/payment/${guid ?? ""}";
+
+  PaykerLinkEditModel get editModel => PaykerLinkEditModel(
+    alindi: alindi,
+    guid: guid,
+    bayiId: bayiId,
+    tutar: tutar?.toDouble(),
+    email: email,
+    unvan: unvan,
+    bitTar: bittar,
+    kullanimSayisi: kullanimSayisi,
+  );
 }

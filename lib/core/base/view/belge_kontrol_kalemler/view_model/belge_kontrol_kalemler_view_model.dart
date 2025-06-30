@@ -33,10 +33,10 @@ abstract class _BelgeKontrolKalemlerViewModelBase
     return observableList
         ?.where(
           (element) => [
-            if (element.belgeNo case final value?) value,
-            if (element.cariKodu case final value?) value,
-            if (element.stokKodu case final value?) value,
-            if (element.stokAdi case final value?) value,
+            ?element.belgeNo,
+            ?element.cariKodu,
+            ?element.stokKodu,
+            ?element.stokAdi,
           ].any((element) => element.toLowerCase().contains(searchText!.toLowerCase())),
         )
         .toList()

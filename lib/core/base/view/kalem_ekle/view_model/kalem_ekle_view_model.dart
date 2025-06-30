@@ -166,55 +166,60 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setMFTutari(double? value) => kalemModel = kalemModel.copyWith(malFazlasiMiktar: value);
+  void setFiyatYuzde(double? value) {
+    kalemModel = kalemModel.copyWith.fiyatYuzde(value);
+  }
 
   @action
-  void setKdvOrani(double? value) => kalemModel = kalemModel.copyWith(kdvOrani: value);
+  void setMFTutari(double? value) => kalemModel = kalemModel.copyWith.malFazlasiMiktar(value);
 
   @action
-  void setIskonto1(double? value) => kalemModel = kalemModel.copyWith(iskonto1: value != 0 ? value : null);
+  void setKdvOrani(double? value) => kalemModel = kalemModel.copyWith.kdvOrani(value);
 
   @action
-  void setIskonto2(double? value) => kalemModel = kalemModel.copyWith(iskonto2: value != 0 ? value : null);
+  void setIskonto1(double? value) => kalemModel = kalemModel.copyWith.iskonto1(value != 0 ? value : null);
 
   @action
-  void setIskonto3(double? value) => kalemModel = kalemModel.copyWith(iskonto3: value != 0 ? value : null);
+  void setIskonto2(double? value) => kalemModel = kalemModel.copyWith.iskonto2(value != 0 ? value : null);
 
   @action
-  void setIskonto4(double? value) => kalemModel = kalemModel.copyWith(iskonto4: value != 0 ? value : null);
+  void setIskonto3(double? value) => kalemModel = kalemModel.copyWith.iskonto3(value != 0 ? value : null);
 
   @action
-  void setIskonto5(double? value) => kalemModel = kalemModel.copyWith(iskonto5: value != 0 ? value : null);
+  void setIskonto4(double? value) => kalemModel = kalemModel.copyWith.iskonto4(value != 0 ? value : null);
 
   @action
-  void setIskonto6(double? value) => kalemModel = kalemModel.copyWith(iskonto6: value != 0 ? value : null);
+  void setIskonto5(double? value) => kalemModel = kalemModel.copyWith.iskonto5(value != 0 ? value : null);
 
   @action
-  void setAciklama1(String? value) => kalemModel = kalemModel.copyWith(aciklama1: value);
-  @action
-  void setAciklama2(String? value) => kalemModel = kalemModel.copyWith(aciklama2: value);
-  @action
-  void setAciklama3(String? value) => kalemModel = kalemModel.copyWith(aciklama3: value);
-  @action
-  void setAciklama4(String? value) => kalemModel = kalemModel.copyWith(aciklama4: value);
-  @action
-  void setAciklama5(String? value) => kalemModel = kalemModel.copyWith(aciklama5: value);
-  @action
-  void setAciklama6(String? value) => kalemModel = kalemModel.copyWith(aciklama6: value);
-  @action
-  void setAciklama7(String? value) => kalemModel = kalemModel.copyWith(aciklama7: value);
-  @action
-  void setAciklama8(String? value) => kalemModel = kalemModel.copyWith(aciklama8: value);
-  @action
-  void setAciklama9(String? value) => kalemModel = kalemModel.copyWith(aciklama9: value);
-  @action
-  void setAciklama10(String? value) => kalemModel = kalemModel.copyWith(aciklama10: value);
+  void setIskonto6(double? value) => kalemModel = kalemModel.copyWith.iskonto6(value != 0 ? value : null);
 
   @action
-  void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith(kalemList: list);
+  void setAciklama1(String? value) => kalemModel = kalemModel.copyWith.aciklama1(value);
+  @action
+  void setAciklama2(String? value) => kalemModel = kalemModel.copyWith.aciklama2(value);
+  @action
+  void setAciklama3(String? value) => kalemModel = kalemModel.copyWith.aciklama3(value);
+  @action
+  void setAciklama4(String? value) => kalemModel = kalemModel.copyWith.aciklama4(value);
+  @action
+  void setAciklama5(String? value) => kalemModel = kalemModel.copyWith.aciklama5(value);
+  @action
+  void setAciklama6(String? value) => kalemModel = kalemModel.copyWith.aciklama6(value);
+  @action
+  void setAciklama7(String? value) => kalemModel = kalemModel.copyWith.aciklama7(value);
+  @action
+  void setAciklama8(String? value) => kalemModel = kalemModel.copyWith.aciklama8(value);
+  @action
+  void setAciklama9(String? value) => kalemModel = kalemModel.copyWith.aciklama9(value);
+  @action
+  void setAciklama10(String? value) => kalemModel = kalemModel.copyWith.aciklama10(value);
 
   @action
-  void setIskonto1OranMi(bool? value) => kalemModel = kalemModel.copyWith(iskonto1OranMi: value);
+  void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith.kalemList(list);
+
+  @action
+  void setIskonto1OranMi(bool? value) => kalemModel = kalemModel.copyWith.iskonto1OranMi(value);
 
   @action
   void changeIskonto1OranMi() =>

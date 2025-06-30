@@ -45,18 +45,18 @@ sealed class CustomerInfo with _$CustomerInfo {
   factory CustomerInfo.fromJson(Map<String, dynamic> json) => _$CustomerInfoFromJson(json);
 
   factory CustomerInfo.fromCariListesiModel(CariListesiModel model) => CustomerInfo(
-      // customerId: model.cariKodu,
-      customerId: "120.0004",
-      name: model.cariAdi,
-      emailAddress: model.email,
-      phoneNumber: model.telefon,
-      taxNumber: model.vergiNumarasi,
-      taxOffice: model.vergiDairesi,
-      cityName: model.sehir,
-      townName: model.ilce,
-      postCode: model.postaKodu,
-      addressDesc: model.adres,
-    );
+    // customerId: model.cariKodu,
+    customerId: "120.0004",
+    name: model.cariAdi,
+    emailAddress: model.email,
+    phoneNumber: model.telefon,
+    taxNumber: model.vergiNumarasi,
+    taxOffice: model.vergiDairesi,
+    cityName: model.sehir,
+    townName: model.ilce,
+    postCode: model.postaKodu,
+    addressDesc: model.adres,
+  );
 }
 
 @freezed
@@ -86,19 +86,20 @@ sealed class Payment3D with _$Payment3D {
 
 @freezed
 sealed class SaleInfo with _$SaleInfo {
+  @JsonSerializable(fieldRename: FieldRename.pascal)
   factory SaleInfo({
-    @JsonKey(name: "CardNameSurname") String? cardNameSurname,
-    @JsonKey(name: "CardNumber") String? cardNumber,
-    @JsonKey(name: "CardExpiryDateMonth") int? cardExpiryDateMonth,
-    @JsonKey(name: "CardExpiryDateYear") int? cardExpiryDateYear,
-    @JsonKey(name: "CardCVV") String? cardCvv,
-    @JsonKey(name: "Currency") int? currency,
-    @JsonKey(name: "Amount") int? amount,
-    @JsonKey(name: "Point") String? point,
-    @JsonKey(name: "Installment") int? installment,
-    @JsonKey(name: "CampaignCode") String? campaignCode,
-    @JsonKey(name: "BankCode") String? bankCode,
-    @JsonKey(name: "Description") String? description,
+    String? cardNameSurname,
+    String? cardNumber,
+    int? cardExpiryDateMonth,
+    int? cardExpiryDateYear,
+    String? cardCvv,
+    int? currency,
+    int? amount,
+    String? point,
+    int? installment,
+    String? campaignCode,
+    String? bankCode,
+    String? description,
   }) = _SaleInfo;
 
   SaleInfo._();
@@ -123,6 +124,7 @@ sealed class SaleInfo with _$SaleInfo {
 
 @freezed
 sealed class ERPInfo with _$ERPInfo {
+  @JsonSerializable(fieldRename: FieldRename.pascal)
   const factory ERPInfo({
     /// Ödemenin yapıldığı ERP sisteminin şirket kodu
     String? companyCode,

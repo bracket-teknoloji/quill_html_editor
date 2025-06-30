@@ -2865,6 +2865,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel fireListe(List<KalemFireModel>? fireListe);
 
+  KalemModel fiyatYuzde(double? fiyatYuzde);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -3026,6 +3028,7 @@ abstract class _$KalemModelCWProxy {
     int? detayId,
     String? kayityapankul,
     List<KalemFireModel>? fireListe,
+    double? fiyatYuzde,
   });
 }
 
@@ -3557,6 +3560,9 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(fireListe: fireListe);
 
   @override
+  KalemModel fiyatYuzde(double? fiyatYuzde) => this(fiyatYuzde: fiyatYuzde);
+
+  @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -3718,6 +3724,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? detayId = const $CopyWithPlaceholder(),
     Object? kayityapankul = const $CopyWithPlaceholder(),
     Object? fireListe = const $CopyWithPlaceholder(),
+    Object? fiyatYuzde = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -4339,6 +4346,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.fireListe
           // ignore: cast_nullable_to_non_nullable
           : fireListe as List<KalemFireModel>?,
+      fiyatYuzde: fiyatYuzde == const $CopyWithPlaceholder()
+          ? _value.fiyatYuzde
+          // ignore: cast_nullable_to_non_nullable
+          : fiyatYuzde as double?,
     );
   }
 }
@@ -5236,13 +5247,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       tamamlananMiktar: (fields[150] as num?)?.toDouble(),
       detayId: (fields[151] as num?)?.toInt(),
       kayityapankul: fields[152] as String?,
+      fiyatYuzde: (fields[153] as num?)?.toDouble(),
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(153)
+      ..writeByte(154)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5548,7 +5560,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(151)
       ..write(obj.detayId)
       ..writeByte(152)
-      ..write(obj.kayityapankul);
+      ..write(obj.kayityapankul)
+      ..writeByte(153)
+      ..write(obj.fiyatYuzde);
   }
 
   @override
@@ -6238,6 +6252,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
   fireListe: (json['FIRE_LISTE'] as List<dynamic>?)
       ?.map((e) => KalemFireModel.fromJson(e as Map<String, dynamic>))
       .toList(),
+  fiyatYuzde: (json['FIYAT_YUZDE'] as num?)?.toDouble(),
 );
 
 Map<String, dynamic> _$KalemModelToJson(
@@ -6414,6 +6429,7 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.tamamlananMiktar case final value?) 'TAMAMLANAN_MIKTAR': value,
   if (instance.detayId case final value?) 'DETAY_ID': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+  if (instance.fiyatYuzde case final value?) 'FIYAT_YUZDE': value,
   if (instance.fireListe?.map((e) => e.toJson()).toList() case final value?)
     'FIRE_LISTE': value,
 };

@@ -558,7 +558,7 @@ final class DialogManager {
       ),
       actions: [
         if (desc != null)
-          IconButton(icon: const Icon(Icons.chevron_right_outlined), onPressed: () => showInfoDialog(desc))
+          IconButton(icon: const Icon(Icons.arrow_circle_right_outlined), onPressed: () => showInfoDialog(desc))
         else
           const SizedBox.shrink(),
       ],

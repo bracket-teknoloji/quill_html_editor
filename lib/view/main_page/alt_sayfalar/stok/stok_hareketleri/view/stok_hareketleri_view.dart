@@ -517,7 +517,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
           ),
           if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("BN")) Text(model.fisno ?? ""),
           Icon(
-            model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp,
+            model.cikisIslemi ?? false ? Icons.arrow_circle_left_outlined : Icons.arrow_circle_right_outlined,
             color: model.cikisIslemi ?? false ? ColorPalette.persianRed : ColorPalette.mantis,
           ),
         ],

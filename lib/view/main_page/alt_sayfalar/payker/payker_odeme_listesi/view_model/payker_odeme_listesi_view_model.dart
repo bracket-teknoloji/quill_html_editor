@@ -2,6 +2,7 @@ import "dart:convert";
 import "dart:developer";
 
 import "package:flutter/widgets.dart";
+import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
@@ -11,6 +12,7 @@ import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/payker/payker_firma_bayi_listesi/model/payker_drop_down_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/module_info_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/payker_filter_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/payker_odeme_listesi_model.dart";
@@ -33,6 +35,7 @@ abstract class _PaykerOdemeListesiViewModelBase
     isSearchBarOpen = !isSearchBarOpen;
     if (!isSearchBarOpen) {
       setSearchText(null);
+      resetList();
     }
   }
 
@@ -68,8 +71,26 @@ abstract class _PaykerOdemeListesiViewModelBase
         }
         return e;
       }).toList(),
+      start: 0,
     );
   }
+
+  @observable
+  MapEntry<String, String>? selectedSort;
+
+  @action
+  void setSelectedSort(MapEntry<String, String>? value) {
+    selectedSort = value;
+  }
+
+  final Map<String, String> sortValues = {
+    "İsim (Artan)": "KART_ISIM ASC",
+    "İsim (Azalan)": "KART_ISIM DESC",
+    "Kart No (Artan)": "KART_NO ASC",
+    "Kart No (Azalan)": "KART_NO DESC",
+    "Tutar (Artan)": "TUTAR ASC",
+    "Tutar (Azalan)": "TUTAR DESC",
+  };
 
   @action
   void setBasTar(DateTime? basTar) {
@@ -77,6 +98,18 @@ abstract class _PaykerOdemeListesiViewModelBase
       filterModels: filterModel.filterModels?.map((e) {
         if (e.name == "BasTar") {
           return e.copyWith(value: basTar?.toIso8601String());
+        }
+        return e;
+      }).toList(),
+    );
+  }
+
+  @action
+  void setFirma(PaykerFirmaModel? model) {
+    filterModel = filterModel.copyWith(
+      filterModels: filterModel.filterModels?.map((e) {
+        if (e.name == "FirmaId") {
+          return e.copyWith(value: model?.id.toString());
         }
         return e;
       }).toList(),
@@ -158,7 +191,13 @@ abstract class _PaykerOdemeListesiViewModelBase
 
   @override
   @action
-  void setSearchText(String? value) => searchText = value;
+  void setSearchText(String? value) {
+    searchText = value;
+    filterModel = filterModel.copyWith(
+      search: Search(value: value),
+      start: 0,
+    );
+  }
 
   @computed
   ObservableList<PaykerOdemeListesiModel>? get filteredList => observableList
@@ -178,22 +217,31 @@ abstract class _PaykerOdemeListesiViewModelBase
   Future<void> getData() async {
     log(jsonEncode(filterModel.toJson()));
     if (filterModel.length == null) {
-      filterModel = filterModel.copyWith(length: parametreModel.sabitSayfalamaOgeSayisi);
+      filterModel = filterModel.copyWith(
+        length: parametreModel.sabitSayfalamaOgeSayisi,
+      );
     }
+    log("Filter Model:\n${jsonEncode(filterModel.toJson())}");
     final result = await networkManager.dioPost(
       path: ApiUrls.getPayments,
       bodyModel: PaykerOdemeListesiModel(),
-      data: filterModel.toJson(),
+      // data: filterModel.toJson(),
+      data: {
+        "DURUM": filterModel.filterModels?.firstWhereOrNull((e) => e.name == "Durum")?.value,
+        "bastar": filterModel.filterModels?.firstWhereOrNull((e) => e.name == "BasTar")?.value,
+        "bittar": filterModel.filterModels?.firstWhereOrNull((e) => e.name == "BitTar")?.value,
+        if (selectedSort != null) "ORDER": selectedSort!.value,
+      },
     );
     if (result.isSuccess) {
-      if (page > 1) {
+      if (observableList != null) {
         addObservableList(result.dataList);
       } else {
         setObservableList(result.dataList);
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);
-        increasePage();
+        // increasePage();
         filterModel = filterModel.copyWith(start: observableList?.length ?? 0);
       } else {
         setDahaVarMi(false);

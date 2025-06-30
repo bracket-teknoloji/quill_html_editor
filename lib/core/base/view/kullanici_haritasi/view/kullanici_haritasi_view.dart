@@ -85,7 +85,7 @@ class _KullaniciHaritasiViewState extends BaseState<KullaniciHaritasiView> {
     body: Observer(
       builder: (_) {
         if (viewModel.markerSet.length != viewModel.kullaniciHaritasiList?.length && viewModel.markerSet.isEmpty) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator.adaptive());
         }
         return GoogleMap(
           initialCameraPosition: const CameraPosition(target: LatLng(1, 1)),

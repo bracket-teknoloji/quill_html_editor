@@ -149,9 +149,7 @@ as String?,
 /// @nodoc
 mixin _$Banka {
 
- int? get id; String? get adi; String? get odemeLink; String? get logoUrl;// List<Sanalpos>? sanalpos,
-// List<dynamic>? bankaTaksitler,
- String? get silindi; DateTime? get kayittarihi; String? get kayityapankul; DateTime? get duzeltmetarihi; String? get duzeltmeyapankul;
+ int? get id; String? get adi; String? get odemeLink; String? get logoUrl; String? get silindi; DateTime? get kayittarihi; String? get kayityapankul; DateTime? get duzeltmetarihi; String? get duzeltmeyapankul;
 /// Create a copy of Banka
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -226,8 +224,6 @@ class _Banka implements Banka {
 @override final  String? adi;
 @override final  String? odemeLink;
 @override final  String? logoUrl;
-// List<Sanalpos>? sanalpos,
-// List<dynamic>? bankaTaksitler,
 @override final  String? silindi;
 @override final  DateTime? kayittarihi;
 @override final  String? kayityapankul;
