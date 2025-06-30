@@ -7,7 +7,6 @@ import "package:uuid/uuid.dart";
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
-import "../../../../../../core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -140,8 +139,8 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
         CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {
           final result = await Get.toNamed(
-            "mainPage/cariRehberi",
-            arguments: CariListesiRequestModel(belgeTuru: model.editTipiEnum?.rawValue),
+            "mainPage/cariListesiOzel",
+            arguments: CariRequestModel(belgeTuru: model.editTipiEnum?.rawValue),
           );
           if ((result as CariListesiModel?)?.muhtelifMi ?? false) {
             BaseSiparisEditModel.instance.muhtelifCariModel = result;
@@ -150,7 +149,7 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
             cariModel = await networkManager.getCariModel(
               CariRequestModel.fromCariListesiModel(result)
                 ..secildi = "E"
-                ..teslimCari = "E"
+                // ..teslimCari = "E"
                 ..kisitYok = true
                 ..eFaturaGoster = true,
             );
@@ -161,7 +160,7 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
           cariModel = await networkManager.getCariModel(
             CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)
               ..secildi = "E"
-              ..teslimCari = "E"
+              // ..teslimCari = "E"
               ..kisitYok = true
               ..eFaturaGoster = true,
           );

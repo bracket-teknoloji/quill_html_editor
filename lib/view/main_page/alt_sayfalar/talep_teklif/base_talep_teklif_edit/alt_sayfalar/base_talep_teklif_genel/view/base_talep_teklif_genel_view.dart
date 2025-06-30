@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -200,15 +201,14 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
               ),
               onTap: () async {
                 final cariModel = await Get.toNamed(
-                  "mainPage/cariRehberi",
-                  arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
+                  "mainPage/cariListesiOzel",
+                  arguments: CariRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
                 );
                 if (cariModel == null) return;
                 final result = await networkManager.getCariModel(
                   CariRequestModel.fromCariListesiModel(cariModel)
                     ..secildi = "E"
                     ..kisitYok = true
-                    ..teslimCari = "E"
                     ..eFaturaGoster = true,
                 );
                 if (result is CariListesiModel) {
@@ -232,6 +232,83 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 }
               },
             ),
+            if (yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum) &&
+                !(model.getEditTipiEnum?.gizlenecekAlanlar("teslim_cari") ?? false) &&
+                widget.model.baseEditEnum != BaseEditEnum.taslak)
+              CustomTextField(
+                enabled: enable && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum),
+                labelText: "Teslim Cari",
+                readOnly: true,
+                suffixMore: true,
+                controller: _teslimCariController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
+                suffix: yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
+                    ? null
+                    : IconButton(
+                        onPressed: () async {
+                          if (model.cariKodu == null) {
+                            dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                            return;
+                          }
+                          final result = await Get.toNamed(
+                            "mainPage/cariRehberi",
+                            arguments: CariListesiRequestModel(
+                              bagliCariKodu: model.cariKodu,
+                              teslimCari: "E",
+                              belgeTuru: widget.model.editTipiEnum?.rawValue,
+                            ),
+                          );
+                          if (result != null && result is CariListesiModel) {
+                            model
+                              ..teslimCari = result.cariKodu
+                              ..teslimCariAdi = result.cariAdi;
+                            _teslimCariController.text = result.cariAdi ?? "";
+                          }
+                        },
+                        icon: const Icon(Icons.hub_outlined),
+                      ),
+                onClear: () {
+                  model
+                    ..teslimCari = null
+                    ..teslimCariAdi = null;
+                  _teslimCariController.clear();
+                },
+                onTap: !yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)
+                    ? null
+                    : () async {
+                        if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
+                          final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                          if (result != null && result is CariListesiModel) {
+                            model
+                              ..teslimCari = result.cariKodu
+                              ..teslimCariAdi = result.cariAdi
+                              ..plasiyerAciklama = result.plasiyerAciklama
+                              ..plasiyerKodu = result.plasiyerKodu;
+                            _teslimCariController.text = result.cariAdi ?? "";
+                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                          }
+                        } else {
+                          if (_cariController.text.isEmpty) {
+                            dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                            return;
+                          }
+                          final result = await Get.toNamed(
+                            "mainPage/cariRehberi",
+                            arguments: CariListesiRequestModel(
+                              bagliCariKodu: model.cariKodu,
+                              teslimCari: "E",
+                              belgeTuru: widget.model.editTipiEnum?.rawValue,
+                            ),
+                          );
+                          if (result != null && result is CariListesiModel) {
+                            model
+                              ..teslimCari = result.cariKodu
+                              ..teslimCariAdi = result.cariAdi;
+                            _teslimCariController.text = result.cariAdi ?? "";
+                          }
+                        }
+                      },
+              ),
             Row(
               children: <Widget>[
                 if (yetkiController.projeUygulamasiAcikMi &&
