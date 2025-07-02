@@ -1,4 +1,3 @@
-import "package:flutter/foundation.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_odeme_listesi/model/module_info_model.dart";
 
@@ -38,14 +37,16 @@ abstract final class ApiUrls {
   static const String getUyeBilgileri = "$_baseStoreWSUrl/Picker/GetUyeBilgileri";
 
   //* Payker
-  static String basePaykerURL = kDebugMode
-      ? "https://pay.payker.com.tr/api"
-      : (DIManager.isRegistered<ModuleInfoModel>() ? DIManager.read<ModuleInfoModel>() : null)
-                ?.paykerModule
-                ?.webServisAdresi ??
-            "";
+  static final String _basePaykerURL =
+      (DIManager.isRegistered<ModuleInfoModel>() ? DIManager.read<ModuleInfoModel>() : null)
+          ?.paykerModule
+          ?.webServisAdresi ??
+      "";
 
   static String basePaykerURLWithoutApi = (basePaykerURL.split("/")..removeLast()).join("/");
+  static String basePaykerURL = !_basePaykerURL.endsWith("/")
+      ? _basePaykerURL
+      : _basePaykerURL.substring(0, _basePaykerURL.length - 1);
   static String createPayment = "$basePaykerURL/Payments/CreatePayment";
   static String getBankInstallments = "$basePaykerURL/payments/getbankinstallments";
   static String paymentCallback = "$basePaykerURLWithoutApi/callback";
