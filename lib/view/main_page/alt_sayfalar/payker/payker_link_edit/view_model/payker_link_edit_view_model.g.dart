@@ -27,6 +27,52 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
     });
   }
 
+  late final _$taksitResponseModelAtom = Atom(
+    name: '_PaykerLinkEditViewModelBase.taksitResponseModel',
+    context: context,
+  );
+
+  @override
+  ObservableList<TaksitResponseModel>? get taksitResponseModel {
+    _$taksitResponseModelAtom.reportRead();
+    return super.taksitResponseModel;
+  }
+
+  @override
+  set taksitResponseModel(ObservableList<TaksitResponseModel>? value) {
+    _$taksitResponseModelAtom.reportWrite(value, super.taksitResponseModel, () {
+      super.taksitResponseModel = value;
+    });
+  }
+
+  late final _$selectedTaksitlerAtom = Atom(
+    name: '_PaykerLinkEditViewModelBase.selectedTaksitler',
+    context: context,
+  );
+
+  @override
+  ObservableList<Taksitler> get selectedTaksitler {
+    _$selectedTaksitlerAtom.reportRead();
+    return super.selectedTaksitler;
+  }
+
+  @override
+  set selectedTaksitler(ObservableList<Taksitler> value) {
+    _$selectedTaksitlerAtom.reportWrite(value, super.selectedTaksitler, () {
+      super.selectedTaksitler = value;
+    });
+  }
+
+  late final _$getInstallmentsAsyncAction = AsyncAction(
+    '_PaykerLinkEditViewModelBase.getInstallments',
+    context: context,
+  );
+
+  @override
+  Future<void> getInstallments() {
+    return _$getInstallmentsAsyncAction.run(() => super.getInstallments());
+  }
+
   late final _$saveLinkAsyncAction = AsyncAction(
     '_PaykerLinkEditViewModelBase.saveLink',
     context: context,
@@ -51,6 +97,28 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
     name: '_PaykerLinkEditViewModelBase',
     context: context,
   );
+
+  @override
+  void setSelectedTaksitler(Taksitler taksit, bool isSelected) {
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
+        .startAction(name: '_PaykerLinkEditViewModelBase.setSelectedTaksitler');
+    try {
+      return super.setSelectedTaksitler(taksit, isSelected);
+    } finally {
+      _$_PaykerLinkEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTaksitler(List<TaksitResponseModel>? taksitler) {
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
+        .startAction(name: '_PaykerLinkEditViewModelBase.setTaksitler');
+    try {
+      return super.setTaksitler(taksitler);
+    } finally {
+      _$_PaykerLinkEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setBayi(PaykerFirmaModel model) {
@@ -132,7 +200,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
   @override
   String toString() {
     return '''
-paykerLinkEditModel: ${paykerLinkEditModel}
+paykerLinkEditModel: ${paykerLinkEditModel},
+taksitResponseModel: ${taksitResponseModel},
+selectedTaksitler: ${selectedTaksitler}
     ''';
   }
 }

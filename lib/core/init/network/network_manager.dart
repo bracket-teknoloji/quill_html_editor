@@ -227,7 +227,7 @@ final class NetworkManager {
         options: Options(headers: head, contentType: Headers.jsonContentType),
         data: data,
       );
-      log("Response: ${response.data}");
+      log("Response: ${jsonEncode(response.data)}");
       responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
     } catch (e) {
       String errorText = e.toString();

@@ -49,7 +49,6 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
     this.transactionId,
     this.tutar,
     this.aciklama,
-    this.odemeTuru,
     this.ipAdres,
     this.bankaId,
     this.bayiId,
@@ -110,9 +109,6 @@ final class PaykerOdemeListesiModel with _$PaykerOdemeListesiModel, NetworkManag
   @override
   @JsonKey(name: "ACIKLAMA")
   String? aciklama;
-  @override
-  @JsonKey(name: "ODEME_TURU")
-  String? odemeTuru;
   @override
   @JsonKey(name: "TAKSIT_SAYISI")
   int? taksitSayisi;

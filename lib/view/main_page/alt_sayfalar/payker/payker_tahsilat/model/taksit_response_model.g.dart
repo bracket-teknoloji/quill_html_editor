@@ -28,7 +28,6 @@ Map<String, dynamic> _$TaksitResponseModelToJson(
 
 Taksitler _$TaksitlerFromJson(Map<String, dynamic> json) => Taksitler(
   id: (json['ID'] as num?)?.toInt(),
-  firmaId: (json['FIRMA_ID'] as num?)?.toInt(),
   bankaId: (json['BANKA_ID'] as num?)?.toInt(),
   odemeMetni: json['ODEME_METNI'] as String?,
   taksit: (json['TAKSIT'] as num?)?.toInt(),
@@ -39,20 +38,10 @@ Taksitler _$TaksitlerFromJson(Map<String, dynamic> json) => Taksitler(
   banka: json['BANKA'] == null
       ? null
       : Banka.fromJson(json['BANKA'] as Map<String, dynamic>),
-  silindi: json['SILINDI'] as String?,
-  kayittarihi: json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String),
-  kayityapankul: json['KAYITYAPANKUL'] as String?,
-  duzeltmetarihi: json['DUZELTMETARIHI'] == null
-      ? null
-      : DateTime.parse(json['DUZELTMETARIHI'] as String),
-  duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
 );
 
 Map<String, dynamic> _$TaksitlerToJson(Taksitler instance) => <String, dynamic>{
   if (instance.id case final value?) 'ID': value,
-  if (instance.firmaId case final value?) 'FIRMA_ID': value,
   if (instance.bankaId case final value?) 'BANKA_ID': value,
   if (instance.odemeMetni case final value?) 'ODEME_METNI': value,
   if (instance.taksit case final value?) 'TAKSIT': value,
@@ -61,13 +50,6 @@ Map<String, dynamic> _$TaksitlerToJson(Taksitler instance) => <String, dynamic>{
   if (instance.vadeFarki case final value?) 'VADE_FARKI': value,
   if (instance.sira case final value?) 'SIRA': value,
   if (instance.banka?.toJson() case final value?) 'BANKA': value,
-  if (instance.silindi case final value?) 'SILINDI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
-  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
-  if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
 };
 
 _Banka _$BankaFromJson(Map<String, dynamic> json) => _Banka(

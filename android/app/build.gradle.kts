@@ -65,7 +65,7 @@ android {
         applicationId = "com.bracket23.picker"
         minSdk = 24
         targetSdk = flutter.targetSdkVersion
-        versionCode = 459
+        versionCode = 461
         versionName = flutterVersionName
     }
     lint {

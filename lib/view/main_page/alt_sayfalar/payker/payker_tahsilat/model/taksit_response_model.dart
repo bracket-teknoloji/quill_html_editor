@@ -18,7 +18,6 @@ class TaksitResponseModel with _$TaksitResponseModel, NetworkManagerMixin {
     this.taksitler,
   });
 
-  // factory TaksitResponseModel.fromJson(Map<String, dynamic> json) => _$TaksitResponseModelFromJson(json);
   @override
   final int? bankaId;
   @override
@@ -40,7 +39,6 @@ class TaksitResponseModel with _$TaksitResponseModel, NetworkManagerMixin {
 final class Taksitler with _$Taksitler, NetworkManagerMixin {
   const Taksitler({
     this.id,
-    this.firmaId,
     this.bankaId,
     this.odemeMetni,
     this.taksit,
@@ -49,18 +47,11 @@ final class Taksitler with _$Taksitler, NetworkManagerMixin {
     this.vadeFarki,
     this.sira,
     this.banka,
-    this.silindi,
-    this.kayittarihi,
-    this.kayityapankul,
-    this.duzeltmetarihi,
-    this.duzeltmeyapankul,
   });
   factory Taksitler.fromJson(Map<String, dynamic> json) => _$TaksitlerFromJson(json);
 
   @override
   final int? id;
-  @override
-  final int? firmaId;
   @override
   final int? bankaId;
   @override
@@ -77,16 +68,6 @@ final class Taksitler with _$Taksitler, NetworkManagerMixin {
   final int? sira;
   @override
   final Banka? banka;
-  @override
-  final String? silindi;
-  @override
-  final DateTime? kayittarihi;
-  @override
-  final String? kayityapankul;
-  @override
-  final DateTime? duzeltmetarihi;
-  @override
-  final String? duzeltmeyapankul;
 
   double? vadeFarkliTaksitTutari(double? tutar) {
     if (tutar == null || vadeFarki == null) return null;

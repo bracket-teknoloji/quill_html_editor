@@ -1,4 +1,6 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -9,7 +11,7 @@ part "base_talep_teklif_genel_view_model.g.dart";
 
 final class BaseTalepTeklifGenelViewModel = _BaseTalepTeklifGenelViewModelBase with _$BaseTalepTeklifGenelViewModel;
 
-abstract class _BaseTalepTeklifGenelViewModelBase with Store {
+abstract class _BaseTalepTeklifGenelViewModelBase with Store, MobxNetworkMixin {
   final Map<String, int> belgeTipi = <String, int>{"Kapalı": 1, "Açık": 2, "İade": 3, "Zayi İade": 4, "İhracat": 5};
 
   @observable
@@ -46,6 +48,34 @@ abstract class _BaseTalepTeklifGenelViewModelBase with Store {
   void setDepoKodu(DepoList? value) {
     model = model.copyWith(topluDepo: value?.depoKodu, depoTanimi: value?.depoTanimi);
     BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setKosulKodu(String? value) {
+    model = model.copyWith(kosulKodu: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setOzelKod1(String? value) {
+    model = model.copyWith(ozelKod1: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  Future<bool> fiyatGuncelle() async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveFatura,
+      bodyModel: BaseSiparisEditModel(),
+      showLoading: true,
+      data: BaseSiparisEditModel.forOzelKod1FiyatGuncelleme(model),
+    );
+    if (result.isSuccess) {
+      model.kalemList = result.dataList.firstOrNull?.kalemList;
+      BaseSiparisEditModel.setInstance(model);
+      return true;
+    }
+    return false;
   }
 
   @action

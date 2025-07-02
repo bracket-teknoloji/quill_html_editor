@@ -173,7 +173,7 @@ class _PaykerOdemeLinkListesiViewState extends BaseState<PaykerOdemeLinkListesiV
             );
           },
           title: Text(
-            "${item.id.toStringIfNotNull ?? "(ID bulunamadı)"} - ${item.unvan ?? "(Unvan bulunamadı)"}",
+            item.unvan ?? "(Unvan bulunamadı)",
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           subtitle: Column(
@@ -209,7 +209,11 @@ class _PaykerOdemeLinkListesiViewState extends BaseState<PaykerOdemeLinkListesiV
               ],
             ],
           ),
-          trailing: Icon(Icons.adaptive.more_outlined),
+          leading: CircleAvatar(
+            child: Text(
+              item.id.toStringIfNotNull ?? "",
+            ),
+          ),
         ),
       ),
     ),

@@ -39,7 +39,9 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
   @observable
   PaymentModel paymentModel = PaymentModel(
     customerIpAddress: AccountModel.instance.localIp,
-    customerInfo: const CustomerInfo(),
+    customerInfo: const CustomerInfo(
+      customerId: "120.0004",
+    ),
     saleInfo: SaleInfo(
       currency: 949, // TRY sabit,
     ),

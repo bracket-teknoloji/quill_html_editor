@@ -77,7 +77,7 @@ sealed class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMix
     aciklama: model.aciklama,
     cariKodu: model.firmaKodu,
     tutar: model.tutar,
-    taksitSayisi: int.tryParse(model.odemeTuru ?? "0"),
+    taksitSayisi: model.taksitSayisi,
   );
 
   void fromPaykerOdemeListesiModel(TahsilatRequestModel model) {

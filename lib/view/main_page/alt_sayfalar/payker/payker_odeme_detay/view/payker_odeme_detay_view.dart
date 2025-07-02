@@ -94,7 +94,7 @@ class _PaykerOdemeDetayViewState extends BaseState<PaykerOdemeDetayView> {
                   CustomTextField(
                     labelText: "Taksit Sayısı",
                     readOnly: true,
-                    controllerText: widget.model.odemeTuru ?? "",
+                    controllerText: widget.model.taksitSayisi.toStringIfNotNull ?? "",
                   ),
                 ],
               ),
@@ -113,7 +113,7 @@ class _PaykerOdemeDetayViewState extends BaseState<PaykerOdemeDetayView> {
                   padding: UIHelper.lowPadding,
                   child: ElevatedButton.icon(
                     onPressed: () async {
-                      final id = widget.model.siparisNo;
+                      final id = widget.model.belgeNo;
                       await Get.to(
                         () => GenelPdfView(
                           model: BasePdfModel(

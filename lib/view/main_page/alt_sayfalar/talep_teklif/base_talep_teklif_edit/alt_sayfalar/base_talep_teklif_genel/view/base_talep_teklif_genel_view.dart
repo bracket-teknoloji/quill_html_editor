@@ -2,7 +2,9 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -55,7 +57,9 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
   late final TextEditingController _belgeTipiController;
   late final TextEditingController _tarihController;
   late final TextEditingController _topluDepoController;
+  late final TextEditingController _ozelKod1Controller;
   late final TextEditingController _ozelKod2Controller;
+  late final TextEditingController _kosulController;
   late final TextEditingController _aciklama1Controller;
   late final TextEditingController _aciklama2Controller;
   late final TextEditingController _aciklama3Controller;
@@ -87,6 +91,14 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
     _belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
+    _ozelKod1Controller = TextEditingController(
+      text: parametreModel.listOzelKodTum
+              ?.firstWhereOrNull(
+                (element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1,
+              )
+              ?.aciklama ??
+          model.ozelKod1,
+    );
     _ozelKod2Controller = TextEditingController(
       text:
           parametreModel.listOzelKodTum
@@ -96,6 +108,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
               ?.aciklama ??
           model.ozelKod2,
     );
+    _kosulController = TextEditingController(text: model.kosulKodu ?? "");
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
     _aciklama3Controller = TextEditingController(text: model.acik3);
@@ -133,7 +146,9 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
     _belgeTipiController.dispose();
     _tarihController.dispose();
     _topluDepoController.dispose();
+    _ozelKod1Controller.dispose();
     _ozelKod2Controller.dispose();
+    _kosulController.dispose();
     _aciklama1Controller.dispose();
     _aciklama2Controller.dispose();
     _aciklama3Controller.dispose();
@@ -432,6 +447,89 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       },
                     ),
                   ),
+              ],
+            ), if (yetkiController.kosulAktif(model.getEditTipiEnum))
+              CustomTextField(
+                enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kosul") ?? false),
+                labelText: "Koşul",
+                readOnly: true,
+                suffixMore: true,
+                controller: _kosulController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(
+                    context,
+                    viewModel.model.kosulKodu,
+                    null,
+                  );
+                  if (result != null) {
+                    viewModel.setKosulKodu(result.kosulKodu);
+                    _kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
+                  }
+                },
+              ),
+              Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                    widget.model.baseEditEnum != BaseEditEnum.taslak)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Özel Kod 1",
+                      readOnly: true,
+                      suffixMore: true,
+                      isMust: true,
+                      controller: _ozelKod1Controller,
+                      enabled: enable,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
+                          context,
+                          viewModel.model.ozelKod1,
+                          model.getEditTipiEnum,
+                        );
+                        if (result != null) {
+                          _ozelKod1Controller.text = result.aciklama ?? "";
+                          viewModel.setOzelKod1(result.kod);
+                          if (model.kalemList.ext.isNotNullOrEmpty) {
+                            await dialogManager.showAreYouSureDialog(
+                              onYes: () async {
+                                final isSuccess = await viewModel.fiyatGuncelle();
+                                if (isSuccess) {
+                                  dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
+                                }
+                              },
+                              title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?",
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+
+                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                    widget.model.baseEditEnum != BaseEditEnum.taslak)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Özel Kod 2",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: _ozelKod2Controller,
+                      enabled: enable,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                      onClear: () => viewModel.setOzelKod2(null),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(
+                          context,
+                          viewModel.model.ozelKod2,
+                        );
+                        if (result != null) {
+                          _ozelKod2Controller.text = result.aciklama ?? "";
+                          viewModel.setOzelKod2(result.kod);
+                        }
+                      },
+                    ),
+                  ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
               ],
             ),
             if (!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false))

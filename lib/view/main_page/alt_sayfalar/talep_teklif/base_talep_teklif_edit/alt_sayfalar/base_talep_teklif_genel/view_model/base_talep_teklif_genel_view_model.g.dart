@@ -46,6 +46,16 @@ mixin _$BaseTalepTeklifGenelViewModel
     });
   }
 
+  late final _$fiyatGuncelleAsyncAction = AsyncAction(
+    '_BaseTalepTeklifGenelViewModelBase.fiyatGuncelle',
+    context: context,
+  );
+
+  @override
+  Future<bool> fiyatGuncelle() {
+    return _$fiyatGuncelleAsyncAction.run(() => super.fiyatGuncelle());
+  }
+
   late final _$_BaseTalepTeklifGenelViewModelBaseActionController =
       ActionController(
         name: '_BaseTalepTeklifGenelViewModelBase',
@@ -114,6 +124,32 @@ mixin _$BaseTalepTeklifGenelViewModel
         .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setDepoKodu');
     try {
       return super.setDepoKodu(value);
+    } finally {
+      _$_BaseTalepTeklifGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setKosulKodu(String? value) {
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setKosulKodu');
+    try {
+      return super.setKosulKodu(value);
+    } finally {
+      _$_BaseTalepTeklifGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setOzelKod1(String? value) {
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setOzelKod1');
+    try {
+      return super.setOzelKod1(value);
     } finally {
       _$_BaseTalepTeklifGenelViewModelBaseActionController.endAction(
         _$actionInfo,

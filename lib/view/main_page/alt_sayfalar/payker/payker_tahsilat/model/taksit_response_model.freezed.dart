@@ -15,7 +15,6 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TaksitResponseModel {
 
-// factory TaksitResponseModel.fromJson(Map<String, dynamic> json) => _$TaksitResponseModelFromJson(json);
  int? get bankaId; String? get bankaAdi; int? get tutar; List<Taksitler>? get taksitler;
 /// Create a copy of TaksitResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -77,7 +76,7 @@ as List<Taksitler>?,
 /// @nodoc
 mixin _$Taksitler {
 
- int? get id; int? get firmaId; int? get bankaId; String? get odemeMetni; int? get taksit; int? get ekstraTaksit; int? get altLimit; int? get vadeFarki; int? get sira; Banka? get banka; String? get silindi; DateTime? get kayittarihi; String? get kayityapankul; DateTime? get duzeltmetarihi; String? get duzeltmeyapankul;
+ int? get id; int? get bankaId; String? get odemeMetni; int? get taksit; int? get ekstraTaksit; int? get altLimit; int? get vadeFarki; int? get sira; Banka? get banka;
 /// Create a copy of Taksitler
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -88,12 +87,12 @@ $TaksitlerCopyWith<Taksitler> get copyWith => _$TaksitlerCopyWithImpl<Taksitler>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Taksitler&&super == other&&(identical(other.id, id) || other.id == id)&&(identical(other.firmaId, firmaId) || other.firmaId == firmaId)&&(identical(other.bankaId, bankaId) || other.bankaId == bankaId)&&(identical(other.odemeMetni, odemeMetni) || other.odemeMetni == odemeMetni)&&(identical(other.taksit, taksit) || other.taksit == taksit)&&(identical(other.ekstraTaksit, ekstraTaksit) || other.ekstraTaksit == ekstraTaksit)&&(identical(other.altLimit, altLimit) || other.altLimit == altLimit)&&(identical(other.vadeFarki, vadeFarki) || other.vadeFarki == vadeFarki)&&(identical(other.sira, sira) || other.sira == sira)&&(identical(other.banka, banka) || other.banka == banka)&&(identical(other.silindi, silindi) || other.silindi == silindi)&&(identical(other.kayittarihi, kayittarihi) || other.kayittarihi == kayittarihi)&&(identical(other.kayityapankul, kayityapankul) || other.kayityapankul == kayityapankul)&&(identical(other.duzeltmetarihi, duzeltmetarihi) || other.duzeltmetarihi == duzeltmetarihi)&&(identical(other.duzeltmeyapankul, duzeltmeyapankul) || other.duzeltmeyapankul == duzeltmeyapankul));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Taksitler&&super == other&&(identical(other.id, id) || other.id == id)&&(identical(other.bankaId, bankaId) || other.bankaId == bankaId)&&(identical(other.odemeMetni, odemeMetni) || other.odemeMetni == odemeMetni)&&(identical(other.taksit, taksit) || other.taksit == taksit)&&(identical(other.ekstraTaksit, ekstraTaksit) || other.ekstraTaksit == ekstraTaksit)&&(identical(other.altLimit, altLimit) || other.altLimit == altLimit)&&(identical(other.vadeFarki, vadeFarki) || other.vadeFarki == vadeFarki)&&(identical(other.sira, sira) || other.sira == sira)&&(identical(other.banka, banka) || other.banka == banka));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,firmaId,bankaId,odemeMetni,taksit,ekstraTaksit,altLimit,vadeFarki,sira,banka,silindi,kayittarihi,kayityapankul,duzeltmetarihi,duzeltmeyapankul);
+int get hashCode => Object.hash(runtimeType,id,bankaId,odemeMetni,taksit,ekstraTaksit,altLimit,vadeFarki,sira,banka);
 
 
 
@@ -104,7 +103,7 @@ abstract mixin class $TaksitlerCopyWith<$Res>  {
   factory $TaksitlerCopyWith(Taksitler value, $Res Function(Taksitler) _then) = _$TaksitlerCopyWithImpl;
 @useResult
 $Res call({
- int? id, int? firmaId, int? bankaId, String? odemeMetni, int? taksit, int? ekstraTaksit, int? altLimit, int? vadeFarki, int? sira, Banka? banka, String? silindi, DateTime? kayittarihi, String? kayityapankul, DateTime? duzeltmetarihi, String? duzeltmeyapankul
+ int? id, int? bankaId, String? odemeMetni, int? taksit, int? ekstraTaksit, int? altLimit, int? vadeFarki, int? sira, Banka? banka
 });
 
 
@@ -121,10 +120,9 @@ class _$TaksitlerCopyWithImpl<$Res>
 
 /// Create a copy of Taksitler
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? firmaId = freezed,Object? bankaId = freezed,Object? odemeMetni = freezed,Object? taksit = freezed,Object? ekstraTaksit = freezed,Object? altLimit = freezed,Object? vadeFarki = freezed,Object? sira = freezed,Object? banka = freezed,Object? silindi = freezed,Object? kayittarihi = freezed,Object? kayityapankul = freezed,Object? duzeltmetarihi = freezed,Object? duzeltmeyapankul = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? bankaId = freezed,Object? odemeMetni = freezed,Object? taksit = freezed,Object? ekstraTaksit = freezed,Object? altLimit = freezed,Object? vadeFarki = freezed,Object? sira = freezed,Object? banka = freezed,}) {
   return _then(Taksitler(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,firmaId: freezed == firmaId ? _self.firmaId : firmaId // ignore: cast_nullable_to_non_nullable
 as int?,bankaId: freezed == bankaId ? _self.bankaId : bankaId // ignore: cast_nullable_to_non_nullable
 as int?,odemeMetni: freezed == odemeMetni ? _self.odemeMetni : odemeMetni // ignore: cast_nullable_to_non_nullable
 as String?,taksit: freezed == taksit ? _self.taksit : taksit // ignore: cast_nullable_to_non_nullable
@@ -133,12 +131,7 @@ as int?,altLimit: freezed == altLimit ? _self.altLimit : altLimit // ignore: cas
 as int?,vadeFarki: freezed == vadeFarki ? _self.vadeFarki : vadeFarki // ignore: cast_nullable_to_non_nullable
 as int?,sira: freezed == sira ? _self.sira : sira // ignore: cast_nullable_to_non_nullable
 as int?,banka: freezed == banka ? _self.banka : banka // ignore: cast_nullable_to_non_nullable
-as Banka?,silindi: freezed == silindi ? _self.silindi : silindi // ignore: cast_nullable_to_non_nullable
-as String?,kayittarihi: freezed == kayittarihi ? _self.kayittarihi : kayittarihi // ignore: cast_nullable_to_non_nullable
-as DateTime?,kayityapankul: freezed == kayityapankul ? _self.kayityapankul : kayityapankul // ignore: cast_nullable_to_non_nullable
-as String?,duzeltmetarihi: freezed == duzeltmetarihi ? _self.duzeltmetarihi : duzeltmetarihi // ignore: cast_nullable_to_non_nullable
-as DateTime?,duzeltmeyapankul: freezed == duzeltmeyapankul ? _self.duzeltmeyapankul : duzeltmeyapankul // ignore: cast_nullable_to_non_nullable
-as String?,
+as Banka?,
   ));
 }
 

@@ -13,9 +13,9 @@ _PaykerLinkEditModel _$PaykerLinkEditModelFromJson(Map<String, dynamic> json) =>
       tutar: (json['TUTAR'] as num?)?.toDouble(),
       email: json['EMAIL'] as String?,
       unvan: json['UNVAN'] as String?,
-      bitTar: json['BIT_TAR'] == null
+      bittar: json['BITTAR'] == null
           ? null
-          : DateTime.parse(json['BIT_TAR'] as String),
+          : DateTime.parse(json['BITTAR'] as String),
       taksitlerJson: json['TAKSITLER_JSON'] as String?,
       kullanimSayisi: (json['KULLANIM_SAYISI'] as num?)?.toInt(),
       guid: json['GUID'] as String?,
@@ -30,7 +30,7 @@ Map<String, dynamic> _$PaykerLinkEditModelToJson(
   if (instance.tutar case final value?) 'TUTAR': value,
   if (instance.email case final value?) 'EMAIL': value,
   if (instance.unvan case final value?) 'UNVAN': value,
-  if (instance.bitTar?.toIso8601String() case final value?) 'BIT_TAR': value,
+  if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
   if (instance.taksitlerJson case final value?) 'TAKSITLER_JSON': value,
   if (instance.kullanimSayisi case final value?) 'KULLANIM_SAYISI': value,
   if (instance.guid case final value?) 'GUID': value,

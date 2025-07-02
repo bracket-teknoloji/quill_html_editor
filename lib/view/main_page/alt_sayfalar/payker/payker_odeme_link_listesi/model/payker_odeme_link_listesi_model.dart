@@ -75,7 +75,6 @@ final class PaykerOdemeLinkListesiModel with _$PaykerOdemeLinkListesiModel, Netw
 
   bool get alindiMi => alindi == true;
 
-
   String? get url => "${ApiUrls.basePaykerURLWithoutApi}/payment/${guid ?? ""}";
 
   PaykerLinkEditModel get editModel => PaykerLinkEditModel(
@@ -85,7 +84,8 @@ final class PaykerOdemeLinkListesiModel with _$PaykerOdemeLinkListesiModel, Netw
     tutar: tutar?.toDouble(),
     email: email,
     unvan: unvan,
-    bitTar: bittar,
+    bittar: bittar,
+    taksitlerJson: taksitlerJson,
     kullanimSayisi: kullanimSayisi,
   );
 }
