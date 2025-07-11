@@ -14,6 +14,28 @@ final class BaseTalepTeklifGenelViewModel = _BaseTalepTeklifGenelViewModelBase w
 abstract class _BaseTalepTeklifGenelViewModelBase with Store, MobxNetworkMixin {
   final Map<String, int> belgeTipi = <String, int>{"Kapalı": 1, "Açık": 2, "İade": 3, "Zayi İade": 4, "İhracat": 5};
 
+  final Map<String, int> ihracatTipi = <String, int>{
+    "FOB": 1,
+    "CIF": 2,
+    "CF": 3,
+    "FOT": 4,
+    "İhracat Kayıt No": 5,
+    "DAF": 6,
+    "EXW": 7,
+    "İhracat Kur Farkı": 8,
+    "CIP": 9,
+    "CPT": 10,
+    "DAT": 11,
+    "DAP": 12,
+    "DDP": 13,
+    "DES": 14,
+    "DEQ": 15,
+    "DDU": 16,
+    "FCA": 17,
+    "FAS": 18,
+    "CFR": 19,
+  };
+
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;
 
@@ -23,6 +45,19 @@ abstract class _BaseTalepTeklifGenelViewModelBase with Store, MobxNetworkMixin {
   @action
   void setCariAdi(String? value) {
     model = model.copyWith(cariAdi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setExportTipi(MapEntry<String, int>? value) {
+    if (value == null) return;
+    model = model.copyWith(exportTipi: value.value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setExportRefNo(String? value) {
+    model = model.copyWith(exportrefno: value);
     BaseSiparisEditModel.setInstance(model);
   }
 
@@ -47,6 +82,12 @@ abstract class _BaseTalepTeklifGenelViewModelBase with Store, MobxNetworkMixin {
   @action
   void setDepoKodu(DepoList? value) {
     model = model.copyWith(topluDepo: value?.depoKodu, depoTanimi: value?.depoTanimi);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setOdemeKodu(String? value) {
+    model = model.copyWith(odemeKodu: value);
     BaseSiparisEditModel.setInstance(model);
   }
 

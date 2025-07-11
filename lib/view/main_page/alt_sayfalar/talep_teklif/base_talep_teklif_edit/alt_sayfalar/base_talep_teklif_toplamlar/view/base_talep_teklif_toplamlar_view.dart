@@ -31,7 +31,8 @@ final class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklif
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseTalepTeklifToplamlarViewModel viewModel = BaseTalepTeklifToplamlarViewModel();
   bool get enable => widget.model.enable;
-  String get tevkifat => yetkiController.talepTeklifEkAciklamaAdi(!model.atalMi) ?? "Tevkifat";
+  String get tevkifat =>
+      yetkiController.talepTeklifEkAciklamaAdi(model.getEditTipiEnum?.satisMi ?? false) ?? "Tevkifat";
   late final TextEditingController genelIskonto1Controller;
   late final TextEditingController genelIskonto2Controller;
   late final TextEditingController genelIskonto3Controller;
@@ -403,59 +404,65 @@ final class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklif
         ],
         Row(
           children: <Widget>[
-            if (!yetkiController.siparisMSEkMaliyet2AktifMi)
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Ek Mal. 1",
-                  enabled: enable,
-                  controller: ekMal1Controller,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
-                ),
-              ),
-            if (yetkiController.siparisEkMaliyet2GizlenecekMi)
-              Expanded(
-                child: CustomTextField(
-                  labelText: tevkifat,
-                  enabled: enable,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  controller: tevkifatController,
-                  inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "Tevkifat Oranı",
-                        children: List.generate(
-                          viewModel.tevkifatMap.length,
-                          (index) => BottomSheetModel(
-                            title: viewModel.tevkifatMap.keys.toList()[index],
-                            value: viewModel.tevkifatMap.values.toList()[index],
-                          ),
-                        ),
-                      );
-                      if (result != null) {
-                        viewModel.setTevkifat(result);
-                        tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
-                      }
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
+             if (yetkiController.ekMaliyet1Aktif(model.getEditTipiEnum) && (model.getEditTipiEnum?.fiyatGor ?? false))
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Ek Mal. 1",
+                    enabled: enable,
+                    isFormattedString: true,
+                    controller: ekMal1Controller,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    onChanged: (value) => viewModel.setEkMal1(value.toDoubleWithFormattedString),
                   ),
-                  // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                 ),
-              ),
+            if (yetkiController.siparisEkMaliyet2GizlenecekMi && yetkiController.ekMaliyet2Aktif(model.getEditTipiEnum) &&
+                  (model.getEditTipiEnum?.fiyatGor ?? false))
+                Expanded(
+                  child: CustomTextField(
+                    labelText: tevkifat,
+                    enabled: enable,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    controller: tevkifatController,
+                    isFormattedString: true,
+                    inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
+                    onChanged: (value) => viewModel.setEkMal2(value.toDoubleWithFormattedString),
+                    suffix: IconButton(
+                      onPressed: () async {
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: tevkifat,
+                          children: List.generate(
+                            viewModel.tevkifatMap.length,
+                            (index) => BottomSheetModel(
+                              title: viewModel.tevkifatMap.keys.toList()[index],
+                              value: viewModel.tevkifatMap.values.toList()[index],
+                            ),
+                          ),
+                        );
+                        if (result != null) {
+                          viewModel.setTevkifat(result);
+                          tevkifatController.text = (-result * viewModel.model.kdvTutari)
+                              .commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
+                        }
+                      },
+                      icon: const Icon(Icons.more_horiz_outlined),
+                    ),
+                    // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
+                  ),
+                ),
           ],
         ),
         Row(
           children: <Widget>[
-            if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+            if (yetkiController.ekMaliyet3Aktif(model.getEditTipiEnum) && (model.getEditTipiEnum?.fiyatGor ?? false))
               Expanded(
                 child: CustomTextField(
                   labelText: "Ek Mal. 3",
                   enabled: enable,
+                  isFormattedString: true,
                   controller: ekMal3Controller,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                  onChanged: (value) => viewModel.setEkMal3(value.toDoubleWithFormattedString),
                 ),
               ),
             Expanded(
@@ -495,20 +502,20 @@ final class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklif
             ),
           ],
         ),
-        Row(
-          children: <Widget>[
-            if (!yetkiController.siparisMSEkMaliyet2AktifMi)
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Ek Mal. 1",
-                  enabled: enable,
-                  controller: ekMal1Controller,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
-                ),
-              ),
-          ],
-        ),
+        // Row(
+        //   children: <Widget>[
+        //     if (yetkiController.ekMaliyet1Aktif(model.getEditTipiEnum) && (model.getEditTipiEnum?.fiyatGor ?? false))
+        //       Expanded(
+        //         child: CustomTextField(
+        //           labelText: "Ek Mal. 1",
+        //           enabled: enable,
+        //           controller: ekMal1Controller,
+        //           keyboardType: const TextInputType.numberWithOptions(decimal: true),
+        //           onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+        //         ),
+        //       ),
+        //   ],
+        // ),
       ],
     ),
   );

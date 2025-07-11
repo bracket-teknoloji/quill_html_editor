@@ -73,9 +73,7 @@ abstract class _PaykerTahsilatViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setCari(CariListesiModel? value) {
-    paymentModel = paymentModel.copyWith(
-      customerInfo: CustomerInfo.fromCariListesiModel(value ?? CariListesiModel())
-    );
+    paymentModel = paymentModel.copyWith(customerInfo: CustomerInfo.fromCariListesiModel(value ?? CariListesiModel()));
   }
 
   @action

@@ -31,8 +31,8 @@ abstract class _PaykerLinkEditViewModelBase with Store, MobxNetworkMixin {
         "\n"
         "${selectedTaksitler.map((e) => e.id).join(", ")}",
       );
-      selectedTaksitler.removeWhere((element) => 
-        element.taksit == taksit.taksit && element.banka?.id == taksit.banka?.id,
+      selectedTaksitler.removeWhere(
+        (element) => element.taksit == taksit.taksit && element.banka?.id == taksit.banka?.id,
       );
     }
   }
@@ -64,12 +64,11 @@ abstract class _PaykerLinkEditViewModelBase with Store, MobxNetworkMixin {
     selectedTaksitler = ObservableList<Taksitler>.of(
       model.getTaksitlerFromJson().map(
         (e) => e.copyWith(
-          id:
-              taksitResponseModel
-                  ?.firstWhereOrNull((t) => t.bankaId == e.banka?.id)
-                  ?.taksitler
-                  ?.firstWhereOrNull((taksit) => taksit.taksit == e.taksit)
-                  ?.id,
+          id: taksitResponseModel
+              ?.firstWhereOrNull((t) => t.bankaId == e.banka?.id)
+              ?.taksitler
+              ?.firstWhereOrNull((taksit) => taksit.taksit == e.taksit)
+              ?.id,
         ),
       ),
     );

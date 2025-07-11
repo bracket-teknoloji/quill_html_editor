@@ -25,8 +25,7 @@ Map<String, dynamic> _$BankaListesiRequestModelToJson(
 ) => <String, dynamic>{
   if (instance.bakiye case final value?) 'Bakiye': value,
   if (instance.arrHesapTipi case final value?) 'ArrHesapTipi': value,
-  if (instance.haricHesaplarArray case final value?)
-    'HaricHesaplarArray': value,
+  if (instance.haricHesaplarArray case final value?) 'HaricHesaplarArray': value,
   if (instance.sirala case final value?) 'Sirala': value,
   if (instance.ekranTipi case final value?) 'EkranTipi': value,
   if (instance.menuKodu case final value?) 'MenuKodu': value,

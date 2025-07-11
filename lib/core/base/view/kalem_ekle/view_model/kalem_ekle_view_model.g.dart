@@ -403,6 +403,18 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setDovizFiyatYuzde(double? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+      name: '_KalemEkleViewModelBase.setDovizFiyatYuzde',
+    );
+    try {
+      return super.setDovizFiyatYuzde(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setMFTutari(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
       name: '_KalemEkleViewModelBase.setMFTutari',

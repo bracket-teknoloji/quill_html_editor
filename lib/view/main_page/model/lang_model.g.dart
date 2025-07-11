@@ -145,8 +145,7 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelTarihSeciniz = json['genelTarihSeciniz'] as String?
   ..genelIthalatTipiSeciniz = json['genelIthalatTipiSeciniz'] as String?
   ..genelGirisDepoSeciniz = json['genelGirisDepoSeciniz'] as String?
-  ..genelGirisVeCikisDepolarAyni =
-      json['genelGirisVeCikisDepolarAyni'] as String?
+  ..genelGirisVeCikisDepolarAyni = json['genelGirisVeCikisDepolarAyni'] as String?
   ..genelAciklamaGiriniz = json['genelAciklamaGiriniz'] as String?
   ..genelOzelKod1Seciniz = json['genelOzelKod1Seciniz'] as String?
   ..genelOzelKod2Seciniz = json['genelOzelKod2Seciniz'] as String?
@@ -158,8 +157,7 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelMuhasebeKoduSeciniz = json['genelMuhasebeKoduSeciniz'] as String?
   ..genelFiyatGiriniz = json['genelFiyatGiriniz'] as String?
   ..genelAdet = json['genelAdet'] as String?
-  ..genelAramaIcinEnAzXHarfGiriniz =
-      json['genelAramaIcinEnAzXHarfGiriniz'] as String?
+  ..genelAramaIcinEnAzXHarfGiriniz = json['genelAramaIcinEnAzXHarfGiriniz'] as String?
   ..genelAra = json['genelAra'] as String?
   ..genelDovizKuru = json['genelDovizKuru'] as String?
   ..genelTemizle = json['genelTemizle'] as String?
@@ -176,8 +174,7 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelIslemMiktari = json['genelIslemMiktari'] as String?
   ..genelKaynakHucreSeciniz = json['genelKaynakHucreSeciniz'] as String?
   ..genelHedefHucreSeciniz = json['genelHedefHucreSeciniz'] as String?
-  ..genelKaynakVeHedefHucrelerAyni =
-      json['genelKaynakVeHedefHucrelerAyni'] as String?
+  ..genelKaynakVeHedefHucrelerAyni = json['genelKaynakVeHedefHucrelerAyni'] as String?
   ..genelYetersizBakiye = json['genelYetersizBakiye'] as String?
   ..genelHedefHucre = json['genelHedefHucre'] as String?
   ..genelKaynakHucre = json['genelKaynakHucre'] as String?
@@ -221,10 +218,8 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelKullanicilar = json['genelKullanicilar'] as String?
   ..genelCariKoduBos = json['genelCariKoduBos'] as String?
   ..genelHucreIslemTuruBos = json['genelHucreIslemTuruBos'] as String?
-  ..genelKullaniciAdiVeyaSifreYanlis =
-      json['genelKullaniciAdiVeyaSifreYanlis'] as String?
-  ..genelKullaniciKilitliDurumda =
-      json['genelKullaniciKilitliDurumda'] as String?
+  ..genelKullaniciAdiVeyaSifreYanlis = json['genelKullaniciAdiVeyaSifreYanlis'] as String?
+  ..genelKullaniciKilitliDurumda = json['genelKullaniciKilitliDurumda'] as String?
   ..genelStokKoduBos = json['genelStokKoduBos'] as String?
   ..genelBelgeZatenKayitli = json['genelBelgeZatenKayitli'] as String?
   ..genelKayitYapildi = json['genelKayitYapildi'] as String?
@@ -237,22 +232,18 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelProfilim = json['genelProfilim'] as String?
   ..genelKullaniciBulunamadi = json['genelKullaniciBulunamadi'] as String?
   ..genelKayitBulunamadi = json['genelKayitBulunamadi'] as String?
-  ..genelCariEFaturaMukellefidir =
-      json['genelCariEFaturaMukellefidir'] as String?
+  ..genelCariEFaturaMukellefidir = json['genelCariEFaturaMukellefidir'] as String?
   ..genelCariEArsivMukellefidir = json['genelCariEArsivMukellefidir'] as String?
-  ..genelCariIleTeslimCariAyniOlamaz =
-      json['genelCariIleTeslimCariAyniOlamaz'] as String?
+  ..genelCariIleTeslimCariAyniOlamaz = json['genelCariIleTeslimCariAyniOlamaz'] as String?
   ..genelYeniBelgeNo = json['genelYeniBelgeNo'] as String?
   ..genelStokHareketleri = json['genelStokHareketleri'] as String?
-  ..genelBelgeKayitliDegisiklikYapilamaz =
-      json['genelBelgeKayitliDegisiklikYapilamaz'] as String?
+  ..genelBelgeKayitliDegisiklikYapilamaz = json['genelBelgeKayitliDegisiklikYapilamaz'] as String?
   ..genelBelgeTipi = json['genelBelgeTipi'] as String?
   ..genelBelgeTipiSeciniz = json['genelBelgeTipiSeciniz'] as String?
   ..genelKasa = json['genelKasa'] as String?
   ..genelKasaSeciniz = json['genelKasaSeciniz'] as String?
   ..genel15HaneliBelgeGiriniz = json['genel15HaneliBelgeGiriniz'] as String?
-  ..genelBelgeSerisiniKontrolEdin =
-      json['genelBelgeSerisiniKontrolEdin'] as String?
+  ..genelBelgeSerisiniKontrolEdin = json['genelBelgeSerisiniKontrolEdin'] as String?
   ..genelTopluDepo = json['genelTopluDepo'] as String?
   ..genelXXXSeciniz = json['genelXXXSeciniz'] as String?
   ..genelEFatura = json['genelEFatura'] as String?
@@ -300,32 +291,24 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..faturaAnaMalGrubu = json['faturaAnaMalGrubu'] as String?
   ..faturaMalGrubu = json['faturaMalGrubu'] as String?
   ..faturaSerbest = json['faturaSerbest'] as String?
-  ..faturaGenelToplamEksiyeDustu =
-      json['faturaGenelToplamEksiyeDustu'] as String?
+  ..faturaGenelToplamEksiyeDustu = json['faturaGenelToplamEksiyeDustu'] as String?
   ..faturaCikisYeriSeciniz = json['faturaCikisYeriSeciniz'] as String?
   ..faturaMasrafKoduSeciniz = json['faturaMasrafKoduSeciniz'] as String?
-  ..faturaFarkliTeslimCariSeciniz =
-      json['faturaFarkliTeslimCariSeciniz'] as String?
+  ..faturaFarkliTeslimCariSeciniz = json['faturaFarkliTeslimCariSeciniz'] as String?
   ..faturaKalemGiriniz = json['faturaKalemGiriniz'] as String?
-  ..faturaSeriEFaturaIcinKullaniliyor =
-      json['faturaSeriEFaturaIcinKullaniliyor'] as String?
-  ..faturaSeriEArsivIcinKullaniliyor =
-      json['faturaSeriEArsivIcinKullaniliyor'] as String?
+  ..faturaSeriEFaturaIcinKullaniliyor = json['faturaSeriEFaturaIcinKullaniliyor'] as String?
+  ..faturaSeriEArsivIcinKullaniliyor = json['faturaSeriEArsivIcinKullaniliyor'] as String?
   ..faturaSeriXXXIleBaslamali = json['faturaSeriXXXIleBaslamali'] as String?
   ..faturaEFaturaOlusturulmus = json['faturaEFaturaOlusturulmus'] as String?
   ..faturaEArsivOlusturulmus = json['faturaEArsivOlusturulmus'] as String?
   ..depoGiris = json['depoGiris'] as String?
   ..depoCikis = json['depoCikis'] as String?
   ..depoKalan = json['depoKalan'] as String?
-  ..servisKullaniciDogrulamaServisiCalismiyor =
-      json['servisKullaniciDogrulamaServisiCalismiyor'] as String?
-  ..servisKullaniciDogrulanamadi =
-      json['servisKullaniciDogrulanamadi'] as String?
+  ..servisKullaniciDogrulamaServisiCalismiyor = json['servisKullaniciDogrulamaServisiCalismiyor'] as String?
+  ..servisKullaniciDogrulanamadi = json['servisKullaniciDogrulanamadi'] as String?
   ..servisOzelKodNoTanimliDegil = json['servisOzelKodNoTanimliDegil'] as String?
-  ..servisPickerBelgeTuruTanimliDegil =
-      json['servisPickerBelgeTuruTanimliDegil'] as String?
-  ..servisPickerYetkinizBulunmuyor =
-      json['servisPickerYetkinizBulunmuyor'] as String?
+  ..servisPickerBelgeTuruTanimliDegil = json['servisPickerBelgeTuruTanimliDegil'] as String?
+  ..servisPickerYetkinizBulunmuyor = json['servisPickerYetkinizBulunmuyor'] as String?
   ..servisSunucuHatasi = json['servisSunucuHatasi'] as String?
   ..servisYeniBelgeNoAlinamadi = json['servisYeniBelgeNoAlinamadi'] as String?;
 
@@ -333,38 +316,26 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
   if (instance.dilKodu case final value?) 'DilKodu': value,
   if (instance.dilAciklama case final value?) 'DilAciklama': value,
   if (instance.menuMalKabul case final value?) 'menuMalKabul': value,
-  if (instance.menuMalKabulSatinAlma case final value?)
-    'menuMalKabulSatinAlma': value,
+  if (instance.menuMalKabulSatinAlma case final value?) 'menuMalKabulSatinAlma': value,
   if (instance.menuMalKabulIade case final value?) 'menuMalKabulIade': value,
   if (instance.menuTransfer case final value?) 'menuTransfer': value,
   if (instance.menuTransferDAT case final value?) 'menuTransferDAT': value,
-  if (instance.menuTransferAmbarGirisFisi case final value?)
-    'menuTransferAmbarGirisFisi': value,
-  if (instance.menuTransferAmbarCikisFisi case final value?)
-    'menuTransferAmbarCikisFisi': value,
+  if (instance.menuTransferAmbarGirisFisi case final value?) 'menuTransferAmbarGirisFisi': value,
+  if (instance.menuTransferAmbarCikisFisi case final value?) 'menuTransferAmbarCikisFisi': value,
   if (instance.menuHucreTakibi case final value?) 'menuHucreTakibi': value,
-  if (instance.menuHucreTakibiYerlestir case final value?)
-    'menuHucreTakibiYerlestir': value,
-  if (instance.menuHucreTakibiBosalt case final value?)
-    'menuHucreTakibiBosalt': value,
-  if (instance.menuHucreTakibiTransfer case final value?)
-    'menuHucreTakibiTransfer': value,
-  if (instance.menuHucreTakibiAra case final value?)
-    'menuHucreTakibiAra': value,
-  if (instance.menuHucreTakibiListe case final value?)
-    'menuHucreTakibiListe': value,
+  if (instance.menuHucreTakibiYerlestir case final value?) 'menuHucreTakibiYerlestir': value,
+  if (instance.menuHucreTakibiBosalt case final value?) 'menuHucreTakibiBosalt': value,
+  if (instance.menuHucreTakibiTransfer case final value?) 'menuHucreTakibiTransfer': value,
+  if (instance.menuHucreTakibiAra case final value?) 'menuHucreTakibiAra': value,
+  if (instance.menuHucreTakibiListe case final value?) 'menuHucreTakibiListe': value,
   if (instance.menuSevkiyat case final value?) 'menuSevkiyat': value,
-  if (instance.menuSevkiyatSatisIrsaliyesi case final value?)
-    'menuSevkiyatSatisIrsaliyesi': value,
-  if (instance.menuSevkiyatMalToplama case final value?)
-    'menuSevkiyatMalToplama': value,
+  if (instance.menuSevkiyatSatisIrsaliyesi case final value?) 'menuSevkiyatSatisIrsaliyesi': value,
+  if (instance.menuSevkiyatMalToplama case final value?) 'menuSevkiyatMalToplama': value,
   if (instance.menuSayim case final value?) 'menuSayim': value,
   if (instance.menuSayimSayim case final value?) 'menuSayimSayim': value,
   if (instance.menuSiparis case final value?) 'menuSiparis': value,
-  if (instance.menuMusteriSiparisi case final value?)
-    'menuMusteriSiparisi': value,
-  if (instance.menuSaticiSiparisi case final value?)
-    'menuSaticiSiparisi': value,
+  if (instance.menuMusteriSiparisi case final value?) 'menuMusteriSiparisi': value,
+  if (instance.menuSaticiSiparisi case final value?) 'menuSaticiSiparisi': value,
   if (instance.menuCari case final value?) 'menuCari': value,
   if (instance.menuCariListesi case final value?) 'menuCariListesi': value,
   if (instance.menuStok case final value?) 'menuStok': value,
@@ -374,13 +345,11 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
   if (instance.menuBankaListesi case final value?) 'menuBankaListesi': value,
   if (instance.menuTahsilat case final value?) 'menuTahsilat': value,
   if (instance.menuTahsilatYap case final value?) 'menuTahsilatYap': value,
-  if (instance.menuTahsilatKayitlari case final value?)
-    'menuTahsilatKayitlari': value,
+  if (instance.menuTahsilatKayitlari case final value?) 'menuTahsilatKayitlari': value,
   if (instance.menuNakitOdeme case final value?) 'menuNakitOdeme': value,
   if (instance.menuKKTahsilat case final value?) 'menuKKTahsilat': value,
   if (instance.menuNakitTahsilat case final value?) 'menuNakitTahsilat': value,
-  if (instance.menuSenetTahsilati case final value?)
-    'menuSenetTahsilati': value,
+  if (instance.menuSenetTahsilati case final value?) 'menuSenetTahsilati': value,
   if (instance.menuCekTahsilati case final value?) 'menuCekTahsilati': value,
   if (instance.menuAyarlar case final value?) 'menuAyarlar': value,
   if (instance.menuFirmalar case final value?) 'menuFirmalar': value,
@@ -388,14 +357,10 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
   if (instance.menuProfilim case final value?) 'menuProfilim': value,
   if (instance.menuAlisFaturasi case final value?) 'menuAlisFaturasi': value,
   if (instance.menuSatisFaturasi case final value?) 'menuSatisFaturasi': value,
-  if (instance.genelSirketDegistir case final value?)
-    'genelSirketDegistir': value,
-  if (instance.genelSirketOturumuKapat case final value?)
-    'genelSirketOturumuKapat': value,
-  if (instance.genelGuncelSurumuIndir case final value?)
-    'genelGuncelSurumuIndir': value,
-  if (instance.genelLutfenBekleyin case final value?)
-    'genelLutfenBekleyin': value,
+  if (instance.genelSirketDegistir case final value?) 'genelSirketDegistir': value,
+  if (instance.genelSirketOturumuKapat case final value?) 'genelSirketOturumuKapat': value,
+  if (instance.genelGuncelSurumuIndir case final value?) 'genelGuncelSurumuIndir': value,
+  if (instance.genelLutfenBekleyin case final value?) 'genelLutfenBekleyin': value,
   if (instance.genelKaydet case final value?) 'genelKaydet': value,
   if (instance.genelTamam case final value?) 'genelTamam': value,
   if (instance.genelHayir case final value?) 'genelHayir': value,
@@ -427,8 +392,7 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
   if (instance.genelBrutTutar case final value?) 'genelBrutTutar': value,
   if (instance.genelMalFazIsk case final value?) 'genelMalFazIsk': value,
   if (instance.genelMalFazTutari case final value?) 'genelMalFazTutari': value,
-  if (instance.genelMalFazMiktari case final value?)
-    'genelMalFazMiktari': value,
+  if (instance.genelMalFazMiktari case final value?) 'genelMalFazMiktari': value,
   if (instance.genelSatirIsk case final value?) 'genelSatirIsk': value,
   if (instance.genelGenelToplam case final value?) 'genelGenelToplam': value,
   if (instance.genelGenelIskonto case final value?) 'genelGenelIskonto': value,
@@ -456,8 +420,7 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
   if (instance.genelYenile case final value?) 'genelYenile': value,
   if (instance.genelFiltrele case final value?) 'genelFiltrele': value,
   if (instance.genelSirala case final value?) 'genelSirala': value,
-  if (instance.genelEkAciklamalar case final value?)
-    'genelEkAciklamalar': value,
+  if (instance.genelEkAciklamalar case final value?) 'genelEkAciklamalar': value,
   if (instance.genelIthalat case final value?) 'genelIthalat': value,
   if (instance.genelYeniBelge case final value?) 'genelYeniBelge': value,
   if (instance.genelYurtici case final value?) 'genelYurtici': value,
@@ -468,93 +431,64 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
   if (instance.genelMuhtelif case final value?) 'genelMuhtelif': value,
   if (instance.genelKonsinye case final value?) 'genelKonsinye': value,
   if (instance.genelXRehberi case final value?) 'genelXRehberi': value,
-  if (instance.genelAlisIrsaliyesi case final value?)
-    'genelAlisIrsaliyesi': value,
-  if (instance.genelSatisIrsaliyesi case final value?)
-    'genelSatisIrsaliyesi': value,
+  if (instance.genelAlisIrsaliyesi case final value?) 'genelAlisIrsaliyesi': value,
+  if (instance.genelSatisIrsaliyesi case final value?) 'genelSatisIrsaliyesi': value,
   if (instance.genelAlisFaturasi case final value?) 'genelAlisFaturasi': value,
-  if (instance.genelSatisFaturasi case final value?)
-    'genelSatisFaturasi': value,
+  if (instance.genelSatisFaturasi case final value?) 'genelSatisFaturasi': value,
   if (instance.genelIade case final value?) 'genelIade': value,
   if (instance.genelXGiriniz case final value?) 'genelXGiriniz': value,
   if (instance.genelXSeciniz case final value?) 'genelXSeciniz': value,
   if (instance.genelXSilinsinMi case final value?) 'genelXSilinsinMi': value,
-  if (instance.genelKayitSilinsinMi case final value?)
-    'genelKayitSilinsinMi': value,
-  if (instance.genelKaydedilsinMi case final value?)
-    'genelKaydedilsinMi': value,
-  if (instance.genelEksikBilgiler case final value?)
-    'genelEksikBilgiler': value,
-  if (instance.genelMiktarGiriniz case final value?)
-    'genelMiktarGiriniz': value,
+  if (instance.genelKayitSilinsinMi case final value?) 'genelKayitSilinsinMi': value,
+  if (instance.genelKaydedilsinMi case final value?) 'genelKaydedilsinMi': value,
+  if (instance.genelEksikBilgiler case final value?) 'genelEksikBilgiler': value,
+  if (instance.genelMiktarGiriniz case final value?) 'genelMiktarGiriniz': value,
   if (instance.genelDovizSeciniz case final value?) 'genelDovizSeciniz': value,
-  if (instance.genelOlcuBirimiSeciniz case final value?)
-    'genelOlcuBirimiSeciniz': value,
-  if (instance.genelPlasiyerSeciniz case final value?)
-    'genelPlasiyerSeciniz': value,
+  if (instance.genelOlcuBirimiSeciniz case final value?) 'genelOlcuBirimiSeciniz': value,
+  if (instance.genelPlasiyerSeciniz case final value?) 'genelPlasiyerSeciniz': value,
   if (instance.genelProjeSeciniz case final value?) 'genelProjeSeciniz': value,
   if (instance.genelCariSeciniz case final value?) 'genelCariSeciniz': value,
   if (instance.genelTarihSeciniz case final value?) 'genelTarihSeciniz': value,
-  if (instance.genelIthalatTipiSeciniz case final value?)
-    'genelIthalatTipiSeciniz': value,
-  if (instance.genelGirisDepoSeciniz case final value?)
-    'genelGirisDepoSeciniz': value,
-  if (instance.genelGirisVeCikisDepolarAyni case final value?)
-    'genelGirisVeCikisDepolarAyni': value,
-  if (instance.genelAciklamaGiriniz case final value?)
-    'genelAciklamaGiriniz': value,
-  if (instance.genelOzelKod1Seciniz case final value?)
-    'genelOzelKod1Seciniz': value,
-  if (instance.genelOzelKod2Seciniz case final value?)
-    'genelOzelKod2Seciniz': value,
+  if (instance.genelIthalatTipiSeciniz case final value?) 'genelIthalatTipiSeciniz': value,
+  if (instance.genelGirisDepoSeciniz case final value?) 'genelGirisDepoSeciniz': value,
+  if (instance.genelGirisVeCikisDepolarAyni case final value?) 'genelGirisVeCikisDepolarAyni': value,
+  if (instance.genelAciklamaGiriniz case final value?) 'genelAciklamaGiriniz': value,
+  if (instance.genelOzelKod1Seciniz case final value?) 'genelOzelKod1Seciniz': value,
+  if (instance.genelOzelKod2Seciniz case final value?) 'genelOzelKod2Seciniz': value,
   if (instance.genelStokSeciniz case final value?) 'genelStokSeciniz': value,
-  if (instance.genelHareketTuruSeciniz case final value?)
-    'genelHareketTuruSeciniz': value,
-  if (instance.genelHucreMiktarlariUyumsuz case final value?)
-    'genelHucreMiktarlariUyumsuz': value,
-  if (instance.genelSeriMiktarlariUyumsuz case final value?)
-    'genelSeriMiktarlariUyumsuz': value,
+  if (instance.genelHareketTuruSeciniz case final value?) 'genelHareketTuruSeciniz': value,
+  if (instance.genelHucreMiktarlariUyumsuz case final value?) 'genelHucreMiktarlariUyumsuz': value,
+  if (instance.genelSeriMiktarlariUyumsuz case final value?) 'genelSeriMiktarlariUyumsuz': value,
   if (instance.genelXBulunamadi case final value?) 'genelXBulunamadi': value,
-  if (instance.genelMuhasebeKoduSeciniz case final value?)
-    'genelMuhasebeKoduSeciniz': value,
+  if (instance.genelMuhasebeKoduSeciniz case final value?) 'genelMuhasebeKoduSeciniz': value,
   if (instance.genelFiyatGiriniz case final value?) 'genelFiyatGiriniz': value,
   if (instance.genelAdet case final value?) 'genelAdet': value,
-  if (instance.genelAramaIcinEnAzXHarfGiriniz case final value?)
-    'genelAramaIcinEnAzXHarfGiriniz': value,
+  if (instance.genelAramaIcinEnAzXHarfGiriniz case final value?) 'genelAramaIcinEnAzXHarfGiriniz': value,
   if (instance.genelAra case final value?) 'genelAra': value,
   if (instance.genelDovizKuru case final value?) 'genelDovizKuru': value,
   if (instance.genelTemizle case final value?) 'genelTemizle': value,
   if (instance.genelFisNo case final value?) 'genelFisNo': value,
-  if (instance.genelBelgeTuruSeciniz case final value?)
-    'genelBelgeTuruSeciniz': value,
+  if (instance.genelBelgeTuruSeciniz case final value?) 'genelBelgeTuruSeciniz': value,
   if (instance.genelHucreSeciniz case final value?) 'genelHucreSeciniz': value,
-  if (instance.genelHucreBakiyesi case final value?)
-    'genelHucreBakiyesi': value,
-  if (instance.genelIslemBasarili case final value?)
-    'genelIslemBasarili': value,
-  if (instance.genelIslemBasarisiz case final value?)
-    'genelIslemBasarisiz': value,
+  if (instance.genelHucreBakiyesi case final value?) 'genelHucreBakiyesi': value,
+  if (instance.genelIslemBasarili case final value?) 'genelIslemBasarili': value,
+  if (instance.genelIslemBasarisiz case final value?) 'genelIslemBasarisiz': value,
   if (instance.genelDepoSeciniz case final value?) 'genelDepoSeciniz': value,
   if (instance.genelBelgeSeciniz case final value?) 'genelBelgeSeciniz': value,
   if (instance.genelBelgeTuru case final value?) 'genelBelgeTuru': value,
   if (instance.genelBelgeTarihi case final value?) 'genelBelgeTarihi': value,
   if (instance.genelIslemMiktari case final value?) 'genelIslemMiktari': value,
-  if (instance.genelKaynakHucreSeciniz case final value?)
-    'genelKaynakHucreSeciniz': value,
-  if (instance.genelHedefHucreSeciniz case final value?)
-    'genelHedefHucreSeciniz': value,
-  if (instance.genelKaynakVeHedefHucrelerAyni case final value?)
-    'genelKaynakVeHedefHucrelerAyni': value,
-  if (instance.genelYetersizBakiye case final value?)
-    'genelYetersizBakiye': value,
+  if (instance.genelKaynakHucreSeciniz case final value?) 'genelKaynakHucreSeciniz': value,
+  if (instance.genelHedefHucreSeciniz case final value?) 'genelHedefHucreSeciniz': value,
+  if (instance.genelKaynakVeHedefHucrelerAyni case final value?) 'genelKaynakVeHedefHucrelerAyni': value,
+  if (instance.genelYetersizBakiye case final value?) 'genelYetersizBakiye': value,
   if (instance.genelHedefHucre case final value?) 'genelHedefHucre': value,
   if (instance.genelKaynakHucre case final value?) 'genelKaynakHucre': value,
   if (instance.genelStokAdi case final value?) 'genelStokAdi': value,
   if (instance.genelBakiye case final value?) 'genelBakiye': value,
   if (instance.genelHareketler case final value?) 'genelHareketler': value,
   if (instance.genelDetaylar case final value?) 'genelDetaylar': value,
-  if (instance.genelDepoBakiyeDurumu case final value?)
-    'genelDepoBakiyeDurumu': value,
+  if (instance.genelDepoBakiyeDurumu case final value?) 'genelDepoBakiyeDurumu': value,
   if (instance.genelArti case final value?) 'genelArti': value,
   if (instance.genelEksi case final value?) 'genelEksi': value,
   if (instance.genelSifir case final value?) 'genelSifir': value,
@@ -567,175 +501,121 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
   if (instance.genelFiyat case final value?) 'genelFiyat': value,
   if (instance.genelAdi case final value?) 'genelAdi': value,
   if (instance.genelKodu case final value?) 'genelKodu': value,
-  if (instance.genelSeriCikistaAktif case final value?)
-    'genelSeriCikistaAktif': value,
-  if (instance.genelSeriGiristeAktif case final value?)
-    'genelSeriGiristeAktif': value,
-  if (instance.genelSeriMiktarKadarSor case final value?)
-    'genelSeriMiktarKadarSor': value,
-  if (instance.genelSeriBakiyeTakibiVar case final value?)
-    'genelSeriBakiyeTakibiVar': value,
+  if (instance.genelSeriCikistaAktif case final value?) 'genelSeriCikistaAktif': value,
+  if (instance.genelSeriGiristeAktif case final value?) 'genelSeriGiristeAktif': value,
+  if (instance.genelSeriMiktarKadarSor case final value?) 'genelSeriMiktarKadarSor': value,
+  if (instance.genelSeriBakiyeTakibiVar case final value?) 'genelSeriBakiyeTakibiVar': value,
   if (instance.genelAlis case final value?) 'genelAlis': value,
   if (instance.genelSatis case final value?) 'genelSatis': value,
   if (instance.genelSatisFiyati case final value?) 'genelSatisFiyati': value,
   if (instance.genelAlisFiyati case final value?) 'genelAlisFiyati': value,
-  if (instance.genelBaslamaTarihi case final value?)
-    'genelBaslamaTarihi': value,
+  if (instance.genelBaslamaTarihi case final value?) 'genelBaslamaTarihi': value,
   if (instance.genelBitisTarihi case final value?) 'genelBitisTarihi': value,
   if (instance.genelSayilanlar case final value?) 'genelSayilanlar': value,
   if (instance.genelMalToplama case final value?) 'genelMalToplama': value,
   if (instance.genelMalKontrol case final value?) 'genelMalKontrol': value,
-  if (instance.genelKullaniciyaGonder case final value?)
-    'genelKullaniciyaGonder': value,
+  if (instance.genelKullaniciyaGonder case final value?) 'genelKullaniciyaGonder': value,
   if (instance.genelDepodaYok case final value?) 'genelDepodaYok': value,
-  if (instance.genelToplananMallar case final value?)
-    'genelToplananMallar': value,
-  if (instance.genelMalKontroleGonder case final value?)
-    'genelMalKontroleGonder': value,
+  if (instance.genelToplananMallar case final value?) 'genelToplananMallar': value,
+  if (instance.genelMalKontroleGonder case final value?) 'genelMalKontroleGonder': value,
   if (instance.genelTamamlandi case final value?) 'genelTamamlandi': value,
-  if (instance.genelIslemiOnayliyorMusunuz case final value?)
-    'genelIslemiOnayliyorMusunuz': value,
+  if (instance.genelIslemiOnayliyorMusunuz case final value?) 'genelIslemiOnayliyorMusunuz': value,
   if (instance.genelTamamla case final value?) 'genelTamamla': value,
   if (instance.genelKullanicilar case final value?) 'genelKullanicilar': value,
   if (instance.genelCariKoduBos case final value?) 'genelCariKoduBos': value,
-  if (instance.genelHucreIslemTuruBos case final value?)
-    'genelHucreIslemTuruBos': value,
-  if (instance.genelKullaniciAdiVeyaSifreYanlis case final value?)
-    'genelKullaniciAdiVeyaSifreYanlis': value,
-  if (instance.genelKullaniciKilitliDurumda case final value?)
-    'genelKullaniciKilitliDurumda': value,
+  if (instance.genelHucreIslemTuruBos case final value?) 'genelHucreIslemTuruBos': value,
+  if (instance.genelKullaniciAdiVeyaSifreYanlis case final value?) 'genelKullaniciAdiVeyaSifreYanlis': value,
+  if (instance.genelKullaniciKilitliDurumda case final value?) 'genelKullaniciKilitliDurumda': value,
   if (instance.genelStokKoduBos case final value?) 'genelStokKoduBos': value,
-  if (instance.genelBelgeZatenKayitli case final value?)
-    'genelBelgeZatenKayitli': value,
+  if (instance.genelBelgeZatenKayitli case final value?) 'genelBelgeZatenKayitli': value,
   if (instance.genelKayitYapildi case final value?) 'genelKayitYapildi': value,
-  if (instance.genelMusteriSiparisi case final value?)
-    'genelMusteriSiparisi': value,
-  if (instance.genelSaticiSiparisi case final value?)
-    'genelSaticiSiparisi': value,
+  if (instance.genelMusteriSiparisi case final value?) 'genelMusteriSiparisi': value,
+  if (instance.genelSaticiSiparisi case final value?) 'genelSaticiSiparisi': value,
   if (instance.genelStokKarti case final value?) 'genelStokKarti': value,
   if (instance.genelYazdir case final value?) 'genelYazdir': value,
   if (instance.genelNetFiyat case final value?) 'genelNetFiyat': value,
   if (instance.genelBrutFiyat case final value?) 'genelBrutFiyat': value,
   if (instance.genelProfilim case final value?) 'genelProfilim': value,
-  if (instance.genelKullaniciBulunamadi case final value?)
-    'genelKullaniciBulunamadi': value,
-  if (instance.genelKayitBulunamadi case final value?)
-    'genelKayitBulunamadi': value,
-  if (instance.genelCariEFaturaMukellefidir case final value?)
-    'genelCariEFaturaMukellefidir': value,
-  if (instance.genelCariEArsivMukellefidir case final value?)
-    'genelCariEArsivMukellefidir': value,
-  if (instance.genelCariIleTeslimCariAyniOlamaz case final value?)
-    'genelCariIleTeslimCariAyniOlamaz': value,
+  if (instance.genelKullaniciBulunamadi case final value?) 'genelKullaniciBulunamadi': value,
+  if (instance.genelKayitBulunamadi case final value?) 'genelKayitBulunamadi': value,
+  if (instance.genelCariEFaturaMukellefidir case final value?) 'genelCariEFaturaMukellefidir': value,
+  if (instance.genelCariEArsivMukellefidir case final value?) 'genelCariEArsivMukellefidir': value,
+  if (instance.genelCariIleTeslimCariAyniOlamaz case final value?) 'genelCariIleTeslimCariAyniOlamaz': value,
   if (instance.genelYeniBelgeNo case final value?) 'genelYeniBelgeNo': value,
-  if (instance.genelStokHareketleri case final value?)
-    'genelStokHareketleri': value,
-  if (instance.genelBelgeKayitliDegisiklikYapilamaz case final value?)
-    'genelBelgeKayitliDegisiklikYapilamaz': value,
+  if (instance.genelStokHareketleri case final value?) 'genelStokHareketleri': value,
+  if (instance.genelBelgeKayitliDegisiklikYapilamaz case final value?) 'genelBelgeKayitliDegisiklikYapilamaz': value,
   if (instance.genelBelgeTipi case final value?) 'genelBelgeTipi': value,
-  if (instance.genelBelgeTipiSeciniz case final value?)
-    'genelBelgeTipiSeciniz': value,
+  if (instance.genelBelgeTipiSeciniz case final value?) 'genelBelgeTipiSeciniz': value,
   if (instance.genelKasa case final value?) 'genelKasa': value,
   if (instance.genelKasaSeciniz case final value?) 'genelKasaSeciniz': value,
-  if (instance.genel15HaneliBelgeGiriniz case final value?)
-    'genel15HaneliBelgeGiriniz': value,
-  if (instance.genelBelgeSerisiniKontrolEdin case final value?)
-    'genelBelgeSerisiniKontrolEdin': value,
+  if (instance.genel15HaneliBelgeGiriniz case final value?) 'genel15HaneliBelgeGiriniz': value,
+  if (instance.genelBelgeSerisiniKontrolEdin case final value?) 'genelBelgeSerisiniKontrolEdin': value,
   if (instance.genelTopluDepo case final value?) 'genelTopluDepo': value,
   if (instance.genelXXXSeciniz case final value?) 'genelXXXSeciniz': value,
   if (instance.genelEFatura case final value?) 'genelEFatura': value,
   if (instance.genelEArsiv case final value?) 'genelEArsiv': value,
-  if (instance.genelEsnekYapilandirma case final value?)
-    'genelEsnekYapilandirma': value,
-  if (instance.genelYapilandirmaKodu case final value?)
-    'genelYapilandirmaKodu': value,
+  if (instance.genelEsnekYapilandirma case final value?) 'genelEsnekYapilandirma': value,
+  if (instance.genelYapilandirmaKodu case final value?) 'genelYapilandirmaKodu': value,
   if (instance.genelIslemler case final value?) 'genelIslemler': value,
-  if (instance.genelBankaIslemleri case final value?)
-    'genelBankaIslemleri': value,
+  if (instance.genelBankaIslemleri case final value?) 'genelBankaIslemleri': value,
   if (instance.genelGelen case final value?) 'genelGelen': value,
   if (instance.genelGonderilen case final value?) 'genelGonderilen': value,
   if (instance.genelBaslama case final value?) 'genelBaslama': value,
   if (instance.genelBitis case final value?) 'genelBitis': value,
   if (instance.genelCariEFTKaydi case final value?) 'genelCariEFTKaydi': value,
   if (instance.bankayaParaGirisi case final value?) 'bankayaParaGirisi': value,
-  if (instance.bankadanParaCikisi case final value?)
-    'bankadanParaCikisi': value,
+  if (instance.bankadanParaCikisi case final value?) 'bankadanParaCikisi': value,
   if (instance.bankaHesabi case final value?) 'bankaHesabi': value,
   if (instance.hareketDetayi case final value?) 'hareketDetayi': value,
   if (instance.islemTuru case final value?) 'islemTuru': value,
-  if (instance.mobilCariEFTIslemi case final value?)
-    'MobilCariEFTIslemi': value,
-  if (instance.mobilHesaplarArasiEFT case final value?)
-    'MobilHesaplarArasiEFT': value,
-  if (instance.mobilHesaplarArasiVirman case final value?)
-    'MobilHesaplarArasiVirman': value,
+  if (instance.mobilCariEFTIslemi case final value?) 'MobilCariEFTIslemi': value,
+  if (instance.mobilHesaplarArasiEFT case final value?) 'MobilHesaplarArasiEFT': value,
+  if (instance.mobilHesaplarArasiVirman case final value?) 'MobilHesaplarArasiVirman': value,
   if (instance.xXXBos case final value?) 'XXXBos': value,
   if (instance.tahsilat case final value?) 'Tahsilat': value,
   if (instance.odeme case final value?) 'Odeme': value,
   if (instance.hucreBakiyeDurumu case final value?) 'HucreBakiyeDurumu': value,
   if (instance.hucreHareketleri case final value?) 'HucreHareketleri': value,
-  if (instance.siparisDurumRaporu case final value?)
-    'SiparisDurumRaporu': value,
+  if (instance.siparisDurumRaporu case final value?) 'SiparisDurumRaporu': value,
   if (instance.olustur case final value?) 'SiparisDurumRaporuDetay': value,
   if (instance.faturaTabGenel case final value?) 'faturaTabGenel': value,
   if (instance.faturaTabKalem case final value?) 'faturaTabKalem': value,
-  if (instance.faturaTabToplamlar case final value?)
-    'faturaTabToplamlar': value,
+  if (instance.faturaTabToplamlar case final value?) 'faturaTabToplamlar': value,
   if (instance.faturaOzelKod1 case final value?) 'faturaOzelKod1': value,
   if (instance.faturaOzelKod2 case final value?) 'faturaOzelKod2': value,
   if (instance.faturaKosul case final value?) 'faturaKosul': value,
   if (instance.faturaHareketTuru case final value?) 'faturaHareketTuru': value,
   if (instance.faturaCikisYeri case final value?) 'faturaCikisYeri': value,
   if (instance.faturaMasrafKodu case final value?) 'faturaMasrafKodu': value,
-  if (instance.faturaFarkliTeslimat case final value?)
-    'faturaFarkliTeslimat': value,
+  if (instance.faturaFarkliTeslimat case final value?) 'faturaFarkliTeslimat': value,
   if (instance.faturaIthalatTipi case final value?) 'faturaIthalatTipi': value,
-  if (instance.faturaIthalatRefNo case final value?)
-    'faturaIthalatRefNo': value,
-  if (instance.faturaIskontoToplami case final value?)
-    'faturaIskontoToplami': value,
+  if (instance.faturaIthalatRefNo case final value?) 'faturaIthalatRefNo': value,
+  if (instance.faturaIskontoToplami case final value?) 'faturaIskontoToplami': value,
   if (instance.faturaAraToplam case final value?) 'faturaAraToplam': value,
   if (instance.faturaKDVTutari case final value?) 'faturaKDVTutari': value,
-  if (instance.faturaMasrafMerkezi case final value?)
-    'faturaMasrafMerkezi': value,
+  if (instance.faturaMasrafMerkezi case final value?) 'faturaMasrafMerkezi': value,
   if (instance.faturaAnaMalGrubu case final value?) 'faturaAnaMalGrubu': value,
   if (instance.faturaMalGrubu case final value?) 'faturaMalGrubu': value,
   if (instance.faturaSerbest case final value?) 'faturaSerbest': value,
-  if (instance.faturaGenelToplamEksiyeDustu case final value?)
-    'faturaGenelToplamEksiyeDustu': value,
-  if (instance.faturaCikisYeriSeciniz case final value?)
-    'faturaCikisYeriSeciniz': value,
-  if (instance.faturaMasrafKoduSeciniz case final value?)
-    'faturaMasrafKoduSeciniz': value,
-  if (instance.faturaFarkliTeslimCariSeciniz case final value?)
-    'faturaFarkliTeslimCariSeciniz': value,
-  if (instance.faturaKalemGiriniz case final value?)
-    'faturaKalemGiriniz': value,
-  if (instance.faturaSeriEFaturaIcinKullaniliyor case final value?)
-    'faturaSeriEFaturaIcinKullaniliyor': value,
-  if (instance.faturaSeriEArsivIcinKullaniliyor case final value?)
-    'faturaSeriEArsivIcinKullaniliyor': value,
-  if (instance.faturaSeriXXXIleBaslamali case final value?)
-    'faturaSeriXXXIleBaslamali': value,
-  if (instance.faturaEFaturaOlusturulmus case final value?)
-    'faturaEFaturaOlusturulmus': value,
-  if (instance.faturaEArsivOlusturulmus case final value?)
-    'faturaEArsivOlusturulmus': value,
+  if (instance.faturaGenelToplamEksiyeDustu case final value?) 'faturaGenelToplamEksiyeDustu': value,
+  if (instance.faturaCikisYeriSeciniz case final value?) 'faturaCikisYeriSeciniz': value,
+  if (instance.faturaMasrafKoduSeciniz case final value?) 'faturaMasrafKoduSeciniz': value,
+  if (instance.faturaFarkliTeslimCariSeciniz case final value?) 'faturaFarkliTeslimCariSeciniz': value,
+  if (instance.faturaKalemGiriniz case final value?) 'faturaKalemGiriniz': value,
+  if (instance.faturaSeriEFaturaIcinKullaniliyor case final value?) 'faturaSeriEFaturaIcinKullaniliyor': value,
+  if (instance.faturaSeriEArsivIcinKullaniliyor case final value?) 'faturaSeriEArsivIcinKullaniliyor': value,
+  if (instance.faturaSeriXXXIleBaslamali case final value?) 'faturaSeriXXXIleBaslamali': value,
+  if (instance.faturaEFaturaOlusturulmus case final value?) 'faturaEFaturaOlusturulmus': value,
+  if (instance.faturaEArsivOlusturulmus case final value?) 'faturaEArsivOlusturulmus': value,
   if (instance.depoGiris case final value?) 'depoGiris': value,
   if (instance.depoCikis case final value?) 'depoCikis': value,
   if (instance.depoKalan case final value?) 'depoKalan': value,
   if (instance.servisKullaniciDogrulamaServisiCalismiyor case final value?)
     'servisKullaniciDogrulamaServisiCalismiyor': value,
-  if (instance.servisKullaniciDogrulanamadi case final value?)
-    'servisKullaniciDogrulanamadi': value,
-  if (instance.servisOzelKodNoTanimliDegil case final value?)
-    'servisOzelKodNoTanimliDegil': value,
-  if (instance.servisPickerBelgeTuruTanimliDegil case final value?)
-    'servisPickerBelgeTuruTanimliDegil': value,
-  if (instance.servisPickerYetkinizBulunmuyor case final value?)
-    'servisPickerYetkinizBulunmuyor': value,
-  if (instance.servisSunucuHatasi case final value?)
-    'servisSunucuHatasi': value,
-  if (instance.servisYeniBelgeNoAlinamadi case final value?)
-    'servisYeniBelgeNoAlinamadi': value,
+  if (instance.servisKullaniciDogrulanamadi case final value?) 'servisKullaniciDogrulanamadi': value,
+  if (instance.servisOzelKodNoTanimliDegil case final value?) 'servisOzelKodNoTanimliDegil': value,
+  if (instance.servisPickerBelgeTuruTanimliDegil case final value?) 'servisPickerBelgeTuruTanimliDegil': value,
+  if (instance.servisPickerYetkinizBulunmuyor case final value?) 'servisPickerYetkinizBulunmuyor': value,
+  if (instance.servisSunucuHatasi case final value?) 'servisSunucuHatasi': value,
+  if (instance.servisYeniBelgeNoAlinamadi case final value?) 'servisYeniBelgeNoAlinamadi': value,
 };

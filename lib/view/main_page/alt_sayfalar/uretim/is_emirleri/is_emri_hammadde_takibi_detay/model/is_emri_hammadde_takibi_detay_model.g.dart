@@ -23,8 +23,7 @@ Map<String, dynamic> _$IsEmriHammaddeTakibiDetayModelToJson(
   if (instance.hamKodu case final value?) 'HAM_KODU': value,
   if (instance.hamAdi case final value?) 'HAM_ADI': value,
   if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.referanslar?.map((e) => e.toJson()).toList() case final value?)
-    'REFERANSLAR': value,
+  if (instance.referanslar?.map((e) => e.toJson()).toList() case final value?) 'REFERANSLAR': value,
 };
 
 _Referanslar _$ReferanslarFromJson(Map<String, dynamic> json) => _Referanslar(

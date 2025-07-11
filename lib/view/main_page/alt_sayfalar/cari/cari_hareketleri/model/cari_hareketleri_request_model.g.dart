@@ -26,8 +26,7 @@ Map<String, dynamic> _$CariHareketleriRequestModelToJson(
   _CariHareketleriRequestModel instance,
 ) => <String, dynamic>{
   if (instance.siralama case final value?) 'SIRALAMA': value,
-  if (instance.sadeceTahsilatlarOdemeler case final value?)
-    'SadeceTahsilatlarOdemeler': value,
+  if (instance.sadeceTahsilatlarOdemeler case final value?) 'SadeceTahsilatlarOdemeler': value,
   if (instance.cariKodu case final value?) 'CariKodu': value,
   if (instance.ekranTipi case final value?) 'EkranTipi': value,
   if (instance.arrPlasiyerKodu case final value?) 'ArrPlasiyerKodu': value,

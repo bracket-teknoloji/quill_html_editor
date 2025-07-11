@@ -41,9 +41,7 @@ class ModuleInfoModelAdapter extends TypeAdapter<ModuleInfoModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ModuleInfoModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is ModuleInfoModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class HesapAdapter extends TypeAdapter<Hesap> {
@@ -182,10 +180,7 @@ class HesapAdapter extends TypeAdapter<Hesap> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HesapAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is HesapAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class CihazlarAdapter extends TypeAdapter<Cihazlar> {
@@ -261,10 +256,7 @@ class CihazlarAdapter extends TypeAdapter<Cihazlar> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CihazlarAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is CihazlarAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class SqlserverinfoAdapter extends TypeAdapter<Sqlserverinfo> {
@@ -317,9 +309,7 @@ class SqlserverinfoAdapter extends TypeAdapter<Sqlserverinfo> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SqlserverinfoAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is SqlserverinfoAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class DeveloperBilgiAdapter extends TypeAdapter<DeveloperBilgi> {
@@ -369,9 +359,7 @@ class DeveloperBilgiAdapter extends TypeAdapter<DeveloperBilgi> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DeveloperBilgiAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is DeveloperBilgiAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class ModullerAdapter extends TypeAdapter<Moduller> {
@@ -444,10 +432,7 @@ class ModullerAdapter extends TypeAdapter<Moduller> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ModullerAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is ModullerAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class EkLisanslarAdapter extends TypeAdapter<EkLisanslar> {
@@ -488,36 +473,24 @@ class EkLisanslarAdapter extends TypeAdapter<EkLisanslar> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is EkLisanslarAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is EkLisanslarAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ModuleInfoModel _$ModuleInfoModelFromJson(Map<String, dynamic> json) =>
-    ModuleInfoModel(
-      hesap: json['hesap'] == null
-          ? null
-          : Hesap.fromJson(json['hesap'] as Map<String, dynamic>),
-      moduller: (json['moduller'] as List<dynamic>?)
-          ?.map((e) => Moduller.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      kayitTarihi: json['kayitTarihi'] == null
-          ? null
-          : DateTime.parse(json['kayitTarihi'] as String),
-    );
+ModuleInfoModel _$ModuleInfoModelFromJson(Map<String, dynamic> json) => ModuleInfoModel(
+  hesap: json['hesap'] == null ? null : Hesap.fromJson(json['hesap'] as Map<String, dynamic>),
+  moduller: (json['moduller'] as List<dynamic>?)?.map((e) => Moduller.fromJson(e as Map<String, dynamic>)).toList(),
+  kayitTarihi: json['kayitTarihi'] == null ? null : DateTime.parse(json['kayitTarihi'] as String),
+);
 
-Map<String, dynamic> _$ModuleInfoModelToJson(ModuleInfoModel instance) =>
-    <String, dynamic>{
-      if (instance.hesap?.toJson() case final value?) 'hesap': value,
-      if (instance.moduller?.map((e) => e.toJson()).toList() case final value?)
-        'moduller': value,
-      if (instance.kayitTarihi?.toIso8601String() case final value?)
-        'kayitTarihi': value,
-    };
+Map<String, dynamic> _$ModuleInfoModelToJson(ModuleInfoModel instance) => <String, dynamic>{
+  if (instance.hesap?.toJson() case final value?) 'hesap': value,
+  if (instance.moduller?.map((e) => e.toJson()).toList() case final value?) 'moduller': value,
+  if (instance.kayitTarihi?.toIso8601String() case final value?) 'kayitTarihi': value,
+};
 
 _Hesap _$HesapFromJson(Map<String, dynamic> json) => _Hesap(
   id: (json['ID'] as num?)?.toInt(),
@@ -546,17 +519,13 @@ _Hesap _$HesapFromJson(Map<String, dynamic> json) => _Hesap(
   yetkiSohbet: json['YETKI_SOHBET'] as bool?,
   yetkiAjanda: json['YETKI_AJANDA'] as bool?,
   yetkiYedekleme: json['YETKI_YEDEKLEME'] as bool?,
-  kayittarihi: json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
   ftpKullanimi: json['FTP_KULLANIMI'] as bool?,
   ftpAdres: json['FTP_ADRES'] as String?,
   ftpKullaniciAdi: json['FTP_KULLANICI_ADI'] as String?,
   ftpParola: json['FTP_PAROLA'] as String?,
   ftpDosyaYedek: json['FTP_DOSYA_YEDEK'] as bool?,
-  cihazlar: (json['CIHAZLAR'] as List<dynamic>?)
-      ?.map((e) => Cihazlar.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  cihazlar: (json['CIHAZLAR'] as List<dynamic>?)?.map((e) => Cihazlar.fromJson(e as Map<String, dynamic>)).toList(),
   developerBilgi: json['DEVELOPER_BILGI'] == null
       ? null
       : DeveloperBilgi.fromJson(
@@ -594,17 +563,14 @@ Map<String, dynamic> _$HesapToJson(_Hesap instance) => <String, dynamic>{
   if (instance.yetkiSohbet case final value?) 'YETKI_SOHBET': value,
   if (instance.yetkiAjanda case final value?) 'YETKI_AJANDA': value,
   if (instance.yetkiYedekleme case final value?) 'YETKI_YEDEKLEME': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
   if (instance.ftpKullanimi case final value?) 'FTP_KULLANIMI': value,
   if (instance.ftpAdres case final value?) 'FTP_ADRES': value,
   if (instance.ftpKullaniciAdi case final value?) 'FTP_KULLANICI_ADI': value,
   if (instance.ftpParola case final value?) 'FTP_PAROLA': value,
   if (instance.ftpDosyaYedek case final value?) 'FTP_DOSYA_YEDEK': value,
-  if (instance.cihazlar?.map((e) => e.toJson()).toList() case final value?)
-    'CIHAZLAR': value,
-  if (instance.developerBilgi?.toJson() case final value?)
-    'DEVELOPER_BILGI': value,
+  if (instance.cihazlar?.map((e) => e.toJson()).toList() case final value?) 'CIHAZLAR': value,
+  if (instance.developerBilgi?.toJson() case final value?) 'DEVELOPER_BILGI': value,
   if (instance.erpTipi case final value?) 'ERP_TIPI': value,
   if (instance.erpVersiyon case final value?) 'ERP_VERSIYON': value,
   if (instance.aciklama case final value?) 'ACIKLAMA': value,
@@ -620,9 +586,7 @@ _Cihazlar _$CihazlarFromJson(Map<String, dynamic> json) => _Cihazlar(
   isletimSistemiPlat: json['ISLETIM_SISTEMI_PLAT'] as String?,
   lisanskey: json['LISANSKEY'] as String?,
   lisanspc: json['LISANSPC'] as String?,
-  songiristar: json['SONGIRISTAR'] == null
-      ? null
-      : DateTime.parse(json['SONGIRISTAR'] as String),
+  songiristar: json['SONGIRISTAR'] == null ? null : DateTime.parse(json['SONGIRISTAR'] as String),
   disIpAdresi: json['DIS_IP_ADRESI'] as String?,
   erpTipi: json['ERP_TIPI'] as String?,
   erpVersiyon: json['ERP_VERSIYON'] as String?,
@@ -639,73 +603,60 @@ Map<String, dynamic> _$CihazlarToJson(_Cihazlar instance) => <String, dynamic>{
   if (instance.versiyon case final value?) 'VERSIYON': value,
   if (instance.storeVersiyon case final value?) 'STORE_VERSIYON': value,
   if (instance.isletimSistemi case final value?) 'ISLETIM_SISTEMI': value,
-  if (instance.isletimSistemiVer case final value?)
-    'ISLETIM_SISTEMI_VER': value,
-  if (instance.isletimSistemiPlat case final value?)
-    'ISLETIM_SISTEMI_PLAT': value,
+  if (instance.isletimSistemiVer case final value?) 'ISLETIM_SISTEMI_VER': value,
+  if (instance.isletimSistemiPlat case final value?) 'ISLETIM_SISTEMI_PLAT': value,
   if (instance.lisanskey case final value?) 'LISANSKEY': value,
   if (instance.lisanspc case final value?) 'LISANSPC': value,
-  if (instance.songiristar?.toIso8601String() case final value?)
-    'SONGIRISTAR': value,
+  if (instance.songiristar?.toIso8601String() case final value?) 'SONGIRISTAR': value,
   if (instance.disIpAdresi case final value?) 'DIS_IP_ADRESI': value,
   if (instance.erpTipi case final value?) 'ERP_TIPI': value,
   if (instance.erpVersiyon case final value?) 'ERP_VERSIYON': value,
   if (instance.sunucuMu case final value?) 'SUNUCU_MU': value,
-  if (instance.sqlserverinfo?.toJson() case final value?)
-    'SQLSERVERINFO': value,
+  if (instance.sqlserverinfo?.toJson() case final value?) 'SQLSERVERINFO': value,
   if (instance.applicationUptime case final value?) 'APPLICATION_UPTIME': value,
 };
 
-_Sqlserverinfo _$SqlserverinfoFromJson(Map<String, dynamic> json) =>
-    _Sqlserverinfo(
-      name: json['NAME'] as String?,
-      instanceName: json['INSTANCE_NAME'] as String?,
-      surum: json['SURUM'] as String?,
-      versiyon: (json['VERSIYON'] as num?)?.toInt(),
-      productVersion: json['PRODUCT_VERSION'] as String?,
-      edition: json['EDITION'] as String?,
-      msdbGuid: json['MSDB_GUID'] as String?,
-      tempdbGuid: json['TEMPDB_GUID'] as String?,
-    );
+_Sqlserverinfo _$SqlserverinfoFromJson(Map<String, dynamic> json) => _Sqlserverinfo(
+  name: json['NAME'] as String?,
+  instanceName: json['INSTANCE_NAME'] as String?,
+  surum: json['SURUM'] as String?,
+  versiyon: (json['VERSIYON'] as num?)?.toInt(),
+  productVersion: json['PRODUCT_VERSION'] as String?,
+  edition: json['EDITION'] as String?,
+  msdbGuid: json['MSDB_GUID'] as String?,
+  tempdbGuid: json['TEMPDB_GUID'] as String?,
+);
 
-Map<String, dynamic> _$SqlserverinfoToJson(_Sqlserverinfo instance) =>
-    <String, dynamic>{
-      if (instance.name case final value?) 'NAME': value,
-      if (instance.instanceName case final value?) 'INSTANCE_NAME': value,
-      if (instance.surum case final value?) 'SURUM': value,
-      if (instance.versiyon case final value?) 'VERSIYON': value,
-      if (instance.productVersion case final value?) 'PRODUCT_VERSION': value,
-      if (instance.edition case final value?) 'EDITION': value,
-      if (instance.msdbGuid case final value?) 'MSDB_GUID': value,
-      if (instance.tempdbGuid case final value?) 'TEMPDB_GUID': value,
-    };
+Map<String, dynamic> _$SqlserverinfoToJson(_Sqlserverinfo instance) => <String, dynamic>{
+  if (instance.name case final value?) 'NAME': value,
+  if (instance.instanceName case final value?) 'INSTANCE_NAME': value,
+  if (instance.surum case final value?) 'SURUM': value,
+  if (instance.versiyon case final value?) 'VERSIYON': value,
+  if (instance.productVersion case final value?) 'PRODUCT_VERSION': value,
+  if (instance.edition case final value?) 'EDITION': value,
+  if (instance.msdbGuid case final value?) 'MSDB_GUID': value,
+  if (instance.tempdbGuid case final value?) 'TEMPDB_GUID': value,
+};
 
-_DeveloperBilgi _$DeveloperBilgiFromJson(Map<String, dynamic> json) =>
-    _DeveloperBilgi(
-      admin: json['ADMIN'] as bool?,
-      guncellemeFtp: json['GUNCELLEME_FTP'] as String?,
-      guncellemeFtpKullaniciAdi:
-          json['GUNCELLEME_FTP_KULLANICI_ADI'] as String?,
-      guncellemeFtpParola: json['GUNCELLEME_FTP_PAROLA'] as String?,
-      yedeklemeFtp: json['YEDEKLEME_FTP'] as String?,
-      yedeklemeFtpKullaniciAdi: json['YEDEKLEME_FTP_KULLANICI_ADI'] as String?,
-      yedeklemeFtpParola: json['YEDEKLEME_FTP_PAROLA'] as String?,
-    );
+_DeveloperBilgi _$DeveloperBilgiFromJson(Map<String, dynamic> json) => _DeveloperBilgi(
+  admin: json['ADMIN'] as bool?,
+  guncellemeFtp: json['GUNCELLEME_FTP'] as String?,
+  guncellemeFtpKullaniciAdi: json['GUNCELLEME_FTP_KULLANICI_ADI'] as String?,
+  guncellemeFtpParola: json['GUNCELLEME_FTP_PAROLA'] as String?,
+  yedeklemeFtp: json['YEDEKLEME_FTP'] as String?,
+  yedeklemeFtpKullaniciAdi: json['YEDEKLEME_FTP_KULLANICI_ADI'] as String?,
+  yedeklemeFtpParola: json['YEDEKLEME_FTP_PAROLA'] as String?,
+);
 
-Map<String, dynamic> _$DeveloperBilgiToJson(_DeveloperBilgi instance) =>
-    <String, dynamic>{
-      if (instance.admin case final value?) 'ADMIN': value,
-      if (instance.guncellemeFtp case final value?) 'GUNCELLEME_FTP': value,
-      if (instance.guncellemeFtpKullaniciAdi case final value?)
-        'GUNCELLEME_FTP_KULLANICI_ADI': value,
-      if (instance.guncellemeFtpParola case final value?)
-        'GUNCELLEME_FTP_PAROLA': value,
-      if (instance.yedeklemeFtp case final value?) 'YEDEKLEME_FTP': value,
-      if (instance.yedeklemeFtpKullaniciAdi case final value?)
-        'YEDEKLEME_FTP_KULLANICI_ADI': value,
-      if (instance.yedeklemeFtpParola case final value?)
-        'YEDEKLEME_FTP_PAROLA': value,
-    };
+Map<String, dynamic> _$DeveloperBilgiToJson(_DeveloperBilgi instance) => <String, dynamic>{
+  if (instance.admin case final value?) 'ADMIN': value,
+  if (instance.guncellemeFtp case final value?) 'GUNCELLEME_FTP': value,
+  if (instance.guncellemeFtpKullaniciAdi case final value?) 'GUNCELLEME_FTP_KULLANICI_ADI': value,
+  if (instance.guncellemeFtpParola case final value?) 'GUNCELLEME_FTP_PAROLA': value,
+  if (instance.yedeklemeFtp case final value?) 'YEDEKLEME_FTP': value,
+  if (instance.yedeklemeFtpKullaniciAdi case final value?) 'YEDEKLEME_FTP_KULLANICI_ADI': value,
+  if (instance.yedeklemeFtpParola case final value?) 'YEDEKLEME_FTP_PAROLA': value,
+};
 
 _Moduller _$ModullerFromJson(Map<String, dynamic> json) => _Moduller(
   kategoriId: (json['KATEGORI_ID'] as num?)?.toInt(),
@@ -716,9 +667,7 @@ _Moduller _$ModullerFromJson(Map<String, dynamic> json) => _Moduller(
   versiyon: json['VERSIYON'] as String?,
   isdemo: json['ISDEMO'] as bool?,
   sozlesmeBastar: json['SOZLESME_BASTAR'],
-  sozlesmeBittar: json['SOZLESME_BITTAR'] == null
-      ? null
-      : DateTime.parse(json['SOZLESME_BITTAR'] as String),
+  sozlesmeBittar: json['SOZLESME_BITTAR'] == null ? null : DateTime.parse(json['SOZLESME_BITTAR'] as String),
   kiralik: json['KIRALIK'] as bool?,
   webServisAdresi: json['WEB_SERVIS_ADRESI'] as String?,
   kullaniciSayisi: (json['KULLANICI_SAYISI'] as num?)?.toInt(),
@@ -738,13 +687,11 @@ Map<String, dynamic> _$ModullerToJson(_Moduller instance) => <String, dynamic>{
   if (instance.versiyon case final value?) 'VERSIYON': value,
   if (instance.isdemo case final value?) 'ISDEMO': value,
   if (instance.sozlesmeBastar case final value?) 'SOZLESME_BASTAR': value,
-  if (instance.sozlesmeBittar?.toIso8601String() case final value?)
-    'SOZLESME_BITTAR': value,
+  if (instance.sozlesmeBittar?.toIso8601String() case final value?) 'SOZLESME_BITTAR': value,
   if (instance.kiralik case final value?) 'KIRALIK': value,
   if (instance.webServisAdresi case final value?) 'WEB_SERVIS_ADRESI': value,
   if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
-  if (instance.ekLisanslar?.map((e) => e.toJson()).toList() case final value?)
-    'EK_LISANSLAR': value,
+  if (instance.ekLisanslar?.map((e) => e.toJson()).toList() case final value?) 'EK_LISANSLAR': value,
   if (instance.sozlesmeAktif case final value?) 'SOZLESME_AKTIF': value,
   if (instance.sozlesmeUyari case final value?) 'SOZLESME_UYARI': value,
 };
@@ -756,10 +703,9 @@ _EkLisanslar _$EkLisanslarFromJson(Map<String, dynamic> json) => _EkLisanslar(
   bitisTarihi: json['BITIS_TARIHI'],
 );
 
-Map<String, dynamic> _$EkLisanslarToJson(_EkLisanslar instance) =>
-    <String, dynamic>{
-      if (instance.sira case final value?) 'SIRA': value,
-      if (instance.tanimi case final value?) 'TANIMI': value,
-      if (instance.adet case final value?) 'ADET': value,
-      if (instance.bitisTarihi case final value?) 'BITIS_TARIHI': value,
-    };
+Map<String, dynamic> _$EkLisanslarToJson(_EkLisanslar instance) => <String, dynamic>{
+  if (instance.sira case final value?) 'SIRA': value,
+  if (instance.tanimi case final value?) 'TANIMI': value,
+  if (instance.adet case final value?) 'ADET': value,
+  if (instance.bitisTarihi case final value?) 'BITIS_TARIHI': value,
+};

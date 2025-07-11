@@ -6,8 +6,7 @@ part of 'hizli_tahsilat_kayitlari_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_HizliTahsilatKayitlariRequestModel
-_$HizliTahsilatKayitlariRequestModelFromJson(Map<String, dynamic> json) =>
+_HizliTahsilatKayitlariRequestModel _$HizliTahsilatKayitlariRequestModelFromJson(Map<String, dynamic> json) =>
     _HizliTahsilatKayitlariRequestModel(
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,

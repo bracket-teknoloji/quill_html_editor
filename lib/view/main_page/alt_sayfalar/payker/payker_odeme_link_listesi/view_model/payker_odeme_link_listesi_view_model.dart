@@ -91,7 +91,6 @@ abstract class _PaykerOdemeLinkListesiViewModelBase
     await getData();
   }
 
-
   @action
   Future<bool> deleteLink(String id) async {
     final response = await networkManager.deletePaykerPaymentLink([id]);

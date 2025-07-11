@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../components/bottom_bar/bottom_bar.dart";
 import "../../../../../components/button/elevated_buttons/footer_button.dart";
@@ -42,9 +43,12 @@ final class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
     formKey = GlobalKey<FormState>();
     if (widget.seriDetayiModel.seriList != null) {
       viewModel.seriModel = widget.seriDetayiModel.seriList!;
+    } else {
+      viewModel.seriModel = SeriList();
+      viewModel.setMiktar(widget.seriDetayiModel.hareketMiktari ?? 0);
     }
-    if ((widget.seriDetayiModel.seriList?.miktar ?? 0) > (widget.seriDetayiModel.kalanMiktar ?? 0)) {
-      viewModel.setMiktar(widget.seriDetayiModel.kalanMiktar?.toDouble() ?? 0);
+    if ((viewModel.seriModel.miktar ?? 0) > (widget.seriDetayiModel.kalanMiktar ?? 0)) {
+      viewModel.setMiktar(widget.seriDetayiModel.kalanMiktar ?? 0);
     }
     if (widget.seriDetayiModel.miktarKadarSor == true) {
       viewModel.setMiktar(1);
@@ -85,11 +89,14 @@ final class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
         FooterButton(
           children: [
             const Text("Hareket Miktarı"),
-            Text(widget.seriDetayiModel.hareketMiktari.toStringIfNotNull ?? ""),
+            Text(widget.seriDetayiModel.hareketMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
           ],
         ),
         FooterButton(
-          children: [const Text("Kalan Miktar"), Text(widget.seriDetayiModel.kalanMiktar.toStringIfNotNull ?? "")],
+          children: [
+            const Text("Kalan Miktar"),
+            Text(widget.seriDetayiModel.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
+          ],
         ),
       ],
     ),

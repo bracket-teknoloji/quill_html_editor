@@ -182,7 +182,7 @@ abstract class _CariListesiViewModelBase
   Future<void> changeScrollStatus(ScrollPosition position) async {
     super.changeScrollStatus(position);
     if (position.pixels == position.maxScrollExtent && dahaVarMi) {
-      if (dahaVarMi)await getData();
+      if (dahaVarMi) await getData();
       // isScrollDown = false;
     }
   }

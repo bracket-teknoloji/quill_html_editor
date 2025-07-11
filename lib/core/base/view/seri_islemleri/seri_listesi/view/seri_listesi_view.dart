@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
@@ -192,7 +193,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                       subtitle: CustomLayoutBuilder(
                         splitCount: 2,
                         children: [
-                          Text("Miktar: ${model.miktar.toIntIfDouble.toStringIfNotNull ?? ""}"),
+                          Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                           if (model.sonKullanmaTarihi != null)
                             Text("Son Kul. Tarihi: ${model.sonKullanmaTarihi?.toDateString ?? ""}"),
                         ],
@@ -211,7 +212,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                                   final result = await Get.toNamed(
                                     "/seriDetayi",
                                     arguments: SeriDetayiModel(
-                                      kalanMiktar: (viewModel.kalanMiktar.toDouble() + (model.miktar ?? 0)).toInt(),
+                                      kalanMiktar: viewModel.kalanMiktar + (model.miktar ?? 0),
                                       hareketMiktari: viewModel.hareketMiktari,
                                       seriList: model,
                                     ),
@@ -227,9 +228,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                                 onTap: () {
                                   Get.back();
                                   dialogManager.showAreYouSureDialog(
-                                    onYes: () {
-                                      viewModel.removeSeriListWithIndex(index);
-                                    },
+                                    onYes: () => viewModel.removeSeriList(model.seri1 ?? ""),
                                   );
                                 },
                               ),
@@ -253,7 +252,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
   Future<void> seriNoUret() async {
     final result = await viewModel.seriNoUret();
     if (result != null) {
-      viewModel.addSeriList(SeriList(seri1: result.seriNo, miktar: viewModel.kalanMiktar.toDouble()));
+      viewModel.addSeriList(SeriList(seri1: result.seriNo, miktar: viewModel.kalanMiktar));
     }
   }
 
@@ -263,13 +262,13 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
       FooterButton(
         children: [
           const Text("Hareket Miktarı"),
-          Observer(builder: (_) => Text(viewModel.hareketMiktari.toString())),
+          Observer(builder: (_) => Text(viewModel.hareketMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar))),
         ],
       ),
       FooterButton(
         children: [
           const Text("Kalan Miktar"),
-          Observer(builder: (_) => Text(viewModel.kalanMiktar.toString())),
+          Observer(builder: (_) => Text(viewModel.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar))),
         ],
       ),
     ],

@@ -6,8 +6,7 @@ part of 'uretim_sonu_kaydi_listesi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UretimSonuKaydiListesiRequestModel
-_$UretimSonuKaydiListesiRequestModelFromJson(Map<String, dynamic> json) =>
+_UretimSonuKaydiListesiRequestModel _$UretimSonuKaydiListesiRequestModelFromJson(Map<String, dynamic> json) =>
     _UretimSonuKaydiListesiRequestModel(
       sayfa: (json['Sayfa'] as num?)?.toInt(),
       ekranTipi: json['EkranTipi'] as String?,

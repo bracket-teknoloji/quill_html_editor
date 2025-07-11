@@ -34,8 +34,9 @@ mixin _$DialogSwitchTileViewModel on DialogSwitchTileViewModelBase, Store {
 
   @override
   void changeValue(bool? value) {
-    final _$actionInfo = _$DialogSwitchTileViewModelBaseActionController
-        .startAction(name: 'DialogSwitchTileViewModelBase.changeValue');
+    final _$actionInfo = _$DialogSwitchTileViewModelBaseActionController.startAction(
+      name: 'DialogSwitchTileViewModelBase.changeValue',
+    );
     try {
       return super.changeValue(value);
     } finally {

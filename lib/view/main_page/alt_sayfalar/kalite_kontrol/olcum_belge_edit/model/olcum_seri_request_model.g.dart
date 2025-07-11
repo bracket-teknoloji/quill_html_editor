@@ -14,9 +14,7 @@ _OlcumSeriRequestModel _$OlcumSeriRequestModelFromJson(
   cikisDepo: (json['CIKIS_DEPO'] as num?)?.toInt(),
   redGirisDepo: (json['RED_GIRIS_DEPO'] as num?)?.toInt(),
   kabulGirisDepo: (json['KABUL_GIRIS_DEPO'] as num?)?.toInt(),
-  seriListe: (json['SERI_LISTE'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+  seriListe: (json['SERI_LISTE'] as List<dynamic>?)?.map((e) => e as String).toList(),
 );
 
 Map<String, dynamic> _$OlcumSeriRequestModelToJson(

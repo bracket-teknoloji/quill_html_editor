@@ -6,31 +6,27 @@ part of 'doviz_kurlari_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_DovizKurlariModel _$DovizKurlariModelFromJson(Map<String, dynamic> json) =>
-    _DovizKurlariModel(
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
-      sira: (json['SIRA'] as num?)?.toInt(),
-      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
-      dovAlis: (json['DOV_ALIS'] as num?)?.toDouble(),
-      dovSatis: (json['DOV_SATIS'] as num?)?.toDouble(),
-      dovizAdi: json['DOVIZ_ADI'] as String?,
-      effAlis: (json['EFF_ALIS'] as num?)?.toDouble(),
-      effSatis: (json['EFF_SATIS'] as num?)?.toDouble(),
-    );
+_DovizKurlariModel _$DovizKurlariModelFromJson(Map<String, dynamic> json) => _DovizKurlariModel(
+  tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
+  sira: (json['SIRA'] as num?)?.toInt(),
+  dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
+  dovAlis: (json['DOV_ALIS'] as num?)?.toDouble(),
+  dovSatis: (json['DOV_SATIS'] as num?)?.toDouble(),
+  dovizAdi: json['DOVIZ_ADI'] as String?,
+  effAlis: (json['EFF_ALIS'] as num?)?.toDouble(),
+  effSatis: (json['EFF_SATIS'] as num?)?.toDouble(),
+);
 
-Map<String, dynamic> _$DovizKurlariModelToJson(_DovizKurlariModel instance) =>
-    <String, dynamic>{
-      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-      if (instance.sira case final value?) 'SIRA': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.dovAlis case final value?) 'DOV_ALIS': value,
-      if (instance.dovSatis case final value?) 'DOV_SATIS': value,
-      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-      if (instance.effAlis case final value?) 'EFF_ALIS': value,
-      if (instance.effSatis case final value?) 'EFF_SATIS': value,
-    };
+Map<String, dynamic> _$DovizKurlariModelToJson(_DovizKurlariModel instance) => <String, dynamic>{
+  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+  if (instance.sira case final value?) 'SIRA': value,
+  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+  if (instance.dovAlis case final value?) 'DOV_ALIS': value,
+  if (instance.dovSatis case final value?) 'DOV_SATIS': value,
+  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+  if (instance.effAlis case final value?) 'EFF_ALIS': value,
+  if (instance.effSatis case final value?) 'EFF_SATIS': value,
+};
 
 _DovizKurlariRequestModel _$DovizKurlariRequestModelFromJson(
   Map<String, dynamic> json,

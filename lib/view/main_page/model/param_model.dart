@@ -553,6 +553,8 @@ final class ParamModel {
   int? sayfalamaKayitSayisi;
   @JsonKey(name: "FieldVar_SatisIrsaliyeFaturalasmayacak")
   bool? fieldVarSatisIrsaliyeFaturalasmayacak;
+  @JsonKey(name: "FieldVar_SatisFaturasiIadeFaturaNo")
+  bool? fieldVarSatisFaturasiIadeFaturaNo;
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
 }
 

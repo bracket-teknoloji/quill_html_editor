@@ -167,7 +167,12 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setFiyatYuzde(double? value) {
-    kalemModel = kalemModel.copyWith.fiyatYuzde(value);
+    kalemModel = kalemModel.copyWith.fiyatYuzde(value).copyWith.fiyatYuzdeDoviz(null);
+  }
+
+  @action
+  void setDovizFiyatYuzde(double? value) {
+    kalemModel = kalemModel.copyWith.fiyatYuzdeDoviz(value).copyWith.fiyatYuzde(null);
   }
 
   @action

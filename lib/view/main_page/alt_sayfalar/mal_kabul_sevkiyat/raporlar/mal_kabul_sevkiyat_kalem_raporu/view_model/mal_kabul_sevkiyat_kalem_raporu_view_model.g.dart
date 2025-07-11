@@ -8,8 +8,7 @@ part of 'mal_kabul_sevkiyat_kalem_raporu_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$MalKabulSevkiyatKalemRaporuViewModel
-    on _MalKabulSevkiyatKalemRaporuViewModelBase, Store {
+mixin _$MalKabulSevkiyatKalemRaporuViewModel on _MalKabulSevkiyatKalemRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
     name: '_MalKabulSevkiyatKalemRaporuViewModelBase.pdfModel',
     context: context,
@@ -46,18 +45,16 @@ mixin _$MalKabulSevkiyatKalemRaporuViewModel
     });
   }
 
-  late final _$_MalKabulSevkiyatKalemRaporuViewModelBaseActionController =
-      ActionController(
-        name: '_MalKabulSevkiyatKalemRaporuViewModelBase',
-        context: context,
-      );
+  late final _$_MalKabulSevkiyatKalemRaporuViewModelBaseActionController = ActionController(
+    name: '_MalKabulSevkiyatKalemRaporuViewModelBase',
+    context: context,
+  );
 
   @override
   void setFuture() {
-    final _$actionInfo =
-        _$_MalKabulSevkiyatKalemRaporuViewModelBaseActionController.startAction(
-          name: '_MalKabulSevkiyatKalemRaporuViewModelBase.setFuture',
-        );
+    final _$actionInfo = _$_MalKabulSevkiyatKalemRaporuViewModelBaseActionController.startAction(
+      name: '_MalKabulSevkiyatKalemRaporuViewModelBase.setFuture',
+    );
     try {
       return super.setFuture();
     } finally {
@@ -69,10 +66,9 @@ mixin _$MalKabulSevkiyatKalemRaporuViewModel
 
   @override
   void resetFuture() {
-    final _$actionInfo =
-        _$_MalKabulSevkiyatKalemRaporuViewModelBaseActionController.startAction(
-          name: '_MalKabulSevkiyatKalemRaporuViewModelBase.resetFuture',
-        );
+    final _$actionInfo = _$_MalKabulSevkiyatKalemRaporuViewModelBaseActionController.startAction(
+      name: '_MalKabulSevkiyatKalemRaporuViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

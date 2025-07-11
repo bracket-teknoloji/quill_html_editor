@@ -8,8 +8,7 @@ part of 'lokal_depo_bakiye_raporu_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$LokalDepoBakiyeRaporuViewModel
-    on _LokalDepoBakiyeRaporuViewModelBase, Store {
+mixin _$LokalDepoBakiyeRaporuViewModel on _LokalDepoBakiyeRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
     name: '_LokalDepoBakiyeRaporuViewModelBase.pdfModel',
     context: context,
@@ -64,16 +63,16 @@ mixin _$LokalDepoBakiyeRaporuViewModel
     });
   }
 
-  late final _$_LokalDepoBakiyeRaporuViewModelBaseActionController =
-      ActionController(
-        name: '_LokalDepoBakiyeRaporuViewModelBase',
-        context: context,
-      );
+  late final _$_LokalDepoBakiyeRaporuViewModelBaseActionController = ActionController(
+    name: '_LokalDepoBakiyeRaporuViewModelBase',
+    context: context,
+  );
 
   @override
   void setSifirHaric(bool value) {
-    final _$actionInfo = _$_LokalDepoBakiyeRaporuViewModelBaseActionController
-        .startAction(name: '_LokalDepoBakiyeRaporuViewModelBase.setSifirHaric');
+    final _$actionInfo = _$_LokalDepoBakiyeRaporuViewModelBaseActionController.startAction(
+      name: '_LokalDepoBakiyeRaporuViewModelBase.setSifirHaric',
+    );
     try {
       return super.setSifirHaric(value);
     } finally {
@@ -85,8 +84,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_LokalDepoBakiyeRaporuViewModelBaseActionController
-        .startAction(name: '_LokalDepoBakiyeRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_LokalDepoBakiyeRaporuViewModelBaseActionController.startAction(
+      name: '_LokalDepoBakiyeRaporuViewModelBase.setFuture',
+    );
     try {
       return super.setFuture();
     } finally {
@@ -98,8 +98,9 @@ mixin _$LokalDepoBakiyeRaporuViewModel
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_LokalDepoBakiyeRaporuViewModelBaseActionController
-        .startAction(name: '_LokalDepoBakiyeRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_LokalDepoBakiyeRaporuViewModelBaseActionController.startAction(
+      name: '_LokalDepoBakiyeRaporuViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

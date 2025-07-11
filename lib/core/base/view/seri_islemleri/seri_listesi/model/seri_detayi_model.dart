@@ -3,8 +3,8 @@ import "../../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/
 final class SeriDetayiModel {
   SeriDetayiModel({this.kalanMiktar, this.hareketMiktari, this.seriList, this.miktarKadarSor});
 
-  int? kalanMiktar;
+  double? kalanMiktar;
   SeriList? seriList;
-  int? hareketMiktari;
+  double? hareketMiktari;
   bool? miktarKadarSor;
 }

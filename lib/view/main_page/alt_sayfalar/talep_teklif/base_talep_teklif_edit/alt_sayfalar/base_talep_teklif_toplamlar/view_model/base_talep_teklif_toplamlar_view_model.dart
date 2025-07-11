@@ -40,6 +40,12 @@ abstract class _BaseTalepTeklifToplamlarViewModelBase with Store {
   }
 
   @action
+  void setEkMal2(double? value) {
+    model = model.copyWith(ekMaliyet2Tutari: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
   void setEkMal3(double? value) {
     model = model.copyWith(ekMaliyet3Tutari: value);
     BaseSiparisEditModel.setInstance(model);

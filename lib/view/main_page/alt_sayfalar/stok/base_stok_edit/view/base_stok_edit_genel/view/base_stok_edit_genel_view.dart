@@ -46,6 +46,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
   final BaseStokEditGenelViewModel viewModel = BaseStokEditGenelViewModel();
   late final TextEditingController stokKoduController;
   late final TextEditingController stokAdiController;
+  late final TextEditingController ingilizceIsimController;
   late final TextEditingController depoController;
   late final TextEditingController muhasebeDetayKoduController;
   late final TextEditingController olcuBirimi1Controller;
@@ -75,6 +76,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
   void initState() {
     stokKoduController = TextEditingController(text: stokModel.stokKodu);
     stokAdiController = TextEditingController(text: stokModel.stokAdi);
+    ingilizceIsimController = TextEditingController(text: stokModel.ingilizceIsim);
     depoController = TextEditingController(
       text:
           CacheManager.getAnaVeri?.paramModel?.depoList
@@ -101,11 +103,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     barkod1Controller = TextEditingController(text: stokModel.barkod1);
     barkod2Controller = TextEditingController(text: stokModel.barkod2);
     barkod3Controller = TextEditingController(text: stokModel.barkod3);
-    subeController = TextEditingController(
-      text: subeList.ext.isNotNullOrEmpty
-          ? subeList.where((element) => element.subeKodu == stokModel.subeKodu).firstOrNull?.subeAdi
-          : null,
-    ); //text: model?.stokAdi
+    subeController = TextEditingController(); //text: model?.stokAdi
     ureticiKoduController = TextEditingController(text: stokModel.ureticiKodu); //text: model?.stokAdi
     grupKoduController = TextEditingController(text: stokModel.grupKodu);
     kod1Controller = TextEditingController(text: stokModel.kod1);
@@ -113,12 +111,17 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     kod3Controller = TextEditingController(text: stokModel.kod3);
     kod4Controller = TextEditingController(text: stokModel.kod4);
     kod5Controller = TextEditingController(text: stokModel.kod5);
-    if (subeController.text == "") {
-      subeController.text = "Şubelerde Ortak";
-      stokModel.subeKodu = -1;
-    }
-    subeChecker();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      subeChecker();
+      subeController.text =
+          (subeList.ext.isNotNullOrEmpty
+              ? subeList.where((element) => element.subeKodu == stokModel.subeKodu).firstOrNull?.subeAdi
+              : "") ??
+          "";
+      if (subeController.text == "" && (widget.model.ekleMi || widget.model == BaseEditEnum.kopyala)) {
+        subeController.text = "Şubelerde Ortak";
+        stokModel.subeKodu = -1;
+      }
       if (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala) {
         if (stokModel.stokKodu == null) {
           stokKoduController.text = await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";
@@ -134,6 +137,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     super.dispose();
     stokKoduController.dispose();
     stokAdiController.dispose();
+    ingilizceIsimController.dispose();
     depoController.dispose();
     muhasebeDetayKoduController.dispose();
     olcuBirimi1Controller.dispose();
@@ -283,6 +287,12 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
             labelText: "Adı",
             controller: stokAdiController,
             onChanged: (p0) => stokModel.stokAdi = p0,
+          ),
+          CustomTextField(
+            enabled: enable,
+            labelText: "İngilizce İsim",
+            controller: ingilizceIsimController,
+            onChanged: (p0) => stokModel.ingilizceIsim = p0,
           ),
           CustomTextField(
             labelText: "Depo",

@@ -190,7 +190,7 @@ class _PaykerLinkEditViewState extends BaseState<PaykerLinkEditView> {
                 return SafeArea(
                   child: PageView(
                     controller: PageController(viewportFraction: context.isLandscape ? 0.4 : 0.8),
-                    
+
                     children:
                         _viewModel.taksitResponseModel
                             ?.map(
@@ -225,32 +225,30 @@ class _PaykerLinkEditViewState extends BaseState<PaykerLinkEditView> {
                                         // checkboxListtile list of taksitler
                                         children: List.generate(
                                           e.taksitler?.length ?? 0,
-                                          (index) => Card(
-                                            child: Column(
-                                              children: [
-                                                CheckboxListTile.adaptive(
-                                                  value: _viewModel.selectedTaksitler.any(
-                                                    (taksit) =>
-                                                        taksit.banka?.id == e.bankaId &&
-                                                        taksit.taksit == e.taksitler![index].taksit,
-                                                  ),
-                                                  onChanged: (value) {
-                                                    _viewModel.setSelectedTaksitler(
-                                                      e.taksitler![index],
-                                                      value ?? false,
-                                                    );
-                                                  },
-                                                  title: Text(
-                                                    "${e.taksitler![index].odemeMetni}",
-                                                  ),
+                                          (index) => Column(
+                                            children: [
+                                              CheckboxListTile.adaptive(
+                                                value: _viewModel.selectedTaksitler.any(
+                                                  (taksit) =>
+                                                      taksit.banka?.id == e.bankaId &&
+                                                      taksit.taksit == e.taksitler![index].taksit,
                                                 ),
-                                                if (index < (e.taksitler?.length ?? 0) - 1)
-                                                  const Divider(
-                                                    endIndent: 0,
-                                                    indent: 0,
-                                                  ),
-                                              ],
-                                            ),
+                                                onChanged: (value) {
+                                                  _viewModel.setSelectedTaksitler(
+                                                    e.taksitler![index],
+                                                    value ?? false,
+                                                  );
+                                                },
+                                                title: Text(
+                                                  "${e.taksitler![index].odemeMetni}",
+                                                ),
+                                              ),
+                                              if (index < (e.taksitler?.length ?? 0) - 1)
+                                                const Divider(
+                                                  endIndent: 0,
+                                                  indent: 0,
+                                                ),
+                                            ],
                                           ),
                                         ),
                                       ),

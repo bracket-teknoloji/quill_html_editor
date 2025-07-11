@@ -76,6 +76,32 @@ mixin _$BaseTalepTeklifGenelViewModel
   }
 
   @override
+  void setExportTipi(MapEntry<String, int>? value) {
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setExportTipi');
+    try {
+      return super.setExportTipi(value);
+    } finally {
+      _$_BaseTalepTeklifGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setExportRefNo(String? value) {
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setExportRefNo');
+    try {
+      return super.setExportRefNo(value);
+    } finally {
+      _$_BaseTalepTeklifGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
   void setCariKodu(String? value) {
     final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
         .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setCariKodu');
@@ -124,6 +150,19 @@ mixin _$BaseTalepTeklifGenelViewModel
         .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setDepoKodu');
     try {
       return super.setDepoKodu(value);
+    } finally {
+      _$_BaseTalepTeklifGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setOdemeKodu(String? value) {
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setOdemeKodu');
+    try {
+      return super.setOdemeKodu(value);
     } finally {
       _$_BaseTalepTeklifGenelViewModelBaseActionController.endAction(
         _$actionInfo,

@@ -1,9 +1,12 @@
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/belge_tipi_model.dart";
 import "package:picker/core/base/model/ek_rehber_request_model.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 
@@ -55,6 +58,8 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
   late final TextEditingController kosulController;
   late final TextEditingController ozelKod1Controller;
   late final TextEditingController ozelKod2Controller;
+  late final TextEditingController _exportTipiController;
+  late final TextEditingController _exportRefNoController;
   late final TextEditingController _aciklama1Controller;
   late final TextEditingController _aciklama2Controller;
   late final TextEditingController _aciklama3Controller;
@@ -304,30 +309,35 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: CustomTextField(
-                    enabled: enable,
-                    labelText: "Belge Tipi",
-                    readOnly: true,
-                    isMust: true,
-                    suffixMore: true,
-                    controller: belgeTipiController,
-
-                    // valueWidget: Observer(builder: (_) => Text(viewModel.model.belgeTipi.toStringIfNotNull ?? "")),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(
-                        context,
-                        model.belgeTipi,
-                      );
-                      if (result != null) {
-                        model
-                          ..belgeTipi = result.belgeTipiId
-                          ..tipi = result.belgeTipiId;
-                        belgeTipiController.text = result.belgeTipi ?? "";
-                      }
-                    },
+               if (!(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false))
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Belge Tipi",
+                      readOnly: true,
+                      isMust: true,
+                      suffixMore: true,
+                      controller: belgeTipiController,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(
+                          context,
+                          model.tipi,
+                        );
+                        if (result is BelgeTipiModel) {
+                          belgeTipiController.text = result.belgeTipi ?? "";
+                          viewModel.setBelgeTipi(result.belgeTipiId);
+                          if ((result.belgeTipiId ?? 0) < 6) {
+                            _exportTipiController.clear();
+                            _exportRefNoController.clear();
+                            viewModel
+                              ..setExportTipi(null)
+                              ..setExportRefNo(null);
+                          }
+                        }
+                      },
+                    ),
                   ),
-                ),
                 if (yetkiController.plasiyerUygulamasiAcikMi)
                   Expanded(
                     child: CustomTextField(
@@ -443,6 +453,56 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     ),
                   ),
               ],
+            ),
+            Observer(
+              builder: (_) {
+                if (viewModel.model.yurticiMi) return const SizedBox.shrink();
+                return Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "İhracat Tipi",
+                        readOnly: true,
+                        isMust: true,
+                        suffixMore: true,
+                        controller: _exportTipiController,
+                        valueWidget: Observer(
+                          builder: (_) => Text(viewModel.model.exportTipi.toStringIfNotNull ?? ""),
+                        ),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "İhracat Tipi",
+                            groupValue: viewModel.model.exportTipi,
+                            children: viewModel.ihracatTipi.entries
+                                .map(
+                                  (e) => BottomSheetModel(
+                                    title: e.key,
+                                    description: e.value.toString(),
+                                    value: e,
+                                    groupValue: e.value,
+                                  ),
+                                )
+                                .toList(),
+                          );
+                          if (result != null) {
+                            viewModel.setExportTipi(result);
+                            _exportTipiController.text = result.key;
+                          }
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Export Ref. No",
+                        enabled: enable,
+                        controller: _exportRefNoController,
+                        onChanged: viewModel.setExportRefNo,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -900,7 +960,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     belgeNoController.text = model.belgeNo ?? "";
     cariController.text = model.cariAdi ?? "";
     teslimCariController.text = model.teslimCariAdi ?? "";
-    belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
+    belgeTipiController.text = model.yurticiMi ? "Yurtiçi" : "Yurtdışı";
     plasiyerController.text = model.plasiyerAciklama ?? model.plasiyerKodu ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
@@ -959,6 +1019,10 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     kosulController = TextEditingController();
     ozelKod1Controller = TextEditingController();
     ozelKod2Controller = TextEditingController();
+    _exportRefNoController = TextEditingController(text: model.exportrefno);
+    _exportTipiController = TextEditingController(
+      text: viewModel.ihracatTipi.entries.firstWhereOrNull((element) => element.value == model.exportTipi)?.key ?? "",
+    );
     _aciklama1Controller = TextEditingController();
     _aciklama2Controller = TextEditingController();
     _aciklama3Controller = TextEditingController();
@@ -984,6 +1048,8 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     teslimCariController.dispose();
     belgeTipiController.dispose();
     plasiyerController.dispose();
+    _exportTipiController.dispose();
+    _exportRefNoController.dispose();
     tarihController.dispose();
     teslimTarihController.dispose();
     topluDepoController.dispose();

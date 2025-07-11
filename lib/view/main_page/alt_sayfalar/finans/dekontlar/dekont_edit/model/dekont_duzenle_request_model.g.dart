@@ -45,8 +45,7 @@ Map<String, dynamic> _$DekontDuzenleRequestModelToJson(
   if (instance.siraNo case final value?) 'SIRA_NO': value,
   if (instance.ba case final value?) 'BA': value,
   if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
-  if (instance.hesapTipiAciklama case final value?)
-    'HESAP_TIPI_ACIKLAMA': value,
+  if (instance.hesapTipiAciklama case final value?) 'HESAP_TIPI_ACIKLAMA': value,
   if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
   if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
   if (instance.tutar case final value?) 'TUTAR': value,
@@ -59,8 +58,7 @@ Map<String, dynamic> _$DekontDuzenleRequestModelToJson(
   if (instance.plasiyerAciklama case final value?) 'PLASIYER_ACIKLAMA': value,
   if (instance.depoKodu case final value?) 'DEPO_KODU': value,
   if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
-  if (instance.muhasebeHesapTipi case final value?)
-    'MUHASEBE_HESAP_TIPI': value,
+  if (instance.muhasebeHesapTipi case final value?) 'MUHASEBE_HESAP_TIPI': value,
   if (instance.belgeNo case final value?) 'BELGE_NO': value,
   if (instance.exportRefno case final value?) 'EXPORT_REFNO': value,
   if (instance.cariAdi case final value?) 'CARI_ADI': value,

@@ -127,7 +127,7 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                   readOnly: true,
                   isMust: true,
                   controller: _controller,
-                  
+
                   isDateTime: true,
                   onTap: () async {
                     final result = await dialogManager.showDateTimePicker();

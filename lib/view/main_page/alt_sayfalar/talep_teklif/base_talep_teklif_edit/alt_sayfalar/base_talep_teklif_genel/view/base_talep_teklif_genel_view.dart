@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 
@@ -60,6 +61,9 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
   late final TextEditingController _ozelKod1Controller;
   late final TextEditingController _ozelKod2Controller;
   late final TextEditingController _kosulController;
+  late final TextEditingController _odemeKoduController;
+  late final TextEditingController _exportTipiController;
+  late final TextEditingController _exportRefNoController;
   late final TextEditingController _aciklama1Controller;
   late final TextEditingController _aciklama2Controller;
   late final TextEditingController _aciklama3Controller;
@@ -88,11 +92,12 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
     _belgeTipiController = TextEditingController(
       text: viewModel.belgeTipi.keys.firstWhereOrNull((element) => viewModel.belgeTipi[element] == model.tipi),
     );
-    _belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
+    _belgeTipiController.text = model.yurticiMi ? "Yurtiçi" : "Yurtdışı";
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod1Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum
+      text:
+          parametreModel.listOzelKodTum
               ?.firstWhereOrNull(
                 (element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1,
               )
@@ -108,7 +113,12 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
               ?.aciklama ??
           model.ozelKod2,
     );
-    _kosulController = TextEditingController(text: model.kosulKodu ?? "");
+    _kosulController = TextEditingController(text: model.kosulKodu);
+    _odemeKoduController = TextEditingController(text: model.odemeKodu);
+    _exportRefNoController = TextEditingController(text: model.exportrefno);
+    _exportTipiController = TextEditingController(
+      text: viewModel.ihracatTipi.entries.firstWhereOrNull((element) => element.value == model.exportTipi)?.key ?? "",
+    );
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
     _aciklama3Controller = TextEditingController(text: model.acik3);
@@ -149,6 +159,9 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
     _ozelKod1Controller.dispose();
     _ozelKod2Controller.dispose();
     _kosulController.dispose();
+    _odemeKoduController.dispose();
+    _exportRefNoController.dispose();
+    _exportTipiController.dispose();
     _aciklama1Controller.dispose();
     _aciklama2Controller.dispose();
     _aciklama3Controller.dispose();
@@ -395,6 +408,13 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         if (result is BelgeTipiModel) {
                           _belgeTipiController.text = result.belgeTipi ?? "";
                           viewModel.setBelgeTipi(result.belgeTipiId);
+                          if ((result.belgeTipiId ?? 0) < 6) {
+                            _exportTipiController.clear();
+                            _exportRefNoController.clear();
+                            viewModel
+                              ..setExportTipi(null)
+                              ..setExportRefNo(null);
+                          }
                         }
                       },
                     ),
@@ -419,6 +439,56 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                   ),
                 ),
               ],
+            ),
+            Observer(
+              builder: (_) {
+                if (model.yurticiMi) return const SizedBox.shrink();
+                return Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "İhracat Tipi",
+                        readOnly: true,
+                        isMust: true,
+                        suffixMore: true,
+                        controller: _exportTipiController,
+                        valueWidget: Observer(
+                          builder: (_) => Text(viewModel.model.exportTipi.toStringIfNotNull ?? ""),
+                        ),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "İhracat Tipi",
+                            groupValue: viewModel.model.exportTipi,
+                            children: viewModel.ihracatTipi.entries
+                                .map(
+                                  (e) => BottomSheetModel(
+                                    title: e.key,
+                                    description: e.value.toString(),
+                                    value: e,
+                                    groupValue: e.value,
+                                  ),
+                                )
+                                .toList(),
+                          );
+                          if (result != null) {
+                            viewModel.setExportTipi(result);
+                            _exportTipiController.text = result.key;
+                          }
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Export Ref. No",
+                        enabled: enable,
+                        controller: _exportRefNoController,
+                        onChanged: (value) => viewModel.setExportRefNo(value),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -448,7 +518,27 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                     ),
                   ),
               ],
-            ), if (yetkiController.kosulAktif(model.getEditTipiEnum))
+            ),
+            if (yetkiController.kosulAktif(model.getEditTipiEnum))
+              CustomTextField(
+                enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("OdemeKodu") ?? false),
+                labelText: "Ödeme Kodu",
+                readOnly: true,
+                suffixMore: true,
+                controller: _odemeKoduController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(
+                    context,
+                    viewModel.model.odemeKodu,
+                  );
+                  if (result is ListCariOdemeKodu) {
+                    viewModel.setOdemeKodu(result.odemeKodu);
+                    _odemeKoduController.text = result.aciklama ?? "";
+                  }
+                },
+              ),
+            if (yetkiController.kosulAktif(model.getEditTipiEnum))
               CustomTextField(
                 enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kosul") ?? false),
                 labelText: "Koşul",
@@ -468,7 +558,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                   }
                 },
               ),
-              Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&

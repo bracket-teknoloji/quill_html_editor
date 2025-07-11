@@ -6,12 +6,9 @@ part of 'urun_grubuna_gore_satis_grafigi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UrunGrubunaGoreSatisGrafigiRequestModel
-_$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(Map<String, dynamic> json) =>
+_UrunGrubunaGoreSatisGrafigiRequestModel _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(Map<String, dynamic> json) =>
     _UrunGrubunaGoreSatisGrafigiRequestModel(
-      arrPlasiyerKodu: (json['ArrPlasiyerKodu'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      arrPlasiyerKodu: (json['ArrPlasiyerKodu'] as List<dynamic>?)?.map((e) => e as String).toList(),
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       cariKodu: json['CariKodu'] as String?,

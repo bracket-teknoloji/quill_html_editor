@@ -16,40 +16,18 @@ _CariListesiRequestModel _$CariListesiRequestModelFromJson(
   filterText: json['FilterText'] as String? ?? "",
   kod: json['Kod'] as String? ?? "",
   cariKodu: json['CariKodu'] as String?,
-  baslamaTarihi: json['BaslamaTarihi'] == null
-      ? null
-      : DateTime.parse(json['BaslamaTarihi'] as String),
-  bitisTarihi: json['BitisTarihi'] == null
-      ? null
-      : DateTime.parse(json['BitisTarihi'] as String),
-  filtreler: (json['Filtreler'] as List<dynamic>?)
-      ?.map((e) => (e as num).toInt())
-      .toList(),
+  baslamaTarihi: json['BaslamaTarihi'] == null ? null : DateTime.parse(json['BaslamaTarihi'] as String),
+  bitisTarihi: json['BitisTarihi'] == null ? null : DateTime.parse(json['BitisTarihi'] as String),
+  filtreler: (json['Filtreler'] as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
   kullanici: json['Kullanici'] as String?,
-  arrPlasiyer: (json['ArrPlasiyer'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  arrKod1: (json['ArrKod1'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  arrKod2: (json['ArrKod2'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  arrKod3: (json['ArrKod3'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  arrKod4: (json['ArrKod4'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  arrKod5: (json['ArrKod5'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  arrSehir: (json['ArrSehir'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+  arrPlasiyer: (json['ArrPlasiyer'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  arrKod1: (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  arrKod2: (json['ArrKod2'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  arrKod3: (json['ArrKod3'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  arrKod4: (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  arrKod5: (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  arrSehir: (json['ArrSehir'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)?.map((e) => e as String).toList(),
   ilce: json['Ilce'] as String?,
   cariTipi: json['CariTipi'] as String?,
   filterBakiye: json['FILTER_BAKIYE'] as String?,
@@ -72,10 +50,8 @@ Map<String, dynamic> _$CariListesiRequestModelToJson(
   if (instance.filterText case final value?) 'FilterText': value,
   if (instance.kod case final value?) 'Kod': value,
   if (instance.cariKodu case final value?) 'CariKodu': value,
-  if (instance.baslamaTarihi?.toIso8601String() case final value?)
-    'BaslamaTarihi': value,
-  if (instance.bitisTarihi?.toIso8601String() case final value?)
-    'BitisTarihi': value,
+  if (instance.baslamaTarihi?.toIso8601String() case final value?) 'BaslamaTarihi': value,
+  if (instance.bitisTarihi?.toIso8601String() case final value?) 'BitisTarihi': value,
   if (instance.filtreler case final value?) 'Filtreler': value,
   if (instance.kullanici case final value?) 'Kullanici': value,
   if (instance.arrPlasiyer case final value?) 'ArrPlasiyer': value,
@@ -93,8 +69,7 @@ Map<String, dynamic> _$CariListesiRequestModelToJson(
   if (instance.belgeTuru case final value?) 'BelgeTuru': value,
   if (instance.teslimCari case final value?) 'TeslimCari': value,
   if (instance.sehir case final value?) 'Sehir': value,
-  if (instance.siparisKarsilanmaDurumu case final value?)
-    'SiparisKarsilanmaDurumu': value,
+  if (instance.siparisKarsilanmaDurumu case final value?) 'SiparisKarsilanmaDurumu': value,
   if (instance.searchText case final value?) 'SearchText': value,
   if (instance.secildi case final value?) 'Secildi': value,
 };

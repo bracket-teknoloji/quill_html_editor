@@ -35,7 +35,7 @@ abstract class _SeriDetayiViewModelBase with Store {
   void setSonKullanmaTarihi(DateTime? datetime) => seriModel = seriModel.copyWith(sonKullanmaTarihi: datetime);
 
   @action
-  void setMiktar(double miktar) => seriModel = seriModel.copyWith(miktar: miktar);
+  void setMiktar(double miktar) => setSeriModel(seriModel.copyWith(miktar: miktar));
 
   @action
   void setAcik1(String? value) => seriModel = seriModel.copyWith(acik1: value?.isNotEmpty ?? false ? value : null);

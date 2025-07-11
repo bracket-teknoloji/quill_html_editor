@@ -243,12 +243,14 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
     }
     final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
-        .map((e) => BottomSheetModel(
+        .map(
+          (e) => BottomSheetModel(
             title: e.grupAdi ?? "",
             value: e,
             groupValue: e.grupKodu,
             description: e.grupKodu ?? "",
-          ))
+          ),
+        )
         .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<BaseGrupKoduModel>(

@@ -47,11 +47,10 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   Computed<double>? _$getBugunTahsilatlarComputed;
 
   @override
-  double get getBugunTahsilatlar =>
-      (_$getBugunTahsilatlarComputed ??= Computed<double>(
-        () => super.getBugunTahsilatlar,
-        name: '_TemsilciProfilViewModelBase.getBugunTahsilatlar',
-      )).value;
+  double get getBugunTahsilatlar => (_$getBugunTahsilatlarComputed ??= Computed<double>(
+    () => super.getBugunTahsilatlar,
+    name: '_TemsilciProfilViewModelBase.getBugunTahsilatlar',
+  )).value;
   Computed<double>? _$getBuAySatisComputed;
 
   @override
@@ -76,11 +75,10 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   Computed<double>? _$getBuAyTahsilatlarComputed;
 
   @override
-  double get getBuAyTahsilatlar =>
-      (_$getBuAyTahsilatlarComputed ??= Computed<double>(
-        () => super.getBuAyTahsilatlar,
-        name: '_TemsilciProfilViewModelBase.getBuAyTahsilatlar',
-      )).value;
+  double get getBuAyTahsilatlar => (_$getBuAyTahsilatlarComputed ??= Computed<double>(
+    () => super.getBuAyTahsilatlar,
+    name: '_TemsilciProfilViewModelBase.getBuAyTahsilatlar',
+  )).value;
   Computed<double>? _$getGecenAySatisComputed;
 
   @override
@@ -98,35 +96,31 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   Computed<double>? _$getGecenAySiparisComputed;
 
   @override
-  double get getGecenAySiparis =>
-      (_$getGecenAySiparisComputed ??= Computed<double>(
-        () => super.getGecenAySiparis,
-        name: '_TemsilciProfilViewModelBase.getGecenAySiparis',
-      )).value;
+  double get getGecenAySiparis => (_$getGecenAySiparisComputed ??= Computed<double>(
+    () => super.getGecenAySiparis,
+    name: '_TemsilciProfilViewModelBase.getGecenAySiparis',
+  )).value;
   Computed<double>? _$getGecenAyTahsilatlarComputed;
 
   @override
-  double get getGecenAyTahsilatlar =>
-      (_$getGecenAyTahsilatlarComputed ??= Computed<double>(
-        () => super.getGecenAyTahsilatlar,
-        name: '_TemsilciProfilViewModelBase.getGecenAyTahsilatlar',
-      )).value;
+  double get getGecenAyTahsilatlar => (_$getGecenAyTahsilatlarComputed ??= Computed<double>(
+    () => super.getGecenAyTahsilatlar,
+    name: '_TemsilciProfilViewModelBase.getGecenAyTahsilatlar',
+  )).value;
   Computed<double>? _$getNakitTahsilatComputed;
 
   @override
-  double get getNakitTahsilat =>
-      (_$getNakitTahsilatComputed ??= Computed<double>(
-        () => super.getNakitTahsilat,
-        name: '_TemsilciProfilViewModelBase.getNakitTahsilat',
-      )).value;
+  double get getNakitTahsilat => (_$getNakitTahsilatComputed ??= Computed<double>(
+    () => super.getNakitTahsilat,
+    name: '_TemsilciProfilViewModelBase.getNakitTahsilat',
+  )).value;
   Computed<double>? _$getKrediKartiTahsilatComputed;
 
   @override
-  double get getKrediKartiTahsilat =>
-      (_$getKrediKartiTahsilatComputed ??= Computed<double>(
-        () => super.getKrediKartiTahsilat,
-        name: '_TemsilciProfilViewModelBase.getKrediKartiTahsilat',
-      )).value;
+  double get getKrediKartiTahsilat => (_$getKrediKartiTahsilatComputed ??= Computed<double>(
+    () => super.getKrediKartiTahsilat,
+    name: '_TemsilciProfilViewModelBase.getKrediKartiTahsilat',
+  )).value;
   Computed<double>? _$getCekTahsilatComputed;
 
   @override
@@ -137,27 +131,24 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   Computed<double>? _$getSenetTahsilatComputed;
 
   @override
-  double get getSenetTahsilat =>
-      (_$getSenetTahsilatComputed ??= Computed<double>(
-        () => super.getSenetTahsilat,
-        name: '_TemsilciProfilViewModelBase.getSenetTahsilat',
-      )).value;
+  double get getSenetTahsilat => (_$getSenetTahsilatComputed ??= Computed<double>(
+    () => super.getSenetTahsilat,
+    name: '_TemsilciProfilViewModelBase.getSenetTahsilat',
+  )).value;
   Computed<double>? _$getDekontTahsilatComputed;
 
   @override
-  double get getDekontTahsilat =>
-      (_$getDekontTahsilatComputed ??= Computed<double>(
-        () => super.getDekontTahsilat,
-        name: '_TemsilciProfilViewModelBase.getDekontTahsilat',
-      )).value;
+  double get getDekontTahsilat => (_$getDekontTahsilatComputed ??= Computed<double>(
+    () => super.getDekontTahsilat,
+    name: '_TemsilciProfilViewModelBase.getDekontTahsilat',
+  )).value;
   Computed<double>? _$getToplamTahsilatComputed;
 
   @override
-  double get getToplamTahsilat =>
-      (_$getToplamTahsilatComputed ??= Computed<double>(
-        () => super.getToplamTahsilat,
-        name: '_TemsilciProfilViewModelBase.getToplamTahsilat',
-      )).value;
+  double get getToplamTahsilat => (_$getToplamTahsilatComputed ??= Computed<double>(
+    () => super.getToplamTahsilat,
+    name: '_TemsilciProfilViewModelBase.getToplamTahsilat',
+  )).value;
   Computed<double>? _$getBuYilSatisComputed;
 
   @override
@@ -182,59 +173,52 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   Computed<double>? _$getBuYilTahsilatlarComputed;
 
   @override
-  double get getBuYilTahsilatlar =>
-      (_$getBuYilTahsilatlarComputed ??= Computed<double>(
-        () => super.getBuYilTahsilatlar,
-        name: '_TemsilciProfilViewModelBase.getBuYilTahsilatlar',
-      )).value;
+  double get getBuYilTahsilatlar => (_$getBuYilTahsilatlarComputed ??= Computed<double>(
+    () => super.getBuYilTahsilatlar,
+    name: '_TemsilciProfilViewModelBase.getBuYilTahsilatlar',
+  )).value;
   Computed<List<double>>? _$getPlasiyerToplamComputed;
 
   @override
-  List<double> get getPlasiyerToplam =>
-      (_$getPlasiyerToplamComputed ??= Computed<List<double>>(
-        () => super.getPlasiyerToplam,
-        name: '_TemsilciProfilViewModelBase.getPlasiyerToplam',
-      )).value;
+  List<double> get getPlasiyerToplam => (_$getPlasiyerToplamComputed ??= Computed<List<double>>(
+    () => super.getPlasiyerToplam,
+    name: '_TemsilciProfilViewModelBase.getPlasiyerToplam',
+  )).value;
   Computed<List<String>>? _$getPlasiyerTitleComputed;
 
   @override
-  List<String> get getPlasiyerTitle =>
-      (_$getPlasiyerTitleComputed ??= Computed<List<String>>(
-        () => super.getPlasiyerTitle,
-        name: '_TemsilciProfilViewModelBase.getPlasiyerTitle',
-      )).value;
+  List<String> get getPlasiyerTitle => (_$getPlasiyerTitleComputed ??= Computed<List<String>>(
+    () => super.getPlasiyerTitle,
+    name: '_TemsilciProfilViewModelBase.getPlasiyerTitle',
+  )).value;
   Computed<List<double>>? _$getAylikSatislarComputed;
 
   @override
-  List<double> get getAylikSatislar =>
-      (_$getAylikSatislarComputed ??= Computed<List<double>>(
-        () => super.getAylikSatislar,
-        name: '_TemsilciProfilViewModelBase.getAylikSatislar',
-      )).value;
+  List<double> get getAylikSatislar => (_$getAylikSatislarComputed ??= Computed<List<double>>(
+    () => super.getAylikSatislar,
+    name: '_TemsilciProfilViewModelBase.getAylikSatislar',
+  )).value;
   Computed<List<double>>? _$getAylikAlislarComputed;
 
   @override
-  List<double> get getAylikAlislar =>
-      (_$getAylikAlislarComputed ??= Computed<List<double>>(
-        () => super.getAylikAlislar,
-        name: '_TemsilciProfilViewModelBase.getAylikAlislar',
-      )).value;
+  List<double> get getAylikAlislar => (_$getAylikAlislarComputed ??= Computed<List<double>>(
+    () => super.getAylikAlislar,
+    name: '_TemsilciProfilViewModelBase.getAylikAlislar',
+  )).value;
   Computed<List<double>>? _$getAylikSiparislerComputed;
 
   @override
-  List<double> get getAylikSiparisler =>
-      (_$getAylikSiparislerComputed ??= Computed<List<double>>(
-        () => super.getAylikSiparisler,
-        name: '_TemsilciProfilViewModelBase.getAylikSiparisler',
-      )).value;
+  List<double> get getAylikSiparisler => (_$getAylikSiparislerComputed ??= Computed<List<double>>(
+    () => super.getAylikSiparisler,
+    name: '_TemsilciProfilViewModelBase.getAylikSiparisler',
+  )).value;
   Computed<List<double>>? _$getAylikTahsilatlarComputed;
 
   @override
-  List<double> get getAylikTahsilatlar =>
-      (_$getAylikTahsilatlarComputed ??= Computed<List<double>>(
-        () => super.getAylikTahsilatlar,
-        name: '_TemsilciProfilViewModelBase.getAylikTahsilatlar',
-      )).value;
+  List<double> get getAylikTahsilatlar => (_$getAylikTahsilatlarComputed ??= Computed<List<double>>(
+    () => super.getAylikTahsilatlar,
+    name: '_TemsilciProfilViewModelBase.getAylikTahsilatlar',
+  )).value;
 
   late final _$iadeDurumuValueListAtom = Atom(
     name: '_TemsilciProfilViewModelBase.iadeDurumuValueList',
@@ -427,10 +411,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setIadeDurumuValueList(int index) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(
-          name: '_TemsilciProfilViewModelBase.setIadeDurumuValueList',
-        );
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setIadeDurumuValueList',
+    );
     try {
       return super.setIadeDurumuValueList(index);
     } finally {
@@ -440,8 +423,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setKDVDahil(bool value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setKDVDahil');
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setKDVDahil',
+    );
     try {
       return super.setKDVDahil(value);
     } finally {
@@ -451,8 +435,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setIrsaliyelerDahil(bool value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setIrsaliyelerDahil');
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setIrsaliyelerDahil',
+    );
     try {
       return super.setIrsaliyelerDahil(value);
     } finally {
@@ -462,8 +447,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setDonemValueList(int index) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setDonemValueList');
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setDonemValueList',
+    );
     try {
       return super.setDonemValueList(index);
     } finally {
@@ -473,8 +459,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setDonemKodu(int value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setDonemKodu');
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setDonemKodu',
+    );
     try {
       return super.setDonemKodu(value);
     } finally {
@@ -484,8 +471,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setTahsilatDonemKodu(int value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setTahsilatDonemKodu');
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setTahsilatDonemKodu',
+    );
     try {
       return super.setTahsilatDonemKodu(value);
     } finally {
@@ -495,8 +483,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setAciklama');
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {
@@ -506,8 +495,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setPlasiyer(String? value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setPlasiyer');
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setPlasiyer',
+    );
     try {
       return super.setPlasiyer(value);
     } finally {
@@ -517,10 +507,9 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
 
   @override
   void setTemsilciProfilList(List<TemsilciProfilModel>? value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(
-          name: '_TemsilciProfilViewModelBase.setTemsilciProfilList',
-        );
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController.startAction(
+      name: '_TemsilciProfilViewModelBase.setTemsilciProfilList',
+    );
     try {
       return super.setTemsilciProfilList(value);
     } finally {

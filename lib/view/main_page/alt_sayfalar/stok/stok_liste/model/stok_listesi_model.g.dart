@@ -285,6 +285,8 @@ abstract class _$StokListesiModelCWProxy {
 
   StokListesiModel bulunanSerilot5(String? bulunanSerilot5);
 
+  StokListesiModel ingilizceIsim(String? ingilizceIsim);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -431,6 +433,7 @@ abstract class _$StokListesiModelCWProxy {
     String? bulunanSeriAcik3,
     String? bulunanSeriAcik4,
     String? bulunanSerilot5,
+    String? ingilizceIsim,
   });
 }
 
@@ -937,6 +940,10 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       this(bulunanSerilot5: bulunanSerilot5);
 
   @override
+  StokListesiModel ingilizceIsim(String? ingilizceIsim) =>
+      this(ingilizceIsim: ingilizceIsim);
+
+  @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1083,6 +1090,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
     Object? bulunanSeriAcik3 = const $CopyWithPlaceholder(),
     Object? bulunanSeriAcik4 = const $CopyWithPlaceholder(),
     Object? bulunanSerilot5 = const $CopyWithPlaceholder(),
+    Object? ingilizceIsim = const $CopyWithPlaceholder(),
   }) {
     return StokListesiModel(
       seriBakiyeKontrolu: seriBakiyeKontrolu == const $CopyWithPlaceholder()
@@ -1644,6 +1652,10 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           ? _value.bulunanSerilot5
           // ignore: cast_nullable_to_non_nullable
           : bulunanSerilot5 as String?,
+      ingilizceIsim: ingilizceIsim == const $CopyWithPlaceholder()
+          ? _value.ingilizceIsim
+          // ignore: cast_nullable_to_non_nullable
+          : ingilizceIsim as String?,
     );
   }
 }
@@ -1815,6 +1827,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
         bulunanSeriAcik3: json['BULUNAN_SERI_ACIK3'] as String?,
         bulunanSeriAcik4: json['BULUNAN_SERI_ACIK4'] as String?,
         bulunanSerilot5: json['BULUNAN_SERILOT5'] as String?,
+        ingilizceIsim: json['INGILIZCE_ISIM'] as String?,
       )
       ..kosulIsk4 = (json['KOSUL_ISK4'] as num?)?.toDouble()
       ..kosulIsk5 = (json['KOSUL_ISK5'] as num?)?.toDouble()
@@ -1997,6 +2010,7 @@ Map<String, dynamic> _$StokListesiModelToJson(
   if (instance.isk6o case final value?) 'ISK6O': value,
   if (instance.bulunanOlcuBirimi case final value?)
     'BULUNAN_OLCU_BIRIMI': value,
+  if (instance.ingilizceIsim case final value?) 'INGILIZCE_ISIM': value,
   if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
     'SERI_LIST': value,
 };

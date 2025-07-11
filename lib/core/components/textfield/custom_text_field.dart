@@ -137,7 +137,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
           if (widget.keyboardType == TextInputType.phone) AutofillHints.telephoneNumber,
           if (widget.keyboardType == TextInputType.streetAddress) AutofillHints.streetAddressLine1,
           if (widget.keyboardType == TextInputType.url) AutofillHints.url,
-          ?widget.autofillHints
+          ?widget.autofillHints,
         ],
         textInputAction: TextInputAction.next,
         keyboardType: widget.keyboardType,

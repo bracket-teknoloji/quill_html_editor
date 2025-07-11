@@ -15,6 +15,28 @@ abstract class _BaseSiparislerGenelViewModelBase with Store, MobxNetworkMixin {
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahilMi ?? false;
 
+  final Map<String, int> ihracatTipi = <String, int>{
+    "FOB": 1,
+    "CIF": 2,
+    "CF": 3,
+    "FOT": 4,
+    "İhracat Kayıt No": 5,
+    "DAF": 6,
+    "EXW": 7,
+    "İhracat Kur Farkı": 8,
+    "CIP": 9,
+    "CPT": 10,
+    "DAT": 11,
+    "DAP": 12,
+    "DDP": 13,
+    "DES": 14,
+    "DEQ": 15,
+    "DDU": 16,
+    "FCA": 17,
+    "FAS": 18,
+    "CFR": 19,
+  };
+
   @observable
   BaseSiparisEditModel model = BaseSiparisEditModel.instance;
 
@@ -36,6 +58,25 @@ abstract class _BaseSiparislerGenelViewModelBase with Store, MobxNetworkMixin {
   @action
   void setKosulKodu(String? value) {
     model = model.copyWith(kosulKodu: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setExportTipi(MapEntry<String, int>? value) {
+    if (value == null) return;
+    model = model.copyWith(exportTipi: value.value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setBelgeTipi(int? value) {
+    model = model.copyWith(belgeTipi: value, tipi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setExportRefNo(String? value) {
+    model = model.copyWith(exportrefno: value);
     BaseSiparisEditModel.setInstance(model);
   }
 

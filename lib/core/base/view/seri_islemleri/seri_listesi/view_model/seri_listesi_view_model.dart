@@ -22,10 +22,10 @@ abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
   StokListesiModel? stokModel;
 
   @computed
-  int get hareketMiktari => (kalemModel.miktar ?? 0).toInt();
+  double get hareketMiktari => kalemModel.miktar ?? 0;
 
   @computed
-  int get kalanMiktar => hareketMiktari - (kalemModel.seriList?.map((e) => e.miktar).sum.toInt() ?? 0);
+  double get kalanMiktar => hareketMiktari - (kalemModel.seriList?.map((e) => e.miktar).sum ?? 0);
 
   @action
   void setKalemModel(KalemModel model) => kalemModel = model;
@@ -52,7 +52,8 @@ abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void removeSeriListWithIndex(int index) {
-    kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList?..removeAt(index));
+    final List<SeriList>? seriList = kalemModel.seriList?..removeAt(index);
+    kalemModel = kalemModel.copyWith(seriList: [...?seriList]);
   }
 
   @action

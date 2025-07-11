@@ -55,9 +55,7 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TokenModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is TokenModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************

@@ -13,20 +13,21 @@ final class SaveStokModel with NetworkManagerMixin {
   factory SaveStokModel.forDeleteBarkodModel(BarkodTanimlaKayitlariModel model) => SaveStokModel()
     ..stokBarkodModel = model
     ..islemKodu = 6
-    ..requestVersion = 1
+    ..requestVersion = 3
     ..kodu = model.stokKodu;
 
   factory SaveStokModel.forBarkodTanimla(StokListesiModel model) => SaveStokModel()
     ..barkod1 = model.barkod1
     ..barkod2 = model.barkod2
     ..barkod3 = model.barkod3
-    ..requestVersion = 1
+    ..requestVersion = 3
     ..kodu = model.stokKodu
     ..islemKodu = 3
     ..barkodTanimlamaIslemi = true;
 
   factory SaveStokModel.fromStokListesiModel(StokListesiModel model) => SaveStokModel()
     ..adi = model.stokAdi
+    ..ingilizceIsim = model.ingilizceIsim
     ..kodu = model.stokKodu
     ..alisFiyati1 = model.alisFiat1
     ..alisDovizTipi = model.alisDovTip
@@ -48,7 +49,7 @@ final class SaveStokModel with NetworkManagerMixin {
     ..alisFiyati3 = model.alisFiat3
     ..alisFiyati4 = model.alisFiat4
     ..satisKdvOrani = model.satisKdv
-    ..requestVersion = 2
+    ..requestVersion = 3
     ..alisKdvOrani = model.alisKdv
     ..satisDovizFiyati = model.dovSatisFiat
     ..alisDovizFiyati = model.dovAlisFiat
@@ -138,6 +139,7 @@ final class SaveStokModel with NetworkManagerMixin {
   static void setInstance(SaveStokModel? instance) => _instance = instance;
 
   String? adi;
+  String? ingilizceIsim;
   double? alisDovizFiyati;
   int? alisDovizTipi;
   double? alisFiyati1;

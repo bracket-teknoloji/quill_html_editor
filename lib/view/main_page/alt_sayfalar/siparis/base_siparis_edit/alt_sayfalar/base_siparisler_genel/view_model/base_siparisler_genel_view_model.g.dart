@@ -102,6 +102,45 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
+  void setExportTipi(MapEntry<String, int>? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setExportTipi');
+    try {
+      return super.setExportTipi(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setBelgeTipi(int? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setBelgeTipi');
+    try {
+      return super.setBelgeTipi(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setExportRefNo(String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setExportRefNo');
+    try {
+      return super.setExportRefNo(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
   void setOzelKod1(String? value) {
     final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
         .startAction(name: '_BaseSiparislerGenelViewModelBase.setOzelKod1');

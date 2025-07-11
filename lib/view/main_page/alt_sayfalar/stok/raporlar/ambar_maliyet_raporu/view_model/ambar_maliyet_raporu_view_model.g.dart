@@ -63,16 +63,16 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_AmbarMaliyetRaporuViewModelBaseActionController =
-      ActionController(
-        name: '_AmbarMaliyetRaporuViewModelBase',
-        context: context,
-      );
+  late final _$_AmbarMaliyetRaporuViewModelBaseActionController = ActionController(
+    name: '_AmbarMaliyetRaporuViewModelBase',
+    context: context,
+  );
 
   @override
   void setSifirHaric(bool value) {
-    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController
-        .startAction(name: '_AmbarMaliyetRaporuViewModelBase.setSifirHaric');
+    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController.startAction(
+      name: '_AmbarMaliyetRaporuViewModelBase.setSifirHaric',
+    );
     try {
       return super.setSifirHaric(value);
     } finally {
@@ -84,8 +84,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController
-        .startAction(name: '_AmbarMaliyetRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController.startAction(
+      name: '_AmbarMaliyetRaporuViewModelBase.setFuture',
+    );
     try {
       return super.setFuture();
     } finally {
@@ -97,8 +98,9 @@ mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController
-        .startAction(name: '_AmbarMaliyetRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController.startAction(
+      name: '_AmbarMaliyetRaporuViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

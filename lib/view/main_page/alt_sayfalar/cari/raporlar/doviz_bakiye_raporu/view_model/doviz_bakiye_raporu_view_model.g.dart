@@ -12,11 +12,10 @@ mixin _$DovizBakiyeRaporuViewModel on _DovizBakiyeRaporuViewModelBase, Store {
   Computed<String>? _$bakiyeDurumuGroupValueComputed;
 
   @override
-  String get bakiyeDurumuGroupValue =>
-      (_$bakiyeDurumuGroupValueComputed ??= Computed<String>(
-        () => super.bakiyeDurumuGroupValue,
-        name: '_DovizBakiyeRaporuViewModelBase.bakiyeDurumuGroupValue',
-      )).value;
+  String get bakiyeDurumuGroupValue => (_$bakiyeDurumuGroupValueComputed ??= Computed<String>(
+    () => super.bakiyeDurumuGroupValue,
+    name: '_DovizBakiyeRaporuViewModelBase.bakiyeDurumuGroupValue',
+  )).value;
 
   late final _$_bakiyeDurumuGroupValueAtom = Atom(
     name: '_DovizBakiyeRaporuViewModelBase._bakiyeDurumuGroupValue',
@@ -76,18 +75,16 @@ mixin _$DovizBakiyeRaporuViewModel on _DovizBakiyeRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_DovizBakiyeRaporuViewModelBaseActionController =
-      ActionController(
-        name: '_DovizBakiyeRaporuViewModelBase',
-        context: context,
-      );
+  late final _$_DovizBakiyeRaporuViewModelBaseActionController = ActionController(
+    name: '_DovizBakiyeRaporuViewModelBase',
+    context: context,
+  );
 
   @override
   void changeBakiyeDurumu(int? index) {
-    final _$actionInfo = _$_DovizBakiyeRaporuViewModelBaseActionController
-        .startAction(
-          name: '_DovizBakiyeRaporuViewModelBase.changeBakiyeDurumu',
-        );
+    final _$actionInfo = _$_DovizBakiyeRaporuViewModelBaseActionController.startAction(
+      name: '_DovizBakiyeRaporuViewModelBase.changeBakiyeDurumu',
+    );
     try {
       return super.changeBakiyeDurumu(index);
     } finally {
@@ -97,8 +94,9 @@ mixin _$DovizBakiyeRaporuViewModel on _DovizBakiyeRaporuViewModelBase, Store {
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_DovizBakiyeRaporuViewModelBaseActionController
-        .startAction(name: '_DovizBakiyeRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_DovizBakiyeRaporuViewModelBaseActionController.startAction(
+      name: '_DovizBakiyeRaporuViewModelBase.setFuture',
+    );
     try {
       return super.setFuture();
     } finally {
@@ -108,8 +106,9 @@ mixin _$DovizBakiyeRaporuViewModel on _DovizBakiyeRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_DovizBakiyeRaporuViewModelBaseActionController
-        .startAction(name: '_DovizBakiyeRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_DovizBakiyeRaporuViewModelBaseActionController.startAction(
+      name: '_DovizBakiyeRaporuViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

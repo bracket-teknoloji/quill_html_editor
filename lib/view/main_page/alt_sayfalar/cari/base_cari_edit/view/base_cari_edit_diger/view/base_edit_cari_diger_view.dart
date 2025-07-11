@@ -218,13 +218,17 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     onClear: () => viewModel.changeGrupKodu(null),
                     onTap: () async {
                       final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 0).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
-                        aramaVarMi: true,
+                        groupValue: viewModel.model?.grupKodu,
                         title: "GrupKodu",
                         children: List.generate(
                           liste!.length,
-                          (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index]),
+                          (index) => BottomSheetModel(
+                            title: liste[index].grupAdi ?? "",
+                            value: liste[index],
+                            groupValue: liste[index].grupKodu,
+                          ),
                         ),
                       );
                       if (result != null) {
@@ -245,13 +249,17 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     onClear: () => viewModel.changeKod1(null),
                     onTap: () async {
                       final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 1).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
-                        aramaVarMi: true,
+                        groupValue: viewModel.model?.kod1,
                         title: "Kod 1",
                         children: List.generate(
                           liste!.length,
-                          (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index]),
+                          (index) => BottomSheetModel(
+                            title: liste[index].grupAdi ?? "",
+                            value: liste[index],
+                            groupValue: liste[index].grupKodu,
+                          ),
                         ),
                       );
                       if (result is BaseGrupKoduModel) {
@@ -277,13 +285,17 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     onClear: () => viewModel.changeKod2(null),
                     onTap: () async {
                       final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 2).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
-                        aramaVarMi: true,
+                        groupValue: viewModel.model?.kod2,
                         title: "Kod 2",
                         children: List.generate(
                           liste!.length,
-                          (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index]),
+                          (index) => BottomSheetModel(
+                            title: liste[index].grupAdi ?? "",
+                            value: liste[index],
+                            groupValue: liste[index].grupKodu,
+                          ),
                         ),
                       );
                       if (result is BaseGrupKoduModel) {
@@ -305,13 +317,17 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     onClear: () => viewModel.changeKod3(null),
                     onTap: () async {
                       final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 3).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
-                        aramaVarMi: true,
+                        groupValue: viewModel.model?.kod3,
                         title: "Kod 3",
                         children: List.generate(
                           liste!.length,
-                          (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index]),
+                          (index) => BottomSheetModel(
+                            title: liste[index].grupAdi ?? "",
+                            value: liste[index],
+                            groupValue: liste[index].grupKodu,
+                          ),
                         ),
                       );
                       if (result is BaseGrupKoduModel) {
@@ -337,13 +353,17 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     onClear: () => viewModel.changeKod4(null),
                     onTap: () async {
                       final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 4).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
-                        aramaVarMi: true,
+                        groupValue: viewModel.model?.kod4,
                         title: "Kod 4",
                         children: List.generate(
                           liste!.length,
-                          (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index]),
+                          (index) => BottomSheetModel(
+                            title: liste[index].grupAdi ?? "",
+                            value: liste[index],
+                            groupValue: liste[index].grupKodu,
+                          ),
                         ),
                       );
                       if (result is BaseGrupKoduModel) {
@@ -364,13 +384,17 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     onClear: () => viewModel.changeKod5(null),
                     onTap: () async {
                       final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 5).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
-                        aramaVarMi: true,
+                        groupValue: viewModel.model?.kod5,
                         title: "Kod 5",
                         children: List.generate(
                           liste!.length,
-                          (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index]),
+                          (index) => BottomSheetModel(
+                            title: liste[index].grupAdi ?? "",
+                            value: liste[index],
+                            groupValue: liste[index].grupKodu,
+                          ),
                         ),
                       );
                       if (result is BaseGrupKoduModel) {
@@ -522,13 +546,15 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               controller: kilitController,
               onClear: () => viewModel.changeKilit(null),
               onTap: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
                   title: "Kilit",
+                  groupValue: viewModel.model?.kilit,
                   children: List.generate(
                     viewModel.kilitMap.length,
                     (index) => BottomSheetModel(
                       title: viewModel.kilitMap.keys.toList()[index],
+                      groupValue: viewModel.kilitMap.entries.toList()[index].value,
                       value: viewModel.kilitMap.entries.toList()[index],
                     ),
                   ),
@@ -818,14 +844,16 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model?.efaturaSenaryo ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                             context,
                             title: "E-Fatura Senaryo",
+                            groupValue: viewModel.model?.efaturaSenaryo,
                             children: List.generate(
                               viewModel.senaryoMap.length,
                               (index) => BottomSheetModel(
                                 title: viewModel.senaryoMap.keys.toList()[index],
                                 value: viewModel.senaryoMap.entries.toList()[index],
+                                groupValue: viewModel.senaryoMap.entries.toList()[index].value,
                               ),
                             ),
                           );

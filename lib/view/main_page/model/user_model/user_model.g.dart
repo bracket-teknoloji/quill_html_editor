@@ -84,10 +84,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UserModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is UserModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -104,9 +101,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..erpParola = json['ERP_PAROLA'] as String?
   ..profilKodu = (json['PROFIL_KODU'] as num?)?.toInt()
   ..profilAdi = json['PROFIL_ADI'] as String?
-  ..profilYetki = json['PROFIL_YETKI'] == null
-      ? null
-      : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
+  ..profilYetki = json['PROFIL_YETKI'] == null ? null : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
   ..kullaniciYetki = KullaniciYetkiModel.fromJson(
     json['KULLANICI_YETKI'] as String?,
   )
@@ -134,11 +129,9 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   if (instance.profilKodu case final value?) 'PROFIL_KODU': value,
   if (instance.profilAdi case final value?) 'PROFIL_ADI': value,
   if (instance.profilYetki?.toJson() case final value?) 'PROFIL_YETKI': value,
-  if (instance.kullaniciYetki?.toJson() case final value?)
-    'KULLANICI_YETKI': value,
+  if (instance.kullaniciYetki?.toJson() case final value?) 'KULLANICI_YETKI': value,
   if (instance._pickerYetkili case final value?) 'PICKER_YETKILI': value,
-  if (instance.yetkiliSubelerJson case final value?)
-    'YETKILI_SUBELER_JSON': value,
+  if (instance.yetkiliSubelerJson case final value?) 'YETKILI_SUBELER_JSON': value,
   if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
   if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
   if (instance.adSoyad case final value?) 'AD_SOYAD': value,
@@ -146,6 +139,5 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   if (instance.adminMi case final value?) 'ADMIN_MI': value,
   if (instance.plasiyerTanimi case final value?) 'PLASIYER_TANIMI': value,
   if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
-  if (instance.ekRehberler?.map((e) => e.toJson()).toList() case final value?)
-    'EKREHBERLER': value,
+  if (instance.ekRehberler?.map((e) => e.toJson()).toList() case final value?) 'EKREHBERLER': value,
 };

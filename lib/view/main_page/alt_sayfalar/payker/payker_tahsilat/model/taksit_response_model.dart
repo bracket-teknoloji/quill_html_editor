@@ -97,7 +97,6 @@ sealed class Banka with _$Banka {
     String? kayityapankul,
     DateTime? duzeltmetarihi,
     String? duzeltmeyapankul,
-    
   }) = _Banka;
 
   factory Banka.fromJson(Map<String, dynamic> json) => _$BankaFromJson(json);

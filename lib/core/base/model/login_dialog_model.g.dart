@@ -41,7 +41,5 @@ class LoginDialogModelAdapter extends TypeAdapter<LoginDialogModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LoginDialogModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is LoginDialogModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

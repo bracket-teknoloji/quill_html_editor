@@ -157,6 +157,7 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     this.bulunanSeriAcik3,
     this.bulunanSeriAcik4,
     this.bulunanSerilot5,
+    this.ingilizceIsim,
   });
 
   factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
@@ -339,6 +340,7 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? isk5o;
   double? isk6o;
   int? bulunanOlcuBirimi;
+  String? ingilizceIsim;
   @override
   List<SeriList>? seriList;
 

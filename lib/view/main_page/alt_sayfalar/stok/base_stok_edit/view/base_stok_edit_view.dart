@@ -50,7 +50,6 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
         ..satisDovizAdi = mainCurrency;
     }
     viewModel.stokListesiModel?.subeKodu ??= -1;
-
     _tabController = TabController(length: tabLength, vsync: this);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
@@ -154,7 +153,6 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
   Future<void> postData() async {
     final StokListesiModel model = StokListesiModel.instance;
     final SaveStokModel saveStokModel = SaveStokModel.fromStokListesiModel(model)
-      ..requestVersion = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2
       ..yeniKayit =
           widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala;
     if (widget.model?.baseEditEnum == BaseEditEnum.ekle) {

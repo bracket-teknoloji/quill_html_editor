@@ -69,7 +69,7 @@ sealed class ClientMetadataModel with _$ClientMetadataModel {
 
   factory ClientMetadataModel.fromJson(Map<String, dynamic> json) => _$ClientMetadataModelFromJson(json);
 
-  factory ClientMetadataModel.fromAccountModel( ) => ClientMetadataModel(
+  factory ClientMetadataModel.fromAccountModel() => ClientMetadataModel(
     platform: AccountModel.instance.platform,
     appName: "Picker",
     appVersion: AppInfoModel.instance.version,
@@ -79,4 +79,3 @@ sealed class ClientMetadataModel with _$ClientMetadataModel {
     timezone: DateTime.now().timeZoneOffset.inHours.toString(),
   );
 }
-

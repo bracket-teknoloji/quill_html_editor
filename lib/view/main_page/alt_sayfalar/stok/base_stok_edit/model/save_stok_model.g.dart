@@ -9,6 +9,7 @@ part of 'save_stok_model.dart';
 SaveStokModel _$SaveStokModelFromJson(Map<String, dynamic> json) =>
     SaveStokModel()
       ..adi = json['ADI'] as String?
+      ..ingilizceIsim = json['INGILIZCE_ISIM'] as String?
       ..alisDovizFiyati = (json['ALIS_DOVIZ_FIYATI'] as num?)?.toDouble()
       ..alisDovizTipi = (json['ALIS_DOVIZ_TIPI'] as num?)?.toInt()
       ..alisFiyati1 = (json['ALIS_FIYATI1'] as num?)?.toDouble()
@@ -80,6 +81,7 @@ Map<String, dynamic> _$SaveStokModelToJson(
   SaveStokModel instance,
 ) => <String, dynamic>{
   if (instance.adi case final value?) 'ADI': value,
+  if (instance.ingilizceIsim case final value?) 'INGILIZCE_ISIM': value,
   if (instance.alisDovizFiyati case final value?) 'ALIS_DOVIZ_FIYATI': value,
   if (instance.alisDovizTipi case final value?) 'ALIS_DOVIZ_TIPI': value,
   if (instance.alisFiyati1 case final value?) 'ALIS_FIYATI1': value,

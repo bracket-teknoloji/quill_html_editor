@@ -253,7 +253,12 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   String get onayDurumuString => "${cevapKodu ?? "0"} - ${cevapAciklama ?? "0"}";
 
-  String get getDizaynAdi => "${dizaynNo ?? ""} - ${dizaynAdi ?? ""}";
+  String get getDizaynAdi {
+    if (dizaynNo == null) {
+      return "";
+    }
+    return "${dizaynNo ?? ""} - ${dizaynAdi ?? ""}";
+  }
 
   String get getTitle {
     if (eArsivMi) {

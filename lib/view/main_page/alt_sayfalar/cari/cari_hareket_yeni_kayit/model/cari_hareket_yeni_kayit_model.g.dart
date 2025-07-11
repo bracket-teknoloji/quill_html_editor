@@ -18,12 +18,8 @@ CariHareketYeniKayitModel _$CariHareketYeniKayitModelFromJson(
   ..plasiyerKodu = json['PLASIYER_KODU'] as String?
   ..projeKodu = json['PROJE_KODU'] as String?
   ..inckeyno = (json['INCKEYNO'] as num?)?.toInt()
-  ..tarih = json['TARIH'] == null
-      ? null
-      : DateTime.parse(json['TARIH'] as String)
-  ..vadeTarihi = json['VADE_TARIHI'] == null
-      ? null
-      : DateTime.parse(json['VADE_TARIHI'] as String)
+  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+  ..vadeTarihi = json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String)
   ..yeniKayit = json['_YeniKayit'] as bool?;
 
 Map<String, dynamic> _$CariHareketYeniKayitModelToJson(
@@ -39,7 +35,6 @@ Map<String, dynamic> _$CariHareketYeniKayitModelToJson(
   if (instance.projeKodu case final value?) 'PROJE_KODU': value,
   if (instance.inckeyno case final value?) 'INCKEYNO': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.vadeTarihi?.toIso8601String() case final value?)
-    'VADE_TARIHI': value,
+  if (instance.vadeTarihi?.toIso8601String() case final value?) 'VADE_TARIHI': value,
   if (instance.yeniKayit case final value?) '_YeniKayit': value,
 };

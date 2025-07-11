@@ -10,9 +10,7 @@ _EkRehberRequestModel _$EkRehberRequestModelFromJson(
   Map<String, dynamic> json,
 ) => _EkRehberRequestModel(
   belgeNo: json['BelgeNo'] as String?,
-  belgeTarihi: json['BelgeTarihi'] == null
-      ? null
-      : DateTime.parse(json['BelgeTarihi'] as String),
+  belgeTarihi: json['BelgeTarihi'] == null ? null : DateTime.parse(json['BelgeTarihi'] as String),
   belgeTipi: json['BelgeTipi'] as String?,
   cariKodu: json['CariKodu'] as String?,
   stokKodu: json['StokKodu'] as String?,
@@ -26,8 +24,7 @@ Map<String, dynamic> _$EkRehberRequestModelToJson(
   _EkRehberRequestModel instance,
 ) => <String, dynamic>{
   if (instance.belgeNo case final value?) 'BelgeNo': value,
-  if (instance.belgeTarihi?.toIso8601String() case final value?)
-    'BelgeTarihi': value,
+  if (instance.belgeTarihi?.toIso8601String() case final value?) 'BelgeTarihi': value,
   if (instance.belgeTipi case final value?) 'BelgeTipi': value,
   if (instance.cariKodu case final value?) 'CariKodu': value,
   if (instance.stokKodu case final value?) 'StokKodu': value,

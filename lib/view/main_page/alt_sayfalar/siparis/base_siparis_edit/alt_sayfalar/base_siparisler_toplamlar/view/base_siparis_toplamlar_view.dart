@@ -31,6 +31,8 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseSiparisToplamlarViewModel viewModel = BaseSiparisToplamlarViewModel();
   bool get enable => widget.model.enable;
+  String get tevkifat =>
+      yetkiController.talepTeklifEkAciklamaAdi(model.getEditTipiEnum?.satisMi ?? false) ?? "Tevkifat";
   late final TextEditingController genelIskonto1Controller;
   late final TextEditingController genelIskonto2Controller;
   late final TextEditingController genelIskonto3Controller;
@@ -268,234 +270,6 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
     ).paddingAll(UIHelper.lowSize),
   );
 
-  Card toplamlardCard() => Card(
-    child: Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                    text: "Miktar\n",
-                    style: TextStyle(color: ColorPalette.slateGray),
-                  ),
-                  TextSpan(
-                    text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNotNull ?? "0",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            const Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Mal Ağırlığı\n",
-                    style: TextStyle(color: ColorPalette.slateGray),
-                  ),
-                  TextSpan(
-                    text: "0",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                    text: "Brüt Tutar\n",
-                    style: TextStyle(color: ColorPalette.slateGray),
-                  ),
-                  TextSpan(
-                    text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  if (model.dovizliMi)
-                    TextSpan(
-                      text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
-                    ),
-                ],
-              ),
-            ),
-          ].map((e) => Expanded(child: e)).toList(),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                    text: "Mal. Faz. İsk.\n",
-                    style: TextStyle(color: ColorPalette.slateGray),
-                  ),
-                  TextSpan(
-                    text:
-                        "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  if (model.dovizliMi)
-                    TextSpan(
-                      text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                    ),
-                ],
-              ),
-            ),
-            Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(
-                    text: "Satır İsk.\n",
-                    style: TextStyle(color: ColorPalette.slateGray),
-                  ),
-                  TextSpan(
-                    text:
-                        "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  if (model.dovizliMi)
-                    TextSpan(
-                      text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                    ),
-                ],
-              ),
-            ),
-            Observer(
-              builder: (_) => Text.rich(
-                TextSpan(
-                  children: [
-                    const TextSpan(
-                      text: "Toplam İskonto\n",
-                      style: TextStyle(color: ColorPalette.slateGray),
-                    ),
-                    TextSpan(
-                      text:
-                          "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    if (model.dovizliMi)
-                      TextSpan(
-                        text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                      ),
-                  ],
-                ),
-              ),
-            ),
-          ].map((e) => Expanded(child: e)).toList(),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Observer(
-              builder: (_) => Text.rich(
-                TextSpan(
-                  children: [
-                    const TextSpan(
-                      text: "Ara Toplam\n",
-                      style: TextStyle(color: ColorPalette.slateGray),
-                    ),
-                    TextSpan(
-                      text:
-                          "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    if (model.dovizliMi)
-                      TextSpan(
-                        text:
-                            "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                      ),
-                  ],
-                ),
-              ),
-            ),
-            Observer(
-              builder: (_) => Text.rich(
-                TextSpan(
-                  children: <InlineSpan>[
-                    const TextSpan(
-                      text: "ÖTV Toplam\n",
-                      style: TextStyle(color: ColorPalette.slateGray),
-                    ),
-                    TextSpan(
-                      text:
-                          "${viewModel.model.getOTVToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    if (model.dovizliMi)
-                      TextSpan(
-                        text:
-                            "\n${viewModel.model.getDovizliOTVToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                      ),
-                  ],
-                ),
-              ),
-            ),
-            Observer(
-              builder: (_) => Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        const TextSpan(
-                          text: "KDV Tutarı\n",
-                          style: TextStyle(color: ColorPalette.slateGray),
-                        ),
-                        TextSpan(
-                          text:
-                              "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        if (model.dovizliMi)
-                          TextSpan(
-                            text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                          ),
-                      ],
-                    ),
-                  ),
-                  IconButton(
-                    alignment: Alignment.topLeft,
-                    padding: UIHelper.zeroPadding,
-                    onPressed: () async {
-                      dialogManager.showInfoDialog("KDV Tutarları\n${viewModel.model.kdvTutarlariVeOranlari}");
-                    },
-                    icon: const Icon(Icons.open_in_new_outlined, size: UIHelper.highSize),
-                  ),
-                ],
-              ),
-            ),
-            Observer(
-              builder: (_) => Text.rich(
-                TextSpan(
-                  children: [
-                    const TextSpan(
-                      text: "Genel Toplam\n",
-                      style: TextStyle(color: ColorPalette.slateGray),
-                    ),
-                    TextSpan(
-                      text:
-                          "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    if (model.dovizliMi)
-                      TextSpan(
-                        text:
-                            "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                      ),
-                  ],
-                ),
-              ),
-            ),
-          ].map((e) => Expanded(child: e)).toList(),
-        ),
-      ],
-    ).paddingAll(UIHelper.lowSize),
-  );
-
   Padding textFields() => Padding(
     padding: UIHelper.lowPaddingHorizontal,
     child: !(model.getEditTipiEnum?.fiyatGor ?? false)
@@ -651,30 +425,35 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                 ].map((e) => Expanded(child: e)).toList(),
               ),
               Row(
-                children: [
-                  if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+                children: <Widget>[
+                  if (yetkiController.ekMaliyet1Aktif(model.getEditTipiEnum) &&
+                      (model.getEditTipiEnum?.fiyatGor ?? false))
                     Expanded(
                       child: CustomTextField(
                         labelText: "Ek Mal. 1",
                         enabled: enable,
+                        isFormattedString: true,
                         controller: ekMal1Controller,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                        onChanged: (value) => viewModel.setEkMal1(value.toDoubleWithFormattedString),
                       ),
                     ),
-                  if (yetkiController.siparisEkMaliyet2GizlenecekMi)
+                  if (yetkiController.siparisEkMaliyet2GizlenecekMi &&
+                      yetkiController.ekMaliyet2Aktif(model.getEditTipiEnum) &&
+                      (model.getEditTipiEnum?.fiyatGor ?? false))
                     Expanded(
                       child: CustomTextField(
-                        labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
+                        labelText: tevkifat,
                         enabled: enable,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         controller: tevkifatController,
-                        inputFormatter: [FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
+                        inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
+                        onChanged: (value) => viewModel.setEkMal2(value.toDoubleWithFormattedString),
                         suffix: IconButton(
                           onPressed: () async {
                             final result = await bottomSheetDialogManager.showBottomSheetDialog(
                               context,
-                              title: "Tevkifat Oranı",
+                              title: tevkifat,
                               children: List.generate(
                                 viewModel.tevkifatMap.length,
                                 (index) => BottomSheetModel(
@@ -697,14 +476,16 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
               ),
               Row(
                 children: [
-                  if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+                  if (yetkiController.ekMaliyet3Aktif(model.getEditTipiEnum) &&
+                      (model.getEditTipiEnum?.fiyatGor ?? false))
                     Expanded(
                       child: CustomTextField(
                         labelText: "Ek Mal. 3",
                         enabled: enable,
+                        isFormattedString: true,
                         controller: ekMal3Controller,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                        onChanged: (value) => viewModel.setEkMal3(value.toDoubleWithFormattedString),
                       ),
                     ),
                   if (!(model.getEditTipiEnum?.gizlenecekAlanlar("vade_gunu") ?? false) &&

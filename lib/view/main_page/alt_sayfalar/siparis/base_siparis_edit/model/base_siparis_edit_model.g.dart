@@ -437,6 +437,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel faturalasmayacak(bool? faturalasmayacak);
 
+  BaseSiparisEditModel exportTipi(int? exportTipi);
+
+  BaseSiparisEditModel exportrefno(String? exportrefno);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -659,6 +663,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     bool? kapali,
     double? tamamlananMiktar,
     bool? faturalasmayacak,
+    int? exportTipi,
+    String? exportrefno,
   });
 }
 
@@ -1453,6 +1459,14 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(faturalasmayacak: faturalasmayacak);
 
   @override
+  BaseSiparisEditModel exportTipi(int? exportTipi) =>
+      this(exportTipi: exportTipi);
+
+  @override
+  BaseSiparisEditModel exportrefno(String? exportrefno) =>
+      this(exportrefno: exportrefno);
+
+  @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1675,6 +1689,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? kapali = const $CopyWithPlaceholder(),
     Object? tamamlananMiktar = const $CopyWithPlaceholder(),
     Object? faturalasmayacak = const $CopyWithPlaceholder(),
+    Object? exportTipi = const $CopyWithPlaceholder(),
+    Object? exportrefno = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2541,6 +2557,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.faturalasmayacak
           // ignore: cast_nullable_to_non_nullable
           : faturalasmayacak as bool?,
+      exportTipi: exportTipi == const $CopyWithPlaceholder()
+          ? _value.exportTipi
+          // ignore: cast_nullable_to_non_nullable
+          : exportTipi as int?,
+      exportrefno: exportrefno == const $CopyWithPlaceholder()
+          ? _value.exportrefno
+          // ignore: cast_nullable_to_non_nullable
+          : exportrefno as String?,
     );
   }
 }
@@ -2867,6 +2891,14 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel fiyatYuzde(double? fiyatYuzde);
 
+  KalemModel fiyatYuzdeDoviz(double? fiyatYuzdeDoviz);
+
+  KalemModel iadefaturano(String? iadefaturano);
+
+  KalemModel iadefaturatarihi(DateTime? iadefaturatarihi);
+
+  KalemModel iadesirano(int? iadesirano);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -3029,6 +3061,10 @@ abstract class _$KalemModelCWProxy {
     String? kayityapankul,
     List<KalemFireModel>? fireListe,
     double? fiyatYuzde,
+    double? fiyatYuzdeDoviz,
+    String? iadefaturano,
+    DateTime? iadefaturatarihi,
+    int? iadesirano,
   });
 }
 
@@ -3563,6 +3599,21 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel fiyatYuzde(double? fiyatYuzde) => this(fiyatYuzde: fiyatYuzde);
 
   @override
+  KalemModel fiyatYuzdeDoviz(double? fiyatYuzdeDoviz) =>
+      this(fiyatYuzdeDoviz: fiyatYuzdeDoviz);
+
+  @override
+  KalemModel iadefaturano(String? iadefaturano) =>
+      this(iadefaturano: iadefaturano);
+
+  @override
+  KalemModel iadefaturatarihi(DateTime? iadefaturatarihi) =>
+      this(iadefaturatarihi: iadefaturatarihi);
+
+  @override
+  KalemModel iadesirano(int? iadesirano) => this(iadesirano: iadesirano);
+
+  @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -3725,6 +3776,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? kayityapankul = const $CopyWithPlaceholder(),
     Object? fireListe = const $CopyWithPlaceholder(),
     Object? fiyatYuzde = const $CopyWithPlaceholder(),
+    Object? fiyatYuzdeDoviz = const $CopyWithPlaceholder(),
+    Object? iadefaturano = const $CopyWithPlaceholder(),
+    Object? iadefaturatarihi = const $CopyWithPlaceholder(),
+    Object? iadesirano = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -4350,6 +4405,22 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.fiyatYuzde
           // ignore: cast_nullable_to_non_nullable
           : fiyatYuzde as double?,
+      fiyatYuzdeDoviz: fiyatYuzdeDoviz == const $CopyWithPlaceholder()
+          ? _value.fiyatYuzdeDoviz
+          // ignore: cast_nullable_to_non_nullable
+          : fiyatYuzdeDoviz as double?,
+      iadefaturano: iadefaturano == const $CopyWithPlaceholder()
+          ? _value.iadefaturano
+          // ignore: cast_nullable_to_non_nullable
+          : iadefaturano as String?,
+      iadefaturatarihi: iadefaturatarihi == const $CopyWithPlaceholder()
+          ? _value.iadefaturatarihi
+          // ignore: cast_nullable_to_non_nullable
+          : iadefaturatarihi as DateTime?,
+      iadesirano: iadesirano == const $CopyWithPlaceholder()
+          ? _value.iadesirano
+          // ignore: cast_nullable_to_non_nullable
+          : iadesirano as int?,
     );
   }
 }
@@ -4671,13 +4742,15 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       kapali: fields[194] as bool?,
       tamamlananMiktar: (fields[193] as num?)?.toDouble(),
       faturalasmayacak: fields[188] as bool?,
+      exportTipi: (fields[196] as num?)?.toInt(),
+      exportrefno: fields[197] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(196)
+      ..writeByte(198)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -5069,7 +5142,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(194)
       ..write(obj.kapali)
       ..writeByte(195)
-      ..write(obj.hedefSube);
+      ..write(obj.hedefSube)
+      ..writeByte(196)
+      ..write(obj.exportTipi)
+      ..writeByte(197)
+      ..write(obj.exportrefno);
   }
 
   @override
@@ -5248,13 +5325,17 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       detayId: (fields[151] as num?)?.toInt(),
       kayityapankul: fields[152] as String?,
       fiyatYuzde: (fields[153] as num?)?.toDouble(),
+      fiyatYuzdeDoviz: (fields[154] as num?)?.toDouble(),
+      iadefaturano: fields[155] as String?,
+      iadefaturatarihi: fields[156] as DateTime?,
+      iadesirano: fields[157] == null ? 1 : (fields[157] as num?)?.toInt(),
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(154)
+      ..writeByte(158)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5562,7 +5643,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(152)
       ..write(obj.kayityapankul)
       ..writeByte(153)
-      ..write(obj.fiyatYuzde);
+      ..write(obj.fiyatYuzde)
+      ..writeByte(154)
+      ..write(obj.fiyatYuzdeDoviz)
+      ..writeByte(155)
+      ..write(obj.iadefaturano)
+      ..writeByte(156)
+      ..write(obj.iadefaturatarihi)
+      ..writeByte(157)
+      ..write(obj.iadesirano);
   }
 
   @override
@@ -5853,6 +5942,8 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   kapali: json['KAPALI'] as bool?,
   tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
   faturalasmayacak: json['FATURALASMAYACAK'] as bool?,
+  exportTipi: (json['EXPORT_TIPI'] as num?)?.toInt(),
+  exportrefno: json['EXPORTREFNO'] as String?,
 );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -6078,6 +6169,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.tamamlananMiktar case final value?) 'TAMAMLANAN_MIKTAR': value,
   if (instance.kapali case final value?) 'KAPALI': value,
   if (instance.hedefSube case final value?) 'HEDEF_SUBE': value,
+  if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
+  if (instance.exportrefno case final value?) 'EXPORTREFNO': value,
 };
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
@@ -6253,6 +6346,12 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       ?.map((e) => KalemFireModel.fromJson(e as Map<String, dynamic>))
       .toList(),
   fiyatYuzde: (json['FIYAT_YUZDE'] as num?)?.toDouble(),
+  fiyatYuzdeDoviz: (json['FIYAT_YUZDE_DOVIZ'] as num?)?.toDouble(),
+  iadefaturano: json['IADEFATURANO'] as String?,
+  iadefaturatarihi: json['IADEFATURATARIHI'] == null
+      ? null
+      : DateTime.parse(json['IADEFATURATARIHI'] as String),
+  iadesirano: (json['IADESIRANO'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$KalemModelToJson(
@@ -6430,6 +6529,11 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.detayId case final value?) 'DETAY_ID': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
   if (instance.fiyatYuzde case final value?) 'FIYAT_YUZDE': value,
+  if (instance.fiyatYuzdeDoviz case final value?) 'FIYAT_YUZDE_DOVIZ': value,
+  if (instance.iadefaturano case final value?) 'IADEFATURANO': value,
+  if (instance.iadefaturatarihi?.toIso8601String() case final value?)
+    'IADEFATURATARIHI': value,
+  if (instance.iadesirano case final value?) 'IADESIRANO': value,
   if (instance.fireListe?.map((e) => e.toJson()).toList() case final value?)
     'FIRE_LISTE': value,
 };

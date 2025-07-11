@@ -364,10 +364,33 @@ final class YetkiController {
     }
   }
 
+  bool get iadeFaturaGoster => _isTrue(_paramModel?.fieldVarSatisFaturasiIadeFaturaNo);
   //* Genel Sipariş Yetkileri
 
+  bool ekMaliyet1Aktif(EditTipiEnum? editTipi) => _isTrue(
+    _paramModel?.listFatuEkMaliyet?.any(
+          (element) => element.belgeTipi == editTipi?.rawValue && element.no == 1,
+        ) ??
+        false,
+    skipAdmin: true,
+  );
+
   bool ekMaliyet2Aktif(EditTipiEnum? editTipi) => _isTrue(
-    editTipi?.satisMi == true ? _paramModel?.satisEkMaliyet2Aktif : _paramModel?.alisEkMaliyet2Aktif,
+    _paramModel?.listFatuEkMaliyet?.any(
+          (element) => element.belgeTipi == editTipi?.rawValue && element.no == 2,
+        ) ??
+        false,
+    skipAdmin: true,
+  );
+
+  double? getEkMaliyet1KdvOrani(EditTipiEnum? editTipi) =>
+      editTipi?.satisMi ?? false ? _paramModel?.satisEkMaliyet1KdvOrani : _paramModel?.alisEkMaliyet1KdvOrani;
+
+  bool ekMaliyet3Aktif(EditTipiEnum? editTipi) => _isTrue(
+    _paramModel?.listFatuEkMaliyet?.any(
+          (element) => element.belgeTipi == editTipi?.rawValue && element.no == 3,
+        ) ??
+        false,
     skipAdmin: true,
   );
 
