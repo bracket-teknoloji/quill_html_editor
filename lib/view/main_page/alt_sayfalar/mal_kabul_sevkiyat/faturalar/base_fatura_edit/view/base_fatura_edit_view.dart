@@ -273,6 +273,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
+        viewModel.baseSiparisEditModel = BaseSiparisEditModel.instance;
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
         BaseSiparisEditModel.instance
           ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
@@ -323,7 +324,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                 ..cariAdi = cariModel.cariAdi
                 ..cariKodu = cariModel.cariKodu
                 ..tipi = BaseSiparisEditModel.instance.belgeTipi
-                ..efaturaSenaryo = cariModel.efaturaSenaryo
+                ..efaturaSenaryo = cariModel.efaturaTipi
                 ..kosulKodu = cariModel.kosulKodu;
               if (cariModel.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance
@@ -341,27 +342,32 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
             arguments: CariListesiRequestModel(belgeTuru: widget.model.editTipiEnum?.rawValue),
           );
           if (result != null) {
-            if (result case CariListesiModel? cari) {
-              if (cari!.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
-                cari = await networkManager.getCariModel(
+            if (result case CariListesiModel cari?) {
+              if (cari.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
+                final newCari = await networkManager.getCariModel(
                   CariRequestModel.fromCariListesiModel(cari.copyWith(cariKodu: cari.bagliCari)),
                 );
-                cari?.tempCariModel = result;
+                if (newCari is CariListesiModel) {
+                  cari = newCari;
+                }
+                cari.tempCariModel = result;
               }
 
               BaseSiparisEditModel.instance
-                ..cariKodu = cari?.cariKodu
-                ..cariAdi = cari?.cariAdi
-                ..teslimCari = cari?.tempCariModel?.cariKodu
-                ..teslimCariAdi = cari?.tempCariModel?.cariAdi
-                ..vadeGunu = cari?.vadeGunu
+                ..cariKodu = cari.cariKodu
+                ..cariAdi = cari.cariAdi
+                ..efaturaSenaryo = cari.efaturaTipi
+                ..efaturaTipi = cari.efaturaTipi
+                ..teslimCari = cari.tempCariModel?.cariKodu
+                ..teslimCariAdi = cari.tempCariModel?.cariAdi
+                ..vadeGunu = cari.vadeGunu
                 ..tipi = 2
-                ..kosulKodu = cari?.kosulKodu
-                ..vadeTarihi = DateTime.now().add(Duration(days: cari?.vadeGunu ?? 0)).dateTimeWithoutTime;
-              if (cari?.plasiyerKodu != null) {
+                ..kosulKodu = cari.kosulKodu
+                ..vadeTarihi = DateTime.now().add(Duration(days: cari.vadeGunu ?? 0)).dateTimeWithoutTime;
+              if (cari.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance
-                  ..plasiyerKodu = cari?.plasiyerKodu
-                  ..plasiyerAciklama = cari?.plasiyerAciklama;
+                  ..plasiyerKodu = cari.plasiyerKodu
+                  ..plasiyerAciklama = cari.plasiyerAciklama;
               }
             }
           }
@@ -373,8 +379,8 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           ..belgeTipi = widget.model.editTipiEnum?.varsayilanBelgeTipi
           ..siparisTipi = model.editTipiEnum
           ..isNew = true
-          ..efaturaSenaryo = widget.model.model?.efaturaSenaryo
-          ..efaturaTipi = widget.model.model?.efaturaSenaryo
+          ..efaturaSenaryo ??= widget.model.model?.efaturaSenaryo
+          ..efaturaTipi ??= widget.model.model?.efaturaSenaryo
           ..belgeTuru = widget.model.editTipiEnum?.rawValue
           ..projeAciklama ??= yetkiController.varsayilanProje?.projeAciklama
           ..projeKodu ??= yetkiController.varsayilanProje?.projeKodu

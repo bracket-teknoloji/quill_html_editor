@@ -1268,10 +1268,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   int get getKalemSayisi => kalemList?.length ?? (kalemAdedi ?? 0);
 
   bool get yurticiMi => exportTipi == null && tipi != 6;
-  bool get isEmpty {
-    log(toJson().toString());
-    return this == BaseSiparisEditModel();
-  }
+  bool get isEmpty => this == BaseSiparisEditModel();
 
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
