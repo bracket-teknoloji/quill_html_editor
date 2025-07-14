@@ -127,18 +127,16 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     return _$saveTahsilatAsyncAction.run(() => super.saveTahsilat());
   }
 
-  late final _$_HesaplarArasiIslemViewModelBaseActionController =
-      ActionController(
-        name: '_HesaplarArasiIslemViewModelBase',
-        context: context,
-      );
+  late final _$_HesaplarArasiIslemViewModelBaseActionController = ActionController(
+    name: '_HesaplarArasiIslemViewModelBase',
+    context: context,
+  );
 
   @override
   void setBankaDovizliMi(bool value) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(
-          name: '_HesaplarArasiIslemViewModelBase.setBankaDovizliMi',
-        );
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setBankaDovizliMi',
+    );
     try {
       return super.setBankaDovizliMi(value);
     } finally {
@@ -150,8 +148,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void changeBelgeTipi(HesaplarArasiEnum value) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.changeBelgeTipi');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.changeBelgeTipi',
+    );
     try {
       return super.changeBelgeTipi(value);
     } finally {
@@ -163,8 +162,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setTarih(DateTime? tarih) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setTarih');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(tarih);
     } finally {
@@ -176,8 +176,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setDekontNo(String? dekontNo) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setDekontNo');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setDekontNo',
+    );
     try {
       return super.setDekontNo(dekontNo);
     } finally {
@@ -189,8 +190,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setGuid(String? value) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setGuid');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setGuid',
+    );
     try {
       return super.setGuid(value);
     } finally {
@@ -202,8 +204,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setCikisHesabi(BankaListesiModel? bankaListesiModel) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setCikisHesabi');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setCikisHesabi',
+    );
     try {
       return super.setCikisHesabi(bankaListesiModel);
     } finally {
@@ -215,8 +218,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setGirisHesabi(BankaListesiModel? bankaListesiModel) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setGirisHesabi');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setGirisHesabi',
+    );
     try {
       return super.setGirisHesabi(bankaListesiModel);
     } finally {
@@ -228,8 +232,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setDovizTipi(int? dovizTipi) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setDovizTipi');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setDovizTipi',
+    );
     try {
       return super.setDovizTipi(dovizTipi);
     } finally {
@@ -241,8 +246,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setDovizTutari(double? dovizTutari) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setDovizTutari',
+    );
     try {
       return super.setDovizTutari(dovizTutari);
     } finally {
@@ -254,8 +260,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setTutar(double? tutar) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setTutar');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(tutar);
     } finally {
@@ -267,10 +274,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setMasrafCikisHesabindanMi(double? masraf) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(
-          name: '_HesaplarArasiIslemViewModelBase.setMasrafCikisHesabindanMi',
-        );
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setMasrafCikisHesabindanMi',
+    );
     try {
       return super.setMasrafCikisHesabindanMi(masraf);
     } finally {
@@ -282,8 +288,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setBSMV(double? bsmv) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setBSMV');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setBSMV',
+    );
     try {
       return super.setBSMV(bsmv);
     } finally {
@@ -295,8 +302,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setMasrafMuhKodu(String? masrafMuhKodu) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setMasrafMuhKodu');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setMasrafMuhKodu',
+    );
     try {
       return super.setMasrafMuhKodu(masrafMuhKodu);
     } finally {
@@ -308,8 +316,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(String? plasiyerKodu) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(plasiyerKodu);
     } finally {
@@ -321,8 +330,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setProjeKodu(String? projeKodu) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setProjeKodu');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(projeKodu);
     } finally {
@@ -334,8 +344,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setAciklama(String? aciklama) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(name: '_HesaplarArasiIslemViewModelBase.setAciklama');
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(aciklama);
     } finally {
@@ -347,10 +358,9 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
-        .startAction(
-          name: '_HesaplarArasiIslemViewModelBase.setDovizKurlariListesi',
-        );
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+      name: '_HesaplarArasiIslemViewModelBase.setDovizKurlariListesi',
+    );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {

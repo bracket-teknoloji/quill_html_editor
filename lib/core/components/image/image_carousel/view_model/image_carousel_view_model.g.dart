@@ -78,8 +78,9 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
 
   @override
   void setObservableList(List<EvraklarModel>? list) {
-    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController
-        .startAction(name: '_ImageCarouselViewModelBase.setObservableList');
+    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController.startAction(
+      name: '_ImageCarouselViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {
@@ -89,8 +90,9 @@ mixin _$ImageCarouselViewModel on _ImageCarouselViewModelBase, Store {
 
   @override
   void setSelectedImage(String? image) {
-    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController
-        .startAction(name: '_ImageCarouselViewModelBase.setSelectedImage');
+    final _$actionInfo = _$_ImageCarouselViewModelBaseActionController.startAction(
+      name: '_ImageCarouselViewModelBase.setSelectedImage',
+    );
     try {
       return super.setSelectedImage(image);
     } finally {

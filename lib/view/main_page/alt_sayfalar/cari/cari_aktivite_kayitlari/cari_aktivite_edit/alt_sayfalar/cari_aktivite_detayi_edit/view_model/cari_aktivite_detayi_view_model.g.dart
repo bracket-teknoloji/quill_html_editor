@@ -37,16 +37,16 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_CariAktiviteDetayiViewModelBaseActionController =
-      ActionController(
-        name: '_CariAktiviteDetayiViewModelBase',
-        context: context,
-      );
+  late final _$_CariAktiviteDetayiViewModelBaseActionController = ActionController(
+    name: '_CariAktiviteDetayiViewModelBase',
+    context: context,
+  );
 
   @override
   void setModel(CariAktiviteListesiModel value) {
-    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayiViewModelBase.setModel');
+    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayiViewModelBase.setModel',
+    );
     try {
       return super.setModel(value);
     } finally {
@@ -58,8 +58,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayiViewModelBase.setTarih');
+    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayiViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -71,8 +72,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
 
   @override
   void setAktiviteTipi(CariAktiviteTipleri? value) {
-    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayiViewModelBase.setAktiviteTipi');
+    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayiViewModelBase.setAktiviteTipi',
+    );
     try {
       return super.setAktiviteTipi(value);
     } finally {
@@ -84,8 +86,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
 
   @override
   void setBolum(String? value) {
-    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayiViewModelBase.setBolum');
+    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayiViewModelBase.setBolum',
+    );
     try {
       return super.setBolum(value);
     } finally {
@@ -97,8 +100,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
 
   @override
   void setIlgiliKisi(String? value) {
-    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayiViewModelBase.setIlgiliKisi');
+    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayiViewModelBase.setIlgiliKisi',
+    );
     try {
       return super.setIlgiliKisi(value);
     } finally {
@@ -110,8 +114,9 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayiViewModelBase.setAciklama');
+    final _$actionInfo = _$_CariAktiviteDetayiViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayiViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {

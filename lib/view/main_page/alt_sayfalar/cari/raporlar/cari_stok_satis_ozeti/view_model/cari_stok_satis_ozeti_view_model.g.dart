@@ -13,12 +13,10 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   ObservableList<CariStokSatisOzetiModel>? get filteredList =>
-      (_$filteredListComputed ??=
-              Computed<ObservableList<CariStokSatisOzetiModel>?>(
-                () => super.filteredList,
-                name: '_CariStokSatisOzetiViewModelBase.filteredList',
-              ))
-          .value;
+      (_$filteredListComputed ??= Computed<ObservableList<CariStokSatisOzetiModel>?>(
+        () => super.filteredList,
+        name: '_CariStokSatisOzetiViewModelBase.filteredList',
+      )).value;
 
   late final _$donemTipiIndexAtom = Atom(
     name: '_CariStokSatisOzetiViewModelBase.donemTipiIndex',
@@ -254,16 +252,16 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     });
   }
 
-  late final _$_CariStokSatisOzetiViewModelBaseActionController =
-      ActionController(
-        name: '_CariStokSatisOzetiViewModelBase',
-        context: context,
-      );
+  late final _$_CariStokSatisOzetiViewModelBaseActionController = ActionController(
+    name: '_CariStokSatisOzetiViewModelBase',
+    context: context,
+  );
 
   @override
   void deleteAllArr() {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.deleteAllArr');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.deleteAllArr',
+    );
     try {
       return super.deleteAllArr();
     } finally {
@@ -275,8 +273,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setIrsDahil(bool value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setIrsDahil');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setIrsDahil',
+    );
     try {
       return super.setIrsDahil(value);
     } finally {
@@ -288,10 +287,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setArrStokGrupKodu(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(
-          name: '_CariStokSatisOzetiViewModelBase.setArrStokGrupKodu',
-        );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setArrStokGrupKodu',
+    );
     try {
       return super.setArrStokGrupKodu(value);
     } finally {
@@ -303,8 +301,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setArrStokKod1(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod1');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod1',
+    );
     try {
       return super.setArrStokKod1(value);
     } finally {
@@ -316,8 +315,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setArrStokKod2(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod2');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod2',
+    );
     try {
       return super.setArrStokKod2(value);
     } finally {
@@ -329,8 +329,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setArrStokKod3(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod3');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod3',
+    );
     try {
       return super.setArrStokKod3(value);
     } finally {
@@ -342,8 +343,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setArrStokKod4(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod4');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod4',
+    );
     try {
       return super.setArrStokKod4(value);
     } finally {
@@ -355,8 +357,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setArrStokKod5(String value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setArrStokKod5');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setArrStokKod5',
+    );
     try {
       return super.setArrStokKod5(value);
     } finally {
@@ -368,10 +371,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setDonemTipiIndex(int value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(
-          name: '_CariStokSatisOzetiViewModelBase.setDonemTipiIndex',
-        );
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setDonemTipiIndex',
+    );
     try {
       return super.setDonemTipiIndex(value);
     } finally {
@@ -383,8 +385,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setSirala(String? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setSirala');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setSirala',
+    );
     try {
       return super.setSirala(value);
     } finally {
@@ -396,8 +399,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setModel(CariListesiModel? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setModel');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setModel',
+    );
     try {
       return super.setModel(value);
     } finally {
@@ -409,8 +413,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setCariKodu');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -422,8 +427,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setSearchText');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -435,8 +441,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setSearchBar');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setSearchBar',
+    );
     try {
       return super.setSearchBar();
     } finally {
@@ -448,8 +455,9 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
 
   @override
   void setModelList(List<CariStokSatisOzetiModel>? value) {
-    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
-        .startAction(name: '_CariStokSatisOzetiViewModelBase.setModelList');
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController.startAction(
+      name: '_CariStokSatisOzetiViewModelBase.setModelList',
+    );
     try {
       return super.setModelList(value);
     } finally {

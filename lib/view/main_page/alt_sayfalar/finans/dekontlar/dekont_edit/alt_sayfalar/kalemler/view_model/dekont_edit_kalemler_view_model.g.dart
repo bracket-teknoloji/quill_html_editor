@@ -12,11 +12,10 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
   Computed<List<DekontKalemler>?>? _$kalemlerComputed;
 
   @override
-  List<DekontKalemler>? get kalemler =>
-      (_$kalemlerComputed ??= Computed<List<DekontKalemler>?>(
-        () => super.kalemler,
-        name: '_DekontEditKalemlerViewModelBase.kalemler',
-      )).value;
+  List<DekontKalemler>? get kalemler => (_$kalemlerComputed ??= Computed<List<DekontKalemler>?>(
+    () => super.kalemler,
+    name: '_DekontEditKalemlerViewModelBase.kalemler',
+  )).value;
   Computed<double>? _$toplamBorcComputed;
 
   @override
@@ -54,16 +53,16 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
     );
   }
 
-  late final _$_DekontEditKalemlerViewModelBaseActionController =
-      ActionController(
-        name: '_DekontEditKalemlerViewModelBase',
-        context: context,
-      );
+  late final _$_DekontEditKalemlerViewModelBaseActionController = ActionController(
+    name: '_DekontEditKalemlerViewModelBase',
+    context: context,
+  );
 
   @override
   void setSingleton() {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
-        .startAction(name: '_DekontEditKalemlerViewModelBase.setSingleton');
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
+      name: '_DekontEditKalemlerViewModelBase.setSingleton',
+    );
     try {
       return super.setSingleton();
     } finally {
@@ -75,8 +74,9 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
 
   @override
   void addKalemler(DekontKalemler? model) {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
-        .startAction(name: '_DekontEditKalemlerViewModelBase.addKalemler');
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
+      name: '_DekontEditKalemlerViewModelBase.addKalemler',
+    );
     try {
       return super.addKalemler(model);
     } finally {
@@ -88,8 +88,9 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
 
   @override
   void updateKalemler(int index, DekontKalemler model) {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
-        .startAction(name: '_DekontEditKalemlerViewModelBase.updateKalemler');
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
+      name: '_DekontEditKalemlerViewModelBase.updateKalemler',
+    );
     try {
       return super.updateKalemler(index, model);
     } finally {
@@ -101,8 +102,9 @@ mixin _$DekontEditKalemlerViewModel on _DekontEditKalemlerViewModelBase, Store {
 
   @override
   void removeKalemler(int index) {
-    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController
-        .startAction(name: '_DekontEditKalemlerViewModelBase.removeKalemler');
+    final _$actionInfo = _$_DekontEditKalemlerViewModelBaseActionController.startAction(
+      name: '_DekontEditKalemlerViewModelBase.removeKalemler',
+    );
     try {
       return super.removeKalemler(index);
     } finally {

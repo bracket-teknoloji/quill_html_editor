@@ -6,15 +6,12 @@ part of 'taksit_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TaksitResponseModel _$TaksitResponseModelFromJson(Map<String, dynamic> json) =>
-    TaksitResponseModel(
-      bankaId: (json['BANKA_ID'] as num?)?.toInt(),
-      bankaAdi: json['BANKA_ADI'] as String?,
-      tutar: (json['TUTAR'] as num?)?.toInt(),
-      taksitler: (json['TAKSITLER'] as List<dynamic>?)
-          ?.map((e) => Taksitler.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+TaksitResponseModel _$TaksitResponseModelFromJson(Map<String, dynamic> json) => TaksitResponseModel(
+  bankaId: (json['BANKA_ID'] as num?)?.toInt(),
+  bankaAdi: json['BANKA_ADI'] as String?,
+  tutar: (json['TUTAR'] as num?)?.toInt(),
+  taksitler: (json['TAKSITLER'] as List<dynamic>?)?.map((e) => Taksitler.fromJson(e as Map<String, dynamic>)).toList(),
+);
 
 Map<String, dynamic> _$TaksitResponseModelToJson(
   TaksitResponseModel instance,
@@ -22,8 +19,7 @@ Map<String, dynamic> _$TaksitResponseModelToJson(
   if (instance.bankaId case final value?) 'BANKA_ID': value,
   if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
   if (instance.tutar case final value?) 'TUTAR': value,
-  if (instance.taksitler?.map((e) => e.toJson()).toList() case final value?)
-    'TAKSITLER': value,
+  if (instance.taksitler?.map((e) => e.toJson()).toList() case final value?) 'TAKSITLER': value,
 };
 
 Taksitler _$TaksitlerFromJson(Map<String, dynamic> json) => Taksitler(
@@ -35,9 +31,7 @@ Taksitler _$TaksitlerFromJson(Map<String, dynamic> json) => Taksitler(
   altLimit: (json['ALT_LIMIT'] as num?)?.toInt(),
   vadeFarki: (json['VADE_FARKI'] as num?)?.toInt(),
   sira: (json['SIRA'] as num?)?.toInt(),
-  banka: json['BANKA'] == null
-      ? null
-      : Banka.fromJson(json['BANKA'] as Map<String, dynamic>),
+  banka: json['BANKA'] == null ? null : Banka.fromJson(json['BANKA'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$TaksitlerToJson(Taksitler instance) => <String, dynamic>{
@@ -58,13 +52,9 @@ _Banka _$BankaFromJson(Map<String, dynamic> json) => _Banka(
   odemeLink: json['ODEME_LINK'] as String?,
   logoUrl: json['LOGO_URL'] as String?,
   silindi: json['SILINDI'] as String?,
-  kayittarihi: json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
   kayityapankul: json['KAYITYAPANKUL'] as String?,
-  duzeltmetarihi: json['DUZELTMETARIHI'] == null
-      ? null
-      : DateTime.parse(json['DUZELTMETARIHI'] as String),
+  duzeltmetarihi: json['DUZELTMETARIHI'] == null ? null : DateTime.parse(json['DUZELTMETARIHI'] as String),
   duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
 );
 
@@ -74,11 +64,9 @@ Map<String, dynamic> _$BankaToJson(_Banka instance) => <String, dynamic>{
   if (instance.odemeLink case final value?) 'ODEME_LINK': value,
   if (instance.logoUrl case final value?) 'LOGO_URL': value,
   if (instance.silindi case final value?) 'SILINDI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?) 'DUZELTMETARIHI': value,
   if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
 };
 
@@ -94,13 +82,9 @@ _Sanalpos _$SanalposFromJson(Map<String, dynamic> json) => _Sanalpos(
   aktifMi: json['AKTIF_MI'] as bool?,
   testMi: json['TEST_MI'] as bool?,
   silindi: json['SILINDI'] as String?,
-  kayittarihi: json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
   kayityapankul: json['KAYITYAPANKUL'] as String?,
-  duzeltmetarihi: json['DUZELTMETARIHI'] == null
-      ? null
-      : DateTime.parse(json['DUZELTMETARIHI'] as String),
+  duzeltmetarihi: json['DUZELTMETARIHI'] == null ? null : DateTime.parse(json['DUZELTMETARIHI'] as String),
   duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
 );
 
@@ -116,10 +100,8 @@ Map<String, dynamic> _$SanalposToJson(_Sanalpos instance) => <String, dynamic>{
   if (instance.aktifMi case final value?) 'AKTIF_MI': value,
   if (instance.testMi case final value?) 'TEST_MI': value,
   if (instance.silindi case final value?) 'SILINDI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?) 'DUZELTMETARIHI': value,
   if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
 };

@@ -44,8 +44,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama1(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama1');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama1',
+    );
     try {
       return super.setAciklama1(value);
     } finally {
@@ -55,8 +56,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama2(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama2');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama2',
+    );
     try {
       return super.setAciklama2(value);
     } finally {
@@ -66,8 +68,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama3(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama3');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama3',
+    );
     try {
       return super.setAciklama3(value);
     } finally {
@@ -77,8 +80,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama4(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama4');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama4',
+    );
     try {
       return super.setAciklama4(value);
     } finally {
@@ -88,8 +92,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama5(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama5');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama5',
+    );
     try {
       return super.setAciklama5(value);
     } finally {
@@ -99,8 +104,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama6(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama6');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama6',
+    );
     try {
       return super.setAciklama6(value);
     } finally {
@@ -110,8 +116,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama7(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama7');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama7',
+    );
     try {
       return super.setAciklama7(value);
     } finally {
@@ -121,8 +128,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama8(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama8');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama8',
+    );
     try {
       return super.setAciklama8(value);
     } finally {
@@ -132,8 +140,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama9(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama9');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama9',
+    );
     try {
       return super.setAciklama9(value);
     } finally {
@@ -143,8 +152,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama10(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama10');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama10',
+    );
     try {
       return super.setAciklama10(value);
     } finally {
@@ -154,8 +164,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama11(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama11');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama11',
+    );
     try {
       return super.setAciklama11(value);
     } finally {
@@ -165,8 +176,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama12(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama12');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama12',
+    );
     try {
       return super.setAciklama12(value);
     } finally {
@@ -176,8 +188,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama13(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama13');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama13',
+    );
     try {
       return super.setAciklama13(value);
     } finally {
@@ -187,8 +200,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama14(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama14');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama14',
+    );
     try {
       return super.setAciklama14(value);
     } finally {
@@ -198,8 +212,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama15(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama15');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama15',
+    );
     try {
       return super.setAciklama15(value);
     } finally {
@@ -209,8 +224,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setAciklama16(String? value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(name: 'AciklamaDuzenleViewModelBase.setAciklama16');
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setAciklama16',
+    );
     try {
       return super.setAciklama16(value);
     } finally {
@@ -220,10 +236,9 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
 
   @override
   void setTalepTeklifListesiModel(BaseSiparisEditModel value) {
-    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController
-        .startAction(
-          name: 'AciklamaDuzenleViewModelBase.setTalepTeklifListesiModel',
-        );
+    final _$actionInfo = _$AciklamaDuzenleViewModelBaseActionController.startAction(
+      name: 'AciklamaDuzenleViewModelBase.setTalepTeklifListesiModel',
+    );
     try {
       return super.setTalepTeklifListesiModel(value);
     } finally {

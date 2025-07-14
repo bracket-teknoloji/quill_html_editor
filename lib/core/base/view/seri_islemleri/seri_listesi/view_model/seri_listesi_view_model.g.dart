@@ -94,8 +94,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void setKalemModel(KalemModel model) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.setKalemModel');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.setKalemModel',
+    );
     try {
       return super.setKalemModel(model);
     } finally {
@@ -105,8 +106,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void addSeriList(SeriList model) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.addSeriList');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.addSeriList',
+    );
     try {
       return super.addSeriList(model);
     } finally {
@@ -116,8 +118,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void updateSeriList(SeriList model, String seri1) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.updateSeriList');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.updateSeriList',
+    );
     try {
       return super.updateSeriList(model, seri1);
     } finally {
@@ -127,8 +130,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void removeSeriList(String seri1) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.removeSeriList');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.removeSeriList',
+    );
     try {
       return super.removeSeriList(seri1);
     } finally {
@@ -138,8 +142,9 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
 
   @override
   void removeSeriListWithIndex(int index) {
-    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
-        .startAction(name: '_SeriListesiViewModelBase.removeSeriListWithIndex');
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController.startAction(
+      name: '_SeriListesiViewModelBase.removeSeriListWithIndex',
+    );
     try {
       return super.removeSeriListWithIndex(index);
     } finally {

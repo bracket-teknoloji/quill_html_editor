@@ -17,9 +17,7 @@ PaykerOdemeLinkListesiModel _$PaykerOdemeLinkListesiModelFromJson(
   email: json['EMAIL'] as String?,
   unvan: json['UNVAN'] as String?,
   alindi: json['ALINDI'] as bool?,
-  bittar: json['BITTAR'] == null
-      ? null
-      : DateTime.parse(json['BITTAR'] as String),
+  bittar: json['BITTAR'] == null ? null : DateTime.parse(json['BITTAR'] as String),
   taksitlerJson: json['TAKSITLER_JSON'] as String?,
   kullanimSayisi: (json['KULLANIM_SAYISI'] as num?)?.toInt(),
   odemeler: (json['ODEMELER'] as List<dynamic>?)
@@ -27,13 +25,9 @@ PaykerOdemeLinkListesiModel _$PaykerOdemeLinkListesiModelFromJson(
         (e) => PaykerOdemeLinkListesiModel.fromJson(e as Map<String, dynamic>),
       )
       .toList(),
-  kayittarihi: json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
   kayityapankul: json['KAYITYAPANKUL'] as String?,
-  duzeltmetarihi: json['DUZELTMETARIHI'] == null
-      ? null
-      : DateTime.parse(json['DUZELTMETARIHI'] as String),
+  duzeltmetarihi: json['DUZELTMETARIHI'] == null ? null : DateTime.parse(json['DUZELTMETARIHI'] as String),
   duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
 );
 
@@ -51,12 +45,9 @@ Map<String, dynamic> _$PaykerOdemeLinkListesiModelToJson(
   if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
   if (instance.taksitlerJson case final value?) 'TAKSITLER_JSON': value,
   if (instance.kullanimSayisi case final value?) 'KULLANIM_SAYISI': value,
-  if (instance.odemeler?.map((e) => e.toJson()).toList() case final value?)
-    'ODEMELER': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
+  if (instance.odemeler?.map((e) => e.toJson()).toList() case final value?) 'ODEMELER': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?) 'DUZELTMETARIHI': value,
   if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
 };

@@ -38,8 +38,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setSingleton() {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setSingleton');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setSingleton',
+    );
     try {
       return super.setSingleton();
     } finally {
@@ -49,8 +50,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setTarih');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -60,8 +62,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setSeri(SeriModel? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setSeri');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setSeri',
+    );
     try {
       return super.setSeri(value);
     } finally {
@@ -71,8 +74,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -82,8 +86,9 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
 
   @override
   void setProjeKodu(BaseProjeModel? value) {
-    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
-        .startAction(name: '_DekontEditGenelViewModelBase.setProjeKodu');
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController.startAction(
+      name: '_DekontEditGenelViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(value);
     } finally {

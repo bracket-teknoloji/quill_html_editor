@@ -8,8 +8,7 @@ part of 'transfer_mal_talebi_listesi_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$TransferMalTalebiListesiViewModel
-    on _TransferMalTalebiListesiViewModelBase, Store {
+mixin _$TransferMalTalebiListesiViewModel on _TransferMalTalebiListesiViewModelBase, Store {
   Computed<List<BaseSiparisEditModel>?>? _$filteredObservableListComputed;
 
   @override
@@ -145,18 +144,16 @@ mixin _$TransferMalTalebiListesiViewModel
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
-  late final _$_TransferMalTalebiListesiViewModelBaseActionController =
-      ActionController(
-        name: '_TransferMalTalebiListesiViewModelBase',
-        context: context,
-      );
+  late final _$_TransferMalTalebiListesiViewModelBaseActionController = ActionController(
+    name: '_TransferMalTalebiListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setObservableList(List<BaseSiparisEditModel>? list) {
-    final _$actionInfo =
-        _$_TransferMalTalebiListesiViewModelBaseActionController.startAction(
-          name: '_TransferMalTalebiListesiViewModelBase.setObservableList',
-        );
+    final _$actionInfo = _$_TransferMalTalebiListesiViewModelBaseActionController.startAction(
+      name: '_TransferMalTalebiListesiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {

@@ -34,8 +34,9 @@ mixin _$YaziciListesiViewModel on _YaziciListesiViewModelBase, Store {
 
   @override
   void setYaziciListesi() {
-    final _$actionInfo = _$_YaziciListesiViewModelBaseActionController
-        .startAction(name: '_YaziciListesiViewModelBase.setYaziciListesi');
+    final _$actionInfo = _$_YaziciListesiViewModelBaseActionController.startAction(
+      name: '_YaziciListesiViewModelBase.setYaziciListesi',
+    );
     try {
       return super.setYaziciListesi();
     } finally {
@@ -45,8 +46,9 @@ mixin _$YaziciListesiViewModel on _YaziciListesiViewModelBase, Store {
 
   @override
   void addYaziciListesi(YaziciModel value) {
-    final _$actionInfo = _$_YaziciListesiViewModelBaseActionController
-        .startAction(name: '_YaziciListesiViewModelBase.addYaziciListesi');
+    final _$actionInfo = _$_YaziciListesiViewModelBaseActionController.startAction(
+      name: '_YaziciListesiViewModelBase.addYaziciListesi',
+    );
     try {
       return super.addYaziciListesi(value);
     } finally {
@@ -56,8 +58,9 @@ mixin _$YaziciListesiViewModel on _YaziciListesiViewModelBase, Store {
 
   @override
   void removeYaziciListesi(YaziciModel value) {
-    final _$actionInfo = _$_YaziciListesiViewModelBaseActionController
-        .startAction(name: '_YaziciListesiViewModelBase.removeYaziciListesi');
+    final _$actionInfo = _$_YaziciListesiViewModelBaseActionController.startAction(
+      name: '_YaziciListesiViewModelBase.removeYaziciListesi',
+    );
     try {
       return super.removeYaziciListesi(value);
     } finally {

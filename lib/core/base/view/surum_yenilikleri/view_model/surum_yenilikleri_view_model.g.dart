@@ -9,18 +9,14 @@ part of 'surum_yenilikleri_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
-  Computed<ObservableList<SurumYenilikleriModel>?>?
-  _$getSurumYenilikleriModelListComputed;
+  Computed<ObservableList<SurumYenilikleriModel>?>? _$getSurumYenilikleriModelListComputed;
 
   @override
   ObservableList<SurumYenilikleriModel>? get getSurumYenilikleriModelList =>
-      (_$getSurumYenilikleriModelListComputed ??=
-              Computed<ObservableList<SurumYenilikleriModel>?>(
-                () => super.getSurumYenilikleriModelList,
-                name:
-                    '_SurumYenilikleriViewModelBase.getSurumYenilikleriModelList',
-              ))
-          .value;
+      (_$getSurumYenilikleriModelListComputed ??= Computed<ObservableList<SurumYenilikleriModel>?>(
+        () => super.getSurumYenilikleriModelList,
+        name: '_SurumYenilikleriViewModelBase.getSurumYenilikleriModelList',
+      )).value;
 
   late final _$searchBarAtom = Atom(
     name: '_SurumYenilikleriViewModelBase.searchBar',
@@ -86,16 +82,16 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_SurumYenilikleriViewModelBaseActionController =
-      ActionController(
-        name: '_SurumYenilikleriViewModelBase',
-        context: context,
-      );
+  late final _$_SurumYenilikleriViewModelBaseActionController = ActionController(
+    name: '_SurumYenilikleriViewModelBase',
+    context: context,
+  );
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_SurumYenilikleriViewModelBaseActionController
-        .startAction(name: '_SurumYenilikleriViewModelBase.setSearchText');
+    final _$actionInfo = _$_SurumYenilikleriViewModelBaseActionController.startAction(
+      name: '_SurumYenilikleriViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -105,8 +101,9 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_SurumYenilikleriViewModelBaseActionController
-        .startAction(name: '_SurumYenilikleriViewModelBase.changeSearchBar');
+    final _$actionInfo = _$_SurumYenilikleriViewModelBaseActionController.startAction(
+      name: '_SurumYenilikleriViewModelBase.changeSearchBar',
+    );
     try {
       return super.changeSearchBar();
     } finally {
@@ -116,8 +113,9 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
 
   @override
   void setObservableList(List<SurumYenilikleriModel>? value) {
-    final _$actionInfo = _$_SurumYenilikleriViewModelBaseActionController
-        .startAction(name: '_SurumYenilikleriViewModelBase.setObservableList');
+    final _$actionInfo = _$_SurumYenilikleriViewModelBaseActionController.startAction(
+      name: '_SurumYenilikleriViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(value);
     } finally {

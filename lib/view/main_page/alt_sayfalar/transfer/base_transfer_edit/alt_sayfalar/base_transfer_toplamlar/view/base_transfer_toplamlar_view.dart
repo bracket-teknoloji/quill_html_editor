@@ -432,39 +432,40 @@ final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplam
                 !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false) &&
                 (model.getEditTipiEnum?.fiyatGor ?? false) &&
                 yetkiController.ekMaliyet2Aktif(model.getEditTipiEnum))
-                Expanded(
-                  child: CustomTextField(
-                    labelText: tevkifat,
-                    enabled: enable,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    controller: tevkifatController,
-                    isFormattedString: true,
-                    inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
-                    onChanged: (value) => viewModel.setEkMal2(value.toDoubleWithFormattedString),
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: tevkifat,
-                          children: List.generate(
-                            viewModel.tevkifatMap.length,
-                            (index) => BottomSheetModel(
-                              title: viewModel.tevkifatMap.keys.toList()[index],
-                              value: viewModel.tevkifatMap.values.toList()[index],
-                            ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: tevkifat,
+                  enabled: enable,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  controller: tevkifatController,
+                  isFormattedString: true,
+                  inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
+                  onChanged: (value) => viewModel.setEkMal2(value.toDoubleWithFormattedString),
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: tevkifat,
+                        children: List.generate(
+                          viewModel.tevkifatMap.length,
+                          (index) => BottomSheetModel(
+                            title: viewModel.tevkifatMap.keys.toList()[index],
+                            value: viewModel.tevkifatMap.values.toList()[index],
                           ),
+                        ),
+                      );
+                      if (result != null) {
+                        viewModel.setTevkifat(result);
+                        tevkifatController.text = (-result * viewModel.model.kdvTutari).commaSeparatedWithDecimalDigits(
+                          OndalikEnum.tutar,
                         );
-                        if (result != null) {
-                          viewModel.setTevkifat(result);
-                          tevkifatController.text = (-result * viewModel.model.kdvTutari)
-                              .commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz_outlined),
-                    ),
-                    // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
+                      }
+                    },
+                    icon: const Icon(Icons.more_horiz_outlined),
                   ),
+                  // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                 ),
+              ),
           ],
         ),
         Row(

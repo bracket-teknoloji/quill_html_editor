@@ -13,12 +13,10 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
 
   @override
   List<PaketlemeListesiModel>? get filteredPaketlemeListesi =>
-      (_$filteredPaketlemeListesiComputed ??=
-              Computed<List<PaketlemeListesiModel>?>(
-                () => super.filteredPaketlemeListesi,
-                name: '_PaketlemeListesiViewModelBase.filteredPaketlemeListesi',
-              ))
-          .value;
+      (_$filteredPaketlemeListesiComputed ??= Computed<List<PaketlemeListesiModel>?>(
+        () => super.filteredPaketlemeListesi,
+        name: '_PaketlemeListesiViewModelBase.filteredPaketlemeListesi',
+      )).value;
 
   late final _$observableListAtom = Atom(
     name: '_PaketlemeListesiViewModelBase.observableList',
@@ -112,16 +110,16 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(paketID));
   }
 
-  late final _$_PaketlemeListesiViewModelBaseActionController =
-      ActionController(
-        name: '_PaketlemeListesiViewModelBase',
-        context: context,
-      );
+  late final _$_PaketlemeListesiViewModelBaseActionController = ActionController(
+    name: '_PaketlemeListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setObservableList(List<PaketlemeListesiModel>? value) {
-    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController
-        .startAction(name: '_PaketlemeListesiViewModelBase.setObservableList');
+    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController.startAction(
+      name: '_PaketlemeListesiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(value);
     } finally {
@@ -131,8 +129,9 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController
-        .startAction(name: '_PaketlemeListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController.startAction(
+      name: '_PaketlemeListesiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -142,10 +141,9 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController
-        .startAction(
-          name: '_PaketlemeListesiViewModelBase.changeSearchBarStatus',
-        );
+    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController.startAction(
+      name: '_PaketlemeListesiViewModelBase.changeSearchBarStatus',
+    );
     try {
       return super.changeSearchBarStatus();
     } finally {

@@ -98,8 +98,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
 
   @override
   void setIsStok(bool value) {
-    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
-        .startAction(name: '_HucreTransferiViewModelBase.setIsStok');
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController.startAction(
+      name: '_HucreTransferiViewModelBase.setIsStok',
+    );
     try {
       return super.setIsStok(value);
     } finally {
@@ -109,8 +110,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
 
   @override
   void setDepoKodu(int? value) {
-    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
-        .startAction(name: '_HucreTransferiViewModelBase.setDepoKodu');
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController.startAction(
+      name: '_HucreTransferiViewModelBase.setDepoKodu',
+    );
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -120,8 +122,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
 
   @override
   void setMiktar(double? value) {
-    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
-        .startAction(name: '_HucreTransferiViewModelBase.setMiktar');
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController.startAction(
+      name: '_HucreTransferiViewModelBase.setMiktar',
+    );
     try {
       return super.setMiktar(value);
     } finally {
@@ -131,8 +134,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
-        .startAction(name: '_HucreTransferiViewModelBase.setStokKodu');
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController.startAction(
+      name: '_HucreTransferiViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(value);
     } finally {
@@ -142,8 +146,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
 
   @override
   void setHucreKodu(String? value) {
-    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
-        .startAction(name: '_HucreTransferiViewModelBase.setHucreKodu');
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController.startAction(
+      name: '_HucreTransferiViewModelBase.setHucreKodu',
+    );
     try {
       return super.setHucreKodu(value);
     } finally {
@@ -153,8 +158,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
 
   @override
   void setHedefHucre(String? value) {
-    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
-        .startAction(name: '_HucreTransferiViewModelBase.setHedefHucre');
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController.startAction(
+      name: '_HucreTransferiViewModelBase.setHedefHucre',
+    );
     try {
       return super.setHedefHucre(value);
     } finally {
@@ -164,8 +170,9 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
 
   @override
   void setPaketKodu(String? value) {
-    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
-        .startAction(name: '_HucreTransferiViewModelBase.setPaketKodu');
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController.startAction(
+      name: '_HucreTransferiViewModelBase.setPaketKodu',
+    );
     try {
       return super.setPaketKodu(value);
     } finally {

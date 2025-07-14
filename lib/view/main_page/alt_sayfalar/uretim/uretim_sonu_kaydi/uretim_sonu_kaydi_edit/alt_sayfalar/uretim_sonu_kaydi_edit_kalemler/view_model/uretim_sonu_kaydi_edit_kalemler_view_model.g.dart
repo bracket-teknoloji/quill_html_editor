@@ -8,8 +8,7 @@ part of 'uretim_sonu_kaydi_edit_kalemler_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UretimSonuKaydiEditKalemlerViewModel
-    on _UretimSonuKaydiEditKalemlerViewModelBase, Store {
+mixin _$UretimSonuKaydiEditKalemlerViewModel on _UretimSonuKaydiEditKalemlerViewModelBase, Store {
   Computed<double?>? _$toplamMiktarComputed;
 
   @override
@@ -20,11 +19,10 @@ mixin _$UretimSonuKaydiEditKalemlerViewModel
   Computed<double?>? _$toplamMaliyetTutariComputed;
 
   @override
-  double? get toplamMaliyetTutari =>
-      (_$toplamMaliyetTutariComputed ??= Computed<double?>(
-        () => super.toplamMaliyetTutari,
-        name: '_UretimSonuKaydiEditKalemlerViewModelBase.toplamMaliyetTutari',
-      )).value;
+  double? get toplamMaliyetTutari => (_$toplamMaliyetTutariComputed ??= Computed<double?>(
+    () => super.toplamMaliyetTutari,
+    name: '_UretimSonuKaydiEditKalemlerViewModelBase.toplamMaliyetTutari',
+  )).value;
 
   late final _$observableListAtom = Atom(
     name: '_UretimSonuKaydiEditKalemlerViewModelBase.observableList',
@@ -90,19 +88,16 @@ mixin _$UretimSonuKaydiEditKalemlerViewModel
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController =
-      ActionController(
-        name: '_UretimSonuKaydiEditKalemlerViewModelBase',
-        context: context,
-      );
+  late final _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController = ActionController(
+    name: '_UretimSonuKaydiEditKalemlerViewModelBase',
+    context: context,
+  );
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
-          name:
-              '_UretimSonuKaydiEditKalemlerViewModelBase.changeSearchBarStatus',
-        );
+    final _$actionInfo = _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiEditKalemlerViewModelBase.changeSearchBarStatus',
+    );
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -114,10 +109,9 @@ mixin _$UretimSonuKaydiEditKalemlerViewModel
 
   @override
   void setObservableList(List<KalemModel>? list) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
-          name: '_UretimSonuKaydiEditKalemlerViewModelBase.setObservableList',
-        );
+    final _$actionInfo = _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiEditKalemlerViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {
@@ -129,10 +123,9 @@ mixin _$UretimSonuKaydiEditKalemlerViewModel
 
   @override
   void addItem(KalemModel item) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
-          name: '_UretimSonuKaydiEditKalemlerViewModelBase.addItem',
-        );
+    final _$actionInfo = _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiEditKalemlerViewModelBase.addItem',
+    );
     try {
       return super.addItem(item);
     } finally {
@@ -144,10 +137,9 @@ mixin _$UretimSonuKaydiEditKalemlerViewModel
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
-          name: '_UretimSonuKaydiEditKalemlerViewModelBase.setSearchText',
-        );
+    final _$actionInfo = _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiEditKalemlerViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {

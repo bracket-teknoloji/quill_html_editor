@@ -12,51 +12,45 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   Computed<List<BaseGrupKoduModel>?>? _$grupKoduComputed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodu =>
-      (_$grupKoduComputed ??= Computed<List<BaseGrupKoduModel>?>(
-        () => super.grupKodu,
-        name: '_StokListesiViewModelBase.grupKodu',
-      )).value;
+  List<BaseGrupKoduModel>? get grupKodu => (_$grupKoduComputed ??= Computed<List<BaseGrupKoduModel>?>(
+    () => super.grupKodu,
+    name: '_StokListesiViewModelBase.grupKodu',
+  )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod1Computed;
 
   @override
-  List<BaseGrupKoduModel>? get kod1 =>
-      (_$kod1Computed ??= Computed<List<BaseGrupKoduModel>?>(
-        () => super.kod1,
-        name: '_StokListesiViewModelBase.kod1',
-      )).value;
+  List<BaseGrupKoduModel>? get kod1 => (_$kod1Computed ??= Computed<List<BaseGrupKoduModel>?>(
+    () => super.kod1,
+    name: '_StokListesiViewModelBase.kod1',
+  )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod2Computed;
 
   @override
-  List<BaseGrupKoduModel>? get kod2 =>
-      (_$kod2Computed ??= Computed<List<BaseGrupKoduModel>?>(
-        () => super.kod2,
-        name: '_StokListesiViewModelBase.kod2',
-      )).value;
+  List<BaseGrupKoduModel>? get kod2 => (_$kod2Computed ??= Computed<List<BaseGrupKoduModel>?>(
+    () => super.kod2,
+    name: '_StokListesiViewModelBase.kod2',
+  )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod3Computed;
 
   @override
-  List<BaseGrupKoduModel>? get kod3 =>
-      (_$kod3Computed ??= Computed<List<BaseGrupKoduModel>?>(
-        () => super.kod3,
-        name: '_StokListesiViewModelBase.kod3',
-      )).value;
+  List<BaseGrupKoduModel>? get kod3 => (_$kod3Computed ??= Computed<List<BaseGrupKoduModel>?>(
+    () => super.kod3,
+    name: '_StokListesiViewModelBase.kod3',
+  )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod4Computed;
 
   @override
-  List<BaseGrupKoduModel>? get kod4 =>
-      (_$kod4Computed ??= Computed<List<BaseGrupKoduModel>?>(
-        () => super.kod4,
-        name: '_StokListesiViewModelBase.kod4',
-      )).value;
+  List<BaseGrupKoduModel>? get kod4 => (_$kod4Computed ??= Computed<List<BaseGrupKoduModel>?>(
+    () => super.kod4,
+    name: '_StokListesiViewModelBase.kod4',
+  )).value;
   Computed<List<BaseGrupKoduModel>?>? _$kod5Computed;
 
   @override
-  List<BaseGrupKoduModel>? get kod5 =>
-      (_$kod5Computed ??= Computed<List<BaseGrupKoduModel>?>(
-        () => super.kod5,
-        name: '_StokListesiViewModelBase.kod5',
-      )).value;
+  List<BaseGrupKoduModel>? get kod5 => (_$kod5Computed ??= Computed<List<BaseGrupKoduModel>?>(
+    () => super.kod5,
+    name: '_StokListesiViewModelBase.kod5',
+  )).value;
   Computed<String?>? _$bakiyeComputed;
 
   @override
@@ -371,8 +365,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeSearchBarStatus');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeSearchBarStatus',
+    );
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -382,8 +377,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setGridSayisi(int value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setGridSayisi');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setGridSayisi',
+    );
     try {
       return super.setGridSayisi(value);
     } finally {
@@ -393,8 +389,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setSearchList(List<StokDetayliAramaAlanlar>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setSearchList');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setSearchList',
+    );
     try {
       return super.setSearchList(value);
     } finally {
@@ -404,8 +401,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -415,8 +413,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void resetSelectedArr() {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.resetSelectedArr');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.resetSelectedArr',
+    );
     try {
       return super.resetSelectedArr();
     } finally {
@@ -426,8 +425,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrGrupKodu(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrGrupKodu');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrGrupKodu',
+    );
     try {
       return super.changeArrGrupKodu(value);
     } finally {
@@ -437,8 +437,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrGrupKoduTemp(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrGrupKoduTemp');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrGrupKoduTemp',
+    );
     try {
       return super.changeArrGrupKoduTemp(value);
     } finally {
@@ -448,8 +449,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod1(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod1');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod1',
+    );
     try {
       return super.changeArrKod1(value);
     } finally {
@@ -459,8 +461,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod1Temp(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod1Temp');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod1Temp',
+    );
     try {
       return super.changeArrKod1Temp(value);
     } finally {
@@ -470,8 +473,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod2(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod2');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod2',
+    );
     try {
       return super.changeArrKod2(value);
     } finally {
@@ -481,8 +485,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod2Temp(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod2Temp');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod2Temp',
+    );
     try {
       return super.changeArrKod2Temp(value);
     } finally {
@@ -492,8 +497,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod3(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod3');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod3',
+    );
     try {
       return super.changeArrKod3(value);
     } finally {
@@ -503,8 +509,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod3Temp(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod3Temp');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod3Temp',
+    );
     try {
       return super.changeArrKod3Temp(value);
     } finally {
@@ -514,8 +521,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod4(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod4');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod4',
+    );
     try {
       return super.changeArrKod4(value);
     } finally {
@@ -525,8 +533,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod4Temp(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod4Temp');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod4Temp',
+    );
     try {
       return super.changeArrKod4Temp(value);
     } finally {
@@ -536,8 +545,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod5(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod5');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod5',
+    );
     try {
       return super.changeArrKod5(value);
     } finally {
@@ -547,8 +557,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeArrKod5Temp(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeArrKod5Temp');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeArrKod5Temp',
+    );
     try {
       return super.changeArrKod5Temp(value);
     } finally {
@@ -558,8 +569,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setResimleriGoster() {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setResimleriGoster');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setResimleriGoster',
+    );
     try {
       return super.setResimleriGoster();
     } finally {
@@ -569,8 +581,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setGrupKodlari(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setGrupKodlari');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setGrupKodlari',
+    );
     try {
       return super.setGrupKodlari(value);
     } finally {
@@ -580,8 +593,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setKategoriGrupKodlari(List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setKategoriGrupKodlari');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setKategoriGrupKodlari',
+    );
     try {
       return super.setKategoriGrupKodlari(value);
     } finally {
@@ -591,8 +605,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setObservableList(List<StokListesiModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setObservableList');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(value);
     } finally {
@@ -602,8 +617,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void addObservableList(List<StokListesiModel>? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.addObservableList');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.addObservableList',
+    );
     try {
       return super.addObservableList(value);
     } finally {
@@ -613,8 +629,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeIsScrolledDown(bool value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeIsScrolledDown');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeIsScrolledDown',
+    );
     try {
       return super.changeIsScrolledDown(value);
     } finally {
@@ -624,8 +641,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setSiralama(String? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setSiralama');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setSiralama',
+    );
     try {
       return super.setSiralama(value);
     } finally {
@@ -635,8 +653,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setSelectedWithIndex(int index) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setSelectedWithIndex');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setSelectedWithIndex',
+    );
     try {
       return super.setSelectedWithIndex(index);
     } finally {
@@ -646,8 +665,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeBakiyeDurumu(String? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeBakiyeDurumu');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeBakiyeDurumu',
+    );
     try {
       return super.changeBakiyeDurumu(value);
     } finally {
@@ -657,8 +677,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void changeBakiyeDurumuTemp(int? value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.changeBakiyeDurumuTemp');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.changeBakiyeDurumuTemp',
+    );
     try {
       return super.changeBakiyeDurumuTemp(value);
     } finally {
@@ -668,8 +689,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setKategoriMi(bool value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setKategoriMi');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setKategoriMi',
+    );
     try {
       return super.setKategoriMi(value);
     } finally {
@@ -679,8 +701,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   @override
   void setGrupNo(int value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setGrupNo');
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController.startAction(
+      name: '_StokListesiViewModelBase.setGrupNo',
+    );
     try {
       return super.setGrupNo(value);
     } finally {

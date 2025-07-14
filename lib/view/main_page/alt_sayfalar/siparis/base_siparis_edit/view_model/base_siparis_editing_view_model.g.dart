@@ -12,11 +12,10 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   Computed<BaseSiparisEditModel>? _$baseSiparisEditModelComputed;
 
   @override
-  BaseSiparisEditModel get baseSiparisEditModel =>
-      (_$baseSiparisEditModelComputed ??= Computed<BaseSiparisEditModel>(
-        () => super.baseSiparisEditModel,
-        name: '_BaseSiparisEditingViewModelBase.baseSiparisEditModel',
-      )).value;
+  BaseSiparisEditModel get baseSiparisEditModel => (_$baseSiparisEditModelComputed ??= Computed<BaseSiparisEditModel>(
+    () => super.baseSiparisEditModel,
+    name: '_BaseSiparisEditingViewModelBase.baseSiparisEditModel',
+  )).value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
@@ -133,18 +132,16 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
-  late final _$_BaseSiparisEditingViewModelBaseActionController =
-      ActionController(
-        name: '_BaseSiparisEditingViewModelBase',
-        context: context,
-      );
+  late final _$_BaseSiparisEditingViewModelBaseActionController = ActionController(
+    name: '_BaseSiparisEditingViewModelBase',
+    context: context,
+  );
 
   @override
   void changeUpdateKalemler() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
-        .startAction(
-          name: '_BaseSiparisEditingViewModelBase.changeUpdateKalemler',
-        );
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+      name: '_BaseSiparisEditingViewModelBase.changeUpdateKalemler',
+    );
     try {
       return super.changeUpdateKalemler();
     } finally {
@@ -156,8 +153,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
 
   @override
   void changeIsValid() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
-        .startAction(name: '_BaseSiparisEditingViewModelBase.changeIsValid');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+      name: '_BaseSiparisEditingViewModelBase.changeIsValid',
+    );
     try {
       return super.changeIsValid();
     } finally {
@@ -169,8 +167,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
 
   @override
   void changePageIndex(int value) {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
-        .startAction(name: '_BaseSiparisEditingViewModelBase.changePageIndex');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+      name: '_BaseSiparisEditingViewModelBase.changePageIndex',
+    );
     try {
       return super.changePageIndex(value);
     } finally {
@@ -182,8 +181,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
 
   @override
   void changeIsLastPage(bool value) {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
-        .startAction(name: '_BaseSiparisEditingViewModelBase.changeIsLastPage');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+      name: '_BaseSiparisEditingViewModelBase.changeIsLastPage',
+    );
     try {
       return super.changeIsLastPage(value);
     } finally {
@@ -195,8 +195,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
 
   @override
   void setLoading(bool value) {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
-        .startAction(name: '_BaseSiparisEditingViewModelBase.setLoading');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+      name: '_BaseSiparisEditingViewModelBase.setLoading',
+    );
     try {
       return super.setLoading(value);
     } finally {
@@ -208,8 +209,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
 
   @override
   void changeFuture() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
-        .startAction(name: '_BaseSiparisEditingViewModelBase.changeFuture');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+      name: '_BaseSiparisEditingViewModelBase.changeFuture',
+    );
     try {
       return super.changeFuture();
     } finally {
@@ -221,10 +223,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
-        .startAction(
-          name: '_BaseSiparisEditingViewModelBase.changeYeniKaydaHazirlaMi',
-        );
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+      name: '_BaseSiparisEditingViewModelBase.changeYeniKaydaHazirlaMi',
+    );
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {

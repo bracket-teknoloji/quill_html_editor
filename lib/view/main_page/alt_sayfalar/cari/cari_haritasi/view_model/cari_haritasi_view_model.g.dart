@@ -134,8 +134,9 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 
   @override
   void setIsLocationEnabled(bool? value) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.setIsLocationEnabled');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.setIsLocationEnabled',
+    );
     try {
       return super.setIsLocationEnabled(value);
     } finally {
@@ -145,8 +146,9 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 
   @override
   void setCurrentPosition(LatLng? position) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.setCurrentPosition');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.setCurrentPosition',
+    );
     try {
       return super.setCurrentPosition(position);
     } finally {
@@ -156,8 +158,9 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 
   @override
   void addMarker(Marker marker) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.addMarker');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.addMarker',
+    );
     try {
       return super.addMarker(marker);
     } finally {
@@ -167,8 +170,9 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 
   @override
   void setCariList(List<CariListesiModel>? list) {
-    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
-        .startAction(name: '_CariHaritasiViewModelBase.setCariList');
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController.startAction(
+      name: '_CariHaritasiViewModelBase.setCariList',
+    );
     try {
       return super.setCariList(list);
     } finally {

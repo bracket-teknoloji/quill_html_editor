@@ -8,8 +8,7 @@ part of 'kredi_karti_tahsilati_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$KrediKartiTahsilatiViewModel
-    on _KrediKartiTahsilatiViewModelBase, Store {
+mixin _$KrediKartiTahsilatiViewModel on _KrediKartiTahsilatiViewModelBase, Store {
   Computed<String?>? _$getCariBakiyeComputed;
 
   @override
@@ -288,16 +287,16 @@ mixin _$KrediKartiTahsilatiViewModel
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$_KrediKartiTahsilatiViewModelBaseActionController =
-      ActionController(
-        name: '_KrediKartiTahsilatiViewModelBase',
-        context: context,
-      );
+  late final _$_KrediKartiTahsilatiViewModelBaseActionController = ActionController(
+    name: '_KrediKartiTahsilatiViewModelBase',
+    context: context,
+  );
 
   @override
   void setModel(TahsilatRequestModel value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setModel');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setModel',
+    );
     try {
       return super.setModel(value);
     } finally {
@@ -309,8 +308,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setCariModel(CariListesiModel? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setCariModel');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setCariModel',
+    );
     try {
       return super.setCariModel(value);
     } finally {
@@ -322,8 +322,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setBankModel(BankaListesiModel? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setBankModel');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setBankModel',
+    );
     try {
       return super.setBankModel(value);
     } finally {
@@ -335,8 +336,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setCariBakiye(double? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setCariBakiye');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setCariBakiye',
+    );
     try {
       return super.setCariBakiye(value);
     } finally {
@@ -348,10 +350,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setShowReferansKodu(bool? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.setShowReferansKodu',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setShowReferansKodu',
+    );
     try {
       return super.setShowReferansKodu(value);
     } finally {
@@ -363,10 +364,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setAppBarSubTitle(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.setAppBarSubTitle',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setAppBarSubTitle',
+    );
     try {
       return super.setAppBarSubTitle(value);
     } finally {
@@ -378,8 +378,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -391,8 +392,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setTarih');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -404,8 +406,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setAciklama');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {
@@ -417,8 +420,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setKasaKodu(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setKasaKodu');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setKasaKodu',
+    );
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -430,8 +434,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setHesapKodu(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setHesapKodu');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setHesapKodu',
+    );
     try {
       return super.setHesapKodu(value);
     } finally {
@@ -443,10 +448,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setHedefAciklama(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.setHedefAciklama',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setHedefAciklama',
+    );
     try {
       return super.setHedefAciklama(value);
     } finally {
@@ -458,10 +462,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setPickerBelgeTuru(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.setPickerBelgeTuru',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setPickerBelgeTuru',
+    );
     try {
       return super.setPickerBelgeTuru(value);
     } finally {
@@ -473,8 +476,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setKrediKartiNo(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setKrediKartiNo');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setKrediKartiNo',
+    );
     try {
       return super.setKrediKartiNo(value);
     } finally {
@@ -486,8 +490,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setTutar(double? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setTutar');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(value);
     } finally {
@@ -499,8 +504,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setTaksitSayisi(int? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setTaksitSayisi');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setTaksitSayisi',
+    );
     try {
       return super.setTaksitSayisi(value);
     } finally {
@@ -512,10 +518,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void increaseTaksitSayisi() {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.increaseTaksitSayisi',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.increaseTaksitSayisi',
+    );
     try {
       return super.increaseTaksitSayisi();
     } finally {
@@ -527,10 +532,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void decreaseTaksitSayisi() {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.decreaseTaksitSayisi',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.decreaseTaksitSayisi',
+    );
     try {
       return super.decreaseTaksitSayisi();
     } finally {
@@ -542,8 +546,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setSeriList(List<SeriModel>? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setSeriList');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setSeriList',
+    );
     try {
       return super.setSeriList(value);
     } finally {
@@ -555,8 +560,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setCariKodu');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -568,8 +574,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setSeri(SeriModel? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setSeri');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setSeri',
+    );
     try {
       return super.setSeri(value);
     } finally {
@@ -581,8 +588,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setDovizTutari(double? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setDovizTutari',
+    );
     try {
       return super.setDovizTutari(value);
     } finally {
@@ -594,8 +602,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setProjekodu(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setProjekodu');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setProjekodu',
+    );
     try {
       return super.setProjekodu(value);
     } finally {
@@ -607,10 +616,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setBankaSozlesmesiList(List<BankaSozlesmesiModel>? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.setBankaSozlesmesiList',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setBankaSozlesmesiList',
+    );
     try {
       return super.setBankaSozlesmesiList(value);
     } finally {
@@ -622,8 +630,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setMuhaRefList(List<MuhasebeReferansModel>? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setMuhaRefList');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setMuhaRefList',
+    );
     try {
       return super.setMuhaRefList(value);
     } finally {
@@ -635,10 +644,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setBankaHesaplariList(List<BankaListesiModel>? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(
-          name: '_KrediKartiTahsilatiViewModelBase.setBankaHesaplariList',
-        );
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setBankaHesaplariList',
+    );
     try {
       return super.setBankaHesaplariList(value);
     } finally {
@@ -650,8 +658,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -663,8 +672,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setKktYontemi(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setKktYontemi');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setKktYontemi',
+    );
     try {
       return super.setKktYontemi(value);
     } finally {
@@ -676,8 +686,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setHesapTipi(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setHesapTipi');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setHesapTipi',
+    );
     try {
       return super.setHesapTipi(value);
     } finally {
@@ -689,8 +700,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setSozlesme(BankaSozlesmesiModel? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setSozlesme');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setSozlesme',
+    );
     try {
       return super.setSozlesme(value);
     } finally {
@@ -702,8 +714,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setReferansKodu(String? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setReferansKodu');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setReferansKodu',
+    );
     try {
       return super.setReferansKodu(value);
     } finally {
@@ -715,8 +728,9 @@ mixin _$KrediKartiTahsilatiViewModel
 
   @override
   void setDovizTipi(int? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setDovizTipi');
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+      name: '_KrediKartiTahsilatiViewModelBase.setDovizTipi',
+    );
     try {
       return super.setDovizTipi(value);
     } finally {

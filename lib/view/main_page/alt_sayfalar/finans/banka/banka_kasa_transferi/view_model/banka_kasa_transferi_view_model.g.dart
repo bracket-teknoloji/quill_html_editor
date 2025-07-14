@@ -12,11 +12,10 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
   Computed<String>? _$bankaHarAciklamaComputed;
 
   @override
-  String get bankaHarAciklama =>
-      (_$bankaHarAciklamaComputed ??= Computed<String>(
-        () => super.bankaHarAciklama,
-        name: '_BankaKasaTransferiViewModelBase.bankaHarAciklama',
-      )).value;
+  String get bankaHarAciklama => (_$bankaHarAciklamaComputed ??= Computed<String>(
+    () => super.bankaHarAciklama,
+    name: '_BankaKasaTransferiViewModelBase.bankaHarAciklama',
+  )).value;
 
   late final _$modelAtom = Atom(
     name: '_BankaKasaTransferiViewModelBase.model',
@@ -124,18 +123,16 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
     return _$saveTahsilatAsyncAction.run(() => super.saveTahsilat());
   }
 
-  late final _$_BankaKasaTransferiViewModelBaseActionController =
-      ActionController(
-        name: '_BankaKasaTransferiViewModelBase',
-        context: context,
-      );
+  late final _$_BankaKasaTransferiViewModelBaseActionController = ActionController(
+    name: '_BankaKasaTransferiViewModelBase',
+    context: context,
+  );
 
   @override
   void setBankaDovizliMi(bool value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(
-          name: '_BankaKasaTransferiViewModelBase.setBankaDovizliMi',
-        );
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setBankaDovizliMi',
+    );
     try {
       return super.setBankaDovizliMi(value);
     } finally {
@@ -147,8 +144,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setGc(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setGc');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setGc',
+    );
     try {
       return super.setGc(value);
     } finally {
@@ -160,8 +158,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -173,8 +172,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setTarih');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -186,8 +186,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setHesapKodu(BankaListesiModel? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setHesapKodu');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setHesapKodu',
+    );
     try {
       return super.setHesapKodu(value);
     } finally {
@@ -199,8 +200,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setGuid(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setGuid');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setGuid',
+    );
     try {
       return super.setGuid(value);
     } finally {
@@ -212,8 +214,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setKasaKodu(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setKasaKodu');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setKasaKodu',
+    );
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -225,8 +228,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setTutar(double? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setTutar');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(value);
     } finally {
@@ -238,8 +242,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setDovizTipi(int? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setDovizTipi');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setDovizTipi',
+    );
     try {
       return super.setDovizTipi(value);
     } finally {
@@ -251,8 +256,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setDovizTutari(double? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setDovizTutari',
+    );
     try {
       return super.setDovizTutari(value);
     } finally {
@@ -264,8 +270,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -277,8 +284,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setProjeKodu(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setProjeKodu');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(value);
     } finally {
@@ -290,8 +298,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setVadeGunu(int? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setVadeGunu');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setVadeGunu',
+    );
     try {
       return super.setVadeGunu(value);
     } finally {
@@ -303,8 +312,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setAciklama');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {
@@ -316,8 +326,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setHedefAciklama(String? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(name: '_BankaKasaTransferiViewModelBase.setHedefAciklama');
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setHedefAciklama',
+    );
     try {
       return super.setHedefAciklama(value);
     } finally {
@@ -329,10 +340,9 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController
-        .startAction(
-          name: '_BankaKasaTransferiViewModelBase.setDovizKurlariListesi',
-        );
+    final _$actionInfo = _$_BankaKasaTransferiViewModelBaseActionController.startAction(
+      name: '_BankaKasaTransferiViewModelBase.setDovizKurlariListesi',
+    );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {

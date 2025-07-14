@@ -13,12 +13,10 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
 
   @override
   ObservableList<HucreListesiModel>? get filteredHucreListesi =>
-      (_$filteredHucreListesiComputed ??=
-              Computed<ObservableList<HucreListesiModel>?>(
-                () => super.filteredHucreListesi,
-                name: '_HucreListesiViewModelBase.filteredHucreListesi',
-              ))
-          .value;
+      (_$filteredHucreListesiComputed ??= Computed<ObservableList<HucreListesiModel>?>(
+        () => super.filteredHucreListesi,
+        name: '_HucreListesiViewModelBase.filteredHucreListesi',
+      )).value;
 
   late final _$requestModelAtom = Atom(
     name: '_HucreListesiViewModelBase.requestModel',
@@ -91,8 +89,9 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_HucreListesiViewModelBaseActionController
-        .startAction(name: '_HucreListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_HucreListesiViewModelBaseActionController.startAction(
+      name: '_HucreListesiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -102,8 +101,9 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
 
   @override
   void setDepoKodu(int? value) {
-    final _$actionInfo = _$_HucreListesiViewModelBaseActionController
-        .startAction(name: '_HucreListesiViewModelBase.setDepoKodu');
+    final _$actionInfo = _$_HucreListesiViewModelBaseActionController.startAction(
+      name: '_HucreListesiViewModelBase.setDepoKodu',
+    );
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -113,8 +113,9 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
 
   @override
   void setObservableList(List<HucreListesiModel>? list) {
-    final _$actionInfo = _$_HucreListesiViewModelBaseActionController
-        .startAction(name: '_HucreListesiViewModelBase.setObservableList');
+    final _$actionInfo = _$_HucreListesiViewModelBaseActionController.startAction(
+      name: '_HucreListesiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {

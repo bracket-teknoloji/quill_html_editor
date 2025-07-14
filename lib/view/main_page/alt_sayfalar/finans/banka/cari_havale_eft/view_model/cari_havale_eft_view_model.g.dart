@@ -138,8 +138,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setCariModel(CariListesiModel? model) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setCariModel');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setCariModel',
+    );
     try {
       return super.setCariModel(model);
     } finally {
@@ -149,8 +150,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setBankaDovizliMi(bool value) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setBankaDovizliMi');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setBankaDovizliMi',
+    );
     try {
       return super.setBankaDovizliMi(value);
     } finally {
@@ -160,8 +162,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setGc(bool? gc) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setGc');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setGc',
+    );
     try {
       return super.setGc(gc);
     } finally {
@@ -171,8 +174,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setBSMV(double? bsmv) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setBSMV');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setBSMV',
+    );
     try {
       return super.setBSMV(bsmv);
     } finally {
@@ -182,8 +186,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setTarih(DateTime? tarih) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setTarih');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(tarih);
     } finally {
@@ -193,8 +198,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setDekontNo(String? dekontNo) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setDekontNo');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setDekontNo',
+    );
     try {
       return super.setDekontNo(dekontNo);
     } finally {
@@ -204,8 +210,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setHesapNo(BankaListesiModel? hesapNo) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setHesapNo');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setHesapNo',
+    );
     try {
       return super.setHesapNo(hesapNo);
     } finally {
@@ -215,8 +222,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setCariKodu(String? cariKodu) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setCariKodu');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(cariKodu);
     } finally {
@@ -226,8 +234,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setDovizTipi(int? dovizTipi) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setDovizTipi');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setDovizTipi',
+    );
     try {
       return super.setDovizTipi(dovizTipi);
     } finally {
@@ -237,8 +246,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setTutar(double? tutar) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setTutar');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(tutar);
     } finally {
@@ -248,8 +258,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setDovizTutari(double? dovizTutari) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setDovizTutari',
+    );
     try {
       return super.setDovizTutari(dovizTutari);
     } finally {
@@ -259,8 +270,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setMasrafTutari(double? masrafTutari) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setMasrafTutari');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setMasrafTutari',
+    );
     try {
       return super.setMasrafTutari(masrafTutari);
     } finally {
@@ -270,8 +282,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setMasrafMuhKodu(String? masrafMuhKodu) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setMasrafMuhKodu');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setMasrafMuhKodu',
+    );
     try {
       return super.setMasrafMuhKodu(masrafMuhKodu);
     } finally {
@@ -281,8 +294,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(String? plasiyerKodu) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(plasiyerKodu);
     } finally {
@@ -292,8 +306,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setProjeKodu(String? projeKodu) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setProjeKodu');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(projeKodu);
     } finally {
@@ -303,8 +318,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setAciklama(String? aciklama) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setAciklama');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(aciklama);
     } finally {
@@ -314,8 +330,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setTCMBBankaKodu(String? tcmbBankaKodu) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setTCMBBankaKodu');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setTCMBBankaKodu',
+    );
     try {
       return super.setTCMBBankaKodu(tcmbBankaKodu);
     } finally {
@@ -325,8 +342,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setTCMBSubeKodu(String? tcmbSubeKodu) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setTCMBSubeKodu');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setTCMBSubeKodu',
+    );
     try {
       return super.setTCMBSubeKodu(tcmbSubeKodu);
     } finally {
@@ -336,8 +354,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setIBAN(String? iban) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setIBAN');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setIBAN',
+    );
     try {
       return super.setIBAN(iban);
     } finally {
@@ -347,8 +366,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setBankaHesapNo(String? hesapNo) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setBankaHesapNo');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setBankaHesapNo',
+    );
     try {
       return super.setBankaHesapNo(hesapNo);
     } finally {
@@ -358,10 +378,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(
-          name: '_CariHavaleEftViewModelBase.setDovizKurlariListesi',
-        );
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setDovizKurlariListesi',
+    );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
@@ -371,8 +390,9 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   @override
   void setReferansKodu(String? referansKodu) {
-    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
-        .startAction(name: '_CariHavaleEftViewModelBase.setReferansKodu');
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController.startAction(
+      name: '_CariHavaleEftViewModelBase.setReferansKodu',
+    );
     try {
       return super.setReferansKodu(referansKodu);
     } finally {

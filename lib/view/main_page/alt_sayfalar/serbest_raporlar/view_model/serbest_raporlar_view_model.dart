@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
@@ -39,9 +40,18 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   List<TextEditingController>? textEditingControllerList;
 
   @action
-  void changeControllerText(String name, String value) =>
+  void changeControllerText(String name, String value) {
+    if (kIsWeb) {
+      textEditingControllerList![serbestRaporResponseModelList!.indexWhere((element) => element.adi == name)].value =
+          TextEditingValue(
+            text: value,
+            selection: TextSelection.collapsed(offset: value.length),
+          );
+    } else {
       textEditingControllerList![serbestRaporResponseModelList!.indexWhere((element) => element.adi == name)].text =
           value;
+    }
+  }
 
   @action
   void dispose() {

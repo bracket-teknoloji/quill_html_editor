@@ -243,15 +243,13 @@ abstract class _$CariSaveRequestModelCWProxy {
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfCariSaveRequestModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfCariSaveRequestModel.copyWith.fieldName(...)`
-class _$CariSaveRequestModelCWProxyImpl
-    implements _$CariSaveRequestModelCWProxy {
+class _$CariSaveRequestModelCWProxyImpl implements _$CariSaveRequestModelCWProxy {
   const _$CariSaveRequestModelCWProxyImpl(this._value);
 
   final CariSaveRequestModel _value;
 
   @override
-  CariSaveRequestModel requestVersion(int? requestVersion) =>
-      this(requestVersion: requestVersion);
+  CariSaveRequestModel requestVersion(int? requestVersion) => this(requestVersion: requestVersion);
 
   @override
   CariSaveRequestModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
@@ -260,8 +258,7 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel yeniKayit(bool? yeniKayit) => this(yeniKayit: yeniKayit);
 
   @override
-  CariSaveRequestModel sahisFirmasi(bool? sahisFirmasi) =>
-      this(sahisFirmasi: sahisFirmasi);
+  CariSaveRequestModel sahisFirmasi(bool? sahisFirmasi) => this(sahisFirmasi: sahisFirmasi);
 
   @override
   CariSaveRequestModel subeKodu(String? subeKodu) => this(subeKodu: subeKodu);
@@ -300,22 +297,19 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel boylam(double? boylam) => this(boylam: boylam);
 
   @override
-  CariSaveRequestModel postaKodu(String? postaKodu) =>
-      this(postaKodu: postaKodu);
+  CariSaveRequestModel postaKodu(String? postaKodu) => this(postaKodu: postaKodu);
 
   @override
   CariSaveRequestModel website(String? website) => this(website: website);
 
   @override
-  CariSaveRequestModel vergiDairesi(String? vergiDairesi) =>
-      this(vergiDairesi: vergiDairesi);
+  CariSaveRequestModel vergiDairesi(String? vergiDairesi) => this(vergiDairesi: vergiDairesi);
 
   @override
   CariSaveRequestModel vergiNo(String? vergiNo) => this(vergiNo: vergiNo);
 
   @override
-  CariSaveRequestModel plasiyerKodu(String? plasiyerKodu) =>
-      this(plasiyerKodu: plasiyerKodu);
+  CariSaveRequestModel plasiyerKodu(String? plasiyerKodu) => this(plasiyerKodu: plasiyerKodu);
 
   @override
   CariSaveRequestModel dovizli(String? dovizli) => this(dovizli: dovizli);
@@ -342,24 +336,19 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel kod5(String? kod5) => this(kod5: kod5);
 
   @override
-  CariSaveRequestModel kod1Tanimi(String? kod1Tanimi) =>
-      this(kod1Tanimi: kod1Tanimi);
+  CariSaveRequestModel kod1Tanimi(String? kod1Tanimi) => this(kod1Tanimi: kod1Tanimi);
 
   @override
-  CariSaveRequestModel kod2Tanimi(String? kod2Tanimi) =>
-      this(kod2Tanimi: kod2Tanimi);
+  CariSaveRequestModel kod2Tanimi(String? kod2Tanimi) => this(kod2Tanimi: kod2Tanimi);
 
   @override
-  CariSaveRequestModel kod3Tanimi(String? kod3Tanimi) =>
-      this(kod3Tanimi: kod3Tanimi);
+  CariSaveRequestModel kod3Tanimi(String? kod3Tanimi) => this(kod3Tanimi: kod3Tanimi);
 
   @override
-  CariSaveRequestModel kod4Tanimi(String? kod4Tanimi) =>
-      this(kod4Tanimi: kod4Tanimi);
+  CariSaveRequestModel kod4Tanimi(String? kod4Tanimi) => this(kod4Tanimi: kod4Tanimi);
 
   @override
-  CariSaveRequestModel kod5Tanimi(String? kod5Tanimi) =>
-      this(kod5Tanimi: kod5Tanimi);
+  CariSaveRequestModel kod5Tanimi(String? kod5Tanimi) => this(kod5Tanimi: kod5Tanimi);
 
   @override
   CariSaveRequestModel bilgi(String? bilgi) => this(bilgi: bilgi);
@@ -368,47 +357,37 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel kilit(String? kilit) => this(kilit: kilit);
 
   @override
-  CariSaveRequestModel bagliCari(String? bagliCari) =>
-      this(bagliCari: bagliCari);
+  CariSaveRequestModel bagliCari(String? bagliCari) => this(bagliCari: bagliCari);
 
   @override
-  CariSaveRequestModel kosulKodu(String? kosulKodu) =>
-      this(kosulKodu: kosulKodu);
+  CariSaveRequestModel kosulKodu(String? kosulKodu) => this(kosulKodu: kosulKodu);
 
   @override
-  CariSaveRequestModel muhasebeKodu(String? muhasebeKodu) =>
-      this(muhasebeKodu: muhasebeKodu);
+  CariSaveRequestModel muhasebeKodu(String? muhasebeKodu) => this(muhasebeKodu: muhasebeKodu);
 
   @override
-  CariSaveRequestModel kurfarkiborcKodu(String? kurfarkiborcKodu) =>
-      this(kurfarkiborcKodu: kurfarkiborcKodu);
+  CariSaveRequestModel kurfarkiborcKodu(String? kurfarkiborcKodu) => this(kurfarkiborcKodu: kurfarkiborcKodu);
 
   @override
-  CariSaveRequestModel kurfarkialacakKodu(String? kurfarkialacakKodu) =>
-      this(kurfarkialacakKodu: kurfarkialacakKodu);
+  CariSaveRequestModel kurfarkialacakKodu(String? kurfarkialacakKodu) => this(kurfarkialacakKodu: kurfarkialacakKodu);
 
   @override
   CariSaveRequestModel vadeGunu(String? vadeGunu) => this(vadeGunu: vadeGunu);
 
   @override
-  CariSaveRequestModel odemeTipi(String? odemeTipi) =>
-      this(odemeTipi: odemeTipi);
+  CariSaveRequestModel odemeTipi(String? odemeTipi) => this(odemeTipi: odemeTipi);
 
   @override
-  CariSaveRequestModel muhtelifCari(bool? muhtelifCari) =>
-      this(muhtelifCari: muhtelifCari);
+  CariSaveRequestModel muhtelifCari(bool? muhtelifCari) => this(muhtelifCari: muhtelifCari);
 
   @override
-  CariSaveRequestModel muhtelifBelgeTipi(String? muhtelifBelgeTipi) =>
-      this(muhtelifBelgeTipi: muhtelifBelgeTipi);
+  CariSaveRequestModel muhtelifBelgeTipi(String? muhtelifBelgeTipi) => this(muhtelifBelgeTipi: muhtelifBelgeTipi);
 
   @override
-  CariSaveRequestModel muhtelifBelgeNo(String? muhtelifBelgeNo) =>
-      this(muhtelifBelgeNo: muhtelifBelgeNo);
+  CariSaveRequestModel muhtelifBelgeNo(String? muhtelifBelgeNo) => this(muhtelifBelgeNo: muhtelifBelgeNo);
 
   @override
-  CariSaveRequestModel efaturaSenaryo(String? efaturaSenaryo) =>
-      this(efaturaSenaryo: efaturaSenaryo);
+  CariSaveRequestModel efaturaSenaryo(String? efaturaSenaryo) => this(efaturaSenaryo: efaturaSenaryo);
 
   @override
   CariSaveRequestModel kull1s(String? kull1s) => this(kull1s: kull1s);
@@ -459,47 +438,37 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel kull8n(double? kull8n) => this(kull8n: kull8n);
 
   @override
-  CariSaveRequestModel aciklama1(String? aciklama1) =>
-      this(aciklama1: aciklama1);
+  CariSaveRequestModel aciklama1(String? aciklama1) => this(aciklama1: aciklama1);
 
   @override
-  CariSaveRequestModel aciklama2(String? aciklama2) =>
-      this(aciklama2: aciklama2);
+  CariSaveRequestModel aciklama2(String? aciklama2) => this(aciklama2: aciklama2);
 
   @override
-  CariSaveRequestModel aciklama3(String? aciklama3) =>
-      this(aciklama3: aciklama3);
+  CariSaveRequestModel aciklama3(String? aciklama3) => this(aciklama3: aciklama3);
 
   @override
-  CariSaveRequestModel postakodu(String? postakodu) =>
-      this(postakodu: postakodu);
+  CariSaveRequestModel postakodu(String? postakodu) => this(postakodu: postakodu);
 
   @override
   CariSaveRequestModel muhAdi(String? muhAdi) => this(muhAdi: muhAdi);
 
   @override
-  CariSaveRequestModel kurfarkialacakAdi(String? kurfarkialacakAdi) =>
-      this(kurfarkialacakAdi: kurfarkialacakAdi);
+  CariSaveRequestModel kurfarkialacakAdi(String? kurfarkialacakAdi) => this(kurfarkialacakAdi: kurfarkialacakAdi);
 
   @override
-  CariSaveRequestModel kurfarkiborcAdi(String? kurfarkiborcAdi) =>
-      this(kurfarkiborcAdi: kurfarkiborcAdi);
+  CariSaveRequestModel kurfarkiborcAdi(String? kurfarkiborcAdi) => this(kurfarkiborcAdi: kurfarkiborcAdi);
 
   @override
-  CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama) =>
-      this(bagliCariAciklama: bagliCariAciklama);
+  CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama) => this(bagliCariAciklama: bagliCariAciklama);
 
   @override
-  CariSaveRequestModel kosulKoduAciklama(String? kosulKoduAciklama) =>
-      this(kosulKoduAciklama: kosulKoduAciklama);
+  CariSaveRequestModel kosulKoduAciklama(String? kosulKoduAciklama) => this(kosulKoduAciklama: kosulKoduAciklama);
 
   @override
-  CariSaveRequestModel ulkeKoduAciklama(String? ulkeKoduAciklama) =>
-      this(ulkeKoduAciklama: ulkeKoduAciklama);
+  CariSaveRequestModel ulkeKoduAciklama(String? ulkeKoduAciklama) => this(ulkeKoduAciklama: ulkeKoduAciklama);
 
   @override
-  CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama) =>
-      this(dovizKoduAciklama: dovizKoduAciklama);
+  CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama) => this(dovizKoduAciklama: dovizKoduAciklama);
 
   @override
   CariSaveRequestModel efatAktif(bool? efatAktif) => this(efatAktif: efatAktif);
@@ -896,8 +865,7 @@ class _$CariSaveRequestModelCWProxyImpl
 extension $CariSaveRequestModelCopyWith on CariSaveRequestModel {
   /// Returns a callable class that can be used as follows: `instanceOfCariSaveRequestModel.copyWith(...)` or like so:`instanceOfCariSaveRequestModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$CariSaveRequestModelCWProxy get copyWith =>
-      _$CariSaveRequestModelCWProxyImpl(this);
+  _$CariSaveRequestModelCWProxy get copyWith => _$CariSaveRequestModelCWProxyImpl(this);
 }
 
 // **************************************************************************
@@ -1023,13 +991,11 @@ Map<String, dynamic> _$CariSaveRequestModelToJson(
   if (instance.kosulKodu case final value?) 'KOSUL_KODU': value,
   if (instance.muhasebeKodu case final value?) 'MUHASEBE_KODU': value,
   if (instance.kurfarkiborcKodu case final value?) 'KURFARKIBORC_KODU': value,
-  if (instance.kurfarkialacakKodu case final value?)
-    'KURFARKIALACAK_KODU': value,
+  if (instance.kurfarkialacakKodu case final value?) 'KURFARKIALACAK_KODU': value,
   if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
   if (instance.odemeTipi case final value?) 'ODEME_TIPI': value,
   if (instance.muhtelifCari case final value?) 'MUHTELIF_CARI': value,
-  if (instance.muhtelifBelgeTipi case final value?)
-    'MUHTELIF_BELGE_TIPI': value,
+  if (instance.muhtelifBelgeTipi case final value?) 'MUHTELIF_BELGE_TIPI': value,
   if (instance.muhtelifBelgeNo case final value?) 'MUHTELIF_BELGE_NO': value,
   if (instance.efaturaSenaryo case final value?) 'EFATURA_SENARYO': value,
   if (instance.kull1s case final value?) 'KULL1S': value,

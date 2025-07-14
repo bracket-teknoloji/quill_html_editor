@@ -44,9 +44,7 @@ mixin _$KasaHareketDetayViewModel on _KasaHareketDetayViewModelBase, Store {
   set kasaIslemleriRequestModel(KasaIslemleriRequestModel value) {
     _$kasaIslemleriRequestModelAtom.reportWrite(
       value,
-      _kasaIslemleriRequestModelIsInitialized
-          ? super.kasaIslemleriRequestModel
-          : null,
+      _kasaIslemleriRequestModelIsInitialized ? super.kasaIslemleriRequestModel : null,
       () {
         super.kasaIslemleriRequestModel = value;
         _kasaIslemleriRequestModelIsInitialized = true;
@@ -82,18 +80,16 @@ mixin _$KasaHareketDetayViewModel on _KasaHareketDetayViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KasaHareketDetayViewModelBaseActionController =
-      ActionController(
-        name: '_KasaHareketDetayViewModelBase',
-        context: context,
-      );
+  late final _$_KasaHareketDetayViewModelBaseActionController = ActionController(
+    name: '_KasaHareketDetayViewModelBase',
+    context: context,
+  );
 
   @override
   void setKasaIslemleriModel(KasaIslemleriModel? value) {
-    final _$actionInfo = _$_KasaHareketDetayViewModelBaseActionController
-        .startAction(
-          name: '_KasaHareketDetayViewModelBase.setKasaIslemleriModel',
-        );
+    final _$actionInfo = _$_KasaHareketDetayViewModelBaseActionController.startAction(
+      name: '_KasaHareketDetayViewModelBase.setKasaIslemleriModel',
+    );
     try {
       return super.setKasaIslemleriModel(value);
     } finally {

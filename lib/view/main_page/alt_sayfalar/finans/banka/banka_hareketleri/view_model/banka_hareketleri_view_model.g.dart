@@ -102,16 +102,16 @@ mixin _$BankaHareketleriViewModel on _BankaHareketleriViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_BankaHareketleriViewModelBaseActionController =
-      ActionController(
-        name: '_BankaHareketleriViewModelBase',
-        context: context,
-      );
+  late final _$_BankaHareketleriViewModelBaseActionController = ActionController(
+    name: '_BankaHareketleriViewModelBase',
+    context: context,
+  );
 
   @override
   void setHesapKodu(String? value) {
-    final _$actionInfo = _$_BankaHareketleriViewModelBaseActionController
-        .startAction(name: '_BankaHareketleriViewModelBase.setHesapKodu');
+    final _$actionInfo = _$_BankaHareketleriViewModelBaseActionController.startAction(
+      name: '_BankaHareketleriViewModelBase.setHesapKodu',
+    );
     try {
       return super.setHesapKodu(value);
     } finally {
@@ -121,10 +121,9 @@ mixin _$BankaHareketleriViewModel on _BankaHareketleriViewModelBase, Store {
 
   @override
   void setBankaHareketleriListesi(List<BankaHareketleriModel>? value) {
-    final _$actionInfo = _$_BankaHareketleriViewModelBaseActionController
-        .startAction(
-          name: '_BankaHareketleriViewModelBase.setBankaHareketleriListesi',
-        );
+    final _$actionInfo = _$_BankaHareketleriViewModelBaseActionController.startAction(
+      name: '_BankaHareketleriViewModelBase.setBankaHareketleriListesi',
+    );
     try {
       return super.setBankaHareketleriListesi(value);
     } finally {

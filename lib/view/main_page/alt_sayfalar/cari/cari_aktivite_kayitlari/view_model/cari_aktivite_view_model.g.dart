@@ -115,8 +115,9 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   @override
   void setDurum(CariAktiviteDurumEnum value) {
-    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setDurum');
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController.startAction(
+      name: '_CariAktiviteViewModelBase.setDurum',
+    );
     try {
       return super.setDurum(value);
     } finally {
@@ -126,8 +127,9 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setCariKodu');
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController.startAction(
+      name: '_CariAktiviteViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -137,8 +139,9 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   @override
   void setKullanici(String? value) {
-    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setKullanici');
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController.startAction(
+      name: '_CariAktiviteViewModelBase.setKullanici',
+    );
     try {
       return super.setKullanici(value);
     } finally {
@@ -148,8 +151,9 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   @override
   void setObservableList(List<CariAktiviteListesiModel>? value) {
-    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setObservableList');
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController.startAction(
+      name: '_CariAktiviteViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(value);
     } finally {
@@ -159,8 +163,9 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(DateTime? value) {
-    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setBaslangicTarihi');
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController.startAction(
+      name: '_CariAktiviteViewModelBase.setBaslangicTarihi',
+    );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -170,8 +175,9 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   @override
   void setBitisTarihi(DateTime? value) {
-    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController.startAction(
+      name: '_CariAktiviteViewModelBase.setBitisTarihi',
+    );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -181,8 +187,9 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setSearchText');
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController.startAction(
+      name: '_CariAktiviteViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {

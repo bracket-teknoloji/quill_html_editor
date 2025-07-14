@@ -13,12 +13,10 @@ mixin _$GenelRehberViewModel on _GenelRehberViewModelBase, Store {
 
   @override
   ObservableList<GenelRehberModel>? get filteredObservableList =>
-      (_$filteredObservableListComputed ??=
-              Computed<ObservableList<GenelRehberModel>?>(
-                () => super.filteredObservableList,
-                name: '_GenelRehberViewModelBase.filteredObservableList',
-              ))
-          .value;
+      (_$filteredObservableListComputed ??= Computed<ObservableList<GenelRehberModel>?>(
+        () => super.filteredObservableList,
+        name: '_GenelRehberViewModelBase.filteredObservableList',
+      )).value;
 
   late final _$requestModelAtom = Atom(
     name: '_GenelRehberViewModelBase.requestModel',
@@ -109,8 +107,9 @@ mixin _$GenelRehberViewModel on _GenelRehberViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_GenelRehberViewModelBaseActionController
-        .startAction(name: '_GenelRehberViewModelBase.changeSearchBarStatus');
+    final _$actionInfo = _$_GenelRehberViewModelBaseActionController.startAction(
+      name: '_GenelRehberViewModelBase.changeSearchBarStatus',
+    );
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -120,8 +119,9 @@ mixin _$GenelRehberViewModel on _GenelRehberViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_GenelRehberViewModelBaseActionController
-        .startAction(name: '_GenelRehberViewModelBase.setSearchText');
+    final _$actionInfo = _$_GenelRehberViewModelBaseActionController.startAction(
+      name: '_GenelRehberViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -131,8 +131,9 @@ mixin _$GenelRehberViewModel on _GenelRehberViewModelBase, Store {
 
   @override
   void setObservableList(List<GenelRehberModel>? list) {
-    final _$actionInfo = _$_GenelRehberViewModelBaseActionController
-        .startAction(name: '_GenelRehberViewModelBase.setObservableList');
+    final _$actionInfo = _$_GenelRehberViewModelBaseActionController.startAction(
+      name: '_GenelRehberViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {

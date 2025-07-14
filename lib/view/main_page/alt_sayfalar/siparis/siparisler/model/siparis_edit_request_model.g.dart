@@ -91,8 +91,7 @@ Map<String, dynamic> _$SiparisEditRequestModelToJson(
   if (instance.resimGoster case final value?) 'ResimGoster': value,
   if (instance.stokKodu case final value?) 'StokKodu': value,
   if (instance.tag case final value?) 'Tag': value,
-  if (instance.siparisSevkEdilenGoster case final value?)
-    'SiparisSevkEdilenGoster': value,
+  if (instance.siparisSevkEdilenGoster case final value?) 'SiparisSevkEdilenGoster': value,
   if (instance.filtreKodu case final value?) 'FiltreKodu': value,
   if (instance.eFaturaIncKeyNo case final value?) 'EFaturaIncKeyNo': value,
   if (instance.depoKodu case final value?) 'DepoKodu': value,
@@ -101,11 +100,9 @@ Map<String, dynamic> _$SiparisEditRequestModelToJson(
   if (instance.cariTipi case final value?) 'CariTipi': value,
   if (instance.miktarGetir case final value?) 'MiktarGetir': value,
   if (instance.siralama case final value?) 'SIRALAMA': value,
-  if (instance.siparisKarsilanmaDurumu case final value?)
-    'SiparisKarsilanmaDurumu': value,
+  if (instance.siparisKarsilanmaDurumu case final value?) 'SiparisKarsilanmaDurumu': value,
   if (instance.ozelKod1 case final value?) 'OzelKod1': value,
-  if (instance.kapaliBelgelerListelenmesin case final value?)
-    'KapaliBelgelerListelenmesin': value,
+  if (instance.kapaliBelgelerListelenmesin case final value?) 'KapaliBelgelerListelenmesin': value,
   if (instance.projeKodu case final value?) 'ProjeKodu': value,
   if (instance.faturalasmaGoster case final value?) 'FaturalasmaGoster': value,
   if (instance.arrKod5 case final value?) 'ArrKod5': value,

@@ -99,16 +99,16 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_OzelHesapKapatmaViewModelBaseActionController =
-      ActionController(
-        name: '_OzelHesapKapatmaViewModelBase',
-        context: context,
-      );
+  late final _$_OzelHesapKapatmaViewModelBaseActionController = ActionController(
+    name: '_OzelHesapKapatmaViewModelBase',
+    context: context,
+  );
 
   @override
   void checkSelectedList(bool value, CariHareketleriModel model) {
-    final _$actionInfo = _$_OzelHesapKapatmaViewModelBaseActionController
-        .startAction(name: '_OzelHesapKapatmaViewModelBase.checkSelectedList');
+    final _$actionInfo = _$_OzelHesapKapatmaViewModelBaseActionController.startAction(
+      name: '_OzelHesapKapatmaViewModelBase.checkSelectedList',
+    );
     try {
       return super.checkSelectedList(value, model);
     } finally {
@@ -118,8 +118,9 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
 
   @override
   void setObservableList(List<CariHareketleriModel>? list) {
-    final _$actionInfo = _$_OzelHesapKapatmaViewModelBaseActionController
-        .startAction(name: '_OzelHesapKapatmaViewModelBase.setObservableList');
+    final _$actionInfo = _$_OzelHesapKapatmaViewModelBaseActionController.startAction(
+      name: '_OzelHesapKapatmaViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {

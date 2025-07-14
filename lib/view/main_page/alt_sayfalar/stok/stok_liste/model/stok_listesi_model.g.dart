@@ -444,32 +444,27 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   final StokListesiModel _value;
 
   @override
-  StokListesiModel seriBakiyeKontrolu(bool? seriBakiyeKontrolu) =>
-      this(seriBakiyeKontrolu: seriBakiyeKontrolu);
+  StokListesiModel seriBakiyeKontrolu(bool? seriBakiyeKontrolu) => this(seriBakiyeKontrolu: seriBakiyeKontrolu);
 
   @override
-  StokListesiModel seriCikislardaAcik(bool? seriCikislardaAcik) =>
-      this(seriCikislardaAcik: seriCikislardaAcik);
+  StokListesiModel seriCikislardaAcik(bool? seriCikislardaAcik) => this(seriCikislardaAcik: seriCikislardaAcik);
 
   @override
   StokListesiModel seriCikistaOtomatikMi(bool? seriCikistaOtomatikMi) =>
       this(seriCikistaOtomatikMi: seriCikistaOtomatikMi);
 
   @override
-  StokListesiModel seriGirislerdeAcik(bool? seriGirislerdeAcik) =>
-      this(seriGirislerdeAcik: seriGirislerdeAcik);
+  StokListesiModel seriGirislerdeAcik(bool? seriGirislerdeAcik) => this(seriGirislerdeAcik: seriGirislerdeAcik);
 
   @override
   StokListesiModel seriGiristeOtomatikMi(bool? seriGiristeOtomatikMi) =>
       this(seriGiristeOtomatikMi: seriGiristeOtomatikMi);
 
   @override
-  StokListesiModel seriMiktarKadarSor(bool? seriMiktarKadarSor) =>
-      this(seriMiktarKadarSor: seriMiktarKadarSor);
+  StokListesiModel seriMiktarKadarSor(bool? seriMiktarKadarSor) => this(seriMiktarKadarSor: seriMiktarKadarSor);
 
   @override
-  StokListesiModel duzeltmetarihi(DateTime? duzeltmetarihi) =>
-      this(duzeltmetarihi: duzeltmetarihi);
+  StokListesiModel duzeltmetarihi(DateTime? duzeltmetarihi) => this(duzeltmetarihi: duzeltmetarihi);
 
   @override
   StokListesiModel alisFiat1(double? alisFiat1) => this(alisFiat1: alisFiat1);
@@ -490,48 +485,37 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel bakiye(double? bakiye) => this(bakiye: bakiye);
 
   @override
-  StokListesiModel birimAgirlik(double? birimAgirlik) =>
-      this(birimAgirlik: birimAgirlik);
+  StokListesiModel birimAgirlik(double? birimAgirlik) => this(birimAgirlik: birimAgirlik);
 
   @override
-  StokListesiModel dovAlisFiat(double? dovAlisFiat) =>
-      this(dovAlisFiat: dovAlisFiat);
+  StokListesiModel dovAlisFiat(double? dovAlisFiat) => this(dovAlisFiat: dovAlisFiat);
 
   @override
-  StokListesiModel dovSatisFiat(double? dovSatisFiat) =>
-      this(dovSatisFiat: dovSatisFiat);
+  StokListesiModel dovSatisFiat(double? dovSatisFiat) => this(dovSatisFiat: dovSatisFiat);
 
   @override
-  StokListesiModel olcuBirimi2Pay(double? olcuBirimi2Pay) =>
-      this(olcuBirimi2Pay: olcuBirimi2Pay);
+  StokListesiModel olcuBirimi2Pay(double? olcuBirimi2Pay) => this(olcuBirimi2Pay: olcuBirimi2Pay);
 
   @override
-  StokListesiModel olcuBirimi2Payda(double? olcuBirimi2Payda) =>
-      this(olcuBirimi2Payda: olcuBirimi2Payda);
+  StokListesiModel olcuBirimi2Payda(double? olcuBirimi2Payda) => this(olcuBirimi2Payda: olcuBirimi2Payda);
 
   @override
-  StokListesiModel olcuBirimi3Pay(double? olcuBirimi3Pay) =>
-      this(olcuBirimi3Pay: olcuBirimi3Pay);
+  StokListesiModel olcuBirimi3Pay(double? olcuBirimi3Pay) => this(olcuBirimi3Pay: olcuBirimi3Pay);
 
   @override
-  StokListesiModel olcuBirimi3Payda(double? olcuBirimi3Payda) =>
-      this(olcuBirimi3Payda: olcuBirimi3Payda);
+  StokListesiModel olcuBirimi3Payda(double? olcuBirimi3Payda) => this(olcuBirimi3Payda: olcuBirimi3Payda);
 
   @override
-  StokListesiModel satisFiat1(double? satisFiat1) =>
-      this(satisFiat1: satisFiat1);
+  StokListesiModel satisFiat1(double? satisFiat1) => this(satisFiat1: satisFiat1);
 
   @override
-  StokListesiModel satisFiat2(double? satisFiat2) =>
-      this(satisFiat2: satisFiat2);
+  StokListesiModel satisFiat2(double? satisFiat2) => this(satisFiat2: satisFiat2);
 
   @override
-  StokListesiModel satisFiat3(double? satisFiat3) =>
-      this(satisFiat3: satisFiat3);
+  StokListesiModel satisFiat3(double? satisFiat3) => this(satisFiat3: satisFiat3);
 
   @override
-  StokListesiModel satisFiat4(double? satisFiat4) =>
-      this(satisFiat4: satisFiat4);
+  StokListesiModel satisFiat4(double? satisFiat4) => this(satisFiat4: satisFiat4);
 
   @override
   StokListesiModel satisKdv(double? satisKdv) => this(satisKdv: satisKdv);
@@ -540,8 +524,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel alisDovTip(int? alisDovTip) => this(alisDovTip: alisDovTip);
 
   @override
-  StokListesiModel bulunanFiyat(double? bulunanFiyat) =>
-      this(bulunanFiyat: bulunanFiyat);
+  StokListesiModel bulunanFiyat(double? bulunanFiyat) => this(bulunanFiyat: bulunanFiyat);
 
   @override
   StokListesiModel depoKodu(int? depoKodu) => this(depoKodu: depoKodu);
@@ -550,8 +533,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel fiatBirimi(int? fiatBirimi) => this(fiatBirimi: fiatBirimi);
 
   @override
-  StokListesiModel muhdetayKodu(int? muhdetayKodu) =>
-      this(muhdetayKodu: muhdetayKodu);
+  StokListesiModel muhdetayKodu(int? muhdetayKodu) => this(muhdetayKodu: muhdetayKodu);
 
   @override
   StokListesiModel satDovTip(int? satDovTip) => this(satDovTip: satDovTip);
@@ -560,16 +542,13 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel subeKodu(int? subeKodu) => this(subeKodu: subeKodu);
 
   @override
-  StokListesiModel stokFiyatList(List<dynamic>? stokFiyatList) =>
-      this(stokFiyatList: stokFiyatList);
+  StokListesiModel stokFiyatList(List<dynamic>? stokFiyatList) => this(stokFiyatList: stokFiyatList);
 
   @override
-  StokListesiModel stokList(List<StokListesiModel>? stokList) =>
-      this(stokList: stokList);
+  StokListesiModel stokList(List<StokListesiModel>? stokList) => this(stokList: stokList);
 
   @override
-  StokListesiModel alisDovizAdi(String? alisDovizAdi) =>
-      this(alisDovizAdi: alisDovizAdi);
+  StokListesiModel alisDovizAdi(String? alisDovizAdi) => this(alisDovizAdi: alisDovizAdi);
 
   @override
   StokListesiModel barkod1(String? barkod1) => this(barkod1: barkod1);
@@ -581,111 +560,91 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel barkod3(String? barkod3) => this(barkod3: barkod3);
 
   @override
-  StokListesiModel duzeltmeyapankul(String? duzeltmeyapankul) =>
-      this(duzeltmeyapankul: duzeltmeyapankul);
+  StokListesiModel duzeltmeyapankul(String? duzeltmeyapankul) => this(duzeltmeyapankul: duzeltmeyapankul);
 
   @override
   StokListesiModel grupKodu(String? grupKodu) => this(grupKodu: grupKodu);
 
   @override
-  StokListesiModel grupTanimi(String? grupTanimi) =>
-      this(grupTanimi: grupTanimi);
+  StokListesiModel grupTanimi(String? grupTanimi) => this(grupTanimi: grupTanimi);
 
   @override
-  StokListesiModel kayittarihi(String? kayittarihi) =>
-      this(kayittarihi: kayittarihi);
+  StokListesiModel kayittarihi(String? kayittarihi) => this(kayittarihi: kayittarihi);
 
   @override
-  StokListesiModel kayityapankul(String? kayityapankul) =>
-      this(kayityapankul: kayityapankul);
+  StokListesiModel kayityapankul(String? kayityapankul) => this(kayityapankul: kayityapankul);
 
   @override
   StokListesiModel kilitAlis(String? kilitAlis) => this(kilitAlis: kilitAlis);
 
   @override
-  StokListesiModel kilitGenel(String? kilitGenel) =>
-      this(kilitGenel: kilitGenel);
+  StokListesiModel kilitGenel(String? kilitGenel) => this(kilitGenel: kilitGenel);
 
   @override
-  StokListesiModel kilitMussip(String? kilitMussip) =>
-      this(kilitMussip: kilitMussip);
+  StokListesiModel kilitMussip(String? kilitMussip) => this(kilitMussip: kilitMussip);
 
   @override
-  StokListesiModel kilitSaticisip(String? kilitSaticisip) =>
-      this(kilitSaticisip: kilitSaticisip);
+  StokListesiModel kilitSaticisip(String? kilitSaticisip) => this(kilitSaticisip: kilitSaticisip);
 
   @override
-  StokListesiModel kilitSatis(String? kilitSatis) =>
-      this(kilitSatis: kilitSatis);
+  StokListesiModel kilitSatis(String? kilitSatis) => this(kilitSatis: kilitSatis);
 
   @override
   StokListesiModel kod1(String? kod1) => this(kod1: kod1);
 
   @override
-  StokListesiModel kod1Tanimi(String? kod1Tanimi) =>
-      this(kod1Tanimi: kod1Tanimi);
+  StokListesiModel kod1Tanimi(String? kod1Tanimi) => this(kod1Tanimi: kod1Tanimi);
 
   @override
   StokListesiModel kod2(String? kod2) => this(kod2: kod2);
 
   @override
-  StokListesiModel kod2Tanimi(String? kod2Tanimi) =>
-      this(kod2Tanimi: kod2Tanimi);
+  StokListesiModel kod2Tanimi(String? kod2Tanimi) => this(kod2Tanimi: kod2Tanimi);
 
   @override
   StokListesiModel kod3(String? kod3) => this(kod3: kod3);
 
   @override
-  StokListesiModel kod3Tanimi(String? kod3Tanimi) =>
-      this(kod3Tanimi: kod3Tanimi);
+  StokListesiModel kod3Tanimi(String? kod3Tanimi) => this(kod3Tanimi: kod3Tanimi);
 
   @override
   StokListesiModel kod4(String? kod4) => this(kod4: kod4);
 
   @override
-  StokListesiModel kod4Tanimi(String? kod4Tanimi) =>
-      this(kod4Tanimi: kod4Tanimi);
+  StokListesiModel kod4Tanimi(String? kod4Tanimi) => this(kod4Tanimi: kod4Tanimi);
 
   @override
   StokListesiModel kod5(String? kod5) => this(kod5: kod5);
 
   @override
-  StokListesiModel kod5Tanimi(String? kod5Tanimi) =>
-      this(kod5Tanimi: kod5Tanimi);
+  StokListesiModel kod5Tanimi(String? kod5Tanimi) => this(kod5Tanimi: kod5Tanimi);
 
   @override
-  StokListesiModel muhdetayAdi(String? muhdetayAdi) =>
-      this(muhdetayAdi: muhdetayAdi);
+  StokListesiModel muhdetayAdi(String? muhdetayAdi) => this(muhdetayAdi: muhdetayAdi);
 
   @override
-  StokListesiModel olcuBirimi(String? olcuBirimi) =>
-      this(olcuBirimi: olcuBirimi);
+  StokListesiModel olcuBirimi(String? olcuBirimi) => this(olcuBirimi: olcuBirimi);
 
   @override
-  StokListesiModel olcuBirimi2(String? olcuBirimi2) =>
-      this(olcuBirimi2: olcuBirimi2);
+  StokListesiModel olcuBirimi2(String? olcuBirimi2) => this(olcuBirimi2: olcuBirimi2);
 
   @override
-  StokListesiModel olcuBirimi3(String? olcuBirimi3) =>
-      this(olcuBirimi3: olcuBirimi3);
+  StokListesiModel olcuBirimi3(String? olcuBirimi3) => this(olcuBirimi3: olcuBirimi3);
 
   @override
   StokListesiModel paketMi(String? paketMi) => this(paketMi: paketMi);
 
   @override
-  StokListesiModel resimBase64(String? resimBase64) =>
-      this(resimBase64: resimBase64);
+  StokListesiModel resimBase64(String? resimBase64) => this(resimBase64: resimBase64);
 
   @override
   StokListesiModel resimUrl(String? resimUrl) => this(resimUrl: resimUrl);
 
   @override
-  StokListesiModel resimUrlKucuk(String? resimUrlKucuk) =>
-      this(resimUrlKucuk: resimUrlKucuk);
+  StokListesiModel resimUrlKucuk(String? resimUrlKucuk) => this(resimUrlKucuk: resimUrlKucuk);
 
   @override
-  StokListesiModel satisDovizAdi(String? satisDovizAdi) =>
-      this(satisDovizAdi: satisDovizAdi);
+  StokListesiModel satisDovizAdi(String? satisDovizAdi) => this(satisDovizAdi: satisDovizAdi);
 
   @override
   StokListesiModel stokAdi(String? stokAdi) => this(stokAdi: stokAdi);
@@ -694,19 +653,16 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel stokKodu(String? stokKodu) => this(stokKodu: stokKodu);
 
   @override
-  StokListesiModel ureticiKodu(String? ureticiKodu) =>
-      this(ureticiKodu: ureticiKodu);
+  StokListesiModel ureticiKodu(String? ureticiKodu) => this(ureticiKodu: ureticiKodu);
 
   @override
-  StokListesiModel yapilandirmaAktif(bool? yapilandirmaAktif) =>
-      this(yapilandirmaAktif: yapilandirmaAktif);
+  StokListesiModel yapilandirmaAktif(bool? yapilandirmaAktif) => this(yapilandirmaAktif: yapilandirmaAktif);
 
   @override
   StokListesiModel yapkod(String? yapkod) => this(yapkod: yapkod);
 
   @override
-  StokListesiModel yapkodAciklama(String? yapkodAciklama) =>
-      this(yapkodAciklama: yapkodAciklama);
+  StokListesiModel yapkodAciklama(String? yapkodAciklama) => this(yapkodAciklama: yapkodAciklama);
 
   @override
   StokListesiModel idx(int? idx) => this(idx: idx);
@@ -715,23 +671,19 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel alisKuru(double? alisKuru) => this(alisKuru: alisKuru);
 
   @override
-  StokListesiModel alisKurTarihi(DateTime? alisKurTarihi) =>
-      this(alisKurTarihi: alisKurTarihi);
+  StokListesiModel alisKurTarihi(DateTime? alisKurTarihi) => this(alisKurTarihi: alisKurTarihi);
 
   @override
   StokListesiModel satisKuru(double? satisKuru) => this(satisKuru: satisKuru);
 
   @override
-  StokListesiModel satisKurTarihi(DateTime? satisKurTarihi) =>
-      this(satisKurTarihi: satisKurTarihi);
+  StokListesiModel satisKurTarihi(DateTime? satisKurTarihi) => this(satisKurTarihi: satisKurTarihi);
 
   @override
-  StokListesiModel bulunanDovizFiyati(double? bulunanDovizFiyati) =>
-      this(bulunanDovizFiyati: bulunanDovizFiyati);
+  StokListesiModel bulunanDovizFiyati(double? bulunanDovizFiyati) => this(bulunanDovizFiyati: bulunanDovizFiyati);
 
   @override
-  StokListesiModel bulunanDovizTipi(int? bulunanDovizTipi) =>
-      this(bulunanDovizTipi: bulunanDovizTipi);
+  StokListesiModel bulunanDovizTipi(int? bulunanDovizTipi) => this(bulunanDovizTipi: bulunanDovizTipi);
 
   @override
   StokListesiModel kull1n(double? kull1n) => this(kull1n: kull1n);
@@ -782,8 +734,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel kull8s(String? kull8s) => this(kull8s: kull8s);
 
   @override
-  StokListesiModel belgeTarihi(DateTime? belgeTarihi) =>
-      this(belgeTarihi: belgeTarihi);
+  StokListesiModel belgeTarihi(DateTime? belgeTarihi) => this(belgeTarihi: belgeTarihi);
 
   @override
   StokListesiModel otvUygula(String? otvUygula) => this(otvUygula: otvUygula);
@@ -795,54 +746,43 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel otvKodu(String? otvKodu) => this(otvKodu: otvKodu);
 
   @override
-  StokListesiModel otvAralik(List<OtvAralikModel>? otvAralik) =>
-      this(otvAralik: otvAralik);
+  StokListesiModel otvAralik(List<OtvAralikModel>? otvAralik) => this(otvAralik: otvAralik);
 
   @override
   StokListesiModel otvDeger(double? otvDeger) => this(otvDeger: otvDeger);
 
   @override
-  StokListesiModel varsayilanMiktar(double? varsayilanMiktar) =>
-      this(varsayilanMiktar: varsayilanMiktar);
+  StokListesiModel varsayilanMiktar(double? varsayilanMiktar) => this(varsayilanMiktar: varsayilanMiktar);
 
   @override
   StokListesiModel miktar2(double? miktar2) => this(miktar2: miktar2);
 
   @override
-  StokListesiModel bulunanSerilot(String? bulunanSerilot) =>
-      this(bulunanSerilot: bulunanSerilot);
+  StokListesiModel bulunanSerilot(String? bulunanSerilot) => this(bulunanSerilot: bulunanSerilot);
 
   @override
-  StokListesiModel bulunanSerilot2(String? bulunanSerilot2) =>
-      this(bulunanSerilot2: bulunanSerilot2);
+  StokListesiModel bulunanSerilot2(String? bulunanSerilot2) => this(bulunanSerilot2: bulunanSerilot2);
 
   @override
-  StokListesiModel bulunanSerilot3(String? bulunanSerilot3) =>
-      this(bulunanSerilot3: bulunanSerilot3);
+  StokListesiModel bulunanSerilot3(String? bulunanSerilot3) => this(bulunanSerilot3: bulunanSerilot3);
 
   @override
-  StokListesiModel bulunanSerilot4(String? bulunanSerilot4) =>
-      this(bulunanSerilot4: bulunanSerilot4);
+  StokListesiModel bulunanSerilot4(String? bulunanSerilot4) => this(bulunanSerilot4: bulunanSerilot4);
 
   @override
-  StokListesiModel bulunanSeriAcik1(String? bulunanSeriAcik1) =>
-      this(bulunanSeriAcik1: bulunanSeriAcik1);
+  StokListesiModel bulunanSeriAcik1(String? bulunanSeriAcik1) => this(bulunanSeriAcik1: bulunanSeriAcik1);
 
   @override
-  StokListesiModel bulunanSeriAcik2(String? bulunanSeriAcik2) =>
-      this(bulunanSeriAcik2: bulunanSeriAcik2);
+  StokListesiModel bulunanSeriAcik2(String? bulunanSeriAcik2) => this(bulunanSeriAcik2: bulunanSeriAcik2);
 
   @override
-  StokListesiModel okutulanBarkod(String? okutulanBarkod) =>
-      this(okutulanBarkod: okutulanBarkod);
+  StokListesiModel okutulanBarkod(String? okutulanBarkod) => this(okutulanBarkod: okutulanBarkod);
 
   @override
-  StokListesiModel bulunanSeriSkt(DateTime? bulunanSeriSkt) =>
-      this(bulunanSeriSkt: bulunanSeriSkt);
+  StokListesiModel bulunanSeriSkt(DateTime? bulunanSeriSkt) => this(bulunanSeriSkt: bulunanSeriSkt);
 
   @override
-  StokListesiModel depoBakiyeListe(List<DepoBakiyeListe>? depoBakiyeListe) =>
-      this(depoBakiyeListe: depoBakiyeListe);
+  StokListesiModel depoBakiyeListe(List<DepoBakiyeListe>? depoBakiyeListe) => this(depoBakiyeListe: depoBakiyeListe);
 
   @override
   StokListesiModel netMiktar(double? netMiktar) => this(netMiktar: netMiktar);
@@ -857,12 +797,10 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel kosulIsk1(double? kosulIsk1) => this(kosulIsk1: kosulIsk1);
 
   @override
-  StokListesiModel kosulUygulandi(String? kosulUygulandi) =>
-      this(kosulUygulandi: kosulUygulandi);
+  StokListesiModel kosulUygulandi(String? kosulUygulandi) => this(kosulUygulandi: kosulUygulandi);
 
   @override
-  StokListesiModel kosulIsk1Ot(String? kosulIsk1Ot) =>
-      this(kosulIsk1Ot: kosulIsk1Ot);
+  StokListesiModel kosulIsk1Ot(String? kosulIsk1Ot) => this(kosulIsk1Ot: kosulIsk1Ot);
 
   @override
   StokListesiModel kosulIsk2(double? kosulIsk2) => this(kosulIsk2: kosulIsk2);
@@ -880,68 +818,53 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
   StokListesiModel isk3o(double? isk3o) => this(isk3o: isk3o);
 
   @override
-  StokListesiModel acikMussipMiktari(double? acikMussipMiktari) =>
-      this(acikMussipMiktari: acikMussipMiktari);
+  StokListesiModel acikMussipMiktari(double? acikMussipMiktari) => this(acikMussipMiktari: acikMussipMiktari);
 
   @override
-  StokListesiModel stokSayimBakiye(double? stokSayimBakiye) =>
-      this(stokSayimBakiye: stokSayimBakiye);
+  StokListesiModel stokSayimBakiye(double? stokSayimBakiye) => this(stokSayimBakiye: stokSayimBakiye);
 
   @override
   StokListesiModel koliBilesenFiyatorandan(String? koliBilesenFiyatorandan) =>
       this(koliBilesenFiyatorandan: koliBilesenFiyatorandan);
 
   @override
-  StokListesiModel koliBilesenKolikdv(String? koliBilesenKolikdv) =>
-      this(koliBilesenKolikdv: koliBilesenKolikdv);
+  StokListesiModel koliBilesenKolikdv(String? koliBilesenKolikdv) => this(koliBilesenKolikdv: koliBilesenKolikdv);
 
   @override
-  StokListesiModel koliBilesenMiktari(double? koliBilesenMiktari) =>
-      this(koliBilesenMiktari: koliBilesenMiktari);
+  StokListesiModel koliBilesenMiktari(double? koliBilesenMiktari) => this(koliBilesenMiktari: koliBilesenMiktari);
 
   @override
-  StokListesiModel koliBilesenOrani(double? koliBilesenOrani) =>
-      this(koliBilesenOrani: koliBilesenOrani);
+  StokListesiModel koliBilesenOrani(double? koliBilesenOrani) => this(koliBilesenOrani: koliBilesenOrani);
 
   @override
-  StokListesiModel bulunanDepo(int? bulunanDepo) =>
-      this(bulunanDepo: bulunanDepo);
+  StokListesiModel bulunanDepo(int? bulunanDepo) => this(bulunanDepo: bulunanDepo);
 
   @override
-  StokListesiModel bulunanIsemri(String? bulunanIsemri) =>
-      this(bulunanIsemri: bulunanIsemri);
+  StokListesiModel bulunanIsemri(String? bulunanIsemri) => this(bulunanIsemri: bulunanIsemri);
 
   @override
-  StokListesiModel bulunanEkalan1(String? bulunanEkalan1) =>
-      this(bulunanEkalan1: bulunanEkalan1);
+  StokListesiModel bulunanEkalan1(String? bulunanEkalan1) => this(bulunanEkalan1: bulunanEkalan1);
 
   @override
-  StokListesiModel bulunanEkalan2(String? bulunanEkalan2) =>
-      this(bulunanEkalan2: bulunanEkalan2);
+  StokListesiModel bulunanEkalan2(String? bulunanEkalan2) => this(bulunanEkalan2: bulunanEkalan2);
 
   @override
-  StokListesiModel bulunanHucre(String? bulunanHucre) =>
-      this(bulunanHucre: bulunanHucre);
+  StokListesiModel bulunanHucre(String? bulunanHucre) => this(bulunanHucre: bulunanHucre);
 
   @override
-  StokListesiModel bulunanMiktar(double? bulunanMiktar) =>
-      this(bulunanMiktar: bulunanMiktar);
+  StokListesiModel bulunanMiktar(double? bulunanMiktar) => this(bulunanMiktar: bulunanMiktar);
 
   @override
-  StokListesiModel bulunanSeriAcik3(String? bulunanSeriAcik3) =>
-      this(bulunanSeriAcik3: bulunanSeriAcik3);
+  StokListesiModel bulunanSeriAcik3(String? bulunanSeriAcik3) => this(bulunanSeriAcik3: bulunanSeriAcik3);
 
   @override
-  StokListesiModel bulunanSeriAcik4(String? bulunanSeriAcik4) =>
-      this(bulunanSeriAcik4: bulunanSeriAcik4);
+  StokListesiModel bulunanSeriAcik4(String? bulunanSeriAcik4) => this(bulunanSeriAcik4: bulunanSeriAcik4);
 
   @override
-  StokListesiModel bulunanSerilot5(String? bulunanSerilot5) =>
-      this(bulunanSerilot5: bulunanSerilot5);
+  StokListesiModel bulunanSerilot5(String? bulunanSerilot5) => this(bulunanSerilot5: bulunanSerilot5);
 
   @override
-  StokListesiModel ingilizceIsim(String? ingilizceIsim) =>
-      this(ingilizceIsim: ingilizceIsim);
+  StokListesiModel ingilizceIsim(String? ingilizceIsim) => this(ingilizceIsim: ingilizceIsim);
 
   @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -1101,8 +1024,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           ? _value.seriCikislardaAcik
           // ignore: cast_nullable_to_non_nullable
           : seriCikislardaAcik as bool?,
-      seriCikistaOtomatikMi:
-          seriCikistaOtomatikMi == const $CopyWithPlaceholder()
+      seriCikistaOtomatikMi: seriCikistaOtomatikMi == const $CopyWithPlaceholder()
           ? _value.seriCikistaOtomatikMi
           // ignore: cast_nullable_to_non_nullable
           : seriCikistaOtomatikMi as bool?,
@@ -1110,8 +1032,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           ? _value.seriGirislerdeAcik
           // ignore: cast_nullable_to_non_nullable
           : seriGirislerdeAcik as bool?,
-      seriGiristeOtomatikMi:
-          seriGiristeOtomatikMi == const $CopyWithPlaceholder()
+      seriGiristeOtomatikMi: seriGiristeOtomatikMi == const $CopyWithPlaceholder()
           ? _value.seriGiristeOtomatikMi
           // ignore: cast_nullable_to_non_nullable
           : seriGiristeOtomatikMi as bool?,
@@ -1599,8 +1520,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           ? _value.stokSayimBakiye
           // ignore: cast_nullable_to_non_nullable
           : stokSayimBakiye as double?,
-      koliBilesenFiyatorandan:
-          koliBilesenFiyatorandan == const $CopyWithPlaceholder()
+      koliBilesenFiyatorandan: koliBilesenFiyatorandan == const $CopyWithPlaceholder()
           ? _value.koliBilesenFiyatorandan
           // ignore: cast_nullable_to_non_nullable
           : koliBilesenFiyatorandan as String?,
@@ -1678,9 +1598,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
         seriGirislerdeAcik: json['SERI_GIRISLERDE_ACIK'] as bool?,
         seriGiristeOtomatikMi: json['SERI_GIRISTE_OTOMATIK_MI'] as bool?,
         seriMiktarKadarSor: json['SERI_MIKTAR_KADAR_SOR'] as bool?,
-        duzeltmetarihi: json['DUZELTMETARIHI'] == null
-            ? null
-            : DateTime.parse(json['DUZELTMETARIHI'] as String),
+        duzeltmetarihi: json['DUZELTMETARIHI'] == null ? null : DateTime.parse(json['DUZELTMETARIHI'] as String),
         alisFiat1: (json['ALIS_FIAT1'] as num?)?.toDouble(),
         alisFiat2: (json['ALIS_FIAT2'] as num?)?.toDouble(),
         alisFiat3: (json['ALIS_FIAT3'] as num?)?.toDouble(),
@@ -1751,13 +1669,9 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
         yapkodAciklama: json['YAPKOD_ACIKLAMA'] as String?,
         idx: (json['IDX'] as num?)?.toInt(),
         alisKuru: (json['ALIS_KURU'] as num?)?.toDouble(),
-        alisKurTarihi: json['ALIS_KUR_TARIHI'] == null
-            ? null
-            : DateTime.parse(json['ALIS_KUR_TARIHI'] as String),
+        alisKurTarihi: json['ALIS_KUR_TARIHI'] == null ? null : DateTime.parse(json['ALIS_KUR_TARIHI'] as String),
         satisKuru: (json['SATIS_KURU'] as num?)?.toDouble(),
-        satisKurTarihi: json['SATIS_KUR_TARIHI'] == null
-            ? null
-            : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
+        satisKurTarihi: json['SATIS_KUR_TARIHI'] == null ? null : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
         bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
         bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt() ?? 0,
         kull1n: (json['KULL1N'] as num?)?.toDouble(),
@@ -1776,9 +1690,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
         kull6s: json['KULL6S'] as String?,
         kull7s: json['KULL7S'] as String?,
         kull8s: json['KULL8S'] as String?,
-        belgeTarihi: json['BELGE_TARIHI'] == null
-            ? null
-            : DateTime.parse(json['BELGE_TARIHI'] as String),
+        belgeTarihi: json['BELGE_TARIHI'] == null ? null : DateTime.parse(json['BELGE_TARIHI'] as String),
         otvUygula: json['OTV_UYGULA'] as String?,
         otvOranmi: json['OTV_ORANMI'] as String?,
         otvKodu: json['OTV_KODU'] as String?,
@@ -1795,9 +1707,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
         bulunanSeriAcik1: json['BULUNAN_SERI_ACIK1'] as String?,
         bulunanSeriAcik2: json['BULUNAN_SERI_ACIK2'] as String?,
         okutulanBarkod: json['OKUTULAN_BARKOD'] as String?,
-        bulunanSeriSkt: json['BULUNAN_SERI_SKT'] == null
-            ? null
-            : DateTime.parse(json['BULUNAN_SERI_SKT'] as String),
+        bulunanSeriSkt: json['BULUNAN_SERI_SKT'] == null ? null : DateTime.parse(json['BULUNAN_SERI_SKT'] as String),
         depoBakiyeListe: (json['DEPO_BAKIYE_LISTE'] as List<dynamic>?)
             ?.map((e) => DepoBakiyeListe.fromJson(e as Map<String, dynamic>))
             .toList(),
@@ -1845,20 +1755,13 @@ Map<String, dynamic> _$StokListesiModelToJson(
 ) => <String, dynamic>{
   if (instance.stokAdi case final value?) 'STOK_ADI': value,
   if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.seriBakiyeKontrolu case final value?)
-    'SERI_BAKIYE_KONTROLU': value,
-  if (instance.seriCikislardaAcik case final value?)
-    'SERI_CIKISLARDA_ACIK': value,
-  if (instance.seriCikistaOtomatikMi case final value?)
-    'SERI_CIKISTA_OTOMATIK_MI': value,
-  if (instance.seriGirislerdeAcik case final value?)
-    'SERI_GIRISLERDE_ACIK': value,
-  if (instance.seriGiristeOtomatikMi case final value?)
-    'SERI_GIRISTE_OTOMATIK_MI': value,
-  if (instance.seriMiktarKadarSor case final value?)
-    'SERI_MIKTAR_KADAR_SOR': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
+  if (instance.seriBakiyeKontrolu case final value?) 'SERI_BAKIYE_KONTROLU': value,
+  if (instance.seriCikislardaAcik case final value?) 'SERI_CIKISLARDA_ACIK': value,
+  if (instance.seriCikistaOtomatikMi case final value?) 'SERI_CIKISTA_OTOMATIK_MI': value,
+  if (instance.seriGirislerdeAcik case final value?) 'SERI_GIRISLERDE_ACIK': value,
+  if (instance.seriGiristeOtomatikMi case final value?) 'SERI_GIRISTE_OTOMATIK_MI': value,
+  if (instance.seriMiktarKadarSor case final value?) 'SERI_MIKTAR_KADAR_SOR': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?) 'DUZELTMETARIHI': value,
   if (instance.alisFiat1 case final value?) 'ALIS_FIAT1': value,
   if (instance.alisFiat2 case final value?) 'ALIS_FIAT2': value,
   if (instance.alisFiat3 case final value?) 'ALIS_FIAT3': value,
@@ -1886,8 +1789,7 @@ Map<String, dynamic> _$StokListesiModelToJson(
   if (instance.satDovTip case final value?) 'SAT_DOV_TIP': value,
   if (instance.subeKodu case final value?) 'SUBE_KODU': value,
   if (instance.stokFiyatList case final value?) 'STOK_FIYAT_LIST': value,
-  if (instance.stokList?.map((e) => e.toJson()).toList() case final value?)
-    'STOK_LIST': value,
+  if (instance.stokList?.map((e) => e.toJson()).toList() case final value?) 'STOK_LIST': value,
   if (instance.alisDovizAdi case final value?) 'ALIS_DOVIZ_ADI': value,
   if (instance.barkod1 case final value?) 'BARKOD1': value,
   if (instance.barkod2 case final value?) 'BARKOD2': value,
@@ -1927,26 +1829,19 @@ Map<String, dynamic> _$StokListesiModelToJson(
   if (instance.yapkodAciklama case final value?) 'YAPKOD_ACIKLAMA': value,
   if (instance.idx case final value?) 'IDX': value,
   if (instance.alisKuru case final value?) 'ALIS_KURU': value,
-  if (instance.alisKurTarihi?.toIso8601String() case final value?)
-    'ALIS_KUR_TARIHI': value,
+  if (instance.alisKurTarihi?.toIso8601String() case final value?) 'ALIS_KUR_TARIHI': value,
   if (instance.satisKuru case final value?) 'SATIS_KURU': value,
-  if (instance.satisKurTarihi?.toIso8601String() case final value?)
-    'SATIS_KUR_TARIHI': value,
-  if (instance.bulunanDovizFiyati case final value?)
-    'BULUNAN_DOVIZ_FIYATI': value,
+  if (instance.satisKurTarihi?.toIso8601String() case final value?) 'SATIS_KUR_TARIHI': value,
+  if (instance.bulunanDovizFiyati case final value?) 'BULUNAN_DOVIZ_FIYATI': value,
   if (instance.bulunanDovizTipi case final value?) 'BULUNAN_DOVIZ_TIPI': value,
   if (instance.yapacik case final value?) 'YAPACIK': value,
   if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
-  if (instance.depoBakiyeListe?.map((e) => e.toJson()).toList()
-      case final value?)
-    'DEPO_BAKIYE_LISTE': value,
-  if (instance.belgeTarihi?.toIso8601String() case final value?)
-    'BELGE_TARIHI': value,
+  if (instance.depoBakiyeListe?.map((e) => e.toJson()).toList() case final value?) 'DEPO_BAKIYE_LISTE': value,
+  if (instance.belgeTarihi?.toIso8601String() case final value?) 'BELGE_TARIHI': value,
   if (instance.otvUygula case final value?) 'OTV_UYGULA': value,
   if (instance.otvOranmi case final value?) 'OTV_ORANMI': value,
   if (instance.otvKodu case final value?) 'OTV_KODU': value,
-  if (instance.otvAralik?.map((e) => e.toJson()).toList() case final value?)
-    'OTV_ARALIK': value,
+  if (instance.otvAralik?.map((e) => e.toJson()).toList() case final value?) 'OTV_ARALIK': value,
   if (instance.otvDeger case final value?) 'OTV_DEGER': value,
   if (instance.kull1s case final value?) 'KULL1S': value,
   if (instance.kull2s case final value?) 'KULL2S': value,
@@ -1977,22 +1872,17 @@ Map<String, dynamic> _$StokListesiModelToJson(
   if (instance.bulunanSeriAcik4 case final value?) 'BULUNAN_SERI_ACIK4': value,
   if (instance.okutulanBarkod case final value?) 'OKUTULAN_BARKOD': value,
   if (instance.bulunanMiktar case final value?) 'BULUNAN_MIKTAR': value,
-  if (instance.bulunanSeriSkt?.toIso8601String() case final value?)
-    'BULUNAN_SERI_SKT': value,
+  if (instance.bulunanSeriSkt?.toIso8601String() case final value?) 'BULUNAN_SERI_SKT': value,
   if (instance.bulunanIsemri case final value?) 'BULUNAN_ISEMRI': value,
   if (instance.bulunanEkalan1 case final value?) 'BULUNAN_EKALAN1': value,
   if (instance.bulunanEkalan2 case final value?) 'BULUNAN_EKALAN2': value,
   if (instance.bulunanHucre case final value?) 'BULUNAN_HUCRE': value,
   if (instance.bulunanDepo case final value?) 'BULUNAN_DEPO': value,
-  if (instance.acikMussipMiktari case final value?)
-    'ACIK_MUSSIP_MIKTARI': value,
+  if (instance.acikMussipMiktari case final value?) 'ACIK_MUSSIP_MIKTARI': value,
   if (instance.stokSayimBakiye case final value?) 'STOK_SAYIM_BAKIYE': value,
-  if (instance.koliBilesenFiyatorandan case final value?)
-    'KOLI_BILESEN_FIYATORANDAN': value,
-  if (instance.koliBilesenKolikdv case final value?)
-    'KOLI_BILESEN_KOLIKDV': value,
-  if (instance.koliBilesenMiktari case final value?)
-    'KOLI_BILESEN_MIKTARI': value,
+  if (instance.koliBilesenFiyatorandan case final value?) 'KOLI_BILESEN_FIYATORANDAN': value,
+  if (instance.koliBilesenKolikdv case final value?) 'KOLI_BILESEN_KOLIKDV': value,
+  if (instance.koliBilesenMiktari case final value?) 'KOLI_BILESEN_MIKTARI': value,
   if (instance.koliBilesenOrani case final value?) 'KOLI_BILESEN_ORANI': value,
   if (instance.kosulIsk1Ot case final value?) 'KOSUL_ISK1_OT': value,
   if (instance.kosulUygulandi case final value?) 'KOSUL_UYGULANDI': value,
@@ -2008,39 +1898,33 @@ Map<String, dynamic> _$StokListesiModelToJson(
   if (instance.isk4o case final value?) 'ISK4O': value,
   if (instance.isk5o case final value?) 'ISK5O': value,
   if (instance.isk6o case final value?) 'ISK6O': value,
-  if (instance.bulunanOlcuBirimi case final value?)
-    'BULUNAN_OLCU_BIRIMI': value,
+  if (instance.bulunanOlcuBirimi case final value?) 'BULUNAN_OLCU_BIRIMI': value,
   if (instance.ingilizceIsim case final value?) 'INGILIZCE_ISIM': value,
-  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
-    'SERI_LIST': value,
+  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?) 'SERI_LIST': value,
 };
 
-DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) =>
-    DepoBakiyeListe(
-      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
-      giris: (json['GIRIS'] as num?)?.toDouble(),
-      cikis: (json['CIKIS'] as num?)?.toDouble(),
-      bakiye: (json['BAKIYE'] as num?)?.toDouble(),
-    );
+DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) => DepoBakiyeListe(
+  depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+  giris: (json['GIRIS'] as num?)?.toDouble(),
+  cikis: (json['CIKIS'] as num?)?.toDouble(),
+  bakiye: (json['BAKIYE'] as num?)?.toDouble(),
+);
 
-Map<String, dynamic> _$DepoBakiyeListeToJson(DepoBakiyeListe instance) =>
-    <String, dynamic>{
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.giris case final value?) 'GIRIS': value,
-      if (instance.cikis case final value?) 'CIKIS': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-    };
+Map<String, dynamic> _$DepoBakiyeListeToJson(DepoBakiyeListe instance) => <String, dynamic>{
+  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+  if (instance.giris case final value?) 'GIRIS': value,
+  if (instance.cikis case final value?) 'CIKIS': value,
+  if (instance.bakiye case final value?) 'BAKIYE': value,
+};
 
-OtvAralikModel _$OtvAralikModelFromJson(Map<String, dynamic> json) =>
-    OtvAralikModel(
-      (json['ALT'] as num).toDouble(),
-      (json['UST'] as num).toDouble(),
-      (json['ORAN'] as num).toDouble(),
-    );
+OtvAralikModel _$OtvAralikModelFromJson(Map<String, dynamic> json) => OtvAralikModel(
+  (json['ALT'] as num).toDouble(),
+  (json['UST'] as num).toDouble(),
+  (json['ORAN'] as num).toDouble(),
+);
 
-Map<String, dynamic> _$OtvAralikModelToJson(OtvAralikModel instance) =>
-    <String, dynamic>{
-      'ALT': instance.alt,
-      'UST': instance.ust,
-      'ORAN': instance.oran,
-    };
+Map<String, dynamic> _$OtvAralikModelToJson(OtvAralikModel instance) => <String, dynamic>{
+  'ALT': instance.alt,
+  'UST': instance.ust,
+  'ORAN': instance.oran,
+};

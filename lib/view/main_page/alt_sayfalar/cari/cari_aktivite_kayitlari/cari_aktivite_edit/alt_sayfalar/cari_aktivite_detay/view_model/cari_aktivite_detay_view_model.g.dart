@@ -37,16 +37,16 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
     return _$deleteDetayAsyncAction.run(() => super.deleteDetay(id));
   }
 
-  late final _$_CariAktiviteDetayViewModelBaseActionController =
-      ActionController(
-        name: '_CariAktiviteDetayViewModelBase',
-        context: context,
-      );
+  late final _$_CariAktiviteDetayViewModelBaseActionController = ActionController(
+    name: '_CariAktiviteDetayViewModelBase',
+    context: context,
+  );
 
   @override
   void addAktivite(CariAktiviteListesiModel value) {
-    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayViewModelBase.addAktivite');
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayViewModelBase.addAktivite',
+    );
     try {
       return super.addAktivite(value);
     } finally {
@@ -56,8 +56,9 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
 
   @override
   void deleteAktivite(CariAktiviteListesiModel value) {
-    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayViewModelBase.deleteAktivite');
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayViewModelBase.deleteAktivite',
+    );
     try {
       return super.deleteAktivite(value);
     } finally {
@@ -70,8 +71,9 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
     CariAktiviteListesiModel oldItem,
     CariAktiviteListesiModel newItem,
   ) {
-    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
-        .startAction(name: '_CariAktiviteDetayViewModelBase.replaceAktivite');
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController.startAction(
+      name: '_CariAktiviteDetayViewModelBase.replaceAktivite',
+    );
     try {
       return super.replaceAktivite(oldItem, newItem);
     } finally {

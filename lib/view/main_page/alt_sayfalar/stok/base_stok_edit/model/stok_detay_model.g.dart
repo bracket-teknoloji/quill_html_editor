@@ -106,55 +106,41 @@ class SeriListAdapter extends TypeAdapter<_SeriList> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SeriListAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is SeriListAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
-    StokDetayModel()
-      ..stokKodu = json['STOK_KODU'] as String?
-      ..stokAdi = json['STOK_ADI'] as String?
-      ..seriList = (json['SeriList'] as List<dynamic>?)
-          ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..yapList = json['YapList'] as List<dynamic>?
-      ..stokList = (json['StokList'] as List<dynamic>?)
-          ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..fiyatList = (json['FiyatList'] as List<dynamic>?)
-          ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))
-          .toList();
+StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) => StokDetayModel()
+  ..stokKodu = json['STOK_KODU'] as String?
+  ..stokAdi = json['STOK_ADI'] as String?
+  ..seriList = (json['SeriList'] as List<dynamic>?)?.map((e) => SeriList.fromJson(e as Map<String, dynamic>)).toList()
+  ..yapList = json['YapList'] as List<dynamic>?
+  ..stokList = (json['StokList'] as List<dynamic>?)
+      ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..fiyatList = (json['FiyatList'] as List<dynamic>?)
+      ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))
+      .toList();
 
-Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) =>
-    <String, dynamic>{
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
-        'SeriList': value,
-      if (instance.yapList case final value?) 'YapList': value,
-      if (instance.stokList?.map((e) => e.toJson()).toList() case final value?)
-        'StokList': value,
-      if (instance.fiyatList?.map((e) => e.toJson()).toList() case final value?)
-        'FiyatList': value,
-    };
+Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) => <String, dynamic>{
+  if (instance.stokKodu case final value?) 'STOK_KODU': value,
+  if (instance.stokAdi case final value?) 'STOK_ADI': value,
+  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?) 'SeriList': value,
+  if (instance.yapList case final value?) 'YapList': value,
+  if (instance.stokList?.map((e) => e.toJson()).toList() case final value?) 'StokList': value,
+  if (instance.fiyatList?.map((e) => e.toJson()).toList() case final value?) 'FiyatList': value,
+};
 
 FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..aS = json['A_S'] as String?
   ..stokKodu = json['STOK_KODU'] as String?
   ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..dovizKodu = json['DOVIZ_KODU'] as String?
-  ..bastar = json['BASTAR'] == null
-      ? null
-      : DateTime.parse(json['BASTAR'] as String)
-  ..bittar = json['BITTAR'] == null
-      ? null
-      : DateTime.parse(json['BITTAR'] as String)
+  ..bastar = json['BASTAR'] == null ? null : DateTime.parse(json['BASTAR'] as String)
+  ..bittar = json['BITTAR'] == null ? null : DateTime.parse(json['BITTAR'] as String)
   ..gecerli = json['GECERLI'] as String?
   ..fiyat1 = (json['FIYAT1'] as num?)?.toDouble()
   ..fiyat2 = (json['FIYAT2'] as num?)?.toDouble()
@@ -195,9 +181,7 @@ _SeriList _$SeriListFromJson(Map<String, dynamic> json) => _SeriList(
   acik2: json['ACIK2'] as String?,
   acik3: json['ACIK3'] as String?,
   acik4: json['ACIK4'] as String?,
-  sonKullanmaTarihi: json['SON_KULLANMA_TARIHI'] == null
-      ? null
-      : DateTime.parse(json['SON_KULLANMA_TARIHI'] as String),
+  sonKullanmaTarihi: json['SON_KULLANMA_TARIHI'] == null ? null : DateTime.parse(json['SON_KULLANMA_TARIHI'] as String),
   stokAdi: json['STOK_ADI'] as String?,
   hucreKodu: json['HUCRE_KODU'] as String?,
   tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
@@ -225,8 +209,7 @@ Map<String, dynamic> _$SeriListToJson(_SeriList instance) => <String, dynamic>{
   if (instance.acik2 case final value?) 'ACIK2': value,
   if (instance.acik3 case final value?) 'ACIK3': value,
   if (instance.acik4 case final value?) 'ACIK4': value,
-  if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
-    'SON_KULLANMA_TARIHI': value,
+  if (instance.sonKullanmaTarihi?.toIso8601String() case final value?) 'SON_KULLANMA_TARIHI': value,
   if (instance.stokAdi case final value?) 'STOK_ADI': value,
   if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,

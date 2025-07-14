@@ -62,8 +62,9 @@ mixin _$BaseStokEditingViewModel on _BaseStokEditingViewModelBase, Store {
 
   @override
   void setStokListesiModel(StokListesiModel? value) {
-    final _$actionInfo = _$_BaseStokEditingViewModelBaseActionController
-        .startAction(name: '_BaseStokEditingViewModelBase.setStokListesiModel');
+    final _$actionInfo = _$_BaseStokEditingViewModelBaseActionController.startAction(
+      name: '_BaseStokEditingViewModelBase.setStokListesiModel',
+    );
     try {
       return super.setStokListesiModel(value);
     } finally {
@@ -73,8 +74,9 @@ mixin _$BaseStokEditingViewModel on _BaseStokEditingViewModelBase, Store {
 
   @override
   void setIsSuccess(bool value) {
-    final _$actionInfo = _$_BaseStokEditingViewModelBaseActionController
-        .startAction(name: '_BaseStokEditingViewModelBase.setIsSuccess');
+    final _$actionInfo = _$_BaseStokEditingViewModelBaseActionController.startAction(
+      name: '_BaseStokEditingViewModelBase.setIsSuccess',
+    );
     try {
       return super.setIsSuccess(value);
     } finally {

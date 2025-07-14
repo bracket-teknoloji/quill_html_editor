@@ -1473,6 +1473,8 @@ final class KalemModel with NetworkManagerMixin {
     this.iadefaturano,
     this.iadefaturatarihi,
     this.iadesirano,
+    this.ekalan1Aciklama,
+    this.ekalan2Aciklama,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) =>
@@ -1888,6 +1890,10 @@ final class KalemModel with NetworkManagerMixin {
   DateTime? iadefaturatarihi;
   @HiveField(157, defaultValue: 1)
   int? iadesirano = 1;
+  @HiveField(158)
+  String? ekalan1Aciklama;
+  @HiveField(159)
+  String? ekalan2Aciklama;
   List<KalemFireModel>? fireListe;
 
   double get yuzdeHesaplanmamisFiyat {

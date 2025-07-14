@@ -27,16 +27,16 @@ mixin _$BaseFaturaKalemlerViewModel on BaseFaturaKalemlerViewModelBase, Store {
     });
   }
 
-  late final _$BaseFaturaKalemlerViewModelBaseActionController =
-      ActionController(
-        name: 'BaseFaturaKalemlerViewModelBase',
-        context: context,
-      );
+  late final _$BaseFaturaKalemlerViewModelBaseActionController = ActionController(
+    name: 'BaseFaturaKalemlerViewModelBase',
+    context: context,
+  );
 
   @override
   void removeAtKalemList(int index) {
-    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController
-        .startAction(name: 'BaseFaturaKalemlerViewModelBase.removeAtKalemList');
+    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController.startAction(
+      name: 'BaseFaturaKalemlerViewModelBase.removeAtKalemList',
+    );
     try {
       return super.removeAtKalemList(index);
     } finally {
@@ -46,8 +46,9 @@ mixin _$BaseFaturaKalemlerViewModel on BaseFaturaKalemlerViewModelBase, Store {
 
   @override
   void updateKalemList() {
-    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController
-        .startAction(name: 'BaseFaturaKalemlerViewModelBase.updateKalemList');
+    final _$actionInfo = _$BaseFaturaKalemlerViewModelBaseActionController.startAction(
+      name: 'BaseFaturaKalemlerViewModelBase.updateKalemList',
+    );
     try {
       return super.updateKalemList();
     } finally {

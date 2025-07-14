@@ -84,8 +84,9 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
 
   @override
   void setObservableList(List<DovizKurlariModel>? value) {
-    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController
-        .startAction(name: '_DovizKurlariViewModelBase.setObservableList');
+    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController.startAction(
+      name: '_DovizKurlariViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(value);
     } finally {
@@ -95,8 +96,9 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
 
   @override
   void changeTarih(DateTime? value) {
-    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController
-        .startAction(name: '_DovizKurlariViewModelBase.changeTarih');
+    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController.startAction(
+      name: '_DovizKurlariViewModelBase.changeTarih',
+    );
     try {
       return super.changeTarih(value);
     } finally {
@@ -106,8 +108,9 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
 
   @override
   void changeTarihTomorow() {
-    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController
-        .startAction(name: '_DovizKurlariViewModelBase.changeTarihTomorow');
+    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController.startAction(
+      name: '_DovizKurlariViewModelBase.changeTarihTomorow',
+    );
     try {
       return super.changeTarihTomorow();
     } finally {
@@ -117,8 +120,9 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
 
   @override
   void changeTarihYesterday() {
-    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController
-        .startAction(name: '_DovizKurlariViewModelBase.changeTarihYesterday');
+    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController.startAction(
+      name: '_DovizKurlariViewModelBase.changeTarihYesterday',
+    );
     try {
       return super.changeTarihYesterday();
     } finally {
@@ -128,10 +132,9 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
 
   @override
   void changeKurlariSilTekrarGuncelle() {
-    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController
-        .startAction(
-          name: '_DovizKurlariViewModelBase.changeKurlariSilTekrarGuncelle',
-        );
+    final _$actionInfo = _$_DovizKurlariViewModelBaseActionController.startAction(
+      name: '_DovizKurlariViewModelBase.changeKurlariSilTekrarGuncelle',
+    );
     try {
       return super.changeKurlariSilTekrarGuncelle();
     } finally {

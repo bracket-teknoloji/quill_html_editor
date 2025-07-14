@@ -88,8 +88,9 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
 
   @override
   void setProjeListesi(List<BaseProjeModel>? model) {
-    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
-        .startAction(name: '_StokYeniKayitViewModelBase.setProjeListesi');
+    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController.startAction(
+      name: '_StokYeniKayitViewModelBase.setProjeListesi',
+    );
     try {
       return super.setProjeListesi(model);
     } finally {
@@ -99,8 +100,9 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
-        .startAction(name: '_StokYeniKayitViewModelBase.setStokKodu');
+    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController.startAction(
+      name: '_StokYeniKayitViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(value);
     } finally {
@@ -110,8 +112,9 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
 
   @override
   void changeIsSelected(int index) {
-    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
-        .startAction(name: '_StokYeniKayitViewModelBase.changeIsSelected');
+    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController.startAction(
+      name: '_StokYeniKayitViewModelBase.changeIsSelected',
+    );
     try {
       return super.changeIsSelected(index);
     } finally {

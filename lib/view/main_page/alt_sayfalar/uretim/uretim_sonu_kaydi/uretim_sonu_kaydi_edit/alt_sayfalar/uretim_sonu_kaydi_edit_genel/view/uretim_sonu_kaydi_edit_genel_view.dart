@@ -2,6 +2,10 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/ek_rehber_request_model.dart";
+import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -103,8 +107,8 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     maliyetFiyatiController = TextEditingController();
     maliyetTutariController = TextEditingController();
     aciklamaController = TextEditingController();
-    ekAlan1Controller = TextEditingController();
-    ekAlan2Controller = TextEditingController();
+    ekAlan1Controller = TextEditingController(text: widget.model.model?.ekalan1Aciklama ?? widget.model.model?.ekalan1);
+    ekAlan2Controller = TextEditingController(text: widget.model.model?.ekalan2Aciklama ?? widget.model.model?.ekalan2);
     // viewModel.setModel(widget.model.model);
     if (viewModel.ekAlanlarList != null) {
       ekAlanlarControllers.addAll(
@@ -145,7 +149,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           viewModel.kalem?.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? "";
       maliyetTutariController.text =
           viewModel.kalem?.maliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? "";
-      ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
       miktarController.text = viewModel.kalem?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
       if (yetkiController.uretimFireDetayUygulamasi) {
         hurdaFireMiktariController.text =
@@ -154,8 +157,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         hurdaFireMiktariController.text =
             viewModel.kalem?.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
       }
-      ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
-      ekAlan2Controller.text = viewModel.kalem?.ekalan2 ?? "";
       aciklamaController.text = model?.aciklama ?? "";
     });
     super.initState();
@@ -503,17 +504,37 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
   );
 
   CustomTextField ekAlan1Field() => CustomTextField(
-    labelText: "Ek Alan 1",
+    labelText: getEkRehberById(1)?.baslik ?? "Ek Alan 1",
     enabled: isEnabled,
     controller: ekAlan1Controller,
     onChanged: viewModel.setEkAlan1,
+    readOnly: getEkRehberById(1) != null,
+    suffixMore: getEkRehberById(1) != null,
+    valueWidget: Observer(
+      builder: (_) => Text(
+        getEkRehberById(1) != null ? viewModel.kalem?.ekalan1 ?? "" : "",
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+    ),
+    onTap: () async => getGenelRehber(1),
   );
 
   CustomTextField ekAlan2Field() => CustomTextField(
-    labelText: "Ek Alan 2",
+    labelText: getEkRehberById(2)?.baslik ?? "Ek Alan 2",
     enabled: isEnabled,
     controller: ekAlan2Controller,
     onChanged: viewModel.setEkAlan2,
+    readOnly: getEkRehberById(2) != null,
+    suffixMore: getEkRehberById(2) != null,
+    valueWidget: Observer(
+      builder: (_) => Text(
+        getEkRehberById(2) != null ? viewModel.kalem?.ekalan2 ?? "" : "",
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+    ),
+    onTap: () async => getGenelRehber(2),
   );
 
   Observer ekAlanlarWidget() => Observer(
@@ -570,5 +591,54 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     if (!yetkiController.uretimFireUygulamasi) return "Miktar 2";
     if (yetkiController.uretimFireDetayUygulamasi) return "Hurda/Fire Bilgileri";
     return "Hurda/Fire Miktarı";
+  }
+
+  EkRehberlerModel? getEkRehberById(int? id) {
+    if (userModel.ekRehberler.ext.isNullOrEmpty) return null;
+    if (EditTipiEnum.uretimSonuKaydi.fiyatGrubuGorunsunMu) {
+      return EkRehberlerModel(alan: "EKALAN${id ?? ""}", baslik: "Fiyat Grubu");
+    }
+    return userModel.ekRehberler?.firstWhereOrNull(
+      (element) => element.alan == "EKALAN${id ?? ""}" && element.ekran == EditTipiEnum.uretimSonuKaydi.rawValue,
+    );
+  }
+
+  Future<void> getGenelRehber(int? id) async {
+    if (viewModel.stokModel == null) {
+      dialogManager.showErrorSnackBar("Önce stok seçiniz.");
+      return;
+    }
+    if (id == null) {
+      dialogManager.showErrorSnackBar("ID bulunamadı.");
+      return;
+    }
+    final ekRehberModel = getEkRehberById(id);
+    final EkRehberRequestModel ekRehberRequestModel = EkRehberRequestModel(
+      belgeNo: widget.model.belgeNo,
+      belgeTipi: EditTipiEnum.uretimSonuKaydi.rawValue,
+      belgeTarihi: viewModel.requestModel.tarih.toDateTimeDDMMYYYY(),
+      id: ekRehberModel?.id,
+      rehberKodu: 8,
+      stokKodu: viewModel.stokModel?.stokKodu,
+      baslik: ekRehberModel?.baslik,
+    );
+    if (ekRehberModel != null) {
+      final result = await Get.toNamed("mainPage/genelRehber", arguments: ekRehberRequestModel);
+      if (result is! GenelRehberModel) return;
+      if (ekRehberModel.alan == "EKALAN1") {
+        ekAlan1Controller.text = result.adi ?? "";
+      }
+      if (ekRehberModel.alan == "EKALAN2") {
+        ekAlan2Controller.text = result.adi ?? "";
+      }
+      return switch (ekRehberModel.alan) {
+        "EKALAN1" => viewModel.setEkAlan1(result.kodu ?? ""),
+        "EKALAN2" => viewModel.setEkAlan2(result.kodu ?? ""),
+        _ => viewModel.setEkAlanlar(
+          id - 1,
+          result.kodu ?? "",
+        ),
+      };
+    }
   }
 }

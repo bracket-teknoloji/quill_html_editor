@@ -8,8 +8,7 @@ part of 'uretim_sonu_kaydi_seri_listesi_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UretimSonuKaydiSeriListesiViewModel
-    on _UretimSonuKaydiSeriListesiViewModelBase, Store {
+mixin _$UretimSonuKaydiSeriListesiViewModel on _UretimSonuKaydiSeriListesiViewModelBase, Store {
   late final _$observableListAtom = Atom(
     name: '_UretimSonuKaydiSeriListesiViewModelBase.observableList',
     context: context,
@@ -84,18 +83,16 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_UretimSonuKaydiSeriListesiViewModelBaseActionController =
-      ActionController(
-        name: '_UretimSonuKaydiSeriListesiViewModelBase',
-        context: context,
-      );
+  late final _$_UretimSonuKaydiSeriListesiViewModelBaseActionController = ActionController(
+    name: '_UretimSonuKaydiSeriListesiViewModelBase',
+    context: context,
+  );
 
   @override
   void setKalem(KalemModel? value) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
-          name: '_UretimSonuKaydiSeriListesiViewModelBase.setKalem',
-        );
+    final _$actionInfo = _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiSeriListesiViewModelBase.setKalem',
+    );
     try {
       return super.setKalem(value);
     } finally {
@@ -107,10 +104,9 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
 
   @override
   void setObservableList(List<UskReceteModel>? list) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
-          name: '_UretimSonuKaydiSeriListesiViewModelBase.setObservableList',
-        );
+    final _$actionInfo = _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiSeriListesiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {
@@ -122,10 +118,9 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
 
   @override
   void updateCard(UskReceteModel model) {
-    final _$actionInfo =
-        _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
-          name: '_UretimSonuKaydiSeriListesiViewModelBase.updateCard',
-        );
+    final _$actionInfo = _$_UretimSonuKaydiSeriListesiViewModelBaseActionController.startAction(
+      name: '_UretimSonuKaydiSeriListesiViewModelBase.updateCard',
+    );
     try {
       return super.updateCard(model);
     } finally {

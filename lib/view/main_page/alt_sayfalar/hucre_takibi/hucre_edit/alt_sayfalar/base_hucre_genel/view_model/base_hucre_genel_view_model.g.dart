@@ -60,8 +60,9 @@ mixin _$BaseHucreGenelViewModel on _BaseHucreGenelViewModelBase, Store {
 
   @override
   void setSelectedEditTipi(int? index) {
-    final _$actionInfo = _$_BaseHucreGenelViewModelBaseActionController
-        .startAction(name: '_BaseHucreGenelViewModelBase.setSelectedEditTipi');
+    final _$actionInfo = _$_BaseHucreGenelViewModelBaseActionController.startAction(
+      name: '_BaseHucreGenelViewModelBase.setSelectedEditTipi',
+    );
     try {
       return super.setSelectedEditTipi(index);
     } finally {
@@ -71,8 +72,9 @@ mixin _$BaseHucreGenelViewModel on _BaseHucreGenelViewModelBase, Store {
 
   @override
   void setDepo(DepoList? depo) {
-    final _$actionInfo = _$_BaseHucreGenelViewModelBaseActionController
-        .startAction(name: '_BaseHucreGenelViewModelBase.setDepo');
+    final _$actionInfo = _$_BaseHucreGenelViewModelBaseActionController.startAction(
+      name: '_BaseHucreGenelViewModelBase.setDepo',
+    );
     try {
       return super.setDepo(depo);
     } finally {
@@ -82,8 +84,9 @@ mixin _$BaseHucreGenelViewModel on _BaseHucreGenelViewModelBase, Store {
 
   @override
   void setBelge(BelgeRehberiModel? belge) {
-    final _$actionInfo = _$_BaseHucreGenelViewModelBaseActionController
-        .startAction(name: '_BaseHucreGenelViewModelBase.setBelge');
+    final _$actionInfo = _$_BaseHucreGenelViewModelBaseActionController.startAction(
+      name: '_BaseHucreGenelViewModelBase.setBelge',
+    );
     try {
       return super.setBelge(belge);
     } finally {

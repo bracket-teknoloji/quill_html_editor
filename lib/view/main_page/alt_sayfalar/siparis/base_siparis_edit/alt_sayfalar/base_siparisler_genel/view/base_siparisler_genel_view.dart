@@ -309,7 +309,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               if (!(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false))
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false))
                   Expanded(
                     child: CustomTextField(
                       labelText: "Belge Tipi",

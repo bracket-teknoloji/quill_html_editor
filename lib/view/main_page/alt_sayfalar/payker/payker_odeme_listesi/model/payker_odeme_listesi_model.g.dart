@@ -23,8 +23,7 @@ Map<String, dynamic> _$BasePaykerOdemeListesiModelToJson(
   if (instance.draw case final value?) 'DRAW': value,
   if (instance.recordsTotal case final value?) 'recordsTotal': value,
   if (instance.recordsFiltered case final value?) 'recordsFiltered': value,
-  if (instance.data?.map((e) => e.toJson()).toList() case final value?)
-    'data': value,
+  if (instance.data?.map((e) => e.toJson()).toList() case final value?) 'data': value,
 };
 
 PaykerOdemeListesiModel _$PaykerOdemeListesiModelFromJson(
@@ -46,31 +45,23 @@ PaykerOdemeListesiModel _$PaykerOdemeListesiModelFromJson(
   durumAciklama: json['DURUM_ACIKLAMA'] as String?,
   odemelinkId: json['ODEMELINK_ID'],
   responsedata: json['RESPONSEDATA'] as String?,
-  banka: json['BANKA'] == null
-      ? null
-      : Banka.fromJson(json['BANKA'] as Map<String, dynamic>),
+  banka: json['BANKA'] == null ? null : Banka.fromJson(json['BANKA'] as Map<String, dynamic>),
   bayi: json['BAYI'],
   firma: json['FIRMA'],
   odemeLink: json['ODEME_LINK'],
   silindi: json['SILINDI'],
   siparisNo: json['SIPARIS_NO'] as String?,
   firmaKodu: json['FIRMA_KODU'] as String?,
-  kayittarihi: json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
   kayityapankul: json['KAYITYAPANKUL'],
-  duzeltmetarihi: json['DUZELTMETARIHI'] == null
-      ? null
-      : DateTime.parse(json['DUZELTMETARIHI'] as String),
+  duzeltmetarihi: json['DUZELTMETARIHI'] == null ? null : DateTime.parse(json['DUZELTMETARIHI'] as String),
   duzeltmeyapankul: json['DUZELTMEYAPANKUL'],
   belgeNo: json['BELGE_NO'] as String?,
   uygulama: json['UYGULAMA'] as String?,
   platform: json['PLATFORM'] as String?,
   erpSirket: json['ERP_SIRKET'] as String?,
   erpIsletmeKodu: (json['ERP_ISLETME_KODU'] as num?)?.toInt(),
-  alinmaTarihi: json['ALINMA_TARIHI'] == null
-      ? null
-      : DateTime.parse(json['ALINMA_TARIHI'] as String),
+  alinmaTarihi: json['ALINMA_TARIHI'] == null ? null : DateTime.parse(json['ALINMA_TARIHI'] as String),
   taksitSayisi: (json['TAKSIT_SAYISI'] as num?)?.toInt(),
 );
 
@@ -99,11 +90,9 @@ Map<String, dynamic> _$PaykerOdemeListesiModelToJson(
   if (instance.firma case final value?) 'FIRMA': value,
   if (instance.odemeLink case final value?) 'ODEME_LINK': value,
   if (instance.silindi case final value?) 'SILINDI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?) 'DUZELTMETARIHI': value,
   if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
   if (instance.siparisNo case final value?) 'SIPARIS_NO': value,
   if (instance.firmaKodu case final value?) 'FIRMA_KODU': value,
@@ -112,6 +101,5 @@ Map<String, dynamic> _$PaykerOdemeListesiModelToJson(
   if (instance.platform case final value?) 'PLATFORM': value,
   if (instance.erpSirket case final value?) 'ERP_SIRKET': value,
   if (instance.erpIsletmeKodu case final value?) 'ERP_ISLETME_KODU': value,
-  if (instance.alinmaTarihi?.toIso8601String() case final value?)
-    'ALINMA_TARIHI': value,
+  if (instance.alinmaTarihi?.toIso8601String() case final value?) 'ALINMA_TARIHI': value,
 };

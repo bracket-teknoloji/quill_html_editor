@@ -18,22 +18,14 @@ _CariAktiviteListesiModel _$CariAktiviteListesiModelFromJson(
   aktiviteTipi: (json['AKTIVITE_TIPI'] as num?)?.toInt(),
   aktiviteId: (json['AKTIVITE_ID'] as num?)?.toInt(),
   aktiviteAdi: json['AKTIVITE_ADI'] as String?,
-  bastar: json['BASTAR'] == null
-      ? null
-      : DateTime.parse(json['BASTAR'] as String),
-  kayittarihi: json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String),
+  bastar: json['BASTAR'] == null ? null : DateTime.parse(json['BASTAR'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
   kayityapankul: json['KAYITYAPANKUL'] as String?,
-  bittar: json['BITTAR'] == null
-      ? null
-      : DateTime.parse(json['BITTAR'] as String),
+  bittar: json['BITTAR'] == null ? null : DateTime.parse(json['BITTAR'] as String),
   sonucAciklama: json['SONUC_ACIKLAMA'] as String?,
   sure: (json['SURE'] as num?)?.toDouble(),
   aciklama: json['ACIKLAMA'] as String?,
-  duzeltmetarihi: json['DUZELTMETARIHI'] == null
-      ? null
-      : DateTime.parse(json['DUZELTMETARIHI'] as String),
+  duzeltmetarihi: json['DUZELTMETARIHI'] == null ? null : DateTime.parse(json['DUZELTMETARIHI'] as String),
   tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
   duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
   ilgiliKisi: json['ILGILI_KISI'] as String?,
@@ -57,19 +49,16 @@ Map<String, dynamic> _$CariAktiviteListesiModelToJson(
   if (instance.aktiviteId case final value?) 'AKTIVITE_ID': value,
   if (instance.aktiviteAdi case final value?) 'AKTIVITE_ADI': value,
   if (instance.bastar?.toIso8601String() case final value?) 'BASTAR': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
   if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
   if (instance.sonucAciklama case final value?) 'SONUC_ACIKLAMA': value,
   if (instance.sure case final value?) 'SURE': value,
   if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?) 'DUZELTMETARIHI': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
   if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
   if (instance.ilgiliKisi case final value?) 'ILGILI_KISI': value,
   if (instance.bolum case final value?) 'BOLUM': value,
-  if (instance.listDetay?.map((e) => e.toJson()).toList() case final value?)
-    'LIST_DETAY': value,
+  if (instance.listDetay?.map((e) => e.toJson()).toList() case final value?) 'LIST_DETAY': value,
 };

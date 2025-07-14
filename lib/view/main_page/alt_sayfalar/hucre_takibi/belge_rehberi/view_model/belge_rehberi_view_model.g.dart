@@ -62,8 +62,9 @@ mixin _$BelgeRehberiViewModel on _BelgeRehberiViewModelBase, Store {
 
   @override
   void setHucreTransferiModel(BelgeRehberiRequestModel model) {
-    final _$actionInfo = _$_BelgeRehberiViewModelBaseActionController
-        .startAction(name: '_BelgeRehberiViewModelBase.setHucreTransferiModel');
+    final _$actionInfo = _$_BelgeRehberiViewModelBaseActionController.startAction(
+      name: '_BelgeRehberiViewModelBase.setHucreTransferiModel',
+    );
     try {
       return super.setHucreTransferiModel(model);
     } finally {
@@ -73,8 +74,9 @@ mixin _$BelgeRehberiViewModel on _BelgeRehberiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_BelgeRehberiViewModelBaseActionController
-        .startAction(name: '_BelgeRehberiViewModelBase.setSearchText');
+    final _$actionInfo = _$_BelgeRehberiViewModelBaseActionController.startAction(
+      name: '_BelgeRehberiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -84,8 +86,9 @@ mixin _$BelgeRehberiViewModel on _BelgeRehberiViewModelBase, Store {
 
   @override
   void setBelgeRehberiList(List<BelgeRehberiModel>? list) {
-    final _$actionInfo = _$_BelgeRehberiViewModelBaseActionController
-        .startAction(name: '_BelgeRehberiViewModelBase.setBelgeRehberiList');
+    final _$actionInfo = _$_BelgeRehberiViewModelBaseActionController.startAction(
+      name: '_BelgeRehberiViewModelBase.setBelgeRehberiList',
+    );
     try {
       return super.setBelgeRehberiList(list);
     } finally {

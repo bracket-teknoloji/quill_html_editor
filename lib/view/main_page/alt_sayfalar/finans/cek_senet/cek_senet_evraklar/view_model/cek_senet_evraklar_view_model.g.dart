@@ -92,16 +92,16 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_CekSenetEvraklarViewModelBaseActionController =
-      ActionController(
-        name: '_CekSenetEvraklarViewModelBase',
-        context: context,
-      );
+  late final _$_CekSenetEvraklarViewModelBaseActionController = ActionController(
+    name: '_CekSenetEvraklarViewModelBase',
+    context: context,
+  );
 
   @override
   void setEvraklarListesi(List<EvraklarModel>? value) {
-    final _$actionInfo = _$_CekSenetEvraklarViewModelBaseActionController
-        .startAction(name: '_CekSenetEvraklarViewModelBase.setEvraklarListesi');
+    final _$actionInfo = _$_CekSenetEvraklarViewModelBaseActionController.startAction(
+      name: '_CekSenetEvraklarViewModelBase.setEvraklarListesi',
+    );
     try {
       return super.setEvraklarListesi(value);
     } finally {

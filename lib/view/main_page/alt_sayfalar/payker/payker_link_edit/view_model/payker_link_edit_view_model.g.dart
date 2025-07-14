@@ -100,8 +100,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setSelectedTaksitler(Taksitler taksit, bool isSelected) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setSelectedTaksitler');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setSelectedTaksitler',
+    );
     try {
       return super.setSelectedTaksitler(taksit, isSelected);
     } finally {
@@ -111,8 +112,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setTaksitler(List<TaksitResponseModel>? taksitler) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setTaksitler');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setTaksitler',
+    );
     try {
       return super.setTaksitler(taksitler);
     } finally {
@@ -122,8 +124,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setBayi(PaykerFirmaModel model) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setBayi');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setBayi',
+    );
     try {
       return super.setBayi(model);
     } finally {
@@ -133,8 +136,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setTutar(double? tutar) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setTutar');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(tutar);
     } finally {
@@ -144,8 +148,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setEmail(String? email) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setEmail');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setEmail',
+    );
     try {
       return super.setEmail(email);
     } finally {
@@ -155,8 +160,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setUnvan(String? unvan) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setUnvan');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setUnvan',
+    );
     try {
       return super.setUnvan(unvan);
     } finally {
@@ -166,8 +172,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setBitTar(DateTime? bitTar) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setBitTar');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setBitTar',
+    );
     try {
       return super.setBitTar(bitTar);
     } finally {
@@ -177,8 +184,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setModel(PaykerLinkEditModel model) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setModel');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setModel',
+    );
     try {
       return super.setModel(model);
     } finally {
@@ -188,8 +196,9 @@ mixin _$PaykerLinkEditViewModel on _PaykerLinkEditViewModelBase, Store {
 
   @override
   void setKullanimSayisi(int? kullanimSayisi) {
-    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController
-        .startAction(name: '_PaykerLinkEditViewModelBase.setKullanimSayisi');
+    final _$actionInfo = _$_PaykerLinkEditViewModelBaseActionController.startAction(
+      name: '_PaykerLinkEditViewModelBase.setKullanimSayisi',
+    );
     try {
       return super.setKullanimSayisi(kullanimSayisi);
     } finally {

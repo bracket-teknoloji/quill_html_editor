@@ -107,16 +107,16 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_MasrafKoduRehberiViewModelBaseActionController =
-      ActionController(
-        name: '_MasrafKoduRehberiViewModelBase',
-        context: context,
-      );
+  late final _$_MasrafKoduRehberiViewModelBaseActionController = ActionController(
+    name: '_MasrafKoduRehberiViewModelBase',
+    context: context,
+  );
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController
-        .startAction(name: '_MasrafKoduRehberiViewModelBase.changeSearchBar');
+    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController.startAction(
+      name: '_MasrafKoduRehberiViewModelBase.changeSearchBar',
+    );
     try {
       return super.changeSearchBar();
     } finally {
@@ -126,8 +126,9 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController
-        .startAction(name: '_MasrafKoduRehberiViewModelBase.setSearchText');
+    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController.startAction(
+      name: '_MasrafKoduRehberiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -137,8 +138,9 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
 
   @override
   void setObservableList(List<MasrafKoduRehberiModel>? value) {
-    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController
-        .startAction(name: '_MasrafKoduRehberiViewModelBase.setObservableList');
+    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController.startAction(
+      name: '_MasrafKoduRehberiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(value);
     } finally {
@@ -148,8 +150,9 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
 
   @override
   void addObservableList(List<MasrafKoduRehberiModel>? value) {
-    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController
-        .startAction(name: '_MasrafKoduRehberiViewModelBase.addObservableList');
+    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController.startAction(
+      name: '_MasrafKoduRehberiViewModelBase.addObservableList',
+    );
     try {
       return super.addObservableList(value);
     } finally {

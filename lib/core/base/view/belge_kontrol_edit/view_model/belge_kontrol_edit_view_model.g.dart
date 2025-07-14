@@ -37,16 +37,16 @@ mixin _$BelgeKontrolEditViewModel on _BelgeKontrolEditViewModelBase, Store {
     return _$saveDataAsyncAction.run(() => super.saveData());
   }
 
-  late final _$_BelgeKontrolEditViewModelBaseActionController =
-      ActionController(
-        name: '_BelgeKontrolEditViewModelBase',
-        context: context,
-      );
+  late final _$_BelgeKontrolEditViewModelBaseActionController = ActionController(
+    name: '_BelgeKontrolEditViewModelBase',
+    context: context,
+  );
 
   @override
   void setBelgeTuru(String value) {
-    final _$actionInfo = _$_BelgeKontrolEditViewModelBaseActionController
-        .startAction(name: '_BelgeKontrolEditViewModelBase.setBelgeTuru');
+    final _$actionInfo = _$_BelgeKontrolEditViewModelBaseActionController.startAction(
+      name: '_BelgeKontrolEditViewModelBase.setBelgeTuru',
+    );
     try {
       return super.setBelgeTuru(value);
     } finally {
@@ -56,8 +56,9 @@ mixin _$BelgeKontrolEditViewModel on _BelgeKontrolEditViewModelBase, Store {
 
   @override
   void setBelge(BaseSiparisEditModel value) {
-    final _$actionInfo = _$_BelgeKontrolEditViewModelBaseActionController
-        .startAction(name: '_BelgeKontrolEditViewModelBase.setBelge');
+    final _$actionInfo = _$_BelgeKontrolEditViewModelBaseActionController.startAction(
+      name: '_BelgeKontrolEditViewModelBase.setBelge',
+    );
     try {
       return super.setBelge(value);
     } finally {

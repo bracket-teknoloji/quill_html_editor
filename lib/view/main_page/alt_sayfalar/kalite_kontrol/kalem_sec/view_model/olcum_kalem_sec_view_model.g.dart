@@ -98,8 +98,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.setSearchBar');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.setSearchBar',
+    );
     try {
       return super.setSearchBar();
     } finally {
@@ -109,8 +110,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.setDahaVarMi');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.setDahaVarMi',
+    );
     try {
       return super.setDahaVarMi(value);
     } finally {
@@ -120,8 +122,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void setRequestModel(OlcumBelgeModel model) {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.setRequestModel');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.setRequestModel',
+    );
     try {
       return super.setRequestModel(model);
     } finally {
@@ -131,8 +134,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void setOlcumBelgeModel(List<OlcumBelgeModel>? list) {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.setOlcumBelgeModel');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.setOlcumBelgeModel',
+    );
     try {
       return super.setOlcumBelgeModel(list);
     } finally {
@@ -142,8 +146,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void addOlcumBelgeModel(List<OlcumBelgeModel> list) {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.addOlcumBelgeModel');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.addOlcumBelgeModel',
+    );
     try {
       return super.addOlcumBelgeModel(list);
     } finally {
@@ -153,8 +158,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.setSearchText');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -164,8 +170,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void increaseSayfa() {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.increaseSayfa');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.increaseSayfa',
+    );
     try {
       return super.increaseSayfa();
     } finally {
@@ -175,8 +182,9 @@ mixin _$OlcumKalemSecViewModel on _OlcumKalemSecViewModelBase, Store {
 
   @override
   void resetSayfa() {
-    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController
-        .startAction(name: '_OlcumKalemSecViewModelBase.resetSayfa');
+    final _$actionInfo = _$_OlcumKalemSecViewModelBaseActionController.startAction(
+      name: '_OlcumKalemSecViewModelBase.resetSayfa',
+    );
     try {
       return super.resetSayfa();
     } finally {

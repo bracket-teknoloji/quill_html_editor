@@ -12,11 +12,10 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
   Computed<double>? _$toplamPaketMiktariComputed;
 
   @override
-  double get toplamPaketMiktari =>
-      (_$toplamPaketMiktariComputed ??= Computed<double>(
-        () => super.toplamPaketMiktari,
-        name: '_PaketIcerigiViewModelBase.toplamPaketMiktari',
-      )).value;
+  double get toplamPaketMiktari => (_$toplamPaketMiktariComputed ??= Computed<double>(
+    () => super.toplamPaketMiktari,
+    name: '_PaketIcerigiViewModelBase.toplamPaketMiktari',
+  )).value;
 
   late final _$observableListAtom = Atom(
     name: '_PaketIcerigiViewModelBase.observableList',
@@ -86,8 +85,9 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
 
   @override
   void setPaketID(int id) {
-    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController
-        .startAction(name: '_PaketIcerigiViewModelBase.setPaketID');
+    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController.startAction(
+      name: '_PaketIcerigiViewModelBase.setPaketID',
+    );
     try {
       return super.setPaketID(id);
     } finally {
@@ -97,8 +97,9 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
 
   @override
   void setObservableList(List<PaketIcerigiModel>? list) {
-    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController
-        .startAction(name: '_PaketIcerigiViewModelBase.setObservableList');
+    final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController.startAction(
+      name: '_PaketIcerigiViewModelBase.setObservableList',
+    );
     try {
       return super.setObservableList(list);
     } finally {

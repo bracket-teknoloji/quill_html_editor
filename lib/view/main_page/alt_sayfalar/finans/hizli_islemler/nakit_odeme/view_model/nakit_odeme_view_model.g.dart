@@ -19,11 +19,10 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   Computed<TahsilatRequestModel>? _$getStokYeniKayitModelComputed;
 
   @override
-  TahsilatRequestModel get getStokYeniKayitModel =>
-      (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
-        () => super.getStokYeniKayitModel,
-        name: '_NakitOdemeViewModelBase.getStokYeniKayitModel',
-      )).value;
+  TahsilatRequestModel get getStokYeniKayitModel => (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
+    () => super.getStokYeniKayitModel,
+    name: '_NakitOdemeViewModelBase.getStokYeniKayitModel',
+  )).value;
   Computed<String?>? _$getCariBakiyeComputed;
 
   @override

@@ -23,17 +23,14 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
     () => super.gidenTutar,
     name: '_BankaIslemleriViewModelBase.gidenTutar',
   )).value;
-  Computed<ObservableList<BankaHareketleriModel>?>?
-  _$getBankaIslemleriListesiComputed;
+  Computed<ObservableList<BankaHareketleriModel>?>? _$getBankaIslemleriListesiComputed;
 
   @override
   ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi =>
-      (_$getBankaIslemleriListesiComputed ??=
-              Computed<ObservableList<BankaHareketleriModel>?>(
-                () => super.getBankaIslemleriListesi,
-                name: '_BankaIslemleriViewModelBase.getBankaIslemleriListesi',
-              ))
-          .value;
+      (_$getBankaIslemleriListesiComputed ??= Computed<ObservableList<BankaHareketleriModel>?>(
+        () => super.getBankaIslemleriListesi,
+        name: '_BankaIslemleriViewModelBase.getBankaIslemleriListesi',
+      )).value;
 
   late final _$bankaIslemleriRequestModelAtom = Atom(
     name: '_BankaIslemleriViewModelBase.bankaIslemleriRequestModel',
@@ -160,8 +157,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setIsScrollDown');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.setIsScrollDown',
+    );
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -171,8 +169,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.changeSearchBar');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.changeSearchBar',
+    );
     try {
       return super.changeSearchBar();
     } finally {
@@ -182,8 +181,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setSearchText');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -193,8 +193,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setBaslamaTarihi(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setBaslamaTarihi');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.setBaslamaTarihi',
+    );
     try {
       return super.setBaslamaTarihi(value);
     } finally {
@@ -204,8 +205,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.setBitisTarihi',
+    );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -215,10 +217,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setBankaIslemleriListesi(List<BankaHareketleriModel>? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(
-          name: '_BankaIslemleriViewModelBase.setBankaIslemleriListesi',
-        );
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.setBankaIslemleriListesi',
+    );
     try {
       return super.setBankaIslemleriListesi(value);
     } finally {
@@ -228,10 +229,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void addBankaIslemleriListesi(List<BankaHareketleriModel>? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(
-          name: '_BankaIslemleriViewModelBase.addBankaIslemleriListesi',
-        );
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.addBankaIslemleriListesi',
+    );
     try {
       return super.addBankaIslemleriListesi(value);
     } finally {
@@ -241,8 +241,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void clearFilters() {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.clearFilters');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.clearFilters',
+    );
     try {
       return super.clearFilters();
     } finally {
@@ -252,8 +253,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setHesapKodu(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setHesapKodu');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.setHesapKodu',
+    );
     try {
       return super.setHesapKodu(value);
     } finally {
@@ -263,8 +265,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setHesapTipi(List<int>? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setHesapTipi');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(
+      name: '_BankaIslemleriViewModelBase.setHesapTipi',
+    );
     try {
       return super.setHesapTipi(value);
     } finally {

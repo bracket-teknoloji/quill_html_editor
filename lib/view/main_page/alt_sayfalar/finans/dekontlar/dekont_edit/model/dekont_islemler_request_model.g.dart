@@ -29,8 +29,7 @@ Map<String, dynamic> _$DekontIslemlerRequestModelToJson(
   if (instance.dekontIslemTuru case final value?) 'DEKONT_ISLEM_TURU': value,
   if (instance.dekontSeri case final value?) 'DEKONT_SERI': value,
   if (instance.guid case final value?) 'GUID': value,
-  if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?)
-    'KALEMLER': value,
+  if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?) 'KALEMLER': value,
   if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
   if (instance.projeKodu case final value?) 'PROJE_KODU': value,
   if (instance.tag case final value?) 'TAG': value,

@@ -62,8 +62,9 @@ mixin _$DekontGoruntuleViewModel on _DekontGoruntuleViewModelBase, Store {
 
   @override
   void setDekontListesi(List<DekontDuzenleRequestModel> value) {
-    final _$actionInfo = _$_DekontGoruntuleViewModelBaseActionController
-        .startAction(name: '_DekontGoruntuleViewModelBase.setDekontListesi');
+    final _$actionInfo = _$_DekontGoruntuleViewModelBaseActionController.startAction(
+      name: '_DekontGoruntuleViewModelBase.setDekontListesi',
+    );
     try {
       return super.setDekontListesi(value);
     } finally {
@@ -73,8 +74,9 @@ mixin _$DekontGoruntuleViewModel on _DekontGoruntuleViewModelBase, Store {
 
   @override
   void setDekontMap(Map<String, dynamic> value) {
-    final _$actionInfo = _$_DekontGoruntuleViewModelBaseActionController
-        .startAction(name: '_DekontGoruntuleViewModelBase.setDekontMap');
+    final _$actionInfo = _$_DekontGoruntuleViewModelBaseActionController.startAction(
+      name: '_DekontGoruntuleViewModelBase.setDekontMap',
+    );
     try {
       return super.setDekontMap(value);
     } finally {

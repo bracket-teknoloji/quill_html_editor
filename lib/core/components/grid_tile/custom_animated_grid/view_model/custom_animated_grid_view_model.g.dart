@@ -45,16 +45,16 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
     });
   }
 
-  late final _$_CustomAnimatedGridViewModelBaseActionController =
-      ActionController(
-        name: '_CustomAnimatedGridViewModelBase',
-        context: context,
-      );
+  late final _$_CustomAnimatedGridViewModelBaseActionController = ActionController(
+    name: '_CustomAnimatedGridViewModelBase',
+    context: context,
+  );
 
   @override
   void setGridItemModel(List<GridItemModel> value) {
-    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController
-        .startAction(name: '_CustomAnimatedGridViewModelBase.setGridItemModel');
+    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController.startAction(
+      name: '_CustomAnimatedGridViewModelBase.setGridItemModel',
+    );
     try {
       return super.setGridItemModel(value);
     } finally {
@@ -66,10 +66,9 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
 
   @override
   void addReturnGridItemModel(List<GridItemModel>? value) {
-    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController
-        .startAction(
-          name: '_CustomAnimatedGridViewModelBase.addReturnGridItemModel',
-        );
+    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController.startAction(
+      name: '_CustomAnimatedGridViewModelBase.addReturnGridItemModel',
+    );
     try {
       return super.addReturnGridItemModel(value);
     } finally {
@@ -81,11 +80,9 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
 
   @override
   void deleteLastReturnGridItemModel() {
-    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController
-        .startAction(
-          name:
-              '_CustomAnimatedGridViewModelBase.deleteLastReturnGridItemModel',
-        );
+    final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController.startAction(
+      name: '_CustomAnimatedGridViewModelBase.deleteLastReturnGridItemModel',
+    );
     try {
       return super.deleteLastReturnGridItemModel();
     } finally {

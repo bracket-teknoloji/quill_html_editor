@@ -102,8 +102,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setCariAdi(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setCariAdi');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setCariAdi',
+    );
     try {
       return super.setCariAdi(value);
     } finally {
@@ -113,8 +114,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setCariKodu');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -124,8 +126,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setTeslimCariAdi(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setTeslimCariAdi');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setTeslimCariAdi',
+    );
     try {
       return super.setTeslimCariAdi(value);
     } finally {
@@ -135,8 +138,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setTeslimCariKodu');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setTeslimCariKodu',
+    );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
@@ -146,8 +150,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setDepoKodu(DepoList? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setDepoKodu');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setDepoKodu',
+    );
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -157,8 +162,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void changeKdvDahil(bool value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.changeKdvDahil');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.changeKdvDahil',
+    );
     try {
       return super.changeKdvDahil(value);
     } finally {
@@ -168,10 +174,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void changeEbelgeCheckBox(bool value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(
-          name: '_BaseFaturaGenelViewModelBase.changeEbelgeCheckBox',
-        );
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.changeEbelgeCheckBox',
+    );
     try {
       return super.changeEbelgeCheckBox(value);
     } finally {
@@ -181,10 +186,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void changeFaturalasmayacakCheckBox(bool value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(
-          name: '_BaseFaturaGenelViewModelBase.changeFaturalasmayacakCheckBox',
-        );
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.changeFaturalasmayacakCheckBox',
+    );
     try {
       return super.changeFaturalasmayacakCheckBox(value);
     } finally {
@@ -194,8 +198,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setBelgeTipi(int? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setBelgeTipi');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setBelgeTipi',
+    );
     try {
       return super.setBelgeTipi(value);
     } finally {
@@ -205,8 +210,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setOzelKod1(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setOzelKod1');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setOzelKod1',
+    );
     try {
       return super.setOzelKod1(value);
     } finally {
@@ -216,8 +222,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setOdemeKodu(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setOdemeKodu');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setOdemeKodu',
+    );
     try {
       return super.setOdemeKodu(value);
     } finally {
@@ -227,8 +234,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setOzelKod2(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setOzelKod2');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setOzelKod2',
+    );
     try {
       return super.setOzelKod2(value);
     } finally {
@@ -238,8 +246,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setPlasiyer(PlasiyerList? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setPlasiyer');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setPlasiyer',
+    );
     try {
       return super.setPlasiyer(value);
     } finally {
@@ -249,8 +258,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setProje(BaseProjeModel? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setProje');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setProje',
+    );
     try {
       return super.setProje(value);
     } finally {
@@ -260,8 +270,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setKosulKodu(String? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setKosulKodu');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setKosulKodu',
+    );
     try {
       return super.setKosulKodu(value);
     } finally {
@@ -271,8 +282,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setTarih');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -282,8 +294,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setBelgeNo(String? value, bool? siparistenKopyalaMi) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(value, siparistenKopyalaMi);
     } finally {
@@ -293,8 +306,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setTopluDepoKodu(int? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setTopluDepoKodu');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setTopluDepoKodu',
+    );
     try {
       return super.setTopluDepoKodu(value);
     } finally {
@@ -304,8 +318,9 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
 
   @override
   void setAciklama(int index, GenelRehberModel? value) {
-    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
-        .startAction(name: '_BaseFaturaGenelViewModelBase.setAciklama');
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+      name: '_BaseFaturaGenelViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(index, value);
     } finally {

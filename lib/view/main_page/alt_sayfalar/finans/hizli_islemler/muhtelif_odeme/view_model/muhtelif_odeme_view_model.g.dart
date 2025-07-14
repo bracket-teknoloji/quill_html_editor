@@ -244,8 +244,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setShowReferansKodu(String? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setShowReferansKodu');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setShowReferansKodu',
+    );
     try {
       return super.setShowReferansKodu(value);
     } finally {
@@ -255,8 +256,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setCariBakiye(double? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setCariBakiye');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setCariBakiye',
+    );
     try {
       return super.setCariBakiye(value);
     } finally {
@@ -266,8 +268,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setAppBarSubTitle(String? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setAppBarSubTitle');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setAppBarSubTitle',
+    );
     try {
       return super.setAppBarSubTitle(value);
     } finally {
@@ -277,8 +280,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -288,8 +292,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setTarih');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setTarih',
+    );
     try {
       return super.setTarih(value);
     } finally {
@@ -299,8 +304,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setAciklama');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setAciklama',
+    );
     try {
       return super.setAciklama(value);
     } finally {
@@ -310,8 +316,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setKasaKodu(KasaList? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setKasaKodu');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setKasaKodu',
+    );
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -321,8 +328,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setHesapKodu(String? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setHesapKodu');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setHesapKodu',
+    );
     try {
       return super.setHesapKodu(value);
     } finally {
@@ -332,8 +340,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setTutar(double? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setTutar');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setTutar',
+    );
     try {
       return super.setTutar(value);
     } finally {
@@ -343,8 +352,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setTahsilatMi(bool? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setTahsilatMi');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setTahsilatMi',
+    );
     try {
       return super.setTahsilatMi(value);
     } finally {
@@ -354,8 +364,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -365,8 +376,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setProjeKodu(BaseProjeModel? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setProjeKodu');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setProjeKodu',
+    );
     try {
       return super.setProjeKodu(value);
     } finally {
@@ -376,8 +388,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setDovizTipi(int? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setDovizTipi');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setDovizTipi',
+    );
     try {
       return super.setDovizTipi(value);
     } finally {
@@ -387,8 +400,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setDovizTutari(double? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setDovizTutari',
+    );
     try {
       return super.setDovizTutari(value);
     } finally {
@@ -398,8 +412,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setHesapTipi(String? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setHesapTipi');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setHesapTipi',
+    );
     try {
       return super.setHesapTipi(value);
     } finally {
@@ -409,8 +424,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setReferansKodu(String? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setReferansKodu');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setReferansKodu',
+    );
     try {
       return super.setReferansKodu(value);
     } finally {
@@ -420,8 +436,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setMuhaRefList(List<MuhasebeReferansModel>? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(name: '_MuhtelifOdemeViewModelBase.setMuhaRefList');
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setMuhaRefList',
+    );
     try {
       return super.setMuhaRefList(value);
     } finally {
@@ -431,10 +448,9 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
-        .startAction(
-          name: '_MuhtelifOdemeViewModelBase.setDovizKurlariListesi',
-        );
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+      name: '_MuhtelifOdemeViewModelBase.setDovizKurlariListesi',
+    );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {

@@ -9,28 +9,22 @@ part of 'banka_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
-  Computed<ObservableList<List<BankaListesiModel>>>?
-  _$groupedWithHesapTipiAdiListComputed;
+  Computed<ObservableList<List<BankaListesiModel>>>? _$groupedWithHesapTipiAdiListComputed;
 
   @override
   ObservableList<List<BankaListesiModel>> get groupedWithHesapTipiAdiList =>
-      (_$groupedWithHesapTipiAdiListComputed ??=
-              Computed<ObservableList<List<BankaListesiModel>>>(
-                () => super.groupedWithHesapTipiAdiList,
-                name: '_BankaListesiViewModelBase.groupedWithHesapTipiAdiList',
-              ))
-          .value;
-  Computed<ObservableList<List<BankaListesiModel>>>?
-  _$groupedWithBankNameComputed;
+      (_$groupedWithHesapTipiAdiListComputed ??= Computed<ObservableList<List<BankaListesiModel>>>(
+        () => super.groupedWithHesapTipiAdiList,
+        name: '_BankaListesiViewModelBase.groupedWithHesapTipiAdiList',
+      )).value;
+  Computed<ObservableList<List<BankaListesiModel>>>? _$groupedWithBankNameComputed;
 
   @override
   ObservableList<List<BankaListesiModel>> get groupedWithBankName =>
-      (_$groupedWithBankNameComputed ??=
-              Computed<ObservableList<List<BankaListesiModel>>>(
-                () => super.groupedWithBankName,
-                name: '_BankaListesiViewModelBase.groupedWithBankName',
-              ))
-          .value;
+      (_$groupedWithBankNameComputed ??= Computed<ObservableList<List<BankaListesiModel>>>(
+        () => super.groupedWithBankName,
+        name: '_BankaListesiViewModelBase.groupedWithBankName',
+      )).value;
 
   late final _$searchBarAtom = Atom(
     name: '_BankaListesiViewModelBase.searchBar',
@@ -149,8 +143,9 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_BankaListesiViewModelBaseActionController
-        .startAction(name: '_BankaListesiViewModelBase.setSearchBar');
+    final _$actionInfo = _$_BankaListesiViewModelBaseActionController.startAction(
+      name: '_BankaListesiViewModelBase.setSearchBar',
+    );
     try {
       return super.setSearchBar();
     } finally {
@@ -160,8 +155,9 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_BankaListesiViewModelBaseActionController
-        .startAction(name: '_BankaListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_BankaListesiViewModelBaseActionController.startAction(
+      name: '_BankaListesiViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -171,8 +167,9 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
 
   @override
   void setErrorText(String? value) {
-    final _$actionInfo = _$_BankaListesiViewModelBaseActionController
-        .startAction(name: '_BankaListesiViewModelBase.setErrorText');
+    final _$actionInfo = _$_BankaListesiViewModelBaseActionController.startAction(
+      name: '_BankaListesiViewModelBase.setErrorText',
+    );
     try {
       return super.setErrorText(value);
     } finally {
@@ -182,8 +179,9 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
 
   @override
   void setBankaListesi(List<BankaListesiModel>? value) {
-    final _$actionInfo = _$_BankaListesiViewModelBaseActionController
-        .startAction(name: '_BankaListesiViewModelBase.setBankaListesi');
+    final _$actionInfo = _$_BankaListesiViewModelBaseActionController.startAction(
+      name: '_BankaListesiViewModelBase.setBankaListesi',
+    );
     try {
       return super.setBankaListesi(value);
     } finally {
@@ -193,8 +191,9 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
 
   @override
   void setSiralama(String value) {
-    final _$actionInfo = _$_BankaListesiViewModelBaseActionController
-        .startAction(name: '_BankaListesiViewModelBase.setSiralama');
+    final _$actionInfo = _$_BankaListesiViewModelBaseActionController.startAction(
+      name: '_BankaListesiViewModelBase.setSiralama',
+    );
     try {
       return super.setSiralama(value);
     } finally {
@@ -204,8 +203,9 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
 
   @override
   void setHesapTipi(List<int>? value) {
-    final _$actionInfo = _$_BankaListesiViewModelBaseActionController
-        .startAction(name: '_BankaListesiViewModelBase.setHesapTipi');
+    final _$actionInfo = _$_BankaListesiViewModelBaseActionController.startAction(
+      name: '_BankaListesiViewModelBase.setHesapTipi',
+    );
     try {
       return super.setHesapTipi(value);
     } finally {
@@ -215,8 +215,9 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
 
   @override
   void setBakiye(String? value) {
-    final _$actionInfo = _$_BankaListesiViewModelBaseActionController
-        .startAction(name: '_BankaListesiViewModelBase.setBakiye');
+    final _$actionInfo = _$_BankaListesiViewModelBaseActionController.startAction(
+      name: '_BankaListesiViewModelBase.setBakiye',
+    );
     try {
       return super.setBakiye(value);
     } finally {
