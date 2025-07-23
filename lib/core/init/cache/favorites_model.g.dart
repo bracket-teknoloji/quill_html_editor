@@ -53,5 +53,7 @@ class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FavoritesModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is FavoritesModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }

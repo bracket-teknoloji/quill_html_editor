@@ -10,10 +10,16 @@ _CekSenetListesiModel _$CekSenetListesiModelFromJson(
   Map<String, dynamic> json,
 ) => _CekSenetListesiModel(
   isCiroTipli: json['IS_CIRO_TIPLI'] as bool?,
-  cikisTarihi: json['CIKIS_TARIHI'] == null ? null : DateTime.parse(json['CIKIS_TARIHI'] as String),
-  odemeTarihi: json['ODEME_TARIHI'] == null ? null : DateTime.parse(json['ODEME_TARIHI'] as String),
+  cikisTarihi: json['CIKIS_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['CIKIS_TARIHI'] as String),
+  odemeTarihi: json['ODEME_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['ODEME_TARIHI'] as String),
   tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
-  vadeTarihi: json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String),
+  vadeTarihi: json['VADE_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['VADE_TARIHI'] as String),
   dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
   getDovizTutari: (json['GetDovizTutari'] as num?)?.toDouble(),
   tutar: (json['TUTAR'] as num?)?.toDouble(),
@@ -56,10 +62,13 @@ Map<String, dynamic> _$CekSenetListesiModelToJson(
   _CekSenetListesiModel instance,
 ) => <String, dynamic>{
   if (instance.isCiroTipli case final value?) 'IS_CIRO_TIPLI': value,
-  if (instance.cikisTarihi?.toIso8601String() case final value?) 'CIKIS_TARIHI': value,
-  if (instance.odemeTarihi?.toIso8601String() case final value?) 'ODEME_TARIHI': value,
+  if (instance.cikisTarihi?.toIso8601String() case final value?)
+    'CIKIS_TARIHI': value,
+  if (instance.odemeTarihi?.toIso8601String() case final value?)
+    'ODEME_TARIHI': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.vadeTarihi?.toIso8601String() case final value?) 'VADE_TARIHI': value,
+  if (instance.vadeTarihi?.toIso8601String() case final value?)
+    'VADE_TARIHI': value,
   if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
   if (instance.getDovizTutari case final value?) 'GetDovizTutari': value,
   if (instance.tutar case final value?) 'TUTAR': value,

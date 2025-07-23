@@ -13,31 +13,36 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 
   @override
   ObservableList<SayimListesiModel>? get filteredSayimListesi =>
-      (_$filteredSayimListesiComputed ??= Computed<ObservableList<SayimListesiModel>?>(
-        () => super.filteredSayimListesi,
-        name: '_DepoFarkRaporuViewModelBase.filteredSayimListesi',
-      )).value;
+      (_$filteredSayimListesiComputed ??=
+              Computed<ObservableList<SayimListesiModel>?>(
+                () => super.filteredSayimListesi,
+                name: '_DepoFarkRaporuViewModelBase.filteredSayimListesi',
+              ))
+          .value;
   Computed<double>? _$toplamDepoMiktariComputed;
 
   @override
-  double get toplamDepoMiktari => (_$toplamDepoMiktariComputed ??= Computed<double>(
-    () => super.toplamDepoMiktari,
-    name: '_DepoFarkRaporuViewModelBase.toplamDepoMiktari',
-  )).value;
+  double get toplamDepoMiktari =>
+      (_$toplamDepoMiktariComputed ??= Computed<double>(
+        () => super.toplamDepoMiktari,
+        name: '_DepoFarkRaporuViewModelBase.toplamDepoMiktari',
+      )).value;
   Computed<double>? _$toplamSayimMiktariComputed;
 
   @override
-  double get toplamSayimMiktari => (_$toplamSayimMiktariComputed ??= Computed<double>(
-    () => super.toplamSayimMiktari,
-    name: '_DepoFarkRaporuViewModelBase.toplamSayimMiktari',
-  )).value;
+  double get toplamSayimMiktari =>
+      (_$toplamSayimMiktariComputed ??= Computed<double>(
+        () => super.toplamSayimMiktari,
+        name: '_DepoFarkRaporuViewModelBase.toplamSayimMiktari',
+      )).value;
   Computed<double>? _$toplamFarkMiktariComputed;
 
   @override
-  double get toplamFarkMiktari => (_$toplamFarkMiktariComputed ??= Computed<double>(
-    () => super.toplamFarkMiktari,
-    name: '_DepoFarkRaporuViewModelBase.toplamFarkMiktari',
-  )).value;
+  double get toplamFarkMiktari =>
+      (_$toplamFarkMiktariComputed ??= Computed<double>(
+        () => super.toplamFarkMiktari,
+        name: '_DepoFarkRaporuViewModelBase.toplamFarkMiktari',
+      )).value;
 
   late final _$sayimListesiAtom = Atom(
     name: '_DepoFarkRaporuViewModelBase.sayimListesi',
@@ -146,9 +151,8 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 
   @override
   void setSearchBar(bool value) {
-    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController.startAction(
-      name: '_DepoFarkRaporuViewModelBase.setSearchBar',
-    );
+    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController
+        .startAction(name: '_DepoFarkRaporuViewModelBase.setSearchBar');
     try {
       return super.setSearchBar(value);
     } finally {
@@ -158,9 +162,8 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 
   @override
   void setFiltreTuru(DepoFarkRaporuFiltreEnum value) {
-    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController.startAction(
-      name: '_DepoFarkRaporuViewModelBase.setFiltreTuru',
-    );
+    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController
+        .startAction(name: '_DepoFarkRaporuViewModelBase.setFiltreTuru');
     try {
       return super.setFiltreTuru(value);
     } finally {
@@ -170,9 +173,8 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController.startAction(
-      name: '_DepoFarkRaporuViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController
+        .startAction(name: '_DepoFarkRaporuViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -182,9 +184,8 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 
   @override
   void setSeriBazindaMi(bool value) {
-    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController.startAction(
-      name: '_DepoFarkRaporuViewModelBase.setSeriBazindaMi',
-    );
+    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController
+        .startAction(name: '_DepoFarkRaporuViewModelBase.setSeriBazindaMi');
     try {
       return super.setSeriBazindaMi(value);
     } finally {
@@ -194,9 +195,8 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 
   @override
   void setRequestModel(SayilanKalemlerRequestModel model) {
-    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController.startAction(
-      name: '_DepoFarkRaporuViewModelBase.setRequestModel',
-    );
+    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController
+        .startAction(name: '_DepoFarkRaporuViewModelBase.setRequestModel');
     try {
       return super.setRequestModel(model);
     } finally {
@@ -206,9 +206,8 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 
   @override
   void setSayimListesi(List<SayimListesiModel>? list) {
-    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController.startAction(
-      name: '_DepoFarkRaporuViewModelBase.setSayimListesi',
-    );
+    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController
+        .startAction(name: '_DepoFarkRaporuViewModelBase.setSayimListesi');
     try {
       return super.setSayimListesi(list);
     } finally {

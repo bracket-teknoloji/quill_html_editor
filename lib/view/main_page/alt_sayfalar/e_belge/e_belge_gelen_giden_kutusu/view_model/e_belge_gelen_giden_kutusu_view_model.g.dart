@@ -8,14 +8,16 @@ part of 'e_belge_gelen_giden_kutusu_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase, Store {
+mixin _$EBelgeGelenGidenKutusuViewModel
+    on _EBelgeGelenGidenKutusuViewModelBase, Store {
   Computed<String>? _$eArsivDateStringComputed;
 
   @override
-  String get eArsivDateString => (_$eArsivDateStringComputed ??= Computed<String>(
-    () => super.eArsivDateString,
-    name: '_EBelgeGelenGidenKutusuViewModelBase.eArsivDateString',
-  )).value;
+  String get eArsivDateString =>
+      (_$eArsivDateStringComputed ??= Computed<String>(
+        () => super.eArsivDateString,
+        name: '_EBelgeGelenGidenKutusuViewModelBase.eArsivDateString',
+      )).value;
 
   late final _$eBelgeEnumAtom = Atom(
     name: '_EBelgeGelenGidenKutusuViewModelBase.eBelgeEnum',
@@ -242,16 +244,18 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_EBelgeGelenGidenKutusuViewModelBaseActionController = ActionController(
-    name: '_EBelgeGelenGidenKutusuViewModelBase',
-    context: context,
-  );
+  late final _$_EBelgeGelenGidenKutusuViewModelBaseActionController =
+      ActionController(
+        name: '_EBelgeGelenGidenKutusuViewModelBase',
+        context: context,
+      );
 
   @override
   void increaseGetWeek() {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.increaseGetWeek',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.increaseGetWeek',
+        );
     try {
       return super.increaseGetWeek();
     } finally {
@@ -263,9 +267,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void decreaseGetWeek() {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.decreaseGetWeek',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.decreaseGetWeek',
+        );
     try {
       return super.decreaseGetWeek();
     } finally {
@@ -277,9 +282,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeIsScrolledDown(bool isScrolledDown) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeIsScrolledDown',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeIsScrolledDown',
+        );
     try {
       return super.changeIsScrolledDown(isScrolledDown);
     } finally {
@@ -291,9 +297,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeDahaVarMi(bool dahaVarMi) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeDahaVarMi',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeDahaVarMi',
+        );
     try {
       return super.changeDahaVarMi(dahaVarMi);
     } finally {
@@ -305,9 +312,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeSearchBar',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeSearchBar',
+        );
     try {
       return super.changeSearchBar();
     } finally {
@@ -319,9 +327,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void setEBelgeListesi(List<EBelgeListesiModel>? eBelgeListesi) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.setEBelgeListesi',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.setEBelgeListesi',
+        );
     try {
       return super.setEBelgeListesi(eBelgeListesi);
     } finally {
@@ -333,9 +342,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void addEBelgeListesi(List<EBelgeListesiModel> eBelgeListesi) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.addEBelgeListesi',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.addEBelgeListesi',
+        );
     try {
       return super.addEBelgeListesi(eBelgeListesi);
     } finally {
@@ -347,9 +357,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void increaseSayfa() {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.increaseSayfa',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.increaseSayfa',
+        );
     try {
       return super.increaseSayfa();
     } finally {
@@ -361,9 +372,8 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void resetSayfa() {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.resetSayfa',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(name: '_EBelgeGelenGidenKutusuViewModelBase.resetSayfa');
     try {
       return super.resetSayfa();
     } finally {
@@ -375,9 +385,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeSiralama(String siralama) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeSiralama',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeSiralama',
+        );
     try {
       return super.changeSiralama(siralama);
     } finally {
@@ -389,9 +400,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeSearchText(String? searchText) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeSearchText',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeSearchText',
+        );
     try {
       return super.changeSearchText(searchText);
     } finally {
@@ -403,9 +415,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeEBelgeTuru(String? eBelgeTuru) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeEBelgeTuru',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeEBelgeTuru',
+        );
     try {
       return super.changeEBelgeTuru(eBelgeTuru);
     } finally {
@@ -417,9 +430,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeTarihTuru(bool? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeTarihTuru',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeTarihTuru',
+        );
     try {
       return super.changeTarihTuru(value);
     } finally {
@@ -431,9 +445,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeDigerGoster() {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeDigerGoster',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeDigerGoster',
+        );
     try {
       return super.changeDigerGoster();
     } finally {
@@ -445,9 +460,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeSorgulanmasin() {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeSorgulanmasin',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeSorgulanmasin',
+        );
     try {
       return super.changeSorgulanmasin();
     } finally {
@@ -459,9 +475,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeBaslangicTarihi',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeBaslangicTarihi',
+        );
     try {
       return super.changeBaslangicTarihi(value);
     } finally {
@@ -473,9 +490,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeBitisTarihi(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeBitisTarihi',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeBitisTarihi',
+        );
     try {
       return super.changeBitisTarihi(value);
     } finally {
@@ -487,9 +505,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeOnayDurumu(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeOnayDurumu',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeOnayDurumu',
+        );
     try {
       return super.changeOnayDurumu(value);
     } finally {
@@ -501,9 +520,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeSenaryo(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeSenaryo',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeSenaryo',
+        );
     try {
       return super.changeSenaryo(value);
     } finally {
@@ -515,9 +535,8 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeTaslak(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeTaslak',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(name: '_EBelgeGelenGidenKutusuViewModelBase.changeTaslak');
     try {
       return super.changeTaslak(value);
     } finally {
@@ -529,9 +548,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeKontrol(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeKontrol',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeKontrol',
+        );
     try {
       return super.changeKontrol(value);
     } finally {
@@ -543,9 +563,8 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeBasim(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeBasim',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(name: '_EBelgeGelenGidenKutusuViewModelBase.changeBasim');
     try {
       return super.changeBasim(value);
     } finally {
@@ -557,9 +576,10 @@ mixin _$EBelgeGelenGidenKutusuViewModel on _EBelgeGelenGidenKutusuViewModelBase,
 
   @override
   void changeNetsisIslenme(String? value) {
-    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.changeNetsisIslenme',
-    );
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(
+          name: '_EBelgeGelenGidenKutusuViewModelBase.changeNetsisIslenme',
+        );
     try {
       return super.changeNetsisIslenme(value);
     } finally {

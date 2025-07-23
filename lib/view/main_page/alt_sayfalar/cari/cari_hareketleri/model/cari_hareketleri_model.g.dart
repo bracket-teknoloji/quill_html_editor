@@ -12,7 +12,9 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
   ..inckeyno = (json['INCKEYNO'] as num?)?.toInt()
   ..cariKodu = json['CARI_KODU'] as String?
   ..cariAdi = json['CARI_ADI'] as String?
-  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+  ..tarih = json['TARIH'] == null
+      ? null
+      : DateTime.parse(json['TARIH'] as String)
   ..aciklama = json['ACIKLAMA'] as String?
   ..borc = (json['BORC'] as num?)?.toDouble()
   ..hareketAciklama = json['HAREKET_ACIKLAMA'] as String?
@@ -28,7 +30,9 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
   ..dovizTuru = (json['DOVIZ_TURU'] as num?)?.toInt()
   ..dovizAdi = json['DOVIZ_ADI'] as String?
   ..refkey = json['REFKEY'] as String?
-  ..vadeTarihi = json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String)
+  ..vadeTarihi = json['VADE_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['VADE_TARIHI'] as String)
   ..belgeTipi = json['BELGE_TIPI'] as String?
   ..alacak = (json['ALACAK'] as num?)?.toDouble()
   ..bordroMu = json['BORDRO_MU'] as bool?
@@ -61,7 +65,8 @@ Map<String, dynamic> _$CariHareketleriModelToJson(
   if (instance.dovizTuru case final value?) 'DOVIZ_TURU': value,
   if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
   if (instance.refkey case final value?) 'REFKEY': value,
-  if (instance.vadeTarihi?.toIso8601String() case final value?) 'VADE_TARIHI': value,
+  if (instance.vadeTarihi?.toIso8601String() case final value?)
+    'VADE_TARIHI': value,
   if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
   if (instance.alacak case final value?) 'ALACAK': value,
   if (instance.bordroMu case final value?) 'BORDRO_MU': value,

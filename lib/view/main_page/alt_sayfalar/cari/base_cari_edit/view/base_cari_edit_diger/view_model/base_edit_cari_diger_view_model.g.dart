@@ -12,10 +12,11 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   Computed<String>? _$efaturaButonAciklamaComputed;
 
   @override
-  String get efaturaButonAciklama => (_$efaturaButonAciklamaComputed ??= Computed<String>(
-    () => super.efaturaButonAciklama,
-    name: '_BaseEditCariDigerViewModelBase.efaturaButonAciklama',
-  )).value;
+  String get efaturaButonAciklama =>
+      (_$efaturaButonAciklamaComputed ??= Computed<String>(
+        () => super.efaturaButonAciklama,
+        name: '_BaseEditCariDigerViewModelBase.efaturaButonAciklama',
+      )).value;
 
   late final _$modelAtom = Atom(
     name: '_BaseEditCariDigerViewModelBase.model',
@@ -45,16 +46,16 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
     return _$postFaturaTipiAsyncAction.run(() => super.postFaturaTipi());
   }
 
-  late final _$_BaseEditCariDigerViewModelBaseActionController = ActionController(
-    name: '_BaseEditCariDigerViewModelBase',
-    context: context,
-  );
+  late final _$_BaseEditCariDigerViewModelBaseActionController =
+      ActionController(
+        name: '_BaseEditCariDigerViewModelBase',
+        context: context,
+      );
 
   @override
   void changeModel(CariSaveRequestModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeModel',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeModel');
     try {
       return super.changeModel(value);
     } finally {
@@ -64,9 +65,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void setModel(CariSaveRequestModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.setModel',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.setModel');
     try {
       return super.setModel(value);
     } finally {
@@ -76,9 +76,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeBagliCari(CariListesiModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeBagliCari',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeBagliCari');
     try {
       return super.changeBagliCari(value);
     } finally {
@@ -88,9 +87,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeGrupKodu(String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeGrupKodu',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeGrupKodu');
     try {
       return super.changeGrupKodu(value);
     } finally {
@@ -100,9 +98,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeMuhaseKodu(StokMuhasebeKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeMuhaseKodu',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeMuhaseKodu');
     try {
       return super.changeMuhaseKodu(value);
     } finally {
@@ -112,9 +109,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeEfaturaMi() {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeEfaturaMi',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeEfaturaMi');
     try {
       return super.changeEfaturaMi();
     } finally {
@@ -124,9 +120,10 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKurFarkiBorc(StokMuhasebeKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKurFarkiBorc',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(
+          name: '_BaseEditCariDigerViewModelBase.changeKurFarkiBorc',
+        );
     try {
       return super.changeKurFarkiBorc(value);
     } finally {
@@ -136,9 +133,10 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKurFarkiAlacak(StokMuhasebeKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKurFarkiAlacak',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(
+          name: '_BaseEditCariDigerViewModelBase.changeKurFarkiAlacak',
+        );
     try {
       return super.changeKurFarkiAlacak(value);
     } finally {
@@ -148,9 +146,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeAdi(String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeAdi',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeAdi');
     try {
       return super.changeAdi(value);
     } finally {
@@ -160,9 +157,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeBilgi(String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeBilgi',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeBilgi');
     try {
       return super.changeBilgi(value);
     } finally {
@@ -172,9 +168,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKosul(CariKosullarModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKosul',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKosul');
     try {
       return super.changeKosul(value);
     } finally {
@@ -184,9 +179,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void setSenaryo(String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.setSenaryo',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.setSenaryo');
     try {
       return super.setSenaryo(value);
     } finally {
@@ -196,9 +190,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKilit(String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKilit',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKilit');
     try {
       return super.changeKilit(value);
     } finally {
@@ -208,9 +201,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKonum((double, double)? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKonum',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKonum');
     try {
       return super.changeKonum(value);
     } finally {
@@ -220,9 +212,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKod1(BaseGrupKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKod1',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKod1');
     try {
       return super.changeKod1(value);
     } finally {
@@ -232,9 +223,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKod2(BaseGrupKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKod2',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKod2');
     try {
       return super.changeKod2(value);
     } finally {
@@ -244,9 +234,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKod3(BaseGrupKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKod3',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKod3');
     try {
       return super.changeKod3(value);
     } finally {
@@ -256,9 +245,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKod4(BaseGrupKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKod4',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKod4');
     try {
       return super.changeKod4(value);
     } finally {
@@ -268,9 +256,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKod5(BaseGrupKoduModel? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKod5',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKod5');
     try {
       return super.changeKod5(value);
     } finally {
@@ -280,9 +267,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeSubeKodu(int? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeSubeKodu',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeSubeKodu');
     try {
       return super.changeSubeKodu(value);
     } finally {
@@ -292,9 +278,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeAciklama(int index, String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeAciklama',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeAciklama');
     try {
       return super.changeAciklama(index, value);
     } finally {
@@ -304,9 +289,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKullA(int index, String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKullA',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKullA');
     try {
       return super.changeKullA(index, value);
     } finally {
@@ -316,9 +300,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
 
   @override
   void changeKullN(int index, String? value) {
-    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController.startAction(
-      name: '_BaseEditCariDigerViewModelBase.changeKullN',
-    );
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKullN');
     try {
       return super.changeKullN(index, value);
     } finally {

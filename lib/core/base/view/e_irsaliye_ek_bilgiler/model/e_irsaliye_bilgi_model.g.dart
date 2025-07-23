@@ -6,32 +6,35 @@ part of 'e_irsaliye_bilgi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_EIrsaliyeBilgiModel _$EIrsaliyeBilgiModelFromJson(Map<String, dynamic> json) => _EIrsaliyeBilgiModel(
-  dorsePlaka1: json['DORSE_PLAKA1'] as String?,
-  dorsePlaka2: json['DORSE_PLAKA2'] as String?,
-  dorsePlaka3: json['DORSE_PLAKA3'] as String?,
-  plaka: json['PLAKA'] as String?,
-  sevktar: json['SEVKTAR'] == null ? null : DateTime.parse(json['SEVKTAR'] as String),
-  sofor1Aciklama: json['SOFOR_1_ACIKLAMA'] as String?,
-  sofor1Adi: json['SOFOR_1_ADI'] as String?,
-  sofor1KimlikNo: json['SOFOR_1_KIMLIK_NO'] as String?,
-  sofor1Soyadi: json['SOFOR_1_SOYADI'] as String?,
-  sofor2Aciklama: json['SOFOR_2_ACIKLAMA'] as String?,
-  sofor2Adi: json['SOFOR_2_ADI'] as String?,
-  sofor2KimlikNo: json['SOFOR_2_KIMLIK_NO'] as String?,
-  sofor2Soyadi: json['SOFOR_2_SOYADI'] as String?,
-  sofor3Aciklama: json['SOFOR_3_ACIKLAMA'] as String?,
-  sofor3Adi: json['SOFOR_3_ADI'] as String?,
-  sofor3KimlikNo: json['SOFOR_3_KIMLIK_NO'] as String?,
-  sofor3Soyadi: json['SOFOR_3_SOYADI'] as String?,
-  tasiyiciIl: json['TASIYICI_IL'] as String?,
-  tasiyiciIlce: json['TASIYICI_ILCE'] as String?,
-  tasiyiciPostakodu: json['TASIYICI_POSTAKODU'] as String?,
-  tasiyiciUlke: json['TASIYICI_ULKE'] as String?,
-  tasiyiciUnvan: json['TASIYICI_UNVAN'] as String?,
-  tasiyiciVkn: json['TASIYICI_VKN'] as String?,
-  sablonKodu: json['SABLON_KODU'] as String?,
-);
+_EIrsaliyeBilgiModel _$EIrsaliyeBilgiModelFromJson(Map<String, dynamic> json) =>
+    _EIrsaliyeBilgiModel(
+      dorsePlaka1: json['DORSE_PLAKA1'] as String?,
+      dorsePlaka2: json['DORSE_PLAKA2'] as String?,
+      dorsePlaka3: json['DORSE_PLAKA3'] as String?,
+      plaka: json['PLAKA'] as String?,
+      sevktar: json['SEVKTAR'] == null
+          ? null
+          : DateTime.parse(json['SEVKTAR'] as String),
+      sofor1Aciklama: json['SOFOR_1_ACIKLAMA'] as String?,
+      sofor1Adi: json['SOFOR_1_ADI'] as String?,
+      sofor1KimlikNo: json['SOFOR_1_KIMLIK_NO'] as String?,
+      sofor1Soyadi: json['SOFOR_1_SOYADI'] as String?,
+      sofor2Aciklama: json['SOFOR_2_ACIKLAMA'] as String?,
+      sofor2Adi: json['SOFOR_2_ADI'] as String?,
+      sofor2KimlikNo: json['SOFOR_2_KIMLIK_NO'] as String?,
+      sofor2Soyadi: json['SOFOR_2_SOYADI'] as String?,
+      sofor3Aciklama: json['SOFOR_3_ACIKLAMA'] as String?,
+      sofor3Adi: json['SOFOR_3_ADI'] as String?,
+      sofor3KimlikNo: json['SOFOR_3_KIMLIK_NO'] as String?,
+      sofor3Soyadi: json['SOFOR_3_SOYADI'] as String?,
+      tasiyiciIl: json['TASIYICI_IL'] as String?,
+      tasiyiciIlce: json['TASIYICI_ILCE'] as String?,
+      tasiyiciPostakodu: json['TASIYICI_POSTAKODU'] as String?,
+      tasiyiciUlke: json['TASIYICI_ULKE'] as String?,
+      tasiyiciUnvan: json['TASIYICI_UNVAN'] as String?,
+      tasiyiciVkn: json['TASIYICI_VKN'] as String?,
+      sablonKodu: json['SABLON_KODU'] as String?,
+    );
 
 Map<String, dynamic> _$EIrsaliyeBilgiModelToJson(
   _EIrsaliyeBilgiModel instance,

@@ -117,9 +117,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setFilterValue(String value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setFilterValue',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setFilterValue');
     try {
       return super.setFilterValue(value);
     } finally {
@@ -129,9 +128,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setBaslangicTarihi');
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -141,9 +139,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -153,9 +150,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setObservableList(List<BelgeKontrolModel>? list) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {
@@ -165,9 +161,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -177,9 +172,8 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {

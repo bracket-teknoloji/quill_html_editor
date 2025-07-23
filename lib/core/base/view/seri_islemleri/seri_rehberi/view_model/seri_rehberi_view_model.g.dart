@@ -12,10 +12,11 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
   Computed<ObservableList<SeriList>?>? _$filteredListComputed;
 
   @override
-  ObservableList<SeriList>? get filteredList => (_$filteredListComputed ??= Computed<ObservableList<SeriList>?>(
-    () => super.filteredList,
-    name: '_SeriRehberiViewModelBase.filteredList',
-  )).value;
+  ObservableList<SeriList>? get filteredList =>
+      (_$filteredListComputed ??= Computed<ObservableList<SeriList>?>(
+        () => super.filteredList,
+        name: '_SeriRehberiViewModelBase.filteredList',
+      )).value;
 
   late final _$observableListAtom = Atom(
     name: '_SeriRehberiViewModelBase.observableList',
@@ -106,9 +107,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
 
   @override
   void setObservableList(List<SeriList>? list) {
-    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController.startAction(
-      name: '_SeriRehberiViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
+        .startAction(name: '_SeriRehberiViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {
@@ -118,9 +118,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController.startAction(
-      name: '_SeriRehberiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
+        .startAction(name: '_SeriRehberiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -130,9 +129,8 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController.startAction(
-      name: '_SeriRehberiViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
+        .startAction(name: '_SeriRehberiViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {

@@ -202,12 +202,12 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
             children: [
               Expanded(
                 child: CustomWidgetWithLabel(
-                  text: "Kapalılar Hariç",
+                  text: "Kapalı belgeler listelenmesin",
                   isVertical: true,
                   child: Observer(
                     builder: (_) => Switch.adaptive(
                       value: viewModel.kapaliMi,
-                      onChanged: (value) => viewModel.setKapali(value ? "E" : "H"),
+                      onChanged: (value) => viewModel.setKapali(value ? "H" : "E"),
                     ),
                   ),
                 ),

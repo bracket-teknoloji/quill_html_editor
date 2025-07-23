@@ -45,16 +45,16 @@ mixin _$CariHareketRaporuViewModel on _CariHareketRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_CariHareketRaporuViewModelBaseActionController = ActionController(
-    name: '_CariHareketRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_CariHareketRaporuViewModelBaseActionController =
+      ActionController(
+        name: '_CariHareketRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController.startAction(
-      name: '_CariHareketRaporuViewModelBase.setFuture',
-    );
+    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController
+        .startAction(name: '_CariHareketRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -64,9 +64,8 @@ mixin _$CariHareketRaporuViewModel on _CariHareketRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController.startAction(
-      name: '_CariHareketRaporuViewModelBase.resetFuture',
-    );
+    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController
+        .startAction(name: '_CariHareketRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

@@ -19,12 +19,16 @@ FiyatGecmisiResponseModel _$FiyatGecmisiResponseModelFromJson(
   ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
   ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..fiyatSirasi = (json['FIYAT_SIRASI'] as num?)?.toInt()
-  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+  ..tarih = json['TARIH'] == null
+      ? null
+      : DateTime.parse(json['TARIH'] as String)
   ..fiyatTipi = json['FIYAT_TIPI'] as String?
   ..dovizAdi = json['DOVIZ_ADI'] as String?
   ..yapkod = json['YAPKOD'] as String?
   ..yazdirankul = json['YAZDIRANKUL'] as String?
-  ..yazdirmatarihi = json['YAZDIRMATARIHI'] == null ? null : DateTime.parse(json['YAZDIRMATARIHI'] as String)
+  ..yazdirmatarihi = json['YAZDIRMATARIHI'] == null
+      ? null
+      : DateTime.parse(json['YAZDIRMATARIHI'] as String)
   ..yazdirildi = json['YAZDIRILDI'] as String?;
 
 Map<String, dynamic> _$FiyatGecmisiResponseModelToJson(
@@ -45,6 +49,7 @@ Map<String, dynamic> _$FiyatGecmisiResponseModelToJson(
   if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
   if (instance.yapkod case final value?) 'YAPKOD': value,
   if (instance.yazdirankul case final value?) 'YAZDIRANKUL': value,
-  if (instance.yazdirmatarihi?.toIso8601String() case final value?) 'YAZDIRMATARIHI': value,
+  if (instance.yazdirmatarihi?.toIso8601String() case final value?)
+    'YAZDIRMATARIHI': value,
   if (instance.yazdirildi case final value?) 'YAZDIRILDI': value,
 };

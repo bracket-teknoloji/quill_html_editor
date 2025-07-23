@@ -13,10 +13,12 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   ObservableList<PaykerOdemeListesiModel>? get filteredList =>
-      (_$filteredListComputed ??= Computed<ObservableList<PaykerOdemeListesiModel>?>(
-        () => super.filteredList,
-        name: '_PaykerOdemeListesiViewModelBase.filteredList',
-      )).value;
+      (_$filteredListComputed ??=
+              Computed<ObservableList<PaykerOdemeListesiModel>?>(
+                () => super.filteredList,
+                name: '_PaykerOdemeListesiViewModelBase.filteredList',
+              ))
+          .value;
 
   late final _$filterModelAtom = Atom(
     name: '_PaykerOdemeListesiViewModelBase.filterModel',
@@ -156,16 +158,18 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
     return _$checkPermissionsAsyncAction.run(() => super.checkPermissions());
   }
 
-  late final _$_PaykerOdemeListesiViewModelBaseActionController = ActionController(
-    name: '_PaykerOdemeListesiViewModelBase',
-    context: context,
-  );
+  late final _$_PaykerOdemeListesiViewModelBaseActionController =
+      ActionController(
+        name: '_PaykerOdemeListesiViewModelBase',
+        context: context,
+      );
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerOdemeListesiViewModelBase.changeSearchBarStatus',
+        );
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -177,9 +181,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setDurum(bool? durum) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setDurum',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setDurum');
     try {
       return super.setDurum(durum);
     } finally {
@@ -191,9 +194,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setSelectedSort(MapEntry<String, String>? value) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setSelectedSort',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setSelectedSort');
     try {
       return super.setSelectedSort(value);
     } finally {
@@ -205,9 +207,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setBasTar(DateTime? basTar) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setBasTar',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setBasTar');
     try {
       return super.setBasTar(basTar);
     } finally {
@@ -219,9 +220,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setFirma(PaykerFirmaModel? model) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setFirma',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setFirma');
     try {
       return super.setFirma(model);
     } finally {
@@ -233,9 +233,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setBitTar(DateTime? bitTar) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setBitTar',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setBitTar');
     try {
       return super.setBitTar(bitTar);
     } finally {
@@ -247,9 +246,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setBankaId(int? bankaId) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setBankaId',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setBankaId');
     try {
       return super.setBankaId(bankaId);
     } finally {
@@ -261,9 +259,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setFirmaId(int? firmaId) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setFirmaId',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setFirmaId');
     try {
       return super.setFirmaId(firmaId);
     } finally {
@@ -275,9 +272,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setOrder(Order newOrder) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setOrder',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setOrder');
     try {
       return super.setOrder(newOrder);
     } finally {
@@ -289,9 +285,10 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setObservableList(List<PaykerOdemeListesiModel>? list) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerOdemeListesiViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {
@@ -303,9 +300,8 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(name: '_PaykerOdemeListesiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -317,9 +313,10 @@ mixin _$PaykerOdemeListesiViewModel on _PaykerOdemeListesiViewModelBase, Store {
 
   @override
   void addObservableList(List<PaykerOdemeListesiModel>? list) {
-    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeListesiViewModelBase.addObservableList',
-    );
+    final _$actionInfo = _$_PaykerOdemeListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerOdemeListesiViewModelBase.addObservableList',
+        );
     try {
       return super.addObservableList(list);
     } finally {

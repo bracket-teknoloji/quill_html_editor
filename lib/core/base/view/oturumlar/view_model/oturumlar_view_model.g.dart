@@ -12,10 +12,11 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
   Computed<ObservableList<AccountModel>?>? _$filteredListComputed;
 
   @override
-  ObservableList<AccountModel>? get filteredList => (_$filteredListComputed ??= Computed<ObservableList<AccountModel>?>(
-    () => super.filteredList,
-    name: '_OturumlarViewModelBase.filteredList',
-  )).value;
+  ObservableList<AccountModel>? get filteredList =>
+      (_$filteredListComputed ??= Computed<ObservableList<AccountModel>?>(
+        () => super.filteredList,
+        name: '_OturumlarViewModelBase.filteredList',
+      )).value;
 
   late final _$observableListAtom = Atom(
     name: '_OturumlarViewModelBase.observableList',

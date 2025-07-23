@@ -29,25 +29,32 @@ Map<String, dynamic> _$PaymentResponseModelToJson(
   if (instance.errorCode case final value?) 'ErrorCode': value,
   if (instance.orderNumber case final value?) 'OrderNumber': value,
   if (instance.transactionId case final value?) 'TransactionId': value,
-  if (instance.privateResponse?.toJson() case final value?) 'PrivateResponse': value,
+  if (instance.privateResponse?.toJson() case final value?)
+    'PrivateResponse': value,
 };
 
-_PrivateResponse _$PrivateResponseFromJson(Map<String, dynamic> json) => _PrivateResponse(
-  message: json['Message'] == null ? null : Message.fromJson(json['Message'] as Map<String, dynamic>),
-  verifyEnrollmentRequestId: json['VerifyEnrollmentRequestId'] as String?,
-  messageErrorCode: json['MessageErrorCode'] as String?,
-);
+_PrivateResponse _$PrivateResponseFromJson(Map<String, dynamic> json) =>
+    _PrivateResponse(
+      message: json['Message'] == null
+          ? null
+          : Message.fromJson(json['Message'] as Map<String, dynamic>),
+      verifyEnrollmentRequestId: json['VerifyEnrollmentRequestId'] as String?,
+      messageErrorCode: json['MessageErrorCode'] as String?,
+    );
 
 Map<String, dynamic> _$PrivateResponseToJson(
   _PrivateResponse instance,
 ) => <String, dynamic>{
   if (instance.message?.toJson() case final value?) 'Message': value,
-  if (instance.verifyEnrollmentRequestId case final value?) 'VerifyEnrollmentRequestId': value,
+  if (instance.verifyEnrollmentRequestId case final value?)
+    'VerifyEnrollmentRequestId': value,
   if (instance.messageErrorCode case final value?) 'MessageErrorCode': value,
 };
 
 _Message _$MessageFromJson(Map<String, dynamic> json) => _Message(
-  veRes: json['VERes'] == null ? null : VeRes.fromJson(json['VERes'] as Map<String, dynamic>),
+  veRes: json['VERes'] == null
+      ? null
+      : VeRes.fromJson(json['VERes'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$MessageToJson(_Message instance) => <String, dynamic>{

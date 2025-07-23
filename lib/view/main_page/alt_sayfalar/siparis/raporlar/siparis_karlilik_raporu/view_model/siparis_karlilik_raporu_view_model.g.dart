@@ -8,7 +8,8 @@ part of 'siparis_karlilik_raporu_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, Store {
+mixin _$SiparisKarlilikRaporuViewModel
+    on _SiparisKarlilikRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
     name: '_SiparisKarlilikRaporuViewModelBase.pdfModel',
     context: context,
@@ -63,16 +64,16 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
     });
   }
 
-  late final _$_SiparisKarlilikRaporuViewModelBaseActionController = ActionController(
-    name: '_SiparisKarlilikRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_SiparisKarlilikRaporuViewModelBaseActionController =
+      ActionController(
+        name: '_SiparisKarlilikRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisKarlilikRaporuViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -84,9 +85,10 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setTeslimCariKodu',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
@@ -98,9 +100,8 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setBelgeNo(String value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisKarlilikRaporuViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -112,9 +113,8 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setPlasiyer(String? value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setPlasiyer',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisKarlilikRaporuViewModelBase.setPlasiyer');
     try {
       return super.setPlasiyer(value);
     } finally {
@@ -126,9 +126,10 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setMaliyetTipi(String? value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setMaliyetTipi',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setMaliyetTipi',
+        );
     try {
       return super.setMaliyetTipi(value);
     } finally {
@@ -140,9 +141,10 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setUretimFiyatiDahilMi(String? value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setUretimFiyatiDahilMi',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setUretimFiyatiDahilMi',
+        );
     try {
       return super.setUretimFiyatiDahilMi(value);
     } finally {
@@ -154,9 +156,10 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setBaslangicTarihi',
+        );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -168,9 +171,10 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisKarlilikRaporuViewModelBase.setBitisTarihi',
+        );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -182,9 +186,8 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.setFuture',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisKarlilikRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -196,9 +199,8 @@ mixin _$SiparisKarlilikRaporuViewModel on _SiparisKarlilikRaporuViewModelBase, S
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisKarlilikRaporuViewModelBase.resetFuture',
-    );
+    final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisKarlilikRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

@@ -291,6 +291,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                       ),
                   ],
                 ),
+
                 Row(
                   children: [
                     if (yetkiController.satisOzelKod1AktifMi)
@@ -360,6 +361,20 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                     groupValue: viewModel.teslimatDurumuGroupValue,
                   ),
                 ),
+                
+        if (yetkiController.kontrolAciklamasiAktifMi(widget.widgetModel.editTipiEnum))
+                Observer(
+                  builder: (_) => SlideControllerWidget(
+                    title: "Kontrol Durumu",
+                    groupValue: viewModel.kontrolEdildiMi,
+                    childrenTitleList: viewModel.kontrolDurumuMap.keys.toList(),
+                    childrenValueList: viewModel.kontrolDurumuMap.values.toList(),
+                    filterOnChanged: (value) => viewModel.setKontrolEdildiMi(
+                      viewModel.kontrolDurumuMap.entries.toList()[value ?? 0].value,
+                    ),
+                  ),
+                ),
+
                 InkWell(
                   onTap: () async {
                     if (viewModel.grupKodList.ext.isNullOrEmpty) {

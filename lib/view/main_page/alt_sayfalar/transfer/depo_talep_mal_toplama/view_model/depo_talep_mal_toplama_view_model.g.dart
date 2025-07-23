@@ -8,7 +8,8 @@ part of 'depo_talep_mal_toplama_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$DepoTalepMalToplamaViewModel on _DepoTalepMalToplamaViewModelBase, Store {
+mixin _$DepoTalepMalToplamaViewModel
+    on _DepoTalepMalToplamaViewModelBase, Store {
   late final _$modelAtom = Atom(
     name: '_DepoTalepMalToplamaViewModelBase.model',
     context: context,
@@ -65,16 +66,16 @@ mixin _$DepoTalepMalToplamaViewModel on _DepoTalepMalToplamaViewModelBase, Store
     return _$saveKalemAsyncAction.run(() => super.saveKalem(kalem));
   }
 
-  late final _$_DepoTalepMalToplamaViewModelBaseActionController = ActionController(
-    name: '_DepoTalepMalToplamaViewModelBase',
-    context: context,
-  );
+  late final _$_DepoTalepMalToplamaViewModelBaseActionController =
+      ActionController(
+        name: '_DepoTalepMalToplamaViewModelBase',
+        context: context,
+      );
 
   @override
   void setModel(BaseSiparisEditModel value) {
-    final _$actionInfo = _$_DepoTalepMalToplamaViewModelBaseActionController.startAction(
-      name: '_DepoTalepMalToplamaViewModelBase.setModel',
-    );
+    final _$actionInfo = _$_DepoTalepMalToplamaViewModelBaseActionController
+        .startAction(name: '_DepoTalepMalToplamaViewModelBase.setModel');
     try {
       return super.setModel(value);
     } finally {
@@ -86,9 +87,8 @@ mixin _$DepoTalepMalToplamaViewModel on _DepoTalepMalToplamaViewModelBase, Store
 
   @override
   void setDepoList(DepoList value) {
-    final _$actionInfo = _$_DepoTalepMalToplamaViewModelBaseActionController.startAction(
-      name: '_DepoTalepMalToplamaViewModelBase.setDepoList',
-    );
+    final _$actionInfo = _$_DepoTalepMalToplamaViewModelBaseActionController
+        .startAction(name: '_DepoTalepMalToplamaViewModelBase.setDepoList');
     try {
       return super.setDepoList(value);
     } finally {

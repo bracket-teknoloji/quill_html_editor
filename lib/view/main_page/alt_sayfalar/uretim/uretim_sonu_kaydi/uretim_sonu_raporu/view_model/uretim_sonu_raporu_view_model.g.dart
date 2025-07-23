@@ -37,16 +37,16 @@ mixin _$UretimSonuRaporuViewModel on _UretimSonuRaporuViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_UretimSonuRaporuViewModelBaseActionController = ActionController(
-    name: '_UretimSonuRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_UretimSonuRaporuViewModelBaseActionController =
+      ActionController(
+        name: '_UretimSonuRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<StokHareketleriModel>? list) {
-    final _$actionInfo = _$_UretimSonuRaporuViewModelBaseActionController.startAction(
-      name: '_UretimSonuRaporuViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_UretimSonuRaporuViewModelBaseActionController
+        .startAction(name: '_UretimSonuRaporuViewModelBase.setObservableList');
     try {
       return super.setObservableList(list);
     } finally {

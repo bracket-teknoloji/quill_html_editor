@@ -8,7 +8,8 @@ part of 'base_talep_teklif_genel_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Store {
+mixin _$BaseTalepTeklifGenelViewModel
+    on _BaseTalepTeklifGenelViewModelBase, Store {
   late final _$kdvDahilAtom = Atom(
     name: '_BaseTalepTeklifGenelViewModelBase.kdvDahil',
     context: context,
@@ -55,16 +56,16 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
     return _$fiyatGuncelleAsyncAction.run(() => super.fiyatGuncelle());
   }
 
-  late final _$_BaseTalepTeklifGenelViewModelBaseActionController = ActionController(
-    name: '_BaseTalepTeklifGenelViewModelBase',
-    context: context,
-  );
+  late final _$_BaseTalepTeklifGenelViewModelBaseActionController =
+      ActionController(
+        name: '_BaseTalepTeklifGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void setCariAdi(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setCariAdi',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setCariAdi');
     try {
       return super.setCariAdi(value);
     } finally {
@@ -76,9 +77,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setExportTipi(MapEntry<String, int>? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setExportTipi',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setExportTipi');
     try {
       return super.setExportTipi(value);
     } finally {
@@ -90,9 +90,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setExportRefNo(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setExportRefNo',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setExportRefNo');
     try {
       return super.setExportRefNo(value);
     } finally {
@@ -104,9 +103,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -118,9 +116,10 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setTeslimCariAdi(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setTeslimCariAdi',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifGenelViewModelBase.setTeslimCariAdi',
+        );
     try {
       return super.setTeslimCariAdi(value);
     } finally {
@@ -132,9 +131,10 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setTeslimCariKodu',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifGenelViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
@@ -146,9 +146,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setDepoKodu(DepoList? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setDepoKodu',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setDepoKodu');
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -160,9 +159,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setOdemeKodu(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setOdemeKodu',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setOdemeKodu');
     try {
       return super.setOdemeKodu(value);
     } finally {
@@ -174,9 +172,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setKosulKodu(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setKosulKodu',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setKosulKodu');
     try {
       return super.setKosulKodu(value);
     } finally {
@@ -188,9 +185,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setOzelKod1(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setOzelKod1',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setOzelKod1');
     try {
       return super.setOzelKod1(value);
     } finally {
@@ -202,9 +198,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void changeKdvDahil(bool value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.changeKdvDahil',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.changeKdvDahil');
     try {
       return super.changeKdvDahil(value);
     } finally {
@@ -216,9 +211,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setBelgeTipi(int? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setBelgeTipi',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setBelgeTipi');
     try {
       return super.setBelgeTipi(value);
     } finally {
@@ -230,9 +224,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setOzelKod2(String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setOzelKod2',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setOzelKod2');
     try {
       return super.setOzelKod2(value);
     } finally {
@@ -244,9 +237,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setPlasiyer(PlasiyerList? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setPlasiyer',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setPlasiyer');
     try {
       return super.setPlasiyer(value);
     } finally {
@@ -258,9 +250,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setProje(BaseProjeModel? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setProje',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setProje');
     try {
       return super.setProje(value);
     } finally {
@@ -272,9 +263,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setTarih',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setTarih');
     try {
       return super.setTarih(value);
     } finally {
@@ -286,9 +276,10 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setTopluDepoKodu(int? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setTopluDepoKodu',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifGenelViewModelBase.setTopluDepoKodu',
+        );
     try {
       return super.setTopluDepoKodu(value);
     } finally {
@@ -300,9 +291,8 @@ mixin _$BaseTalepTeklifGenelViewModel on _BaseTalepTeklifGenelViewModelBase, Sto
 
   @override
   void setAciklama(int index, String? value) {
-    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifGenelViewModelBase.setAciklama',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setAciklama');
     try {
       return super.setAciklama(index, value);
     } finally {

@@ -62,9 +62,8 @@ mixin _$SeriBakiyeleriViewModel on _SeriBakiyeleriViewModelBase, Store {
 
   @override
   void setSeriList(List<SeriList>? listOfSeri) {
-    final _$actionInfo = _$_SeriBakiyeleriViewModelBaseActionController.startAction(
-      name: '_SeriBakiyeleriViewModelBase.setSeriList',
-    );
+    final _$actionInfo = _$_SeriBakiyeleriViewModelBaseActionController
+        .startAction(name: '_SeriBakiyeleriViewModelBase.setSeriList');
     try {
       return super.setSeriList(listOfSeri);
     } finally {
@@ -74,9 +73,8 @@ mixin _$SeriBakiyeleriViewModel on _SeriBakiyeleriViewModelBase, Store {
 
   @override
   void setStokKodu(String stokKodu) {
-    final _$actionInfo = _$_SeriBakiyeleriViewModelBaseActionController.startAction(
-      name: '_SeriBakiyeleriViewModelBase.setStokKodu',
-    );
+    final _$actionInfo = _$_SeriBakiyeleriViewModelBaseActionController
+        .startAction(name: '_SeriBakiyeleriViewModelBase.setStokKodu');
     try {
       return super.setStokKodu(stokKodu);
     } finally {
@@ -86,9 +84,8 @@ mixin _$SeriBakiyeleriViewModel on _SeriBakiyeleriViewModelBase, Store {
 
   @override
   void setBakiyeDurumu(String? bakiyeDurumu) {
-    final _$actionInfo = _$_SeriBakiyeleriViewModelBaseActionController.startAction(
-      name: '_SeriBakiyeleriViewModelBase.setBakiyeDurumu',
-    );
+    final _$actionInfo = _$_SeriBakiyeleriViewModelBaseActionController
+        .startAction(name: '_SeriBakiyeleriViewModelBase.setBakiyeDurumu');
     try {
       return super.setBakiyeDurumu(bakiyeDurumu);
     } finally {

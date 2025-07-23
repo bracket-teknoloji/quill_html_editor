@@ -159,16 +159,16 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_SiparisDurumRaporuViewModelBaseActionController = ActionController(
-    name: '_SiparisDurumRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_SiparisDurumRaporuViewModelBaseActionController =
+      ActionController(
+        name: '_SiparisDurumRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setSearchBar',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setSearchBar');
     try {
       return super.setSearchBar();
     } finally {
@@ -180,9 +180,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setSearchKey(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setSearchKey',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setSearchKey');
     try {
       return super.setSearchKey(value);
     } finally {
@@ -194,9 +193,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setDahaVarMi',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setDahaVarMi');
     try {
       return super.setDahaVarMi(value);
     } finally {
@@ -208,9 +206,10 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setKarsilanmaGroupValue(int value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setKarsilanmaGroupValue',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisDurumRaporuViewModelBase.setKarsilanmaGroupValue',
+        );
     try {
       return super.setKarsilanmaGroupValue(value);
     } finally {
@@ -222,9 +221,10 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setDurumGroupValue(int value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setDurumGroupValue',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisDurumRaporuViewModelBase.setDurumGroupValue',
+        );
     try {
       return super.setDurumGroupValue(value);
     } finally {
@@ -236,9 +236,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setKalemList(List<KalemModel?>? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setKalemList',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setKalemList');
     try {
       return super.setKalemList(value);
     } finally {
@@ -250,9 +249,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void addKalemList(List<KalemModel?>? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.addKalemList',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.addKalemList');
     try {
       return super.addKalemList(value);
     } finally {
@@ -264,9 +262,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setSiralama(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setSiralama',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setSiralama');
     try {
       return super.setSiralama(value);
     } finally {
@@ -278,9 +275,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setStokKodu',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setStokKodu');
     try {
       return super.setStokKodu(value);
     } finally {
@@ -292,9 +288,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -306,9 +301,10 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setTeslimCariKodu',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisDurumRaporuViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
@@ -320,9 +316,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -334,9 +329,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setBaslamaTarihi(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setBaslamaTarihi',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setBaslamaTarihi');
     try {
       return super.setBaslamaTarihi(value);
     } finally {
@@ -348,9 +342,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -362,9 +355,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void increaseSayfa() {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.increaseSayfa',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.increaseSayfa');
     try {
       return super.increaseSayfa();
     } finally {
@@ -376,9 +368,8 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
 
   @override
   void resetSayfa() {
-    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisDurumRaporuViewModelBase.resetSayfa',
-    );
+    final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisDurumRaporuViewModelBase.resetSayfa');
     try {
       return super.resetSayfa();
     } finally {

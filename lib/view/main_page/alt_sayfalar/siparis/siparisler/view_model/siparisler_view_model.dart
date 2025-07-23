@@ -1,6 +1,8 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
@@ -11,7 +13,7 @@ part "siparisler_view_model.g.dart";
 
 final class SiparislerViewModel = _SiparislerViewModelBase with _$SiparislerViewModel;
 
-abstract class _SiparislerViewModelBase with Store {
+abstract class _SiparislerViewModelBase with Store, MobxNetworkMixin {
   _SiparislerViewModelBase({required this.pickerBelgeTuru});
   //*for view
   final Map<String, String> siralaMap = {
@@ -24,6 +26,8 @@ abstract class _SiparislerViewModelBase with Store {
     "Vade Günü (A-Z)": "VADE_AZ",
     "Vade Günü (Z-A)": "VADE_ZA",
   };
+
+  final Map<String, String?> kontrolDurumuMap = {"Tümü": null, "Kontrol Edilenler": "E", "Kontrol Edilmeyenler": "H"};
 
   final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
 
@@ -167,6 +171,9 @@ abstract class _SiparislerViewModelBase with Store {
     musteriSiparisleriList = musteriSiparisleriList?..removeAt(index);
   }
 
+  @action
+  void setKontrolEdildiMi(String? value) => kontrolEdildiMi = value;
+
   //*for model
   SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(
     pickerBelgeTuru: pickerBelgeTuru,
@@ -182,6 +189,7 @@ abstract class _SiparislerViewModelBase with Store {
     arrKod3: getKod3,
     arrKod4: getKod4,
     arrKod5: getKod5,
+    kontrolEdildi: kontrolEdildiMi,
     ozelKod1: ozelKod1,
     ozelKod2: ozelKod2,
     cariKodu: cariKodu ?? "",
@@ -205,6 +213,9 @@ abstract class _SiparislerViewModelBase with Store {
 
   @observable
   String? ozelKod2;
+
+  @observable
+  String? kontrolEdildiMi;
 
   @observable
   int sayfa = 1;
@@ -307,6 +318,23 @@ abstract class _SiparislerViewModelBase with Store {
     setSearchText(null);
     setCariTipi(null);
     resetSayfa();
+  }
+
+  @action
+  Future<bool> setKontrolAciklama(BaseSiparisEditModel model) async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveFatura,
+      bodyModel: model,
+      queryParameters: BaseSiparisEditModel(
+        belgeNo: model.belgeNo,
+        kontrolAciklama: model.kontrolAciklama,
+        islemKodu: 12,
+        belgeTuru: model.belgeTuru,
+        pickerBelgeTuru: model.pickerBelgeTuru,
+        tag: "FaturaModel",
+      ).toJson(),
+    );
+    return result.isSuccess;
   }
 
   //* getters

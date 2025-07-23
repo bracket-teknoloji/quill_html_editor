@@ -8,6 +8,7 @@ import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -551,6 +552,19 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
             }
           },
         ),
+        if (yetkiController.kontrolAciklamasiAktifMi(widget.editTipiEnum))
+          Observer(
+                  builder: (_) => SlideControllerWidget(
+                    title: "Kontrol Durumu",
+                    groupValue: viewModel.kontrolEdildiMi,
+                    childrenTitleList: viewModel.kontrolDurumuMap.keys.toList(),
+                    childrenValueList: viewModel.kontrolDurumuMap.values.toList(),
+                    filterOnChanged: (value) => viewModel.setKontrolEdildiMi(
+                      viewModel.kontrolDurumuMap.entries.toList()[value ?? 0].value,
+                    ),
+                  ),
+                ),
+
         InkWell(
           onTap: () => viewModel.setKodlariGoster(),
           child: Row(

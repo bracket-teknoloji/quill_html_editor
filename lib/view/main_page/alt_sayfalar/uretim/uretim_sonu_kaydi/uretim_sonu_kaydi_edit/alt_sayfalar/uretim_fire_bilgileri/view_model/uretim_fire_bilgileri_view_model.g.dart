@@ -8,7 +8,8 @@ part of 'uretim_fire_bilgileri_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UretimFireBilgileriViewModel on _UretimFireBilgileriViewModelBase, Store {
+mixin _$UretimFireBilgileriViewModel
+    on _UretimFireBilgileriViewModelBase, Store {
   late final _$modelAtom = Atom(
     name: '_UretimFireBilgileriViewModelBase.model',
     context: context,
@@ -80,16 +81,16 @@ mixin _$UretimFireBilgileriViewModel on _UretimFireBilgileriViewModelBase, Store
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_UretimFireBilgileriViewModelBaseActionController = ActionController(
-    name: '_UretimFireBilgileriViewModelBase',
-    context: context,
-  );
+  late final _$_UretimFireBilgileriViewModelBaseActionController =
+      ActionController(
+        name: '_UretimFireBilgileriViewModelBase',
+        context: context,
+      );
 
   @override
   void addFireModel(KalemFireModel value) {
-    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController.startAction(
-      name: '_UretimFireBilgileriViewModelBase.addFireModel',
-    );
+    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController
+        .startAction(name: '_UretimFireBilgileriViewModelBase.addFireModel');
     try {
       return super.addFireModel(value);
     } finally {
@@ -101,9 +102,8 @@ mixin _$UretimFireBilgileriViewModel on _UretimFireBilgileriViewModelBase, Store
 
   @override
   void removeFireModel(KalemFireModel value) {
-    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController.startAction(
-      name: '_UretimFireBilgileriViewModelBase.removeFireModel',
-    );
+    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController
+        .startAction(name: '_UretimFireBilgileriViewModelBase.removeFireModel');
     try {
       return super.removeFireModel(value);
     } finally {
@@ -115,9 +115,8 @@ mixin _$UretimFireBilgileriViewModel on _UretimFireBilgileriViewModelBase, Store
 
   @override
   void setFireModel(KalemFireModel value) {
-    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController.startAction(
-      name: '_UretimFireBilgileriViewModelBase.setFireModel',
-    );
+    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController
+        .startAction(name: '_UretimFireBilgileriViewModelBase.setFireModel');
     try {
       return super.setFireModel(value);
     } finally {
@@ -129,9 +128,8 @@ mixin _$UretimFireBilgileriViewModel on _UretimFireBilgileriViewModelBase, Store
 
   @override
   void clearFireModel() {
-    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController.startAction(
-      name: '_UretimFireBilgileriViewModelBase.clearFireModel',
-    );
+    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController
+        .startAction(name: '_UretimFireBilgileriViewModelBase.clearFireModel');
     try {
       return super.clearFireModel();
     } finally {
@@ -143,9 +141,10 @@ mixin _$UretimFireBilgileriViewModel on _UretimFireBilgileriViewModelBase, Store
 
   @override
   void setObservableList(List<KalemFireModel>? list) {
-    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController.startAction(
-      name: '_UretimFireBilgileriViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_UretimFireBilgileriViewModelBaseActionController
+        .startAction(
+          name: '_UretimFireBilgileriViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {

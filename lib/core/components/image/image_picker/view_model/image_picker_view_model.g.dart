@@ -80,9 +80,8 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
 
   @override
   void setRequestModel(EvraklarRequestModel? model) {
-    final _$actionInfo = _$_ImagePickerViewModelBaseActionController.startAction(
-      name: '_ImagePickerViewModelBase.setRequestModel',
-    );
+    final _$actionInfo = _$_ImagePickerViewModelBaseActionController
+        .startAction(name: '_ImagePickerViewModelBase.setRequestModel');
     try {
       return super.setRequestModel(model);
     } finally {
@@ -92,9 +91,8 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
 
   @override
   void setImage(Uint8List? value) {
-    final _$actionInfo = _$_ImagePickerViewModelBaseActionController.startAction(
-      name: '_ImagePickerViewModelBase.setImage',
-    );
+    final _$actionInfo = _$_ImagePickerViewModelBaseActionController
+        .startAction(name: '_ImagePickerViewModelBase.setImage');
     try {
       return super.setImage(value);
     } finally {
@@ -104,9 +102,8 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
 
   @override
   void setIsProcessing(bool value) {
-    final _$actionInfo = _$_ImagePickerViewModelBaseActionController.startAction(
-      name: '_ImagePickerViewModelBase.setIsProcessing',
-    );
+    final _$actionInfo = _$_ImagePickerViewModelBaseActionController
+        .startAction(name: '_ImagePickerViewModelBase.setIsProcessing');
     try {
       return super.setIsProcessing(value);
     } finally {
@@ -116,9 +113,8 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
 
   @override
   void setByteData(String? value) {
-    final _$actionInfo = _$_ImagePickerViewModelBaseActionController.startAction(
-      name: '_ImagePickerViewModelBase.setByteData',
-    );
+    final _$actionInfo = _$_ImagePickerViewModelBaseActionController
+        .startAction(name: '_ImagePickerViewModelBase.setByteData');
     try {
       return super.setByteData(value);
     } finally {
@@ -128,9 +124,8 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
 
   @override
   void setBoyutByte(int? value) {
-    final _$actionInfo = _$_ImagePickerViewModelBaseActionController.startAction(
-      name: '_ImagePickerViewModelBase.setBoyutByte',
-    );
+    final _$actionInfo = _$_ImagePickerViewModelBaseActionController
+        .startAction(name: '_ImagePickerViewModelBase.setBoyutByte');
     try {
       return super.setBoyutByte(value);
     } finally {
@@ -140,9 +135,8 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_ImagePickerViewModelBaseActionController.startAction(
-      name: '_ImagePickerViewModelBase.setAciklama',
-    );
+    final _$actionInfo = _$_ImagePickerViewModelBaseActionController
+        .startAction(name: '_ImagePickerViewModelBase.setAciklama');
     try {
       return super.setAciklama(value);
     } finally {

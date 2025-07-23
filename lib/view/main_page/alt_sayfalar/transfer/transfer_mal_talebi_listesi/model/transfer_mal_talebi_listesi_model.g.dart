@@ -16,7 +16,9 @@ _TransferMalTalebiListesiModel _$TransferMalTalebiListesiModelFromJson(
   kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toInt(),
   miktar: (json['MIKTAR'] as num?)?.toDouble(),
   kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toDouble(),
-  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String),
   kayityapankul: json['KAYITYAPANKUL'] as String?,
   tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
   aciklama: json['ACIKLAMA'] as String?,
@@ -40,7 +42,8 @@ Map<String, dynamic> _$TransferMalTalebiListesiModelToJson(
   if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
   if (instance.miktar case final value?) 'MIKTAR': value,
   if (instance.kalanMiktar case final value?) 'KALAN_MIKTAR': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?)
+    'KAYITTARIHI': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
   if (instance.tamamlananMiktar case final value?) 'TAMAMLANAN_MIKTAR': value,
   if (instance.aciklama case final value?) 'ACIKLAMA': value,
@@ -49,5 +52,6 @@ Map<String, dynamic> _$TransferMalTalebiListesiModelToJson(
   if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
   if (instance.hedefSube case final value?) 'HEDEF_SUBE': value,
   if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?) 'KALEM_LIST': value,
+  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?)
+    'KALEM_LIST': value,
 };

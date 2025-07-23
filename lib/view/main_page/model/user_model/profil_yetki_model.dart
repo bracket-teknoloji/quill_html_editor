@@ -90,7 +90,7 @@ final class ProfilYetkiModel {
   @JsonKey(name: "sirket_KontrolluAktar_BelgeNoGoster")
   List<dynamic>? sirketKontrolluAktarBelgeNoGoster;
   @JsonKey(name: "sirket_KontrolAciklamasi_BelgeTipleri")
-  List<dynamic>? sirketKontrolAciklamasiBelgeTipleri;
+  List<String>? sirketKontrolAciklamasiBelgeTipleri;
   @JsonKey(name: "sirket_TLFiyatGelsin_BelgeTipleri")
   List<dynamic>? sirketTLFiyatGelsinBelgeTipleri;
   @JsonKey(name: "sirket_KalemKayitKontrol_BelgeTipleri")

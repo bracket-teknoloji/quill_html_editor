@@ -178,7 +178,12 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
 
   Observer fab() => Observer(
     builder: (_) => CustomFloatingActionButton(
-      isScrolledDown: viewModel.isScrollDown,
+      isScrolledDown:
+          viewModel.isScrollDown &&
+          (EditTipiEnum.values
+                  .firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue)
+                  ?.eklensinMi ??
+              false),
       onPressed: () async {
         final result = await Get.toNamed(
           "mainPage/talTekEdit",
@@ -376,6 +381,23 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
               groupValue: viewModel.siparislerRequestModel.siparisKarsilanmaDurumu,
             ),
           ),
+          if (yetkiController.kontrolAciklamasiAktifMi(
+            EditTipiEnum.values.firstWhereOrNull(
+              (element) => element.rawValue == widget.talepTeklifEnum.rawValue,
+            ),
+          ))
+            Observer(
+              builder: (_) => SlideControllerWidget(
+                title: "Kontrol Durumu",
+                groupValue: viewModel.kontrolEdildiMi,
+                childrenTitleList: viewModel.kontrolDurumuMap.keys.toList(),
+                childrenValueList: viewModel.kontrolDurumuMap.values.toList(),
+                filterOnChanged: (value) => viewModel.setKontrolEdildiMi(
+                  viewModel.kontrolDurumuMap.entries.toList()[value ?? 0].value,
+                ),
+              ),
+            ),
+
           InkWell(
             onTap: viewModel.changeGrupKodlariGoster,
             child: Row(

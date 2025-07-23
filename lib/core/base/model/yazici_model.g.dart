@@ -47,7 +47,9 @@ class YaziciModelAdapter extends TypeAdapter<YaziciModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is YaziciModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is YaziciModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class YaziciTipiAdapter extends TypeAdapter<YaziciTipi> {
@@ -106,7 +108,9 @@ class YaziciTipiAdapter extends TypeAdapter<YaziciTipi> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is YaziciTipiAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is YaziciTipiAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -121,13 +125,15 @@ _YaziciModel _$YaziciModelFromJson(Map<String, dynamic> json) => _YaziciModel(
   yazdirmaTipi: json['YAZDIRMA_TIPI'] as String?,
 );
 
-Map<String, dynamic> _$YaziciModelToJson(_YaziciModel instance) => <String, dynamic>{
-  if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
-  'MAC_ADRESI': instance.macAdresi,
-  if (_$YaziciTipiEnumMap[instance.yaziciTipi] case final value?) 'YAZICI_TIPI': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.yazdirmaTipi case final value?) 'YAZDIRMA_TIPI': value,
-};
+Map<String, dynamic> _$YaziciModelToJson(_YaziciModel instance) =>
+    <String, dynamic>{
+      if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
+      'MAC_ADRESI': instance.macAdresi,
+      if (_$YaziciTipiEnumMap[instance.yaziciTipi] case final value?)
+        'YAZICI_TIPI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.yazdirmaTipi case final value?) 'YAZDIRMA_TIPI': value,
+    };
 
 const _$YaziciTipiEnumMap = {
   YaziciTipi.sewooEtiket: 'sewooEtiket',

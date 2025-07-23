@@ -8,7 +8,8 @@ part of 'barkod_tanimla_kayitlari_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BarkodTanimlaKayitlariViewModel on _BarkodTanimlaKayitlariViewModelBase, Store {
+mixin _$BarkodTanimlaKayitlariViewModel
+    on _BarkodTanimlaKayitlariViewModelBase, Store {
   late final _$barkodTanimlaKayitlariAtom = Atom(
     name: '_BarkodTanimlaKayitlariViewModelBase.barkodTanimlaKayitlari',
     context: context,
@@ -71,16 +72,16 @@ mixin _$BarkodTanimlaKayitlariViewModel on _BarkodTanimlaKayitlariViewModelBase,
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_BarkodTanimlaKayitlariViewModelBaseActionController = ActionController(
-    name: '_BarkodTanimlaKayitlariViewModelBase',
-    context: context,
-  );
+  late final _$_BarkodTanimlaKayitlariViewModelBaseActionController =
+      ActionController(
+        name: '_BarkodTanimlaKayitlariViewModelBase',
+        context: context,
+      );
 
   @override
   void setStokKodu(String? stokKodu) {
-    final _$actionInfo = _$_BarkodTanimlaKayitlariViewModelBaseActionController.startAction(
-      name: '_BarkodTanimlaKayitlariViewModelBase.setStokKodu',
-    );
+    final _$actionInfo = _$_BarkodTanimlaKayitlariViewModelBaseActionController
+        .startAction(name: '_BarkodTanimlaKayitlariViewModelBase.setStokKodu');
     try {
       return super.setStokKodu(stokKodu);
     } finally {
@@ -92,9 +93,11 @@ mixin _$BarkodTanimlaKayitlariViewModel on _BarkodTanimlaKayitlariViewModelBase,
 
   @override
   void setBarkodTanimlaKayitlari(List<BarkodTanimlaKayitlariModel>? list) {
-    final _$actionInfo = _$_BarkodTanimlaKayitlariViewModelBaseActionController.startAction(
-      name: '_BarkodTanimlaKayitlariViewModelBase.setBarkodTanimlaKayitlari',
-    );
+    final _$actionInfo = _$_BarkodTanimlaKayitlariViewModelBaseActionController
+        .startAction(
+          name:
+              '_BarkodTanimlaKayitlariViewModelBase.setBarkodTanimlaKayitlari',
+        );
     try {
       return super.setBarkodTanimlaKayitlari(list);
     } finally {

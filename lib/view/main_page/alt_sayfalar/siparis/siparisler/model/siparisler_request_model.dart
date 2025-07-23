@@ -16,6 +16,7 @@ sealed class SiparislerRequestModel with _$SiparislerRequestModel {
     String? ozelKod2,
     String? cariTipi,
     String? miktarGetir,
+    String? kontrolEdildi,
     @JsonKey(name: "SIRALAMA") String? siralama,
     String? siparisKarsilanmaDurumu,
     String? ozelKod1,

@@ -8,7 +8,8 @@ part of 'siparis_teslim_raporu_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store {
+mixin _$SiparisTeslimRaporuViewModel
+    on _SiparisTeslimRaporuViewModelBase, Store {
   late final _$pdfModelAtom = Atom(
     name: '_SiparisTeslimRaporuViewModelBase.pdfModel',
     context: context,
@@ -81,16 +82,16 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
     });
   }
 
-  late final _$_SiparisTeslimRaporuViewModelBaseActionController = ActionController(
-    name: '_SiparisTeslimRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_SiparisTeslimRaporuViewModelBaseActionController =
+      ActionController(
+        name: '_SiparisTeslimRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setStokKodu',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setStokKodu');
     try {
       return super.setStokKodu(value);
     } finally {
@@ -102,9 +103,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -116,9 +116,10 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setTeslimCariKodu(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setTeslimCariKodu',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisTeslimRaporuViewModelBase.setTeslimCariKodu',
+        );
     try {
       return super.setTeslimCariKodu(value);
     } finally {
@@ -130,9 +131,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setBelgeNo(String value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -144,9 +144,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setVergiNo(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setVergiNo',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setVergiNo');
     try {
       return super.setVergiNo(value);
     } finally {
@@ -158,9 +157,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setKapali(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setKapali',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setKapali');
     try {
       return super.setKapali(value);
     } finally {
@@ -172,9 +170,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setDurum(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setDurum',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setDurum');
     try {
       return super.setDurum(value);
     } finally {
@@ -186,9 +183,10 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(
+          name: '_SiparisTeslimRaporuViewModelBase.setBaslangicTarihi',
+        );
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -200,9 +198,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -214,9 +211,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.setFuture',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -228,9 +224,8 @@ mixin _$SiparisTeslimRaporuViewModel on _SiparisTeslimRaporuViewModelBase, Store
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
-      name: '_SiparisTeslimRaporuViewModelBase.resetFuture',
-    );
+    final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
+        .startAction(name: '_SiparisTeslimRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

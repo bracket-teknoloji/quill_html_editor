@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/listener/mouse_right_click_listener.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -301,6 +302,20 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                   ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
               ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
             ),
+            if (yetkiController.kontrolAciklamasiAktifMi(widget.editTipiEnum))
+            if (model.kontrolAciklama case final value?)
+              Row(
+                children: [
+                  const Icon(
+                    Icons.check_outlined,
+                    size: UIHelper.highSize,
+                    color: ColorPalette.mantis,
+                  ),
+                  Text(
+                    value,
+                  ).paddingSymmetric(vertical: UIHelper.lowSize),
+                ],
+              ),
             Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
             Text("Cari Kodu: ${model.cariKodu ?? ""}"),
             if (model.teslimCari != null) Text("Teslim Cari: ${model.teslimCari}"),

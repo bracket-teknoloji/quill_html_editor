@@ -114,9 +114,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setSearchBar',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setSearchBar');
     try {
       return super.setSearchBar();
     } finally {
@@ -126,9 +125,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setIsScrolledDown(bool value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setIsScrolledDown',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setIsScrolledDown');
     try {
       return super.setIsScrolledDown(value);
     } finally {
@@ -138,9 +136,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -150,9 +147,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setBaslangicTarihi');
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -162,9 +158,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setBitisTarihi',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -174,9 +169,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setYeri(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setYeri',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setYeri');
     try {
       return super.setYeri(value);
     } finally {
@@ -186,9 +180,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setVerenCari(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setVerenCari',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setVerenCari');
     try {
       return super.setVerenCari(value);
     } finally {
@@ -198,9 +191,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setVerilenCari(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setVerilenCari',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setVerilenCari');
     try {
       return super.setVerilenCari(value);
     } finally {
@@ -210,9 +202,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBanka(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setBanka',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setBanka');
     try {
       return super.setBanka(value);
     } finally {
@@ -222,9 +213,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setVadeTarihi(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setVadeTarihi',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setVadeTarihi');
     try {
       return super.setVadeTarihi(value);
     } finally {
@@ -234,9 +224,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setDurumu(String? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setDurumu',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setDurumu');
     try {
       return super.setDurumu(value);
     } finally {
@@ -246,9 +235,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setSirala(String value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setSirala',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setSirala');
     try {
       return super.setSirala(value);
     } finally {
@@ -258,9 +246,8 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setBelgeTipi(String value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setBelgeTipi',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setBelgeTipi');
     try {
       return super.setBelgeTipi(value);
     } finally {
@@ -270,9 +257,10 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
 
   @override
   void setCekSenetListesiListesi(List<CekSenetListesiModel>? value) {
-    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController.startAction(
-      name: '_CekSenetListesiViewModelBase.setCekSenetListesiListesi',
-    );
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetListesiViewModelBase.setCekSenetListesiListesi',
+        );
     try {
       return super.setCekSenetListesiListesi(value);
     } finally {

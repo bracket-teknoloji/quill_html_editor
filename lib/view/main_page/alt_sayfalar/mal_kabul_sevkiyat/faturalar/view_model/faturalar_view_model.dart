@@ -50,6 +50,8 @@ abstract class _FaturalarViewModelBase
     "Vade Günü (A-Z)": "VADE_GUNU_AZ",
     "Vade Günü (Z-A)": "VADE_GUNU_ZA",
   };
+  final Map<String, String?> kontrolDurumuMap = {"Tümü": null, "Kontrol Edilenler": "E", "Kontrol Edilmeyenler": "H"};
+
 
   final Map<String, dynamic> tipiMap = {
     "Alıcı": "A",
@@ -86,13 +88,40 @@ abstract class _FaturalarViewModelBase
     iadeMi: false,
     faturalasmaGoster: true,
   );
+  @action
+  void setKontrolEdildiMi(String? value) {
+    kontrolEdildiMi = value;
+    faturaRequestModel = faturaRequestModel.copyWith(kontrolEdildi: value);
+  }
 
+
+  @action
+  Future<bool> setKontrolAciklama(BaseSiparisEditModel model) async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveFatura,
+      bodyModel: model,
+      queryParameters: BaseSiparisEditModel(
+        belgeNo: model.belgeNo,
+        kontrolAciklama: model.kontrolAciklama,
+        islemKodu: 12,
+        belgeTuru: model.belgeTuru,
+        pickerBelgeTuru: model.pickerBelgeTuru,
+        tag: "FaturaModel",
+      ).toJson(),
+    );
+    return result.isSuccess;
+  }
   @observable
   ObservableMap<String, dynamic>? paramData;
 
   @override
   @observable
   bool isScrollDown = true;
+
+
+  @observable
+  String? kontrolEdildiMi;
+
 
   @observable
   bool searchBar = false;

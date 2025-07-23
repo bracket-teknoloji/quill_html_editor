@@ -45,16 +45,16 @@ mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_AylikMizanRaporuViewModelBaseActionController = ActionController(
-    name: '_AylikMizanRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_AylikMizanRaporuViewModelBaseActionController =
+      ActionController(
+        name: '_AylikMizanRaporuViewModelBase',
+        context: context,
+      );
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController.startAction(
-      name: '_AylikMizanRaporuViewModelBase.setFuture',
-    );
+    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController
+        .startAction(name: '_AylikMizanRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -64,9 +64,8 @@ mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController.startAction(
-      name: '_AylikMizanRaporuViewModelBase.resetFuture',
-    );
+    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController
+        .startAction(name: '_AylikMizanRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {
@@ -76,9 +75,8 @@ mixin _$AylikMizanRaporuViewModel on _AylikMizanRaporuViewModelBase, Store {
 
   @override
   void changeMuhasebeKodu(String? value) {
-    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController.startAction(
-      name: '_AylikMizanRaporuViewModelBase.changeMuhasebeKodu',
-    );
+    final _$actionInfo = _$_AylikMizanRaporuViewModelBaseActionController
+        .startAction(name: '_AylikMizanRaporuViewModelBase.changeMuhasebeKodu');
     try {
       return super.changeMuhasebeKodu(value);
     } finally {

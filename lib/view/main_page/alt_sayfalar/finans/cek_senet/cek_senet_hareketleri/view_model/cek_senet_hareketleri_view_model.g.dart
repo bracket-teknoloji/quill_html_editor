@@ -8,7 +8,8 @@ part of 'cek_senet_hareketleri_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CekSenetHareketleriViewModel on _CekSenetHareketleriViewModelBase, Store {
+mixin _$CekSenetHareketleriViewModel
+    on _CekSenetHareketleriViewModelBase, Store {
   late final _$cekSenetListesiModelAtom = Atom(
     name: '_CekSenetHareketleriViewModelBase.cekSenetListesiModel',
     context: context,
@@ -65,16 +66,18 @@ mixin _$CekSenetHareketleriViewModel on _CekSenetHareketleriViewModelBase, Store
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_CekSenetHareketleriViewModelBaseActionController = ActionController(
-    name: '_CekSenetHareketleriViewModelBase',
-    context: context,
-  );
+  late final _$_CekSenetHareketleriViewModelBaseActionController =
+      ActionController(
+        name: '_CekSenetHareketleriViewModelBase',
+        context: context,
+      );
 
   @override
   void setCekSenetListesiModel(CekSenetListesiModel model) {
-    final _$actionInfo = _$_CekSenetHareketleriViewModelBaseActionController.startAction(
-      name: '_CekSenetHareketleriViewModelBase.setCekSenetListesiModel',
-    );
+    final _$actionInfo = _$_CekSenetHareketleriViewModelBaseActionController
+        .startAction(
+          name: '_CekSenetHareketleriViewModelBase.setCekSenetListesiModel',
+        );
     try {
       return super.setCekSenetListesiModel(model);
     } finally {
@@ -86,9 +89,11 @@ mixin _$CekSenetHareketleriViewModel on _CekSenetHareketleriViewModelBase, Store
 
   @override
   void setCekSenetHareketleriListesi(List<CekSenetHareketleriModel> list) {
-    final _$actionInfo = _$_CekSenetHareketleriViewModelBaseActionController.startAction(
-      name: '_CekSenetHareketleriViewModelBase.setCekSenetHareketleriListesi',
-    );
+    final _$actionInfo = _$_CekSenetHareketleriViewModelBaseActionController
+        .startAction(
+          name:
+              '_CekSenetHareketleriViewModelBase.setCekSenetHareketleriListesi',
+        );
     try {
       return super.setCekSenetHareketleriListesi(list);
     } finally {

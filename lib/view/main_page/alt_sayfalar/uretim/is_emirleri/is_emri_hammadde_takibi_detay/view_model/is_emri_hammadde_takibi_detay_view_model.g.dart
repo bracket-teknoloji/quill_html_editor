@@ -8,14 +8,16 @@ part of 'is_emri_hammadde_takibi_detay_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$IsEmriHammaddeTakibiDetayViewModel on _IsEmriHammaddeTakibiDetayViewModelBase, Store {
+mixin _$IsEmriHammaddeTakibiDetayViewModel
+    on _IsEmriHammaddeTakibiDetayViewModelBase, Store {
   Computed<ObservableList<bool>>? _$valueListComputed;
 
   @override
-  ObservableList<bool> get valueList => (_$valueListComputed ??= Computed<ObservableList<bool>>(
-    () => super.valueList,
-    name: '_IsEmriHammaddeTakibiDetayViewModelBase.valueList',
-  )).value;
+  ObservableList<bool> get valueList =>
+      (_$valueListComputed ??= Computed<ObservableList<bool>>(
+        () => super.valueList,
+        name: '_IsEmriHammaddeTakibiDetayViewModelBase.valueList',
+      )).value;
 
   late final _$observableListAtom = Atom(
     name: '_IsEmriHammaddeTakibiDetayViewModelBase.observableList',
@@ -95,16 +97,18 @@ mixin _$IsEmriHammaddeTakibiDetayViewModel on _IsEmriHammaddeTakibiDetayViewMode
     return _$deleteItemAsyncAction.run(() => super.deleteItem(model));
   }
 
-  late final _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController = ActionController(
-    name: '_IsEmriHammaddeTakibiDetayViewModelBase',
-    context: context,
-  );
+  late final _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController =
+      ActionController(
+        name: '_IsEmriHammaddeTakibiDetayViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<IsEmriHammaddeTakibiDetayModel>? list) {
-    final _$actionInfo = _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
-      name: '_IsEmriHammaddeTakibiDetayViewModelBase.setObservableList',
-    );
+    final _$actionInfo =
+        _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
+          name: '_IsEmriHammaddeTakibiDetayViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {
@@ -116,9 +120,10 @@ mixin _$IsEmriHammaddeTakibiDetayViewModel on _IsEmriHammaddeTakibiDetayViewMode
 
   @override
   void setSelectedTipi(String? value) {
-    final _$actionInfo = _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
-      name: '_IsEmriHammaddeTakibiDetayViewModelBase.setSelectedTipi',
-    );
+    final _$actionInfo =
+        _$_IsEmriHammaddeTakibiDetayViewModelBaseActionController.startAction(
+          name: '_IsEmriHammaddeTakibiDetayViewModelBase.setSelectedTipi',
+        );
     try {
       return super.setSelectedTipi(value);
     } finally {

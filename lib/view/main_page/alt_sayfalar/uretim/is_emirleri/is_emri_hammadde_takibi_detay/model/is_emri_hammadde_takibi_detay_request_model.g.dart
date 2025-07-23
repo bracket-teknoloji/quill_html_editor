@@ -6,7 +6,8 @@ part of 'is_emri_hammadde_takibi_detay_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_IsEmriHammaddeTakibiDetayRequestModel _$IsEmriHammaddeTakibiDetayRequestModelFromJson(Map<String, dynamic> json) =>
+_IsEmriHammaddeTakibiDetayRequestModel
+_$IsEmriHammaddeTakibiDetayRequestModelFromJson(Map<String, dynamic> json) =>
     _IsEmriHammaddeTakibiDetayRequestModel(
       takipno: (json['TAKIPNO'] as num?)?.toInt(),
       tip: json['TIP'] as String?,

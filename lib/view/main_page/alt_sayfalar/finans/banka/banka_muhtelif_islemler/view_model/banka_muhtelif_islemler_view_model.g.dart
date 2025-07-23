@@ -8,7 +8,8 @@ part of 'banka_muhtelif_islemler_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, Store {
+mixin _$BankaMuhtelifIslemlerViewModel
+    on _BankaMuhtelifIslemlerViewModelBase, Store {
   late final _$dovizKurlariListesiAtom = Atom(
     name: '_BankaMuhtelifIslemlerViewModelBase.dovizKurlariListesi',
     context: context,
@@ -105,16 +106,16 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
     return _$getDovizlerAsyncAction.run(() => super.getDovizler());
   }
 
-  late final _$_BankaMuhtelifIslemlerViewModelBaseActionController = ActionController(
-    name: '_BankaMuhtelifIslemlerViewModelBase',
-    context: context,
-  );
+  late final _$_BankaMuhtelifIslemlerViewModelBaseActionController =
+      ActionController(
+        name: '_BankaMuhtelifIslemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void setBelgeTuru(String? belgeTuru) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setBelgeTuru',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setBelgeTuru');
     try {
       return super.setBelgeTuru(belgeTuru);
     } finally {
@@ -126,9 +127,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setTarih(DateTime? tarih) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setTarih',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setTarih');
     try {
       return super.setTarih(tarih);
     } finally {
@@ -140,9 +140,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setSeriNo(String? seriNo) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setSeriNo',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setSeriNo');
     try {
       return super.setSeriNo(seriNo);
     } finally {
@@ -154,9 +153,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setHesapNo(String? hesapNo) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setHesapNo',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setHesapNo');
     try {
       return super.setHesapNo(hesapNo);
     } finally {
@@ -168,9 +166,10 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setMuhasebeKodu(String? muhasebeKodu) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setMuhasebeKodu',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setMuhasebeKodu',
+        );
     try {
       return super.setMuhasebeKodu(muhasebeKodu);
     } finally {
@@ -182,9 +181,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setDovizTipi(int? dovizTipi) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setDovizTipi',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setDovizTipi');
     try {
       return super.setDovizTipi(dovizTipi);
     } finally {
@@ -196,9 +194,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setTutar(double? tutar) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setTutar',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setTutar');
     try {
       return super.setTutar(tutar);
     } finally {
@@ -210,9 +207,10 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setDovizTutari(double? dovizTutari) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setDovizTutari',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setDovizTutari',
+        );
     try {
       return super.setDovizTutari(dovizTutari);
     } finally {
@@ -224,9 +222,10 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setPlasiyerKodu(String? plasiyerKodu) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setPlasiyerKodu',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setPlasiyerKodu',
+        );
     try {
       return super.setPlasiyerKodu(plasiyerKodu);
     } finally {
@@ -238,9 +237,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setProjeKodu(String? projeKodu) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setProjeKodu',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setProjeKodu');
     try {
       return super.setProjeKodu(projeKodu);
     } finally {
@@ -252,9 +250,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setAciklama(String? aciklama) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setAciklama',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setAciklama');
     try {
       return super.setAciklama(aciklama);
     } finally {
@@ -266,9 +263,10 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setDovizKurlariListesi',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(
+          name: '_BankaMuhtelifIslemlerViewModelBase.setDovizKurlariListesi',
+        );
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
@@ -280,9 +278,8 @@ mixin _$BankaMuhtelifIslemlerViewModel on _BankaMuhtelifIslemlerViewModelBase, S
 
   @override
   void setSeriList(List<SeriModel>? value) {
-    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController.startAction(
-      name: '_BankaMuhtelifIslemlerViewModelBase.setSeriList',
-    );
+    final _$actionInfo = _$_BankaMuhtelifIslemlerViewModelBaseActionController
+        .startAction(name: '_BankaMuhtelifIslemlerViewModelBase.setSeriList');
     try {
       return super.setSeriList(value);
     } finally {

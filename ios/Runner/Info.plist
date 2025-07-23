@@ -57,7 +57,7 @@
 		<key>CFBundleSignature</key>
 		<string>????</string>
 		<key>CFBundleVersion</key>
-		<string>472</string>
+		<string>473</string>
 		<key>FirebaseAppDelegateProxyEnabled</key>
 		<true />
 		<key>ITSAppUsesNonExemptEncryption</key>

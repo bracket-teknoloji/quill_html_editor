@@ -73,16 +73,18 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_BaseStokEditGenelViewModelBaseActionController = ActionController(
-    name: '_BaseStokEditGenelViewModelBase',
-    context: context,
-  );
+  late final _$_BaseStokEditGenelViewModelBaseActionController =
+      ActionController(
+        name: '_BaseStokEditGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void changeGrupKoduListesi(int grupkodu, List<BaseGrupKoduModel>? value) {
-    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-      name: '_BaseStokEditGenelViewModelBase.changeGrupKoduListesi',
-    );
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(
+          name: '_BaseStokEditGenelViewModelBase.changeGrupKoduListesi',
+        );
     try {
       return super.changeGrupKoduListesi(grupkodu, value);
     } finally {
@@ -92,9 +94,8 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
 
   @override
   void setAdi(String? value) {
-    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-      name: '_BaseStokEditGenelViewModelBase.setAdi',
-    );
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setAdi');
     try {
       return super.setAdi(value);
     } finally {
@@ -104,9 +105,8 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
 
   @override
   void setImage(String? value) {
-    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-      name: '_BaseStokEditGenelViewModelBase.setImage',
-    );
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setImage');
     try {
       return super.setImage(value);
     } finally {
@@ -116,9 +116,8 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
 
   @override
   void setDepoKodu(int? value) {
-    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-      name: '_BaseStokEditGenelViewModelBase.setDepoKodu',
-    );
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setDepoKodu');
     try {
       return super.setDepoKodu(value);
     } finally {
@@ -128,9 +127,8 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
 
   @override
   void setSube(IsletmeModel? value) {
-    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-      name: '_BaseStokEditGenelViewModelBase.setSube',
-    );
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setSube');
     try {
       return super.setSube(value);
     } finally {
@@ -140,9 +138,8 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
 
   @override
   void setMuhasebeKodu(StokMuhasebeKoduModel? model) {
-    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-      name: '_BaseStokEditGenelViewModelBase.setMuhasebeKodu',
-    );
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setMuhasebeKodu');
     try {
       return super.setMuhasebeKodu(model);
     } finally {
@@ -152,9 +149,8 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
 
   @override
   void setGrupKodu(int index, BaseGrupKoduModel model) {
-    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController.startAction(
-      name: '_BaseStokEditGenelViewModelBase.setGrupKodu',
-    );
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setGrupKodu');
     try {
       return super.setGrupKodu(index, model);
     } finally {

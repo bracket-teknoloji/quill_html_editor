@@ -8,14 +8,16 @@ part of 'base_transfer_editing_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store {
+mixin _$BaseTransferEditingViewModel
+    on _BaseTransferEditingViewModelBase, Store {
   Computed<BaseSiparisEditModel>? _$modelComputed;
 
   @override
-  BaseSiparisEditModel get model => (_$modelComputed ??= Computed<BaseSiparisEditModel>(
-    () => super.model,
-    name: '_BaseTransferEditingViewModelBase.model',
-  )).value;
+  BaseSiparisEditModel get model =>
+      (_$modelComputed ??= Computed<BaseSiparisEditModel>(
+        () => super.model,
+        name: '_BaseTransferEditingViewModelBase.model',
+      )).value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
@@ -154,16 +156,18 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
     );
   }
 
-  late final _$_BaseTransferEditingViewModelBaseActionController = ActionController(
-    name: '_BaseTransferEditingViewModelBase',
-    context: context,
-  );
+  late final _$_BaseTransferEditingViewModelBaseActionController =
+      ActionController(
+        name: '_BaseTransferEditingViewModelBase',
+        context: context,
+      );
 
   @override
   void changeUpdateKalemler() {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.changeUpdateKalemler',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferEditingViewModelBase.changeUpdateKalemler',
+        );
     try {
       return super.changeUpdateKalemler();
     } finally {
@@ -175,9 +179,8 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void changeIsValid() {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.changeIsValid',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.changeIsValid');
     try {
       return super.changeIsValid();
     } finally {
@@ -189,9 +192,8 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void changePageIndex(int value) {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.changePageIndex',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.changePageIndex');
     try {
       return super.changePageIndex(value);
     } finally {
@@ -203,9 +205,10 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void changeIsLastPage(bool value) {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.changeIsLastPage',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferEditingViewModelBase.changeIsLastPage',
+        );
     try {
       return super.changeIsLastPage(value);
     } finally {
@@ -217,9 +220,8 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void setLoading(bool value) {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.setLoading',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.setLoading');
     try {
       return super.setLoading(value);
     } finally {
@@ -231,9 +233,8 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void changeFuture() {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.changeFuture',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.changeFuture');
     try {
       return super.changeFuture();
     } finally {
@@ -245,9 +246,10 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.changeYeniKaydaHazirlaMi',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTransferEditingViewModelBase.changeYeniKaydaHazirlaMi',
+        );
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {
@@ -259,9 +261,8 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void setCariKodu(CariListesiModel? value) {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -273,9 +274,8 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void setBelgeNo(List<BaseSiparisEditModel>? value) {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -287,9 +287,8 @@ mixin _$BaseTransferEditingViewModel on _BaseTransferEditingViewModelBase, Store
 
   @override
   void setKalemList(List<KalemModel>? value) {
-    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController.startAction(
-      name: '_BaseTransferEditingViewModelBase.setKalemList',
-    );
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.setKalemList');
     try {
       return super.setKalemList(value);
     } finally {

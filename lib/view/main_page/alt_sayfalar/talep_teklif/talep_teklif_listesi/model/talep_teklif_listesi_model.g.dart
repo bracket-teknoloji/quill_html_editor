@@ -10,10 +10,16 @@ _TalepTeklifListesiModel _$TalepTeklifListesiModelFromJson(
   Map<String, dynamic> json,
 ) => _TalepTeklifListesiModel(
   cariDovizli: json['CARI_DOVIZLI'] as bool?,
-  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String),
   tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
-  teslimTarihi: json['TESLIM_TARIHI'] == null ? null : DateTime.parse(json['TESLIM_TARIHI'] as String),
-  vadeTarihi: json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String),
+  teslimTarihi: json['TESLIM_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['TESLIM_TARIHI'] as String),
+  vadeTarihi: json['VADE_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['VADE_TARIHI'] as String),
   dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
   genelIskonto1: (json['GENEL_ISKONTO1'] as num?)?.toDouble(),
   genelIskonto2: (json['GENEL_ISKONTO2'] as num?)?.toDouble(),
@@ -91,10 +97,13 @@ Map<String, dynamic> _$TalepTeklifListesiModelToJson(
   _TalepTeklifListesiModel instance,
 ) => <String, dynamic>{
   if (instance.cariDovizli case final value?) 'CARI_DOVIZLI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?)
+    'KAYITTARIHI': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.teslimTarihi?.toIso8601String() case final value?) 'TESLIM_TARIHI': value,
-  if (instance.vadeTarihi?.toIso8601String() case final value?) 'VADE_TARIHI': value,
+  if (instance.teslimTarihi?.toIso8601String() case final value?)
+    'TESLIM_TARIHI': value,
+  if (instance.vadeTarihi?.toIso8601String() case final value?)
+    'VADE_TARIHI': value,
   if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
   if (instance.genelIskonto1 case final value?) 'GENEL_ISKONTO1': value,
   if (instance.genelIskonto2 case final value?) 'GENEL_ISKONTO2': value,
@@ -114,7 +123,8 @@ Map<String, dynamic> _$TalepTeklifListesiModelToJson(
   if (instance.tipi case final value?) 'TIPI': value,
   if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
   if (instance.tempSipList case final value?) 'TEMP_SIP_LIST': value,
-  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?) 'KALEM_LIST': value,
+  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?)
+    'KALEM_LIST': value,
   if (instance.acik1 case final value?) 'ACIK1': value,
   if (instance.acik2 case final value?) 'ACIK2': value,
   if (instance.acik3 case final value?) 'ACIK3': value,

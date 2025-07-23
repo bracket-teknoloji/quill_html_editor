@@ -45,7 +45,10 @@ class DepoListAdapter extends TypeAdapter<DepoList> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is DepoListAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      identical(this, other) ||
+      other is DepoListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class NetFectDizaynListAdapter extends TypeAdapter<NetFectDizaynList> {
@@ -109,7 +112,9 @@ class NetFectDizaynListAdapter extends TypeAdapter<NetFectDizaynList> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NetFectDizaynListAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is NetFectDizaynListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class YaziciListAdapter extends TypeAdapter<YaziciList> {
@@ -146,7 +151,9 @@ class YaziciListAdapter extends TypeAdapter<YaziciList> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is YaziciListAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is YaziciListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -166,27 +173,36 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..mapCariEkAlanlar = (json['MapCariEkAlanlar'] as List<dynamic>?)
       ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..sabitSayfalamaOgeSayisi = (json['sabitSayfalamaOgeSayisi'] as num?)?.toInt() ?? 25
-  ..netsisOndalikResponseModel = (json['_NetsisOndalikResponseModel'] as List<dynamic>?)
-      ?.map(
-        (e) => NetsisOndalikResponseModel.fromJson(e as Map<String, dynamic>),
-      )
+  ..sabitSayfalamaOgeSayisi =
+      (json['sabitSayfalamaOgeSayisi'] as num?)?.toInt() ?? 25
+  ..netsisOndalikResponseModel =
+      (json['_NetsisOndalikResponseModel'] as List<dynamic>?)
+          ?.map(
+            (e) =>
+                NetsisOndalikResponseModel.fromJson(e as Map<String, dynamic>),
+          )
+          .toList()
+  ..depoList = (json['DepoList'] as List<dynamic>?)
+      ?.map((e) => DepoList.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..depoList = (json['DepoList'] as List<dynamic>?)?.map((e) => DepoList.fromJson(e as Map<String, dynamic>)).toList()
   ..dovizList = (json['DovizList'] as List<dynamic>?)
       ?.map((e) => DovizList.fromJson(e as Map<String, dynamic>))
       .toList()
   ..satirAcikBaslikList = (json['SatirAcikBaslikList'] as List<dynamic>?)
       ?.map((e) => SatirAcikBaslikList.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..kasaList = (json['KasaList'] as List<dynamic>?)?.map((e) => KasaList.fromJson(e as Map<String, dynamic>)).toList()
+  ..kasaList = (json['KasaList'] as List<dynamic>?)
+      ?.map((e) => KasaList.fromJson(e as Map<String, dynamic>))
+      .toList()
   ..plasiyerList = (json['PlasiyerList'] as List<dynamic>?)
       ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
       .toList()
   ..plasiyerListTumu = (json['PlasiyerListTumu'] as List<dynamic>?)
       ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..subeList = (json['SubeList'] as List<dynamic>?)?.map((e) => SubeList.fromJson(e as Map<String, dynamic>)).toList()
+  ..subeList = (json['SubeList'] as List<dynamic>?)
+      ?.map((e) => SubeList.fromJson(e as Map<String, dynamic>))
+      .toList()
   ..talTekParam = (json['TalTekParam'] as List<dynamic>?)
       ?.map((e) => TalTekParam.fromJson(e as Map<String, dynamic>))
       .toList()
@@ -261,14 +277,16 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisFarkliTeslimCariAktif = json['AlisFarkliTeslimCariAktif'] as bool?
   ..alisMalFazMiktarIskontoAcik = json['AlisMalFazMiktarIskontoAcik'] as bool?
   ..alisSatirKademeliIskontoAcik = json['AlisSatirKademeliIskontoAcik'] as bool?
-  ..alisSatirKademeliIskontoSayisi = (json['AlisSatirKademeliIskontoSayisi'] as num?)?.toInt()
+  ..alisSatirKademeliIskontoSayisi =
+      (json['AlisSatirKademeliIskontoSayisi'] as num?)?.toInt()
   ..alisGenIsk1Aktif = json['AlisGenIsk1Aktif'] as bool?
   ..alisGenIsk2Aktif = json['AlisGenIsk2Aktif'] as bool?
   ..alisGenIsk3Aktif = json['AlisGenIsk3Aktif'] as bool?
   ..alisTopluDepoAktif = json['AlisTopluDepoAktif'] as bool?
   ..alisStokDepoKarttanGelsin = json['AlisStokDepoKarttanGelsin'] as bool?
   ..alisGenellikleKdvHaric = json['AlisGenellikleKDVHaric'] as bool?
-  ..alisFarkliOlcuBirimleriKullan = json['AlisFarkliOlcuBirimleriKullan'] as bool?
+  ..alisFarkliOlcuBirimleriKullan =
+      json['AlisFarkliOlcuBirimleriKullan'] as bool?
   ..alisDovizAktif = json['AlisDovizAktif'] as bool?
   ..alisSatirdaKdvSor = json['AlisSatirdaKDVSor'] as bool?
   ..alisSatirdaAciklamalarAktif = json['AlisSatirdaAciklamalarAktif'] as bool?
@@ -279,7 +297,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisTevkifatPayda = (json['AlisTevkifatPayda'] as num?)?.toInt()
   ..alisFaturaFiyatSifirGecilsin = json['AlisFaturaFiyatSifirGecilsin'] as bool?
   ..alisFazlaTeslimat = json['AlisFazlaTeslimat'] as bool?
-  ..alisDovizTakipHangiDeger = (json['AlisDovizTakipHangiDeger'] as num?)?.toInt()
+  ..alisDovizTakipHangiDeger = (json['AlisDovizTakipHangiDeger'] as num?)
+      ?.toInt()
   ..alisHizmetAktif = json['AlisHizmetAktif'] as bool?
   ..alisHizmetDepoKodu = (json['AlisHizmetDepoKodu'] as num?)?.toInt()
   ..alisMiktar2Sor = json['AlisMiktar2Sor'] as bool?
@@ -289,7 +308,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisCariIskSatiraUygula = json['AlisCariIskSatiraUygula'] as bool?
   ..seriUygulamasiAcik = json['SeriUygulamasiAcik'] as bool?
   ..sirketDovizUygulamasiAcik = json['SirketDovizUygulamasiAcik'] as bool?
-  ..sirketDovizUygulamasiDovizKodu = (json['SirketDovizUygulamasiDovizKodu'] as num?)?.toInt()
+  ..sirketDovizUygulamasiDovizKodu =
+      (json['SirketDovizUygulamasiDovizKodu'] as num?)?.toInt()
   ..plasiyerUygulamasi = json['PlasiyerUygulamasi'] as bool?
   ..paraBirimi = json['ParaBirimi'] as String?
   ..bankaEntegre = json['BankaEntegre'] as bool?
@@ -319,8 +339,10 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisKosulSatirdaSor = json['SatisKosulSatirdaSor'] as bool?
   ..satisFarkliTeslimCariAktif = json['SatisFarkliTeslimCariAktif'] as bool?
   ..satisMalFazMiktarIskontoAcik = json['SatisMalFazMiktarIskontoAcik'] as bool?
-  ..satisSatirKademeliIskontoAcik = json['SatisSatirKademeliIskontoAcik'] as bool?
-  ..satisSatirKademeliIskontoSayisi = (json['SatisSatirKademeliIskontoSayisi'] as num?)?.toInt()
+  ..satisSatirKademeliIskontoAcik =
+      json['SatisSatirKademeliIskontoAcik'] as bool?
+  ..satisSatirKademeliIskontoSayisi =
+      (json['SatisSatirKademeliIskontoSayisi'] as num?)?.toInt()
   ..satisSatirdaKdvSor = json['SatisSatirdaKDVSor'] as bool?
   ..satisGenIsk1Aktif = json['SatisGenIsk1Aktif'] as bool?
   ..satisGenIsk2Aktif = json['SatisGenIsk2Aktif'] as bool?
@@ -328,7 +350,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisTopluDepoAktif = json['SatisTopluDepoAktif'] as bool?
   ..satisStokDepoKarttanGelsin = json['SatisStokDepoKarttanGelsin'] as bool?
   ..satisGenellikleKdvHaric = json['SatisGenellikleKDVHaric'] as bool?
-  ..satisFarkliOlcuBirimleriKullan = json['SatisFarkliOlcuBirimleriKullan'] as bool?
+  ..satisFarkliOlcuBirimleriKullan =
+      json['SatisFarkliOlcuBirimleriKullan'] as bool?
   ..satisCariRiskTakibi = json['SatisCariRiskTakibi'] as String?
   ..satisDovizAktif = json['SatisDovizAktif'] as bool?
   ..satisSatirdaAciklamalarAktif = json['SatisSatirdaAciklamalarAktif'] as bool?
@@ -337,9 +360,11 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisEkMaliyet2Adi = json['SatisEkMaliyet2Adi'] as String?
   ..satisTevkifatPay = (json['SatisTevkifatPay'] as num?)?.toInt()
   ..satisTevkifatPayda = (json['SatisTevkifatPayda'] as num?)?.toInt()
-  ..satisFaturaFiyatSifirGecilsin = json['SatisFaturaFiyatSifirGecilsin'] as bool?
+  ..satisFaturaFiyatSifirGecilsin =
+      json['SatisFaturaFiyatSifirGecilsin'] as bool?
   ..satisFazlaTeslimat = json['SatisFazlaTeslimat'] as bool?
-  ..satisDovizTakipHangiDeger = (json['SatisDovizTakipHangiDeger'] as num?)?.toInt()
+  ..satisDovizTakipHangiDeger = (json['SatisDovizTakipHangiDeger'] as num?)
+      ?.toInt()
   ..satisHizmetAktif = json['SatisHizmetAktif'] as bool?
   ..satisHizmetDepoKodu = (json['SatisHizmetDepoKodu'] as num?)?.toInt()
   ..satisMiktar2Sor = json['SatisMiktar2Sor'] as bool?
@@ -360,56 +385,73 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..serideAyOlsun = json['SerideAyOlsun'] as bool?
   ..serideGunOlsun = json['SerideGunOlsun'] as bool?
   ..seriUzunlugu = (json['SeriUzunlugu'] as num?)?.toInt()
-  ..seriEkAlanList = (json['SeriEkAlanList'] as List<dynamic>?)?.map((e) => e as String).toList()
+  ..seriEkAlanList = (json['SeriEkAlanList'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList()
   ..eFaturaAktif = json['EFaturaAktif'] as bool?
   ..seriEFatura = json['Seri_EFatura'] as String?
   ..eFaturaSenaryoDegistir = json['EFaturaSenaryoDegistir'] as bool?
   ..eIrsaliyeAktif = json['EIrsaliyeAktif'] as bool?
   ..seriEIrsaliye = json['SeriEIrsaliye'] as String?
-  ..arrEIrsSeri = (json['ArrEIrsSeri'] as List<dynamic>?)?.map((e) => e as String).toList()
-  ..arrEFatSeri = (json['ArrEFatSeri'] as List<dynamic>?)?.map((e) => e as String).toList()
-  ..arrEArSeri = (json['ArrEArSeri'] as List<dynamic>?)?.map((e) => e as String).toList()
+  ..arrEIrsSeri = (json['ArrEIrsSeri'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList()
+  ..arrEFatSeri = (json['ArrEFatSeri'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList()
+  ..arrEArSeri = (json['ArrEArSeri'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList()
   ..seriEArsiv = json['Seri_EArsiv'] as String?
   ..uretimEkAlanKullan = json['UretimEkAlanKullan'] as bool?
-  ..ozelFaturaIadeMaliyetiZorunlu = json['OzelFaturaIadeMaliyetiZorunlu'] as bool?
+  ..ozelFaturaIadeMaliyetiZorunlu =
+      json['OzelFaturaIadeMaliyetiZorunlu'] as bool?
   ..bankaKKartiKasayaIsle = json['bankaKKartiKasayaIsle'] as bool?
-  ..kayitliBankaHesapTipleri = (json['KayitliBankaHesapTipleri'] as List<dynamic>?)
-      ?.map((e) => (e as num).toInt())
-      .toList()
+  ..kayitliBankaHesapTipleri =
+      (json['KayitliBankaHesapTipleri'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList()
   ..kkNoZorunluDegil = json['KKNoZorunluDegil'] as bool?
   ..fifoLifoYontem = json['FifoLifoYontem'] as String?
   ..cariAktiviteUygulamasi = json['CariAktiviteUygulamasi'] as String?
   ..cariAktiviteTipleri = (json['CariAktiviteTipleri'] as List<dynamic>?)
       ?.map((e) => CariAktiviteTipleri.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..cariAktiviteEkAlanlar = (json['CariAktiviteEkAlanlar'] as List<dynamic>?)?.map((e) => (e as num).toInt()).toList()
+  ..cariAktiviteEkAlanlar = (json['CariAktiviteEkAlanlar'] as List<dynamic>?)
+      ?.map((e) => (e as num).toInt())
+      .toList()
   ..satisCariDovizTipiniKullan = json['SatisCariDovizTipiniKullan'] as bool?
   ..alisCariDovizTipiniKullan = json['AlisCariDovizTipiniKullan'] as bool?
-  ..fatuKontrolAciklamasiAktif = (json['Fatu_KontrolAciklamasiAktif'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList()
-  ..satisFiyatGrubuSorulacakAlan = json['SatisFiyatGrubuSorulacakAlan'] as String?
+  ..fatuKontrolAciklamasiAktif =
+      (json['Fatu_KontrolAciklamasiAktif'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..satisFiyatGrubuSorulacakAlan =
+      json['SatisFiyatGrubuSorulacakAlan'] as String?
   ..siparisFarkliSubeUyg = json['Siparis_FarkliSubeUyg'] as String?
   ..satisIskEkSahadanGelsin = json['SatisIskEkSahadanGelsin'] as String?
   ..satisIsk1Saha = json['SatisIsk1Saha'] as String?
   ..satisIsk1Kullanim = json['SatisIsk1Kullanim'] as String?
   ..uretimMalTopHangiHucrede = json['Uretim_MalTop_HangiHucrede'] as bool?
-  ..uretimMalTopFazlaTeslimYapilabilir = json['Uretim_MalTop_FazlaTeslimYapilabilir'] as bool?
+  ..uretimMalTopFazlaTeslimYapilabilir =
+      json['Uretim_MalTop_FazlaTeslimYapilabilir'] as bool?
   ..uretimUskSeriGirilsin = json['Uretim_USK_SeriGirilsin'] as bool?
   ..finansBankaIslemModulu = json['Finans_BankaIslemModulu'] as String?
   ..finansBankaTcmbBankaKodu = json['Finans_BankaTcmbBankaKodu'] as String?
   ..finansBankaTcmbSubeKodu = json['Finans_BankaTcmbSubeKodu'] as String?
-  ..finansCekSenOzelOrtalamaVadeGunuHesapla = (json['Finans_CekSenOzelOrtalamaVadeGunuHesapla'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList()
+  ..finansCekSenOzelOrtalamaVadeGunuHesapla =
+      (json['Finans_CekSenOzelOrtalamaVadeGunuHesapla'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
   ..stokYapRehberTipi = json['Stok_Yap_RehberTipi'] as String?
   ..stokKanbanBarkodEslemeUyg = json['Stok_KanbanBarkodEslemeUyg'] as String?
   ..stokSeriParcalamaUyg = json['Stok_SeriParcalamaUyg'] as String?
-  ..stokDetayliAramaAlanlar = (json['Stok_DetayliAramaAlanlar'] as List<dynamic>?)
-      ?.map(
-        (e) => StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>),
-      )
-      .toList()
+  ..stokDetayliAramaAlanlar =
+      (json['Stok_DetayliAramaAlanlar'] as List<dynamic>?)
+          ?.map(
+            (e) => StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>),
+          )
+          .toList()
   ..genelKonumTakibiYapilsin = json['Genel_KonumTakibiYapilsin'] as String?
   ..genelKonumTakibiDakika = (json['Genel_KonumTakibiDakika'] as num?)?.toInt()
   ..genelKonumTakibiMetre = (json['Genel_KonumTakibiMetre'] as num?)?.toInt()
@@ -421,20 +463,27 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..sevkEmriTerminalIrsaliye = json['SevkEmriTerminalIrsaliye'] as bool?
   ..sevkEmriTerminalTransfer = json['SevkEmriTerminalTransfer'] as bool?
   ..sevkEmriHucreKontrol = json['SevkEmriHucreKontrol'] as bool?
-  ..sevkEmriMalTopGorunecekAlanlar = (json['SevkEmriMalTopGorunecekAlanlar'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList()
+  ..sevkEmriMalTopGorunecekAlanlar =
+      (json['SevkEmriMalTopGorunecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
   ..seriSevkIrsaliye = json['Seri_SevkIrsaliye'] as String?
   ..kontrolluBelgeAktarimAktif = json['KontrolluBelgeAktarimAktif'] as bool?
-  ..kontrolluBelgeAktarimBelgeNoGoster = json['KontrolluBelgeAktarimBelgeNoGoster'] as List<dynamic>?
+  ..kontrolluBelgeAktarimBelgeNoGoster =
+      json['KontrolluBelgeAktarimBelgeNoGoster'] as List<dynamic>?
   ..eMustahsilAktif = json['EMustahsilAktif'] as bool?
   ..muhasebeEntegre = json['MuhasebeEntegre'] as bool?
   ..muhFislerdeRefKodSorulsun = json['MuhFislerdeRefKodSorulsun'] as bool?
-  ..muhFislerdeRefKodSorulsunAktif = json['MuhFislerdeRefKodSorulsun_Aktif'] as bool?
-  ..muhFislerdeRefKodSorulsunPasif = json['MuhFislerdeRefKodSorulsun_Pasif'] as bool?
-  ..muhFislerdeRefKodSorulsunGelir = json['MuhFislerdeRefKodSorulsun_Gelir'] as bool?
-  ..muhFislerdeRefKodSorulsunGider = json['MuhFislerdeRefKodSorulsun_Gider'] as bool?
-  ..muhFislerdeRefKodSorulsunNazim = json['MuhFislerdeRefKodSorulsun_Nazim'] as bool?
+  ..muhFislerdeRefKodSorulsunAktif =
+      json['MuhFislerdeRefKodSorulsun_Aktif'] as bool?
+  ..muhFislerdeRefKodSorulsunPasif =
+      json['MuhFislerdeRefKodSorulsun_Pasif'] as bool?
+  ..muhFislerdeRefKodSorulsunGelir =
+      json['MuhFislerdeRefKodSorulsun_Gelir'] as bool?
+  ..muhFislerdeRefKodSorulsunGider =
+      json['MuhFislerdeRefKodSorulsun_Gider'] as bool?
+  ..muhFislerdeRefKodSorulsunNazim =
+      json['MuhFislerdeRefKodSorulsun_Nazim'] as bool?
   ..alisOzelKod1Aktif = json['AlisOzelKod1Aktif'] as bool?
   ..alisOzelKod2Aktif = json['AlisOzelKod2Aktif'] as bool?
   ..alisOzelKod2Tablodan = json['AlisOzelKod2Tablodan'] as bool?
@@ -447,32 +496,42 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..datSatirBazindaDepoSorulsun = json['DAT_SatirBazindaDepoSorulsun'] as bool?
   ..stokResimleriKlasorden = json['StokResimleriKlasorden'] as bool?
   ..alisEkAlan1Aktif = json['AlisEkAlan1Aktif'] as bool?
-  ..alisEkMaliyet1KdvOrani = (json['AlisEkMaliyet1KdvOrani'] as num?)?.toDouble()
+  ..alisEkMaliyet1KdvOrani = (json['AlisEkMaliyet1KdvOrani'] as num?)
+      ?.toDouble()
   ..satisAciklamaAlaniGorunsun = json['SatisAciklamaAlaniGorunsun'] as bool?
   ..alisAciklamaAlaniGorunsun = json['AlisAciklamaAlaniGorunsun'] as bool?
-  ..satisMusteriSiptenSaticiSipAktif = json['SatisMusteriSiptenSaticiSipAktif'] as bool?
+  ..satisMusteriSiptenSaticiSipAktif =
+      json['SatisMusteriSiptenSaticiSipAktif'] as bool?
   ..satisSipOnayAktif = json['SatisSipOnayAktif'] as bool?
   ..satisMuhRefKodSorulsun = json['SatisMuhRefKodSorulsun'] as bool?
   ..alisMuhRefKodSorulsun = json['AlisMuhRefKodSorulsun'] as bool?
-  ..satisEkMaliyet1KdvOrani = (json['SatisEkMaliyet1KdvOrani'] as num?)?.toDouble()
-  ..fatuSatisTeslimCarideBaglanmisCarilerSecilsin = json['FatuSatisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
-  ..fatuAlisTeslimCarideBaglanmisCarilerSecilsin = json['FatuAlisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..satisEkMaliyet1KdvOrani = (json['SatisEkMaliyet1KdvOrani'] as num?)
+      ?.toDouble()
+  ..fatuSatisTeslimCarideBaglanmisCarilerSecilsin =
+      json['FatuSatisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..fatuAlisTeslimCarideBaglanmisCarilerSecilsin =
+      json['FatuAlisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
   ..seriUrunBazindaTekOlsun = json['SeriUrunBazindaTekOlsun'] as bool?
   ..eArsivAktif = json['EArsivAktif'] as bool?
-  ..satisTeslimCarideBaglanmisCarilerSecilsin = json['SatisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
-  ..alisTeslimCarideBaglanmisCarilerSecilsin = json['AlisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..satisTeslimCarideBaglanmisCarilerSecilsin =
+      json['SatisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..alisTeslimCarideBaglanmisCarilerSecilsin =
+      json['AlisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
   ..faturaSatisIadeUygulamasi = json['FaturaSatisIadeUygulamasi'] as bool?
   ..cariRotaUygulamasi = json['CariRotaUygulamasi'] as String?
   ..sevkEmriYeniKullaniciSistemi = json['sevkEmriYeniKullaniciSistemi'] as bool?
   ..fatuEkMaliyet3FieldVar = json['fatuEkMaliyet3FieldVar'] as bool?
   ..clientTimeoutSeconds = (json['ClientTimeoutSeconds'] as num?)?.toInt()
-  ..alisIhracatMiktarStoklaraGecsin = json['AlisIhracatMiktarStoklaraGecsin'] as bool?
-  ..satisIhracatMiktarStoklaraGecsin = json['SatisIhracatMiktarStoklaraGecsin'] as bool?
+  ..alisIhracatMiktarStoklaraGecsin =
+      json['AlisIhracatMiktarStoklaraGecsin'] as bool?
+  ..satisIhracatMiktarStoklaraGecsin =
+      json['SatisIhracatMiktarStoklaraGecsin'] as bool?
   ..seriOpsiyonelSahalar = (json['SeriOpsiyonelSahalar'] as num?)?.toInt()
   ..uretimMiktar2Uyg = json['UretimMiktar2Uyg'] as bool?
   ..uretimFireUyg = json['UretimFireUyg'] as bool?
   ..uretimFireDetayUyg = json['UretimFireDetayUyg'] as bool?
-  ..netsisOzelParamFaturaOzelIletisimVergisi = json['NetsisOzelParam_FaturaOzelIletisimVergisi'] as bool?
+  ..netsisOzelParamFaturaOzelIletisimVergisi =
+      json['NetsisOzelParam_FaturaOzelIletisimVergisi'] as bool?
   ..eMailSunucu = json['eMail_Sunucu'] as String?
   ..eMailMailAdresi = json['eMail_MailAdresi'] as String?
   ..eMailParola = json['eMail_Parola'] as String?
@@ -489,8 +548,10 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..netOpenXePosta = json['NetOpenXEPosta'] as String?
   ..netOpenXLog = json['NetOpenXLog'] as String?
   ..sayfalamaKayitSayisi = (json['SayfalamaKayitSayisi'] as num?)?.toInt()
-  ..fieldVarSatisIrsaliyeFaturalasmayacak = json['FieldVar_SatisIrsaliyeFaturalasmayacak'] as bool?
-  ..fieldVarSatisFaturasiIadeFaturaNo = json['FieldVar_SatisFaturasiIadeFaturaNo'] as bool?;
+  ..fieldVarSatisIrsaliyeFaturalasmayacak =
+      json['FieldVar_SatisIrsaliyeFaturalasmayacak'] as bool?
+  ..fieldVarSatisFaturasiIadeFaturaNo =
+      json['FieldVar_SatisFaturasiIadeFaturaNo'] as bool?;
 
 Map<String, dynamic> _$ParamModelToJson(
   ParamModel instance,
@@ -499,155 +560,279 @@ Map<String, dynamic> _$ParamModelToJson(
   if (instance.kullanici case final value?) 'KULLANICI': value,
   if (instance.sirket case final value?) 'SIRKET': value,
   if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
-  if (instance.mapCariKullSahalar?.toJson() case final value?) 'MapCariKullSahalar': value,
-  if (instance.mapCariEkAlanlar?.map((e) => e.toJson()).toList() case final value?) 'MapCariEkAlanlar': value,
+  if (instance.mapCariKullSahalar?.toJson() case final value?)
+    'MapCariKullSahalar': value,
+  if (instance.mapCariEkAlanlar?.map((e) => e.toJson()).toList()
+      case final value?)
+    'MapCariEkAlanlar': value,
   'sabitSayfalamaOgeSayisi': instance.sabitSayfalamaOgeSayisi,
-  if (instance.netsisOndalikResponseModel?.map((e) => e.toJson()).toList() case final value?)
+  if (instance.netsisOndalikResponseModel?.map((e) => e.toJson()).toList()
+      case final value?)
     '_NetsisOndalikResponseModel': value,
-  if (instance.depoList?.map((e) => e.toJson()).toList() case final value?) 'DepoList': value,
-  if (instance.dovizList?.map((e) => e.toJson()).toList() case final value?) 'DovizList': value,
-  if (instance.satirAcikBaslikList?.map((e) => e.toJson()).toList() case final value?) 'SatirAcikBaslikList': value,
-  if (instance.kasaList?.map((e) => e.toJson()).toList() case final value?) 'KasaList': value,
-  if (instance.plasiyerList?.map((e) => e.toJson()).toList() case final value?) 'PlasiyerList': value,
-  if (instance.plasiyerListTumu?.map((e) => e.toJson()).toList() case final value?) 'PlasiyerListTumu': value,
-  if (instance.subeList?.map((e) => e.toJson()).toList() case final value?) 'SubeList': value,
-  if (instance.talTekParam?.map((e) => e.toJson()).toList() case final value?) 'TalTekParam': value,
-  if (instance.cekSenParam?.map((e) => e.toJson()).toList() case final value?) 'CekSenParam': value,
-  if (instance.listOzelKodTum?.map((e) => e.toJson()).toList() case final value?) 'ListOzelKodTum': value,
-  if (instance.listIskTip?.map((e) => e.toJson()).toList() case final value?) 'ListIskTip': value,
-  if (instance.listCariOdemeKodu?.map((e) => e.toJson()).toList() case final value?) 'ListCariOdemeKodu': value,
-  if (instance.yaziciList?.map((e) => e.toJson()).toList() case final value?) 'YaziciList': value,
-  if (instance.netFectDizaynList?.map((e) => e.toJson()).toList() case final value?) 'NetFectDizaynList': value,
-  if (instance.mapStokGrupAdlari?.toJson() case final value?) 'MapStokGrupAdlari': value,
-  if (instance.mustahsilParam?.toJson() case final value?) 'MustahsilParam': value,
-  if (instance.listFatuEkMaliyet?.map((e) => e.toJson()).toList() case final value?) 'ListFatuEkMaliyet': value,
-  if (instance.mapKdvSifirBelgeTipiOzelKod2?.toJson() case final value?) 'MapKdvSifirBelgeTipiOzelKod2': value,
-  if (instance.lokalDepoUygulamasiAcik case final value?) 'LokalDepoUygulamasiAcik': value,
+  if (instance.depoList?.map((e) => e.toJson()).toList() case final value?)
+    'DepoList': value,
+  if (instance.dovizList?.map((e) => e.toJson()).toList() case final value?)
+    'DovizList': value,
+  if (instance.satirAcikBaslikList?.map((e) => e.toJson()).toList()
+      case final value?)
+    'SatirAcikBaslikList': value,
+  if (instance.kasaList?.map((e) => e.toJson()).toList() case final value?)
+    'KasaList': value,
+  if (instance.plasiyerList?.map((e) => e.toJson()).toList() case final value?)
+    'PlasiyerList': value,
+  if (instance.plasiyerListTumu?.map((e) => e.toJson()).toList()
+      case final value?)
+    'PlasiyerListTumu': value,
+  if (instance.subeList?.map((e) => e.toJson()).toList() case final value?)
+    'SubeList': value,
+  if (instance.talTekParam?.map((e) => e.toJson()).toList() case final value?)
+    'TalTekParam': value,
+  if (instance.cekSenParam?.map((e) => e.toJson()).toList() case final value?)
+    'CekSenParam': value,
+  if (instance.listOzelKodTum?.map((e) => e.toJson()).toList()
+      case final value?)
+    'ListOzelKodTum': value,
+  if (instance.listIskTip?.map((e) => e.toJson()).toList() case final value?)
+    'ListIskTip': value,
+  if (instance.listCariOdemeKodu?.map((e) => e.toJson()).toList()
+      case final value?)
+    'ListCariOdemeKodu': value,
+  if (instance.yaziciList?.map((e) => e.toJson()).toList() case final value?)
+    'YaziciList': value,
+  if (instance.netFectDizaynList?.map((e) => e.toJson()).toList()
+      case final value?)
+    'NetFectDizaynList': value,
+  if (instance.mapStokGrupAdlari?.toJson() case final value?)
+    'MapStokGrupAdlari': value,
+  if (instance.mustahsilParam?.toJson() case final value?)
+    'MustahsilParam': value,
+  if (instance.listFatuEkMaliyet?.map((e) => e.toJson()).toList()
+      case final value?)
+    'ListFatuEkMaliyet': value,
+  if (instance.mapKdvSifirBelgeTipiOzelKod2?.toJson() case final value?)
+    'MapKdvSifirBelgeTipiOzelKod2': value,
+  if (instance.lokalDepoUygulamasiAcik case final value?)
+    'LokalDepoUygulamasiAcik': value,
   if (instance.esnekYapilandir case final value?) 'EsnekYapilandir': value,
   if (instance.ozelFiyatSistemi case final value?) 'OzelFiyatSistemi': value,
-  if (instance.sadeceOzelFiyatSistemi case final value?) 'SadeceOzelFiyatSistemi': value,
+  if (instance.sadeceOzelFiyatSistemi case final value?)
+    'SadeceOzelFiyatSistemi': value,
   if (instance.otvliStoklarVar case final value?) 'OtvliStoklarVar': value,
-  if (instance.mapStokKullSahalar?.toJson() case final value?) 'MapStokKullSahalar': value,
-  if (instance.mapStokEkAlanlar?.map((e) => e.toJson()).toList() case final value?) 'MapStokEkAlanlar': value,
+  if (instance.mapStokKullSahalar?.toJson() case final value?)
+    'MapStokKullSahalar': value,
+  if (instance.mapStokEkAlanlar?.map((e) => e.toJson()).toList()
+      case final value?)
+    'MapStokEkAlanlar': value,
   if (instance.karmaKoliUyg case final value?) 'KarmaKoliUyg': value,
-  if (instance.alisEkAciklamalarAktif case final value?) 'AlisEkAciklamalarAktif': value,
-  if (instance.alisEkAciklamaTanimi1 case final value?) 'AlisEkAciklamaTanimi1': value,
-  if (instance.alisEkAciklamaTanimi2 case final value?) 'AlisEkAciklamaTanimi2': value,
-  if (instance.alisEkAciklamaTanimi3 case final value?) 'AlisEkAciklamaTanimi3': value,
-  if (instance.alisEkAciklamaTanimi4 case final value?) 'AlisEkAciklamaTanimi4': value,
-  if (instance.alisEkAciklamaTanimi5 case final value?) 'AlisEkAciklamaTanimi5': value,
-  if (instance.alisEkAciklamaTanimi6 case final value?) 'AlisEkAciklamaTanimi6': value,
-  if (instance.alisEkAciklamaTanimi7 case final value?) 'AlisEkAciklamaTanimi7': value,
-  if (instance.alisEkAciklamaTanimi8 case final value?) 'AlisEkAciklamaTanimi8': value,
-  if (instance.alisEkAciklamaTanimi9 case final value?) 'AlisEkAciklamaTanimi9': value,
-  if (instance.alisEkAciklamaTanimi10 case final value?) 'AlisEkAciklamaTanimi10': value,
-  if (instance.alisEkAciklamaTanimi11 case final value?) 'AlisEkAciklamaTanimi11': value,
-  if (instance.alisEkAciklamaTanimi12 case final value?) 'AlisEkAciklamaTanimi12': value,
-  if (instance.alisEkAciklamaTanimi13 case final value?) 'AlisEkAciklamaTanimi13': value,
-  if (instance.alisEkAciklamaTanimi14 case final value?) 'AlisEkAciklamaTanimi14': value,
-  if (instance.alisEkAciklamaTanimi15 case final value?) 'AlisEkAciklamaTanimi15': value,
-  if (instance.alisEkAciklamaTanimi16 case final value?) 'AlisEkAciklamaTanimi16': value,
-  if (instance.alisOzelKod1Tablodan case final value?) 'AlisOzelKod1Tablodan': value,
-  if (instance.satisOzelKod1Tablodan case final value?) 'SatisOzelKod1Tablodan': value,
+  if (instance.alisEkAciklamalarAktif case final value?)
+    'AlisEkAciklamalarAktif': value,
+  if (instance.alisEkAciklamaTanimi1 case final value?)
+    'AlisEkAciklamaTanimi1': value,
+  if (instance.alisEkAciklamaTanimi2 case final value?)
+    'AlisEkAciklamaTanimi2': value,
+  if (instance.alisEkAciklamaTanimi3 case final value?)
+    'AlisEkAciklamaTanimi3': value,
+  if (instance.alisEkAciklamaTanimi4 case final value?)
+    'AlisEkAciklamaTanimi4': value,
+  if (instance.alisEkAciklamaTanimi5 case final value?)
+    'AlisEkAciklamaTanimi5': value,
+  if (instance.alisEkAciklamaTanimi6 case final value?)
+    'AlisEkAciklamaTanimi6': value,
+  if (instance.alisEkAciklamaTanimi7 case final value?)
+    'AlisEkAciklamaTanimi7': value,
+  if (instance.alisEkAciklamaTanimi8 case final value?)
+    'AlisEkAciklamaTanimi8': value,
+  if (instance.alisEkAciklamaTanimi9 case final value?)
+    'AlisEkAciklamaTanimi9': value,
+  if (instance.alisEkAciklamaTanimi10 case final value?)
+    'AlisEkAciklamaTanimi10': value,
+  if (instance.alisEkAciklamaTanimi11 case final value?)
+    'AlisEkAciklamaTanimi11': value,
+  if (instance.alisEkAciklamaTanimi12 case final value?)
+    'AlisEkAciklamaTanimi12': value,
+  if (instance.alisEkAciklamaTanimi13 case final value?)
+    'AlisEkAciklamaTanimi13': value,
+  if (instance.alisEkAciklamaTanimi14 case final value?)
+    'AlisEkAciklamaTanimi14': value,
+  if (instance.alisEkAciklamaTanimi15 case final value?)
+    'AlisEkAciklamaTanimi15': value,
+  if (instance.alisEkAciklamaTanimi16 case final value?)
+    'AlisEkAciklamaTanimi16': value,
+  if (instance.alisOzelKod1Tablodan case final value?)
+    'AlisOzelKod1Tablodan': value,
+  if (instance.satisOzelKod1Tablodan case final value?)
+    'SatisOzelKod1Tablodan': value,
   if (instance.alisKosulAktif case final value?) 'AlisKosulAktif': value,
-  if (instance.alisFarkliTeslimCariAktif case final value?) 'AlisFarkliTeslimCariAktif': value,
-  if (instance.alisMalFazMiktarIskontoAcik case final value?) 'AlisMalFazMiktarIskontoAcik': value,
-  if (instance.alisSatirKademeliIskontoAcik case final value?) 'AlisSatirKademeliIskontoAcik': value,
-  if (instance.alisSatirKademeliIskontoSayisi case final value?) 'AlisSatirKademeliIskontoSayisi': value,
+  if (instance.alisFarkliTeslimCariAktif case final value?)
+    'AlisFarkliTeslimCariAktif': value,
+  if (instance.alisMalFazMiktarIskontoAcik case final value?)
+    'AlisMalFazMiktarIskontoAcik': value,
+  if (instance.alisSatirKademeliIskontoAcik case final value?)
+    'AlisSatirKademeliIskontoAcik': value,
+  if (instance.alisSatirKademeliIskontoSayisi case final value?)
+    'AlisSatirKademeliIskontoSayisi': value,
   if (instance.alisGenIsk1Aktif case final value?) 'AlisGenIsk1Aktif': value,
   if (instance.alisGenIsk2Aktif case final value?) 'AlisGenIsk2Aktif': value,
   if (instance.alisGenIsk3Aktif case final value?) 'AlisGenIsk3Aktif': value,
-  if (instance.alisTopluDepoAktif case final value?) 'AlisTopluDepoAktif': value,
-  if (instance.alisStokDepoKarttanGelsin case final value?) 'AlisStokDepoKarttanGelsin': value,
-  if (instance.alisGenellikleKdvHaric case final value?) 'AlisGenellikleKDVHaric': value,
-  if (instance.alisFarkliOlcuBirimleriKullan case final value?) 'AlisFarkliOlcuBirimleriKullan': value,
+  if (instance.alisTopluDepoAktif case final value?)
+    'AlisTopluDepoAktif': value,
+  if (instance.alisStokDepoKarttanGelsin case final value?)
+    'AlisStokDepoKarttanGelsin': value,
+  if (instance.alisGenellikleKdvHaric case final value?)
+    'AlisGenellikleKDVHaric': value,
+  if (instance.alisFarkliOlcuBirimleriKullan case final value?)
+    'AlisFarkliOlcuBirimleriKullan': value,
   if (instance.alisDovizAktif case final value?) 'AlisDovizAktif': value,
   if (instance.alisSatirdaKdvSor case final value?) 'AlisSatirdaKDVSor': value,
-  if (instance.alisSatirdaAciklamalarAktif case final value?) 'AlisSatirdaAciklamalarAktif': value,
-  if (instance.alisSatirdaEkAlan2Aktif case final value?) 'AlisSatirdaEkAlan2Aktif': value,
-  if (instance.alisEkMaliyet2Aktif case final value?) 'AlisEkMaliyet2Aktif': value,
+  if (instance.alisSatirdaAciklamalarAktif case final value?)
+    'AlisSatirdaAciklamalarAktif': value,
+  if (instance.alisSatirdaEkAlan2Aktif case final value?)
+    'AlisSatirdaEkAlan2Aktif': value,
+  if (instance.alisEkMaliyet2Aktif case final value?)
+    'AlisEkMaliyet2Aktif': value,
   if (instance.alisEkMaliyet2Adi case final value?) 'AlisEkMaliyet2Adi': value,
   if (instance.alisTevkifatPay case final value?) 'AlisTevkifatPay': value,
   if (instance.alisTevkifatPayda case final value?) 'AlisTevkifatPayda': value,
-  if (instance.alisFaturaFiyatSifirGecilsin case final value?) 'AlisFaturaFiyatSifirGecilsin': value,
+  if (instance.alisFaturaFiyatSifirGecilsin case final value?)
+    'AlisFaturaFiyatSifirGecilsin': value,
   if (instance.alisFazlaTeslimat case final value?) 'AlisFazlaTeslimat': value,
-  if (instance.alisDovizTakipHangiDeger case final value?) 'AlisDovizTakipHangiDeger': value,
+  if (instance.alisDovizTakipHangiDeger case final value?)
+    'AlisDovizTakipHangiDeger': value,
   if (instance.alisHizmetAktif case final value?) 'AlisHizmetAktif': value,
-  if (instance.alisHizmetDepoKodu case final value?) 'AlisHizmetDepoKodu': value,
+  if (instance.alisHizmetDepoKodu case final value?)
+    'AlisHizmetDepoKodu': value,
   if (instance.alisMiktar2Sor case final value?) 'AlisMiktar2Sor': value,
-  if (instance.alisSatirdaTeslimTarihiSor case final value?) 'AlisSatirdaTeslimTarihiSor': value,
-  if (instance.alisFisSeriTakibiVar case final value?) 'AlisFisSeriTakibiVar': value,
-  if (instance.alisTutardanFiyataGecilsin case final value?) 'AlisTutardanFiyataGecilsin': value,
-  if (instance.alisCariIskSatiraUygula case final value?) 'AlisCariIskSatiraUygula': value,
-  if (instance.seriUygulamasiAcik case final value?) 'SeriUygulamasiAcik': value,
-  if (instance.sirketDovizUygulamasiAcik case final value?) 'SirketDovizUygulamasiAcik': value,
-  if (instance.sirketDovizUygulamasiDovizKodu case final value?) 'SirketDovizUygulamasiDovizKodu': value,
-  if (instance.plasiyerUygulamasi case final value?) 'PlasiyerUygulamasi': value,
+  if (instance.alisSatirdaTeslimTarihiSor case final value?)
+    'AlisSatirdaTeslimTarihiSor': value,
+  if (instance.alisFisSeriTakibiVar case final value?)
+    'AlisFisSeriTakibiVar': value,
+  if (instance.alisTutardanFiyataGecilsin case final value?)
+    'AlisTutardanFiyataGecilsin': value,
+  if (instance.alisCariIskSatiraUygula case final value?)
+    'AlisCariIskSatiraUygula': value,
+  if (instance.seriUygulamasiAcik case final value?)
+    'SeriUygulamasiAcik': value,
+  if (instance.sirketDovizUygulamasiAcik case final value?)
+    'SirketDovizUygulamasiAcik': value,
+  if (instance.sirketDovizUygulamasiDovizKodu case final value?)
+    'SirketDovizUygulamasiDovizKodu': value,
+  if (instance.plasiyerUygulamasi case final value?)
+    'PlasiyerUygulamasi': value,
   if (instance.paraBirimi case final value?) 'ParaBirimi': value,
   if (instance.bankaEntegre case final value?) 'BankaEntegre': value,
   if (instance.bagliCariVar case final value?) 'BagliCariVar': value,
-  if (instance.projeUygulamasiAcik case final value?) 'ProjeUygulamasiAcik': value,
-  if (instance.satisOzelKod1Aktif case final value?) 'SatisOzelKod1Aktif': value,
-  if (instance.satisOzelKod2Aktif case final value?) 'SatisOzelKod2Aktif': value,
-  if (instance.satisEkAciklamalarAktif case final value?) 'SatisEkAciklamalarAktif': value,
-  if (instance.satisEkAciklamaTanimi1 case final value?) 'SatisEkAciklamaTanimi1': value,
-  if (instance.satisEkAciklamaTanimi2 case final value?) 'SatisEkAciklamaTanimi2': value,
-  if (instance.satisEkAciklamaTanimi3 case final value?) 'SatisEkAciklamaTanimi3': value,
-  if (instance.satisEkAciklamaTanimi4 case final value?) 'SatisEkAciklamaTanimi4': value,
-  if (instance.satisEkAciklamaTanimi5 case final value?) 'SatisEkAciklamaTanimi5': value,
-  if (instance.satisEkAciklamaTanimi6 case final value?) 'SatisEkAciklamaTanimi6': value,
-  if (instance.satisEkAciklamaTanimi7 case final value?) 'SatisEkAciklamaTanimi7': value,
-  if (instance.satisEkAciklamaTanimi8 case final value?) 'SatisEkAciklamaTanimi8': value,
-  if (instance.satisEkAciklamaTanimi9 case final value?) 'SatisEkAciklamaTanimi9': value,
-  if (instance.satisEkAciklamaTanimi10 case final value?) 'SatisEkAciklamaTanimi10': value,
-  if (instance.satisEkAciklamaTanimi11 case final value?) 'SatisEkAciklamaTanimi11': value,
-  if (instance.satisEkAciklamaTanimi12 case final value?) 'SatisEkAciklamaTanimi12': value,
-  if (instance.satisEkAciklamaTanimi13 case final value?) 'SatisEkAciklamaTanimi13': value,
-  if (instance.satisEkAciklamaTanimi14 case final value?) 'SatisEkAciklamaTanimi14': value,
-  if (instance.satisEkAciklamaTanimi15 case final value?) 'SatisEkAciklamaTanimi15': value,
-  if (instance.satisEkAciklamaTanimi16 case final value?) 'SatisEkAciklamaTanimi16': value,
-  if (instance.satisSatirIsk1YuzdeSor case final value?) 'SatisSatirIsk1YuzdeSor': value,
+  if (instance.projeUygulamasiAcik case final value?)
+    'ProjeUygulamasiAcik': value,
+  if (instance.satisOzelKod1Aktif case final value?)
+    'SatisOzelKod1Aktif': value,
+  if (instance.satisOzelKod2Aktif case final value?)
+    'SatisOzelKod2Aktif': value,
+  if (instance.satisEkAciklamalarAktif case final value?)
+    'SatisEkAciklamalarAktif': value,
+  if (instance.satisEkAciklamaTanimi1 case final value?)
+    'SatisEkAciklamaTanimi1': value,
+  if (instance.satisEkAciklamaTanimi2 case final value?)
+    'SatisEkAciklamaTanimi2': value,
+  if (instance.satisEkAciklamaTanimi3 case final value?)
+    'SatisEkAciklamaTanimi3': value,
+  if (instance.satisEkAciklamaTanimi4 case final value?)
+    'SatisEkAciklamaTanimi4': value,
+  if (instance.satisEkAciklamaTanimi5 case final value?)
+    'SatisEkAciklamaTanimi5': value,
+  if (instance.satisEkAciklamaTanimi6 case final value?)
+    'SatisEkAciklamaTanimi6': value,
+  if (instance.satisEkAciklamaTanimi7 case final value?)
+    'SatisEkAciklamaTanimi7': value,
+  if (instance.satisEkAciklamaTanimi8 case final value?)
+    'SatisEkAciklamaTanimi8': value,
+  if (instance.satisEkAciklamaTanimi9 case final value?)
+    'SatisEkAciklamaTanimi9': value,
+  if (instance.satisEkAciklamaTanimi10 case final value?)
+    'SatisEkAciklamaTanimi10': value,
+  if (instance.satisEkAciklamaTanimi11 case final value?)
+    'SatisEkAciklamaTanimi11': value,
+  if (instance.satisEkAciklamaTanimi12 case final value?)
+    'SatisEkAciklamaTanimi12': value,
+  if (instance.satisEkAciklamaTanimi13 case final value?)
+    'SatisEkAciklamaTanimi13': value,
+  if (instance.satisEkAciklamaTanimi14 case final value?)
+    'SatisEkAciklamaTanimi14': value,
+  if (instance.satisEkAciklamaTanimi15 case final value?)
+    'SatisEkAciklamaTanimi15': value,
+  if (instance.satisEkAciklamaTanimi16 case final value?)
+    'SatisEkAciklamaTanimi16': value,
+  if (instance.satisSatirIsk1YuzdeSor case final value?)
+    'SatisSatirIsk1YuzdeSor': value,
   if (instance.satisKosulAktif case final value?) 'SatisKosulAktif': value,
-  if (instance.satisKosulSatirdaSor case final value?) 'SatisKosulSatirdaSor': value,
-  if (instance.satisFarkliTeslimCariAktif case final value?) 'SatisFarkliTeslimCariAktif': value,
-  if (instance.satisMalFazMiktarIskontoAcik case final value?) 'SatisMalFazMiktarIskontoAcik': value,
-  if (instance.satisSatirKademeliIskontoAcik case final value?) 'SatisSatirKademeliIskontoAcik': value,
-  if (instance.satisSatirKademeliIskontoSayisi case final value?) 'SatisSatirKademeliIskontoSayisi': value,
-  if (instance.satisSatirdaKdvSor case final value?) 'SatisSatirdaKDVSor': value,
+  if (instance.satisKosulSatirdaSor case final value?)
+    'SatisKosulSatirdaSor': value,
+  if (instance.satisFarkliTeslimCariAktif case final value?)
+    'SatisFarkliTeslimCariAktif': value,
+  if (instance.satisMalFazMiktarIskontoAcik case final value?)
+    'SatisMalFazMiktarIskontoAcik': value,
+  if (instance.satisSatirKademeliIskontoAcik case final value?)
+    'SatisSatirKademeliIskontoAcik': value,
+  if (instance.satisSatirKademeliIskontoSayisi case final value?)
+    'SatisSatirKademeliIskontoSayisi': value,
+  if (instance.satisSatirdaKdvSor case final value?)
+    'SatisSatirdaKDVSor': value,
   if (instance.satisGenIsk1Aktif case final value?) 'SatisGenIsk1Aktif': value,
   if (instance.satisGenIsk2Aktif case final value?) 'SatisGenIsk2Aktif': value,
   if (instance.satisGenIsk3Aktif case final value?) 'SatisGenIsk3Aktif': value,
-  if (instance.satisTopluDepoAktif case final value?) 'SatisTopluDepoAktif': value,
-  if (instance.satisStokDepoKarttanGelsin case final value?) 'SatisStokDepoKarttanGelsin': value,
-  if (instance.satisGenellikleKdvHaric case final value?) 'SatisGenellikleKDVHaric': value,
-  if (instance.satisFarkliOlcuBirimleriKullan case final value?) 'SatisFarkliOlcuBirimleriKullan': value,
-  if (instance.satisCariRiskTakibi case final value?) 'SatisCariRiskTakibi': value,
+  if (instance.satisTopluDepoAktif case final value?)
+    'SatisTopluDepoAktif': value,
+  if (instance.satisStokDepoKarttanGelsin case final value?)
+    'SatisStokDepoKarttanGelsin': value,
+  if (instance.satisGenellikleKdvHaric case final value?)
+    'SatisGenellikleKDVHaric': value,
+  if (instance.satisFarkliOlcuBirimleriKullan case final value?)
+    'SatisFarkliOlcuBirimleriKullan': value,
+  if (instance.satisCariRiskTakibi case final value?)
+    'SatisCariRiskTakibi': value,
   if (instance.satisDovizAktif case final value?) 'SatisDovizAktif': value,
-  if (instance.satisSatirdaAciklamalarAktif case final value?) 'SatisSatirdaAciklamalarAktif': value,
-  if (instance.satisSatirdaEkAlan2Aktif case final value?) 'SatisSatirdaEkAlan2Aktif': value,
-  if (instance.satisEkMaliyet2Aktif case final value?) 'SatisEkMaliyet2Aktif': value,
-  if (instance.satisEkMaliyet2Adi case final value?) 'SatisEkMaliyet2Adi': value,
+  if (instance.satisSatirdaAciklamalarAktif case final value?)
+    'SatisSatirdaAciklamalarAktif': value,
+  if (instance.satisSatirdaEkAlan2Aktif case final value?)
+    'SatisSatirdaEkAlan2Aktif': value,
+  if (instance.satisEkMaliyet2Aktif case final value?)
+    'SatisEkMaliyet2Aktif': value,
+  if (instance.satisEkMaliyet2Adi case final value?)
+    'SatisEkMaliyet2Adi': value,
   if (instance.satisTevkifatPay case final value?) 'SatisTevkifatPay': value,
-  if (instance.satisTevkifatPayda case final value?) 'SatisTevkifatPayda': value,
-  if (instance.satisFaturaFiyatSifirGecilsin case final value?) 'SatisFaturaFiyatSifirGecilsin': value,
-  if (instance.satisFazlaTeslimat case final value?) 'SatisFazlaTeslimat': value,
-  if (instance.satisDovizTakipHangiDeger case final value?) 'SatisDovizTakipHangiDeger': value,
+  if (instance.satisTevkifatPayda case final value?)
+    'SatisTevkifatPayda': value,
+  if (instance.satisFaturaFiyatSifirGecilsin case final value?)
+    'SatisFaturaFiyatSifirGecilsin': value,
+  if (instance.satisFazlaTeslimat case final value?)
+    'SatisFazlaTeslimat': value,
+  if (instance.satisDovizTakipHangiDeger case final value?)
+    'SatisDovizTakipHangiDeger': value,
   if (instance.satisHizmetAktif case final value?) 'SatisHizmetAktif': value,
-  if (instance.satisHizmetDepoKodu case final value?) 'SatisHizmetDepoKodu': value,
+  if (instance.satisHizmetDepoKodu case final value?)
+    'SatisHizmetDepoKodu': value,
   if (instance.satisMiktar2Sor case final value?) 'SatisMiktar2Sor': value,
-  if (instance.satisSubeDatOnaylansin case final value?) 'SatisSubeDATOnaylansin': value,
-  if (instance.satisSatirdaTeslimTarihiSor case final value?) 'SatisSatirdaTeslimTarihiSor': value,
-  if (instance.satisSatirdaIsEmriSorulsun case final value?) 'SatisSatirdaIsEmriSorulsun': value,
-  if (instance.satisFisSeriTakibiVar case final value?) 'SatisFisSeriTakibiVar': value,
-  if (instance.satisIrsCariHesaba case final value?) 'SatisIrsCariHesaba': value,
+  if (instance.satisSubeDatOnaylansin case final value?)
+    'SatisSubeDATOnaylansin': value,
+  if (instance.satisSatirdaTeslimTarihiSor case final value?)
+    'SatisSatirdaTeslimTarihiSor': value,
+  if (instance.satisSatirdaIsEmriSorulsun case final value?)
+    'SatisSatirdaIsEmriSorulsun': value,
+  if (instance.satisFisSeriTakibiVar case final value?)
+    'SatisFisSeriTakibiVar': value,
+  if (instance.satisIrsCariHesaba case final value?)
+    'SatisIrsCariHesaba': value,
   if (instance.satisEkAlan1Aktif case final value?) 'SatisEkAlan1Aktif': value,
-  if (instance.satisDatSiparisTakibi case final value?) 'SatisDATSiparisTakibi': value,
-  if (instance.satisIrsFatuSipVadeDegissin case final value?) 'SatisIrsFatuSipVadeDegissin': value,
-  if (instance.konsinyeUygulamasi case final value?) 'KonsinyeUygulamasi': value,
+  if (instance.satisDatSiparisTakibi case final value?)
+    'SatisDATSiparisTakibi': value,
+  if (instance.satisIrsFatuSipVadeDegissin case final value?)
+    'SatisIrsFatuSipVadeDegissin': value,
+  if (instance.konsinyeUygulamasi case final value?)
+    'KonsinyeUygulamasi': value,
   if (instance.mSenetDovizAktif case final value?) 'MSenetDovizAktif': value,
   if (instance.mCekDovizAktif case final value?) 'MCekDovizAktif': value,
   if (instance.mCekAciklamaAktif case final value?) 'MCekAciklamaAktif': value,
-  if (instance.seriGirislerdeOtomatik case final value?) 'SeriGirislerdeOtomatik': value,
+  if (instance.seriGirislerdeOtomatik case final value?)
+    'SeriGirislerdeOtomatik': value,
   if (instance.serideYilOlsun case final value?) 'SerideYilOlsun': value,
   if (instance.serideAyOlsun case final value?) 'SerideAyOlsun': value,
   if (instance.serideGunOlsun case final value?) 'SerideGunOlsun': value,
@@ -655,107 +840,174 @@ Map<String, dynamic> _$ParamModelToJson(
   if (instance.seriEkAlanList case final value?) 'SeriEkAlanList': value,
   if (instance.eFaturaAktif case final value?) 'EFaturaAktif': value,
   if (instance.seriEFatura case final value?) 'Seri_EFatura': value,
-  if (instance.eFaturaSenaryoDegistir case final value?) 'EFaturaSenaryoDegistir': value,
+  if (instance.eFaturaSenaryoDegistir case final value?)
+    'EFaturaSenaryoDegistir': value,
   if (instance.eIrsaliyeAktif case final value?) 'EIrsaliyeAktif': value,
   if (instance.seriEIrsaliye case final value?) 'SeriEIrsaliye': value,
   if (instance.arrEIrsSeri case final value?) 'ArrEIrsSeri': value,
   if (instance.arrEFatSeri case final value?) 'ArrEFatSeri': value,
   if (instance.arrEArSeri case final value?) 'ArrEArSeri': value,
   if (instance.seriEArsiv case final value?) 'Seri_EArsiv': value,
-  if (instance.uretimEkAlanKullan case final value?) 'UretimEkAlanKullan': value,
-  if (instance.ozelFaturaIadeMaliyetiZorunlu case final value?) 'OzelFaturaIadeMaliyetiZorunlu': value,
-  if (instance.bankaKKartiKasayaIsle case final value?) 'bankaKKartiKasayaIsle': value,
-  if (instance.kayitliBankaHesapTipleri case final value?) 'KayitliBankaHesapTipleri': value,
+  if (instance.uretimEkAlanKullan case final value?)
+    'UretimEkAlanKullan': value,
+  if (instance.ozelFaturaIadeMaliyetiZorunlu case final value?)
+    'OzelFaturaIadeMaliyetiZorunlu': value,
+  if (instance.bankaKKartiKasayaIsle case final value?)
+    'bankaKKartiKasayaIsle': value,
+  if (instance.kayitliBankaHesapTipleri case final value?)
+    'KayitliBankaHesapTipleri': value,
   if (instance.kkNoZorunluDegil case final value?) 'KKNoZorunluDegil': value,
   if (instance.fifoLifoYontem case final value?) 'FifoLifoYontem': value,
-  if (instance.cariAktiviteUygulamasi case final value?) 'CariAktiviteUygulamasi': value,
-  if (instance.cariAktiviteTipleri?.map((e) => e.toJson()).toList() case final value?) 'CariAktiviteTipleri': value,
-  if (instance.cariAktiviteEkAlanlar case final value?) 'CariAktiviteEkAlanlar': value,
-  if (instance.satisCariDovizTipiniKullan case final value?) 'SatisCariDovizTipiniKullan': value,
-  if (instance.alisCariDovizTipiniKullan case final value?) 'AlisCariDovizTipiniKullan': value,
-  if (instance.fatuKontrolAciklamasiAktif case final value?) 'Fatu_KontrolAciklamasiAktif': value,
-  if (instance.satisFiyatGrubuSorulacakAlan case final value?) 'SatisFiyatGrubuSorulacakAlan': value,
-  if (instance.siparisFarkliSubeUyg case final value?) 'Siparis_FarkliSubeUyg': value,
-  if (instance.satisIskEkSahadanGelsin case final value?) 'SatisIskEkSahadanGelsin': value,
+  if (instance.cariAktiviteUygulamasi case final value?)
+    'CariAktiviteUygulamasi': value,
+  if (instance.cariAktiviteTipleri?.map((e) => e.toJson()).toList()
+      case final value?)
+    'CariAktiviteTipleri': value,
+  if (instance.cariAktiviteEkAlanlar case final value?)
+    'CariAktiviteEkAlanlar': value,
+  if (instance.satisCariDovizTipiniKullan case final value?)
+    'SatisCariDovizTipiniKullan': value,
+  if (instance.alisCariDovizTipiniKullan case final value?)
+    'AlisCariDovizTipiniKullan': value,
+  if (instance.fatuKontrolAciklamasiAktif case final value?)
+    'Fatu_KontrolAciklamasiAktif': value,
+  if (instance.satisFiyatGrubuSorulacakAlan case final value?)
+    'SatisFiyatGrubuSorulacakAlan': value,
+  if (instance.siparisFarkliSubeUyg case final value?)
+    'Siparis_FarkliSubeUyg': value,
+  if (instance.satisIskEkSahadanGelsin case final value?)
+    'SatisIskEkSahadanGelsin': value,
   if (instance.satisIsk1Saha case final value?) 'SatisIsk1Saha': value,
   if (instance.satisIsk1Kullanim case final value?) 'SatisIsk1Kullanim': value,
-  if (instance.uretimMalTopHangiHucrede case final value?) 'Uretim_MalTop_HangiHucrede': value,
-  if (instance.uretimMalTopFazlaTeslimYapilabilir case final value?) 'Uretim_MalTop_FazlaTeslimYapilabilir': value,
-  if (instance.uretimUskSeriGirilsin case final value?) 'Uretim_USK_SeriGirilsin': value,
-  if (instance.finansBankaIslemModulu case final value?) 'Finans_BankaIslemModulu': value,
-  if (instance.finansBankaTcmbBankaKodu case final value?) 'Finans_BankaTcmbBankaKodu': value,
-  if (instance.finansBankaTcmbSubeKodu case final value?) 'Finans_BankaTcmbSubeKodu': value,
+  if (instance.uretimMalTopHangiHucrede case final value?)
+    'Uretim_MalTop_HangiHucrede': value,
+  if (instance.uretimMalTopFazlaTeslimYapilabilir case final value?)
+    'Uretim_MalTop_FazlaTeslimYapilabilir': value,
+  if (instance.uretimUskSeriGirilsin case final value?)
+    'Uretim_USK_SeriGirilsin': value,
+  if (instance.finansBankaIslemModulu case final value?)
+    'Finans_BankaIslemModulu': value,
+  if (instance.finansBankaTcmbBankaKodu case final value?)
+    'Finans_BankaTcmbBankaKodu': value,
+  if (instance.finansBankaTcmbSubeKodu case final value?)
+    'Finans_BankaTcmbSubeKodu': value,
   if (instance.finansCekSenOzelOrtalamaVadeGunuHesapla case final value?)
     'Finans_CekSenOzelOrtalamaVadeGunuHesapla': value,
-  if (instance.stokYapRehberTipi case final value?) 'Stok_Yap_RehberTipi': value,
-  if (instance.stokKanbanBarkodEslemeUyg case final value?) 'Stok_KanbanBarkodEslemeUyg': value,
-  if (instance.stokSeriParcalamaUyg case final value?) 'Stok_SeriParcalamaUyg': value,
-  if (instance.stokDetayliAramaAlanlar?.map((e) => e.toJson()).toList() case final value?)
+  if (instance.stokYapRehberTipi case final value?)
+    'Stok_Yap_RehberTipi': value,
+  if (instance.stokKanbanBarkodEslemeUyg case final value?)
+    'Stok_KanbanBarkodEslemeUyg': value,
+  if (instance.stokSeriParcalamaUyg case final value?)
+    'Stok_SeriParcalamaUyg': value,
+  if (instance.stokDetayliAramaAlanlar?.map((e) => e.toJson()).toList()
+      case final value?)
     'Stok_DetayliAramaAlanlar': value,
-  if (instance.genelKonumTakibiYapilsin case final value?) 'Genel_KonumTakibiYapilsin': value,
-  if (instance.genelKonumTakibiDakika case final value?) 'Genel_KonumTakibiDakika': value,
-  if (instance.genelKonumTakibiMetre case final value?) 'Genel_KonumTakibiMetre': value,
+  if (instance.genelKonumTakibiYapilsin case final value?)
+    'Genel_KonumTakibiYapilsin': value,
+  if (instance.genelKonumTakibiDakika case final value?)
+    'Genel_KonumTakibiDakika': value,
+  if (instance.genelKonumTakibiMetre case final value?)
+    'Genel_KonumTakibiMetre': value,
   if (instance.uetdsEsyaAktif case final value?) 'UetdsEsyaAktif': value,
-  if (instance.satistaSiparisKullan case final value?) 'SatistaSiparisKullan': value,
-  if (instance.alistaSiparisKullan case final value?) 'AlistaSiparisKullan': value,
+  if (instance.satistaSiparisKullan case final value?)
+    'SatistaSiparisKullan': value,
+  if (instance.alistaSiparisKullan case final value?)
+    'AlistaSiparisKullan': value,
   if (instance.sipOtoEslestir case final value?) 'SipOtoEslestir': value,
-  if (instance.sevkEmriTerminalFatura case final value?) 'SevkEmriTerminalFatura': value,
-  if (instance.sevkEmriTerminalIrsaliye case final value?) 'SevkEmriTerminalIrsaliye': value,
-  if (instance.sevkEmriTerminalTransfer case final value?) 'SevkEmriTerminalTransfer': value,
-  if (instance.sevkEmriHucreKontrol case final value?) 'SevkEmriHucreKontrol': value,
-  if (instance.sevkEmriMalTopGorunecekAlanlar case final value?) 'SevkEmriMalTopGorunecekAlanlar': value,
+  if (instance.sevkEmriTerminalFatura case final value?)
+    'SevkEmriTerminalFatura': value,
+  if (instance.sevkEmriTerminalIrsaliye case final value?)
+    'SevkEmriTerminalIrsaliye': value,
+  if (instance.sevkEmriTerminalTransfer case final value?)
+    'SevkEmriTerminalTransfer': value,
+  if (instance.sevkEmriHucreKontrol case final value?)
+    'SevkEmriHucreKontrol': value,
+  if (instance.sevkEmriMalTopGorunecekAlanlar case final value?)
+    'SevkEmriMalTopGorunecekAlanlar': value,
   if (instance.seriSevkIrsaliye case final value?) 'Seri_SevkIrsaliye': value,
-  if (instance.kontrolluBelgeAktarimAktif case final value?) 'KontrolluBelgeAktarimAktif': value,
-  if (instance.kontrolluBelgeAktarimBelgeNoGoster case final value?) 'KontrolluBelgeAktarimBelgeNoGoster': value,
+  if (instance.kontrolluBelgeAktarimAktif case final value?)
+    'KontrolluBelgeAktarimAktif': value,
+  if (instance.kontrolluBelgeAktarimBelgeNoGoster case final value?)
+    'KontrolluBelgeAktarimBelgeNoGoster': value,
   if (instance.eMustahsilAktif case final value?) 'EMustahsilAktif': value,
   if (instance.muhasebeEntegre case final value?) 'MuhasebeEntegre': value,
-  if (instance.muhFislerdeRefKodSorulsun case final value?) 'MuhFislerdeRefKodSorulsun': value,
-  if (instance.muhFislerdeRefKodSorulsunAktif case final value?) 'MuhFislerdeRefKodSorulsun_Aktif': value,
-  if (instance.muhFislerdeRefKodSorulsunPasif case final value?) 'MuhFislerdeRefKodSorulsun_Pasif': value,
-  if (instance.muhFislerdeRefKodSorulsunGelir case final value?) 'MuhFislerdeRefKodSorulsun_Gelir': value,
-  if (instance.muhFislerdeRefKodSorulsunGider case final value?) 'MuhFislerdeRefKodSorulsun_Gider': value,
-  if (instance.muhFislerdeRefKodSorulsunNazim case final value?) 'MuhFislerdeRefKodSorulsun_Nazim': value,
+  if (instance.muhFislerdeRefKodSorulsun case final value?)
+    'MuhFislerdeRefKodSorulsun': value,
+  if (instance.muhFislerdeRefKodSorulsunAktif case final value?)
+    'MuhFislerdeRefKodSorulsun_Aktif': value,
+  if (instance.muhFislerdeRefKodSorulsunPasif case final value?)
+    'MuhFislerdeRefKodSorulsun_Pasif': value,
+  if (instance.muhFislerdeRefKodSorulsunGelir case final value?)
+    'MuhFislerdeRefKodSorulsun_Gelir': value,
+  if (instance.muhFislerdeRefKodSorulsunGider case final value?)
+    'MuhFislerdeRefKodSorulsun_Gider': value,
+  if (instance.muhFislerdeRefKodSorulsunNazim case final value?)
+    'MuhFislerdeRefKodSorulsun_Nazim': value,
   if (instance.alisOzelKod1Aktif case final value?) 'AlisOzelKod1Aktif': value,
   if (instance.alisOzelKod2Aktif case final value?) 'AlisOzelKod2Aktif': value,
-  if (instance.alisOzelKod2Tablodan case final value?) 'AlisOzelKod2Tablodan': value,
+  if (instance.alisOzelKod2Tablodan case final value?)
+    'AlisOzelKod2Tablodan': value,
   if (instance.alisMiktar1Gelsin case final value?) 'AlisMiktar1Gelsin': value,
-  if (instance.satisMiktar1Gelsin case final value?) 'SatisMiktar1Gelsin': value,
-  if (instance.satisOzelKod2Tablodan case final value?) 'SatisOzelKod2Tablodan': value,
-  if (instance.seriCikislardaOtomatik case final value?) 'SeriCikislardaOtomatik': value,
+  if (instance.satisMiktar1Gelsin case final value?)
+    'SatisMiktar1Gelsin': value,
+  if (instance.satisOzelKod2Tablodan case final value?)
+    'SatisOzelKod2Tablodan': value,
+  if (instance.seriCikislardaOtomatik case final value?)
+    'SeriCikislardaOtomatik': value,
   if (instance.serideSaatOlsun case final value?) 'SerideSaatOlsun': value,
-  if (instance.seriEIrsaliyeYanit case final value?) 'SeriEIrsaliyeYanit': value,
-  if (instance.datSatirBazindaDepoSorulsun case final value?) 'DAT_SatirBazindaDepoSorulsun': value,
-  if (instance.stokResimleriKlasorden case final value?) 'StokResimleriKlasorden': value,
+  if (instance.seriEIrsaliyeYanit case final value?)
+    'SeriEIrsaliyeYanit': value,
+  if (instance.datSatirBazindaDepoSorulsun case final value?)
+    'DAT_SatirBazindaDepoSorulsun': value,
+  if (instance.stokResimleriKlasorden case final value?)
+    'StokResimleriKlasorden': value,
   if (instance.alisEkAlan1Aktif case final value?) 'AlisEkAlan1Aktif': value,
-  if (instance.alisEkMaliyet1KdvOrani case final value?) 'AlisEkMaliyet1KdvOrani': value,
-  if (instance.satisAciklamaAlaniGorunsun case final value?) 'SatisAciklamaAlaniGorunsun': value,
-  if (instance.alisAciklamaAlaniGorunsun case final value?) 'AlisAciklamaAlaniGorunsun': value,
-  if (instance.satisMusteriSiptenSaticiSipAktif case final value?) 'SatisMusteriSiptenSaticiSipAktif': value,
+  if (instance.alisEkMaliyet1KdvOrani case final value?)
+    'AlisEkMaliyet1KdvOrani': value,
+  if (instance.satisAciklamaAlaniGorunsun case final value?)
+    'SatisAciklamaAlaniGorunsun': value,
+  if (instance.alisAciklamaAlaniGorunsun case final value?)
+    'AlisAciklamaAlaniGorunsun': value,
+  if (instance.satisMusteriSiptenSaticiSipAktif case final value?)
+    'SatisMusteriSiptenSaticiSipAktif': value,
   if (instance.satisSipOnayAktif case final value?) 'SatisSipOnayAktif': value,
-  if (instance.satisMuhRefKodSorulsun case final value?) 'SatisMuhRefKodSorulsun': value,
-  if (instance.alisMuhRefKodSorulsun case final value?) 'AlisMuhRefKodSorulsun': value,
-  if (instance.satisEkMaliyet1KdvOrani case final value?) 'SatisEkMaliyet1KdvOrani': value,
+  if (instance.satisMuhRefKodSorulsun case final value?)
+    'SatisMuhRefKodSorulsun': value,
+  if (instance.alisMuhRefKodSorulsun case final value?)
+    'AlisMuhRefKodSorulsun': value,
+  if (instance.satisEkMaliyet1KdvOrani case final value?)
+    'SatisEkMaliyet1KdvOrani': value,
   if (instance.fatuSatisTeslimCarideBaglanmisCarilerSecilsin case final value?)
     'FatuSatisTeslimCarideBaglanmisCarilerSecilsin': value,
   if (instance.fatuAlisTeslimCarideBaglanmisCarilerSecilsin case final value?)
     'FatuAlisTeslimCarideBaglanmisCarilerSecilsin': value,
-  if (instance.seriUrunBazindaTekOlsun case final value?) 'SeriUrunBazindaTekOlsun': value,
+  if (instance.seriUrunBazindaTekOlsun case final value?)
+    'SeriUrunBazindaTekOlsun': value,
   if (instance.eArsivAktif case final value?) 'EArsivAktif': value,
   if (instance.satisTeslimCarideBaglanmisCarilerSecilsin case final value?)
     'SatisTeslimCarideBaglanmisCarilerSecilsin': value,
   if (instance.alisTeslimCarideBaglanmisCarilerSecilsin case final value?)
     'AlisTeslimCarideBaglanmisCarilerSecilsin': value,
-  if (instance.faturaSatisIadeUygulamasi case final value?) 'FaturaSatisIadeUygulamasi': value,
-  if (instance.cariRotaUygulamasi case final value?) 'CariRotaUygulamasi': value,
-  if (instance.sevkEmriYeniKullaniciSistemi case final value?) 'sevkEmriYeniKullaniciSistemi': value,
-  if (instance.fatuEkMaliyet3FieldVar case final value?) 'fatuEkMaliyet3FieldVar': value,
-  if (instance.clientTimeoutSeconds case final value?) 'ClientTimeoutSeconds': value,
-  if (instance.alisIhracatMiktarStoklaraGecsin case final value?) 'AlisIhracatMiktarStoklaraGecsin': value,
-  if (instance.satisIhracatMiktarStoklaraGecsin case final value?) 'SatisIhracatMiktarStoklaraGecsin': value,
-  if (instance.seriOpsiyonelSahalar case final value?) 'SeriOpsiyonelSahalar': value,
+  if (instance.faturaSatisIadeUygulamasi case final value?)
+    'FaturaSatisIadeUygulamasi': value,
+  if (instance.cariRotaUygulamasi case final value?)
+    'CariRotaUygulamasi': value,
+  if (instance.sevkEmriYeniKullaniciSistemi case final value?)
+    'sevkEmriYeniKullaniciSistemi': value,
+  if (instance.fatuEkMaliyet3FieldVar case final value?)
+    'fatuEkMaliyet3FieldVar': value,
+  if (instance.clientTimeoutSeconds case final value?)
+    'ClientTimeoutSeconds': value,
+  if (instance.alisIhracatMiktarStoklaraGecsin case final value?)
+    'AlisIhracatMiktarStoklaraGecsin': value,
+  if (instance.satisIhracatMiktarStoklaraGecsin case final value?)
+    'SatisIhracatMiktarStoklaraGecsin': value,
+  if (instance.seriOpsiyonelSahalar case final value?)
+    'SeriOpsiyonelSahalar': value,
   if (instance.uretimMiktar2Uyg case final value?) 'UretimMiktar2Uyg': value,
   if (instance.uretimFireUyg case final value?) 'UretimFireUyg': value,
-  if (instance.uretimFireDetayUyg case final value?) 'UretimFireDetayUyg': value,
+  if (instance.uretimFireDetayUyg case final value?)
+    'UretimFireDetayUyg': value,
   if (instance.netsisOzelParamFaturaOzelIletisimVergisi case final value?)
     'NetsisOzelParam_FaturaOzelIletisimVergisi': value,
   if (instance.eMailSunucu case final value?) 'eMail_Sunucu': value,
@@ -763,24 +1015,31 @@ Map<String, dynamic> _$ParamModelToJson(
   if (instance.eMailParola case final value?) 'eMail_Parola': value,
   if (instance.eMailPort case final value?) 'eMail_Port': value,
   if (instance.eMailSslKullan case final value?) 'eMail_SSLKullan': value,
-  if (instance.sevkEmriMalTopFazlaTeslimat case final value?) 'SevkEmriMalTopFazlaTeslimat': value,
+  if (instance.sevkEmriMalTopFazlaTeslimat case final value?)
+    'SevkEmriMalTopFazlaTeslimat': value,
   if (instance.sayKull1S case final value?) 'say_Kull1S': value,
   if (instance.sayKull2S case final value?) 'say_Kull2S': value,
   if (instance.sayKull3S case final value?) 'say_Kull3S': value,
   if (instance.sayKull4S case final value?) 'say_Kull4S': value,
   if (instance.sayKull5S case final value?) 'say_Kull5S': value,
-  if (instance.alisSatirBazindaVade case final value?) 'AlisSatirBazindaVade': value,
-  if (instance.satisSatirBazindaVade case final value?) 'SatisSatirBazindaVade': value,
+  if (instance.alisSatirBazindaVade case final value?)
+    'AlisSatirBazindaVade': value,
+  if (instance.satisSatirBazindaVade case final value?)
+    'SatisSatirBazindaVade': value,
   if (instance.netOpenXePosta case final value?) 'NetOpenXEPosta': value,
   if (instance.netOpenXLog case final value?) 'NetOpenXLog': value,
-  if (instance.sayfalamaKayitSayisi case final value?) 'SayfalamaKayitSayisi': value,
-  if (instance.fieldVarSatisIrsaliyeFaturalasmayacak case final value?) 'FieldVar_SatisIrsaliyeFaturalasmayacak': value,
-  if (instance.fieldVarSatisFaturasiIadeFaturaNo case final value?) 'FieldVar_SatisFaturasiIadeFaturaNo': value,
+  if (instance.sayfalamaKayitSayisi case final value?)
+    'SayfalamaKayitSayisi': value,
+  if (instance.fieldVarSatisIrsaliyeFaturalasmayacak case final value?)
+    'FieldVar_SatisIrsaliyeFaturalasmayacak': value,
+  if (instance.fieldVarSatisFaturasiIadeFaturaNo case final value?)
+    'FieldVar_SatisFaturasiIadeFaturaNo': value,
 };
 
-CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) => CariAktiviteTipleri()
-  ..aktiviteTipi = (json['AKTIVITE_TIPI'] as num?)?.toInt()
-  ..aktiviteAdi = json['AKTIVITE_ADI'] as String?;
+CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>
+    CariAktiviteTipleri()
+      ..aktiviteTipi = (json['AKTIVITE_TIPI'] as num?)?.toInt()
+      ..aktiviteAdi = json['AKTIVITE_ADI'] as String?;
 
 Map<String, dynamic> _$CariAktiviteTipleriToJson(
   CariAktiviteTipleri instance,
@@ -801,7 +1060,8 @@ Map<String, dynamic> _$CekSenParamToJson(
 ) => <String, dynamic>{
   if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
   if (instance.dovizAktif case final value?) 'DOVIZ_AKTIF': value,
-  if (instance.verilenKoduIstensin case final value?) 'VERILEN_KODU_ISTENSIN': value,
+  if (instance.verilenKoduIstensin case final value?)
+    'VERILEN_KODU_ISTENSIN': value,
   if (instance.ekAciklamaKullan case final value?) 'EK_ACIKLAMA_KULLAN': value,
   if (instance.cikistaBankaKodu case final value?) 'CIKISTA_BANKA_KODU': value,
 };
@@ -875,100 +1135,111 @@ Map<String, dynamic> _$KasaListToJson(KasaList instance) => <String, dynamic>{
   if (instance.dovizToplamGiris case final value?) 'DOVIZ_TOPLAM_GIRIS': value,
   if (instance.dovizToplamCikis case final value?) 'DOVIZ_TOPLAM_CIKIS': value,
   if (instance.dovizBakiye case final value?) 'DOVIZ_BAKIYE': value,
-  if (instance.devirliDovizBakiye case final value?) 'DEVIRLI_DOVIZ_BAKIYE': value,
+  if (instance.devirliDovizBakiye case final value?)
+    'DEVIRLI_DOVIZ_BAKIYE': value,
 };
 
-ListCariOdemeKodu _$ListCariOdemeKoduFromJson(Map<String, dynamic> json) => ListCariOdemeKodu()
-  ..odemeKodu = json['ODEME_KODU'] as String?
-  ..aciklama = json['ACIKLAMA'] as String?;
+ListCariOdemeKodu _$ListCariOdemeKoduFromJson(Map<String, dynamic> json) =>
+    ListCariOdemeKodu()
+      ..odemeKodu = json['ODEME_KODU'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?;
 
-Map<String, dynamic> _$ListCariOdemeKoduToJson(ListCariOdemeKodu instance) => <String, dynamic>{
-  if (instance.odemeKodu case final value?) 'ODEME_KODU': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-};
+Map<String, dynamic> _$ListCariOdemeKoduToJson(ListCariOdemeKodu instance) =>
+    <String, dynamic>{
+      if (instance.odemeKodu case final value?) 'ODEME_KODU': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+    };
 
-ListFatuEkMaliyet _$ListFatuEkMaliyetFromJson(Map<String, dynamic> json) => ListFatuEkMaliyet()
-  ..no = (json['NO'] as num?)?.toInt()
-  ..belgeTipi = json['BELGE_TIPI'] as String?
-  ..adi = json['ADI'] as String?;
+ListFatuEkMaliyet _$ListFatuEkMaliyetFromJson(Map<String, dynamic> json) =>
+    ListFatuEkMaliyet()
+      ..no = (json['NO'] as num?)?.toInt()
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..adi = json['ADI'] as String?;
 
-Map<String, dynamic> _$ListFatuEkMaliyetToJson(ListFatuEkMaliyet instance) => <String, dynamic>{
-  if (instance.no case final value?) 'NO': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.adi case final value?) 'ADI': value,
-};
+Map<String, dynamic> _$ListFatuEkMaliyetToJson(ListFatuEkMaliyet instance) =>
+    <String, dynamic>{
+      if (instance.no case final value?) 'NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.adi case final value?) 'ADI': value,
+    };
 
 ListIskTip _$ListIskTipFromJson(Map<String, dynamic> json) => ListIskTip()
   ..iskontoTipi = (json['ISKONTO_TIPI'] as num?)?.toInt()
   ..aciklama = json['ACIKLAMA'] as String?;
 
-Map<String, dynamic> _$ListIskTipToJson(ListIskTip instance) => <String, dynamic>{
-  if (instance.iskontoTipi case final value?) 'ISKONTO_TIPI': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-};
+Map<String, dynamic> _$ListIskTipToJson(ListIskTip instance) =>
+    <String, dynamic>{
+      if (instance.iskontoTipi case final value?) 'ISKONTO_TIPI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+    };
 
-ListOzelKodTum _$ListOzelKodTumFromJson(Map<String, dynamic> json) => ListOzelKodTum()
-  ..kodTipi = (json['KOD_TIPI'] as num?)?.toInt()
-  ..belgeTipi = json['BELGE_TIPI'] as String?
-  ..kod = json['KOD'] as String?
-  ..aciklama = json['ACIKLAMA'] as String?
-  ..fiyatSirasi = (json['FIYAT_SIRASI'] as num?)?.toInt();
+ListOzelKodTum _$ListOzelKodTumFromJson(Map<String, dynamic> json) =>
+    ListOzelKodTum()
+      ..kodTipi = (json['KOD_TIPI'] as num?)?.toInt()
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..kod = json['KOD'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?
+      ..fiyatSirasi = (json['FIYAT_SIRASI'] as num?)?.toInt();
 
-Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) => <String, dynamic>{
-  if (instance.kodTipi case final value?) 'KOD_TIPI': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.kod case final value?) 'KOD': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
-};
+Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) =>
+    <String, dynamic>{
+      if (instance.kodTipi case final value?) 'KOD_TIPI': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.kod case final value?) 'KOD': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
+    };
 
 MapEkAlanlar _$MapEkAlanlarFromJson(Map<String, dynamic> json) => MapEkAlanlar()
   ..caption = json['caption'] as String?
   ..fieldName = json['fieldName'] as String?
   ..veriTipi = json['-veriTipi'] as String?;
 
-Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) => <String, dynamic>{
-  if (instance.caption case final value?) 'caption': value,
-  if (instance.fieldName case final value?) 'fieldName': value,
-  if (instance.veriTipi case final value?) '-veriTipi': value,
-};
+Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) =>
+    <String, dynamic>{
+      if (instance.caption case final value?) 'caption': value,
+      if (instance.fieldName case final value?) 'fieldName': value,
+      if (instance.veriTipi case final value?) '-veriTipi': value,
+    };
 
-MapCariKullSahalar _$MapCariKullSahalarFromJson(Map<String, dynamic> json) => MapCariKullSahalar()
-  ..the1S = json['1S'] as String?
-  ..the2S = json['2S'] as String?
-  ..the3S = json['3S'] as String?
-  ..the4S = json['4S'] as String?
-  ..the5S = json['5S'] as String?
-  ..the6S = json['6S'] as String?
-  ..the7S = json['7S'] as String?
-  ..the8S = json['8S'] as String?
-  ..the1N = json['1N'] as String?
-  ..the2N = json['2N'] as String?
-  ..the3N = json['3N'] as String?
-  ..the4N = json['4N'] as String?
-  ..the5N = json['5N'] as String?
-  ..the6N = json['6N'] as String?
-  ..the7N = json['7N'] as String?
-  ..the8N = json['8N'] as String?;
+MapCariKullSahalar _$MapCariKullSahalarFromJson(Map<String, dynamic> json) =>
+    MapCariKullSahalar()
+      ..the1S = json['1S'] as String?
+      ..the2S = json['2S'] as String?
+      ..the3S = json['3S'] as String?
+      ..the4S = json['4S'] as String?
+      ..the5S = json['5S'] as String?
+      ..the6S = json['6S'] as String?
+      ..the7S = json['7S'] as String?
+      ..the8S = json['8S'] as String?
+      ..the1N = json['1N'] as String?
+      ..the2N = json['2N'] as String?
+      ..the3N = json['3N'] as String?
+      ..the4N = json['4N'] as String?
+      ..the5N = json['5N'] as String?
+      ..the6N = json['6N'] as String?
+      ..the7N = json['7N'] as String?
+      ..the8N = json['8N'] as String?;
 
-Map<String, dynamic> _$MapCariKullSahalarToJson(MapCariKullSahalar instance) => <String, dynamic>{
-  if (instance.the1S case final value?) '1S': value,
-  if (instance.the2S case final value?) '2S': value,
-  if (instance.the3S case final value?) '3S': value,
-  if (instance.the4S case final value?) '4S': value,
-  if (instance.the5S case final value?) '5S': value,
-  if (instance.the6S case final value?) '6S': value,
-  if (instance.the7S case final value?) '7S': value,
-  if (instance.the8S case final value?) '8S': value,
-  if (instance.the1N case final value?) '1N': value,
-  if (instance.the2N case final value?) '2N': value,
-  if (instance.the3N case final value?) '3N': value,
-  if (instance.the4N case final value?) '4N': value,
-  if (instance.the5N case final value?) '5N': value,
-  if (instance.the6N case final value?) '6N': value,
-  if (instance.the7N case final value?) '7N': value,
-  if (instance.the8N case final value?) '8N': value,
-};
+Map<String, dynamic> _$MapCariKullSahalarToJson(MapCariKullSahalar instance) =>
+    <String, dynamic>{
+      if (instance.the1S case final value?) '1S': value,
+      if (instance.the2S case final value?) '2S': value,
+      if (instance.the3S case final value?) '3S': value,
+      if (instance.the4S case final value?) '4S': value,
+      if (instance.the5S case final value?) '5S': value,
+      if (instance.the6S case final value?) '6S': value,
+      if (instance.the7S case final value?) '7S': value,
+      if (instance.the8S case final value?) '8S': value,
+      if (instance.the1N case final value?) '1N': value,
+      if (instance.the2N case final value?) '2N': value,
+      if (instance.the3N case final value?) '3N': value,
+      if (instance.the4N case final value?) '4N': value,
+      if (instance.the5N case final value?) '5N': value,
+      if (instance.the6N case final value?) '6N': value,
+      if (instance.the7N case final value?) '7N': value,
+      if (instance.the8N case final value?) '8N': value,
+    };
 
 MapKdvSifirBelgeTipiOzelKod2 _$MapKdvSifirBelgeTipiOzelKod2FromJson(
   Map<String, dynamic> json,
@@ -991,107 +1262,116 @@ Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(
   if (instance.stek case final value?) 'STEK': value,
 };
 
-MapStokGrupAdlari _$MapStokGrupAdlariFromJson(Map<String, dynamic> json) => MapStokGrupAdlari()
-  ..grupKodu = json['GrupKodu'] as String?
-  ..kod1 = json['Kod1'] as String?
-  ..kod2 = json['Kod2'] as String?
-  ..kod3 = json['Kod3'] as String?
-  ..kod4 = json['Kod4'] as String?
-  ..kod5 = json['Kod5'] as String?;
+MapStokGrupAdlari _$MapStokGrupAdlariFromJson(Map<String, dynamic> json) =>
+    MapStokGrupAdlari()
+      ..grupKodu = json['GrupKodu'] as String?
+      ..kod1 = json['Kod1'] as String?
+      ..kod2 = json['Kod2'] as String?
+      ..kod3 = json['Kod3'] as String?
+      ..kod4 = json['Kod4'] as String?
+      ..kod5 = json['Kod5'] as String?;
 
-Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) => <String, dynamic>{
-  if (instance.grupKodu case final value?) 'GrupKodu': value,
-  if (instance.kod1 case final value?) 'Kod1': value,
-  if (instance.kod2 case final value?) 'Kod2': value,
-  if (instance.kod3 case final value?) 'Kod3': value,
-  if (instance.kod4 case final value?) 'Kod4': value,
-  if (instance.kod5 case final value?) 'Kod5': value,
-};
+Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) =>
+    <String, dynamic>{
+      if (instance.grupKodu case final value?) 'GrupKodu': value,
+      if (instance.kod1 case final value?) 'Kod1': value,
+      if (instance.kod2 case final value?) 'Kod2': value,
+      if (instance.kod3 case final value?) 'Kod3': value,
+      if (instance.kod4 case final value?) 'Kod4': value,
+      if (instance.kod5 case final value?) 'Kod5': value,
+    };
 
-MapStokKullSahalar _$MapStokKullSahalarFromJson(Map<String, dynamic> json) => MapStokKullSahalar()
-  ..the1S = json['1S'] as String?
-  ..the2S = json['2S'] as String?
-  ..the3S = json['3S'] as String?
-  ..the4S = json['4S'] as String?
-  ..the5S = json['5S'] as String?
-  ..the6S = json['6S'] as String?
-  ..the7S = json['7S'] as String?
-  ..the8S = json['8S'] as String?
-  ..the1N = json['1N'] as String?
-  ..the2N = json['2N'] as String?
-  ..the3N = json['3N'] as String?
-  ..the4N = json['4N'] as String?
-  ..the5N = json['5N'] as String?
-  ..the6N = json['6N'] as String?
-  ..the7N = json['7N'] as String?
-  ..the8N = json['8N'] as String?;
+MapStokKullSahalar _$MapStokKullSahalarFromJson(Map<String, dynamic> json) =>
+    MapStokKullSahalar()
+      ..the1S = json['1S'] as String?
+      ..the2S = json['2S'] as String?
+      ..the3S = json['3S'] as String?
+      ..the4S = json['4S'] as String?
+      ..the5S = json['5S'] as String?
+      ..the6S = json['6S'] as String?
+      ..the7S = json['7S'] as String?
+      ..the8S = json['8S'] as String?
+      ..the1N = json['1N'] as String?
+      ..the2N = json['2N'] as String?
+      ..the3N = json['3N'] as String?
+      ..the4N = json['4N'] as String?
+      ..the5N = json['5N'] as String?
+      ..the6N = json['6N'] as String?
+      ..the7N = json['7N'] as String?
+      ..the8N = json['8N'] as String?;
 
-Map<String, dynamic> _$MapStokKullSahalarToJson(MapStokKullSahalar instance) => <String, dynamic>{
-  if (instance.the1S case final value?) '1S': value,
-  if (instance.the2S case final value?) '2S': value,
-  if (instance.the3S case final value?) '3S': value,
-  if (instance.the4S case final value?) '4S': value,
-  if (instance.the5S case final value?) '5S': value,
-  if (instance.the6S case final value?) '6S': value,
-  if (instance.the7S case final value?) '7S': value,
-  if (instance.the8S case final value?) '8S': value,
-  if (instance.the1N case final value?) '1N': value,
-  if (instance.the2N case final value?) '2N': value,
-  if (instance.the3N case final value?) '3N': value,
-  if (instance.the4N case final value?) '4N': value,
-  if (instance.the5N case final value?) '5N': value,
-  if (instance.the6N case final value?) '6N': value,
-  if (instance.the7N case final value?) '7N': value,
-  if (instance.the8N case final value?) '8N': value,
-};
+Map<String, dynamic> _$MapStokKullSahalarToJson(MapStokKullSahalar instance) =>
+    <String, dynamic>{
+      if (instance.the1S case final value?) '1S': value,
+      if (instance.the2S case final value?) '2S': value,
+      if (instance.the3S case final value?) '3S': value,
+      if (instance.the4S case final value?) '4S': value,
+      if (instance.the5S case final value?) '5S': value,
+      if (instance.the6S case final value?) '6S': value,
+      if (instance.the7S case final value?) '7S': value,
+      if (instance.the8S case final value?) '8S': value,
+      if (instance.the1N case final value?) '1N': value,
+      if (instance.the2N case final value?) '2N': value,
+      if (instance.the3N case final value?) '3N': value,
+      if (instance.the4N case final value?) '4N': value,
+      if (instance.the5N case final value?) '5N': value,
+      if (instance.the6N case final value?) '6N': value,
+      if (instance.the7N case final value?) '7N': value,
+      if (instance.the8N case final value?) '8N': value,
+    };
 
-MustahsilParam _$MustahsilParamFromJson(Map<String, dynamic> json) => MustahsilParam()
-  ..stopajOrani = (json['STOPAJ_ORANI'] as num?)?.toDouble()
-  ..fonOrani = (json['FON_ORANI'] as num?)?.toDouble()
-  ..borsaOrani = (json['BORSA_ORANI'] as num?)?.toDouble()
-  ..bagkurOrani = (json['BAGKUR_ORANI'] as num?)?.toInt()
-  ..bagkurYb = json['BAGKUR_YB'] as String?
-  ..meraOrani = (json['MERA_ORANI'] as num?)?.toDouble()
-  ..borsaUcretDuzenlemesi = json['BORSA_UCRET_DUZENLEMESI'] as String?;
+MustahsilParam _$MustahsilParamFromJson(Map<String, dynamic> json) =>
+    MustahsilParam()
+      ..stopajOrani = (json['STOPAJ_ORANI'] as num?)?.toDouble()
+      ..fonOrani = (json['FON_ORANI'] as num?)?.toDouble()
+      ..borsaOrani = (json['BORSA_ORANI'] as num?)?.toDouble()
+      ..bagkurOrani = (json['BAGKUR_ORANI'] as num?)?.toInt()
+      ..bagkurYb = json['BAGKUR_YB'] as String?
+      ..meraOrani = (json['MERA_ORANI'] as num?)?.toDouble()
+      ..borsaUcretDuzenlemesi = json['BORSA_UCRET_DUZENLEMESI'] as String?;
 
-Map<String, dynamic> _$MustahsilParamToJson(MustahsilParam instance) => <String, dynamic>{
-  if (instance.stopajOrani case final value?) 'STOPAJ_ORANI': value,
-  if (instance.fonOrani case final value?) 'FON_ORANI': value,
-  if (instance.borsaOrani case final value?) 'BORSA_ORANI': value,
-  if (instance.bagkurOrani case final value?) 'BAGKUR_ORANI': value,
-  if (instance.bagkurYb case final value?) 'BAGKUR_YB': value,
-  if (instance.meraOrani case final value?) 'MERA_ORANI': value,
-  if (instance.borsaUcretDuzenlemesi case final value?) 'BORSA_UCRET_DUZENLEMESI': value,
-};
+Map<String, dynamic> _$MustahsilParamToJson(MustahsilParam instance) =>
+    <String, dynamic>{
+      if (instance.stopajOrani case final value?) 'STOPAJ_ORANI': value,
+      if (instance.fonOrani case final value?) 'FON_ORANI': value,
+      if (instance.borsaOrani case final value?) 'BORSA_ORANI': value,
+      if (instance.bagkurOrani case final value?) 'BAGKUR_ORANI': value,
+      if (instance.bagkurYb case final value?) 'BAGKUR_YB': value,
+      if (instance.meraOrani case final value?) 'MERA_ORANI': value,
+      if (instance.borsaUcretDuzenlemesi case final value?)
+        'BORSA_UCRET_DUZENLEMESI': value,
+    };
 
-NetFectDizaynList _$NetFectDizaynListFromJson(Map<String, dynamic> json) => NetFectDizaynList()
-  ..id = (json['ID'] as num?)?.toInt()
-  ..dizaynYeri = json['DIZAYN_YERI'] as String?
-  ..dizaynYolu = json['DIZAYN_YOLU'] as String?
-  ..dizaynAdi = json['DIZAYN_ADI'] as String?
-  ..ozelKod = json['OZEL_KOD'] as String?
-  ..kopyaSayisi = (json['KOPYA_SAYISI'] as num?)?.toInt()
-  ..sablonVar = json['SABLON_VAR'] as String?
-  ..aktif = json['AKTIF'] as String?
-  ..dosyaAdi = json['DOSYA_ADI'] as String?
-  ..parametreler = json['PARAMETRELER'] as String?
-  ..varsayilanMi = json['VARSAYILAN_MI'] as bool?
-  ..detayKod = json['DETAY_KOD'] as String?;
+NetFectDizaynList _$NetFectDizaynListFromJson(Map<String, dynamic> json) =>
+    NetFectDizaynList()
+      ..id = (json['ID'] as num?)?.toInt()
+      ..dizaynYeri = json['DIZAYN_YERI'] as String?
+      ..dizaynYolu = json['DIZAYN_YOLU'] as String?
+      ..dizaynAdi = json['DIZAYN_ADI'] as String?
+      ..ozelKod = json['OZEL_KOD'] as String?
+      ..kopyaSayisi = (json['KOPYA_SAYISI'] as num?)?.toInt()
+      ..sablonVar = json['SABLON_VAR'] as String?
+      ..aktif = json['AKTIF'] as String?
+      ..dosyaAdi = json['DOSYA_ADI'] as String?
+      ..parametreler = json['PARAMETRELER'] as String?
+      ..varsayilanMi = json['VARSAYILAN_MI'] as bool?
+      ..detayKod = json['DETAY_KOD'] as String?;
 
-Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.dizaynYeri case final value?) 'DIZAYN_YERI': value,
-  if (instance.dizaynYolu case final value?) 'DIZAYN_YOLU': value,
-  if (instance.dizaynAdi case final value?) 'DIZAYN_ADI': value,
-  if (instance.ozelKod case final value?) 'OZEL_KOD': value,
-  if (instance.kopyaSayisi case final value?) 'KOPYA_SAYISI': value,
-  if (instance.sablonVar case final value?) 'SABLON_VAR': value,
-  if (instance.aktif case final value?) 'AKTIF': value,
-  if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
-  if (instance.parametreler case final value?) 'PARAMETRELER': value,
-  if (instance.varsayilanMi case final value?) 'VARSAYILAN_MI': value,
-  if (instance.detayKod case final value?) 'DETAY_KOD': value,
-};
+Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.dizaynYeri case final value?) 'DIZAYN_YERI': value,
+      if (instance.dizaynYolu case final value?) 'DIZAYN_YOLU': value,
+      if (instance.dizaynAdi case final value?) 'DIZAYN_ADI': value,
+      if (instance.ozelKod case final value?) 'OZEL_KOD': value,
+      if (instance.kopyaSayisi case final value?) 'KOPYA_SAYISI': value,
+      if (instance.sablonVar case final value?) 'SABLON_VAR': value,
+      if (instance.aktif case final value?) 'AKTIF': value,
+      if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
+      if (instance.parametreler case final value?) 'PARAMETRELER': value,
+      if (instance.varsayilanMi case final value?) 'VARSAYILAN_MI': value,
+      if (instance.detayKod case final value?) 'DETAY_KOD': value,
+    };
 
 NetsisOndalikResponseModel _$NetsisOndalikResponseModelFromJson(
   Map<String, dynamic> json,
@@ -1130,18 +1410,19 @@ Map<String, dynamic> _$PlasiyerListToJson(
   if (instance.plasiyerAciklama case final value?) 'PLASIYER_ACIKLAMA': value,
 };
 
-SatirAcikBaslikList _$SatirAcikBaslikListFromJson(Map<String, dynamic> json) => SatirAcikBaslikList()
-  ..belgeKodu = json['BELGE_KODU'] as String?
-  ..aciklama1 = json['ACIKLAMA1'] as String?
-  ..aciklama2 = json['ACIKLAMA2'] as String?
-  ..aciklama3 = json['ACIKLAMA3'] as String?
-  ..aciklama4 = json['ACIKLAMA4'] as String?
-  ..aciklama5 = json['ACIKLAMA5'] as String?
-  ..aciklama6 = json['ACIKLAMA6'] as String?
-  ..aciklama7 = json['ACIKLAMA7'] as String?
-  ..aciklama8 = json['ACIKLAMA8'] as String?
-  ..aciklama9 = json['ACIKLAMA9'] as String?
-  ..aciklama10 = json['ACIKLAMA10'] as String?;
+SatirAcikBaslikList _$SatirAcikBaslikListFromJson(Map<String, dynamic> json) =>
+    SatirAcikBaslikList()
+      ..belgeKodu = json['BELGE_KODU'] as String?
+      ..aciklama1 = json['ACIKLAMA1'] as String?
+      ..aciklama2 = json['ACIKLAMA2'] as String?
+      ..aciklama3 = json['ACIKLAMA3'] as String?
+      ..aciklama4 = json['ACIKLAMA4'] as String?
+      ..aciklama5 = json['ACIKLAMA5'] as String?
+      ..aciklama6 = json['ACIKLAMA6'] as String?
+      ..aciklama7 = json['ACIKLAMA7'] as String?
+      ..aciklama8 = json['ACIKLAMA8'] as String?
+      ..aciklama9 = json['ACIKLAMA9'] as String?
+      ..aciklama10 = json['ACIKLAMA10'] as String?;
 
 Map<String, dynamic> _$SatirAcikBaslikListToJson(
   SatirAcikBaslikList instance,
@@ -1214,7 +1495,8 @@ Map<String, dynamic> _$SubeListToJson(SubeList instance) => <String, dynamic>{
   if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
   if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
   if (instance.paraBirimi case final value?) 'PARA_BIRIMI': value,
-  if (instance.paraBirimiKusurat case final value?) 'PARA_BIRIMI_KUSURAT': value,
+  if (instance.paraBirimiKusurat case final value?)
+    'PARA_BIRIMI_KUSURAT': value,
   if (instance.subeKodu case final value?) 'SUBE_KODU': value,
   if (instance.cariKodu case final value?) 'CARI_KODU': value,
   if (instance.cariAdi case final value?) 'CARI_ADI': value,
@@ -1295,11 +1577,15 @@ Map<String, dynamic> _$TalTekParamToJson(
   if (instance.tip case final value?) 'TIP': value,
   if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
   if (instance.dovizTakip case final value?) 'DOVIZ_TAKIP': value,
-  if (instance.satirIskontoSayisi case final value?) 'SATIR_ISKONTO_SAYISI': value,
-  if (instance.farkliBirimlerdenIslem case final value?) 'FARKLI_BIRIMLERDEN_ISLEM': value,
+  if (instance.satirIskontoSayisi case final value?)
+    'SATIR_ISKONTO_SAYISI': value,
+  if (instance.farkliBirimlerdenIslem case final value?)
+    'FARKLI_BIRIMLERDEN_ISLEM': value,
   if (instance.farkliTeslimYeri case final value?) 'FARKLI_TESLIM_YERI': value,
-  if (instance.depoStokKartindanGelsin case final value?) 'DEPO_STOK_KARTINDAN_GELSIN': value,
-  if (instance.ekaciklamalarAktif case final value?) 'EKACIKLAMALAR_AKTIF': value,
+  if (instance.depoStokKartindanGelsin case final value?)
+    'DEPO_STOK_KARTINDAN_GELSIN': value,
+  if (instance.ekaciklamalarAktif case final value?)
+    'EKACIKLAMALAR_AKTIF': value,
   if (instance.ozelKod1Aktif case final value?) 'OZEL_KOD1_AKTIF': value,
   if (instance.ozelKod1Secim11 case final value?) 'OZEL_KOD1_SECIM11': value,
   if (instance.ozelKod1Secim21 case final value?) 'OZEL_KOD1_SECIM21': value,
@@ -1323,13 +1609,18 @@ Map<String, dynamic> _$TalTekParamToJson(
   if (instance.aciklar15 case final value?) 'ACIKLAR15': value,
   if (instance.aciklar16 case final value?) 'ACIKLAR16': value,
   if (instance.satirdaKdvSor case final value?) 'SATIRDA_KDV_SOR': value,
-  if (instance.satirTeslimTarSor case final value?) 'SATIR_TESLIM_TAR_SOR': value,
-  if (instance.dovizTakipHangisi case final value?) 'DOVIZ_TAKIP_HANGISI': value,
-  if (instance.satirEkalan2Kullan case final value?) 'SATIR_EKALAN2_KULLAN': value,
+  if (instance.satirTeslimTarSor case final value?)
+    'SATIR_TESLIM_TAR_SOR': value,
+  if (instance.dovizTakipHangisi case final value?)
+    'DOVIZ_TAKIP_HANGISI': value,
+  if (instance.satirEkalan2Kullan case final value?)
+    'SATIR_EKALAN2_KULLAN': value,
   if (instance.hizmetUygulamasi case final value?) 'HIZMET_UYGULAMASI': value,
   if (instance.hizmetDepoKodu case final value?) 'HIZMET_DEPO_KODU': value,
-  if (instance.kalemlerdeAciklamaAktif case final value?) 'KALEMLERDE_ACIKLAMA_AKTIF': value,
-  if (instance.onaySistemiKullan case final value?) 'ONAY_SISTEMI_KULLAN': value,
+  if (instance.kalemlerdeAciklamaAktif case final value?)
+    'KALEMLERDE_ACIKLAMA_AKTIF': value,
+  if (instance.onaySistemiKullan case final value?)
+    'ONAY_SISTEMI_KULLAN': value,
   if (instance.kdvHaric case final value?) 'KDV_HARIC': value,
   if (instance.kdvDahilHaricSor case final value?) 'KDV_DAHIL_HARIC_SOR': value,
   if (instance.ozelKod2Tablodan case final value?) 'OZEL_KOD2_TABLODAN': value,
@@ -1338,7 +1629,8 @@ Map<String, dynamic> _$TalTekParamToJson(
   if (instance.kosulAktif case final value?) 'KOSUL_AKTIF': value,
   if (instance.satirIskontosu case final value?) 'SATIR_ISKONTOSU': value,
   if (instance.yuzdeSorulsun case final value?) 'YUZDE_SORULSUN': value,
-  if (instance.malFazlasiIskonto case final value?) 'MAL_FAZLASI_ISKONTO': value,
+  if (instance.malFazlasiIskonto case final value?)
+    'MAL_FAZLASI_ISKONTO': value,
   if (instance.genIsk1Aktif case final value?) 'GEN_ISK1_AKTIF': value,
   if (instance.genIsk1Adi case final value?) 'GEN_ISK1_ADI': value,
   if (instance.genIsk2Aktif case final value?) 'GEN_ISK2_AKTIF': value,
@@ -1349,16 +1641,22 @@ Map<String, dynamic> _$TalTekParamToJson(
   if (instance.aciklamaAktif case final value?) 'ACIKLAMA_AKTIF': value,
   if (instance.miktar2Sor case final value?) 'MIKTAR2_SOR': value,
   if (instance.miktarBirGelsin case final value?) 'MIKTAR_BIR_GELSIN': value,
-  if (instance.varsayilanMuhrefkod case final value?) 'VARSAYILAN_MUHREFKOD': value,
-  if (instance.tutardanBirimFiata case final value?) 'TUTARDAN_BIRIM_FIATA': value,
-  if (instance.cariIskSatiraUygula case final value?) 'CARI_ISK_SATIRA_UYGULA': value,
-  if (instance.miktarSifirOlamaz case final value?) 'MIKTAR_SIFIR_OLAMAZ': value,
+  if (instance.varsayilanMuhrefkod case final value?)
+    'VARSAYILAN_MUHREFKOD': value,
+  if (instance.tutardanBirimFiata case final value?)
+    'TUTARDAN_BIRIM_FIATA': value,
+  if (instance.cariIskSatiraUygula case final value?)
+    'CARI_ISK_SATIRA_UYGULA': value,
+  if (instance.miktarSifirOlamaz case final value?)
+    'MIKTAR_SIFIR_OLAMAZ': value,
   if (instance.fatAltm1Varmi case final value?) 'FAT_ALTM1_VARMI': value,
   if (instance.fatAltm2Varmi case final value?) 'FAT_ALTM2_VARMI': value,
   if (instance.fatAltm1Tanim case final value?) 'FAT_ALTM1_TANIM': value,
   if (instance.fatAltm2Tanim case final value?) 'FAT_ALTM2_TANIM': value,
-  if (instance.kdvSifirlanacakOzelkod2 case final value?) 'KDV_SIFIRLANACAK_OZELKOD2': value,
-  if (instance.kosulSatirdaAktif case final value?) 'KOSUL_SATIRDA_AKTIF': value,
+  if (instance.kdvSifirlanacakOzelkod2 case final value?)
+    'KDV_SIFIRLANACAK_OZELKOD2': value,
+  if (instance.kosulSatirdaAktif case final value?)
+    'KOSUL_SATIRDA_AKTIF': value,
 };
 
 YaziciList _$YaziciListFromJson(Map<String, dynamic> json) => YaziciList()
@@ -1366,8 +1664,9 @@ YaziciList _$YaziciListFromJson(Map<String, dynamic> json) => YaziciList()
   ..yaziciTipi = json['YAZICI_TIPI'] as String?
   ..aciklama = json['ACIKLAMA'] as String?;
 
-Map<String, dynamic> _$YaziciListToJson(YaziciList instance) => <String, dynamic>{
-  if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
-  if (instance.yaziciTipi case final value?) 'YAZICI_TIPI': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-};
+Map<String, dynamic> _$YaziciListToJson(YaziciList instance) =>
+    <String, dynamic>{
+      if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
+      if (instance.yaziciTipi case final value?) 'YAZICI_TIPI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+    };

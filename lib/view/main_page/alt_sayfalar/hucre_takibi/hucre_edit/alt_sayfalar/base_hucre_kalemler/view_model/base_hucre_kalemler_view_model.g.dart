@@ -55,16 +55,16 @@ mixin _$BaseHucreKalemlerViewModel on _BaseHucreKalemlerViewModelBase, Store {
     return _$getPaketAsyncAction.run(() => super.getPaket(paketKodu));
   }
 
-  late final _$_BaseHucreKalemlerViewModelBaseActionController = ActionController(
-    name: '_BaseHucreKalemlerViewModelBase',
-    context: context,
-  );
+  late final _$_BaseHucreKalemlerViewModelBaseActionController =
+      ActionController(
+        name: '_BaseHucreKalemlerViewModelBase',
+        context: context,
+      );
 
   @override
   void setStok(BaseStokMixin? stok) {
-    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController.startAction(
-      name: '_BaseHucreKalemlerViewModelBase.setStok',
-    );
+    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController
+        .startAction(name: '_BaseHucreKalemlerViewModelBase.setStok');
     try {
       return super.setStok(stok);
     } finally {
@@ -74,9 +74,8 @@ mixin _$BaseHucreKalemlerViewModel on _BaseHucreKalemlerViewModelBase, Store {
 
   @override
   void setHucre(String? hucre) {
-    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController.startAction(
-      name: '_BaseHucreKalemlerViewModelBase.setHucre',
-    );
+    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController
+        .startAction(name: '_BaseHucreKalemlerViewModelBase.setHucre');
     try {
       return super.setHucre(hucre);
     } finally {
@@ -86,9 +85,8 @@ mixin _$BaseHucreKalemlerViewModel on _BaseHucreKalemlerViewModelBase, Store {
 
   @override
   void setMiktar(double? miktar) {
-    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController.startAction(
-      name: '_BaseHucreKalemlerViewModelBase.setMiktar',
-    );
+    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController
+        .startAction(name: '_BaseHucreKalemlerViewModelBase.setMiktar');
     try {
       return super.setMiktar(miktar);
     } finally {

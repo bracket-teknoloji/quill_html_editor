@@ -20,7 +20,9 @@ _HucreHareketleriModel _$HucreHareketleriModelFromJson(
   hareketTuru: json['HAREKET_TURU'] as String?,
   hareketAdi: json['HAREKET_ADI'] as String?,
   kayityapankul: json['KAYITYAPANKUL'] as String?,
-  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String),
   depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
   depoTanimi: json['DEPO_TANIMI'] as String?,
   eksiBakiye: json['EKSI_BAKIYE'] as String?,
@@ -44,7 +46,8 @@ Map<String, dynamic> _$HucreHareketleriModelToJson(
   if (instance.hareketTuru case final value?) 'HAREKET_TURU': value,
   if (instance.hareketAdi case final value?) 'HAREKET_ADI': value,
   if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?)
+    'KAYITTARIHI': value,
   if (instance.depoKodu case final value?) 'DEPO_KODU': value,
   if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
   if (instance.eksiBakiye case final value?) 'EKSI_BAKIYE': value,

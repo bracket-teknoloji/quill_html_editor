@@ -90,9 +90,8 @@ mixin _$SayimListesiViewModel on _SayimListesiViewModelBase, Store {
 
   @override
   void setSayimList(List<SayimListesiModel>? value) {
-    final _$actionInfo = _$_SayimListesiViewModelBaseActionController.startAction(
-      name: '_SayimListesiViewModelBase.setSayimList',
-    );
+    final _$actionInfo = _$_SayimListesiViewModelBaseActionController
+        .startAction(name: '_SayimListesiViewModelBase.setSayimList');
     try {
       return super.setSayimList(value);
     } finally {

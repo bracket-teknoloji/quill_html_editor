@@ -14,7 +14,9 @@ _YapilandirmaProfilModel _$YapilandirmaProfilModelFromJson(
   aciklama: json['ACIKLAMA'] as String?,
   deger: (json['DEGER'] as List<dynamic>?)
       ?.map(
-        (e) => e == null ? null : YapilandirmaRehberiModel.fromJson(e as Map<String, dynamic>),
+        (e) => e == null
+            ? null
+            : YapilandirmaRehberiModel.fromJson(e as Map<String, dynamic>),
       )
       .toList(),
 );
@@ -25,5 +27,6 @@ Map<String, dynamic> _$YapilandirmaProfilModelToJson(
   if (instance.sira case final value?) 'SIRA': value,
   if (instance.ozellikKodu case final value?) 'OZELLIK_KODU': value,
   if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.deger?.map((e) => e?.toJson()).toList() case final value?) 'DEGER': value,
+  if (instance.deger?.map((e) => e?.toJson()).toList() case final value?)
+    'DEGER': value,
 };

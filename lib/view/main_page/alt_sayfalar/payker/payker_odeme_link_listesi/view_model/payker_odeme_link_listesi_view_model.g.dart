@@ -8,15 +8,19 @@ part of 'payker_odeme_link_listesi_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$PaykerOdemeLinkListesiViewModel on _PaykerOdemeLinkListesiViewModelBase, Store {
-  Computed<ObservableList<PaykerOdemeLinkListesiModel>?>? _$filteredListComputed;
+mixin _$PaykerOdemeLinkListesiViewModel
+    on _PaykerOdemeLinkListesiViewModelBase, Store {
+  Computed<ObservableList<PaykerOdemeLinkListesiModel>?>?
+  _$filteredListComputed;
 
   @override
   ObservableList<PaykerOdemeLinkListesiModel>? get filteredList =>
-      (_$filteredListComputed ??= Computed<ObservableList<PaykerOdemeLinkListesiModel>?>(
-        () => super.filteredList,
-        name: '_PaykerOdemeLinkListesiViewModelBase.filteredList',
-      )).value;
+      (_$filteredListComputed ??=
+              Computed<ObservableList<PaykerOdemeLinkListesiModel>?>(
+                () => super.filteredList,
+                name: '_PaykerOdemeLinkListesiViewModelBase.filteredList',
+              ))
+          .value;
 
   late final _$observableListAtom = Atom(
     name: '_PaykerOdemeLinkListesiViewModelBase.observableList',
@@ -102,16 +106,18 @@ mixin _$PaykerOdemeLinkListesiViewModel on _PaykerOdemeLinkListesiViewModelBase,
     return _$deleteLinkAsyncAction.run(() => super.deleteLink(id));
   }
 
-  late final _$_PaykerOdemeLinkListesiViewModelBaseActionController = ActionController(
-    name: '_PaykerOdemeLinkListesiViewModelBase',
-    context: context,
-  );
+  late final _$_PaykerOdemeLinkListesiViewModelBaseActionController =
+      ActionController(
+        name: '_PaykerOdemeLinkListesiViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<PaykerOdemeLinkListesiModel>? list) {
-    final _$actionInfo = _$_PaykerOdemeLinkListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeLinkListesiViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_PaykerOdemeLinkListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerOdemeLinkListesiViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(list);
     } finally {
@@ -123,9 +129,10 @@ mixin _$PaykerOdemeLinkListesiViewModel on _PaykerOdemeLinkListesiViewModelBase,
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_PaykerOdemeLinkListesiViewModelBaseActionController.startAction(
-      name: '_PaykerOdemeLinkListesiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_PaykerOdemeLinkListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerOdemeLinkListesiViewModelBase.setSearchText',
+        );
     try {
       return super.setSearchText(value);
     } finally {

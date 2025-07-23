@@ -54,9 +54,8 @@ mixin _$BarkodTanimlaViewModel on _BarkodTanimlaViewModelBase, Store {
 
   @override
   void setStokModel(StokListesiModel? model) {
-    final _$actionInfo = _$_BarkodTanimlaViewModelBaseActionController.startAction(
-      name: '_BarkodTanimlaViewModelBase.setStokModel',
-    );
+    final _$actionInfo = _$_BarkodTanimlaViewModelBaseActionController
+        .startAction(name: '_BarkodTanimlaViewModelBase.setStokModel');
     try {
       return super.setStokModel(model);
     } finally {

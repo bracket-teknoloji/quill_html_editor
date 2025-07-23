@@ -156,9 +156,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setFiltreGroupValue(int? value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(
-      name: '_KasaListesiViewModelBase.setFiltreGroupValue',
-    );
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setFiltreGroupValue');
     try {
       return super.setFiltreGroupValue(value);
     } finally {
@@ -168,9 +167,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setSirala(String value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(
-      name: '_KasaListesiViewModelBase.setSirala',
-    );
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setSirala');
     try {
       return super.setSirala(value);
     } finally {
@@ -180,9 +178,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(
-      name: '_KasaListesiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -192,9 +189,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(
-      name: '_KasaListesiViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -204,9 +200,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setObservableList(List<KasaListesiModel>? value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(
-      name: '_KasaListesiViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setObservableList');
     try {
       return super.setObservableList(value);
     } finally {

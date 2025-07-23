@@ -6,20 +6,23 @@ part of 'stok_fiyat_ozeti_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_StokFiyatOzetiModel _$StokFiyatOzetiModelFromJson(Map<String, dynamic> json) => _StokFiyatOzetiModel(
-  sira: (json['SIRA'] as num?)?.toInt(),
-  grup: json['GRUP'] as String?,
-  tip: json['TIP'] as String?,
-  cariKodu: json['CARI_KODU'] as String?,
-  cariAdi: json['CARI_ADI'] as String?,
-  tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
-  fiyat: (json['FIYAT'] as num?)?.toDouble(),
-  dovizFiyati: (json['DOVIZ_FIYATI'] as num?)?.toDouble(),
-  dovizAdi: json['DOVIZ_ADI'] as String?,
-  dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
-  brutFiyat: (json['BRUT_FIYAT'] as num?)?.toDouble(),
-  brutDovizFiyati: (json['BRUT_DOVIZ_FIYATI'] as num?)?.toDouble(),
-);
+_StokFiyatOzetiModel _$StokFiyatOzetiModelFromJson(Map<String, dynamic> json) =>
+    _StokFiyatOzetiModel(
+      sira: (json['SIRA'] as num?)?.toInt(),
+      grup: json['GRUP'] as String?,
+      tip: json['TIP'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      cariAdi: json['CARI_ADI'] as String?,
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
+      fiyat: (json['FIYAT'] as num?)?.toDouble(),
+      dovizFiyati: (json['DOVIZ_FIYATI'] as num?)?.toDouble(),
+      dovizAdi: json['DOVIZ_ADI'] as String?,
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
+      brutFiyat: (json['BRUT_FIYAT'] as num?)?.toDouble(),
+      brutDovizFiyati: (json['BRUT_DOVIZ_FIYATI'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$StokFiyatOzetiModelToJson(
   _StokFiyatOzetiModel instance,

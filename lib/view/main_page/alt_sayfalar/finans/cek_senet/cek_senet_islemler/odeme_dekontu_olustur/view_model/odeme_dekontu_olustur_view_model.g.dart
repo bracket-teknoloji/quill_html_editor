@@ -8,7 +8,8 @@ part of 'odeme_dekontu_olustur_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$OdemeDekontuOlusturViewModel on _OdemeDekontuOlusturViewModelBase, Store {
+mixin _$OdemeDekontuOlusturViewModel
+    on _OdemeDekontuOlusturViewModelBase, Store {
   Computed<String>? _$aciklamaComputed;
 
   @override
@@ -42,16 +43,16 @@ mixin _$OdemeDekontuOlusturViewModel on _OdemeDekontuOlusturViewModelBase, Store
     );
   }
 
-  late final _$_OdemeDekontuOlusturViewModelBaseActionController = ActionController(
-    name: '_OdemeDekontuOlusturViewModelBase',
-    context: context,
-  );
+  late final _$_OdemeDekontuOlusturViewModelBaseActionController =
+      ActionController(
+        name: '_OdemeDekontuOlusturViewModelBase',
+        context: context,
+      );
 
   @override
   void setTarih(DateTime? tarih) {
-    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController.startAction(
-      name: '_OdemeDekontuOlusturViewModelBase.setTarih',
-    );
+    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController
+        .startAction(name: '_OdemeDekontuOlusturViewModelBase.setTarih');
     try {
       return super.setTarih(tarih);
     } finally {
@@ -63,9 +64,8 @@ mixin _$OdemeDekontuOlusturViewModel on _OdemeDekontuOlusturViewModelBase, Store
 
   @override
   void setSerino(String? serino) {
-    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController.startAction(
-      name: '_OdemeDekontuOlusturViewModelBase.setSerino',
-    );
+    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController
+        .startAction(name: '_OdemeDekontuOlusturViewModelBase.setSerino');
     try {
       return super.setSerino(serino);
     } finally {
@@ -77,9 +77,8 @@ mixin _$OdemeDekontuOlusturViewModel on _OdemeDekontuOlusturViewModelBase, Store
 
   @override
   void setOdemeHesabi(String? odemeHesabi) {
-    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController.startAction(
-      name: '_OdemeDekontuOlusturViewModelBase.setOdemeHesabi',
-    );
+    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController
+        .startAction(name: '_OdemeDekontuOlusturViewModelBase.setOdemeHesabi');
     try {
       return super.setOdemeHesabi(odemeHesabi);
     } finally {
@@ -91,9 +90,8 @@ mixin _$OdemeDekontuOlusturViewModel on _OdemeDekontuOlusturViewModelBase, Store
 
   @override
   void setProjeKodu(String? projeKodu) {
-    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController.startAction(
-      name: '_OdemeDekontuOlusturViewModelBase.setProjeKodu',
-    );
+    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController
+        .startAction(name: '_OdemeDekontuOlusturViewModelBase.setProjeKodu');
     try {
       return super.setProjeKodu(projeKodu);
     } finally {
@@ -105,9 +103,8 @@ mixin _$OdemeDekontuOlusturViewModel on _OdemeDekontuOlusturViewModelBase, Store
 
   @override
   void setPlasiyerKodu(String? plasiyerKodu) {
-    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController.startAction(
-      name: '_OdemeDekontuOlusturViewModelBase.setPlasiyerKodu',
-    );
+    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController
+        .startAction(name: '_OdemeDekontuOlusturViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(plasiyerKodu);
     } finally {
@@ -119,9 +116,8 @@ mixin _$OdemeDekontuOlusturViewModel on _OdemeDekontuOlusturViewModelBase, Store
 
   @override
   void setAciklama(String? aciklama) {
-    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController.startAction(
-      name: '_OdemeDekontuOlusturViewModelBase.setAciklama',
-    );
+    final _$actionInfo = _$_OdemeDekontuOlusturViewModelBaseActionController
+        .startAction(name: '_OdemeDekontuOlusturViewModelBase.setAciklama');
     try {
       return super.setAciklama(aciklama);
     } finally {

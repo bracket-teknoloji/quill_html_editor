@@ -61,16 +61,18 @@ mixin _$HucreTakibiStoklarViewModel on _HucreTakibiStoklarViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_HucreTakibiStoklarViewModelBaseActionController = ActionController(
-    name: '_HucreTakibiStoklarViewModelBase',
-    context: context,
-  );
+  late final _$_HucreTakibiStoklarViewModelBaseActionController =
+      ActionController(
+        name: '_HucreTakibiStoklarViewModelBase',
+        context: context,
+      );
 
   @override
   void setHucreTakibiStoklarListesi(List<HucreTakibiStoklarModel>? list) {
-    final _$actionInfo = _$_HucreTakibiStoklarViewModelBaseActionController.startAction(
-      name: '_HucreTakibiStoklarViewModelBase.setHucreTakibiStoklarListesi',
-    );
+    final _$actionInfo = _$_HucreTakibiStoklarViewModelBaseActionController
+        .startAction(
+          name: '_HucreTakibiStoklarViewModelBase.setHucreTakibiStoklarListesi',
+        );
     try {
       return super.setHucreTakibiStoklarListesi(list);
     } finally {

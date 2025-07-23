@@ -81,16 +81,16 @@ mixin _$HucreHareketleriViewModel on _HucreHareketleriViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_HucreHareketleriViewModelBaseActionController = ActionController(
-    name: '_HucreHareketleriViewModelBase',
-    context: context,
-  );
+  late final _$_HucreHareketleriViewModelBaseActionController =
+      ActionController(
+        name: '_HucreHareketleriViewModelBase',
+        context: context,
+      );
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_HucreHareketleriViewModelBaseActionController.startAction(
-      name: '_HucreHareketleriViewModelBase.setStokKodu',
-    );
+    final _$actionInfo = _$_HucreHareketleriViewModelBaseActionController
+        .startAction(name: '_HucreHareketleriViewModelBase.setStokKodu');
     try {
       return super.setStokKodu(value);
     } finally {
@@ -100,9 +100,10 @@ mixin _$HucreHareketleriViewModel on _HucreHareketleriViewModelBase, Store {
 
   @override
   void setHucreHareketleriListesi(List<HucreHareketleriModel>? value) {
-    final _$actionInfo = _$_HucreHareketleriViewModelBaseActionController.startAction(
-      name: '_HucreHareketleriViewModelBase.setHucreHareketleriListesi',
-    );
+    final _$actionInfo = _$_HucreHareketleriViewModelBaseActionController
+        .startAction(
+          name: '_HucreHareketleriViewModelBase.setHucreHareketleriListesi',
+        );
     try {
       return super.setHucreHareketleriListesi(value);
     } finally {

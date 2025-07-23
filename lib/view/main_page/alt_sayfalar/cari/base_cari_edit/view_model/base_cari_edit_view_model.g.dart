@@ -74,9 +74,8 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
 
   @override
   void changeMessage(String? value) {
-    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController.startAction(
-      name: '_BaseCariEditViewModelBase.changeMessage',
-    );
+    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController
+        .startAction(name: '_BaseCariEditViewModelBase.changeMessage');
     try {
       return super.changeMessage(value);
     } finally {
@@ -86,9 +85,11 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
 
   @override
   void changeIsDownloadCompletedSuccesfully(bool? value) {
-    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController.startAction(
-      name: '_BaseCariEditViewModelBase.changeIsDownloadCompletedSuccesfully',
-    );
+    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController
+        .startAction(
+          name:
+              '_BaseCariEditViewModelBase.changeIsDownloadCompletedSuccesfully',
+        );
     try {
       return super.changeIsDownloadCompletedSuccesfully(value);
     } finally {
@@ -98,9 +99,8 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
 
   @override
   void setIsValidate(bool value) {
-    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController.startAction(
-      name: '_BaseCariEditViewModelBase.setIsValidate',
-    );
+    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController
+        .startAction(name: '_BaseCariEditViewModelBase.setIsValidate');
     try {
       return super.setIsValidate(value);
     } finally {

@@ -11,7 +11,9 @@ CariStokSatisOzetiModel _$CariStokSatisOzetiModelFromJson(
 ) => CariStokSatisOzetiModel()
   ..stokKodu = json['STOK_KODU'] as String?
   ..miktar = (json['MIKTAR'] as num?)?.toDouble()
-  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+  ..tarih = json['TARIH'] == null
+      ? null
+      : DateTime.parse(json['TARIH'] as String)
   ..stokAdi = json['STOK_ADI'] as String?
   ..olcuBirimAdi = json['OLCU_BIRIM_ADI'] as String?
   ..netTutar = (json['NET_TUTAR'] as num?)?.toDouble()

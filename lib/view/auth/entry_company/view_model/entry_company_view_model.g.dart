@@ -126,9 +126,8 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
 
   @override
   void setSirket(List<CompanyModel>? value) {
-    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController.startAction(
-      name: '_EntryCompanyViewModelBase.setSirket',
-    );
+    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController
+        .startAction(name: '_EntryCompanyViewModelBase.setSirket');
     try {
       return super.setSirket(value);
     } finally {
@@ -138,9 +137,8 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
 
   @override
   void setIsletme(List<IsletmeModel>? value) {
-    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController.startAction(
-      name: '_EntryCompanyViewModelBase.setIsletme',
-    );
+    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController
+        .startAction(name: '_EntryCompanyViewModelBase.setIsletme');
     try {
       return super.setIsletme(value);
     } finally {
@@ -150,9 +148,8 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
 
   @override
   void setSube(List<IsletmeModel>? value) {
-    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController.startAction(
-      name: '_EntryCompanyViewModelBase.setSube',
-    );
+    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController
+        .startAction(name: '_EntryCompanyViewModelBase.setSube');
     try {
       return super.setSube(value);
     } finally {
@@ -162,9 +159,8 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
 
   @override
   void selectedSirket(CompanyModel? value) {
-    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController.startAction(
-      name: '_EntryCompanyViewModelBase.selectedSirket',
-    );
+    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController
+        .startAction(name: '_EntryCompanyViewModelBase.selectedSirket');
     try {
       return super.selectedSirket(value);
     } finally {
@@ -174,9 +170,8 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
 
   @override
   void selectedIsletme(IsletmeModel? value) {
-    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController.startAction(
-      name: '_EntryCompanyViewModelBase.selectedIsletme',
-    );
+    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController
+        .startAction(name: '_EntryCompanyViewModelBase.selectedIsletme');
     try {
       return super.selectedIsletme(value);
     } finally {
@@ -186,9 +181,8 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
 
   @override
   void selectedSube(IsletmeModel? value) {
-    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController.startAction(
-      name: '_EntryCompanyViewModelBase.selectedSube',
-    );
+    final _$actionInfo = _$_EntryCompanyViewModelBaseActionController
+        .startAction(name: '_EntryCompanyViewModelBase.selectedSube');
     try {
       return super.selectedSube(value);
     } finally {

@@ -62,16 +62,16 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
     return _$saveDataAsyncAction.run(() => super.saveData());
   }
 
-  late final _$_CekSenetEvrakEkleViewModelBaseActionController = ActionController(
-    name: '_CekSenetEvrakEkleViewModelBase',
-    context: context,
-  );
+  late final _$_CekSenetEvrakEkleViewModelBaseActionController =
+      ActionController(
+        name: '_CekSenetEvrakEkleViewModelBase',
+        context: context,
+      );
 
   @override
   void setBase64Data(String? base64Data) {
-    final _$actionInfo = _$_CekSenetEvrakEkleViewModelBaseActionController.startAction(
-      name: '_CekSenetEvrakEkleViewModelBase.setBase64Data',
-    );
+    final _$actionInfo = _$_CekSenetEvrakEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetEvrakEkleViewModelBase.setBase64Data');
     try {
       return super.setBase64Data(base64Data);
     } finally {
@@ -81,9 +81,8 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
 
   @override
   void setBoyutByte(int? boyutByte) {
-    final _$actionInfo = _$_CekSenetEvrakEkleViewModelBaseActionController.startAction(
-      name: '_CekSenetEvrakEkleViewModelBase.setBoyutByte',
-    );
+    final _$actionInfo = _$_CekSenetEvrakEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetEvrakEkleViewModelBase.setBoyutByte');
     try {
       return super.setBoyutByte(boyutByte);
     } finally {
@@ -93,9 +92,8 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
 
   @override
   void setAciklama(String? aciklama) {
-    final _$actionInfo = _$_CekSenetEvrakEkleViewModelBaseActionController.startAction(
-      name: '_CekSenetEvrakEkleViewModelBase.setAciklama',
-    );
+    final _$actionInfo = _$_CekSenetEvrakEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetEvrakEkleViewModelBase.setAciklama');
     try {
       return super.setAciklama(aciklama);
     } finally {

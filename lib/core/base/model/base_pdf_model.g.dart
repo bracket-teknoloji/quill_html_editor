@@ -15,11 +15,12 @@ BasePdfModel _$BasePdfModelFromJson(Map<String, dynamic> json) => BasePdfModel(
   fromMemory: json['FROM_MEMORY'] as bool? ?? false,
 );
 
-Map<String, dynamic> _$BasePdfModelToJson(BasePdfModel instance) => <String, dynamic>{
-  if (instance.byteData case final value?) 'BYTE_DATA': value,
-  if (instance.uzanti case final value?) 'UZANTI': value,
-  if (instance.reportWidth case final value?) 'REPORT_WIDTH': value,
-  if (instance.reportHeight case final value?) 'REPORT_HEIGHT': value,
-  if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
-  if (instance.fromMemory case final value?) 'FROM_MEMORY': value,
-};
+Map<String, dynamic> _$BasePdfModelToJson(BasePdfModel instance) =>
+    <String, dynamic>{
+      if (instance.byteData case final value?) 'BYTE_DATA': value,
+      if (instance.uzanti case final value?) 'UZANTI': value,
+      if (instance.reportWidth case final value?) 'REPORT_WIDTH': value,
+      if (instance.reportHeight case final value?) 'REPORT_HEIGHT': value,
+      if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
+      if (instance.fromMemory case final value?) 'FROM_MEMORY': value,
+    };

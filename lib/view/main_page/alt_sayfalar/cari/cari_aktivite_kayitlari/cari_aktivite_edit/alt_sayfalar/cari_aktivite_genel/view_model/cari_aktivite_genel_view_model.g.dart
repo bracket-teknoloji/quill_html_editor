@@ -77,16 +77,16 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
     return _$saveCariAktiviteAsyncAction.run(() => super.saveCariAktivite());
   }
 
-  late final _$CariAktiviteGenelViewModelBaseActionController = ActionController(
-    name: 'CariAktiviteGenelViewModelBase',
-    context: context,
-  );
+  late final _$CariAktiviteGenelViewModelBaseActionController =
+      ActionController(
+        name: 'CariAktiviteGenelViewModelBase',
+        context: context,
+      );
 
   @override
   void setBaseEditEnum(BaseEditEnum? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setBaseEditEnum',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setBaseEditEnum');
     try {
       return super.setBaseEditEnum(value);
     } finally {
@@ -96,9 +96,10 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setAktiviteBitirilsinMi(bool value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setAktiviteBitirilsinMi',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(
+          name: 'CariAktiviteGenelViewModelBase.setAktiviteBitirilsinMi',
+        );
     try {
       return super.setAktiviteBitirilsinMi(value);
     } finally {
@@ -108,9 +109,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setModel(CariAktiviteListesiModel value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setModel',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setModel');
     try {
       return super.setModel(value);
     } finally {
@@ -120,9 +120,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setBaslangicTarihi(DateTime? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setBaslangicTarihi',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setBaslangicTarihi');
     try {
       return super.setBaslangicTarihi(value);
     } finally {
@@ -132,9 +131,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setSaat(DateTime? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setSaat',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setSaat');
     try {
       return super.setSaat(value);
     } finally {
@@ -144,9 +142,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setCari(CariListesiModel? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setCari',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setCari');
     try {
       return super.setCari(value);
     } finally {
@@ -156,9 +153,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setBolum(String? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setBolum',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setBolum');
     try {
       return super.setBolum(value);
     } finally {
@@ -168,9 +164,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setIlgiliKisi(String? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setIlgiliKisi',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setIlgiliKisi');
     try {
       return super.setIlgiliKisi(value);
     } finally {
@@ -180,9 +175,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setKullanici(KullanicilarModel? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setKullanici',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setKullanici');
     try {
       return super.setKullanici(value);
     } finally {
@@ -192,9 +186,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setAktiviteTipi(CariAktiviteTipleri? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setAktiviteTipi',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setAktiviteTipi');
     try {
       return super.setAktiviteTipi(value);
     } finally {
@@ -204,9 +197,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setAciklama',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setAciklama');
     try {
       return super.setAciklama(value);
     } finally {
@@ -216,9 +208,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setSonucAciklama(String? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setSonucAciklama',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setSonucAciklama');
     try {
       return super.setSonucAciklama(value);
     } finally {
@@ -228,9 +219,8 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
 
   @override
   void setSure(double? value) {
-    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController.startAction(
-      name: 'CariAktiviteGenelViewModelBase.setSure',
-    );
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setSure');
     try {
       return super.setSure(value);
     } finally {

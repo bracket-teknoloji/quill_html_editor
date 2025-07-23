@@ -9,7 +9,9 @@ part of 'pdf_viewer_model.dart';
 _PdfModel _$PdfModelFromJson(Map<String, dynamic> json) => _PdfModel(
   raporOzelKod: json['RAPOR_OZEL_KOD'] as String?,
   standart: json['STANDART'] as bool?,
-  dicParams: json['DIC_PARAMS'] == null ? null : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
+  dicParams: json['DIC_PARAMS'] == null
+      ? null
+      : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
   dicParamsMap: json['DicParams'] as Map<String, dynamic>?,
   dizaynId: (json['DIZAYN_ID'] as num?)?.toInt(),
   etiketSayisi: (json['ETIKET_SAYISI'] as num?)?.toInt(),
@@ -73,7 +75,9 @@ _DicParams _$DicParamsFromJson(Map<String, dynamic> json) => _DicParams(
   kalemId: json['KALEM_ID'] as String?,
   tempBelgeId: json['TEMP_BELGE_ID'] as String?,
   irsDahil: json['IRS_DAHIL'] as String?,
-  dovizTipleri: (json['DOVIZ_TIPLERI'] as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
+  dovizTipleri: (json['DOVIZ_TIPLERI'] as List<dynamic>?)
+      ?.map((e) => (e as num).toInt())
+      .toList(),
 );
 
 Map<String, dynamic> _$DicParamsToJson(
@@ -88,7 +92,8 @@ Map<String, dynamic> _$DicParamsToJson(
   if (instance.tlHarDokulsun case final value?) 'TL_HAR_DOKULSUN': value,
   if (instance.depoKodlari case final value?) 'DEPO_KODLARI': value,
   if (instance.haricStokKodlari case final value?) 'HARIC_STOK_KODLARI': value,
-  if (instance.haricStokGrupKodlari case final value?) 'HARIC_STOK_GRUP_KODLARI': value,
+  if (instance.haricStokGrupKodlari case final value?)
+    'HARIC_STOK_GRUP_KODLARI': value,
   if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
   if (instance.bastar case final value?) 'BASTAR': value,
   if (instance.bittar case final value?) 'BITTAR': value,
@@ -113,9 +118,11 @@ Map<String, dynamic> _$DicParamsToJson(
   if (instance.isemriNo case final value?) 'ISEMRI_NO': value,
   if (instance.dinamikParam case final value?) 'DINAMIK_PARAM': value,
   if (instance.kasaharInckey case final value?) 'KASAHAR_INCKEY': value,
-  if (instance.uretimFiyatiDahil case final value?) 'URETIM_FIYATI_DAHIL': value,
+  if (instance.uretimFiyatiDahil case final value?)
+    'URETIM_FIYATI_DAHIL': value,
   if (instance.fiyatTipi case final value?) 'FIYAT_TIPI': value,
-  if (instance.tblnfStokfiyatgecmisiId case final value?) 'TBLNF_STOKFIYATGECMISI_ID': value,
+  if (instance.tblnfStokfiyatgecmisiId case final value?)
+    'TBLNF_STOKFIYATGECMISI_ID': value,
   if (instance.gorunecekAlanlar case final value?) 'GORUNECEK_ALANLAR': value,
   if (instance.miktar case final value?) 'MIKTAR': value,
   if (instance.yapkod case final value?) 'YAPKOD': value,
@@ -128,5 +135,6 @@ Map<String, dynamic> _$DicParamsToJson(
   if (instance.kalemId case final value?) 'KALEM_ID': value,
   if (instance.tempBelgeId case final value?) 'TEMP_BELGE_ID': value,
   if (instance.irsDahil case final value?) 'IRS_DAHIL': value,
-  if (_dovizTipleriToJson(instance.dovizTipleri) case final value?) 'DOVIZ_TIPLERI': value,
+  if (_dovizTipleriToJson(instance.dovizTipleri) case final value?)
+    'DOVIZ_TIPLERI': value,
 };

@@ -118,7 +118,9 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AccountResponseModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is AccountResponseModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -168,13 +170,17 @@ Map<String, dynamic> _$AccountResponseModelToJson(
   if (instance.wsLan case final value?) 'WS_LAN': value,
   if (instance.wsWan case final value?) 'WS_WAN': value,
   if (instance.webServis case final value?) 'WEB_SERVIS': value,
-  if (instance.lisansBitisTarihi case final value?) 'LISANS_BITIS_TARIHI': value,
+  if (instance.lisansBitisTarihi case final value?)
+    'LISANS_BITIS_TARIHI': value,
   if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
   if (instance.firmaKisaAdi case final value?) 'FIRMA_KISA_ADI': value,
-  if (instance.sozlesmeBitisTarihi case final value?) 'SOZLESME_BITIS_TARIHI': value,
-  if (instance.sozlesmeBitisKalanGun case final value?) 'SOZLESME_BITIS_KALAN_GUN': value,
+  if (instance.sozlesmeBitisTarihi case final value?)
+    'SOZLESME_BITIS_TARIHI': value,
+  if (instance.sozlesmeBitisKalanGun case final value?)
+    'SOZLESME_BITIS_KALAN_GUN': value,
   if (instance.karsilamaMesaji case final value?) 'KARSILAMA_MESAJI': value,
-  if (instance.karsilamaResimUrl case final value?) 'KARSILAMA_RESIM_URL': value,
+  if (instance.karsilamaResimUrl case final value?)
+    'KARSILAMA_RESIM_URL': value,
   if (instance.karsilamaSaniye case final value?) 'KARSILAMA_SANIYE': value,
   if (instance.guncellemeVarmi case final value?) 'GUNCELLEME_VARMI': value,
   if (instance.maxApkVersion case final value?) 'MAX_APK_VERSION': value,
@@ -187,7 +193,9 @@ Map<String, dynamic> _$AccountResponseModelToJson(
   if (instance.bayiUnvan case final value?) 'BAYI_UNVAN': value,
   if (instance.bracketCihazi case final value?) 'BRACKET_CIHAZI': value,
   if (instance.sozlesmeUyarisi case final value?) 'SOZLESME_UYARISI': value,
-  if (instance.sozlesmeUyarisiGoster case final value?) 'SOZLESME_UYARISI_GOSTER': value,
+  if (instance.sozlesmeUyarisiGoster case final value?)
+    'SOZLESME_UYARISI_GOSTER': value,
   if (instance.karsilamaBaslik case final value?) 'KARSILAMA_BASLIK': value,
-  if (instance.sozlesmeTeklifGoster case final value?) 'SOZLESME_TEKLIF_GOSTER': value,
+  if (instance.sozlesmeTeklifGoster case final value?)
+    'SOZLESME_TEKLIF_GOSTER': value,
 };

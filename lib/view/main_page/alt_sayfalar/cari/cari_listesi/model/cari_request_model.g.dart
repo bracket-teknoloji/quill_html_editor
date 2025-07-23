@@ -6,34 +6,51 @@ part of 'cari_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_CariRequestModel _$CariRequestModelFromJson(Map<String, dynamic> json) => _CariRequestModel(
-  filterText: json['FilterText'] as String? ?? "",
-  kod: (json['Kod'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  sayfa: (json['Sayfa'] as num?)?.toInt(),
-  ilce: json['Ilce'] as String?,
-  cariTipi: json['CariTipi'] as String?,
-  siralama: json['SIRALAMA'] as String?,
-  menuKodu: json['MenuKodu'] as String?,
-  eFaturaGoster: json['EFaturaGoster'] as bool?,
-  bagliCariKodu: json['BagliCariKodu'] as String?,
-  filterBakiye: json['FILTER_BAKIYE'] as String?,
-  arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  arrKod1: (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  arrKod2: (json['ArrKod2'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  arrKod3: (json['ArrKod3'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  arrKod4: (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  arrKod5: (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  arrSehir: (json['ArrSehir'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  arrPlasiyerKodu: (json['ArrPlasiyerKodu'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  plasiyerKisitiYok: json['PlasiyerKisitiYok'] as bool?,
-  belgeTuru: json['BelgeTuru'] as String?,
-  vergiNo: json['VergiNo'] as String?,
-  siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
-  kisitYok: json['KisitYok'] as bool?,
-  secildi: json['Secildi'] as String?,
-  teslimCari: json['TeslimCari'] as String?,
-  rotaDisi: json['RotaDisi'] as String?,
-);
+_CariRequestModel _$CariRequestModelFromJson(Map<String, dynamic> json) =>
+    _CariRequestModel(
+      filterText: json['FilterText'] as String? ?? "",
+      kod: (json['Kod'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
+      ilce: json['Ilce'] as String?,
+      cariTipi: json['CariTipi'] as String?,
+      siralama: json['SIRALAMA'] as String?,
+      menuKodu: json['MenuKodu'] as String?,
+      eFaturaGoster: json['EFaturaGoster'] as bool?,
+      bagliCariKodu: json['BagliCariKodu'] as String?,
+      filterBakiye: json['FILTER_BAKIYE'] as String?,
+      arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod1: (json['ArrKod1'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod2: (json['ArrKod2'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod3: (json['ArrKod3'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod4: (json['ArrKod4'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod5: (json['ArrKod5'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrSehir: (json['ArrSehir'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrPlasiyerKodu: (json['ArrPlasiyerKodu'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      plasiyerKisitiYok: json['PlasiyerKisitiYok'] as bool?,
+      belgeTuru: json['BelgeTuru'] as String?,
+      vergiNo: json['VergiNo'] as String?,
+      siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
+      kisitYok: json['KisitYok'] as bool?,
+      secildi: json['Secildi'] as String?,
+      teslimCari: json['TeslimCari'] as String?,
+      rotaDisi: json['RotaDisi'] as String?,
+    );
 
 Map<String, dynamic> _$CariRequestModelToJson(
   _CariRequestModel instance,
@@ -59,7 +76,8 @@ Map<String, dynamic> _$CariRequestModelToJson(
   if (instance.plasiyerKisitiYok case final value?) 'PlasiyerKisitiYok': value,
   if (instance.belgeTuru case final value?) 'BelgeTuru': value,
   if (instance.vergiNo case final value?) 'VergiNo': value,
-  if (instance.siparisKarsilanmaDurumu case final value?) 'SiparisKarsilanmaDurumu': value,
+  if (instance.siparisKarsilanmaDurumu case final value?)
+    'SiparisKarsilanmaDurumu': value,
   if (instance.kisitYok case final value?) 'KisitYok': value,
   if (instance.secildi case final value?) 'Secildi': value,
   if (instance.teslimCari case final value?) 'TeslimCari': value,

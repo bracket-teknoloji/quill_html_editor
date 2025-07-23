@@ -35,30 +35,33 @@ _SaveCekSenetModel _$SaveCekSenetModelFromJson(
   tutar: (json['TUTAR'] as num?)?.toDouble(),
 );
 
-Map<String, dynamic> _$SaveCekSenetModelToJson(_SaveCekSenetModel instance) => <String, dynamic>{
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.cariAdi case final value?) 'CARI_ADI': value,
-  if (instance.cariKodu case final value?) 'CARI_KODU': value,
-  if (instance.guid case final value?) 'GUID': value,
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?) 'KALEMLER': value,
-  if (instance.pickerTahsilatTuru case final value?) 'PickerTahsilatTuru': value,
-  if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
-  if (instance.tag case final value?) 'TAG': value,
-  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.yeniKayit case final value?) '_YeniKayit': value,
-  if (instance.projeKodu case final value?) 'PROJE_KODU': value,
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.verilenKodu case final value?) 'VERILEN_KODU': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.ceksenNo case final value?) 'CEKSEN_NO': value,
-  if (instance.gc case final value?) 'GC': value,
-  if (instance.kasaKodu case final value?) 'KASA_KODU': value,
-  if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
-  if (instance.refKod case final value?) 'REF_KOD': value,
-  if (instance.tahsilatmi case final value?) 'TAHSILATMI': value,
-  if (instance.tutar case final value?) 'TUTAR': value,
-};
+Map<String, dynamic> _$SaveCekSenetModelToJson(_SaveCekSenetModel instance) =>
+    <String, dynamic>{
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.guid case final value?) 'GUID': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?)
+        'KALEMLER': value,
+      if (instance.pickerTahsilatTuru case final value?)
+        'PickerTahsilatTuru': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.tag case final value?) 'TAG': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.yeniKayit case final value?) '_YeniKayit': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.verilenKodu case final value?) 'VERILEN_KODU': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.ceksenNo case final value?) 'CEKSEN_NO': value,
+      if (instance.gc case final value?) 'GC': value,
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
+      if (instance.refKod case final value?) 'REF_KOD': value,
+      if (instance.tahsilatmi case final value?) 'TAHSILATMI': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+    };
 
 _CekSenetKalemlerModel _$CekSenetKalemlerModelFromJson(
   Map<String, dynamic> json,
@@ -81,7 +84,9 @@ _CekSenetKalemlerModel _$CekSenetKalemlerModelFromJson(
   tag: json['TAG'] as String?,
   tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
   tutar: (json['TUTAR'] as num?)?.toDouble(),
-  vadeTarihi: json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String),
+  vadeTarihi: json['VADE_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['VADE_TARIHI'] as String),
   dovizKuru: (json['DOVIZ_KURU'] as num?)?.toDouble(),
   dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
   asilCari: json['ASIL_CARI'] as String?,
@@ -118,7 +123,8 @@ Map<String, dynamic> _$CekSenetKalemlerModelToJson(
   if (instance.tag case final value?) 'TAG': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
   if (instance.tutar case final value?) 'TUTAR': value,
-  if (instance.vadeTarihi?.toIso8601String() case final value?) 'VADE_TARIHI': value,
+  if (instance.vadeTarihi?.toIso8601String() case final value?)
+    'VADE_TARIHI': value,
   if (instance.dovizKuru case final value?) 'DOVIZ_KURU': value,
   if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
   if (instance.asilCari case final value?) 'ASIL_CARI': value,

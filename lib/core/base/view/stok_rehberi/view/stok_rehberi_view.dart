@@ -598,7 +598,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             ),
                         ],
                       ),
-                      Text(item.stokAdi ?? ""),
+                      Text(item.stokAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
                       CustomLayoutBuilder.divideInHalf(
                         children: [
                           if (yetkiController.siparisMSEkstraAlanlari("acik_sip_miktari"))

@@ -173,6 +173,24 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
+  late final _$kontrolEdildiMiAtom = Atom(
+    name: '_FaturalarViewModelBase.kontrolEdildiMi',
+    context: context,
+  );
+
+  @override
+  String? get kontrolEdildiMi {
+    _$kontrolEdildiMiAtom.reportRead();
+    return super.kontrolEdildiMi;
+  }
+
+  @override
+  set kontrolEdildiMi(String? value) {
+    _$kontrolEdildiMiAtom.reportWrite(value, super.kontrolEdildiMi, () {
+      super.kontrolEdildiMi = value;
+    });
+  }
+
   late final _$searchBarAtom = Atom(
     name: '_FaturalarViewModelBase.searchBar',
     context: context,
@@ -303,6 +321,18 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
+  late final _$setKontrolAciklamaAsyncAction = AsyncAction(
+    '_FaturalarViewModelBase.setKontrolAciklama',
+    context: context,
+  );
+
+  @override
+  Future<bool> setKontrolAciklama(BaseSiparisEditModel model) {
+    return _$setKontrolAciklamaAsyncAction.run(
+      () => super.setKontrolAciklama(model),
+    );
+  }
+
   late final _$changeScrollStatusAsyncAction = AsyncAction(
     '_FaturalarViewModelBase.changeScrollStatus',
     context: context,
@@ -359,6 +389,18 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     name: '_FaturalarViewModelBase',
     context: context,
   );
+
+  @override
+  void setKontrolEdildiMi(String? value) {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+      name: '_FaturalarViewModelBase.setKontrolEdildiMi',
+    );
+    try {
+      return super.setKontrolEdildiMi(value);
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changeEkstraAlanlarMap(String key, bool value) {
@@ -753,6 +795,7 @@ ekstraAlanlarMap: ${ekstraAlanlarMap},
 faturaRequestModel: ${faturaRequestModel},
 paramData: ${paramData},
 isScrollDown: ${isScrollDown},
+kontrolEdildiMi: ${kontrolEdildiMi},
 searchBar: ${searchBar},
 grupKodlariGoster: ${grupKodlariGoster},
 observableList: ${observableList},

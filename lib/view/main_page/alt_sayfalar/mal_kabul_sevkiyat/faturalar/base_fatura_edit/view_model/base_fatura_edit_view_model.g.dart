@@ -154,9 +154,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void setCariKodu(CariListesiModel? value) {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.setCariKodu',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -166,9 +165,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void setBelgeNo(List<BaseSiparisEditModel>? value) {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -178,9 +176,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void setKalemList(List<KalemModel>? value) {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.setKalemList',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setKalemList');
     try {
       return super.setKalemList(value);
     } finally {
@@ -190,9 +187,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void changeUpdateKalemler() {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.changeUpdateKalemler',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.changeUpdateKalemler');
     try {
       return super.changeUpdateKalemler();
     } finally {
@@ -202,9 +198,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void changeIsValid() {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.changeIsValid',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.changeIsValid');
     try {
       return super.changeIsValid();
     } finally {
@@ -214,9 +209,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void changePageIndex(int value) {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.changePageIndex',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.changePageIndex');
     try {
       return super.changePageIndex(value);
     } finally {
@@ -226,9 +220,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void changeIsLastPage(bool value) {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.changeIsLastPage',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.changeIsLastPage');
     try {
       return super.changeIsLastPage(value);
     } finally {
@@ -238,9 +231,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void setLoading(bool value) {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.setLoading',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setLoading');
     try {
       return super.setLoading(value);
     } finally {
@@ -250,9 +242,8 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void changeFuture() {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.changeFuture',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.changeFuture');
     try {
       return super.changeFuture();
     } finally {
@@ -262,9 +253,10 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController.startAction(
-      name: '_BaseFaturaEditViewModelBase.changeYeniKaydaHazirlaMi',
-    );
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(
+          name: '_BaseFaturaEditViewModelBase.changeYeniKaydaHazirlaMi',
+        );
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {

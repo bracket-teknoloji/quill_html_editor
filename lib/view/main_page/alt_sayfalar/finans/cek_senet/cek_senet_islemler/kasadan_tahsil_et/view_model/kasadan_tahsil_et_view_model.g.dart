@@ -59,9 +59,8 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   void setTarih(DateTime value) {
-    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController.startAction(
-      name: '_KasadanTahsilEtViewModelBase.setTarih',
-    );
+    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController
+        .startAction(name: '_KasadanTahsilEtViewModelBase.setTarih');
     try {
       return super.setTarih(value);
     } finally {
@@ -71,9 +70,8 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   void setKasaKodu(String? value) {
-    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController.startAction(
-      name: '_KasadanTahsilEtViewModelBase.setKasaKodu',
-    );
+    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController
+        .startAction(name: '_KasadanTahsilEtViewModelBase.setKasaKodu');
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -83,9 +81,8 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   void setMusteriCeki(String? value) {
-    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController.startAction(
-      name: '_KasadanTahsilEtViewModelBase.setMusteriCeki',
-    );
+    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController
+        .startAction(name: '_KasadanTahsilEtViewModelBase.setMusteriCeki');
     try {
       return super.setMusteriCeki(value);
     } finally {
@@ -95,9 +92,8 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(String? value) {
-    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController.startAction(
-      name: '_KasadanTahsilEtViewModelBase.setPlasiyerKodu',
-    );
+    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController
+        .startAction(name: '_KasadanTahsilEtViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -107,9 +103,8 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   void setProjeKodu(String? value) {
-    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController.startAction(
-      name: '_KasadanTahsilEtViewModelBase.setProjeKodu',
-    );
+    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController
+        .startAction(name: '_KasadanTahsilEtViewModelBase.setProjeKodu');
     try {
       return super.setProjeKodu(value);
     } finally {
@@ -119,9 +114,8 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   void setReferansKodu(String? value) {
-    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController.startAction(
-      name: '_KasadanTahsilEtViewModelBase.setReferansKodu',
-    );
+    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController
+        .startAction(name: '_KasadanTahsilEtViewModelBase.setReferansKodu');
     try {
       return super.setReferansKodu(value);
     } finally {
@@ -131,9 +125,8 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
 
   @override
   void setKasaHarAciklama(String? value) {
-    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController.startAction(
-      name: '_KasadanTahsilEtViewModelBase.setKasaHarAciklama',
-    );
+    final _$actionInfo = _$_KasadanTahsilEtViewModelBaseActionController
+        .startAction(name: '_KasadanTahsilEtViewModelBase.setKasaHarAciklama');
     try {
       return super.setKasaHarAciklama(value);
     } finally {

@@ -12,10 +12,11 @@ mixin _$FiyatOzetiViewModel on _FiyatOzetiViewModelBase, Store {
   Computed<List<String?>?>? _$grupListComputed;
 
   @override
-  List<String?>? get grupList => (_$grupListComputed ??= Computed<List<String?>?>(
-    () => super.grupList,
-    name: '_FiyatOzetiViewModelBase.grupList',
-  )).value;
+  List<String?>? get grupList =>
+      (_$grupListComputed ??= Computed<List<String?>?>(
+        () => super.grupList,
+        name: '_FiyatOzetiViewModelBase.grupList',
+      )).value;
   Computed<Map<String, List<StokFiyatOzetiModel>>>? _$grupMapComputed;
 
   @override

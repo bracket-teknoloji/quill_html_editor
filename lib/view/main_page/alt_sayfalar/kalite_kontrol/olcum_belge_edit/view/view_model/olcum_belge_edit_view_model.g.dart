@@ -12,10 +12,11 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   Computed<OlcumBelgeModel?>? _$belgeModelComputed;
 
   @override
-  OlcumBelgeModel? get belgeModel => (_$belgeModelComputed ??= Computed<OlcumBelgeModel?>(
-    () => super.belgeModel,
-    name: '_OlcumBelgeEditViewModelBase.belgeModel',
-  )).value;
+  OlcumBelgeModel? get belgeModel =>
+      (_$belgeModelComputed ??= Computed<OlcumBelgeModel?>(
+        () => super.belgeModel,
+        name: '_OlcumBelgeEditViewModelBase.belgeModel',
+      )).value;
   Computed<bool>? _$depolarValidationComputed;
 
   @override
@@ -187,9 +188,8 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setGirisDepo(DepoList? value) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setGirisDepo',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setGirisDepo');
     try {
       return super.setGirisDepo(value);
     } finally {
@@ -199,9 +199,8 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setKabulGirisDepo(DepoList? value) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setKabulGirisDepo',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setKabulGirisDepo');
     try {
       return super.setKabulGirisDepo(value);
     } finally {
@@ -211,9 +210,8 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setRedGirisDepo(DepoList? value) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setRedGirisDepo',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setRedGirisDepo');
     try {
       return super.setRedGirisDepo(value);
     } finally {
@@ -223,9 +221,8 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setCikisDepo(DepoList? value) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setCikisDepo',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setCikisDepo');
     try {
       return super.setCikisDepo(value);
     } finally {
@@ -235,9 +232,10 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setOlcumDatResponseListesi(List<SeriList>? list) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setOlcumDatResponseListesi',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(
+          name: '_OlcumBelgeEditViewModelBase.setOlcumDatResponseListesi',
+        );
     try {
       return super.setOlcumDatResponseListesi(list);
     } finally {
@@ -247,9 +245,8 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setRequestModel(OlcumBelgeModel reqModel) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setRequestModel',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setRequestModel');
     try {
       return super.setRequestModel(reqModel);
     } finally {
@@ -259,9 +256,8 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setOlcumDatListesi(List<OlcumBelgeModel>? list) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setOlcumDatListesi',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setOlcumDatListesi');
     try {
       return super.setOlcumDatListesi(list);
     } finally {
@@ -271,9 +267,8 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 
   @override
   void setOlcumlerList(List<OlcumOlcumlerModel>? list) {
-    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController.startAction(
-      name: '_OlcumBelgeEditViewModelBase.setOlcumlerList',
-    );
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setOlcumlerList');
     try {
       return super.setOlcumlerList(list);
     } finally {

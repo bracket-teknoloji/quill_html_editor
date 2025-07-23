@@ -9,7 +9,9 @@ part of 'ozel_hesap_kapatma_save_model.dart';
 _OzelHesapKapatmaSaveModel _$OzelHesapKapatmaSaveModelFromJson(
   Map<String, dynamic> json,
 ) => _OzelHesapKapatmaSaveModel(
-  arrHedefInckeyno: (json['ARR_HEDEF_INCKEYNO'] as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
+  arrHedefInckeyno: (json['ARR_HEDEF_INCKEYNO'] as List<dynamic>?)
+      ?.map((e) => (e as num).toInt())
+      .toList(),
   cariKodu: json['CARI_KODU'] as String?,
   kaynakInckeyno: (json['KAYNAK_INCKEYNO'] as num?)?.toInt(),
 );

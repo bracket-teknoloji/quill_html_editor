@@ -8,7 +8,8 @@ part of 'urun_grubuna_gore_satis_grafigi_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UrunGrubunaGoreSatisGrafigiViewModel on _UrunGrubunaGoreSatisGrafigiViewModelBase, Store {
+mixin _$UrunGrubunaGoreSatisGrafigiViewModel
+    on _UrunGrubunaGoreSatisGrafigiViewModelBase, Store {
   Computed<String>? _$toplamMiktarComputed;
 
   @override
@@ -132,16 +133,18 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel on _UrunGrubunaGoreSatisGrafigiView
     });
   }
 
-  late final _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController = ActionController(
-    name: '_UrunGrubunaGoreSatisGrafigiViewModelBase',
-    context: context,
-  );
+  late final _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController =
+      ActionController(
+        name: '_UrunGrubunaGoreSatisGrafigiViewModelBase',
+        context: context,
+      );
 
   @override
   void setProjeList(List<BaseProjeModel>? value) {
-    final _$actionInfo = _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProjeList',
-    );
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProjeList',
+        );
     try {
       return super.setProjeList(value);
     } finally {
@@ -153,9 +156,10 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel on _UrunGrubunaGoreSatisGrafigiView
 
   @override
   void setRaporTipi(String value) {
-    final _$actionInfo = _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setRaporTipi',
-    );
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setRaporTipi',
+        );
     try {
       return super.setRaporTipi(value);
     } finally {
@@ -167,9 +171,10 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel on _UrunGrubunaGoreSatisGrafigiView
 
   @override
   void setProje(BaseProjeModel? proje) {
-    final _$actionInfo = _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProje',
-    );
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProje',
+        );
     try {
       return super.setProje(proje);
     } finally {
@@ -181,9 +186,10 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel on _UrunGrubunaGoreSatisGrafigiView
 
   @override
   void setIrsDahilValue(bool value) {
-    final _$actionInfo = _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setIrsDahilValue',
-    );
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setIrsDahilValue',
+        );
     try {
       return super.setIrsDahilValue(value);
     } finally {
@@ -195,9 +201,10 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel on _UrunGrubunaGoreSatisGrafigiView
 
   @override
   void setGruplansinValue(bool value) {
-    final _$actionInfo = _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setGruplansinValue',
-    );
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setGruplansinValue',
+        );
     try {
       return super.setGruplansinValue(value);
     } finally {
@@ -209,9 +216,10 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel on _UrunGrubunaGoreSatisGrafigiView
 
   @override
   void setModelList(List<UrunGrubunaGoreSatisGrafigiModel>? value) {
-    final _$actionInfo = _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
-      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setModelList',
-    );
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+          name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setModelList',
+        );
     try {
       return super.setModelList(value);
     } finally {

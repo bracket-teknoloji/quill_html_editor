@@ -42,6 +42,17 @@ abstract class _TalepTeklifListesiViewModelBase
   final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
 
   @observable
+  String? kontrolEdildiMi;
+
+  final Map<String, String?> kontrolDurumuMap = {"Tümü": null, "Kontrol Edilenler": "E", "Kontrol Edilmeyenler": "H"};
+
+  @action
+  void setKontrolEdildiMi(String? value) {
+    kontrolEdildiMi = value;
+    siparislerRequestModel = siparislerRequestModel.copyWith(kontrolEdildi: value);
+  }
+
+  @observable
   List<String?> teslimatDurumuValueList = const [null, "K", "B"];
 
   @observable
@@ -256,6 +267,7 @@ abstract class _TalepTeklifListesiViewModelBase
       arrKod2: null,
       arrKod3: null,
       arrKod4: null,
+      kontrolEdildi: null,
       arrKod5: null,
       arrPlasiyerKodu: null,
       arrBelgeTipi: null,
@@ -304,8 +316,8 @@ abstract class _TalepTeklifListesiViewModelBase
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
         dahaVarMi = false;
       } else {
+        increasePage();
         dahaVarMi = true;
-        siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: (siparislerRequestModel.sayfa ?? 0) + 1);
       }
       if (observableList == null) {
         setObservableList(

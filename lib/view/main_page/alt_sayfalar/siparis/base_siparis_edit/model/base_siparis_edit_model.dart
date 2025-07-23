@@ -267,6 +267,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     this.faturalasmayacak,
     this.exportTipi,
     this.exportrefno,
+    this.kontrolAciklama,
   });
 
   BaseSiparisEditModel._init();
@@ -854,6 +855,10 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   int? exportTipi;
   @HiveField(197)
   String? exportrefno;
+  @HiveField(198)
+  String? kontrolAciklama;
+  @HiveField(199)
+  String? tekliflesti;
 
   bool get isTamamlandi => (tamamlananMiktar ?? 0) == (miktar ?? 0);
 
@@ -922,6 +927,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   bool get faturalastiMi => faturalasti == "E";
 
   bool get irsaliyelestiMi => irsaliyelesti == "E";
+
+  bool get tekliflestiMi => tekliflesti == "E";
 
   bool get kapaliMi => tipi == 1;
 
@@ -1475,10 +1482,19 @@ final class KalemModel with NetworkManagerMixin {
     this.iadesirano,
     this.ekalan1Aciklama,
     this.ekalan2Aciklama,
+    this.teklifSira,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) =>
       KalemModel(siparisNo: model.belgeNo, siparisSira: model.sira, depoKodu: model.depoKodu, stokKodu: model.stokKodu);
+
+  factory KalemModel.forTalepTekliflestir(KalemModel model) => KalemModel(
+    teklifSira: model.sira,
+    teklifKalemSira: model.sira,
+    stokKodu: model.stokKodu,
+    depoKodu: model.depoKodu,
+    teklifNo: model.belgeNo,
+  );
   factory KalemModel.fromOlcumBelgeModel(OlcumBelgeModel? model) => KalemModel(
     stokAdi: model?.stokAdi,
     stokKodu: model?.stokKodu,
@@ -1895,6 +1911,8 @@ final class KalemModel with NetworkManagerMixin {
   @HiveField(159)
   String? ekalan2Aciklama;
   List<KalemFireModel>? fireListe;
+  @HiveField(160)
+  int? teklifSira;
 
   double get yuzdeHesaplanmamisFiyat {
     if (fiyatYuzde != null && fiyatYuzde! > 0) {

@@ -33,7 +33,9 @@ _KasaIslemleriModel _$KasaIslemleriModelFromJson(
   projeAdi: json['PROJE_ADI'] as String?,
   aciklama: json['ACIKLAMA'] as String?,
   refkey: json['REFKEY'] as String?,
-  kasaDevirTarihi: json['KASA_DEVIR_TARIHI'] == null ? null : DateTime.parse(json['KASA_DEVIR_TARIHI'] as String),
+  kasaDevirTarihi: json['KASA_DEVIR_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['KASA_DEVIR_TARIHI'] as String),
   kasaDevirTutari: (json['KASA_DEVIR_TUTARI'] as num?)?.toDouble(),
   kasaDovizDevirTutari: (json['KASA_DOVIZ_DEVIR_TUTARI'] as num?)?.toDouble(),
   kasaDovizTipi: (json['KASA_DOVIZ_TIPI'] as num?)?.toInt(),
@@ -69,9 +71,11 @@ Map<String, dynamic> _$KasaIslemleriModelToJson(
   if (instance.projeAdi case final value?) 'PROJE_ADI': value,
   if (instance.aciklama case final value?) 'ACIKLAMA': value,
   if (instance.refkey case final value?) 'REFKEY': value,
-  if (instance.kasaDevirTarihi?.toIso8601String() case final value?) 'KASA_DEVIR_TARIHI': value,
+  if (instance.kasaDevirTarihi?.toIso8601String() case final value?)
+    'KASA_DEVIR_TARIHI': value,
   if (instance.kasaDevirTutari case final value?) 'KASA_DEVIR_TUTARI': value,
-  if (instance.kasaDovizDevirTutari case final value?) 'KASA_DOVIZ_DEVIR_TUTARI': value,
+  if (instance.kasaDovizDevirTutari case final value?)
+    'KASA_DOVIZ_DEVIR_TUTARI': value,
   if (instance.kasaDovizTipi case final value?) 'KASA_DOVIZ_TIPI': value,
   if (instance.saat case final value?) 'SAAT': value,
   if (instance.kdvOrani case final value?) 'KDV_ORANI': value,

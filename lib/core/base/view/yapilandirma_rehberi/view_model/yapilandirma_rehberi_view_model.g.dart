@@ -8,7 +8,8 @@ part of 'yapilandirma_rehberi_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$YapilandirmaRehberiViewModel on _YapilandirmaRehberiViewModelBase, Store {
+mixin _$YapilandirmaRehberiViewModel
+    on _YapilandirmaRehberiViewModelBase, Store {
   Computed<YapilandirmaProfilModel?>? _$yapilandirmaProfilModelComputed;
 
   @override
@@ -42,10 +43,13 @@ mixin _$YapilandirmaRehberiViewModel on _YapilandirmaRehberiViewModelBase, Store
 
   @override
   YapilandirmaRehberiModel? get yapilandirmaRehberiModel =>
-      (_$yapilandirmaRehberiModelComputed ??= Computed<YapilandirmaRehberiModel?>(
-        () => super.yapilandirmaRehberiModel,
-        name: '_YapilandirmaRehberiViewModelBase.yapilandirmaRehberiModel',
-      )).value;
+      (_$yapilandirmaRehberiModelComputed ??=
+              Computed<YapilandirmaRehberiModel?>(
+                () => super.yapilandirmaRehberiModel,
+                name:
+                    '_YapilandirmaRehberiViewModelBase.yapilandirmaRehberiModel',
+              ))
+          .value;
   Computed<String>? _$titleComputed;
 
   @override
@@ -214,16 +218,16 @@ mixin _$YapilandirmaRehberiViewModel on _YapilandirmaRehberiViewModelBase, Store
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_YapilandirmaRehberiViewModelBaseActionController = ActionController(
-    name: '_YapilandirmaRehberiViewModelBase',
-    context: context,
-  );
+  late final _$_YapilandirmaRehberiViewModelBaseActionController =
+      ActionController(
+        name: '_YapilandirmaRehberiViewModelBase',
+        context: context,
+      );
 
   @override
   void setMaxPage(int? value) {
-    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
-      name: '_YapilandirmaRehberiViewModelBase.setMaxPage',
-    );
+    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
+        .startAction(name: '_YapilandirmaRehberiViewModelBase.setMaxPage');
     try {
       return super.setMaxPage(value);
     } finally {
@@ -235,9 +239,10 @@ mixin _$YapilandirmaRehberiViewModel on _YapilandirmaRehberiViewModelBase, Store
 
   @override
   void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
-    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
-      name: '_YapilandirmaRehberiViewModelBase.setYapilandirmaRehberiModel',
-    );
+    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
+        .startAction(
+          name: '_YapilandirmaRehberiViewModelBase.setYapilandirmaRehberiModel',
+        );
     try {
       return super.setYapilandirmaRehberiModel(value);
     } finally {
@@ -249,9 +254,8 @@ mixin _$YapilandirmaRehberiViewModel on _YapilandirmaRehberiViewModelBase, Store
 
   @override
   void decrementPage() {
-    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
-      name: '_YapilandirmaRehberiViewModelBase.decrementPage',
-    );
+    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
+        .startAction(name: '_YapilandirmaRehberiViewModelBase.decrementPage');
     try {
       return super.decrementPage();
     } finally {
@@ -263,9 +267,10 @@ mixin _$YapilandirmaRehberiViewModel on _YapilandirmaRehberiViewModelBase, Store
 
   @override
   void resetFilteredList() {
-    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
-      name: '_YapilandirmaRehberiViewModelBase.resetFilteredList',
-    );
+    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
+        .startAction(
+          name: '_YapilandirmaRehberiViewModelBase.resetFilteredList',
+        );
     try {
       return super.resetFilteredList();
     } finally {
@@ -277,9 +282,10 @@ mixin _$YapilandirmaRehberiViewModel on _YapilandirmaRehberiViewModelBase, Store
 
   @override
   void setStokListesiModel(StokListesiModel? value) {
-    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
-      name: '_YapilandirmaRehberiViewModelBase.setStokListesiModel',
-    );
+    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
+        .startAction(
+          name: '_YapilandirmaRehberiViewModelBase.setStokListesiModel',
+        );
     try {
       return super.setStokListesiModel(value);
     } finally {

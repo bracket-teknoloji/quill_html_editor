@@ -4,6 +4,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/listener/mouse_right_click_listener.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
@@ -318,6 +319,20 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
                   ),
               ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
             ),
+            if (yetkiController.kontrolAciklamasiAktifMi(widget.editTipiEnum))
+              if (widget.model.kontrolAciklama case final value?)
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.check_outlined,
+                      size: UIHelper.highSize,
+                      color: ColorPalette.mantis,
+                    ),
+                    Text(
+                      value,
+                    ).paddingSymmetric(vertical: UIHelper.lowSize),
+                  ],
+                ),
             Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
             if (widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi)
               Text("Teslim Cari: ${widget.model.teslimCariAdi}"),

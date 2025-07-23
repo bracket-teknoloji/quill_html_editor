@@ -15,7 +15,9 @@ StokHareketleriModel _$StokHareketleriModelFromJson(
   ..stokKodu = json['STOK_KODU'] as String?
   ..fisno = json['FISNO'] as String?
   ..stharGcmik = (json['STHAR_GCMIK'] as num?)?.toDouble()
-  ..stharTarih = json['STHAR_TARIH'] == null ? null : DateTime.parse(json['STHAR_TARIH'] as String)
+  ..stharTarih = json['STHAR_TARIH'] == null
+      ? null
+      : DateTime.parse(json['STHAR_TARIH'] as String)
   ..stharNf = (json['STHAR_NF'] as num?)?.toDouble()
   ..stharBf = (json['STHAR_BF'] as num?)?.toDouble()
   ..stharKdv = (json['STHAR_KDV'] as num?)?.toDouble()
@@ -48,14 +50,17 @@ Map<String, dynamic> _$StokHareketleriModelToJson(
   if (instance.stokKodu case final value?) 'STOK_KODU': value,
   if (instance.fisno case final value?) 'FISNO': value,
   if (instance.stharGcmik case final value?) 'STHAR_GCMIK': value,
-  if (instance.stharTarih?.toIso8601String() case final value?) 'STHAR_TARIH': value,
+  if (instance.stharTarih?.toIso8601String() case final value?)
+    'STHAR_TARIH': value,
   if (instance.stharNf case final value?) 'STHAR_NF': value,
   if (instance.stharBf case final value?) 'STHAR_BF': value,
   if (instance.stharKdv case final value?) 'STHAR_KDV': value,
   if (instance.hareketTuru case final value?) 'HAREKET_TURU': value,
-  if (instance.hareketTuruAciklama case final value?) 'HAREKET_TURU_ACIKLAMA': value,
+  if (instance.hareketTuruAciklama case final value?)
+    'HAREKET_TURU_ACIKLAMA': value,
   if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.belgeTipiAciklama case final value?) 'BELGE_TIPI_ACIKLAMA': value,
+  if (instance.belgeTipiAciklama case final value?)
+    'BELGE_TIPI_ACIKLAMA': value,
   if (instance.cariKodu case final value?) 'CARI_KODU': value,
   if (instance.ambarIslemi case final value?) 'AMBAR_ISLEMI': value,
   if (instance.depoKodu case final value?) 'DEPO_KODU': value,

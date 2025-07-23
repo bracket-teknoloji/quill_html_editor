@@ -37,16 +37,18 @@ mixin _$PaykerBankaListesiViewModel on _PaykerBankaListesiViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_PaykerBankaListesiViewModelBaseActionController = ActionController(
-    name: '_PaykerBankaListesiViewModelBase',
-    context: context,
-  );
+  late final _$_PaykerBankaListesiViewModelBaseActionController =
+      ActionController(
+        name: '_PaykerBankaListesiViewModelBase',
+        context: context,
+      );
 
   @override
   void setObservableList(List<PaykerFirmaModel>? value) {
-    final _$actionInfo = _$_PaykerBankaListesiViewModelBaseActionController.startAction(
-      name: '_PaykerBankaListesiViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_PaykerBankaListesiViewModelBaseActionController
+        .startAction(
+          name: '_PaykerBankaListesiViewModelBase.setObservableList',
+        );
     try {
       return super.setObservableList(value);
     } finally {

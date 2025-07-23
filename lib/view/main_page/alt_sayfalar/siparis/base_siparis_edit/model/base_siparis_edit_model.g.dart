@@ -441,6 +441,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel exportrefno(String? exportrefno);
 
+  BaseSiparisEditModel kontrolAciklama(String? kontrolAciklama);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -665,53 +667,67 @@ abstract class _$BaseSiparisEditModelCWProxy {
     bool? faturalasmayacak,
     int? exportTipi,
     String? exportrefno,
+    String? kontrolAciklama,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfBaseSiparisEditModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfBaseSiparisEditModel.copyWith.fieldName(...)`
-class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy {
+class _$BaseSiparisEditModelCWProxyImpl
+    implements _$BaseSiparisEditModelCWProxy {
   const _$BaseSiparisEditModelCWProxyImpl(this._value);
 
   final BaseSiparisEditModel _value;
 
   @override
-  BaseSiparisEditModel duzeltmetarihi(DateTime? duzeltmetarihi) => this(duzeltmetarihi: duzeltmetarihi);
+  BaseSiparisEditModel duzeltmetarihi(DateTime? duzeltmetarihi) =>
+      this(duzeltmetarihi: duzeltmetarihi);
 
   @override
-  BaseSiparisEditModel kalemAdedi(int? kalemAdedi) => this(kalemAdedi: kalemAdedi);
+  BaseSiparisEditModel kalemAdedi(int? kalemAdedi) =>
+      this(kalemAdedi: kalemAdedi);
 
   @override
-  BaseSiparisEditModel cariEfaturami(String? cariEfaturami) => this(cariEfaturami: cariEfaturami);
+  BaseSiparisEditModel cariEfaturami(String? cariEfaturami) =>
+      this(cariEfaturami: cariEfaturami);
 
   @override
   BaseSiparisEditModel cYedek6(String? cYedek6) => this(cYedek6: cYedek6);
 
   @override
-  BaseSiparisEditModel duzeltmeyapankul(String? duzeltmeyapankul) => this(duzeltmeyapankul: duzeltmeyapankul);
+  BaseSiparisEditModel duzeltmeyapankul(String? duzeltmeyapankul) =>
+      this(duzeltmeyapankul: duzeltmeyapankul);
 
   @override
-  BaseSiparisEditModel plasiyerAciklama(String? plasiyerAciklama) => this(plasiyerAciklama: plasiyerAciklama);
+  BaseSiparisEditModel plasiyerAciklama(String? plasiyerAciklama) =>
+      this(plasiyerAciklama: plasiyerAciklama);
 
   @override
-  BaseSiparisEditModel projeAciklama(String? projeAciklama) => this(projeAciklama: projeAciklama);
+  BaseSiparisEditModel projeAciklama(String? projeAciklama) =>
+      this(projeAciklama: projeAciklama);
 
   @override
-  BaseSiparisEditModel tempJsonData(String? tempJsonData) => this(tempJsonData: tempJsonData);
+  BaseSiparisEditModel tempJsonData(String? tempJsonData) =>
+      this(tempJsonData: tempJsonData);
 
   @override
-  BaseSiparisEditModel teslimCariAdi(String? teslimCariAdi) => this(teslimCariAdi: teslimCariAdi);
+  BaseSiparisEditModel teslimCariAdi(String? teslimCariAdi) =>
+      this(teslimCariAdi: teslimCariAdi);
 
   @override
-  BaseSiparisEditModel kdvDahilmi(bool? kdvDahilmi) => this(kdvDahilmi: kdvDahilmi);
+  BaseSiparisEditModel kdvDahilmi(bool? kdvDahilmi) =>
+      this(kdvDahilmi: kdvDahilmi);
 
   @override
-  BaseSiparisEditModel remoteTempBelge(bool? remoteTempBelge) => this(remoteTempBelge: remoteTempBelge);
+  BaseSiparisEditModel remoteTempBelge(bool? remoteTempBelge) =>
+      this(remoteTempBelge: remoteTempBelge);
 
   @override
-  BaseSiparisEditModel tempBelgeMi(bool? tempBelgeMi) => this(tempBelgeMi: tempBelgeMi);
+  BaseSiparisEditModel tempBelgeMi(bool? tempBelgeMi) =>
+      this(tempBelgeMi: tempBelgeMi);
 
   @override
-  BaseSiparisEditModel cariModel(CariListesiModel? cariModel) => this(cariModel: cariModel);
+  BaseSiparisEditModel cariModel(CariListesiModel? cariModel) =>
+      this(cariModel: cariModel);
 
   @override
   BaseSiparisEditModel islemeBaslamaTarihi(DateTime? islemeBaslamaTarihi) =>
@@ -722,43 +738,55 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
       this(istenilenTeslimTarihi: istenilenTeslimTarihi);
 
   @override
-  BaseSiparisEditModel kayittarihi(DateTime? kayittarihi) => this(kayittarihi: kayittarihi);
+  BaseSiparisEditModel kayittarihi(DateTime? kayittarihi) =>
+      this(kayittarihi: kayittarihi);
 
   @override
-  BaseSiparisEditModel kosulTarihi(DateTime? kosulTarihi) => this(kosulTarihi: kosulTarihi);
+  BaseSiparisEditModel kosulTarihi(DateTime? kosulTarihi) =>
+      this(kosulTarihi: kosulTarihi);
 
   @override
   BaseSiparisEditModel tarih(DateTime? tarih) => this(tarih: tarih);
 
   @override
-  BaseSiparisEditModel teslimTarihi(DateTime? teslimTarihi) => this(teslimTarihi: teslimTarihi);
+  BaseSiparisEditModel teslimTarihi(DateTime? teslimTarihi) =>
+      this(teslimTarihi: teslimTarihi);
 
   @override
-  BaseSiparisEditModel vadeTarihi(DateTime? vadeTarihi) => this(vadeTarihi: vadeTarihi);
+  BaseSiparisEditModel vadeTarihi(DateTime? vadeTarihi) =>
+      this(vadeTarihi: vadeTarihi);
 
   @override
-  BaseSiparisEditModel araToplam(double? araToplam) => this(araToplam: araToplam);
+  BaseSiparisEditModel araToplam(double? araToplam) =>
+      this(araToplam: araToplam);
 
   @override
-  BaseSiparisEditModel ekMaliyet1Tutari(double? ekMaliyet1Tutari) => this(ekMaliyet1Tutari: ekMaliyet1Tutari);
+  BaseSiparisEditModel ekMaliyet1Tutari(double? ekMaliyet1Tutari) =>
+      this(ekMaliyet1Tutari: ekMaliyet1Tutari);
 
   @override
-  BaseSiparisEditModel ekMaliyet2Tutari(double? ekMaliyet2Tutari) => this(ekMaliyet2Tutari: ekMaliyet2Tutari);
+  BaseSiparisEditModel ekMaliyet2Tutari(double? ekMaliyet2Tutari) =>
+      this(ekMaliyet2Tutari: ekMaliyet2Tutari);
 
   @override
-  BaseSiparisEditModel ekMaliyet3Tutari(double? ekMaliyet3Tutari) => this(ekMaliyet3Tutari: ekMaliyet3Tutari);
+  BaseSiparisEditModel ekMaliyet3Tutari(double? ekMaliyet3Tutari) =>
+      this(ekMaliyet3Tutari: ekMaliyet3Tutari);
 
   @override
-  BaseSiparisEditModel genelIskonto1(double? genelIskonto1) => this(genelIskonto1: genelIskonto1);
+  BaseSiparisEditModel genelIskonto1(double? genelIskonto1) =>
+      this(genelIskonto1: genelIskonto1);
 
   @override
-  BaseSiparisEditModel genelIskonto2(double? genelIskonto2) => this(genelIskonto2: genelIskonto2);
+  BaseSiparisEditModel genelIskonto2(double? genelIskonto2) =>
+      this(genelIskonto2: genelIskonto2);
 
   @override
-  BaseSiparisEditModel genelIskonto3(double? genelIskonto3) => this(genelIskonto3: genelIskonto3);
+  BaseSiparisEditModel genelIskonto3(double? genelIskonto3) =>
+      this(genelIskonto3: genelIskonto3);
 
   @override
-  BaseSiparisEditModel genelToplam(double? genelToplam) => this(genelToplam: genelToplam);
+  BaseSiparisEditModel genelToplam(double? genelToplam) =>
+      this(genelToplam: genelToplam);
 
   @override
   BaseSiparisEditModel genIsk1o(double? genIsk1o) => this(genIsk1o: genIsk1o);
@@ -785,25 +813,32 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel belgeTipi(int? belgeTipi) => this(belgeTipi: belgeTipi);
 
   @override
-  BaseSiparisEditModel cikisDepoKodu(int? cikisDepoKodu) => this(cikisDepoKodu: cikisDepoKodu);
+  BaseSiparisEditModel cikisDepoKodu(int? cikisDepoKodu) =>
+      this(cikisDepoKodu: cikisDepoKodu);
 
   @override
-  BaseSiparisEditModel genisk1Tipi(int? genisk1Tipi) => this(genisk1Tipi: genisk1Tipi);
+  BaseSiparisEditModel genisk1Tipi(int? genisk1Tipi) =>
+      this(genisk1Tipi: genisk1Tipi);
 
   @override
-  BaseSiparisEditModel genisk2Tipi(int? genisk2Tipi) => this(genisk2Tipi: genisk2Tipi);
+  BaseSiparisEditModel genisk2Tipi(int? genisk2Tipi) =>
+      this(genisk2Tipi: genisk2Tipi);
 
   @override
-  BaseSiparisEditModel genisk3Tipi(int? genisk3Tipi) => this(genisk3Tipi: genisk3Tipi);
+  BaseSiparisEditModel genisk3Tipi(int? genisk3Tipi) =>
+      this(genisk3Tipi: genisk3Tipi);
 
   @override
-  BaseSiparisEditModel kalemModelAdedi(int? kalemModelAdedi) => this(kalemModelAdedi: kalemModelAdedi);
+  BaseSiparisEditModel kalemModelAdedi(int? kalemModelAdedi) =>
+      this(kalemModelAdedi: kalemModelAdedi);
 
   @override
-  BaseSiparisEditModel tempBelgeId(int? tempBelgeId) => this(tempBelgeId: tempBelgeId);
+  BaseSiparisEditModel tempBelgeId(int? tempBelgeId) =>
+      this(tempBelgeId: tempBelgeId);
 
   @override
-  BaseSiparisEditModel tempKayitTipi(int? tempKayitTipi) => this(tempKayitTipi: tempKayitTipi);
+  BaseSiparisEditModel tempKayitTipi(int? tempKayitTipi) =>
+      this(tempKayitTipi: tempKayitTipi);
 
   @override
   BaseSiparisEditModel tipi(int? tipi) => this(tipi: tipi);
@@ -815,16 +850,20 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel vadeGunu(int? vadeGunu) => this(vadeGunu: vadeGunu);
 
   @override
-  BaseSiparisEditModel tempSipList(List<dynamic>? tempSipList) => this(tempSipList: tempSipList);
+  BaseSiparisEditModel tempSipList(List<dynamic>? tempSipList) =>
+      this(tempSipList: tempSipList);
 
   @override
-  BaseSiparisEditModel kalemList(List<KalemModel>? kalemList) => this(kalemList: kalemList);
+  BaseSiparisEditModel kalemList(List<KalemModel>? kalemList) =>
+      this(kalemList: kalemList);
 
   @override
-  BaseSiparisEditModel kalemModeller(List<KalemModel>? kalemModeller) => this(kalemModeller: kalemModeller);
+  BaseSiparisEditModel kalemModeller(List<KalemModel>? kalemModeller) =>
+      this(kalemModeller: kalemModeller);
 
   @override
-  BaseSiparisEditModel kalemModelList(List<KalemModel>? kalemModelList) => this(kalemModelList: kalemModelList);
+  BaseSiparisEditModel kalemModelList(List<KalemModel>? kalemModelList) =>
+      this(kalemModelList: kalemModelList);
 
   @override
   BaseSiparisEditModel acik1(String? acik1) => this(acik1: acik1);
@@ -875,13 +914,15 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel acik9(String? acik9) => this(acik9: acik9);
 
   @override
-  BaseSiparisEditModel belgeKodu(String? belgeKodu) => this(belgeKodu: belgeKodu);
+  BaseSiparisEditModel belgeKodu(String? belgeKodu) =>
+      this(belgeKodu: belgeKodu);
 
   @override
   BaseSiparisEditModel belgeNo(String? belgeNo) => this(belgeNo: belgeNo);
 
   @override
-  BaseSiparisEditModel belgeTuru(String? belgeTuru) => this(belgeTuru: belgeTuru);
+  BaseSiparisEditModel belgeTuru(String? belgeTuru) =>
+      this(belgeTuru: belgeTuru);
 
   @override
   BaseSiparisEditModel cariAdi(String? cariAdi) => this(cariAdi: cariAdi);
@@ -938,28 +979,34 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel ekAcik9(String? ekAcik9) => this(ekAcik9: ekAcik9);
 
   @override
-  BaseSiparisEditModel ekAciklama(String? ekAciklama) => this(ekAciklama: ekAciklama);
+  BaseSiparisEditModel ekAciklama(String? ekAciklama) =>
+      this(ekAciklama: ekAciklama);
 
   @override
   BaseSiparisEditModel islemId(String? islemId) => this(islemId: islemId);
 
   @override
-  BaseSiparisEditModel kayityapankul(String? kayityapankul) => this(kayityapankul: kayityapankul);
+  BaseSiparisEditModel kayityapankul(String? kayityapankul) =>
+      this(kayityapankul: kayityapankul);
 
   @override
   BaseSiparisEditModel kdvDahil(String? kdvDahil) => this(kdvDahil: kdvDahil);
 
   @override
-  BaseSiparisEditModel kosulKodu(String? kosulKodu) => this(kosulKodu: kosulKodu);
+  BaseSiparisEditModel kosulKodu(String? kosulKodu) =>
+      this(kosulKodu: kosulKodu);
 
   @override
-  BaseSiparisEditModel mevcutBelgeNo(String? mevcutBelgeNo) => this(mevcutBelgeNo: mevcutBelgeNo);
+  BaseSiparisEditModel mevcutBelgeNo(String? mevcutBelgeNo) =>
+      this(mevcutBelgeNo: mevcutBelgeNo);
 
   @override
-  BaseSiparisEditModel mevcutCariKodu(String? mevcutCariKodu) => this(mevcutCariKodu: mevcutCariKodu);
+  BaseSiparisEditModel mevcutCariKodu(String? mevcutCariKodu) =>
+      this(mevcutCariKodu: mevcutCariKodu);
 
   @override
-  BaseSiparisEditModel odemeKodu(String? odemeKodu) => this(odemeKodu: odemeKodu);
+  BaseSiparisEditModel odemeKodu(String? odemeKodu) =>
+      this(odemeKodu: odemeKodu);
 
   @override
   BaseSiparisEditModel ozelKod1(String? ozelKod1) => this(ozelKod1: ozelKod1);
@@ -968,13 +1015,16 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel ozelKod2(String? ozelKod2) => this(ozelKod2: ozelKod2);
 
   @override
-  BaseSiparisEditModel pickerBelgeTuru(String? pickerBelgeTuru) => this(pickerBelgeTuru: pickerBelgeTuru);
+  BaseSiparisEditModel pickerBelgeTuru(String? pickerBelgeTuru) =>
+      this(pickerBelgeTuru: pickerBelgeTuru);
 
   @override
-  BaseSiparisEditModel plasiyerKodu(String? plasiyerKodu) => this(plasiyerKodu: plasiyerKodu);
+  BaseSiparisEditModel plasiyerKodu(String? plasiyerKodu) =>
+      this(plasiyerKodu: plasiyerKodu);
 
   @override
-  BaseSiparisEditModel projeKodu(String? projeKodu) => this(projeKodu: projeKodu);
+  BaseSiparisEditModel projeKodu(String? projeKodu) =>
+      this(projeKodu: projeKodu);
 
   @override
   BaseSiparisEditModel remoteTempBelgeEtiketi(String? remoteTempBelgeEtiketi) =>
@@ -984,22 +1034,27 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel tag(String? tag) => this(tag: tag);
 
   @override
-  BaseSiparisEditModel kalemler(List<KalemModel>? kalemler) => this(kalemler: kalemler);
+  BaseSiparisEditModel kalemler(List<KalemModel>? kalemler) =>
+      this(kalemler: kalemler);
 
   @override
-  BaseSiparisEditModel siparisTipi(EditTipiEnum? siparisTipi) => this(siparisTipi: siparisTipi);
+  BaseSiparisEditModel siparisTipi(EditTipiEnum? siparisTipi) =>
+      this(siparisTipi: siparisTipi);
 
   @override
   BaseSiparisEditModel isNew(bool? isNew) => this(isNew: isNew);
 
   @override
-  BaseSiparisEditModel irsaliyelesti(String? irsaliyelesti) => this(irsaliyelesti: irsaliyelesti);
+  BaseSiparisEditModel irsaliyelesti(String? irsaliyelesti) =>
+      this(irsaliyelesti: irsaliyelesti);
 
   @override
-  BaseSiparisEditModel irslesenSayi(int? irslesenSayi) => this(irslesenSayi: irslesenSayi);
+  BaseSiparisEditModel irslesenSayi(int? irslesenSayi) =>
+      this(irslesenSayi: irslesenSayi);
 
   @override
-  BaseSiparisEditModel faturalasti(String? faturalasti) => this(faturalasti: faturalasti);
+  BaseSiparisEditModel faturalasti(String? faturalasti) =>
+      this(faturalasti: faturalasti);
 
   @override
   BaseSiparisEditModel dovizTipi(int? dovizTipi) => this(dovizTipi: dovizTipi);
@@ -1008,16 +1063,19 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel dovizAdi(String? dovizAdi) => this(dovizAdi: dovizAdi);
 
   @override
-  BaseSiparisEditModel kapatilmis(String? kapatilmis) => this(kapatilmis: kapatilmis);
+  BaseSiparisEditModel kapatilmis(String? kapatilmis) =>
+      this(kapatilmis: kapatilmis);
 
   @override
   BaseSiparisEditModel aciklama(String? aciklama) => this(aciklama: aciklama);
 
   @override
-  BaseSiparisEditModel dovizTutari(double? dovizTutari) => this(dovizTutari: dovizTutari);
+  BaseSiparisEditModel dovizTutari(double? dovizTutari) =>
+      this(dovizTutari: dovizTutari);
 
   @override
-  BaseSiparisEditModel teslimCari(String? teslimCari) => this(teslimCari: teslimCari);
+  BaseSiparisEditModel teslimCari(String? teslimCari) =>
+      this(teslimCari: teslimCari);
 
   @override
   BaseSiparisEditModel fYedek4(double? fYedek4) => this(fYedek4: fYedek4);
@@ -1026,34 +1084,42 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel miktar(double? miktar) => this(miktar: miktar);
 
   @override
-  BaseSiparisEditModel kalanMiktar(double? kalanMiktar) => this(kalanMiktar: kalanMiktar);
+  BaseSiparisEditModel kalanMiktar(double? kalanMiktar) =>
+      this(kalanMiktar: kalanMiktar);
 
   @override
-  BaseSiparisEditModel yeniBelgeNo(String? yeniBelgeNo) => this(yeniBelgeNo: yeniBelgeNo);
+  BaseSiparisEditModel yeniBelgeNo(String? yeniBelgeNo) =>
+      this(yeniBelgeNo: yeniBelgeNo);
 
   @override
   BaseSiparisEditModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
 
   @override
-  BaseSiparisEditModel resmiBelgeNo(String? resmiBelgeNo) => this(resmiBelgeNo: resmiBelgeNo);
+  BaseSiparisEditModel resmiBelgeNo(String? resmiBelgeNo) =>
+      this(resmiBelgeNo: resmiBelgeNo);
 
   @override
-  BaseSiparisEditModel cikisYeri(String? cikisYeri) => this(cikisYeri: cikisYeri);
+  BaseSiparisEditModel cikisYeri(String? cikisYeri) =>
+      this(cikisYeri: cikisYeri);
 
   @override
-  BaseSiparisEditModel hareketTuru(String? hareketTuru) => this(hareketTuru: hareketTuru);
+  BaseSiparisEditModel hareketTuru(String? hareketTuru) =>
+      this(hareketTuru: hareketTuru);
 
   @override
   BaseSiparisEditModel kasaKodu(String? kasaKodu) => this(kasaKodu: kasaKodu);
 
   @override
-  BaseSiparisEditModel efaturaDurumu(String? efaturaDurumu) => this(efaturaDurumu: efaturaDurumu);
+  BaseSiparisEditModel efaturaDurumu(String? efaturaDurumu) =>
+      this(efaturaDurumu: efaturaDurumu);
 
   @override
-  BaseSiparisEditModel efaturaTipi(String? efaturaTipi) => this(efaturaTipi: efaturaTipi);
+  BaseSiparisEditModel efaturaTipi(String? efaturaTipi) =>
+      this(efaturaTipi: efaturaTipi);
 
   @override
-  BaseSiparisEditModel earsivDurumu(String? earsivDurumu) => this(earsivDurumu: earsivDurumu);
+  BaseSiparisEditModel earsivDurumu(String? earsivDurumu) =>
+      this(earsivDurumu: earsivDurumu);
 
   @override
   BaseSiparisEditModel genIsk1O(int? genIsk1O) => this(genIsk1O: genIsk1O);
@@ -1065,19 +1131,24 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel genIsk3O(double? genIsk3O) => this(genIsk3O: genIsk3O);
 
   @override
-  BaseSiparisEditModel cariDovizli(bool? cariDovizli) => this(cariDovizli: cariDovizli);
+  BaseSiparisEditModel cariDovizli(bool? cariDovizli) =>
+      this(cariDovizli: cariDovizli);
 
   @override
-  BaseSiparisEditModel efaturaMi(String? efaturaMi) => this(efaturaMi: efaturaMi);
+  BaseSiparisEditModel efaturaMi(String? efaturaMi) =>
+      this(efaturaMi: efaturaMi);
 
   @override
-  BaseSiparisEditModel efatOnayDurumKodu(String? efatOnayDurumKodu) => this(efatOnayDurumKodu: efatOnayDurumKodu);
+  BaseSiparisEditModel efatOnayDurumKodu(String? efatOnayDurumKodu) =>
+      this(efatOnayDurumKodu: efatOnayDurumKodu);
 
   @override
-  BaseSiparisEditModel efatOnayAciklama(String? efatOnayAciklama) => this(efatOnayAciklama: efatOnayAciklama);
+  BaseSiparisEditModel efatOnayAciklama(String? efatOnayAciklama) =>
+      this(efatOnayAciklama: efatOnayAciklama);
 
   @override
-  BaseSiparisEditModel efaturaGibDurumKodu(int? efaturaGibDurumKodu) => this(efaturaGibDurumKodu: efaturaGibDurumKodu);
+  BaseSiparisEditModel efaturaGibDurumKodu(int? efaturaGibDurumKodu) =>
+      this(efaturaGibDurumKodu: efaturaGibDurumKodu);
 
   @override
   BaseSiparisEditModel efaturaDurumAciklama(String? efaturaDurumAciklama) =>
@@ -1091,31 +1162,40 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
       this(earsivDurumAciklama: earsivDurumAciklama);
 
   @override
-  BaseSiparisEditModel earsivGibDurumKodu(int? earsivGibDurumKodu) => this(earsivGibDurumKodu: earsivGibDurumKodu);
+  BaseSiparisEditModel earsivGibDurumKodu(int? earsivGibDurumKodu) =>
+      this(earsivGibDurumKodu: earsivGibDurumKodu);
 
   @override
-  BaseSiparisEditModel eirsaliyeDurumu(String? eirsaliyeDurumu) => this(eirsaliyeDurumu: eirsaliyeDurumu);
+  BaseSiparisEditModel eirsaliyeDurumu(String? eirsaliyeDurumu) =>
+      this(eirsaliyeDurumu: eirsaliyeDurumu);
 
   @override
-  BaseSiparisEditModel ebelgeCheckbox(String? ebelgeCheckbox) => this(ebelgeCheckbox: ebelgeCheckbox);
+  BaseSiparisEditModel ebelgeCheckbox(String? ebelgeCheckbox) =>
+      this(ebelgeCheckbox: ebelgeCheckbox);
 
   @override
-  BaseSiparisEditModel eirsBilgiModel(EIrsaliyeBilgiModel? eirsBilgiModel) => this(eirsBilgiModel: eirsBilgiModel);
+  BaseSiparisEditModel eirsBilgiModel(EIrsaliyeBilgiModel? eirsBilgiModel) =>
+      this(eirsBilgiModel: eirsBilgiModel);
 
   @override
-  BaseSiparisEditModel uetdsBildirildi(String? uetdsBildirildi) => this(uetdsBildirildi: uetdsBildirildi);
+  BaseSiparisEditModel uetdsBildirildi(String? uetdsBildirildi) =>
+      this(uetdsBildirildi: uetdsBildirildi);
 
   @override
-  BaseSiparisEditModel kdvDahilMi(bool? kdvDahilMi) => this(kdvDahilMi: kdvDahilMi);
+  BaseSiparisEditModel kdvDahilMi(bool? kdvDahilMi) =>
+      this(kdvDahilMi: kdvDahilMi);
 
   @override
-  BaseSiparisEditModel efatOzelkod(int? efatOzelkod) => this(efatOzelkod: efatOzelkod);
+  BaseSiparisEditModel efatOzelkod(int? efatOzelkod) =>
+      this(efatOzelkod: efatOzelkod);
 
   @override
-  BaseSiparisEditModel siparislesti(String? siparislesti) => this(siparislesti: siparislesti);
+  BaseSiparisEditModel siparislesti(String? siparislesti) =>
+      this(siparislesti: siparislesti);
 
   @override
-  BaseSiparisEditModel faturalasanSayi(int? faturalasanSayi) => this(faturalasanSayi: faturalasanSayi);
+  BaseSiparisEditModel faturalasanSayi(int? faturalasanSayi) =>
+      this(faturalasanSayi: faturalasanSayi);
 
   @override
   BaseSiparisEditModel yeniKayit(bool? yeniKayit) => this(yeniKayit: yeniKayit);
@@ -1124,56 +1204,72 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel uuid(String? uuid) => this(uuid: uuid);
 
   @override
-  BaseSiparisEditModel arrBelgeNo(String? arrBelgeNo) => this(arrBelgeNo: arrBelgeNo);
+  BaseSiparisEditModel arrBelgeNo(String? arrBelgeNo) =>
+      this(arrBelgeNo: arrBelgeNo);
 
   @override
-  BaseSiparisEditModel sonrakiRevizeNo(String? sonrakiRevizeNo) => this(sonrakiRevizeNo: sonrakiRevizeNo);
+  BaseSiparisEditModel sonrakiRevizeNo(String? sonrakiRevizeNo) =>
+      this(sonrakiRevizeNo: sonrakiRevizeNo);
 
   @override
-  BaseSiparisEditModel teklifRevizeIslemi(bool? teklifRevizeIslemi) => this(teklifRevizeIslemi: teklifRevizeIslemi);
+  BaseSiparisEditModel teklifRevizeIslemi(bool? teklifRevizeIslemi) =>
+      this(teklifRevizeIslemi: teklifRevizeIslemi);
 
   @override
-  BaseSiparisEditModel onaylayankul(String? onaylayankul) => this(onaylayankul: onaylayankul);
+  BaseSiparisEditModel onaylayankul(String? onaylayankul) =>
+      this(onaylayankul: onaylayankul);
 
   @override
-  BaseSiparisEditModel onaytarihi(DateTime? onaytarihi) => this(onaytarihi: onaytarihi);
+  BaseSiparisEditModel onaytarihi(DateTime? onaytarihi) =>
+      this(onaytarihi: onaytarihi);
 
   @override
-  BaseSiparisEditModel efaturaSenaryo(String? efaturaSenaryo) => this(efaturaSenaryo: efaturaSenaryo);
+  BaseSiparisEditModel efaturaSenaryo(String? efaturaSenaryo) =>
+      this(efaturaSenaryo: efaturaSenaryo);
 
   @override
-  BaseSiparisEditModel paramMap(Map<String, dynamic>? paramMap) => this(paramMap: paramMap);
+  BaseSiparisEditModel paramMap(Map<String, dynamic>? paramMap) =>
+      this(paramMap: paramMap);
 
   @override
-  BaseSiparisEditModel yeniCariKodu(String? yeniCariKodu) => this(yeniCariKodu: yeniCariKodu);
+  BaseSiparisEditModel yeniCariKodu(String? yeniCariKodu) =>
+      this(yeniCariKodu: yeniCariKodu);
 
   @override
-  BaseSiparisEditModel depoTanimi(String? depoTanimi) => this(depoTanimi: depoTanimi);
+  BaseSiparisEditModel depoTanimi(String? depoTanimi) =>
+      this(depoTanimi: depoTanimi);
 
   @override
-  BaseSiparisEditModel efattanAlisFat(bool? efattanAlisFat) => this(efattanAlisFat: efattanAlisFat);
+  BaseSiparisEditModel efattanAlisFat(bool? efattanAlisFat) =>
+      this(efattanAlisFat: efattanAlisFat);
 
   @override
-  BaseSiparisEditModel efaturaInckeyno(int? efaturaInckeyno) => this(efaturaInckeyno: efaturaInckeyno);
+  BaseSiparisEditModel efaturaInckeyno(int? efaturaInckeyno) =>
+      this(efaturaInckeyno: efaturaInckeyno);
 
   @override
-  BaseSiparisEditModel ebelgeZarfid(String? ebelgeZarfid) => this(ebelgeZarfid: ebelgeZarfid);
+  BaseSiparisEditModel ebelgeZarfid(String? ebelgeZarfid) =>
+      this(ebelgeZarfid: ebelgeZarfid);
 
   @override
-  BaseSiparisEditModel efattanTutar(double? efattanTutar) => this(efattanTutar: efattanTutar);
+  BaseSiparisEditModel efattanTutar(double? efattanTutar) =>
+      this(efattanTutar: efattanTutar);
 
   @override
-  BaseSiparisEditModel efattanDoviz(double? efattanDoviz) => this(efattanDoviz: efattanDoviz);
+  BaseSiparisEditModel efattanDoviz(double? efattanDoviz) =>
+      this(efattanDoviz: efattanDoviz);
 
   @override
-  BaseSiparisEditModel efattanDovizAdi(String? efattanDovizAdi) => this(efattanDovizAdi: efattanDovizAdi);
+  BaseSiparisEditModel efattanDovizAdi(String? efattanDovizAdi) =>
+      this(efattanDovizAdi: efattanDovizAdi);
 
   @override
   BaseSiparisEditModel muhtelifCariModel(CariListesiModel? muhtelifCariModel) =>
       this(muhtelifCariModel: muhtelifCariModel);
 
   @override
-  BaseSiparisEditModel cariTitle(String? cariTitle) => this(cariTitle: cariTitle);
+  BaseSiparisEditModel cariTitle(String? cariTitle) =>
+      this(cariTitle: cariTitle);
 
   @override
   BaseSiparisEditModel hedefDepo(int? hedefDepo) => this(hedefDepo: hedefDepo);
@@ -1182,22 +1278,27 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel girisDepo(int? girisDepo) => this(girisDepo: girisDepo);
 
   @override
-  BaseSiparisEditModel cikisSubeKodu(int? cikisSubeKodu) => this(cikisSubeKodu: cikisSubeKodu);
+  BaseSiparisEditModel cikisSubeKodu(int? cikisSubeKodu) =>
+      this(cikisSubeKodu: cikisSubeKodu);
 
   @override
-  BaseSiparisEditModel girisSubeKodu(int? girisSubeKodu) => this(girisSubeKodu: girisSubeKodu);
+  BaseSiparisEditModel girisSubeKodu(int? girisSubeKodu) =>
+      this(girisSubeKodu: girisSubeKodu);
 
   @override
   BaseSiparisEditModel lokalDat(String? lokalDat) => this(lokalDat: lokalDat);
 
   @override
-  BaseSiparisEditModel masrafKodu(String? masrafKodu) => this(masrafKodu: masrafKodu);
+  BaseSiparisEditModel masrafKodu(String? masrafKodu) =>
+      this(masrafKodu: masrafKodu);
 
   @override
-  BaseSiparisEditModel eirsaliye(String? eirsaliye) => this(eirsaliye: eirsaliye);
+  BaseSiparisEditModel eirsaliye(String? eirsaliye) =>
+      this(eirsaliye: eirsaliye);
 
   @override
-  BaseSiparisEditModel girisDepoKodu(int? girisDepoKodu) => this(girisDepoKodu: girisDepoKodu);
+  BaseSiparisEditModel girisDepoKodu(int? girisDepoKodu) =>
+      this(girisDepoKodu: girisDepoKodu);
 
   @override
   BaseSiparisEditModel topluGirisDepoTanimi(String? topluGirisDepoTanimi) =>
@@ -1211,99 +1312,127 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel isemriNo(String? isemriNo) => this(isemriNo: isemriNo);
 
   @override
-  BaseSiparisEditModel isemriAciklama(String? isemriAciklama) => this(isemriAciklama: isemriAciklama);
+  BaseSiparisEditModel isemriAciklama(String? isemriAciklama) =>
+      this(isemriAciklama: isemriAciklama);
 
   @override
-  BaseSiparisEditModel masrafKoduAdi(String? masrafKoduAdi) => this(masrafKoduAdi: masrafKoduAdi);
+  BaseSiparisEditModel masrafKoduAdi(String? masrafKoduAdi) =>
+      this(masrafKoduAdi: masrafKoduAdi);
 
   @override
-  BaseSiparisEditModel masrafKoduTipi(int? masrafKoduTipi) => this(masrafKoduTipi: masrafKoduTipi);
+  BaseSiparisEditModel masrafKoduTipi(int? masrafKoduTipi) =>
+      this(masrafKoduTipi: masrafKoduTipi);
 
   @override
   BaseSiparisEditModel eirsaliyeDurumAciklama(String? eirsaliyeDurumAciklama) =>
       this(eirsaliyeDurumAciklama: eirsaliyeDurumAciklama);
 
   @override
-  BaseSiparisEditModel eirsaliyeMi(String? eirsaliyeMi) => this(eirsaliyeMi: eirsaliyeMi);
+  BaseSiparisEditModel eirsaliyeMi(String? eirsaliyeMi) =>
+      this(eirsaliyeMi: eirsaliyeMi);
 
   @override
-  BaseSiparisEditModel cariDovizkodu(int? cariDovizkodu) => this(cariDovizkodu: cariDovizkodu);
+  BaseSiparisEditModel cariDovizkodu(int? cariDovizkodu) =>
+      this(cariDovizkodu: cariDovizkodu);
 
   @override
   BaseSiparisEditModel eirsaliyeGibDurumKodu(int? eirsaliyeGibDurumKodu) =>
       this(eirsaliyeGibDurumKodu: eirsaliyeGibDurumKodu);
 
   @override
-  BaseSiparisEditModel datOnayda(String? datOnayda) => this(datOnayda: datOnayda);
+  BaseSiparisEditModel datOnayda(String? datOnayda) =>
+      this(datOnayda: datOnayda);
 
   @override
-  BaseSiparisEditModel olcumBelgeRefKey(String? olcumBelgeRefKey) => this(olcumBelgeRefKey: olcumBelgeRefKey);
+  BaseSiparisEditModel olcumBelgeRefKey(String? olcumBelgeRefKey) =>
+      this(olcumBelgeRefKey: olcumBelgeRefKey);
 
   @override
-  BaseSiparisEditModel dovizListesi(Map<int, double>? dovizListesi) => this(dovizListesi: dovizListesi);
+  BaseSiparisEditModel dovizListesi(Map<int, double>? dovizListesi) =>
+      this(dovizListesi: dovizListesi);
 
   @override
-  BaseSiparisEditModel hedefDepoAdi(String? hedefDepoAdi) => this(hedefDepoAdi: hedefDepoAdi);
+  BaseSiparisEditModel hedefDepoAdi(String? hedefDepoAdi) =>
+      this(hedefDepoAdi: hedefDepoAdi);
 
   @override
-  BaseSiparisEditModel otvTutari(double? otvTutari) => this(otvTutari: otvTutari);
+  BaseSiparisEditModel otvTutari(double? otvTutari) =>
+      this(otvTutari: otvTutari);
 
   @override
   BaseSiparisEditModel index(int? index) => this(index: index);
 
   @override
-  BaseSiparisEditModel aciklama1Adi(String? aciklama1Adi) => this(aciklama1Adi: aciklama1Adi);
+  BaseSiparisEditModel aciklama1Adi(String? aciklama1Adi) =>
+      this(aciklama1Adi: aciklama1Adi);
 
   @override
-  BaseSiparisEditModel aciklama2Adi(String? aciklama2Adi) => this(aciklama2Adi: aciklama2Adi);
+  BaseSiparisEditModel aciklama2Adi(String? aciklama2Adi) =>
+      this(aciklama2Adi: aciklama2Adi);
 
   @override
-  BaseSiparisEditModel aciklama3Adi(String? aciklama3Adi) => this(aciklama3Adi: aciklama3Adi);
+  BaseSiparisEditModel aciklama3Adi(String? aciklama3Adi) =>
+      this(aciklama3Adi: aciklama3Adi);
 
   @override
-  BaseSiparisEditModel aciklama4Adi(String? aciklama4Adi) => this(aciklama4Adi: aciklama4Adi);
+  BaseSiparisEditModel aciklama4Adi(String? aciklama4Adi) =>
+      this(aciklama4Adi: aciklama4Adi);
 
   @override
-  BaseSiparisEditModel aciklama5Adi(String? aciklama5Adi) => this(aciklama5Adi: aciklama5Adi);
+  BaseSiparisEditModel aciklama5Adi(String? aciklama5Adi) =>
+      this(aciklama5Adi: aciklama5Adi);
 
   @override
-  BaseSiparisEditModel aciklama6Adi(String? aciklama6Adi) => this(aciklama6Adi: aciklama6Adi);
+  BaseSiparisEditModel aciklama6Adi(String? aciklama6Adi) =>
+      this(aciklama6Adi: aciklama6Adi);
 
   @override
-  BaseSiparisEditModel aciklama7Adi(String? aciklama7Adi) => this(aciklama7Adi: aciklama7Adi);
+  BaseSiparisEditModel aciklama7Adi(String? aciklama7Adi) =>
+      this(aciklama7Adi: aciklama7Adi);
 
   @override
-  BaseSiparisEditModel aciklama8Adi(String? aciklama8Adi) => this(aciklama8Adi: aciklama8Adi);
+  BaseSiparisEditModel aciklama8Adi(String? aciklama8Adi) =>
+      this(aciklama8Adi: aciklama8Adi);
 
   @override
-  BaseSiparisEditModel aciklama9Adi(String? aciklama9Adi) => this(aciklama9Adi: aciklama9Adi);
+  BaseSiparisEditModel aciklama9Adi(String? aciklama9Adi) =>
+      this(aciklama9Adi: aciklama9Adi);
 
   @override
-  BaseSiparisEditModel aciklama10Adi(String? aciklama10Adi) => this(aciklama10Adi: aciklama10Adi);
+  BaseSiparisEditModel aciklama10Adi(String? aciklama10Adi) =>
+      this(aciklama10Adi: aciklama10Adi);
 
   @override
-  BaseSiparisEditModel aciklama11Adi(String? aciklama11Adi) => this(aciklama11Adi: aciklama11Adi);
+  BaseSiparisEditModel aciklama11Adi(String? aciklama11Adi) =>
+      this(aciklama11Adi: aciklama11Adi);
 
   @override
-  BaseSiparisEditModel aciklama12Adi(String? aciklama12Adi) => this(aciklama12Adi: aciklama12Adi);
+  BaseSiparisEditModel aciklama12Adi(String? aciklama12Adi) =>
+      this(aciklama12Adi: aciklama12Adi);
 
   @override
-  BaseSiparisEditModel aciklama13Adi(String? aciklama13Adi) => this(aciklama13Adi: aciklama13Adi);
+  BaseSiparisEditModel aciklama13Adi(String? aciklama13Adi) =>
+      this(aciklama13Adi: aciklama13Adi);
 
   @override
-  BaseSiparisEditModel aciklama14Adi(String? aciklama14Adi) => this(aciklama14Adi: aciklama14Adi);
+  BaseSiparisEditModel aciklama14Adi(String? aciklama14Adi) =>
+      this(aciklama14Adi: aciklama14Adi);
 
   @override
-  BaseSiparisEditModel aciklama15Adi(String? aciklama15Adi) => this(aciklama15Adi: aciklama15Adi);
+  BaseSiparisEditModel aciklama15Adi(String? aciklama15Adi) =>
+      this(aciklama15Adi: aciklama15Adi);
 
   @override
-  BaseSiparisEditModel aciklama16Adi(String? aciklama16Adi) => this(aciklama16Adi: aciklama16Adi);
+  BaseSiparisEditModel aciklama16Adi(String? aciklama16Adi) =>
+      this(aciklama16Adi: aciklama16Adi);
 
   @override
-  BaseSiparisEditModel cikisSubeAciklama(String? cikisSubeAciklama) => this(cikisSubeAciklama: cikisSubeAciklama);
+  BaseSiparisEditModel cikisSubeAciklama(String? cikisSubeAciklama) =>
+      this(cikisSubeAciklama: cikisSubeAciklama);
 
   @override
-  BaseSiparisEditModel girisSubeAciklama(String? girisSubeAciklama) => this(girisSubeAciklama: girisSubeAciklama);
+  BaseSiparisEditModel girisSubeAciklama(String? girisSubeAciklama) =>
+      this(girisSubeAciklama: girisSubeAciklama);
 
   @override
   BaseSiparisEditModel id(int? id) => this(id: id);
@@ -1318,22 +1447,31 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
   BaseSiparisEditModel durumAdi(String? durumAdi) => this(durumAdi: durumAdi);
 
   @override
-  BaseSiparisEditModel kalemSayisi(int? kalemSayisi) => this(kalemSayisi: kalemSayisi);
+  BaseSiparisEditModel kalemSayisi(int? kalemSayisi) =>
+      this(kalemSayisi: kalemSayisi);
 
   @override
   BaseSiparisEditModel kapali(bool? kapali) => this(kapali: kapali);
 
   @override
-  BaseSiparisEditModel tamamlananMiktar(double? tamamlananMiktar) => this(tamamlananMiktar: tamamlananMiktar);
+  BaseSiparisEditModel tamamlananMiktar(double? tamamlananMiktar) =>
+      this(tamamlananMiktar: tamamlananMiktar);
 
   @override
-  BaseSiparisEditModel faturalasmayacak(bool? faturalasmayacak) => this(faturalasmayacak: faturalasmayacak);
+  BaseSiparisEditModel faturalasmayacak(bool? faturalasmayacak) =>
+      this(faturalasmayacak: faturalasmayacak);
 
   @override
-  BaseSiparisEditModel exportTipi(int? exportTipi) => this(exportTipi: exportTipi);
+  BaseSiparisEditModel exportTipi(int? exportTipi) =>
+      this(exportTipi: exportTipi);
 
   @override
-  BaseSiparisEditModel exportrefno(String? exportrefno) => this(exportrefno: exportrefno);
+  BaseSiparisEditModel exportrefno(String? exportrefno) =>
+      this(exportrefno: exportrefno);
+
+  @override
+  BaseSiparisEditModel kontrolAciklama(String? kontrolAciklama) =>
+      this(kontrolAciklama: kontrolAciklama);
 
   @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -1560,6 +1698,7 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
     Object? faturalasmayacak = const $CopyWithPlaceholder(),
     Object? exportTipi = const $CopyWithPlaceholder(),
     Object? exportrefno = const $CopyWithPlaceholder(),
+    Object? kontrolAciklama = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1618,7 +1757,8 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
           ? _value.islemeBaslamaTarihi
           // ignore: cast_nullable_to_non_nullable
           : islemeBaslamaTarihi as DateTime?,
-      istenilenTeslimTarihi: istenilenTeslimTarihi == const $CopyWithPlaceholder()
+      istenilenTeslimTarihi:
+          istenilenTeslimTarihi == const $CopyWithPlaceholder()
           ? _value.istenilenTeslimTarihi
           // ignore: cast_nullable_to_non_nullable
           : istenilenTeslimTarihi as DateTime?,
@@ -1962,7 +2102,8 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
           ? _value.projeKodu
           // ignore: cast_nullable_to_non_nullable
           : projeKodu as String?,
-      remoteTempBelgeEtiketi: remoteTempBelgeEtiketi == const $CopyWithPlaceholder()
+      remoteTempBelgeEtiketi:
+          remoteTempBelgeEtiketi == const $CopyWithPlaceholder()
           ? _value.remoteTempBelgeEtiketi
           // ignore: cast_nullable_to_non_nullable
           : remoteTempBelgeEtiketi as String?,
@@ -2278,7 +2419,8 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
           ? _value.masrafKoduTipi
           // ignore: cast_nullable_to_non_nullable
           : masrafKoduTipi as int?,
-      eirsaliyeDurumAciklama: eirsaliyeDurumAciklama == const $CopyWithPlaceholder()
+      eirsaliyeDurumAciklama:
+          eirsaliyeDurumAciklama == const $CopyWithPlaceholder()
           ? _value.eirsaliyeDurumAciklama
           // ignore: cast_nullable_to_non_nullable
           : eirsaliyeDurumAciklama as String?,
@@ -2290,7 +2432,8 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
           ? _value.cariDovizkodu
           // ignore: cast_nullable_to_non_nullable
           : cariDovizkodu as int?,
-      eirsaliyeGibDurumKodu: eirsaliyeGibDurumKodu == const $CopyWithPlaceholder()
+      eirsaliyeGibDurumKodu:
+          eirsaliyeGibDurumKodu == const $CopyWithPlaceholder()
           ? _value.eirsaliyeGibDurumKodu
           // ignore: cast_nullable_to_non_nullable
           : eirsaliyeGibDurumKodu as int?,
@@ -2430,6 +2573,10 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
           ? _value.exportrefno
           // ignore: cast_nullable_to_non_nullable
           : exportrefno as String?,
+      kontrolAciklama: kontrolAciklama == const $CopyWithPlaceholder()
+          ? _value.kontrolAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : kontrolAciklama as String?,
     );
   }
 }
@@ -2437,7 +2584,8 @@ class _$BaseSiparisEditModelCWProxyImpl implements _$BaseSiparisEditModelCWProxy
 extension $BaseSiparisEditModelCopyWith on BaseSiparisEditModel {
   /// Returns a callable class that can be used as follows: `instanceOfBaseSiparisEditModel.copyWith(...)` or like so:`instanceOfBaseSiparisEditModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$BaseSiparisEditModelCWProxy get copyWith => _$BaseSiparisEditModelCWProxyImpl(this);
+  _$BaseSiparisEditModelCWProxy get copyWith =>
+      _$BaseSiparisEditModelCWProxyImpl(this);
 }
 
 abstract class _$KalemModelCWProxy {
@@ -2767,6 +2915,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel ekalan2Aciklama(String? ekalan2Aciklama);
 
+  KalemModel teklifSira(int? teklifSira);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2935,6 +3085,7 @@ abstract class _$KalemModelCWProxy {
     int? iadesirano,
     String? ekalan1Aciklama,
     String? ekalan2Aciklama,
+    int? teklifSira,
   });
 }
 
@@ -2945,13 +3096,15 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   final KalemModel _value;
 
   @override
-  KalemModel iskonto1OranMi(bool? iskonto1OranMi) => this(iskonto1OranMi: iskonto1OranMi);
+  KalemModel iskonto1OranMi(bool? iskonto1OranMi) =>
+      this(iskonto1OranMi: iskonto1OranMi);
 
   @override
   KalemModel tarih(DateTime? tarih) => this(tarih: tarih);
 
   @override
-  KalemModel teslimTarihi(DateTime? teslimTarihi) => this(teslimTarihi: teslimTarihi);
+  KalemModel teslimTarihi(DateTime? teslimTarihi) =>
+      this(teslimTarihi: teslimTarihi);
 
   @override
   KalemModel brutFiyat(double? brutFiyat) => this(brutFiyat: brutFiyat);
@@ -2966,7 +3119,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel miktar(double? miktar) => this(miktar: miktar);
 
   @override
-  KalemModel olcuBirimKodu(int? olcuBirimKodu) => this(olcuBirimKodu: olcuBirimKodu);
+  KalemModel olcuBirimKodu(int? olcuBirimKodu) =>
+      this(olcuBirimKodu: olcuBirimKodu);
 
   @override
   KalemModel sira(int? sira) => this(sira: sira);
@@ -2982,7 +3136,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel seriList(List<SeriList>? seriList) => this(seriList: seriList);
 
   @override
-  KalemModel tempBarkodList(List<dynamic>? tempBarkodList) => this(tempBarkodList: tempBarkodList);
+  KalemModel tempBarkodList(List<dynamic>? tempBarkodList) =>
+      this(tempBarkodList: tempBarkodList);
 
   @override
   KalemModel belgeNo(String? belgeNo) => this(belgeNo: belgeNo);
@@ -2997,7 +3152,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel depoTanimi(String? depoTanimi) => this(depoTanimi: depoTanimi);
 
   @override
-  KalemModel olcuBirimAdi(String? olcuBirimAdi) => this(olcuBirimAdi: olcuBirimAdi);
+  KalemModel olcuBirimAdi(String? olcuBirimAdi) =>
+      this(olcuBirimAdi: olcuBirimAdi);
 
   @override
   KalemModel stokAdi(String? stokAdi) => this(stokAdi: stokAdi);
@@ -3006,7 +3162,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel stokKodu(String? stokKodu) => this(stokKodu: stokKodu);
 
   @override
-  KalemModel stokOlcuBirimi(String? stokOlcuBirimi) => this(stokOlcuBirimi: stokOlcuBirimi);
+  KalemModel stokOlcuBirimi(String? stokOlcuBirimi) =>
+      this(stokOlcuBirimi: stokOlcuBirimi);
 
   @override
   KalemModel dovizKuru(double? dovizKuru) => this(dovizKuru: dovizKuru);
@@ -3015,7 +3172,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel dovizTipi(int? dovizTipi) => this(dovizTipi: dovizTipi);
 
   @override
-  KalemModel dovizliFiyat(double? dovizliFiyat) => this(dovizliFiyat: dovizliFiyat);
+  KalemModel dovizliFiyat(double? dovizliFiyat) =>
+      this(dovizliFiyat: dovizliFiyat);
 
   @override
   KalemModel aciklama1(String? aciklama1) => this(aciklama1: aciklama1);
@@ -3090,7 +3248,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel iskonto6(double? iskonto6) => this(iskonto6: iskonto6);
 
   @override
-  KalemModel malfazIskAdedi(double? malfazIskAdedi) => this(malfazIskAdedi: malfazIskAdedi);
+  KalemModel malfazIskAdedi(double? malfazIskAdedi) =>
+      this(malfazIskAdedi: malfazIskAdedi);
 
   @override
   KalemModel miktar2(double? miktar2) => this(miktar2: miktar2);
@@ -3108,16 +3267,19 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel dovizFiyati(double? dovizFiyati) => this(dovizFiyati: dovizFiyati);
 
   @override
-  KalemModel malfazCevrimliMiktar(double? malfazCevrimliMiktar) => this(malfazCevrimliMiktar: malfazCevrimliMiktar);
+  KalemModel malfazCevrimliMiktar(double? malfazCevrimliMiktar) =>
+      this(malfazCevrimliMiktar: malfazCevrimliMiktar);
 
   @override
-  KalemModel malFazlasiMiktar(double? malFazlasiMiktar) => this(malFazlasiMiktar: malFazlasiMiktar);
+  KalemModel malFazlasiMiktar(double? malFazlasiMiktar) =>
+      this(malFazlasiMiktar: malFazlasiMiktar);
 
   @override
   KalemModel kosulKodu(String? kosulKodu) => this(kosulKodu: kosulKodu);
 
   @override
-  KalemModel kalemList(List<KalemModel>? kalemList) => this(kalemList: kalemList);
+  KalemModel kalemList(List<KalemModel>? kalemList) =>
+      this(kalemList: kalemList);
 
   @override
   KalemModel koliMi(bool? koliMi) => this(koliMi: koliMi);
@@ -3129,13 +3291,15 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel cariAdi(String? cariAdi) => this(cariAdi: cariAdi);
 
   @override
-  KalemModel plasiyerKodu(String? plasiyerKodu) => this(plasiyerKodu: plasiyerKodu);
+  KalemModel plasiyerKodu(String? plasiyerKodu) =>
+      this(plasiyerKodu: plasiyerKodu);
 
   @override
   KalemModel kapali(String? kapali) => this(kapali: kapali);
 
   @override
-  KalemModel stokSatisKdv(double? stokSatisKdv) => this(stokSatisKdv: stokSatisKdv);
+  KalemModel stokSatisKdv(double? stokSatisKdv) =>
+      this(stokSatisKdv: stokSatisKdv);
 
   @override
   KalemModel stokAlisKdv(double? stokAlisKdv) => this(stokAlisKdv: stokAlisKdv);
@@ -3144,7 +3308,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel netFiyat(double? netFiyat) => this(netFiyat: netFiyat);
 
   @override
-  KalemModel zHucreList(List<dynamic>? zHucreList) => this(zHucreList: zHucreList);
+  KalemModel zHucreList(List<dynamic>? zHucreList) =>
+      this(zHucreList: zHucreList);
 
   @override
   KalemModel kalan(double? kalan) => this(kalan: kalan);
@@ -3156,32 +3321,40 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel lYedek9(int? lYedek9) => this(lYedek9: lYedek9);
 
   @override
-  KalemModel koliBilesenMiktari(double? koliBilesenMiktari) => this(koliBilesenMiktari: koliBilesenMiktari);
+  KalemModel koliBilesenMiktari(double? koliBilesenMiktari) =>
+      this(koliBilesenMiktari: koliBilesenMiktari);
 
   @override
-  KalemModel koliBilesenOrani(double? koliBilesenOrani) => this(koliBilesenOrani: koliBilesenOrani);
+  KalemModel koliBilesenOrani(double? koliBilesenOrani) =>
+      this(koliBilesenOrani: koliBilesenOrani);
 
   @override
   KalemModel koliBilesenFiyatorandan(String? koliBilesenFiyatorandan) =>
       this(koliBilesenFiyatorandan: koliBilesenFiyatorandan);
 
   @override
-  KalemModel koliBilesenKolikdv(String? koliBilesenKolikdv) => this(koliBilesenKolikdv: koliBilesenKolikdv);
+  KalemModel koliBilesenKolikdv(String? koliBilesenKolikdv) =>
+      this(koliBilesenKolikdv: koliBilesenKolikdv);
 
   @override
-  KalemModel stokSatDovTip(int? stokSatDovTip) => this(stokSatDovTip: stokSatDovTip);
+  KalemModel stokSatDovTip(int? stokSatDovTip) =>
+      this(stokSatDovTip: stokSatDovTip);
 
   @override
-  KalemModel stokAlisDovTip(int? stokAlisDovTip) => this(stokAlisDovTip: stokAlisDovTip);
+  KalemModel stokAlisDovTip(int? stokAlisDovTip) =>
+      this(stokAlisDovTip: stokAlisDovTip);
 
   @override
-  KalemModel stokAlisDovizAdi(String? stokAlisDovizAdi) => this(stokAlisDovizAdi: stokAlisDovizAdi);
+  KalemModel stokAlisDovizAdi(String? stokAlisDovizAdi) =>
+      this(stokAlisDovizAdi: stokAlisDovizAdi);
 
   @override
-  KalemModel stokSatDovizAdi(String? stokSatDovizAdi) => this(stokSatDovizAdi: stokSatDovizAdi);
+  KalemModel stokSatDovizAdi(String? stokSatDovizAdi) =>
+      this(stokSatDovizAdi: stokSatDovizAdi);
 
   @override
-  KalemModel muhasebeKodu(String? muhasebeKodu) => this(muhasebeKodu: muhasebeKodu);
+  KalemModel muhasebeKodu(String? muhasebeKodu) =>
+      this(muhasebeKodu: muhasebeKodu);
 
   @override
   KalemModel yapkod(String? yapkod) => this(yapkod: yapkod);
@@ -3196,25 +3369,30 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel irsaliyeNo(String? irsaliyeNo) => this(irsaliyeNo: irsaliyeNo);
 
   @override
-  KalemModel irsaliyeSira(int? irsaliyeSira) => this(irsaliyeSira: irsaliyeSira);
+  KalemModel irsaliyeSira(int? irsaliyeSira) =>
+      this(irsaliyeSira: irsaliyeSira);
 
   @override
   KalemModel tamamlanan(double? tamamlanan) => this(tamamlanan: tamamlanan);
 
   @override
-  KalemModel seriCikislardaAcik(bool? seriCikislardaAcik) => this(seriCikislardaAcik: seriCikislardaAcik);
+  KalemModel seriCikislardaAcik(bool? seriCikislardaAcik) =>
+      this(seriCikislardaAcik: seriCikislardaAcik);
 
   @override
-  KalemModel seriGirislerdeAcik(bool? seriGirislerdeAcik) => this(seriGirislerdeAcik: seriGirislerdeAcik);
+  KalemModel seriGirislerdeAcik(bool? seriGirislerdeAcik) =>
+      this(seriGirislerdeAcik: seriGirislerdeAcik);
 
   @override
-  KalemModel seriMiktarKadarSor(bool? seriMiktarKadarSor) => this(seriMiktarKadarSor: seriMiktarKadarSor);
+  KalemModel seriMiktarKadarSor(bool? seriMiktarKadarSor) =>
+      this(seriMiktarKadarSor: seriMiktarKadarSor);
 
   @override
   KalemModel dovizAdi(String? dovizAdi) => this(dovizAdi: dovizAdi);
 
   @override
-  KalemModel kalemListHucreList(List<dynamic>? kalemListHucreList) => this(kalemListHucreList: kalemListHucreList);
+  KalemModel kalemListHucreList(List<dynamic>? kalemListHucreList) =>
+      this(kalemListHucreList: kalemListHucreList);
 
   @override
   KalemModel arrBelgeNo(String? arrBelgeNo) => this(arrBelgeNo: arrBelgeNo);
@@ -3223,37 +3401,44 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel efatOzelkod(int? efatOzelkod) => this(efatOzelkod: efatOzelkod);
 
   @override
-  KalemModel efatOzelkodAdi(String? efatOzelkodAdi) => this(efatOzelkodAdi: efatOzelkodAdi);
+  KalemModel efatOzelkodAdi(String? efatOzelkodAdi) =>
+      this(efatOzelkodAdi: efatOzelkodAdi);
 
   @override
   KalemModel kalemAdi(String? kalemAdi) => this(kalemAdi: kalemAdi);
 
   @override
-  KalemModel kalemAdiDegistimi(bool? kalemAdiDegistimi) => this(kalemAdiDegistimi: kalemAdiDegistimi);
+  KalemModel kalemAdiDegistimi(bool? kalemAdiDegistimi) =>
+      this(kalemAdiDegistimi: kalemAdiDegistimi);
 
   @override
-  KalemModel kalemAdiDegisti(bool? kalemAdiDegisti) => this(kalemAdiDegisti: kalemAdiDegisti);
+  KalemModel kalemAdiDegisti(bool? kalemAdiDegisti) =>
+      this(kalemAdiDegisti: kalemAdiDegisti);
 
   @override
   KalemModel teklifNo(String? teklifNo) => this(teklifNo: teklifNo);
 
   @override
-  KalemModel teklifKalemSira(int? teklifKalemSira) => this(teklifKalemSira: teklifKalemSira);
+  KalemModel teklifKalemSira(int? teklifKalemSira) =>
+      this(teklifKalemSira: teklifKalemSira);
 
   @override
-  KalemModel muhasebeTanimi(String? muhasebeTanimi) => this(muhasebeTanimi: muhasebeTanimi);
+  KalemModel muhasebeTanimi(String? muhasebeTanimi) =>
+      this(muhasebeTanimi: muhasebeTanimi);
 
   @override
   KalemModel hedefDepo(int? hedefDepo) => this(hedefDepo: hedefDepo);
 
   @override
-  KalemModel siparisInckeyno(int? siparisInckeyno) => this(siparisInckeyno: siparisInckeyno);
+  KalemModel siparisInckeyno(int? siparisInckeyno) =>
+      this(siparisInckeyno: siparisInckeyno);
 
   @override
   KalemModel sipInckeyno(int? sipInckeyno) => this(sipInckeyno: sipInckeyno);
 
   @override
-  KalemModel kalemStoktanKodu(String? kalemStoktanKodu) => this(kalemStoktanKodu: kalemStoktanKodu);
+  KalemModel kalemStoktanKodu(String? kalemStoktanKodu) =>
+      this(kalemStoktanKodu: kalemStoktanKodu);
 
   @override
   KalemModel muhRefKodu(String? muhRefKodu) => this(muhRefKodu: muhRefKodu);
@@ -3264,7 +3449,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   ) => this(sayimListesiModelHucreList: sayimListesiModelHucreList);
 
   @override
-  KalemModel hedefDepoAdi(String? hedefDepoAdi) => this(hedefDepoAdi: hedefDepoAdi);
+  KalemModel hedefDepoAdi(String? hedefDepoAdi) =>
+      this(hedefDepoAdi: hedefDepoAdi);
 
   @override
   KalemModel sayimKalemRequestModelHucreList(
@@ -3278,16 +3464,19 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel dipFiyat(double? dipFiyat) => this(dipFiyat: dipFiyat);
 
   @override
-  KalemModel stokSatisKuru(double? stokSatisKuru) => this(stokSatisKuru: stokSatisKuru);
+  KalemModel stokSatisKuru(double? stokSatisKuru) =>
+      this(stokSatisKuru: stokSatisKuru);
 
   @override
-  KalemModel olcuBirimCarpani(double? olcuBirimCarpani) => this(olcuBirimCarpani: olcuBirimCarpani);
+  KalemModel olcuBirimCarpani(double? olcuBirimCarpani) =>
+      this(olcuBirimCarpani: olcuBirimCarpani);
 
   @override
   KalemModel stokBakiye(double? stokBakiye) => this(stokBakiye: stokBakiye);
 
   @override
-  KalemModel stokBirimAgirlik(double? stokBirimAgirlik) => this(stokBirimAgirlik: stokBirimAgirlik);
+  KalemModel stokBirimAgirlik(double? stokBirimAgirlik) =>
+      this(stokBirimAgirlik: stokBirimAgirlik);
 
   @override
   KalemModel bakiye(double? bakiye) => this(bakiye: bakiye);
@@ -3308,25 +3497,31 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel girisDepo(int? girisDepo) => this(girisDepo: girisDepo);
 
   @override
-  KalemModel cikisDepoAdi(String? cikisDepoAdi) => this(cikisDepoAdi: cikisDepoAdi);
+  KalemModel cikisDepoAdi(String? cikisDepoAdi) =>
+      this(cikisDepoAdi: cikisDepoAdi);
 
   @override
-  KalemModel girisDepoAdi(String? girisDepoAdi) => this(girisDepoAdi: girisDepoAdi);
+  KalemModel girisDepoAdi(String? girisDepoAdi) =>
+      this(girisDepoAdi: girisDepoAdi);
 
   @override
-  KalemModel cikisdepoKodu(int? cikisdepoKodu) => this(cikisdepoKodu: cikisdepoKodu);
+  KalemModel cikisdepoKodu(int? cikisdepoKodu) =>
+      this(cikisdepoKodu: cikisdepoKodu);
 
   @override
-  KalemModel girisdepoKodu(int? girisdepoKodu) => this(girisdepoKodu: girisdepoKodu);
+  KalemModel girisdepoKodu(int? girisdepoKodu) =>
+      this(girisdepoKodu: girisdepoKodu);
 
   @override
   KalemModel yapacik(String? yapacik) => this(yapacik: yapacik);
 
   @override
-  KalemModel stoklaraIslendi(String? stoklaraIslendi) => this(stoklaraIslendi: stoklaraIslendi);
+  KalemModel stoklaraIslendi(String? stoklaraIslendi) =>
+      this(stoklaraIslendi: stoklaraIslendi);
 
   @override
-  KalemModel maliyetFiyati(double? maliyetFiyati) => this(maliyetFiyati: maliyetFiyati);
+  KalemModel maliyetFiyati(double? maliyetFiyati) =>
+      this(maliyetFiyati: maliyetFiyati);
 
   @override
   KalemModel sipno(String? sipno) => this(sipno: sipno);
@@ -3335,7 +3530,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel isemriNo(String? isemriNo) => this(isemriNo: isemriNo);
 
   @override
-  KalemModel depoOnceligi(String? depoOnceligi) => this(depoOnceligi: depoOnceligi);
+  KalemModel depoOnceligi(String? depoOnceligi) =>
+      this(depoOnceligi: depoOnceligi);
 
   @override
   KalemModel kalemSayisi(int? kalemSayisi) => this(kalemSayisi: kalemSayisi);
@@ -3365,10 +3561,12 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel vadeTarihi(DateTime? vadeTarihi) => this(vadeTarihi: vadeTarihi);
 
   @override
-  KalemModel gercekMiktar(double? gercekMiktar) => this(gercekMiktar: gercekMiktar);
+  KalemModel gercekMiktar(double? gercekMiktar) =>
+      this(gercekMiktar: gercekMiktar);
 
   @override
-  KalemModel barkodList(List<BarkodList>? barkodList) => this(barkodList: barkodList);
+  KalemModel barkodList(List<BarkodList>? barkodList) =>
+      this(barkodList: barkodList);
 
   @override
   KalemModel grupKodu(String? grupKodu) => this(grupKodu: grupKodu);
@@ -3383,16 +3581,19 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel kalanMiktar(double? kalanMiktar) => this(kalanMiktar: kalanMiktar);
 
   @override
-  KalemModel kayittarihi(DateTime? kayittarihi) => this(kayittarihi: kayittarihi);
+  KalemModel kayittarihi(DateTime? kayittarihi) =>
+      this(kayittarihi: kayittarihi);
 
   @override
   KalemModel olcuBirimi(int? olcuBirimi) => this(olcuBirimi: olcuBirimi);
 
   @override
-  KalemModel olcuBirimiAdi(String? olcuBirimiAdi) => this(olcuBirimiAdi: olcuBirimiAdi);
+  KalemModel olcuBirimiAdi(String? olcuBirimiAdi) =>
+      this(olcuBirimiAdi: olcuBirimiAdi);
 
   @override
-  KalemModel olcuBirimiCarpan(double? olcuBirimiCarpan) => this(olcuBirimiCarpan: olcuBirimiCarpan);
+  KalemModel olcuBirimiCarpan(double? olcuBirimiCarpan) =>
+      this(olcuBirimiCarpan: olcuBirimiCarpan);
 
   @override
   KalemModel talepId(int? talepId) => this(talepId: talepId);
@@ -3401,37 +3602,48 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel tur(String? tur) => this(tur: tur);
 
   @override
-  KalemModel tamamlananMiktar(double? tamamlananMiktar) => this(tamamlananMiktar: tamamlananMiktar);
+  KalemModel tamamlananMiktar(double? tamamlananMiktar) =>
+      this(tamamlananMiktar: tamamlananMiktar);
 
   @override
   KalemModel detayId(int? detayId) => this(detayId: detayId);
 
   @override
-  KalemModel kayityapankul(String? kayityapankul) => this(kayityapankul: kayityapankul);
+  KalemModel kayityapankul(String? kayityapankul) =>
+      this(kayityapankul: kayityapankul);
 
   @override
-  KalemModel fireListe(List<KalemFireModel>? fireListe) => this(fireListe: fireListe);
+  KalemModel fireListe(List<KalemFireModel>? fireListe) =>
+      this(fireListe: fireListe);
 
   @override
   KalemModel fiyatYuzde(double? fiyatYuzde) => this(fiyatYuzde: fiyatYuzde);
 
   @override
-  KalemModel fiyatYuzdeDoviz(double? fiyatYuzdeDoviz) => this(fiyatYuzdeDoviz: fiyatYuzdeDoviz);
+  KalemModel fiyatYuzdeDoviz(double? fiyatYuzdeDoviz) =>
+      this(fiyatYuzdeDoviz: fiyatYuzdeDoviz);
 
   @override
-  KalemModel iadefaturano(String? iadefaturano) => this(iadefaturano: iadefaturano);
+  KalemModel iadefaturano(String? iadefaturano) =>
+      this(iadefaturano: iadefaturano);
 
   @override
-  KalemModel iadefaturatarihi(DateTime? iadefaturatarihi) => this(iadefaturatarihi: iadefaturatarihi);
+  KalemModel iadefaturatarihi(DateTime? iadefaturatarihi) =>
+      this(iadefaturatarihi: iadefaturatarihi);
 
   @override
   KalemModel iadesirano(int? iadesirano) => this(iadesirano: iadesirano);
 
   @override
-  KalemModel ekalan1Aciklama(String? ekalan1Aciklama) => this(ekalan1Aciklama: ekalan1Aciklama);
+  KalemModel ekalan1Aciklama(String? ekalan1Aciklama) =>
+      this(ekalan1Aciklama: ekalan1Aciklama);
 
   @override
-  KalemModel ekalan2Aciklama(String? ekalan2Aciklama) => this(ekalan2Aciklama: ekalan2Aciklama);
+  KalemModel ekalan2Aciklama(String? ekalan2Aciklama) =>
+      this(ekalan2Aciklama: ekalan2Aciklama);
+
+  @override
+  KalemModel teklifSira(int? teklifSira) => this(teklifSira: teklifSira);
 
   @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -3602,6 +3814,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? iadesirano = const $CopyWithPlaceholder(),
     Object? ekalan1Aciklama = const $CopyWithPlaceholder(),
     Object? ekalan2Aciklama = const $CopyWithPlaceholder(),
+    Object? teklifSira = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -3892,7 +4105,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.koliBilesenOrani
           // ignore: cast_nullable_to_non_nullable
           : koliBilesenOrani as double?,
-      koliBilesenFiyatorandan: koliBilesenFiyatorandan == const $CopyWithPlaceholder()
+      koliBilesenFiyatorandan:
+          koliBilesenFiyatorandan == const $CopyWithPlaceholder()
           ? _value.koliBilesenFiyatorandan
           // ignore: cast_nullable_to_non_nullable
           : koliBilesenFiyatorandan as String?,
@@ -4020,7 +4234,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.muhRefKodu
           // ignore: cast_nullable_to_non_nullable
           : muhRefKodu as String?,
-      sayimListesiModelHucreList: sayimListesiModelHucreList == const $CopyWithPlaceholder()
+      sayimListesiModelHucreList:
+          sayimListesiModelHucreList == const $CopyWithPlaceholder()
           ? _value.sayimListesiModelHucreList
           // ignore: cast_nullable_to_non_nullable
           : sayimListesiModelHucreList as List<dynamic>?,
@@ -4028,7 +4243,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.hedefDepoAdi
           // ignore: cast_nullable_to_non_nullable
           : hedefDepoAdi as String?,
-      sayimKalemRequestModelHucreList: sayimKalemRequestModelHucreList == const $CopyWithPlaceholder()
+      sayimKalemRequestModelHucreList:
+          sayimKalemRequestModelHucreList == const $CopyWithPlaceholder()
           ? _value.sayimKalemRequestModelHucreList
           // ignore: cast_nullable_to_non_nullable
           : sayimKalemRequestModelHucreList as List<dynamic>?,
@@ -4248,6 +4464,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.ekalan2Aciklama
           // ignore: cast_nullable_to_non_nullable
           : ekalan2Aciklama as String?,
+      teklifSira: teklifSira == const $CopyWithPlaceholder()
+          ? _value.teklifSira
+          // ignore: cast_nullable_to_non_nullable
+          : teklifSira as int?,
     );
   }
 }
@@ -4357,7 +4577,9 @@ class ListSiparisEditModelAdapter extends TypeAdapter<ListSiparisEditModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ListSiparisEditModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is ListSiparisEditModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
@@ -4569,13 +4791,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       faturalasmayacak: fields[188] as bool?,
       exportTipi: (fields[196] as num?)?.toInt(),
       exportrefno: fields[197] as String?,
-    );
+      kontrolAciklama: fields[198] as String?,
+    )..tekliflesti = fields[199] as String?;
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(198)
+      ..writeByte(200)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -4971,7 +5194,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(196)
       ..write(obj.exportTipi)
       ..writeByte(197)
-      ..write(obj.exportrefno);
+      ..write(obj.exportrefno)
+      ..writeByte(198)
+      ..write(obj.kontrolAciklama)
+      ..writeByte(199)
+      ..write(obj.tekliflesti);
   }
 
   @override
@@ -4980,7 +5207,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is BaseSiparisEditModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is BaseSiparisEditModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class KalemModelAdapter extends TypeAdapter<KalemModel> {
@@ -5154,13 +5383,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       iadesirano: fields[157] == null ? 1 : (fields[157] as num?)?.toInt(),
       ekalan1Aciklama: fields[158] as String?,
       ekalan2Aciklama: fields[159] as String?,
+      teklifSira: (fields[160] as num?)?.toInt(),
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(160)
+      ..writeByte(161)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5480,7 +5710,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(158)
       ..write(obj.ekalan1Aciklama)
       ..writeByte(159)
-      ..write(obj.ekalan2Aciklama);
+      ..write(obj.ekalan2Aciklama)
+      ..writeByte(160)
+      ..write(obj.teklifSira);
   }
 
   @override
@@ -5489,7 +5721,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is KalemModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is KalemModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class BarkodListAdapter extends TypeAdapter<BarkodList> {
@@ -5527,7 +5761,9 @@ class BarkodListAdapter extends TypeAdapter<BarkodList> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is BarkodListAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is BarkodListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -5537,7 +5773,9 @@ class BarkodListAdapter extends TypeAdapter<BarkodList> {
 BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   Map<String, dynamic> json,
 ) => BaseSiparisEditModel(
-  duzeltmetarihi: json['DUZELTMETARIHI'] == null ? null : DateTime.parse(json['DUZELTMETARIHI'] as String),
+  duzeltmetarihi: json['DUZELTMETARIHI'] == null
+      ? null
+      : DateTime.parse(json['DUZELTMETARIHI'] as String),
   kalemAdedi: (json['KALEM_ADEDI'] as num?)?.toInt(),
   cariEfaturami: json['CARI_EFATURAMI'] as String?,
   cYedek6: json['C_YEDEK6'] as String?,
@@ -5548,18 +5786,28 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   teslimCariAdi: json['TESLIM_CARI_ADI'] as String?,
   remoteTempBelge: json['REMOTE_TEMP_BELGE'] as bool?,
   tempBelgeMi: json['TEMP_BELGE_MI'] as bool?,
-  cariModel: json['CARI_MODEL'] == null ? null : CariListesiModel.fromJson(json['CARI_MODEL'] as Map<String, dynamic>),
+  cariModel: json['CARI_MODEL'] == null
+      ? null
+      : CariListesiModel.fromJson(json['CARI_MODEL'] as Map<String, dynamic>),
   islemeBaslamaTarihi: json['ISLEME_BASLAMA_TARIHI'] == null
       ? null
       : DateTime.parse(json['ISLEME_BASLAMA_TARIHI'] as String),
   istenilenTeslimTarihi: json['ISTENILEN_TESLIM_TARIHI'] == null
       ? null
       : DateTime.parse(json['ISTENILEN_TESLIM_TARIHI'] as String),
-  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
-  kosulTarihi: json['KOSUL_TARIHI'] == null ? null : DateTime.parse(json['KOSUL_TARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String),
+  kosulTarihi: json['KOSUL_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['KOSUL_TARIHI'] as String),
   tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
-  teslimTarihi: json['TESLIM_TARIHI'] == null ? null : DateTime.parse(json['TESLIM_TARIHI'] as String),
-  vadeTarihi: json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String),
+  teslimTarihi: json['TESLIM_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['TESLIM_TARIHI'] as String),
+  vadeTarihi: json['VADE_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['VADE_TARIHI'] as String),
   araToplam: (json['ARA_TOPLAM'] as num?)?.toDouble(),
   ekMaliyet1Tutari: (json['EK_MALIYET1_TUTARI'] as num?)?.toDouble(),
   ekMaliyet2Tutari: (json['EK_MALIYET2_TUTARI'] as num?)?.toDouble(),
@@ -5648,7 +5896,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   projeKodu: json['PROJE_KODU'] as String?,
   remoteTempBelgeEtiketi: json['REMOTE_TEMP_BELGE_ETIKETI'] as String?,
   tag: json['TAG'] as String?,
-  kalemler: (json['KALEMLER'] as List<dynamic>?)?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>)).toList(),
+  kalemler: (json['KALEMLER'] as List<dynamic>?)
+      ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
   irsaliyelesti: json['IRSALIYELESTI'] as String?,
   irslesenSayi: (json['IRSLESEN_SAYI'] as num?)?.toInt(),
   faturalasti: json['FATURALASTI'] as String?,
@@ -5698,7 +5948,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   sonrakiRevizeNo: json['SONRAKI_REVIZE_NO'] as String?,
   teklifRevizeIslemi: json['TEKLIF_REVIZE_ISLEMI'] as bool?,
   onaylayankul: json['ONAYLAYANKUL'] as String?,
-  onaytarihi: json['ONAYTARIHI'] == null ? null : DateTime.parse(json['ONAYTARIHI'] as String),
+  onaytarihi: json['ONAYTARIHI'] == null
+      ? null
+      : DateTime.parse(json['ONAYTARIHI'] as String),
   efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
   paramMap: json['PARAM_MAP'] as Map<String, dynamic>? ?? {},
   yeniCariKodu: json['YENI_CARI_KODU'] as String?,
@@ -5753,12 +6005,14 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   faturalasmayacak: json['FATURALASMAYACAK'] as bool?,
   exportTipi: (json['EXPORT_TIPI'] as num?)?.toInt(),
   exportrefno: json['EXPORTREFNO'] as String?,
-);
+  kontrolAciklama: json['KONTROL_ACIKLAMA'] as String?,
+)..tekliflesti = json['TEKLIFLESTI'] as String?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
   BaseSiparisEditModel instance,
 ) => <String, dynamic>{
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?) 'DUZELTMETARIHI': value,
+  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
+    'DUZELTMETARIHI': value,
   if (instance.kalemAdedi case final value?) 'KALEM_ADEDI': value,
   if (instance.cariEfaturami case final value?) 'CARI_EFATURAMI': value,
   if (instance.cYedek6 case final value?) 'C_YEDEK6': value,
@@ -5770,13 +6024,19 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.remoteTempBelge case final value?) 'REMOTE_TEMP_BELGE': value,
   if (instance.tempBelgeMi case final value?) 'TEMP_BELGE_MI': value,
   if (instance.cariModel?.toJson() case final value?) 'CARI_MODEL': value,
-  if (instance.islemeBaslamaTarihi?.toIso8601String() case final value?) 'ISLEME_BASLAMA_TARIHI': value,
-  if (instance.istenilenTeslimTarihi?.toIso8601String() case final value?) 'ISTENILEN_TESLIM_TARIHI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
-  if (instance.kosulTarihi?.toIso8601String() case final value?) 'KOSUL_TARIHI': value,
+  if (instance.islemeBaslamaTarihi?.toIso8601String() case final value?)
+    'ISLEME_BASLAMA_TARIHI': value,
+  if (instance.istenilenTeslimTarihi?.toIso8601String() case final value?)
+    'ISTENILEN_TESLIM_TARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?)
+    'KAYITTARIHI': value,
+  if (instance.kosulTarihi?.toIso8601String() case final value?)
+    'KOSUL_TARIHI': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.teslimTarihi?.toIso8601String() case final value?) 'TESLIM_TARIHI': value,
-  if (instance.vadeTarihi?.toIso8601String() case final value?) 'VADE_TARIHI': value,
+  if (instance.teslimTarihi?.toIso8601String() case final value?)
+    'TESLIM_TARIHI': value,
+  if (instance.vadeTarihi?.toIso8601String() case final value?)
+    'VADE_TARIHI': value,
   if (instance.araToplam case final value?) 'ARA_TOPLAM': value,
   if (instance.ekMaliyet1Tutari case final value?) 'EK_MALIYET1_TUTARI': value,
   if (instance.ekMaliyet2Tutari case final value?) 'EK_MALIYET2_TUTARI': value,
@@ -5804,9 +6064,13 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.topluDepo case final value?) 'TOPLU_DEPO': value,
   if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
   if (instance.tempSipList case final value?) 'TEMP_SIP_LIST': value,
-  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?) 'KALEM_LIST': value,
-  if (instance.kalemModeller?.map((e) => e.toJson()).toList() case final value?) 'KALEM_MODELLER': value,
-  if (instance.kalemModelList?.map((e) => e.toJson()).toList() case final value?) 'KALEM_MODEL_LIST': value,
+  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?)
+    'KALEM_LIST': value,
+  if (instance.kalemModeller?.map((e) => e.toJson()).toList() case final value?)
+    'KALEM_MODELLER': value,
+  if (instance.kalemModelList?.map((e) => e.toJson()).toList()
+      case final value?)
+    'KALEM_MODEL_LIST': value,
   if (instance.acik1 case final value?) 'ACIK1': value,
   if (instance.acik10 case final value?) 'ACIK10': value,
   if (instance.acik11 case final value?) 'ACIK11': value,
@@ -5857,9 +6121,11 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
   if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
   if (instance.projeKodu case final value?) 'PROJE_KODU': value,
-  if (instance.remoteTempBelgeEtiketi case final value?) 'REMOTE_TEMP_BELGE_ETIKETI': value,
+  if (instance.remoteTempBelgeEtiketi case final value?)
+    'REMOTE_TEMP_BELGE_ETIKETI': value,
   if (instance.tag case final value?) 'TAG': value,
-  if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?) 'KALEMLER': value,
+  if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?)
+    'KALEMLER': value,
   if (instance.irsaliyelesti case final value?) 'IRSALIYELESTI': value,
   if (instance.irslesenSayi case final value?) 'IRSLESEN_SAYI': value,
   if (instance.faturalasti case final value?) 'FATURALASTI': value,
@@ -5888,24 +6154,32 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.genIsk3O case final value?) 'GEN_ISK3_O': value,
   if (instance.cariDovizli case final value?) 'CARI_DOVIZLI': value,
   if (instance.efaturaMi case final value?) 'EFATURA_MI': value,
-  if (instance.efatOnayDurumKodu case final value?) 'EFAT_ONAY_DURUM_KODU': value,
+  if (instance.efatOnayDurumKodu case final value?)
+    'EFAT_ONAY_DURUM_KODU': value,
   if (instance.efatOnayAciklama case final value?) 'EFAT_ONAY_ACIKLAMA': value,
-  if (instance.efaturaGibDurumKodu case final value?) 'EFATURA_GIB_DURUM_KODU': value,
-  if (instance.efaturaDurumAciklama case final value?) 'EFATURA_DURUM_ACIKLAMA': value,
+  if (instance.efaturaGibDurumKodu case final value?)
+    'EFATURA_GIB_DURUM_KODU': value,
+  if (instance.efaturaDurumAciklama case final value?)
+    'EFATURA_DURUM_ACIKLAMA': value,
   if (instance.earsivMi case final value?) 'EARSIV_MI': value,
-  if (instance.earsivDurumAciklama case final value?) 'EARSIV_DURUM_ACIKLAMA': value,
-  if (instance.earsivGibDurumKodu case final value?) 'EARSIV_GIB_DURUM_KODU': value,
+  if (instance.earsivDurumAciklama case final value?)
+    'EARSIV_DURUM_ACIKLAMA': value,
+  if (instance.earsivGibDurumKodu case final value?)
+    'EARSIV_GIB_DURUM_KODU': value,
   if (instance.eirsaliyeDurumu case final value?) 'EIRSALIYE_DURUMU': value,
   if (instance.ebelgeCheckbox case final value?) 'EBELGE_CHECKBOX': value,
-  if (instance.eirsBilgiModel?.toJson() case final value?) 'EIRS_BILGI_MODEL': value,
+  if (instance.eirsBilgiModel?.toJson() case final value?)
+    'EIRS_BILGI_MODEL': value,
   if (instance.uetdsBildirildi case final value?) 'UETDS_BILDIRILDI': value,
   if (instance.efatOzelkod case final value?) 'EFAT_OZELKOD': value,
   if (instance.siparislesti case final value?) 'SIPARISLESTI': value,
   if (instance.arrBelgeNo case final value?) 'ARR_BELGE_NO': value,
   if (instance.sonrakiRevizeNo case final value?) 'SONRAKI_REVIZE_NO': value,
-  if (instance.teklifRevizeIslemi case final value?) 'TEKLIF_REVIZE_ISLEMI': value,
+  if (instance.teklifRevizeIslemi case final value?)
+    'TEKLIF_REVIZE_ISLEMI': value,
   if (instance.onaylayankul case final value?) 'ONAYLAYANKUL': value,
-  if (instance.onaytarihi?.toIso8601String() case final value?) 'ONAYTARIHI': value,
+  if (instance.onaytarihi?.toIso8601String() case final value?)
+    'ONAYTARIHI': value,
   if (instance.efaturaSenaryo case final value?) 'EFATURA_SENARYO': value,
   if (instance.paramMap case final value?) 'PARAM_MAP': value,
   if (instance.yeniCariKodu case final value?) 'YENI_CARI_KODU': value,
@@ -5916,7 +6190,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.efattanTutar case final value?) 'EFATTAN_TUTAR': value,
   if (instance.efattanDoviz case final value?) 'EFATTAN_DOVIZ': value,
   if (instance.efattanDovizAdi case final value?) 'EFATTAN_DOVIZ_ADI': value,
-  if (instance.muhtelifCariModel?.toJson() case final value?) 'MUHTELIF_CARI_MODEL': value,
+  if (instance.muhtelifCariModel?.toJson() case final value?)
+    'MUHTELIF_CARI_MODEL': value,
   if (instance.cariTitle case final value?) 'CARI_TITLE': value,
   if (instance.hedefDepo case final value?) 'HEDEF_DEPO': value,
   if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
@@ -5926,19 +6201,25 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.masrafKodu case final value?) 'MASRAF_KODU': value,
   if (instance.eirsaliye case final value?) 'EIRSALIYE': value,
   if (instance.girisDepoKodu case final value?) 'GIRIS_DEPO_KODU': value,
-  if (instance.topluGirisDepoTanimi case final value?) 'TOPLU_GIRIS_DEPO_TANIMI': value,
-  if (instance.topluCikisDepoTanimi case final value?) 'TOPLU_CIKIS_DEPO_TANIMI': value,
+  if (instance.topluGirisDepoTanimi case final value?)
+    'TOPLU_GIRIS_DEPO_TANIMI': value,
+  if (instance.topluCikisDepoTanimi case final value?)
+    'TOPLU_CIKIS_DEPO_TANIMI': value,
   if (instance.isemriNo case final value?) 'ISEMRI_NO': value,
   if (instance.isemriAciklama case final value?) 'ISEMRI_ACIKLAMA': value,
   if (instance.masrafKoduAdi case final value?) 'MASRAF_KODU_ADI': value,
   if (instance.masrafKoduTipi case final value?) 'MASRAF_KODU_TIPI': value,
   if (instance.eirsaliyeMi case final value?) 'EIRSALIYE_MI': value,
-  if (instance.eirsaliyeDurumAciklama case final value?) 'EIRSALIYE_DURUM_ACIKLAMA': value,
-  if (instance.eirsaliyeGibDurumKodu case final value?) 'EIRSALIYE_GIB_DURUM_KODU': value,
+  if (instance.eirsaliyeDurumAciklama case final value?)
+    'EIRSALIYE_DURUM_ACIKLAMA': value,
+  if (instance.eirsaliyeGibDurumKodu case final value?)
+    'EIRSALIYE_GIB_DURUM_KODU': value,
   if (instance.cariDovizkodu case final value?) 'CARI_DOVIZKODU': value,
   if (instance.datOnayda case final value?) 'DAT_ONAYDA': value,
   if (instance.olcumBelgeRefKey case final value?) 'OLCUM_BELGE_REF_KEY': value,
-  if (instance.dovizListesi?.map((k, e) => MapEntry(k.toString(), e)) case final value?) 'DOVIZ_LISTESI': value,
+  if (instance.dovizListesi?.map((k, e) => MapEntry(k.toString(), e))
+      case final value?)
+    'DOVIZ_LISTESI': value,
   if (instance.hedefDepoAdi case final value?) 'HEDEF_DEPO_ADI': value,
   if (instance.otvTutari case final value?) 'OTV_TUTARI': value,
   if (instance.index case final value?) 'INDEX': value,
@@ -5952,12 +6233,16 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   if (instance.hedefSube case final value?) 'HEDEF_SUBE': value,
   if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
   if (instance.exportrefno case final value?) 'EXPORTREFNO': value,
+  if (instance.kontrolAciklama case final value?) 'KONTROL_ACIKLAMA': value,
+  if (instance.tekliflesti case final value?) 'TEKLIFLESTI': value,
 };
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
   iskonto1OranMi: json['ISKONTO_1_ORAN_MI'] as bool? ?? false,
   tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
-  teslimTarihi: json['TESLIM_TARIHI'] == null ? null : DateTime.parse(json['TESLIM_TARIHI'] as String),
+  teslimTarihi: json['TESLIM_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['TESLIM_TARIHI'] as String),
   brutFiyat: (json['BRUT_FIYAT'] as num?)?.toDouble(),
   depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
   kdvOrani: (json['KDV_ORANI'] as num?)?.toDouble(),
@@ -5968,7 +6253,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
   kalemModelHucreList: (json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?)
       ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
       .toList(),
-  seriList: (json['SeriList'] as List<dynamic>?)?.map((e) => SeriList.fromJson(e as Map<String, dynamic>)).toList(),
+  seriList: (json['SeriList'] as List<dynamic>?)
+      ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
+      .toList(),
   tempBarkodList: json['TEMP_BARKOD_LIST'] as List<dynamic>?,
   belgeNo: json['BELGE_NO'] as String?,
   belgeTipi: json['BELGE_TIPI'] as String?,
@@ -6062,9 +6349,11 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
   sipInckeyno: (json['SIP_INCKEYNO'] as num?)?.toInt(),
   kalemStoktanKodu: json['KALEM_STOKTAN_KODU'] as String?,
   muhRefKodu: json['MUH_REF_KODU'] as String?,
-  sayimListesiModelHucreList: json['SAYIM_LISTESI_MODEL_HUCRE_LIST'] as List<dynamic>?,
+  sayimListesiModelHucreList:
+      json['SAYIM_LISTESI_MODEL_HUCRE_LIST'] as List<dynamic>?,
   hedefDepoAdi: json['HEDEF_DEPO_ADI'] as String?,
-  sayimKalemRequestModelHucreList: json['SAYIM_KALEM_REQUEST_MODEL_HUCRE_LIST'] as List<dynamic>?,
+  sayimKalemRequestModelHucreList:
+      json['SAYIM_KALEM_REQUEST_MODEL_HUCRE_LIST'] as List<dynamic>?,
   gc: json['GC'] as String?,
   dipFiyat: (json['DIP_FIYAT'] as num?)?.toDouble(),
   stokSatisKuru: (json['STOK_SATIS_KURU'] as num?)?.toDouble(),
@@ -6095,7 +6384,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
   otvVarmi: json['OTV_VARMI'] as bool?,
   otvOranmi: json['OTV_ORANMI'] as bool?,
   otvDegeri: (json['OTV_DEGERI'] as num?)?.toDouble(),
-  vadeTarihi: json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String),
+  vadeTarihi: json['VADE_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['VADE_TARIHI'] as String),
   gercekMiktar: (json['GERCEK_MIKTAR'] as num?)?.toDouble(),
   barkodList: (json['BARKOD_LIST'] as List<dynamic>?)
       ?.map((e) => BarkodList.fromJson(e as Map<String, dynamic>))
@@ -6104,7 +6395,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
   id: (json['ID'] as num?)?.toInt(),
   islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
   kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toDouble(),
-  kayittarihi: json['KAYITTARIHI'] == null ? null : DateTime.parse(json['KAYITTARIHI'] as String),
+  kayittarihi: json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String),
   olcuBirimi: (json['OLCU_BIRIMI'] as num?)?.toInt(),
   olcuBirimiAdi: json['OLCU_BIRIMI_ADI'] as String?,
   olcuBirimiCarpan: (json['OLCU_BIRIMI_CARPAN'] as num?)?.toDouble(),
@@ -6119,10 +6412,13 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
   fiyatYuzde: (json['FIYAT_YUZDE'] as num?)?.toDouble(),
   fiyatYuzdeDoviz: (json['FIYAT_YUZDE_DOVIZ'] as num?)?.toDouble(),
   iadefaturano: json['IADEFATURANO'] as String?,
-  iadefaturatarihi: json['IADEFATURATARIHI'] == null ? null : DateTime.parse(json['IADEFATURATARIHI'] as String),
+  iadefaturatarihi: json['IADEFATURATARIHI'] == null
+      ? null
+      : DateTime.parse(json['IADEFATURATARIHI'] as String),
   iadesirano: (json['IADESIRANO'] as num?)?.toInt(),
   ekalan1Aciklama: json['EKALAN1_ACIKLAMA'] as String?,
   ekalan2Aciklama: json['EKALAN2_ACIKLAMA'] as String?,
+  teklifSira: (json['TEKLIF_SIRA'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$KalemModelToJson(
@@ -6130,7 +6426,8 @@ Map<String, dynamic> _$KalemModelToJson(
 ) => <String, dynamic>{
   if (instance.iskonto1OranMi case final value?) 'ISKONTO_1_ORAN_MI': value,
   if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.teslimTarihi?.toIso8601String() case final value?) 'TESLIM_TARIHI': value,
+  if (instance.teslimTarihi?.toIso8601String() case final value?)
+    'TESLIM_TARIHI': value,
   if (instance.brutFiyat case final value?) 'BRUT_FIYAT': value,
   if (instance.depoKodu case final value?) 'DEPO_KODU': value,
   if (instance.kdvOrani case final value?) 'KDV_ORANI': value,
@@ -6138,8 +6435,11 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.olcuBirimKodu case final value?) 'OLCU_BIRIM_KODU': value,
   if (instance.sira case final value?) 'SIRA': value,
   if (instance.hucreList case final value?) 'HUCRE_LIST': value,
-  if (instance.kalemModelHucreList?.map((e) => e.toJson()).toList() case final value?) 'KALEM_MODEL_HUCRE_LIST': value,
-  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?) 'SeriList': value,
+  if (instance.kalemModelHucreList?.map((e) => e.toJson()).toList()
+      case final value?)
+    'KALEM_MODEL_HUCRE_LIST': value,
+  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+    'SeriList': value,
   if (instance.tempBarkodList case final value?) 'TEMP_BARKOD_LIST': value,
   if (instance.belgeNo case final value?) 'BELGE_NO': value,
   if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
@@ -6176,7 +6476,8 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.satisFiyati case final value?) 'SATIS_FIYATI': value,
   if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
   if (instance.dovizFiyati case final value?) 'DOVIZ_FIYATI': value,
-  if (instance.malfazCevrimliMiktar case final value?) 'MALFAZ_CEVRIMLI_MIKTAR': value,
+  if (instance.malfazCevrimliMiktar case final value?)
+    'MALFAZ_CEVRIMLI_MIKTAR': value,
   if (instance.malFazlasiMiktar case final value?) 'MAL_FAZLASI_MIKTAR': value,
   if (instance.kosulKodu case final value?) 'KOSUL_KODU': value,
   if (instance.isk4Tipi case final value?) 'ISK4_TIPI': value,
@@ -6185,7 +6486,8 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.iskonto5 case final value?) 'ISKONTO5': value,
   if (instance.isk6Tipi case final value?) 'ISK6_TIPI': value,
   if (instance.iskonto6 case final value?) 'ISKONTO6': value,
-  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?) 'KALEM_LIST': value,
+  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?)
+    'KALEM_LIST': value,
   if (instance.inckeyno case final value?) 'INCKEYNO': value,
   if (instance.cariAdi case final value?) 'CARI_ADI': value,
   if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
@@ -6197,10 +6499,13 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.kalan case final value?) 'KALAN': value,
   if (instance.paketMi case final value?) 'PAKET_MI': value,
   if (instance.lYedek9 case final value?) 'L_YEDEK9': value,
-  if (instance.koliBilesenMiktari case final value?) 'KOLI_BILESEN_MIKTARI': value,
+  if (instance.koliBilesenMiktari case final value?)
+    'KOLI_BILESEN_MIKTARI': value,
   if (instance.koliBilesenOrani case final value?) 'KOLI_BILESEN_ORANI': value,
-  if (instance.koliBilesenFiyatorandan case final value?) 'KOLI_BILESEN_FIYATORANDAN': value,
-  if (instance.koliBilesenKolikdv case final value?) 'KOLI_BILESEN_KOLIKDV': value,
+  if (instance.koliBilesenFiyatorandan case final value?)
+    'KOLI_BILESEN_FIYATORANDAN': value,
+  if (instance.koliBilesenKolikdv case final value?)
+    'KOLI_BILESEN_KOLIKDV': value,
   if (instance.stokSatDovTip case final value?) 'STOK_SAT_DOV_TIP': value,
   if (instance.stokAlisDovTip case final value?) 'STOK_ALIS_DOV_TIP': value,
   if (instance.stokAlisDovizAdi case final value?) 'STOK_ALIS_DOVIZ_ADI': value,
@@ -6212,16 +6517,21 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.irsaliyeNo case final value?) 'IRSALIYE_NO': value,
   if (instance.irsaliyeSira case final value?) 'IRSALIYE_SIRA': value,
   if (instance.tamamlanan case final value?) 'TAMAMLANAN': value,
-  if (instance.seriCikislardaAcik case final value?) 'SERI_CIKISLARDA_ACIK': value,
-  if (instance.seriGirislerdeAcik case final value?) 'SERI_GIRISLERDE_ACIK': value,
-  if (instance.seriMiktarKadarSor case final value?) 'SERI_MIKTAR_KADAR_SOR': value,
+  if (instance.seriCikislardaAcik case final value?)
+    'SERI_CIKISLARDA_ACIK': value,
+  if (instance.seriGirislerdeAcik case final value?)
+    'SERI_GIRISLERDE_ACIK': value,
+  if (instance.seriMiktarKadarSor case final value?)
+    'SERI_MIKTAR_KADAR_SOR': value,
   if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-  if (instance.kalemListHucreList case final value?) 'KALEM_LIST_HUCRE_LIST': value,
+  if (instance.kalemListHucreList case final value?)
+    'KALEM_LIST_HUCRE_LIST': value,
   if (instance.arrBelgeNo case final value?) 'ARR_BELGE_NO': value,
   if (instance.efatOzelkod case final value?) 'EFAT_OZELKOD': value,
   if (instance.efatOzelkodAdi case final value?) 'EFAT_OZELKOD_ADI': value,
   if (instance.kalemAdi case final value?) 'KALEM_ADI': value,
-  if (instance.kalemAdiDegistimi case final value?) 'KALEM_ADI_DEGISTIMI': value,
+  if (instance.kalemAdiDegistimi case final value?)
+    'KALEM_ADI_DEGISTIMI': value,
   if (instance.kalemAdiDegisti case final value?) 'KALEM_ADI_DEGISTI': value,
   if (instance.teklifNo case final value?) 'TEKLIF_NO': value,
   if (instance.teklifKalemSira case final value?) 'TEKLIF_KALEM_SIRA': value,
@@ -6231,7 +6541,8 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.siparisInckeyno case final value?) 'SIPARIS_INCKEYNO': value,
   if (instance.sipInckeyno case final value?) 'SIP_INCKEYNO': value,
   if (instance.muhRefKodu case final value?) 'MUH_REF_KODU': value,
-  if (instance.sayimListesiModelHucreList case final value?) 'SAYIM_LISTESI_MODEL_HUCRE_LIST': value,
+  if (instance.sayimListesiModelHucreList case final value?)
+    'SAYIM_LISTESI_MODEL_HUCRE_LIST': value,
   if (instance.dipFiyat case final value?) 'DIP_FIYAT': value,
   if (instance.stokSatisKuru case final value?) 'STOK_SATIS_KURU': value,
   if (instance.olcuBirimCarpani case final value?) 'OLCU_BIRIM_CARPANI': value,
@@ -6240,7 +6551,8 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.bakiye case final value?) 'BAKIYE': value,
   if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
   if (instance.hedefDepoAdi case final value?) 'HEDEF_DEPO_ADI': value,
-  if (instance.sayimKalemRequestModelHucreList case final value?) 'SAYIM_KALEM_REQUEST_MODEL_HUCRE_LIST': value,
+  if (instance.sayimKalemRequestModelHucreList case final value?)
+    'SAYIM_KALEM_REQUEST_MODEL_HUCRE_LIST': value,
   if (instance.gc case final value?) 'GC': value,
   if (instance.aciklama case final value?) 'ACIKLAMA': value,
   if (instance.barkod case final value?) 'BARKOD': value,
@@ -6264,9 +6576,11 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.otvVarmi case final value?) 'OTV_VARMI': value,
   if (instance.otvOranmi case final value?) 'OTV_ORANMI': value,
   if (instance.otvDegeri case final value?) 'OTV_DEGERI': value,
-  if (instance.vadeTarihi?.toIso8601String() case final value?) 'VADE_TARIHI': value,
+  if (instance.vadeTarihi?.toIso8601String() case final value?)
+    'VADE_TARIHI': value,
   if (instance.gercekMiktar case final value?) 'GERCEK_MIKTAR': value,
-  if (instance.barkodList?.map((e) => e.toJson()).toList() case final value?) 'BARKOD_LIST': value,
+  if (instance.barkodList?.map((e) => e.toJson()).toList() case final value?)
+    'BARKOD_LIST': value,
   if (instance.id case final value?) 'ID': value,
   if (instance.talepId case final value?) 'TALEP_ID': value,
   if (instance.tur case final value?) 'TUR': value,
@@ -6275,7 +6589,8 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.olcuBirimiAdi case final value?) 'OLCU_BIRIMI_ADI': value,
   if (instance.olcuBirimiCarpan case final value?) 'OLCU_BIRIMI_CARPAN': value,
   if (instance.kalanMiktar case final value?) 'KALAN_MIKTAR': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?) 'KAYITTARIHI': value,
+  if (instance.kayittarihi?.toIso8601String() case final value?)
+    'KAYITTARIHI': value,
   if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
   if (instance.tamamlananMiktar case final value?) 'TAMAMLANAN_MIKTAR': value,
   if (instance.detayId case final value?) 'DETAY_ID': value,
@@ -6283,11 +6598,14 @@ Map<String, dynamic> _$KalemModelToJson(
   if (instance.fiyatYuzde case final value?) 'FIYAT_YUZDE': value,
   if (instance.fiyatYuzdeDoviz case final value?) 'FIYAT_YUZDE_DOVIZ': value,
   if (instance.iadefaturano case final value?) 'IADEFATURANO': value,
-  if (instance.iadefaturatarihi?.toIso8601String() case final value?) 'IADEFATURATARIHI': value,
+  if (instance.iadefaturatarihi?.toIso8601String() case final value?)
+    'IADEFATURATARIHI': value,
   if (instance.iadesirano case final value?) 'IADESIRANO': value,
   if (instance.ekalan1Aciklama case final value?) 'EKALAN1_ACIKLAMA': value,
   if (instance.ekalan2Aciklama case final value?) 'EKALAN2_ACIKLAMA': value,
-  if (instance.fireListe?.map((e) => e.toJson()).toList() case final value?) 'FIRE_LISTE': value,
+  if (instance.fireListe?.map((e) => e.toJson()).toList() case final value?)
+    'FIRE_LISTE': value,
+  if (instance.teklifSira case final value?) 'TEKLIF_SIRA': value,
 };
 
 BarkodList _$BarkodListFromJson(Map<String, dynamic> json) => BarkodList(
@@ -6296,20 +6614,23 @@ BarkodList _$BarkodListFromJson(Map<String, dynamic> json) => BarkodList(
   miktar2: (json['MIKTAR2'] as num?)?.toDouble(),
 );
 
-Map<String, dynamic> _$BarkodListToJson(BarkodList instance) => <String, dynamic>{
-  if (instance.barkod case final value?) 'BARKOD': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.miktar2 case final value?) 'MIKTAR2': value,
-};
+Map<String, dynamic> _$BarkodListToJson(BarkodList instance) =>
+    <String, dynamic>{
+      if (instance.barkod case final value?) 'BARKOD': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.miktar2 case final value?) 'MIKTAR2': value,
+    };
 
-KalemFireModel _$KalemFireModelFromJson(Map<String, dynamic> json) => KalemFireModel(
-  kodu: json['Kodu'] as String?,
-  tanimi: json['Tanimi'] as String?,
-  miktar: (json['Miktar'] as num?)?.toDouble(),
-);
+KalemFireModel _$KalemFireModelFromJson(Map<String, dynamic> json) =>
+    KalemFireModel(
+      kodu: json['Kodu'] as String?,
+      tanimi: json['Tanimi'] as String?,
+      miktar: (json['Miktar'] as num?)?.toDouble(),
+    );
 
-Map<String, dynamic> _$KalemFireModelToJson(KalemFireModel instance) => <String, dynamic>{
-  if (instance.kodu case final value?) 'Kodu': value,
-  if (instance.tanimi case final value?) 'Tanimi': value,
-  if (instance.miktar case final value?) 'Miktar': value,
-};
+Map<String, dynamic> _$KalemFireModelToJson(KalemFireModel instance) =>
+    <String, dynamic>{
+      if (instance.kodu case final value?) 'Kodu': value,
+      if (instance.tanimi case final value?) 'Tanimi': value,
+      if (instance.miktar case final value?) 'Miktar': value,
+    };

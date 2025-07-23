@@ -572,6 +572,11 @@ abstract final class MenuItemConstants {
               route: "/mainPage/stokAmbarMaliyetRaporu",
             ),
             GridItemModel.item(
+              name: "stok_DepoBakiyeDurumu",
+              title: "Depo Bakiye Raporu",
+              route: "/mainPage/depoBakiyeDurumu",
+            ),
+            GridItemModel.item(
               name: "stok_Rap_LokalDepoBakiye",
               title: "Lokal Depo Bakiye Raporu",
               route: "/mainPage/stokLokalDepoBakiyeRaporu",

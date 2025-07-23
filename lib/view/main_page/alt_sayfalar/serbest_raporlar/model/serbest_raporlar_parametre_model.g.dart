@@ -19,6 +19,7 @@ Map<String, dynamic> _$SerbestRaporParametreModelToJson(
 ) => <String, dynamic>{
   if (instance.parametreAdi case final value?) 'PARAMETRE_ADI': value,
   if (instance.parametreTanimi case final value?) 'PARAMETRE_TANIMI': value,
-  if (instance.degerTemizlenmesin case final value?) 'DEGER_TEMIZLENMESIN': value,
+  if (instance.degerTemizlenmesin case final value?)
+    'DEGER_TEMIZLENMESIN': value,
   if (instance.enterIslemYap case final value?) 'ENTER_ISLEM_YAP': value,
 };

@@ -6,25 +6,26 @@ part of 'kasa_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_KasaListesiModel _$KasaListesiModelFromJson(Map<String, dynamic> json) => _KasaListesiModel(
-  kasaKodu: json['KASA_KODU'] as String?,
-  kasaTanimi: json['KASA_TANIMI'] as String?,
-  subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
-  dovizli: json['DOVIZLI'] as String?,
-  dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
-  kkartKasasi: json['KKART_KASASI'] as bool?,
-  toplamGiris: (json['TOPLAM_GIRIS'] as num?)?.toDouble(),
-  toplamCikis: (json['TOPLAM_CIKIS'] as num?)?.toDouble(),
-  bakiye: (json['BAKIYE'] as num?)?.toDouble(),
-  devirliBakiye: (json['DEVIRLI_BAKIYE'] as num?)?.toDouble(),
-  devirTutari: (json['DEVIR_TUTARI'] as num?)?.toDouble(),
-  dovizToplamGiris: (json['DOVIZ_TOPLAM_GIRIS'] as num?)?.toDouble(),
-  dovizToplamCikis: (json['DOVIZ_TOPLAM_CIKIS'] as num?)?.toDouble(),
-  dovizBakiye: (json['DOVIZ_BAKIYE'] as num?)?.toDouble(),
-  devirliDovizBakiye: (json['DEVIRLI_DOVIZ_BAKIYE'] as num?)?.toDouble(),
-  dovizDevirTutari: (json['DOVIZ_DEVIR_TUTARI'] as num?)?.toDouble(),
-  dovizAdi: json['DOVIZ_ADI'] as String?,
-);
+_KasaListesiModel _$KasaListesiModelFromJson(Map<String, dynamic> json) =>
+    _KasaListesiModel(
+      kasaKodu: json['KASA_KODU'] as String?,
+      kasaTanimi: json['KASA_TANIMI'] as String?,
+      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
+      dovizli: json['DOVIZLI'] as String?,
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
+      kkartKasasi: json['KKART_KASASI'] as bool?,
+      toplamGiris: (json['TOPLAM_GIRIS'] as num?)?.toDouble(),
+      toplamCikis: (json['TOPLAM_CIKIS'] as num?)?.toDouble(),
+      bakiye: (json['BAKIYE'] as num?)?.toDouble(),
+      devirliBakiye: (json['DEVIRLI_BAKIYE'] as num?)?.toDouble(),
+      devirTutari: (json['DEVIR_TUTARI'] as num?)?.toDouble(),
+      dovizToplamGiris: (json['DOVIZ_TOPLAM_GIRIS'] as num?)?.toDouble(),
+      dovizToplamCikis: (json['DOVIZ_TOPLAM_CIKIS'] as num?)?.toDouble(),
+      dovizBakiye: (json['DOVIZ_BAKIYE'] as num?)?.toDouble(),
+      devirliDovizBakiye: (json['DEVIRLI_DOVIZ_BAKIYE'] as num?)?.toDouble(),
+      dovizDevirTutari: (json['DOVIZ_DEVIR_TUTARI'] as num?)?.toDouble(),
+      dovizAdi: json['DOVIZ_ADI'] as String?,
+    );
 
 Map<String, dynamic> _$KasaListesiModelToJson(
   _KasaListesiModel instance,
@@ -43,7 +44,8 @@ Map<String, dynamic> _$KasaListesiModelToJson(
   if (instance.dovizToplamGiris case final value?) 'DOVIZ_TOPLAM_GIRIS': value,
   if (instance.dovizToplamCikis case final value?) 'DOVIZ_TOPLAM_CIKIS': value,
   if (instance.dovizBakiye case final value?) 'DOVIZ_BAKIYE': value,
-  if (instance.devirliDovizBakiye case final value?) 'DEVIRLI_DOVIZ_BAKIYE': value,
+  if (instance.devirliDovizBakiye case final value?)
+    'DEVIRLI_DOVIZ_BAKIYE': value,
   if (instance.dovizDevirTutari case final value?) 'DOVIZ_DEVIR_TUTARI': value,
   if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
 };

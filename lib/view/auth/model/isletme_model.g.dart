@@ -77,7 +77,9 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is IsletmeModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is IsletmeModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -102,20 +104,21 @@ IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) => IsletmeModel(
   vergiDairesi: json['VERGI_DAIRESI'] as String?,
 );
 
-Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) => <String, dynamic>{
-  if (instance.sirket case final value?) 'SIRKET': value,
-  if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
-  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-  if (instance.subeAdi case final value?) 'SUBE_ADI': value,
-  if (instance.isletmeAdi case final value?) 'ISLETME_ADI': value,
-  if (instance.lokalDepoAktif case final value?) 'LOKAL_DEPO_AKTIF': value,
-  if (instance.merkezmi case final value?) 'MERKEZMI': value,
-  if (instance.adres case final value?) 'ADRES': value,
-  if (instance.telefon case final value?) 'TELEFON': value,
-  if (instance.faks case final value?) 'FAKS': value,
-  if (instance.email case final value?) 'EMAIL': value,
-  if (instance.ilAdi case final value?) 'IL_ADI': value,
-  if (instance.ilce case final value?) 'ILCE': value,
-  if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
-  if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
-};
+Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) =>
+    <String, dynamic>{
+      if (instance.sirket case final value?) 'SIRKET': value,
+      if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
+      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+      if (instance.subeAdi case final value?) 'SUBE_ADI': value,
+      if (instance.isletmeAdi case final value?) 'ISLETME_ADI': value,
+      if (instance.lokalDepoAktif case final value?) 'LOKAL_DEPO_AKTIF': value,
+      if (instance.merkezmi case final value?) 'MERKEZMI': value,
+      if (instance.adres case final value?) 'ADRES': value,
+      if (instance.telefon case final value?) 'TELEFON': value,
+      if (instance.faks case final value?) 'FAKS': value,
+      if (instance.email case final value?) 'EMAIL': value,
+      if (instance.ilAdi case final value?) 'IL_ADI': value,
+      if (instance.ilce case final value?) 'ILCE': value,
+      if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
+      if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
+    };

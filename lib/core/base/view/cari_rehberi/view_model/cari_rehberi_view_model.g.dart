@@ -12,38 +12,43 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari1Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari1 => (_$grupKodlari1Computed ??= Computed<List<BaseGrupKoduModel>?>(
-    () => super.grupKodlari1,
-    name: '_CariRehberiViewModelBase.grupKodlari1',
-  )).value;
+  List<BaseGrupKoduModel>? get grupKodlari1 =>
+      (_$grupKodlari1Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari1,
+        name: '_CariRehberiViewModelBase.grupKodlari1',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari2Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari2 => (_$grupKodlari2Computed ??= Computed<List<BaseGrupKoduModel>?>(
-    () => super.grupKodlari2,
-    name: '_CariRehberiViewModelBase.grupKodlari2',
-  )).value;
+  List<BaseGrupKoduModel>? get grupKodlari2 =>
+      (_$grupKodlari2Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari2,
+        name: '_CariRehberiViewModelBase.grupKodlari2',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari3Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari3 => (_$grupKodlari3Computed ??= Computed<List<BaseGrupKoduModel>?>(
-    () => super.grupKodlari3,
-    name: '_CariRehberiViewModelBase.grupKodlari3',
-  )).value;
+  List<BaseGrupKoduModel>? get grupKodlari3 =>
+      (_$grupKodlari3Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari3,
+        name: '_CariRehberiViewModelBase.grupKodlari3',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari4Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari4 => (_$grupKodlari4Computed ??= Computed<List<BaseGrupKoduModel>?>(
-    () => super.grupKodlari4,
-    name: '_CariRehberiViewModelBase.grupKodlari4',
-  )).value;
+  List<BaseGrupKoduModel>? get grupKodlari4 =>
+      (_$grupKodlari4Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari4,
+        name: '_CariRehberiViewModelBase.grupKodlari4',
+      )).value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKodlari5Computed;
 
   @override
-  List<BaseGrupKoduModel>? get grupKodlari5 => (_$grupKodlari5Computed ??= Computed<List<BaseGrupKoduModel>?>(
-    () => super.grupKodlari5,
-    name: '_CariRehberiViewModelBase.grupKodlari5',
-  )).value;
+  List<BaseGrupKoduModel>? get grupKodlari5 =>
+      (_$grupKodlari5Computed ??= Computed<List<BaseGrupKoduModel>?>(
+        () => super.grupKodlari5,
+        name: '_CariRehberiViewModelBase.grupKodlari5',
+      )).value;
 
   late final _$isSearchBarOpenAtom = Atom(
     name: '_CariRehberiViewModelBase.isSearchBarOpen',
@@ -234,9 +239,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeSearchBarStatus() {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeSearchBarStatus',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
     } finally {
@@ -246,9 +250,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void setMenuKodu(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.setMenuKodu',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.setMenuKodu');
     try {
       return super.setMenuKodu(value);
     } finally {
@@ -258,9 +261,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void setBelgeTuru(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.setBelgeTuru',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.setBelgeTuru');
     try {
       return super.setBelgeTuru(value);
     } finally {
@@ -270,9 +272,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void setSiparisKarsilanmaDurumu(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.setSiparisKarsilanmaDurumu',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(
+          name: '_CariRehberiViewModelBase.setSiparisKarsilanmaDurumu',
+        );
     try {
       return super.setSiparisKarsilanmaDurumu(value);
     } finally {
@@ -282,9 +285,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeIsScrollDown(bool value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeIsScrollDown',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeIsScrollDown');
     try {
       return super.changeIsScrollDown(value);
     } finally {
@@ -294,9 +296,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void setObservableList(List<CariListesiModel>? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.setObservableList');
     try {
       return super.setObservableList(value);
     } finally {
@@ -306,9 +307,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void addObservableList(List<CariListesiModel>? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.addObservableList',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.addObservableList');
     try {
       return super.addObservableList(value);
     } finally {
@@ -318,9 +318,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeBagliCariKodu(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeBagliCariKodu',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeBagliCariKodu');
     try {
       return super.changeBagliCariKodu(value);
     } finally {
@@ -330,9 +329,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeSehir(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeSehir',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeSehir');
     try {
       return super.changeSehir(value);
     } finally {
@@ -342,9 +340,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeIlce(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeIlce',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeIlce');
     try {
       return super.changeIlce(value);
     } finally {
@@ -354,9 +351,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeTipi(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeTipi',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeTipi');
     try {
       return super.changeTipi(value);
     } finally {
@@ -366,9 +362,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeKod1(List<String>? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeKod1',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeKod1');
     try {
       return super.changeKod1(value);
     } finally {
@@ -378,9 +373,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeKod2(List<String>? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeKod2',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeKod2');
     try {
       return super.changeKod2(value);
     } finally {
@@ -390,9 +384,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeKod3(List<String>? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeKod3',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeKod3');
     try {
       return super.changeKod3(value);
     } finally {
@@ -402,9 +395,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeKod4(List<String>? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeKod4',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeKod4');
     try {
       return super.changeKod4(value);
     } finally {
@@ -414,9 +406,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeKod5(List<String>? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeKod5',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeKod5');
     try {
       return super.changeKod5(value);
     } finally {
@@ -426,9 +417,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void changeSiralama(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.changeSiralama',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.changeSiralama');
     try {
       return super.changeSiralama(value);
     } finally {
@@ -438,9 +428,8 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController.startAction(
-      name: '_CariRehberiViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {

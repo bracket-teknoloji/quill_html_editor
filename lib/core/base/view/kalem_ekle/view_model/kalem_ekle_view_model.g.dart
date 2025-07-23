@@ -23,14 +23,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
     () => super.dovizAdi,
     name: '_KalemEkleViewModelBase.dovizAdi',
   )).value;
-  Computed<List<({String? adi, double? pay, double? payda})>>? _$olcuBirimiMapComputed;
+  Computed<List<({String? adi, double? pay, double? payda})>>?
+  _$olcuBirimiMapComputed;
 
   @override
   List<({String? adi, double? pay, double? payda})> get olcuBirimiMap =>
-      (_$olcuBirimiMapComputed ??= Computed<List<({String? adi, double? pay, double? payda})>>(
-        () => super.olcuBirimiMap,
-        name: '_KalemEkleViewModelBase.olcuBirimiMap',
-      )).value;
+      (_$olcuBirimiMapComputed ??=
+              Computed<List<({String? adi, double? pay, double? payda})>>(
+                () => super.olcuBirimiMap,
+                name: '_KalemEkleViewModelBase.olcuBirimiMap',
+              ))
+          .value;
   Computed<bool>? _$koliMiComputed;
 
   @override

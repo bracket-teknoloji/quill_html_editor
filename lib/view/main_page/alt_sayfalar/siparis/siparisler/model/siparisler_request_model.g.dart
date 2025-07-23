@@ -16,6 +16,7 @@ _SiparislerRequestModel _$SiparislerRequestModelFromJson(
   ozelKod2: json['OzelKod2'] as String?,
   cariTipi: json['CariTipi'] as String?,
   miktarGetir: json['MiktarGetir'] as String?,
+  kontrolEdildi: json['KontrolEdildi'] as String?,
   siralama: json['SIRALAMA'] as String?,
   siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
   ozelKod1: json['OzelKod1'] as String?,
@@ -62,11 +63,14 @@ Map<String, dynamic> _$SiparislerRequestModelToJson(
   if (instance.ozelKod2 case final value?) 'OzelKod2': value,
   if (instance.cariTipi case final value?) 'CariTipi': value,
   if (instance.miktarGetir case final value?) 'MiktarGetir': value,
+  if (instance.kontrolEdildi case final value?) 'KontrolEdildi': value,
   if (instance.siralama case final value?) 'SIRALAMA': value,
-  if (instance.siparisKarsilanmaDurumu case final value?) 'SiparisKarsilanmaDurumu': value,
+  if (instance.siparisKarsilanmaDurumu case final value?)
+    'SiparisKarsilanmaDurumu': value,
   if (instance.ozelKod1 case final value?) 'OzelKod1': value,
   if (instance.stokKodu case final value?) 'StokKodu': value,
-  if (instance.kapaliBelgelerListelenmesin case final value?) 'KapaliBelgelerListelenmesin': value,
+  if (instance.kapaliBelgelerListelenmesin case final value?)
+    'KapaliBelgelerListelenmesin': value,
   if (instance.projeKodu case final value?) 'ProjeKodu': value,
   if (instance.faturalasmaGoster case final value?) 'FaturalasmaGoster': value,
   if (instance.arrKod5 case final value?) 'ArrKod5': value,
@@ -89,11 +93,13 @@ Map<String, dynamic> _$SiparislerRequestModelToJson(
   if (instance.referansStokKodu case final value?) 'ReferansStokKodu': value,
   if (instance.fiyatGrubu case final value?) 'FiyatGrubu': value,
   if (instance.menuKodu case final value?) 'MenuKodu': value,
-  if (instance.siparisSevkEdilenGoster case final value?) 'SiparisSevkEdilenGoster': value,
+  if (instance.siparisSevkEdilenGoster case final value?)
+    'SiparisSevkEdilenGoster': value,
   if (instance.refBelgeTuru case final value?) 'RefBelgeTuru': value,
   if (instance.kisitYok case final value?) 'KisitYok': value,
   if (instance.arrBelgeTipi case final value?) 'ArrBelgeTipi': value,
   if (instance.arrBelgeNo case final value?) 'ArrBelgeNo': value,
   if (instance.lokalDAT case final value?) 'LokalDAT': value,
-  if (instance.faturalanmisIrsaliyelerGelsin case final value?) 'FaturalanmisIrsaliyelerGelsin': value,
+  if (instance.faturalanmisIrsaliyelerGelsin case final value?)
+    'FaturalanmisIrsaliyelerGelsin': value,
 };

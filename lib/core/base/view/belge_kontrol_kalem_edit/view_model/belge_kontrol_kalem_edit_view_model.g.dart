@@ -8,7 +8,8 @@ part of 'belge_kontrol_kalem_edit_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BelgeKontrolKalemEditViewModel on _BelgeKontrolKalemEditViewModelBase, Store {
+mixin _$BelgeKontrolKalemEditViewModel
+    on _BelgeKontrolKalemEditViewModelBase, Store {
   late final _$requestModelAtom = Atom(
     name: '_BelgeKontrolKalemEditViewModelBase.requestModel',
     context: context,
@@ -37,16 +38,18 @@ mixin _$BelgeKontrolKalemEditViewModel on _BelgeKontrolKalemEditViewModelBase, S
     return _$saveKalemAsyncAction.run(() => super.saveKalem());
   }
 
-  late final _$_BelgeKontrolKalemEditViewModelBaseActionController = ActionController(
-    name: '_BelgeKontrolKalemEditViewModelBase',
-    context: context,
-  );
+  late final _$_BelgeKontrolKalemEditViewModelBaseActionController =
+      ActionController(
+        name: '_BelgeKontrolKalemEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setRequestModel(BelgeKontrolKalemlerModel value) {
-    final _$actionInfo = _$_BelgeKontrolKalemEditViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolKalemEditViewModelBase.setRequestModel',
-    );
+    final _$actionInfo = _$_BelgeKontrolKalemEditViewModelBaseActionController
+        .startAction(
+          name: '_BelgeKontrolKalemEditViewModelBase.setRequestModel',
+        );
     try {
       return super.setRequestModel(value);
     } finally {
@@ -58,9 +61,8 @@ mixin _$BelgeKontrolKalemEditViewModel on _BelgeKontrolKalemEditViewModelBase, S
 
   @override
   void setMiktar(double? value) {
-    final _$actionInfo = _$_BelgeKontrolKalemEditViewModelBaseActionController.startAction(
-      name: '_BelgeKontrolKalemEditViewModelBase.setMiktar',
-    );
+    final _$actionInfo = _$_BelgeKontrolKalemEditViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolKalemEditViewModelBase.setMiktar');
     try {
       return super.setMiktar(value);
     } finally {

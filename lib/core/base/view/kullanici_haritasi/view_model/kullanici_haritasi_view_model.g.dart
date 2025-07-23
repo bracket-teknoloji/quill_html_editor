@@ -59,16 +59,16 @@ mixin _$KullaniciHaritasiViewModel on _KullaniciHaritasiViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KullaniciHaritasiViewModelBaseActionController = ActionController(
-    name: '_KullaniciHaritasiViewModelBase',
-    context: context,
-  );
+  late final _$_KullaniciHaritasiViewModelBaseActionController =
+      ActionController(
+        name: '_KullaniciHaritasiViewModelBase',
+        context: context,
+      );
 
   @override
   void addMarker(Marker marker) {
-    final _$actionInfo = _$_KullaniciHaritasiViewModelBaseActionController.startAction(
-      name: '_KullaniciHaritasiViewModelBase.addMarker',
-    );
+    final _$actionInfo = _$_KullaniciHaritasiViewModelBaseActionController
+        .startAction(name: '_KullaniciHaritasiViewModelBase.addMarker');
     try {
       return super.addMarker(marker);
     } finally {
@@ -78,9 +78,10 @@ mixin _$KullaniciHaritasiViewModel on _KullaniciHaritasiViewModelBase, Store {
 
   @override
   void setKullaniciHaritasiList(List<KullaniciHaritasiModel> value) {
-    final _$actionInfo = _$_KullaniciHaritasiViewModelBaseActionController.startAction(
-      name: '_KullaniciHaritasiViewModelBase.setKullaniciHaritasiList',
-    );
+    final _$actionInfo = _$_KullaniciHaritasiViewModelBaseActionController
+        .startAction(
+          name: '_KullaniciHaritasiViewModelBase.setKullaniciHaritasiList',
+        );
     try {
       return super.setKullaniciHaritasiList(value);
     } finally {

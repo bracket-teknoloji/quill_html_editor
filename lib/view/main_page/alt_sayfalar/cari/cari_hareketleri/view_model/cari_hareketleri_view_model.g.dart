@@ -19,10 +19,11 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
   Computed<double>? _$alacaklarToplamiComputed;
 
   @override
-  double get alacaklarToplami => (_$alacaklarToplamiComputed ??= Computed<double>(
-    () => super.alacaklarToplami,
-    name: '_CariHareketleriViewModelBase.alacaklarToplami',
-  )).value;
+  double get alacaklarToplami =>
+      (_$alacaklarToplamiComputed ??= Computed<double>(
+        () => super.alacaklarToplami,
+        name: '_CariHareketleriViewModelBase.alacaklarToplami',
+      )).value;
   Computed<double>? _$toplamBakiyeComputed;
 
   @override
@@ -33,25 +34,31 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
   Computed<double>? _$dovizBorclarToplamiComputed;
 
   @override
-  double get dovizBorclarToplami => (_$dovizBorclarToplamiComputed ??= Computed<double>(
-    () => super.dovizBorclarToplami,
-    name: '_CariHareketleriViewModelBase.dovizBorclarToplami',
-  )).value;
+  double get dovizBorclarToplami =>
+      (_$dovizBorclarToplamiComputed ??= Computed<double>(
+        () => super.dovizBorclarToplami,
+        name: '_CariHareketleriViewModelBase.dovizBorclarToplami',
+      )).value;
   Computed<double>? _$dovizAlacaklarToplamiComputed;
 
   @override
-  double get dovizAlacaklarToplami => (_$dovizAlacaklarToplamiComputed ??= Computed<double>(
-    () => super.dovizAlacaklarToplami,
-    name: '_CariHareketleriViewModelBase.dovizAlacaklarToplami',
-  )).value;
-  Computed<ObservableList<CariHareketleriModel>?>? _$filteredCariHareketleriListComputed;
+  double get dovizAlacaklarToplami =>
+      (_$dovizAlacaklarToplamiComputed ??= Computed<double>(
+        () => super.dovizAlacaklarToplami,
+        name: '_CariHareketleriViewModelBase.dovizAlacaklarToplami',
+      )).value;
+  Computed<ObservableList<CariHareketleriModel>?>?
+  _$filteredCariHareketleriListComputed;
 
   @override
   ObservableList<CariHareketleriModel>? get filteredCariHareketleriList =>
-      (_$filteredCariHareketleriListComputed ??= Computed<ObservableList<CariHareketleriModel>?>(
-        () => super.filteredCariHareketleriList,
-        name: '_CariHareketleriViewModelBase.filteredCariHareketleriList',
-      )).value;
+      (_$filteredCariHareketleriListComputed ??=
+              Computed<ObservableList<CariHareketleriModel>?>(
+                () => super.filteredCariHareketleriList,
+                name:
+                    '_CariHareketleriViewModelBase.filteredCariHareketleriList',
+              ))
+          .value;
 
   late final _$cariListesiModelAtom = Atom(
     name: '_CariHareketleriViewModelBase.cariListesiModel',
@@ -200,9 +207,8 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
 
   @override
   void changeScrollDown(bool value) {
-    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController.startAction(
-      name: '_CariHareketleriViewModelBase.changeScrollDown',
-    );
+    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
+        .startAction(name: '_CariHareketleriViewModelBase.changeScrollDown');
     try {
       return super.changeScrollDown(value);
     } finally {
@@ -212,9 +218,8 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
 
   @override
   void setObservableList(List<CariHareketleriModel>? value) {
-    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController.startAction(
-      name: '_CariHareketleriViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
+        .startAction(name: '_CariHareketleriViewModelBase.setObservableList');
     try {
       return super.setObservableList(value);
     } finally {
@@ -224,9 +229,8 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController.startAction(
-      name: '_CariHareketleriViewModelBase.setSearchText',
-    );
+    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
+        .startAction(name: '_CariHareketleriViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -236,9 +240,8 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
 
   @override
   void setCariListesiModel(CariListesiModel? value) {
-    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController.startAction(
-      name: '_CariHareketleriViewModelBase.setCariListesiModel',
-    );
+    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
+        .startAction(name: '_CariHareketleriViewModelBase.setCariListesiModel');
     try {
       return super.setCariListesiModel(value);
     } finally {

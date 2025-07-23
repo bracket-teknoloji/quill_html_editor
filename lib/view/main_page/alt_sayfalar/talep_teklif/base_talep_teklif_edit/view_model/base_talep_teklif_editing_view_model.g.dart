@@ -8,14 +8,16 @@ part of 'base_talep_teklif_editing_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase, Store {
+mixin _$BaseTalepTeklifEditingViewModel
+    on _BaseTalepTeklifEditingViewModelBase, Store {
   Computed<BaseSiparisEditModel>? _$modelComputed;
 
   @override
-  BaseSiparisEditModel get model => (_$modelComputed ??= Computed<BaseSiparisEditModel>(
-    () => super.model,
-    name: '_BaseTalepTeklifEditingViewModelBase.model',
-  )).value;
+  BaseSiparisEditModel get model =>
+      (_$modelComputed ??= Computed<BaseSiparisEditModel>(
+        () => super.model,
+        name: '_BaseTalepTeklifEditingViewModelBase.model',
+      )).value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
@@ -132,16 +134,18 @@ mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase,
     });
   }
 
-  late final _$_BaseTalepTeklifEditingViewModelBaseActionController = ActionController(
-    name: '_BaseTalepTeklifEditingViewModelBase',
-    context: context,
-  );
+  late final _$_BaseTalepTeklifEditingViewModelBaseActionController =
+      ActionController(
+        name: '_BaseTalepTeklifEditingViewModelBase',
+        context: context,
+      );
 
   @override
   void changeUpdateKalemler() {
-    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifEditingViewModelBase.changeUpdateKalemler',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeUpdateKalemler',
+        );
     try {
       return super.changeUpdateKalemler();
     } finally {
@@ -153,9 +157,10 @@ mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase,
 
   @override
   void changeIsValid() {
-    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifEditingViewModelBase.changeIsValid',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeIsValid',
+        );
     try {
       return super.changeIsValid();
     } finally {
@@ -167,9 +172,10 @@ mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase,
 
   @override
   void changePageIndex(int value) {
-    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifEditingViewModelBase.changePageIndex',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changePageIndex',
+        );
     try {
       return super.changePageIndex(value);
     } finally {
@@ -181,9 +187,10 @@ mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase,
 
   @override
   void changeIsLastPage(bool value) {
-    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifEditingViewModelBase.changeIsLastPage',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeIsLastPage',
+        );
     try {
       return super.changeIsLastPage(value);
     } finally {
@@ -195,9 +202,8 @@ mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase,
 
   @override
   void setLoading(bool value) {
-    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifEditingViewModelBase.setLoading',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifEditingViewModelBase.setLoading');
     try {
       return super.setLoading(value);
     } finally {
@@ -209,9 +215,8 @@ mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase,
 
   @override
   void changeFuture() {
-    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifEditingViewModelBase.changeFuture',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifEditingViewModelBase.changeFuture');
     try {
       return super.changeFuture();
     } finally {
@@ -223,9 +228,10 @@ mixin _$BaseTalepTeklifEditingViewModel on _BaseTalepTeklifEditingViewModelBase,
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-      name: '_BaseTalepTeklifEditingViewModelBase.changeYeniKaydaHazirlaMi',
-    );
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(
+          name: '_BaseTalepTeklifEditingViewModelBase.changeYeniKaydaHazirlaMi',
+        );
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {

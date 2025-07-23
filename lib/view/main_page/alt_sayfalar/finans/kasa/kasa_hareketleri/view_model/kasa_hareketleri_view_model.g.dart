@@ -160,9 +160,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void setDovizAdi(String? value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setDovizAdi',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setDovizAdi');
     try {
       return super.setDovizAdi(value);
     } finally {
@@ -172,9 +171,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setIsScrollDown',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setIsScrollDown');
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -184,9 +182,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void incrementSayfa() {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.incrementSayfa',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.incrementSayfa');
     try {
       return super.incrementSayfa();
     } finally {
@@ -196,9 +193,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void setKasaKodu(String? value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setKasaKodu',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setKasaKodu');
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -208,9 +204,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void setObservableList(List<KasaIslemleriModel>? value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.setObservableList',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setObservableList');
     try {
       return super.setObservableList(value);
     } finally {
@@ -220,9 +215,8 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   @override
   void addObservableList(List<KasaIslemleriModel>? list) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController.startAction(
-      name: '_KasaHareketleriViewModelBase.addObservableList',
-    );
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.addObservableList');
     try {
       return super.addObservableList(list);
     } finally {

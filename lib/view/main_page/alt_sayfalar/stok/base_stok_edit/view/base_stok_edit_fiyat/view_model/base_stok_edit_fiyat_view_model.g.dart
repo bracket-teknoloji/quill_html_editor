@@ -12,10 +12,11 @@ mixin _$BaseStokEditFiyatViewModel on _BaseStokEditFiyatViewModelBase, Store {
   Computed<Map<int, String>>? _$dovizListComputed;
 
   @override
-  Map<int, String> get dovizList => (_$dovizListComputed ??= Computed<Map<int, String>>(
-    () => super.dovizList,
-    name: '_BaseStokEditFiyatViewModelBase.dovizList',
-  )).value;
+  Map<int, String> get dovizList =>
+      (_$dovizListComputed ??= Computed<Map<int, String>>(
+        () => super.dovizList,
+        name: '_BaseStokEditFiyatViewModelBase.dovizList',
+      )).value;
 
   late final _$kdvOraniListAtom = Atom(
     name: '_BaseStokEditFiyatViewModelBase.kdvOraniList',
@@ -35,16 +36,16 @@ mixin _$BaseStokEditFiyatViewModel on _BaseStokEditFiyatViewModelBase, Store {
     });
   }
 
-  late final _$_BaseStokEditFiyatViewModelBaseActionController = ActionController(
-    name: '_BaseStokEditFiyatViewModelBase',
-    context: context,
-  );
+  late final _$_BaseStokEditFiyatViewModelBaseActionController =
+      ActionController(
+        name: '_BaseStokEditFiyatViewModelBase',
+        context: context,
+      );
 
   @override
   void setKdvOraniList(List<double> value) {
-    final _$actionInfo = _$_BaseStokEditFiyatViewModelBaseActionController.startAction(
-      name: '_BaseStokEditFiyatViewModelBase.setKdvOraniList',
-    );
+    final _$actionInfo = _$_BaseStokEditFiyatViewModelBaseActionController
+        .startAction(name: '_BaseStokEditFiyatViewModelBase.setKdvOraniList');
     try {
       return super.setKdvOraniList(value);
     } finally {

@@ -170,9 +170,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setIsInstallmentLoading(bool value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setIsInstallmentLoading',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(
+          name: '_PaykerTahsilatViewModelBase.setIsInstallmentLoading',
+        );
     try {
       return super.setIsInstallmentLoading(value);
     } finally {
@@ -182,9 +183,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setCari(CariListesiModel? value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setCari',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setCari');
     try {
       return super.setCari(value);
     } finally {
@@ -194,9 +194,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setTaksitResponseModel(List<TaksitResponseModel>? value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setTaksitResponseModel',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(
+          name: '_PaykerTahsilatViewModelBase.setTaksitResponseModel',
+        );
     try {
       return super.setTaksitResponseModel(value);
     } finally {
@@ -206,9 +207,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setScrollDown(bool value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setScrollDown',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setScrollDown');
     try {
       return super.setScrollDown(value);
     } finally {
@@ -218,9 +218,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setAmount(double? value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setAmount',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setAmount');
     try {
       return super.setAmount(value);
     } finally {
@@ -230,9 +229,10 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setPaymentResponseModel(PaymentResponseModel? value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setPaymentResponseModel',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(
+          name: '_PaykerTahsilatViewModelBase.setPaymentResponseModel',
+        );
     try {
       return super.setPaymentResponseModel(value);
     } finally {
@@ -242,9 +242,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setInstallment(int? value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setInstallment',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setInstallment');
     try {
       return super.setInstallment(value);
     } finally {
@@ -254,9 +253,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setBankId(String? value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setBankId',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setBankId');
     try {
       return super.setBankId(value);
     } finally {
@@ -266,9 +264,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setCardNumber(String value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setCardNumber',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setCardNumber');
     try {
       return super.setCardNumber(value);
     } finally {
@@ -278,9 +275,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setExpiryDate(String value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setExpiryDate',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setExpiryDate');
     try {
       return super.setExpiryDate(value);
     } finally {
@@ -290,9 +286,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setCardHolderName(String value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setCardHolderName',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setCardHolderName');
     try {
       return super.setCardHolderName(value);
     } finally {
@@ -302,9 +297,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setCvvCode(String value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setCvvCode',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setCvvCode');
     try {
       return super.setCvvCode(value);
     } finally {
@@ -314,9 +308,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setShowBackView(bool value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setShowBackView',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setShowBackView');
     try {
       return super.setShowBackView(value);
     } finally {
@@ -326,9 +319,8 @@ mixin _$PaykerTahsilatViewModel on _PaykerTahsilatViewModelBase, Store {
 
   @override
   void setIsExtended(bool value) {
-    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController.startAction(
-      name: '_PaykerTahsilatViewModelBase.setIsExtended',
-    );
+    final _$actionInfo = _$_PaykerTahsilatViewModelBaseActionController
+        .startAction(name: '_PaykerTahsilatViewModelBase.setIsExtended');
     try {
       return super.setIsExtended(value);
     } finally {

@@ -8,15 +8,18 @@ part of 'uretim_sonu_kaydi_edit_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UretimSonuKaydiEditViewModel on _UretimSonuKaydiEditViewModelBase, Store {
+mixin _$UretimSonuKaydiEditViewModel
+    on _UretimSonuKaydiEditViewModelBase, Store {
   Computed<UretimSonuKaydiListesiRequestModel>? _$kalemlerRequestModelComputed;
 
   @override
   UretimSonuKaydiListesiRequestModel get kalemlerRequestModel =>
-      (_$kalemlerRequestModelComputed ??= Computed<UretimSonuKaydiListesiRequestModel>(
-        () => super.kalemlerRequestModel,
-        name: '_UretimSonuKaydiEditViewModelBase.kalemlerRequestModel',
-      )).value;
+      (_$kalemlerRequestModelComputed ??=
+              Computed<UretimSonuKaydiListesiRequestModel>(
+                () => super.kalemlerRequestModel,
+                name: '_UretimSonuKaydiEditViewModelBase.kalemlerRequestModel',
+              ))
+          .value;
 
   late final _$showSaveButtonAtom = Atom(
     name: '_UretimSonuKaydiEditViewModelBase.showSaveButton',
@@ -138,16 +141,16 @@ mixin _$UretimSonuKaydiEditViewModel on _UretimSonuKaydiEditViewModelBase, Store
     return _$saveUSKAsyncAction.run(() => super.saveUSK());
   }
 
-  late final _$_UretimSonuKaydiEditViewModelBaseActionController = ActionController(
-    name: '_UretimSonuKaydiEditViewModelBase',
-    context: context,
-  );
+  late final _$_UretimSonuKaydiEditViewModelBaseActionController =
+      ActionController(
+        name: '_UretimSonuKaydiEditViewModelBase',
+        context: context,
+      );
 
   @override
   void setBelgeNo(String? belgeNo) {
-    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-      name: '_UretimSonuKaydiEditViewModelBase.setBelgeNo',
-    );
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(belgeNo);
     } finally {
@@ -159,9 +162,8 @@ mixin _$UretimSonuKaydiEditViewModel on _UretimSonuKaydiEditViewModelBase, Store
 
   @override
   void setKalemList(List<KalemModel>? list) {
-    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-      name: '_UretimSonuKaydiEditViewModelBase.setKalemList',
-    );
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setKalemList');
     try {
       return super.setKalemList(list);
     } finally {
@@ -173,9 +175,10 @@ mixin _$UretimSonuKaydiEditViewModel on _UretimSonuKaydiEditViewModelBase, Store
 
   @override
   void setShowSaveButton(bool value) {
-    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-      name: '_UretimSonuKaydiEditViewModelBase.setShowSaveButton',
-    );
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(
+          name: '_UretimSonuKaydiEditViewModelBase.setShowSaveButton',
+        );
     try {
       return super.setShowSaveButton(value);
     } finally {
@@ -187,9 +190,8 @@ mixin _$UretimSonuKaydiEditViewModel on _UretimSonuKaydiEditViewModelBase, Store
 
   @override
   void setRequestModel(UretimSonuKaydiEditModel value) {
-    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-      name: '_UretimSonuKaydiEditViewModelBase.setRequestModel',
-    );
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setRequestModel');
     try {
       return super.setRequestModel(value);
     } finally {
@@ -201,9 +203,8 @@ mixin _$UretimSonuKaydiEditViewModel on _UretimSonuKaydiEditViewModelBase, Store
 
   @override
   void setModel(KalemModel? item) {
-    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
-      name: '_UretimSonuKaydiEditViewModelBase.setModel',
-    );
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setModel');
     try {
       return super.setModel(item);
     } finally {

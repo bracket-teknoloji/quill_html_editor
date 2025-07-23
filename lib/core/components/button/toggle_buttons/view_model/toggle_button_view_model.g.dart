@@ -34,9 +34,8 @@ mixin _$ToggleButtonViewModel on _ToggleButtonViewModelBase, Store {
 
   @override
   void initializeIsSelected() {
-    final _$actionInfo = _$_ToggleButtonViewModelBaseActionController.startAction(
-      name: '_ToggleButtonViewModelBase.initializeIsSelected',
-    );
+    final _$actionInfo = _$_ToggleButtonViewModelBaseActionController
+        .startAction(name: '_ToggleButtonViewModelBase.initializeIsSelected');
     try {
       return super.initializeIsSelected();
     } finally {
@@ -46,9 +45,8 @@ mixin _$ToggleButtonViewModel on _ToggleButtonViewModelBase, Store {
 
   @override
   void changeIsSelected(int index) {
-    final _$actionInfo = _$_ToggleButtonViewModelBaseActionController.startAction(
-      name: '_ToggleButtonViewModelBase.changeIsSelected',
-    );
+    final _$actionInfo = _$_ToggleButtonViewModelBaseActionController
+        .startAction(name: '_ToggleButtonViewModelBase.changeIsSelected');
     try {
       return super.changeIsSelected(index);
     } finally {
@@ -58,9 +56,8 @@ mixin _$ToggleButtonViewModel on _ToggleButtonViewModelBase, Store {
 
   @override
   void resetSelectedList() {
-    final _$actionInfo = _$_ToggleButtonViewModelBaseActionController.startAction(
-      name: '_ToggleButtonViewModelBase.resetSelectedList',
-    );
+    final _$actionInfo = _$_ToggleButtonViewModelBaseActionController
+        .startAction(name: '_ToggleButtonViewModelBase.resetSelectedList');
     try {
       return super.resetSelectedList();
     } finally {

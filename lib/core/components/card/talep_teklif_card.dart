@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -106,7 +107,7 @@ final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                       );
                     },
                   ),
-                  if (yetkiController.siparisDuzelt(widget.model.getEditTipiEnum) &&
+                  if ((widget.model.getEditTipiEnum?.duzenlensinMi ?? false) &&
                       (widget.model.tipi != 1 || widget.model.isNew == true))
                     BottomSheetModel(
                       title: loc.generalStrings.edit,
@@ -304,11 +305,43 @@ final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                     await getBelgeBaglantilari(result);
                   },
                 ),
+                if (model.tekliflestiMi)
+                ColorfulBadge(
+                  label: const Text("Teklif"),
+                  badgeColorEnum: BadgeColorEnum.fatura,
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
+                      context,
+                      cariKodu: widget.model.cariKodu,
+                      belgeNo: widget.model.belgeNo,
+                      belgeTipi: widget.model.belgeTuru,
+                      filterText: EditTipiEnum.values
+                          .where((element) => element.satisTeklifiMi)
+                          .map((e) => e.rawValue)
+                          .toList(),
+                    );
+                    await getBelgeBaglantilari(result);
+                  },
+                ),
               if (model.tipi == 1) const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
               if (model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
             ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
           ),
           if (model.cariAdi != null) Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+          if (yetkiController.kontrolAciklamasiAktifMi(widget.editTipiEnum))
+            if (model.kontrolAciklama case final value?)
+              Row(
+                children: [
+                  const Icon(
+                    Icons.check_outlined,
+                    size: UIHelper.highSize,
+                    color: ColorPalette.mantis,
+                  ),
+                  Text(
+                    value,
+                  ).paddingSymmetric(vertical: UIHelper.lowSize),
+                ],
+              ),
           if (widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi)
             Text("Teslim Cari: ${widget.model.teslimCariAdi}"),
           if (model.sonrakiRevizeNo != null)

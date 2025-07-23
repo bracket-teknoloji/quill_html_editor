@@ -6,27 +6,28 @@ part of 'client_metadata_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ClientMetadataModel _$ClientMetadataModelFromJson(Map<String, dynamic> json) => _ClientMetadataModel(
-  platform: json['Platform'] as String?,
-  appName: json['AppName'] as String?,
-  appVersion: json['AppVersion'] as String?,
-  appBuildNumber: json['AppBuildNumber'] as String?,
-  deviceModel: json['DeviceModel'] as String?,
-  osVersion: json['OsVersion'] as String?,
-  deviceId: json['DeviceId'] as String?,
-  iPAddress: json['IPAddress'] as String?,
-  language: json['Language'] as String?,
-  timezone: json['Timezone'] as String?,
-  country: json['Country'] as String?,
-  location: json['Location'] as String?,
-  browser: json['Browser'] as String?,
-  browserVersion: json['BrowserVersion'] as String?,
-  environment: json['Environment'] as String?,
-  referrer: json['Referrer'] as String?,
-  sessionId: json['SessionId'] as String?,
-  clientType: json['ClientType'] as String?,
-  externalClientName: json['ExternalClientName'] as String?,
-);
+_ClientMetadataModel _$ClientMetadataModelFromJson(Map<String, dynamic> json) =>
+    _ClientMetadataModel(
+      platform: json['Platform'] as String?,
+      appName: json['AppName'] as String?,
+      appVersion: json['AppVersion'] as String?,
+      appBuildNumber: json['AppBuildNumber'] as String?,
+      deviceModel: json['DeviceModel'] as String?,
+      osVersion: json['OsVersion'] as String?,
+      deviceId: json['DeviceId'] as String?,
+      iPAddress: json['IPAddress'] as String?,
+      language: json['Language'] as String?,
+      timezone: json['Timezone'] as String?,
+      country: json['Country'] as String?,
+      location: json['Location'] as String?,
+      browser: json['Browser'] as String?,
+      browserVersion: json['BrowserVersion'] as String?,
+      environment: json['Environment'] as String?,
+      referrer: json['Referrer'] as String?,
+      sessionId: json['SessionId'] as String?,
+      clientType: json['ClientType'] as String?,
+      externalClientName: json['ExternalClientName'] as String?,
+    );
 
 Map<String, dynamic> _$ClientMetadataModelToJson(
   _ClientMetadataModel instance,
@@ -49,5 +50,6 @@ Map<String, dynamic> _$ClientMetadataModelToJson(
   if (instance.referrer case final value?) 'Referrer': value,
   if (instance.sessionId case final value?) 'SessionId': value,
   if (instance.clientType case final value?) 'ClientType': value,
-  if (instance.externalClientName case final value?) 'ExternalClientName': value,
+  if (instance.externalClientName case final value?)
+    'ExternalClientName': value,
 };

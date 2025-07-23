@@ -240,6 +240,9 @@ final class IslemlerMenuItemConstants<T> {
     } else if (islemTipi == IslemTipiEnum.talepTeklif) {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+        if (siparisModel.getEditTipiEnum?.satisTalebiMi ?? false) {
+          islemlerList.add(satisTeklifiOlustur);
+        }
         islemlerList
           ..add(siparisPDFGoruntule)
           ..addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt);
@@ -1034,6 +1037,73 @@ final class IslemlerMenuItemConstants<T> {
   );
 
   //* Talep Teklif
+  GridItemModel get satisTeklifiOlustur => GridItemModel.islemler(
+    title: "Satış Teklifi Oluştur",
+    iconData: Icons.add_outlined,
+    isEnabled: _yetkiController.satisTeklifiEkle,
+    onTap: () async {
+      final siparisModel = model as BaseSiparisEditModel;
+      final result = await _networkManager.getBaseSiparisEditModel(
+        SiparisEditRequestModel.fromSiparislerModel(model as BaseSiparisEditModel),
+      );
+      if (result == null) {
+        return;
+      } else {
+        final kalemList = await getKalemRehberi(result);
+        if (kalemList == null) {
+          return;
+        }
+        final List<KalemModel> newKalemler = kalemList
+            .map(KalemModel.forTalepTekliflestir)
+            .toList()
+            .cast<KalemModel>();
+        final TextEditingController controller = TextEditingController();
+        await getBelgeNo(controller, siparisModel);
+        // ignore: use_build_context_synchronously
+        return await _bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: "Belge No",
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomTextField(
+                labelText: "Belge No",
+                controller: controller,
+                isMust: true,
+                maxLength: 15,
+                suffix: IconButton(
+                  onPressed: () async => await getBelgeNo(controller, siparisModel),
+                  icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  final result = await _networkManager.dioPost<SiparisEditRequestModel>(
+                    path: ApiUrls.talepTekliflestir,
+                    showLoading: true,
+                    bodyModel: SiparisEditRequestModel(),
+                    data: EditFaturaModel.fromSiparislerModel(
+                      siparisModel
+                        ..belgeTipi = null
+                        ..tipi = null
+                        ..yeniBelgeNo = controller.text
+                        ..kalemList = newKalemler,
+                    ).toJson(),
+                  );
+                  if (result.isSuccess) {
+                    _dialogManager.showSuccessSnackBar("Başarılı");
+                    Get.back(result: true);
+                    controller.dispose();
+                  }
+                },
+                child: const Text("Kaydet"),
+              ).paddingAll(UIHelper.lowSize),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        );
+      }
+    },
+  );
   GridItemModel get belgeBaglantilari => GridItemModel.islemler(
     title: "Belge Bağlantıları",
     iconData: Icons.hub_outlined,

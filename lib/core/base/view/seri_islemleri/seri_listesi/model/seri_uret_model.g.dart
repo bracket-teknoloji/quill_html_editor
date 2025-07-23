@@ -6,14 +6,16 @@ part of 'seri_uret_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_SeriUretModel _$SeriUretModelFromJson(Map<String, dynamic> json) => _SeriUretModel(
-  seriNo: json['SERI_NO'] as String?,
-  stokKodu: json['STOK_KODU'] as String?,
-  sonNo: (json['SON_NO'] as num?)?.toInt(),
-);
+_SeriUretModel _$SeriUretModelFromJson(Map<String, dynamic> json) =>
+    _SeriUretModel(
+      seriNo: json['SERI_NO'] as String?,
+      stokKodu: json['STOK_KODU'] as String?,
+      sonNo: (json['SON_NO'] as num?)?.toInt(),
+    );
 
-Map<String, dynamic> _$SeriUretModelToJson(_SeriUretModel instance) => <String, dynamic>{
-  if (instance.seriNo case final value?) 'SERI_NO': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.sonNo case final value?) 'SON_NO': value,
-};
+Map<String, dynamic> _$SeriUretModelToJson(_SeriUretModel instance) =>
+    <String, dynamic>{
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.sonNo case final value?) 'SON_NO': value,
+    };

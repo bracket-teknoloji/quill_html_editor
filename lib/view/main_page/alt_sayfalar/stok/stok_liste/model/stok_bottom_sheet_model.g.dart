@@ -39,19 +39,29 @@ _StokBottomSheetModel _$StokBottomSheetModelFromJson(
           .toList() ??
       const [],
   arrKod1:
-      (json['ArrKod1'] as List<dynamic>?)?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>)).toList() ??
+      (json['ArrKod1'] as List<dynamic>?)
+          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
       const [],
   arrKod2:
-      (json['ArrKod2'] as List<dynamic>?)?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>)).toList() ??
+      (json['ArrKod2'] as List<dynamic>?)
+          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
       const [],
   arrKod3:
-      (json['ArrKod3'] as List<dynamic>?)?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>)).toList() ??
+      (json['ArrKod3'] as List<dynamic>?)
+          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
       const [],
   arrKod4:
-      (json['ArrKod4'] as List<dynamic>?)?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>)).toList() ??
+      (json['ArrKod4'] as List<dynamic>?)
+          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
       const [],
   arrKod5:
-      (json['ArrKod5'] as List<dynamic>?)?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>)).toList() ??
+      (json['ArrKod5'] as List<dynamic>?)
+          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
       const [],
   receteliStoklar: json['ReceteliStoklar'] as bool?,
 );
@@ -80,12 +90,19 @@ Map<String, dynamic> _$StokBottomSheetModelToJson(
   if (instance.fiyatGrubu case final value?) 'FiyatGrubu': value,
   if (instance.ozelKod1 case final value?) 'OzelKod1': value,
   if (instance.ozelKod2 case final value?) 'OzelKod2': value,
-  if (instance.searchList?.map((e) => e.toJson()).toList() case final value?) 'SearchList': value,
-  if (instance.arrGrupKodu?.map((e) => e.toJson()).toList() case final value?) 'ArrGrupKodu': value,
-  if (instance.arrKod1?.map((e) => e.toJson()).toList() case final value?) 'ArrKod1': value,
-  if (instance.arrKod2?.map((e) => e.toJson()).toList() case final value?) 'ArrKod2': value,
-  if (instance.arrKod3?.map((e) => e.toJson()).toList() case final value?) 'ArrKod3': value,
-  if (instance.arrKod4?.map((e) => e.toJson()).toList() case final value?) 'ArrKod4': value,
-  if (instance.arrKod5?.map((e) => e.toJson()).toList() case final value?) 'ArrKod5': value,
+  if (instance.searchList?.map((e) => e.toJson()).toList() case final value?)
+    'SearchList': value,
+  if (instance.arrGrupKodu?.map((e) => e.toJson()).toList() case final value?)
+    'ArrGrupKodu': value,
+  if (instance.arrKod1?.map((e) => e.toJson()).toList() case final value?)
+    'ArrKod1': value,
+  if (instance.arrKod2?.map((e) => e.toJson()).toList() case final value?)
+    'ArrKod2': value,
+  if (instance.arrKod3?.map((e) => e.toJson()).toList() case final value?)
+    'ArrKod3': value,
+  if (instance.arrKod4?.map((e) => e.toJson()).toList() case final value?)
+    'ArrKod4': value,
+  if (instance.arrKod5?.map((e) => e.toJson()).toList() case final value?)
+    'ArrKod5': value,
   if (instance.receteliStoklar case final value?) 'ReceteliStoklar': value,
 };

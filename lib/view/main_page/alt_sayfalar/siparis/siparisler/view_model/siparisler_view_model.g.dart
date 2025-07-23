@@ -365,6 +365,24 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
+  late final _$kontrolEdildiMiAtom = Atom(
+    name: '_SiparislerViewModelBase.kontrolEdildiMi',
+    context: context,
+  );
+
+  @override
+  String? get kontrolEdildiMi {
+    _$kontrolEdildiMiAtom.reportRead();
+    return super.kontrolEdildiMi;
+  }
+
+  @override
+  set kontrolEdildiMi(String? value) {
+    _$kontrolEdildiMiAtom.reportWrite(value, super.kontrolEdildiMi, () {
+      super.kontrolEdildiMi = value;
+    });
+  }
+
   late final _$sayfaAtom = Atom(
     name: '_SiparislerViewModelBase.sayfa',
     context: context,
@@ -635,6 +653,18 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
+  late final _$setKontrolAciklamaAsyncAction = AsyncAction(
+    '_SiparislerViewModelBase.setKontrolAciklama',
+    context: context,
+  );
+
+  @override
+  Future<bool> setKontrolAciklama(BaseSiparisEditModel model) {
+    return _$setKontrolAciklamaAsyncAction.run(
+      () => super.setKontrolAciklama(model),
+    );
+  }
+
   late final _$_SiparislerViewModelBaseActionController = ActionController(
     name: '_SiparislerViewModelBase',
     context: context,
@@ -827,6 +857,18 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     );
     try {
       return super.removeSiparislerList(index);
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKontrolEdildiMi(String? value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+      name: '_SiparislerViewModelBase.setKontrolEdildiMi',
+    );
+    try {
+      return super.setKontrolEdildiMi(value);
     } finally {
       _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -1040,6 +1082,7 @@ musteriSiparisleriList: ${musteriSiparisleriList},
 kapaliBelgelerListelenmesin: ${kapaliBelgelerListelenmesin},
 ozelKod1: ${ozelKod1},
 ozelKod2: ${ozelKod2},
+kontrolEdildiMi: ${kontrolEdildiMi},
 sayfa: ${sayfa},
 siralama: ${siralama},
 searchText: ${searchText},

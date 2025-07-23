@@ -39,7 +39,7 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
   void setVergiNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(vergiNo: value);
   @action
   void setKapali(String? value) {
-    kapaliMi = value == "E";
+    kapaliMi = value == "H";
     pdfModel.dicParams = pdfModel.dicParams?.copyWith(kapali: value);
   }
 

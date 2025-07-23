@@ -458,6 +458,12 @@ final class YetkiController {
   bool siparisFiyatDegistirilmesin(EditTipiEnum? editTipi) =>
       _musteriSiparisiMi(editTipi) ? siparisMSFiyatDegistirilmesin : siparisSSFiyatDegistirilmesin;
 
+  bool kontrolAciklamasiAktifMi(EditTipiEnum? editTipi) {
+    final value = _paramModel?.fatuKontrolAciklamasiAktif?.contains(editTipi?.rawValue) ?? false;
+    if (adminMi) return value;
+    return value && _profilYetkiModel?.sirketKontrolAciklamasiBelgeTipleri?.contains(editTipi?.rawValue) == true;
+  }
+
   //* Müşteri Siparişi
   //😳SatisSatirKademeliIskontoSayisi => 0 ise kademeli iskonto yok demektir. Kaç tane varsa o kadar genisk ve geniskTipi gelecek
   String? get siparisMSOzelKod1Degeri => _profilYetkiModel?.siparisMusSipOzelKod1Degeri;

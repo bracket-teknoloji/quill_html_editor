@@ -6,23 +6,33 @@ part of 'payment_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_PaymentModel _$PaymentModelFromJson(Map<String, dynamic> json) => _PaymentModel(
-  customerIpAddress: json['CustomerIPAddress'] as String?,
-  customerMailAddress: json['CustomerMailAddress'] as String?,
-  customerInfo: json['CustomerInfo'] == null
-      ? null
-      : CustomerInfo.fromJson(json['CustomerInfo'] as Map<String, dynamic>),
-  order: json['Order'] == null ? null : Order.fromJson(json['Order'] as Map<String, dynamic>),
-  saleInfo: json['SaleInfo'] == null ? null : SaleInfo.fromJson(json['SaleInfo'] as Map<String, dynamic>),
-  payment3D: json['Payment3D'] == null ? null : Payment3D.fromJson(json['Payment3D'] as Map<String, dynamic>),
-  erpInfo: json['ERPInfo'] == null ? null : ERPInfo.fromJson(json['ERPInfo'] as Map<String, dynamic>),
-);
+_PaymentModel _$PaymentModelFromJson(Map<String, dynamic> json) =>
+    _PaymentModel(
+      customerIpAddress: json['CustomerIPAddress'] as String?,
+      customerMailAddress: json['CustomerMailAddress'] as String?,
+      customerInfo: json['CustomerInfo'] == null
+          ? null
+          : CustomerInfo.fromJson(json['CustomerInfo'] as Map<String, dynamic>),
+      order: json['Order'] == null
+          ? null
+          : Order.fromJson(json['Order'] as Map<String, dynamic>),
+      saleInfo: json['SaleInfo'] == null
+          ? null
+          : SaleInfo.fromJson(json['SaleInfo'] as Map<String, dynamic>),
+      payment3D: json['Payment3D'] == null
+          ? null
+          : Payment3D.fromJson(json['Payment3D'] as Map<String, dynamic>),
+      erpInfo: json['ERPInfo'] == null
+          ? null
+          : ERPInfo.fromJson(json['ERPInfo'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$PaymentModelToJson(
   _PaymentModel instance,
 ) => <String, dynamic>{
   if (instance.customerIpAddress case final value?) 'CustomerIPAddress': value,
-  if (instance.customerMailAddress case final value?) 'CustomerMailAddress': value,
+  if (instance.customerMailAddress case final value?)
+    'CustomerMailAddress': value,
   if (instance.customerInfo?.toJson() case final value?) 'CustomerInfo': value,
   if (instance.order?.toJson() case final value?) 'Order': value,
   if (instance.saleInfo?.toJson() case final value?) 'SaleInfo': value,
@@ -30,35 +40,37 @@ Map<String, dynamic> _$PaymentModelToJson(
   if (instance.erpInfo?.toJson() case final value?) 'ERPInfo': value,
 };
 
-_CustomerInfo _$CustomerInfoFromJson(Map<String, dynamic> json) => _CustomerInfo(
-  customerId: json['CustomerId'] as String?,
-  name: json['Name'] as String?,
-  surname: json['Surname'] as String?,
-  emailAddress: json['EmailAddress'] as String?,
-  phoneNumber: json['PhoneNumber'] as String?,
-  taxNumber: json['TaxNumber'] as String?,
-  taxOffice: json['TaxOffice'] as String?,
-  country: (json['Country'] as num?)?.toInt(),
-  cityName: json['CityName'] as String?,
-  townName: json['TownName'] as String?,
-  addressDesc: json['AddressDesc'] as String?,
-  postCode: json['PostCode'] as String?,
-);
+_CustomerInfo _$CustomerInfoFromJson(Map<String, dynamic> json) =>
+    _CustomerInfo(
+      customerId: json['CustomerId'] as String?,
+      name: json['Name'] as String?,
+      surname: json['Surname'] as String?,
+      emailAddress: json['EmailAddress'] as String?,
+      phoneNumber: json['PhoneNumber'] as String?,
+      taxNumber: json['TaxNumber'] as String?,
+      taxOffice: json['TaxOffice'] as String?,
+      country: (json['Country'] as num?)?.toInt(),
+      cityName: json['CityName'] as String?,
+      townName: json['TownName'] as String?,
+      addressDesc: json['AddressDesc'] as String?,
+      postCode: json['PostCode'] as String?,
+    );
 
-Map<String, dynamic> _$CustomerInfoToJson(_CustomerInfo instance) => <String, dynamic>{
-  if (instance.customerId case final value?) 'CustomerId': value,
-  if (instance.name case final value?) 'Name': value,
-  if (instance.surname case final value?) 'Surname': value,
-  if (instance.emailAddress case final value?) 'EmailAddress': value,
-  if (instance.phoneNumber case final value?) 'PhoneNumber': value,
-  if (instance.taxNumber case final value?) 'TaxNumber': value,
-  if (instance.taxOffice case final value?) 'TaxOffice': value,
-  if (instance.country case final value?) 'Country': value,
-  if (instance.cityName case final value?) 'CityName': value,
-  if (instance.townName case final value?) 'TownName': value,
-  if (instance.addressDesc case final value?) 'AddressDesc': value,
-  if (instance.postCode case final value?) 'PostCode': value,
-};
+Map<String, dynamic> _$CustomerInfoToJson(_CustomerInfo instance) =>
+    <String, dynamic>{
+      if (instance.customerId case final value?) 'CustomerId': value,
+      if (instance.name case final value?) 'Name': value,
+      if (instance.surname case final value?) 'Surname': value,
+      if (instance.emailAddress case final value?) 'EmailAddress': value,
+      if (instance.phoneNumber case final value?) 'PhoneNumber': value,
+      if (instance.taxNumber case final value?) 'TaxNumber': value,
+      if (instance.taxOffice case final value?) 'TaxOffice': value,
+      if (instance.country case final value?) 'Country': value,
+      if (instance.cityName case final value?) 'CityName': value,
+      if (instance.townName case final value?) 'TownName': value,
+      if (instance.addressDesc case final value?) 'AddressDesc': value,
+      if (instance.postCode case final value?) 'PostCode': value,
+    };
 
 _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
   orderId: json['OrderID'] as String?,
@@ -84,11 +96,12 @@ _Payment3D _$Payment3DFromJson(Map<String, dynamic> json) => _Payment3D(
   isDesktop: json['IsDesktop'] as bool?,
 );
 
-Map<String, dynamic> _$Payment3DToJson(_Payment3D instance) => <String, dynamic>{
-  if (instance.confirm case final value?) 'Confirm': value,
-  if (instance.returnUrl case final value?) 'ReturnURL': value,
-  if (instance.isDesktop case final value?) 'IsDesktop': value,
-};
+Map<String, dynamic> _$Payment3DToJson(_Payment3D instance) =>
+    <String, dynamic>{
+      if (instance.confirm case final value?) 'Confirm': value,
+      if (instance.returnUrl case final value?) 'ReturnURL': value,
+      if (instance.isDesktop case final value?) 'IsDesktop': value,
+    };
 
 _SaleInfo _$SaleInfoFromJson(Map<String, dynamic> json) => _SaleInfo(
   cardNameSurname: json['CardNameSurname'] as String?,
@@ -108,8 +121,10 @@ _SaleInfo _$SaleInfoFromJson(Map<String, dynamic> json) => _SaleInfo(
 Map<String, dynamic> _$SaleInfoToJson(_SaleInfo instance) => <String, dynamic>{
   if (instance.cardNameSurname case final value?) 'CardNameSurname': value,
   if (instance.cardNumber case final value?) 'CardNumber': value,
-  if (instance.cardExpiryDateMonth case final value?) 'CardExpiryDateMonth': value,
-  if (instance.cardExpiryDateYear case final value?) 'CardExpiryDateYear': value,
+  if (instance.cardExpiryDateMonth case final value?)
+    'CardExpiryDateMonth': value,
+  if (instance.cardExpiryDateYear case final value?)
+    'CardExpiryDateYear': value,
   if (instance.cardCvv case final value?) 'CardCvv': value,
   if (instance.currency case final value?) 'Currency': value,
   if (instance.amount case final value?) 'Amount': value,

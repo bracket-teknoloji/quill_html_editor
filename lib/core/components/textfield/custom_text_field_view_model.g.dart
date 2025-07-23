@@ -34,9 +34,8 @@ mixin _$CustomTextFieldViewModel on _CustomTextFieldViewModelBase, Store {
 
   @override
   void setShowClearButton(bool value) {
-    final _$actionInfo = _$_CustomTextFieldViewModelBaseActionController.startAction(
-      name: '_CustomTextFieldViewModelBase.setShowClearButton',
-    );
+    final _$actionInfo = _$_CustomTextFieldViewModelBaseActionController
+        .startAction(name: '_CustomTextFieldViewModelBase.setShowClearButton');
     try {
       return super.setShowClearButton(value);
     } finally {

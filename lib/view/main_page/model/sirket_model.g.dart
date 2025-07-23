@@ -43,7 +43,9 @@ class SirketModelAdapter extends TypeAdapter<SirketModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SirketModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is SirketModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -56,9 +58,10 @@ SirketModel _$SirketModelFromJson(Map<String, dynamic> json) => SirketModel()
   ..yil = (json['YIL'] as num?)?.toInt()
   ..isDevredilmis = json['isDevredilmis'] as bool?;
 
-Map<String, dynamic> _$SirketModelToJson(SirketModel instance) => <String, dynamic>{
-  if (instance.sirket case final value?) 'SIRKET': value,
-  if (instance.devsirket case final value?) 'DEVSIRKET': value,
-  if (instance.yil case final value?) 'YIL': value,
-  if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
-};
+Map<String, dynamic> _$SirketModelToJson(SirketModel instance) =>
+    <String, dynamic>{
+      if (instance.sirket case final value?) 'SIRKET': value,
+      if (instance.devsirket case final value?) 'DEVSIRKET': value,
+      if (instance.yil case final value?) 'YIL': value,
+      if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
+    };

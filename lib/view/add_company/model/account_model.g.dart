@@ -190,7 +190,9 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AccountModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is AccountModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -204,7 +206,9 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..aktifSubeKodu = (json['AKTIF_SUBE_KODU'] as num?)?.toInt()
   ..aktifVeritabani = json['AKTIF_VERITABANI'] as String?
   ..cihazSistemVersiyonu = json['CIHAZ_SISTEM_VERSIYONU'] as String?
-  ..apkDerlemeTarihi = json['APK_DERLEME_TARIHI'] == null ? null : DateTime.parse(json['APK_DERLEME_TARIHI'] as String)
+  ..apkDerlemeTarihi = json['APK_DERLEME_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['APK_DERLEME_TARIHI'] as String)
   ..cihazDili = json['CIHAZ_DILI'] as String?
   ..gCid = json['G_CID'] as String?
   ..cihazMarkasi = json['CIHAZ_MARKASI'] as String?
@@ -212,12 +216,16 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..cihazModeli = json['CIHAZ_MODELI'] as String?
   ..gDsn = json['G_DSN'] as String?
   ..cihazTarihi = json['CIHAZ_TARIHI'] as String?
-  ..cihazTarihiUtc = json['CIHAZ_TARIHI_UTC'] == null ? null : DateTime.parse(json['CIHAZ_TARIHI_UTC'] as String)
+  ..cihazTarihiUtc = json['CIHAZ_TARIHI_UTC'] == null
+      ? null
+      : DateTime.parse(json['CIHAZ_TARIHI_UTC'] as String)
   ..cihazTimeZoneDakika = (json['CIHAZ_TIME_ZONE_DAKIKA'] as num?)?.toInt()
   ..fcmToken = json['FCM_TOKEN'] as String?
   ..uyeEmail = json['UYE_EMAIL'] as String?
   ..uyeSifre = json['UYE_SIFRE'] as String?
-  ..konumDate = json['KONUM_DATE'] == null ? null : DateTime.parse(json['KONUM_DATE'] as String)
+  ..konumDate = json['KONUM_DATE'] == null
+      ? null
+      : DateTime.parse(json['KONUM_DATE'] as String)
   ..konumTarihi = json['KONUM_TARIHI'] as String?
   ..gKa = json['G_KA'] as String?
   ..gBo = json['G_BO'] as String?
@@ -246,7 +254,9 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..adi = json['ADI'] as String?
   ..wifiAdi = json['WIFI_ADI'] as String?
   ..debug = json['DEBUG'] as String?
-  ..girisTarihi = json['GIRIS_TARIHI'] == null ? null : DateTime.parse(json['GIRIS_TARIHI'] as String)
+  ..girisTarihi = json['GIRIS_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['GIRIS_TARIHI'] as String)
   ..sonKullanimTarihi = json['SON_KULLANIM_TARIHI'] == null
       ? null
       : DateTime.parse(json['SON_KULLANIM_TARIHI'] as String)
@@ -262,8 +272,10 @@ Map<String, dynamic> _$AccountModelToJson(
   if (instance.aktifIsletmeKodu case final value?) 'AKTIF_ISLETME_KODU': value,
   if (instance.aktifSubeKodu case final value?) 'AKTIF_SUBE_KODU': value,
   if (instance.aktifVeritabani case final value?) 'AKTIF_VERITABANI': value,
-  if (instance.cihazSistemVersiyonu case final value?) 'CIHAZ_SISTEM_VERSIYONU': value,
-  if (instance.apkDerlemeTarihi?.toIso8601String() case final value?) 'APK_DERLEME_TARIHI': value,
+  if (instance.cihazSistemVersiyonu case final value?)
+    'CIHAZ_SISTEM_VERSIYONU': value,
+  if (instance.apkDerlemeTarihi?.toIso8601String() case final value?)
+    'APK_DERLEME_TARIHI': value,
   if (instance.cihazDili case final value?) 'CIHAZ_DILI': value,
   if (instance.gCid case final value?) 'G_CID': value,
   if (instance.cihazMarkasi case final value?) 'CIHAZ_MARKASI': value,
@@ -271,12 +283,15 @@ Map<String, dynamic> _$AccountModelToJson(
   if (instance.cihazModeli case final value?) 'CIHAZ_MODELI': value,
   if (instance.gDsn case final value?) 'G_DSN': value,
   if (instance.cihazTarihi case final value?) 'CIHAZ_TARIHI': value,
-  if (instance.cihazTarihiUtc?.toIso8601String() case final value?) 'CIHAZ_TARIHI_UTC': value,
-  if (instance.cihazTimeZoneDakika case final value?) 'CIHAZ_TIME_ZONE_DAKIKA': value,
+  if (instance.cihazTarihiUtc?.toIso8601String() case final value?)
+    'CIHAZ_TARIHI_UTC': value,
+  if (instance.cihazTimeZoneDakika case final value?)
+    'CIHAZ_TIME_ZONE_DAKIKA': value,
   if (instance.fcmToken case final value?) 'FCM_TOKEN': value,
   if (instance.uyeEmail case final value?) 'UYE_EMAIL': value,
   if (instance.uyeSifre case final value?) 'UYE_SIFRE': value,
-  if (instance.konumDate?.toIso8601String() case final value?) 'KONUM_DATE': value,
+  if (instance.konumDate?.toIso8601String() case final value?)
+    'KONUM_DATE': value,
   if (instance.konumTarihi case final value?) 'KONUM_TARIHI': value,
   if (instance.gKa case final value?) 'G_KA': value,
   if (instance.gBo case final value?) 'G_BO': value,
@@ -295,9 +310,11 @@ Map<String, dynamic> _$AccountModelToJson(
   if (instance.serviceVersion case final value?) 'SERVICE_VERSION': value,
   if (instance.tzInfo case final value?) 'TZ_INFO': value,
   if (instance.uygulamaDili case final value?) 'UYGULAMA_DILI': value,
-  if (instance.uygulamaGuncellemeTarihi case final value?) 'UYGULAMA_GUNCELLEME_TARIHI': value,
+  if (instance.uygulamaGuncellemeTarihi case final value?)
+    'UYGULAMA_GUNCELLEME_TARIHI': value,
   if (instance.uygulamaSurumu case final value?) 'UYGULAMA_SURUMU': value,
-  if (instance.uygulamaSurumKodu case final value?) 'UYGULAMA_SURUM_KODU': value,
+  if (instance.uygulamaSurumKodu case final value?)
+    'UYGULAMA_SURUM_KODU': value,
   if (instance.uzakErisim case final value?) 'UZAK_ERISIM': value,
   if (instance.wifidenBagli case final value?) 'WIFIDEN_BAGLI': value,
   if (instance.qrData case final value?) 'QR_DATA': value,
@@ -305,8 +322,10 @@ Map<String, dynamic> _$AccountModelToJson(
   if (instance.adi case final value?) 'ADI': value,
   if (instance.wifiAdi case final value?) 'WIFI_ADI': value,
   if (instance.debug case final value?) 'DEBUG': value,
-  if (instance.girisTarihi?.toIso8601String() case final value?) 'GIRIS_TARIHI': value,
-  if (instance.sonKullanimTarihi?.toIso8601String() case final value?) 'SON_KULLANIM_TARIHI': value,
+  if (instance.girisTarihi?.toIso8601String() case final value?)
+    'GIRIS_TARIHI': value,
+  if (instance.sonKullanimTarihi?.toIso8601String() case final value?)
+    'SON_KULLANIM_TARIHI': value,
   if (instance.onayli case final value?) 'ONAYLI': value,
   if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
   if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,

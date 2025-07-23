@@ -46,24 +46,31 @@ class MainPageModelAdapter extends TypeAdapter<MainPageModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MainPageModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is MainPageModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) => MainPageModel()
-  ..userModel = json['UserModel'] == null ? null : UserModel.fromJson(json['UserModel'] as Map<String, dynamic>)
-  ..serviceVersion = json['ServiceVersion'] as String?
-  ..langVersion = json['LangVersion'] as String?
-  ..sirketModel = SirketModel.fromJson(
-    json['SirketModel'] as Map<String, dynamic>,
-  )
-  ..menuList = (json['MenuList'] as List<dynamic>?)?.map((e) => e as String).toList()
-  ..paramModel = ParamModel.fromJson(
-    json['ParamModel'] as Map<String, dynamic>,
-  );
+MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
+    MainPageModel()
+      ..userModel = json['UserModel'] == null
+          ? null
+          : UserModel.fromJson(json['UserModel'] as Map<String, dynamic>)
+      ..serviceVersion = json['ServiceVersion'] as String?
+      ..langVersion = json['LangVersion'] as String?
+      ..sirketModel = SirketModel.fromJson(
+        json['SirketModel'] as Map<String, dynamic>,
+      )
+      ..menuList = (json['MenuList'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+      ..paramModel = ParamModel.fromJson(
+        json['ParamModel'] as Map<String, dynamic>,
+      );
 
 Map<String, dynamic> _$MainPageModelToJson(
   MainPageModel instance,
