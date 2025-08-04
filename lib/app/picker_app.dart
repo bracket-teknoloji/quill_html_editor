@@ -43,8 +43,7 @@ final class PickerMaterialApp extends StatelessWidget {
     title: "Picker",
     popGesture: true,
     debugShowCheckedModeBanner: false,
-    locale: Get.deviceLocale,
-    fallbackLocale: const Locale("en"),
+    locale: const Locale("tr"),
     supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
     localizationsDelegates: const <LocalizationsDelegate>[
       GlobalWidgetsLocalizations.delegate,

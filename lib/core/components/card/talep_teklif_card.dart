@@ -305,7 +305,7 @@ final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                     await getBelgeBaglantilari(result);
                   },
                 ),
-                if (model.tekliflestiMi)
+              if (model.tekliflestiMi)
                 ColorfulBadge(
                   label: const Text("Teklif"),
                   badgeColorEnum: BadgeColorEnum.fatura,
@@ -486,6 +486,15 @@ final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
             model: newModel,
             baseEditEnum: BaseEditEnum.goruntule,
             editTipiEnum: EditTipiEnum.alisIrsaliye,
+          ),
+        );
+      } else if (model.belgeTipi == "STEK") {
+        Get.toNamed(
+          "mainPage/talTekEdit",
+          arguments: BaseEditModel(
+            model: newModel,
+            baseEditEnum: BaseEditEnum.goruntule,
+            editTipiEnum: EditTipiEnum.satisTeklifi,
           ),
         );
       }

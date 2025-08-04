@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:share_plus/share_plus.dart";
 
 import "../../base/state/base_state.dart";
 import "../wrap/appbar_title.dart";
@@ -15,7 +14,6 @@ final class ImageView extends StatefulWidget {
 }
 
 final class _ImageViewState extends BaseState<ImageView> {
-  XFile? xfile;
   @override
   Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(

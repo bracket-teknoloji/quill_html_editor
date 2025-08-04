@@ -293,6 +293,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
   Observer bottomBar() => Observer(
     builder: (_) => BottomBarWidget(
       isScrolledDown: viewModel.isScrollDown,
+      visible: widget.editTipiEnum.stokTipineBakmadanFiyatGor,
       children: <FooterButton>[
         FooterButton(
           children: <Widget>[
@@ -554,16 +555,16 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
         ),
         if (yetkiController.kontrolAciklamasiAktifMi(widget.editTipiEnum))
           Observer(
-                  builder: (_) => SlideControllerWidget(
-                    title: "Kontrol Durumu",
-                    groupValue: viewModel.kontrolEdildiMi,
-                    childrenTitleList: viewModel.kontrolDurumuMap.keys.toList(),
-                    childrenValueList: viewModel.kontrolDurumuMap.values.toList(),
-                    filterOnChanged: (value) => viewModel.setKontrolEdildiMi(
-                      viewModel.kontrolDurumuMap.entries.toList()[value ?? 0].value,
-                    ),
-                  ),
-                ),
+            builder: (_) => SlideControllerWidget(
+              title: "Kontrol Durumu",
+              groupValue: viewModel.kontrolEdildiMi,
+              childrenTitleList: viewModel.kontrolDurumuMap.keys.toList(),
+              childrenValueList: viewModel.kontrolDurumuMap.values.toList(),
+              filterOnChanged: (value) => viewModel.setKontrolEdildiMi(
+                viewModel.kontrolDurumuMap.entries.toList()[value ?? 0].value,
+              ),
+            ),
+          ),
 
         InkWell(
           onTap: () => viewModel.setKodlariGoster(),

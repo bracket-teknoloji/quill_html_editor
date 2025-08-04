@@ -651,6 +651,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                 labelText: "Koşul",
                 readOnly: true,
                 suffixMore: true,
+                isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("kosul"),
                 controller: _kosulController,
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
                 onTap: () async {

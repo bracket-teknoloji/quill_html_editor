@@ -703,6 +703,25 @@ final class YetkiController {
   bool alisFatBosGecilmeyecekAlanlar(String? value) =>
       _isTrue(_profilYetkiModel?.malKabulAlisFatBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
 
+  bool musteriSiparisiBosGecilmeyecekAlanlar(String? value) =>
+      _isTrue(_profilYetkiModel?.siparisMusSipBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+  bool saticiSiparisiBosGecilmeyecekAlanlar(String? value) =>
+      _isTrue(_profilYetkiModel?.siparisSaticiSipBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+
+      bool satisTeklifiBosGecilmeyecekAlanlar(String? value) =>
+      _isTrue(_profilYetkiModel?.taltekStekBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+      bool alisTalebiBosGecilmeyecekAlanlar(String? value) =>
+      _isTrue(_profilYetkiModel?.taltekAtalBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+      bool satisTalebiBosGecilmeyecekAlanlar(String? value) =>
+      _isTrue(_profilYetkiModel?.taltekStalBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+
+      bool satisTeklifiDegistirilmeyecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.taltekStekDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      bool alisTalebiDegistirilmeyecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.taltekAtalDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      bool satisTalebiDegistirilmeyecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.taltekStalDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+
   bool satisIrsGizlenecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool satisFatGizlenecekAlanlar(String? index) =>
@@ -1115,6 +1134,9 @@ final class YetkiController {
   bool get transferDatFiyatGor => _isTrue(_profilYetkiModel?.transferDatFiyatGor);
   bool get transferAGFiyatGor => _isTrue(_profilYetkiModel?.transferAgFiyatGor);
   bool get transferACFiyatGor => _isTrue(_profilYetkiModel?.transferAcFiyatGor);
+
+  bool get siparisMSFiyatGor =>
+      _isTrue(!(_profilYetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains("parasal") ?? false));
 
   bool get transferEkMaliyet1GizlenecekMi =>
       transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);

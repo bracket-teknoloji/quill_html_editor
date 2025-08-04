@@ -132,6 +132,7 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+        BaseSiparisEditModel.instance.teslimTarihi = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.isNew = true;
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;

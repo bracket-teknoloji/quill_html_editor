@@ -1778,16 +1778,13 @@ final class BottomSheetDialogManager {
       );
       if (result != null) {
         Uint8List? compressedImage;
-        compressedImage = await FlutterImageCompress.compressWithFile(
-          result.path,
+        compressedImage = await FlutterImageCompress.compressWithList(
+          await result.readAsBytes(),
           format: CompressFormat.png,
           keepExif: true,
-          numberOfRetries: 10,
           quality: 30,
         );
-        if (compressedImage != null) {
-          return MemoryImage(compressedImage);
-        }
+        return MemoryImage(compressedImage);
       }
     }
     return null;

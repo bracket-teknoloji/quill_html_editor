@@ -1053,12 +1053,9 @@ final class IslemlerMenuItemConstants<T> {
         if (kalemList == null) {
           return;
         }
-        final List<KalemModel> newKalemler = kalemList
-            .map(KalemModel.forTalepTekliflestir)
-            .toList()
-            .cast<KalemModel>();
+        final List<KalemModel> newKalemler = kalemList.map(KalemModel.forTalepTekliflestir).toList().cast<KalemModel>();
         final TextEditingController controller = TextEditingController();
-        await getBelgeNo(controller, siparisModel);
+        await getBelgeNo(controller, siparisModel.copyWith.belgeNo(null), EditTipiEnum.satisTeklifi);
         // ignore: use_build_context_synchronously
         return await _bottomSheetDialogManager.showBottomSheetDialog(
           context,
@@ -1072,7 +1069,7 @@ final class IslemlerMenuItemConstants<T> {
                 isMust: true,
                 maxLength: 15,
                 suffix: IconButton(
-                  onPressed: () async => await getBelgeNo(controller, siparisModel),
+                  onPressed: () async => await getBelgeNo(controller, siparisModel, EditTipiEnum.satisTeklifi),
                   icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                 ),
               ),
@@ -1505,7 +1502,7 @@ final class IslemlerMenuItemConstants<T> {
               .toList()
               .cast<KalemModel>();
           final TextEditingController controller = TextEditingController();
-          await getBelgeNo(controller, siparisModel);
+          await getBelgeNo(controller, siparisModel, EditTipiEnum.musteri);
           // ignore: use_build_context_synchronously
           return await _bottomSheetDialogManager.showBottomSheetDialog(
             context,
@@ -1519,7 +1516,7 @@ final class IslemlerMenuItemConstants<T> {
                   isMust: true,
                   maxLength: 15,
                   suffix: IconButton(
-                    onPressed: () async => await getBelgeNo(controller, siparisModel),
+                    onPressed: () async => await getBelgeNo(controller, siparisModel, EditTipiEnum.musteri),
                     icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                   ),
                 ),
@@ -1553,15 +1550,19 @@ final class IslemlerMenuItemConstants<T> {
     },
   );
 
-  Future<void> getBelgeNo(TextEditingController controller, BaseSiparisEditModel siparisModel) async {
+  Future<void> getBelgeNo(
+    TextEditingController controller,
+    BaseSiparisEditModel siparisModel,
+    EditTipiEnum editTipiEnum,
+  ) async {
     final result = await _networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
       queryParameters: {
         "Seri": controller.text,
-        "BelgeTipi": "MS",
+        "BelgeTipi": editTipiEnum.rawValue,
         "EIrsaliye": "H",
-        "CariKodu": siparisModel.cariKodu ?? "",
+        if (editTipiEnum.musteriMi) "CariKodu": siparisModel.cariKodu ?? "",
       },
     );
     if (result.isSuccess) {

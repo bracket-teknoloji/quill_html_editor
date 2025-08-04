@@ -261,7 +261,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
               onPressed: () async {
                 if (viewModel.model.hesapKodu != null) {
                   final result = await networkManager.getCariModel(
-                    CariRequestModel.fromTahsilatRequestModel(viewModel.model),
+                    CariRequestModel.fromKrediKartiTahsilat(viewModel.model),
                   );
                   dialogManager.showCariIslemleriGridViewDialog(result);
                 } else {

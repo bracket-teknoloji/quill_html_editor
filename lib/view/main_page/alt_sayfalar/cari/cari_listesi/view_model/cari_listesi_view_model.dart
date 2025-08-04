@@ -26,7 +26,7 @@ abstract class _CariListesiViewModelBase
     "Tahsil Edilecek": "T",
     "Ödenecek": "Ö",
     "Sıfır Bakiye": "S",
-    "Bakiyeli": "B",
+    "Bakiyeli": "",
   };
 
   final Map<String, String> siralaMap = {

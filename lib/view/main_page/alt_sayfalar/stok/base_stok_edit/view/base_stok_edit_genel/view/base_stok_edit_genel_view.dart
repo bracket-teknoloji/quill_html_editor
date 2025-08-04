@@ -826,22 +826,20 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     if (result != null) {
       Uint8List? compressedImage;
       try {
-        compressedImage = await FlutterImageCompress.compressWithFile(
-          result.path,
+        compressedImage = await FlutterImageCompress.compressWithList(
+          await result.readAsBytes(),
           format: CompressFormat.png,
           keepExif: true,
-          numberOfRetries: 10,
           quality: 30,
         );
       } catch (e) {
-        compressedImage = await FlutterImageCompress.compressWithFile(
-          result.path,
+        compressedImage = await FlutterImageCompress.compressWithList(
+          await result.readAsBytes(),
           format: CompressFormat.heic,
-          numberOfRetries: 10,
           keepExif: true,
         );
       }
-      final base64 = base64Encode(compressedImage!.toList());
+      final base64 = base64Encode(compressedImage.toList());
       viewModel.setImage(base64);
       return base64;
       // stokModel?.resimBase64 = base64;

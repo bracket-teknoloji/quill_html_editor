@@ -535,6 +535,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       labelText: "Koşul",
                       readOnly: true,
                       suffixMore: true,
+                      isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("kosul") ?? false,
                       controller: kosulController,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
                       onTap: () async {
@@ -631,6 +632,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(1) != null,
                         suffixMore: getEkRehberById(1) != null,
@@ -649,6 +651,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A2"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(2) != null,
                         onClear: () => viewModel.setAciklama(2, null),
@@ -667,6 +670,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A3"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(3) != null,
                         suffixMore: getEkRehberById(3) != null,
@@ -684,6 +688,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A4"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(4) != null,
                         suffixMore: getEkRehberById(4) != null,
@@ -702,6 +707,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A5"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(5) != null,
                         suffixMore: getEkRehberById(5) != null,
@@ -720,6 +726,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A6"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(6) != null,
                         suffixMore: getEkRehberById(6) != null,
@@ -738,6 +745,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A7"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(7) != null,
                         suffixMore: getEkRehberById(7) != null,
@@ -756,6 +764,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A8"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(8) != null,
                         suffixMore: getEkRehberById(8) != null,
@@ -774,6 +783,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A9"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(9) != null,
                         suffixMore: getEkRehberById(9) != null,
@@ -792,6 +802,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A10"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(10) != null,
                         suffixMore: getEkRehberById(10) != null,
@@ -810,6 +821,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A11"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(11) != null,
                         suffixMore: getEkRehberById(11) != null,
@@ -828,6 +840,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A12"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(12) != null,
                         suffixMore: getEkRehberById(12) != null,
@@ -846,6 +859,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A13"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(13) != null,
                         suffixMore: getEkRehberById(13) != null,
@@ -864,6 +878,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A14"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(14) != null,
                         suffixMore: getEkRehberById(14) != null,
@@ -882,6 +897,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A15"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(15) != null,
                         suffixMore: getEkRehberById(15) != null,
@@ -900,6 +916,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16))
                       CustomTextField(
                         enabled: enable,
+                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A16"),
                         maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: getEkRehberById(16) != null,
                         suffixMore: getEkRehberById(16) != null,

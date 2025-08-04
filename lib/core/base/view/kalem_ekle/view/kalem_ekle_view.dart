@@ -1254,7 +1254,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       viewModel
                         ..setFiyatYuzde(null)
                         ..setBrutFiyat(p0.toDoubleWithFormattedString);
-                      if (viewModel.model?.dovizliMi ?? false) {
+                      if ((viewModel.model?.dovizliMi ?? false) && viewModel.kalemModel.dovizTipi != 0) {
                         viewModel.setDovizFiyati(
                           (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1),
                         );
@@ -1853,6 +1853,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       }
       if (widget.kalemModel == null) {
         viewModel.kalemModel
+          ..depoKodu ??= editTipi?.varsayilanDepoKodu
           ..dovizTipi ??= widget.stokListesiModel?.bulunanDovizTipi
           ..dovizKodu ??= widget.stokListesiModel?.bulunanDovizTipi
           ..isemriNo = model.isemriNo

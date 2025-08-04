@@ -57,6 +57,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
   late final TextEditingController _plasiyerController;
   late final TextEditingController _belgeTipiController;
   late final TextEditingController _tarihController;
+  late final TextEditingController _teslimTarihController;
   late final TextEditingController _topluDepoController;
   late final TextEditingController _ozelKod1Controller;
   late final TextEditingController _ozelKod2Controller;
@@ -94,6 +95,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
     );
     _belgeTipiController.text = model.yurticiMi ? "Yurtiçi" : "Yurtdışı";
     _tarihController = TextEditingController(text: model.tarih.toDateString);
+    _teslimTarihController = TextEditingController(text: model.teslimTarihi.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod1Controller = TextEditingController(
       text:
@@ -155,6 +157,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
     _plasiyerController.dispose();
     _belgeTipiController.dispose();
     _tarihController.dispose();
+    _teslimTarihController.dispose();
     _topluDepoController.dispose();
     _ozelKod1Controller.dispose();
     _ozelKod2Controller.dispose();
@@ -440,6 +443,21 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 ),
               ],
             ),
+             CustomTextField(
+               enabled: enable,
+               labelText: "Teslim Tarihi",
+               isMust: true,
+               isDateTime: true,
+               readOnly: true,
+               onTap: () async {
+                 final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.teslimTarihi);
+                 if (result != null) {
+                   model.teslimTarihi = result;
+                   _teslimTarihController.text = result.toDateString;
+                 }
+               },
+               controller: _teslimTarihController,
+             ),
             Observer(
               builder: (_) {
                 if (model.yurticiMi) return const SizedBox.shrink();
@@ -543,6 +561,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kosul") ?? false),
                 labelText: "Koşul",
                 readOnly: true,
+                isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("kosul") ?? false,
                 suffixMore: true,
                 controller: _kosulController,
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),

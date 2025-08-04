@@ -981,6 +981,8 @@ final class ProfilYetkiModel {
   bool? siparisMusSipMiktar1Gelsin;
   @JsonKey(name: "siparis_MusSip_BosGecilmeyecekAlanlar")
   List<String>? siparisMusSipBosGecilmeyecekAlanlar;
+  @JsonKey(name: "siparis_SaticiSip_BosGecilmeyecekAlanlar")
+  List<String>? siparisSaticiSipBosGecilmeyecekAlanlar;
   @JsonKey(name: "siparis_MusSip_OtoPdfGor")
   bool? siparisMusSipOtoPdfGor;
   @JsonKey(name: "siparis_MusSip_CariKoduDegistir")
@@ -1651,8 +1653,16 @@ final class ProfilYetkiModel {
   List<String>? taltekStekGizlenecekAlanlar;
   @JsonKey(name: "taltek_STEK_DegismeyecekAlanlar")
   List<String>? taltekStekDegismeyecekAlanlar;
+  @JsonKey(name: "taltek_ATAL_DegismeyecekAlanlar")
+  List<String>? taltekAtalDegismeyecekAlanlar;
+  @JsonKey(name: "taltek_STAL_DegismeyecekAlanlar")
+  List<String>? taltekStalDegismeyecekAlanlar;
   @JsonKey(name: "taltek_STEK_BosGecilmeyecekAlanlar")
   List<String>? taltekStekBosGecilmeyecekAlanlar;
+  @JsonKey(name: "taltek_STAL_BosGecilmeyecekAlanlar")
+  List<String>? taltekStalBosGecilmeyecekAlanlar;
+  @JsonKey(name: "taltek_ATAL_BosGecilmeyecekAlanlar")
+  List<String>? taltekAtalBosGecilmeyecekAlanlar;
   @JsonKey(name: "taltek_STEK_AciklamaAlanlari")
   List<int>? taltekStekAciklamaAlanlari;
   @JsonKey(name: "taltek_STEK_OzelKod1degeri")
@@ -2183,6 +2193,12 @@ final class ProfilYetkiModel {
   String? transferDatOzelKod2Degeri;
   @JsonKey(name: "transfer_DepoTalebi_BildirimKullanicilar")
   List<String>? transferDepoTalebiBildirimKullanicilar;
+  String? uretimIsemriFireDusmeYontemi;
+  List<String>? yazdirmaAlisFatYazicilari;
+  List<String>? yazdirmaAmbarCikisYazicilari;
+  List<int>? yazdirmaDizaynAmbarCikis;
+  List<String>? yazdirmaAmbarGirisYazicilari;
+  List<int>? yazdirmaDizaynDat;
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 

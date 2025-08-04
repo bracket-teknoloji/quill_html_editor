@@ -456,6 +456,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDegistirilmeyecekAlanlar(value),
     EditTipiEnum.satisFatura => yetkiController.satisFatDegistirilmeyecekAlanlar(value),
     EditTipiEnum.alisFatura => yetkiController.alisFatDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.alisTalebi => yetkiController.alisTalebiDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiDegistirilmeyecekAlanlar(value),
     _ => false,
   };
 
@@ -471,6 +474,11 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBosGecilmeyecekAlanlar(value),
     EditTipiEnum.satisFatura => yetkiController.satisFatBosGecilmeyecekAlanlar(value),
     EditTipiEnum.alisFatura => yetkiController.alisFatBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.musteri => yetkiController.musteriSiparisiBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.satici => yetkiController.saticiSiparisiBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.alisTalebi => yetkiController.alisTalebiBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiBosGecilmeyecekAlanlar(value),
     _ => false,
   };
 
@@ -620,6 +628,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.depoTransferi => yetkiController.transferDatFiyatGor,
     EditTipiEnum.ambarGirisi => yetkiController.transferAGFiyatGor,
     EditTipiEnum.ambarCikisi => yetkiController.transferACFiyatGor,
+    EditTipiEnum.musteri => yetkiController.siparisMSFiyatGor,
     _ => true,
   };
 
@@ -650,6 +659,26 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
     _ => true,
   };
+
+  int? get varsayilanDepoKodu {
+    final profil = CacheManager.getAnaVeri?.userModel?.profilYetki;
+    int? value;
+    if (musteriMi) {
+      value = profil?.sirketSatisDepoMusSip != 0 ? profil?.sirketSatisDepoMusSip : null;
+    }
+    if (satisFaturasiMi) {
+      value = profil?.sirketSatisDepoSatisFat != 0 ? profil?.sirketSatisDepoSatisFat : null;
+    }
+    if (satisIrsaliyesiMi) {
+      value = profil?.sirketSatisDepoSatisIrs != 0 ? profil?.sirketSatisDepoSatisIrs : null;
+    }
+    if (satisMi) {
+      value ??= profil?.sirketSatisDepo;
+    } else {
+      value = profil?.sirketAlisDepo;
+    }
+    return value != 0 ? value : null;
+  }
 
   bool get siparisBaglantisiTumuSeciliGelsin => switch (this) {
     EditTipiEnum.satisFatura => yetkiController.satisFaturasiSiparisBaglantisiTamamiSeciliGelsin,

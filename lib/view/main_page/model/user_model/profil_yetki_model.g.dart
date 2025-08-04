@@ -933,6 +933,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(
       (json['siparis_MusSip_BosGecilmeyecekAlanlar'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList()
+  ..siparisSaticiSipBosGecilmeyecekAlanlar =
+      (json['siparis_SaticiSip_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
   ..siparisMusSipOtoPdfGor = json['siparis_MusSip_OtoPdfGor'] as bool?
   ..siparisMusSipCariKoduDegistir =
       json['siparis_MusSip_CariKoduDegistir'] as bool?
@@ -1457,8 +1461,24 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(
       (json['taltek_STEK_DegismeyecekAlanlar'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList()
+  ..taltekAtalDegismeyecekAlanlar =
+      (json['taltek_ATAL_DegismeyecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..taltekStalDegismeyecekAlanlar =
+      (json['taltek_STAL_DegismeyecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
   ..taltekStekBosGecilmeyecekAlanlar =
       (json['taltek_STEK_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..taltekStalBosGecilmeyecekAlanlar =
+      (json['taltek_STAL_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..taltekAtalBosGecilmeyecekAlanlar =
+      (json['taltek_ATAL_BosGecilmeyecekAlanlar'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList()
   ..taltekStekAciklamaAlanlari =
@@ -1909,7 +1929,28 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(
   ..transferDepoTalebiBildirimKullanicilar =
       (json['transfer_DepoTalebi_BildirimKullanicilar'] as List<dynamic>?)
           ?.map((e) => e as String)
-          .toList();
+          .toList()
+  ..uretimIsemriFireDusmeYontemi =
+      json['URETIM_ISEMRI_FIRE_DUSME_YONTEMI'] as String?
+  ..yazdirmaAlisFatYazicilari =
+      (json['YAZDIRMA_ALIS_FAT_YAZICILARI'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..yazdirmaAmbarCikisYazicilari =
+      (json['YAZDIRMA_AMBAR_CIKIS_YAZICILARI'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..yazdirmaDizaynAmbarCikis =
+      (json['YAZDIRMA_DIZAYN_AMBAR_CIKIS'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList()
+  ..yazdirmaAmbarGirisYazicilari =
+      (json['YAZDIRMA_AMBAR_GIRIS_YAZICILARI'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..yazdirmaDizaynDat = (json['YAZDIRMA_DIZAYN_DAT'] as List<dynamic>?)
+      ?.map((e) => (e as num).toInt())
+      .toList();
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(
   ProfilYetkiModel instance,
@@ -2849,6 +2890,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(
     'siparis_MusSip_Miktar1Gelsin': value,
   if (instance.siparisMusSipBosGecilmeyecekAlanlar case final value?)
     'siparis_MusSip_BosGecilmeyecekAlanlar': value,
+  if (instance.siparisSaticiSipBosGecilmeyecekAlanlar case final value?)
+    'siparis_SaticiSip_BosGecilmeyecekAlanlar': value,
   if (instance.siparisMusSipOtoPdfGor case final value?)
     'siparis_MusSip_OtoPdfGor': value,
   if (instance.siparisMusSipCariKoduDegistir case final value?)
@@ -3447,8 +3490,16 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(
     'taltek_STEK_GizlenecekAlanlar': value,
   if (instance.taltekStekDegismeyecekAlanlar case final value?)
     'taltek_STEK_DegismeyecekAlanlar': value,
+  if (instance.taltekAtalDegismeyecekAlanlar case final value?)
+    'taltek_ATAL_DegismeyecekAlanlar': value,
+  if (instance.taltekStalDegismeyecekAlanlar case final value?)
+    'taltek_STAL_DegismeyecekAlanlar': value,
   if (instance.taltekStekBosGecilmeyecekAlanlar case final value?)
     'taltek_STEK_BosGecilmeyecekAlanlar': value,
+  if (instance.taltekStalBosGecilmeyecekAlanlar case final value?)
+    'taltek_STAL_BosGecilmeyecekAlanlar': value,
+  if (instance.taltekAtalBosGecilmeyecekAlanlar case final value?)
+    'taltek_ATAL_BosGecilmeyecekAlanlar': value,
   if (instance.taltekStekAciklamaAlanlari case final value?)
     'taltek_STEK_AciklamaAlanlari': value,
   if (instance.taltekStekOzelKod1degeri case final value?)
@@ -3964,6 +4015,18 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(
     'transfer_DAT_OzelKod2Degeri': value,
   if (instance.transferDepoTalebiBildirimKullanicilar case final value?)
     'transfer_DepoTalebi_BildirimKullanicilar': value,
+  if (instance.uretimIsemriFireDusmeYontemi case final value?)
+    'URETIM_ISEMRI_FIRE_DUSME_YONTEMI': value,
+  if (instance.yazdirmaAlisFatYazicilari case final value?)
+    'YAZDIRMA_ALIS_FAT_YAZICILARI': value,
+  if (instance.yazdirmaAmbarCikisYazicilari case final value?)
+    'YAZDIRMA_AMBAR_CIKIS_YAZICILARI': value,
+  if (instance.yazdirmaDizaynAmbarCikis case final value?)
+    'YAZDIRMA_DIZAYN_AMBAR_CIKIS': value,
+  if (instance.yazdirmaAmbarGirisYazicilari case final value?)
+    'YAZDIRMA_AMBAR_GIRIS_YAZICILARI': value,
+  if (instance.yazdirmaDizaynDat case final value?)
+    'YAZDIRMA_DIZAYN_DAT': value,
 };
 
 const _$BarkodSayisiSaklanacakAlanEnumMap = {

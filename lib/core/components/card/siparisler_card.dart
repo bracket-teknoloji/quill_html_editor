@@ -344,17 +344,19 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
                 if (widget.model.kosulKodu != null) Text("Koşul: ${widget.model.kosulKodu ?? ""}"),
                 Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
                 if (widget.showVade == true) Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}"),
-                if (widget.model.dovizTutari != null && widget.model.dovizAdi != null)
+                if (widget.editTipiEnum.stokTipineBakmadanFiyatGor) ...[
+                  if (widget.model.dovizTutari != null && widget.model.dovizAdi != null)
+                    Text(
+                      "Döviz Toplamı: ${widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.model.dovizAdi ?? ""}",
+                    ),
+                  Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                   Text(
-                    "Döviz Toplamı: ${widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.model.dovizAdi ?? ""}",
+                    "Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                   ),
-                Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                Text(
-                  "Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
-                Text(
-                  "Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                ),
+                  Text(
+                    "Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  ),
+                ],
               ],
             ),
             if (widget.showMiktar ?? false)

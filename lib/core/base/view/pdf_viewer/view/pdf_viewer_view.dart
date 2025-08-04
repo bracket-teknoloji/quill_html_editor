@@ -339,7 +339,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
     final file = File(
-      '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString}.${viewModel.pdfModel?.uzanti ?? "pdf"}',
+      '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString}.pdf',
     );
     final fileWriter = file.openSync(mode: FileMode.write)
       ..writeFromSync(base64Decode(viewModel.pdfModel?.byteData ?? ""));

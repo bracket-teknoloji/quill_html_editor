@@ -66,6 +66,17 @@ sealed class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     // sayfa: 1,
     eFaturaGoster: true,
     plasiyerKisitiYok: true,
+    
+    // belgeTuru: model,
+  );
+
+
+  factory CariRequestModel.fromKrediKartiTahsilat(TahsilatRequestModel model) => CariRequestModel(
+    kod: [model.cariKodu ?? ""],
+    // sayfa: 1,
+    eFaturaGoster: true,
+    plasiyerKisitiYok: true,
+    
     // belgeTuru: model,
   );
 

@@ -193,7 +193,7 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
         XFile.fromData(
           Uint8List.fromList(doc),
           mimeType: "application/pdf",
-          name: "${widget.model?.dosyaAdi ?? "document"}${widget.model?.uzanti ?? ".pdf"}",
+          name: "${widget.model?.dosyaAdi ?? "document"}.pdf",
         ),
       ], subject: "Pdf Paylaşımı");
       return;
@@ -210,7 +210,7 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
-    final file = File("${appStorage.path}/picker/pdf/${widget.model?.dosyaAdi ?? "demo.pdf"}${widget.model?.uzanti}");
+    final file = File("${appStorage.path}/picker/pdf/${widget.model?.dosyaAdi ?? "demo"}.pdf");
     final fileWriter = file.openSync(mode: FileMode.write)..writeFromSync(base64Decode(widget.model?.byteData ?? ""));
     await fileWriter.close();
     if (file.lengthSync() > 0) {

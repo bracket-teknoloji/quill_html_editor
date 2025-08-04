@@ -683,20 +683,20 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
         );
         if (result != null) {
           Uint8List? compressedImage;
-          compressedImage = await FlutterImageCompress.compressWithFile(
-            result.path,
+          compressedImage = await FlutterImageCompress.compressWithList(
+            await result.readAsBytes(),
             format: CompressFormat.png,
             keepExif: true,
-            numberOfRetries: 10,
+            // numberOfRetries: 10,
             quality: 30,
           );
-          if (compressedImage != null) {
-            if (index == 1) {
-              viewModel.setPhotoFront(base64Encode(compressedImage));
-            } else {
-              viewModel.setPhotoBack(base64Encode(compressedImage));
-            }
+          if (index == 1) {
+            viewModel.setPhotoFront(base64Encode(compressedImage));
+          } else {
+            viewModel.setPhotoBack(base64Encode(compressedImage));
           }
+          // if (compressedImage != null) {
+          // }
         }
       }
     }

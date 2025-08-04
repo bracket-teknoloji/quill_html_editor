@@ -192,7 +192,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
       queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"},
     );
     if (result.isSuccess) {
-      setBelgeNo((result.dataList.firstOrNull as BaseSiparisEditModel).belgeNo);
+      setBelgeNo(result.dataList.first.belgeNo);
     }
   }
 

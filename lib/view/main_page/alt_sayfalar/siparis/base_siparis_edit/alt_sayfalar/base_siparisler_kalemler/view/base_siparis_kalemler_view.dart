@@ -189,7 +189,7 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
                     ],
                   ),
                 ),
-              if (kalemModel.brutFiyat != null)
+              if (kalemModel.brutFiyat != null && (model.getEditTipiEnum?.stokTipineBakmadanFiyatGor ?? false))
                 Text.rich(
                   TextSpan(
                     children: [
@@ -211,7 +211,7 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
                 ),
               if (yetkiController.satirdaVade(model.getEditTipiEnum!))
                 Text("Vade Tarihi: ${kalemModel.vadeTarihi?.toDateString ?? ""}"),
-              if (kalemModel.brutFiyat != null)
+              if (kalemModel.brutFiyat != null && (model.getEditTipiEnum?.stokTipineBakmadanFiyatGor ?? false))
                 Text.rich(
                   TextSpan(
                     children: [
@@ -277,14 +277,16 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
     subtitle: CustomLayoutBuilder.divideInHalf(
       children: [
         Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
-        Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? ""}"),
+        if (model.getEditTipiEnum?.stokTipineBakmadanFiyatGor ?? false)
+          Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? ""}"),
         // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
         Text(
           "KDV %: ${((model.getEditTipiEnum?.satisMi == true ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}",
         ),
-        Text(
-          "Tutar: ${(kalemList?.araToplamTutari.toIntIfDouble ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
-        ),
+        if (model.getEditTipiEnum?.stokTipineBakmadanFiyatGor ?? false)
+          Text(
+            "Tutar: ${(kalemList?.araToplamTutari.toIntIfDouble ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+          ),
       ],
     ),
     // title: Text("${stokList?.stokKodu ?? ""}-${stokList?.stokAdi ?? ""}"),

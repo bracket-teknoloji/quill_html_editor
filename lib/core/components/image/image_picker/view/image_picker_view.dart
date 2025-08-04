@@ -103,22 +103,20 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
         ..setImage(await result.readAsBytes());
       Uint8List? compressedImage;
       try {
-        compressedImage = await FlutterImageCompress.compressWithFile(
-          result.path,
+        compressedImage = await FlutterImageCompress.compressWithList(
+          await result.readAsBytes(),
           format: CompressFormat.png,
           keepExif: true,
-          numberOfRetries: 10,
           quality: 30,
         );
       } catch (e) {
-        compressedImage = await FlutterImageCompress.compressWithFile(
-          result.path,
+        compressedImage = await FlutterImageCompress.compressWithList(
+          await result.readAsBytes(),
           format: CompressFormat.heic,
-          numberOfRetries: 10,
           keepExif: true,
         );
       }
-      final list = compressedImage!.toList();
+      final list = compressedImage.toList();
       final base64 = base64Encode(list);
       viewModel.setBoyutByte(list.length);
       // wait for a second

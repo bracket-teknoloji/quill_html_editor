@@ -361,19 +361,19 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                     groupValue: viewModel.teslimatDurumuGroupValue,
                   ),
                 ),
-                
-        if (yetkiController.kontrolAciklamasiAktifMi(widget.widgetModel.editTipiEnum))
-                Observer(
-                  builder: (_) => SlideControllerWidget(
-                    title: "Kontrol Durumu",
-                    groupValue: viewModel.kontrolEdildiMi,
-                    childrenTitleList: viewModel.kontrolDurumuMap.keys.toList(),
-                    childrenValueList: viewModel.kontrolDurumuMap.values.toList(),
-                    filterOnChanged: (value) => viewModel.setKontrolEdildiMi(
-                      viewModel.kontrolDurumuMap.entries.toList()[value ?? 0].value,
+
+                if (yetkiController.kontrolAciklamasiAktifMi(widget.widgetModel.editTipiEnum))
+                  Observer(
+                    builder: (_) => SlideControllerWidget(
+                      title: "Kontrol Durumu",
+                      groupValue: viewModel.kontrolEdildiMi,
+                      childrenTitleList: viewModel.kontrolDurumuMap.keys.toList(),
+                      childrenValueList: viewModel.kontrolDurumuMap.values.toList(),
+                      filterOnChanged: (value) => viewModel.setKontrolEdildiMi(
+                        viewModel.kontrolDurumuMap.entries.toList()[value ?? 0].value,
+                      ),
                     ),
                   ),
-                ),
 
                 InkWell(
                   onTap: () async {
@@ -683,7 +683,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
   Observer bottomNavigationBar() => Observer(
     builder: (_) => BottomBarWidget(
       isScrolledDown: viewModel.isScrolledDown,
-      visible: viewModel.paramData?.isNotEmpty == true,
+      visible: viewModel.paramData?.isNotEmpty == true && widget.widgetModel.editTipiEnum.stokTipineBakmadanFiyatGor,
       children: [
         FooterButton(
           children: [
