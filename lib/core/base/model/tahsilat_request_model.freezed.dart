@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -113,6 +112,130 @@ as int?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [TahsilatRequestModel].
+extension TahsilatRequestModelPatterns on TahsilatRequestModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TahsilatRequestModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _TahsilatRequestModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TahsilatRequestModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _TahsilatRequestModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TahsilatRequestModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _TahsilatRequestModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? aciklama,  String? belgeNo,  String? gc,  String? guid,  String? hesapKodu,  String? hesapTipi,  String? kasaKodu,  String? plasiyerKodu,  String? projeKodu,  String? tag,  bool? tahsilatmi,  DateTime? tarih,  double? tutar,  double? dovizTutari,  int? dovizTipi,  String? kktYontemi,  String? raporKodu2,  String? refKod, @JsonKey(name: "PickerBelgeTuru")  String? pickerBelgeTuru,  String? stokKodu,  int? depoKodu,  String? hareketTuru,  int? miktar,  double? fiyat,  String? dekontSeri, @JsonKey(name: "_YeniKayit")  bool? yeniKayit,  String? cariKodu,  String? sozlesmeKodu,  String? krediKartNo,  String? hedefAciklama,  int? vadeGunu,  double? bsmvTutari,  String? dekontIslemTuru,  String? dekontBelgeNo,  String? hedefHesapKodu,  String? islemModulu,  String? masrafMuhKodu,  double? masrafTutari,  bool? cariyiBorclandir,  String? hesapNo,  String? iban,  String? tcmbBankaKodu,  String? tcmbSubeKodu,  List<DekontKalemler>? kalemler,  String? hedefCariKodu,  double? tahsilatBakiye,  double? odemeBakiye,  String? hedefHesapReferansKodu,  String? kaynakHesapReferansKodu,  int? taksitSayisi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _TahsilatRequestModel() when $default != null:
+return $default(_that.aciklama,_that.belgeNo,_that.gc,_that.guid,_that.hesapKodu,_that.hesapTipi,_that.kasaKodu,_that.plasiyerKodu,_that.projeKodu,_that.tag,_that.tahsilatmi,_that.tarih,_that.tutar,_that.dovizTutari,_that.dovizTipi,_that.kktYontemi,_that.raporKodu2,_that.refKod,_that.pickerBelgeTuru,_that.stokKodu,_that.depoKodu,_that.hareketTuru,_that.miktar,_that.fiyat,_that.dekontSeri,_that.yeniKayit,_that.cariKodu,_that.sozlesmeKodu,_that.krediKartNo,_that.hedefAciklama,_that.vadeGunu,_that.bsmvTutari,_that.dekontIslemTuru,_that.dekontBelgeNo,_that.hedefHesapKodu,_that.islemModulu,_that.masrafMuhKodu,_that.masrafTutari,_that.cariyiBorclandir,_that.hesapNo,_that.iban,_that.tcmbBankaKodu,_that.tcmbSubeKodu,_that.kalemler,_that.hedefCariKodu,_that.tahsilatBakiye,_that.odemeBakiye,_that.hedefHesapReferansKodu,_that.kaynakHesapReferansKodu,_that.taksitSayisi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? aciklama,  String? belgeNo,  String? gc,  String? guid,  String? hesapKodu,  String? hesapTipi,  String? kasaKodu,  String? plasiyerKodu,  String? projeKodu,  String? tag,  bool? tahsilatmi,  DateTime? tarih,  double? tutar,  double? dovizTutari,  int? dovizTipi,  String? kktYontemi,  String? raporKodu2,  String? refKod, @JsonKey(name: "PickerBelgeTuru")  String? pickerBelgeTuru,  String? stokKodu,  int? depoKodu,  String? hareketTuru,  int? miktar,  double? fiyat,  String? dekontSeri, @JsonKey(name: "_YeniKayit")  bool? yeniKayit,  String? cariKodu,  String? sozlesmeKodu,  String? krediKartNo,  String? hedefAciklama,  int? vadeGunu,  double? bsmvTutari,  String? dekontIslemTuru,  String? dekontBelgeNo,  String? hedefHesapKodu,  String? islemModulu,  String? masrafMuhKodu,  double? masrafTutari,  bool? cariyiBorclandir,  String? hesapNo,  String? iban,  String? tcmbBankaKodu,  String? tcmbSubeKodu,  List<DekontKalemler>? kalemler,  String? hedefCariKodu,  double? tahsilatBakiye,  double? odemeBakiye,  String? hedefHesapReferansKodu,  String? kaynakHesapReferansKodu,  int? taksitSayisi)  $default,) {final _that = this;
+switch (_that) {
+case _TahsilatRequestModel():
+return $default(_that.aciklama,_that.belgeNo,_that.gc,_that.guid,_that.hesapKodu,_that.hesapTipi,_that.kasaKodu,_that.plasiyerKodu,_that.projeKodu,_that.tag,_that.tahsilatmi,_that.tarih,_that.tutar,_that.dovizTutari,_that.dovizTipi,_that.kktYontemi,_that.raporKodu2,_that.refKod,_that.pickerBelgeTuru,_that.stokKodu,_that.depoKodu,_that.hareketTuru,_that.miktar,_that.fiyat,_that.dekontSeri,_that.yeniKayit,_that.cariKodu,_that.sozlesmeKodu,_that.krediKartNo,_that.hedefAciklama,_that.vadeGunu,_that.bsmvTutari,_that.dekontIslemTuru,_that.dekontBelgeNo,_that.hedefHesapKodu,_that.islemModulu,_that.masrafMuhKodu,_that.masrafTutari,_that.cariyiBorclandir,_that.hesapNo,_that.iban,_that.tcmbBankaKodu,_that.tcmbSubeKodu,_that.kalemler,_that.hedefCariKodu,_that.tahsilatBakiye,_that.odemeBakiye,_that.hedefHesapReferansKodu,_that.kaynakHesapReferansKodu,_that.taksitSayisi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? aciklama,  String? belgeNo,  String? gc,  String? guid,  String? hesapKodu,  String? hesapTipi,  String? kasaKodu,  String? plasiyerKodu,  String? projeKodu,  String? tag,  bool? tahsilatmi,  DateTime? tarih,  double? tutar,  double? dovizTutari,  int? dovizTipi,  String? kktYontemi,  String? raporKodu2,  String? refKod, @JsonKey(name: "PickerBelgeTuru")  String? pickerBelgeTuru,  String? stokKodu,  int? depoKodu,  String? hareketTuru,  int? miktar,  double? fiyat,  String? dekontSeri, @JsonKey(name: "_YeniKayit")  bool? yeniKayit,  String? cariKodu,  String? sozlesmeKodu,  String? krediKartNo,  String? hedefAciklama,  int? vadeGunu,  double? bsmvTutari,  String? dekontIslemTuru,  String? dekontBelgeNo,  String? hedefHesapKodu,  String? islemModulu,  String? masrafMuhKodu,  double? masrafTutari,  bool? cariyiBorclandir,  String? hesapNo,  String? iban,  String? tcmbBankaKodu,  String? tcmbSubeKodu,  List<DekontKalemler>? kalemler,  String? hedefCariKodu,  double? tahsilatBakiye,  double? odemeBakiye,  String? hedefHesapReferansKodu,  String? kaynakHesapReferansKodu,  int? taksitSayisi)?  $default,) {final _that = this;
+switch (_that) {
+case _TahsilatRequestModel() when $default != null:
+return $default(_that.aciklama,_that.belgeNo,_that.gc,_that.guid,_that.hesapKodu,_that.hesapTipi,_that.kasaKodu,_that.plasiyerKodu,_that.projeKodu,_that.tag,_that.tahsilatmi,_that.tarih,_that.tutar,_that.dovizTutari,_that.dovizTipi,_that.kktYontemi,_that.raporKodu2,_that.refKod,_that.pickerBelgeTuru,_that.stokKodu,_that.depoKodu,_that.hareketTuru,_that.miktar,_that.fiyat,_that.dekontSeri,_that.yeniKayit,_that.cariKodu,_that.sozlesmeKodu,_that.krediKartNo,_that.hedefAciklama,_that.vadeGunu,_that.bsmvTutari,_that.dekontIslemTuru,_that.dekontBelgeNo,_that.hedefHesapKodu,_that.islemModulu,_that.masrafMuhKodu,_that.masrafTutari,_that.cariyiBorclandir,_that.hesapNo,_that.iban,_that.tcmbBankaKodu,_that.tcmbSubeKodu,_that.kalemler,_that.hedefCariKodu,_that.tahsilatBakiye,_that.odemeBakiye,_that.hedefHesapReferansKodu,_that.kaynakHesapReferansKodu,_that.taksitSayisi);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -361,6 +484,130 @@ as bool?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [DekontKalemler].
+extension DekontKalemlerPatterns on DekontKalemler {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DekontKalemler value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _DekontKalemler() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DekontKalemler value)  $default,){
+final _that = this;
+switch (_that) {
+case _DekontKalemler():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DekontKalemler value)?  $default,){
+final _that = this;
+switch (_that) {
+case _DekontKalemler() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? aciklama,  String? belgeNo,  String? ba,  int? dovizTipi,  double? dovizTutari,  String? exportRefno,  int? exportTipi,  String? hesapKodu,  String? hesapTipi,  String? plasiyerKodu,  String? projeKodu,  DateTime? tarih,  double? tutar,  int? depoKodu,  int? inckeyno,  String? seriNo,  int? dekontNo,  int? siraNo,  String? hesapTipiAciklama,  String? hesapAdi,  String? dovizAdi,  String? refkey,  String? plasiyerAciklama,  String? muhasebeHesapTipi, @JsonKey(includeToJson: false, includeFromJson: false)  String? kalemAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? plasiyerAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? projeAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? dovizTipiAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? exportAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? depoAdi,  String? cariKodu,  String? dekontIslemTuru,  String? dekontSeri,  String? guid,  String? hedefAciklama,  String? hedefCariKodu,  String? islemModulu,  String? tag,  int? vadeGunu,  bool? yeniKayit)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _DekontKalemler() when $default != null:
+return $default(_that.aciklama,_that.belgeNo,_that.ba,_that.dovizTipi,_that.dovizTutari,_that.exportRefno,_that.exportTipi,_that.hesapKodu,_that.hesapTipi,_that.plasiyerKodu,_that.projeKodu,_that.tarih,_that.tutar,_that.depoKodu,_that.inckeyno,_that.seriNo,_that.dekontNo,_that.siraNo,_that.hesapTipiAciklama,_that.hesapAdi,_that.dovizAdi,_that.refkey,_that.plasiyerAciklama,_that.muhasebeHesapTipi,_that.kalemAdi,_that.plasiyerAdi,_that.projeAdi,_that.dovizTipiAdi,_that.exportAdi,_that.depoAdi,_that.cariKodu,_that.dekontIslemTuru,_that.dekontSeri,_that.guid,_that.hedefAciklama,_that.hedefCariKodu,_that.islemModulu,_that.tag,_that.vadeGunu,_that.yeniKayit);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? aciklama,  String? belgeNo,  String? ba,  int? dovizTipi,  double? dovizTutari,  String? exportRefno,  int? exportTipi,  String? hesapKodu,  String? hesapTipi,  String? plasiyerKodu,  String? projeKodu,  DateTime? tarih,  double? tutar,  int? depoKodu,  int? inckeyno,  String? seriNo,  int? dekontNo,  int? siraNo,  String? hesapTipiAciklama,  String? hesapAdi,  String? dovizAdi,  String? refkey,  String? plasiyerAciklama,  String? muhasebeHesapTipi, @JsonKey(includeToJson: false, includeFromJson: false)  String? kalemAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? plasiyerAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? projeAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? dovizTipiAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? exportAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? depoAdi,  String? cariKodu,  String? dekontIslemTuru,  String? dekontSeri,  String? guid,  String? hedefAciklama,  String? hedefCariKodu,  String? islemModulu,  String? tag,  int? vadeGunu,  bool? yeniKayit)  $default,) {final _that = this;
+switch (_that) {
+case _DekontKalemler():
+return $default(_that.aciklama,_that.belgeNo,_that.ba,_that.dovizTipi,_that.dovizTutari,_that.exportRefno,_that.exportTipi,_that.hesapKodu,_that.hesapTipi,_that.plasiyerKodu,_that.projeKodu,_that.tarih,_that.tutar,_that.depoKodu,_that.inckeyno,_that.seriNo,_that.dekontNo,_that.siraNo,_that.hesapTipiAciklama,_that.hesapAdi,_that.dovizAdi,_that.refkey,_that.plasiyerAciklama,_that.muhasebeHesapTipi,_that.kalemAdi,_that.plasiyerAdi,_that.projeAdi,_that.dovizTipiAdi,_that.exportAdi,_that.depoAdi,_that.cariKodu,_that.dekontIslemTuru,_that.dekontSeri,_that.guid,_that.hedefAciklama,_that.hedefCariKodu,_that.islemModulu,_that.tag,_that.vadeGunu,_that.yeniKayit);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? aciklama,  String? belgeNo,  String? ba,  int? dovizTipi,  double? dovizTutari,  String? exportRefno,  int? exportTipi,  String? hesapKodu,  String? hesapTipi,  String? plasiyerKodu,  String? projeKodu,  DateTime? tarih,  double? tutar,  int? depoKodu,  int? inckeyno,  String? seriNo,  int? dekontNo,  int? siraNo,  String? hesapTipiAciklama,  String? hesapAdi,  String? dovizAdi,  String? refkey,  String? plasiyerAciklama,  String? muhasebeHesapTipi, @JsonKey(includeToJson: false, includeFromJson: false)  String? kalemAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? plasiyerAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? projeAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? dovizTipiAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? exportAdi, @JsonKey(includeToJson: false, includeFromJson: false)  String? depoAdi,  String? cariKodu,  String? dekontIslemTuru,  String? dekontSeri,  String? guid,  String? hedefAciklama,  String? hedefCariKodu,  String? islemModulu,  String? tag,  int? vadeGunu,  bool? yeniKayit)?  $default,) {final _that = this;
+switch (_that) {
+case _DekontKalemler() when $default != null:
+return $default(_that.aciklama,_that.belgeNo,_that.ba,_that.dovizTipi,_that.dovizTutari,_that.exportRefno,_that.exportTipi,_that.hesapKodu,_that.hesapTipi,_that.plasiyerKodu,_that.projeKodu,_that.tarih,_that.tutar,_that.depoKodu,_that.inckeyno,_that.seriNo,_that.dekontNo,_that.siraNo,_that.hesapTipiAciklama,_that.hesapAdi,_that.dovizAdi,_that.refkey,_that.plasiyerAciklama,_that.muhasebeHesapTipi,_that.kalemAdi,_that.plasiyerAdi,_that.projeAdi,_that.dovizTipiAdi,_that.exportAdi,_that.depoAdi,_that.cariKodu,_that.dekontIslemTuru,_that.dekontSeri,_that.guid,_that.hedefAciklama,_that.hedefCariKodu,_that.islemModulu,_that.tag,_that.vadeGunu,_that.yeniKayit);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

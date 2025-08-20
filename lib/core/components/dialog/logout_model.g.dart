@@ -12,6 +12,6 @@ LogoutModel _$LogoutModelFromJson(Map<String, dynamic> json) => LogoutModel()
 
 Map<String, dynamic> _$LogoutModelToJson(LogoutModel instance) =>
     <String, dynamic>{
-      if (instance.succes case final value?) 'Success': value,
-      if (instance.message case final value?) 'Message': value,
+      'Success': ?instance.succes,
+      'Message': ?instance.message,
     };

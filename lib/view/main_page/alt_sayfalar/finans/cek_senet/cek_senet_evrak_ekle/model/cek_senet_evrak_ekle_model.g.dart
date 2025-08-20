@@ -20,10 +20,10 @@ _CekSenetEvrakEkleModel _$CekSenetEvrakEkleModelFromJson(
 Map<String, dynamic> _$CekSenetEvrakEkleModelToJson(
   _CekSenetEvrakEkleModel instance,
 ) => <String, dynamic>{
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.base64Data case final value?) 'BASE64_DATA': value,
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.boyutByte case final value?) 'BOYUT_BYTE': value,
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+  'ACIKLAMA': ?instance.aciklama,
+  'BASE64_DATA': ?instance.base64Data,
+  'BELGE_NO': ?instance.belgeNo,
+  'BELGE_TIPI': ?instance.belgeTipi,
+  'BOYUT_BYTE': ?instance.boyutByte,
+  'ISLEM_KODU': ?instance.islemKodu,
 };

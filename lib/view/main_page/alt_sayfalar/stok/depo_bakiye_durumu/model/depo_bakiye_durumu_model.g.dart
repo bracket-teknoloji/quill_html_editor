@@ -23,13 +23,13 @@ _DepoBakiyeDurumuModel _$DepoBakiyeDurumuModelFromJson(
 Map<String, dynamic> _$DepoBakiyeDurumuModelToJson(
   _DepoBakiyeDurumuModel instance,
 ) => <String, dynamic>{
-  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.giris case final value?) 'GIRIS': value,
-  if (instance.cikis case final value?) 'CIKIS': value,
-  if (instance.bakiye case final value?) 'BAKIYE': value,
-  if (instance.subeAdi case final value?) 'SUBE_ADI': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.depoAdi case final value?) 'DEPO_ADI': value,
+  'SUBE_KODU': ?instance.subeKodu,
+  'DEPO_KODU': ?instance.depoKodu,
+  'STOK_KODU': ?instance.stokKodu,
+  'GIRIS': ?instance.giris,
+  'CIKIS': ?instance.cikis,
+  'BAKIYE': ?instance.bakiye,
+  'SUBE_ADI': ?instance.subeAdi,
+  'STOK_ADI': ?instance.stokAdi,
+  'DEPO_ADI': ?instance.depoAdi,
 };

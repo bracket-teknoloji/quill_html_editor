@@ -71,12 +71,13 @@ abstract class _$CariDetayModelCWProxy {
 
   CariDetayModel bakiyeList(List<BakiyeList>? bakiyeList);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariDetayModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `CariDetayModel(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// CariDetayModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   CariDetayModel call({
     String? cariKodu,
     String? cariAdi,
@@ -113,141 +114,143 @@ abstract class _$CariDetayModelCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfCariDetayModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfCariDetayModel.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfCariDetayModel.copyWith(...)` or call `instanceOfCariDetayModel.copyWith.fieldName(value)` for a single field.
 class _$CariDetayModelCWProxyImpl implements _$CariDetayModelCWProxy {
   const _$CariDetayModelCWProxyImpl(this._value);
 
   final CariDetayModel _value;
 
   @override
-  CariDetayModel cariKodu(String? cariKodu) => this(cariKodu: cariKodu);
+  CariDetayModel cariKodu(String? cariKodu) => call(cariKodu: cariKodu);
 
   @override
-  CariDetayModel cariAdi(String? cariAdi) => this(cariAdi: cariAdi);
+  CariDetayModel cariAdi(String? cariAdi) => call(cariAdi: cariAdi);
 
   @override
   CariDetayModel riskBorcToplami(double? riskBorcToplami) =>
-      this(riskBorcToplami: riskBorcToplami);
+      call(riskBorcToplami: riskBorcToplami);
 
   @override
   CariDetayModel riskAlacakToplami(double? riskAlacakToplami) =>
-      this(riskAlacakToplami: riskAlacakToplami);
+      call(riskAlacakToplami: riskAlacakToplami);
 
   @override
-  CariDetayModel riskBakiye(double? riskBakiye) => this(riskBakiye: riskBakiye);
+  CariDetayModel riskBakiye(double? riskBakiye) => call(riskBakiye: riskBakiye);
 
   @override
   CariDetayModel teminatRiski(double? teminatRiski) =>
-      this(teminatRiski: teminatRiski);
+      call(teminatRiski: teminatRiski);
 
   @override
   CariDetayModel cekAsilRiski(double? cekAsilRiski) =>
-      this(cekAsilRiski: cekAsilRiski);
+      call(cekAsilRiski: cekAsilRiski);
 
   @override
   CariDetayModel cekCiroRiski(double? cekCiroRiski) =>
-      this(cekCiroRiski: cekCiroRiski);
+      call(cekCiroRiski: cekCiroRiski);
 
   @override
   CariDetayModel senetAsilRiski(double? senetAsilRiski) =>
-      this(senetAsilRiski: senetAsilRiski);
+      call(senetAsilRiski: senetAsilRiski);
 
   @override
   CariDetayModel senetCiroRiski(double? senetCiroRiski) =>
-      this(senetCiroRiski: senetCiroRiski);
+      call(senetCiroRiski: senetCiroRiski);
 
   @override
   CariDetayModel irsaliyeRiski(double? irsaliyeRiski) =>
-      this(irsaliyeRiski: irsaliyeRiski);
+      call(irsaliyeRiski: irsaliyeRiski);
 
   @override
   CariDetayModel siparisRiski(double? siparisRiski) =>
-      this(siparisRiski: siparisRiski);
+      call(siparisRiski: siparisRiski);
 
   @override
-  CariDetayModel sevkRiski(double? sevkRiski) => this(sevkRiski: sevkRiski);
+  CariDetayModel sevkRiski(double? sevkRiski) => call(sevkRiski: sevkRiski);
 
   @override
   CariDetayModel yuklemeRiski(double? yuklemeRiski) =>
-      this(yuklemeRiski: yuklemeRiski);
+      call(yuklemeRiski: yuklemeRiski);
 
   @override
   CariDetayModel bilinmeyenRiskField(double? bilinmeyenRiskField) =>
-      this(bilinmeyenRiskField: bilinmeyenRiskField);
+      call(bilinmeyenRiskField: bilinmeyenRiskField);
 
   @override
   CariDetayModel brutRiskToplami(double? brutRiskToplami) =>
-      this(brutRiskToplami: brutRiskToplami);
+      call(brutRiskToplami: brutRiskToplami);
 
   @override
   CariDetayModel hareketBakiyeRiskO(double? hareketBakiyeRiskO) =>
-      this(hareketBakiyeRiskO: hareketBakiyeRiskO);
+      call(hareketBakiyeRiskO: hareketBakiyeRiskO);
 
   @override
   CariDetayModel teminatRiskO(double? teminatRiskO) =>
-      this(teminatRiskO: teminatRiskO);
+      call(teminatRiskO: teminatRiskO);
 
   @override
   CariDetayModel senetAsilRiskO(double? senetAsilRiskO) =>
-      this(senetAsilRiskO: senetAsilRiskO);
+      call(senetAsilRiskO: senetAsilRiskO);
 
   @override
   CariDetayModel senetCiroRiskO(double? senetCiroRiskO) =>
-      this(senetCiroRiskO: senetCiroRiskO);
+      call(senetCiroRiskO: senetCiroRiskO);
 
   @override
   CariDetayModel cekAsilRiskO(double? cekAsilRiskO) =>
-      this(cekAsilRiskO: cekAsilRiskO);
+      call(cekAsilRiskO: cekAsilRiskO);
 
   @override
   CariDetayModel cekCiroRiskO(double? cekCiroRiskO) =>
-      this(cekCiroRiskO: cekCiroRiskO);
+      call(cekCiroRiskO: cekCiroRiskO);
 
   @override
   CariDetayModel siparisRiskO(double? siparisRiskO) =>
-      this(siparisRiskO: siparisRiskO);
+      call(siparisRiskO: siparisRiskO);
 
   @override
-  CariDetayModel sevkRiskO(double? sevkRiskO) => this(sevkRiskO: sevkRiskO);
+  CariDetayModel sevkRiskO(double? sevkRiskO) => call(sevkRiskO: sevkRiskO);
 
   @override
   CariDetayModel yuklemeRiskO(double? yuklemeRiskO) =>
-      this(yuklemeRiskO: yuklemeRiskO);
+      call(yuklemeRiskO: yuklemeRiskO);
 
   @override
   CariDetayModel irsaliyeRiskO(double? irsaliyeRiskO) =>
-      this(irsaliyeRiskO: irsaliyeRiskO);
+      call(irsaliyeRiskO: irsaliyeRiskO);
 
   @override
-  CariDetayModel riskLimiti(double? riskLimiti) => this(riskLimiti: riskLimiti);
+  CariDetayModel riskLimiti(double? riskLimiti) => call(riskLimiti: riskLimiti);
 
   @override
   CariDetayModel teminatTutari(double? teminatTutari) =>
-      this(teminatTutari: teminatTutari);
+      call(teminatTutari: teminatTutari);
 
   @override
   CariDetayModel irtibatList(List<IrtibatList>? irtibatList) =>
-      this(irtibatList: irtibatList);
+      call(irtibatList: irtibatList);
 
   @override
   CariDetayModel bankaList(List<BankaList>? bankaList) =>
-      this(bankaList: bankaList);
+      call(bankaList: bankaList);
 
   @override
   CariDetayModel cariList(List<CariListesiModel>? cariList) =>
-      this(cariList: cariList);
+      call(cariList: cariList);
 
   @override
   CariDetayModel bakiyeList(List<BakiyeList>? bakiyeList) =>
-      this(bakiyeList: bakiyeList);
+      call(bakiyeList: bakiyeList);
 
   @override
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariDetayModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `CariDetayModel(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// CariDetayModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   CariDetayModel call({
     Object? cariKodu = const $CopyWithPlaceholder(),
     Object? cariAdi = const $CopyWithPlaceholder(),
@@ -416,7 +419,8 @@ class _$CariDetayModelCWProxyImpl implements _$CariDetayModelCWProxy {
 }
 
 extension $CariDetayModelCopyWith on CariDetayModel {
-  /// Returns a callable class that can be used as follows: `instanceOfCariDetayModel.copyWith(...)` or like so:`instanceOfCariDetayModel.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfCariDetayModel.copyWith(...)` or `instanceOfCariDetayModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$CariDetayModelCWProxy get copyWith => _$CariDetayModelCWProxyImpl(this);
 }
@@ -469,49 +473,41 @@ CariDetayModel _$CariDetayModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$CariDetayModelToJson(
-  CariDetayModel instance,
-) => <String, dynamic>{
-  if (instance.cariKodu case final value?) 'CARI_KODU': value,
-  if (instance.cariAdi case final value?) 'CARI_ADI': value,
-  if (instance.riskBorcToplami case final value?) 'RISK_BORC_TOPLAMI': value,
-  if (instance.riskAlacakToplami case final value?)
-    'RISK_ALACAK_TOPLAMI': value,
-  if (instance.riskBakiye case final value?) 'RISK_BAKIYE': value,
-  if (instance.teminatRiski case final value?) 'TEMINAT_RISKI': value,
-  if (instance.cekAsilRiski case final value?) 'CEK_ASIL_RISKI': value,
-  if (instance.cekCiroRiski case final value?) 'CEK_CIRO_RISKI': value,
-  if (instance.senetAsilRiski case final value?) 'SENET_ASIL_RISKI': value,
-  if (instance.senetCiroRiski case final value?) 'SENET_CIRO_RISKI': value,
-  if (instance.irsaliyeRiski case final value?) 'IRSALIYE_RISKI': value,
-  if (instance.siparisRiski case final value?) 'SIPARIS_RISKI': value,
-  if (instance.sevkRiski case final value?) 'SEVK_RISKI': value,
-  if (instance.yuklemeRiski case final value?) 'YUKLEME_RISKI': value,
-  if (instance.bilinmeyenRiskField case final value?)
-    'BILINMEYEN_RISK_FIELD': value,
-  if (instance.brutRiskToplami case final value?) 'BRUT_RISK_TOPLAMI': value,
-  if (instance.hareketBakiyeRiskO case final value?)
-    'HAREKET_BAKIYE_RISK_O': value,
-  if (instance.teminatRiskO case final value?) 'TEMINAT_RISK_O': value,
-  if (instance.senetAsilRiskO case final value?) 'SENET_ASIL_RISK_O': value,
-  if (instance.senetCiroRiskO case final value?) 'SENET_CIRO_RISK_O': value,
-  if (instance.cekAsilRiskO case final value?) 'CEK_ASIL_RISK_O': value,
-  if (instance.cekCiroRiskO case final value?) 'CEK_CIRO_RISK_O': value,
-  if (instance.siparisRiskO case final value?) 'SIPARIS_RISK_O': value,
-  if (instance.sevkRiskO case final value?) 'SEVK_RISK_O': value,
-  if (instance.yuklemeRiskO case final value?) 'YUKLEME_RISK_O': value,
-  if (instance.irsaliyeRiskO case final value?) 'IRSALIYE_RISK_O': value,
-  if (instance.riskLimiti case final value?) 'RISK_LIMITI': value,
-  if (instance.teminatTutari case final value?) 'TEMINAT_TUTARI': value,
-  if (instance.irtibatList?.map((e) => e.toJson()).toList() case final value?)
-    'IrtibatList': value,
-  if (instance.bankaList?.map((e) => e.toJson()).toList() case final value?)
-    'BankaList': value,
-  if (instance.cariList?.map((e) => e.toJson()).toList() case final value?)
-    'CariList': value,
-  if (instance.bakiyeList?.map((e) => e.toJson()).toList() case final value?)
-    'BakiyeList': value,
-};
+Map<String, dynamic> _$CariDetayModelToJson(CariDetayModel instance) =>
+    <String, dynamic>{
+      'CARI_KODU': ?instance.cariKodu,
+      'CARI_ADI': ?instance.cariAdi,
+      'RISK_BORC_TOPLAMI': ?instance.riskBorcToplami,
+      'RISK_ALACAK_TOPLAMI': ?instance.riskAlacakToplami,
+      'RISK_BAKIYE': ?instance.riskBakiye,
+      'TEMINAT_RISKI': ?instance.teminatRiski,
+      'CEK_ASIL_RISKI': ?instance.cekAsilRiski,
+      'CEK_CIRO_RISKI': ?instance.cekCiroRiski,
+      'SENET_ASIL_RISKI': ?instance.senetAsilRiski,
+      'SENET_CIRO_RISKI': ?instance.senetCiroRiski,
+      'IRSALIYE_RISKI': ?instance.irsaliyeRiski,
+      'SIPARIS_RISKI': ?instance.siparisRiski,
+      'SEVK_RISKI': ?instance.sevkRiski,
+      'YUKLEME_RISKI': ?instance.yuklemeRiski,
+      'BILINMEYEN_RISK_FIELD': ?instance.bilinmeyenRiskField,
+      'BRUT_RISK_TOPLAMI': ?instance.brutRiskToplami,
+      'HAREKET_BAKIYE_RISK_O': ?instance.hareketBakiyeRiskO,
+      'TEMINAT_RISK_O': ?instance.teminatRiskO,
+      'SENET_ASIL_RISK_O': ?instance.senetAsilRiskO,
+      'SENET_CIRO_RISK_O': ?instance.senetCiroRiskO,
+      'CEK_ASIL_RISK_O': ?instance.cekAsilRiskO,
+      'CEK_CIRO_RISK_O': ?instance.cekCiroRiskO,
+      'SIPARIS_RISK_O': ?instance.siparisRiskO,
+      'SEVK_RISK_O': ?instance.sevkRiskO,
+      'YUKLEME_RISK_O': ?instance.yuklemeRiskO,
+      'IRSALIYE_RISK_O': ?instance.irsaliyeRiskO,
+      'RISK_LIMITI': ?instance.riskLimiti,
+      'TEMINAT_TUTARI': ?instance.teminatTutari,
+      'IrtibatList': ?instance.irtibatList?.map((e) => e.toJson()).toList(),
+      'BankaList': ?instance.bankaList?.map((e) => e.toJson()).toList(),
+      'CariList': ?instance.cariList?.map((e) => e.toJson()).toList(),
+      'BakiyeList': ?instance.bakiyeList?.map((e) => e.toJson()).toList(),
+    };
 
 BakiyeList _$BakiyeListFromJson(Map<String, dynamic> json) => BakiyeList()
   ..cariKodu = json['CARI_KODU'] as String?
@@ -523,12 +519,12 @@ BakiyeList _$BakiyeListFromJson(Map<String, dynamic> json) => BakiyeList()
 
 Map<String, dynamic> _$BakiyeListToJson(BakiyeList instance) =>
     <String, dynamic>{
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
-      if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      'CARI_KODU': ?instance.cariKodu,
+      'DOVIZ_TIPI': ?instance.dovizTipi,
+      'BORC_TOPLAMI': ?instance.borcToplami,
+      'ALACAK_TOPLAMI': ?instance.alacakToplami,
+      'BAKIYE': ?instance.bakiye,
+      'DOVIZ_ADI': ?instance.dovizAdi,
     };
 
 BankaList _$BankaListFromJson(Map<String, dynamic> json) => BankaList()
@@ -546,18 +542,18 @@ BankaList _$BankaListFromJson(Map<String, dynamic> json) => BankaList()
   ..bakiye = (json['BAKIYE'] as num?)?.toDouble();
 
 Map<String, dynamic> _$BankaListToJson(BankaList instance) => <String, dynamic>{
-  if (instance.cariKodu case final value?) 'CARI_KODU': value,
-  if (instance.ibanno case final value?) 'IBANNO': value,
-  if (instance.bankakodu case final value?) 'BANKAKODU': value,
-  if (instance.subekodu case final value?) 'SUBEKODU': value,
-  if (instance.bankahesno case final value?) 'BANKAHESNO': value,
-  if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
-  if (instance.subeAdi case final value?) 'SUBE_ADI': value,
-  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-  if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
-  if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
-  if (instance.bakiye case final value?) 'BAKIYE': value,
+  'CARI_KODU': ?instance.cariKodu,
+  'IBANNO': ?instance.ibanno,
+  'BANKAKODU': ?instance.bankakodu,
+  'SUBEKODU': ?instance.subekodu,
+  'BANKAHESNO': ?instance.bankahesno,
+  'BANKA_ADI': ?instance.bankaAdi,
+  'SUBE_ADI': ?instance.subeAdi,
+  'DOVIZ_TIPI': ?instance.dovizTipi,
+  'DOVIZ_ADI': ?instance.dovizAdi,
+  'BORC_TOPLAMI': ?instance.borcToplami,
+  'ALACAK_TOPLAMI': ?instance.alacakToplami,
+  'BAKIYE': ?instance.bakiye,
 };
 
 IrtibatList _$IrtibatListFromJson(Map<String, dynamic> json) => IrtibatList()
@@ -570,10 +566,10 @@ IrtibatList _$IrtibatListFromJson(Map<String, dynamic> json) => IrtibatList()
 
 Map<String, dynamic> _$IrtibatListToJson(IrtibatList instance) =>
     <String, dynamic>{
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.yetkiliKisi case final value?) 'YETKILI_KISI': value,
-      if (instance.gorev case final value?) 'GOREV': value,
-      if (instance.sabitTel1 case final value?) 'SABIT_TEL1': value,
-      if (instance.emailSplit case final value?) 'EMAIL_SPLIT': value,
-      if (instance.aktif case final value?) 'AKTIF': value,
+      'CARI_KODU': ?instance.cariKodu,
+      'YETKILI_KISI': ?instance.yetkiliKisi,
+      'GOREV': ?instance.gorev,
+      'SABIT_TEL1': ?instance.sabitTel1,
+      'EMAIL_SPLIT': ?instance.emailSplit,
+      'AKTIF': ?instance.aktif,
     };

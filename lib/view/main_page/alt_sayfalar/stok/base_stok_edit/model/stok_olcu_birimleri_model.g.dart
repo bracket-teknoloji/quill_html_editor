@@ -15,6 +15,6 @@ StokOlcuBirimleriModel _$StokOlcuBirimleriModelFromJson(
 Map<String, dynamic> _$StokOlcuBirimleriModelToJson(
   StokOlcuBirimleriModel instance,
 ) => <String, dynamic>{
-  if (instance.birimNo case final value?) 'BIRIM_NO': value,
-  if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+  'BIRIM_NO': ?instance.birimNo,
+  'OLCU_BIRIMI': ?instance.olcuBirimi,
 };

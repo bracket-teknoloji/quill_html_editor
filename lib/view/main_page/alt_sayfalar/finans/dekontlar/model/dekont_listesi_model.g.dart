@@ -21,11 +21,11 @@ _DekontListesiModel _$DekontListesiModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$DekontListesiModelToJson(_DekontListesiModel instance) =>
     <String, dynamic>{
-      if (instance.inckeyno case final value?) 'INCKEYNO': value,
-      if (instance.seri case final value?) 'SERI': value,
-      if (instance.dekontNo case final value?) 'DEKONT_NO': value,
-      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-      if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
-      if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
-      if (instance.seriAdi case final value?) 'SERI_ADI': value,
+      'INCKEYNO': ?instance.inckeyno,
+      'SERI': ?instance.seri,
+      'DEKONT_NO': ?instance.dekontNo,
+      'TARIH': ?instance.tarih?.toIso8601String(),
+      'KALEM_SAYISI': ?instance.kalemSayisi,
+      'BORC_TOPLAMI': ?instance.borcToplami,
+      'SERI_ADI': ?instance.seriAdi,
     };

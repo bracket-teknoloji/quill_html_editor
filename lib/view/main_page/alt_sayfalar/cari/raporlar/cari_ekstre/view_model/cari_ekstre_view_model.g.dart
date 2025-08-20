@@ -105,6 +105,18 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
   }
 
   @override
+  void changePlasiyerKirilimi(bool value) {
+    final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
+      name: '_CariEkstreViewModelBase.changePlasiyerKirilimi',
+    );
+    try {
+      return super.changePlasiyerKirilimi(value);
+    } finally {
+      _$_CariEkstreViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setFuture() {
     final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
       name: '_CariEkstreViewModelBase.setFuture',

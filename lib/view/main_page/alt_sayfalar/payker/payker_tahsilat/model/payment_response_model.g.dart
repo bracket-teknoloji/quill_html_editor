@@ -24,13 +24,12 @@ PaymentResponseModel _$PaymentResponseModelFromJson(
 Map<String, dynamic> _$PaymentResponseModelToJson(
   PaymentResponseModel instance,
 ) => <String, dynamic>{
-  if (instance.status case final value?) 'Status': value,
-  if (instance.message case final value?) 'Message': value,
-  if (instance.errorCode case final value?) 'ErrorCode': value,
-  if (instance.orderNumber case final value?) 'OrderNumber': value,
-  if (instance.transactionId case final value?) 'TransactionId': value,
-  if (instance.privateResponse?.toJson() case final value?)
-    'PrivateResponse': value,
+  'Status': ?instance.status,
+  'Message': ?instance.message,
+  'ErrorCode': ?instance.errorCode,
+  'OrderNumber': ?instance.orderNumber,
+  'TransactionId': ?instance.transactionId,
+  'PrivateResponse': ?instance.privateResponse?.toJson(),
 };
 
 _PrivateResponse _$PrivateResponseFromJson(Map<String, dynamic> json) =>
@@ -42,14 +41,12 @@ _PrivateResponse _$PrivateResponseFromJson(Map<String, dynamic> json) =>
       messageErrorCode: json['MessageErrorCode'] as String?,
     );
 
-Map<String, dynamic> _$PrivateResponseToJson(
-  _PrivateResponse instance,
-) => <String, dynamic>{
-  if (instance.message?.toJson() case final value?) 'Message': value,
-  if (instance.verifyEnrollmentRequestId case final value?)
-    'VerifyEnrollmentRequestId': value,
-  if (instance.messageErrorCode case final value?) 'MessageErrorCode': value,
-};
+Map<String, dynamic> _$PrivateResponseToJson(_PrivateResponse instance) =>
+    <String, dynamic>{
+      'Message': ?instance.message?.toJson(),
+      'VerifyEnrollmentRequestId': ?instance.verifyEnrollmentRequestId,
+      'MessageErrorCode': ?instance.messageErrorCode,
+    };
 
 _Message _$MessageFromJson(Map<String, dynamic> json) => _Message(
   veRes: json['VERes'] == null
@@ -58,7 +55,7 @@ _Message _$MessageFromJson(Map<String, dynamic> json) => _Message(
 );
 
 Map<String, dynamic> _$MessageToJson(_Message instance) => <String, dynamic>{
-  if (instance.veRes?.toJson() case final value?) 'VERes': value,
+  'VERes': ?instance.veRes?.toJson(),
 };
 
 _VeRes _$VeResFromJson(Map<String, dynamic> json) => _VeRes(
@@ -72,11 +69,11 @@ _VeRes _$VeResFromJson(Map<String, dynamic> json) => _VeRes(
 );
 
 Map<String, dynamic> _$VeResToJson(_VeRes instance) => <String, dynamic>{
-  if (instance.version case final value?) 'Version': value,
-  if (instance.status case final value?) 'Status': value,
-  if (instance.paReq case final value?) 'PaReq': value,
-  if (instance.acsUrl case final value?) 'ACSUrl': value,
-  if (instance.termUrl case final value?) 'TermUrl': value,
-  if (instance.md case final value?) 'MD': value,
-  if (instance.actualbrand case final value?) 'ACTUALBRAND': value,
+  'Version': ?instance.version,
+  'Status': ?instance.status,
+  'PaReq': ?instance.paReq,
+  'ACSUrl': ?instance.acsUrl,
+  'TermUrl': ?instance.termUrl,
+  'MD': ?instance.md,
+  'ACTUALBRAND': ?instance.actualbrand,
 };

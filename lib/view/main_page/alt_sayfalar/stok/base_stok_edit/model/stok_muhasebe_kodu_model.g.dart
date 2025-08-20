@@ -21,12 +21,12 @@ StokMuhasebeKoduModel _$StokMuhasebeKoduModelFromJson(
 Map<String, dynamic> _$StokMuhasebeKoduModelToJson(
   StokMuhasebeKoduModel instance,
 ) => <String, dynamic>{
-  if (instance.muhKodu case final value?) 'MUH_KODU': value,
-  if (instance.adi case final value?) 'ADI': value,
-  if (instance.alisHesabi case final value?) 'ALIS_HESABI': value,
-  if (instance.satisHesabi case final value?) 'SATIS_HESABI': value,
-  if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
-  if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
-  if (instance.agm case final value?) 'AGM': value,
-  if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
+  'MUH_KODU': ?instance.muhKodu,
+  'ADI': ?instance.adi,
+  'ALIS_HESABI': ?instance.alisHesabi,
+  'SATIS_HESABI': ?instance.satisHesabi,
+  'HESAP_KODU': ?instance.hesapKodu,
+  'HESAP_ADI': ?instance.hesapAdi,
+  'AGM': ?instance.agm,
+  'HESAP_TIPI': ?instance.hesapTipi,
 };

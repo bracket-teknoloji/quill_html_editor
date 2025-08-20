@@ -60,8 +60,8 @@ SirketModel _$SirketModelFromJson(Map<String, dynamic> json) => SirketModel()
 
 Map<String, dynamic> _$SirketModelToJson(SirketModel instance) =>
     <String, dynamic>{
-      if (instance.sirket case final value?) 'SIRKET': value,
-      if (instance.devsirket case final value?) 'DEVSIRKET': value,
-      if (instance.yil case final value?) 'YIL': value,
-      if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
+      'SIRKET': ?instance.sirket,
+      'DEVSIRKET': ?instance.devsirket,
+      'YIL': ?instance.yil,
+      'isDevredilmis': ?instance.isDevredilmis,
     };

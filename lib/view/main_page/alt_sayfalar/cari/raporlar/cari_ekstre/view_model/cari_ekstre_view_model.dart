@@ -31,6 +31,10 @@ abstract class _CariEkstreViewModelBase with Store {
   @action
   void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
 
+  @action
+  void changePlasiyerKirilimi(bool value) =>
+      pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(plasiyerKirilimi: value ? "E" : "H"));
+
   //* Future
   //*
   @observable

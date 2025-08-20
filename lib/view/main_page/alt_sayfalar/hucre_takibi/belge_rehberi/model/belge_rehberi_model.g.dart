@@ -22,12 +22,12 @@ _BelgeRehberiModel _$BelgeRehberiModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BelgeRehberiModelToJson(_BelgeRehberiModel instance) =>
     <String, dynamic>{
-      if (instance.belgeNo case final value?) 'BELGE_NO': value,
-      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.cariAdi case final value?) 'CARI_ADI': value,
-      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
-      if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
+      'BELGE_NO': ?instance.belgeNo,
+      'BELGE_TIPI': ?instance.belgeTipi,
+      'CARI_KODU': ?instance.cariKodu,
+      'CARI_ADI': ?instance.cariAdi,
+      'TARIH': ?instance.tarih?.toIso8601String(),
+      'DEPO_KODU': ?instance.depoKodu,
+      'DEPO_TANIMI': ?instance.depoTanimi,
+      'KALEM_SAYISI': ?instance.kalemSayisi,
     };

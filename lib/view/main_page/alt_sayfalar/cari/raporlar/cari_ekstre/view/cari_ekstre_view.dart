@@ -116,6 +116,14 @@ final class _CariEkstreViewState extends BaseState<CariEkstreView> {
             },
           ),
           Observer(
+            builder: (_) => SwitchListTile.adaptive(
+              value: viewModel.pdfModel.dicParams?.plasiyerKirilimi == "E",
+              onChanged: (value) => viewModel.changePlasiyerKirilimi(value),
+              title: const Text("Plasiyer Kırılımı Yapılsın"),
+            ),
+          ),
+
+          Observer(
             builder: (_) => ElevatedButton(
               onPressed: () {
                 if (viewModel.pdfModel.dicParams?.cariKodu == null || viewModel.pdfModel.dicParams?.dovizTipi == null) {

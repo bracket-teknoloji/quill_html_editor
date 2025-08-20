@@ -17,7 +17,7 @@ _HucreHareketleriRequestModel _$HucreHareketleriRequestModelFromJson(
 Map<String, dynamic> _$HucreHareketleriRequestModelToJson(
   _HucreHareketleriRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.ekranTipi case final value?) 'EkranTipi': value,
-  if (instance.filtreKodu case final value?) 'FiltreKodu': value,
-  if (instance.stokKodu case final value?) 'StokKodu': value,
+  'EkranTipi': ?instance.ekranTipi,
+  'FiltreKodu': ?instance.filtreKodu,
+  'StokKodu': ?instance.stokKodu,
 };

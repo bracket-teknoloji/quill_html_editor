@@ -19,12 +19,12 @@ FiyatGorModel _$FiyatGorModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$FiyatGorModelToJson(FiyatGorModel instance) =>
     <String, dynamic>{
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.aS case final value?) 'A_S': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.fiyat1 case final value?) 'FIYAT1': value,
-      if (instance.fiyat2 case final value?) 'FIYAT2': value,
-      if (instance.fiyat3 case final value?) 'FIYAT3': value,
-      if (instance.fiyat4 case final value?) 'FIYAT4': value,
-      if (instance.kdvOrani case final value?) 'KDV_ORANI': value,
+      'STOK_KODU': ?instance.stokKodu,
+      'A_S': ?instance.aS,
+      'DOVIZ_TIPI': ?instance.dovizTipi,
+      'FIYAT1': ?instance.fiyat1,
+      'FIYAT2': ?instance.fiyat2,
+      'FIYAT3': ?instance.fiyat3,
+      'FIYAT4': ?instance.fiyat4,
+      'KDV_ORANI': ?instance.kdvOrani,
     };

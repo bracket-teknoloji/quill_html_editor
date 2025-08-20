@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -88,6 +87,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [SeriList].
+extension SeriListPatterns on SeriList {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SeriList value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SeriList() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SeriList value)  $default,){
+final _that = this;
+switch (_that) {
+case _SeriList():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SeriList value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SeriList() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  String? stokKodu, @HiveField(1)  int? depoKodu, @HiveField(2)  double? miktar, @HiveField(3)  String? seriNo, @HiveField(4)  int? inckeyno, @HiveField(5)  String? depoTanimi, @HiveField(6)  int? hareketId, @HiveField(7)  String? barkod, @HiveField(8)  String? gckod, @HiveField(9)  String? seri1, @HiveField(10)  int? requestVersion, @HiveField(11)  String? tempBarkod, @HiveField(12)  String? seri2, @HiveField(13)  String? seri3, @HiveField(14)  String? seri4, @HiveField(15)  String? acik1, @HiveField(16)  String? acik2, @HiveField(17)  String? acik3, @HiveField(18)  String? acik4, @HiveField(19)  DateTime? sonKullanmaTarihi, @HiveField(20)  String? stokAdi, @HiveField(21)  String? hucreKodu, @HiveField(22)  DateTime? tarih, @HiveField(23)  int? refId, @HiveField(24)  String? aciklama1)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SeriList() when $default != null:
+return $default(_that.stokKodu,_that.depoKodu,_that.miktar,_that.seriNo,_that.inckeyno,_that.depoTanimi,_that.hareketId,_that.barkod,_that.gckod,_that.seri1,_that.requestVersion,_that.tempBarkod,_that.seri2,_that.seri3,_that.seri4,_that.acik1,_that.acik2,_that.acik3,_that.acik4,_that.sonKullanmaTarihi,_that.stokAdi,_that.hucreKodu,_that.tarih,_that.refId,_that.aciklama1);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  String? stokKodu, @HiveField(1)  int? depoKodu, @HiveField(2)  double? miktar, @HiveField(3)  String? seriNo, @HiveField(4)  int? inckeyno, @HiveField(5)  String? depoTanimi, @HiveField(6)  int? hareketId, @HiveField(7)  String? barkod, @HiveField(8)  String? gckod, @HiveField(9)  String? seri1, @HiveField(10)  int? requestVersion, @HiveField(11)  String? tempBarkod, @HiveField(12)  String? seri2, @HiveField(13)  String? seri3, @HiveField(14)  String? seri4, @HiveField(15)  String? acik1, @HiveField(16)  String? acik2, @HiveField(17)  String? acik3, @HiveField(18)  String? acik4, @HiveField(19)  DateTime? sonKullanmaTarihi, @HiveField(20)  String? stokAdi, @HiveField(21)  String? hucreKodu, @HiveField(22)  DateTime? tarih, @HiveField(23)  int? refId, @HiveField(24)  String? aciklama1)  $default,) {final _that = this;
+switch (_that) {
+case _SeriList():
+return $default(_that.stokKodu,_that.depoKodu,_that.miktar,_that.seriNo,_that.inckeyno,_that.depoTanimi,_that.hareketId,_that.barkod,_that.gckod,_that.seri1,_that.requestVersion,_that.tempBarkod,_that.seri2,_that.seri3,_that.seri4,_that.acik1,_that.acik2,_that.acik3,_that.acik4,_that.sonKullanmaTarihi,_that.stokAdi,_that.hucreKodu,_that.tarih,_that.refId,_that.aciklama1);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  String? stokKodu, @HiveField(1)  int? depoKodu, @HiveField(2)  double? miktar, @HiveField(3)  String? seriNo, @HiveField(4)  int? inckeyno, @HiveField(5)  String? depoTanimi, @HiveField(6)  int? hareketId, @HiveField(7)  String? barkod, @HiveField(8)  String? gckod, @HiveField(9)  String? seri1, @HiveField(10)  int? requestVersion, @HiveField(11)  String? tempBarkod, @HiveField(12)  String? seri2, @HiveField(13)  String? seri3, @HiveField(14)  String? seri4, @HiveField(15)  String? acik1, @HiveField(16)  String? acik2, @HiveField(17)  String? acik3, @HiveField(18)  String? acik4, @HiveField(19)  DateTime? sonKullanmaTarihi, @HiveField(20)  String? stokAdi, @HiveField(21)  String? hucreKodu, @HiveField(22)  DateTime? tarih, @HiveField(23)  int? refId, @HiveField(24)  String? aciklama1)?  $default,) {final _that = this;
+switch (_that) {
+case _SeriList() when $default != null:
+return $default(_that.stokKodu,_that.depoKodu,_that.miktar,_that.seriNo,_that.inckeyno,_that.depoTanimi,_that.hareketId,_that.barkod,_that.gckod,_that.seri1,_that.requestVersion,_that.tempBarkod,_that.seri2,_that.seri3,_that.seri4,_that.acik1,_that.acik2,_that.acik3,_that.acik4,_that.sonKullanmaTarihi,_that.stokAdi,_that.hucreKodu,_that.tarih,_that.refId,_that.aciklama1);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

@@ -17,7 +17,7 @@ _EvraklarRequestModel _$EvraklarRequestModelFromJson(
 Map<String, dynamic> _$EvraklarRequestModelToJson(
   _EvraklarRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.belgeTipi case final value?) 'BelgeTipi': value,
-  if (instance.urlGetir case final value?) 'UrlGetir': value,
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
+  'BelgeTipi': ?instance.belgeTipi,
+  'UrlGetir': ?instance.urlGetir,
+  'BelgeNo': ?instance.belgeNo,
 };

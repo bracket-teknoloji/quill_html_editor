@@ -26,21 +26,17 @@ _PaykerFilterModel _$PaykerFilterModelFromJson(Map<String, dynamic> json) =>
       sortOrder: json['SortOrder'] as String?,
     );
 
-Map<String, dynamic> _$PaykerFilterModelToJson(
-  _PaykerFilterModel instance,
-) => <String, dynamic>{
-  if (instance.filterModels?.map((e) => e.toJson()).toList() case final value?)
-    'FilterModels': value,
-  if (instance.draw case final value?) 'Draw': value,
-  if (instance.columns?.map((e) => e.toJson()).toList() case final value?)
-    'Columns': value,
-  if (instance.order?.map((e) => e.toJson()).toList() case final value?)
-    'Order': value,
-  if (instance.start case final value?) 'Start': value,
-  if (instance.length case final value?) 'Length': value,
-  if (instance.search?.toJson() case final value?) 'Search': value,
-  if (instance.sortOrder case final value?) 'SortOrder': value,
-};
+Map<String, dynamic> _$PaykerFilterModelToJson(_PaykerFilterModel instance) =>
+    <String, dynamic>{
+      'FilterModels': ?instance.filterModels?.map((e) => e.toJson()).toList(),
+      'Draw': ?instance.draw,
+      'Columns': ?instance.columns?.map((e) => e.toJson()).toList(),
+      'Order': ?instance.order?.map((e) => e.toJson()).toList(),
+      'Start': ?instance.start,
+      'Length': ?instance.length,
+      'Search': ?instance.search?.toJson(),
+      'SortOrder': ?instance.sortOrder,
+    };
 
 _PaykerColumn _$PaykerColumnFromJson(Map<String, dynamic> json) =>
     _PaykerColumn(
@@ -52,10 +48,10 @@ _PaykerColumn _$PaykerColumnFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PaykerColumnToJson(_PaykerColumn instance) =>
     <String, dynamic>{
-      if (instance.data case final value?) 'Data': value,
-      if (instance.name case final value?) 'Name': value,
-      if (instance.searchable case final value?) 'Searchable': value,
-      if (instance.orderable case final value?) 'Orderable': value,
+      'Data': ?instance.data,
+      'Name': ?instance.name,
+      'Searchable': ?instance.searchable,
+      'Orderable': ?instance.orderable,
     };
 
 _FilterModel _$FilterModelFromJson(Map<String, dynamic> json) => _FilterModel(
@@ -66,9 +62,9 @@ _FilterModel _$FilterModelFromJson(Map<String, dynamic> json) => _FilterModel(
 
 Map<String, dynamic> _$FilterModelToJson(_FilterModel instance) =>
     <String, dynamic>{
-      if (instance.type case final value?) 'Type': value,
-      if (instance.name case final value?) 'Name': value,
-      if (instance.value case final value?) 'Value': value,
+      'Type': ?instance.type,
+      'Name': ?instance.name,
+      'Value': ?instance.value,
     };
 
 _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
@@ -78,14 +74,14 @@ _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
 );
 
 Map<String, dynamic> _$OrderToJson(_Order instance) => <String, dynamic>{
-  if (instance.column case final value?) 'Column': value,
-  if (instance.dir case final value?) 'Dir': value,
+  'Column': ?instance.column,
+  'Dir': ?instance.dir,
 };
 
 _Search _$SearchFromJson(Map<String, dynamic> json) =>
     _Search(value: json['Value'], regex: json['Regex'] as bool?);
 
 Map<String, dynamic> _$SearchToJson(_Search instance) => <String, dynamic>{
-  if (instance.value case final value?) 'Value': value,
-  if (instance.regex case final value?) 'Regex': value,
+  'Value': ?instance.value,
+  'Regex': ?instance.regex,
 };

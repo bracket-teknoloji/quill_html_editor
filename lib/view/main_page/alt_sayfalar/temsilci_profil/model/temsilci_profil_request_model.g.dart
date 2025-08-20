@@ -20,10 +20,10 @@ TemsilciProfilRequestModel _$TemsilciProfilRequestModelFromJson(
 Map<String, dynamic> _$TemsilciProfilRequestModelToJson(
   TemsilciProfilRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.cariKodu case final value?) 'CariKodu': value,
-  if (instance.donemTipi case final value?) 'DonemTipi': value,
-  if (instance.satisIrsDahil case final value?) 'SATIS_IRS_DAHIL': value,
-  if (instance.cariVKN case final value?) 'CariVKN': value,
-  if (instance.kdvDahil case final value?) 'KDVDahil': value,
-  if (instance.iadeDurumu case final value?) 'IadeDurumu': value,
+  'CariKodu': ?instance.cariKodu,
+  'DonemTipi': ?instance.donemTipi,
+  'SATIS_IRS_DAHIL': ?instance.satisIrsDahil,
+  'CariVKN': ?instance.cariVKN,
+  'KDVDahil': ?instance.kdvDahil,
+  'IadeDurumu': ?instance.iadeDurumu,
 };

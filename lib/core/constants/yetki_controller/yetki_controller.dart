@@ -136,7 +136,7 @@ final class YetkiController {
   bool get genelDovizSil => _isTrue(_profilYetkiModel?.genelDovizKurlariSil);
   bool muhRefSorulsun(EditTipiEnum? editTipi) {
     if (editTipi.talepTeklifMi) {
-      return taltekMuhRefSorulsun;
+      return taltekMuhRefSorulsun(editTipi);
     } else if (editTipi?.satisMi == true) {
       return satisMuhRefSorulsun;
     } else {
@@ -161,8 +161,8 @@ final class YetkiController {
 
   bool get satisMuhRefSorulsun => _isTrue(_paramModel?.satisMuhRefKodSorulsun, skipAdmin: true);
   bool get alisMuhRefSorulsun => _isTrue(_paramModel?.alisMuhRefKodSorulsun, skipAdmin: true);
-  bool get taltekMuhRefSorulsun =>
-      _isTrue(_paramModel?.talTekParam?.firstOrNull?.muhrefkodSorulsun == "E", skipAdmin: true);
+  bool taltekMuhRefSorulsun(EditTipiEnum? editTipi) =>
+      _isTrue(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == editTipi?.rawValue)?.muhrefkodSorulsun == "E", skipAdmin: true);
 
   bool get alisMiktar1Gelsin => _isTrue(_paramModel?.alisMiktar1Gelsin, skipAdmin: true);
   bool get satisMiktar1Gelsin => _isTrue(_paramModel?.satisMiktar1Gelsin, skipAdmin: true);
@@ -519,7 +519,7 @@ final class YetkiController {
 
   ///? Eğer içeriyorsa gösterilecek (Sipariş için)
   bool siparisMSAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.siparisMusteriSiparisiAciklamaAlanlari == null
+    _profilYetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.isNotEmpty
@@ -730,6 +730,12 @@ final class YetkiController {
       _isTrue(_profilYetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool alisFatGizlenecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.malKabulAlisFatGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      bool satisTeklifiGizlenecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.taltekStekGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      bool alisTalebiGizlenecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.taltekAtalGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      bool satisTalebiGizlenecekAlanlar(String? index) =>
+      _isTrue(_profilYetkiModel?.taltekStalGizlenecekAlanlar?.contains(index), skipAdmin: true);
 
   bool get satisFatDigerSekmesiGelsin => _isTrue(_profilYetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
   bool get satisIrsDigerSekmesiGelsin => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
@@ -867,7 +873,7 @@ final class YetkiController {
   bool get satisTalebiEkle => _isTrue(_profilYetkiModel?.taltekStalKaydet);
 
   bool talepTeklifSatisTeklifiAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.taltekStekAciklamaAlanlari == null
+    _profilYetkiModel?.taltekStekAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.taltekStekAciklamaAlanlari?.isNotEmpty
@@ -875,7 +881,7 @@ final class YetkiController {
               true,
   );
   bool talepTeklifAlisTalebiAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.taltekAtalAciklamaAlanlari == null
+    _profilYetkiModel?.taltekAtalAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.taltekAtalAciklamaAlanlari?.isNotEmpty
@@ -884,7 +890,7 @@ final class YetkiController {
   );
 
   bool talepTeklifSatisTalebiAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.taltekStalAciklamaAlanlari == null
+    _profilYetkiModel?.taltekStalAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.taltekStalAciklamaAlanlari?.isNotEmpty
@@ -1060,7 +1066,7 @@ final class YetkiController {
       _isTrue(_profilYetkiModel?.transferAcSipBagTumKalemlerSecilsin);
 
   bool alisFaturaAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.malKabulAlisFatAciklamaAlanlari == null
+    _profilYetkiModel?.malKabulAlisFatAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.malKabulAlisFatAciklamaAlanlari?.isNotEmpty
@@ -1068,7 +1074,7 @@ final class YetkiController {
               false,
   );
   bool alisIrsaliyeAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.malKabulAlisIrsAciklamaAlanlari == null
+    _profilYetkiModel?.malKabulAlisIrsAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.malKabulAlisIrsAciklamaAlanlari?.isNotEmpty
@@ -1076,7 +1082,7 @@ final class YetkiController {
               false,
   );
   bool satisFaturaAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.sevkiyatSatisFatAciklamaAlanlari.ext.isNullOrEmpty ?? false
+    _profilYetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.isNotEmpty
@@ -1084,7 +1090,7 @@ final class YetkiController {
               false,
   );
   bool satisIrsaliyeAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari == null
+    _profilYetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.isNotEmpty
@@ -1149,7 +1155,7 @@ final class YetkiController {
       _isTrue(_profilYetkiModel?.transferDepoTalebiMalTopFazlaTeslimat == "E");
 
   bool transferDatAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.transferDatAciklamaAlanlari == null
+    _profilYetkiModel?.transferDatAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.transferDatAciklamaAlanlari?.isNotEmpty
@@ -1235,7 +1241,7 @@ final class YetkiController {
   bool transferLokalAgGizlenecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.transferAgGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAgAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.transferAgAciklamaAlanlari == null
+    _profilYetkiModel?.transferAgAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty
@@ -1272,7 +1278,7 @@ final class YetkiController {
   bool transferLokalAcGizlenecekAlanlar(String? index) =>
       _isTrue(_profilYetkiModel?.transferAcGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAcAciklamaAlanlari(int index) => _isTrue(
-    _profilYetkiModel?.transferAcAciklamaAlanlari == null
+    _profilYetkiModel?.transferAcAciklamaAlanlari?.isEmpty ?? false
         ? false
         : (index < 1
                   ? _profilYetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty
@@ -1346,6 +1352,7 @@ final class YetkiController {
   //! Kopyala
   bool get kopyalaMusSip => _isTrue(_profilYetkiModel?.siparisMusSipBelgeKopyala);
   bool get kopyalaAlisTalebi => _isTrue(_profilYetkiModel?.taltekAtalBelgeKopyala);
+  bool get kopyalaSatisTeklifi => _isTrue(_profilYetkiModel?.taltekStekBelgeKopyala);
   bool get kopyalaAmbarGirisi => _isTrue(_profilYetkiModel?.transferAgBelgeKopyala);
   bool get kopyalaAmbarCikisi => _isTrue(_profilYetkiModel?.transferAcBelgeKopyala);
 
@@ -1447,7 +1454,7 @@ final class YetkiController {
         skipAdmin: true,
       );
     }
-    return _isTrue(_paramModel?.talTekParam?.firstOrNull?.ozelKod1Tablodan == "E", skipAdmin: true);
+    return _isTrue(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == editTipi?.rawValue)?.ozelKod1Tablodan == "E", skipAdmin: true);
   }
 
   String? get satisFatTekrarEdenBarkod => _profilYetkiModel?.sevkiyatSatisFaturasiTekrarEdenBarkod;

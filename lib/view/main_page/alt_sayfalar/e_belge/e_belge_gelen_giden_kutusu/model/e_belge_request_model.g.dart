@@ -26,23 +26,22 @@ _EBelgeRequestModel _$EBelgeRequestModelFromJson(Map<String, dynamic> json) =>
       resmiBelgeNo: json['ResmiBelgeNo'] as String?,
     );
 
-Map<String, dynamic> _$EBelgeRequestModelToJson(
-  _EBelgeRequestModel instance,
-) => <String, dynamic>{
-  if (instance.basimDurumu case final value?) 'BasimDurumu': value,
-  if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
-  if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
-  if (instance.eBelgeTuru case final value?) 'EBelgeTuru': value,
-  if (instance.islendi case final value?) 'Islendi': value,
-  if (instance.kayitTarihineGore case final value?) 'KayitTarihineGore': value,
-  if (instance.kontrolEdildi case final value?) 'KontrolEdildi': value,
-  if (instance.faturaYonu case final value?) 'FaturaYonu': value,
-  if (instance.onayDurumu case final value?) 'OnayDurumu': value,
-  if (instance.sayfa case final value?) 'Sayfa': value,
-  if (instance.senaryo case final value?) 'Senaryo': value,
-  if (instance.sirala case final value?) 'Sirala': value,
-  if (instance.sorgulanmasin case final value?) 'Sorgulanmasin': value,
-  if (instance.searchText case final value?) 'SearchText': value,
-  if (instance.taslak case final value?) 'Taslak': value,
-  if (instance.resmiBelgeNo case final value?) 'ResmiBelgeNo': value,
-};
+Map<String, dynamic> _$EBelgeRequestModelToJson(_EBelgeRequestModel instance) =>
+    <String, dynamic>{
+      'BasimDurumu': ?instance.basimDurumu,
+      'BaslamaTarihi': ?instance.baslamaTarihi,
+      'BitisTarihi': ?instance.bitisTarihi,
+      'EBelgeTuru': ?instance.eBelgeTuru,
+      'Islendi': ?instance.islendi,
+      'KayitTarihineGore': ?instance.kayitTarihineGore,
+      'KontrolEdildi': ?instance.kontrolEdildi,
+      'FaturaYonu': ?instance.faturaYonu,
+      'OnayDurumu': ?instance.onayDurumu,
+      'Sayfa': ?instance.sayfa,
+      'Senaryo': ?instance.senaryo,
+      'Sirala': ?instance.sirala,
+      'Sorgulanmasin': ?instance.sorgulanmasin,
+      'SearchText': ?instance.searchText,
+      'Taslak': ?instance.taslak,
+      'ResmiBelgeNo': ?instance.resmiBelgeNo,
+    };

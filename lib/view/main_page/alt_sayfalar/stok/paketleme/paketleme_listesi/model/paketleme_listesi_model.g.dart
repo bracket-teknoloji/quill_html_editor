@@ -26,15 +26,14 @@ _PaketlemeListesiModel _$PaketlemeListesiModelFromJson(
 Map<String, dynamic> _$PaketlemeListesiModelToJson(
   _PaketlemeListesiModel instance,
 ) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.kodu case final value?) 'KODU': value,
-  if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
-  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-  if (instance.paketTuru case final value?) 'PAKET_TURU': value,
-  if (instance.paketTuruTanimi case final value?) 'PAKET_TURU_TANIMI': value,
-  if (instance.kilit case final value?) 'KILIT': value,
-  if (instance.ukey case final value?) 'UKEY': value,
+  'ID': ?instance.id,
+  'KODU': ?instance.kodu,
+  'KALEM_SAYISI': ?instance.kalemSayisi,
+  'KAYITTARIHI': ?instance.kayittarihi?.toIso8601String(),
+  'KAYITYAPANKUL': ?instance.kayityapankul,
+  'DEPO_KODU': ?instance.depoKodu,
+  'PAKET_TURU': ?instance.paketTuru,
+  'PAKET_TURU_TANIMI': ?instance.paketTuruTanimi,
+  'KILIT': ?instance.kilit,
+  'UKEY': ?instance.ukey,
 };

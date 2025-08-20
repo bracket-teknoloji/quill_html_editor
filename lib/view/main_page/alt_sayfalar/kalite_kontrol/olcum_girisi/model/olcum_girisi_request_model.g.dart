@@ -22,12 +22,12 @@ _OlcumGirisiRequestModel _$OlcumGirisiRequestModelFromJson(
 Map<String, dynamic> _$OlcumGirisiRequestModelToJson(
   _OlcumGirisiRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.durum case final value?) 'DURUM': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.bastar case final value?) 'BASTAR': value,
-  if (instance.bittar case final value?) 'BITTAR': value,
-  if (instance.siralama case final value?) 'SIRALAMA': value,
-  if (instance.qrstring case final value?) 'QRSTRING': value,
-  if (instance.searchText case final value?) 'SearchText': value,
-  if (instance.sayfa case final value?) 'Sayfa': value,
+  'DURUM': ?instance.durum,
+  'BELGE_TIPI': ?instance.belgeTipi,
+  'BASTAR': ?instance.bastar,
+  'BITTAR': ?instance.bittar,
+  'SIRALAMA': ?instance.siralama,
+  'QRSTRING': ?instance.qrstring,
+  'SearchText': ?instance.searchText,
+  'Sayfa': ?instance.sayfa,
 };

@@ -329,6 +329,24 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     );
   }
 
+  late final _$onayBekliyorAtom = Atom(
+    name: '_SiparislerViewModelBase.onayBekliyor',
+    context: context,
+  );
+
+  @override
+  bool get onayBekliyor {
+    _$onayBekliyorAtom.reportRead();
+    return super.onayBekliyor;
+  }
+
+  @override
+  set onayBekliyor(bool value) {
+    _$onayBekliyorAtom.reportWrite(value, super.onayBekliyor, () {
+      super.onayBekliyor = value;
+    });
+  }
+
   late final _$ozelKod1Atom = Atom(
     name: '_SiparislerViewModelBase.ozelKod1',
     context: context,
@@ -899,6 +917,18 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   @override
+  void setOnayBekliyor(bool value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+      name: '_SiparislerViewModelBase.setOnayBekliyor',
+    );
+    try {
+      return super.setOnayBekliyor(value);
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSearchText(String? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
       name: '_SiparislerViewModelBase.setSearchText',
@@ -1080,6 +1110,7 @@ dahaVarMi: ${dahaVarMi},
 grupKodlariGoster: ${grupKodlariGoster},
 musteriSiparisleriList: ${musteriSiparisleriList},
 kapaliBelgelerListelenmesin: ${kapaliBelgelerListelenmesin},
+onayBekliyor: ${onayBekliyor},
 ozelKod1: ${ozelKod1},
 ozelKod2: ${ozelKod2},
 kontrolEdildiMi: ${kontrolEdildiMi},

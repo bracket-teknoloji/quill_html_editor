@@ -18,8 +18,8 @@ _BelgeRehberiRequestModel _$BelgeRehberiRequestModelFromJson(
 Map<String, dynamic> _$BelgeRehberiRequestModelToJson(
   _BelgeRehberiRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.depoKodu case final value?) 'DepoKodu': value,
-  if (instance.islemTuru case final value?) 'IslemTuru': value,
-  if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
-  if (instance.searchText case final value?) 'SearchText': value,
+  'DepoKodu': ?instance.depoKodu,
+  'IslemTuru': ?instance.islemTuru,
+  'PickerBelgeTuru': ?instance.pickerBelgeTuru,
+  'SearchText': ?instance.searchText,
 };

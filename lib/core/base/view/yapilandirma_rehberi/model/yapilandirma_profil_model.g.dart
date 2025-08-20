@@ -24,9 +24,8 @@ _YapilandirmaProfilModel _$YapilandirmaProfilModelFromJson(
 Map<String, dynamic> _$YapilandirmaProfilModelToJson(
   _YapilandirmaProfilModel instance,
 ) => <String, dynamic>{
-  if (instance.sira case final value?) 'SIRA': value,
-  if (instance.ozellikKodu case final value?) 'OZELLIK_KODU': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.deger?.map((e) => e?.toJson()).toList() case final value?)
-    'DEGER': value,
+  'SIRA': ?instance.sira,
+  'OZELLIK_KODU': ?instance.ozellikKodu,
+  'ACIKLAMA': ?instance.aciklama,
+  'DEGER': ?instance.deger?.map((e) => e?.toJson()).toList(),
 };

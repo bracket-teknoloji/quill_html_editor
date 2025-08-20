@@ -95,8 +95,10 @@ abstract class _CariListesiViewModelBase
   bool get getRota => cariRequestModel.rotaDisi == "E";
 
   @computed
-  Map<String, dynamic> get getCariRequestModel =>
-      cariRequestModel.toJson().map((key, value) => MapEntry(key, value is List ? jsonEncode(value) : value));
+  Map<String, dynamic> get getCariRequestModel => cariRequestModel
+      .copyWith(rotaDisi: getRota ? "E" : null)
+      .toJson()
+      .map((key, value) => MapEntry(key, value is List ? jsonEncode(value) : value));
 
   @computed
   ObservableList<BaseGrupKoduModel>? get getGrupKod0 =>

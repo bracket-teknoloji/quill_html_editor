@@ -15,7 +15,7 @@ _SeriUretModel _$SeriUretModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$SeriUretModelToJson(_SeriUretModel instance) =>
     <String, dynamic>{
-      if (instance.seriNo case final value?) 'SERI_NO': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.sonNo case final value?) 'SON_NO': value,
+      'SERI_NO': ?instance.seriNo,
+      'STOK_KODU': ?instance.stokKodu,
+      'SON_NO': ?instance.sonNo,
     };

@@ -15,7 +15,7 @@ _GenelRehberModel _$GenelRehberModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$GenelRehberModelToJson(_GenelRehberModel instance) =>
     <String, dynamic>{
-      if (instance.kodu case final value?) 'KODU': value,
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.adi case final value?) 'ADI': value,
+      'KODU': ?instance.kodu,
+      'ACIKLAMA': ?instance.aciklama,
+      'ADI': ?instance.adi,
     };

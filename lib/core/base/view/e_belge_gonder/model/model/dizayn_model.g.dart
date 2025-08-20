@@ -17,10 +17,10 @@ DizaynModel _$DizaynModelFromJson(Map<String, dynamic> json) => DizaynModel(
 
 Map<String, dynamic> _$DizaynModelToJson(DizaynModel instance) =>
     <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.dizaynAdi case final value?) 'DIZAYN_ADI': value,
-      if (instance.modulId case final value?) 'MODUL_ID': value,
-      if (instance.dizaynKodu case final value?) 'DIZAYN_KODU': value,
-      if (instance.erpDizayni case final value?) 'ERP_DIZAYNI': value,
-      if (instance.varsayilanMi case final value?) 'VARSAYILAN_MI': value,
+      'ID': ?instance.id,
+      'DIZAYN_ADI': ?instance.dizaynAdi,
+      'MODUL_ID': ?instance.modulId,
+      'DIZAYN_KODU': ?instance.dizaynKodu,
+      'ERP_DIZAYNI': ?instance.erpDizayni,
+      'VARSAYILAN_MI': ?instance.varsayilanMi,
     };

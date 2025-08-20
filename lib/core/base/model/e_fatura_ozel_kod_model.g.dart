@@ -17,8 +17,8 @@ _EFaturaOzelKodModel _$EFaturaOzelKodModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$EFaturaOzelKodModelToJson(
   _EFaturaOzelKodModel instance,
 ) => <String, dynamic>{
-  if (instance.tip case final value?) 'TIP': value,
-  if (instance.tipAdi case final value?) 'TIP_ADI': value,
-  if (instance.kod case final value?) 'KOD': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
+  'TIP': ?instance.tip,
+  'TIP_ADI': ?instance.tipAdi,
+  'KOD': ?instance.kod,
+  'ACIKLAMA': ?instance.aciklama,
 };

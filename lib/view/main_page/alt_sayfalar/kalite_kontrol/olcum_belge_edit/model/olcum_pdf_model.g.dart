@@ -19,9 +19,9 @@ _OlcumPdfModel _$OlcumPdfModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OlcumPdfModelToJson(_OlcumPdfModel instance) =>
     <String, dynamic>{
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.yapkod case final value?) 'YAPKOD': value,
-      if (instance.revno case final value?) 'REVNO': value,
-      if (instance.revtar?.toIso8601String() case final value?) 'REVTAR': value,
-      if (instance.tur case final value?) 'TUR': value,
+      'STOK_KODU': ?instance.stokKodu,
+      'YAPKOD': ?instance.yapkod,
+      'REVNO': ?instance.revno,
+      'REVTAR': ?instance.revtar?.toIso8601String(),
+      'TUR': ?instance.tur,
     };

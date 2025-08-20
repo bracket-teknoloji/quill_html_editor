@@ -193,7 +193,7 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
           GetPage(
             name: "/cariListesiOzel",
-            page: () => CariListesiView(isGetData: true, cariRequestModel: Get.arguments),
+            page: () => CariListesiView(isGetData: true, cariRequestModel: (Get.arguments as CariRequestModel?)?.copyWith(menuKodu:"CARI_CARI")),
           ),
           GetPage(
             name: "/cariRehberi",

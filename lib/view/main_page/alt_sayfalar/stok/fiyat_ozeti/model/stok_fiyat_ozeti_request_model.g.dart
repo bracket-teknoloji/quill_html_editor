@@ -17,7 +17,7 @@ _StokFiyatOzetiRequestModel _$StokFiyatOzetiRequestModelFromJson(
 Map<String, dynamic> _$StokFiyatOzetiRequestModelToJson(
   _StokFiyatOzetiRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.yapKod case final value?) 'YapKod': value,
-  if (instance.cariKodu case final value?) 'CariKodu': value,
-  if (instance.stokKodu case final value?) 'StokKodu': value,
+  'YapKod': ?instance.yapKod,
+  'CariKodu': ?instance.cariKodu,
+  'StokKodu': ?instance.stokKodu,
 };

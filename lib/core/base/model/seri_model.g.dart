@@ -18,11 +18,11 @@ _SeriModel _$SeriModelFromJson(Map<String, dynamic> json) => _SeriModel(
 
 Map<String, dynamic> _$SeriModelToJson(_SeriModel instance) =>
     <String, dynamic>{
-      if (instance.seriNo case final value?) 'SERI_NO': value,
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.miktar case final value?) 'MIKTAR': value,
-      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      'SERI_NO': ?instance.seriNo,
+      'ACIKLAMA': ?instance.aciklama,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
+      'DEPO_KODU': ?instance.depoKodu,
+      'MIKTAR': ?instance.miktar,
+      'DEPO_TANIMI': ?instance.depoTanimi,
     };

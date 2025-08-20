@@ -20,10 +20,10 @@ _StokFiyatiModel _$StokFiyatiModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$StokFiyatiModelToJson(_StokFiyatiModel instance) =>
     <String, dynamic>{
-      if (instance.fiyat case final value?) 'FIYAT': value,
-      if (instance.yer case final value?) 'YER': value,
-      if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.cariKodu case final value?) 'CARI_KODU': value,
-      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      'FIYAT': ?instance.fiyat,
+      'YER': ?instance.yer,
+      'FIYAT_SIRASI': ?instance.fiyatSirasi,
+      'STOK_KODU': ?instance.stokKodu,
+      'CARI_KODU': ?instance.cariKodu,
+      'TARIH': ?instance.tarih?.toIso8601String(),
     };

@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -146,6 +145,130 @@ $EIrsaliyeBilgiModelCopyWith<$Res>? get eirsBilgi {
 }
 }
 
+
+/// Adds pattern-matching-related methods to [EBelgeListesiModel].
+extension EBelgeListesiModelPatterns on EBelgeListesiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _EBelgeListesiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _EBelgeListesiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _EBelgeListesiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _EBelgeListesiModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _EBelgeListesiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _EBelgeListesiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? ebelgeTuru,  int? inckeyno,  int? efatmasInckeyno,  String? gelen,  String? taslak,  String? gonderildi,  String? faturaIslendi,  String? dekontIslendi,  String? iptalEdildi,  int? cevapKodu,  String? cevapAciklama,  String? basariylaGonderildi,  String? onayDurumKodu,  String? onayAciklama,  String? resmiBelgeNo,  DateTime? tarih,  DateTime? kayittarihi,  String? belgeTuru,  String? cariAdi,  String? vergiNo,  String? cariIlce,  String? cariIl,  double? dovizKuru,  String? basimYapildi,  double? genelToplam,  double? kdvTutari,  String? senaryo,  String? zarfid,  String? uuid,  String? faturaTipi,  String? kayityapankul,  String? kontrolEdildi,  String? kayitliCariKodu,  String? belgeNo,  String? islenenBelgeNo,  String? cariKodu,  int? dovizTipi,  String? dovizAdi,  double? dovizTutari,  double? iskontoTutari,  String? dekontJson,  String? kontrolAciklama,  String? dizaynYolu,  String? gondermeDurumu,  String? zarfSilinebilir,  DateTime? iptalTarihi,  String? eposta,  String? eBelgeTuru,  int? id,  int? eFatMasId,  int? eIrsMasId,  DateTime? kayitTarihi,  DateTime? eFaturaIptalTarihi,  String? ilce,  String? sehir,  String? kayitYapanKul,  String? gelenEFatKontrolEdildi,  String? gelenEFatKontrolAciklama,  bool? gonderimSekliEPosta,  String? ePosta,  int? islemKodu,  String? kutuTuru,  String? aciklama,  String? senaryoTipi,  int? kopyaSayisi,  String? yaziciAdi,  int? dizaynNo,  bool? dovizliOlustur,  bool? internetFaturasi,  EIrsaliyeBilgiModel? eirsBilgi, @JsonKey(includeFromJson: false, includeToJson: false)  String? dizaynAdi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _EBelgeListesiModel() when $default != null:
+return $default(_that.ebelgeTuru,_that.inckeyno,_that.efatmasInckeyno,_that.gelen,_that.taslak,_that.gonderildi,_that.faturaIslendi,_that.dekontIslendi,_that.iptalEdildi,_that.cevapKodu,_that.cevapAciklama,_that.basariylaGonderildi,_that.onayDurumKodu,_that.onayAciklama,_that.resmiBelgeNo,_that.tarih,_that.kayittarihi,_that.belgeTuru,_that.cariAdi,_that.vergiNo,_that.cariIlce,_that.cariIl,_that.dovizKuru,_that.basimYapildi,_that.genelToplam,_that.kdvTutari,_that.senaryo,_that.zarfid,_that.uuid,_that.faturaTipi,_that.kayityapankul,_that.kontrolEdildi,_that.kayitliCariKodu,_that.belgeNo,_that.islenenBelgeNo,_that.cariKodu,_that.dovizTipi,_that.dovizAdi,_that.dovizTutari,_that.iskontoTutari,_that.dekontJson,_that.kontrolAciklama,_that.dizaynYolu,_that.gondermeDurumu,_that.zarfSilinebilir,_that.iptalTarihi,_that.eposta,_that.eBelgeTuru,_that.id,_that.eFatMasId,_that.eIrsMasId,_that.kayitTarihi,_that.eFaturaIptalTarihi,_that.ilce,_that.sehir,_that.kayitYapanKul,_that.gelenEFatKontrolEdildi,_that.gelenEFatKontrolAciklama,_that.gonderimSekliEPosta,_that.ePosta,_that.islemKodu,_that.kutuTuru,_that.aciklama,_that.senaryoTipi,_that.kopyaSayisi,_that.yaziciAdi,_that.dizaynNo,_that.dovizliOlustur,_that.internetFaturasi,_that.eirsBilgi,_that.dizaynAdi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? ebelgeTuru,  int? inckeyno,  int? efatmasInckeyno,  String? gelen,  String? taslak,  String? gonderildi,  String? faturaIslendi,  String? dekontIslendi,  String? iptalEdildi,  int? cevapKodu,  String? cevapAciklama,  String? basariylaGonderildi,  String? onayDurumKodu,  String? onayAciklama,  String? resmiBelgeNo,  DateTime? tarih,  DateTime? kayittarihi,  String? belgeTuru,  String? cariAdi,  String? vergiNo,  String? cariIlce,  String? cariIl,  double? dovizKuru,  String? basimYapildi,  double? genelToplam,  double? kdvTutari,  String? senaryo,  String? zarfid,  String? uuid,  String? faturaTipi,  String? kayityapankul,  String? kontrolEdildi,  String? kayitliCariKodu,  String? belgeNo,  String? islenenBelgeNo,  String? cariKodu,  int? dovizTipi,  String? dovizAdi,  double? dovizTutari,  double? iskontoTutari,  String? dekontJson,  String? kontrolAciklama,  String? dizaynYolu,  String? gondermeDurumu,  String? zarfSilinebilir,  DateTime? iptalTarihi,  String? eposta,  String? eBelgeTuru,  int? id,  int? eFatMasId,  int? eIrsMasId,  DateTime? kayitTarihi,  DateTime? eFaturaIptalTarihi,  String? ilce,  String? sehir,  String? kayitYapanKul,  String? gelenEFatKontrolEdildi,  String? gelenEFatKontrolAciklama,  bool? gonderimSekliEPosta,  String? ePosta,  int? islemKodu,  String? kutuTuru,  String? aciklama,  String? senaryoTipi,  int? kopyaSayisi,  String? yaziciAdi,  int? dizaynNo,  bool? dovizliOlustur,  bool? internetFaturasi,  EIrsaliyeBilgiModel? eirsBilgi, @JsonKey(includeFromJson: false, includeToJson: false)  String? dizaynAdi)  $default,) {final _that = this;
+switch (_that) {
+case _EBelgeListesiModel():
+return $default(_that.ebelgeTuru,_that.inckeyno,_that.efatmasInckeyno,_that.gelen,_that.taslak,_that.gonderildi,_that.faturaIslendi,_that.dekontIslendi,_that.iptalEdildi,_that.cevapKodu,_that.cevapAciklama,_that.basariylaGonderildi,_that.onayDurumKodu,_that.onayAciklama,_that.resmiBelgeNo,_that.tarih,_that.kayittarihi,_that.belgeTuru,_that.cariAdi,_that.vergiNo,_that.cariIlce,_that.cariIl,_that.dovizKuru,_that.basimYapildi,_that.genelToplam,_that.kdvTutari,_that.senaryo,_that.zarfid,_that.uuid,_that.faturaTipi,_that.kayityapankul,_that.kontrolEdildi,_that.kayitliCariKodu,_that.belgeNo,_that.islenenBelgeNo,_that.cariKodu,_that.dovizTipi,_that.dovizAdi,_that.dovizTutari,_that.iskontoTutari,_that.dekontJson,_that.kontrolAciklama,_that.dizaynYolu,_that.gondermeDurumu,_that.zarfSilinebilir,_that.iptalTarihi,_that.eposta,_that.eBelgeTuru,_that.id,_that.eFatMasId,_that.eIrsMasId,_that.kayitTarihi,_that.eFaturaIptalTarihi,_that.ilce,_that.sehir,_that.kayitYapanKul,_that.gelenEFatKontrolEdildi,_that.gelenEFatKontrolAciklama,_that.gonderimSekliEPosta,_that.ePosta,_that.islemKodu,_that.kutuTuru,_that.aciklama,_that.senaryoTipi,_that.kopyaSayisi,_that.yaziciAdi,_that.dizaynNo,_that.dovizliOlustur,_that.internetFaturasi,_that.eirsBilgi,_that.dizaynAdi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? ebelgeTuru,  int? inckeyno,  int? efatmasInckeyno,  String? gelen,  String? taslak,  String? gonderildi,  String? faturaIslendi,  String? dekontIslendi,  String? iptalEdildi,  int? cevapKodu,  String? cevapAciklama,  String? basariylaGonderildi,  String? onayDurumKodu,  String? onayAciklama,  String? resmiBelgeNo,  DateTime? tarih,  DateTime? kayittarihi,  String? belgeTuru,  String? cariAdi,  String? vergiNo,  String? cariIlce,  String? cariIl,  double? dovizKuru,  String? basimYapildi,  double? genelToplam,  double? kdvTutari,  String? senaryo,  String? zarfid,  String? uuid,  String? faturaTipi,  String? kayityapankul,  String? kontrolEdildi,  String? kayitliCariKodu,  String? belgeNo,  String? islenenBelgeNo,  String? cariKodu,  int? dovizTipi,  String? dovizAdi,  double? dovizTutari,  double? iskontoTutari,  String? dekontJson,  String? kontrolAciklama,  String? dizaynYolu,  String? gondermeDurumu,  String? zarfSilinebilir,  DateTime? iptalTarihi,  String? eposta,  String? eBelgeTuru,  int? id,  int? eFatMasId,  int? eIrsMasId,  DateTime? kayitTarihi,  DateTime? eFaturaIptalTarihi,  String? ilce,  String? sehir,  String? kayitYapanKul,  String? gelenEFatKontrolEdildi,  String? gelenEFatKontrolAciklama,  bool? gonderimSekliEPosta,  String? ePosta,  int? islemKodu,  String? kutuTuru,  String? aciklama,  String? senaryoTipi,  int? kopyaSayisi,  String? yaziciAdi,  int? dizaynNo,  bool? dovizliOlustur,  bool? internetFaturasi,  EIrsaliyeBilgiModel? eirsBilgi, @JsonKey(includeFromJson: false, includeToJson: false)  String? dizaynAdi)?  $default,) {final _that = this;
+switch (_that) {
+case _EBelgeListesiModel() when $default != null:
+return $default(_that.ebelgeTuru,_that.inckeyno,_that.efatmasInckeyno,_that.gelen,_that.taslak,_that.gonderildi,_that.faturaIslendi,_that.dekontIslendi,_that.iptalEdildi,_that.cevapKodu,_that.cevapAciklama,_that.basariylaGonderildi,_that.onayDurumKodu,_that.onayAciklama,_that.resmiBelgeNo,_that.tarih,_that.kayittarihi,_that.belgeTuru,_that.cariAdi,_that.vergiNo,_that.cariIlce,_that.cariIl,_that.dovizKuru,_that.basimYapildi,_that.genelToplam,_that.kdvTutari,_that.senaryo,_that.zarfid,_that.uuid,_that.faturaTipi,_that.kayityapankul,_that.kontrolEdildi,_that.kayitliCariKodu,_that.belgeNo,_that.islenenBelgeNo,_that.cariKodu,_that.dovizTipi,_that.dovizAdi,_that.dovizTutari,_that.iskontoTutari,_that.dekontJson,_that.kontrolAciklama,_that.dizaynYolu,_that.gondermeDurumu,_that.zarfSilinebilir,_that.iptalTarihi,_that.eposta,_that.eBelgeTuru,_that.id,_that.eFatMasId,_that.eIrsMasId,_that.kayitTarihi,_that.eFaturaIptalTarihi,_that.ilce,_that.sehir,_that.kayitYapanKul,_that.gelenEFatKontrolEdildi,_that.gelenEFatKontrolAciklama,_that.gonderimSekliEPosta,_that.ePosta,_that.islemKodu,_that.kutuTuru,_that.aciklama,_that.senaryoTipi,_that.kopyaSayisi,_that.yaziciAdi,_that.dizaynNo,_that.dovizliOlustur,_that.internetFaturasi,_that.eirsBilgi,_that.dizaynAdi);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

@@ -22,10 +22,10 @@ _OlcumSeriRequestModel _$OlcumSeriRequestModelFromJson(
 Map<String, dynamic> _$OlcumSeriRequestModelToJson(
   _OlcumSeriRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
-  if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
-  if (instance.redGirisDepo case final value?) 'RED_GIRIS_DEPO': value,
-  if (instance.kabulGirisDepo case final value?) 'KABUL_GIRIS_DEPO': value,
-  if (instance.seriListe case final value?) 'SERI_LISTE': value,
+  'STOK_KODU': ?instance.stokKodu,
+  'GIRIS_DEPO': ?instance.girisDepo,
+  'CIKIS_DEPO': ?instance.cikisDepo,
+  'RED_GIRIS_DEPO': ?instance.redGirisDepo,
+  'KABUL_GIRIS_DEPO': ?instance.kabulGirisDepo,
+  'SERI_LISTE': ?instance.seriListe,
 };

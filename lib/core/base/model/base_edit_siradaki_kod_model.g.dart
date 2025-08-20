@@ -12,6 +12,4 @@ BaseEditSiradakiKodModel _$BaseEditSiradakiKodModelFromJson(
 
 Map<String, dynamic> _$BaseEditSiradakiKodModelToJson(
   BaseEditSiradakiKodModel instance,
-) => <String, dynamic>{
-  if (instance.siradakiKod case final value?) 'SIRADAKI_KOD': value,
-};
+) => <String, dynamic>{'SIRADAKI_KOD': ?instance.siradakiKod};

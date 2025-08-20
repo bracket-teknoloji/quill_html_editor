@@ -18,8 +18,8 @@ _EBelgePdfRequestModel _$EBelgePdfRequestModelFromJson(
 Map<String, dynamic> _$EBelgePdfRequestModelToJson(
   _EBelgePdfRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
-  if (instance.ebelgeTuru case final value?) 'EBELGE_TURU': value,
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.resmiBelgeNo case final value?) 'RESMI_BELGE_NO': value,
+  'BELGE_TURU': ?instance.belgeTuru,
+  'EBELGE_TURU': ?instance.ebelgeTuru,
+  'ISLEM_KODU': ?instance.islemKodu,
+  'RESMI_BELGE_NO': ?instance.resmiBelgeNo,
 };

@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -137,6 +136,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [TalepTeklifListesiModel].
+extension TalepTeklifListesiModelPatterns on TalepTeklifListesiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TalepTeklifListesiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _TalepTeklifListesiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TalepTeklifListesiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _TalepTeklifListesiModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TalepTeklifListesiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _TalepTeklifListesiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? cariDovizli,  DateTime? kayittarihi,  DateTime? tarih,  DateTime? teslimTarihi,  DateTime? vadeTarihi,  double? dovizTutari,  double? genelIskonto1,  double? genelIskonto2,  double? genelIskonto3,  double? genelToplam,  double? genIsk1O,  double? genisk1Tipi,  double? genIsk2O,  double? genIsk3O,  double? kalanMiktar,  double? kdv,  double? miktar,  double? tamamlananMiktar,  int? dovizTipi,  int? genisk3Tipi,  int? kalemAdedi,  int? tipi,  int? vadeGunu,  List<dynamic>? tempSipList,  List<KalemListModel>? kalemList,  String? acik1,  String? acik2,  String? acik3,  String? acik4,  String? acik5,  String? acik6,  String? acik7,  String? acik8,  String? acik9,  String? acik10,  String? acik11,  String? acik12,  String? acik13,  String? acik14,  String? acik15,  String? acik16,  String? belgeKodu,  String? belgeNo,  String? belgeTuru,  String? cariAdi,  String? cariKodu,  String? cYedek6,  String? dovizAdi,  String? ekAciklama,  String? faturalasti,  String? kasaKodu,  String? kayityapankul,  String? kdvDahil,  String? plasiyerAciklama,  String? plasiyerKodu,  String? siparislesti,  String? ekAcik1,  String? ekAcik10,  String? ekAcik11,  String? ekAcik12,  String? ekAcik13,  String? ekAcik14,  String? ekAcik15,  String? ekAcik16,  String? ekAcik2,  String? ekAcik3,  String? ekAcik4,  String? ekAcik5,  String? ekAcik6,  String? ekAcik7,  String? ekAcik8,  String? ekAcik9,  int? islemKodu,  String? tag)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _TalepTeklifListesiModel() when $default != null:
+return $default(_that.cariDovizli,_that.kayittarihi,_that.tarih,_that.teslimTarihi,_that.vadeTarihi,_that.dovizTutari,_that.genelIskonto1,_that.genelIskonto2,_that.genelIskonto3,_that.genelToplam,_that.genIsk1O,_that.genisk1Tipi,_that.genIsk2O,_that.genIsk3O,_that.kalanMiktar,_that.kdv,_that.miktar,_that.tamamlananMiktar,_that.dovizTipi,_that.genisk3Tipi,_that.kalemAdedi,_that.tipi,_that.vadeGunu,_that.tempSipList,_that.kalemList,_that.acik1,_that.acik2,_that.acik3,_that.acik4,_that.acik5,_that.acik6,_that.acik7,_that.acik8,_that.acik9,_that.acik10,_that.acik11,_that.acik12,_that.acik13,_that.acik14,_that.acik15,_that.acik16,_that.belgeKodu,_that.belgeNo,_that.belgeTuru,_that.cariAdi,_that.cariKodu,_that.cYedek6,_that.dovizAdi,_that.ekAciklama,_that.faturalasti,_that.kasaKodu,_that.kayityapankul,_that.kdvDahil,_that.plasiyerAciklama,_that.plasiyerKodu,_that.siparislesti,_that.ekAcik1,_that.ekAcik10,_that.ekAcik11,_that.ekAcik12,_that.ekAcik13,_that.ekAcik14,_that.ekAcik15,_that.ekAcik16,_that.ekAcik2,_that.ekAcik3,_that.ekAcik4,_that.ekAcik5,_that.ekAcik6,_that.ekAcik7,_that.ekAcik8,_that.ekAcik9,_that.islemKodu,_that.tag);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? cariDovizli,  DateTime? kayittarihi,  DateTime? tarih,  DateTime? teslimTarihi,  DateTime? vadeTarihi,  double? dovizTutari,  double? genelIskonto1,  double? genelIskonto2,  double? genelIskonto3,  double? genelToplam,  double? genIsk1O,  double? genisk1Tipi,  double? genIsk2O,  double? genIsk3O,  double? kalanMiktar,  double? kdv,  double? miktar,  double? tamamlananMiktar,  int? dovizTipi,  int? genisk3Tipi,  int? kalemAdedi,  int? tipi,  int? vadeGunu,  List<dynamic>? tempSipList,  List<KalemListModel>? kalemList,  String? acik1,  String? acik2,  String? acik3,  String? acik4,  String? acik5,  String? acik6,  String? acik7,  String? acik8,  String? acik9,  String? acik10,  String? acik11,  String? acik12,  String? acik13,  String? acik14,  String? acik15,  String? acik16,  String? belgeKodu,  String? belgeNo,  String? belgeTuru,  String? cariAdi,  String? cariKodu,  String? cYedek6,  String? dovizAdi,  String? ekAciklama,  String? faturalasti,  String? kasaKodu,  String? kayityapankul,  String? kdvDahil,  String? plasiyerAciklama,  String? plasiyerKodu,  String? siparislesti,  String? ekAcik1,  String? ekAcik10,  String? ekAcik11,  String? ekAcik12,  String? ekAcik13,  String? ekAcik14,  String? ekAcik15,  String? ekAcik16,  String? ekAcik2,  String? ekAcik3,  String? ekAcik4,  String? ekAcik5,  String? ekAcik6,  String? ekAcik7,  String? ekAcik8,  String? ekAcik9,  int? islemKodu,  String? tag)  $default,) {final _that = this;
+switch (_that) {
+case _TalepTeklifListesiModel():
+return $default(_that.cariDovizli,_that.kayittarihi,_that.tarih,_that.teslimTarihi,_that.vadeTarihi,_that.dovizTutari,_that.genelIskonto1,_that.genelIskonto2,_that.genelIskonto3,_that.genelToplam,_that.genIsk1O,_that.genisk1Tipi,_that.genIsk2O,_that.genIsk3O,_that.kalanMiktar,_that.kdv,_that.miktar,_that.tamamlananMiktar,_that.dovizTipi,_that.genisk3Tipi,_that.kalemAdedi,_that.tipi,_that.vadeGunu,_that.tempSipList,_that.kalemList,_that.acik1,_that.acik2,_that.acik3,_that.acik4,_that.acik5,_that.acik6,_that.acik7,_that.acik8,_that.acik9,_that.acik10,_that.acik11,_that.acik12,_that.acik13,_that.acik14,_that.acik15,_that.acik16,_that.belgeKodu,_that.belgeNo,_that.belgeTuru,_that.cariAdi,_that.cariKodu,_that.cYedek6,_that.dovizAdi,_that.ekAciklama,_that.faturalasti,_that.kasaKodu,_that.kayityapankul,_that.kdvDahil,_that.plasiyerAciklama,_that.plasiyerKodu,_that.siparislesti,_that.ekAcik1,_that.ekAcik10,_that.ekAcik11,_that.ekAcik12,_that.ekAcik13,_that.ekAcik14,_that.ekAcik15,_that.ekAcik16,_that.ekAcik2,_that.ekAcik3,_that.ekAcik4,_that.ekAcik5,_that.ekAcik6,_that.ekAcik7,_that.ekAcik8,_that.ekAcik9,_that.islemKodu,_that.tag);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? cariDovizli,  DateTime? kayittarihi,  DateTime? tarih,  DateTime? teslimTarihi,  DateTime? vadeTarihi,  double? dovizTutari,  double? genelIskonto1,  double? genelIskonto2,  double? genelIskonto3,  double? genelToplam,  double? genIsk1O,  double? genisk1Tipi,  double? genIsk2O,  double? genIsk3O,  double? kalanMiktar,  double? kdv,  double? miktar,  double? tamamlananMiktar,  int? dovizTipi,  int? genisk3Tipi,  int? kalemAdedi,  int? tipi,  int? vadeGunu,  List<dynamic>? tempSipList,  List<KalemListModel>? kalemList,  String? acik1,  String? acik2,  String? acik3,  String? acik4,  String? acik5,  String? acik6,  String? acik7,  String? acik8,  String? acik9,  String? acik10,  String? acik11,  String? acik12,  String? acik13,  String? acik14,  String? acik15,  String? acik16,  String? belgeKodu,  String? belgeNo,  String? belgeTuru,  String? cariAdi,  String? cariKodu,  String? cYedek6,  String? dovizAdi,  String? ekAciklama,  String? faturalasti,  String? kasaKodu,  String? kayityapankul,  String? kdvDahil,  String? plasiyerAciklama,  String? plasiyerKodu,  String? siparislesti,  String? ekAcik1,  String? ekAcik10,  String? ekAcik11,  String? ekAcik12,  String? ekAcik13,  String? ekAcik14,  String? ekAcik15,  String? ekAcik16,  String? ekAcik2,  String? ekAcik3,  String? ekAcik4,  String? ekAcik5,  String? ekAcik6,  String? ekAcik7,  String? ekAcik8,  String? ekAcik9,  int? islemKodu,  String? tag)?  $default,) {final _that = this;
+switch (_that) {
+case _TalepTeklifListesiModel() when $default != null:
+return $default(_that.cariDovizli,_that.kayittarihi,_that.tarih,_that.teslimTarihi,_that.vadeTarihi,_that.dovizTutari,_that.genelIskonto1,_that.genelIskonto2,_that.genelIskonto3,_that.genelToplam,_that.genIsk1O,_that.genisk1Tipi,_that.genIsk2O,_that.genIsk3O,_that.kalanMiktar,_that.kdv,_that.miktar,_that.tamamlananMiktar,_that.dovizTipi,_that.genisk3Tipi,_that.kalemAdedi,_that.tipi,_that.vadeGunu,_that.tempSipList,_that.kalemList,_that.acik1,_that.acik2,_that.acik3,_that.acik4,_that.acik5,_that.acik6,_that.acik7,_that.acik8,_that.acik9,_that.acik10,_that.acik11,_that.acik12,_that.acik13,_that.acik14,_that.acik15,_that.acik16,_that.belgeKodu,_that.belgeNo,_that.belgeTuru,_that.cariAdi,_that.cariKodu,_that.cYedek6,_that.dovizAdi,_that.ekAciklama,_that.faturalasti,_that.kasaKodu,_that.kayityapankul,_that.kdvDahil,_that.plasiyerAciklama,_that.plasiyerKodu,_that.siparislesti,_that.ekAcik1,_that.ekAcik10,_that.ekAcik11,_that.ekAcik12,_that.ekAcik13,_that.ekAcik14,_that.ekAcik15,_that.ekAcik16,_that.ekAcik2,_that.ekAcik3,_that.ekAcik4,_that.ekAcik5,_that.ekAcik6,_that.ekAcik7,_that.ekAcik8,_that.ekAcik9,_that.islemKodu,_that.tag);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

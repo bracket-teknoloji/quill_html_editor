@@ -14,8 +14,8 @@ CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) => CompanyModel()
 
 Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) =>
     <String, dynamic>{
-      if (instance.company case final value?) 'SIRKET': value,
-      if (instance.year case final value?) 'YIL': value,
-      if (instance.devSirket case final value?) 'DEVSIRKET': value,
-      if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
+      'SIRKET': ?instance.company,
+      'YIL': ?instance.year,
+      'DEVSIRKET': ?instance.devSirket,
+      'isDevredilmis': ?instance.isDevredilmis,
     };

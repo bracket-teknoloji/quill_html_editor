@@ -245,6 +245,7 @@ final class IslemlerMenuItemConstants<T> {
         }
         islemlerList
           ..add(siparisPDFGoruntule)
+          ..add(kopyala)
           ..addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt);
         if (_yetkiController.menuCheck(MenuItemsEnum.siparis)) {
           islemlerList

@@ -491,6 +491,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.alisIrsaliye => yetkiController.alisIrsGizlenecekAlanlar(value),
     EditTipiEnum.satisFatura => yetkiController.satisFatGizlenecekAlanlar(value),
     EditTipiEnum.alisFatura => yetkiController.alisFatGizlenecekAlanlar(value),
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiGizlenecekAlanlar(value),
+    EditTipiEnum.alisTalebi => yetkiController.alisTalebiGizlenecekAlanlar(value),
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiGizlenecekAlanlar(value),
     _ => false,
   };
 
@@ -505,6 +508,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyeAciklamaAlanlari(value),
     EditTipiEnum.musteri => yetkiController.siparisMSAciklamaAlanlari(value),
     EditTipiEnum.satisTeklifi => yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(value),
+    EditTipiEnum.satisTalebi => yetkiController.talepTeklifSatisTalebiAciklamaAlanlari(value),
     EditTipiEnum.alisTalebi => yetkiController.talepTeklifAlisTalebiAciklamaAlanlari(value),
     EditTipiEnum.satici => true,
     _ => false,
@@ -513,6 +517,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   bool get kopyalanabilirMi => switch (this) {
     EditTipiEnum.musteri => yetkiController.kopyalaMusSip,
     EditTipiEnum.alisTalebi => yetkiController.kopyalaAlisTalebi,
+    EditTipiEnum.satisTeklifi => yetkiController.kopyalaSatisTeklifi,
     EditTipiEnum.ambarGirisi => yetkiController.kopyalaAmbarGirisi,
     EditTipiEnum.ambarCikisi => yetkiController.kopyalaAmbarCikisi,
     EditTipiEnum.cari ||

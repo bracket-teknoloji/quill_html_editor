@@ -23,14 +23,13 @@ _BankaListesiRequestModel _$BankaListesiRequestModelFromJson(
 Map<String, dynamic> _$BankaListesiRequestModelToJson(
   _BankaListesiRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.bakiye case final value?) 'Bakiye': value,
-  if (instance.arrHesapTipi case final value?) 'ArrHesapTipi': value,
-  if (instance.haricHesaplarArray case final value?)
-    'HaricHesaplarArray': value,
-  if (instance.sirala case final value?) 'Sirala': value,
-  if (instance.ekranTipi case final value?) 'EkranTipi': value,
-  if (instance.menuKodu case final value?) 'MenuKodu': value,
-  if (instance.belgeTipi case final value?) 'BelgeTipi': value,
-  if (instance.bankaKodu case final value?) 'BankaKodu': value,
-  if (instance.islemModulu case final value?) 'IslemModulu': value,
+  'Bakiye': ?instance.bakiye,
+  'ArrHesapTipi': ?instance.arrHesapTipi,
+  'HaricHesaplarArray': ?instance.haricHesaplarArray,
+  'Sirala': ?instance.sirala,
+  'EkranTipi': ?instance.ekranTipi,
+  'MenuKodu': ?instance.menuKodu,
+  'BelgeTipi': ?instance.belgeTipi,
+  'BankaKodu': ?instance.bankaKodu,
+  'IslemModulu': ?instance.islemModulu,
 };

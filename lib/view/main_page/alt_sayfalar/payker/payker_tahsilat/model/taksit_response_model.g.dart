@@ -19,11 +19,10 @@ TaksitResponseModel _$TaksitResponseModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$TaksitResponseModelToJson(
   TaksitResponseModel instance,
 ) => <String, dynamic>{
-  if (instance.bankaId case final value?) 'BANKA_ID': value,
-  if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
-  if (instance.tutar case final value?) 'TUTAR': value,
-  if (instance.taksitler?.map((e) => e.toJson()).toList() case final value?)
-    'TAKSITLER': value,
+  'BANKA_ID': ?instance.bankaId,
+  'BANKA_ADI': ?instance.bankaAdi,
+  'TUTAR': ?instance.tutar,
+  'TAKSITLER': ?instance.taksitler?.map((e) => e.toJson()).toList(),
 };
 
 Taksitler _$TaksitlerFromJson(Map<String, dynamic> json) => Taksitler(
@@ -41,15 +40,15 @@ Taksitler _$TaksitlerFromJson(Map<String, dynamic> json) => Taksitler(
 );
 
 Map<String, dynamic> _$TaksitlerToJson(Taksitler instance) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.bankaId case final value?) 'BANKA_ID': value,
-  if (instance.odemeMetni case final value?) 'ODEME_METNI': value,
-  if (instance.taksit case final value?) 'TAKSIT': value,
-  if (instance.ekstraTaksit case final value?) 'EKSTRA_TAKSIT': value,
-  if (instance.altLimit case final value?) 'ALT_LIMIT': value,
-  if (instance.vadeFarki case final value?) 'VADE_FARKI': value,
-  if (instance.sira case final value?) 'SIRA': value,
-  if (instance.banka?.toJson() case final value?) 'BANKA': value,
+  'ID': ?instance.id,
+  'BANKA_ID': ?instance.bankaId,
+  'ODEME_METNI': ?instance.odemeMetni,
+  'TAKSIT': ?instance.taksit,
+  'EKSTRA_TAKSIT': ?instance.ekstraTaksit,
+  'ALT_LIMIT': ?instance.altLimit,
+  'VADE_FARKI': ?instance.vadeFarki,
+  'SIRA': ?instance.sira,
+  'BANKA': ?instance.banka?.toJson(),
 };
 
 _Banka _$BankaFromJson(Map<String, dynamic> json) => _Banka(
@@ -69,17 +68,15 @@ _Banka _$BankaFromJson(Map<String, dynamic> json) => _Banka(
 );
 
 Map<String, dynamic> _$BankaToJson(_Banka instance) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.adi case final value?) 'ADI': value,
-  if (instance.odemeLink case final value?) 'ODEME_LINK': value,
-  if (instance.logoUrl case final value?) 'LOGO_URL': value,
-  if (instance.silindi case final value?) 'SILINDI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
-  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
-  if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
+  'ID': ?instance.id,
+  'ADI': ?instance.adi,
+  'ODEME_LINK': ?instance.odemeLink,
+  'LOGO_URL': ?instance.logoUrl,
+  'SILINDI': ?instance.silindi,
+  'KAYITTARIHI': ?instance.kayittarihi?.toIso8601String(),
+  'KAYITYAPANKUL': ?instance.kayityapankul,
+  'DUZELTMETARIHI': ?instance.duzeltmetarihi?.toIso8601String(),
+  'DUZELTMEYAPANKUL': ?instance.duzeltmeyapankul,
 };
 
 _Sanalpos _$SanalposFromJson(Map<String, dynamic> json) => _Sanalpos(
@@ -105,21 +102,19 @@ _Sanalpos _$SanalposFromJson(Map<String, dynamic> json) => _Sanalpos(
 );
 
 Map<String, dynamic> _$SanalposToJson(_Sanalpos instance) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.bankaId case final value?) 'BANKA_ID': value,
-  if (instance.firmaId case final value?) 'FIRMA_ID': value,
-  if (instance.merchantId case final value?) 'MERCHANT_ID': value,
-  if (instance.merchantUser case final value?) 'MERCHANT_USER': value,
-  if (instance.merchantPassword case final value?) 'MERCHANT_PASSWORD': value,
-  if (instance.terminalNo case final value?) 'TERMINAL_NO': value,
-  if (instance.storeKey case final value?) 'STORE_KEY': value,
-  if (instance.aktifMi case final value?) 'AKTIF_MI': value,
-  if (instance.testMi case final value?) 'TEST_MI': value,
-  if (instance.silindi case final value?) 'SILINDI': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
-  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-    'DUZELTMETARIHI': value,
-  if (instance.duzeltmeyapankul case final value?) 'DUZELTMEYAPANKUL': value,
+  'ID': ?instance.id,
+  'BANKA_ID': ?instance.bankaId,
+  'FIRMA_ID': ?instance.firmaId,
+  'MERCHANT_ID': ?instance.merchantId,
+  'MERCHANT_USER': ?instance.merchantUser,
+  'MERCHANT_PASSWORD': ?instance.merchantPassword,
+  'TERMINAL_NO': ?instance.terminalNo,
+  'STORE_KEY': ?instance.storeKey,
+  'AKTIF_MI': ?instance.aktifMi,
+  'TEST_MI': ?instance.testMi,
+  'SILINDI': ?instance.silindi,
+  'KAYITTARIHI': ?instance.kayittarihi?.toIso8601String(),
+  'KAYITYAPANKUL': ?instance.kayityapankul,
+  'DUZELTMETARIHI': ?instance.duzeltmetarihi?.toIso8601String(),
+  'DUZELTMEYAPANKUL': ?instance.duzeltmeyapankul,
 };

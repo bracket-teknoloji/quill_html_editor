@@ -157,6 +157,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
                   arguments: CariRequestModel(
                     bagliCariKodu: viewModel.pdfModel.dicParams?.teslimCariKodu,
                     teslimCari: "E",
+                    menuKodu: "CARI_CARI",
                   ),
                 );
                 if (result is CariListesiModel) {

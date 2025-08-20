@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -67,6 +66,130 @@ as List<Referanslar>?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [IsEmriHammaddeTakibiDetayModel].
+extension IsEmriHammaddeTakibiDetayModelPatterns on IsEmriHammaddeTakibiDetayModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _IsEmriHammaddeTakibiDetayModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _IsEmriHammaddeTakibiDetayModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _IsEmriHammaddeTakibiDetayModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _IsEmriHammaddeTakibiDetayModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _IsEmriHammaddeTakibiDetayModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _IsEmriHammaddeTakibiDetayModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? hamKodu,  String? hamAdi,  int? miktar,  List<Referanslar>? referanslar)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _IsEmriHammaddeTakibiDetayModel() when $default != null:
+return $default(_that.hamKodu,_that.hamAdi,_that.miktar,_that.referanslar);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? hamKodu,  String? hamAdi,  int? miktar,  List<Referanslar>? referanslar)  $default,) {final _that = this;
+switch (_that) {
+case _IsEmriHammaddeTakibiDetayModel():
+return $default(_that.hamKodu,_that.hamAdi,_that.miktar,_that.referanslar);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? hamKodu,  String? hamAdi,  int? miktar,  List<Referanslar>? referanslar)?  $default,) {final _that = this;
+switch (_that) {
+case _IsEmriHammaddeTakibiDetayModel() when $default != null:
+return $default(_that.hamKodu,_that.hamAdi,_that.miktar,_that.referanslar);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -189,6 +312,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [Referanslar].
+extension ReferanslarPatterns on Referanslar {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Referanslar value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Referanslar() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Referanslar value)  $default,){
+final _that = this;
+switch (_that) {
+case _Referanslar():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Referanslar value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Referanslar() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? hammaddeNo,  String? stokKodu,  String? stokAdi,  String? referansStokKodu,  String? referansStokAdi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Referanslar() when $default != null:
+return $default(_that.id,_that.hammaddeNo,_that.stokKodu,_that.stokAdi,_that.referansStokKodu,_that.referansStokAdi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? hammaddeNo,  String? stokKodu,  String? stokAdi,  String? referansStokKodu,  String? referansStokAdi)  $default,) {final _that = this;
+switch (_that) {
+case _Referanslar():
+return $default(_that.id,_that.hammaddeNo,_that.stokKodu,_that.stokAdi,_that.referansStokKodu,_that.referansStokAdi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? hammaddeNo,  String? stokKodu,  String? stokAdi,  String? referansStokKodu,  String? referansStokAdi)?  $default,) {final _that = this;
+switch (_that) {
+case _Referanslar() when $default != null:
+return $default(_that.id,_that.hammaddeNo,_that.stokKodu,_that.stokAdi,_that.referansStokKodu,_that.referansStokAdi);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

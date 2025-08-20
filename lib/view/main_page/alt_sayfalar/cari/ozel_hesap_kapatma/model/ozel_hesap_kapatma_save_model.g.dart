@@ -19,7 +19,7 @@ _OzelHesapKapatmaSaveModel _$OzelHesapKapatmaSaveModelFromJson(
 Map<String, dynamic> _$OzelHesapKapatmaSaveModelToJson(
   _OzelHesapKapatmaSaveModel instance,
 ) => <String, dynamic>{
-  if (instance.arrHedefInckeyno case final value?) 'ARR_HEDEF_INCKEYNO': value,
-  if (instance.cariKodu case final value?) 'CARI_KODU': value,
-  if (instance.kaynakInckeyno case final value?) 'KAYNAK_INCKEYNO': value,
+  'ARR_HEDEF_INCKEYNO': ?instance.arrHedefInckeyno,
+  'CARI_KODU': ?instance.cariKodu,
+  'KAYNAK_INCKEYNO': ?instance.kaynakInckeyno,
 };

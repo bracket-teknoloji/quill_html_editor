@@ -68,7 +68,7 @@ final class AppThemeLight extends AppTheme {
       displayColor: colorManager.onSecondaryContainer,
       decorationColor: colorManager.onSecondaryContainer,
     ),
-    bottomAppBarTheme: BottomAppBarTheme(
+    bottomAppBarTheme: BottomAppBarThemeData(
       // elevation: 0,
       surfaceTintColor: colorManager.shadow,
     ),

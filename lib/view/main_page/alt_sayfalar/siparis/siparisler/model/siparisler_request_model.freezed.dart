@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -16,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SiparislerRequestModel {
 
- String? get pickerBelgeTuru; set pickerBelgeTuru(String? value); bool? get iadeMi; set iadeMi(bool? value); String? get cariKodu; set cariKodu(String? value); String? get teslimCariKodu; set teslimCariKodu(String? value); String? get ozelKod2; set ozelKod2(String? value); String? get cariTipi; set cariTipi(String? value); String? get miktarGetir; set miktarGetir(String? value); String? get kontrolEdildi; set kontrolEdildi(String? value);@JsonKey(name: "SIRALAMA") String? get siralama;@JsonKey(name: "SIRALAMA") set siralama(String? value); String? get siparisKarsilanmaDurumu; set siparisKarsilanmaDurumu(String? value); String? get ozelKod1; set ozelKod1(String? value); String? get stokKodu; set stokKodu(String? value); bool? get kapaliBelgelerListelenmesin; set kapaliBelgelerListelenmesin(bool? value); String? get projeKodu; set projeKodu(String? value); bool? get faturalasmaGoster; set faturalasmaGoster(bool? value); String? get arrKod5; set arrKod5(String? value); String? get arrGrupKodu; set arrGrupKodu(String? value); String? get arrKod4; set arrKod4(String? value); String? get arrKod3; set arrKod3(String? value); String? get arrKod2; set arrKod2(String? value); String? get arrPlasiyerKodu; set arrPlasiyerKodu(String? value); String? get arrKod1; set arrKod1(String? value); String? get ekranTipi; set ekranTipi(String? value); int? get sayfa; set sayfa(int? value); String? get baslamaTarihi; set baslamaTarihi(String? value); String? get bitisTarihi; set bitisTarihi(String? value); String? get searchText; set searchText(String? value); int? get filtreKodu; set filtreKodu(int? value); String? get depoKodu; set depoKodu(String? value); String? get hedefDepoKodu; set hedefDepoKodu(String? value); String? get belgeNo; set belgeNo(String? value); String? get siparisDurumu; set siparisDurumu(String? value); String? get referansStokKodu; set referansStokKodu(String? value); String? get fiyatGrubu; set fiyatGrubu(String? value); String? get menuKodu; set menuKodu(String? value); bool? get siparisSevkEdilenGoster; set siparisSevkEdilenGoster(bool? value); String? get refBelgeTuru; set refBelgeTuru(String? value); bool? get kisitYok; set kisitYok(bool? value); String? get arrBelgeTipi; set arrBelgeTipi(String? value); String? get arrBelgeNo; set arrBelgeNo(String? value); String? get lokalDAT; set lokalDAT(String? value); bool? get faturalanmisIrsaliyelerGelsin; set faturalanmisIrsaliyelerGelsin(bool? value);
+ String? get pickerBelgeTuru; set pickerBelgeTuru(String? value); bool? get iadeMi; set iadeMi(bool? value); String? get cariKodu; set cariKodu(String? value); String? get teslimCariKodu; set teslimCariKodu(String? value); String? get ozelKod2; set ozelKod2(String? value); String? get cariTipi; set cariTipi(String? value); String? get miktarGetir; set miktarGetir(String? value); String? get kontrolEdildi; set kontrolEdildi(String? value);@JsonKey(name: "SIRALAMA") String? get siralama;@JsonKey(name: "SIRALAMA") set siralama(String? value); String? get siparisKarsilanmaDurumu; set siparisKarsilanmaDurumu(String? value); String? get ozelKod1; set ozelKod1(String? value); String? get stokKodu; set stokKodu(String? value); bool? get kapaliBelgelerListelenmesin; set kapaliBelgelerListelenmesin(bool? value); String? get projeKodu; set projeKodu(String? value); bool? get faturalasmaGoster; set faturalasmaGoster(bool? value); String? get arrKod5; set arrKod5(String? value); String? get arrGrupKodu; set arrGrupKodu(String? value); String? get arrKod4; set arrKod4(String? value); String? get arrKod3; set arrKod3(String? value); String? get arrKod2; set arrKod2(String? value); String? get arrPlasiyerKodu; set arrPlasiyerKodu(String? value); String? get arrKod1; set arrKod1(String? value); String? get ekranTipi; set ekranTipi(String? value); int? get sayfa; set sayfa(int? value); String? get baslamaTarihi; set baslamaTarihi(String? value); String? get bitisTarihi; set bitisTarihi(String? value); String? get searchText; set searchText(String? value); int? get filtreKodu; set filtreKodu(int? value); String? get depoKodu; set depoKodu(String? value); String? get hedefDepoKodu; set hedefDepoKodu(String? value); String? get belgeNo; set belgeNo(String? value); String? get siparisDurumu; set siparisDurumu(String? value); String? get referansStokKodu; set referansStokKodu(String? value); String? get fiyatGrubu; set fiyatGrubu(String? value); String? get menuKodu; set menuKodu(String? value); bool? get siparisSevkEdilenGoster; set siparisSevkEdilenGoster(bool? value); String? get refBelgeTuru; set refBelgeTuru(String? value); bool? get kisitYok; set kisitYok(bool? value); String? get arrBelgeTipi; set arrBelgeTipi(String? value); String? get arrBelgeNo; set arrBelgeNo(String? value); String? get lokalDAT; set lokalDAT(String? value); bool? get faturalanmisIrsaliyelerGelsin; set faturalanmisIrsaliyelerGelsin(bool? value); String? get onayDurumu; set onayDurumu(String? value);
 /// Create a copy of SiparislerRequestModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -38,7 +37,7 @@ abstract mixin class $SiparislerRequestModelCopyWith<$Res>  {
   factory $SiparislerRequestModelCopyWith(SiparislerRequestModel value, $Res Function(SiparislerRequestModel) _then) = _$SiparislerRequestModelCopyWithImpl;
 @useResult
 $Res call({
- String? pickerBelgeTuru, bool? iadeMi, String? cariKodu, String? teslimCariKodu, String? ozelKod2, String? cariTipi, String? miktarGetir, String? kontrolEdildi,@JsonKey(name: "SIRALAMA") String? siralama, String? siparisKarsilanmaDurumu, String? ozelKod1, String? stokKodu, bool? kapaliBelgelerListelenmesin, String? projeKodu, bool? faturalasmaGoster, String? arrKod5, String? arrGrupKodu, String? arrKod4, String? arrKod3, String? arrKod2, String? arrPlasiyerKodu, String? arrKod1, String? ekranTipi, int? sayfa, String? baslamaTarihi, String? bitisTarihi, String? searchText, int? filtreKodu, String? depoKodu, String? hedefDepoKodu, String? belgeNo, String? siparisDurumu, String? referansStokKodu, String? fiyatGrubu, String? menuKodu, bool? siparisSevkEdilenGoster, String? refBelgeTuru, bool? kisitYok, String? arrBelgeTipi, String? arrBelgeNo, String? lokalDAT, bool? faturalanmisIrsaliyelerGelsin
+ String? pickerBelgeTuru, bool? iadeMi, String? cariKodu, String? teslimCariKodu, String? ozelKod2, String? cariTipi, String? miktarGetir, String? kontrolEdildi,@JsonKey(name: "SIRALAMA") String? siralama, String? siparisKarsilanmaDurumu, String? ozelKod1, String? stokKodu, bool? kapaliBelgelerListelenmesin, String? projeKodu, bool? faturalasmaGoster, String? arrKod5, String? arrGrupKodu, String? arrKod4, String? arrKod3, String? arrKod2, String? arrPlasiyerKodu, String? arrKod1, String? ekranTipi, int? sayfa, String? baslamaTarihi, String? bitisTarihi, String? searchText, int? filtreKodu, String? depoKodu, String? hedefDepoKodu, String? belgeNo, String? siparisDurumu, String? referansStokKodu, String? fiyatGrubu, String? menuKodu, bool? siparisSevkEdilenGoster, String? refBelgeTuru, bool? kisitYok, String? arrBelgeTipi, String? arrBelgeNo, String? lokalDAT, bool? faturalanmisIrsaliyelerGelsin, String? onayDurumu
 });
 
 
@@ -55,7 +54,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res>
 
 /// Create a copy of SiparislerRequestModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? pickerBelgeTuru = freezed,Object? iadeMi = freezed,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? ozelKod2 = freezed,Object? cariTipi = freezed,Object? miktarGetir = freezed,Object? kontrolEdildi = freezed,Object? siralama = freezed,Object? siparisKarsilanmaDurumu = freezed,Object? ozelKod1 = freezed,Object? stokKodu = freezed,Object? kapaliBelgelerListelenmesin = freezed,Object? projeKodu = freezed,Object? faturalasmaGoster = freezed,Object? arrKod5 = freezed,Object? arrGrupKodu = freezed,Object? arrKod4 = freezed,Object? arrKod3 = freezed,Object? arrKod2 = freezed,Object? arrPlasiyerKodu = freezed,Object? arrKod1 = freezed,Object? ekranTipi = freezed,Object? sayfa = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? searchText = freezed,Object? filtreKodu = freezed,Object? depoKodu = freezed,Object? hedefDepoKodu = freezed,Object? belgeNo = freezed,Object? siparisDurumu = freezed,Object? referansStokKodu = freezed,Object? fiyatGrubu = freezed,Object? menuKodu = freezed,Object? siparisSevkEdilenGoster = freezed,Object? refBelgeTuru = freezed,Object? kisitYok = freezed,Object? arrBelgeTipi = freezed,Object? arrBelgeNo = freezed,Object? lokalDAT = freezed,Object? faturalanmisIrsaliyelerGelsin = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? pickerBelgeTuru = freezed,Object? iadeMi = freezed,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? ozelKod2 = freezed,Object? cariTipi = freezed,Object? miktarGetir = freezed,Object? kontrolEdildi = freezed,Object? siralama = freezed,Object? siparisKarsilanmaDurumu = freezed,Object? ozelKod1 = freezed,Object? stokKodu = freezed,Object? kapaliBelgelerListelenmesin = freezed,Object? projeKodu = freezed,Object? faturalasmaGoster = freezed,Object? arrKod5 = freezed,Object? arrGrupKodu = freezed,Object? arrKod4 = freezed,Object? arrKod3 = freezed,Object? arrKod2 = freezed,Object? arrPlasiyerKodu = freezed,Object? arrKod1 = freezed,Object? ekranTipi = freezed,Object? sayfa = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? searchText = freezed,Object? filtreKodu = freezed,Object? depoKodu = freezed,Object? hedefDepoKodu = freezed,Object? belgeNo = freezed,Object? siparisDurumu = freezed,Object? referansStokKodu = freezed,Object? fiyatGrubu = freezed,Object? menuKodu = freezed,Object? siparisSevkEdilenGoster = freezed,Object? refBelgeTuru = freezed,Object? kisitYok = freezed,Object? arrBelgeTipi = freezed,Object? arrBelgeNo = freezed,Object? lokalDAT = freezed,Object? faturalanmisIrsaliyelerGelsin = freezed,Object? onayDurumu = freezed,}) {
   return _then(_self.copyWith(
 pickerBelgeTuru: freezed == pickerBelgeTuru ? _self.pickerBelgeTuru : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
 as String?,iadeMi: freezed == iadeMi ? _self.iadeMi : iadeMi // ignore: cast_nullable_to_non_nullable
@@ -99,18 +98,143 @@ as bool?,arrBelgeTipi: freezed == arrBelgeTipi ? _self.arrBelgeTipi : arrBelgeTi
 as String?,arrBelgeNo: freezed == arrBelgeNo ? _self.arrBelgeNo : arrBelgeNo // ignore: cast_nullable_to_non_nullable
 as String?,lokalDAT: freezed == lokalDAT ? _self.lokalDAT : lokalDAT // ignore: cast_nullable_to_non_nullable
 as String?,faturalanmisIrsaliyelerGelsin: freezed == faturalanmisIrsaliyelerGelsin ? _self.faturalanmisIrsaliyelerGelsin : faturalanmisIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
-as bool?,
+as bool?,onayDurumu: freezed == onayDurumu ? _self.onayDurumu : onayDurumu // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
 }
 
 
+/// Adds pattern-matching-related methods to [SiparislerRequestModel].
+extension SiparislerRequestModelPatterns on SiparislerRequestModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SiparislerRequestModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SiparislerRequestModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SiparislerRequestModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _SiparislerRequestModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SiparislerRequestModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SiparislerRequestModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? pickerBelgeTuru,  bool? iadeMi,  String? cariKodu,  String? teslimCariKodu,  String? ozelKod2,  String? cariTipi,  String? miktarGetir,  String? kontrolEdildi, @JsonKey(name: "SIRALAMA")  String? siralama,  String? siparisKarsilanmaDurumu,  String? ozelKod1,  String? stokKodu,  bool? kapaliBelgelerListelenmesin,  String? projeKodu,  bool? faturalasmaGoster,  String? arrKod5,  String? arrGrupKodu,  String? arrKod4,  String? arrKod3,  String? arrKod2,  String? arrPlasiyerKodu,  String? arrKod1,  String? ekranTipi,  int? sayfa,  String? baslamaTarihi,  String? bitisTarihi,  String? searchText,  int? filtreKodu,  String? depoKodu,  String? hedefDepoKodu,  String? belgeNo,  String? siparisDurumu,  String? referansStokKodu,  String? fiyatGrubu,  String? menuKodu,  bool? siparisSevkEdilenGoster,  String? refBelgeTuru,  bool? kisitYok,  String? arrBelgeTipi,  String? arrBelgeNo,  String? lokalDAT,  bool? faturalanmisIrsaliyelerGelsin,  String? onayDurumu)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SiparislerRequestModel() when $default != null:
+return $default(_that.pickerBelgeTuru,_that.iadeMi,_that.cariKodu,_that.teslimCariKodu,_that.ozelKod2,_that.cariTipi,_that.miktarGetir,_that.kontrolEdildi,_that.siralama,_that.siparisKarsilanmaDurumu,_that.ozelKod1,_that.stokKodu,_that.kapaliBelgelerListelenmesin,_that.projeKodu,_that.faturalasmaGoster,_that.arrKod5,_that.arrGrupKodu,_that.arrKod4,_that.arrKod3,_that.arrKod2,_that.arrPlasiyerKodu,_that.arrKod1,_that.ekranTipi,_that.sayfa,_that.baslamaTarihi,_that.bitisTarihi,_that.searchText,_that.filtreKodu,_that.depoKodu,_that.hedefDepoKodu,_that.belgeNo,_that.siparisDurumu,_that.referansStokKodu,_that.fiyatGrubu,_that.menuKodu,_that.siparisSevkEdilenGoster,_that.refBelgeTuru,_that.kisitYok,_that.arrBelgeTipi,_that.arrBelgeNo,_that.lokalDAT,_that.faturalanmisIrsaliyelerGelsin,_that.onayDurumu);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? pickerBelgeTuru,  bool? iadeMi,  String? cariKodu,  String? teslimCariKodu,  String? ozelKod2,  String? cariTipi,  String? miktarGetir,  String? kontrolEdildi, @JsonKey(name: "SIRALAMA")  String? siralama,  String? siparisKarsilanmaDurumu,  String? ozelKod1,  String? stokKodu,  bool? kapaliBelgelerListelenmesin,  String? projeKodu,  bool? faturalasmaGoster,  String? arrKod5,  String? arrGrupKodu,  String? arrKod4,  String? arrKod3,  String? arrKod2,  String? arrPlasiyerKodu,  String? arrKod1,  String? ekranTipi,  int? sayfa,  String? baslamaTarihi,  String? bitisTarihi,  String? searchText,  int? filtreKodu,  String? depoKodu,  String? hedefDepoKodu,  String? belgeNo,  String? siparisDurumu,  String? referansStokKodu,  String? fiyatGrubu,  String? menuKodu,  bool? siparisSevkEdilenGoster,  String? refBelgeTuru,  bool? kisitYok,  String? arrBelgeTipi,  String? arrBelgeNo,  String? lokalDAT,  bool? faturalanmisIrsaliyelerGelsin,  String? onayDurumu)  $default,) {final _that = this;
+switch (_that) {
+case _SiparislerRequestModel():
+return $default(_that.pickerBelgeTuru,_that.iadeMi,_that.cariKodu,_that.teslimCariKodu,_that.ozelKod2,_that.cariTipi,_that.miktarGetir,_that.kontrolEdildi,_that.siralama,_that.siparisKarsilanmaDurumu,_that.ozelKod1,_that.stokKodu,_that.kapaliBelgelerListelenmesin,_that.projeKodu,_that.faturalasmaGoster,_that.arrKod5,_that.arrGrupKodu,_that.arrKod4,_that.arrKod3,_that.arrKod2,_that.arrPlasiyerKodu,_that.arrKod1,_that.ekranTipi,_that.sayfa,_that.baslamaTarihi,_that.bitisTarihi,_that.searchText,_that.filtreKodu,_that.depoKodu,_that.hedefDepoKodu,_that.belgeNo,_that.siparisDurumu,_that.referansStokKodu,_that.fiyatGrubu,_that.menuKodu,_that.siparisSevkEdilenGoster,_that.refBelgeTuru,_that.kisitYok,_that.arrBelgeTipi,_that.arrBelgeNo,_that.lokalDAT,_that.faturalanmisIrsaliyelerGelsin,_that.onayDurumu);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? pickerBelgeTuru,  bool? iadeMi,  String? cariKodu,  String? teslimCariKodu,  String? ozelKod2,  String? cariTipi,  String? miktarGetir,  String? kontrolEdildi, @JsonKey(name: "SIRALAMA")  String? siralama,  String? siparisKarsilanmaDurumu,  String? ozelKod1,  String? stokKodu,  bool? kapaliBelgelerListelenmesin,  String? projeKodu,  bool? faturalasmaGoster,  String? arrKod5,  String? arrGrupKodu,  String? arrKod4,  String? arrKod3,  String? arrKod2,  String? arrPlasiyerKodu,  String? arrKod1,  String? ekranTipi,  int? sayfa,  String? baslamaTarihi,  String? bitisTarihi,  String? searchText,  int? filtreKodu,  String? depoKodu,  String? hedefDepoKodu,  String? belgeNo,  String? siparisDurumu,  String? referansStokKodu,  String? fiyatGrubu,  String? menuKodu,  bool? siparisSevkEdilenGoster,  String? refBelgeTuru,  bool? kisitYok,  String? arrBelgeTipi,  String? arrBelgeNo,  String? lokalDAT,  bool? faturalanmisIrsaliyelerGelsin,  String? onayDurumu)?  $default,) {final _that = this;
+switch (_that) {
+case _SiparislerRequestModel() when $default != null:
+return $default(_that.pickerBelgeTuru,_that.iadeMi,_that.cariKodu,_that.teslimCariKodu,_that.ozelKod2,_that.cariTipi,_that.miktarGetir,_that.kontrolEdildi,_that.siralama,_that.siparisKarsilanmaDurumu,_that.ozelKod1,_that.stokKodu,_that.kapaliBelgelerListelenmesin,_that.projeKodu,_that.faturalasmaGoster,_that.arrKod5,_that.arrGrupKodu,_that.arrKod4,_that.arrKod3,_that.arrKod2,_that.arrPlasiyerKodu,_that.arrKod1,_that.ekranTipi,_that.sayfa,_that.baslamaTarihi,_that.bitisTarihi,_that.searchText,_that.filtreKodu,_that.depoKodu,_that.hedefDepoKodu,_that.belgeNo,_that.siparisDurumu,_that.referansStokKodu,_that.fiyatGrubu,_that.menuKodu,_that.siparisSevkEdilenGoster,_that.refBelgeTuru,_that.kisitYok,_that.arrBelgeTipi,_that.arrBelgeNo,_that.lokalDAT,_that.faturalanmisIrsaliyelerGelsin,_that.onayDurumu);case _:
+  return null;
+
+}
+}
+
+}
+
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _SiparislerRequestModel implements SiparislerRequestModel {
-   _SiparislerRequestModel({this.pickerBelgeTuru, this.iadeMi, this.cariKodu = "", this.teslimCariKodu, this.ozelKod2, this.cariTipi, this.miktarGetir, this.kontrolEdildi, @JsonKey(name: "SIRALAMA") this.siralama, this.siparisKarsilanmaDurumu, this.ozelKod1, this.stokKodu, this.kapaliBelgelerListelenmesin, this.projeKodu, this.faturalasmaGoster, this.arrKod5, this.arrGrupKodu, this.arrKod4, this.arrKod3, this.arrKod2, this.arrPlasiyerKodu, this.arrKod1, this.ekranTipi = "R", this.sayfa, this.baslamaTarihi, this.bitisTarihi, this.searchText, this.filtreKodu, this.depoKodu, this.hedefDepoKodu, this.belgeNo = "", this.siparisDurumu, this.referansStokKodu, this.fiyatGrubu, this.menuKodu, this.siparisSevkEdilenGoster, this.refBelgeTuru, this.kisitYok, this.arrBelgeTipi, this.arrBelgeNo, this.lokalDAT, this.faturalanmisIrsaliyelerGelsin});
+   _SiparislerRequestModel({this.pickerBelgeTuru, this.iadeMi, this.cariKodu = "", this.teslimCariKodu, this.ozelKod2, this.cariTipi, this.miktarGetir, this.kontrolEdildi, @JsonKey(name: "SIRALAMA") this.siralama, this.siparisKarsilanmaDurumu, this.ozelKod1, this.stokKodu, this.kapaliBelgelerListelenmesin, this.projeKodu, this.faturalasmaGoster, this.arrKod5, this.arrGrupKodu, this.arrKod4, this.arrKod3, this.arrKod2, this.arrPlasiyerKodu, this.arrKod1, this.ekranTipi = "R", this.sayfa, this.baslamaTarihi, this.bitisTarihi, this.searchText, this.filtreKodu, this.depoKodu, this.hedefDepoKodu, this.belgeNo = "", this.siparisDurumu, this.referansStokKodu, this.fiyatGrubu, this.menuKodu, this.siparisSevkEdilenGoster, this.refBelgeTuru, this.kisitYok, this.arrBelgeTipi, this.arrBelgeNo, this.lokalDAT, this.faturalanmisIrsaliyelerGelsin, this.onayDurumu});
   factory _SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
 
 @override  String? pickerBelgeTuru;
@@ -155,6 +279,7 @@ class _SiparislerRequestModel implements SiparislerRequestModel {
 @override  String? arrBelgeNo;
 @override  String? lokalDAT;
 @override  bool? faturalanmisIrsaliyelerGelsin;
+@override  String? onayDurumu;
 
 /// Create a copy of SiparislerRequestModel
 /// with the given fields replaced by the non-null parameter values.
@@ -178,7 +303,7 @@ abstract mixin class _$SiparislerRequestModelCopyWith<$Res> implements $Siparisl
   factory _$SiparislerRequestModelCopyWith(_SiparislerRequestModel value, $Res Function(_SiparislerRequestModel) _then) = __$SiparislerRequestModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? pickerBelgeTuru, bool? iadeMi, String? cariKodu, String? teslimCariKodu, String? ozelKod2, String? cariTipi, String? miktarGetir, String? kontrolEdildi,@JsonKey(name: "SIRALAMA") String? siralama, String? siparisKarsilanmaDurumu, String? ozelKod1, String? stokKodu, bool? kapaliBelgelerListelenmesin, String? projeKodu, bool? faturalasmaGoster, String? arrKod5, String? arrGrupKodu, String? arrKod4, String? arrKod3, String? arrKod2, String? arrPlasiyerKodu, String? arrKod1, String? ekranTipi, int? sayfa, String? baslamaTarihi, String? bitisTarihi, String? searchText, int? filtreKodu, String? depoKodu, String? hedefDepoKodu, String? belgeNo, String? siparisDurumu, String? referansStokKodu, String? fiyatGrubu, String? menuKodu, bool? siparisSevkEdilenGoster, String? refBelgeTuru, bool? kisitYok, String? arrBelgeTipi, String? arrBelgeNo, String? lokalDAT, bool? faturalanmisIrsaliyelerGelsin
+ String? pickerBelgeTuru, bool? iadeMi, String? cariKodu, String? teslimCariKodu, String? ozelKod2, String? cariTipi, String? miktarGetir, String? kontrolEdildi,@JsonKey(name: "SIRALAMA") String? siralama, String? siparisKarsilanmaDurumu, String? ozelKod1, String? stokKodu, bool? kapaliBelgelerListelenmesin, String? projeKodu, bool? faturalasmaGoster, String? arrKod5, String? arrGrupKodu, String? arrKod4, String? arrKod3, String? arrKod2, String? arrPlasiyerKodu, String? arrKod1, String? ekranTipi, int? sayfa, String? baslamaTarihi, String? bitisTarihi, String? searchText, int? filtreKodu, String? depoKodu, String? hedefDepoKodu, String? belgeNo, String? siparisDurumu, String? referansStokKodu, String? fiyatGrubu, String? menuKodu, bool? siparisSevkEdilenGoster, String? refBelgeTuru, bool? kisitYok, String? arrBelgeTipi, String? arrBelgeNo, String? lokalDAT, bool? faturalanmisIrsaliyelerGelsin, String? onayDurumu
 });
 
 
@@ -195,7 +320,7 @@ class __$SiparislerRequestModelCopyWithImpl<$Res>
 
 /// Create a copy of SiparislerRequestModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? pickerBelgeTuru = freezed,Object? iadeMi = freezed,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? ozelKod2 = freezed,Object? cariTipi = freezed,Object? miktarGetir = freezed,Object? kontrolEdildi = freezed,Object? siralama = freezed,Object? siparisKarsilanmaDurumu = freezed,Object? ozelKod1 = freezed,Object? stokKodu = freezed,Object? kapaliBelgelerListelenmesin = freezed,Object? projeKodu = freezed,Object? faturalasmaGoster = freezed,Object? arrKod5 = freezed,Object? arrGrupKodu = freezed,Object? arrKod4 = freezed,Object? arrKod3 = freezed,Object? arrKod2 = freezed,Object? arrPlasiyerKodu = freezed,Object? arrKod1 = freezed,Object? ekranTipi = freezed,Object? sayfa = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? searchText = freezed,Object? filtreKodu = freezed,Object? depoKodu = freezed,Object? hedefDepoKodu = freezed,Object? belgeNo = freezed,Object? siparisDurumu = freezed,Object? referansStokKodu = freezed,Object? fiyatGrubu = freezed,Object? menuKodu = freezed,Object? siparisSevkEdilenGoster = freezed,Object? refBelgeTuru = freezed,Object? kisitYok = freezed,Object? arrBelgeTipi = freezed,Object? arrBelgeNo = freezed,Object? lokalDAT = freezed,Object? faturalanmisIrsaliyelerGelsin = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? pickerBelgeTuru = freezed,Object? iadeMi = freezed,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? ozelKod2 = freezed,Object? cariTipi = freezed,Object? miktarGetir = freezed,Object? kontrolEdildi = freezed,Object? siralama = freezed,Object? siparisKarsilanmaDurumu = freezed,Object? ozelKod1 = freezed,Object? stokKodu = freezed,Object? kapaliBelgelerListelenmesin = freezed,Object? projeKodu = freezed,Object? faturalasmaGoster = freezed,Object? arrKod5 = freezed,Object? arrGrupKodu = freezed,Object? arrKod4 = freezed,Object? arrKod3 = freezed,Object? arrKod2 = freezed,Object? arrPlasiyerKodu = freezed,Object? arrKod1 = freezed,Object? ekranTipi = freezed,Object? sayfa = freezed,Object? baslamaTarihi = freezed,Object? bitisTarihi = freezed,Object? searchText = freezed,Object? filtreKodu = freezed,Object? depoKodu = freezed,Object? hedefDepoKodu = freezed,Object? belgeNo = freezed,Object? siparisDurumu = freezed,Object? referansStokKodu = freezed,Object? fiyatGrubu = freezed,Object? menuKodu = freezed,Object? siparisSevkEdilenGoster = freezed,Object? refBelgeTuru = freezed,Object? kisitYok = freezed,Object? arrBelgeTipi = freezed,Object? arrBelgeNo = freezed,Object? lokalDAT = freezed,Object? faturalanmisIrsaliyelerGelsin = freezed,Object? onayDurumu = freezed,}) {
   return _then(_SiparislerRequestModel(
 pickerBelgeTuru: freezed == pickerBelgeTuru ? _self.pickerBelgeTuru : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
 as String?,iadeMi: freezed == iadeMi ? _self.iadeMi : iadeMi // ignore: cast_nullable_to_non_nullable
@@ -239,7 +364,8 @@ as bool?,arrBelgeTipi: freezed == arrBelgeTipi ? _self.arrBelgeTipi : arrBelgeTi
 as String?,arrBelgeNo: freezed == arrBelgeNo ? _self.arrBelgeNo : arrBelgeNo // ignore: cast_nullable_to_non_nullable
 as String?,lokalDAT: freezed == lokalDAT ? _self.lokalDAT : lokalDAT // ignore: cast_nullable_to_non_nullable
 as String?,faturalanmisIrsaliyelerGelsin: freezed == faturalanmisIrsaliyelerGelsin ? _self.faturalanmisIrsaliyelerGelsin : faturalanmisIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
-as bool?,
+as bool?,onayDurumu: freezed == onayDurumu ? _self.onayDurumu : onayDurumu // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

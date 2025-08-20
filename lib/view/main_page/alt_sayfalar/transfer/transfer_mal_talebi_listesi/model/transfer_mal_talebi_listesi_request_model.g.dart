@@ -18,6 +18,6 @@ _$TransferMalTalebiListesiRequestModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$TransferMalTalebiListesiRequestModelToJson(
   _TransferMalTalebiListesiRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.durum case final value?) 'DURUM': value,
-  if (instance.filtreler case final value?) 'FILTRELER': value,
+  'DURUM': ?instance.durum,
+  'FILTRELER': ?instance.filtreler,
 };

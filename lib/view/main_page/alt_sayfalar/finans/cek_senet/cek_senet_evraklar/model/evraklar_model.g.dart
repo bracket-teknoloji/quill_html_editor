@@ -20,12 +20,12 @@ _EvraklarModel _$EvraklarModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$EvraklarModelToJson(_EvraklarModel instance) =>
     <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.belgeNo case final value?) 'BELGE_NO': value,
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-      if (instance.resimUrl case final value?) 'RESIM_URL': value,
-      if (instance.resimUrlKucuk case final value?) 'RESIM_URL_KUCUK': value,
-      if (instance.boyutByte case final value?) 'BOYUT_BYTE': value,
-      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      'ID': ?instance.id,
+      'BELGE_NO': ?instance.belgeNo,
+      'ACIKLAMA': ?instance.aciklama,
+      'BELGE_TIPI': ?instance.belgeTipi,
+      'RESIM_URL': ?instance.resimUrl,
+      'RESIM_URL_KUCUK': ?instance.resimUrlKucuk,
+      'BOYUT_BYTE': ?instance.boyutByte,
+      'ISLEM_KODU': ?instance.islemKodu,
     };

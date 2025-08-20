@@ -127,12 +127,11 @@ _YaziciModel _$YaziciModelFromJson(Map<String, dynamic> json) => _YaziciModel(
 
 Map<String, dynamic> _$YaziciModelToJson(_YaziciModel instance) =>
     <String, dynamic>{
-      if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
+      'YAZICI_ADI': ?instance.yaziciAdi,
       'MAC_ADRESI': instance.macAdresi,
-      if (_$YaziciTipiEnumMap[instance.yaziciTipi] case final value?)
-        'YAZICI_TIPI': value,
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.yazdirmaTipi case final value?) 'YAZDIRMA_TIPI': value,
+      'YAZICI_TIPI': ?_$YaziciTipiEnumMap[instance.yaziciTipi],
+      'ACIKLAMA': ?instance.aciklama,
+      'YAZDIRMA_TIPI': ?instance.yazdirmaTipi,
     };
 
 const _$YaziciTipiEnumMap = {

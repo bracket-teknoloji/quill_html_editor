@@ -115,9 +115,9 @@ final class GridItemModel {
         return yetkiListesi!.any((element) => element) && (_cacheManager?.profilYetki?.toJson()[name] ?? false);
       } else {
         final result = route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
-        if (route is bool) {
-          return result as bool;
-        } else if (route is String) {
+        if (result is bool) {
+          return result;
+        } else if (result is String) {
           return result == "E";
         }
         return result ?? false;

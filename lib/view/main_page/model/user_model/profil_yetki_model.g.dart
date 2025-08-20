@@ -1508,6 +1508,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(
           ?.map((e) => (e as num).toInt())
           .toList()
   ..taltekAtalBelgeKopyala = json['taltek_ATAL_BelgeKopyala'] as bool?
+  ..taltekStekBelgeKopyala = json['taltek_STEK_BelgeKopyala'] as bool?
   ..taltekStal = json['taltek_STAL'] as bool?
   ..taltekStalKaydet = json['taltek_STAL_Kaydet'] as bool?
   ..taltekStalDuzelt = json['taltek_STAL_Duzelt'] as bool?
@@ -1955,2078 +1956,1416 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(
 Map<String, dynamic> _$ProfilYetkiModelToJson(
   ProfilYetkiModel instance,
 ) => <String, dynamic>{
-  if (instance.yazdirmaSatisIrsYazicilari case final value?)
-    'yazdirma_SatisIrs_Yazicilari': value,
-  if (instance.yazdirmaDizaynSatisIrs case final value?)
-    'yazdirma_Dizayn_SatisIrs': value,
-  if (instance.yazdirmaSatisTalebi case final value?)
-    'yazdirma_SatisTalebi': value,
-  if (instance.yazdirmaSatisTalebiYazicilari case final value?)
-    'yazdirma_SatisTalebi_Yazicilari': value,
-  if (instance.yazdirmaDizaynSatisTalebi case final value?)
-    'yazdirma_Dizayn_SatisTalebi': value,
-  if (instance.yazdirmaSatisTeklifi case final value?)
-    'yazdirma_SatisTeklifi': value,
-  if (instance.yazdirmaDizaynSatisTeklifi case final value?)
-    'yazdirma_Dizayn_SatisTeklifi': value,
-  if (instance.yazdirmaSayim case final value?) 'yazdirma_Sayim': value,
-  if (instance.yazdirmaSayimYazicilari case final value?)
-    'yazdirma_Sayim_Yazicilari': value,
-  if (instance.yazdirmaDizaynSayim case final value?)
-    'yazdirma_Dizayn_Sayim': value,
-  if (instance.yazdirmaSevkiyatEtiketi case final value?)
-    'yazdirma_Sevkiyat_Etiketi': value,
-  if (instance.yazdirmaSevkiyatEtiketiYazicilari case final value?)
-    'yazdirma_Sevkiyat_Etiketi_Yazicilari': value,
-  if (instance.yazdirmaDizaynSevkiyatEtiketi case final value?)
-    'yazdirma_Dizayn_SevkiyatEtiketi': value,
-  if (instance.yazdirmaSevkiyatEtiketiKopyaSayisiGizle case final value?)
-    'yazdirma_Sevkiyat_Etiketi_KopyaSayisiGizle': value,
-  if (instance.yazdirmaSerbest case final value?) 'yazdirma_Serbest': value,
-  if (instance.yazdirmaSerbestYazicilari case final value?)
-    'yazdirma_Serbest_Yazicilari': value,
-  if (instance.yazdirmaDizaynSerbest case final value?)
-    'yazdirma_Dizayn_Serbest': value,
-  if (instance.yazdirmaSeriEtiketi case final value?)
-    'yazdirma_SeriEtiketi': value,
-  if (instance.yazdirmaSeriEtiketiYazicilari case final value?)
-    'yazdirma_Seri_Etiketi_Yazicilari': value,
-  if (instance.yazdirmaDizaynSeriEtiketi case final value?)
-    'yazdirma_Dizayn_SeriEtiketi': value,
-  if (instance.yazdirmaStokEtiketi case final value?)
-    'yazdirma_Stok_Etiketi': value,
-  if (instance.yazdirmaStokEtiketiYazicilari case final value?)
-    'yazdirma_Stok_Etiketi_Yazicilari': value,
-  if (instance.yazdirmaDizaynStokEtiketi case final value?)
-    'yazdirma_Dizayn_StokEtiketi': value,
-  if (instance.yazdirmaTahsilatMakbuzu case final value?)
-    'yazdirma_TahsilatMakbuzu': value,
-  if (instance.yazdirmaDizaynTahsilatMakbuzu case final value?)
-    'yazdirma_Dizayn_TahsilatMakbuzu': value,
-  if (instance.yazdirmaUsk case final value?) 'yazdirma_USK': value,
-  if (instance.yazdirmaUskYazicilari case final value?)
-    'yazdirma_USK_Yazicilari': value,
-  if (instance.yazdirmaDizaynUSK case final value?)
-    'yazdirma_Dizayn_USK': value,
-  if (instance.yazdirmaUretMalTop case final value?)
-    'yazdirma_UretMalTop': value,
-  if (instance.yazdirmaUretMalTopYazicilari case final value?)
-    'yazdirma_UretMalTop_Yazicilari': value,
-  if (instance.yazdirmaDizaynUretMalTop case final value?)
-    'yazdirma_Dizayn_UretMalTop': value,
-  if (instance.kullanicilar case final value?) 'kullanicilar': value,
-  if (instance.sirketTamEkranAcilsin case final value?)
-    'sirket_TamEkranAcilsin': value,
-  if (instance.sirketRehberdeCariKodGizle case final value?)
-    'sirket_RehberdeCariKodGizle': value,
-  if (instance.sirketRehberdeStokKodGizle case final value?)
-    'sirket_RehberdeStokKodGizle': value,
-  if (instance.sirketRaporlardaFiyatGizle case final value?)
-    'sirket_RaporlardaFiyatGizle': value,
-  if (instance.sirketTarihDegismesin case final value?)
-    'sirket_TarihDegismesin': value,
-  if (instance.sirketDevirSirketineGiris case final value?)
-    'sirket_DevirSirketineGiris': value,
-  if (instance.sirketKontrolluAktarBelgeTipleri case final value?)
-    'sirket_KontrolluAktar_BelgeTipleri': value,
-  if (instance.sirketKontrolluAktarBelgeNoGoster case final value?)
-    'sirket_KontrolluAktar_BelgeNoGoster': value,
-  if (instance.sirketKontrolAciklamasiBelgeTipleri case final value?)
-    'sirket_KontrolAciklamasi_BelgeTipleri': value,
-  if (instance.sirketTLFiyatGelsinBelgeTipleri case final value?)
-    'sirket_TLFiyatGelsin_BelgeTipleri': value,
-  if (instance.sirketKalemKayitKontrolBelgeTipleri case final value?)
-    'sirket_KalemKayitKontrol_BelgeTipleri': value,
-  if (instance.sirketAktifDepolar case final value?)
-    'sirket_aktifDepolar': value,
-  if (instance.sirketSatisDepo case final value?) 'sirket_satisDepo': value,
-  if (instance.sirketSatisDepoOzellestir case final value?)
-    'sirket_satisDepo_Ozellestir': value,
-  if (instance.sirketSatisDepoMusSip case final value?)
-    'sirket_satisDepo_MusSip': value,
-  if (instance.sirketSatisDepoSatisFat case final value?)
-    'sirket_satisDepo_SatisFat': value,
-  if (instance.sirketSatisDepoSatisIrs case final value?)
-    'sirket_satisDepo_SatisIrs': value,
-  if (instance.sirketAlisDepo case final value?) 'sirket_alisDepo': value,
-  if (instance.sirketIadeDepo case final value?) 'sirket_iadeDepo': value,
-  if (instance.sirketProjeKodu case final value?) 'sirket_projeKodu': value,
-  if (instance.sirketAktifProjeler case final value?)
-    'sirket_aktifProjeler': value,
-  if (instance.ayarlarFirmaAyarlari case final value?)
-    'ayarlar_FirmaAyarlari': value,
-  if (instance.ayarlarOturumlar case final value?) 'ayarlar_Oturumlar': value,
-  if (instance.sirketSifreHatirlamaDurumu case final value?)
-    'sirket_SifreHatirlamaDurumu': value,
-  if (instance.genelDovizKurlari case final value?) 'genel_DovizKurlari': value,
-  if (instance.genelDovizKurlariEkle case final value?)
-    'genel_DovizKurlari_Ekle': value,
-  if (instance.genelDovizKurlariDuzelt case final value?)
-    'genel_DovizKurlari_Duzelt': value,
-  if (instance.genelDovizKurlariSil case final value?)
-    'genel_DovizKurlari_Sil': value,
-  if (instance.genelBelgeKontrol case final value?) 'genel_BelgeKontrol': value,
-  if (instance.genelBelgeKontrolEkle case final value?)
-    'genel_BelgeKontrol_Ekle': value,
-  if (instance.genelBelgeKontrolSil case final value?)
-    'genel_BelgeKontrol_Sil': value,
-  if (instance.genelBelgeKontrolBelgeTipleri case final value?)
-    'genel_BelgeKontrol_BelgeTipleri': value,
-  if (instance.genelBelgeKontrolBarkodOkutsun case final value?)
-    'genel_BelgeKontrol_BarkodOkutsun': value,
-  if (instance.genelBelgeKontrolMiktarOtomatikGelsin case final value?)
-    'genel_BelgeKontrol_MiktarOtomatikGelsin': value,
-  if (instance.genelBelgeKontrolKalemDetaySorulmasin case final value?)
-    'genel_BelgeKontrol_KalemDetaySorulmasin': value,
-  if (instance.genelBelgeKontrolBelgeOnaySormasin case final value?)
-    'genel_BelgeKontrol_BelgeOnaySormasin': value,
-  if (instance.malKabulFiyatDegistirilmesin case final value?)
-    'malKabul_FiyatDegistirilmesin': value,
-  if (instance.malKabulAlisIrsBelgeTipleri case final value?)
-    'malKabul_AlisIrs_BelgeTipleri': value,
-  if (instance.malKabulAlisIrsGizlenecekAlanlar case final value?)
-    'malKabul_AlisIrs_GizlenecekAlanlar': value,
-  if (instance.malKabulAlisFatGizlenecekAlanlar case final value?)
-    'malKabul_AlisFat_GizlenecekAlanlar': value,
-  if (instance.malKabulAlisIrsAciklamaAlanlari case final value?)
-    'malKabul_AlisIrs_AciklamaAlanlari': value,
-  if (instance.malKabulSatinAlma case final value?) 'malKabul_SatinAlma': value,
-  if (instance.malKabulSatinAlmaKaydet case final value?)
-    'malKabul_SatinAlma_Kaydet': value,
-  if (instance.malKabulSatinAlmaDuzelt case final value?)
-    'malKabul_SatinAlma_Duzelt': value,
-  if (instance.malKabulSatinAlmaSil case final value?)
-    'malKabul_SatinAlma_Sil': value,
-  if (instance.malKabulAlisIrsaliyesiFiyatGor case final value?)
-    'malKabul_AlisIrsaliyesiFiyatGor': value,
-  if (instance.malKabulAlisIrsDigerSekmesiGoster case final value?)
-    'malKabul_AlisIrs_DigerSekmesiGoster': value,
-  if (instance.malKabulAlisIrsSipBagSecenegi case final value?)
-    'malKabul_AlisIrs_SipBagSecenegi': value,
-  if (instance.malKabulAlisIrsReferansStokUygulamasi case final value?)
-    'malKabul_AlisIrs_ReferansStokUygulamasi': value,
-  if (instance.malKabulAlisIrsSipBagSipHariciKalemEklenebilir case final value?)
-    'malKabul_AlisIrs_SipBag_SipHariciKalemEklenebilir': value,
-  if (instance.malKabulAlisIrsSipBagFazlaTeslimatYapilabilir case final value?)
-    'malKabul_AlisIrs_SipBag_FazlaTeslimatYapilabilir': value,
-  if (instance.malKabulAlisIrsSipBagSipOkutulsun case final value?)
-    'malKabul_AlisIrs_SipBag_SipOkutulsun': value,
-  if (instance.malKabulAlisIrsSipBagCokluSecim case final value?)
-    'malKabul_AlisIrs_SipBag_CokluSecim': value,
-  if (instance.malKabulAlisIrsSipBagTumKalemlerSecilsin case final value?)
-    'malKabul_AlisIrs_SipBag_TumKalemlerSecilsin': value,
-  if (instance.malKabulAlisIrsSipBagEslesmeDurumu case final value?)
-    'malKabul_AlisIrs_SipBag_EslesmeDurumu': value,
-  if (instance.malKabulAlisIrsBarkodluGiris case final value?)
-    'malKabul_AlisIrs_BarkodluGiris': value,
-  if (instance.malKabulAlisIrsMiktarOtomatikGelsin case final value?)
-    'malKabul_AlisIrs_MiktarOtomatikGelsin': value,
-  if (instance.malKabulAlisIrsKalemDetaySorulmasin case final value?)
-    'malKabul_AlisIrs_KalemDetaySorulmasin': value,
-  if (instance.malKabulAlisIrsKalemlerBirlestirilsin case final value?)
-    'malKabul_AlisIrs_KalemlerBirlestirilsin': value,
-  if (instance.malKabulAlisIrsStokRehberiAcilmasin case final value?)
-    'malKabul_AlisIrs_StokRehberiAcilmasin': value,
-  if (instance.malKabulAlisIrsKalemDuzeltilemesin case final value?)
-    'malKabul_AlisIrs_KalemDuzeltilemesin': value,
-  if (instance.malKabulAlisIrsTekrarEdenBarkod case final value?)
-    'malKabul_AlisIrs_TekrarEdenBarkod': value,
-  if (instance.malKabulAlisIrsKlavyeEngelle case final value?)
-    'malKabul_AlisIrs_KlavyeEngelle': value,
-  if (instance.malKabulAlisIrsMiktar1Gelsin case final value?)
-    'malKabul_AlisIrs_Miktar1Gelsin': value,
-  if (instance.malKabulAlisIrsRaporlar case final value?)
-    'malKabul_AlisIrs_Raporlar': value,
-  if (instance.malKabulAlisIrsKalemRaporu case final value?)
-    'malKabul_AlisIrs_KalemRaporu': value,
-  if (instance.malKabulAlisIrsOtoBasimYap case final value?)
-    'malKabul_AlisIrs_OtoBasimYap': value,
-  if (instance.malKabulAlisIrsKacGunlukKayitlarListelensin case final value?)
-    'malKabul_AlisIrs_KacGunlukKayitlarListelensin': value,
-  if (instance.malKabulAlisIrsFiyatSirasi case final value?)
-    'malKabul_AlisIrs_FiyatSirasi': value,
-  if (instance.malKabulAlisIrsCariKoduDegistir case final value?)
-    'malKabul_AlisIrs_CariKoduDegistir': value,
-  if (instance.malKabulAlisIrsCariRehPlaEslesmesin case final value?)
-    'malKabul_AlisIrs_CariRehPlaEslesmesin': value,
-  if (instance.malKabulIade case final value?) 'malKabul_Iade': value,
-  if (instance.malKabulIadeKaydet case final value?)
-    'malKabul_Iade_Kaydet': value,
-  if (instance.malKabulIadeDuzelt case final value?)
-    'malKabul_Iade_Duzelt': value,
-  if (instance.malKabulIadeSil case final value?) 'malKabul_Iade_Sil': value,
-  if (instance.malKabulAlisFaturasiBelgeTipleri case final value?)
-    'malKabul_AlisFaturasi_BelgeTipleri': value,
-  if (instance.malKabulAlisFaturasi case final value?)
-    'malKabul_AlisFaturasi': value,
-  if (instance.malKabulAlisFaturasiKaydet case final value?)
-    'malKabul_AlisFaturasi_Kaydet': value,
-  if (instance.malKabulAlisFaturasiDuzelt case final value?)
-    'malKabul_AlisFaturasi_Duzelt': value,
-  if (instance.malKabulAlisFaturasiSil case final value?)
-    'malKabul_AlisFaturasi_Sil': value,
-  if (instance.malKabulAlisFatDigerSekmesiGoster case final value?)
-    'malKabul_AlisFat_DigerSekmesiGoster': value,
-  if (instance.malKabulAlisFatKacGunlukKayitlarListelensin case final value?)
-    'malKabul_AlisFat_KacGunlukKayitlarListelensin': value,
-  if (instance.malKabulAlisFatFiyatSirasi case final value?)
-    'malKabul_AlisFat_FiyatSirasi': value,
-  if (instance.malKabulAlisFatAciklamalarYetkiTuru case final value?)
-    'malKabul_AlisFat_Aciklamalar_YetkiTuru': value,
-  if (instance.malKabulAlisFatAciklamaAlanlari case final value?)
-    'malKabul_AlisFat_AciklamaAlanlari': value,
-  if (instance.malKabulAlisFatCariKoduDegistir case final value?)
-    'malKabul_AlisFat_CariKoduDegistir': value,
-  if (instance.malKabulAlisFatBarkodluGiris case final value?)
-    'malKabul_AlisFat_BarkodluGiris': value,
-  if (instance.malKabulAlisFatMiktarOtomatikGelsin case final value?)
-    'malKabul_AlisFat_MiktarOtomatikGelsin': value,
-  if (instance.malKabulAlisFatKalemDetaySorulmasin case final value?)
-    'malKabul_AlisFat_KalemDetaySorulmasin': value,
-  if (instance.malKabulAlisFatStokRehberiAcilmasin case final value?)
-    'malKabul_AlisFat_StokRehberiAcilmasin': value,
-  if (instance.malKabulAlisFatKalemDuzeltilemesin case final value?)
-    'malKabul_AlisFat_KalemDuzeltilemesin': value,
-  if (instance.malKabulAlisFatKlavyeEngelle case final value?)
-    'malKabul_AlisFat_KlavyeEngelle': value,
-  if (instance.malKabulAlisFatMiktar1Gelsin case final value?)
-    'malKabul_AlisFat_Miktar1Gelsin': value,
-  if (instance.malKabulAlisFatReferansStokUygulamasi case final value?)
-    'malKabul_AlisFat_ReferansStokUygulamasi': value,
-  if (instance.malKabulAlisFatSipBagSipHariciKalemEklenebilir case final value?)
-    'malKabul_AlisFat_SipBag_SipHariciKalemEklenebilir': value,
-  if (instance.malKabulAlisFatSipBagFazlaTeslimatYapilabilir case final value?)
-    'malKabul_AlisFat_SipBag_FazlaTeslimatYapilabilir': value,
-  if (instance.malKabulAlisFatSipBagSipOkutulsun case final value?)
-    'malKabul_AlisFat_SipBag_SipOkutulsun': value,
-  if (instance.malKabulAlisFatSipBagCokluSecim case final value?)
-    'malKabul_AlisFat_SipBag_CokluSecim': value,
-  if (instance.malKabulAlisFatSipBagTumKalemlerSecilsin case final value?)
-    'malKabul_AlisFat_SipBag_TumKalemlerSecilsin': value,
-  if (instance.malKabulAlisFatSipBagEslesmeDurumu case final value?)
-    'malKabul_AlisFat_SipBag_EslesmeDurumu': value,
-  if (instance.malKabulAlisFatRaporlar case final value?)
-    'malKabul_AlisFat_Raporlar': value,
-  if (instance.malKabulAlisFatKalemRaporu case final value?)
-    'malKabul_AlisFat_KalemRaporu': value,
-  if (instance.malKabulMustahsil case final value?) 'malKabul_Mustahsil': value,
-  if (instance.malKabulMustahsilEkle case final value?)
-    'malKabul_Mustahsil_Ekle': value,
-  if (instance.malKabulMustahsilDuzelt case final value?)
-    'malKabul_Mustahsil_Duzelt': value,
-  if (instance.malKabulMustahsilSil case final value?)
-    'malKabul_Mustahsil_Sil': value,
-  if (instance.transferDat case final value?) 'transfer_DAT': value,
-  if (instance.transferDatKaydet case final value?)
-    'transfer_DAT_Kaydet': value,
-  if (instance.transferDatDuzelt case final value?)
-    'transfer_DAT_Duzelt': value,
-  if (instance.transferDatSil case final value?) 'transfer_DAT_Sil': value,
-  if (instance.transferDatFiyatGor case final value?)
-    'transfer_DAT_FiyatGor': value,
-  if (instance.transferDatOtoEtiketBas case final value?)
-    'transfer_DAT_OtoEtiketBas': value,
-  if (instance.transferDatVarsayilanCikisDepo case final value?)
-    'transfer_DAT_VarsayilanCikisDepo': value,
-  if (instance.transferDatVarsayilanGirisDepo case final value?)
-    'transfer_DAT_VarsayilanGirisDepo': value,
-  if (instance.transferDatEIrsIsaretleyemesin case final value?)
-    'transfer_DAT_eIrsIsaretleyemesin': value,
-  if (instance.transferDatDigerSekmesiGoster case final value?)
-    'transfer_DAT_DigerSekmesiGoster': value,
-  if (instance.transferDatBarkodluGiris case final value?)
-    'transfer_DAT_BarkodluGiris': value,
-  if (instance.transferDatMiktarOtomatikGelsin case final value?)
-    'transfer_DAT_MiktarOtomatikGelsin': value,
-  if (instance.transferDatKalemDetaySorulmasin case final value?)
-    'transfer_DAT_KalemDetaySorulmasin': value,
-  if (instance.transferDatStokRehberiAcilmasin case final value?)
-    'transfer_DAT_StokRehberiAcilmasin': value,
-  if (instance.transferDatKalemDuzeltilemesin case final value?)
-    'transfer_DAT_KalemDuzeltilemesin': value,
-  if (instance.transferDatKlavyeEngelle case final value?)
-    'transfer_DAT_KlavyeEngelle': value,
-  if (instance.transferDatMiktar1Gelsin case final value?)
-    'transfer_DAT_Miktar1Gelsin': value,
-  if (instance.transferDatKalemlerBirlestirilsin case final value?)
-    'transfer_DAT_KalemlerBirlestirilsin': value,
-  if (instance.transferDatKacGunlukKayitlarListelensin case final value?)
-    'transfer_DAT_KacGunlukKayitlarListelensin': value,
-  if (instance.transferDatOnayIslemleri case final value?)
-    'transfer_DAT_OnayIslemleri': value,
-  if (instance.transferDatOnayIslemleriDepolar case final value?)
-    'transfer_DAT_OnayIslemleri_Depolar': value,
-  if (instance.transferDatEkAlan2Hatirla case final value?)
-    'transfer_DAT_EkAlan2Hatirla': value,
-  if (instance.transferDatEkAlan2Tablodan case final value?)
-    'transfer_DAT_EkAlan2Tablodan': value,
-  if (instance.transferDatSeriGirisHarYapabilsin case final value?)
-    'transfer_DAT_SeriGirisHarYapabilsin': value,
-  if (instance.transferDatBirim1DenKaydet case final value?)
-    'transfer_DAT_Birim1denKaydet': value,
-  if (instance.transferDatBarkod2Sor case final value?)
-    'transfer_DAT_Barkod2Sor': value,
-  if (instance.transferDatBosGecilmeyecekAlanlar case final value?)
-    'transfer_DAT_BosGecilmeyecekAlanlar': value,
-  if (instance.transferDatGizlenecekAlanlar case final value?)
-    'transfer_DAT_GizlenecekAlanlar': value,
-  if (instance.transferDatDegismeyecekAlanlar case final value?)
-    'transfer_DAT_DegismeyecekAlanlar': value,
-  if (instance.transferDatAciklamaAlanlari case final value?)
-    'transfer_DAT_AciklamaAlanlari': value,
-  if (instance.transferDatSipBagSecenegi case final value?)
-    'transfer_DAT_SipBagSecenegi': value,
-  if (instance.transferDatReferansStokUygulamasi case final value?)
-    'transfer_DAT_ReferansStokUygulamasi': value,
-  if (instance.transferDatSipBagSipHariciKalemEklenebilir case final value?)
-    'transfer_DAT_SipBag_SipHariciKalemEklenebilir': value,
-  if (instance.transferDatSipBagFazlaTeslimatYapilabilir case final value?)
-    'transfer_DAT_SipBag_FazlaTeslimatYapilabilir': value,
-  if (instance.transferDatSipBagSipOkutulsun case final value?)
-    'transfer_DAT_SipBag_SipOkutulsun': value,
-  if (instance.transferDatSipBagSipOkutulsunMiktar2BazAl case final value?)
-    'transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl': value,
-  if (instance.transferDatSipBagSipOkutulsunKalanMiktarGelsin case final value?)
-    'transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin': value,
-  if (instance.transferDatSipBagCokluSecim case final value?)
-    'transfer_DAT_SipBag_CokluSecim': value,
-  if (instance.transferDatSipBagTumKalemlerSecilsin case final value?)
-    'transfer_DAT_SipBag_TumKalemlerSecilsin': value,
-  if (instance.transferDatSipBagEslesmeDurumu case final value?)
-    'transfer_DAT_SipBag_EslesmeDurumu': value,
-  if (instance.transferDatSipBagMalToplananlarGelsin case final value?)
-    'transfer_DAT_SipBag_MalToplananlarGelsin': value,
-  if (instance.transferDatSipBagSevkOnayliSiparislerGelsin case final value?)
-    'transfer_DAT_SipBag_SevkOnayliSiparislerGelsin': value,
-  if (instance.transferAg case final value?) 'transfer_AG': value,
-  if (instance.transferAgKaydet case final value?) 'transfer_AG_Kaydet': value,
-  if (instance.transferAgDuzelt case final value?) 'transfer_AG_Duzelt': value,
-  if (instance.transferAgSil case final value?) 'transfer_AG_Sil': value,
-  if (instance.transferAgFiyatGor case final value?)
-    'transfer_AG_FiyatGor': value,
-  if (instance.transferAgKacGunlukKayitlarListelensin case final value?)
-    'transfer_AG_KacGunlukKayitlarListelensin': value,
-  if (instance.transferAgVarsayilanDepo case final value?)
-    'transfer_AG_VarsayilanDepo': value,
-  if (instance.transferAgDigerSekmesiGoster case final value?)
-    'transfer_AG_DigerSekmesiGoster': value,
-  if (instance.transferAgBelgeKopyala case final value?)
-    'transfer_AG_BelgeKopyala': value,
-  if (instance.transferAgOtoBasimYap case final value?)
-    'transfer_AG_OtoBasimYap': value,
-  if (instance.transferAgSeriGirisHarYapabilsin case final value?)
-    'transfer_AG_SeriGirisHarYapabilsin': value,
-  if (instance.transferAgBarkodluGiris case final value?)
-    'transfer_AG_BarkodluGiris': value,
-  if (instance.transferAgMiktarOtomatikGelsin case final value?)
-    'transfer_AG_MiktarOtomatikGelsin': value,
-  if (instance.transferAgKalemDetaySorulmasin case final value?)
-    'transfer_AG_KalemDetaySorulmasin': value,
-  if (instance.transferAgStokRehberiAcilmasin case final value?)
-    'transfer_AG_StokRehberiAcilmasin': value,
-  if (instance.transferAgKalemDuzeltilemesin case final value?)
-    'transfer_AG_KalemDuzeltilemesin': value,
-  if (instance.transferAgKlavyeEngelle case final value?)
-    'transfer_AG_KlavyeEngelle': value,
-  if (instance.transferAgMiktar1Gelsin case final value?)
-    'transfer_AG_Miktar1Gelsin': value,
-  if (instance.transferAgReferansStokUygulamasi case final value?)
-    'transfer_AG_ReferansStokUygulamasi': value,
-  if (instance.transferAgSipBagSipHariciKalemEklenebilir case final value?)
-    'transfer_AG_SipBag_SipHariciKalemEklenebilir': value,
-  if (instance.transferAgSipBagFazlaTeslimatYapilabilir case final value?)
-    'transfer_AG_SipBag_FazlaTeslimatYapilabilir': value,
-  if (instance.transferAgSipBagSipOkutulsun case final value?)
-    'transfer_AG_SipBag_SipOkutulsun': value,
-  if (instance.transferAgSipBagSipOkutulsunMiktar2BazAl case final value?)
-    'transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl': value,
-  if (instance.transferAgSipBagCokluSecim case final value?)
-    'transfer_AG_SipBag_CokluSecim': value,
-  if (instance.transferAgSipBagTumKalemlerSecilsin case final value?)
-    'transfer_AG_SipBag_TumKalemlerSecilsin': value,
-  if (instance.transferAgSipBagEslesmeDurumu case final value?)
-    'transfer_AG_SipBag_EslesmeDurumu': value,
-  if (instance.transferAgSipBagMalToplananlarGelsin case final value?)
-    'transfer_AG_SipBag_MalToplananlarGelsin': value,
-  if (instance.transferAgSipBagSevkOnayliSiparislerGelsin case final value?)
-    'transfer_AG_SipBag_SevkOnayliSiparislerGelsin': value,
-  if (instance.transferAc case final value?) 'transfer_AC': value,
-  if (instance.transferAcKaydet case final value?) 'transfer_AC_Kaydet': value,
-  if (instance.transferAcDuzelt case final value?) 'transfer_AC_Duzelt': value,
-  if (instance.transferAcSil case final value?) 'transfer_AC_Sil': value,
-  if (instance.transferAcFiyatGor case final value?)
-    'transfer_AC_FiyatGor': value,
-  if (instance.transferAcKacGunlukKayitlarListelensin case final value?)
-    'transfer_AC_KacGunlukKayitlarListelensin': value,
-  if (instance.transferAcVarsayilanDepo case final value?)
-    'transfer_AC_VarsayilanDepo': value,
-  if (instance.transferAcEIrsIsaretleyemesin case final value?)
-    'transfer_AC_eIrsIsaretleyemesin': value,
-  if (instance.transferAcDigerSekmesiGoster case final value?)
-    'transfer_AC_DigerSekmesiGoster': value,
-  if (instance.transferAcBelgeKopyala case final value?)
-    'transfer_AC_BelgeKopyala': value,
-  if (instance.transferAcOtoBasimYap case final value?)
-    'transfer_AC_OtoBasimYap': value,
-  if (instance.transferAcSeriGirisHarYapabilsin case final value?)
-    'transfer_AC_SeriGirisHarYapabilsin': value,
-  if (instance.transferAcEkAlan2Tablodan case final value?)
-    'transfer_AC_EkAlan2Tablodan': value,
-  if (instance.transferAcEkAlan2Hatirla case final value?)
-    'transfer_AC_EkAlan2Hatirla': value,
-  if (instance.transferAcMinStokMikGoster case final value?)
-    'transfer_AC_MinStokMikGoster': value,
-  if (instance.transferAcBosGecilmeyecekAlanlar case final value?)
-    'transfer_AC_BosGecilmeyecekAlanlar': value,
-  if (instance.transferAcBarkodluGiris case final value?)
-    'transfer_AC_BarkodluGiris': value,
-  if (instance.transferAcMiktarOtomatikGelsin case final value?)
-    'transfer_AC_MiktarOtomatikGelsin': value,
-  if (instance.transferAcKalemDetaySorulmasin case final value?)
-    'transfer_AC_KalemDetaySorulmasin': value,
-  if (instance.transferAcStokRehberiAcilmasin case final value?)
-    'transfer_AC_StokRehberiAcilmasin': value,
-  if (instance.transferAcKalemDuzeltilemesin case final value?)
-    'transfer_AC_KalemDuzeltilemesin': value,
-  if (instance.transferAcKlavyeEngelle case final value?)
-    'transfer_AC_KlavyeEngelle': value,
-  if (instance.transferAcMiktar1Gelsin case final value?)
-    'transfer_AC_Miktar1Gelsin': value,
-  if (instance.transferAcReferansStokUygulamasi case final value?)
-    'transfer_AC_ReferansStokUygulamasi': value,
-  if (instance.transferAcSipBagSipHariciKalemEklenebilir case final value?)
-    'transfer_AC_SipBag_SipHariciKalemEklenebilir': value,
-  if (instance.transferAcSipBagFazlaTeslimatYapilabilir case final value?)
-    'transfer_AC_SipBag_FazlaTeslimatYapilabilir': value,
-  if (instance.transferAcSipBagSipOkutulsun case final value?)
-    'transfer_AC_SipBag_SipOkutulsun': value,
-  if (instance.transferAcSipBagSipOkutulsunMiktar2BazAl case final value?)
-    'transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl': value,
-  if (instance.transferAcSipBagCokluSecim case final value?)
-    'transfer_AC_SipBag_CokluSecim': value,
-  if (instance.transferAcSipBagTumKalemlerSecilsin case final value?)
-    'transfer_AC_SipBag_TumKalemlerSecilsin': value,
-  if (instance.transferAcSipBagEslesmeDurumu case final value?)
-    'transfer_AC_SipBag_EslesmeDurumu': value,
-  if (instance.transferAcSipBagMalToplananlarGelsin case final value?)
-    'transfer_AC_SipBag_MalToplananlarGelsin': value,
-  if (instance.transferAcSipBagSevkOnayliSiparislerGelsin case final value?)
-    'transfer_AC_SipBag_SevkOnayliSiparislerGelsin': value,
-  if (instance.transferAcGizlenecekAlanlar case final value?)
-    'transfer_AC_GizlenecekAlanlar': value,
-  if (instance.transferAcDegismeyecekAlanlar case final value?)
-    'transfer_AC_DegismeyecekAlanlar': value,
-  if (instance.transferDepoTalebi case final value?)
-    'transfer_DepoTalebi': value,
-  if (instance.transferDepoTalebiSil case final value?)
-    'transfer_DepoTalebi_Sil': value,
-  if (instance.transferDepoTalebiMalTop case final value?)
-    'transfer_DepoTalebi_MalTop': value,
-  if (instance.transferDepoTalebiMalTopFazlaTeslimat case final value?)
-    'transfer_DepoTalebi_MalTop_FazlaTeslimat': value,
-  if (instance.hucreGiristeHucreYerlestir case final value?)
-    'hucre_GiristeHucreYerlestir': value,
-  if (instance.hucreCikistaHucreYerlestir case final value?)
-    'hucre_CikistaHucreYerlestir': value,
-  if (instance.hucreYerlestir case final value?) 'hucre_Yerlestir': value,
-  if (instance.hucreYerlestirBelgesiz case final value?)
-    'hucre_YerlestirBelgesiz': value,
-  if (instance.hucreYerlestirKlavyeEngelle case final value?)
-    'hucre_Yerlestir_KlavyeEngelle': value,
-  if (instance.hucreYerlestirRehberdenStokSecilmesin case final value?)
-    'hucre_Yerlestir_RehberdenStokSecilmesin': value,
-  if (instance.hucreYerlestirHangiHucrede case final value?)
-    'hucre_Yerlestir_HangiHucrede': value,
-  if (instance.hucreYerlestirBelgeTipleri case final value?)
-    'hucre_Yerlestir_BelgeTipleri': value,
-  if (instance.hucreBosalt case final value?) 'hucre_Bosalt': value,
-  if (instance.hucreBosaltBelgesiz case final value?)
-    'hucre_BosaltBelgesiz': value,
-  if (instance.hucreBosaltKlavyeEngelle case final value?)
-    'hucre_Bosalt_KlavyeEngelle': value,
-  if (instance.hucreBosaltRehberdenStokSecilmesin case final value?)
-    'hucre_Bosalt_RehberdenStokSecilmesin': value,
-  if (instance.hucreBosaltHangiHucrede case final value?)
-    'hucre_Bosalt_HangiHucrede': value,
-  if (instance.hucreBosaltBelgeTipleri case final value?)
-    'hucre_Bosalt_BelgeTipleri': value,
-  if (instance.hucreArama case final value?) 'hucre_Arama': value,
-  if (instance.hucreAramaTumDepolar case final value?)
-    'hucre_AramaTumDepolar': value,
-  if (instance.hucreAramaOzelFonksiyon case final value?)
-    'hucre_AramaOzelFonksiyon': value,
-  if (instance.hucreTransfer case final value?) 'hucre_Transfer': value,
-  if (instance.hucreTransferKlavyeEngelle case final value?)
-    'hucre_Transfer_KlavyeEngelle': value,
-  if (instance.hucreTransferRehberdenStokSecilmesin case final value?)
-    'hucre_Transfer_RehberdenStokSecilmesin': value,
-  if (instance.hucreTransferBelgeTipleri case final value?)
-    'hucre_Transfer_BelgeTipleri': value,
-  if (instance.hucreListesi case final value?) 'hucre_Listesi': value,
-  if (instance.hucreBosaltOtomatikStokEtiketiYazdir case final value?)
-    'hucre_Bosalt_OtomatikStokEtiketiYazdir': value,
-  if (instance.hucreBakiyeDurumu case final value?) 'hucre_BakiyeDurumu': value,
-  if (instance.hucreHareketleri case final value?) 'hucre_Hareketleri': value,
-  if (instance.hucreHareketleriSil case final value?)
-    'hucre_Hareketleri_Sil': value,
-  if (instance.sevkiyatSatisIrsaliyesiBelgeTipleri case final value?)
-    'sevkiyat_SatisIrsaliyesi_BelgeTipleri': value,
-  if (instance.sevkiyatSatisIrsaliyesiGizlenecekAlanlar case final value?)
-    'sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar': value,
-  if (instance.sevkiyatSatisIrsaliyesiDegismeyecekAlanlar case final value?)
-    'sevkiyat_SatisIrsaliyesi_DegismeyecekAlanlar': value,
-  if (instance.sevkiyatSatisIrsaliyesi case final value?)
-    'sevkiyat_SatisIrsaliyesi': value,
-  if (instance.sevkiyatSatisIrsaliyesiKayit case final value?)
-    'sevkiyat_SatisIrsaliyesiKayit': value,
-  if (instance.sevkiyatSatisIrsaliyesiDuzeltme case final value?)
-    'sevkiyat_SatisIrsaliyesiDuzeltme': value,
-  if (instance.sevkiyatSatisIrsaliyesiSilme case final value?)
-    'sevkiyat_SatisIrsaliyesiSilme': value,
-  if (instance.sevkiyatSatisIrsaliyesiFiyatGor case final value?)
-    'sevkiyat_SatisIrsaliyesiFiyatGor': value,
-  if (instance.sevkiyatSatisIrsDigerSekmesiGoster case final value?)
-    'sevkiyat_SatisIrs_DigerSekmesiGoster': value,
-  if (instance.sevkiyatSatisIrsaliyesiSipBagSecenegi case final value?)
-    'sevkiyat_SatisIrsaliyesi_SipBagSecenegi': value,
-  if (instance.sevkiyatSatisIrsReferansStokUygulamasi case final value?)
-    'sevkiyat_SatisIrs_ReferansStokUygulamasi': value,
-  if (instance.sevkiyatSatisIrsSipBagSipHariciKalemEklenebilir
-      case final value?)
-    'sevkiyat_SatisIrs_SipBag_SipHariciKalemEklenebilir': value,
-  if (instance.sevkiyatSatisIrsSipBagFazlaTeslimatYapilabilir case final value?)
-    'sevkiyat_SatisIrs_SipBag_FazlaTeslimatYapilabilir': value,
-  if (instance.sevkiyatSatisIrsSipBagSipOkutulsun case final value?)
-    'sevkiyat_SatisIrs_SipBag_SipOkutulsun': value,
-  if (instance.sevkiyatSatisIrsSipBagSipOkutulsunMiktar2BazAl case final value?)
-    'sevkiyat_SatisIrs_SipBag_SipOkutulsun_Miktar2BazAl': value,
-  if (instance.sevkiyatSatisIrsSipBagSipOkutulsunKalanMiktarGelsin
-      case final value?)
-    'sevkiyat_SatisIrs_SipBag_SipOkutulsun_KalanMiktarGelsin': value,
-  if (instance.sevkiyatSatisIrsSipBagCokluSecim case final value?)
-    'sevkiyat_SatisIrs_SipBag_CokluSecim': value,
-  if (instance.sevkiyatSatisIrsSipBagTumKalemlerSecilsin case final value?)
-    'sevkiyat_SatisIrs_SipBag_TumKalemlerSecilsin': value,
-  if (instance.sevkiyatSatisIrsSipBagEslesmeDurumu case final value?)
-    'sevkiyat_SatisIrs_SipBag_EslesmeDurumu': value,
-  if (instance.sevkiyatSatisIrsSipBagMalToplananlarGelsin case final value?)
-    'sevkiyat_SatisIrs_SipBag_MalToplananlarGelsin': value,
-  if (instance.sevkiyatSatisIrsSipBagSevkOnayliSiparislerGelsin
-      case final value?)
-    'sevkiyat_SatisIrs_SipBag_SevkOnayliSiparislerGelsin': value,
-  if (instance.sevkiyatFiyatDegistirilmesin case final value?)
-    'sevkiyat_FiyatDegistirilmesin': value,
-  if (instance.sevkiyatSatisIrsaliyesiEIrsaliyeDuzenleyemesin case final value?)
-    'sevkiyat_SatisIrsaliyesi_EIrsaliyeDuzenleyemesin': value,
-  if (instance.sevkiyatSatisIrsKalemlerBirlestirilsin case final value?)
-    'sevkiyat_SatisIrs_KalemlerBirlestirilsin': value,
-  if (instance.sevkiyatSatisIrsOtoBasimYap case final value?)
-    'sevkiyat_SatisIrs_OtoBasimYap': value,
-  if (instance.sevkiyatSatisIrsKacGunlukKayitlarListelensin case final value?)
-    'sevkiyat_SatisIrs_KacGunlukKayitlarListelensin': value,
-  if (instance.sevkiyatSatisIrsFiyatSirasi case final value?)
-    'sevkiyat_SatisIrs_FiyatSirasi': value,
-  if (instance.sevkiyatSatisIrsSeriGirisHarYapabilsin case final value?)
-    'sevkiyat_SatisIrs_SeriGirisHarYapabilsin': value,
-  if (instance.sevkiyatSatisIrsEkAlan2Tablodan case final value?)
-    'sevkiyat_SatisIrs_EkAlan2Tablodan': value,
-  if (instance.sevkiyatSatisIrsEkAlan2Hatirla case final value?)
-    'sevkiyat_SatisIrs_EkAlan2Hatirla': value,
-  if (instance.sevkiyatSatisIrsOlcuBirimi case final value?)
-    'sevkiyat_SatisIrs_OlcuBirimi': value,
-  if (instance.sevkiyatSatisIrsCariKoduDegistir case final value?)
-    'sevkiyat_SatisIrs_CariKoduDegistir': value,
-  if (instance.sevkiyatSatisIrsMaxIskUygulamasi case final value?)
-    'sevkiyat_SatisIrs_MaxIskUygulamasi': value,
-  if (instance.sevkiyatSatisIrsMaxSatIsk1 case final value?)
-    'sevkiyat_SatisIrs_MaxSatIsk1': value,
-  if (instance.sevkiyatSatisIrsMaxSatIsk2 case final value?)
-    'sevkiyat_SatisIrs_MaxSatIsk2': value,
-  if (instance.sevkiyatSatisIrsMaxSatIsk3 case final value?)
-    'sevkiyat_SatisIrs_MaxSatIsk3': value,
-  if (instance.sevkiyatSatisIrsMaxSatIsk4 case final value?)
-    'sevkiyat_SatisIrs_MaxSatIsk4': value,
-  if (instance.sevkiyatSatisIrsMaxSatIsk5 case final value?)
-    'sevkiyat_SatisIrs_MaxSatIsk5': value,
-  if (instance.sevkiyatSatisIrsMaxSatIsk6 case final value?)
-    'sevkiyat_SatisIrs_MaxSatIsk6': value,
-  if (instance.sevkiyatSatisIrsMaxGenIsk1 case final value?)
-    'sevkiyat_SatisIrs_MaxGenIsk1': value,
-  if (instance.sevkiyatSatisIrsMaxGenIsk2 case final value?)
-    'sevkiyat_SatisIrs_MaxGenIsk2': value,
-  if (instance.sevkiyatSatisIrsMaxGenIsk3 case final value?)
-    'sevkiyat_SatisIrs_MaxGenIsk3': value,
-  if (instance.sevkiyatSatisIrsDipFiyatUygulamasi case final value?)
-    'sevkiyat_SatisIrs_DipFiyatUygulamasi': value,
-  if (instance.sevkiyatSatisIrsDipFiyatSaha case final value?)
-    'sevkiyat_SatisIrs_DipFiyatSaha': value,
-  if (instance.sevkiyatSatisIrsDipFiyatEylem case final value?)
-    'sevkiyat_SatisIrs_DipFiyatEylem': value,
-  if (instance.sevkiyatSatisIrsBarkodluGiris case final value?)
-    'sevkiyat_SatisIrs_BarkodluGiris': value,
-  if (instance.sevkiyatSatisIrsMiktarOtomatikGelsin case final value?)
-    'sevkiyat_SatisIrs_MiktarOtomatikGelsin': value,
-  if (instance.sevkiyatSatisIrsKalemDetaySorulmasin case final value?)
-    'sevkiyat_SatisIrs_KalemDetaySorulmasin': value,
-  if (instance.sevkiyatSatisIrsStokRehberiAcilmasin case final value?)
-    'sevkiyat_SatisIrs_StokRehberiAcilmasin': value,
-  if (instance.sevkiyatSatisIrsKalemDuzeltilemesin case final value?)
-    'sevkiyat_SatisIrs_KalemDuzeltilemesin': value,
-  if (instance.sevkiyatSatisIrsKlavyeEngelle case final value?)
-    'sevkiyat_SatisIrs_KlavyeEngelle': value,
-  if (instance.sevkiyatSatisIrsMiktar1Gelsin case final value?)
-    'sevkiyat_SatisIrs_Miktar1Gelsin': value,
-  if (instance.sevkiyatSatisIrsBakiyesizStokSecilmesin case final value?)
-    'sevkiyat_SatisIrs_BakiyesizStokSecilmesin': value,
-  if (instance.sevkiyatSatisIrsRaporlar case final value?)
-    'sevkiyat_SatisIrs_Raporlar': value,
-  if (instance.sevkiyatSatisIrsKalemRaporu case final value?)
-    'sevkiyat_SatisIrs_KalemRaporu': value,
-  if (instance.sevkiyatSatisFatBelgeTipleri case final value?)
-    'sevkiyat_SatisFat_BelgeTipleri': value,
-  if (instance.sevkiyatSatisFatVarsayilanBelgeTipi case final value?)
-    'sevkiyat_SatisFat_VarsayilanBelgeTipi': value,
-  if (instance.sevkiyatSatisFat case final value?) 'sevkiyat_SatisFat': value,
-  if (instance.sevkiyatSatisFatKaydet case final value?)
-    'sevkiyat_SatisFat_Kaydet': value,
-  if (instance.sevkiyatSatisFatDuzelt case final value?)
-    'sevkiyat_SatisFat_Duzelt': value,
-  if (instance.sevkiyatSatisFatSil case final value?)
-    'sevkiyat_SatisFat_Sil': value,
-  if (instance.sevkiyatSatisFatToplamlarCariTahsilatIslemleri case final value?)
-    'sevkiyat_SatisFat_ToplamlarCariTahsilatIslemleri': value,
-  if (instance.sevkiyatSatisFatKayittanSonraTaslakOlustur case final value?)
-    'sevkiyat_SatisFat_KayittanSonraTaslakOlustur': value,
-  if (instance.sevkiyatSatisFatOtomatikBasimYap case final value?)
-    'sevkiyat_SatisFat_OtomatikBasimYap': value,
-  if (instance.sevkiyatSatisFatDigerSekmesiGoster case final value?)
-    'sevkiyat_SatisFat_DigerSekmesiGoster': value,
-  if (instance.sevkiyatSatisFatFiyatDegistirilmesin case final value?)
-    'sevkiyat_SatisFat_FiyatDegistirilmesin': value,
-  if (instance.sevkiyatSatisFatKacGunlukKayitlarListelensin case final value?)
-    'sevkiyat_SatisFat_KacGunlukKayitlarListelensin': value,
-  if (instance.sevkiyatSatisFatFiyatSirasi case final value?)
-    'sevkiyat_SatisFat_FiyatSirasi': value,
-  if (instance.sevkiyatSatisFatKalemlerBirlestirilsin case final value?)
-    'sevkiyat_SatisFat_KalemlerBirlestirilsin': value,
-  if (instance.sevkiyatSatisFatEkAlan2Tablodan case final value?)
-    'sevkiyat_SatisFat_EkAlan2Tablodan': value,
-  if (instance.sevkiyatSatisFatEkAlan2Hatirla case final value?)
-    'sevkiyat_SatisFat_EkAlan2Hatirla': value,
-  if (instance.sevkiyatSatisFatFiltre case final value?)
-    'sevkiyat_SatisFat_Filtre': value,
-  if (instance.sevkiyatSatisFatFiltreSQL case final value?)
-    'sevkiyat_SatisFat_FiltreSQL': value,
-  if (instance.sevkiyatSatisFatOlcuBirimi case final value?)
-    'sevkiyat_SatisFat_OlcuBirimi': value,
-  if (instance.sevkiyatSatisFatAciklamaAlanlari case final value?)
-    'sevkiyat_SatisFat_AciklamaAlanlari': value,
-  if (instance.sevkiyatSatisIrsAciklamaAlanlari case final value?)
-    'sevkiyat_SatisIrs_AciklamaAlanlari': value,
-  if (instance.sevkiyatSatisFatBosGecilmeyecekAlanlar case final value?)
-    'sevkiyat_SatisFat_BosGecilmeyecekAlanlar': value,
-  if (instance.sevkiyatSatisIrsBosGecilmeyecekAlanlar case final value?)
-    'sevkiyat_SatisIrs_BosGecilmeyecekAlanlar': value,
-  if (instance.malKabulAlisFatBosGecilmeyecekAlanlar case final value?)
-    'malKabul_AlisFat_BosGecilmeyecekAlanlar': value,
-  if (instance.malKabulAlisIrsBosGecilmeyecekAlanlar case final value?)
-    'malKabul_AlisIrs_BosGecilmeyecekAlanlar': value,
-  if (instance.sevkiyatSatisFatGizlenecekAlanlar case final value?)
-    'sevkiyat_SatisFat_GizlenecekAlanlar': value,
-  if (instance.sevkiyatSatisFatDegismeyecekAlanlar case final value?)
-    'sevkiyat_SatisFat_DegismeyecekAlanlar': value,
-  if (instance.sevkiyatSatisFatSeriGirisHarYapabilsin case final value?)
-    'sevkiyat_SatisFat_SeriGirisHarYapabilsin': value,
-  if (instance.sevkiyatSatisFatCariKoduDegistir case final value?)
-    'sevkiyat_SatisFat_CariKoduDegistir': value,
-  if (instance.sevkiyatSatisFaturasiSipBagSecenegi case final value?)
-    'sevkiyat_SatisFaturasi_SipBagSecenegi': value,
-  if (instance.sevkiyatSatisFatReferansStokUygulamasi case final value?)
-    'sevkiyat_SatisFat_ReferansStokUygulamasi': value,
-  if (instance.sevkiyatSatisFatSipBagSipHariciKalemEklenebilir
-      case final value?)
-    'sevkiyat_SatisFat_SipBag_SipHariciKalemEklenebilir': value,
-  if (instance.sevkiyatSatisFatSipBagFazlaTeslimatYapilabilir case final value?)
-    'sevkiyat_SatisFat_SipBag_FazlaTeslimatYapilabilir': value,
-  if (instance.sevkiyatSatisFatSipBagSipOkutulsun case final value?)
-    'sevkiyat_SatisFat_SipBag_SipOkutulsun': value,
-  if (instance.sevkiyatSatisFatSipBagSipOkutulsunMiktar2BazAl case final value?)
-    'sevkiyat_SatisFat_SipBag_SipOkutulsun_Miktar2BazAl': value,
-  if (instance.sevkiyatSatisFatSipBagCokluSecim case final value?)
-    'sevkiyat_SatisFat_SipBag_CokluSecim': value,
-  if (instance.sevkiyatSatisFatSipBagTumKalemlerSecilsin case final value?)
-    'sevkiyat_SatisFat_SipBag_TumKalemlerSecilsin': value,
-  if (instance.sevkiyatSatisFatSipBagEslesmeDurumu case final value?)
-    'sevkiyat_SatisFat_SipBag_EslesmeDurumu': value,
-  if (instance.sevkiyatSatisFatSipBagSevkOnayliSiparislerGelsin
-      case final value?)
-    'sevkiyat_SatisFat_SipBag_SevkOnayliSiparislerGelsin': value,
-  if (instance.sevkiyatSatisFatBarkodluGiris case final value?)
-    'sevkiyat_SatisFat_BarkodluGiris': value,
-  if (instance.sevkiyatSatisFaturasiMiktarOtomatikGelsin case final value?)
-    'sevkiyat_SatisFaturasi_MiktarOtomatikGelsin': value,
-  if (instance.sevkiyatSatisFaturasiKalemDetaySorulmasin case final value?)
-    'sevkiyat_SatisFaturasi_KalemDetaySorulmasin': value,
-  if (instance.sevkiyatSatisFatBarkodSayisiSaklanacakAlan case final value?)
-    'sevkiyat_SatisFat_BarkodSayisiSaklanacakAlan': value,
-  if (instance.sevkiyatSatisFatStokRehberiAcilmasin case final value?)
-    'sevkiyat_SatisFat_StokRehberiAcilmasin': value,
-  if (instance.sevkiyatSatisFatKalemDuzeltilemesin case final value?)
-    'sevkiyat_SatisFat_KalemDuzeltilemesin': value,
-  if (instance.sevkiyatSatisFatKlavyeEngelle case final value?)
-    'sevkiyat_SatisFat_KlavyeEngelle': value,
-  if (instance.sevkiyatSatisFatMiktar1Gelsin case final value?)
-    'sevkiyat_SatisFat_Miktar1Gelsin': value,
-  if (instance.sevkiyatSatisFatBakiyesizStokSecilmesin case final value?)
-    'sevkiyat_SatisFat_BakiyesizStokSecilmesin': value,
-  if (instance.sevkiyatSatisFatRaporlar case final value?)
-    'sevkiyat_SatisFat_Raporlar': value,
-  if (instance.sevkiyatSatisFatKalemRaporu case final value?)
-    'sevkiyat_SatisFat_KalemRaporu': value,
-  if (instance.sevkiyatSatisFatKarlilikRaporu case final value?)
-    'sevkiyat_SatisFat_KarlilikRaporu': value,
-  if (instance.sevkiyatSatisFatMaxIskUygulamasi case final value?)
-    'sevkiyat_SatisFat_MaxIskUygulamasi': value,
-  if (instance.sevkiyatSatisFatMaxSatIsk1 case final value?)
-    'sevkiyat_SatisFat_MaxSatIsk1': value,
-  if (instance.sevkiyatSatisFatMaxSatIsk2 case final value?)
-    'sevkiyat_SatisFat_MaxSatIsk2': value,
-  if (instance.sevkiyatSatisFatMaxSatIsk3 case final value?)
-    'sevkiyat_SatisFat_MaxSatIsk3': value,
-  if (instance.sevkiyatSatisFatMaxSatIsk4 case final value?)
-    'sevkiyat_SatisFat_MaxSatIsk4': value,
-  if (instance.sevkiyatSatisFatMaxSatIsk5 case final value?)
-    'sevkiyat_SatisFat_MaxSatIsk5': value,
-  if (instance.sevkiyatSatisFatMaxSatIsk6 case final value?)
-    'sevkiyat_SatisFat_MaxSatIsk6': value,
-  if (instance.sevkiyatSatisFatMaxGenIsk1 case final value?)
-    'sevkiyat_SatisFat_MaxGenIsk1': value,
-  if (instance.sevkiyatSatisFatMaxGenIsk2 case final value?)
-    'sevkiyat_SatisFat_MaxGenIsk2': value,
-  if (instance.sevkiyatSatisFatMaxGenIsk3 case final value?)
-    'sevkiyat_SatisFat_MaxGenIsk3': value,
-  if (instance.sevkiyatSatisFatDipFiyatUygulamasi case final value?)
-    'sevkiyat_SatisFat_DipFiyatUygulamasi': value,
-  if (instance.sevkiyatSatisFatDipFiyatSaha case final value?)
-    'sevkiyat_SatisFat_DipFiyatSaha': value,
-  if (instance.sevkiyatSatisFatDipFiyatEylem case final value?)
-    'sevkiyat_SatisFat_DipFiyatEylem': value,
-  if (instance.sevkiyatSatisFatDipFiyatKdvDurumu case final value?)
-    'sevkiyat_SatisFat_DipFiyatKDVDurumu': value,
-  if (instance.sevkiyatSatisIrsaliyesiSiparissiz case final value?)
-    'sevkiyat_SatisIrsaliyesiSiparissiz': value,
-  if (instance.sevkiyatSatisIrsaliyesiSiparissizFiyatGor case final value?)
-    'sevkiyat_SatisIrsaliyesiSiparissizFiyatGor': value,
-  if (instance.sevkiyatSatisIrsaliyesiIade case final value?)
-    'sevkiyat_SatisIrsaliyesiIade': value,
-  if (instance.sevkiyatSiptenMalTop case final value?)
-    'sevkiyat_SiptenMalTop': value,
-  if (instance.sevkiyatSiptenMalTopMiktarBarkoddanGelsin case final value?)
-    'sevkiyat_SiptenMalTop_MiktarBarkoddanGelsin': value,
-  if (instance.sevkiyatSiptenMalTopRehberdenStokSecilmesin case final value?)
-    'sevkiyat_SiptenMalTop_RehberdenStokSecilmesin': value,
-  if (instance.sevkiyatSiptenMalTopKlavyedenBarkodGirilmesin case final value?)
-    'sevkiyat_SiptenMalTop_KlavyedenBarkodGirilmesin': value,
-  if (instance.sevkiyatSiptenMalTopSevkOnayliSiparislerGelsin case final value?)
-    'sevkiyat_SiptenMalTop_SevkOnayliSiparislerGelsin': value,
-  if (instance.sevkiyatSiptenMalTopKacGunlukKayitlarListelensin
-      case final value?)
-    'sevkiyat_SiptenMalTop_KacGunlukKayitlarListelensin': value,
-  if (instance.sevkemriMalToplama case final value?)
-    'sevkemri_MalToplama': value,
-  if (instance.sevkemriMalToplamaAtanabilir case final value?)
-    'sevkemri_MalToplamaAtanabilir': value,
-  if (instance.sevkemriMalToplamaAtayabilir case final value?)
-    'sevkemri_MalToplamaAtayabilir': value,
-  if (instance.sevkemriUrunDegistir case final value?)
-    'sevkemri_UrunDegistir': value,
-  if (instance.sevkemriMiktarDegistir case final value?)
-    'sevkemri_MiktarDegistir': value,
-  if (instance.sevkemriMuadilUrun case final value?)
-    'sevkemri_MuadilUrun': value,
-  if (instance.sevkemriMalToplamaBarkodsuzUrunListedenSecilsin
-      case final value?)
-    'sevkemri_malToplama_BarkodsuzUrunListedenSecilsin': value,
-  if (instance.sevkemriMalToplamaOtoStokEtiketiYazdir case final value?)
-    'sevkemri_MalToplama_OtoStokEtiketiYazdir': value,
-  if (instance.sevkemriMalToplamaOtoStokEtiketiYazdirSor case final value?)
-    'sevkemri_MalToplama_OtoStokEtiketiYazdirSor': value,
-  if (instance.sevkemriMalToplamaKlavyedenGirisiEngelle case final value?)
-    'sevkemri_MalToplama_KlavyedenGirisiEngelle': value,
-  if (instance.sevkemriMalToplamaBarkod2Sor case final value?)
-    'sevkemri_MalToplama_Barkod2Sor': value,
-  if (instance.sevkemriMalToplamaBarkod2YildizliGorunsun case final value?)
-    'sevkemri_MalToplama_Barkod2_YildizliGorunsun': value,
-  if (instance.sevkemriMalToplamaBarkod2KalemEkranindaSor case final value?)
-    'sevkemri_MalToplama_Barkod2KalemEkranindaSor': value,
-  if (instance.sevkemriMalToplamaTumuToplanmadanTamamlanmasin case final value?)
-    'sevkemri_MalToplama_TumuToplanmadanTamamlanmasin': value,
-  if (instance.sevkemriMalToplamaHangiHucredeGoster case final value?)
-    'sevkemri_MalToplama_HangiHucredeGoster': value,
-  if (instance.sevkemriMalToplamaKalemDetayIslemOnaySormasin case final value?)
-    'sevkemri_MalToplama_KalemDetayIslemOnaySormasin': value,
-  if (instance.sevkemriMalToplamaGosterilecekEkBilgiler case final value?)
-    'sevkemri_MalToplama_GosterilecekEkBilgiler': value,
-  if (instance.sevkemriMalToplamaDegistirilemeyecekAlanlar case final value?)
-    'sevkemri_MalToplama_DegistirilemeyecekAlanlar': value,
-  if (instance.sevkemriMalToplamaGizlenecekAlanlar case final value?)
-    'sevkemri_MalToplama_GizlenecekAlanlar': value,
-  if (instance.sevkemriMalToplamaMiktarBarkoddan case final value?)
-    'sevkemri_MalToplama_MiktarBarkoddan': value,
-  if (instance.sevkemriMalToplamaKalemDetayiSorulmasin case final value?)
-    'sevkemri_MalToplama_KalemDetayiSorulmasin': value,
-  if (instance.sevkemriMalToplamaKalemDetayaUlasamasin case final value?)
-    'sevkemri_MalToplama_KalemDetayaUlasamasin': value,
-  if (instance.sevkemriMalToplamaFazlaTeslimat case final value?)
-    'sevkemri_MalToplama_FazlaTeslimat': value,
-  if (instance.sevkemriMalToplamaVarsayilanOlcuBirimi case final value?)
-    'sevkemri_MalToplama_VarsayilanOlcuBirimi': value,
-  if (instance.sevkemriMalToplamaSiralamaTipi case final value?)
-    'sevkemri_MalToplama_SiralamaTipi': value,
-  if (instance.sevkemriMalKontrol case final value?)
-    'sevkemri_MalKontrol': value,
-  if (instance.sevkemriMalKontrolKlavyeEngelle case final value?)
-    'sevkemri_MalKontrol_KlavyeEngelle': value,
-  if (instance.sevkemriMalKontrolTipi?.toJson() case final value?)
-    'sevkemri_MalKontrolTipi': value,
-  if (instance.sevkemriMalKontrolKullanicilar case final value?)
-    'sevkemri_MalKontrolKullanicilar': value,
-  if (instance.sevkemriPaketleme case final value?) 'sevkemri_Paketleme': value,
-  if (instance.sevkemriPaketlemeKlavyeEngelle case final value?)
-    'sevkemri_Paketleme_KlavyeEngelle': value,
-  if (instance.sevkemriPaketlemeBarkodOkutmayaZorla case final value?)
-    'sevkemri_Paketleme_BarkodOkutmayaZorla': value,
-  if (instance.sevkemriPaketlemeBarkodsuzUrunListedenSecilsin case final value?)
-    'sevkemri_Paketleme_BarkodsuzUrunListedenSecilsin': value,
-  if (instance.sevkemriAracYukleme case final value?)
-    'sevkemri_AracYukleme': value,
-  if (instance.sevkemriAracYuklemeKlavyeEngelle case final value?)
-    'sevkemri_AracYukleme_KlavyeEngelle': value,
-  if (instance.sevkemriAracBosaltma case final value?)
-    'sevkemri_AracBosaltma': value,
-  if (instance.sevkemriAracBosaltmaKlavyeEngelle case final value?)
-    'sevkemri_AracBosaltma_KlavyeEngelle': value,
-  if (instance.sevkemriDepodanTeslimat case final value?)
-    'sevkemri_DepodanTeslimat': value,
-  if (instance.sevkemriDepodanTeslimatKlavyeEngelle case final value?)
-    'sevkemri_DepodanTeslimat_KlavyeEngelle': value,
-  if (instance.sayimSayim case final value?) 'sayim_sayim': value,
-  if (instance.sayimKontrolMiktari case final value?)
-    'sayim_Kontrol_Miktari': value,
-  if (instance.sayimMiktarBarkoddanGelsin case final value?)
-    'sayim_MiktarBarkoddanGelsin': value,
-  if (instance.sayimAyniStokDurumu case final value?)
-    'sayim_AyniStokDurumu': value,
-  if (instance.sayimMiktar1Gelsin case final value?)
-    'sayim_Miktar1Gelsin': value,
-  if (instance.sayimHemenKaydet case final value?) 'sayim_HemenKaydet': value,
-  if (instance.sayimCarpanAktif case final value?) 'sayim_CarpanAktif': value,
-  if (instance.sayimSeriMikGirilenMikKabulEdilsin case final value?)
-    'sayim_SeriMikGirilenMikKabulEdilsin': value,
-  if (instance.sayimDigerKulSayimHarGorsun case final value?)
-    'sayim_DigerKulSayimHarGorsun': value,
-  if (instance.sayimDigerKulSayimFisGorsun case final value?)
-    'sayim_DigerKulSayimFisGorsun': value,
-  if (instance.sayimSerbest case final value?) 'sayim_Serbest': value,
-  if (instance.sayimSerbestSil case final value?) 'sayim_Serbest_Sil': value,
-  if (instance.sayimDepoFarkRaporu case final value?)
-    'sayim_DepoFarkRaporu': value,
-  if (instance.sayimBelgeBaglantisiniKopar case final value?)
-    'sayim_BelgeBaglantisiniKopar': value,
-  if (instance.sayimBelgeOlusturabilir case final value?)
-    'sayim_BelgeOlusturabilir': value,
-  if (instance.sayimEkAlanlar case final value?) 'sayim_EkAlanlar': value,
-  if (instance.sayimDegismeyecekAlanlar case final value?)
-    'sayim_DegismeyecekAlanlar': value,
-  if (instance.sayimGizlenecekAlanlar case final value?)
-    'sayim_GizlenecekAlanlar': value,
-  if (instance.sayimVarsayilanOlcuBirimi case final value?)
-    'sayim_VarsayilanOlcuBirimi': value,
-  if (instance.sayimRaporu case final value?) 'sayim_Raporu': value,
-  if (instance.paketOlustur case final value?) 'paket_Olustur': value,
-  if (instance.paketCokluOlustur case final value?) 'paket_CokluOlustur': value,
-  if (instance.paketKontrol case final value?) 'paket_Kontrol': value,
-  if (instance.paketMalzemeCikisi case final value?)
-    'paket_MalzemeCikisi': value,
-  if (instance.paketReceteyiFiltrele case final value?)
-    'paket_ReceteyiFiltrele': value,
-  if (instance.islemlerHucreEtiket case final value?)
-    'islemler_HucreEtiket': value,
-  if (instance.islemlerStokEtiket case final value?)
-    'islemler_StokEtiket': value,
-  if (instance.islemlerBarkodTanimlama case final value?)
-    'islemler_BarkodTanimlama': value,
-  if (instance.siparisMusteriSiparisi case final value?)
-    'siparis_MusteriSiparisi': value,
-  if (instance.siparisMusteriSiparisiKaydet case final value?)
-    'siparis_MusteriSiparisi_Kaydet': value,
-  if (instance.siparisMusteriSiparisiDuzelt case final value?)
-    'siparis_MusteriSiparisi_Duzelt': value,
-  if (instance.siparisMusteriSiparisiSil case final value?)
-    'siparis_MusteriSiparisi_Sil': value,
-  if (instance.siparisMusteriSiparisiKapalilarListelenmesin case final value?)
-    'siparis_MusteriSiparisi_KapalilarListelenmesin': value,
-  if (instance.siparisMusteriSiparisiFiyatDegistirilmesin case final value?)
-    'siparis_MusteriSiparisi_FiyatDegistirilmesin': value,
-  if (instance.siparisMusteriSiparisiFiyatSirasi case final value?)
-    'siparis_MusteriSiparisi_FiyatSirasi': value,
-  if (instance.siparisMusSipBirim1DenKaydet case final value?)
-    'siparis_MusSip_Birim1denKaydet': value,
-  if (instance.siparisMusteriSiparisiKapatmaIslemi case final value?)
-    'siparis_MusteriSiparisi_KapatmaIslemi': value,
-  if (instance.siparisMusSipOnayIslemleri case final value?)
-    'siparis_MusSip_OnayIslemleri': value,
-  if (instance.siparisMusSipStokIhtiyacRaporu case final value?)
-    'siparis_MusSip_StokIhtiyacRaporu': value,
-  if (instance.siparisMusteriSiparisiSonFiyatGoster case final value?)
-    'siparis_MusteriSiparisi_SonFiyatGoster': value,
-  if (instance.siparisMusSipDigerSekmesiGoster case final value?)
-    'siparis_MusSip_DigerSekmesiGoster': value,
-  if (instance.siparisMusSipEkAlan2Tablodan case final value?)
-    'siparis_MusSip_EkAlan2Tablodan': value,
-  if (instance.siparisMusSipEkAlan2Hatirla case final value?)
-    'siparis_MusSip_EkAlan2Hatirla': value,
-  if (instance.siparisMusSipMiktar1Gelsin case final value?)
-    'siparis_MusSip_Miktar1Gelsin': value,
-  if (instance.siparisMusSipBosGecilmeyecekAlanlar case final value?)
-    'siparis_MusSip_BosGecilmeyecekAlanlar': value,
-  if (instance.siparisSaticiSipBosGecilmeyecekAlanlar case final value?)
-    'siparis_SaticiSip_BosGecilmeyecekAlanlar': value,
-  if (instance.siparisMusSipOtoPdfGor case final value?)
-    'siparis_MusSip_OtoPdfGor': value,
-  if (instance.siparisMusSipCariKoduDegistir case final value?)
-    'siparis_MusSip_CariKoduDegistir': value,
-  if (instance.siparisMusteriSiparisiAciklamaAlanlari case final value?)
-    'siparis_MusteriSiparisi_AciklamaAlanlari': value,
-  if (instance.siparisMusteriSiparisiGizlenecekAlanlar case final value?)
-    'siparis_MusteriSiparisi_GizlenecekAlanlar': value,
-  if (instance.siparisMusteriSiparisiDegismeyecekAlanlar case final value?)
-    'siparis_MusteriSiparisi_DegismeyecekAlanlar': value,
-  if (instance.siparisSaticiSiparisiDegismeyecekAlanlar case final value?)
-    'siparis_SaticiSiparisi_DegismeyecekAlanlar': value,
-  if (instance.siparisMusSipEkstraAlanlar case final value?)
-    'siparis_MusSip_EkstraAlanlar': value,
-  if (instance.siparisMusteriSiparisiSatirAciklamaAlanlari case final value?)
-    'siparis_MusteriSiparisi_SatirAciklamaAlanlari': value,
-  if (instance.siparisMusSipOlcuBirimi case final value?)
-    'siparis_MusSip_OlcuBirimi': value,
-  if (instance.siparisMusSipBakiyesizStokSecilmesin case final value?)
-    'siparis_MusSip_BakiyesizStokSecilmesin': value,
-  if (instance.siparisMusSipHizliUrunGirisiMiktar2Kullanilsin case final value?)
-    'siparis_MusSip_HizliUrunGirisi_Miktar2Kullanilsin': value,
-  if (instance.siparisMusteriSiparisiDipFiyatUygulamasi case final value?)
-    'siparis_MusteriSiparisi_DipFiyatUygulamasi': value,
-  if (instance.siparisMusteriSiparisiDipFiyatSaha case final value?)
-    'siparis_MusteriSiparisi_DipFiyatSaha': value,
-  if (instance.siparisMusteriSiparisiDipFiyatEylem case final value?)
-    'siparis_MusteriSiparisi_DipFiyatEylem': value,
-  if (instance.siparisMusSipMaxIskUygulamasi case final value?)
-    'siparis_MusSip_MaxIskUygulamasi': value,
-  if (instance.siparisMusSipMaxSatIsk1 case final value?)
-    'siparis_MusSip_MaxSatIsk1': value,
-  if (instance.siparisMusSipMaxSatIsk2 case final value?)
-    'siparis_MusSip_MaxSatIsk2': value,
-  if (instance.siparisMusSipMaxSatIsk3 case final value?)
-    'siparis_MusSip_MaxSatIsk3': value,
-  if (instance.siparisMusSipMaxSatIsk4 case final value?)
-    'siparis_MusSip_MaxSatIsk4': value,
-  if (instance.siparisMusSipMaxSatIsk5 case final value?)
-    'siparis_MusSip_MaxSatIsk5': value,
-  if (instance.siparisMusSipMaxSatIsk6 case final value?)
-    'siparis_MusSip_MaxSatIsk6': value,
-  if (instance.siparisMusSipMaxGenIsk1 case final value?)
-    'siparis_MusSip_MaxGenIsk1': value,
-  if (instance.siparisMusSipMaxGenIsk2 case final value?)
-    'siparis_MusSip_MaxGenIsk2': value,
-  if (instance.siparisMusSipMaxGenIsk3 case final value?)
-    'siparis_MusSip_MaxGenIsk3': value,
-  if (instance.siparisMusteriSiparisiRaporlar case final value?)
-    'siparis_MusteriSiparisi_Raporlar': value,
-  if (instance.siparisMusteriSiparisiDurumRaporu case final value?)
-    'siparis_MusteriSiparisi_DurumRaporu': value,
-  if (instance.siparisMusteriSiparisiDurumRaporuFiyatGor case final value?)
-    'siparis_MusteriSiparisi_DurumRaporuFiyatGor': value,
-  if (instance.siparisMusSipKarlilikRaporu case final value?)
-    'siparis_MusSip_KarlilikRaporu': value,
-  if (instance.siparisMusSipTeslimRaporu case final value?)
-    'siparis_MusSip_TeslimRaporu': value,
-  if (instance.siparisSaticiSiparisi case final value?)
-    'siparis_SaticiSiparisi': value,
-  if (instance.siparisSaticiSiparisiKaydet case final value?)
-    'siparis_SaticiSiparisi_Kaydet': value,
-  if (instance.siparisSaticiSiparisiDuzelt case final value?)
-    'siparis_SaticiSiparisi_Duzelt': value,
-  if (instance.siparisSaticiSiparisiSil case final value?)
-    'siparis_SaticiSiparisi_Sil': value,
-  if (instance.siparisSaticiSiparisiKapalilarListelenmesin case final value?)
-    'siparis_SaticiSiparisi_KapalilarListelenmesin': value,
-  if (instance.siparisSaticiSiparisiFiyatDegistirilmesin case final value?)
-    'siparis_SaticiSiparisi_FiyatDegistirilmesin': value,
-  if (instance.siparisSaticiSiparisiFiyatSirasi case final value?)
-    'siparis_SaticiSiparisi_FiyatSirasi': value,
-  if (instance.siparisSaticiSipBirim1DenKaydet case final value?)
-    'siparis_SaticiSip_Birim1denKaydet': value,
-  if (instance.siparisSaticiSiparisiKapatmaIslemi case final value?)
-    'siparis_SaticiSiparisi_KapatmaIslemi': value,
-  if (instance.siparisSaticiSipOnayIslemleri case final value?)
-    'siparis_SaticiSip_OnayIslemleri': value,
-  if (instance.siparisSaticiSipDigerSekmesiGoster case final value?)
-    'siparis_SaticiSip_DigerSekmesiGoster': value,
-  if (instance.siparisSaticiSipOlcuBirimi case final value?)
-    'siparis_SaticiSip_OlcuBirimi': value,
-  if (instance.siparisSaticiSipCariKoduDegistir case final value?)
-    'siparis_SaticiSip_CariKoduDegistir': value,
-  if (instance.siparisSaticiSiparisiRaporlar case final value?)
-    'siparis_SaticiSiparisi_Raporlar': value,
-  if (instance.siparisSaticiSiparisiDurumRaporu case final value?)
-    'siparis_SaticiSiparisi_DurumRaporu': value,
-  if (instance.siparisSaticiSiparisiDurumRaporuFiyatGor case final value?)
-    'siparis_SaticiSiparisi_DurumRaporuFiyatGor': value,
-  if (instance.siparisSaticiSipTeslimRaporu case final value?)
-    'siparis_SaticiSip_TeslimRaporu': value,
-  if (instance.stokStokListesi case final value?) 'stok_StokListesi': value,
-  if (instance.stokStokListesiExtraAlanlar case final value?)
-    'stok_StokListesi_ExtraAlanlar': value,
-  if (instance.stokStokKarti case final value?) 'stok_StokKarti': value,
-  if (instance.stokStokKartiKaydet case final value?)
-    'stok_StokKarti_Kaydet': value,
-  if (instance.stokStokKartiDuzelt case final value?)
-    'stok_StokKarti_Duzelt': value,
-  if (instance.stokStokKartiSil case final value?) 'stok_StokKarti_Sil': value,
-  if (instance.stokStokKartiAlisFiyatiGizle case final value?)
-    'stok_StokKarti_AlisFiyatiGizle': value,
-  if (instance.stokStokKartiSatisFiyatiGizle case final value?)
-    'stok_StokKarti_SatisFiyatiGizle': value,
-  if (instance.stokStokHareketleri case final value?)
-    'stok_StokHareketleri': value,
-  if (instance.stokStokHarKaydet case final value?)
-    'stok_StokHar_Kaydet': value,
-  if (instance.stokStokHarDuzelt case final value?)
-    'stok_StokHar_Duzelt': value,
-  if (instance.stokStokHarSil case final value?) 'stok_StokHar_Sil': value,
-  if (instance.stokStokHarPlasiyerKendiniGorsun case final value?)
-    'stok_StokHar_PlasiyerKendiniGorsun': value,
-  if (instance.stokResimGoster case final value?) 'stok_ResimGoster': value,
-  if (instance.stokResimGosterEkle case final value?)
-    'stok_ResimGoster_Ekle': value,
-  if (instance.stokResimGosterSil case final value?)
-    'stok_ResimGoster_Sil': value,
-  if (instance.stokFiyatOzeti case final value?) 'stok_FiyatOzeti': value,
-  if (instance.stokHareketDetayiniGizle case final value?)
-    'stok_HareketDetayiniGizle': value,
-  if (instance.stokGirisHareketleriniGizle case final value?)
-    'stok_GirisHareketleriniGizle': value,
-  if (instance.stokCikisHareketleriniGizle case final value?)
-    'stok_CikisHareketleriniGizle': value,
-  if (instance.stokBakiyeGosterimTipi case final value?)
-    'stok_BakiyeGosterimTipi': value,
-  if (instance.stokBarkodKontrol case final value?) 'stok_BarkodKontrol': value,
-  if (instance.stokDepoBakiyeDurumu case final value?)
-    'stok_DepoBakiyeDurumu': value,
-  if (instance.stokBarkodTanimlama case final value?)
-    'stok_BarkodTanimlama': value,
-  if (instance.stokBarkodTanimlamaGorunecekAlanlar case final value?)
-    'stok_BarkodTanimlama_GorunecekAlanlar': value,
-  if (instance.stokBarkodKayitlariGecerliBarkodTipleri case final value?)
-    'stok_BarkodKayitlari_GecerliBarkodTipleri': value,
-  if (instance.stokBarkodKayitlariGecerliOlcuBirimleri case final value?)
-    'stok_BarkodKayitlari_GecerliOlcuBirimleri': value,
-  if (instance.stokBarkodKayitlari case final value?)
-    'stok_BarkodKayitlari': value,
-  if (instance.stokBarkodKayitlariEkle case final value?)
-    'stok_BarkodKayitlari_Ekle': value,
-  if (instance.stokBarkodKayitlariDuzelt case final value?)
-    'stok_BarkodKayitlari_Duzelt': value,
-  if (instance.stokBarkodKayitlariSil case final value?)
-    'stok_BarkodKayitlari_Sil': value,
-  if (instance.stokKanbanBarkodEsle case final value?)
-    'stok_KanbanBarkodEsle': value,
-  if (instance.stokKanbanBarkodEsleSil case final value?)
-    'stok_KanbanBarkodEsle_Sil': value,
-  if (instance.stokKanbanBarkodEsleFarkliStokOkutulmasin case final value?)
-    'stok_KanbanBarkodEsleFarkliStokOkutulmasin': value,
-  if (instance.stokFiyatGorEkrani case final value?)
-    'stok_FiyatGorEkrani': value,
-  if (instance.stokFiyatGorEkraniGorunecekAlanlar case final value?)
-    'stok_FiyatGorEkraniGorunecekAlanlar': value,
-  if (instance.stokFiyatGecmisi case final value?) 'stok_FiyatGecmisi': value,
-  if (instance.stokFiyatGecmisiSil case final value?)
-    'stok_FiyatGecmisiSil': value,
-  if (instance.stokFiyatGecmisiFiyatTipleri case final value?)
-    'stok_FiyatGecmisiFiyatTipleri': value,
-  if (instance.stokSeriHar case final value?) 'stok_SeriHar': value,
-  if (instance.stokSeriHarEkle case final value?) 'stok_SeriHar_Ekle': value,
-  if (instance.stokSeriHarDuzelt case final value?)
-    'stok_SeriHar_Duzelt': value,
-  if (instance.stokSeriHarSil case final value?) 'stok_SeriHar_Sil': value,
-  if (instance.stokSeriParcala case final value?) 'stok_SeriParcala': value,
-  if (instance.stokSeriParcalaEkle case final value?)
-    'stok_SeriParcala_Ekle': value,
-  if (instance.stokSeriParcalaDuzelt case final value?)
-    'stok_SeriParcala_Duzelt': value,
-  if (instance.stokSeriParcalaSil case final value?)
-    'stok_SeriParcala_Sil': value,
-  if (instance.stokSeriBirlestir case final value?) 'stok_SeriBirlestir': value,
-  if (instance.stokSeriBirlestirEkle case final value?)
-    'stok_SeriBirlestir_Ekle': value,
-  if (instance.stokSeriBirlestirDuzelt case final value?)
-    'stok_SeriBirlestir_Duzelt': value,
-  if (instance.stokSeriBirlestirSil case final value?)
-    'stok_SeriBirlestir_Sil': value,
-  if (instance.stokPaketleme case final value?) 'stok_Paketleme': value,
-  if (instance.stokPaketlemeEkle case final value?)
-    'stok_Paketleme_Ekle': value,
-  if (instance.stokPaketlemeSil case final value?) 'stok_Paketleme_Sil': value,
-  if (instance.stokPaketlemeOnaySormasin case final value?)
-    'stok_Paketleme_OnaySormasin': value,
-  if (instance.stokPaketlemeDigerKulKayitGorebilir case final value?)
-    'stok_Paketleme_DigerKulKayitGorebilir': value,
-  if (instance.stokPaketlemeSorulacakBelgeTipleri case final value?)
-    'stok_Paketleme_SorulacakBelgeTipleri': value,
-  if (instance.stokRaporlar case final value?) 'stok_Raporlar': value,
-  if (instance.stokRapAmbarMaliyet case final value?)
-    'stok_Rap_AmbarMaliyet': value,
-  if (instance.stokRapLokalDepoBakiye case final value?)
-    'stok_Rap_LokalDepoBakiye': value,
-  if (instance.stokRapUrunGrubunaGoreSatis case final value?)
-    'stok_Rap_UrunGrubunaGoreSatis': value,
-  if (instance.cariCariListesi case final value?) 'cari_CariListesi': value,
-  if (instance.cariCariListesiRiskGorebilir case final value?)
-    'cari_CariListesi_RiskGorebilir': value,
-  if (instance.cariRiskGirisi case final value?) 'cari_RiskGirisi': value,
-  if (instance.cariCariKarti case final value?) 'cari_CariKarti': value,
-  if (instance.cariCariKartiKaydet case final value?)
-    'cari_CariKarti_Kaydet': value,
-  if (instance.cariCariKartiDuzelt case final value?)
-    'cari_CariKarti_Duzelt': value,
-  if (instance.cariCariKartiSil case final value?) 'cari_CariKarti_Sil': value,
-  if (instance.cariCariKartiEIslemler case final value?)
-    'cari_CariKarti_EIslemler': value,
-  if (instance.cariCariKartiDegismeyecekAlanlar case final value?)
-    'cari_CariKarti_DegismeyecekAlanlar': value,
-  if (instance.cariCariKartiGizlenecekAlanlar case final value?)
-    'cari_CariKarti_GizlenecekAlanlar': value,
-  if (instance.cariCariHareketleri case final value?)
-    'cari_CariHareketleri': value,
-  if (instance.cariCariHarKaydet case final value?)
-    'cari_CariHar_Kaydet': value,
-  if (instance.cariCariHarDuzelt case final value?)
-    'cari_CariHar_Duzelt': value,
-  if (instance.cariCariHarSil case final value?) 'cari_CariHar_Sil': value,
-  if (instance.cariCariHareketleriHarDetayGorsun case final value?)
-    'cari_CariHareketleri_HarDetayGorsun': value,
-  if (instance.stokCariHarPlasiyerKendiniGorsun case final value?)
-    'stok_CariHar_PlasiyerKendiniGorsun': value,
-  if (instance.cariAktivite case final value?) 'cari_Aktivite': value,
-  if (instance.cariAktiviteEkle case final value?) 'cari_Aktivite_Ekle': value,
-  if (instance.cariAktiviteDuzelt case final value?)
-    'cari_Aktivite_Duzelt': value,
-  if (instance.cariAktiviteSil case final value?) 'cari_Aktivite_Sil': value,
-  if (instance.cariAktiviteAtayabilir case final value?)
-    'cari_Aktivite_Atayabilir': value,
-  if (instance.cariAktiviteBitirmeyiGeriAl case final value?)
-    'cari_Aktivite_BitirmeyiGeriAl': value,
-  if (instance.cariOzelHesapKapatma case final value?)
-    'cari_OzelHesapKapatma': value,
-  if (instance.cariOzelHesapKapatmaSil case final value?)
-    'cari_OzelHesapKapatma_Sil': value,
-  if (instance.cariVadeKontrolu case final value?) 'cari_VadeKontrolu': value,
-  if (instance.cariVadeKontroluGun case final value?)
-    'cari_VadeKontrolu_Gun': value,
-  if (instance.cariVadeKontroluBelgeTipleri case final value?)
-    'cari_VadeKontrolu_BelgeTipleri': value,
-  if (instance.cariFiltre case final value?) 'cari_Filtre': value,
-  if (instance.cariFiltreSql case final value?) 'cari_FiltreSQL': value,
-  if (instance.cariVirman case final value?) 'cari_Virman': value,
-  if (instance.cariVirmanKaydet case final value?) 'cari_Virman_Kaydet': value,
-  if (instance.cariHarita case final value?) 'cari_Harita': value,
-  if (instance.cariTeslimCariRehberSadeceSecsin case final value?)
-    'cari_TeslimCari_RehberSadeceSecsin': value,
-  if (instance.cariTeslimCariSatisBaglanmisCarilerSecilsin case final value?)
-    'cari_TeslimCari_SatisBaglanmisCarilerSecilsin': value,
-  if (instance.cariTeslimCariAlisBaglanmisCarilerSecilsin case final value?)
-    'cari_TeslimCari_AlisBaglanmisCarilerSecilsin': value,
-  if (instance.cariRaporlar case final value?) 'cari_Raporlar': value,
-  if (instance.cariRapEkstre case final value?) 'cari_Rap_Ekstre': value,
-  if (instance.cariRapStokEkstre case final value?)
-    'cari_Rap_StokEkstre': value,
-  if (instance.cariRapYaslandirma case final value?)
-    'cari_Rap_Yaslandirma': value,
-  if (instance.cariRapHarDetayliYaslandir case final value?)
-    'cari_Rap_HarDetayliYaslandir': value,
-  if (instance.cariRapHareket case final value?) 'cari_Rap_Hareket': value,
-  if (instance.cariRapDovizBakiye case final value?)
-    'cari_Rap_DovizBakiye': value,
-  if (instance.cariRapStokSatisOzeti case final value?)
-    'cari_Rap_StokSatisOzeti': value,
-  if (instance.cariRapDovizliEkstre case final value?)
-    'cari_Rap_DovizliEkstre': value,
-  if (instance.tahsilatTahsilatlar case final value?)
-    'tahsilat_Tahsilatlar': value,
-  if (instance.tahsilatPayker case final value?) 'tahsilat_Payker': value,
-  if (instance.tahsilatNakitTahsilat case final value?)
-    'tahsilat_NakitTahsilat': value,
-  if (instance.tahsilatNakitTahsilatKaydet case final value?)
-    'tahsilat_NakitTahsilat_Kaydet': value,
-  if (instance.tahsilatKKartiTahsilat case final value?)
-    'tahsilat_KKartiTahsilat': value,
-  if (instance.tahsilatKKartiTahsilatKaydet case final value?)
-    'tahsilat_KKartiTahsilat_Kaydet': value,
-  if (instance.tahsilatNakitOdeme case final value?)
-    'tahsilat_NakitOdeme': value,
-  if (instance.tahsilatNakitOdemeKaydet case final value?)
-    'tahsilat_NakitOdeme_Kaydet': value,
-  if (instance.tahsilatSenetTahsilat case final value?)
-    'tahsilat_SenetTahsilat': value,
-  if (instance.tahsilatSenetTahsilatKaydet case final value?)
-    'tahsilat_SenetTahsilat_Kaydet': value,
-  if (instance.tahsilatCekTahsilat case final value?)
-    'tahsilat_CekTahsilat': value,
-  if (instance.tahsilatCekTahsilatKaydet case final value?)
-    'tahsilat_CekTahsilat_Kaydet': value,
-  if (instance.tahsilatMuhtelifTahsilat case final value?)
-    'tahsilat_MuhtelifTahsilat': value,
-  if (instance.tahsilatMuhtelifOdeme case final value?)
-    'tahsilat_MuhtelifOdeme': value,
-  if (instance.tahsilatMuhtelifTahsilatFiltre case final value?)
-    'tahsilat_MuhtelifTahsilatFiltre': value,
-  if (instance.tahsilatMuhtelifTahsilatFiltreSQL case final value?)
-    'tahsilat_MuhtelifTahsilatFiltreSQL': value,
-  if (instance.tahsilatMuhtelifOdemeFiltre case final value?)
-    'tahsilat_MuhtelifOdemeFiltre': value,
-  if (instance.tahsilatMuhtelifOdemeFiltreSQL case final value?)
-    'tahsilat_MuhtelifOdemeFiltreSQL': value,
-  if (instance.yoneticiBankaBankaLitesi case final value?)
-    'yonetici_Banka_Banka_Litesi': value,
-  if (instance.yoneticiBankaIslemleri case final value?)
-    'yonetici_Banka_Islemleri': value,
-  if (instance.yoneticiBankaIslemleriSil case final value?)
-    'yonetici_Banka_Islemleri_Sil': value,
-  if (instance.yoneticiBankaIslemHesapEft case final value?)
-    'yonetici_Banka_Islem_HesapEFT': value,
-  if (instance.yoneticiBankaIslemHesapVirman case final value?)
-    'yonetici_Banka_Islem_HesapVirman': value,
-  if (instance.yoneticiBankaIslemCariEft case final value?)
-    'yonetici_Banka_Islem_CariEFT': value,
-  if (instance.finansBankaKasaTransferi case final value?)
-    'finans_Banka_Kasa_Transferi': value,
-  if (instance.finansKasaListesi case final value?)
-    'finans_Kasa_Listesi': value,
-  if (instance.finansKasaIslemleri case final value?)
-    'finans_Kasa_Islemleri': value,
-  if (instance.finansKasaIslemleriSil case final value?)
-    'finans_Kasa_Islemleri_Sil': value,
-  if (instance.finansKasalarArasiTransfer case final value?)
-    'finans_KasalarArasiTransfer': value,
-  if (instance.finansKasaNakitTahsilat case final value?)
-    'finans_Kasa_NakitTahsilat': value,
-  if (instance.finansKasaNakitOdeme case final value?)
-    'finans_Kasa_NakitOdeme': value,
-  if (instance.finansKasaMuhtelifTahsilat case final value?)
-    'finans_Kasa_MuhtelifTahsilat': value,
-  if (instance.finansKasaMuhtelifOdeme case final value?)
-    'finans_Kasa_MuhtelifOdeme': value,
-  if (instance.finansKasaSenetTahsilati case final value?)
-    'finans_Kasa_SenetTahsilati': value,
-  if (instance.finansKasaSenetOdemesi case final value?)
-    'finans_Kasa_SenetOdemesi': value,
-  if (instance.finansKasaCekTahsilati case final value?)
-    'finans_Kasa_CekTahsilati': value,
-  if (instance.finansKasaCekOdemesi case final value?)
-    'finans_Kasa_CekOdemesi': value,
-  if (instance.dekontListesi case final value?) 'dekont_Listesi': value,
-  if (instance.dekontKaydet case final value?) 'dekont_Kaydet': value,
-  if (instance.dekontDuzelt case final value?) 'dekont_Duzelt': value,
-  if (instance.dekontSil case final value?) 'dekont_Sil': value,
-  if (instance.finansCekGizlenecekAlanlar case final value?)
-    'finans_Cek_GizlenecekAlanlar': value,
-  if (instance.finansCekMusteri case final value?) 'finans_Cek_Musteri': value,
-  if (instance.finansMcekEkle case final value?) 'finans_MCEK_Ekle': value,
-  if (instance.finansMcekSil case final value?) 'finans_MCEK_Sil': value,
-  if (instance.finansMcekBelgeDetayi case final value?)
-    'finans_MCEK_BelgeDetayi': value,
-  if (instance.finansMcekHareketler case final value?)
-    'finans_MCEK_Hareketler': value,
-  if (instance.finansMcekEvraklar case final value?)
-    'finans_MCEK_Evraklar': value,
-  if (instance.finansMcekCariyeCiro case final value?)
-    'finans_MCEK_CariyeCiro': value,
-  if (instance.finansMcekTahsileCiro case final value?)
-    'finans_MCEK_TahsileCiro': value,
-  if (instance.finansMcekTahsilDekontu case final value?)
-    'finans_MCEK_TahsilDekontu': value,
-  if (instance.finansCekBorc case final value?) 'finans_Cek_Borc': value,
-  if (instance.finansBorcCekiEkle case final value?)
-    'finans_BorcCeki_Ekle': value,
-  if (instance.finansBorcCekiSil case final value?)
-    'finans_BorcCeki_Sil': value,
-  if (instance.finansBcekEkle case final value?) 'finans_BCEK_Ekle': value,
-  if (instance.finansBcekSil case final value?) 'finans_BCEK_Sil': value,
-  if (instance.finansBcekBelgeDetayi case final value?)
-    'finans_BCEK_BelgeDetayi': value,
-  if (instance.finansBcekHareketler case final value?)
-    'finans_BCEK_Hareketler': value,
-  if (instance.finansBcekEvraklar case final value?)
-    'finans_BCEK_Evraklar': value,
-  if (instance.finansBcekOdemeDekontu case final value?)
-    'finans_BCEK_OdemeDekontu': value,
-  if (instance.finansSenetMusteri case final value?)
-    'finans_Senet_Musteri': value,
-  if (instance.finansMsenEkle case final value?) 'finans_MSEN_Ekle': value,
-  if (instance.finansMsenSil case final value?) 'finans_MSEN_Sil': value,
-  if (instance.finansMsenBelgeDetayi case final value?)
-    'finans_MSEN_BelgeDetayi': value,
-  if (instance.finansMsenHareketler case final value?)
-    'finans_MSEN_Hareketler': value,
-  if (instance.finansMsenEvraklar case final value?)
-    'finans_MSEN_Evraklar': value,
-  if (instance.finansMsenCariyeCiro case final value?)
-    'finans_MSEN_CariyeCiro': value,
-  if (instance.finansMsenTahsileCiro case final value?)
-    'finans_MSEN_TahsileCiro': value,
-  if (instance.finansMsenTahsilDekontu case final value?)
-    'finans_MSEN_TahsilDekontu': value,
-  if (instance.finansSenetBorc case final value?) 'finans_Senet_Borc': value,
-  if (instance.finansBsenEkle case final value?) 'finans_BSEN_Ekle': value,
-  if (instance.finansBsenSil case final value?) 'finans_BSEN_Sil': value,
-  if (instance.finansBsenBelgeDetayi case final value?)
-    'finans_BSEN_BelgeDetayi': value,
-  if (instance.finansBsenHareketler case final value?)
-    'finans_BSEN_Hareketler': value,
-  if (instance.finansBsenEvraklar case final value?)
-    'finans_BSEN_Evraklar': value,
-  if (instance.finansBsenOdemeDekontu case final value?)
-    'finans_BSEN_OdemeDekontu': value,
-  if (instance.finansKKartiTahsilati case final value?)
-    'finans_KKartiTahsilati': value,
-  if (instance.finansMuhtelifTahsilat case final value?)
-    'finans_MuhtelifTahsilat': value,
-  if (instance.finansMuhtelifOdeme case final value?)
-    'finans_MuhtelifOdeme': value,
-  if (instance.finansTahsilatKayitlari case final value?)
-    'finans_TahsilatKayitlari': value,
-  if (instance.finansHizliTahsilatKayitlari case final value?)
-    'finans_HizliTahsilatKayitlari': value,
-  if (instance.finansHizliTahsilatKayitlariSil case final value?)
-    'finans_HizliTahsilatKayitlari_Sil': value,
-  if (instance.finansOrtalamaVadeTarihiHesaplama case final value?)
-    'finans_OrtalamaVadeTarihiHesaplama': value,
-  if (instance.finansOzetRapor case final value?) 'finans_OzetRapor': value,
-  if (instance.finansRaporlarFinansalDurum case final value?)
-    'finans_Raporlar_FinansalDurum': value,
-  if (instance.finansRaporlarAylikMizan case final value?)
-    'finans_Raporlar_AylikMizan': value,
-  if (instance.temsilciProfil case final value?) 'temsilci_Profil': value,
-  if (instance.temsilciProfilKdvDahil case final value?)
-    'temsilci_Profil_KdvDahil': value,
-  if (instance.temsilciProfilSatisPerformansiniGizle case final value?)
-    'temsilci_Profil_SatisPerformansiniGizle': value,
-  if (instance.temsilciProfilAylaraGoreSatisiGizle case final value?)
-    'temsilci_Profil_AylaraGoreSatisiGizle': value,
-  if (instance.temsilciProfilAylaraGoreTahsilatiGizle case final value?)
-    'temsilci_Profil_AylaraGoreTahsilatiGizle': value,
-  if (instance.yazdirmaBluetoothYaziciKullanabilir case final value?)
-    'yazdirma_BluetoothYaziciKullanabilir': value,
-  if (instance.yazdirmaHucreEtiketi case final value?)
-    'yazdirma_Hucre_Etiketi': value,
-  if (instance.yazdirmaHucreEtiketiYazicilari case final value?)
-    'yazdirma_Hucre_Etiketi_Yazicilari': value,
-  if (instance.yazdirmaDizaynHucreEtiketi case final value?)
-    'yazdirma_Dizayn_HucreEtiketi': value,
-  if (instance.yazdirmaMalToplamaEtiketi case final value?)
-    'yazdirma_MalToplama_Etiketi': value,
-  if (instance.yazdirmaMalToplamaYazicilari case final value?)
-    'yazdirma_Mal_Toplama_Yazicilari': value,
-  if (instance.yazdirmaDizaynMalToplama case final value?)
-    'yazdirma_Dizayn_MalToplama': value,
-  if (instance.yazdirmaMalKontrolEtiketi case final value?)
-    'yazdirma_MalKontrol_Etiketi': value,
-  if (instance.yazdirmaMalKontrolYazicilari case final value?)
-    'yazdirma_Mal_Kontrol_Yazicilari': value,
-  if (instance.yazdirmaDizaynMalKontrol case final value?)
-    'yazdirma_Dizayn_MalKontrol': value,
-  if (instance.yazdirmaDat case final value?) 'yazdirma_DAT': value,
-  if (instance.yazdirmaDatYazicilari case final value?)
-    'yazdirma_DAT_Yazicilari': value,
-  if (instance.yazdirmaDizaynDAT case final value?)
-    'yazdirma_Dizayn_DAT': value,
-  if (instance.yazdirmaPaketlemeEtiketi case final value?)
-    'yazdirma_Paketleme_Etiketi': value,
-  if (instance.yazdirmaPaketlemeKopyaSayisiGizle case final value?)
-    'yazdirma_Paketleme_KopyaSayisiGizle': value,
-  if (instance.yazdirmaPaketlemeYazicilari case final value?)
-    'yazdirma_Paketleme_Yazicilari': value,
-  if (instance.yazdirmaDizaynPaketleme case final value?)
-    'yazdirma_Dizayn_Paketleme': value,
-  if (instance.yazdirmaSatisIrs case final value?) 'yazdirma_SatisIrs': value,
-  if (instance.yazdirmaSatisFat case final value?) 'yazdirma_SatisFat': value,
-  if (instance.yazdirmaSatisFatYazicilari case final value?)
-    'yazdirma_SatisFat_Yazicilari': value,
-  if (instance.yazdirmaDizaynSatisFat case final value?)
-    'yazdirma_Dizayn_SatisFat': value,
-  if (instance.yazdirmaAlisFat case final value?) 'yazdirma_AlisFat': value,
-  if (instance.yazdirmaDizaynAlisFat case final value?)
-    'yazdirma_Dizayn_AlisFat': value,
-  if (instance.yazdirmaMustahsil case final value?) 'yazdirma_Mustahsil': value,
-  if (instance.yazdirmaMusSip case final value?) 'yazdirma_MusSip': value,
-  if (instance.yazdirmaMusSipYazicilari case final value?)
-    'yazdirma_MusSip_Yazicilari': value,
-  if (instance.yazdirmaDizaynMusSip case final value?)
-    'yazdirma_Dizayn_MusSip': value,
-  if (instance.yazdirmaSaticiSip case final value?) 'yazdirma_SaticiSip': value,
-  if (instance.yazdirmaDizaynSaticiSip case final value?)
-    'yazdirma_Dizayn_SaticiSip': value,
-  if (instance.yazdirmaAtal case final value?) 'yazdirma_ATAL': value,
-  if (instance.yazdirmaAtalYazicilari case final value?)
-    'yazdirma_ATAL_Yazicilari': value,
-  if (instance.yazdirmaDizaynATAL case final value?)
-    'yazdirma_Dizayn_ATAL': value,
-  if (instance.yazdirmaOdemeMakbuzu case final value?)
-    'yazdirma_OdemeMakbuzu': value,
-  if (instance.yazdirmaOdemeMakbuzuYazicilari case final value?)
-    'yazdirma_OdemeMakbuzu_Yazicilari': value,
-  if (instance.yazdirmaDizaynOdemeMakbuzu case final value?)
-    'yazdirma_Dizayn_OdemeMakbuzu': value,
-  if (instance.yazdirmaAlisIrs case final value?) 'yazdirma_AlisIrs': value,
-  if (instance.yazdirmaAlisIrsYazicilari case final value?)
-    'yazdirma_AlisIrs_Yazicilari': value,
-  if (instance.yazdirmaDizaynAlisIrs case final value?)
-    'yazdirma_Dizayn_AlisIrs': value,
-  if (instance.yazdirmaIsEmri case final value?) 'yazdirma_IsEmri': value,
-  if (instance.yazdirmaAmbarCikis case final value?)
-    'yazdirma_AmbarCikis': value,
-  if (instance.yazdirmaAmbarGiris case final value?)
-    'yazdirma_AmbarGiris': value,
-  if (instance.yazdirmaCariHareket case final value?)
-    'yazdirma_CariHareket': value,
-  if (instance.uretimFiyatGorebilir case final value?)
-    'uretim_FiyatGorebilir': value,
-  if (instance.uretimUskKaydet case final value?) 'uretim_USK_Kaydet': value,
-  if (instance.uretimUskDuzelt case final value?) 'uretim_USK_Duzelt': value,
-  if (instance.uretimUskSil case final value?) 'uretim_USK_Sil': value,
-  if (instance.uretimUskKacGunlukKayitlarListelensin case final value?)
-    'uretim_USK_KacGunlukKayitlarListelensin': value,
-  if (instance.uretimUskMiktarBarkoddan case final value?)
-    'uretim_USK_MiktarBarkoddan': value,
-  if (instance.uretimUskMiktar1Gelsin case final value?)
-    'uretim_USK_Miktar1Gelsin': value,
-  if (instance.sirketDepoUretimGiris case final value?)
-    'sirket_Depo_Uretim_Giris': value,
-  if (instance.sirketDepoUretimCikis case final value?)
-    'sirket_Depo_Uretim_Cikis': value,
-  if (instance.uretimUskIsEmriOtoGelsin case final value?)
-    'uretim_USK_IsEmriOtoGelsin': value,
-  if (instance.uretimUskSoruSorulmasin case final value?)
-    'uretim_USK_SoruSorulmasin': value,
-  if (instance.uretimUskStokRehberiAcilmasin case final value?)
-    'uretim_USK_StokRehberiAcilmasin': value,
-  if (instance.uretimUskKlavyeEngelle case final value?)
-    'uretim_USK_KlavyeEngelle': value,
-  if (instance.uretimUskDepoOnceligi case final value?)
-    'uretim_USK_DepoOnceligi': value,
-  if (instance.uretimUskFisiErpUretsin case final value?)
-    'uretim_USK_FisiErpUretsin': value,
-  if (instance.uretimUskGizlenecekAlanlar case final value?)
-    'uretim_USK_GizlenecekAlanlar': value,
-  if (instance.uretimUskBosGecilmeyecekAlanlar case final value?)
-    'uretim_USK_BosGecilmeyecekAlanlar': value,
-  if (instance.uretimUskDegismeyecekAlanlar case final value?)
-    'uretim_USK_DegismeyecekAlanlar': value,
-  if (instance.uretimUskOlcuBirimi case final value?)
-    'uretim_USK_OlcuBirimi': value,
-  if (instance.uretimUskOtoYazdir case final value?)
-    'uretim_USK_OtoYazdir': value,
-  if (instance.uretimUskKalemliYapi case final value?)
-    'uretim_USK_KalemliYapi': value,
-  if (instance.uretimUskKalemliYapiStokMevcutaEklensin case final value?)
-    'uretim_USK_KalemliYapi_StokMevcutaEklensin': value,
-  if (instance.uretimUskKalemliYapiOtoEtiketYazdir case final value?)
-    'uretim_USK_KalemliYapi_OtoEtiketYazdir': value,
-  if (instance.uretimUskKalemliYapiAyniBarkodOkutulamaz case final value?)
-    'uretim_USK_KalemliYapi_AyniBarkodOkutulamaz': value,
-  if (instance.uretimUskKalemliYapiOkutulanEnUsteEklensin case final value?)
-    'uretim_USK_KalemliYapi_OkutulanEnUsteEklensin': value,
-  if (instance.uretimUskKalemliYapiKalemDuzeltilemesin case final value?)
-    'uretim_USK_KalemliYapi_KalemDuzeltilemesin': value,
-  if (instance.uretimReceteIzleme case final value?)
-    'uretim_ReceteIzleme': value,
-  if (instance.uretimMalToplama case final value?) 'uretim_MalToplama': value,
-  if (instance.uretimMalToplamaEkle case final value?)
-    'uretim_MalToplama_Ekle': value,
-  if (instance.uretimMalToplamaSil case final value?)
-    'uretim_MalToplama_Sil': value,
-  if (instance.uretimMalToplamaKlavyeEngelle case final value?)
-    'uretim_MalToplama_KlavyeEngelle': value,
-  if (instance.uretimMalToplamaBarkodOkutsun case final value?)
-    'uretim_MalToplama_BarkodOkutsun': value,
-  if (instance.uretimMalToplamaBelgeTipleri case final value?)
-    'uretim_MalToplama_BelgeTipleri': value,
-  if (instance.uretimMalToplamaReceteFiltresi case final value?)
-    'uretim_MalToplama_ReceteFiltresi': value,
-  if (instance.uretimMalToplamaReceteFiltresiSQL case final value?)
-    'uretim_MalToplama_ReceteFiltresiSQL': value,
-  if (instance.uretimIsEmri case final value?) 'uretim_IsEmri': value,
-  if (instance.uretimIsemriHammaddeTakip case final value?)
-    'uretim_Isemri_HammaddeTakip': value,
-  if (instance.uretimIsEmriEkle case final value?) 'uretim_IsEmri_Ekle': value,
-  if (instance.uretimIsEmriDuzelt case final value?)
-    'uretim_IsEmri_Duzelt': value,
-  if (instance.uretimIsEmriSil case final value?) 'uretim_IsEmri_Sil': value,
-  if (instance.taltekStek case final value?) 'taltek_STEK': value,
-  if (instance.taltekStekKaydet case final value?) 'taltek_STEK_Kaydet': value,
-  if (instance.taltekStekDuzelt case final value?) 'taltek_STEK_Duzelt': value,
-  if (instance.taltekStekSil case final value?) 'taltek_STEK_Sil': value,
-  if (instance.taltekStekKapalilarListenlenmesin case final value?)
-    'taltek_STEK_KapalilarListenlenmesin': value,
-  if (instance.taltekStekOnayIslemleri case final value?)
-    'taltek_STEK_OnayIslemleri': value,
-  if (instance.taltekStekCariKoduDegistir case final value?)
-    'taltek_STEK_CariKoduDegistir': value,
-  if (instance.taltekStekFiyatDegistirilmesin case final value?)
-    'taltek_STEK_FiyatDegistirilmesin': value,
-  if (instance.taltekStekAciklamalarYetkiTuru case final value?)
-    'taltek_STEK_Aciklamalar_YetkiTuru': value,
-  if (instance.taltekStekGizlenecekAlanlar case final value?)
-    'taltek_STEK_GizlenecekAlanlar': value,
-  if (instance.taltekStekDegismeyecekAlanlar case final value?)
-    'taltek_STEK_DegismeyecekAlanlar': value,
-  if (instance.taltekAtalDegismeyecekAlanlar case final value?)
-    'taltek_ATAL_DegismeyecekAlanlar': value,
-  if (instance.taltekStalDegismeyecekAlanlar case final value?)
-    'taltek_STAL_DegismeyecekAlanlar': value,
-  if (instance.taltekStekBosGecilmeyecekAlanlar case final value?)
-    'taltek_STEK_BosGecilmeyecekAlanlar': value,
-  if (instance.taltekStalBosGecilmeyecekAlanlar case final value?)
-    'taltek_STAL_BosGecilmeyecekAlanlar': value,
-  if (instance.taltekAtalBosGecilmeyecekAlanlar case final value?)
-    'taltek_ATAL_BosGecilmeyecekAlanlar': value,
-  if (instance.taltekStekAciklamaAlanlari case final value?)
-    'taltek_STEK_AciklamaAlanlari': value,
-  if (instance.taltekStekOzelKod1degeri case final value?)
-    'taltek_STEK_OzelKod1degeri': value,
-  if (instance.taltekStekDipFiyatUygulamasi case final value?)
-    'taltek_STEK_DipFiyatUygulamasi': value,
-  if (instance.taltekStekDipFiyatSaha case final value?)
-    'taltek_STEK_DipFiyatSaha': value,
-  if (instance.taltekStekDipFiyatEylem case final value?)
-    'taltek_STEK_DipFiyatEylem': value,
-  if (instance.taltekAtal case final value?) 'taltek_ATAL': value,
-  if (instance.taltekAtalKaydet case final value?) 'taltek_ATAL_Kaydet': value,
-  if (instance.taltekAtalDuzelt case final value?) 'taltek_ATAL_Duzelt': value,
-  if (instance.taltekAtalSil case final value?) 'taltek_ATAL_Sil': value,
-  if (instance.taltekAtalCariEMailAlani case final value?)
-    'taltek_ATAL_CariEMailAlani': value,
-  if (instance.taltekAtalOnayIslemleri case final value?)
-    'taltek_ATAL_OnayIslemleri': value,
-  if (instance.taltekAtalCariKoduDegistir case final value?)
-    'taltek_ATAL_CariKoduDegistir': value,
-  if (instance.taltekAtalAciklamalarYetkiTuru case final value?)
-    'taltek_ATAL_Aciklamalar_YetkiTuru': value,
-  if (instance.taltekAtalGizlenecekAlanlar case final value?)
-    'taltek_ATAL_GizlenecekAlanlar': value,
-  if (instance.taltekAtalAciklamaAlanlari case final value?)
-    'taltek_ATAL_AciklamaAlanlari': value,
-  if (instance.taltekAtalBelgeKopyala case final value?)
-    'taltek_ATAL_BelgeKopyala': value,
-  if (instance.taltekStal case final value?) 'taltek_STAL': value,
-  if (instance.taltekStalKaydet case final value?) 'taltek_STAL_Kaydet': value,
-  if (instance.taltekStalDuzelt case final value?) 'taltek_STAL_Duzelt': value,
-  if (instance.taltekStalSil case final value?) 'taltek_STAL_Sil': value,
-  if (instance.taltekStalKapalilarListenlenmesin case final value?)
-    'taltek_STAL_KapalilarListenlenmesin': value,
-  if (instance.taltekStalOnayIslemleri case final value?)
-    'taltek_STAL_OnayIslemleri': value,
-  if (instance.taltekStalCariKoduDegistir case final value?)
-    'taltek_STAL_CariKoduDegistir': value,
-  if (instance.taltekStalFiyatDegistirilmesin case final value?)
-    'taltek_STAL_FiyatDegistirilmesin': value,
-  if (instance.taltekStalGizlenecekAlanlar case final value?)
-    'taltek_STAL_GizlenecekAlanlar': value,
-  if (instance.taltekStalDipFiyatUygulamasi case final value?)
-    'taltek_STAL_DipFiyatUygulamasi': value,
-  if (instance.ebelgeEFat case final value?) 'ebelge_EFat': value,
-  if (instance.ebelgeEFatCariGuncelle case final value?)
-    'ebelge_EFatCariGuncelle': value,
-  if (instance.ebelgeEFatSorgula case final value?) 'ebelge_EFatSorgula': value,
-  if (instance.ebelgeEFatGelenKutusu case final value?)
-    'ebelge_EFatGelenKutusu': value,
-  if (instance.ebelgeEFatTaslakOlustur case final value?)
-    'ebelge_EFatTaslakOlustur': value,
-  if (instance.ebelgeEFatTaslakSil case final value?)
-    'ebelge_EFatTaslakSil': value,
-  if (instance.ebelgeEFatTaslakBasim case final value?)
-    'ebelge_EFatTaslakBasim': value,
-  if (instance.ebelgeEFatGoruntule case final value?)
-    'ebelge_EFatGoruntule': value,
-  if (instance.ebelgeEFatAlisFatOlustur case final value?)
-    'ebelge_EFatAlisFatOlustur': value,
-  if (instance.ebelgeEFatGonder case final value?) 'ebelge_EFatGonder': value,
-  if (instance.ebelgeEFatDizayn case final value?) 'ebelge_EFat_Dizayn': value,
-  if (instance.ebelgeEArsiv case final value?) 'ebelge_EArsiv': value,
-  if (instance.ebelgeEArsivTaslakOlustur case final value?)
-    'ebelge_EArsivTaslakOlustur': value,
-  if (instance.ebelgeEArsivTaslakSil case final value?)
-    'ebelge_EArsivTaslakSil': value,
-  if (instance.ebelgeEArsivTaslakBasim case final value?)
-    'ebelge_EArsivTaslakBasim': value,
-  if (instance.ebelgeEArsivGoruntule case final value?)
-    'ebelge_EArsivGoruntule': value,
-  if (instance.ebelgeEArsivSorgula case final value?)
-    'ebelge_EArsivSorgula': value,
-  if (instance.ebelgeEArsivGonder case final value?)
-    'ebelge_EArsivGonder': value,
-  if (instance.ebelgeEArsivDizayn case final value?)
-    'ebelge_EArsiv_Dizayn': value,
-  if (instance.ebelgeEIrsaliye case final value?) 'ebelge_EIrsaliye': value,
-  if (instance.ebelgeEFaturaGidenKutusu case final value?)
-    'ebelge_EFatGidenKutusu': value,
-  if (instance.ebelgeEIrsaliyeGidenKutusu case final value?)
-    'ebelge_EIrsaliyeGidenKutusu': value,
-  if (instance.ebelgeEIrsaliyeGelenKutusu case final value?)
-    'ebelge_EIrsaliyeGelenKutusu': value,
-  if (instance.ebelgeEIrsaliyeTaslakOlustur case final value?)
-    'ebelge_EIrsaliyeTaslakOlustur': value,
-  if (instance.ebelgeEIrsaliyeTaslakSil case final value?)
-    'ebelge_EIrsaliyeTaslakSil': value,
-  if (instance.ebelgeEIrsaliyeTaslakBasim case final value?)
-    'ebelge_EIrsaliyeTaslakBasim': value,
-  if (instance.ebelgeEIrsaliyeGonder case final value?)
-    'ebelge_EIrsaliyeGonder': value,
-  if (instance.ebelgeEIrsaliyeGoruntule case final value?)
-    'ebelge_EIrsaliyeGoruntule': value,
-  if (instance.ebelgeEIrsaliyeDizayn case final value?)
-    'ebelge_EIrsaliye_Dizayn': value,
-  if (instance.entegrasyonUetdsesya case final value?)
-    'entegrasyon_UETDSESYA': value,
-  if (instance.entegrasyonUetdsesyaIptal case final value?)
-    'entegrasyon_UETDSESYA_Iptal': value,
-  if (instance.transferDatTekrarEdenBarkod case final value?)
-    'transfer_DAT_TekrarEdenBarkod': value,
-  if (instance.transferDatAciklamaDuzenle case final value?)
-    'transfer_DAT_AciklamaDuzenle': value,
-  if (instance.transferDatLokalDatSeciliGelmesin case final value?)
-    'transfer_DAT_LokalDATSeciliGelmesin': value,
-  if (instance.transferDatVarsayilanHarTuruDegistiremesin case final value?)
-    'transfer_DAT_VarsayilanHarTuruDegistiremesin': value,
-  if (instance.transferDatDepoCaridenGelsin case final value?)
-    'transfer_DAT_DepoCaridenGelsin': value,
-  if (instance.transferAgSipBagSecenegi case final value?)
-    'transfer_AG_SipBagSecenegi': value,
-  if (instance.transferAgTekrarEdenBarkod case final value?)
-    'transfer_AG_TekrarEdenBarkod': value,
-  if (instance.transferAgAciklamaDuzenle case final value?)
-    'transfer_AG_AciklamaDuzenle': value,
-  if (instance.transferAcSipBagSecenegi case final value?)
-    'transfer_AC_SipBagSecenegi': value,
-  if (instance.transferAcTekrarEdenBarkod case final value?)
-    'transfer_AC_TekrarEdenBarkod': value,
-  if (instance.transferAcAciklamaDuzenle case final value?)
-    'transfer_AC_AciklamaDuzenle': value,
-  if (instance.transferDepoTalebiBildirim case final value?)
-    'transfer_DepoTalebi_Bildirim': value,
-  if (instance.uretimUsk case final value?) 'uretim_USK': value,
-  if (instance.malKabulAlisIrsDegismeyecekAlanlar case final value?)
-    'malKabul_AlisIrs_DegismeyecekAlanlar': value,
-  if (instance.malKabulAlisIrsAciklamaDuzenle case final value?)
-    'malKabul_AlisIrs_AciklamaDuzenle': value,
-  if (instance.malKabulAlisFatDegismeyecekAlanlar case final value?)
-    'malKabul_AlisFat_DegismeyecekAlanlar': value,
-  if (instance.malKabulAlisFatAciklamaDuzenle case final value?)
-    'malKabul_AlisFat_AciklamaDuzenle': value,
-  if (instance.malKabulAlisFatTekrarEdenBarkod case final value?)
-    'malKabul_AlisFat_TekrarEdenBarkod': value,
-  if (instance.malKabulAlisFaturasiSipBagSecenegi case final value?)
-    'malKabul_AlisFaturasi_SipBagSecenegi': value,
-  if (instance.sevkiyatSatisIrsVarsayilanBelgeTipi case final value?)
-    'sevkiyat_SatisIrs_VarsayilanBelgeTipi': value,
-  if (instance.sevkiyatSatisIrsaliyesiAciklamaAlanlari case final value?)
-    'sevkiyat_SatisIrsaliyesi_AciklamaAlanlari': value,
-  if (instance.sevkiyatSatisIrsaliyesiAciklamaDuzenle case final value?)
-    'sevkiyat_SatisIrsaliyesi_AciklamaDuzenle': value,
-  if (instance.sevkiyatSatisIrsKayittanSonraTaslakOlustur case final value?)
-    'sevkiyat_SatisIrs_KayittanSonraTaslakOlustur': value,
-  if (instance.sevkiyatSatisIrsIadeMiktariGirebilir case final value?)
-    'sevkiyat_SatisIrs_IadeMiktariGirebilir': value,
-  if (instance.sevkiyatSatisIrsIadeMiktariGirebilirFarkliDepo case final value?)
-    'sevkiyat_SatisIrs_IadeMiktariGirebilirFarkliDepo': value,
-  if (instance.sevkiyatSatisIrsTekrarEdenBarkod case final value?)
-    'sevkiyat_SatisIrs_TekrarEdenBarkod': value,
-  if (instance.sevkiyatSatisFatAciklamaDuzenle case final value?)
-    'sevkiyat_SatisFat_AciklamaDuzenle': value,
-  if (instance.sevkiyatSatisFatIadeMiktariGirebilir case final value?)
-    'sevkiyat_SatisFat_IadeMiktariGirebilir': value,
-  if (instance.sevkiyatSatisFatIadeMiktariGirebilirFarkliDepo case final value?)
-    'sevkiyat_SatisFat_IadeMiktariGirebilirFarkliDepo': value,
-  if (instance.sevkiyatSatisFaturasiTekrarEdenBarkod case final value?)
-    'sevkiyat_SatisFaturasi_TekrarEdenBarkod': value,
-  if (instance.sevkemriMalToplamaYontemi case final value?)
-    'sevkemri_MalToplama_Yontemi': value,
-  if (instance.sayimSerbestSayimFiltreIslem case final value?)
-    'sayim_SerbestSayimFiltreIslem': value,
-  if (instance.siparisMusSipBelgeKopyala case final value?)
-    'siparis_MusSip_BelgeKopyala': value,
-  if (instance.siparisMusSipTekrarEdenBarkod case final value?)
-    'siparis_MusSip_TekrarEdenBarkod': value,
-  if (instance.siparisMusSipKacGunlukKayitlarListelensin case final value?)
-    'siparis_MusSip_KacGunlukKayitlarListelensin': value,
-  if (instance.siparisMusteriSiparisiAciklamaDuzenle case final value?)
-    'siparis_MusteriSiparisi_AciklamaDuzenle': value,
-  if (instance.stokFiltreSqlTipi case final value?) 'stok_FiltreSQLTipi': value,
-  if (instance.stokFiyatGorEkraniGunlukKurdanTlGoster case final value?)
-    'stok_FiyatGorEkrani_GunlukKurdanTLGoster': value,
-  if (instance.stokPaketlemeCoklu case final value?)
-    'stok_Paketleme_Coklu': value,
-  if (instance.stokRehberBakiyesindeDigerOlcuBirimleriGorunsun
-      case final value?)
-    'stok_RehberBakiyesindeDigerOlcuBirimleriGorunsun': value,
-  if (instance.stokYazdirPdfGoruntule case final value?)
-    'stok_YazdirPdfGoruntule': value,
-  if (instance.cariToplamGorunmesin case final value?)
-    'cari_ToplamGorunmesin': value,
-  if (instance.cariBakiyeGosterim case final value?)
-    'cari_BakiyeGosterim': value,
-  if (instance.cariFiltreSqlTipi case final value?) 'cari_FiltreSQLTipi': value,
-  if (instance.tahsilatDovizKuruDegeri case final value?)
-    'tahsilat_DovizKuru_Degeri': value,
-  if (instance.tahsilatDovizKuruYetki case final value?)
-    'tahsilat_DovizKuru_Yetki': value,
-  if (instance.tahsilatDovizKuruTolerans case final value?)
-    'tahsilat_DovizKuru_Tolerans': value,
-  if (instance.finansRaporlarKasaEkstre case final value?)
-    'finans_Raporlar_KasaEkstre': value,
-  if (instance.finansKasaGizlenecekAlanlar case final value?)
-    'finans_Kasa_GizlenecekAlanlar': value,
-  if (instance.finansKasaDegistirilemeyecekAlanlar case final value?)
-    'finans_Kasa_DegistirilemeyecekAlanlar': value,
-  if (instance.finansKasaBosGecilemeyecekAlanlar case final value?)
-    'finans_Kasa_BosGecilemeyecekAlanlar': value,
-  if (instance.taltekStekAciklamaDuzenle case final value?)
-    'taltek_STEK_AciklamaDuzenle': value,
-  if (instance.taltekStekDipFiyatKdvDurumu case final value?)
-    'taltek_STEK_DipFiyatKDVDurumu': value,
-  if (instance.taltekStalAciklamaDuzenle case final value?)
-    'taltek_STAL_AciklamaDuzenle': value,
-  if (instance.taltekStalDipFiyatSaha case final value?)
-    'taltek_STAL_DipFiyatSaha': value,
-  if (instance.taltekStalDipFiyatEylem case final value?)
-    'taltek_STAL_DipFiyatEylem': value,
-  if (instance.taltekStalDipFiyatKdvDurumu case final value?)
-    'taltek_STAL_DipFiyatKDVDurumu': value,
-  if (instance.malKabulAlisIrsBirim1DenKaydet case final value?)
-    'malKabul_AlisIrs_Birim1denKaydet': value,
-  if (instance.malKabulAlisFatBirim1DenKaydet case final value?)
-    'malKabul_AlisFat_Birim1denKaydet': value,
-  if (instance.transferAgBirim1DenKaydet case final value?)
-    'transfer_AG_Birim1denKaydet': value,
-  if (instance.transferAcBirim1DenKaydet case final value?)
-    'transfer_AC_Birim1denKaydet': value,
-  if (instance.sevkiyatSatisIrsKdvSifirGelsin case final value?)
-    'sevkiyat_SatisIrs_KDVSifirGelsin': value,
-  if (instance.sevkiyatSatisIrsBirim1DenKaydet case final value?)
-    'sevkiyat_SatisIrs_Birim1denKaydet': value,
-  if (instance.sevkiyatSatisIrsDipFiyatKdvDurumu case final value?)
-    'sevkiyat_SatisIrs_DipFiyatKDVDurumu': value,
-  if (instance.sevkiyatSatisFatBirim1DenKaydet case final value?)
-    'sevkiyat_SatisFat_Birim1denKaydet': value,
-  if (instance.siparisMusteriSiparisiDipFiyatKdvDurumu case final value?)
-    'siparis_MusteriSiparisi_DipFiyatKDVDurumu': value,
-  if (instance.siparisSatSipTekrarEdenBarkod case final value?)
-    'siparis_SatSip_TekrarEdenBarkod': value,
-  if (instance.siparisSatSipKacGunlukKayitlarListelensin case final value?)
-    'siparis_SatSip_KacGunlukKayitlarListelensin': value,
-  if (instance.cariRapBorcAlacakDokumu case final value?)
-    'cari_Rap_BorcAlacakDokumu': value,
-  if (instance.sirketProjeYetkiTuru case final value?)
-    'sirket_Proje_YetkiTuru': value,
-  if (instance.transferDatVarsayilanHarTuru case final value?)
-    'transfer_DAT_VarsayilanHarTuru': value,
-  if (instance.siparisMusSipKdvDurumu case final value?)
-    'siparis_MusSip_KdvDurumu': value,
-  if (instance.siparisSaticiSiparisiAciklamaDuzenle case final value?)
-    'siparis_SaticiSiparisi_AciklamaDuzenle': value,
-  if (instance.taltekStekKdvDurumu case final value?)
-    'taltek_STEK_KdvDurumu': value,
-  if (instance.taltekStalKdvDurumu case final value?)
-    'taltek_STAL_KdvDurumu': value,
-  if (instance.transferAgBosGecilmeyecekAlanlar case final value?)
-    'transfer_AG_BosGecilmeyecekAlanlar': value,
-  if (instance.transferAgGizlenecekAlanlar case final value?)
-    'transfer_AG_GizlenecekAlanlar': value,
-  if (instance.transferAgDegismeyecekAlanlar case final value?)
-    'transfer_AG_DegismeyecekAlanlar': value,
-  if (instance.transferAgAciklamaAlanlari case final value?)
-    'transfer_AG_AciklamaAlanlari': value,
-  if (instance.transferAcAciklamaAlanlari case final value?)
-    'transfer_AC_AciklamaAlanlari': value,
-  if (instance.sevkiyatSatisFatKdvDurumu case final value?)
-    'sevkiyat_SatisFat_KdvDurumu': value,
-  if (instance.sigmaOlcumGir case final value?) 'sigma_OlcumGir': value,
-  if (instance.sigmaOlcumGirKaydet case final value?)
-    'sigma_OlcumGir_Kaydet': value,
-  if (instance.sigmaOlcumGirDuzelt case final value?)
-    'sigma_OlcumGir_Duzelt': value,
-  if (instance.sigmaOlcumGirSil case final value?) 'sigma_OlcumGir_Sil': value,
-  if (instance.sigmaTeknikResim case final value?) 'sigma_TeknikResim': value,
-  if (instance.sigmaKontrolPlani case final value?) 'sigma_KontrolPlani': value,
-  if (instance.transferDatEIrsaliyeIsaretDurum case final value?)
-    'transfer_DAT_EIrsaliyeIsaretDurum': value,
-  if (instance.transferAcEIrsaliyeIsaretDurum case final value?)
-    'transfer_AC_EIrsaliyeIsaretDurum': value,
-  if (instance.sevkiyatSatisIrsaliyesiEIrsaliyeIsaretDurum case final value?)
-    'sevkiyat_SatisIrsaliyesi_EIrsaliyeIsaretDurum': value,
-  if (instance.sayimAyniBarkodEngelle case final value?)
-    'sayim_AyniBarkodEngelle': value,
-  if (instance.siparisMusSipBildirim case final value?)
-    'siparis_MusSip_Bildirim': value,
-  if (instance.siparisSatSipBildirim case final value?)
-    'siparis_SatSip_Bildirim': value,
-  if (instance.stokStokKartiFiyatlariGizle case final value?)
-    'stok_StokKarti_FiyatlariGizle': value,
-  if (instance.stokBarkodTanimlamaZorunluBarkodTipi case final value?)
-    'stok_BarkodTanimlama_ZorunluBarkodTipi': value,
-  if (instance.stokCariStokFiltresiUygulansin case final value?)
-    'stok_CariStokFiltresiUygulansin': value,
-  if (instance.cariKodDegistir case final value?) 'cari_KodDegistir': value,
-  if (instance.cariRapDovizliBorcAlacakDokumu case final value?)
-    'cari_Rap_DovizliBorcAlacakDokumu': value,
-  if (instance.cariRapUrunGrubunaGoreSatis case final value?)
-    'cari_Rap_UrunGrubunaGoreSatis': value,
-  if (instance.finansKasaNakitTahsilatKasaBakGizle case final value?)
-    'finans_Kasa_NakitTahsilat_KasaBakGizle': value,
-  if (instance.finansKasaNakitOdemeKasaBakGizle case final value?)
-    'finans_Kasa_NakitOdeme_KasaBakGizle': value,
-  if (instance.finansKasaKacGunlukKayitlarListelensin case final value?)
-    'finans_Kasa_KacGunlukKayitlarListelensin': value,
-  if (instance.yazdirmaMustahsilYazicilari case final value?)
-    'yazdirma_Mustahsil_Yazicilari': value,
-  if (instance.yazdirmaDizaynMustahsil case final value?)
-    'yazdirma_Dizayn_Mustahsil': value,
-  if (instance.yazdirmaSaticiSipYazicilari case final value?)
-    'yazdirma_SaticiSip_Yazicilari': value,
-  if (instance.yazdirmaSatisTeklifiYazicilari case final value?)
-    'yazdirma_SatisTeklifi_Yazicilari': value,
-  if (instance.yazdirmaTahsilatMakbuzuYazicilari case final value?)
-    'yazdirma_TahsilatMakbuzu_Yazicilari': value,
-  if (instance.sirketDepoYetkiTuru case final value?)
-    'sirket_Depo_YetkiTuru': value,
-  if (instance.siparisMusSipOzelKod1Degeri case final value?)
-    'siparis_MusSip_OzelKod1Degeri': value,
-  if (instance.siparisSaticiSiparisiSatirAciklamaAlanlari case final value?)
-    'siparis_SaticiSiparisi_SatirAciklamaAlanlari': value,
-  if (instance.transferAgOtoPdfGor case final value?)
-    'transfer_AG_OtoPdfGor': value,
-  if (instance.transferAgBildirim case final value?)
-    'transfer_AG_Bildirim': value,
-  if (instance.transferAgEMailGonder case final value?)
-    'transfer_AG_EMailGonder': value,
-  if (instance.transferAgEMailGonderBaslik case final value?)
-    'transfer_AG_EMailGonder_Baslik': value,
-  if (instance.transferAgEMailGonderDizayn case final value?)
-    'transfer_AG_EMailGonder_Dizayn': value,
-  if (instance.transferAcOtoPdfGor case final value?)
-    'transfer_AC_OtoPdfGor': value,
-  if (instance.transferAcBildirim case final value?)
-    'transfer_AC_Bildirim': value,
-  if (instance.transferAcEMailGonder case final value?)
-    'transfer_AC_EMailGonder': value,
-  if (instance.transferAcEMailGonderBaslik case final value?)
-    'transfer_AC_EMailGonder_Baslik': value,
-  if (instance.transferAcEMailGonderDizayn case final value?)
-    'transfer_AC_EMailGonder_Dizayn': value,
-  if (instance.malKabulAlisIrsOtoPdfGor case final value?)
-    'malKabul_AlisIrs_OtoPdfGor': value,
-  if (instance.malKabulAlisIrsBildirim case final value?)
-    'malKabul_AlisIrs_Bildirim': value,
-  if (instance.malKabulAlisIrsEMailGonder case final value?)
-    'malKabul_AlisIrs_EMailGonder': value,
-  if (instance.malKabulAlisIrsEMailGonderBaslik case final value?)
-    'malKabul_AlisIrs_EMailGonder_Baslik': value,
-  if (instance.malKabulAlisIrsEMailGonderDizayn case final value?)
-    'malKabul_AlisIrs_EMailGonder_Dizayn': value,
-  if (instance.malKabulAlisFatBildirim case final value?)
-    'malKabul_AlisFat_Bildirim': value,
-  if (instance.malKabulAlisFatEMailGonder case final value?)
-    'malKabul_AlisFat_EMailGonder': value,
-  if (instance.malKabulAlisFatEMailGonderBaslik case final value?)
-    'malKabul_AlisFat_EMailGonder_Baslik': value,
-  if (instance.malKabulAlisFatEMailGonderDizayn case final value?)
-    'malKabul_AlisFat_EMailGonder_Dizayn': value,
-  if (instance.transferDatOtoPdfGor case final value?)
-    'transfer_DAT_OtoPdfGor': value,
-  if (instance.transferDatBildirim case final value?)
-    'transfer_DAT_Bildirim': value,
-  if (instance.transferDatEMailGonder case final value?)
-    'transfer_DAT_EMailGonder': value,
-  if (instance.transferDatEMailGonderBaslik case final value?)
-    'transfer_DAT_EMailGonder_Baslik': value,
-  if (instance.transferDatEMailGonderDizayn case final value?)
-    'transfer_DAT_EMailGonder_Dizayn': value,
-  if (instance.sevkiyatSatisIrsOtoPdfGor case final value?)
-    'sevkiyat_SatisIrs_OtoPdfGor': value,
-  if (instance.sevkiyatSatisIrsBildirim case final value?)
-    'sevkiyat_SatisIrs_Bildirim': value,
-  if (instance.sevkiyatSatisIrsEMailGonder case final value?)
-    'sevkiyat_SatisIrs_EMailGonder': value,
-  if (instance.sevkiyatSatisIrsEMailGonderBaslik case final value?)
-    'sevkiyat_SatisIrs_EMailGonder_Baslik': value,
-  if (instance.sevkiyatSatisIrsEMailGonderDizayn case final value?)
-    'sevkiyat_SatisIrs_EMailGonder_Dizayn': value,
-  if (instance.sevkiyatSatisFatOtoPdfGor case final value?)
-    'sevkiyat_SatisFat_OtoPdfGor': value,
-  if (instance.sevkiyatSatisFatOzelKod1Degeri case final value?)
-    'sevkiyat_SatisFat_OzelKod1Degeri': value,
-  if (instance.sevkiyatSatisFatOzelKod2Degeri case final value?)
-    'sevkiyat_SatisFat_OzelKod2Degeri': value,
-  if (instance.sevkiyatSatisFatBildirim case final value?)
-    'sevkiyat_SatisFat_Bildirim': value,
-  if (instance.sevkiyatSatisFatEMailGonder case final value?)
-    'sevkiyat_SatisFat_EMailGonder': value,
-  if (instance.sevkiyatSatisFatEMailGonderBaslik case final value?)
-    'sevkiyat_SatisFat_EMailGonder_Baslik': value,
-  if (instance.sevkiyatSatisFatEMailGonderDizayn case final value?)
-    'sevkiyat_SatisFat_EMailGonder_Dizayn': value,
-  if (instance.sayimEkAlan1 case final value?) 'sayim_EkAlan1': value,
-  if (instance.sayimEkAlan1Zorunlu case final value?)
-    'sayim_EkAlan1_Zorunlu': value,
-  if (instance.sayimEkAlan2 case final value?) 'sayim_EkAlan2': value,
-  if (instance.sayimEkAlan2Zorunlu case final value?)
-    'sayim_EkAlan2_Zorunlu': value,
-  if (instance.sayimEkAlan3 case final value?) 'sayim_EkAlan3': value,
-  if (instance.sayimEkAlan3Zorunlu case final value?)
-    'sayim_EkAlan3_Zorunlu': value,
-  if (instance.sayimEkAlan4 case final value?) 'sayim_EkAlan4': value,
-  if (instance.sayimEkAlan4Zorunlu case final value?)
-    'sayim_EkAlan4_Zorunlu': value,
-  if (instance.sayimEkAlan5 case final value?) 'sayim_EkAlan5': value,
-  if (instance.sayimEkAlan5Zorunlu case final value?)
-    'sayim_EkAlan5_Zorunlu': value,
-  if (instance.siparisMusSipEMailGonder case final value?)
-    'siparis_MusSip_EMailGonder': value,
-  if (instance.siparisMusSipEMailGonderBaslik case final value?)
-    'siparis_MusSip_EMailGonder_Baslik': value,
-  if (instance.siparisMusSipEMailGonderDizayn case final value?)
-    'siparis_MusSip_EMailGonder_Dizayn': value,
-  if (instance.siparisSaticiSipOtoPdfGor case final value?)
-    'siparis_SaticiSip_OtoPdfGor': value,
-  if (instance.siparisSatSipEMailGonder case final value?)
-    'siparis_SatSip_EMailGonder': value,
-  if (instance.siparisSatSipEMailGonderBaslik case final value?)
-    'siparis_SatSip_EMailGonder_Baslik': value,
-  if (instance.siparisSatSipEMailGonderDizayn case final value?)
-    'siparis_SatSip_EMailGonder_Dizayn': value,
-  if (instance.taltekStekBildirim case final value?)
-    'taltek_STEK_Bildirim': value,
-  if (instance.taltekStekEMailGonder case final value?)
-    'taltek_STEK_EMailGonder': value,
-  if (instance.taltekStekEMailGonderBaslik case final value?)
-    'taltek_STEK_EMailGonder_Baslik': value,
-  if (instance.taltekStekEMailGonderDizayn case final value?)
-    'taltek_STEK_EMailGonder_Dizayn': value,
-  if (instance.taltekAtalBildirim case final value?)
-    'taltek_ATAL_Bildirim': value,
-  if (instance.taltekAtalEMailGonder case final value?)
-    'taltek_ATAL_EMailGonder': value,
-  if (instance.taltekAtalEMailGonderBaslik case final value?)
-    'taltek_ATAL_EMailGonder_Baslik': value,
-  if (instance.taltekAtalEMailGonderDizayn case final value?)
-    'taltek_ATAL_EMailGonder_Dizayn': value,
-  if (instance.taltekStalBildirim case final value?)
-    'taltek_STAL_Bildirim': value,
-  if (instance.taltekStalEMailGonder case final value?)
-    'taltek_STAL_EMailGonder': value,
-  if (instance.taltekStalEMailGonderBaslik case final value?)
-    'taltek_STAL_EMailGonder_Baslik': value,
-  if (instance.taltekStalEMailGonderDizayn case final value?)
-    'taltek_STAL_EMailGonder_Dizayn': value,
-  if (instance.ebelgeEFatSatirdaIskDikkateAlma case final value?)
-    'ebelge_EFat_SatirdaIskDikkateAlma': value,
-  if (instance.ebelgeEArsivSatirdaIskDikkateAlma case final value?)
-    'ebelge_EArsiv_SatirdaIskDikkateAlma': value,
-  if (instance.transferAgOzelKod1Degeri case final value?)
-    'transfer_AG_OzelKod1Degeri': value,
-  if (instance.transferAgOzelKod2Degeri case final value?)
-    'transfer_AG_OzelKod2Degeri': value,
-  if (instance.transferAgVarsayilanMasrafKodu case final value?)
-    'transfer_AG_VarsayilanMasrafKodu': value,
-  if (instance.transferAcVarsayilanMasrafKodu case final value?)
-    'transfer_AC_VarsayilanMasrafKodu': value,
-  if (instance.transferAcOzelKod1Degeri case final value?)
-    'transfer_AC_OzelKod1Degeri': value,
-  if (instance.transferAcOzelKod2Degeri case final value?)
-    'transfer_AC_OzelKod2Degeri': value,
-  if (instance.malKabulAlisIrsOzelKod1Degeri case final value?)
-    'malKabul_AlisIrs_OzelKod1Degeri': value,
-  if (instance.malKabulAlisIrsOzelKod2Degeri case final value?)
-    'malKabul_AlisIrs_OzelKod2Degeri': value,
-  if (instance.sevkiyatSatisIrsOzelKod1Degeri case final value?)
-    'sevkiyat_SatisIrs_OzelKod1Degeri': value,
-  if (instance.sevkiyatSatisIrsOzelKod2Degeri case final value?)
-    'sevkiyat_SatisIrs_OzelKod2Degeri': value,
-  if (instance.siparisMusSipOzelKod2Degeri case final value?)
-    'siparis_MusSip_OzelKod2Degeri': value,
-  if (instance.taltekStekOzelKod1Degeri case final value?)
-    'taltek_STEK_OzelKod1Degeri': value,
-  if (instance.taltekStekOzelKod2Degeri case final value?)
-    'taltek_STEK_OzelKod2Degeri': value,
-  if (instance.taltekStalOzelKod1Degeri case final value?)
-    'taltek_STAL_OzelKod1Degeri': value,
-  if (instance.taltekStalOzelKod2Degeri case final value?)
-    'taltek_STAL_OzelKod2Degeri': value,
-  if (instance.sevkiyatSatisFatAciklamalarYetkiTuru case final value?)
-    'sevkiyat_SatisFat_Aciklamalar_YetkiTuru': value,
-  if (instance.taltekStalAciklamalarYetkiTuru case final value?)
-    'taltek_STAL_Aciklamalar_YetkiTuru': value,
-  if (instance.taltekStalAciklamaAlanlari case final value?)
-    'taltek_STAL_AciklamaAlanlari': value,
-  if (_$BarkodSayisiSaklanacakAlanEnumMap[instance
-          .uretimUskBarkodSayisiSaklanacakAlan]
-      case final value?)
-    'uretim_USK_BarkodSayisiSaklanacakAlan': value,
-  if (_$BarkodSayisiSaklanacakAlanEnumMap[instance
-          .malKabulAlisIrsBarkodSayisiSaklanacakAlan]
-      case final value?)
-    'malKabul_AlisIrs_BarkodSayisiSaklanacakAlan': value,
-  if (_$BarkodSayisiSaklanacakAlanEnumMap[instance
-          .malKabulAlisFatBarkodSayisiSaklanacakAlan]
-      case final value?)
-    'malKabul_AlisFat_BarkodSayisiSaklanacakAlan': value,
-  if (_$BarkodSayisiSaklanacakAlanEnumMap[instance
-          .transferDatBarkodSayisiSaklanacakAlan]
-      case final value?)
-    'transfer_DAT_BarkodSayisiSaklanacakAlan': value,
-  if (_$BarkodSayisiSaklanacakAlanEnumMap[instance
-          .sevkiyatSatisIrsBarkodSayisiSaklanacakAlan]
-      case final value?)
-    'sevkiyat_SatisIrs_BarkodSayisiSaklanacakAlan': value,
-  if (instance.sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin
-      case final value?)
-    'sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin': value,
-  if (instance.transferAcVarsayilanHarTuru case final value?)
-    'transfer_AC_VarsayilanHarTuru': value,
-  if (instance.transferAcVarsayilanCikisYeri case final value?)
-    'transfer_AC_VarsayilanCikisYeri': value,
-  if (instance.transferDepoTalebiRehberdenStokSecilmesin case final value?)
-    'transfer_DepoTalebi_RehberdenStokSecilmesin': value,
-  if (instance.stokCariHarGizlenecekAlanlar case final value?)
-    'stok_CariHar_GizlenecekAlanlar': value,
-  if (instance.transferDatOzelKod1Degeri case final value?)
-    'transfer_DAT_OzelKod1Degeri': value,
-  if (instance.transferDatOzelKod2Degeri case final value?)
-    'transfer_DAT_OzelKod2Degeri': value,
-  if (instance.transferDepoTalebiBildirimKullanicilar case final value?)
-    'transfer_DepoTalebi_BildirimKullanicilar': value,
-  if (instance.uretimIsemriFireDusmeYontemi case final value?)
-    'URETIM_ISEMRI_FIRE_DUSME_YONTEMI': value,
-  if (instance.yazdirmaAlisFatYazicilari case final value?)
-    'YAZDIRMA_ALIS_FAT_YAZICILARI': value,
-  if (instance.yazdirmaAmbarCikisYazicilari case final value?)
-    'YAZDIRMA_AMBAR_CIKIS_YAZICILARI': value,
-  if (instance.yazdirmaDizaynAmbarCikis case final value?)
-    'YAZDIRMA_DIZAYN_AMBAR_CIKIS': value,
-  if (instance.yazdirmaAmbarGirisYazicilari case final value?)
-    'YAZDIRMA_AMBAR_GIRIS_YAZICILARI': value,
-  if (instance.yazdirmaDizaynDat case final value?)
-    'YAZDIRMA_DIZAYN_DAT': value,
+  'yazdirma_SatisIrs_Yazicilari': ?instance.yazdirmaSatisIrsYazicilari,
+  'yazdirma_Dizayn_SatisIrs': ?instance.yazdirmaDizaynSatisIrs,
+  'yazdirma_SatisTalebi': ?instance.yazdirmaSatisTalebi,
+  'yazdirma_SatisTalebi_Yazicilari': ?instance.yazdirmaSatisTalebiYazicilari,
+  'yazdirma_Dizayn_SatisTalebi': ?instance.yazdirmaDizaynSatisTalebi,
+  'yazdirma_SatisTeklifi': ?instance.yazdirmaSatisTeklifi,
+  'yazdirma_Dizayn_SatisTeklifi': ?instance.yazdirmaDizaynSatisTeklifi,
+  'yazdirma_Sayim': ?instance.yazdirmaSayim,
+  'yazdirma_Sayim_Yazicilari': ?instance.yazdirmaSayimYazicilari,
+  'yazdirma_Dizayn_Sayim': ?instance.yazdirmaDizaynSayim,
+  'yazdirma_Sevkiyat_Etiketi': ?instance.yazdirmaSevkiyatEtiketi,
+  'yazdirma_Sevkiyat_Etiketi_Yazicilari':
+      ?instance.yazdirmaSevkiyatEtiketiYazicilari,
+  'yazdirma_Dizayn_SevkiyatEtiketi': ?instance.yazdirmaDizaynSevkiyatEtiketi,
+  'yazdirma_Sevkiyat_Etiketi_KopyaSayisiGizle':
+      ?instance.yazdirmaSevkiyatEtiketiKopyaSayisiGizle,
+  'yazdirma_Serbest': ?instance.yazdirmaSerbest,
+  'yazdirma_Serbest_Yazicilari': ?instance.yazdirmaSerbestYazicilari,
+  'yazdirma_Dizayn_Serbest': ?instance.yazdirmaDizaynSerbest,
+  'yazdirma_SeriEtiketi': ?instance.yazdirmaSeriEtiketi,
+  'yazdirma_Seri_Etiketi_Yazicilari': ?instance.yazdirmaSeriEtiketiYazicilari,
+  'yazdirma_Dizayn_SeriEtiketi': ?instance.yazdirmaDizaynSeriEtiketi,
+  'yazdirma_Stok_Etiketi': ?instance.yazdirmaStokEtiketi,
+  'yazdirma_Stok_Etiketi_Yazicilari': ?instance.yazdirmaStokEtiketiYazicilari,
+  'yazdirma_Dizayn_StokEtiketi': ?instance.yazdirmaDizaynStokEtiketi,
+  'yazdirma_TahsilatMakbuzu': ?instance.yazdirmaTahsilatMakbuzu,
+  'yazdirma_Dizayn_TahsilatMakbuzu': ?instance.yazdirmaDizaynTahsilatMakbuzu,
+  'yazdirma_USK': ?instance.yazdirmaUsk,
+  'yazdirma_USK_Yazicilari': ?instance.yazdirmaUskYazicilari,
+  'yazdirma_Dizayn_USK': ?instance.yazdirmaDizaynUSK,
+  'yazdirma_UretMalTop': ?instance.yazdirmaUretMalTop,
+  'yazdirma_UretMalTop_Yazicilari': ?instance.yazdirmaUretMalTopYazicilari,
+  'yazdirma_Dizayn_UretMalTop': ?instance.yazdirmaDizaynUretMalTop,
+  'kullanicilar': ?instance.kullanicilar,
+  'sirket_TamEkranAcilsin': ?instance.sirketTamEkranAcilsin,
+  'sirket_RehberdeCariKodGizle': ?instance.sirketRehberdeCariKodGizle,
+  'sirket_RehberdeStokKodGizle': ?instance.sirketRehberdeStokKodGizle,
+  'sirket_RaporlardaFiyatGizle': ?instance.sirketRaporlardaFiyatGizle,
+  'sirket_TarihDegismesin': ?instance.sirketTarihDegismesin,
+  'sirket_DevirSirketineGiris': ?instance.sirketDevirSirketineGiris,
+  'sirket_KontrolluAktar_BelgeTipleri':
+      ?instance.sirketKontrolluAktarBelgeTipleri,
+  'sirket_KontrolluAktar_BelgeNoGoster':
+      ?instance.sirketKontrolluAktarBelgeNoGoster,
+  'sirket_KontrolAciklamasi_BelgeTipleri':
+      ?instance.sirketKontrolAciklamasiBelgeTipleri,
+  'sirket_TLFiyatGelsin_BelgeTipleri':
+      ?instance.sirketTLFiyatGelsinBelgeTipleri,
+  'sirket_KalemKayitKontrol_BelgeTipleri':
+      ?instance.sirketKalemKayitKontrolBelgeTipleri,
+  'sirket_aktifDepolar': ?instance.sirketAktifDepolar,
+  'sirket_satisDepo': ?instance.sirketSatisDepo,
+  'sirket_satisDepo_Ozellestir': ?instance.sirketSatisDepoOzellestir,
+  'sirket_satisDepo_MusSip': ?instance.sirketSatisDepoMusSip,
+  'sirket_satisDepo_SatisFat': ?instance.sirketSatisDepoSatisFat,
+  'sirket_satisDepo_SatisIrs': ?instance.sirketSatisDepoSatisIrs,
+  'sirket_alisDepo': ?instance.sirketAlisDepo,
+  'sirket_iadeDepo': ?instance.sirketIadeDepo,
+  'sirket_projeKodu': ?instance.sirketProjeKodu,
+  'sirket_aktifProjeler': ?instance.sirketAktifProjeler,
+  'ayarlar_FirmaAyarlari': ?instance.ayarlarFirmaAyarlari,
+  'ayarlar_Oturumlar': ?instance.ayarlarOturumlar,
+  'sirket_SifreHatirlamaDurumu': ?instance.sirketSifreHatirlamaDurumu,
+  'genel_DovizKurlari': ?instance.genelDovizKurlari,
+  'genel_DovizKurlari_Ekle': ?instance.genelDovizKurlariEkle,
+  'genel_DovizKurlari_Duzelt': ?instance.genelDovizKurlariDuzelt,
+  'genel_DovizKurlari_Sil': ?instance.genelDovizKurlariSil,
+  'genel_BelgeKontrol': ?instance.genelBelgeKontrol,
+  'genel_BelgeKontrol_Ekle': ?instance.genelBelgeKontrolEkle,
+  'genel_BelgeKontrol_Sil': ?instance.genelBelgeKontrolSil,
+  'genel_BelgeKontrol_BelgeTipleri': ?instance.genelBelgeKontrolBelgeTipleri,
+  'genel_BelgeKontrol_BarkodOkutsun': ?instance.genelBelgeKontrolBarkodOkutsun,
+  'genel_BelgeKontrol_MiktarOtomatikGelsin':
+      ?instance.genelBelgeKontrolMiktarOtomatikGelsin,
+  'genel_BelgeKontrol_KalemDetaySorulmasin':
+      ?instance.genelBelgeKontrolKalemDetaySorulmasin,
+  'genel_BelgeKontrol_BelgeOnaySormasin':
+      ?instance.genelBelgeKontrolBelgeOnaySormasin,
+  'malKabul_FiyatDegistirilmesin': ?instance.malKabulFiyatDegistirilmesin,
+  'malKabul_AlisIrs_BelgeTipleri': ?instance.malKabulAlisIrsBelgeTipleri,
+  'malKabul_AlisIrs_GizlenecekAlanlar':
+      ?instance.malKabulAlisIrsGizlenecekAlanlar,
+  'malKabul_AlisFat_GizlenecekAlanlar':
+      ?instance.malKabulAlisFatGizlenecekAlanlar,
+  'malKabul_AlisIrs_AciklamaAlanlari':
+      ?instance.malKabulAlisIrsAciklamaAlanlari,
+  'malKabul_SatinAlma': ?instance.malKabulSatinAlma,
+  'malKabul_SatinAlma_Kaydet': ?instance.malKabulSatinAlmaKaydet,
+  'malKabul_SatinAlma_Duzelt': ?instance.malKabulSatinAlmaDuzelt,
+  'malKabul_SatinAlma_Sil': ?instance.malKabulSatinAlmaSil,
+  'malKabul_AlisIrsaliyesiFiyatGor': ?instance.malKabulAlisIrsaliyesiFiyatGor,
+  'malKabul_AlisIrs_DigerSekmesiGoster':
+      ?instance.malKabulAlisIrsDigerSekmesiGoster,
+  'malKabul_AlisIrs_SipBagSecenegi': ?instance.malKabulAlisIrsSipBagSecenegi,
+  'malKabul_AlisIrs_ReferansStokUygulamasi':
+      ?instance.malKabulAlisIrsReferansStokUygulamasi,
+  'malKabul_AlisIrs_SipBag_SipHariciKalemEklenebilir':
+      ?instance.malKabulAlisIrsSipBagSipHariciKalemEklenebilir,
+  'malKabul_AlisIrs_SipBag_FazlaTeslimatYapilabilir':
+      ?instance.malKabulAlisIrsSipBagFazlaTeslimatYapilabilir,
+  'malKabul_AlisIrs_SipBag_SipOkutulsun':
+      ?instance.malKabulAlisIrsSipBagSipOkutulsun,
+  'malKabul_AlisIrs_SipBag_CokluSecim':
+      ?instance.malKabulAlisIrsSipBagCokluSecim,
+  'malKabul_AlisIrs_SipBag_TumKalemlerSecilsin':
+      ?instance.malKabulAlisIrsSipBagTumKalemlerSecilsin,
+  'malKabul_AlisIrs_SipBag_EslesmeDurumu':
+      ?instance.malKabulAlisIrsSipBagEslesmeDurumu,
+  'malKabul_AlisIrs_BarkodluGiris': ?instance.malKabulAlisIrsBarkodluGiris,
+  'malKabul_AlisIrs_MiktarOtomatikGelsin':
+      ?instance.malKabulAlisIrsMiktarOtomatikGelsin,
+  'malKabul_AlisIrs_KalemDetaySorulmasin':
+      ?instance.malKabulAlisIrsKalemDetaySorulmasin,
+  'malKabul_AlisIrs_KalemlerBirlestirilsin':
+      ?instance.malKabulAlisIrsKalemlerBirlestirilsin,
+  'malKabul_AlisIrs_StokRehberiAcilmasin':
+      ?instance.malKabulAlisIrsStokRehberiAcilmasin,
+  'malKabul_AlisIrs_KalemDuzeltilemesin':
+      ?instance.malKabulAlisIrsKalemDuzeltilemesin,
+  'malKabul_AlisIrs_TekrarEdenBarkod':
+      ?instance.malKabulAlisIrsTekrarEdenBarkod,
+  'malKabul_AlisIrs_KlavyeEngelle': ?instance.malKabulAlisIrsKlavyeEngelle,
+  'malKabul_AlisIrs_Miktar1Gelsin': ?instance.malKabulAlisIrsMiktar1Gelsin,
+  'malKabul_AlisIrs_Raporlar': ?instance.malKabulAlisIrsRaporlar,
+  'malKabul_AlisIrs_KalemRaporu': ?instance.malKabulAlisIrsKalemRaporu,
+  'malKabul_AlisIrs_OtoBasimYap': ?instance.malKabulAlisIrsOtoBasimYap,
+  'malKabul_AlisIrs_KacGunlukKayitlarListelensin':
+      ?instance.malKabulAlisIrsKacGunlukKayitlarListelensin,
+  'malKabul_AlisIrs_FiyatSirasi': ?instance.malKabulAlisIrsFiyatSirasi,
+  'malKabul_AlisIrs_CariKoduDegistir':
+      ?instance.malKabulAlisIrsCariKoduDegistir,
+  'malKabul_AlisIrs_CariRehPlaEslesmesin':
+      ?instance.malKabulAlisIrsCariRehPlaEslesmesin,
+  'malKabul_Iade': ?instance.malKabulIade,
+  'malKabul_Iade_Kaydet': ?instance.malKabulIadeKaydet,
+  'malKabul_Iade_Duzelt': ?instance.malKabulIadeDuzelt,
+  'malKabul_Iade_Sil': ?instance.malKabulIadeSil,
+  'malKabul_AlisFaturasi_BelgeTipleri':
+      ?instance.malKabulAlisFaturasiBelgeTipleri,
+  'malKabul_AlisFaturasi': ?instance.malKabulAlisFaturasi,
+  'malKabul_AlisFaturasi_Kaydet': ?instance.malKabulAlisFaturasiKaydet,
+  'malKabul_AlisFaturasi_Duzelt': ?instance.malKabulAlisFaturasiDuzelt,
+  'malKabul_AlisFaturasi_Sil': ?instance.malKabulAlisFaturasiSil,
+  'malKabul_AlisFat_DigerSekmesiGoster':
+      ?instance.malKabulAlisFatDigerSekmesiGoster,
+  'malKabul_AlisFat_KacGunlukKayitlarListelensin':
+      ?instance.malKabulAlisFatKacGunlukKayitlarListelensin,
+  'malKabul_AlisFat_FiyatSirasi': ?instance.malKabulAlisFatFiyatSirasi,
+  'malKabul_AlisFat_Aciklamalar_YetkiTuru':
+      ?instance.malKabulAlisFatAciklamalarYetkiTuru,
+  'malKabul_AlisFat_AciklamaAlanlari':
+      ?instance.malKabulAlisFatAciklamaAlanlari,
+  'malKabul_AlisFat_CariKoduDegistir':
+      ?instance.malKabulAlisFatCariKoduDegistir,
+  'malKabul_AlisFat_BarkodluGiris': ?instance.malKabulAlisFatBarkodluGiris,
+  'malKabul_AlisFat_MiktarOtomatikGelsin':
+      ?instance.malKabulAlisFatMiktarOtomatikGelsin,
+  'malKabul_AlisFat_KalemDetaySorulmasin':
+      ?instance.malKabulAlisFatKalemDetaySorulmasin,
+  'malKabul_AlisFat_StokRehberiAcilmasin':
+      ?instance.malKabulAlisFatStokRehberiAcilmasin,
+  'malKabul_AlisFat_KalemDuzeltilemesin':
+      ?instance.malKabulAlisFatKalemDuzeltilemesin,
+  'malKabul_AlisFat_KlavyeEngelle': ?instance.malKabulAlisFatKlavyeEngelle,
+  'malKabul_AlisFat_Miktar1Gelsin': ?instance.malKabulAlisFatMiktar1Gelsin,
+  'malKabul_AlisFat_ReferansStokUygulamasi':
+      ?instance.malKabulAlisFatReferansStokUygulamasi,
+  'malKabul_AlisFat_SipBag_SipHariciKalemEklenebilir':
+      ?instance.malKabulAlisFatSipBagSipHariciKalemEklenebilir,
+  'malKabul_AlisFat_SipBag_FazlaTeslimatYapilabilir':
+      ?instance.malKabulAlisFatSipBagFazlaTeslimatYapilabilir,
+  'malKabul_AlisFat_SipBag_SipOkutulsun':
+      ?instance.malKabulAlisFatSipBagSipOkutulsun,
+  'malKabul_AlisFat_SipBag_CokluSecim':
+      ?instance.malKabulAlisFatSipBagCokluSecim,
+  'malKabul_AlisFat_SipBag_TumKalemlerSecilsin':
+      ?instance.malKabulAlisFatSipBagTumKalemlerSecilsin,
+  'malKabul_AlisFat_SipBag_EslesmeDurumu':
+      ?instance.malKabulAlisFatSipBagEslesmeDurumu,
+  'malKabul_AlisFat_Raporlar': ?instance.malKabulAlisFatRaporlar,
+  'malKabul_AlisFat_KalemRaporu': ?instance.malKabulAlisFatKalemRaporu,
+  'malKabul_Mustahsil': ?instance.malKabulMustahsil,
+  'malKabul_Mustahsil_Ekle': ?instance.malKabulMustahsilEkle,
+  'malKabul_Mustahsil_Duzelt': ?instance.malKabulMustahsilDuzelt,
+  'malKabul_Mustahsil_Sil': ?instance.malKabulMustahsilSil,
+  'transfer_DAT': ?instance.transferDat,
+  'transfer_DAT_Kaydet': ?instance.transferDatKaydet,
+  'transfer_DAT_Duzelt': ?instance.transferDatDuzelt,
+  'transfer_DAT_Sil': ?instance.transferDatSil,
+  'transfer_DAT_FiyatGor': ?instance.transferDatFiyatGor,
+  'transfer_DAT_OtoEtiketBas': ?instance.transferDatOtoEtiketBas,
+  'transfer_DAT_VarsayilanCikisDepo': ?instance.transferDatVarsayilanCikisDepo,
+  'transfer_DAT_VarsayilanGirisDepo': ?instance.transferDatVarsayilanGirisDepo,
+  'transfer_DAT_eIrsIsaretleyemesin': ?instance.transferDatEIrsIsaretleyemesin,
+  'transfer_DAT_DigerSekmesiGoster': ?instance.transferDatDigerSekmesiGoster,
+  'transfer_DAT_BarkodluGiris': ?instance.transferDatBarkodluGiris,
+  'transfer_DAT_MiktarOtomatikGelsin':
+      ?instance.transferDatMiktarOtomatikGelsin,
+  'transfer_DAT_KalemDetaySorulmasin':
+      ?instance.transferDatKalemDetaySorulmasin,
+  'transfer_DAT_StokRehberiAcilmasin':
+      ?instance.transferDatStokRehberiAcilmasin,
+  'transfer_DAT_KalemDuzeltilemesin': ?instance.transferDatKalemDuzeltilemesin,
+  'transfer_DAT_KlavyeEngelle': ?instance.transferDatKlavyeEngelle,
+  'transfer_DAT_Miktar1Gelsin': ?instance.transferDatMiktar1Gelsin,
+  'transfer_DAT_KalemlerBirlestirilsin':
+      ?instance.transferDatKalemlerBirlestirilsin,
+  'transfer_DAT_KacGunlukKayitlarListelensin':
+      ?instance.transferDatKacGunlukKayitlarListelensin,
+  'transfer_DAT_OnayIslemleri': ?instance.transferDatOnayIslemleri,
+  'transfer_DAT_OnayIslemleri_Depolar':
+      ?instance.transferDatOnayIslemleriDepolar,
+  'transfer_DAT_EkAlan2Hatirla': ?instance.transferDatEkAlan2Hatirla,
+  'transfer_DAT_EkAlan2Tablodan': ?instance.transferDatEkAlan2Tablodan,
+  'transfer_DAT_SeriGirisHarYapabilsin':
+      ?instance.transferDatSeriGirisHarYapabilsin,
+  'transfer_DAT_Birim1denKaydet': ?instance.transferDatBirim1DenKaydet,
+  'transfer_DAT_Barkod2Sor': ?instance.transferDatBarkod2Sor,
+  'transfer_DAT_BosGecilmeyecekAlanlar':
+      ?instance.transferDatBosGecilmeyecekAlanlar,
+  'transfer_DAT_GizlenecekAlanlar': ?instance.transferDatGizlenecekAlanlar,
+  'transfer_DAT_DegismeyecekAlanlar': ?instance.transferDatDegismeyecekAlanlar,
+  'transfer_DAT_AciklamaAlanlari': ?instance.transferDatAciklamaAlanlari,
+  'transfer_DAT_SipBagSecenegi': ?instance.transferDatSipBagSecenegi,
+  'transfer_DAT_ReferansStokUygulamasi':
+      ?instance.transferDatReferansStokUygulamasi,
+  'transfer_DAT_SipBag_SipHariciKalemEklenebilir':
+      ?instance.transferDatSipBagSipHariciKalemEklenebilir,
+  'transfer_DAT_SipBag_FazlaTeslimatYapilabilir':
+      ?instance.transferDatSipBagFazlaTeslimatYapilabilir,
+  'transfer_DAT_SipBag_SipOkutulsun': ?instance.transferDatSipBagSipOkutulsun,
+  'transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl':
+      ?instance.transferDatSipBagSipOkutulsunMiktar2BazAl,
+  'transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin':
+      ?instance.transferDatSipBagSipOkutulsunKalanMiktarGelsin,
+  'transfer_DAT_SipBag_CokluSecim': ?instance.transferDatSipBagCokluSecim,
+  'transfer_DAT_SipBag_TumKalemlerSecilsin':
+      ?instance.transferDatSipBagTumKalemlerSecilsin,
+  'transfer_DAT_SipBag_EslesmeDurumu': ?instance.transferDatSipBagEslesmeDurumu,
+  'transfer_DAT_SipBag_MalToplananlarGelsin':
+      ?instance.transferDatSipBagMalToplananlarGelsin,
+  'transfer_DAT_SipBag_SevkOnayliSiparislerGelsin':
+      ?instance.transferDatSipBagSevkOnayliSiparislerGelsin,
+  'transfer_AG': ?instance.transferAg,
+  'transfer_AG_Kaydet': ?instance.transferAgKaydet,
+  'transfer_AG_Duzelt': ?instance.transferAgDuzelt,
+  'transfer_AG_Sil': ?instance.transferAgSil,
+  'transfer_AG_FiyatGor': ?instance.transferAgFiyatGor,
+  'transfer_AG_KacGunlukKayitlarListelensin':
+      ?instance.transferAgKacGunlukKayitlarListelensin,
+  'transfer_AG_VarsayilanDepo': ?instance.transferAgVarsayilanDepo,
+  'transfer_AG_DigerSekmesiGoster': ?instance.transferAgDigerSekmesiGoster,
+  'transfer_AG_BelgeKopyala': ?instance.transferAgBelgeKopyala,
+  'transfer_AG_OtoBasimYap': ?instance.transferAgOtoBasimYap,
+  'transfer_AG_SeriGirisHarYapabilsin':
+      ?instance.transferAgSeriGirisHarYapabilsin,
+  'transfer_AG_BarkodluGiris': ?instance.transferAgBarkodluGiris,
+  'transfer_AG_MiktarOtomatikGelsin': ?instance.transferAgMiktarOtomatikGelsin,
+  'transfer_AG_KalemDetaySorulmasin': ?instance.transferAgKalemDetaySorulmasin,
+  'transfer_AG_StokRehberiAcilmasin': ?instance.transferAgStokRehberiAcilmasin,
+  'transfer_AG_KalemDuzeltilemesin': ?instance.transferAgKalemDuzeltilemesin,
+  'transfer_AG_KlavyeEngelle': ?instance.transferAgKlavyeEngelle,
+  'transfer_AG_Miktar1Gelsin': ?instance.transferAgMiktar1Gelsin,
+  'transfer_AG_ReferansStokUygulamasi':
+      ?instance.transferAgReferansStokUygulamasi,
+  'transfer_AG_SipBag_SipHariciKalemEklenebilir':
+      ?instance.transferAgSipBagSipHariciKalemEklenebilir,
+  'transfer_AG_SipBag_FazlaTeslimatYapilabilir':
+      ?instance.transferAgSipBagFazlaTeslimatYapilabilir,
+  'transfer_AG_SipBag_SipOkutulsun': ?instance.transferAgSipBagSipOkutulsun,
+  'transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl':
+      ?instance.transferAgSipBagSipOkutulsunMiktar2BazAl,
+  'transfer_AG_SipBag_CokluSecim': ?instance.transferAgSipBagCokluSecim,
+  'transfer_AG_SipBag_TumKalemlerSecilsin':
+      ?instance.transferAgSipBagTumKalemlerSecilsin,
+  'transfer_AG_SipBag_EslesmeDurumu': ?instance.transferAgSipBagEslesmeDurumu,
+  'transfer_AG_SipBag_MalToplananlarGelsin':
+      ?instance.transferAgSipBagMalToplananlarGelsin,
+  'transfer_AG_SipBag_SevkOnayliSiparislerGelsin':
+      ?instance.transferAgSipBagSevkOnayliSiparislerGelsin,
+  'transfer_AC': ?instance.transferAc,
+  'transfer_AC_Kaydet': ?instance.transferAcKaydet,
+  'transfer_AC_Duzelt': ?instance.transferAcDuzelt,
+  'transfer_AC_Sil': ?instance.transferAcSil,
+  'transfer_AC_FiyatGor': ?instance.transferAcFiyatGor,
+  'transfer_AC_KacGunlukKayitlarListelensin':
+      ?instance.transferAcKacGunlukKayitlarListelensin,
+  'transfer_AC_VarsayilanDepo': ?instance.transferAcVarsayilanDepo,
+  'transfer_AC_eIrsIsaretleyemesin': ?instance.transferAcEIrsIsaretleyemesin,
+  'transfer_AC_DigerSekmesiGoster': ?instance.transferAcDigerSekmesiGoster,
+  'transfer_AC_BelgeKopyala': ?instance.transferAcBelgeKopyala,
+  'transfer_AC_OtoBasimYap': ?instance.transferAcOtoBasimYap,
+  'transfer_AC_SeriGirisHarYapabilsin':
+      ?instance.transferAcSeriGirisHarYapabilsin,
+  'transfer_AC_EkAlan2Tablodan': ?instance.transferAcEkAlan2Tablodan,
+  'transfer_AC_EkAlan2Hatirla': ?instance.transferAcEkAlan2Hatirla,
+  'transfer_AC_MinStokMikGoster': ?instance.transferAcMinStokMikGoster,
+  'transfer_AC_BosGecilmeyecekAlanlar':
+      ?instance.transferAcBosGecilmeyecekAlanlar,
+  'transfer_AC_BarkodluGiris': ?instance.transferAcBarkodluGiris,
+  'transfer_AC_MiktarOtomatikGelsin': ?instance.transferAcMiktarOtomatikGelsin,
+  'transfer_AC_KalemDetaySorulmasin': ?instance.transferAcKalemDetaySorulmasin,
+  'transfer_AC_StokRehberiAcilmasin': ?instance.transferAcStokRehberiAcilmasin,
+  'transfer_AC_KalemDuzeltilemesin': ?instance.transferAcKalemDuzeltilemesin,
+  'transfer_AC_KlavyeEngelle': ?instance.transferAcKlavyeEngelle,
+  'transfer_AC_Miktar1Gelsin': ?instance.transferAcMiktar1Gelsin,
+  'transfer_AC_ReferansStokUygulamasi':
+      ?instance.transferAcReferansStokUygulamasi,
+  'transfer_AC_SipBag_SipHariciKalemEklenebilir':
+      ?instance.transferAcSipBagSipHariciKalemEklenebilir,
+  'transfer_AC_SipBag_FazlaTeslimatYapilabilir':
+      ?instance.transferAcSipBagFazlaTeslimatYapilabilir,
+  'transfer_AC_SipBag_SipOkutulsun': ?instance.transferAcSipBagSipOkutulsun,
+  'transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl':
+      ?instance.transferAcSipBagSipOkutulsunMiktar2BazAl,
+  'transfer_AC_SipBag_CokluSecim': ?instance.transferAcSipBagCokluSecim,
+  'transfer_AC_SipBag_TumKalemlerSecilsin':
+      ?instance.transferAcSipBagTumKalemlerSecilsin,
+  'transfer_AC_SipBag_EslesmeDurumu': ?instance.transferAcSipBagEslesmeDurumu,
+  'transfer_AC_SipBag_MalToplananlarGelsin':
+      ?instance.transferAcSipBagMalToplananlarGelsin,
+  'transfer_AC_SipBag_SevkOnayliSiparislerGelsin':
+      ?instance.transferAcSipBagSevkOnayliSiparislerGelsin,
+  'transfer_AC_GizlenecekAlanlar': ?instance.transferAcGizlenecekAlanlar,
+  'transfer_AC_DegismeyecekAlanlar': ?instance.transferAcDegismeyecekAlanlar,
+  'transfer_DepoTalebi': ?instance.transferDepoTalebi,
+  'transfer_DepoTalebi_Sil': ?instance.transferDepoTalebiSil,
+  'transfer_DepoTalebi_MalTop': ?instance.transferDepoTalebiMalTop,
+  'transfer_DepoTalebi_MalTop_FazlaTeslimat':
+      ?instance.transferDepoTalebiMalTopFazlaTeslimat,
+  'hucre_GiristeHucreYerlestir': ?instance.hucreGiristeHucreYerlestir,
+  'hucre_CikistaHucreYerlestir': ?instance.hucreCikistaHucreYerlestir,
+  'hucre_Yerlestir': ?instance.hucreYerlestir,
+  'hucre_YerlestirBelgesiz': ?instance.hucreYerlestirBelgesiz,
+  'hucre_Yerlestir_KlavyeEngelle': ?instance.hucreYerlestirKlavyeEngelle,
+  'hucre_Yerlestir_RehberdenStokSecilmesin':
+      ?instance.hucreYerlestirRehberdenStokSecilmesin,
+  'hucre_Yerlestir_HangiHucrede': ?instance.hucreYerlestirHangiHucrede,
+  'hucre_Yerlestir_BelgeTipleri': ?instance.hucreYerlestirBelgeTipleri,
+  'hucre_Bosalt': ?instance.hucreBosalt,
+  'hucre_BosaltBelgesiz': ?instance.hucreBosaltBelgesiz,
+  'hucre_Bosalt_KlavyeEngelle': ?instance.hucreBosaltKlavyeEngelle,
+  'hucre_Bosalt_RehberdenStokSecilmesin':
+      ?instance.hucreBosaltRehberdenStokSecilmesin,
+  'hucre_Bosalt_HangiHucrede': ?instance.hucreBosaltHangiHucrede,
+  'hucre_Bosalt_BelgeTipleri': ?instance.hucreBosaltBelgeTipleri,
+  'hucre_Arama': ?instance.hucreArama,
+  'hucre_AramaTumDepolar': ?instance.hucreAramaTumDepolar,
+  'hucre_AramaOzelFonksiyon': ?instance.hucreAramaOzelFonksiyon,
+  'hucre_Transfer': ?instance.hucreTransfer,
+  'hucre_Transfer_KlavyeEngelle': ?instance.hucreTransferKlavyeEngelle,
+  'hucre_Transfer_RehberdenStokSecilmesin':
+      ?instance.hucreTransferRehberdenStokSecilmesin,
+  'hucre_Transfer_BelgeTipleri': ?instance.hucreTransferBelgeTipleri,
+  'hucre_Listesi': ?instance.hucreListesi,
+  'hucre_Bosalt_OtomatikStokEtiketiYazdir':
+      ?instance.hucreBosaltOtomatikStokEtiketiYazdir,
+  'hucre_BakiyeDurumu': ?instance.hucreBakiyeDurumu,
+  'hucre_Hareketleri': ?instance.hucreHareketleri,
+  'hucre_Hareketleri_Sil': ?instance.hucreHareketleriSil,
+  'sevkiyat_SatisIrsaliyesi_BelgeTipleri':
+      ?instance.sevkiyatSatisIrsaliyesiBelgeTipleri,
+  'sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar':
+      ?instance.sevkiyatSatisIrsaliyesiGizlenecekAlanlar,
+  'sevkiyat_SatisIrsaliyesi_DegismeyecekAlanlar':
+      ?instance.sevkiyatSatisIrsaliyesiDegismeyecekAlanlar,
+  'sevkiyat_SatisIrsaliyesi': ?instance.sevkiyatSatisIrsaliyesi,
+  'sevkiyat_SatisIrsaliyesiKayit': ?instance.sevkiyatSatisIrsaliyesiKayit,
+  'sevkiyat_SatisIrsaliyesiDuzeltme': ?instance.sevkiyatSatisIrsaliyesiDuzeltme,
+  'sevkiyat_SatisIrsaliyesiSilme': ?instance.sevkiyatSatisIrsaliyesiSilme,
+  'sevkiyat_SatisIrsaliyesiFiyatGor': ?instance.sevkiyatSatisIrsaliyesiFiyatGor,
+  'sevkiyat_SatisIrs_DigerSekmesiGoster':
+      ?instance.sevkiyatSatisIrsDigerSekmesiGoster,
+  'sevkiyat_SatisIrsaliyesi_SipBagSecenegi':
+      ?instance.sevkiyatSatisIrsaliyesiSipBagSecenegi,
+  'sevkiyat_SatisIrs_ReferansStokUygulamasi':
+      ?instance.sevkiyatSatisIrsReferansStokUygulamasi,
+  'sevkiyat_SatisIrs_SipBag_SipHariciKalemEklenebilir':
+      ?instance.sevkiyatSatisIrsSipBagSipHariciKalemEklenebilir,
+  'sevkiyat_SatisIrs_SipBag_FazlaTeslimatYapilabilir':
+      ?instance.sevkiyatSatisIrsSipBagFazlaTeslimatYapilabilir,
+  'sevkiyat_SatisIrs_SipBag_SipOkutulsun':
+      ?instance.sevkiyatSatisIrsSipBagSipOkutulsun,
+  'sevkiyat_SatisIrs_SipBag_SipOkutulsun_Miktar2BazAl':
+      ?instance.sevkiyatSatisIrsSipBagSipOkutulsunMiktar2BazAl,
+  'sevkiyat_SatisIrs_SipBag_SipOkutulsun_KalanMiktarGelsin':
+      ?instance.sevkiyatSatisIrsSipBagSipOkutulsunKalanMiktarGelsin,
+  'sevkiyat_SatisIrs_SipBag_CokluSecim':
+      ?instance.sevkiyatSatisIrsSipBagCokluSecim,
+  'sevkiyat_SatisIrs_SipBag_TumKalemlerSecilsin':
+      ?instance.sevkiyatSatisIrsSipBagTumKalemlerSecilsin,
+  'sevkiyat_SatisIrs_SipBag_EslesmeDurumu':
+      ?instance.sevkiyatSatisIrsSipBagEslesmeDurumu,
+  'sevkiyat_SatisIrs_SipBag_MalToplananlarGelsin':
+      ?instance.sevkiyatSatisIrsSipBagMalToplananlarGelsin,
+  'sevkiyat_SatisIrs_SipBag_SevkOnayliSiparislerGelsin':
+      ?instance.sevkiyatSatisIrsSipBagSevkOnayliSiparislerGelsin,
+  'sevkiyat_FiyatDegistirilmesin': ?instance.sevkiyatFiyatDegistirilmesin,
+  'sevkiyat_SatisIrsaliyesi_EIrsaliyeDuzenleyemesin':
+      ?instance.sevkiyatSatisIrsaliyesiEIrsaliyeDuzenleyemesin,
+  'sevkiyat_SatisIrs_KalemlerBirlestirilsin':
+      ?instance.sevkiyatSatisIrsKalemlerBirlestirilsin,
+  'sevkiyat_SatisIrs_OtoBasimYap': ?instance.sevkiyatSatisIrsOtoBasimYap,
+  'sevkiyat_SatisIrs_KacGunlukKayitlarListelensin':
+      ?instance.sevkiyatSatisIrsKacGunlukKayitlarListelensin,
+  'sevkiyat_SatisIrs_FiyatSirasi': ?instance.sevkiyatSatisIrsFiyatSirasi,
+  'sevkiyat_SatisIrs_SeriGirisHarYapabilsin':
+      ?instance.sevkiyatSatisIrsSeriGirisHarYapabilsin,
+  'sevkiyat_SatisIrs_EkAlan2Tablodan':
+      ?instance.sevkiyatSatisIrsEkAlan2Tablodan,
+  'sevkiyat_SatisIrs_EkAlan2Hatirla': ?instance.sevkiyatSatisIrsEkAlan2Hatirla,
+  'sevkiyat_SatisIrs_OlcuBirimi': ?instance.sevkiyatSatisIrsOlcuBirimi,
+  'sevkiyat_SatisIrs_CariKoduDegistir':
+      ?instance.sevkiyatSatisIrsCariKoduDegistir,
+  'sevkiyat_SatisIrs_MaxIskUygulamasi':
+      ?instance.sevkiyatSatisIrsMaxIskUygulamasi,
+  'sevkiyat_SatisIrs_MaxSatIsk1': ?instance.sevkiyatSatisIrsMaxSatIsk1,
+  'sevkiyat_SatisIrs_MaxSatIsk2': ?instance.sevkiyatSatisIrsMaxSatIsk2,
+  'sevkiyat_SatisIrs_MaxSatIsk3': ?instance.sevkiyatSatisIrsMaxSatIsk3,
+  'sevkiyat_SatisIrs_MaxSatIsk4': ?instance.sevkiyatSatisIrsMaxSatIsk4,
+  'sevkiyat_SatisIrs_MaxSatIsk5': ?instance.sevkiyatSatisIrsMaxSatIsk5,
+  'sevkiyat_SatisIrs_MaxSatIsk6': ?instance.sevkiyatSatisIrsMaxSatIsk6,
+  'sevkiyat_SatisIrs_MaxGenIsk1': ?instance.sevkiyatSatisIrsMaxGenIsk1,
+  'sevkiyat_SatisIrs_MaxGenIsk2': ?instance.sevkiyatSatisIrsMaxGenIsk2,
+  'sevkiyat_SatisIrs_MaxGenIsk3': ?instance.sevkiyatSatisIrsMaxGenIsk3,
+  'sevkiyat_SatisIrs_DipFiyatUygulamasi':
+      ?instance.sevkiyatSatisIrsDipFiyatUygulamasi,
+  'sevkiyat_SatisIrs_DipFiyatSaha': ?instance.sevkiyatSatisIrsDipFiyatSaha,
+  'sevkiyat_SatisIrs_DipFiyatEylem': ?instance.sevkiyatSatisIrsDipFiyatEylem,
+  'sevkiyat_SatisIrs_BarkodluGiris': ?instance.sevkiyatSatisIrsBarkodluGiris,
+  'sevkiyat_SatisIrs_MiktarOtomatikGelsin':
+      ?instance.sevkiyatSatisIrsMiktarOtomatikGelsin,
+  'sevkiyat_SatisIrs_KalemDetaySorulmasin':
+      ?instance.sevkiyatSatisIrsKalemDetaySorulmasin,
+  'sevkiyat_SatisIrs_StokRehberiAcilmasin':
+      ?instance.sevkiyatSatisIrsStokRehberiAcilmasin,
+  'sevkiyat_SatisIrs_KalemDuzeltilemesin':
+      ?instance.sevkiyatSatisIrsKalemDuzeltilemesin,
+  'sevkiyat_SatisIrs_KlavyeEngelle': ?instance.sevkiyatSatisIrsKlavyeEngelle,
+  'sevkiyat_SatisIrs_Miktar1Gelsin': ?instance.sevkiyatSatisIrsMiktar1Gelsin,
+  'sevkiyat_SatisIrs_BakiyesizStokSecilmesin':
+      ?instance.sevkiyatSatisIrsBakiyesizStokSecilmesin,
+  'sevkiyat_SatisIrs_Raporlar': ?instance.sevkiyatSatisIrsRaporlar,
+  'sevkiyat_SatisIrs_KalemRaporu': ?instance.sevkiyatSatisIrsKalemRaporu,
+  'sevkiyat_SatisFat_BelgeTipleri': ?instance.sevkiyatSatisFatBelgeTipleri,
+  'sevkiyat_SatisFat_VarsayilanBelgeTipi':
+      ?instance.sevkiyatSatisFatVarsayilanBelgeTipi,
+  'sevkiyat_SatisFat': ?instance.sevkiyatSatisFat,
+  'sevkiyat_SatisFat_Kaydet': ?instance.sevkiyatSatisFatKaydet,
+  'sevkiyat_SatisFat_Duzelt': ?instance.sevkiyatSatisFatDuzelt,
+  'sevkiyat_SatisFat_Sil': ?instance.sevkiyatSatisFatSil,
+  'sevkiyat_SatisFat_ToplamlarCariTahsilatIslemleri':
+      ?instance.sevkiyatSatisFatToplamlarCariTahsilatIslemleri,
+  'sevkiyat_SatisFat_KayittanSonraTaslakOlustur':
+      ?instance.sevkiyatSatisFatKayittanSonraTaslakOlustur,
+  'sevkiyat_SatisFat_OtomatikBasimYap':
+      ?instance.sevkiyatSatisFatOtomatikBasimYap,
+  'sevkiyat_SatisFat_DigerSekmesiGoster':
+      ?instance.sevkiyatSatisFatDigerSekmesiGoster,
+  'sevkiyat_SatisFat_FiyatDegistirilmesin':
+      ?instance.sevkiyatSatisFatFiyatDegistirilmesin,
+  'sevkiyat_SatisFat_KacGunlukKayitlarListelensin':
+      ?instance.sevkiyatSatisFatKacGunlukKayitlarListelensin,
+  'sevkiyat_SatisFat_FiyatSirasi': ?instance.sevkiyatSatisFatFiyatSirasi,
+  'sevkiyat_SatisFat_KalemlerBirlestirilsin':
+      ?instance.sevkiyatSatisFatKalemlerBirlestirilsin,
+  'sevkiyat_SatisFat_EkAlan2Tablodan':
+      ?instance.sevkiyatSatisFatEkAlan2Tablodan,
+  'sevkiyat_SatisFat_EkAlan2Hatirla': ?instance.sevkiyatSatisFatEkAlan2Hatirla,
+  'sevkiyat_SatisFat_Filtre': ?instance.sevkiyatSatisFatFiltre,
+  'sevkiyat_SatisFat_FiltreSQL': ?instance.sevkiyatSatisFatFiltreSQL,
+  'sevkiyat_SatisFat_OlcuBirimi': ?instance.sevkiyatSatisFatOlcuBirimi,
+  'sevkiyat_SatisFat_AciklamaAlanlari':
+      ?instance.sevkiyatSatisFatAciklamaAlanlari,
+  'sevkiyat_SatisIrs_AciklamaAlanlari':
+      ?instance.sevkiyatSatisIrsAciklamaAlanlari,
+  'sevkiyat_SatisFat_BosGecilmeyecekAlanlar':
+      ?instance.sevkiyatSatisFatBosGecilmeyecekAlanlar,
+  'sevkiyat_SatisIrs_BosGecilmeyecekAlanlar':
+      ?instance.sevkiyatSatisIrsBosGecilmeyecekAlanlar,
+  'malKabul_AlisFat_BosGecilmeyecekAlanlar':
+      ?instance.malKabulAlisFatBosGecilmeyecekAlanlar,
+  'malKabul_AlisIrs_BosGecilmeyecekAlanlar':
+      ?instance.malKabulAlisIrsBosGecilmeyecekAlanlar,
+  'sevkiyat_SatisFat_GizlenecekAlanlar':
+      ?instance.sevkiyatSatisFatGizlenecekAlanlar,
+  'sevkiyat_SatisFat_DegismeyecekAlanlar':
+      ?instance.sevkiyatSatisFatDegismeyecekAlanlar,
+  'sevkiyat_SatisFat_SeriGirisHarYapabilsin':
+      ?instance.sevkiyatSatisFatSeriGirisHarYapabilsin,
+  'sevkiyat_SatisFat_CariKoduDegistir':
+      ?instance.sevkiyatSatisFatCariKoduDegistir,
+  'sevkiyat_SatisFaturasi_SipBagSecenegi':
+      ?instance.sevkiyatSatisFaturasiSipBagSecenegi,
+  'sevkiyat_SatisFat_ReferansStokUygulamasi':
+      ?instance.sevkiyatSatisFatReferansStokUygulamasi,
+  'sevkiyat_SatisFat_SipBag_SipHariciKalemEklenebilir':
+      ?instance.sevkiyatSatisFatSipBagSipHariciKalemEklenebilir,
+  'sevkiyat_SatisFat_SipBag_FazlaTeslimatYapilabilir':
+      ?instance.sevkiyatSatisFatSipBagFazlaTeslimatYapilabilir,
+  'sevkiyat_SatisFat_SipBag_SipOkutulsun':
+      ?instance.sevkiyatSatisFatSipBagSipOkutulsun,
+  'sevkiyat_SatisFat_SipBag_SipOkutulsun_Miktar2BazAl':
+      ?instance.sevkiyatSatisFatSipBagSipOkutulsunMiktar2BazAl,
+  'sevkiyat_SatisFat_SipBag_CokluSecim':
+      ?instance.sevkiyatSatisFatSipBagCokluSecim,
+  'sevkiyat_SatisFat_SipBag_TumKalemlerSecilsin':
+      ?instance.sevkiyatSatisFatSipBagTumKalemlerSecilsin,
+  'sevkiyat_SatisFat_SipBag_EslesmeDurumu':
+      ?instance.sevkiyatSatisFatSipBagEslesmeDurumu,
+  'sevkiyat_SatisFat_SipBag_SevkOnayliSiparislerGelsin':
+      ?instance.sevkiyatSatisFatSipBagSevkOnayliSiparislerGelsin,
+  'sevkiyat_SatisFat_BarkodluGiris': ?instance.sevkiyatSatisFatBarkodluGiris,
+  'sevkiyat_SatisFaturasi_MiktarOtomatikGelsin':
+      ?instance.sevkiyatSatisFaturasiMiktarOtomatikGelsin,
+  'sevkiyat_SatisFaturasi_KalemDetaySorulmasin':
+      ?instance.sevkiyatSatisFaturasiKalemDetaySorulmasin,
+  'sevkiyat_SatisFat_BarkodSayisiSaklanacakAlan':
+      ?instance.sevkiyatSatisFatBarkodSayisiSaklanacakAlan,
+  'sevkiyat_SatisFat_StokRehberiAcilmasin':
+      ?instance.sevkiyatSatisFatStokRehberiAcilmasin,
+  'sevkiyat_SatisFat_KalemDuzeltilemesin':
+      ?instance.sevkiyatSatisFatKalemDuzeltilemesin,
+  'sevkiyat_SatisFat_KlavyeEngelle': ?instance.sevkiyatSatisFatKlavyeEngelle,
+  'sevkiyat_SatisFat_Miktar1Gelsin': ?instance.sevkiyatSatisFatMiktar1Gelsin,
+  'sevkiyat_SatisFat_BakiyesizStokSecilmesin':
+      ?instance.sevkiyatSatisFatBakiyesizStokSecilmesin,
+  'sevkiyat_SatisFat_Raporlar': ?instance.sevkiyatSatisFatRaporlar,
+  'sevkiyat_SatisFat_KalemRaporu': ?instance.sevkiyatSatisFatKalemRaporu,
+  'sevkiyat_SatisFat_KarlilikRaporu': ?instance.sevkiyatSatisFatKarlilikRaporu,
+  'sevkiyat_SatisFat_MaxIskUygulamasi':
+      ?instance.sevkiyatSatisFatMaxIskUygulamasi,
+  'sevkiyat_SatisFat_MaxSatIsk1': ?instance.sevkiyatSatisFatMaxSatIsk1,
+  'sevkiyat_SatisFat_MaxSatIsk2': ?instance.sevkiyatSatisFatMaxSatIsk2,
+  'sevkiyat_SatisFat_MaxSatIsk3': ?instance.sevkiyatSatisFatMaxSatIsk3,
+  'sevkiyat_SatisFat_MaxSatIsk4': ?instance.sevkiyatSatisFatMaxSatIsk4,
+  'sevkiyat_SatisFat_MaxSatIsk5': ?instance.sevkiyatSatisFatMaxSatIsk5,
+  'sevkiyat_SatisFat_MaxSatIsk6': ?instance.sevkiyatSatisFatMaxSatIsk6,
+  'sevkiyat_SatisFat_MaxGenIsk1': ?instance.sevkiyatSatisFatMaxGenIsk1,
+  'sevkiyat_SatisFat_MaxGenIsk2': ?instance.sevkiyatSatisFatMaxGenIsk2,
+  'sevkiyat_SatisFat_MaxGenIsk3': ?instance.sevkiyatSatisFatMaxGenIsk3,
+  'sevkiyat_SatisFat_DipFiyatUygulamasi':
+      ?instance.sevkiyatSatisFatDipFiyatUygulamasi,
+  'sevkiyat_SatisFat_DipFiyatSaha': ?instance.sevkiyatSatisFatDipFiyatSaha,
+  'sevkiyat_SatisFat_DipFiyatEylem': ?instance.sevkiyatSatisFatDipFiyatEylem,
+  'sevkiyat_SatisFat_DipFiyatKDVDurumu':
+      ?instance.sevkiyatSatisFatDipFiyatKdvDurumu,
+  'sevkiyat_SatisIrsaliyesiSiparissiz':
+      ?instance.sevkiyatSatisIrsaliyesiSiparissiz,
+  'sevkiyat_SatisIrsaliyesiSiparissizFiyatGor':
+      ?instance.sevkiyatSatisIrsaliyesiSiparissizFiyatGor,
+  'sevkiyat_SatisIrsaliyesiIade': ?instance.sevkiyatSatisIrsaliyesiIade,
+  'sevkiyat_SiptenMalTop': ?instance.sevkiyatSiptenMalTop,
+  'sevkiyat_SiptenMalTop_MiktarBarkoddanGelsin':
+      ?instance.sevkiyatSiptenMalTopMiktarBarkoddanGelsin,
+  'sevkiyat_SiptenMalTop_RehberdenStokSecilmesin':
+      ?instance.sevkiyatSiptenMalTopRehberdenStokSecilmesin,
+  'sevkiyat_SiptenMalTop_KlavyedenBarkodGirilmesin':
+      ?instance.sevkiyatSiptenMalTopKlavyedenBarkodGirilmesin,
+  'sevkiyat_SiptenMalTop_SevkOnayliSiparislerGelsin':
+      ?instance.sevkiyatSiptenMalTopSevkOnayliSiparislerGelsin,
+  'sevkiyat_SiptenMalTop_KacGunlukKayitlarListelensin':
+      ?instance.sevkiyatSiptenMalTopKacGunlukKayitlarListelensin,
+  'sevkemri_MalToplama': ?instance.sevkemriMalToplama,
+  'sevkemri_MalToplamaAtanabilir': ?instance.sevkemriMalToplamaAtanabilir,
+  'sevkemri_MalToplamaAtayabilir': ?instance.sevkemriMalToplamaAtayabilir,
+  'sevkemri_UrunDegistir': ?instance.sevkemriUrunDegistir,
+  'sevkemri_MiktarDegistir': ?instance.sevkemriMiktarDegistir,
+  'sevkemri_MuadilUrun': ?instance.sevkemriMuadilUrun,
+  'sevkemri_malToplama_BarkodsuzUrunListedenSecilsin':
+      ?instance.sevkemriMalToplamaBarkodsuzUrunListedenSecilsin,
+  'sevkemri_MalToplama_OtoStokEtiketiYazdir':
+      ?instance.sevkemriMalToplamaOtoStokEtiketiYazdir,
+  'sevkemri_MalToplama_OtoStokEtiketiYazdirSor':
+      ?instance.sevkemriMalToplamaOtoStokEtiketiYazdirSor,
+  'sevkemri_MalToplama_KlavyedenGirisiEngelle':
+      ?instance.sevkemriMalToplamaKlavyedenGirisiEngelle,
+  'sevkemri_MalToplama_Barkod2Sor': ?instance.sevkemriMalToplamaBarkod2Sor,
+  'sevkemri_MalToplama_Barkod2_YildizliGorunsun':
+      ?instance.sevkemriMalToplamaBarkod2YildizliGorunsun,
+  'sevkemri_MalToplama_Barkod2KalemEkranindaSor':
+      ?instance.sevkemriMalToplamaBarkod2KalemEkranindaSor,
+  'sevkemri_MalToplama_TumuToplanmadanTamamlanmasin':
+      ?instance.sevkemriMalToplamaTumuToplanmadanTamamlanmasin,
+  'sevkemri_MalToplama_HangiHucredeGoster':
+      ?instance.sevkemriMalToplamaHangiHucredeGoster,
+  'sevkemri_MalToplama_KalemDetayIslemOnaySormasin':
+      ?instance.sevkemriMalToplamaKalemDetayIslemOnaySormasin,
+  'sevkemri_MalToplama_GosterilecekEkBilgiler':
+      ?instance.sevkemriMalToplamaGosterilecekEkBilgiler,
+  'sevkemri_MalToplama_DegistirilemeyecekAlanlar':
+      ?instance.sevkemriMalToplamaDegistirilemeyecekAlanlar,
+  'sevkemri_MalToplama_GizlenecekAlanlar':
+      ?instance.sevkemriMalToplamaGizlenecekAlanlar,
+  'sevkemri_MalToplama_MiktarBarkoddan':
+      ?instance.sevkemriMalToplamaMiktarBarkoddan,
+  'sevkemri_MalToplama_KalemDetayiSorulmasin':
+      ?instance.sevkemriMalToplamaKalemDetayiSorulmasin,
+  'sevkemri_MalToplama_KalemDetayaUlasamasin':
+      ?instance.sevkemriMalToplamaKalemDetayaUlasamasin,
+  'sevkemri_MalToplama_FazlaTeslimat':
+      ?instance.sevkemriMalToplamaFazlaTeslimat,
+  'sevkemri_MalToplama_VarsayilanOlcuBirimi':
+      ?instance.sevkemriMalToplamaVarsayilanOlcuBirimi,
+  'sevkemri_MalToplama_SiralamaTipi': ?instance.sevkemriMalToplamaSiralamaTipi,
+  'sevkemri_MalKontrol': ?instance.sevkemriMalKontrol,
+  'sevkemri_MalKontrol_KlavyeEngelle':
+      ?instance.sevkemriMalKontrolKlavyeEngelle,
+  'sevkemri_MalKontrolTipi': ?instance.sevkemriMalKontrolTipi?.toJson(),
+  'sevkemri_MalKontrolKullanicilar': ?instance.sevkemriMalKontrolKullanicilar,
+  'sevkemri_Paketleme': ?instance.sevkemriPaketleme,
+  'sevkemri_Paketleme_KlavyeEngelle': ?instance.sevkemriPaketlemeKlavyeEngelle,
+  'sevkemri_Paketleme_BarkodOkutmayaZorla':
+      ?instance.sevkemriPaketlemeBarkodOkutmayaZorla,
+  'sevkemri_Paketleme_BarkodsuzUrunListedenSecilsin':
+      ?instance.sevkemriPaketlemeBarkodsuzUrunListedenSecilsin,
+  'sevkemri_AracYukleme': ?instance.sevkemriAracYukleme,
+  'sevkemri_AracYukleme_KlavyeEngelle':
+      ?instance.sevkemriAracYuklemeKlavyeEngelle,
+  'sevkemri_AracBosaltma': ?instance.sevkemriAracBosaltma,
+  'sevkemri_AracBosaltma_KlavyeEngelle':
+      ?instance.sevkemriAracBosaltmaKlavyeEngelle,
+  'sevkemri_DepodanTeslimat': ?instance.sevkemriDepodanTeslimat,
+  'sevkemri_DepodanTeslimat_KlavyeEngelle':
+      ?instance.sevkemriDepodanTeslimatKlavyeEngelle,
+  'sayim_sayim': ?instance.sayimSayim,
+  'sayim_Kontrol_Miktari': ?instance.sayimKontrolMiktari,
+  'sayim_MiktarBarkoddanGelsin': ?instance.sayimMiktarBarkoddanGelsin,
+  'sayim_AyniStokDurumu': ?instance.sayimAyniStokDurumu,
+  'sayim_Miktar1Gelsin': ?instance.sayimMiktar1Gelsin,
+  'sayim_HemenKaydet': ?instance.sayimHemenKaydet,
+  'sayim_CarpanAktif': ?instance.sayimCarpanAktif,
+  'sayim_SeriMikGirilenMikKabulEdilsin':
+      ?instance.sayimSeriMikGirilenMikKabulEdilsin,
+  'sayim_DigerKulSayimHarGorsun': ?instance.sayimDigerKulSayimHarGorsun,
+  'sayim_DigerKulSayimFisGorsun': ?instance.sayimDigerKulSayimFisGorsun,
+  'sayim_Serbest': ?instance.sayimSerbest,
+  'sayim_Serbest_Sil': ?instance.sayimSerbestSil,
+  'sayim_DepoFarkRaporu': ?instance.sayimDepoFarkRaporu,
+  'sayim_BelgeBaglantisiniKopar': ?instance.sayimBelgeBaglantisiniKopar,
+  'sayim_BelgeOlusturabilir': ?instance.sayimBelgeOlusturabilir,
+  'sayim_EkAlanlar': ?instance.sayimEkAlanlar,
+  'sayim_DegismeyecekAlanlar': ?instance.sayimDegismeyecekAlanlar,
+  'sayim_GizlenecekAlanlar': ?instance.sayimGizlenecekAlanlar,
+  'sayim_VarsayilanOlcuBirimi': ?instance.sayimVarsayilanOlcuBirimi,
+  'sayim_Raporu': ?instance.sayimRaporu,
+  'paket_Olustur': ?instance.paketOlustur,
+  'paket_CokluOlustur': ?instance.paketCokluOlustur,
+  'paket_Kontrol': ?instance.paketKontrol,
+  'paket_MalzemeCikisi': ?instance.paketMalzemeCikisi,
+  'paket_ReceteyiFiltrele': ?instance.paketReceteyiFiltrele,
+  'islemler_HucreEtiket': ?instance.islemlerHucreEtiket,
+  'islemler_StokEtiket': ?instance.islemlerStokEtiket,
+  'islemler_BarkodTanimlama': ?instance.islemlerBarkodTanimlama,
+  'siparis_MusteriSiparisi': ?instance.siparisMusteriSiparisi,
+  'siparis_MusteriSiparisi_Kaydet': ?instance.siparisMusteriSiparisiKaydet,
+  'siparis_MusteriSiparisi_Duzelt': ?instance.siparisMusteriSiparisiDuzelt,
+  'siparis_MusteriSiparisi_Sil': ?instance.siparisMusteriSiparisiSil,
+  'siparis_MusteriSiparisi_KapalilarListelenmesin':
+      ?instance.siparisMusteriSiparisiKapalilarListelenmesin,
+  'siparis_MusteriSiparisi_FiyatDegistirilmesin':
+      ?instance.siparisMusteriSiparisiFiyatDegistirilmesin,
+  'siparis_MusteriSiparisi_FiyatSirasi':
+      ?instance.siparisMusteriSiparisiFiyatSirasi,
+  'siparis_MusSip_Birim1denKaydet': ?instance.siparisMusSipBirim1DenKaydet,
+  'siparis_MusteriSiparisi_KapatmaIslemi':
+      ?instance.siparisMusteriSiparisiKapatmaIslemi,
+  'siparis_MusSip_OnayIslemleri': ?instance.siparisMusSipOnayIslemleri,
+  'siparis_MusSip_StokIhtiyacRaporu': ?instance.siparisMusSipStokIhtiyacRaporu,
+  'siparis_MusteriSiparisi_SonFiyatGoster':
+      ?instance.siparisMusteriSiparisiSonFiyatGoster,
+  'siparis_MusSip_DigerSekmesiGoster':
+      ?instance.siparisMusSipDigerSekmesiGoster,
+  'siparis_MusSip_EkAlan2Tablodan': ?instance.siparisMusSipEkAlan2Tablodan,
+  'siparis_MusSip_EkAlan2Hatirla': ?instance.siparisMusSipEkAlan2Hatirla,
+  'siparis_MusSip_Miktar1Gelsin': ?instance.siparisMusSipMiktar1Gelsin,
+  'siparis_MusSip_BosGecilmeyecekAlanlar':
+      ?instance.siparisMusSipBosGecilmeyecekAlanlar,
+  'siparis_SaticiSip_BosGecilmeyecekAlanlar':
+      ?instance.siparisSaticiSipBosGecilmeyecekAlanlar,
+  'siparis_MusSip_OtoPdfGor': ?instance.siparisMusSipOtoPdfGor,
+  'siparis_MusSip_CariKoduDegistir': ?instance.siparisMusSipCariKoduDegistir,
+  'siparis_MusteriSiparisi_AciklamaAlanlari':
+      ?instance.siparisMusteriSiparisiAciklamaAlanlari,
+  'siparis_MusteriSiparisi_GizlenecekAlanlar':
+      ?instance.siparisMusteriSiparisiGizlenecekAlanlar,
+  'siparis_MusteriSiparisi_DegismeyecekAlanlar':
+      ?instance.siparisMusteriSiparisiDegismeyecekAlanlar,
+  'siparis_SaticiSiparisi_DegismeyecekAlanlar':
+      ?instance.siparisSaticiSiparisiDegismeyecekAlanlar,
+  'siparis_MusSip_EkstraAlanlar': ?instance.siparisMusSipEkstraAlanlar,
+  'siparis_MusteriSiparisi_SatirAciklamaAlanlari':
+      ?instance.siparisMusteriSiparisiSatirAciklamaAlanlari,
+  'siparis_MusSip_OlcuBirimi': ?instance.siparisMusSipOlcuBirimi,
+  'siparis_MusSip_BakiyesizStokSecilmesin':
+      ?instance.siparisMusSipBakiyesizStokSecilmesin,
+  'siparis_MusSip_HizliUrunGirisi_Miktar2Kullanilsin':
+      ?instance.siparisMusSipHizliUrunGirisiMiktar2Kullanilsin,
+  'siparis_MusteriSiparisi_DipFiyatUygulamasi':
+      ?instance.siparisMusteriSiparisiDipFiyatUygulamasi,
+  'siparis_MusteriSiparisi_DipFiyatSaha':
+      ?instance.siparisMusteriSiparisiDipFiyatSaha,
+  'siparis_MusteriSiparisi_DipFiyatEylem':
+      ?instance.siparisMusteriSiparisiDipFiyatEylem,
+  'siparis_MusSip_MaxIskUygulamasi': ?instance.siparisMusSipMaxIskUygulamasi,
+  'siparis_MusSip_MaxSatIsk1': ?instance.siparisMusSipMaxSatIsk1,
+  'siparis_MusSip_MaxSatIsk2': ?instance.siparisMusSipMaxSatIsk2,
+  'siparis_MusSip_MaxSatIsk3': ?instance.siparisMusSipMaxSatIsk3,
+  'siparis_MusSip_MaxSatIsk4': ?instance.siparisMusSipMaxSatIsk4,
+  'siparis_MusSip_MaxSatIsk5': ?instance.siparisMusSipMaxSatIsk5,
+  'siparis_MusSip_MaxSatIsk6': ?instance.siparisMusSipMaxSatIsk6,
+  'siparis_MusSip_MaxGenIsk1': ?instance.siparisMusSipMaxGenIsk1,
+  'siparis_MusSip_MaxGenIsk2': ?instance.siparisMusSipMaxGenIsk2,
+  'siparis_MusSip_MaxGenIsk3': ?instance.siparisMusSipMaxGenIsk3,
+  'siparis_MusteriSiparisi_Raporlar': ?instance.siparisMusteriSiparisiRaporlar,
+  'siparis_MusteriSiparisi_DurumRaporu':
+      ?instance.siparisMusteriSiparisiDurumRaporu,
+  'siparis_MusteriSiparisi_DurumRaporuFiyatGor':
+      ?instance.siparisMusteriSiparisiDurumRaporuFiyatGor,
+  'siparis_MusSip_KarlilikRaporu': ?instance.siparisMusSipKarlilikRaporu,
+  'siparis_MusSip_TeslimRaporu': ?instance.siparisMusSipTeslimRaporu,
+  'siparis_SaticiSiparisi': ?instance.siparisSaticiSiparisi,
+  'siparis_SaticiSiparisi_Kaydet': ?instance.siparisSaticiSiparisiKaydet,
+  'siparis_SaticiSiparisi_Duzelt': ?instance.siparisSaticiSiparisiDuzelt,
+  'siparis_SaticiSiparisi_Sil': ?instance.siparisSaticiSiparisiSil,
+  'siparis_SaticiSiparisi_KapalilarListelenmesin':
+      ?instance.siparisSaticiSiparisiKapalilarListelenmesin,
+  'siparis_SaticiSiparisi_FiyatDegistirilmesin':
+      ?instance.siparisSaticiSiparisiFiyatDegistirilmesin,
+  'siparis_SaticiSiparisi_FiyatSirasi':
+      ?instance.siparisSaticiSiparisiFiyatSirasi,
+  'siparis_SaticiSip_Birim1denKaydet':
+      ?instance.siparisSaticiSipBirim1DenKaydet,
+  'siparis_SaticiSiparisi_KapatmaIslemi':
+      ?instance.siparisSaticiSiparisiKapatmaIslemi,
+  'siparis_SaticiSip_OnayIslemleri': ?instance.siparisSaticiSipOnayIslemleri,
+  'siparis_SaticiSip_DigerSekmesiGoster':
+      ?instance.siparisSaticiSipDigerSekmesiGoster,
+  'siparis_SaticiSip_OlcuBirimi': ?instance.siparisSaticiSipOlcuBirimi,
+  'siparis_SaticiSip_CariKoduDegistir':
+      ?instance.siparisSaticiSipCariKoduDegistir,
+  'siparis_SaticiSiparisi_Raporlar': ?instance.siparisSaticiSiparisiRaporlar,
+  'siparis_SaticiSiparisi_DurumRaporu':
+      ?instance.siparisSaticiSiparisiDurumRaporu,
+  'siparis_SaticiSiparisi_DurumRaporuFiyatGor':
+      ?instance.siparisSaticiSiparisiDurumRaporuFiyatGor,
+  'siparis_SaticiSip_TeslimRaporu': ?instance.siparisSaticiSipTeslimRaporu,
+  'stok_StokListesi': ?instance.stokStokListesi,
+  'stok_StokListesi_ExtraAlanlar': ?instance.stokStokListesiExtraAlanlar,
+  'stok_StokKarti': ?instance.stokStokKarti,
+  'stok_StokKarti_Kaydet': ?instance.stokStokKartiKaydet,
+  'stok_StokKarti_Duzelt': ?instance.stokStokKartiDuzelt,
+  'stok_StokKarti_Sil': ?instance.stokStokKartiSil,
+  'stok_StokKarti_AlisFiyatiGizle': ?instance.stokStokKartiAlisFiyatiGizle,
+  'stok_StokKarti_SatisFiyatiGizle': ?instance.stokStokKartiSatisFiyatiGizle,
+  'stok_StokHareketleri': ?instance.stokStokHareketleri,
+  'stok_StokHar_Kaydet': ?instance.stokStokHarKaydet,
+  'stok_StokHar_Duzelt': ?instance.stokStokHarDuzelt,
+  'stok_StokHar_Sil': ?instance.stokStokHarSil,
+  'stok_StokHar_PlasiyerKendiniGorsun':
+      ?instance.stokStokHarPlasiyerKendiniGorsun,
+  'stok_ResimGoster': ?instance.stokResimGoster,
+  'stok_ResimGoster_Ekle': ?instance.stokResimGosterEkle,
+  'stok_ResimGoster_Sil': ?instance.stokResimGosterSil,
+  'stok_FiyatOzeti': ?instance.stokFiyatOzeti,
+  'stok_HareketDetayiniGizle': ?instance.stokHareketDetayiniGizle,
+  'stok_GirisHareketleriniGizle': ?instance.stokGirisHareketleriniGizle,
+  'stok_CikisHareketleriniGizle': ?instance.stokCikisHareketleriniGizle,
+  'stok_BakiyeGosterimTipi': ?instance.stokBakiyeGosterimTipi,
+  'stok_BarkodKontrol': ?instance.stokBarkodKontrol,
+  'stok_DepoBakiyeDurumu': ?instance.stokDepoBakiyeDurumu,
+  'stok_BarkodTanimlama': ?instance.stokBarkodTanimlama,
+  'stok_BarkodTanimlama_GorunecekAlanlar':
+      ?instance.stokBarkodTanimlamaGorunecekAlanlar,
+  'stok_BarkodKayitlari_GecerliBarkodTipleri':
+      ?instance.stokBarkodKayitlariGecerliBarkodTipleri,
+  'stok_BarkodKayitlari_GecerliOlcuBirimleri':
+      ?instance.stokBarkodKayitlariGecerliOlcuBirimleri,
+  'stok_BarkodKayitlari': ?instance.stokBarkodKayitlari,
+  'stok_BarkodKayitlari_Ekle': ?instance.stokBarkodKayitlariEkle,
+  'stok_BarkodKayitlari_Duzelt': ?instance.stokBarkodKayitlariDuzelt,
+  'stok_BarkodKayitlari_Sil': ?instance.stokBarkodKayitlariSil,
+  'stok_KanbanBarkodEsle': ?instance.stokKanbanBarkodEsle,
+  'stok_KanbanBarkodEsle_Sil': ?instance.stokKanbanBarkodEsleSil,
+  'stok_KanbanBarkodEsleFarkliStokOkutulmasin':
+      ?instance.stokKanbanBarkodEsleFarkliStokOkutulmasin,
+  'stok_FiyatGorEkrani': ?instance.stokFiyatGorEkrani,
+  'stok_FiyatGorEkraniGorunecekAlanlar':
+      ?instance.stokFiyatGorEkraniGorunecekAlanlar,
+  'stok_FiyatGecmisi': ?instance.stokFiyatGecmisi,
+  'stok_FiyatGecmisiSil': ?instance.stokFiyatGecmisiSil,
+  'stok_FiyatGecmisiFiyatTipleri': ?instance.stokFiyatGecmisiFiyatTipleri,
+  'stok_SeriHar': ?instance.stokSeriHar,
+  'stok_SeriHar_Ekle': ?instance.stokSeriHarEkle,
+  'stok_SeriHar_Duzelt': ?instance.stokSeriHarDuzelt,
+  'stok_SeriHar_Sil': ?instance.stokSeriHarSil,
+  'stok_SeriParcala': ?instance.stokSeriParcala,
+  'stok_SeriParcala_Ekle': ?instance.stokSeriParcalaEkle,
+  'stok_SeriParcala_Duzelt': ?instance.stokSeriParcalaDuzelt,
+  'stok_SeriParcala_Sil': ?instance.stokSeriParcalaSil,
+  'stok_SeriBirlestir': ?instance.stokSeriBirlestir,
+  'stok_SeriBirlestir_Ekle': ?instance.stokSeriBirlestirEkle,
+  'stok_SeriBirlestir_Duzelt': ?instance.stokSeriBirlestirDuzelt,
+  'stok_SeriBirlestir_Sil': ?instance.stokSeriBirlestirSil,
+  'stok_Paketleme': ?instance.stokPaketleme,
+  'stok_Paketleme_Ekle': ?instance.stokPaketlemeEkle,
+  'stok_Paketleme_Sil': ?instance.stokPaketlemeSil,
+  'stok_Paketleme_OnaySormasin': ?instance.stokPaketlemeOnaySormasin,
+  'stok_Paketleme_DigerKulKayitGorebilir':
+      ?instance.stokPaketlemeDigerKulKayitGorebilir,
+  'stok_Paketleme_SorulacakBelgeTipleri':
+      ?instance.stokPaketlemeSorulacakBelgeTipleri,
+  'stok_Raporlar': ?instance.stokRaporlar,
+  'stok_Rap_AmbarMaliyet': ?instance.stokRapAmbarMaliyet,
+  'stok_Rap_LokalDepoBakiye': ?instance.stokRapLokalDepoBakiye,
+  'stok_Rap_UrunGrubunaGoreSatis': ?instance.stokRapUrunGrubunaGoreSatis,
+  'cari_CariListesi': ?instance.cariCariListesi,
+  'cari_CariListesi_RiskGorebilir': ?instance.cariCariListesiRiskGorebilir,
+  'cari_RiskGirisi': ?instance.cariRiskGirisi,
+  'cari_CariKarti': ?instance.cariCariKarti,
+  'cari_CariKarti_Kaydet': ?instance.cariCariKartiKaydet,
+  'cari_CariKarti_Duzelt': ?instance.cariCariKartiDuzelt,
+  'cari_CariKarti_Sil': ?instance.cariCariKartiSil,
+  'cari_CariKarti_EIslemler': ?instance.cariCariKartiEIslemler,
+  'cari_CariKarti_DegismeyecekAlanlar':
+      ?instance.cariCariKartiDegismeyecekAlanlar,
+  'cari_CariKarti_GizlenecekAlanlar': ?instance.cariCariKartiGizlenecekAlanlar,
+  'cari_CariHareketleri': ?instance.cariCariHareketleri,
+  'cari_CariHar_Kaydet': ?instance.cariCariHarKaydet,
+  'cari_CariHar_Duzelt': ?instance.cariCariHarDuzelt,
+  'cari_CariHar_Sil': ?instance.cariCariHarSil,
+  'cari_CariHareketleri_HarDetayGorsun':
+      ?instance.cariCariHareketleriHarDetayGorsun,
+  'stok_CariHar_PlasiyerKendiniGorsun':
+      ?instance.stokCariHarPlasiyerKendiniGorsun,
+  'cari_Aktivite': ?instance.cariAktivite,
+  'cari_Aktivite_Ekle': ?instance.cariAktiviteEkle,
+  'cari_Aktivite_Duzelt': ?instance.cariAktiviteDuzelt,
+  'cari_Aktivite_Sil': ?instance.cariAktiviteSil,
+  'cari_Aktivite_Atayabilir': ?instance.cariAktiviteAtayabilir,
+  'cari_Aktivite_BitirmeyiGeriAl': ?instance.cariAktiviteBitirmeyiGeriAl,
+  'cari_OzelHesapKapatma': ?instance.cariOzelHesapKapatma,
+  'cari_OzelHesapKapatma_Sil': ?instance.cariOzelHesapKapatmaSil,
+  'cari_VadeKontrolu': ?instance.cariVadeKontrolu,
+  'cari_VadeKontrolu_Gun': ?instance.cariVadeKontroluGun,
+  'cari_VadeKontrolu_BelgeTipleri': ?instance.cariVadeKontroluBelgeTipleri,
+  'cari_Filtre': ?instance.cariFiltre,
+  'cari_FiltreSQL': ?instance.cariFiltreSql,
+  'cari_Virman': ?instance.cariVirman,
+  'cari_Virman_Kaydet': ?instance.cariVirmanKaydet,
+  'cari_Harita': ?instance.cariHarita,
+  'cari_TeslimCari_RehberSadeceSecsin':
+      ?instance.cariTeslimCariRehberSadeceSecsin,
+  'cari_TeslimCari_SatisBaglanmisCarilerSecilsin':
+      ?instance.cariTeslimCariSatisBaglanmisCarilerSecilsin,
+  'cari_TeslimCari_AlisBaglanmisCarilerSecilsin':
+      ?instance.cariTeslimCariAlisBaglanmisCarilerSecilsin,
+  'cari_Raporlar': ?instance.cariRaporlar,
+  'cari_Rap_Ekstre': ?instance.cariRapEkstre,
+  'cari_Rap_StokEkstre': ?instance.cariRapStokEkstre,
+  'cari_Rap_Yaslandirma': ?instance.cariRapYaslandirma,
+  'cari_Rap_HarDetayliYaslandir': ?instance.cariRapHarDetayliYaslandir,
+  'cari_Rap_Hareket': ?instance.cariRapHareket,
+  'cari_Rap_DovizBakiye': ?instance.cariRapDovizBakiye,
+  'cari_Rap_StokSatisOzeti': ?instance.cariRapStokSatisOzeti,
+  'cari_Rap_DovizliEkstre': ?instance.cariRapDovizliEkstre,
+  'tahsilat_Tahsilatlar': ?instance.tahsilatTahsilatlar,
+  'tahsilat_Payker': ?instance.tahsilatPayker,
+  'tahsilat_NakitTahsilat': ?instance.tahsilatNakitTahsilat,
+  'tahsilat_NakitTahsilat_Kaydet': ?instance.tahsilatNakitTahsilatKaydet,
+  'tahsilat_KKartiTahsilat': ?instance.tahsilatKKartiTahsilat,
+  'tahsilat_KKartiTahsilat_Kaydet': ?instance.tahsilatKKartiTahsilatKaydet,
+  'tahsilat_NakitOdeme': ?instance.tahsilatNakitOdeme,
+  'tahsilat_NakitOdeme_Kaydet': ?instance.tahsilatNakitOdemeKaydet,
+  'tahsilat_SenetTahsilat': ?instance.tahsilatSenetTahsilat,
+  'tahsilat_SenetTahsilat_Kaydet': ?instance.tahsilatSenetTahsilatKaydet,
+  'tahsilat_CekTahsilat': ?instance.tahsilatCekTahsilat,
+  'tahsilat_CekTahsilat_Kaydet': ?instance.tahsilatCekTahsilatKaydet,
+  'tahsilat_MuhtelifTahsilat': ?instance.tahsilatMuhtelifTahsilat,
+  'tahsilat_MuhtelifOdeme': ?instance.tahsilatMuhtelifOdeme,
+  'tahsilat_MuhtelifTahsilatFiltre': ?instance.tahsilatMuhtelifTahsilatFiltre,
+  'tahsilat_MuhtelifTahsilatFiltreSQL':
+      ?instance.tahsilatMuhtelifTahsilatFiltreSQL,
+  'tahsilat_MuhtelifOdemeFiltre': ?instance.tahsilatMuhtelifOdemeFiltre,
+  'tahsilat_MuhtelifOdemeFiltreSQL': ?instance.tahsilatMuhtelifOdemeFiltreSQL,
+  'yonetici_Banka_Banka_Litesi': ?instance.yoneticiBankaBankaLitesi,
+  'yonetici_Banka_Islemleri': ?instance.yoneticiBankaIslemleri,
+  'yonetici_Banka_Islemleri_Sil': ?instance.yoneticiBankaIslemleriSil,
+  'yonetici_Banka_Islem_HesapEFT': ?instance.yoneticiBankaIslemHesapEft,
+  'yonetici_Banka_Islem_HesapVirman': ?instance.yoneticiBankaIslemHesapVirman,
+  'yonetici_Banka_Islem_CariEFT': ?instance.yoneticiBankaIslemCariEft,
+  'finans_Banka_Kasa_Transferi': ?instance.finansBankaKasaTransferi,
+  'finans_Kasa_Listesi': ?instance.finansKasaListesi,
+  'finans_Kasa_Islemleri': ?instance.finansKasaIslemleri,
+  'finans_Kasa_Islemleri_Sil': ?instance.finansKasaIslemleriSil,
+  'finans_KasalarArasiTransfer': ?instance.finansKasalarArasiTransfer,
+  'finans_Kasa_NakitTahsilat': ?instance.finansKasaNakitTahsilat,
+  'finans_Kasa_NakitOdeme': ?instance.finansKasaNakitOdeme,
+  'finans_Kasa_MuhtelifTahsilat': ?instance.finansKasaMuhtelifTahsilat,
+  'finans_Kasa_MuhtelifOdeme': ?instance.finansKasaMuhtelifOdeme,
+  'finans_Kasa_SenetTahsilati': ?instance.finansKasaSenetTahsilati,
+  'finans_Kasa_SenetOdemesi': ?instance.finansKasaSenetOdemesi,
+  'finans_Kasa_CekTahsilati': ?instance.finansKasaCekTahsilati,
+  'finans_Kasa_CekOdemesi': ?instance.finansKasaCekOdemesi,
+  'dekont_Listesi': ?instance.dekontListesi,
+  'dekont_Kaydet': ?instance.dekontKaydet,
+  'dekont_Duzelt': ?instance.dekontDuzelt,
+  'dekont_Sil': ?instance.dekontSil,
+  'finans_Cek_GizlenecekAlanlar': ?instance.finansCekGizlenecekAlanlar,
+  'finans_Cek_Musteri': ?instance.finansCekMusteri,
+  'finans_MCEK_Ekle': ?instance.finansMcekEkle,
+  'finans_MCEK_Sil': ?instance.finansMcekSil,
+  'finans_MCEK_BelgeDetayi': ?instance.finansMcekBelgeDetayi,
+  'finans_MCEK_Hareketler': ?instance.finansMcekHareketler,
+  'finans_MCEK_Evraklar': ?instance.finansMcekEvraklar,
+  'finans_MCEK_CariyeCiro': ?instance.finansMcekCariyeCiro,
+  'finans_MCEK_TahsileCiro': ?instance.finansMcekTahsileCiro,
+  'finans_MCEK_TahsilDekontu': ?instance.finansMcekTahsilDekontu,
+  'finans_Cek_Borc': ?instance.finansCekBorc,
+  'finans_BorcCeki_Ekle': ?instance.finansBorcCekiEkle,
+  'finans_BorcCeki_Sil': ?instance.finansBorcCekiSil,
+  'finans_BCEK_Ekle': ?instance.finansBcekEkle,
+  'finans_BCEK_Sil': ?instance.finansBcekSil,
+  'finans_BCEK_BelgeDetayi': ?instance.finansBcekBelgeDetayi,
+  'finans_BCEK_Hareketler': ?instance.finansBcekHareketler,
+  'finans_BCEK_Evraklar': ?instance.finansBcekEvraklar,
+  'finans_BCEK_OdemeDekontu': ?instance.finansBcekOdemeDekontu,
+  'finans_Senet_Musteri': ?instance.finansSenetMusteri,
+  'finans_MSEN_Ekle': ?instance.finansMsenEkle,
+  'finans_MSEN_Sil': ?instance.finansMsenSil,
+  'finans_MSEN_BelgeDetayi': ?instance.finansMsenBelgeDetayi,
+  'finans_MSEN_Hareketler': ?instance.finansMsenHareketler,
+  'finans_MSEN_Evraklar': ?instance.finansMsenEvraklar,
+  'finans_MSEN_CariyeCiro': ?instance.finansMsenCariyeCiro,
+  'finans_MSEN_TahsileCiro': ?instance.finansMsenTahsileCiro,
+  'finans_MSEN_TahsilDekontu': ?instance.finansMsenTahsilDekontu,
+  'finans_Senet_Borc': ?instance.finansSenetBorc,
+  'finans_BSEN_Ekle': ?instance.finansBsenEkle,
+  'finans_BSEN_Sil': ?instance.finansBsenSil,
+  'finans_BSEN_BelgeDetayi': ?instance.finansBsenBelgeDetayi,
+  'finans_BSEN_Hareketler': ?instance.finansBsenHareketler,
+  'finans_BSEN_Evraklar': ?instance.finansBsenEvraklar,
+  'finans_BSEN_OdemeDekontu': ?instance.finansBsenOdemeDekontu,
+  'finans_KKartiTahsilati': ?instance.finansKKartiTahsilati,
+  'finans_MuhtelifTahsilat': ?instance.finansMuhtelifTahsilat,
+  'finans_MuhtelifOdeme': ?instance.finansMuhtelifOdeme,
+  'finans_TahsilatKayitlari': ?instance.finansTahsilatKayitlari,
+  'finans_HizliTahsilatKayitlari': ?instance.finansHizliTahsilatKayitlari,
+  'finans_HizliTahsilatKayitlari_Sil':
+      ?instance.finansHizliTahsilatKayitlariSil,
+  'finans_OrtalamaVadeTarihiHesaplama':
+      ?instance.finansOrtalamaVadeTarihiHesaplama,
+  'finans_OzetRapor': ?instance.finansOzetRapor,
+  'finans_Raporlar_FinansalDurum': ?instance.finansRaporlarFinansalDurum,
+  'finans_Raporlar_AylikMizan': ?instance.finansRaporlarAylikMizan,
+  'temsilci_Profil': ?instance.temsilciProfil,
+  'temsilci_Profil_KdvDahil': ?instance.temsilciProfilKdvDahil,
+  'temsilci_Profil_SatisPerformansiniGizle':
+      ?instance.temsilciProfilSatisPerformansiniGizle,
+  'temsilci_Profil_AylaraGoreSatisiGizle':
+      ?instance.temsilciProfilAylaraGoreSatisiGizle,
+  'temsilci_Profil_AylaraGoreTahsilatiGizle':
+      ?instance.temsilciProfilAylaraGoreTahsilatiGizle,
+  'yazdirma_BluetoothYaziciKullanabilir':
+      ?instance.yazdirmaBluetoothYaziciKullanabilir,
+  'yazdirma_Hucre_Etiketi': ?instance.yazdirmaHucreEtiketi,
+  'yazdirma_Hucre_Etiketi_Yazicilari': ?instance.yazdirmaHucreEtiketiYazicilari,
+  'yazdirma_Dizayn_HucreEtiketi': ?instance.yazdirmaDizaynHucreEtiketi,
+  'yazdirma_MalToplama_Etiketi': ?instance.yazdirmaMalToplamaEtiketi,
+  'yazdirma_Mal_Toplama_Yazicilari': ?instance.yazdirmaMalToplamaYazicilari,
+  'yazdirma_Dizayn_MalToplama': ?instance.yazdirmaDizaynMalToplama,
+  'yazdirma_MalKontrol_Etiketi': ?instance.yazdirmaMalKontrolEtiketi,
+  'yazdirma_Mal_Kontrol_Yazicilari': ?instance.yazdirmaMalKontrolYazicilari,
+  'yazdirma_Dizayn_MalKontrol': ?instance.yazdirmaDizaynMalKontrol,
+  'yazdirma_DAT': ?instance.yazdirmaDat,
+  'yazdirma_DAT_Yazicilari': ?instance.yazdirmaDatYazicilari,
+  'yazdirma_Dizayn_DAT': ?instance.yazdirmaDizaynDAT,
+  'yazdirma_Paketleme_Etiketi': ?instance.yazdirmaPaketlemeEtiketi,
+  'yazdirma_Paketleme_KopyaSayisiGizle':
+      ?instance.yazdirmaPaketlemeKopyaSayisiGizle,
+  'yazdirma_Paketleme_Yazicilari': ?instance.yazdirmaPaketlemeYazicilari,
+  'yazdirma_Dizayn_Paketleme': ?instance.yazdirmaDizaynPaketleme,
+  'yazdirma_SatisIrs': ?instance.yazdirmaSatisIrs,
+  'yazdirma_SatisFat': ?instance.yazdirmaSatisFat,
+  'yazdirma_SatisFat_Yazicilari': ?instance.yazdirmaSatisFatYazicilari,
+  'yazdirma_Dizayn_SatisFat': ?instance.yazdirmaDizaynSatisFat,
+  'yazdirma_AlisFat': ?instance.yazdirmaAlisFat,
+  'yazdirma_Dizayn_AlisFat': ?instance.yazdirmaDizaynAlisFat,
+  'yazdirma_Mustahsil': ?instance.yazdirmaMustahsil,
+  'yazdirma_MusSip': ?instance.yazdirmaMusSip,
+  'yazdirma_MusSip_Yazicilari': ?instance.yazdirmaMusSipYazicilari,
+  'yazdirma_Dizayn_MusSip': ?instance.yazdirmaDizaynMusSip,
+  'yazdirma_SaticiSip': ?instance.yazdirmaSaticiSip,
+  'yazdirma_Dizayn_SaticiSip': ?instance.yazdirmaDizaynSaticiSip,
+  'yazdirma_ATAL': ?instance.yazdirmaAtal,
+  'yazdirma_ATAL_Yazicilari': ?instance.yazdirmaAtalYazicilari,
+  'yazdirma_Dizayn_ATAL': ?instance.yazdirmaDizaynATAL,
+  'yazdirma_OdemeMakbuzu': ?instance.yazdirmaOdemeMakbuzu,
+  'yazdirma_OdemeMakbuzu_Yazicilari': ?instance.yazdirmaOdemeMakbuzuYazicilari,
+  'yazdirma_Dizayn_OdemeMakbuzu': ?instance.yazdirmaDizaynOdemeMakbuzu,
+  'yazdirma_AlisIrs': ?instance.yazdirmaAlisIrs,
+  'yazdirma_AlisIrs_Yazicilari': ?instance.yazdirmaAlisIrsYazicilari,
+  'yazdirma_Dizayn_AlisIrs': ?instance.yazdirmaDizaynAlisIrs,
+  'yazdirma_IsEmri': ?instance.yazdirmaIsEmri,
+  'yazdirma_AmbarCikis': ?instance.yazdirmaAmbarCikis,
+  'yazdirma_AmbarGiris': ?instance.yazdirmaAmbarGiris,
+  'yazdirma_CariHareket': ?instance.yazdirmaCariHareket,
+  'uretim_FiyatGorebilir': ?instance.uretimFiyatGorebilir,
+  'uretim_USK_Kaydet': ?instance.uretimUskKaydet,
+  'uretim_USK_Duzelt': ?instance.uretimUskDuzelt,
+  'uretim_USK_Sil': ?instance.uretimUskSil,
+  'uretim_USK_KacGunlukKayitlarListelensin':
+      ?instance.uretimUskKacGunlukKayitlarListelensin,
+  'uretim_USK_MiktarBarkoddan': ?instance.uretimUskMiktarBarkoddan,
+  'uretim_USK_Miktar1Gelsin': ?instance.uretimUskMiktar1Gelsin,
+  'sirket_Depo_Uretim_Giris': ?instance.sirketDepoUretimGiris,
+  'sirket_Depo_Uretim_Cikis': ?instance.sirketDepoUretimCikis,
+  'uretim_USK_IsEmriOtoGelsin': ?instance.uretimUskIsEmriOtoGelsin,
+  'uretim_USK_SoruSorulmasin': ?instance.uretimUskSoruSorulmasin,
+  'uretim_USK_StokRehberiAcilmasin': ?instance.uretimUskStokRehberiAcilmasin,
+  'uretim_USK_KlavyeEngelle': ?instance.uretimUskKlavyeEngelle,
+  'uretim_USK_DepoOnceligi': ?instance.uretimUskDepoOnceligi,
+  'uretim_USK_FisiErpUretsin': ?instance.uretimUskFisiErpUretsin,
+  'uretim_USK_GizlenecekAlanlar': ?instance.uretimUskGizlenecekAlanlar,
+  'uretim_USK_BosGecilmeyecekAlanlar':
+      ?instance.uretimUskBosGecilmeyecekAlanlar,
+  'uretim_USK_DegismeyecekAlanlar': ?instance.uretimUskDegismeyecekAlanlar,
+  'uretim_USK_OlcuBirimi': ?instance.uretimUskOlcuBirimi,
+  'uretim_USK_OtoYazdir': ?instance.uretimUskOtoYazdir,
+  'uretim_USK_KalemliYapi': ?instance.uretimUskKalemliYapi,
+  'uretim_USK_KalemliYapi_StokMevcutaEklensin':
+      ?instance.uretimUskKalemliYapiStokMevcutaEklensin,
+  'uretim_USK_KalemliYapi_OtoEtiketYazdir':
+      ?instance.uretimUskKalemliYapiOtoEtiketYazdir,
+  'uretim_USK_KalemliYapi_AyniBarkodOkutulamaz':
+      ?instance.uretimUskKalemliYapiAyniBarkodOkutulamaz,
+  'uretim_USK_KalemliYapi_OkutulanEnUsteEklensin':
+      ?instance.uretimUskKalemliYapiOkutulanEnUsteEklensin,
+  'uretim_USK_KalemliYapi_KalemDuzeltilemesin':
+      ?instance.uretimUskKalemliYapiKalemDuzeltilemesin,
+  'uretim_ReceteIzleme': ?instance.uretimReceteIzleme,
+  'uretim_MalToplama': ?instance.uretimMalToplama,
+  'uretim_MalToplama_Ekle': ?instance.uretimMalToplamaEkle,
+  'uretim_MalToplama_Sil': ?instance.uretimMalToplamaSil,
+  'uretim_MalToplama_KlavyeEngelle': ?instance.uretimMalToplamaKlavyeEngelle,
+  'uretim_MalToplama_BarkodOkutsun': ?instance.uretimMalToplamaBarkodOkutsun,
+  'uretim_MalToplama_BelgeTipleri': ?instance.uretimMalToplamaBelgeTipleri,
+  'uretim_MalToplama_ReceteFiltresi': ?instance.uretimMalToplamaReceteFiltresi,
+  'uretim_MalToplama_ReceteFiltresiSQL':
+      ?instance.uretimMalToplamaReceteFiltresiSQL,
+  'uretim_IsEmri': ?instance.uretimIsEmri,
+  'uretim_Isemri_HammaddeTakip': ?instance.uretimIsemriHammaddeTakip,
+  'uretim_IsEmri_Ekle': ?instance.uretimIsEmriEkle,
+  'uretim_IsEmri_Duzelt': ?instance.uretimIsEmriDuzelt,
+  'uretim_IsEmri_Sil': ?instance.uretimIsEmriSil,
+  'taltek_STEK': ?instance.taltekStek,
+  'taltek_STEK_Kaydet': ?instance.taltekStekKaydet,
+  'taltek_STEK_Duzelt': ?instance.taltekStekDuzelt,
+  'taltek_STEK_Sil': ?instance.taltekStekSil,
+  'taltek_STEK_KapalilarListenlenmesin':
+      ?instance.taltekStekKapalilarListenlenmesin,
+  'taltek_STEK_OnayIslemleri': ?instance.taltekStekOnayIslemleri,
+  'taltek_STEK_CariKoduDegistir': ?instance.taltekStekCariKoduDegistir,
+  'taltek_STEK_FiyatDegistirilmesin': ?instance.taltekStekFiyatDegistirilmesin,
+  'taltek_STEK_Aciklamalar_YetkiTuru': ?instance.taltekStekAciklamalarYetkiTuru,
+  'taltek_STEK_GizlenecekAlanlar': ?instance.taltekStekGizlenecekAlanlar,
+  'taltek_STEK_DegismeyecekAlanlar': ?instance.taltekStekDegismeyecekAlanlar,
+  'taltek_ATAL_DegismeyecekAlanlar': ?instance.taltekAtalDegismeyecekAlanlar,
+  'taltek_STAL_DegismeyecekAlanlar': ?instance.taltekStalDegismeyecekAlanlar,
+  'taltek_STEK_BosGecilmeyecekAlanlar':
+      ?instance.taltekStekBosGecilmeyecekAlanlar,
+  'taltek_STAL_BosGecilmeyecekAlanlar':
+      ?instance.taltekStalBosGecilmeyecekAlanlar,
+  'taltek_ATAL_BosGecilmeyecekAlanlar':
+      ?instance.taltekAtalBosGecilmeyecekAlanlar,
+  'taltek_STEK_AciklamaAlanlari': ?instance.taltekStekAciklamaAlanlari,
+  'taltek_STEK_OzelKod1degeri': ?instance.taltekStekOzelKod1degeri,
+  'taltek_STEK_DipFiyatUygulamasi': ?instance.taltekStekDipFiyatUygulamasi,
+  'taltek_STEK_DipFiyatSaha': ?instance.taltekStekDipFiyatSaha,
+  'taltek_STEK_DipFiyatEylem': ?instance.taltekStekDipFiyatEylem,
+  'taltek_ATAL': ?instance.taltekAtal,
+  'taltek_ATAL_Kaydet': ?instance.taltekAtalKaydet,
+  'taltek_ATAL_Duzelt': ?instance.taltekAtalDuzelt,
+  'taltek_ATAL_Sil': ?instance.taltekAtalSil,
+  'taltek_ATAL_CariEMailAlani': ?instance.taltekAtalCariEMailAlani,
+  'taltek_ATAL_OnayIslemleri': ?instance.taltekAtalOnayIslemleri,
+  'taltek_ATAL_CariKoduDegistir': ?instance.taltekAtalCariKoduDegistir,
+  'taltek_ATAL_Aciklamalar_YetkiTuru': ?instance.taltekAtalAciklamalarYetkiTuru,
+  'taltek_ATAL_GizlenecekAlanlar': ?instance.taltekAtalGizlenecekAlanlar,
+  'taltek_ATAL_AciklamaAlanlari': ?instance.taltekAtalAciklamaAlanlari,
+  'taltek_ATAL_BelgeKopyala': ?instance.taltekAtalBelgeKopyala,
+  'taltek_STEK_BelgeKopyala': ?instance.taltekStekBelgeKopyala,
+  'taltek_STAL': ?instance.taltekStal,
+  'taltek_STAL_Kaydet': ?instance.taltekStalKaydet,
+  'taltek_STAL_Duzelt': ?instance.taltekStalDuzelt,
+  'taltek_STAL_Sil': ?instance.taltekStalSil,
+  'taltek_STAL_KapalilarListenlenmesin':
+      ?instance.taltekStalKapalilarListenlenmesin,
+  'taltek_STAL_OnayIslemleri': ?instance.taltekStalOnayIslemleri,
+  'taltek_STAL_CariKoduDegistir': ?instance.taltekStalCariKoduDegistir,
+  'taltek_STAL_FiyatDegistirilmesin': ?instance.taltekStalFiyatDegistirilmesin,
+  'taltek_STAL_GizlenecekAlanlar': ?instance.taltekStalGizlenecekAlanlar,
+  'taltek_STAL_DipFiyatUygulamasi': ?instance.taltekStalDipFiyatUygulamasi,
+  'ebelge_EFat': ?instance.ebelgeEFat,
+  'ebelge_EFatCariGuncelle': ?instance.ebelgeEFatCariGuncelle,
+  'ebelge_EFatSorgula': ?instance.ebelgeEFatSorgula,
+  'ebelge_EFatGelenKutusu': ?instance.ebelgeEFatGelenKutusu,
+  'ebelge_EFatTaslakOlustur': ?instance.ebelgeEFatTaslakOlustur,
+  'ebelge_EFatTaslakSil': ?instance.ebelgeEFatTaslakSil,
+  'ebelge_EFatTaslakBasim': ?instance.ebelgeEFatTaslakBasim,
+  'ebelge_EFatGoruntule': ?instance.ebelgeEFatGoruntule,
+  'ebelge_EFatAlisFatOlustur': ?instance.ebelgeEFatAlisFatOlustur,
+  'ebelge_EFatGonder': ?instance.ebelgeEFatGonder,
+  'ebelge_EFat_Dizayn': ?instance.ebelgeEFatDizayn,
+  'ebelge_EArsiv': ?instance.ebelgeEArsiv,
+  'ebelge_EArsivTaslakOlustur': ?instance.ebelgeEArsivTaslakOlustur,
+  'ebelge_EArsivTaslakSil': ?instance.ebelgeEArsivTaslakSil,
+  'ebelge_EArsivTaslakBasim': ?instance.ebelgeEArsivTaslakBasim,
+  'ebelge_EArsivGoruntule': ?instance.ebelgeEArsivGoruntule,
+  'ebelge_EArsivSorgula': ?instance.ebelgeEArsivSorgula,
+  'ebelge_EArsivGonder': ?instance.ebelgeEArsivGonder,
+  'ebelge_EArsiv_Dizayn': ?instance.ebelgeEArsivDizayn,
+  'ebelge_EIrsaliye': ?instance.ebelgeEIrsaliye,
+  'ebelge_EFatGidenKutusu': ?instance.ebelgeEFaturaGidenKutusu,
+  'ebelge_EIrsaliyeGidenKutusu': ?instance.ebelgeEIrsaliyeGidenKutusu,
+  'ebelge_EIrsaliyeGelenKutusu': ?instance.ebelgeEIrsaliyeGelenKutusu,
+  'ebelge_EIrsaliyeTaslakOlustur': ?instance.ebelgeEIrsaliyeTaslakOlustur,
+  'ebelge_EIrsaliyeTaslakSil': ?instance.ebelgeEIrsaliyeTaslakSil,
+  'ebelge_EIrsaliyeTaslakBasim': ?instance.ebelgeEIrsaliyeTaslakBasim,
+  'ebelge_EIrsaliyeGonder': ?instance.ebelgeEIrsaliyeGonder,
+  'ebelge_EIrsaliyeGoruntule': ?instance.ebelgeEIrsaliyeGoruntule,
+  'ebelge_EIrsaliye_Dizayn': ?instance.ebelgeEIrsaliyeDizayn,
+  'entegrasyon_UETDSESYA': ?instance.entegrasyonUetdsesya,
+  'entegrasyon_UETDSESYA_Iptal': ?instance.entegrasyonUetdsesyaIptal,
+  'transfer_DAT_TekrarEdenBarkod': ?instance.transferDatTekrarEdenBarkod,
+  'transfer_DAT_AciklamaDuzenle': ?instance.transferDatAciklamaDuzenle,
+  'transfer_DAT_LokalDATSeciliGelmesin':
+      ?instance.transferDatLokalDatSeciliGelmesin,
+  'transfer_DAT_VarsayilanHarTuruDegistiremesin':
+      ?instance.transferDatVarsayilanHarTuruDegistiremesin,
+  'transfer_DAT_DepoCaridenGelsin': ?instance.transferDatDepoCaridenGelsin,
+  'transfer_AG_SipBagSecenegi': ?instance.transferAgSipBagSecenegi,
+  'transfer_AG_TekrarEdenBarkod': ?instance.transferAgTekrarEdenBarkod,
+  'transfer_AG_AciklamaDuzenle': ?instance.transferAgAciklamaDuzenle,
+  'transfer_AC_SipBagSecenegi': ?instance.transferAcSipBagSecenegi,
+  'transfer_AC_TekrarEdenBarkod': ?instance.transferAcTekrarEdenBarkod,
+  'transfer_AC_AciklamaDuzenle': ?instance.transferAcAciklamaDuzenle,
+  'transfer_DepoTalebi_Bildirim': ?instance.transferDepoTalebiBildirim,
+  'uretim_USK': ?instance.uretimUsk,
+  'malKabul_AlisIrs_DegismeyecekAlanlar':
+      ?instance.malKabulAlisIrsDegismeyecekAlanlar,
+  'malKabul_AlisIrs_AciklamaDuzenle': ?instance.malKabulAlisIrsAciklamaDuzenle,
+  'malKabul_AlisFat_DegismeyecekAlanlar':
+      ?instance.malKabulAlisFatDegismeyecekAlanlar,
+  'malKabul_AlisFat_AciklamaDuzenle': ?instance.malKabulAlisFatAciklamaDuzenle,
+  'malKabul_AlisFat_TekrarEdenBarkod':
+      ?instance.malKabulAlisFatTekrarEdenBarkod,
+  'malKabul_AlisFaturasi_SipBagSecenegi':
+      ?instance.malKabulAlisFaturasiSipBagSecenegi,
+  'sevkiyat_SatisIrs_VarsayilanBelgeTipi':
+      ?instance.sevkiyatSatisIrsVarsayilanBelgeTipi,
+  'sevkiyat_SatisIrsaliyesi_AciklamaAlanlari':
+      ?instance.sevkiyatSatisIrsaliyesiAciklamaAlanlari,
+  'sevkiyat_SatisIrsaliyesi_AciklamaDuzenle':
+      ?instance.sevkiyatSatisIrsaliyesiAciklamaDuzenle,
+  'sevkiyat_SatisIrs_KayittanSonraTaslakOlustur':
+      ?instance.sevkiyatSatisIrsKayittanSonraTaslakOlustur,
+  'sevkiyat_SatisIrs_IadeMiktariGirebilir':
+      ?instance.sevkiyatSatisIrsIadeMiktariGirebilir,
+  'sevkiyat_SatisIrs_IadeMiktariGirebilirFarkliDepo':
+      ?instance.sevkiyatSatisIrsIadeMiktariGirebilirFarkliDepo,
+  'sevkiyat_SatisIrs_TekrarEdenBarkod':
+      ?instance.sevkiyatSatisIrsTekrarEdenBarkod,
+  'sevkiyat_SatisFat_AciklamaDuzenle':
+      ?instance.sevkiyatSatisFatAciklamaDuzenle,
+  'sevkiyat_SatisFat_IadeMiktariGirebilir':
+      ?instance.sevkiyatSatisFatIadeMiktariGirebilir,
+  'sevkiyat_SatisFat_IadeMiktariGirebilirFarkliDepo':
+      ?instance.sevkiyatSatisFatIadeMiktariGirebilirFarkliDepo,
+  'sevkiyat_SatisFaturasi_TekrarEdenBarkod':
+      ?instance.sevkiyatSatisFaturasiTekrarEdenBarkod,
+  'sevkemri_MalToplama_Yontemi': ?instance.sevkemriMalToplamaYontemi,
+  'sayim_SerbestSayimFiltreIslem': ?instance.sayimSerbestSayimFiltreIslem,
+  'siparis_MusSip_BelgeKopyala': ?instance.siparisMusSipBelgeKopyala,
+  'siparis_MusSip_TekrarEdenBarkod': ?instance.siparisMusSipTekrarEdenBarkod,
+  'siparis_MusSip_KacGunlukKayitlarListelensin':
+      ?instance.siparisMusSipKacGunlukKayitlarListelensin,
+  'siparis_MusteriSiparisi_AciklamaDuzenle':
+      ?instance.siparisMusteriSiparisiAciklamaDuzenle,
+  'stok_FiltreSQLTipi': ?instance.stokFiltreSqlTipi,
+  'stok_FiyatGorEkrani_GunlukKurdanTLGoster':
+      ?instance.stokFiyatGorEkraniGunlukKurdanTlGoster,
+  'stok_Paketleme_Coklu': ?instance.stokPaketlemeCoklu,
+  'stok_RehberBakiyesindeDigerOlcuBirimleriGorunsun':
+      ?instance.stokRehberBakiyesindeDigerOlcuBirimleriGorunsun,
+  'stok_YazdirPdfGoruntule': ?instance.stokYazdirPdfGoruntule,
+  'cari_ToplamGorunmesin': ?instance.cariToplamGorunmesin,
+  'cari_BakiyeGosterim': ?instance.cariBakiyeGosterim,
+  'cari_FiltreSQLTipi': ?instance.cariFiltreSqlTipi,
+  'tahsilat_DovizKuru_Degeri': ?instance.tahsilatDovizKuruDegeri,
+  'tahsilat_DovizKuru_Yetki': ?instance.tahsilatDovizKuruYetki,
+  'tahsilat_DovizKuru_Tolerans': ?instance.tahsilatDovizKuruTolerans,
+  'finans_Raporlar_KasaEkstre': ?instance.finansRaporlarKasaEkstre,
+  'finans_Kasa_GizlenecekAlanlar': ?instance.finansKasaGizlenecekAlanlar,
+  'finans_Kasa_DegistirilemeyecekAlanlar':
+      ?instance.finansKasaDegistirilemeyecekAlanlar,
+  'finans_Kasa_BosGecilemeyecekAlanlar':
+      ?instance.finansKasaBosGecilemeyecekAlanlar,
+  'taltek_STEK_AciklamaDuzenle': ?instance.taltekStekAciklamaDuzenle,
+  'taltek_STEK_DipFiyatKDVDurumu': ?instance.taltekStekDipFiyatKdvDurumu,
+  'taltek_STAL_AciklamaDuzenle': ?instance.taltekStalAciklamaDuzenle,
+  'taltek_STAL_DipFiyatSaha': ?instance.taltekStalDipFiyatSaha,
+  'taltek_STAL_DipFiyatEylem': ?instance.taltekStalDipFiyatEylem,
+  'taltek_STAL_DipFiyatKDVDurumu': ?instance.taltekStalDipFiyatKdvDurumu,
+  'malKabul_AlisIrs_Birim1denKaydet': ?instance.malKabulAlisIrsBirim1DenKaydet,
+  'malKabul_AlisFat_Birim1denKaydet': ?instance.malKabulAlisFatBirim1DenKaydet,
+  'transfer_AG_Birim1denKaydet': ?instance.transferAgBirim1DenKaydet,
+  'transfer_AC_Birim1denKaydet': ?instance.transferAcBirim1DenKaydet,
+  'sevkiyat_SatisIrs_KDVSifirGelsin': ?instance.sevkiyatSatisIrsKdvSifirGelsin,
+  'sevkiyat_SatisIrs_Birim1denKaydet':
+      ?instance.sevkiyatSatisIrsBirim1DenKaydet,
+  'sevkiyat_SatisIrs_DipFiyatKDVDurumu':
+      ?instance.sevkiyatSatisIrsDipFiyatKdvDurumu,
+  'sevkiyat_SatisFat_Birim1denKaydet':
+      ?instance.sevkiyatSatisFatBirim1DenKaydet,
+  'siparis_MusteriSiparisi_DipFiyatKDVDurumu':
+      ?instance.siparisMusteriSiparisiDipFiyatKdvDurumu,
+  'siparis_SatSip_TekrarEdenBarkod': ?instance.siparisSatSipTekrarEdenBarkod,
+  'siparis_SatSip_KacGunlukKayitlarListelensin':
+      ?instance.siparisSatSipKacGunlukKayitlarListelensin,
+  'cari_Rap_BorcAlacakDokumu': ?instance.cariRapBorcAlacakDokumu,
+  'sirket_Proje_YetkiTuru': ?instance.sirketProjeYetkiTuru,
+  'transfer_DAT_VarsayilanHarTuru': ?instance.transferDatVarsayilanHarTuru,
+  'siparis_MusSip_KdvDurumu': ?instance.siparisMusSipKdvDurumu,
+  'siparis_SaticiSiparisi_AciklamaDuzenle':
+      ?instance.siparisSaticiSiparisiAciklamaDuzenle,
+  'taltek_STEK_KdvDurumu': ?instance.taltekStekKdvDurumu,
+  'taltek_STAL_KdvDurumu': ?instance.taltekStalKdvDurumu,
+  'transfer_AG_BosGecilmeyecekAlanlar':
+      ?instance.transferAgBosGecilmeyecekAlanlar,
+  'transfer_AG_GizlenecekAlanlar': ?instance.transferAgGizlenecekAlanlar,
+  'transfer_AG_DegismeyecekAlanlar': ?instance.transferAgDegismeyecekAlanlar,
+  'transfer_AG_AciklamaAlanlari': ?instance.transferAgAciklamaAlanlari,
+  'transfer_AC_AciklamaAlanlari': ?instance.transferAcAciklamaAlanlari,
+  'sevkiyat_SatisFat_KdvDurumu': ?instance.sevkiyatSatisFatKdvDurumu,
+  'sigma_OlcumGir': ?instance.sigmaOlcumGir,
+  'sigma_OlcumGir_Kaydet': ?instance.sigmaOlcumGirKaydet,
+  'sigma_OlcumGir_Duzelt': ?instance.sigmaOlcumGirDuzelt,
+  'sigma_OlcumGir_Sil': ?instance.sigmaOlcumGirSil,
+  'sigma_TeknikResim': ?instance.sigmaTeknikResim,
+  'sigma_KontrolPlani': ?instance.sigmaKontrolPlani,
+  'transfer_DAT_EIrsaliyeIsaretDurum':
+      ?instance.transferDatEIrsaliyeIsaretDurum,
+  'transfer_AC_EIrsaliyeIsaretDurum': ?instance.transferAcEIrsaliyeIsaretDurum,
+  'sevkiyat_SatisIrsaliyesi_EIrsaliyeIsaretDurum':
+      ?instance.sevkiyatSatisIrsaliyesiEIrsaliyeIsaretDurum,
+  'sayim_AyniBarkodEngelle': ?instance.sayimAyniBarkodEngelle,
+  'siparis_MusSip_Bildirim': ?instance.siparisMusSipBildirim,
+  'siparis_SatSip_Bildirim': ?instance.siparisSatSipBildirim,
+  'stok_StokKarti_FiyatlariGizle': ?instance.stokStokKartiFiyatlariGizle,
+  'stok_BarkodTanimlama_ZorunluBarkodTipi':
+      ?instance.stokBarkodTanimlamaZorunluBarkodTipi,
+  'stok_CariStokFiltresiUygulansin': ?instance.stokCariStokFiltresiUygulansin,
+  'cari_KodDegistir': ?instance.cariKodDegistir,
+  'cari_Rap_DovizliBorcAlacakDokumu': ?instance.cariRapDovizliBorcAlacakDokumu,
+  'cari_Rap_UrunGrubunaGoreSatis': ?instance.cariRapUrunGrubunaGoreSatis,
+  'finans_Kasa_NakitTahsilat_KasaBakGizle':
+      ?instance.finansKasaNakitTahsilatKasaBakGizle,
+  'finans_Kasa_NakitOdeme_KasaBakGizle':
+      ?instance.finansKasaNakitOdemeKasaBakGizle,
+  'finans_Kasa_KacGunlukKayitlarListelensin':
+      ?instance.finansKasaKacGunlukKayitlarListelensin,
+  'yazdirma_Mustahsil_Yazicilari': ?instance.yazdirmaMustahsilYazicilari,
+  'yazdirma_Dizayn_Mustahsil': ?instance.yazdirmaDizaynMustahsil,
+  'yazdirma_SaticiSip_Yazicilari': ?instance.yazdirmaSaticiSipYazicilari,
+  'yazdirma_SatisTeklifi_Yazicilari': ?instance.yazdirmaSatisTeklifiYazicilari,
+  'yazdirma_TahsilatMakbuzu_Yazicilari':
+      ?instance.yazdirmaTahsilatMakbuzuYazicilari,
+  'sirket_Depo_YetkiTuru': ?instance.sirketDepoYetkiTuru,
+  'siparis_MusSip_OzelKod1Degeri': ?instance.siparisMusSipOzelKod1Degeri,
+  'siparis_SaticiSiparisi_SatirAciklamaAlanlari':
+      ?instance.siparisSaticiSiparisiSatirAciklamaAlanlari,
+  'transfer_AG_OtoPdfGor': ?instance.transferAgOtoPdfGor,
+  'transfer_AG_Bildirim': ?instance.transferAgBildirim,
+  'transfer_AG_EMailGonder': ?instance.transferAgEMailGonder,
+  'transfer_AG_EMailGonder_Baslik': ?instance.transferAgEMailGonderBaslik,
+  'transfer_AG_EMailGonder_Dizayn': ?instance.transferAgEMailGonderDizayn,
+  'transfer_AC_OtoPdfGor': ?instance.transferAcOtoPdfGor,
+  'transfer_AC_Bildirim': ?instance.transferAcBildirim,
+  'transfer_AC_EMailGonder': ?instance.transferAcEMailGonder,
+  'transfer_AC_EMailGonder_Baslik': ?instance.transferAcEMailGonderBaslik,
+  'transfer_AC_EMailGonder_Dizayn': ?instance.transferAcEMailGonderDizayn,
+  'malKabul_AlisIrs_OtoPdfGor': ?instance.malKabulAlisIrsOtoPdfGor,
+  'malKabul_AlisIrs_Bildirim': ?instance.malKabulAlisIrsBildirim,
+  'malKabul_AlisIrs_EMailGonder': ?instance.malKabulAlisIrsEMailGonder,
+  'malKabul_AlisIrs_EMailGonder_Baslik':
+      ?instance.malKabulAlisIrsEMailGonderBaslik,
+  'malKabul_AlisIrs_EMailGonder_Dizayn':
+      ?instance.malKabulAlisIrsEMailGonderDizayn,
+  'malKabul_AlisFat_Bildirim': ?instance.malKabulAlisFatBildirim,
+  'malKabul_AlisFat_EMailGonder': ?instance.malKabulAlisFatEMailGonder,
+  'malKabul_AlisFat_EMailGonder_Baslik':
+      ?instance.malKabulAlisFatEMailGonderBaslik,
+  'malKabul_AlisFat_EMailGonder_Dizayn':
+      ?instance.malKabulAlisFatEMailGonderDizayn,
+  'transfer_DAT_OtoPdfGor': ?instance.transferDatOtoPdfGor,
+  'transfer_DAT_Bildirim': ?instance.transferDatBildirim,
+  'transfer_DAT_EMailGonder': ?instance.transferDatEMailGonder,
+  'transfer_DAT_EMailGonder_Baslik': ?instance.transferDatEMailGonderBaslik,
+  'transfer_DAT_EMailGonder_Dizayn': ?instance.transferDatEMailGonderDizayn,
+  'sevkiyat_SatisIrs_OtoPdfGor': ?instance.sevkiyatSatisIrsOtoPdfGor,
+  'sevkiyat_SatisIrs_Bildirim': ?instance.sevkiyatSatisIrsBildirim,
+  'sevkiyat_SatisIrs_EMailGonder': ?instance.sevkiyatSatisIrsEMailGonder,
+  'sevkiyat_SatisIrs_EMailGonder_Baslik':
+      ?instance.sevkiyatSatisIrsEMailGonderBaslik,
+  'sevkiyat_SatisIrs_EMailGonder_Dizayn':
+      ?instance.sevkiyatSatisIrsEMailGonderDizayn,
+  'sevkiyat_SatisFat_OtoPdfGor': ?instance.sevkiyatSatisFatOtoPdfGor,
+  'sevkiyat_SatisFat_OzelKod1Degeri': ?instance.sevkiyatSatisFatOzelKod1Degeri,
+  'sevkiyat_SatisFat_OzelKod2Degeri': ?instance.sevkiyatSatisFatOzelKod2Degeri,
+  'sevkiyat_SatisFat_Bildirim': ?instance.sevkiyatSatisFatBildirim,
+  'sevkiyat_SatisFat_EMailGonder': ?instance.sevkiyatSatisFatEMailGonder,
+  'sevkiyat_SatisFat_EMailGonder_Baslik':
+      ?instance.sevkiyatSatisFatEMailGonderBaslik,
+  'sevkiyat_SatisFat_EMailGonder_Dizayn':
+      ?instance.sevkiyatSatisFatEMailGonderDizayn,
+  'sayim_EkAlan1': ?instance.sayimEkAlan1,
+  'sayim_EkAlan1_Zorunlu': ?instance.sayimEkAlan1Zorunlu,
+  'sayim_EkAlan2': ?instance.sayimEkAlan2,
+  'sayim_EkAlan2_Zorunlu': ?instance.sayimEkAlan2Zorunlu,
+  'sayim_EkAlan3': ?instance.sayimEkAlan3,
+  'sayim_EkAlan3_Zorunlu': ?instance.sayimEkAlan3Zorunlu,
+  'sayim_EkAlan4': ?instance.sayimEkAlan4,
+  'sayim_EkAlan4_Zorunlu': ?instance.sayimEkAlan4Zorunlu,
+  'sayim_EkAlan5': ?instance.sayimEkAlan5,
+  'sayim_EkAlan5_Zorunlu': ?instance.sayimEkAlan5Zorunlu,
+  'siparis_MusSip_EMailGonder': ?instance.siparisMusSipEMailGonder,
+  'siparis_MusSip_EMailGonder_Baslik': ?instance.siparisMusSipEMailGonderBaslik,
+  'siparis_MusSip_EMailGonder_Dizayn': ?instance.siparisMusSipEMailGonderDizayn,
+  'siparis_SaticiSip_OtoPdfGor': ?instance.siparisSaticiSipOtoPdfGor,
+  'siparis_SatSip_EMailGonder': ?instance.siparisSatSipEMailGonder,
+  'siparis_SatSip_EMailGonder_Baslik': ?instance.siparisSatSipEMailGonderBaslik,
+  'siparis_SatSip_EMailGonder_Dizayn': ?instance.siparisSatSipEMailGonderDizayn,
+  'taltek_STEK_Bildirim': ?instance.taltekStekBildirim,
+  'taltek_STEK_EMailGonder': ?instance.taltekStekEMailGonder,
+  'taltek_STEK_EMailGonder_Baslik': ?instance.taltekStekEMailGonderBaslik,
+  'taltek_STEK_EMailGonder_Dizayn': ?instance.taltekStekEMailGonderDizayn,
+  'taltek_ATAL_Bildirim': ?instance.taltekAtalBildirim,
+  'taltek_ATAL_EMailGonder': ?instance.taltekAtalEMailGonder,
+  'taltek_ATAL_EMailGonder_Baslik': ?instance.taltekAtalEMailGonderBaslik,
+  'taltek_ATAL_EMailGonder_Dizayn': ?instance.taltekAtalEMailGonderDizayn,
+  'taltek_STAL_Bildirim': ?instance.taltekStalBildirim,
+  'taltek_STAL_EMailGonder': ?instance.taltekStalEMailGonder,
+  'taltek_STAL_EMailGonder_Baslik': ?instance.taltekStalEMailGonderBaslik,
+  'taltek_STAL_EMailGonder_Dizayn': ?instance.taltekStalEMailGonderDizayn,
+  'ebelge_EFat_SatirdaIskDikkateAlma':
+      ?instance.ebelgeEFatSatirdaIskDikkateAlma,
+  'ebelge_EArsiv_SatirdaIskDikkateAlma':
+      ?instance.ebelgeEArsivSatirdaIskDikkateAlma,
+  'transfer_AG_OzelKod1Degeri': ?instance.transferAgOzelKod1Degeri,
+  'transfer_AG_OzelKod2Degeri': ?instance.transferAgOzelKod2Degeri,
+  'transfer_AG_VarsayilanMasrafKodu': ?instance.transferAgVarsayilanMasrafKodu,
+  'transfer_AC_VarsayilanMasrafKodu': ?instance.transferAcVarsayilanMasrafKodu,
+  'transfer_AC_OzelKod1Degeri': ?instance.transferAcOzelKod1Degeri,
+  'transfer_AC_OzelKod2Degeri': ?instance.transferAcOzelKod2Degeri,
+  'malKabul_AlisIrs_OzelKod1Degeri': ?instance.malKabulAlisIrsOzelKod1Degeri,
+  'malKabul_AlisIrs_OzelKod2Degeri': ?instance.malKabulAlisIrsOzelKod2Degeri,
+  'sevkiyat_SatisIrs_OzelKod1Degeri': ?instance.sevkiyatSatisIrsOzelKod1Degeri,
+  'sevkiyat_SatisIrs_OzelKod2Degeri': ?instance.sevkiyatSatisIrsOzelKod2Degeri,
+  'siparis_MusSip_OzelKod2Degeri': ?instance.siparisMusSipOzelKod2Degeri,
+  'taltek_STEK_OzelKod1Degeri': ?instance.taltekStekOzelKod1Degeri,
+  'taltek_STEK_OzelKod2Degeri': ?instance.taltekStekOzelKod2Degeri,
+  'taltek_STAL_OzelKod1Degeri': ?instance.taltekStalOzelKod1Degeri,
+  'taltek_STAL_OzelKod2Degeri': ?instance.taltekStalOzelKod2Degeri,
+  'sevkiyat_SatisFat_Aciklamalar_YetkiTuru':
+      ?instance.sevkiyatSatisFatAciklamalarYetkiTuru,
+  'taltek_STAL_Aciklamalar_YetkiTuru': ?instance.taltekStalAciklamalarYetkiTuru,
+  'taltek_STAL_AciklamaAlanlari': ?instance.taltekStalAciklamaAlanlari,
+  'uretim_USK_BarkodSayisiSaklanacakAlan':
+      ?_$BarkodSayisiSaklanacakAlanEnumMap[instance
+          .uretimUskBarkodSayisiSaklanacakAlan],
+  'malKabul_AlisIrs_BarkodSayisiSaklanacakAlan':
+      ?_$BarkodSayisiSaklanacakAlanEnumMap[instance
+          .malKabulAlisIrsBarkodSayisiSaklanacakAlan],
+  'malKabul_AlisFat_BarkodSayisiSaklanacakAlan':
+      ?_$BarkodSayisiSaklanacakAlanEnumMap[instance
+          .malKabulAlisFatBarkodSayisiSaklanacakAlan],
+  'transfer_DAT_BarkodSayisiSaklanacakAlan':
+      ?_$BarkodSayisiSaklanacakAlanEnumMap[instance
+          .transferDatBarkodSayisiSaklanacakAlan],
+  'sevkiyat_SatisIrs_BarkodSayisiSaklanacakAlan':
+      ?_$BarkodSayisiSaklanacakAlanEnumMap[instance
+          .sevkiyatSatisIrsBarkodSayisiSaklanacakAlan],
+  'sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin':
+      ?instance.sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin,
+  'transfer_AC_VarsayilanHarTuru': ?instance.transferAcVarsayilanHarTuru,
+  'transfer_AC_VarsayilanCikisYeri': ?instance.transferAcVarsayilanCikisYeri,
+  'transfer_DepoTalebi_RehberdenStokSecilmesin':
+      ?instance.transferDepoTalebiRehberdenStokSecilmesin,
+  'stok_CariHar_GizlenecekAlanlar': ?instance.stokCariHarGizlenecekAlanlar,
+  'transfer_DAT_OzelKod1Degeri': ?instance.transferDatOzelKod1Degeri,
+  'transfer_DAT_OzelKod2Degeri': ?instance.transferDatOzelKod2Degeri,
+  'transfer_DepoTalebi_BildirimKullanicilar':
+      ?instance.transferDepoTalebiBildirimKullanicilar,
+  'URETIM_ISEMRI_FIRE_DUSME_YONTEMI': ?instance.uretimIsemriFireDusmeYontemi,
+  'YAZDIRMA_ALIS_FAT_YAZICILARI': ?instance.yazdirmaAlisFatYazicilari,
+  'YAZDIRMA_AMBAR_CIKIS_YAZICILARI': ?instance.yazdirmaAmbarCikisYazicilari,
+  'YAZDIRMA_DIZAYN_AMBAR_CIKIS': ?instance.yazdirmaDizaynAmbarCikis,
+  'YAZDIRMA_AMBAR_GIRIS_YAZICILARI': ?instance.yazdirmaAmbarGirisYazicilari,
+  'YAZDIRMA_DIZAYN_DAT': ?instance.yazdirmaDizaynDat,
 };
 
 const _$BarkodSayisiSaklanacakAlanEnumMap = {
@@ -4054,7 +3393,4 @@ SevkemriMalKontrolTipi _$SevkemriMalKontrolTipiFromJson(
 
 Map<String, dynamic> _$SevkemriMalKontrolTipiToJson(
   SevkemriMalKontrolTipi instance,
-) => <String, dynamic>{
-  if (instance.kod case final value?) 'Kod': value,
-  if (instance.tanim case final value?) 'Tanim': value,
-};
+) => <String, dynamic>{'Kod': ?instance.kod, 'Tanim': ?instance.tanim};

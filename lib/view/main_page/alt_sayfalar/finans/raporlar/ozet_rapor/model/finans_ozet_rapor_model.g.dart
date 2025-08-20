@@ -19,9 +19,9 @@ _FinansOzetRaporModel _$FinansOzetRaporModelFromJson(
 Map<String, dynamic> _$FinansOzetRaporModelToJson(
   _FinansOzetRaporModel instance,
 ) => <String, dynamic>{
-  if (instance.tabloTipi case final value?) 'TABLO_TIPI': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.ayKodu case final value?) 'AY_KODU': value,
-  if (instance.tutar1 case final value?) 'TUTAR1': value,
-  if (instance.tutar2 case final value?) 'TUTAR2': value,
+  'TABLO_TIPI': ?instance.tabloTipi,
+  'BELGE_TIPI': ?instance.belgeTipi,
+  'AY_KODU': ?instance.ayKodu,
+  'TUTAR1': ?instance.tutar1,
+  'TUTAR2': ?instance.tutar2,
 };

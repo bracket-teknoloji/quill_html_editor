@@ -25,23 +25,19 @@ _PaketIcerigiModel _$PaketIcerigiModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$PaketIcerigiModelToJson(
-  _PaketIcerigiModel instance,
-) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.paketId case final value?) 'PAKET_ID': value,
-  if (instance.paketKodu case final value?) 'PAKET_KODU': value,
-  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-  if (instance.depoAdi case final value?) 'DEPO_ADI': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.cikistaSeri case final value?) 'CIKISTA_SERI': value,
-  if (instance.seriMiktarKadar case final value?) 'SERI_MIKTAR_KADAR': value,
-  if (instance.seriBakiyeKontrol case final value?)
-    'SERI_BAKIYE_KONTROL': value,
-  if (instance.seriCikistaOtomatik case final value?)
-    'SERI_CIKISTA_OTOMATIK': value,
-  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
-    'SERI_LIST': value,
-};
+Map<String, dynamic> _$PaketIcerigiModelToJson(_PaketIcerigiModel instance) =>
+    <String, dynamic>{
+      'ID': ?instance.id,
+      'PAKET_ID': ?instance.paketId,
+      'PAKET_KODU': ?instance.paketKodu,
+      'DEPO_KODU': ?instance.depoKodu,
+      'DEPO_ADI': ?instance.depoAdi,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
+      'MIKTAR': ?instance.miktar,
+      'CIKISTA_SERI': ?instance.cikistaSeri,
+      'SERI_MIKTAR_KADAR': ?instance.seriMiktarKadar,
+      'SERI_BAKIYE_KONTROL': ?instance.seriBakiyeKontrol,
+      'SERI_CIKISTA_OTOMATIK': ?instance.seriCikistaOtomatik,
+      'SERI_LIST': ?instance.seriList?.map((e) => e.toJson()).toList(),
+    };

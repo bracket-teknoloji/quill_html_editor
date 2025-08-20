@@ -18,7 +18,6 @@ import "../../../../../../core/components/button/elevated_buttons/footer_button.
 import "../../../../../../core/components/card/siparisler_card.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
-import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
@@ -341,13 +340,22 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                       ),
                   ],
                 ),
-                CustomWidgetWithLabel(
-                  isVertical: true,
-                  text: "Kapalı Belgeler Listelenmesin",
-                  child: Observer(
-                    builder: (_) => Switch.adaptive(
+
+                Observer(
+                  builder: (_) => Card(
+                    child: SwitchListTile.adaptive(
+                      title: const Text("Kapalı Belgeler Listelenmesin"),
                       value: viewModel.kapaliBelgelerListelenmesin,
                       onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value),
+                    ),
+                  ),
+                ),
+                Observer(
+                  builder: (_) => Card(
+                    child: SwitchListTile.adaptive(
+                      title: const Text("Onay Bekliyor"),
+                      value: viewModel.onayBekliyor,
+                      onChanged: (value) => viewModel.setOnayBekliyor(value),
                     ),
                   ),
                 ),

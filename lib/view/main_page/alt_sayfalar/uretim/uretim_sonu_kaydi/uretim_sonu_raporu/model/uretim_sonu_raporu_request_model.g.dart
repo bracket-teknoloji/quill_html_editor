@@ -17,7 +17,7 @@ _UretimSonuRaporuRequestModel _$UretimSonuRaporuRequestModelFromJson(
 Map<String, dynamic> _$UretimSonuRaporuRequestModelToJson(
   _UretimSonuRaporuRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
-  if (instance.filtreKodu case final value?) 'FiltreKodu': value,
-  if (instance.stokKodu case final value?) 'StokKodu': value,
+  'BelgeNo': ?instance.belgeNo,
+  'FiltreKodu': ?instance.filtreKodu,
+  'StokKodu': ?instance.stokKodu,
 };

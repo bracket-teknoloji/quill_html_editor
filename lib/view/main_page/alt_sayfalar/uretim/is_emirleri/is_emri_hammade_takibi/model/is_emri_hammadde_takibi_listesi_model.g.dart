@@ -23,13 +23,13 @@ _IsEmriHammaddeTakibiListesiModel _$IsEmriHammaddeTakibiListesiModelFromJson(
 Map<String, dynamic> _$IsEmriHammaddeTakibiListesiModelToJson(
   _IsEmriHammaddeTakibiListesiModel instance,
 ) => <String, dynamic>{
-  if (instance.takipno case final value?) 'TAKIPNO': value,
-  if (instance.nfisemrino case final value?) 'NFISEMRINO': value,
-  if (instance.isemrino case final value?) 'ISEMRINO': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.yapkod case final value?) 'YAPKOD': value,
-  if (instance.yapacik case final value?) 'YAPACIK': value,
-  if (instance.makineKodu case final value?) 'MAKINE_KODU': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
+  'TAKIPNO': ?instance.takipno,
+  'NFISEMRINO': ?instance.nfisemrino,
+  'ISEMRINO': ?instance.isemrino,
+  'STOK_KODU': ?instance.stokKodu,
+  'STOK_ADI': ?instance.stokAdi,
+  'YAPKOD': ?instance.yapkod,
+  'YAPACIK': ?instance.yapacik,
+  'MAKINE_KODU': ?instance.makineKodu,
+  'MIKTAR': ?instance.miktar,
 };

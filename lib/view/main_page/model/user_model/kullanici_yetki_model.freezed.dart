@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -126,6 +125,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [KullaniciYetkiModel].
+extension KullaniciYetkiModelPatterns on KullaniciYetkiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _KullaniciYetkiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _KullaniciYetkiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _KullaniciYetkiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _KullaniciYetkiModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _KullaniciYetkiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _KullaniciYetkiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: "bagliPlasiyerler")  List<String?>? bagliPlasiyerler, @JsonKey(name: "eIrsOnEki")  String? eIrsOnEki, @JsonKey(name: "eIrsAmbarOnEki")  String? eIrsAmbarOnEki, @JsonKey(name: "yetkiliKasalar")  List<String>? yetkiliKasalar, @JsonKey(name: "kkartiHesaplar")  List<String>? kkartiHesaplar, @JsonKey(name: "kkartiKasalar")  List<String>? kkartiKasalar, @JsonKey(name: "acikHesapLimiti")  double? acikHesapLimiti, @JsonKey(name: "acikHesapTolerans")  double? acikHesapTolerans, @JsonKey(name: "acikHesapLimitiBelgeTipleri")  List? acikHesapLimitiBelgeTipleri, @JsonKey(name: "stok_FiltreSQLTipi")  String? stokFiltreSQLTipi, @JsonKey(name: "cari_FiltreSQLTipi")  String? cariFiltreSQLTipi, @JsonKey(name: "hizliTahsilat_SozlesmeKodlari")  List? hizliTahsilatSozlesmeKodlari, @JsonKey(name: "siparis_MusSip_EkstraAlanlar")  List? siparisMusSipEkstraAlanlar, @JsonKey(name: "sirket_alisDepo")  int? sirketAlisDepo, @JsonKey(name: "sirket_satisDepo")  int? sirketSatisDepo, @JsonKey(name: "transfer_DAT_VarsayilanCikisDepo")  int? transferDATVarsayilanCikisDepo, @JsonKey(name: "transfer_DAT_VarsayilanGirisDepo")  int? transferDATVarsayilanGirisDepo, @JsonKey(name: "cariRehPlaEslesmesinBelgeTipleri")  List<dynamic>? cariRehPlaEslesmesinBelgeTipleri, @JsonKey(name: "profilKodu")  String? profilKodu, @JsonKey(name: "sirket_aktifDepolar")  List<int>? sirketAktifDepolar, @JsonKey(name: "sirket_DAT_YetkiliDepolar")  List<int>? sirketDatYetkiliDepolar, @JsonKey(name: "ADMIN_MI")  bool? adminMi, @JsonKey(name: "varsayilan_PlasiyerTanimi")  String? varsayilanPlasiyerTanimi, @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")  bool? siparisMusSipBakiyesizStokSecilmesin, @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")  bool? sevkiyatSatisIrsBakiyesizStokSecilmesin, @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")  bool? sevkiyatSatisFatBakiyesizStokSecilmesin, @JsonKey(name: "plasiyerKodu")  String? plasiyerKodu, @JsonKey(name: "varsayilan_PlasiyerKodu")  String? varsayilanPlasiyerKodu, @JsonKey(name: "kkartiTahsilatYontemi")  String? kkartiTahsilatYontemi, @JsonKey(name: "satIrsOnEki")  String? satIrsOnEki, @JsonKey(name: "varsayilanNakitKasa")  String? varsayilanNakitKasa, @JsonKey(name: "sirket_Depo_YetkiTuru")  String? sirketDepoYetkiTuru, @JsonKey(name: "varsayilan_ProjeTanimi")  String? varsayilanProjeTanimi, @JsonKey(name: "varsayilan_ProjeKodu")  String? varsayilanProjeKodu, @JsonKey(name: "varsayilanKrediKartiKasa")  String? varsayilanKrediKartiKasa, @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")  String? varsayilanMuhasebeReferansTanimi, @JsonKey(name: "varsayilan_MuhasebeReferansKodu")  String? varsayilanMuhasebeReferansKodu, @JsonKey(name: "satSipOnEki")  String? satSipOnEki, @JsonKey(name: "musSipOnEki")  String? musSipOnEki, @JsonKey(name: "alIrsOnEki")  String? alIrsOnEki, @JsonKey(name: "eFatOnEki")  String? eFatOnEki, @JsonKey(name: "eArvOnEki")  String? eArvOnEki, @JsonKey(name: "satAlmTalOnEki")  String? satAlmTalOnEki, @JsonKey(name: "satisTalOnEki")  String? satisTalOnEki, @JsonKey(name: "satAlmTekOnEki")  String? satAlmTekOnEki, @JsonKey(name: "satisTekOnEki")  String? satisTekOnEki, @JsonKey(name: "tahsilatOnEki")  String? tahsilatOnEki, @JsonKey(name: "sevkEmriOnEki")  String? sevkEmriOnEki, @JsonKey(name: "kkTahsilatOnEki")  String? kkTahsilatOnEki, @JsonKey(name: "eIrsDATOnEki")  String? eIrsDatOnEki, @JsonKey(name: "DATOnEki")  String? datOnEki, @JsonKey(name: "ambarCikisOnEki")  String? ambarCikisOnEki, @JsonKey(name: "ambarGirisOnEki")  String? ambarGirisOnEki, @JsonKey(name: "cariOnEki")  String? cariOnEki, @JsonKey(name: "uskOnEki")  String? uskOnEki, @JsonKey(name: "alisFatOnEki")  String? alisFatOnEki, @JsonKey(name: "satisFatOnEki")  String? satisFatOnEki, @JsonKey(name: "dekSeri_CekTahsil")  String? dekSeriCekTahsil, @JsonKey(name: "dekSeri_KKartiTahsilati")  String? dekSeriKKartiTahsilati, @JsonKey(name: "dekSeri_CariEFT")  String? dekSeriCariEft, @JsonKey(name: "dekSeri_HesArasiVirman")  String? dekSeriHesArasiVirman, @JsonKey(name: "dekSeri_HesArasiEFT")  String? dekSeriHesArasiEft, @JsonKey(name: "dekSeri_CariVirman")  String? dekSeriCariVirman)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _KullaniciYetkiModel() when $default != null:
+return $default(_that.bagliPlasiyerler,_that.eIrsOnEki,_that.eIrsAmbarOnEki,_that.yetkiliKasalar,_that.kkartiHesaplar,_that.kkartiKasalar,_that.acikHesapLimiti,_that.acikHesapTolerans,_that.acikHesapLimitiBelgeTipleri,_that.stokFiltreSQLTipi,_that.cariFiltreSQLTipi,_that.hizliTahsilatSozlesmeKodlari,_that.siparisMusSipEkstraAlanlar,_that.sirketAlisDepo,_that.sirketSatisDepo,_that.transferDATVarsayilanCikisDepo,_that.transferDATVarsayilanGirisDepo,_that.cariRehPlaEslesmesinBelgeTipleri,_that.profilKodu,_that.sirketAktifDepolar,_that.sirketDatYetkiliDepolar,_that.adminMi,_that.varsayilanPlasiyerTanimi,_that.siparisMusSipBakiyesizStokSecilmesin,_that.sevkiyatSatisIrsBakiyesizStokSecilmesin,_that.sevkiyatSatisFatBakiyesizStokSecilmesin,_that.plasiyerKodu,_that.varsayilanPlasiyerKodu,_that.kkartiTahsilatYontemi,_that.satIrsOnEki,_that.varsayilanNakitKasa,_that.sirketDepoYetkiTuru,_that.varsayilanProjeTanimi,_that.varsayilanProjeKodu,_that.varsayilanKrediKartiKasa,_that.varsayilanMuhasebeReferansTanimi,_that.varsayilanMuhasebeReferansKodu,_that.satSipOnEki,_that.musSipOnEki,_that.alIrsOnEki,_that.eFatOnEki,_that.eArvOnEki,_that.satAlmTalOnEki,_that.satisTalOnEki,_that.satAlmTekOnEki,_that.satisTekOnEki,_that.tahsilatOnEki,_that.sevkEmriOnEki,_that.kkTahsilatOnEki,_that.eIrsDatOnEki,_that.datOnEki,_that.ambarCikisOnEki,_that.ambarGirisOnEki,_that.cariOnEki,_that.uskOnEki,_that.alisFatOnEki,_that.satisFatOnEki,_that.dekSeriCekTahsil,_that.dekSeriKKartiTahsilati,_that.dekSeriCariEft,_that.dekSeriHesArasiVirman,_that.dekSeriHesArasiEft,_that.dekSeriCariVirman);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: "bagliPlasiyerler")  List<String?>? bagliPlasiyerler, @JsonKey(name: "eIrsOnEki")  String? eIrsOnEki, @JsonKey(name: "eIrsAmbarOnEki")  String? eIrsAmbarOnEki, @JsonKey(name: "yetkiliKasalar")  List<String>? yetkiliKasalar, @JsonKey(name: "kkartiHesaplar")  List<String>? kkartiHesaplar, @JsonKey(name: "kkartiKasalar")  List<String>? kkartiKasalar, @JsonKey(name: "acikHesapLimiti")  double? acikHesapLimiti, @JsonKey(name: "acikHesapTolerans")  double? acikHesapTolerans, @JsonKey(name: "acikHesapLimitiBelgeTipleri")  List? acikHesapLimitiBelgeTipleri, @JsonKey(name: "stok_FiltreSQLTipi")  String? stokFiltreSQLTipi, @JsonKey(name: "cari_FiltreSQLTipi")  String? cariFiltreSQLTipi, @JsonKey(name: "hizliTahsilat_SozlesmeKodlari")  List? hizliTahsilatSozlesmeKodlari, @JsonKey(name: "siparis_MusSip_EkstraAlanlar")  List? siparisMusSipEkstraAlanlar, @JsonKey(name: "sirket_alisDepo")  int? sirketAlisDepo, @JsonKey(name: "sirket_satisDepo")  int? sirketSatisDepo, @JsonKey(name: "transfer_DAT_VarsayilanCikisDepo")  int? transferDATVarsayilanCikisDepo, @JsonKey(name: "transfer_DAT_VarsayilanGirisDepo")  int? transferDATVarsayilanGirisDepo, @JsonKey(name: "cariRehPlaEslesmesinBelgeTipleri")  List<dynamic>? cariRehPlaEslesmesinBelgeTipleri, @JsonKey(name: "profilKodu")  String? profilKodu, @JsonKey(name: "sirket_aktifDepolar")  List<int>? sirketAktifDepolar, @JsonKey(name: "sirket_DAT_YetkiliDepolar")  List<int>? sirketDatYetkiliDepolar, @JsonKey(name: "ADMIN_MI")  bool? adminMi, @JsonKey(name: "varsayilan_PlasiyerTanimi")  String? varsayilanPlasiyerTanimi, @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")  bool? siparisMusSipBakiyesizStokSecilmesin, @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")  bool? sevkiyatSatisIrsBakiyesizStokSecilmesin, @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")  bool? sevkiyatSatisFatBakiyesizStokSecilmesin, @JsonKey(name: "plasiyerKodu")  String? plasiyerKodu, @JsonKey(name: "varsayilan_PlasiyerKodu")  String? varsayilanPlasiyerKodu, @JsonKey(name: "kkartiTahsilatYontemi")  String? kkartiTahsilatYontemi, @JsonKey(name: "satIrsOnEki")  String? satIrsOnEki, @JsonKey(name: "varsayilanNakitKasa")  String? varsayilanNakitKasa, @JsonKey(name: "sirket_Depo_YetkiTuru")  String? sirketDepoYetkiTuru, @JsonKey(name: "varsayilan_ProjeTanimi")  String? varsayilanProjeTanimi, @JsonKey(name: "varsayilan_ProjeKodu")  String? varsayilanProjeKodu, @JsonKey(name: "varsayilanKrediKartiKasa")  String? varsayilanKrediKartiKasa, @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")  String? varsayilanMuhasebeReferansTanimi, @JsonKey(name: "varsayilan_MuhasebeReferansKodu")  String? varsayilanMuhasebeReferansKodu, @JsonKey(name: "satSipOnEki")  String? satSipOnEki, @JsonKey(name: "musSipOnEki")  String? musSipOnEki, @JsonKey(name: "alIrsOnEki")  String? alIrsOnEki, @JsonKey(name: "eFatOnEki")  String? eFatOnEki, @JsonKey(name: "eArvOnEki")  String? eArvOnEki, @JsonKey(name: "satAlmTalOnEki")  String? satAlmTalOnEki, @JsonKey(name: "satisTalOnEki")  String? satisTalOnEki, @JsonKey(name: "satAlmTekOnEki")  String? satAlmTekOnEki, @JsonKey(name: "satisTekOnEki")  String? satisTekOnEki, @JsonKey(name: "tahsilatOnEki")  String? tahsilatOnEki, @JsonKey(name: "sevkEmriOnEki")  String? sevkEmriOnEki, @JsonKey(name: "kkTahsilatOnEki")  String? kkTahsilatOnEki, @JsonKey(name: "eIrsDATOnEki")  String? eIrsDatOnEki, @JsonKey(name: "DATOnEki")  String? datOnEki, @JsonKey(name: "ambarCikisOnEki")  String? ambarCikisOnEki, @JsonKey(name: "ambarGirisOnEki")  String? ambarGirisOnEki, @JsonKey(name: "cariOnEki")  String? cariOnEki, @JsonKey(name: "uskOnEki")  String? uskOnEki, @JsonKey(name: "alisFatOnEki")  String? alisFatOnEki, @JsonKey(name: "satisFatOnEki")  String? satisFatOnEki, @JsonKey(name: "dekSeri_CekTahsil")  String? dekSeriCekTahsil, @JsonKey(name: "dekSeri_KKartiTahsilati")  String? dekSeriKKartiTahsilati, @JsonKey(name: "dekSeri_CariEFT")  String? dekSeriCariEft, @JsonKey(name: "dekSeri_HesArasiVirman")  String? dekSeriHesArasiVirman, @JsonKey(name: "dekSeri_HesArasiEFT")  String? dekSeriHesArasiEft, @JsonKey(name: "dekSeri_CariVirman")  String? dekSeriCariVirman)  $default,) {final _that = this;
+switch (_that) {
+case _KullaniciYetkiModel():
+return $default(_that.bagliPlasiyerler,_that.eIrsOnEki,_that.eIrsAmbarOnEki,_that.yetkiliKasalar,_that.kkartiHesaplar,_that.kkartiKasalar,_that.acikHesapLimiti,_that.acikHesapTolerans,_that.acikHesapLimitiBelgeTipleri,_that.stokFiltreSQLTipi,_that.cariFiltreSQLTipi,_that.hizliTahsilatSozlesmeKodlari,_that.siparisMusSipEkstraAlanlar,_that.sirketAlisDepo,_that.sirketSatisDepo,_that.transferDATVarsayilanCikisDepo,_that.transferDATVarsayilanGirisDepo,_that.cariRehPlaEslesmesinBelgeTipleri,_that.profilKodu,_that.sirketAktifDepolar,_that.sirketDatYetkiliDepolar,_that.adminMi,_that.varsayilanPlasiyerTanimi,_that.siparisMusSipBakiyesizStokSecilmesin,_that.sevkiyatSatisIrsBakiyesizStokSecilmesin,_that.sevkiyatSatisFatBakiyesizStokSecilmesin,_that.plasiyerKodu,_that.varsayilanPlasiyerKodu,_that.kkartiTahsilatYontemi,_that.satIrsOnEki,_that.varsayilanNakitKasa,_that.sirketDepoYetkiTuru,_that.varsayilanProjeTanimi,_that.varsayilanProjeKodu,_that.varsayilanKrediKartiKasa,_that.varsayilanMuhasebeReferansTanimi,_that.varsayilanMuhasebeReferansKodu,_that.satSipOnEki,_that.musSipOnEki,_that.alIrsOnEki,_that.eFatOnEki,_that.eArvOnEki,_that.satAlmTalOnEki,_that.satisTalOnEki,_that.satAlmTekOnEki,_that.satisTekOnEki,_that.tahsilatOnEki,_that.sevkEmriOnEki,_that.kkTahsilatOnEki,_that.eIrsDatOnEki,_that.datOnEki,_that.ambarCikisOnEki,_that.ambarGirisOnEki,_that.cariOnEki,_that.uskOnEki,_that.alisFatOnEki,_that.satisFatOnEki,_that.dekSeriCekTahsil,_that.dekSeriKKartiTahsilati,_that.dekSeriCariEft,_that.dekSeriHesArasiVirman,_that.dekSeriHesArasiEft,_that.dekSeriCariVirman);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: "bagliPlasiyerler")  List<String?>? bagliPlasiyerler, @JsonKey(name: "eIrsOnEki")  String? eIrsOnEki, @JsonKey(name: "eIrsAmbarOnEki")  String? eIrsAmbarOnEki, @JsonKey(name: "yetkiliKasalar")  List<String>? yetkiliKasalar, @JsonKey(name: "kkartiHesaplar")  List<String>? kkartiHesaplar, @JsonKey(name: "kkartiKasalar")  List<String>? kkartiKasalar, @JsonKey(name: "acikHesapLimiti")  double? acikHesapLimiti, @JsonKey(name: "acikHesapTolerans")  double? acikHesapTolerans, @JsonKey(name: "acikHesapLimitiBelgeTipleri")  List? acikHesapLimitiBelgeTipleri, @JsonKey(name: "stok_FiltreSQLTipi")  String? stokFiltreSQLTipi, @JsonKey(name: "cari_FiltreSQLTipi")  String? cariFiltreSQLTipi, @JsonKey(name: "hizliTahsilat_SozlesmeKodlari")  List? hizliTahsilatSozlesmeKodlari, @JsonKey(name: "siparis_MusSip_EkstraAlanlar")  List? siparisMusSipEkstraAlanlar, @JsonKey(name: "sirket_alisDepo")  int? sirketAlisDepo, @JsonKey(name: "sirket_satisDepo")  int? sirketSatisDepo, @JsonKey(name: "transfer_DAT_VarsayilanCikisDepo")  int? transferDATVarsayilanCikisDepo, @JsonKey(name: "transfer_DAT_VarsayilanGirisDepo")  int? transferDATVarsayilanGirisDepo, @JsonKey(name: "cariRehPlaEslesmesinBelgeTipleri")  List<dynamic>? cariRehPlaEslesmesinBelgeTipleri, @JsonKey(name: "profilKodu")  String? profilKodu, @JsonKey(name: "sirket_aktifDepolar")  List<int>? sirketAktifDepolar, @JsonKey(name: "sirket_DAT_YetkiliDepolar")  List<int>? sirketDatYetkiliDepolar, @JsonKey(name: "ADMIN_MI")  bool? adminMi, @JsonKey(name: "varsayilan_PlasiyerTanimi")  String? varsayilanPlasiyerTanimi, @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")  bool? siparisMusSipBakiyesizStokSecilmesin, @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")  bool? sevkiyatSatisIrsBakiyesizStokSecilmesin, @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")  bool? sevkiyatSatisFatBakiyesizStokSecilmesin, @JsonKey(name: "plasiyerKodu")  String? plasiyerKodu, @JsonKey(name: "varsayilan_PlasiyerKodu")  String? varsayilanPlasiyerKodu, @JsonKey(name: "kkartiTahsilatYontemi")  String? kkartiTahsilatYontemi, @JsonKey(name: "satIrsOnEki")  String? satIrsOnEki, @JsonKey(name: "varsayilanNakitKasa")  String? varsayilanNakitKasa, @JsonKey(name: "sirket_Depo_YetkiTuru")  String? sirketDepoYetkiTuru, @JsonKey(name: "varsayilan_ProjeTanimi")  String? varsayilanProjeTanimi, @JsonKey(name: "varsayilan_ProjeKodu")  String? varsayilanProjeKodu, @JsonKey(name: "varsayilanKrediKartiKasa")  String? varsayilanKrediKartiKasa, @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")  String? varsayilanMuhasebeReferansTanimi, @JsonKey(name: "varsayilan_MuhasebeReferansKodu")  String? varsayilanMuhasebeReferansKodu, @JsonKey(name: "satSipOnEki")  String? satSipOnEki, @JsonKey(name: "musSipOnEki")  String? musSipOnEki, @JsonKey(name: "alIrsOnEki")  String? alIrsOnEki, @JsonKey(name: "eFatOnEki")  String? eFatOnEki, @JsonKey(name: "eArvOnEki")  String? eArvOnEki, @JsonKey(name: "satAlmTalOnEki")  String? satAlmTalOnEki, @JsonKey(name: "satisTalOnEki")  String? satisTalOnEki, @JsonKey(name: "satAlmTekOnEki")  String? satAlmTekOnEki, @JsonKey(name: "satisTekOnEki")  String? satisTekOnEki, @JsonKey(name: "tahsilatOnEki")  String? tahsilatOnEki, @JsonKey(name: "sevkEmriOnEki")  String? sevkEmriOnEki, @JsonKey(name: "kkTahsilatOnEki")  String? kkTahsilatOnEki, @JsonKey(name: "eIrsDATOnEki")  String? eIrsDatOnEki, @JsonKey(name: "DATOnEki")  String? datOnEki, @JsonKey(name: "ambarCikisOnEki")  String? ambarCikisOnEki, @JsonKey(name: "ambarGirisOnEki")  String? ambarGirisOnEki, @JsonKey(name: "cariOnEki")  String? cariOnEki, @JsonKey(name: "uskOnEki")  String? uskOnEki, @JsonKey(name: "alisFatOnEki")  String? alisFatOnEki, @JsonKey(name: "satisFatOnEki")  String? satisFatOnEki, @JsonKey(name: "dekSeri_CekTahsil")  String? dekSeriCekTahsil, @JsonKey(name: "dekSeri_KKartiTahsilati")  String? dekSeriKKartiTahsilati, @JsonKey(name: "dekSeri_CariEFT")  String? dekSeriCariEft, @JsonKey(name: "dekSeri_HesArasiVirman")  String? dekSeriHesArasiVirman, @JsonKey(name: "dekSeri_HesArasiEFT")  String? dekSeriHesArasiEft, @JsonKey(name: "dekSeri_CariVirman")  String? dekSeriCariVirman)?  $default,) {final _that = this;
+switch (_that) {
+case _KullaniciYetkiModel() when $default != null:
+return $default(_that.bagliPlasiyerler,_that.eIrsOnEki,_that.eIrsAmbarOnEki,_that.yetkiliKasalar,_that.kkartiHesaplar,_that.kkartiKasalar,_that.acikHesapLimiti,_that.acikHesapTolerans,_that.acikHesapLimitiBelgeTipleri,_that.stokFiltreSQLTipi,_that.cariFiltreSQLTipi,_that.hizliTahsilatSozlesmeKodlari,_that.siparisMusSipEkstraAlanlar,_that.sirketAlisDepo,_that.sirketSatisDepo,_that.transferDATVarsayilanCikisDepo,_that.transferDATVarsayilanGirisDepo,_that.cariRehPlaEslesmesinBelgeTipleri,_that.profilKodu,_that.sirketAktifDepolar,_that.sirketDatYetkiliDepolar,_that.adminMi,_that.varsayilanPlasiyerTanimi,_that.siparisMusSipBakiyesizStokSecilmesin,_that.sevkiyatSatisIrsBakiyesizStokSecilmesin,_that.sevkiyatSatisFatBakiyesizStokSecilmesin,_that.plasiyerKodu,_that.varsayilanPlasiyerKodu,_that.kkartiTahsilatYontemi,_that.satIrsOnEki,_that.varsayilanNakitKasa,_that.sirketDepoYetkiTuru,_that.varsayilanProjeTanimi,_that.varsayilanProjeKodu,_that.varsayilanKrediKartiKasa,_that.varsayilanMuhasebeReferansTanimi,_that.varsayilanMuhasebeReferansKodu,_that.satSipOnEki,_that.musSipOnEki,_that.alIrsOnEki,_that.eFatOnEki,_that.eArvOnEki,_that.satAlmTalOnEki,_that.satisTalOnEki,_that.satAlmTekOnEki,_that.satisTekOnEki,_that.tahsilatOnEki,_that.sevkEmriOnEki,_that.kkTahsilatOnEki,_that.eIrsDatOnEki,_that.datOnEki,_that.ambarCikisOnEki,_that.ambarGirisOnEki,_that.cariOnEki,_that.uskOnEki,_that.alisFatOnEki,_that.satisFatOnEki,_that.dekSeriCekTahsil,_that.dekSeriKKartiTahsilati,_that.dekSeriCariEft,_that.dekSeriHesArasiVirman,_that.dekSeriHesArasiEft,_that.dekSeriCariVirman);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

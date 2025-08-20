@@ -51,6 +51,7 @@ sealed class SiparislerRequestModel with _$SiparislerRequestModel {
     String? arrBelgeNo,
     String? lokalDAT,
     bool? faturalanmisIrsaliyelerGelsin,
+    String? onayDurumu,
   }) = _SiparislerRequestModel;
 
   factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);

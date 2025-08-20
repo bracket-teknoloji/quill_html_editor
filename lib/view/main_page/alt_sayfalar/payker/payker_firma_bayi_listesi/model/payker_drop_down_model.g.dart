@@ -14,7 +14,7 @@ _Pagination _$PaginationFromJson(Map<String, dynamic> json) => _Pagination(
 Map<String, dynamic> _$PaginationToJson(_Pagination instance) =>
     <String, dynamic>{
       'More': instance.more,
-      if (instance.totalCount case final value?) 'TotalCount': value,
+      'TotalCount': ?instance.totalCount,
     };
 
 _DropdownFilter _$DropdownFilterFromJson(Map<String, dynamic> json) =>
@@ -33,12 +33,12 @@ _DropdownFilter _$DropdownFilterFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$DropdownFilterToJson(_DropdownFilter instance) =>
     <String, dynamic>{
-      if (instance.searchTerm case final value?) 'SearchTerm': value,
+      'SearchTerm': ?instance.searchTerm,
       'PageNumber': instance.pageNumber,
       'PageSize': instance.pageSize,
-      if (instance.selectedValues case final value?) 'SelectedValues': value,
-      if (instance.filterType case final value?) 'FilterType': value,
-      if (instance.filters case final value?) 'Filters': value,
+      'SelectedValues': ?instance.selectedValues,
+      'FilterType': ?instance.filterType,
+      'Filters': ?instance.filters,
     };
 
 _DropdownResult _$DropdownResultFromJson(Map<String, dynamic> json) =>
@@ -53,16 +53,12 @@ _DropdownResult _$DropdownResultFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$DropdownResultToJson(_DropdownResult instance) =>
     <String, dynamic>{
-      if (instance.results?.map((e) => e.toJson()).toList() case final value?)
-        'Results': value,
-      if (instance.pagination?.toJson() case final value?) 'Pagination': value,
+      'Results': ?instance.results?.map((e) => e.toJson()).toList(),
+      'Pagination': ?instance.pagination?.toJson(),
     };
 
 _PaykerFirmaModel _$PaykerFirmaModelFromJson(Map<String, dynamic> json) =>
     _PaykerFirmaModel(id: json['Id'] as String?, text: json['Text'] as String?);
 
 Map<String, dynamic> _$PaykerFirmaModelToJson(_PaykerFirmaModel instance) =>
-    <String, dynamic>{
-      if (instance.id case final value?) 'Id': value,
-      if (instance.text case final value?) 'Text': value,
-    };
+    <String, dynamic>{'Id': ?instance.id, 'Text': ?instance.text};

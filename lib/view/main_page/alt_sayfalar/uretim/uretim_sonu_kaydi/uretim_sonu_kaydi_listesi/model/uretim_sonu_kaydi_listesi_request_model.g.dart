@@ -18,8 +18,8 @@ _$UretimSonuKaydiListesiRequestModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$UretimSonuKaydiListesiRequestModelToJson(
   _UretimSonuKaydiListesiRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.sayfa case final value?) 'Sayfa': value,
-  if (instance.ekranTipi case final value?) 'EkranTipi': value,
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
-  if (instance.searchText case final value?) 'SearchText': value,
+  'Sayfa': ?instance.sayfa,
+  'EkranTipi': ?instance.ekranTipi,
+  'BelgeNo': ?instance.belgeNo,
+  'SearchText': ?instance.searchText,
 };

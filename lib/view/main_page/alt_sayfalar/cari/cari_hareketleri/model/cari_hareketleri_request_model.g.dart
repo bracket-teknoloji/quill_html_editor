@@ -25,16 +25,15 @@ _CariHareketleriRequestModel _$CariHareketleriRequestModelFromJson(
 Map<String, dynamic> _$CariHareketleriRequestModelToJson(
   _CariHareketleriRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.siralama case final value?) 'SIRALAMA': value,
-  if (instance.sadeceTahsilatlarOdemeler case final value?)
-    'SadeceTahsilatlarOdemeler': value,
-  if (instance.cariKodu case final value?) 'CariKodu': value,
-  if (instance.ekranTipi case final value?) 'EkranTipi': value,
-  if (instance.arrPlasiyerKodu case final value?) 'ArrPlasiyerKodu': value,
-  if (instance.arrHareketTuru case final value?) 'ArrHareketTuru': value,
-  if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
-  if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
-  if (instance.ba case final value?) 'BA': value,
-  if (instance.menuKodu case final value?) 'MenuKodu': value,
-  if (instance.kapatilmis case final value?) 'Kapatilmis': value,
+  'SIRALAMA': ?instance.siralama,
+  'SadeceTahsilatlarOdemeler': ?instance.sadeceTahsilatlarOdemeler,
+  'CariKodu': ?instance.cariKodu,
+  'EkranTipi': ?instance.ekranTipi,
+  'ArrPlasiyerKodu': ?instance.arrPlasiyerKodu,
+  'ArrHareketTuru': ?instance.arrHareketTuru,
+  'BaslamaTarihi': ?instance.baslamaTarihi,
+  'BitisTarihi': ?instance.bitisTarihi,
+  'BA': ?instance.ba,
+  'MenuKodu': ?instance.menuKodu,
+  'Kapatilmis': ?instance.kapatilmis,
 };

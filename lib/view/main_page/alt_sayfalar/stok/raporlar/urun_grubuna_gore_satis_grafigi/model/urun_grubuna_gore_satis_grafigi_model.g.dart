@@ -22,13 +22,13 @@ UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(
 Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(
   UrunGrubunaGoreSatisGrafigiModel instance,
 ) => <String, dynamic>{
-  if (instance.grupKodu case final value?) 'GRUP_KODU': value,
-  if (instance.grupAdi case final value?) 'GRUP_ADI': value,
-  if (instance.netTutar case final value?) 'NET_TUTAR': value,
-  if (instance.toplamTutar case final value?) 'TOPLAM_TUTAR': value,
-  if (instance.oran case final value?) 'ORAN': value,
-  if (instance.sira case final value?) 'SIRA': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.oranMiktar case final value?) 'ORAN_MIKTAR': value,
-  if (instance.oranTutar case final value?) 'ORAN_TUTAR': value,
+  'GRUP_KODU': ?instance.grupKodu,
+  'GRUP_ADI': ?instance.grupAdi,
+  'NET_TUTAR': ?instance.netTutar,
+  'TOPLAM_TUTAR': ?instance.toplamTutar,
+  'ORAN': ?instance.oran,
+  'SIRA': ?instance.sira,
+  'MIKTAR': ?instance.miktar,
+  'ORAN_MIKTAR': ?instance.oranMiktar,
+  'ORAN_TUTAR': ?instance.oranTutar,
 };

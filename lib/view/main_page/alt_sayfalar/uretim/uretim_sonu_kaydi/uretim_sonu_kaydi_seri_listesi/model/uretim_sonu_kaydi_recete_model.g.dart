@@ -27,26 +27,21 @@ _UskReceteModel _$UskReceteModelFromJson(Map<String, dynamic> json) =>
       giristeSeri: json['GIRISTE_SERI'] as String?,
     );
 
-Map<String, dynamic> _$UskReceteModelToJson(
-  _UskReceteModel instance,
-) => <String, dynamic>{
-  if (instance.mamulKodu case final value?) 'MAMUL_KODU': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.sonOperasyon case final value?) 'SON_OPERASYON': value,
-  if (instance.ob case final value?) 'OB': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.cikistaSeri case final value?) 'CIKISTA_SERI': value,
-  if (instance.seriMiktarKadar case final value?) 'SERI_MIKTAR_KADAR': value,
-  if (instance.seriBakiyeKontrol case final value?)
-    'SERI_BAKIYE_KONTROL': value,
-  if (instance.seriCikistaOtomatik case final value?)
-    'SERI_CIKISTA_OTOMATIK': value,
-  if (instance.seriGiristeOtomatik case final value?)
-    'SERI_GIRISTE_OTOMATIK': value,
-  if (instance.sira case final value?) 'SIRA': value,
-  if (instance.otorec case final value?) 'OTOREC': value,
-  if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
-    'SERI_LIST': value,
-  if (instance.giristeSeri case final value?) 'GIRISTE_SERI': value,
-};
+Map<String, dynamic> _$UskReceteModelToJson(_UskReceteModel instance) =>
+    <String, dynamic>{
+      'MAMUL_KODU': ?instance.mamulKodu,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
+      'SON_OPERASYON': ?instance.sonOperasyon,
+      'OB': ?instance.ob,
+      'MIKTAR': ?instance.miktar,
+      'CIKISTA_SERI': ?instance.cikistaSeri,
+      'SERI_MIKTAR_KADAR': ?instance.seriMiktarKadar,
+      'SERI_BAKIYE_KONTROL': ?instance.seriBakiyeKontrol,
+      'SERI_CIKISTA_OTOMATIK': ?instance.seriCikistaOtomatik,
+      'SERI_GIRISTE_OTOMATIK': ?instance.seriGiristeOtomatik,
+      'SIRA': ?instance.sira,
+      'OTOREC': ?instance.otorec,
+      'SERI_LIST': ?instance.seriList?.map((e) => e.toJson()).toList(),
+      'GIRISTE_SERI': ?instance.giristeSeri,
+    };

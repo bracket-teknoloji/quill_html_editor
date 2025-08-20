@@ -25,14 +25,13 @@ _EkRehberRequestModel _$EkRehberRequestModelFromJson(
 Map<String, dynamic> _$EkRehberRequestModelToJson(
   _EkRehberRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
-  if (instance.belgeTarihi?.toIso8601String() case final value?)
-    'BelgeTarihi': value,
-  if (instance.belgeTipi case final value?) 'BelgeTipi': value,
-  if (instance.cariKodu case final value?) 'CariKodu': value,
-  if (instance.stokKodu case final value?) 'StokKodu': value,
-  if (instance.id case final value?) 'ID': value,
-  if (instance.rehberKodu case final value?) 'RehberKodu': value,
-  if (instance.yapkod case final value?) 'Yapkod': value,
-  if (instance.params case final value?) 'PARAMS': value,
+  'BelgeNo': ?instance.belgeNo,
+  'BelgeTarihi': ?instance.belgeTarihi?.toIso8601String(),
+  'BelgeTipi': ?instance.belgeTipi,
+  'CariKodu': ?instance.cariKodu,
+  'StokKodu': ?instance.stokKodu,
+  'ID': ?instance.id,
+  'RehberKodu': ?instance.rehberKodu,
+  'Yapkod': ?instance.yapkod,
+  'PARAMS': ?instance.params,
 };

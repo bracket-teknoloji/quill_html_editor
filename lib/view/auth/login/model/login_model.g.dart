@@ -74,15 +74,14 @@ TokenModel _$TokenModelFromJson(Map<String, dynamic> json) => TokenModel()
   ..error = json['error'] as String?
   ..errorDescription = json['error_description'] as String?;
 
-Map<String, dynamic> _$TokenModelToJson(
-  TokenModel instance,
-) => <String, dynamic>{
-  if (instance.accessToken case final value?) 'access_token': value,
-  if (instance.tokenType case final value?) 'token_type': value,
-  if (instance.expiresIn case final value?) 'expires_in': value,
-  if (instance.userJson?.toJson() case final value?) 'USER_JSON': value,
-  if (instance.issued case final value?) '.issued': value,
-  if (instance.expires case final value?) '.expires': value,
-  if (instance.error case final value?) 'error': value,
-  if (instance.errorDescription case final value?) 'error_description': value,
-};
+Map<String, dynamic> _$TokenModelToJson(TokenModel instance) =>
+    <String, dynamic>{
+      'access_token': ?instance.accessToken,
+      'token_type': ?instance.tokenType,
+      'expires_in': ?instance.expiresIn,
+      'USER_JSON': ?instance.userJson?.toJson(),
+      '.issued': ?instance.issued,
+      '.expires': ?instance.expires,
+      'error': ?instance.error,
+      'error_description': ?instance.errorDescription,
+    };

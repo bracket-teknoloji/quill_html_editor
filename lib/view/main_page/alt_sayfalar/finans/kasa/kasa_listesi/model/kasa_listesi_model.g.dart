@@ -27,25 +27,23 @@ _KasaListesiModel _$KasaListesiModelFromJson(Map<String, dynamic> json) =>
       dovizAdi: json['DOVIZ_ADI'] as String?,
     );
 
-Map<String, dynamic> _$KasaListesiModelToJson(
-  _KasaListesiModel instance,
-) => <String, dynamic>{
-  if (instance.kasaKodu case final value?) 'KASA_KODU': value,
-  if (instance.kasaTanimi case final value?) 'KASA_TANIMI': value,
-  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-  if (instance.dovizli case final value?) 'DOVIZLI': value,
-  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-  if (instance.kkartKasasi case final value?) 'KKART_KASASI': value,
-  if (instance.toplamGiris case final value?) 'TOPLAM_GIRIS': value,
-  if (instance.toplamCikis case final value?) 'TOPLAM_CIKIS': value,
-  if (instance.bakiye case final value?) 'BAKIYE': value,
-  if (instance.devirliBakiye case final value?) 'DEVIRLI_BAKIYE': value,
-  if (instance.devirTutari case final value?) 'DEVIR_TUTARI': value,
-  if (instance.dovizToplamGiris case final value?) 'DOVIZ_TOPLAM_GIRIS': value,
-  if (instance.dovizToplamCikis case final value?) 'DOVIZ_TOPLAM_CIKIS': value,
-  if (instance.dovizBakiye case final value?) 'DOVIZ_BAKIYE': value,
-  if (instance.devirliDovizBakiye case final value?)
-    'DEVIRLI_DOVIZ_BAKIYE': value,
-  if (instance.dovizDevirTutari case final value?) 'DOVIZ_DEVIR_TUTARI': value,
-  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-};
+Map<String, dynamic> _$KasaListesiModelToJson(_KasaListesiModel instance) =>
+    <String, dynamic>{
+      'KASA_KODU': ?instance.kasaKodu,
+      'KASA_TANIMI': ?instance.kasaTanimi,
+      'SUBE_KODU': ?instance.subeKodu,
+      'DOVIZLI': ?instance.dovizli,
+      'DOVIZ_TIPI': ?instance.dovizTipi,
+      'KKART_KASASI': ?instance.kkartKasasi,
+      'TOPLAM_GIRIS': ?instance.toplamGiris,
+      'TOPLAM_CIKIS': ?instance.toplamCikis,
+      'BAKIYE': ?instance.bakiye,
+      'DEVIRLI_BAKIYE': ?instance.devirliBakiye,
+      'DEVIR_TUTARI': ?instance.devirTutari,
+      'DOVIZ_TOPLAM_GIRIS': ?instance.dovizToplamGiris,
+      'DOVIZ_TOPLAM_CIKIS': ?instance.dovizToplamCikis,
+      'DOVIZ_BAKIYE': ?instance.dovizBakiye,
+      'DEVIRLI_DOVIZ_BAKIYE': ?instance.devirliDovizBakiye,
+      'DOVIZ_DEVIR_TUTARI': ?instance.dovizDevirTutari,
+      'DOVIZ_ADI': ?instance.dovizAdi,
+    };

@@ -100,9 +100,8 @@ Map<String, dynamic> _$BaseProfilParametreModelToJson(
   'ACIK_TEMA_MI': instance.acikTemaMi,
   'TEMA_MODU': _$ThemeModeEnumMap[instance.temaModu]!,
   'ROTA_DISI_GORUNSUN_MU': instance.rotaDisiGorunsunMu,
-  if (instance.netFectDizaynList?.toJson() case final value?)
-    'NET_FECT_DIZAYN_LIST': value,
-  if (instance.yaziciList?.toJson() case final value?) 'YAZICI_LIST': value,
+  'NET_FECT_DIZAYN_LIST': ?instance.netFectDizaynList?.toJson(),
+  'YAZICI_LIST': ?instance.yaziciList?.toJson(),
   'OLCUM_GIRISI_BELGE_TIPI':
       _$EditTipiEnumEnumMap[instance.olcumGirisiBelgeTipi]!,
   'KAPALI_BELGELER_LISTELENMESIN_MI': instance.kapaliBelgelerListelenmesinMi,
@@ -118,8 +117,7 @@ Map<String, dynamic> _$BaseProfilParametreModelToJson(
   'IRS_FATURALASAN_IRSALIYELER_GELSIN':
       instance.irsFaturalasanIrsaliyelerGelsin,
   'E_IRSALIYE_SECILI_GELSIN': instance.eIrsaliyeSeciliGelsin,
-  if (instance.depoTalepDepoList?.toJson() case final value?)
-    'DEPO_TALEP_DEPO_LIST': value,
+  'DEPO_TALEP_DEPO_LIST': ?instance.depoTalepDepoList?.toJson(),
   'FATURA_KARLILIK_MALIYET_TIPI': instance.faturaKarlilikMaliyetTipi,
   'STOKHAREKETLERI_GIZLENECEK_ALANLAR':
       instance.stokhareketleriGizlenecekAlanlar,

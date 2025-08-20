@@ -19,9 +19,9 @@ _$IsEmriHammaddeTakibiDetayRequestModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$IsEmriHammaddeTakibiDetayRequestModelToJson(
   _IsEmriHammaddeTakibiDetayRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.takipno case final value?) 'TAKIPNO': value,
-  if (instance.tip case final value?) 'TIP': value,
-  if (instance.barcode case final value?) 'BARCODE': value,
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.referansStokKodu case final value?) 'REFERANS_STOK_KODU': value,
+  'TAKIPNO': ?instance.takipno,
+  'TIP': ?instance.tip,
+  'BARCODE': ?instance.barcode,
+  'ISLEM_KODU': ?instance.islemKodu,
+  'REFERANS_STOK_KODU': ?instance.referansStokKodu,
 };

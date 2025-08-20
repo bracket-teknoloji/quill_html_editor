@@ -21,11 +21,11 @@ _SeriHareketleriRequestModel _$SeriHareketleriRequestModelFromJson(
 Map<String, dynamic> _$SeriHareketleriRequestModelToJson(
   _SeriHareketleriRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.stokKodu case final value?) 'StokKodu': value,
-  if (instance.seriNo case final value?) 'SeriNo': value,
-  if (instance.sirala case final value?) 'Sirala': value,
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
-  if (instance.belgeTipi case final value?) 'BelgeTipi': value,
-  if (instance.hareketId case final value?) 'HareketID': value,
-  if (instance.tempGetir case final value?) 'TempGetir': value,
+  'StokKodu': ?instance.stokKodu,
+  'SeriNo': ?instance.seriNo,
+  'Sirala': ?instance.sirala,
+  'BelgeNo': ?instance.belgeNo,
+  'BelgeTipi': ?instance.belgeTipi,
+  'HareketID': ?instance.hareketId,
+  'TempGetir': ?instance.tempGetir,
 };

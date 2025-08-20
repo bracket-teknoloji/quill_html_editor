@@ -141,7 +141,7 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
         if (widget.model.model?.cariKodu == null) {
           final result = await Get.toNamed(
             "mainPage/cariListesiOzel",
-            arguments: CariRequestModel(belgeTuru: model.editTipiEnum?.rawValue),
+            arguments: CariRequestModel(belgeTuru: model.editTipiEnum?.rawValue, menuKodu: "CARI_CARI"),
           );
           if ((result as CariListesiModel?)?.muhtelifMi ?? false) {
             BaseSiparisEditModel.instance.muhtelifCariModel = result;

@@ -24,16 +24,16 @@ _OlcumOperatorModel _$OlcumOperatorModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OlcumOperatorModelToJson(_OlcumOperatorModel instance) =>
     <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.isyeri case final value?) 'ISYERI': value,
-      if (instance.adi case final value?) 'ADI': value,
-      if (instance.istasyonKodu case final value?) 'ISTASYON_KODU': value,
-      if (instance.istasyonTanimi case final value?) 'ISTASYON_TANIMI': value,
-      if (instance.durum case final value?) 'DURUM': value,
-      if (instance.sicilno case final value?) 'SICILNO': value,
-      if (instance.adiSoyadi case final value?) 'ADI_SOYADI': value,
-      if (instance.soyadi case final value?) 'SOYADI': value,
-      if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
-      if (instance.kartid case final value?) 'KARTID': value,
-      if (instance.resim case final value?) 'RESIM': value,
+      'ID': ?instance.id,
+      'ISYERI': ?instance.isyeri,
+      'ADI': ?instance.adi,
+      'ISTASYON_KODU': ?instance.istasyonKodu,
+      'ISTASYON_TANIMI': ?instance.istasyonTanimi,
+      'DURUM': ?instance.durum,
+      'SICILNO': ?instance.sicilno,
+      'ADI_SOYADI': ?instance.adiSoyadi,
+      'SOYADI': ?instance.soyadi,
+      'ISLETME_KODU': ?instance.isletmeKodu,
+      'KARTID': ?instance.kartid,
+      'RESIM': ?instance.resim,
     };

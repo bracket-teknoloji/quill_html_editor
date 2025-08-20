@@ -16,6 +16,6 @@ _$BarkodTanimlaKayitlariRequestModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$BarkodTanimlaKayitlariRequestModelToJson(
   _BarkodTanimlaKayitlariRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.stokKodu case final value?) 'StokKodu': value,
-  if (instance.kayitTipi case final value?) 'KayitTipi': value,
+  'StokKodu': ?instance.stokKodu,
+  'KayitTipi': ?instance.kayitTipi,
 };

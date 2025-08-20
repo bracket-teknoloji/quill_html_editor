@@ -111,6 +111,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     kod3Controller = TextEditingController(text: stokModel.kod3);
     kod4Controller = TextEditingController(text: stokModel.kod4);
     kod5Controller = TextEditingController(text: stokModel.kod5);
+    stokModel.subeKodu ??= 0;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       subeChecker();
       subeController.text =
@@ -122,6 +123,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
         subeController.text = "Şubelerde Ortak";
         stokModel.subeKodu = -1;
       }
+
       if (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala) {
         if (stokModel.stokKodu == null) {
           stokKoduController.text = await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";

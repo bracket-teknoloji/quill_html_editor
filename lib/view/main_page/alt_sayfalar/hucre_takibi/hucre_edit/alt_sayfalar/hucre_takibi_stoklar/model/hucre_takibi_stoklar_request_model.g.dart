@@ -20,10 +20,10 @@ _HucreTakibiStoklarRequestModel _$HucreTakibiStoklarRequestModelFromJson(
 Map<String, dynamic> _$HucreTakibiStoklarRequestModelToJson(
   _HucreTakibiStoklarRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.depoKodu case final value?) 'DepoKodu': value,
-  if (instance.islemTuru case final value?) 'IslemTuru': value,
-  if (instance.cariKodu case final value?) 'CariKodu': value,
-  if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
-  if (instance.stokKodu case final value?) 'StokKodu': value,
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
+  'DepoKodu': ?instance.depoKodu,
+  'IslemTuru': ?instance.islemTuru,
+  'CariKodu': ?instance.cariKodu,
+  'PickerBelgeTuru': ?instance.pickerBelgeTuru,
+  'StokKodu': ?instance.stokKodu,
+  'BelgeNo': ?instance.belgeNo,
 };

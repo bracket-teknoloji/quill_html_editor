@@ -15,7 +15,4 @@ _MuhasebeReferansModel _$MuhasebeReferansModelFromJson(
 
 Map<String, dynamic> _$MuhasebeReferansModelToJson(
   _MuhasebeReferansModel instance,
-) => <String, dynamic>{
-  if (instance.kodu case final value?) 'KODU': value,
-  if (instance.tanimi case final value?) 'TANIMI': value,
-};
+) => <String, dynamic>{'KODU': ?instance.kodu, 'TANIMI': ?instance.tanimi};

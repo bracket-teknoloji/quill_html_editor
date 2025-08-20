@@ -96,6 +96,7 @@ abstract class _SiparislerViewModelBase with Store, MobxNetworkMixin {
       cariKodu != null ||
       ozelKod1 != null ||
       kapaliBelgelerListelenmesin ||
+      onayBekliyor ||
       projeKodu != null ||
       arrGrupKodu != null ||
       arrKod1 != null ||
@@ -178,6 +179,7 @@ abstract class _SiparislerViewModelBase with Store, MobxNetworkMixin {
   SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(
     pickerBelgeTuru: pickerBelgeTuru,
     kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin,
+    onayDurumu: onayBekliyor ? "B" : null,
     sayfa: sayfa,
     siralama: siralama,
     searchText: searchText,
@@ -207,6 +209,9 @@ abstract class _SiparislerViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   bool kapaliBelgelerListelenmesin = CacheManager.getProfilParametre.kapaliBelgelerListelenmesinMi;
+
+  @observable
+  bool onayBekliyor = false;
 
   @observable
   String? ozelKod1;
@@ -272,6 +277,11 @@ abstract class _SiparislerViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setOnayBekliyor(bool value) {
+    onayBekliyor = value;
+  }
+
+  @action
   void setSearchText(String? value) => searchText = value;
   @action
   void setProjeKodu(String? value) => projeKodu = value;
@@ -315,6 +325,7 @@ abstract class _SiparislerViewModelBase with Store, MobxNetworkMixin {
     setArrPlasiyerKodu(null);
     setSiralama("TARIH_ZA");
     setKapaliBelgelerListelenmesin(false);
+    setOnayBekliyor(false);
     setSearchText(null);
     setCariTipi(null);
     resetSayfa();

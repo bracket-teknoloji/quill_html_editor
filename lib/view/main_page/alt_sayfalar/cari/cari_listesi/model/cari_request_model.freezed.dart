@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -89,6 +88,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [CariRequestModel].
+extension CariRequestModelPatterns on CariRequestModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CariRequestModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CariRequestModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CariRequestModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _CariRequestModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CariRequestModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CariRequestModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? filterText,  List<String>? kod,  int? sayfa,  String? ilce,  String? cariTipi, @JsonKey(name: "SIRALAMA")  String? siralama,  String? menuKodu,  bool? eFaturaGoster,  String? bagliCariKodu, @JsonKey(name: "FILTER_BAKIYE")  String? filterBakiye,  List<String>? arrGrupKodu,  List<String>? arrKod1,  List<String>? arrKod2,  List<String>? arrKod3,  List<String>? arrKod4,  List<String>? arrKod5,  List<String>? arrSehir, @JsonKey(name: "ArrPlasiyerKodu")  List<String>? arrPlasiyerKodu,  bool? plasiyerKisitiYok,  String? belgeTuru,  String? vergiNo,  String? siparisKarsilanmaDurumu,  bool? kisitYok,  String? secildi,  String? teslimCari,  String? rotaDisi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CariRequestModel() when $default != null:
+return $default(_that.filterText,_that.kod,_that.sayfa,_that.ilce,_that.cariTipi,_that.siralama,_that.menuKodu,_that.eFaturaGoster,_that.bagliCariKodu,_that.filterBakiye,_that.arrGrupKodu,_that.arrKod1,_that.arrKod2,_that.arrKod3,_that.arrKod4,_that.arrKod5,_that.arrSehir,_that.arrPlasiyerKodu,_that.plasiyerKisitiYok,_that.belgeTuru,_that.vergiNo,_that.siparisKarsilanmaDurumu,_that.kisitYok,_that.secildi,_that.teslimCari,_that.rotaDisi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? filterText,  List<String>? kod,  int? sayfa,  String? ilce,  String? cariTipi, @JsonKey(name: "SIRALAMA")  String? siralama,  String? menuKodu,  bool? eFaturaGoster,  String? bagliCariKodu, @JsonKey(name: "FILTER_BAKIYE")  String? filterBakiye,  List<String>? arrGrupKodu,  List<String>? arrKod1,  List<String>? arrKod2,  List<String>? arrKod3,  List<String>? arrKod4,  List<String>? arrKod5,  List<String>? arrSehir, @JsonKey(name: "ArrPlasiyerKodu")  List<String>? arrPlasiyerKodu,  bool? plasiyerKisitiYok,  String? belgeTuru,  String? vergiNo,  String? siparisKarsilanmaDurumu,  bool? kisitYok,  String? secildi,  String? teslimCari,  String? rotaDisi)  $default,) {final _that = this;
+switch (_that) {
+case _CariRequestModel():
+return $default(_that.filterText,_that.kod,_that.sayfa,_that.ilce,_that.cariTipi,_that.siralama,_that.menuKodu,_that.eFaturaGoster,_that.bagliCariKodu,_that.filterBakiye,_that.arrGrupKodu,_that.arrKod1,_that.arrKod2,_that.arrKod3,_that.arrKod4,_that.arrKod5,_that.arrSehir,_that.arrPlasiyerKodu,_that.plasiyerKisitiYok,_that.belgeTuru,_that.vergiNo,_that.siparisKarsilanmaDurumu,_that.kisitYok,_that.secildi,_that.teslimCari,_that.rotaDisi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? filterText,  List<String>? kod,  int? sayfa,  String? ilce,  String? cariTipi, @JsonKey(name: "SIRALAMA")  String? siralama,  String? menuKodu,  bool? eFaturaGoster,  String? bagliCariKodu, @JsonKey(name: "FILTER_BAKIYE")  String? filterBakiye,  List<String>? arrGrupKodu,  List<String>? arrKod1,  List<String>? arrKod2,  List<String>? arrKod3,  List<String>? arrKod4,  List<String>? arrKod5,  List<String>? arrSehir, @JsonKey(name: "ArrPlasiyerKodu")  List<String>? arrPlasiyerKodu,  bool? plasiyerKisitiYok,  String? belgeTuru,  String? vergiNo,  String? siparisKarsilanmaDurumu,  bool? kisitYok,  String? secildi,  String? teslimCari,  String? rotaDisi)?  $default,) {final _that = this;
+switch (_that) {
+case _CariRequestModel() when $default != null:
+return $default(_that.filterText,_that.kod,_that.sayfa,_that.ilce,_that.cariTipi,_that.siralama,_that.menuKodu,_that.eFaturaGoster,_that.bagliCariKodu,_that.filterBakiye,_that.arrGrupKodu,_that.arrKod1,_that.arrKod2,_that.arrKod3,_that.arrKod4,_that.arrKod5,_that.arrSehir,_that.arrPlasiyerKodu,_that.plasiyerKisitiYok,_that.belgeTuru,_that.vergiNo,_that.siparisKarsilanmaDurumu,_that.kisitYok,_that.secildi,_that.teslimCari,_that.rotaDisi);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

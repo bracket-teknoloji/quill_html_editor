@@ -19,9 +19,9 @@ _OlcumDatResponseModel _$OlcumDatResponseModelFromJson(
 Map<String, dynamic> _$OlcumDatResponseModelToJson(
   _OlcumDatResponseModel instance,
 ) => <String, dynamic>{
-  if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
-  if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.seriNo case final value?) 'SERI_NO': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
+  'GIRIS_DEPO': ?instance.girisDepo,
+  'CIKIS_DEPO': ?instance.cikisDepo,
+  'STOK_KODU': ?instance.stokKodu,
+  'SERI_NO': ?instance.seriNo,
+  'MIKTAR': ?instance.miktar,
 };

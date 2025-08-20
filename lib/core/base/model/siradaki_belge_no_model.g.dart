@@ -19,9 +19,9 @@ SiradakiBelgeNoModel _$SiradakiBelgeNoModelFromJson(
 Map<String, dynamic> _$SiradakiBelgeNoModelToJson(
   SiradakiBelgeNoModel instance,
 ) => <String, dynamic>{
-  if (instance.seri case final value?) 'Seri': value,
-  if (instance.belgeTipi case final value?) 'BelgeTipi': value,
-  if (instance.eIrsaliye case final value?) 'EIrsaliye': value,
-  if (instance.cariKodu case final value?) 'CariKodu': value,
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
+  'Seri': ?instance.seri,
+  'BelgeTipi': ?instance.belgeTipi,
+  'EIrsaliye': ?instance.eIrsaliye,
+  'CariKodu': ?instance.cariKodu,
+  'BelgeNo': ?instance.belgeNo,
 };

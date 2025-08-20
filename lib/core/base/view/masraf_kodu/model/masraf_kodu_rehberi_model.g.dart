@@ -16,6 +16,6 @@ _MasrafKoduRehberiModel _$MasrafKoduRehberiModelFromJson(
 Map<String, dynamic> _$MasrafKoduRehberiModelToJson(
   _MasrafKoduRehberiModel instance,
 ) => <String, dynamic>{
-  if (instance.masrafKodu case final value?) 'MASRAF_KODU': value,
-  if (instance.masrafAdi case final value?) 'MASRAF_ADI': value,
+  'MASRAF_KODU': ?instance.masrafKodu,
+  'MASRAF_ADI': ?instance.masrafAdi,
 };

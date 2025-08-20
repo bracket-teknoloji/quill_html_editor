@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -424,7 +424,7 @@
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			packageReferences = (
-				781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage" */,
+				781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "FlutterGeneratedPluginSwiftPackage" */,
 			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
@@ -477,13 +477,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -573,13 +569,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -706,7 +698,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
@@ -752,7 +744,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
@@ -797,7 +789,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
@@ -897,7 +889,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_BITCODE = NO;
@@ -912,7 +904,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.19;
+				MARKETING_VERSION = 1.9.20;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -931,7 +923,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -950,7 +942,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -967,7 +959,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1108,7 +1100,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_BITCODE = NO;
@@ -1123,7 +1115,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.19;
+				MARKETING_VERSION = 1.9.20;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1152,7 +1144,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 478;
+				CURRENT_PROJECT_VERSION = 482;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_BITCODE = NO;
@@ -1167,7 +1159,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.19;
+				MARKETING_VERSION = 1.9.20;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;
@@ -1227,7 +1219,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage" */ = {
+		781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "FlutterGeneratedPluginSwiftPackage" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage;
 		};

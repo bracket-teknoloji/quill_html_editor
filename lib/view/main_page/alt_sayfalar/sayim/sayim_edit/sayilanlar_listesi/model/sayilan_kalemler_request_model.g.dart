@@ -21,11 +21,11 @@ _SayilanKalemlerRequestModel _$SayilanKalemlerRequestModelFromJson(
 Map<String, dynamic> _$SayilanKalemlerRequestModelToJson(
   _SayilanKalemlerRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.filtreKodu case final value?) 'FiltreKodu': value,
-  if (instance.depoKodu case final value?) 'DepoKodu': value,
-  if (instance.kullaniciAdi case final value?) 'KullaniciAdi': value,
-  if (instance.ekranTipi case final value?) 'EkranTipi': value,
-  if (instance.belgeNo case final value?) 'BelgeNo': value,
-  if (instance.seriBazinda case final value?) 'seriBazinda': value,
-  if (instance.id case final value?) 'ID': value,
+  'FiltreKodu': ?instance.filtreKodu,
+  'DepoKodu': ?instance.depoKodu,
+  'KullaniciAdi': ?instance.kullaniciAdi,
+  'EkranTipi': ?instance.ekranTipi,
+  'BelgeNo': ?instance.belgeNo,
+  'seriBazinda': ?instance.seriBazinda,
+  'ID': ?instance.id,
 };

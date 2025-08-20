@@ -18,7 +18,6 @@ _OrtalamaVadeTarihiModel _$OrtalamaVadeTarihiModelFromJson(
 Map<String, dynamic> _$OrtalamaVadeTarihiModelToJson(
   _OrtalamaVadeTarihiModel instance,
 ) => <String, dynamic>{
-  if (instance.vadeTarihi?.toIso8601String() case final value?)
-    'VADE_TARIHI': value,
-  if (instance.tutar case final value?) 'TUTAR': value,
+  'VADE_TARIHI': ?instance.vadeTarihi?.toIso8601String(),
+  'TUTAR': ?instance.tutar,
 };

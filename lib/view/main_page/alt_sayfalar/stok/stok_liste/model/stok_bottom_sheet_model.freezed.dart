@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -92,6 +91,130 @@ as bool?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [StokBottomSheetModel].
+extension StokBottomSheetModelPatterns on StokBottomSheetModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _StokBottomSheetModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _StokBottomSheetModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _StokBottomSheetModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _StokBottomSheetModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _StokBottomSheetModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _StokBottomSheetModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? sayfa,  String? bakiyeDurumu,  String? menuKodu,  String? resimleriGoster,  String? siralama,  String? searchText,  String? belgeNo,  String? belgeTarihi,  String? belgeTipi,  String? cariKodu,  int? faturaDepoKodu,  String? ekranTipi,  int? faturaTipi,  String? resimGoster,  bool? kisitYok,  String? stokKodu,  bool? okutuldu,  String? seriTakibiVar,  String? fiyatGrubu,  String? ozelKod1,  String? ozelKod2,  List<StokDetayliAramaAlanlar>? searchList,  List<BaseGrupKoduModel>? arrGrupKodu,  List<BaseGrupKoduModel>? arrKod1,  List<BaseGrupKoduModel>? arrKod2,  List<BaseGrupKoduModel>? arrKod3,  List<BaseGrupKoduModel>? arrKod4,  List<BaseGrupKoduModel>? arrKod5,  bool? receteliStoklar)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _StokBottomSheetModel() when $default != null:
+return $default(_that.sayfa,_that.bakiyeDurumu,_that.menuKodu,_that.resimleriGoster,_that.siralama,_that.searchText,_that.belgeNo,_that.belgeTarihi,_that.belgeTipi,_that.cariKodu,_that.faturaDepoKodu,_that.ekranTipi,_that.faturaTipi,_that.resimGoster,_that.kisitYok,_that.stokKodu,_that.okutuldu,_that.seriTakibiVar,_that.fiyatGrubu,_that.ozelKod1,_that.ozelKod2,_that.searchList,_that.arrGrupKodu,_that.arrKod1,_that.arrKod2,_that.arrKod3,_that.arrKod4,_that.arrKod5,_that.receteliStoklar);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? sayfa,  String? bakiyeDurumu,  String? menuKodu,  String? resimleriGoster,  String? siralama,  String? searchText,  String? belgeNo,  String? belgeTarihi,  String? belgeTipi,  String? cariKodu,  int? faturaDepoKodu,  String? ekranTipi,  int? faturaTipi,  String? resimGoster,  bool? kisitYok,  String? stokKodu,  bool? okutuldu,  String? seriTakibiVar,  String? fiyatGrubu,  String? ozelKod1,  String? ozelKod2,  List<StokDetayliAramaAlanlar>? searchList,  List<BaseGrupKoduModel>? arrGrupKodu,  List<BaseGrupKoduModel>? arrKod1,  List<BaseGrupKoduModel>? arrKod2,  List<BaseGrupKoduModel>? arrKod3,  List<BaseGrupKoduModel>? arrKod4,  List<BaseGrupKoduModel>? arrKod5,  bool? receteliStoklar)  $default,) {final _that = this;
+switch (_that) {
+case _StokBottomSheetModel():
+return $default(_that.sayfa,_that.bakiyeDurumu,_that.menuKodu,_that.resimleriGoster,_that.siralama,_that.searchText,_that.belgeNo,_that.belgeTarihi,_that.belgeTipi,_that.cariKodu,_that.faturaDepoKodu,_that.ekranTipi,_that.faturaTipi,_that.resimGoster,_that.kisitYok,_that.stokKodu,_that.okutuldu,_that.seriTakibiVar,_that.fiyatGrubu,_that.ozelKod1,_that.ozelKod2,_that.searchList,_that.arrGrupKodu,_that.arrKod1,_that.arrKod2,_that.arrKod3,_that.arrKod4,_that.arrKod5,_that.receteliStoklar);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? sayfa,  String? bakiyeDurumu,  String? menuKodu,  String? resimleriGoster,  String? siralama,  String? searchText,  String? belgeNo,  String? belgeTarihi,  String? belgeTipi,  String? cariKodu,  int? faturaDepoKodu,  String? ekranTipi,  int? faturaTipi,  String? resimGoster,  bool? kisitYok,  String? stokKodu,  bool? okutuldu,  String? seriTakibiVar,  String? fiyatGrubu,  String? ozelKod1,  String? ozelKod2,  List<StokDetayliAramaAlanlar>? searchList,  List<BaseGrupKoduModel>? arrGrupKodu,  List<BaseGrupKoduModel>? arrKod1,  List<BaseGrupKoduModel>? arrKod2,  List<BaseGrupKoduModel>? arrKod3,  List<BaseGrupKoduModel>? arrKod4,  List<BaseGrupKoduModel>? arrKod5,  bool? receteliStoklar)?  $default,) {final _that = this;
+switch (_that) {
+case _StokBottomSheetModel() when $default != null:
+return $default(_that.sayfa,_that.bakiyeDurumu,_that.menuKodu,_that.resimleriGoster,_that.siralama,_that.searchText,_that.belgeNo,_that.belgeTarihi,_that.belgeTipi,_that.cariKodu,_that.faturaDepoKodu,_that.ekranTipi,_that.faturaTipi,_that.resimGoster,_that.kisitYok,_that.stokKodu,_that.okutuldu,_that.seriTakibiVar,_that.fiyatGrubu,_that.ozelKod1,_that.ozelKod2,_that.searchList,_that.arrGrupKodu,_that.arrKod1,_that.arrKod2,_that.arrKod3,_that.arrKod4,_that.arrKod5,_that.receteliStoklar);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

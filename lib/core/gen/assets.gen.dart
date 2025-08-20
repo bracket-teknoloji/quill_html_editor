@@ -1,3 +1,5 @@
+// dart format width=120
+
 /// GENERATED CODE - DO NOT MODIFY BY HAND
 /// *****************************************************
 ///  FlutterGen
@@ -5,7 +7,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
+// ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -30,16 +32,13 @@ class $AssetsAppIconGen {
   const $AssetsAppIconGen();
 
   /// File path: assets/app_icon/PickerLogoBeyaz.svg
-  SvgGenImage get pickerLogoBeyaz =>
-      const SvgGenImage('assets/app_icon/PickerLogoBeyaz.svg');
+  SvgGenImage get pickerLogoBeyaz => const SvgGenImage('assets/app_icon/PickerLogoBeyaz.svg');
 
   /// File path: assets/app_icon/beyaz_1024.png
-  AssetGenImage get beyaz1024 =>
-      const AssetGenImage('assets/app_icon/beyaz_1024.png');
+  AssetGenImage get beyaz1024 => const AssetGenImage('assets/app_icon/beyaz_1024.png');
 
   /// File path: assets/app_icon/beyaz_400.png
-  AssetGenImage get beyaz400 =>
-      const AssetGenImage('assets/app_icon/beyaz_400.png');
+  AssetGenImage get beyaz400 => const AssetGenImage('assets/app_icon/beyaz_400.png');
 
   /// List of all assets
   List<dynamic> get values => [pickerLogoBeyaz, beyaz1024, beyaz400];
@@ -55,8 +54,7 @@ class $AssetsBackgroundGen {
   AssetGenImage get bg2 => const AssetGenImage('assets/background/bg2.png');
 
   /// File path: assets/background/payker-card-2-background.png
-  AssetGenImage get paykerCard2Background =>
-      const AssetGenImage('assets/background/payker-card-2-background.png');
+  AssetGenImage get paykerCard2Background => const AssetGenImage('assets/background/payker-card-2-background.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [bg1, bg2, paykerCard2Background];
@@ -66,64 +64,45 @@ class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   /// Directory path: assets/icons/PickerSvgIcon
-  $AssetsIconsPickerSvgIconGen get pickerSvgIcon =>
-      const $AssetsIconsPickerSvgIconGen();
+  $AssetsIconsPickerSvgIconGen get pickerSvgIcon => const $AssetsIconsPickerSvgIconGen();
 }
 
 class $AssetsLottiesGen {
   const $AssetsLottiesGen();
 
   /// File path: assets/lotties/image_processing_lottie.json
-  LottieGenImage get imageProcessingLottie =>
-      const LottieGenImage('assets/lotties/image_processing_lottie.json');
+  LottieGenImage get imageProcessingLottie => const LottieGenImage('assets/lotties/image_processing_lottie.json');
 
   /// File path: assets/lotties/location_lottie.json
-  LottieGenImage get locationLottie =>
-      const LottieGenImage('assets/lotties/location_lottie.json');
+  LottieGenImage get locationLottie => const LottieGenImage('assets/lotties/location_lottie.json');
 
   /// File path: assets/lotties/person_lottie.json
-  LottieGenImage get personLottie =>
-      const LottieGenImage('assets/lotties/person_lottie.json');
+  LottieGenImage get personLottie => const LottieGenImage('assets/lotties/person_lottie.json');
 
   /// File path: assets/lotties/woman_lottie.json
-  LottieGenImage get womanLottie =>
-      const LottieGenImage('assets/lotties/woman_lottie.json');
+  LottieGenImage get womanLottie => const LottieGenImage('assets/lotties/woman_lottie.json');
 
   /// List of all assets
-  List<LottieGenImage> get values => [
-    imageProcessingLottie,
-    locationLottie,
-    personLottie,
-    womanLottie,
-  ];
+  List<LottieGenImage> get values => [imageProcessingLottie, locationLottie, personLottie, womanLottie];
 }
 
 class $AssetsSplashGen {
   const $AssetsSplashGen();
 
   /// File path: assets/splash/PickerLogoTuruncu.png
-  AssetGenImage get pickerLogoTuruncuPng =>
-      const AssetGenImage('assets/splash/PickerLogoTuruncu.png');
+  AssetGenImage get pickerLogoTuruncuPng => const AssetGenImage('assets/splash/PickerLogoTuruncu.png');
 
   /// File path: assets/splash/PickerLogoTuruncu.svg
-  SvgGenImage get pickerLogoTuruncuSvg =>
-      const SvgGenImage('assets/splash/PickerLogoTuruncu.svg');
+  SvgGenImage get pickerLogoTuruncuSvg => const SvgGenImage('assets/splash/PickerLogoTuruncu.svg');
 
   /// File path: assets/splash/PickerLogoTuruncu1024.png
-  AssetGenImage get pickerLogoTuruncu1024 =>
-      const AssetGenImage('assets/splash/PickerLogoTuruncu1024.png');
+  AssetGenImage get pickerLogoTuruncu1024 => const AssetGenImage('assets/splash/PickerLogoTuruncu1024.png');
 
   /// File path: assets/splash/mapMarker.png
-  AssetGenImage get mapMarker =>
-      const AssetGenImage('assets/splash/mapMarker.png');
+  AssetGenImage get mapMarker => const AssetGenImage('assets/splash/mapMarker.png');
 
   /// List of all assets
-  List<dynamic> get values => [
-    pickerLogoTuruncuPng,
-    pickerLogoTuruncuSvg,
-    pickerLogoTuruncu1024,
-    mapMarker,
-  ];
+  List<dynamic> get values => [pickerLogoTuruncuPng, pickerLogoTuruncuSvg, pickerLogoTuruncu1024, mapMarker];
 }
 
 class $AssetsTranslationsGen {
@@ -143,16 +122,13 @@ class $AssetsIconsPickerSvgIconGen {
   const $AssetsIconsPickerSvgIconGen();
 
   /// Directory path: assets/icons/PickerSvgIcon/AnaMenu
-  $AssetsIconsPickerSvgIconAnaMenuGen get anaMenu =>
-      const $AssetsIconsPickerSvgIconAnaMenuGen();
+  $AssetsIconsPickerSvgIconAnaMenuGen get anaMenu => const $AssetsIconsPickerSvgIconAnaMenuGen();
 
   /// File path: assets/icons/PickerSvgIcon/User-Account.svg
-  SvgGenImage get userAccount =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/User-Account.svg');
+  SvgGenImage get userAccount => const SvgGenImage('assets/icons/PickerSvgIcon/User-Account.svg');
 
   /// File path: assets/icons/PickerSvgIcon/sirket_degistir.svg
-  SvgGenImage get sirketDegistir =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/sirket_degistir.svg');
+  SvgGenImage get sirketDegistir => const SvgGenImage('assets/icons/PickerSvgIcon/sirket_degistir.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [userAccount, sirketDegistir];
@@ -162,73 +138,55 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
   const $AssetsIconsPickerSvgIconAnaMenuGen();
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/atm_dollar.svg
-  SvgGenImage get atmDollar =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/atm_dollar.svg');
+  SvgGenImage get atmDollar => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/atm_dollar.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/counter.svg
-  SvgGenImage get counter =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/counter.svg');
+  SvgGenImage get counter => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/counter.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/e_belge.svg
-  SvgGenImage get eBelge =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/e_belge.svg');
+  SvgGenImage get eBelge => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/e_belge.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/factory_2.svg
-  SvgGenImage get factory2 =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/factory_2.svg');
+  SvgGenImage get factory2 => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/factory_2.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/forklift.svg
-  SvgGenImage get forklift =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/forklift.svg');
+  SvgGenImage get forklift => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/forklift.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/inventory.svg
-  SvgGenImage get inventory =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/inventory.svg');
+  SvgGenImage get inventory => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/inventory.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/monitoring.svg
-  SvgGenImage get monitoring =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/monitoring.svg');
+  SvgGenImage get monitoring => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/monitoring.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/offer.svg
-  SvgGenImage get offer =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/offer.svg');
+  SvgGenImage get offer => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/offer.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/order.svg
-  SvgGenImage get order =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/order.svg');
+  SvgGenImage get order => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/order.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/pallet.svg
-  SvgGenImage get pallet =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/pallet.svg');
+  SvgGenImage get pallet => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/pallet.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/profile.svg
-  SvgGenImage get profile =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/profile.svg');
+  SvgGenImage get profile => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/profile.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg
-  SvgGenImage get qualityControl => const SvgGenImage(
-    'assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg',
-  );
+  SvgGenImage get qualityControl => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/settings.svg
-  SvgGenImage get settings =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/settings.svg');
+  SvgGenImage get settings => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/settings.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/shelves.svg
-  SvgGenImage get shelves =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/shelves.svg');
+  SvgGenImage get shelves => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/shelves.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/supervisor.svg
-  SvgGenImage get supervisor =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/supervisor.svg');
+  SvgGenImage get supervisor => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/supervisor.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/trolley.svg
-  SvgGenImage get trolley =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/trolley.svg');
+  SvgGenImage get trolley => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/trolley.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/wallet.svg
-  SvgGenImage get wallet =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/wallet.svg');
+  SvgGenImage get wallet => const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/wallet.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
@@ -265,12 +223,13 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}, this.animation});
 
   final String _assetName;
 
   final Size? size;
   final Set<String> flavors;
+  final AssetGenImageAnimation? animation;
 
   Image image({
     Key? key,
@@ -334,12 +293,18 @@ class AssetGenImage {
   String get keyName => _assetName;
 }
 
-class SvgGenImage {
-  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = false;
+class AssetGenImageAnimation {
+  const AssetGenImageAnimation({required this.isAnimation, required this.duration, required this.frames});
 
-  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = true;
+  final bool isAnimation;
+  final Duration duration;
+  final int frames;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}}) : _isVecFormat = false;
+
+  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}}) : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -360,6 +325,7 @@ class SvgGenImage {
     String? semanticsLabel,
     bool excludeFromSemantics = false,
     _svg.SvgTheme? theme,
+    _svg.ColorMapper? colorMapper,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
@@ -368,17 +334,14 @@ class SvgGenImage {
   }) {
     final _svg.BytesLoader loader;
     if (_isVecFormat) {
-      loader = _vg.AssetBytesLoader(
-        _assetName,
-        assetBundle: bundle,
-        packageName: package,
-      );
+      loader = _vg.AssetBytesLoader(_assetName, assetBundle: bundle, packageName: package);
     } else {
       loader = _svg.SvgAssetLoader(
         _assetName,
         assetBundle: bundle,
         packageName: package,
         theme: theme,
+        colorMapper: colorMapper,
       );
     }
     return _svg.SvgPicture(
@@ -393,9 +356,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter:
-          colorFilter ??
-          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
+      colorFilter: colorFilter ?? (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );
@@ -424,8 +385,7 @@ class LottieGenImage {
     _lottie.LottieImageProviderFactory? imageProviderFactory,
     Key? key,
     AssetBundle? bundle,
-    Widget Function(BuildContext, Widget, _lottie.LottieComposition?)?
-    frameBuilder,
+    Widget Function(BuildContext, Widget, _lottie.LottieComposition?)? frameBuilder,
     ImageErrorWidgetBuilder? errorBuilder,
     double? width,
     double? height,

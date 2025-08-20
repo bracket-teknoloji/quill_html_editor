@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -64,6 +63,130 @@ as DateTime?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [ModuleInfoModel].
+extension ModuleInfoModelPatterns on ModuleInfoModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(){
+final _that = this;
+switch (_that) {
+case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(){
+final _that = this;
+switch (_that) {
+case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>() {final _that = this;
+switch (_that) {
+case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>() {final _that = this;
+switch (_that) {
+case _:
+  return null;
+
+}
+}
+
+}
 
 
 /// @nodoc
@@ -172,6 +295,130 @@ $DeveloperBilgiCopyWith<$Res>? get developerBilgi {
 }
 }
 
+
+/// Adds pattern-matching-related methods to [Hesap].
+extension HesapPatterns on Hesap {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Hesap value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Hesap() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Hesap value)  $default,){
+final _that = this;
+switch (_that) {
+case _Hesap():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Hesap value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Hesap() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  int? id, @HiveField(1)  String? email, @HiveField(2)  String? parola, @HiveField(3)  String? adi, @HiveField(4)  String? soyadi, @HiveField(5)  String? adiSoyadi, @HiveField(6)  String? firma, @HiveField(7)  String? telefon, @HiveField(8)  String? adres, @HiveField(9)  int? vergiDairesi, @HiveField(10)  String? vergiDairesiAdi, @HiveField(11)  String? vergiNumarasi, @HiveField(12)  int? ilKodu, @HiveField(13)  String? ilAdi, @HiveField(14)  int? ilceKodu, @HiveField(15)  String? ilceAdi, @HiveField(16)  bool? admin, @HiveField(17)  bool? aktif, @HiveField(18)  bool? bayiMi, @HiveField(19)  int? kullaniciSayisi, @HiveField(20)  String? dogrulamaKod, @HiveField(21)  bool? yetkiSerbestrapor, @HiveField(22)  bool? yetkiDizayn, @HiveField(23)  bool? yetkiSohbet, @HiveField(24)  bool? yetkiAjanda, @HiveField(25)  bool? yetkiYedekleme, @HiveField(26)  DateTime? kayittarihi, @HiveField(27)  bool? ftpKullanimi, @HiveField(28)  String? ftpAdres, @HiveField(29)  String? ftpKullaniciAdi, @HiveField(30)  String? ftpParola, @HiveField(31)  bool? ftpDosyaYedek, @HiveField(32)  List<Cihazlar>? cihazlar, @HiveField(33)  DeveloperBilgi? developerBilgi, @HiveField(34)  String? erpTipi, @HiveField(35)  String? erpVersiyon, @HiveField(36)  dynamic aciklama)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Hesap() when $default != null:
+return $default(_that.id,_that.email,_that.parola,_that.adi,_that.soyadi,_that.adiSoyadi,_that.firma,_that.telefon,_that.adres,_that.vergiDairesi,_that.vergiDairesiAdi,_that.vergiNumarasi,_that.ilKodu,_that.ilAdi,_that.ilceKodu,_that.ilceAdi,_that.admin,_that.aktif,_that.bayiMi,_that.kullaniciSayisi,_that.dogrulamaKod,_that.yetkiSerbestrapor,_that.yetkiDizayn,_that.yetkiSohbet,_that.yetkiAjanda,_that.yetkiYedekleme,_that.kayittarihi,_that.ftpKullanimi,_that.ftpAdres,_that.ftpKullaniciAdi,_that.ftpParola,_that.ftpDosyaYedek,_that.cihazlar,_that.developerBilgi,_that.erpTipi,_that.erpVersiyon,_that.aciklama);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  int? id, @HiveField(1)  String? email, @HiveField(2)  String? parola, @HiveField(3)  String? adi, @HiveField(4)  String? soyadi, @HiveField(5)  String? adiSoyadi, @HiveField(6)  String? firma, @HiveField(7)  String? telefon, @HiveField(8)  String? adres, @HiveField(9)  int? vergiDairesi, @HiveField(10)  String? vergiDairesiAdi, @HiveField(11)  String? vergiNumarasi, @HiveField(12)  int? ilKodu, @HiveField(13)  String? ilAdi, @HiveField(14)  int? ilceKodu, @HiveField(15)  String? ilceAdi, @HiveField(16)  bool? admin, @HiveField(17)  bool? aktif, @HiveField(18)  bool? bayiMi, @HiveField(19)  int? kullaniciSayisi, @HiveField(20)  String? dogrulamaKod, @HiveField(21)  bool? yetkiSerbestrapor, @HiveField(22)  bool? yetkiDizayn, @HiveField(23)  bool? yetkiSohbet, @HiveField(24)  bool? yetkiAjanda, @HiveField(25)  bool? yetkiYedekleme, @HiveField(26)  DateTime? kayittarihi, @HiveField(27)  bool? ftpKullanimi, @HiveField(28)  String? ftpAdres, @HiveField(29)  String? ftpKullaniciAdi, @HiveField(30)  String? ftpParola, @HiveField(31)  bool? ftpDosyaYedek, @HiveField(32)  List<Cihazlar>? cihazlar, @HiveField(33)  DeveloperBilgi? developerBilgi, @HiveField(34)  String? erpTipi, @HiveField(35)  String? erpVersiyon, @HiveField(36)  dynamic aciklama)  $default,) {final _that = this;
+switch (_that) {
+case _Hesap():
+return $default(_that.id,_that.email,_that.parola,_that.adi,_that.soyadi,_that.adiSoyadi,_that.firma,_that.telefon,_that.adres,_that.vergiDairesi,_that.vergiDairesiAdi,_that.vergiNumarasi,_that.ilKodu,_that.ilAdi,_that.ilceKodu,_that.ilceAdi,_that.admin,_that.aktif,_that.bayiMi,_that.kullaniciSayisi,_that.dogrulamaKod,_that.yetkiSerbestrapor,_that.yetkiDizayn,_that.yetkiSohbet,_that.yetkiAjanda,_that.yetkiYedekleme,_that.kayittarihi,_that.ftpKullanimi,_that.ftpAdres,_that.ftpKullaniciAdi,_that.ftpParola,_that.ftpDosyaYedek,_that.cihazlar,_that.developerBilgi,_that.erpTipi,_that.erpVersiyon,_that.aciklama);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  int? id, @HiveField(1)  String? email, @HiveField(2)  String? parola, @HiveField(3)  String? adi, @HiveField(4)  String? soyadi, @HiveField(5)  String? adiSoyadi, @HiveField(6)  String? firma, @HiveField(7)  String? telefon, @HiveField(8)  String? adres, @HiveField(9)  int? vergiDairesi, @HiveField(10)  String? vergiDairesiAdi, @HiveField(11)  String? vergiNumarasi, @HiveField(12)  int? ilKodu, @HiveField(13)  String? ilAdi, @HiveField(14)  int? ilceKodu, @HiveField(15)  String? ilceAdi, @HiveField(16)  bool? admin, @HiveField(17)  bool? aktif, @HiveField(18)  bool? bayiMi, @HiveField(19)  int? kullaniciSayisi, @HiveField(20)  String? dogrulamaKod, @HiveField(21)  bool? yetkiSerbestrapor, @HiveField(22)  bool? yetkiDizayn, @HiveField(23)  bool? yetkiSohbet, @HiveField(24)  bool? yetkiAjanda, @HiveField(25)  bool? yetkiYedekleme, @HiveField(26)  DateTime? kayittarihi, @HiveField(27)  bool? ftpKullanimi, @HiveField(28)  String? ftpAdres, @HiveField(29)  String? ftpKullaniciAdi, @HiveField(30)  String? ftpParola, @HiveField(31)  bool? ftpDosyaYedek, @HiveField(32)  List<Cihazlar>? cihazlar, @HiveField(33)  DeveloperBilgi? developerBilgi, @HiveField(34)  String? erpTipi, @HiveField(35)  String? erpVersiyon, @HiveField(36)  dynamic aciklama)?  $default,) {final _that = this;
+switch (_that) {
+case _Hesap() when $default != null:
+return $default(_that.id,_that.email,_that.parola,_that.adi,_that.soyadi,_that.adiSoyadi,_that.firma,_that.telefon,_that.adres,_that.vergiDairesi,_that.vergiDairesiAdi,_that.vergiNumarasi,_that.ilKodu,_that.ilAdi,_that.ilceKodu,_that.ilceAdi,_that.admin,_that.aktif,_that.bayiMi,_that.kullaniciSayisi,_that.dogrulamaKod,_that.yetkiSerbestrapor,_that.yetkiDizayn,_that.yetkiSohbet,_that.yetkiAjanda,_that.yetkiYedekleme,_that.kayittarihi,_that.ftpKullanimi,_that.ftpAdres,_that.ftpKullaniciAdi,_that.ftpParola,_that.ftpDosyaYedek,_that.cihazlar,_that.developerBilgi,_that.erpTipi,_that.erpVersiyon,_that.aciklama);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -417,6 +664,130 @@ $SqlserverinfoCopyWith<$Res>? get sqlserverinfo {
 }
 
 
+/// Adds pattern-matching-related methods to [Cihazlar].
+extension CihazlarPatterns on Cihazlar {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Cihazlar value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Cihazlar() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Cihazlar value)  $default,){
+final _that = this;
+switch (_that) {
+case _Cihazlar():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Cihazlar value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Cihazlar() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  int? id, @HiveField(1)  String? platform, @HiveField(2)  String? versiyon, @HiveField(3)  dynamic storeVersiyon, @HiveField(4)  String? isletimSistemi, @HiveField(5)  String? isletimSistemiVer, @HiveField(6)  String? isletimSistemiPlat, @HiveField(7)  String? lisanskey, @HiveField(8)  String? lisanspc, @HiveField(9)  DateTime? songiristar, @HiveField(10)  String? disIpAdresi, @HiveField(11)  String? erpTipi, @HiveField(12)  String? erpVersiyon, @HiveField(13)  bool? sunucuMu, @HiveField(14)  Sqlserverinfo? sqlserverinfo, @HiveField(15)  int? applicationUptime)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Cihazlar() when $default != null:
+return $default(_that.id,_that.platform,_that.versiyon,_that.storeVersiyon,_that.isletimSistemi,_that.isletimSistemiVer,_that.isletimSistemiPlat,_that.lisanskey,_that.lisanspc,_that.songiristar,_that.disIpAdresi,_that.erpTipi,_that.erpVersiyon,_that.sunucuMu,_that.sqlserverinfo,_that.applicationUptime);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  int? id, @HiveField(1)  String? platform, @HiveField(2)  String? versiyon, @HiveField(3)  dynamic storeVersiyon, @HiveField(4)  String? isletimSistemi, @HiveField(5)  String? isletimSistemiVer, @HiveField(6)  String? isletimSistemiPlat, @HiveField(7)  String? lisanskey, @HiveField(8)  String? lisanspc, @HiveField(9)  DateTime? songiristar, @HiveField(10)  String? disIpAdresi, @HiveField(11)  String? erpTipi, @HiveField(12)  String? erpVersiyon, @HiveField(13)  bool? sunucuMu, @HiveField(14)  Sqlserverinfo? sqlserverinfo, @HiveField(15)  int? applicationUptime)  $default,) {final _that = this;
+switch (_that) {
+case _Cihazlar():
+return $default(_that.id,_that.platform,_that.versiyon,_that.storeVersiyon,_that.isletimSistemi,_that.isletimSistemiVer,_that.isletimSistemiPlat,_that.lisanskey,_that.lisanspc,_that.songiristar,_that.disIpAdresi,_that.erpTipi,_that.erpVersiyon,_that.sunucuMu,_that.sqlserverinfo,_that.applicationUptime);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  int? id, @HiveField(1)  String? platform, @HiveField(2)  String? versiyon, @HiveField(3)  dynamic storeVersiyon, @HiveField(4)  String? isletimSistemi, @HiveField(5)  String? isletimSistemiVer, @HiveField(6)  String? isletimSistemiPlat, @HiveField(7)  String? lisanskey, @HiveField(8)  String? lisanspc, @HiveField(9)  DateTime? songiristar, @HiveField(10)  String? disIpAdresi, @HiveField(11)  String? erpTipi, @HiveField(12)  String? erpVersiyon, @HiveField(13)  bool? sunucuMu, @HiveField(14)  Sqlserverinfo? sqlserverinfo, @HiveField(15)  int? applicationUptime)?  $default,) {final _that = this;
+switch (_that) {
+case _Cihazlar() when $default != null:
+return $default(_that.id,_that.platform,_that.versiyon,_that.storeVersiyon,_that.isletimSistemi,_that.isletimSistemiVer,_that.isletimSistemiPlat,_that.lisanskey,_that.lisanspc,_that.songiristar,_that.disIpAdresi,_that.erpTipi,_that.erpVersiyon,_that.sunucuMu,_that.sqlserverinfo,_that.applicationUptime);case _:
+  return null;
+
+}
+}
+
+}
+
 /// @nodoc
 @JsonSerializable()
 
@@ -591,6 +962,130 @@ as String?,
 }
 
 
+/// Adds pattern-matching-related methods to [Sqlserverinfo].
+extension SqlserverinfoPatterns on Sqlserverinfo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Sqlserverinfo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Sqlserverinfo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Sqlserverinfo value)  $default,){
+final _that = this;
+switch (_that) {
+case _Sqlserverinfo():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Sqlserverinfo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Sqlserverinfo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  String? name, @HiveField(1)  String? instanceName, @HiveField(2)  String? surum, @HiveField(3)  int? versiyon, @HiveField(4)  String? productVersion, @HiveField(5)  String? edition, @HiveField(6)  String? msdbGuid, @HiveField(7)  String? tempdbGuid)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Sqlserverinfo() when $default != null:
+return $default(_that.name,_that.instanceName,_that.surum,_that.versiyon,_that.productVersion,_that.edition,_that.msdbGuid,_that.tempdbGuid);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  String? name, @HiveField(1)  String? instanceName, @HiveField(2)  String? surum, @HiveField(3)  int? versiyon, @HiveField(4)  String? productVersion, @HiveField(5)  String? edition, @HiveField(6)  String? msdbGuid, @HiveField(7)  String? tempdbGuid)  $default,) {final _that = this;
+switch (_that) {
+case _Sqlserverinfo():
+return $default(_that.name,_that.instanceName,_that.surum,_that.versiyon,_that.productVersion,_that.edition,_that.msdbGuid,_that.tempdbGuid);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  String? name, @HiveField(1)  String? instanceName, @HiveField(2)  String? surum, @HiveField(3)  int? versiyon, @HiveField(4)  String? productVersion, @HiveField(5)  String? edition, @HiveField(6)  String? msdbGuid, @HiveField(7)  String? tempdbGuid)?  $default,) {final _that = this;
+switch (_that) {
+case _Sqlserverinfo() when $default != null:
+return $default(_that.name,_that.instanceName,_that.surum,_that.versiyon,_that.productVersion,_that.edition,_that.msdbGuid,_that.tempdbGuid);case _:
+  return null;
+
+}
+}
+
+}
+
 /// @nodoc
 @JsonSerializable()
 
@@ -735,6 +1230,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [DeveloperBilgi].
+extension DeveloperBilgiPatterns on DeveloperBilgi {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DeveloperBilgi value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _DeveloperBilgi() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DeveloperBilgi value)  $default,){
+final _that = this;
+switch (_that) {
+case _DeveloperBilgi():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DeveloperBilgi value)?  $default,){
+final _that = this;
+switch (_that) {
+case _DeveloperBilgi() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  bool? admin, @HiveField(1)  String? guncellemeFtp, @HiveField(2)  String? guncellemeFtpKullaniciAdi, @HiveField(3)  String? guncellemeFtpParola, @HiveField(4)  String? yedeklemeFtp, @HiveField(5)  String? yedeklemeFtpKullaniciAdi, @HiveField(6)  String? yedeklemeFtpParola)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _DeveloperBilgi() when $default != null:
+return $default(_that.admin,_that.guncellemeFtp,_that.guncellemeFtpKullaniciAdi,_that.guncellemeFtpParola,_that.yedeklemeFtp,_that.yedeklemeFtpKullaniciAdi,_that.yedeklemeFtpParola);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  bool? admin, @HiveField(1)  String? guncellemeFtp, @HiveField(2)  String? guncellemeFtpKullaniciAdi, @HiveField(3)  String? guncellemeFtpParola, @HiveField(4)  String? yedeklemeFtp, @HiveField(5)  String? yedeklemeFtpKullaniciAdi, @HiveField(6)  String? yedeklemeFtpParola)  $default,) {final _that = this;
+switch (_that) {
+case _DeveloperBilgi():
+return $default(_that.admin,_that.guncellemeFtp,_that.guncellemeFtpKullaniciAdi,_that.guncellemeFtpParola,_that.yedeklemeFtp,_that.yedeklemeFtpKullaniciAdi,_that.yedeklemeFtpParola);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  bool? admin, @HiveField(1)  String? guncellemeFtp, @HiveField(2)  String? guncellemeFtpKullaniciAdi, @HiveField(3)  String? guncellemeFtpParola, @HiveField(4)  String? yedeklemeFtp, @HiveField(5)  String? yedeklemeFtpKullaniciAdi, @HiveField(6)  String? yedeklemeFtpParola)?  $default,) {final _that = this;
+switch (_that) {
+case _DeveloperBilgi() when $default != null:
+return $default(_that.admin,_that.guncellemeFtp,_that.guncellemeFtpKullaniciAdi,_that.guncellemeFtpParola,_that.yedeklemeFtp,_that.yedeklemeFtpKullaniciAdi,_that.yedeklemeFtpParola);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -886,6 +1505,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [Moduller].
+extension ModullerPatterns on Moduller {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Moduller value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Moduller() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Moduller value)  $default,){
+final _that = this;
+switch (_that) {
+case _Moduller():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Moduller value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Moduller() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  int? kategoriId, @HiveField(1)  String? kategoriAdi, @HiveField(2)  String? modulBaslik, @HiveField(3)  String? dosyaAdi, @HiveField(4)  String? aciklama, @HiveField(5)  String? versiyon, @HiveField(6)  bool? isdemo, @HiveField(7)  dynamic sozlesmeBastar, @HiveField(8)  DateTime? sozlesmeBittar, @HiveField(9)  bool? kiralik, @HiveField(10)  String? webServisAdresi, @HiveField(11)  int? kullaniciSayisi, @HiveField(12)  List<EkLisanslar>? ekLisanslar, @HiveField(13)  bool? sozlesmeAktif, @HiveField(14)  String? sozlesmeUyari)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Moduller() when $default != null:
+return $default(_that.kategoriId,_that.kategoriAdi,_that.modulBaslik,_that.dosyaAdi,_that.aciklama,_that.versiyon,_that.isdemo,_that.sozlesmeBastar,_that.sozlesmeBittar,_that.kiralik,_that.webServisAdresi,_that.kullaniciSayisi,_that.ekLisanslar,_that.sozlesmeAktif,_that.sozlesmeUyari);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  int? kategoriId, @HiveField(1)  String? kategoriAdi, @HiveField(2)  String? modulBaslik, @HiveField(3)  String? dosyaAdi, @HiveField(4)  String? aciklama, @HiveField(5)  String? versiyon, @HiveField(6)  bool? isdemo, @HiveField(7)  dynamic sozlesmeBastar, @HiveField(8)  DateTime? sozlesmeBittar, @HiveField(9)  bool? kiralik, @HiveField(10)  String? webServisAdresi, @HiveField(11)  int? kullaniciSayisi, @HiveField(12)  List<EkLisanslar>? ekLisanslar, @HiveField(13)  bool? sozlesmeAktif, @HiveField(14)  String? sozlesmeUyari)  $default,) {final _that = this;
+switch (_that) {
+case _Moduller():
+return $default(_that.kategoriId,_that.kategoriAdi,_that.modulBaslik,_that.dosyaAdi,_that.aciklama,_that.versiyon,_that.isdemo,_that.sozlesmeBastar,_that.sozlesmeBittar,_that.kiralik,_that.webServisAdresi,_that.kullaniciSayisi,_that.ekLisanslar,_that.sozlesmeAktif,_that.sozlesmeUyari);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  int? kategoriId, @HiveField(1)  String? kategoriAdi, @HiveField(2)  String? modulBaslik, @HiveField(3)  String? dosyaAdi, @HiveField(4)  String? aciklama, @HiveField(5)  String? versiyon, @HiveField(6)  bool? isdemo, @HiveField(7)  dynamic sozlesmeBastar, @HiveField(8)  DateTime? sozlesmeBittar, @HiveField(9)  bool? kiralik, @HiveField(10)  String? webServisAdresi, @HiveField(11)  int? kullaniciSayisi, @HiveField(12)  List<EkLisanslar>? ekLisanslar, @HiveField(13)  bool? sozlesmeAktif, @HiveField(14)  String? sozlesmeUyari)?  $default,) {final _that = this;
+switch (_that) {
+case _Moduller() when $default != null:
+return $default(_that.kategoriId,_that.kategoriAdi,_that.modulBaslik,_that.dosyaAdi,_that.aciklama,_that.versiyon,_that.isdemo,_that.sozlesmeBastar,_that.sozlesmeBittar,_that.kiralik,_that.webServisAdresi,_that.kullaniciSayisi,_that.ekLisanslar,_that.sozlesmeAktif,_that.sozlesmeUyari);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -1050,6 +1793,130 @@ as dynamic,
 
 }
 
+
+/// Adds pattern-matching-related methods to [EkLisanslar].
+extension EkLisanslarPatterns on EkLisanslar {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _EkLisanslar value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _EkLisanslar() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _EkLisanslar value)  $default,){
+final _that = this;
+switch (_that) {
+case _EkLisanslar():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _EkLisanslar value)?  $default,){
+final _that = this;
+switch (_that) {
+case _EkLisanslar() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  int? sira, @HiveField(1)  String? tanimi, @HiveField(2)  dynamic adet, @HiveField(3)  dynamic bitisTarihi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _EkLisanslar() when $default != null:
+return $default(_that.sira,_that.tanimi,_that.adet,_that.bitisTarihi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  int? sira, @HiveField(1)  String? tanimi, @HiveField(2)  dynamic adet, @HiveField(3)  dynamic bitisTarihi)  $default,) {final _that = this;
+switch (_that) {
+case _EkLisanslar():
+return $default(_that.sira,_that.tanimi,_that.adet,_that.bitisTarihi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  int? sira, @HiveField(1)  String? tanimi, @HiveField(2)  dynamic adet, @HiveField(3)  dynamic bitisTarihi)?  $default,) {final _that = this;
+switch (_that) {
+case _EkLisanslar() when $default != null:
+return $default(_that.sira,_that.tanimi,_that.adet,_that.bitisTarihi);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

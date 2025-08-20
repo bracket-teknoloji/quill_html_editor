@@ -32,20 +32,18 @@ _UretimSonuKaydiEditModel _$UretimSonuKaydiEditModelFromJson(
 Map<String, dynamic> _$UretimSonuKaydiEditModelToJson(
   _UretimSonuKaydiEditModel instance,
 ) => <String, dynamic>{
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.belgeTarihi?.toIso8601String() case final value?)
-    'BELGE_TARIHI': value,
-  if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.depoOnceligi case final value?) 'DEPO_ONCELIGI': value,
-  if (instance.ekAlanlar?.toJson() case final value?) 'EkAlanlar': value,
-  if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
-  if (instance.guid case final value?) 'GUID': value,
-  if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?)
-    'KalemList': value,
-  if (instance.projeKodu case final value?) 'PROJE_KODU': value,
-  if (instance.tarih case final value?) 'TARIH': value,
-  if (instance.yeniKayit case final value?) '_YeniKayit': value,
+  'BELGE_NO': ?instance.belgeNo,
+  'BELGE_TARIHI': ?instance.belgeTarihi?.toIso8601String(),
+  'CIKIS_DEPO': ?instance.cikisDepo,
+  'ACIKLAMA': ?instance.aciklama,
+  'DEPO_ONCELIGI': ?instance.depoOnceligi,
+  'EkAlanlar': ?instance.ekAlanlar?.toJson(),
+  'GIRIS_DEPO': ?instance.girisDepo,
+  'GUID': ?instance.guid,
+  'KalemList': ?instance.kalemList?.map((e) => e.toJson()).toList(),
+  'PROJE_KODU': ?instance.projeKodu,
+  'TARIH': ?instance.tarih,
+  '_YeniKayit': ?instance.yeniKayit,
 };
 
 _EkAlanlar _$EkAlanlarFromJson(Map<String, dynamic> json) => _EkAlanlar(
@@ -56,7 +54,7 @@ _EkAlanlar _$EkAlanlarFromJson(Map<String, dynamic> json) => _EkAlanlar(
 
 Map<String, dynamic> _$EkAlanlarToJson(_EkAlanlar instance) =>
     <String, dynamic>{
-      if (instance.ktAlan1 case final value?) 'KT_ALAN1': value,
-      if (instance.ktAlan3 case final value?) 'KT_ALAN3': value,
-      if (instance.ktAlan4 case final value?) 'KT_ALAN4': value,
+      'KT_ALAN1': ?instance.ktAlan1,
+      'KT_ALAN3': ?instance.ktAlan3,
+      'KT_ALAN4': ?instance.ktAlan4,
     };

@@ -26,15 +26,14 @@ _DekontIslemlerRequestModel _$DekontIslemlerRequestModelFromJson(
 Map<String, dynamic> _$DekontIslemlerRequestModelToJson(
   _DekontIslemlerRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.dekontIslemTuru case final value?) 'DEKONT_ISLEM_TURU': value,
-  if (instance.dekontSeri case final value?) 'DEKONT_SERI': value,
-  if (instance.guid case final value?) 'GUID': value,
-  if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?)
-    'KALEMLER': value,
-  if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
-  if (instance.projeKodu case final value?) 'PROJE_KODU': value,
-  if (instance.tag case final value?) 'TAG': value,
-  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.yeniKayit case final value?) '_YeniKayit': value,
-  if (instance.dekontNo case final value?) 'DEKONT_NO': value,
+  'DEKONT_ISLEM_TURU': ?instance.dekontIslemTuru,
+  'DEKONT_SERI': ?instance.dekontSeri,
+  'GUID': ?instance.guid,
+  'KALEMLER': ?instance.kalemler?.map((e) => e.toJson()).toList(),
+  'PLASIYER_KODU': ?instance.plasiyerKodu,
+  'PROJE_KODU': ?instance.projeKodu,
+  'TAG': ?instance.tag,
+  'TARIH': ?instance.tarih?.toIso8601String(),
+  '_YeniKayit': ?instance.yeniKayit,
+  'DEKONT_NO': ?instance.dekontNo,
 };

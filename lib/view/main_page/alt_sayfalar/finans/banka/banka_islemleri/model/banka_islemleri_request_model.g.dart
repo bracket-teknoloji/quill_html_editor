@@ -19,9 +19,9 @@ _BankaIslemleriRequestModel _$BankaIslemleriRequestModelFromJson(
 Map<String, dynamic> _$BankaIslemleriRequestModelToJson(
   _BankaIslemleriRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
-  if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
-  if (instance.menuKodu case final value?) 'MenuKodu': value,
-  if (instance.hesapTipi case final value?) 'HesapTipi': value,
-  if (instance.hesapKodu case final value?) 'HesapKodu': value,
+  'BaslamaTarihi': ?instance.baslamaTarihi,
+  'BitisTarihi': ?instance.bitisTarihi,
+  'MenuKodu': ?instance.menuKodu,
+  'HesapTipi': ?instance.hesapTipi,
+  'HesapKodu': ?instance.hesapKodu,
 };

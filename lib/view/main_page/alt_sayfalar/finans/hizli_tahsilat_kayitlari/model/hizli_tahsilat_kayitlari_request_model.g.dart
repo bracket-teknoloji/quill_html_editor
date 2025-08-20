@@ -18,8 +18,8 @@ _$HizliTahsilatKayitlariRequestModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$HizliTahsilatKayitlariRequestModelToJson(
   _HizliTahsilatKayitlariRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
-  if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
-  if (instance.ekranTipi case final value?) 'EkranTipi': value,
-  if (instance.sayfa case final value?) 'Sayfa': value,
+  'BaslamaTarihi': ?instance.baslamaTarihi,
+  'BitisTarihi': ?instance.bitisTarihi,
+  'EkranTipi': ?instance.ekranTipi,
+  'Sayfa': ?instance.sayfa,
 };

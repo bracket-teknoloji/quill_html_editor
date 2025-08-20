@@ -21,9 +21,9 @@ _HucreAraRequestModel _$HucreAraRequestModelFromJson(
 Map<String, dynamic> _$HucreAraRequestModelToJson(
   _HucreAraRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.barkod case final value?) 'Barkod': value,
-  if (instance.ekranTipi case final value?) 'EkranTipi': value,
-  if (instance.filtreKodu case final value?) 'FiltreKodu': value,
-  if (instance.hucreMiktarArray case final value?) 'HucreMiktarArray': value,
-  if (instance.menuKodu case final value?) 'MenuKodu': value,
+  'Barkod': ?instance.barkod,
+  'EkranTipi': ?instance.ekranTipi,
+  'FiltreKodu': ?instance.filtreKodu,
+  'HucreMiktarArray': ?instance.hucreMiktarArray,
+  'MenuKodu': ?instance.menuKodu,
 };

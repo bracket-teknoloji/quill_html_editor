@@ -14,6 +14,6 @@ _DizaynRequestModel _$DizaynRequestModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$DizaynRequestModelToJson(_DizaynRequestModel instance) =>
     <String, dynamic>{
-      if (instance.modulId case final value?) 'ModulID': value,
-      if (instance.erpDizaynlari case final value?) 'ERPDizaynlari': value,
+      'ModulID': ?instance.modulId,
+      'ERPDizaynlari': ?instance.erpDizaynlari,
     };

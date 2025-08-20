@@ -18,10 +18,9 @@ _DeleteCekSenetModel _$DeleteCekSenetModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$DeleteCekSenetModelToJson(
   _DeleteCekSenetModel instance,
 ) => <String, dynamic>{
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.pickerTahsilatTuru case final value?)
-    'PickerTahsilatTuru': value,
-  if (instance.tag case final value?) 'TAG': value,
+  'BELGE_NO': ?instance.belgeNo,
+  'BELGE_TIPI': ?instance.belgeTipi,
+  'ISLEM_KODU': ?instance.islemKodu,
+  'PickerTahsilatTuru': ?instance.pickerTahsilatTuru,
+  'TAG': ?instance.tag,
 };

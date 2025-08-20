@@ -31,22 +31,18 @@ _OlcumBelgeEditModel _$OlcumBelgeEditModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$OlcumBelgeEditModelToJson(
   _OlcumBelgeEditModel instance,
 ) => <String, dynamic>{
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.belgeSira case final value?) 'BELGE_SIRA': value,
-  if (instance.seriNo case final value?) 'SERI_NO': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.yapkod case final value?) 'YAPKOD': value,
-  if (instance.opkodu case final value?) 'OPKODU': value,
-  if (instance.kayitOperator case final value?) 'KAYIT_OPERATOR': value,
-  if (instance.kayitOperatorKodu case final value?)
-    'KAYIT_OPERATOR_KODU': value,
-  if (instance.belge?.map((e) => e.toJson()).toList() case final value?)
-    'BELGE': value,
-  if (instance.olcumler?.map((e) => e.toJson()).toList() case final value?)
-    'OLCUMLER': value,
-  if (instance.prosesler?.map((e) => e.toJson()).toList() case final value?)
-    'PROSESLER': value,
+  'BELGE_NO': ?instance.belgeNo,
+  'BELGE_TIPI': ?instance.belgeTipi,
+  'BELGE_SIRA': ?instance.belgeSira,
+  'SERI_NO': ?instance.seriNo,
+  'STOK_KODU': ?instance.stokKodu,
+  'YAPKOD': ?instance.yapkod,
+  'OPKODU': ?instance.opkodu,
+  'KAYIT_OPERATOR': ?instance.kayitOperator,
+  'KAYIT_OPERATOR_KODU': ?instance.kayitOperatorKodu,
+  'BELGE': ?instance.belge?.map((e) => e.toJson()).toList(),
+  'OLCUMLER': ?instance.olcumler?.map((e) => e.toJson()).toList(),
+  'PROSESLER': ?instance.prosesler?.map((e) => e.toJson()).toList(),
 };
 
 _OlcumBelgeModel _$OlcumBelgeModelFromJson(Map<String, dynamic> json) =>
@@ -87,44 +83,41 @@ _OlcumBelgeModel _$OlcumBelgeModelFromJson(Map<String, dynamic> json) =>
       sayfa: (json['Sayfa'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$OlcumBelgeModelToJson(
-  _OlcumBelgeModel instance,
-) => <String, dynamic>{
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.belgeSira case final value?) 'BELGE_SIRA': value,
-  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.sira case final value?) 'SIRA': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.yapkod case final value?) 'YAPKOD': value,
-  if (instance.yapacik case final value?) 'YAPACIK': value,
-  if (instance.olcumAdedi case final value?) 'OLCUM_ADEDI': value,
-  if (instance.kabulAdet case final value?) 'KABUL_ADET': value,
-  if (instance.sartliAdet case final value?) 'SARTLI_ADET': value,
-  if (instance.retAdet case final value?) 'RET_ADET': value,
-  if (instance.opkodu case final value?) 'OPKODU': value,
-  if (instance.cariKodu case final value?) 'CARI_KODU': value,
-  if (instance.cariAdi case final value?) 'CARI_ADI': value,
-  if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
-  if (instance.kalemAdedi case final value?) 'KALEM_ADEDI': value,
-  if (instance.seriNo case final value?) 'SERI_NO': value,
-  if (instance.prosesVar case final value?) 'PROSES_VAR': value,
-  if (instance.teknikResimVarmi case final value?) 'TEKNIK_RESIM_VARMI': value,
-  if (instance.kontrolPlaniVarmi case final value?)
-    'KONTROL_PLANI_VARMI': value,
-  if (instance.yarimOlcumYapabilirmi case final value?)
-    'YARIM_OLCUM_YAPABILIRMI': value,
-  if (instance.opkoduTanimi case final value?) 'OPKODU_TANIMI': value,
-  if (instance.istasyonKodu case final value?) 'ISTASYON_KODU': value,
-  if (instance.istasyonTanimi case final value?) 'ISTASYON_TANIMI': value,
-  if (instance.datAdedi case final value?) 'DAT_ADEDI': value,
-  if (instance.seriSorulsunmu case final value?) 'SERI_SORULSUNMU': value,
-  if (instance.tur case final value?) 'TUR': value,
-  if (instance.searchText case final value?) 'SearchText': value,
-  if (instance.sayfa case final value?) 'Sayfa': value,
-};
+Map<String, dynamic> _$OlcumBelgeModelToJson(_OlcumBelgeModel instance) =>
+    <String, dynamic>{
+      'BELGE_NO': ?instance.belgeNo,
+      'BELGE_TIPI': ?instance.belgeTipi,
+      'BELGE_SIRA': ?instance.belgeSira,
+      'TARIH': ?instance.tarih?.toIso8601String(),
+      'SIRA': ?instance.sira,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
+      'MIKTAR': ?instance.miktar,
+      'YAPKOD': ?instance.yapkod,
+      'YAPACIK': ?instance.yapacik,
+      'OLCUM_ADEDI': ?instance.olcumAdedi,
+      'KABUL_ADET': ?instance.kabulAdet,
+      'SARTLI_ADET': ?instance.sartliAdet,
+      'RET_ADET': ?instance.retAdet,
+      'OPKODU': ?instance.opkodu,
+      'CARI_KODU': ?instance.cariKodu,
+      'CARI_ADI': ?instance.cariAdi,
+      'BELGE_TURU': ?instance.belgeTuru,
+      'KALEM_ADEDI': ?instance.kalemAdedi,
+      'SERI_NO': ?instance.seriNo,
+      'PROSES_VAR': ?instance.prosesVar,
+      'TEKNIK_RESIM_VARMI': ?instance.teknikResimVarmi,
+      'KONTROL_PLANI_VARMI': ?instance.kontrolPlaniVarmi,
+      'YARIM_OLCUM_YAPABILIRMI': ?instance.yarimOlcumYapabilirmi,
+      'OPKODU_TANIMI': ?instance.opkoduTanimi,
+      'ISTASYON_KODU': ?instance.istasyonKodu,
+      'ISTASYON_TANIMI': ?instance.istasyonTanimi,
+      'DAT_ADEDI': ?instance.datAdedi,
+      'SERI_SORULSUNMU': ?instance.seriSorulsunmu,
+      'TUR': ?instance.tur,
+      'SearchText': ?instance.searchText,
+      'Sayfa': ?instance.sayfa,
+    };
 
 _OlcumOlcumlerModel _$OlcumOlcumlerModelFromJson(Map<String, dynamic> json) =>
     _OlcumOlcumlerModel(
@@ -146,26 +139,23 @@ _OlcumOlcumlerModel _$OlcumOlcumlerModelFromJson(Map<String, dynamic> json) =>
       tamamlandi: json['TAMAMLANDI'] as String?,
     );
 
-Map<String, dynamic> _$OlcumOlcumlerModelToJson(
-  _OlcumOlcumlerModel instance,
-) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.belgeSira case final value?) 'BELGE_SIRA': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.olcumlerOperator case final value?) 'OLCUMLER_OPERATOR': value,
-  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.kayitOperator case final value?) 'KAYIT_OPERATOR': value,
-  if (instance.kayitOperatorKodu case final value?)
-    'KAYIT_OPERATOR_KODU': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
-  if (instance.kabulAdet case final value?) 'KABUL_ADET': value,
-  if (instance.sartliAdet case final value?) 'SARTLI_ADET': value,
-  if (instance.retAdet case final value?) 'RET_ADET': value,
-  if (instance.seriNo case final value?) 'SERI_NO': value,
-  if (instance.tamamlandi case final value?) 'TAMAMLANDI': value,
-};
+Map<String, dynamic> _$OlcumOlcumlerModelToJson(_OlcumOlcumlerModel instance) =>
+    <String, dynamic>{
+      'ID': ?instance.id,
+      'BELGE_SIRA': ?instance.belgeSira,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
+      'OLCUMLER_OPERATOR': ?instance.olcumlerOperator,
+      'KAYITYAPANKUL': ?instance.kayityapankul,
+      'KAYIT_OPERATOR': ?instance.kayitOperator,
+      'KAYIT_OPERATOR_KODU': ?instance.kayitOperatorKodu,
+      'KAYITTARIHI': ?instance.kayittarihi?.toIso8601String(),
+      'KABUL_ADET': ?instance.kabulAdet,
+      'SARTLI_ADET': ?instance.sartliAdet,
+      'RET_ADET': ?instance.retAdet,
+      'SERI_NO': ?instance.seriNo,
+      'TAMAMLANDI': ?instance.tamamlandi,
+    };
 
 _OlcumProsesModel _$OlcumProsesModelFromJson(
   Map<String, dynamic> json,
@@ -205,40 +195,35 @@ _OlcumProsesModel _$OlcumProsesModelFromJson(
 
 Map<String, dynamic> _$OlcumProsesModelToJson(_OlcumProsesModel instance) =>
     <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.sira case final value?) 'SIRA': value,
-      if (instance.proses case final value?) 'PROSES': value,
-      if (instance.kriter case final value?) 'KRITER': value,
-      if (instance.kabulSarti case final value?) 'KABUL_SARTI': value,
-      if (instance.tolerans case final value?) 'TOLERANS': value,
-      if (instance.ekipman case final value?) 'EKIPMAN': value,
-      if (instance.olculecekmi case final value?) 'OLCULECEKMI': value,
-      if (instance.onemlimi case final value?) 'ONEMLIMI': value,
-      if (instance.altSinir case final value?) 'ALT_SINIR': value,
-      if (instance.ustSinir case final value?) 'UST_SINIR': value,
-      if (instance.tur case final value?) 'TUR': value,
-      if (instance.olcumSikligi case final value?) 'OLCUM_SIKLIGI': value,
-      if (instance.numuneMiktari case final value?) 'NUMUNE_MIKTARI': value,
-      if (instance.detayId case final value?) 'DETAY_ID': value,
-      if (instance.prosesTipi case final value?) 'PROSES_TIPI': value,
-      if (instance.sonuc case final value?) 'SONUC': value,
-      if (instance.sartliKabulNedeni case final value?)
-        'SARTLI_KABUL_NEDENI': value,
-      if (instance.sartliKabulNedeniAciklama case final value?)
-        'SARTLI_KABUL_NEDENI_ACIKLAMA': value,
-      if (instance.olcumOperatorModelOperator case final value?)
-        'OLCUM_OPERATOR_MODEL_OPERATOR': value,
-      if (instance.oncekiOlcudeSartlivarmi case final value?)
-        'ONCEKI_OLCUDE_SARTLIVARMI': value,
-      if (instance.prosesId case final value?) 'PROSES_ID': value,
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.kayitOperator case final value?) 'KAYIT_OPERATOR': value,
-      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
-      if (instance.talno case final value?) 'TALNO': value,
-      if (instance.form case final value?) 'FORM': value,
-      if (instance.detayAciklama case final value?) 'DETAY_ACIKLAMA': value,
-      if (instance.olcumler?.map((e) => e.toJson()).toList() case final value?)
-        'OLCUMLER': value,
+      'ID': ?instance.id,
+      'SIRA': ?instance.sira,
+      'PROSES': ?instance.proses,
+      'KRITER': ?instance.kriter,
+      'KABUL_SARTI': ?instance.kabulSarti,
+      'TOLERANS': ?instance.tolerans,
+      'EKIPMAN': ?instance.ekipman,
+      'OLCULECEKMI': ?instance.olculecekmi,
+      'ONEMLIMI': ?instance.onemlimi,
+      'ALT_SINIR': ?instance.altSinir,
+      'UST_SINIR': ?instance.ustSinir,
+      'TUR': ?instance.tur,
+      'OLCUM_SIKLIGI': ?instance.olcumSikligi,
+      'NUMUNE_MIKTARI': ?instance.numuneMiktari,
+      'DETAY_ID': ?instance.detayId,
+      'PROSES_TIPI': ?instance.prosesTipi,
+      'SONUC': ?instance.sonuc,
+      'SARTLI_KABUL_NEDENI': ?instance.sartliKabulNedeni,
+      'SARTLI_KABUL_NEDENI_ACIKLAMA': ?instance.sartliKabulNedeniAciklama,
+      'OLCUM_OPERATOR_MODEL_OPERATOR': ?instance.olcumOperatorModelOperator,
+      'ONCEKI_OLCUDE_SARTLIVARMI': ?instance.oncekiOlcudeSartlivarmi,
+      'PROSES_ID': ?instance.prosesId,
+      'ACIKLAMA': ?instance.aciklama,
+      'KAYIT_OPERATOR': ?instance.kayitOperator,
+      'OLCU_BIRIMI': ?instance.olcuBirimi,
+      'TALNO': ?instance.talno,
+      'FORM': ?instance.form,
+      'DETAY_ACIKLAMA': ?instance.detayAciklama,
+      'OLCUMLER': ?instance.olcumler?.map((e) => e.toJson()).toList(),
     };
 
 _OlcumEkleDetayModel _$OlcumEkleDetayModelFromJson(Map<String, dynamic> json) =>
@@ -253,7 +238,7 @@ _OlcumEkleDetayModel _$OlcumEkleDetayModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$OlcumEkleDetayModelToJson(
   _OlcumEkleDetayModel instance,
 ) => <String, dynamic>{
-  if (instance.deger case final value?) 'DEGER': value,
-  if (instance.detayId case final value?) 'DETAY_ID': value,
-  if (instance.zaman?.toIso8601String() case final value?) 'ZAMAN': value,
+  'DEGER': ?instance.deger,
+  'DETAY_ID': ?instance.detayId,
+  'ZAMAN': ?instance.zaman?.toIso8601String(),
 };

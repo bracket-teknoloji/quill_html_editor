@@ -100,91 +100,72 @@ _KullaniciYetkiModel _$KullaniciYetkiModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$KullaniciYetkiModelToJson(
   _KullaniciYetkiModel instance,
 ) => <String, dynamic>{
-  if (instance.bagliPlasiyerler case final value?) 'bagliPlasiyerler': value,
-  if (instance.eIrsOnEki case final value?) 'eIrsOnEki': value,
-  if (instance.eIrsAmbarOnEki case final value?) 'eIrsAmbarOnEki': value,
-  if (instance.yetkiliKasalar case final value?) 'yetkiliKasalar': value,
-  if (instance.kkartiHesaplar case final value?) 'kkartiHesaplar': value,
-  if (instance.kkartiKasalar case final value?) 'kkartiKasalar': value,
-  if (instance.acikHesapLimiti case final value?) 'acikHesapLimiti': value,
-  if (instance.acikHesapTolerans case final value?) 'acikHesapTolerans': value,
-  if (instance.acikHesapLimitiBelgeTipleri case final value?)
-    'acikHesapLimitiBelgeTipleri': value,
-  if (instance.stokFiltreSQLTipi case final value?) 'stok_FiltreSQLTipi': value,
-  if (instance.cariFiltreSQLTipi case final value?) 'cari_FiltreSQLTipi': value,
-  if (instance.hizliTahsilatSozlesmeKodlari case final value?)
-    'hizliTahsilat_SozlesmeKodlari': value,
-  if (instance.siparisMusSipEkstraAlanlar case final value?)
-    'siparis_MusSip_EkstraAlanlar': value,
-  if (instance.sirketAlisDepo case final value?) 'sirket_alisDepo': value,
-  if (instance.sirketSatisDepo case final value?) 'sirket_satisDepo': value,
-  if (instance.transferDATVarsayilanCikisDepo case final value?)
-    'transfer_DAT_VarsayilanCikisDepo': value,
-  if (instance.transferDATVarsayilanGirisDepo case final value?)
-    'transfer_DAT_VarsayilanGirisDepo': value,
-  if (instance.cariRehPlaEslesmesinBelgeTipleri case final value?)
-    'cariRehPlaEslesmesinBelgeTipleri': value,
-  if (instance.profilKodu case final value?) 'profilKodu': value,
-  if (instance.sirketAktifDepolar case final value?)
-    'sirket_aktifDepolar': value,
-  if (instance.sirketDatYetkiliDepolar case final value?)
-    'sirket_DAT_YetkiliDepolar': value,
-  if (instance.adminMi case final value?) 'ADMIN_MI': value,
-  if (instance.varsayilanPlasiyerTanimi case final value?)
-    'varsayilan_PlasiyerTanimi': value,
-  if (instance.siparisMusSipBakiyesizStokSecilmesin case final value?)
-    'siparis_MusSip_BakiyesizStokSecilmesin': value,
-  if (instance.sevkiyatSatisIrsBakiyesizStokSecilmesin case final value?)
-    'sevkiyat_SatisIrs_BakiyesizStokSecilmesin': value,
-  if (instance.sevkiyatSatisFatBakiyesizStokSecilmesin case final value?)
-    'sevkiyat_SatisFat_BakiyesizStokSecilmesin': value,
-  if (instance.plasiyerKodu case final value?) 'plasiyerKodu': value,
-  if (instance.varsayilanPlasiyerKodu case final value?)
-    'varsayilan_PlasiyerKodu': value,
-  if (instance.kkartiTahsilatYontemi case final value?)
-    'kkartiTahsilatYontemi': value,
-  if (instance.satIrsOnEki case final value?) 'satIrsOnEki': value,
-  if (instance.varsayilanNakitKasa case final value?)
-    'varsayilanNakitKasa': value,
-  if (instance.sirketDepoYetkiTuru case final value?)
-    'sirket_Depo_YetkiTuru': value,
-  if (instance.varsayilanProjeTanimi case final value?)
-    'varsayilan_ProjeTanimi': value,
-  if (instance.varsayilanProjeKodu case final value?)
-    'varsayilan_ProjeKodu': value,
-  if (instance.varsayilanKrediKartiKasa case final value?)
-    'varsayilanKrediKartiKasa': value,
-  if (instance.varsayilanMuhasebeReferansTanimi case final value?)
-    'varsayilan_MuhasebeReferansTanimi': value,
-  if (instance.varsayilanMuhasebeReferansKodu case final value?)
-    'varsayilan_MuhasebeReferansKodu': value,
-  if (instance.satSipOnEki case final value?) 'satSipOnEki': value,
-  if (instance.musSipOnEki case final value?) 'musSipOnEki': value,
-  if (instance.alIrsOnEki case final value?) 'alIrsOnEki': value,
-  if (instance.eFatOnEki case final value?) 'eFatOnEki': value,
-  if (instance.eArvOnEki case final value?) 'eArvOnEki': value,
-  if (instance.satAlmTalOnEki case final value?) 'satAlmTalOnEki': value,
-  if (instance.satisTalOnEki case final value?) 'satisTalOnEki': value,
-  if (instance.satAlmTekOnEki case final value?) 'satAlmTekOnEki': value,
-  if (instance.satisTekOnEki case final value?) 'satisTekOnEki': value,
-  if (instance.tahsilatOnEki case final value?) 'tahsilatOnEki': value,
-  if (instance.sevkEmriOnEki case final value?) 'sevkEmriOnEki': value,
-  if (instance.kkTahsilatOnEki case final value?) 'kkTahsilatOnEki': value,
-  if (instance.eIrsDatOnEki case final value?) 'eIrsDATOnEki': value,
-  if (instance.datOnEki case final value?) 'DATOnEki': value,
-  if (instance.ambarCikisOnEki case final value?) 'ambarCikisOnEki': value,
-  if (instance.ambarGirisOnEki case final value?) 'ambarGirisOnEki': value,
-  if (instance.cariOnEki case final value?) 'cariOnEki': value,
-  if (instance.uskOnEki case final value?) 'uskOnEki': value,
-  if (instance.alisFatOnEki case final value?) 'alisFatOnEki': value,
-  if (instance.satisFatOnEki case final value?) 'satisFatOnEki': value,
-  if (instance.dekSeriCekTahsil case final value?) 'dekSeri_CekTahsil': value,
-  if (instance.dekSeriKKartiTahsilati case final value?)
-    'dekSeri_KKartiTahsilati': value,
-  if (instance.dekSeriCariEft case final value?) 'dekSeri_CariEFT': value,
-  if (instance.dekSeriHesArasiVirman case final value?)
-    'dekSeri_HesArasiVirman': value,
-  if (instance.dekSeriHesArasiEft case final value?)
-    'dekSeri_HesArasiEFT': value,
-  if (instance.dekSeriCariVirman case final value?) 'dekSeri_CariVirman': value,
+  'bagliPlasiyerler': ?instance.bagliPlasiyerler,
+  'eIrsOnEki': ?instance.eIrsOnEki,
+  'eIrsAmbarOnEki': ?instance.eIrsAmbarOnEki,
+  'yetkiliKasalar': ?instance.yetkiliKasalar,
+  'kkartiHesaplar': ?instance.kkartiHesaplar,
+  'kkartiKasalar': ?instance.kkartiKasalar,
+  'acikHesapLimiti': ?instance.acikHesapLimiti,
+  'acikHesapTolerans': ?instance.acikHesapTolerans,
+  'acikHesapLimitiBelgeTipleri': ?instance.acikHesapLimitiBelgeTipleri,
+  'stok_FiltreSQLTipi': ?instance.stokFiltreSQLTipi,
+  'cari_FiltreSQLTipi': ?instance.cariFiltreSQLTipi,
+  'hizliTahsilat_SozlesmeKodlari': ?instance.hizliTahsilatSozlesmeKodlari,
+  'siparis_MusSip_EkstraAlanlar': ?instance.siparisMusSipEkstraAlanlar,
+  'sirket_alisDepo': ?instance.sirketAlisDepo,
+  'sirket_satisDepo': ?instance.sirketSatisDepo,
+  'transfer_DAT_VarsayilanCikisDepo': ?instance.transferDATVarsayilanCikisDepo,
+  'transfer_DAT_VarsayilanGirisDepo': ?instance.transferDATVarsayilanGirisDepo,
+  'cariRehPlaEslesmesinBelgeTipleri':
+      ?instance.cariRehPlaEslesmesinBelgeTipleri,
+  'profilKodu': ?instance.profilKodu,
+  'sirket_aktifDepolar': ?instance.sirketAktifDepolar,
+  'sirket_DAT_YetkiliDepolar': ?instance.sirketDatYetkiliDepolar,
+  'ADMIN_MI': ?instance.adminMi,
+  'varsayilan_PlasiyerTanimi': ?instance.varsayilanPlasiyerTanimi,
+  'siparis_MusSip_BakiyesizStokSecilmesin':
+      ?instance.siparisMusSipBakiyesizStokSecilmesin,
+  'sevkiyat_SatisIrs_BakiyesizStokSecilmesin':
+      ?instance.sevkiyatSatisIrsBakiyesizStokSecilmesin,
+  'sevkiyat_SatisFat_BakiyesizStokSecilmesin':
+      ?instance.sevkiyatSatisFatBakiyesizStokSecilmesin,
+  'plasiyerKodu': ?instance.plasiyerKodu,
+  'varsayilan_PlasiyerKodu': ?instance.varsayilanPlasiyerKodu,
+  'kkartiTahsilatYontemi': ?instance.kkartiTahsilatYontemi,
+  'satIrsOnEki': ?instance.satIrsOnEki,
+  'varsayilanNakitKasa': ?instance.varsayilanNakitKasa,
+  'sirket_Depo_YetkiTuru': ?instance.sirketDepoYetkiTuru,
+  'varsayilan_ProjeTanimi': ?instance.varsayilanProjeTanimi,
+  'varsayilan_ProjeKodu': ?instance.varsayilanProjeKodu,
+  'varsayilanKrediKartiKasa': ?instance.varsayilanKrediKartiKasa,
+  'varsayilan_MuhasebeReferansTanimi':
+      ?instance.varsayilanMuhasebeReferansTanimi,
+  'varsayilan_MuhasebeReferansKodu': ?instance.varsayilanMuhasebeReferansKodu,
+  'satSipOnEki': ?instance.satSipOnEki,
+  'musSipOnEki': ?instance.musSipOnEki,
+  'alIrsOnEki': ?instance.alIrsOnEki,
+  'eFatOnEki': ?instance.eFatOnEki,
+  'eArvOnEki': ?instance.eArvOnEki,
+  'satAlmTalOnEki': ?instance.satAlmTalOnEki,
+  'satisTalOnEki': ?instance.satisTalOnEki,
+  'satAlmTekOnEki': ?instance.satAlmTekOnEki,
+  'satisTekOnEki': ?instance.satisTekOnEki,
+  'tahsilatOnEki': ?instance.tahsilatOnEki,
+  'sevkEmriOnEki': ?instance.sevkEmriOnEki,
+  'kkTahsilatOnEki': ?instance.kkTahsilatOnEki,
+  'eIrsDATOnEki': ?instance.eIrsDatOnEki,
+  'DATOnEki': ?instance.datOnEki,
+  'ambarCikisOnEki': ?instance.ambarCikisOnEki,
+  'ambarGirisOnEki': ?instance.ambarGirisOnEki,
+  'cariOnEki': ?instance.cariOnEki,
+  'uskOnEki': ?instance.uskOnEki,
+  'alisFatOnEki': ?instance.alisFatOnEki,
+  'satisFatOnEki': ?instance.satisFatOnEki,
+  'dekSeri_CekTahsil': ?instance.dekSeriCekTahsil,
+  'dekSeri_KKartiTahsilati': ?instance.dekSeriKKartiTahsilati,
+  'dekSeri_CariEFT': ?instance.dekSeriCariEft,
+  'dekSeri_HesArasiVirman': ?instance.dekSeriHesArasiVirman,
+  'dekSeri_HesArasiEFT': ?instance.dekSeriHesArasiEft,
+  'dekSeri_CariVirman': ?instance.dekSeriCariVirman,
 };

@@ -25,13 +25,11 @@ _BankaSozlesmesiModel _$BankaSozlesmesiModelFromJson(
 Map<String, dynamic> _$BankaSozlesmesiModelToJson(
   _BankaSozlesmesiModel instance,
 ) => <String, dynamic>{
-  if (instance.sozlesmeKodu case final value?) 'SOZLESME_KODU': value,
-  if (instance.sozlesmeAdi case final value?) 'SOZLESME_ADI': value,
-  if (instance.krediKartiTanimi case final value?) 'KREDI_KARTI_TANIMI': value,
-  if (instance.bankaTanimi case final value?) 'BANKA_TANIMI': value,
-  if (instance.baslamaTarihi?.toIso8601String() case final value?)
-    'BASLAMA_TARIHI': value,
-  if (instance.bitisTarihi?.toIso8601String() case final value?)
-    'BITIS_TARIHI': value,
-  if (instance.taksitBitis case final value?) 'TAKSIT_BITIS': value,
+  'SOZLESME_KODU': ?instance.sozlesmeKodu,
+  'SOZLESME_ADI': ?instance.sozlesmeAdi,
+  'KREDI_KARTI_TANIMI': ?instance.krediKartiTanimi,
+  'BANKA_TANIMI': ?instance.bankaTanimi,
+  'BASLAMA_TARIHI': ?instance.baslamaTarihi?.toIso8601String(),
+  'BITIS_TARIHI': ?instance.bitisTarihi?.toIso8601String(),
+  'TAKSIT_BITIS': ?instance.taksitBitis,
 };

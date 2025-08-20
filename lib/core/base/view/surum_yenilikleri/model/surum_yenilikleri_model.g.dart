@@ -25,14 +25,13 @@ _SurumYenilikleriModel _$SurumYenilikleriModelFromJson(
 Map<String, dynamic> _$SurumYenilikleriModelToJson(
   _SurumYenilikleriModel instance,
 ) => <String, dynamic>{
-  if (instance.surumKodu case final value?) 'SURUM_KODU': value,
-  if (instance.versiyon case final value?) 'VERSIYON': value,
-  if (instance.surumAdi case final value?) 'SURUM_ADI': value,
-  if (instance.yer case final value?) 'YER': value,
-  if (instance.liste?.map((e) => e.toJson()).toList() case final value?)
-    'LISTE': value,
-  if (instance.listAciklama case final value?) 'LIST_ACIKLAMA': value,
-  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+  'SURUM_KODU': ?instance.surumKodu,
+  'VERSIYON': ?instance.versiyon,
+  'SURUM_ADI': ?instance.surumAdi,
+  'YER': ?instance.yer,
+  'LISTE': ?instance.liste?.map((e) => e.toJson()).toList(),
+  'LIST_ACIKLAMA': ?instance.listAciklama,
+  'TARIH': ?instance.tarih?.toIso8601String(),
 };
 
 _ValueList _$ValueListFromJson(Map<String, dynamic> json) => _ValueList(
@@ -43,7 +42,7 @@ _ValueList _$ValueListFromJson(Map<String, dynamic> json) => _ValueList(
 
 Map<String, dynamic> _$ValueListToJson(_ValueList instance) =>
     <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.aciklama case final value?) 'ACIKLAMA': value,
-      if (instance.talepEden case final value?) 'TALEP_EDEN': value,
+      'ID': ?instance.id,
+      'ACIKLAMA': ?instance.aciklama,
+      'TALEP_EDEN': ?instance.talepEden,
     };

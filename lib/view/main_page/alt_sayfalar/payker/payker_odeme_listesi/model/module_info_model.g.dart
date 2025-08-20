@@ -512,11 +512,9 @@ ModuleInfoModel _$ModuleInfoModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ModuleInfoModelToJson(ModuleInfoModel instance) =>
     <String, dynamic>{
-      if (instance.hesap?.toJson() case final value?) 'hesap': value,
-      if (instance.moduller?.map((e) => e.toJson()).toList() case final value?)
-        'moduller': value,
-      if (instance.kayitTarihi?.toIso8601String() case final value?)
-        'kayitTarihi': value,
+      'hesap': ?instance.hesap?.toJson(),
+      'moduller': ?instance.moduller?.map((e) => e.toJson()).toList(),
+      'kayitTarihi': ?instance.kayitTarihi?.toIso8601String(),
     };
 
 _Hesap _$HesapFromJson(Map<String, dynamic> json) => _Hesap(
@@ -568,46 +566,43 @@ _Hesap _$HesapFromJson(Map<String, dynamic> json) => _Hesap(
 );
 
 Map<String, dynamic> _$HesapToJson(_Hesap instance) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.email case final value?) 'EMAIL': value,
-  if (instance.parola case final value?) 'PAROLA': value,
-  if (instance.adi case final value?) 'ADI': value,
-  if (instance.soyadi case final value?) 'SOYADI': value,
-  if (instance.adiSoyadi case final value?) 'ADI_SOYADI': value,
-  if (instance.firma case final value?) 'FIRMA': value,
-  if (instance.telefon case final value?) 'TELEFON': value,
-  if (instance.adres case final value?) 'ADRES': value,
-  if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
-  if (instance.vergiDairesiAdi case final value?) 'VERGI_DAIRESI_ADI': value,
-  if (instance.vergiNumarasi case final value?) 'VERGI_NUMARASI': value,
-  if (instance.ilKodu case final value?) 'IL_KODU': value,
-  if (instance.ilAdi case final value?) 'IL_ADI': value,
-  if (instance.ilceKodu case final value?) 'ILCE_KODU': value,
-  if (instance.ilceAdi case final value?) 'ILCE_ADI': value,
-  if (instance.admin case final value?) 'ADMIN': value,
-  if (instance.aktif case final value?) 'AKTIF': value,
-  if (instance.bayiMi case final value?) 'BAYI_MI': value,
-  if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
-  if (instance.dogrulamaKod case final value?) 'DOGRULAMA_KOD': value,
-  if (instance.yetkiSerbestrapor case final value?) 'YETKI_SERBESTRAPOR': value,
-  if (instance.yetkiDizayn case final value?) 'YETKI_DIZAYN': value,
-  if (instance.yetkiSohbet case final value?) 'YETKI_SOHBET': value,
-  if (instance.yetkiAjanda case final value?) 'YETKI_AJANDA': value,
-  if (instance.yetkiYedekleme case final value?) 'YETKI_YEDEKLEME': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
-  if (instance.ftpKullanimi case final value?) 'FTP_KULLANIMI': value,
-  if (instance.ftpAdres case final value?) 'FTP_ADRES': value,
-  if (instance.ftpKullaniciAdi case final value?) 'FTP_KULLANICI_ADI': value,
-  if (instance.ftpParola case final value?) 'FTP_PAROLA': value,
-  if (instance.ftpDosyaYedek case final value?) 'FTP_DOSYA_YEDEK': value,
-  if (instance.cihazlar?.map((e) => e.toJson()).toList() case final value?)
-    'CIHAZLAR': value,
-  if (instance.developerBilgi?.toJson() case final value?)
-    'DEVELOPER_BILGI': value,
-  if (instance.erpTipi case final value?) 'ERP_TIPI': value,
-  if (instance.erpVersiyon case final value?) 'ERP_VERSIYON': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
+  'ID': ?instance.id,
+  'EMAIL': ?instance.email,
+  'PAROLA': ?instance.parola,
+  'ADI': ?instance.adi,
+  'SOYADI': ?instance.soyadi,
+  'ADI_SOYADI': ?instance.adiSoyadi,
+  'FIRMA': ?instance.firma,
+  'TELEFON': ?instance.telefon,
+  'ADRES': ?instance.adres,
+  'VERGI_DAIRESI': ?instance.vergiDairesi,
+  'VERGI_DAIRESI_ADI': ?instance.vergiDairesiAdi,
+  'VERGI_NUMARASI': ?instance.vergiNumarasi,
+  'IL_KODU': ?instance.ilKodu,
+  'IL_ADI': ?instance.ilAdi,
+  'ILCE_KODU': ?instance.ilceKodu,
+  'ILCE_ADI': ?instance.ilceAdi,
+  'ADMIN': ?instance.admin,
+  'AKTIF': ?instance.aktif,
+  'BAYI_MI': ?instance.bayiMi,
+  'KULLANICI_SAYISI': ?instance.kullaniciSayisi,
+  'DOGRULAMA_KOD': ?instance.dogrulamaKod,
+  'YETKI_SERBESTRAPOR': ?instance.yetkiSerbestrapor,
+  'YETKI_DIZAYN': ?instance.yetkiDizayn,
+  'YETKI_SOHBET': ?instance.yetkiSohbet,
+  'YETKI_AJANDA': ?instance.yetkiAjanda,
+  'YETKI_YEDEKLEME': ?instance.yetkiYedekleme,
+  'KAYITTARIHI': ?instance.kayittarihi?.toIso8601String(),
+  'FTP_KULLANIMI': ?instance.ftpKullanimi,
+  'FTP_ADRES': ?instance.ftpAdres,
+  'FTP_KULLANICI_ADI': ?instance.ftpKullaniciAdi,
+  'FTP_PAROLA': ?instance.ftpParola,
+  'FTP_DOSYA_YEDEK': ?instance.ftpDosyaYedek,
+  'CIHAZLAR': ?instance.cihazlar?.map((e) => e.toJson()).toList(),
+  'DEVELOPER_BILGI': ?instance.developerBilgi?.toJson(),
+  'ERP_TIPI': ?instance.erpTipi,
+  'ERP_VERSIYON': ?instance.erpVersiyon,
+  'ACIKLAMA': ?instance.aciklama,
 };
 
 _Cihazlar _$CihazlarFromJson(Map<String, dynamic> json) => _Cihazlar(
@@ -634,26 +629,22 @@ _Cihazlar _$CihazlarFromJson(Map<String, dynamic> json) => _Cihazlar(
 );
 
 Map<String, dynamic> _$CihazlarToJson(_Cihazlar instance) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.platform case final value?) 'PLATFORM': value,
-  if (instance.versiyon case final value?) 'VERSIYON': value,
-  if (instance.storeVersiyon case final value?) 'STORE_VERSIYON': value,
-  if (instance.isletimSistemi case final value?) 'ISLETIM_SISTEMI': value,
-  if (instance.isletimSistemiVer case final value?)
-    'ISLETIM_SISTEMI_VER': value,
-  if (instance.isletimSistemiPlat case final value?)
-    'ISLETIM_SISTEMI_PLAT': value,
-  if (instance.lisanskey case final value?) 'LISANSKEY': value,
-  if (instance.lisanspc case final value?) 'LISANSPC': value,
-  if (instance.songiristar?.toIso8601String() case final value?)
-    'SONGIRISTAR': value,
-  if (instance.disIpAdresi case final value?) 'DIS_IP_ADRESI': value,
-  if (instance.erpTipi case final value?) 'ERP_TIPI': value,
-  if (instance.erpVersiyon case final value?) 'ERP_VERSIYON': value,
-  if (instance.sunucuMu case final value?) 'SUNUCU_MU': value,
-  if (instance.sqlserverinfo?.toJson() case final value?)
-    'SQLSERVERINFO': value,
-  if (instance.applicationUptime case final value?) 'APPLICATION_UPTIME': value,
+  'ID': ?instance.id,
+  'PLATFORM': ?instance.platform,
+  'VERSIYON': ?instance.versiyon,
+  'STORE_VERSIYON': ?instance.storeVersiyon,
+  'ISLETIM_SISTEMI': ?instance.isletimSistemi,
+  'ISLETIM_SISTEMI_VER': ?instance.isletimSistemiVer,
+  'ISLETIM_SISTEMI_PLAT': ?instance.isletimSistemiPlat,
+  'LISANSKEY': ?instance.lisanskey,
+  'LISANSPC': ?instance.lisanspc,
+  'SONGIRISTAR': ?instance.songiristar?.toIso8601String(),
+  'DIS_IP_ADRESI': ?instance.disIpAdresi,
+  'ERP_TIPI': ?instance.erpTipi,
+  'ERP_VERSIYON': ?instance.erpVersiyon,
+  'SUNUCU_MU': ?instance.sunucuMu,
+  'SQLSERVERINFO': ?instance.sqlserverinfo?.toJson(),
+  'APPLICATION_UPTIME': ?instance.applicationUptime,
 };
 
 _Sqlserverinfo _$SqlserverinfoFromJson(Map<String, dynamic> json) =>
@@ -670,14 +661,14 @@ _Sqlserverinfo _$SqlserverinfoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$SqlserverinfoToJson(_Sqlserverinfo instance) =>
     <String, dynamic>{
-      if (instance.name case final value?) 'NAME': value,
-      if (instance.instanceName case final value?) 'INSTANCE_NAME': value,
-      if (instance.surum case final value?) 'SURUM': value,
-      if (instance.versiyon case final value?) 'VERSIYON': value,
-      if (instance.productVersion case final value?) 'PRODUCT_VERSION': value,
-      if (instance.edition case final value?) 'EDITION': value,
-      if (instance.msdbGuid case final value?) 'MSDB_GUID': value,
-      if (instance.tempdbGuid case final value?) 'TEMPDB_GUID': value,
+      'NAME': ?instance.name,
+      'INSTANCE_NAME': ?instance.instanceName,
+      'SURUM': ?instance.surum,
+      'VERSIYON': ?instance.versiyon,
+      'PRODUCT_VERSION': ?instance.productVersion,
+      'EDITION': ?instance.edition,
+      'MSDB_GUID': ?instance.msdbGuid,
+      'TEMPDB_GUID': ?instance.tempdbGuid,
     };
 
 _DeveloperBilgi _$DeveloperBilgiFromJson(Map<String, dynamic> json) =>
@@ -694,17 +685,13 @@ _DeveloperBilgi _$DeveloperBilgiFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$DeveloperBilgiToJson(_DeveloperBilgi instance) =>
     <String, dynamic>{
-      if (instance.admin case final value?) 'ADMIN': value,
-      if (instance.guncellemeFtp case final value?) 'GUNCELLEME_FTP': value,
-      if (instance.guncellemeFtpKullaniciAdi case final value?)
-        'GUNCELLEME_FTP_KULLANICI_ADI': value,
-      if (instance.guncellemeFtpParola case final value?)
-        'GUNCELLEME_FTP_PAROLA': value,
-      if (instance.yedeklemeFtp case final value?) 'YEDEKLEME_FTP': value,
-      if (instance.yedeklemeFtpKullaniciAdi case final value?)
-        'YEDEKLEME_FTP_KULLANICI_ADI': value,
-      if (instance.yedeklemeFtpParola case final value?)
-        'YEDEKLEME_FTP_PAROLA': value,
+      'ADMIN': ?instance.admin,
+      'GUNCELLEME_FTP': ?instance.guncellemeFtp,
+      'GUNCELLEME_FTP_KULLANICI_ADI': ?instance.guncellemeFtpKullaniciAdi,
+      'GUNCELLEME_FTP_PAROLA': ?instance.guncellemeFtpParola,
+      'YEDEKLEME_FTP': ?instance.yedeklemeFtp,
+      'YEDEKLEME_FTP_KULLANICI_ADI': ?instance.yedeklemeFtpKullaniciAdi,
+      'YEDEKLEME_FTP_PAROLA': ?instance.yedeklemeFtpParola,
     };
 
 _Moduller _$ModullerFromJson(Map<String, dynamic> json) => _Moduller(
@@ -730,23 +717,21 @@ _Moduller _$ModullerFromJson(Map<String, dynamic> json) => _Moduller(
 );
 
 Map<String, dynamic> _$ModullerToJson(_Moduller instance) => <String, dynamic>{
-  if (instance.kategoriId case final value?) 'KATEGORI_ID': value,
-  if (instance.kategoriAdi case final value?) 'KATEGORI_ADI': value,
-  if (instance.modulBaslik case final value?) 'MODUL_BASLIK': value,
-  if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
-  if (instance.aciklama case final value?) 'ACIKLAMA': value,
-  if (instance.versiyon case final value?) 'VERSIYON': value,
-  if (instance.isdemo case final value?) 'ISDEMO': value,
-  if (instance.sozlesmeBastar case final value?) 'SOZLESME_BASTAR': value,
-  if (instance.sozlesmeBittar?.toIso8601String() case final value?)
-    'SOZLESME_BITTAR': value,
-  if (instance.kiralik case final value?) 'KIRALIK': value,
-  if (instance.webServisAdresi case final value?) 'WEB_SERVIS_ADRESI': value,
-  if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
-  if (instance.ekLisanslar?.map((e) => e.toJson()).toList() case final value?)
-    'EK_LISANSLAR': value,
-  if (instance.sozlesmeAktif case final value?) 'SOZLESME_AKTIF': value,
-  if (instance.sozlesmeUyari case final value?) 'SOZLESME_UYARI': value,
+  'KATEGORI_ID': ?instance.kategoriId,
+  'KATEGORI_ADI': ?instance.kategoriAdi,
+  'MODUL_BASLIK': ?instance.modulBaslik,
+  'DOSYA_ADI': ?instance.dosyaAdi,
+  'ACIKLAMA': ?instance.aciklama,
+  'VERSIYON': ?instance.versiyon,
+  'ISDEMO': ?instance.isdemo,
+  'SOZLESME_BASTAR': ?instance.sozlesmeBastar,
+  'SOZLESME_BITTAR': ?instance.sozlesmeBittar?.toIso8601String(),
+  'KIRALIK': ?instance.kiralik,
+  'WEB_SERVIS_ADRESI': ?instance.webServisAdresi,
+  'KULLANICI_SAYISI': ?instance.kullaniciSayisi,
+  'EK_LISANSLAR': ?instance.ekLisanslar?.map((e) => e.toJson()).toList(),
+  'SOZLESME_AKTIF': ?instance.sozlesmeAktif,
+  'SOZLESME_UYARI': ?instance.sozlesmeUyari,
 };
 
 _EkLisanslar _$EkLisanslarFromJson(Map<String, dynamic> json) => _EkLisanslar(
@@ -758,8 +743,8 @@ _EkLisanslar _$EkLisanslarFromJson(Map<String, dynamic> json) => _EkLisanslar(
 
 Map<String, dynamic> _$EkLisanslarToJson(_EkLisanslar instance) =>
     <String, dynamic>{
-      if (instance.sira case final value?) 'SIRA': value,
-      if (instance.tanimi case final value?) 'TANIMI': value,
-      if (instance.adet case final value?) 'ADET': value,
-      if (instance.bitisTarihi case final value?) 'BITIS_TARIHI': value,
+      'SIRA': ?instance.sira,
+      'TANIMI': ?instance.tanimi,
+      'ADET': ?instance.adet,
+      'BITIS_TARIHI': ?instance.bitisTarihi,
     };

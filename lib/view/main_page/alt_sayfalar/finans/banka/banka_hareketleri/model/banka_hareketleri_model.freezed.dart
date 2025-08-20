@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -95,6 +94,130 @@ as int?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [BankaHareketleriModel].
+extension BankaHareketleriModelPatterns on BankaHareketleriModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BankaHareketleriModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _BankaHareketleriModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BankaHareketleriModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _BankaHareketleriModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BankaHareketleriModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _BankaHareketleriModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? inckeyno,  String? netheskodu,  DateTime? tarih,  int? harturu,  String? ba,  double? tutar,  String? aciklama,  String? entegrefkey,  int? dovizTipi,  double? dovizTutari,  int? hareketTipi,  String? hesapAdi,  String? hareketAciklama,  String? bankaKodu,  String? bankaAdi,  String? bankasubeKodu,  String? subeAdi,  String? belgeno,  String? dovizAdi,  String? cariKodu,  String? cariAdi,  String? belgeNo,  String? kasaKodu,  String? kasaAdi,  String? entegreKasaKodu,  String? sozlesmeKodu,  String? projeKodu,  String? projeAciklama,  String? plasiyerKodu,  String? plasiyerAdi,  String? nakitmi,  int? taksitSayisi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _BankaHareketleriModel() when $default != null:
+return $default(_that.inckeyno,_that.netheskodu,_that.tarih,_that.harturu,_that.ba,_that.tutar,_that.aciklama,_that.entegrefkey,_that.dovizTipi,_that.dovizTutari,_that.hareketTipi,_that.hesapAdi,_that.hareketAciklama,_that.bankaKodu,_that.bankaAdi,_that.bankasubeKodu,_that.subeAdi,_that.belgeno,_that.dovizAdi,_that.cariKodu,_that.cariAdi,_that.belgeNo,_that.kasaKodu,_that.kasaAdi,_that.entegreKasaKodu,_that.sozlesmeKodu,_that.projeKodu,_that.projeAciklama,_that.plasiyerKodu,_that.plasiyerAdi,_that.nakitmi,_that.taksitSayisi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? inckeyno,  String? netheskodu,  DateTime? tarih,  int? harturu,  String? ba,  double? tutar,  String? aciklama,  String? entegrefkey,  int? dovizTipi,  double? dovizTutari,  int? hareketTipi,  String? hesapAdi,  String? hareketAciklama,  String? bankaKodu,  String? bankaAdi,  String? bankasubeKodu,  String? subeAdi,  String? belgeno,  String? dovizAdi,  String? cariKodu,  String? cariAdi,  String? belgeNo,  String? kasaKodu,  String? kasaAdi,  String? entegreKasaKodu,  String? sozlesmeKodu,  String? projeKodu,  String? projeAciklama,  String? plasiyerKodu,  String? plasiyerAdi,  String? nakitmi,  int? taksitSayisi)  $default,) {final _that = this;
+switch (_that) {
+case _BankaHareketleriModel():
+return $default(_that.inckeyno,_that.netheskodu,_that.tarih,_that.harturu,_that.ba,_that.tutar,_that.aciklama,_that.entegrefkey,_that.dovizTipi,_that.dovizTutari,_that.hareketTipi,_that.hesapAdi,_that.hareketAciklama,_that.bankaKodu,_that.bankaAdi,_that.bankasubeKodu,_that.subeAdi,_that.belgeno,_that.dovizAdi,_that.cariKodu,_that.cariAdi,_that.belgeNo,_that.kasaKodu,_that.kasaAdi,_that.entegreKasaKodu,_that.sozlesmeKodu,_that.projeKodu,_that.projeAciklama,_that.plasiyerKodu,_that.plasiyerAdi,_that.nakitmi,_that.taksitSayisi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? inckeyno,  String? netheskodu,  DateTime? tarih,  int? harturu,  String? ba,  double? tutar,  String? aciklama,  String? entegrefkey,  int? dovizTipi,  double? dovizTutari,  int? hareketTipi,  String? hesapAdi,  String? hareketAciklama,  String? bankaKodu,  String? bankaAdi,  String? bankasubeKodu,  String? subeAdi,  String? belgeno,  String? dovizAdi,  String? cariKodu,  String? cariAdi,  String? belgeNo,  String? kasaKodu,  String? kasaAdi,  String? entegreKasaKodu,  String? sozlesmeKodu,  String? projeKodu,  String? projeAciklama,  String? plasiyerKodu,  String? plasiyerAdi,  String? nakitmi,  int? taksitSayisi)?  $default,) {final _that = this;
+switch (_that) {
+case _BankaHareketleriModel() when $default != null:
+return $default(_that.inckeyno,_that.netheskodu,_that.tarih,_that.harturu,_that.ba,_that.tutar,_that.aciklama,_that.entegrefkey,_that.dovizTipi,_that.dovizTutari,_that.hareketTipi,_that.hesapAdi,_that.hareketAciklama,_that.bankaKodu,_that.bankaAdi,_that.bankasubeKodu,_that.subeAdi,_that.belgeno,_that.dovizAdi,_that.cariKodu,_that.cariAdi,_that.belgeNo,_that.kasaKodu,_that.kasaAdi,_that.entegreKasaKodu,_that.sozlesmeKodu,_that.projeKodu,_that.projeAciklama,_that.plasiyerKodu,_that.plasiyerAdi,_that.nakitmi,_that.taksitSayisi);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

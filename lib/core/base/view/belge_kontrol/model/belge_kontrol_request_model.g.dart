@@ -17,7 +17,7 @@ _BelgeKontrolRequestModel _$BelgeKontrolRequestModelFromJson(
 Map<String, dynamic> _$BelgeKontrolRequestModelToJson(
   _BelgeKontrolRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
-  if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
-  if (instance.durum case final value?) 'Durum': value,
+  'BaslamaTarihi': ?instance.baslamaTarihi,
+  'BitisTarihi': ?instance.bitisTarihi,
+  'Durum': ?instance.durum,
 };

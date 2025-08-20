@@ -28,23 +28,20 @@ _BelgeKontrolModel _$BelgeKontrolModelFromJson(Map<String, dynamic> json) =>
       stokKodu: json['STOK_KODU'] as String?,
     );
 
-Map<String, dynamic> _$BelgeKontrolModelToJson(
-  _BelgeKontrolModel instance,
-) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
-  if (instance.cariKodu case final value?) 'CARI_KODU': value,
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.sira case final value?) 'SIRA': value,
-  if (instance.belgeTarihi?.toIso8601String() case final value?)
-    'BELGE_TARIHI': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.tamamlananMiktar case final value?) 'TAMAMLANAN_MIKTAR': value,
-  if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-  if (instance.kayittarihi?.toIso8601String() case final value?)
-    'KAYITTARIHI': value,
-  if (instance.cariAdi case final value?) 'CARI_ADI': value,
-  if (instance.kalanMiktar case final value?) 'KALAN_MIKTAR': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-};
+Map<String, dynamic> _$BelgeKontrolModelToJson(_BelgeKontrolModel instance) =>
+    <String, dynamic>{
+      'ID': ?instance.id,
+      'BELGE_TIPI': ?instance.belgeTipi,
+      'BELGE_NO': ?instance.belgeNo,
+      'CARI_KODU': ?instance.cariKodu,
+      'ISLEM_KODU': ?instance.islemKodu,
+      'SIRA': ?instance.sira,
+      'BELGE_TARIHI': ?instance.belgeTarihi?.toIso8601String(),
+      'MIKTAR': ?instance.miktar,
+      'TAMAMLANAN_MIKTAR': ?instance.tamamlananMiktar,
+      'KAYITYAPANKUL': ?instance.kayityapankul,
+      'KAYITTARIHI': ?instance.kayittarihi?.toIso8601String(),
+      'CARI_ADI': ?instance.cariAdi,
+      'KALAN_MIKTAR': ?instance.kalanMiktar,
+      'STOK_KODU': ?instance.stokKodu,
+    };

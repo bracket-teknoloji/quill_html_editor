@@ -13,7 +13,4 @@ _KullanicilarModel _$KullanicilarModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$KullanicilarModelToJson(_KullanicilarModel instance) =>
-    <String, dynamic>{
-      if (instance.kodu case final value?) 'KODU': value,
-      if (instance.adi case final value?) 'ADI': value,
-    };
+    <String, dynamic>{'KODU': ?instance.kodu, 'ADI': ?instance.adi};

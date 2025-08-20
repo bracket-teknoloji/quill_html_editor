@@ -20,11 +20,10 @@ _IsEmriHammaddeTakibiDetayModel _$IsEmriHammaddeTakibiDetayModelFromJson(
 Map<String, dynamic> _$IsEmriHammaddeTakibiDetayModelToJson(
   _IsEmriHammaddeTakibiDetayModel instance,
 ) => <String, dynamic>{
-  if (instance.hamKodu case final value?) 'HAM_KODU': value,
-  if (instance.hamAdi case final value?) 'HAM_ADI': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.referanslar?.map((e) => e.toJson()).toList() case final value?)
-    'REFERANSLAR': value,
+  'HAM_KODU': ?instance.hamKodu,
+  'HAM_ADI': ?instance.hamAdi,
+  'MIKTAR': ?instance.miktar,
+  'REFERANSLAR': ?instance.referanslar?.map((e) => e.toJson()).toList(),
 };
 
 _Referanslar _$ReferanslarFromJson(Map<String, dynamic> json) => _Referanslar(
@@ -36,13 +35,12 @@ _Referanslar _$ReferanslarFromJson(Map<String, dynamic> json) => _Referanslar(
   referansStokAdi: json['REFERANS_STOK_ADI'] as String?,
 );
 
-Map<String, dynamic> _$ReferanslarToJson(
-  _Referanslar instance,
-) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.hammaddeNo case final value?) 'HAMMADDE_NO': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.referansStokKodu case final value?) 'REFERANS_STOK_KODU': value,
-  if (instance.referansStokAdi case final value?) 'REFERANS_STOK_ADI': value,
-};
+Map<String, dynamic> _$ReferanslarToJson(_Referanslar instance) =>
+    <String, dynamic>{
+      'ID': ?instance.id,
+      'HAMMADDE_NO': ?instance.hammaddeNo,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
+      'REFERANS_STOK_KODU': ?instance.referansStokKodu,
+      'REFERANS_STOK_ADI': ?instance.referansStokAdi,
+    };

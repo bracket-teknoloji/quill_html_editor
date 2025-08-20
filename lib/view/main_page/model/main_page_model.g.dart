@@ -72,13 +72,12 @@ MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
         json['ParamModel'] as Map<String, dynamic>,
       );
 
-Map<String, dynamic> _$MainPageModelToJson(
-  MainPageModel instance,
-) => <String, dynamic>{
-  if (instance.userModel?.toJson() case final value?) 'UserModel': value,
-  if (instance.serviceVersion case final value?) 'ServiceVersion': value,
-  if (instance.langVersion case final value?) 'LangVersion': value,
-  if (instance.sirketModel?.toJson() case final value?) 'SirketModel': value,
-  if (instance.menuList case final value?) 'MenuList': value,
-  if (instance.paramModel?.toJson() case final value?) 'ParamModel': value,
-};
+Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) =>
+    <String, dynamic>{
+      'UserModel': ?instance.userModel?.toJson(),
+      'ServiceVersion': ?instance.serviceVersion,
+      'LangVersion': ?instance.langVersion,
+      'SirketModel': ?instance.sirketModel?.toJson(),
+      'MenuList': ?instance.menuList,
+      'ParamModel': ?instance.paramModel?.toJson(),
+    };

@@ -22,14 +22,14 @@ _DovizKurlariModel _$DovizKurlariModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$DovizKurlariModelToJson(_DovizKurlariModel instance) =>
     <String, dynamic>{
-      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-      if (instance.sira case final value?) 'SIRA': value,
-      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-      if (instance.dovAlis case final value?) 'DOV_ALIS': value,
-      if (instance.dovSatis case final value?) 'DOV_SATIS': value,
-      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-      if (instance.effAlis case final value?) 'EFF_ALIS': value,
-      if (instance.effSatis case final value?) 'EFF_SATIS': value,
+      'TARIH': ?instance.tarih?.toIso8601String(),
+      'SIRA': ?instance.sira,
+      'DOVIZ_TIPI': ?instance.dovizTipi,
+      'DOV_ALIS': ?instance.dovAlis,
+      'DOV_SATIS': ?instance.dovSatis,
+      'DOVIZ_ADI': ?instance.dovizAdi,
+      'EFF_ALIS': ?instance.effAlis,
+      'EFF_SATIS': ?instance.effSatis,
     };
 
 _DovizKurlariRequestModel _$DovizKurlariRequestModelFromJson(
@@ -48,12 +48,12 @@ _DovizKurlariRequestModel _$DovizKurlariRequestModelFromJson(
 Map<String, dynamic> _$DovizKurlariRequestModelToJson(
   _DovizKurlariRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.tarih?.toIso8601String() case final value?) 'Tarih': value,
-  if (instance.sira case final value?) 'Sira': value,
-  if (instance.dovizTipi case final value?) 'DovizTipi': value,
-  if (instance.alis case final value?) 'Alis': value,
-  if (instance.satis case final value?) 'Satis': value,
-  if (instance.dovizAdi case final value?) 'DovizAdi': value,
-  if (instance.eFAlis case final value?) 'EFAlis': value,
-  if (instance.eFSatis case final value?) 'EFSatis': value,
+  'Tarih': ?instance.tarih?.toIso8601String(),
+  'Sira': ?instance.sira,
+  'DovizTipi': ?instance.dovizTipi,
+  'Alis': ?instance.alis,
+  'Satis': ?instance.satis,
+  'DovizAdi': ?instance.dovizAdi,
+  'EFAlis': ?instance.eFAlis,
+  'EFSatis': ?instance.eFSatis,
 };

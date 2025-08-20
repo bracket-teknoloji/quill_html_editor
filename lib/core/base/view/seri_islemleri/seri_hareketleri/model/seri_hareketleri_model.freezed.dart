@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -86,6 +85,130 @@ as String?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [SeriHareketleriModel].
+extension SeriHareketleriModelPatterns on SeriHareketleriModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SeriHareketleriModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SeriHareketleriModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SeriHareketleriModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _SeriHareketleriModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SeriHareketleriModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SeriHareketleriModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? stokKodu,  String? stokAdi,  int? depoKodu,  double? miktar,  String? seriNo,  int? inckeyno,  String? depoTanimi,  String? kayitTipi,  String? kayitTipiAdi,  String? belgeNo,  String? belgeTipi,  String? belgeTipiAdi,  String? haracik,  String? gckod,  DateTime? tarih,  int? stharInc,  int? islemKodu,  String? acik1,  String? acik2,  String? aciklama1,  String? seri1,  int? requestVersion,  String? seri2)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SeriHareketleriModel() when $default != null:
+return $default(_that.stokKodu,_that.stokAdi,_that.depoKodu,_that.miktar,_that.seriNo,_that.inckeyno,_that.depoTanimi,_that.kayitTipi,_that.kayitTipiAdi,_that.belgeNo,_that.belgeTipi,_that.belgeTipiAdi,_that.haracik,_that.gckod,_that.tarih,_that.stharInc,_that.islemKodu,_that.acik1,_that.acik2,_that.aciklama1,_that.seri1,_that.requestVersion,_that.seri2);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? stokKodu,  String? stokAdi,  int? depoKodu,  double? miktar,  String? seriNo,  int? inckeyno,  String? depoTanimi,  String? kayitTipi,  String? kayitTipiAdi,  String? belgeNo,  String? belgeTipi,  String? belgeTipiAdi,  String? haracik,  String? gckod,  DateTime? tarih,  int? stharInc,  int? islemKodu,  String? acik1,  String? acik2,  String? aciklama1,  String? seri1,  int? requestVersion,  String? seri2)  $default,) {final _that = this;
+switch (_that) {
+case _SeriHareketleriModel():
+return $default(_that.stokKodu,_that.stokAdi,_that.depoKodu,_that.miktar,_that.seriNo,_that.inckeyno,_that.depoTanimi,_that.kayitTipi,_that.kayitTipiAdi,_that.belgeNo,_that.belgeTipi,_that.belgeTipiAdi,_that.haracik,_that.gckod,_that.tarih,_that.stharInc,_that.islemKodu,_that.acik1,_that.acik2,_that.aciklama1,_that.seri1,_that.requestVersion,_that.seri2);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? stokKodu,  String? stokAdi,  int? depoKodu,  double? miktar,  String? seriNo,  int? inckeyno,  String? depoTanimi,  String? kayitTipi,  String? kayitTipiAdi,  String? belgeNo,  String? belgeTipi,  String? belgeTipiAdi,  String? haracik,  String? gckod,  DateTime? tarih,  int? stharInc,  int? islemKodu,  String? acik1,  String? acik2,  String? aciklama1,  String? seri1,  int? requestVersion,  String? seri2)?  $default,) {final _that = this;
+switch (_that) {
+case _SeriHareketleriModel() when $default != null:
+return $default(_that.stokKodu,_that.stokAdi,_that.depoKodu,_that.miktar,_that.seriNo,_that.inckeyno,_that.depoTanimi,_that.kayitTipi,_that.kayitTipiAdi,_that.belgeNo,_that.belgeTipi,_that.belgeTipiAdi,_that.haracik,_that.gckod,_that.tarih,_that.stharInc,_that.islemKodu,_that.acik1,_that.acik2,_that.aciklama1,_that.seri1,_that.requestVersion,_that.seri2);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

@@ -16,8 +16,8 @@ _EkRehberlerModel _$EkRehberlerModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$EkRehberlerModelToJson(_EkRehberlerModel instance) =>
     <String, dynamic>{
-      if (instance.id case final value?) 'ID': value,
-      if (instance.baslik case final value?) 'BASLIK': value,
-      if (instance.ekran case final value?) 'EKRAN': value,
-      if (instance.alan case final value?) 'ALAN': value,
+      'ID': ?instance.id,
+      'BASLIK': ?instance.baslik,
+      'EKRAN': ?instance.ekran,
+      'ALAN': ?instance.alan,
     };

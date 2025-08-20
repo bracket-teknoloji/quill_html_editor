@@ -1695,6 +1695,8 @@ final class ProfilYetkiModel {
   List<int>? taltekAtalAciklamaAlanlari;
   @JsonKey(name: "taltek_ATAL_BelgeKopyala")
   bool? taltekAtalBelgeKopyala;
+  @JsonKey(name: "taltek_STEK_BelgeKopyala")
+  bool? taltekStekBelgeKopyala;
   @JsonKey(name: "taltek_STAL")
   bool? taltekStal;
   @JsonKey(name: "taltek_STAL_Kaydet")

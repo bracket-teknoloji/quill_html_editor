@@ -27,18 +27,16 @@ _PaymentModel _$PaymentModelFromJson(Map<String, dynamic> json) =>
           : ERPInfo.fromJson(json['ERPInfo'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PaymentModelToJson(
-  _PaymentModel instance,
-) => <String, dynamic>{
-  if (instance.customerIpAddress case final value?) 'CustomerIPAddress': value,
-  if (instance.customerMailAddress case final value?)
-    'CustomerMailAddress': value,
-  if (instance.customerInfo?.toJson() case final value?) 'CustomerInfo': value,
-  if (instance.order?.toJson() case final value?) 'Order': value,
-  if (instance.saleInfo?.toJson() case final value?) 'SaleInfo': value,
-  if (instance.payment3D?.toJson() case final value?) 'Payment3D': value,
-  if (instance.erpInfo?.toJson() case final value?) 'ERPInfo': value,
-};
+Map<String, dynamic> _$PaymentModelToJson(_PaymentModel instance) =>
+    <String, dynamic>{
+      'CustomerIPAddress': ?instance.customerIpAddress,
+      'CustomerMailAddress': ?instance.customerMailAddress,
+      'CustomerInfo': ?instance.customerInfo?.toJson(),
+      'Order': ?instance.order?.toJson(),
+      'SaleInfo': ?instance.saleInfo?.toJson(),
+      'Payment3D': ?instance.payment3D?.toJson(),
+      'ERPInfo': ?instance.erpInfo?.toJson(),
+    };
 
 _CustomerInfo _$CustomerInfoFromJson(Map<String, dynamic> json) =>
     _CustomerInfo(
@@ -58,18 +56,18 @@ _CustomerInfo _$CustomerInfoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CustomerInfoToJson(_CustomerInfo instance) =>
     <String, dynamic>{
-      if (instance.customerId case final value?) 'CustomerId': value,
-      if (instance.name case final value?) 'Name': value,
-      if (instance.surname case final value?) 'Surname': value,
-      if (instance.emailAddress case final value?) 'EmailAddress': value,
-      if (instance.phoneNumber case final value?) 'PhoneNumber': value,
-      if (instance.taxNumber case final value?) 'TaxNumber': value,
-      if (instance.taxOffice case final value?) 'TaxOffice': value,
-      if (instance.country case final value?) 'Country': value,
-      if (instance.cityName case final value?) 'CityName': value,
-      if (instance.townName case final value?) 'TownName': value,
-      if (instance.addressDesc case final value?) 'AddressDesc': value,
-      if (instance.postCode case final value?) 'PostCode': value,
+      'CustomerId': ?instance.customerId,
+      'Name': ?instance.name,
+      'Surname': ?instance.surname,
+      'EmailAddress': ?instance.emailAddress,
+      'PhoneNumber': ?instance.phoneNumber,
+      'TaxNumber': ?instance.taxNumber,
+      'TaxOffice': ?instance.taxOffice,
+      'Country': ?instance.country,
+      'CityName': ?instance.cityName,
+      'TownName': ?instance.townName,
+      'AddressDesc': ?instance.addressDesc,
+      'PostCode': ?instance.postCode,
     };
 
 _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
@@ -82,12 +80,12 @@ _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
 );
 
 Map<String, dynamic> _$OrderToJson(_Order instance) => <String, dynamic>{
-  if (instance.orderId case final value?) 'OrderID': value,
-  if (instance.groupId case final value?) 'GroupID': value,
-  if (instance.items case final value?) 'Items': value,
-  if (instance.addresses case final value?) 'Addresses': value,
-  if (instance.comments case final value?) 'Comments': value,
-  if (instance.description case final value?) 'Description': value,
+  'OrderID': ?instance.orderId,
+  'GroupID': ?instance.groupId,
+  'Items': ?instance.items,
+  'Addresses': ?instance.addresses,
+  'Comments': ?instance.comments,
+  'Description': ?instance.description,
 };
 
 _Payment3D _$Payment3DFromJson(Map<String, dynamic> json) => _Payment3D(
@@ -98,9 +96,9 @@ _Payment3D _$Payment3DFromJson(Map<String, dynamic> json) => _Payment3D(
 
 Map<String, dynamic> _$Payment3DToJson(_Payment3D instance) =>
     <String, dynamic>{
-      if (instance.confirm case final value?) 'Confirm': value,
-      if (instance.returnUrl case final value?) 'ReturnURL': value,
-      if (instance.isDesktop case final value?) 'IsDesktop': value,
+      'Confirm': ?instance.confirm,
+      'ReturnURL': ?instance.returnUrl,
+      'IsDesktop': ?instance.isDesktop,
     };
 
 _SaleInfo _$SaleInfoFromJson(Map<String, dynamic> json) => _SaleInfo(
@@ -119,20 +117,18 @@ _SaleInfo _$SaleInfoFromJson(Map<String, dynamic> json) => _SaleInfo(
 );
 
 Map<String, dynamic> _$SaleInfoToJson(_SaleInfo instance) => <String, dynamic>{
-  if (instance.cardNameSurname case final value?) 'CardNameSurname': value,
-  if (instance.cardNumber case final value?) 'CardNumber': value,
-  if (instance.cardExpiryDateMonth case final value?)
-    'CardExpiryDateMonth': value,
-  if (instance.cardExpiryDateYear case final value?)
-    'CardExpiryDateYear': value,
-  if (instance.cardCvv case final value?) 'CardCvv': value,
-  if (instance.currency case final value?) 'Currency': value,
-  if (instance.amount case final value?) 'Amount': value,
-  if (instance.point case final value?) 'Point': value,
-  if (instance.installment case final value?) 'Installment': value,
-  if (instance.campaignCode case final value?) 'CampaignCode': value,
-  if (instance.bankCode case final value?) 'BankCode': value,
-  if (instance.description case final value?) 'Description': value,
+  'CardNameSurname': ?instance.cardNameSurname,
+  'CardNumber': ?instance.cardNumber,
+  'CardExpiryDateMonth': ?instance.cardExpiryDateMonth,
+  'CardExpiryDateYear': ?instance.cardExpiryDateYear,
+  'CardCvv': ?instance.cardCvv,
+  'Currency': ?instance.currency,
+  'Amount': ?instance.amount,
+  'Point': ?instance.point,
+  'Installment': ?instance.installment,
+  'CampaignCode': ?instance.campaignCode,
+  'BankCode': ?instance.bankCode,
+  'Description': ?instance.description,
 };
 
 _ERPInfo _$ERPInfoFromJson(Map<String, dynamic> json) => _ERPInfo(
@@ -145,10 +141,10 @@ _ERPInfo _$ERPInfoFromJson(Map<String, dynamic> json) => _ERPInfo(
 );
 
 Map<String, dynamic> _$ERPInfoToJson(_ERPInfo instance) => <String, dynamic>{
-  if (instance.companyCode case final value?) 'CompanyCode': value,
-  if (instance.businessUnitCode case final value?) 'BusinessUnitCode': value,
-  if (instance.branchCode case final value?) 'BranchCode': value,
-  if (instance.receiptNumber case final value?) 'ReceiptNumber': value,
-  if (instance.receiptSeries case final value?) 'ReceiptSeries': value,
-  if (instance.operatorUser case final value?) 'OperatorUser': value,
+  'CompanyCode': ?instance.companyCode,
+  'BusinessUnitCode': ?instance.businessUnitCode,
+  'BranchCode': ?instance.branchCode,
+  'ReceiptNumber': ?instance.receiptNumber,
+  'ReceiptSeries': ?instance.receiptSeries,
+  'OperatorUser': ?instance.operatorUser,
 };

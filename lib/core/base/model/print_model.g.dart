@@ -23,12 +23,12 @@ _PrintModel _$PrintModelFromJson(Map<String, dynamic> json) => _PrintModel(
 Map<String, dynamic> _$PrintModelToJson(_PrintModel instance) =>
     <String, dynamic>{
       'RAPOR_OZEL_KOD': instance.raporOzelKod,
-      if (instance.dizaynId case final value?) 'DIZAYN_ID': value,
-      if (instance.etiketSayisi case final value?) 'ETIKET_SAYISI': value,
-      if (instance.yazdir case final value?) 'YAZDIR': value,
-      if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
-      if (instance.yaziciTipi case final value?) 'YAZICI_TIPI': value,
-      if (instance.dicParams?.toJson() case final value?) 'DIC_PARAMS': value,
-      if (instance.standart case final value?) 'STANDART': value,
-      if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
+      'DIZAYN_ID': ?instance.dizaynId,
+      'ETIKET_SAYISI': ?instance.etiketSayisi,
+      'YAZDIR': ?instance.yazdir,
+      'YAZICI_ADI': ?instance.yaziciAdi,
+      'YAZICI_TIPI': ?instance.yaziciTipi,
+      'DIC_PARAMS': ?instance.dicParams?.toJson(),
+      'STANDART': ?instance.standart,
+      'EXPORT_TIPI': ?instance.exportTipi,
     };

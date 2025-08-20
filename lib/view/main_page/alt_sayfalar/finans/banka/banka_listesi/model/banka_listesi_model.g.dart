@@ -29,28 +29,25 @@ _BankaListesiModel _$BankaListesiModelFromJson(Map<String, dynamic> json) =>
       baglihesapKodu: json['BAGLIHESAP_KODU'] as String?,
     );
 
-Map<String, dynamic> _$BankaListesiModelToJson(
-  _BankaListesiModel instance,
-) => <String, dynamic>{
-  if (instance.bankaKodu case final value?) 'BANKA_KODU': value,
-  if (instance.bankasubeKodu case final value?) 'BANKASUBE_KODU': value,
-  if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
-  if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
-  if (instance.muhasebeHesapTipi case final value?)
-    'MUHASEBE_HESAP_TIPI': value,
-  if (instance.hesapNo case final value?) 'HESAP_NO': value,
-  if (instance.ibanNo case final value?) 'IBAN_NO': value,
-  if (instance.kilit case final value?) 'KILIT': value,
-  if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
-  if (instance.hesapTipiAdi case final value?) 'HESAP_TIPI_ADI': value,
-  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-  if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
-  if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
-  if (instance.dovizborcToplami case final value?) 'DOVIZBORC_TOPLAMI': value,
-  if (instance.dovizalacakToplami case final value?)
-    'DOVIZALACAK_TOPLAMI': value,
-  if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
-  if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
-  if (instance.subeAdi case final value?) 'SUBE_ADI': value,
-  if (instance.baglihesapKodu case final value?) 'BAGLIHESAP_KODU': value,
-};
+Map<String, dynamic> _$BankaListesiModelToJson(_BankaListesiModel instance) =>
+    <String, dynamic>{
+      'BANKA_KODU': ?instance.bankaKodu,
+      'BANKASUBE_KODU': ?instance.bankasubeKodu,
+      'HESAP_KODU': ?instance.hesapKodu,
+      'HESAP_ADI': ?instance.hesapAdi,
+      'MUHASEBE_HESAP_TIPI': ?instance.muhasebeHesapTipi,
+      'HESAP_NO': ?instance.hesapNo,
+      'IBAN_NO': ?instance.ibanNo,
+      'KILIT': ?instance.kilit,
+      'HESAP_TIPI': ?instance.hesapTipi,
+      'HESAP_TIPI_ADI': ?instance.hesapTipiAdi,
+      'DOVIZ_TIPI': ?instance.dovizTipi,
+      'BORC_TOPLAMI': ?instance.borcToplami,
+      'ALACAK_TOPLAMI': ?instance.alacakToplami,
+      'DOVIZBORC_TOPLAMI': ?instance.dovizborcToplami,
+      'DOVIZALACAK_TOPLAMI': ?instance.dovizalacakToplami,
+      'DOVIZ_ADI': ?instance.dovizAdi,
+      'BANKA_ADI': ?instance.bankaAdi,
+      'SUBE_ADI': ?instance.subeAdi,
+      'BAGLIHESAP_KODU': ?instance.baglihesapKodu,
+    };

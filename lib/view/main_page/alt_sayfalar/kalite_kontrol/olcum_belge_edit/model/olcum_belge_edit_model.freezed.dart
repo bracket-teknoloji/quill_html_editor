@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -75,6 +74,130 @@ as List<OlcumProsesModel>?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [OlcumBelgeEditModel].
+extension OlcumBelgeEditModelPatterns on OlcumBelgeEditModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OlcumBelgeEditModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OlcumBelgeEditModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OlcumBelgeEditModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumBelgeEditModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OlcumBelgeEditModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumBelgeEditModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? belgeNo,  String? belgeTipi,  int? belgeSira,  String? seriNo,  String? stokKodu,  String? yapkod,  String? opkodu,  String? kayitOperator,  String? kayitOperatorKodu,  List<OlcumBelgeModel>? belge,  List<OlcumOlcumlerModel>? olcumler,  List<OlcumProsesModel>? prosesler)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OlcumBelgeEditModel() when $default != null:
+return $default(_that.belgeNo,_that.belgeTipi,_that.belgeSira,_that.seriNo,_that.stokKodu,_that.yapkod,_that.opkodu,_that.kayitOperator,_that.kayitOperatorKodu,_that.belge,_that.olcumler,_that.prosesler);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? belgeNo,  String? belgeTipi,  int? belgeSira,  String? seriNo,  String? stokKodu,  String? yapkod,  String? opkodu,  String? kayitOperator,  String? kayitOperatorKodu,  List<OlcumBelgeModel>? belge,  List<OlcumOlcumlerModel>? olcumler,  List<OlcumProsesModel>? prosesler)  $default,) {final _that = this;
+switch (_that) {
+case _OlcumBelgeEditModel():
+return $default(_that.belgeNo,_that.belgeTipi,_that.belgeSira,_that.seriNo,_that.stokKodu,_that.yapkod,_that.opkodu,_that.kayitOperator,_that.kayitOperatorKodu,_that.belge,_that.olcumler,_that.prosesler);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? belgeNo,  String? belgeTipi,  int? belgeSira,  String? seriNo,  String? stokKodu,  String? yapkod,  String? opkodu,  String? kayitOperator,  String? kayitOperatorKodu,  List<OlcumBelgeModel>? belge,  List<OlcumOlcumlerModel>? olcumler,  List<OlcumProsesModel>? prosesler)?  $default,) {final _that = this;
+switch (_that) {
+case _OlcumBelgeEditModel() when $default != null:
+return $default(_that.belgeNo,_that.belgeTipi,_that.belgeSira,_that.seriNo,_that.stokKodu,_that.yapkod,_that.opkodu,_that.kayitOperator,_that.kayitOperatorKodu,_that.belge,_that.olcumler,_that.prosesler);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -239,6 +362,130 @@ as int?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [OlcumBelgeModel].
+extension OlcumBelgeModelPatterns on OlcumBelgeModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OlcumBelgeModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OlcumBelgeModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OlcumBelgeModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumBelgeModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OlcumBelgeModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumBelgeModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? belgeNo,  String? belgeTipi,  int? belgeSira,  DateTime? tarih,  int? sira,  String? stokKodu,  String? stokAdi,  double? miktar,  String? yapkod,  String? yapacik,  double? olcumAdedi,  double? kabulAdet,  double? sartliAdet,  double? retAdet,  String? opkodu,  String? cariKodu,  String? cariAdi,  String? belgeTuru,  int? kalemAdedi,  String? seriNo,  String? prosesVar,  String? teknikResimVarmi,  String? kontrolPlaniVarmi,  String? yarimOlcumYapabilirmi,  String? opkoduTanimi,  String? istasyonKodu,  String? istasyonTanimi,  int? datAdedi,  String? seriSorulsunmu,  String? tur, @JsonKey(name: "SearchText")  String? searchText, @JsonKey(name: "Sayfa")  int? sayfa)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OlcumBelgeModel() when $default != null:
+return $default(_that.belgeNo,_that.belgeTipi,_that.belgeSira,_that.tarih,_that.sira,_that.stokKodu,_that.stokAdi,_that.miktar,_that.yapkod,_that.yapacik,_that.olcumAdedi,_that.kabulAdet,_that.sartliAdet,_that.retAdet,_that.opkodu,_that.cariKodu,_that.cariAdi,_that.belgeTuru,_that.kalemAdedi,_that.seriNo,_that.prosesVar,_that.teknikResimVarmi,_that.kontrolPlaniVarmi,_that.yarimOlcumYapabilirmi,_that.opkoduTanimi,_that.istasyonKodu,_that.istasyonTanimi,_that.datAdedi,_that.seriSorulsunmu,_that.tur,_that.searchText,_that.sayfa);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? belgeNo,  String? belgeTipi,  int? belgeSira,  DateTime? tarih,  int? sira,  String? stokKodu,  String? stokAdi,  double? miktar,  String? yapkod,  String? yapacik,  double? olcumAdedi,  double? kabulAdet,  double? sartliAdet,  double? retAdet,  String? opkodu,  String? cariKodu,  String? cariAdi,  String? belgeTuru,  int? kalemAdedi,  String? seriNo,  String? prosesVar,  String? teknikResimVarmi,  String? kontrolPlaniVarmi,  String? yarimOlcumYapabilirmi,  String? opkoduTanimi,  String? istasyonKodu,  String? istasyonTanimi,  int? datAdedi,  String? seriSorulsunmu,  String? tur, @JsonKey(name: "SearchText")  String? searchText, @JsonKey(name: "Sayfa")  int? sayfa)  $default,) {final _that = this;
+switch (_that) {
+case _OlcumBelgeModel():
+return $default(_that.belgeNo,_that.belgeTipi,_that.belgeSira,_that.tarih,_that.sira,_that.stokKodu,_that.stokAdi,_that.miktar,_that.yapkod,_that.yapacik,_that.olcumAdedi,_that.kabulAdet,_that.sartliAdet,_that.retAdet,_that.opkodu,_that.cariKodu,_that.cariAdi,_that.belgeTuru,_that.kalemAdedi,_that.seriNo,_that.prosesVar,_that.teknikResimVarmi,_that.kontrolPlaniVarmi,_that.yarimOlcumYapabilirmi,_that.opkoduTanimi,_that.istasyonKodu,_that.istasyonTanimi,_that.datAdedi,_that.seriSorulsunmu,_that.tur,_that.searchText,_that.sayfa);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? belgeNo,  String? belgeTipi,  int? belgeSira,  DateTime? tarih,  int? sira,  String? stokKodu,  String? stokAdi,  double? miktar,  String? yapkod,  String? yapacik,  double? olcumAdedi,  double? kabulAdet,  double? sartliAdet,  double? retAdet,  String? opkodu,  String? cariKodu,  String? cariAdi,  String? belgeTuru,  int? kalemAdedi,  String? seriNo,  String? prosesVar,  String? teknikResimVarmi,  String? kontrolPlaniVarmi,  String? yarimOlcumYapabilirmi,  String? opkoduTanimi,  String? istasyonKodu,  String? istasyonTanimi,  int? datAdedi,  String? seriSorulsunmu,  String? tur, @JsonKey(name: "SearchText")  String? searchText, @JsonKey(name: "Sayfa")  int? sayfa)?  $default,) {final _that = this;
+switch (_that) {
+case _OlcumBelgeModel() when $default != null:
+return $default(_that.belgeNo,_that.belgeTipi,_that.belgeSira,_that.tarih,_that.sira,_that.stokKodu,_that.stokAdi,_that.miktar,_that.yapkod,_that.yapacik,_that.olcumAdedi,_that.kabulAdet,_that.sartliAdet,_that.retAdet,_that.opkodu,_that.cariKodu,_that.cariAdi,_that.belgeTuru,_that.kalemAdedi,_that.seriNo,_that.prosesVar,_that.teknikResimVarmi,_that.kontrolPlaniVarmi,_that.yarimOlcumYapabilirmi,_that.opkoduTanimi,_that.istasyonKodu,_that.istasyonTanimi,_that.datAdedi,_that.seriSorulsunmu,_that.tur,_that.searchText,_that.sayfa);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -426,6 +673,130 @@ as String?,
 }
 
 
+/// Adds pattern-matching-related methods to [OlcumOlcumlerModel].
+extension OlcumOlcumlerModelPatterns on OlcumOlcumlerModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OlcumOlcumlerModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OlcumOlcumlerModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OlcumOlcumlerModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumOlcumlerModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OlcumOlcumlerModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumOlcumlerModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? belgeSira,  String? stokKodu,  String? stokAdi,  String? olcumlerOperator,  String? kayityapankul,  String? kayitOperator,  String? kayitOperatorKodu,  DateTime? kayittarihi,  double? kabulAdet,  double? sartliAdet,  double? retAdet,  String? seriNo,  String? tamamlandi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OlcumOlcumlerModel() when $default != null:
+return $default(_that.id,_that.belgeSira,_that.stokKodu,_that.stokAdi,_that.olcumlerOperator,_that.kayityapankul,_that.kayitOperator,_that.kayitOperatorKodu,_that.kayittarihi,_that.kabulAdet,_that.sartliAdet,_that.retAdet,_that.seriNo,_that.tamamlandi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? belgeSira,  String? stokKodu,  String? stokAdi,  String? olcumlerOperator,  String? kayityapankul,  String? kayitOperator,  String? kayitOperatorKodu,  DateTime? kayittarihi,  double? kabulAdet,  double? sartliAdet,  double? retAdet,  String? seriNo,  String? tamamlandi)  $default,) {final _that = this;
+switch (_that) {
+case _OlcumOlcumlerModel():
+return $default(_that.id,_that.belgeSira,_that.stokKodu,_that.stokAdi,_that.olcumlerOperator,_that.kayityapankul,_that.kayitOperator,_that.kayitOperatorKodu,_that.kayittarihi,_that.kabulAdet,_that.sartliAdet,_that.retAdet,_that.seriNo,_that.tamamlandi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? belgeSira,  String? stokKodu,  String? stokAdi,  String? olcumlerOperator,  String? kayityapankul,  String? kayitOperator,  String? kayitOperatorKodu,  DateTime? kayittarihi,  double? kabulAdet,  double? sartliAdet,  double? retAdet,  String? seriNo,  String? tamamlandi)?  $default,) {final _that = this;
+switch (_that) {
+case _OlcumOlcumlerModel() when $default != null:
+return $default(_that.id,_that.belgeSira,_that.stokKodu,_that.stokAdi,_that.olcumlerOperator,_that.kayityapankul,_that.kayitOperator,_that.kayitOperatorKodu,_that.kayittarihi,_that.kabulAdet,_that.sartliAdet,_that.retAdet,_that.seriNo,_that.tamamlandi);case _:
+  return null;
+
+}
+}
+
+}
+
 /// @nodoc
 @JsonSerializable()
 
@@ -603,6 +974,130 @@ $OlcumProsesModelCopyWith<$Res>? get numuneler {
 }
 }
 
+
+/// Adds pattern-matching-related methods to [OlcumProsesModel].
+extension OlcumProsesModelPatterns on OlcumProsesModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OlcumProsesModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OlcumProsesModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OlcumProsesModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumProsesModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OlcumProsesModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumProsesModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? sira,  String? proses,  String? kriter,  String? kabulSarti,  String? tolerans,  String? ekipman,  String? olculecekmi,  String? onemlimi,  double? altSinir,  double? ustSinir,  String? tur,  int? olcumSikligi,  int? numuneMiktari,  int? detayId,  String? prosesTipi,  String? sonuc,  String? sartliKabulNedeni,  String? sartliKabulNedeniAciklama,  String? olcumOperatorModelOperator,  String? oncekiOlcudeSartlivarmi, @JsonKey(includeToJson: false, includeFromJson: false)  OlcumProsesModel? numuneler,  int? prosesId,  String? aciklama,  String? kayitOperator,  String? olcuBirimi,  String? talno,  String? form,  String? detayAciklama,  List<OlcumEkleDetayModel>? olcumler)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OlcumProsesModel() when $default != null:
+return $default(_that.id,_that.sira,_that.proses,_that.kriter,_that.kabulSarti,_that.tolerans,_that.ekipman,_that.olculecekmi,_that.onemlimi,_that.altSinir,_that.ustSinir,_that.tur,_that.olcumSikligi,_that.numuneMiktari,_that.detayId,_that.prosesTipi,_that.sonuc,_that.sartliKabulNedeni,_that.sartliKabulNedeniAciklama,_that.olcumOperatorModelOperator,_that.oncekiOlcudeSartlivarmi,_that.numuneler,_that.prosesId,_that.aciklama,_that.kayitOperator,_that.olcuBirimi,_that.talno,_that.form,_that.detayAciklama,_that.olcumler);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? sira,  String? proses,  String? kriter,  String? kabulSarti,  String? tolerans,  String? ekipman,  String? olculecekmi,  String? onemlimi,  double? altSinir,  double? ustSinir,  String? tur,  int? olcumSikligi,  int? numuneMiktari,  int? detayId,  String? prosesTipi,  String? sonuc,  String? sartliKabulNedeni,  String? sartliKabulNedeniAciklama,  String? olcumOperatorModelOperator,  String? oncekiOlcudeSartlivarmi, @JsonKey(includeToJson: false, includeFromJson: false)  OlcumProsesModel? numuneler,  int? prosesId,  String? aciklama,  String? kayitOperator,  String? olcuBirimi,  String? talno,  String? form,  String? detayAciklama,  List<OlcumEkleDetayModel>? olcumler)  $default,) {final _that = this;
+switch (_that) {
+case _OlcumProsesModel():
+return $default(_that.id,_that.sira,_that.proses,_that.kriter,_that.kabulSarti,_that.tolerans,_that.ekipman,_that.olculecekmi,_that.onemlimi,_that.altSinir,_that.ustSinir,_that.tur,_that.olcumSikligi,_that.numuneMiktari,_that.detayId,_that.prosesTipi,_that.sonuc,_that.sartliKabulNedeni,_that.sartliKabulNedeniAciklama,_that.olcumOperatorModelOperator,_that.oncekiOlcudeSartlivarmi,_that.numuneler,_that.prosesId,_that.aciklama,_that.kayitOperator,_that.olcuBirimi,_that.talno,_that.form,_that.detayAciklama,_that.olcumler);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? sira,  String? proses,  String? kriter,  String? kabulSarti,  String? tolerans,  String? ekipman,  String? olculecekmi,  String? onemlimi,  double? altSinir,  double? ustSinir,  String? tur,  int? olcumSikligi,  int? numuneMiktari,  int? detayId,  String? prosesTipi,  String? sonuc,  String? sartliKabulNedeni,  String? sartliKabulNedeniAciklama,  String? olcumOperatorModelOperator,  String? oncekiOlcudeSartlivarmi, @JsonKey(includeToJson: false, includeFromJson: false)  OlcumProsesModel? numuneler,  int? prosesId,  String? aciklama,  String? kayitOperator,  String? olcuBirimi,  String? talno,  String? form,  String? detayAciklama,  List<OlcumEkleDetayModel>? olcumler)?  $default,) {final _that = this;
+switch (_that) {
+case _OlcumProsesModel() when $default != null:
+return $default(_that.id,_that.sira,_that.proses,_that.kriter,_that.kabulSarti,_that.tolerans,_that.ekipman,_that.olculecekmi,_that.onemlimi,_that.altSinir,_that.ustSinir,_that.tur,_that.olcumSikligi,_that.numuneMiktari,_that.detayId,_that.prosesTipi,_that.sonuc,_that.sartliKabulNedeni,_that.sartliKabulNedeniAciklama,_that.olcumOperatorModelOperator,_that.oncekiOlcudeSartlivarmi,_that.numuneler,_that.prosesId,_that.aciklama,_that.kayitOperator,_that.olcuBirimi,_that.talno,_that.form,_that.detayAciklama,_that.olcumler);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -786,6 +1281,130 @@ as DateTime?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [OlcumEkleDetayModel].
+extension OlcumEkleDetayModelPatterns on OlcumEkleDetayModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OlcumEkleDetayModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OlcumEkleDetayModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OlcumEkleDetayModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumEkleDetayModel():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OlcumEkleDetayModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OlcumEkleDetayModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double? deger,  int? detayId,  DateTime? zaman)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OlcumEkleDetayModel() when $default != null:
+return $default(_that.deger,_that.detayId,_that.zaman);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double? deger,  int? detayId,  DateTime? zaman)  $default,) {final _that = this;
+switch (_that) {
+case _OlcumEkleDetayModel():
+return $default(_that.deger,_that.detayId,_that.zaman);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double? deger,  int? detayId,  DateTime? zaman)?  $default,) {final _that = this;
+switch (_that) {
+case _OlcumEkleDetayModel() when $default != null:
+return $default(_that.deger,_that.detayId,_that.zaman);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()

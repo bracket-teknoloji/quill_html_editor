@@ -17,7 +17,7 @@ _PaketlemeEditRequestModel _$PaketlemeEditRequestModelFromJson(
 Map<String, dynamic> _$PaketlemeEditRequestModelToJson(
   _PaketlemeEditRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.paketId case final value?) 'PAKET_ID': value,
-  if (instance.kalemId case final value?) 'KALEM_ID': value,
+  'ISLEM_KODU': ?instance.islemKodu,
+  'PAKET_ID': ?instance.paketId,
+  'KALEM_ID': ?instance.kalemId,
 };

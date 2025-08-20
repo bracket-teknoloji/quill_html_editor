@@ -1,13 +1,13 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/gen/assets.gen.dart";
 
 import "../../../../view/add_company/model/account_model.dart";
 import "../../../../view/add_company/model/account_response_model.dart";
 import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
-import "../../../gen/assets.gen.dart";
 import "../../../init/app_info/app_info.dart";
 import "../../../init/cache/cache_manager.dart";
 import "../../dialog/bottom_sheet/model/bottom_sheet_model.dart";

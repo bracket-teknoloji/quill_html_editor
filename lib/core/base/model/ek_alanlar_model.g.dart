@@ -25,15 +25,15 @@ _EkAlanlarModel _$EkAlanlarModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$EkAlanlarModelToJson(_EkAlanlarModel instance) =>
     <String, dynamic>{
-      if (instance.tabloAdi case final value?) 'TABLO_ADI': value,
-      if (instance.alanKodu case final value?) 'ALAN_KODU': value,
-      if (instance.alanAciklama case final value?) 'ALAN_ACIKLAMA': value,
-      if (instance.zorunlu case final value?) 'ZORUNLU': value,
-      if (instance.aktif case final value?) 'AKTIF': value,
-      if (instance.sira case final value?) 'SIRA': value,
-      if (instance.veriTipi case final value?) 'VERI_TIPI': value,
-      if (instance.uzunluk case final value?) 'UZUNLUK': value,
-      if (instance.componentTipi case final value?) 'COMPONENT_TIPI': value,
-      if (instance.secimListesi case final value?) 'SecimListesi': value,
-      if (instance.ondeger case final value?) 'ONDEGER': value,
+      'TABLO_ADI': ?instance.tabloAdi,
+      'ALAN_KODU': ?instance.alanKodu,
+      'ALAN_ACIKLAMA': ?instance.alanAciklama,
+      'ZORUNLU': ?instance.zorunlu,
+      'AKTIF': ?instance.aktif,
+      'SIRA': ?instance.sira,
+      'VERI_TIPI': ?instance.veriTipi,
+      'UZUNLUK': ?instance.uzunluk,
+      'COMPONENT_TIPI': ?instance.componentTipi,
+      'SecimListesi': ?instance.secimListesi,
+      'ONDEGER': ?instance.ondeger,
     };

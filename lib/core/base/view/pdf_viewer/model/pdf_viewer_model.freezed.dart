@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -81,6 +80,136 @@ $DicParamsCopyWith<$Res>? get dicParams {
 }
 }
 
+
+/// Adds pattern-matching-related methods to [PdfModel].
+extension PdfModelPatterns on PdfModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PdfModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PdfModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PdfModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _PdfModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PdfModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PdfModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? raporOzelKod,  bool? standart,  DicParams? dicParams, @JsonKey(name: "DicParams", includeToJson: false)  Map<String, dynamic>? dicParamsMap,  int? dizaynId,  int? etiketSayisi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PdfModel() when $default != null:
+return $default(_that.raporOzelKod,_that.standart,_that.dicParams,_that.dicParamsMap,_that.dizaynId,_that.etiketSayisi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? raporOzelKod,  bool? standart,  DicParams? dicParams, @JsonKey(name: "DicParams", includeToJson: false)  Map<String, dynamic>? dicParamsMap,  int? dizaynId,  int? etiketSayisi)  $default,) {final _that = this;
+switch (_that) {
+case _PdfModel():
+return $default(_that.raporOzelKod,_that.standart,_that.dicParams,_that.dicParamsMap,_that.dizaynId,_that.etiketSayisi);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? raporOzelKod,  bool? standart,  DicParams? dicParams, @JsonKey(name: "DicParams", includeToJson: false)  Map<String, dynamic>? dicParamsMap,  int? dizaynId,  int? etiketSayisi)?  $default,) {final _that = this;
+switch (_that) {
+case _PdfModel() when $default != null:
+return $default(_that.raporOzelKod,_that.standart,_that.dicParams,_that.dicParamsMap,_that.dizaynId,_that.etiketSayisi);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -166,7 +295,7 @@ $DicParamsCopyWith<$Res>? get dicParams {
 /// @nodoc
 mixin _$DicParams {
 
- String get belgeNo; set belgeNo(String value); String? get cariKodu; set cariKodu(String? value); String? get teslimCariKodu; set teslimCariKodu(String? value); String? get stokKodu; set stokKodu(String? value); String? get sifirHaric; set sifirHaric(String? value); String? get maliyetTipi; set maliyetTipi(String? value); String? get tlHarDokulsun; set tlHarDokulsun(String? value); String? get depoKodlari; set depoKodlari(String? value); String? get haricStokKodlari; set haricStokKodlari(String? value); String? get haricStokGrupKodlari; set haricStokGrupKodlari(String? value); String? get dovizTipi; set dovizTipi(String? value); String? get bastar; set bastar(String? value); String? get bittar; set bittar(String? value); String? get grupKodu; set grupKodu(String? value); String? get borcAlacak; set borcAlacak(String? value); String? get refTarih; set refTarih(String? value); String? get tarihTipi; set tarihTipi(String? value); String? get kod1; set kod1(String? value); String? get kod2; set kod2(String? value); String? get kod3; set kod3(String? value); String? get kod4; set kod4(String? value); String? get kod5; set kod5(String? value); String? get kapali; set kapali(String? value); String? get durum; set durum(String? value); String? get vergiNo; set vergiNo(String? value); String? get plasiyerKodu; set plasiyerKodu(String? value); String? get aralikTipi; set aralikTipi(String? value); String? get sirala; set sirala(String? value); String? get bakiyeDurumu; set bakiyeDurumu(String? value); String? get caharInckey; set caharInckey(String? value); String? get belgeTipi; set belgeTipi(String? value); String? get isemriNo; set isemriNo(String? value); String? get dinamikParam; set dinamikParam(String? value); String? get kasaharInckey; set kasaharInckey(String? value); String? get uretimFiyatiDahil; set uretimFiyatiDahil(String? value); String? get fiyatTipi; set fiyatTipi(String? value); String? get tblnfStokfiyatgecmisiId; set tblnfStokfiyatgecmisiId(String? value); String? get gorunecekAlanlar; set gorunecekAlanlar(String? value); int? get miktar; set miktar(int? value); String? get yapkod; set yapkod(String? value); String? get opkodu; set opkodu(String? value); String? get kasaKodu; set kasaKodu(String? value); String? get muhasebeKodu; set muhasebeKodu(String? value); String? get filtre; set filtre(String? value); String? get depoKodu; set depoKodu(String? value); String? get hucreKodu; set hucreKodu(String? value); String? get kalemId; set kalemId(String? value); String? get tempBelgeId; set tempBelgeId(String? value); String? get irsDahil; set irsDahil(String? value);@JsonKey(toJson: _dovizTipleriToJson) List<int>? get dovizTipleri;@JsonKey(toJson: _dovizTipleriToJson) set dovizTipleri(List<int>? value);
+ String get belgeNo; set belgeNo(String value); String? get cariKodu; set cariKodu(String? value); String? get teslimCariKodu; set teslimCariKodu(String? value); String? get stokKodu; set stokKodu(String? value); String? get sifirHaric; set sifirHaric(String? value); String? get maliyetTipi; set maliyetTipi(String? value); String? get tlHarDokulsun; set tlHarDokulsun(String? value); String? get depoKodlari; set depoKodlari(String? value); String? get haricStokKodlari; set haricStokKodlari(String? value); String? get haricStokGrupKodlari; set haricStokGrupKodlari(String? value); String? get dovizTipi; set dovizTipi(String? value); String? get bastar; set bastar(String? value); String? get bittar; set bittar(String? value); String? get grupKodu; set grupKodu(String? value); String? get borcAlacak; set borcAlacak(String? value); String? get refTarih; set refTarih(String? value); String? get tarihTipi; set tarihTipi(String? value); String? get kod1; set kod1(String? value); String? get kod2; set kod2(String? value); String? get kod3; set kod3(String? value); String? get kod4; set kod4(String? value); String? get kod5; set kod5(String? value); String? get kapali; set kapali(String? value); String? get durum; set durum(String? value); String? get vergiNo; set vergiNo(String? value); String? get plasiyerKodu; set plasiyerKodu(String? value); String? get aralikTipi; set aralikTipi(String? value); String? get sirala; set sirala(String? value); String? get bakiyeDurumu; set bakiyeDurumu(String? value); String? get caharInckey; set caharInckey(String? value); String? get belgeTipi; set belgeTipi(String? value); String? get isemriNo; set isemriNo(String? value); String? get dinamikParam; set dinamikParam(String? value); String? get kasaharInckey; set kasaharInckey(String? value); String? get uretimFiyatiDahil; set uretimFiyatiDahil(String? value); String? get fiyatTipi; set fiyatTipi(String? value); String? get tblnfStokfiyatgecmisiId; set tblnfStokfiyatgecmisiId(String? value); String? get gorunecekAlanlar; set gorunecekAlanlar(String? value); int? get miktar; set miktar(int? value); String? get yapkod; set yapkod(String? value); String? get opkodu; set opkodu(String? value); String? get kasaKodu; set kasaKodu(String? value); String? get muhasebeKodu; set muhasebeKodu(String? value); String? get filtre; set filtre(String? value); String? get depoKodu; set depoKodu(String? value); String? get hucreKodu; set hucreKodu(String? value); String? get kalemId; set kalemId(String? value); String? get tempBelgeId; set tempBelgeId(String? value); String? get irsDahil; set irsDahil(String? value);@JsonKey(toJson: _dovizTipleriToJson) List<int>? get dovizTipleri;@JsonKey(toJson: _dovizTipleriToJson) set dovizTipleri(List<int>? value); String? get plasiyerKirilimi; set plasiyerKirilimi(String? value);
 /// Create a copy of DicParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -188,7 +317,7 @@ abstract mixin class $DicParamsCopyWith<$Res>  {
   factory $DicParamsCopyWith(DicParams value, $Res Function(DicParams) _then) = _$DicParamsCopyWithImpl;
 @useResult
 $Res call({
- String belgeNo, String? cariKodu, String? teslimCariKodu, String? stokKodu, String? sifirHaric, String? maliyetTipi, String? tlHarDokulsun, String? depoKodlari, String? haricStokKodlari, String? haricStokGrupKodlari, String? dovizTipi, String? bastar, String? bittar, String? grupKodu, String? borcAlacak, String? refTarih, String? tarihTipi, String? kod1, String? kod2, String? kod3, String? kod4, String? kod5, String? kapali, String? durum, String? vergiNo, String? plasiyerKodu, String? aralikTipi, String? sirala, String? bakiyeDurumu, String? caharInckey, String? belgeTipi, String? isemriNo, String? dinamikParam, String? kasaharInckey, String? uretimFiyatiDahil, String? fiyatTipi, String? tblnfStokfiyatgecmisiId, String? gorunecekAlanlar, int? miktar, String? yapkod, String? opkodu, String? kasaKodu, String? muhasebeKodu, String? filtre, String? depoKodu, String? hucreKodu, String? kalemId, String? tempBelgeId, String? irsDahil,@JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri
+ String belgeNo, String? cariKodu, String? teslimCariKodu, String? stokKodu, String? sifirHaric, String? maliyetTipi, String? tlHarDokulsun, String? depoKodlari, String? haricStokKodlari, String? haricStokGrupKodlari, String? dovizTipi, String? bastar, String? bittar, String? grupKodu, String? borcAlacak, String? refTarih, String? tarihTipi, String? kod1, String? kod2, String? kod3, String? kod4, String? kod5, String? kapali, String? durum, String? vergiNo, String? plasiyerKodu, String? aralikTipi, String? sirala, String? bakiyeDurumu, String? caharInckey, String? belgeTipi, String? isemriNo, String? dinamikParam, String? kasaharInckey, String? uretimFiyatiDahil, String? fiyatTipi, String? tblnfStokfiyatgecmisiId, String? gorunecekAlanlar, int? miktar, String? yapkod, String? opkodu, String? kasaKodu, String? muhasebeKodu, String? filtre, String? depoKodu, String? hucreKodu, String? kalemId, String? tempBelgeId, String? irsDahil,@JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri, String? plasiyerKirilimi
 });
 
 
@@ -205,7 +334,7 @@ class _$DicParamsCopyWithImpl<$Res>
 
 /// Create a copy of DicParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? belgeNo = null,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? stokKodu = freezed,Object? sifirHaric = freezed,Object? maliyetTipi = freezed,Object? tlHarDokulsun = freezed,Object? depoKodlari = freezed,Object? haricStokKodlari = freezed,Object? haricStokGrupKodlari = freezed,Object? dovizTipi = freezed,Object? bastar = freezed,Object? bittar = freezed,Object? grupKodu = freezed,Object? borcAlacak = freezed,Object? refTarih = freezed,Object? tarihTipi = freezed,Object? kod1 = freezed,Object? kod2 = freezed,Object? kod3 = freezed,Object? kod4 = freezed,Object? kod5 = freezed,Object? kapali = freezed,Object? durum = freezed,Object? vergiNo = freezed,Object? plasiyerKodu = freezed,Object? aralikTipi = freezed,Object? sirala = freezed,Object? bakiyeDurumu = freezed,Object? caharInckey = freezed,Object? belgeTipi = freezed,Object? isemriNo = freezed,Object? dinamikParam = freezed,Object? kasaharInckey = freezed,Object? uretimFiyatiDahil = freezed,Object? fiyatTipi = freezed,Object? tblnfStokfiyatgecmisiId = freezed,Object? gorunecekAlanlar = freezed,Object? miktar = freezed,Object? yapkod = freezed,Object? opkodu = freezed,Object? kasaKodu = freezed,Object? muhasebeKodu = freezed,Object? filtre = freezed,Object? depoKodu = freezed,Object? hucreKodu = freezed,Object? kalemId = freezed,Object? tempBelgeId = freezed,Object? irsDahil = freezed,Object? dovizTipleri = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? belgeNo = null,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? stokKodu = freezed,Object? sifirHaric = freezed,Object? maliyetTipi = freezed,Object? tlHarDokulsun = freezed,Object? depoKodlari = freezed,Object? haricStokKodlari = freezed,Object? haricStokGrupKodlari = freezed,Object? dovizTipi = freezed,Object? bastar = freezed,Object? bittar = freezed,Object? grupKodu = freezed,Object? borcAlacak = freezed,Object? refTarih = freezed,Object? tarihTipi = freezed,Object? kod1 = freezed,Object? kod2 = freezed,Object? kod3 = freezed,Object? kod4 = freezed,Object? kod5 = freezed,Object? kapali = freezed,Object? durum = freezed,Object? vergiNo = freezed,Object? plasiyerKodu = freezed,Object? aralikTipi = freezed,Object? sirala = freezed,Object? bakiyeDurumu = freezed,Object? caharInckey = freezed,Object? belgeTipi = freezed,Object? isemriNo = freezed,Object? dinamikParam = freezed,Object? kasaharInckey = freezed,Object? uretimFiyatiDahil = freezed,Object? fiyatTipi = freezed,Object? tblnfStokfiyatgecmisiId = freezed,Object? gorunecekAlanlar = freezed,Object? miktar = freezed,Object? yapkod = freezed,Object? opkodu = freezed,Object? kasaKodu = freezed,Object? muhasebeKodu = freezed,Object? filtre = freezed,Object? depoKodu = freezed,Object? hucreKodu = freezed,Object? kalemId = freezed,Object? tempBelgeId = freezed,Object? irsDahil = freezed,Object? dovizTipleri = freezed,Object? plasiyerKirilimi = freezed,}) {
   return _then(_self.copyWith(
 belgeNo: null == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
 as String,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
@@ -257,18 +386,143 @@ as String?,kalemId: freezed == kalemId ? _self.kalemId : kalemId // ignore: cast
 as String?,tempBelgeId: freezed == tempBelgeId ? _self.tempBelgeId : tempBelgeId // ignore: cast_nullable_to_non_nullable
 as String?,irsDahil: freezed == irsDahil ? _self.irsDahil : irsDahil // ignore: cast_nullable_to_non_nullable
 as String?,dovizTipleri: freezed == dovizTipleri ? _self.dovizTipleri : dovizTipleri // ignore: cast_nullable_to_non_nullable
-as List<int>?,
+as List<int>?,plasiyerKirilimi: freezed == plasiyerKirilimi ? _self.plasiyerKirilimi : plasiyerKirilimi // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
 }
 
 
+/// Adds pattern-matching-related methods to [DicParams].
+extension DicParamsPatterns on DicParams {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DicParams value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _DicParams() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DicParams value)  $default,){
+final _that = this;
+switch (_that) {
+case _DicParams():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DicParams value)?  $default,){
+final _that = this;
+switch (_that) {
+case _DicParams() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String belgeNo,  String? cariKodu,  String? teslimCariKodu,  String? stokKodu,  String? sifirHaric,  String? maliyetTipi,  String? tlHarDokulsun,  String? depoKodlari,  String? haricStokKodlari,  String? haricStokGrupKodlari,  String? dovizTipi,  String? bastar,  String? bittar,  String? grupKodu,  String? borcAlacak,  String? refTarih,  String? tarihTipi,  String? kod1,  String? kod2,  String? kod3,  String? kod4,  String? kod5,  String? kapali,  String? durum,  String? vergiNo,  String? plasiyerKodu,  String? aralikTipi,  String? sirala,  String? bakiyeDurumu,  String? caharInckey,  String? belgeTipi,  String? isemriNo,  String? dinamikParam,  String? kasaharInckey,  String? uretimFiyatiDahil,  String? fiyatTipi,  String? tblnfStokfiyatgecmisiId,  String? gorunecekAlanlar,  int? miktar,  String? yapkod,  String? opkodu,  String? kasaKodu,  String? muhasebeKodu,  String? filtre,  String? depoKodu,  String? hucreKodu,  String? kalemId,  String? tempBelgeId,  String? irsDahil, @JsonKey(toJson: _dovizTipleriToJson)  List<int>? dovizTipleri,  String? plasiyerKirilimi)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _DicParams() when $default != null:
+return $default(_that.belgeNo,_that.cariKodu,_that.teslimCariKodu,_that.stokKodu,_that.sifirHaric,_that.maliyetTipi,_that.tlHarDokulsun,_that.depoKodlari,_that.haricStokKodlari,_that.haricStokGrupKodlari,_that.dovizTipi,_that.bastar,_that.bittar,_that.grupKodu,_that.borcAlacak,_that.refTarih,_that.tarihTipi,_that.kod1,_that.kod2,_that.kod3,_that.kod4,_that.kod5,_that.kapali,_that.durum,_that.vergiNo,_that.plasiyerKodu,_that.aralikTipi,_that.sirala,_that.bakiyeDurumu,_that.caharInckey,_that.belgeTipi,_that.isemriNo,_that.dinamikParam,_that.kasaharInckey,_that.uretimFiyatiDahil,_that.fiyatTipi,_that.tblnfStokfiyatgecmisiId,_that.gorunecekAlanlar,_that.miktar,_that.yapkod,_that.opkodu,_that.kasaKodu,_that.muhasebeKodu,_that.filtre,_that.depoKodu,_that.hucreKodu,_that.kalemId,_that.tempBelgeId,_that.irsDahil,_that.dovizTipleri,_that.plasiyerKirilimi);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String belgeNo,  String? cariKodu,  String? teslimCariKodu,  String? stokKodu,  String? sifirHaric,  String? maliyetTipi,  String? tlHarDokulsun,  String? depoKodlari,  String? haricStokKodlari,  String? haricStokGrupKodlari,  String? dovizTipi,  String? bastar,  String? bittar,  String? grupKodu,  String? borcAlacak,  String? refTarih,  String? tarihTipi,  String? kod1,  String? kod2,  String? kod3,  String? kod4,  String? kod5,  String? kapali,  String? durum,  String? vergiNo,  String? plasiyerKodu,  String? aralikTipi,  String? sirala,  String? bakiyeDurumu,  String? caharInckey,  String? belgeTipi,  String? isemriNo,  String? dinamikParam,  String? kasaharInckey,  String? uretimFiyatiDahil,  String? fiyatTipi,  String? tblnfStokfiyatgecmisiId,  String? gorunecekAlanlar,  int? miktar,  String? yapkod,  String? opkodu,  String? kasaKodu,  String? muhasebeKodu,  String? filtre,  String? depoKodu,  String? hucreKodu,  String? kalemId,  String? tempBelgeId,  String? irsDahil, @JsonKey(toJson: _dovizTipleriToJson)  List<int>? dovizTipleri,  String? plasiyerKirilimi)  $default,) {final _that = this;
+switch (_that) {
+case _DicParams():
+return $default(_that.belgeNo,_that.cariKodu,_that.teslimCariKodu,_that.stokKodu,_that.sifirHaric,_that.maliyetTipi,_that.tlHarDokulsun,_that.depoKodlari,_that.haricStokKodlari,_that.haricStokGrupKodlari,_that.dovizTipi,_that.bastar,_that.bittar,_that.grupKodu,_that.borcAlacak,_that.refTarih,_that.tarihTipi,_that.kod1,_that.kod2,_that.kod3,_that.kod4,_that.kod5,_that.kapali,_that.durum,_that.vergiNo,_that.plasiyerKodu,_that.aralikTipi,_that.sirala,_that.bakiyeDurumu,_that.caharInckey,_that.belgeTipi,_that.isemriNo,_that.dinamikParam,_that.kasaharInckey,_that.uretimFiyatiDahil,_that.fiyatTipi,_that.tblnfStokfiyatgecmisiId,_that.gorunecekAlanlar,_that.miktar,_that.yapkod,_that.opkodu,_that.kasaKodu,_that.muhasebeKodu,_that.filtre,_that.depoKodu,_that.hucreKodu,_that.kalemId,_that.tempBelgeId,_that.irsDahil,_that.dovizTipleri,_that.plasiyerKirilimi);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String belgeNo,  String? cariKodu,  String? teslimCariKodu,  String? stokKodu,  String? sifirHaric,  String? maliyetTipi,  String? tlHarDokulsun,  String? depoKodlari,  String? haricStokKodlari,  String? haricStokGrupKodlari,  String? dovizTipi,  String? bastar,  String? bittar,  String? grupKodu,  String? borcAlacak,  String? refTarih,  String? tarihTipi,  String? kod1,  String? kod2,  String? kod3,  String? kod4,  String? kod5,  String? kapali,  String? durum,  String? vergiNo,  String? plasiyerKodu,  String? aralikTipi,  String? sirala,  String? bakiyeDurumu,  String? caharInckey,  String? belgeTipi,  String? isemriNo,  String? dinamikParam,  String? kasaharInckey,  String? uretimFiyatiDahil,  String? fiyatTipi,  String? tblnfStokfiyatgecmisiId,  String? gorunecekAlanlar,  int? miktar,  String? yapkod,  String? opkodu,  String? kasaKodu,  String? muhasebeKodu,  String? filtre,  String? depoKodu,  String? hucreKodu,  String? kalemId,  String? tempBelgeId,  String? irsDahil, @JsonKey(toJson: _dovizTipleriToJson)  List<int>? dovizTipleri,  String? plasiyerKirilimi)?  $default,) {final _that = this;
+switch (_that) {
+case _DicParams() when $default != null:
+return $default(_that.belgeNo,_that.cariKodu,_that.teslimCariKodu,_that.stokKodu,_that.sifirHaric,_that.maliyetTipi,_that.tlHarDokulsun,_that.depoKodlari,_that.haricStokKodlari,_that.haricStokGrupKodlari,_that.dovizTipi,_that.bastar,_that.bittar,_that.grupKodu,_that.borcAlacak,_that.refTarih,_that.tarihTipi,_that.kod1,_that.kod2,_that.kod3,_that.kod4,_that.kod5,_that.kapali,_that.durum,_that.vergiNo,_that.plasiyerKodu,_that.aralikTipi,_that.sirala,_that.bakiyeDurumu,_that.caharInckey,_that.belgeTipi,_that.isemriNo,_that.dinamikParam,_that.kasaharInckey,_that.uretimFiyatiDahil,_that.fiyatTipi,_that.tblnfStokfiyatgecmisiId,_that.gorunecekAlanlar,_that.miktar,_that.yapkod,_that.opkodu,_that.kasaKodu,_that.muhasebeKodu,_that.filtre,_that.depoKodu,_that.hucreKodu,_that.kalemId,_that.tempBelgeId,_that.irsDahil,_that.dovizTipleri,_that.plasiyerKirilimi);case _:
+  return null;
+
+}
+}
+
+}
+
 /// @nodoc
 @JsonSerializable()
 
 class _DicParams implements DicParams {
-   _DicParams({required this.belgeNo, this.cariKodu, this.teslimCariKodu, this.stokKodu, this.sifirHaric, this.maliyetTipi, this.tlHarDokulsun, this.depoKodlari, this.haricStokKodlari, this.haricStokGrupKodlari, this.dovizTipi, this.bastar, this.bittar, this.grupKodu, this.borcAlacak, this.refTarih, this.tarihTipi, this.kod1, this.kod2, this.kod3, this.kod4, this.kod5, this.kapali, this.durum, this.vergiNo, this.plasiyerKodu, this.aralikTipi, this.sirala, this.bakiyeDurumu, this.caharInckey, this.belgeTipi, this.isemriNo, this.dinamikParam, this.kasaharInckey, this.uretimFiyatiDahil, this.fiyatTipi, this.tblnfStokfiyatgecmisiId, this.gorunecekAlanlar, this.miktar, this.yapkod, this.opkodu, this.kasaKodu, this.muhasebeKodu, this.filtre, this.depoKodu, this.hucreKodu, this.kalemId, this.tempBelgeId, this.irsDahil, @JsonKey(toJson: _dovizTipleriToJson) this.dovizTipleri});
+   _DicParams({required this.belgeNo, this.cariKodu, this.teslimCariKodu, this.stokKodu, this.sifirHaric, this.maliyetTipi, this.tlHarDokulsun, this.depoKodlari, this.haricStokKodlari, this.haricStokGrupKodlari, this.dovizTipi, this.bastar, this.bittar, this.grupKodu, this.borcAlacak, this.refTarih, this.tarihTipi, this.kod1, this.kod2, this.kod3, this.kod4, this.kod5, this.kapali, this.durum, this.vergiNo, this.plasiyerKodu, this.aralikTipi, this.sirala, this.bakiyeDurumu, this.caharInckey, this.belgeTipi, this.isemriNo, this.dinamikParam, this.kasaharInckey, this.uretimFiyatiDahil, this.fiyatTipi, this.tblnfStokfiyatgecmisiId, this.gorunecekAlanlar, this.miktar, this.yapkod, this.opkodu, this.kasaKodu, this.muhasebeKodu, this.filtre, this.depoKodu, this.hucreKodu, this.kalemId, this.tempBelgeId, this.irsDahil, @JsonKey(toJson: _dovizTipleriToJson) this.dovizTipleri, this.plasiyerKirilimi});
   factory _DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 
 @override  String belgeNo;
@@ -321,6 +575,7 @@ class _DicParams implements DicParams {
 @override  String? tempBelgeId;
 @override  String? irsDahil;
 @override@JsonKey(toJson: _dovizTipleriToJson)  List<int>? dovizTipleri;
+@override  String? plasiyerKirilimi;
 
 /// Create a copy of DicParams
 /// with the given fields replaced by the non-null parameter values.
@@ -344,7 +599,7 @@ abstract mixin class _$DicParamsCopyWith<$Res> implements $DicParamsCopyWith<$Re
   factory _$DicParamsCopyWith(_DicParams value, $Res Function(_DicParams) _then) = __$DicParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String belgeNo, String? cariKodu, String? teslimCariKodu, String? stokKodu, String? sifirHaric, String? maliyetTipi, String? tlHarDokulsun, String? depoKodlari, String? haricStokKodlari, String? haricStokGrupKodlari, String? dovizTipi, String? bastar, String? bittar, String? grupKodu, String? borcAlacak, String? refTarih, String? tarihTipi, String? kod1, String? kod2, String? kod3, String? kod4, String? kod5, String? kapali, String? durum, String? vergiNo, String? plasiyerKodu, String? aralikTipi, String? sirala, String? bakiyeDurumu, String? caharInckey, String? belgeTipi, String? isemriNo, String? dinamikParam, String? kasaharInckey, String? uretimFiyatiDahil, String? fiyatTipi, String? tblnfStokfiyatgecmisiId, String? gorunecekAlanlar, int? miktar, String? yapkod, String? opkodu, String? kasaKodu, String? muhasebeKodu, String? filtre, String? depoKodu, String? hucreKodu, String? kalemId, String? tempBelgeId, String? irsDahil,@JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri
+ String belgeNo, String? cariKodu, String? teslimCariKodu, String? stokKodu, String? sifirHaric, String? maliyetTipi, String? tlHarDokulsun, String? depoKodlari, String? haricStokKodlari, String? haricStokGrupKodlari, String? dovizTipi, String? bastar, String? bittar, String? grupKodu, String? borcAlacak, String? refTarih, String? tarihTipi, String? kod1, String? kod2, String? kod3, String? kod4, String? kod5, String? kapali, String? durum, String? vergiNo, String? plasiyerKodu, String? aralikTipi, String? sirala, String? bakiyeDurumu, String? caharInckey, String? belgeTipi, String? isemriNo, String? dinamikParam, String? kasaharInckey, String? uretimFiyatiDahil, String? fiyatTipi, String? tblnfStokfiyatgecmisiId, String? gorunecekAlanlar, int? miktar, String? yapkod, String? opkodu, String? kasaKodu, String? muhasebeKodu, String? filtre, String? depoKodu, String? hucreKodu, String? kalemId, String? tempBelgeId, String? irsDahil,@JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri, String? plasiyerKirilimi
 });
 
 
@@ -361,7 +616,7 @@ class __$DicParamsCopyWithImpl<$Res>
 
 /// Create a copy of DicParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? belgeNo = null,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? stokKodu = freezed,Object? sifirHaric = freezed,Object? maliyetTipi = freezed,Object? tlHarDokulsun = freezed,Object? depoKodlari = freezed,Object? haricStokKodlari = freezed,Object? haricStokGrupKodlari = freezed,Object? dovizTipi = freezed,Object? bastar = freezed,Object? bittar = freezed,Object? grupKodu = freezed,Object? borcAlacak = freezed,Object? refTarih = freezed,Object? tarihTipi = freezed,Object? kod1 = freezed,Object? kod2 = freezed,Object? kod3 = freezed,Object? kod4 = freezed,Object? kod5 = freezed,Object? kapali = freezed,Object? durum = freezed,Object? vergiNo = freezed,Object? plasiyerKodu = freezed,Object? aralikTipi = freezed,Object? sirala = freezed,Object? bakiyeDurumu = freezed,Object? caharInckey = freezed,Object? belgeTipi = freezed,Object? isemriNo = freezed,Object? dinamikParam = freezed,Object? kasaharInckey = freezed,Object? uretimFiyatiDahil = freezed,Object? fiyatTipi = freezed,Object? tblnfStokfiyatgecmisiId = freezed,Object? gorunecekAlanlar = freezed,Object? miktar = freezed,Object? yapkod = freezed,Object? opkodu = freezed,Object? kasaKodu = freezed,Object? muhasebeKodu = freezed,Object? filtre = freezed,Object? depoKodu = freezed,Object? hucreKodu = freezed,Object? kalemId = freezed,Object? tempBelgeId = freezed,Object? irsDahil = freezed,Object? dovizTipleri = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? belgeNo = null,Object? cariKodu = freezed,Object? teslimCariKodu = freezed,Object? stokKodu = freezed,Object? sifirHaric = freezed,Object? maliyetTipi = freezed,Object? tlHarDokulsun = freezed,Object? depoKodlari = freezed,Object? haricStokKodlari = freezed,Object? haricStokGrupKodlari = freezed,Object? dovizTipi = freezed,Object? bastar = freezed,Object? bittar = freezed,Object? grupKodu = freezed,Object? borcAlacak = freezed,Object? refTarih = freezed,Object? tarihTipi = freezed,Object? kod1 = freezed,Object? kod2 = freezed,Object? kod3 = freezed,Object? kod4 = freezed,Object? kod5 = freezed,Object? kapali = freezed,Object? durum = freezed,Object? vergiNo = freezed,Object? plasiyerKodu = freezed,Object? aralikTipi = freezed,Object? sirala = freezed,Object? bakiyeDurumu = freezed,Object? caharInckey = freezed,Object? belgeTipi = freezed,Object? isemriNo = freezed,Object? dinamikParam = freezed,Object? kasaharInckey = freezed,Object? uretimFiyatiDahil = freezed,Object? fiyatTipi = freezed,Object? tblnfStokfiyatgecmisiId = freezed,Object? gorunecekAlanlar = freezed,Object? miktar = freezed,Object? yapkod = freezed,Object? opkodu = freezed,Object? kasaKodu = freezed,Object? muhasebeKodu = freezed,Object? filtre = freezed,Object? depoKodu = freezed,Object? hucreKodu = freezed,Object? kalemId = freezed,Object? tempBelgeId = freezed,Object? irsDahil = freezed,Object? dovizTipleri = freezed,Object? plasiyerKirilimi = freezed,}) {
   return _then(_DicParams(
 belgeNo: null == belgeNo ? _self.belgeNo : belgeNo // ignore: cast_nullable_to_non_nullable
 as String,cariKodu: freezed == cariKodu ? _self.cariKodu : cariKodu // ignore: cast_nullable_to_non_nullable
@@ -413,7 +668,8 @@ as String?,kalemId: freezed == kalemId ? _self.kalemId : kalemId // ignore: cast
 as String?,tempBelgeId: freezed == tempBelgeId ? _self.tempBelgeId : tempBelgeId // ignore: cast_nullable_to_non_nullable
 as String?,irsDahil: freezed == irsDahil ? _self.irsDahil : irsDahil // ignore: cast_nullable_to_non_nullable
 as String?,dovizTipleri: freezed == dovizTipleri ? _self.dovizTipleri : dovizTipleri // ignore: cast_nullable_to_non_nullable
-as List<int>?,
+as List<int>?,plasiyerKirilimi: freezed == plasiyerKirilimi ? _self.plasiyerKirilimi : plasiyerKirilimi // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

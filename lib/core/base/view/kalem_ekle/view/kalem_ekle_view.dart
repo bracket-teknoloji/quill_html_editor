@@ -585,6 +585,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         enabled: AccountModel.instance.adminMi || yetkiController.varsayilanMuhRefKodu == null,
                         controller: muhRefKoduController,
                         onTap: () async {
+                          if (yetkiController.varsayilanMuhRefKodu != null && !yetkiController.adminMi) return;
                           final result = await bottomSheetDialogManager.showMuhasebeReferansKoduBottomSheetDialog(
                             context,
                             viewModel.kalemModel.muhRefKodu,
@@ -954,6 +955,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 children: [
                   if (!editTipi.talepKalemlerFiltrele &&
                       !transferMi &&
+                      model.yurticiMi &&
                       !(editTipi?.gizlenecekAlanlar("kdv_orani") ?? false) &&
                       yetkiController.siparisSatirdaKDVSor(editTipi))
                     Expanded(
@@ -1914,6 +1916,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     miktarController.text = viewModel.kalemModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     miktar2Controller.text = viewModel.kalemModel.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     muhKoduController.text = viewModel.kalemModel.muhasebeTanimi ?? viewModel.kalemModel.muhasebeKodu ?? "";
+    if (yetkiController.muhRefSorulsun(editTipi) && viewModel.kalemModel.muhRefKodu == null) {
+      viewModel.setMuhasebeReferansKodu(yetkiController.varsayilanMuhRefKodu?.hesapKodu);
+      muhRefKoduController.text = yetkiController.varsayilanMuhRefKodu?.hesapAdi ?? "";
+    }
     muhRefKoduController.text = viewModel.kalemModel.muhRefKodu ?? "";
     malFazMiktarController.text =
         (viewModel.kalemModel.malFazlasiMiktar ?? viewModel.kalemModel.malFazlasiMiktar)
@@ -1969,23 +1975,21 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       if (yetkiController.projeUygulamasiAcikMi) {
         viewModel.setProjeKodu(model.projeKodu ?? "");
       }
-      if (yetkiController.muhRefSorulsun(editTipi) && widget.stokListesiModel != null) {
-        viewModel.setMuhasebeReferansKodu(yetkiController.varsayilanMuhRefKodu?.hesapKodu);
-        muhRefKoduController.text = yetkiController.varsayilanMuhRefKodu?.hesapAdi ?? "";
-      }
       viewModel
         ..setFiyat(fiyatController.text.toDoubleWithFormattedString)
         ..setBrutFiyat(fiyatController.text.toDoubleWithFormattedString)
         ..setMiktar2(double.tryParse(miktar2Controller.text) ?? 0)
         ..setMiktar(double.tryParse(miktarController.text) ?? 0)
         ..setMFMiktar(double.tryParse(malFazMiktarController.text) ?? 0)
-        ..setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0)
         ..setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0)
         ..setIskonto2(double.tryParse(isk2YuzdeController?.text ?? "") ?? 0)
         ..setIskonto3(double.tryParse(isk3YuzdeController?.text ?? "") ?? 0)
         ..setIskonto4(double.tryParse(isk4YuzdeController?.text ?? "") ?? 0)
         ..setIskonto5(double.tryParse(isk5YuzdeController?.text ?? "") ?? 0)
         ..setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
+      if (model.yurticiMi) {
+        viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
+      }
     }
     if (editTipi?.depoTransferiMi == true) {
       viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? viewModel.model?.depoKodu;

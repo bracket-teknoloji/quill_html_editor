@@ -133,15 +133,12 @@ StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) =>
     <String, dynamic>{
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
-        'SeriList': value,
-      if (instance.yapList case final value?) 'YapList': value,
-      if (instance.stokList?.map((e) => e.toJson()).toList() case final value?)
-        'StokList': value,
-      if (instance.fiyatList?.map((e) => e.toJson()).toList() case final value?)
-        'FiyatList': value,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
+      'SeriList': ?instance.seriList?.map((e) => e.toJson()).toList(),
+      'YapList': ?instance.yapList,
+      'StokList': ?instance.stokList?.map((e) => e.toJson()).toList(),
+      'FiyatList': ?instance.fiyatList?.map((e) => e.toJson()).toList(),
     };
 
 FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
@@ -162,17 +159,17 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..fiyat4 = (json['FIYAT4'] as num?)?.toDouble();
 
 Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
-  if (instance.aS case final value?) 'A_S': value,
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
-  if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
-  if (instance.bastar?.toIso8601String() case final value?) 'BASTAR': value,
-  if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
-  if (instance.gecerli case final value?) 'GECERLI': value,
-  if (instance.fiyat1 case final value?) 'FIYAT1': value,
-  if (instance.fiyat2 case final value?) 'FIYAT2': value,
-  if (instance.fiyat3 case final value?) 'FIYAT3': value,
-  if (instance.fiyat4 case final value?) 'FIYAT4': value,
+  'A_S': ?instance.aS,
+  'STOK_KODU': ?instance.stokKodu,
+  'DOVIZ_TIPI': ?instance.dovizTipi,
+  'DOVIZ_KODU': ?instance.dovizKodu,
+  'BASTAR': ?instance.bastar?.toIso8601String(),
+  'BITTAR': ?instance.bittar?.toIso8601String(),
+  'GECERLI': ?instance.gecerli,
+  'FIYAT1': ?instance.fiyat1,
+  'FIYAT2': ?instance.fiyat2,
+  'FIYAT3': ?instance.fiyat3,
+  'FIYAT4': ?instance.fiyat4,
 };
 
 _SeriList _$SeriListFromJson(Map<String, dynamic> json) => _SeriList(
@@ -206,30 +203,29 @@ _SeriList _$SeriListFromJson(Map<String, dynamic> json) => _SeriList(
 );
 
 Map<String, dynamic> _$SeriListToJson(_SeriList instance) => <String, dynamic>{
-  if (instance.stokKodu case final value?) 'STOK_KODU': value,
-  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-  if (instance.miktar case final value?) 'MIKTAR': value,
-  if (instance.seriNo case final value?) 'SERI_NO': value,
-  if (instance.inckeyno case final value?) 'INCKEYNO': value,
-  if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
-  if (instance.hareketId case final value?) 'HAREKET_ID': value,
-  if (instance.barkod case final value?) 'BARKOD': value,
-  if (instance.gckod case final value?) 'GCKOD': value,
-  if (instance.seri1 case final value?) 'SERI1': value,
-  if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
-  if (instance.tempBarkod case final value?) 'TEMP_BARKOD': value,
-  if (instance.seri2 case final value?) 'SERI2': value,
-  if (instance.seri3 case final value?) 'SERI3': value,
-  if (instance.seri4 case final value?) 'SERI4': value,
-  if (instance.acik1 case final value?) 'ACIK1': value,
-  if (instance.acik2 case final value?) 'ACIK2': value,
-  if (instance.acik3 case final value?) 'ACIK3': value,
-  if (instance.acik4 case final value?) 'ACIK4': value,
-  if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
-    'SON_KULLANMA_TARIHI': value,
-  if (instance.stokAdi case final value?) 'STOK_ADI': value,
-  if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
-  if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
-  if (instance.refId case final value?) 'REF_ID': value,
-  if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
+  'STOK_KODU': ?instance.stokKodu,
+  'DEPO_KODU': ?instance.depoKodu,
+  'MIKTAR': ?instance.miktar,
+  'SERI_NO': ?instance.seriNo,
+  'INCKEYNO': ?instance.inckeyno,
+  'DEPO_TANIMI': ?instance.depoTanimi,
+  'HAREKET_ID': ?instance.hareketId,
+  'BARKOD': ?instance.barkod,
+  'GCKOD': ?instance.gckod,
+  'SERI1': ?instance.seri1,
+  'REQUEST_VERSION': ?instance.requestVersion,
+  'TEMP_BARKOD': ?instance.tempBarkod,
+  'SERI2': ?instance.seri2,
+  'SERI3': ?instance.seri3,
+  'SERI4': ?instance.seri4,
+  'ACIK1': ?instance.acik1,
+  'ACIK2': ?instance.acik2,
+  'ACIK3': ?instance.acik3,
+  'ACIK4': ?instance.acik4,
+  'SON_KULLANMA_TARIHI': ?instance.sonKullanmaTarihi?.toIso8601String(),
+  'STOK_ADI': ?instance.stokAdi,
+  'HUCRE_KODU': ?instance.hucreKodu,
+  'TARIH': ?instance.tarih?.toIso8601String(),
+  'REF_ID': ?instance.refId,
+  'ACIKLAMA1': ?instance.aciklama1,
 };

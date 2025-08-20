@@ -157,12 +157,13 @@ abstract class _$CariSaveRequestModelCWProxy {
 
   CariSaveRequestModel efatAktif(bool? efatAktif);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariSaveRequestModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `CariSaveRequestModel(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// CariSaveRequestModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   CariSaveRequestModel call({
     int? requestVersion,
     int? islemKodu,
@@ -242,7 +243,8 @@ abstract class _$CariSaveRequestModelCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfCariSaveRequestModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfCariSaveRequestModel.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfCariSaveRequestModel.copyWith(...)` or call `instanceOfCariSaveRequestModel.copyWith.fieldName(value)` for a single field.
 class _$CariSaveRequestModelCWProxyImpl
     implements _$CariSaveRequestModelCWProxy {
   const _$CariSaveRequestModelCWProxyImpl(this._value);
@@ -251,266 +253,267 @@ class _$CariSaveRequestModelCWProxyImpl
 
   @override
   CariSaveRequestModel requestVersion(int? requestVersion) =>
-      this(requestVersion: requestVersion);
+      call(requestVersion: requestVersion);
 
   @override
-  CariSaveRequestModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
+  CariSaveRequestModel islemKodu(int? islemKodu) => call(islemKodu: islemKodu);
 
   @override
-  CariSaveRequestModel yeniKayit(bool? yeniKayit) => this(yeniKayit: yeniKayit);
+  CariSaveRequestModel yeniKayit(bool? yeniKayit) => call(yeniKayit: yeniKayit);
 
   @override
   CariSaveRequestModel sahisFirmasi(bool? sahisFirmasi) =>
-      this(sahisFirmasi: sahisFirmasi);
+      call(sahisFirmasi: sahisFirmasi);
 
   @override
-  CariSaveRequestModel subeKodu(String? subeKodu) => this(subeKodu: subeKodu);
+  CariSaveRequestModel subeKodu(String? subeKodu) => call(subeKodu: subeKodu);
 
   @override
-  CariSaveRequestModel kodu(String? kodu) => this(kodu: kodu);
+  CariSaveRequestModel kodu(String? kodu) => call(kodu: kodu);
 
   @override
-  CariSaveRequestModel tipi(String? tipi) => this(tipi: tipi);
+  CariSaveRequestModel tipi(String? tipi) => call(tipi: tipi);
 
   @override
-  CariSaveRequestModel adi(String? adi) => this(adi: adi);
+  CariSaveRequestModel adi(String? adi) => call(adi: adi);
 
   @override
-  CariSaveRequestModel ulkeKodu(String? ulkeKodu) => this(ulkeKodu: ulkeKodu);
+  CariSaveRequestModel ulkeKodu(String? ulkeKodu) => call(ulkeKodu: ulkeKodu);
 
   @override
-  CariSaveRequestModel sehir(String? sehir) => this(sehir: sehir);
+  CariSaveRequestModel sehir(String? sehir) => call(sehir: sehir);
 
   @override
-  CariSaveRequestModel ilce(String? ilce) => this(ilce: ilce);
+  CariSaveRequestModel ilce(String? ilce) => call(ilce: ilce);
 
   @override
-  CariSaveRequestModel adres(String? adres) => this(adres: adres);
+  CariSaveRequestModel adres(String? adres) => call(adres: adres);
 
   @override
-  CariSaveRequestModel telefon(String? telefon) => this(telefon: telefon);
+  CariSaveRequestModel telefon(String? telefon) => call(telefon: telefon);
 
   @override
-  CariSaveRequestModel eposta(String? eposta) => this(eposta: eposta);
+  CariSaveRequestModel eposta(String? eposta) => call(eposta: eposta);
 
   @override
-  CariSaveRequestModel enlem(double? enlem) => this(enlem: enlem);
+  CariSaveRequestModel enlem(double? enlem) => call(enlem: enlem);
 
   @override
-  CariSaveRequestModel boylam(double? boylam) => this(boylam: boylam);
+  CariSaveRequestModel boylam(double? boylam) => call(boylam: boylam);
 
   @override
   CariSaveRequestModel postaKodu(String? postaKodu) =>
-      this(postaKodu: postaKodu);
+      call(postaKodu: postaKodu);
 
   @override
-  CariSaveRequestModel website(String? website) => this(website: website);
+  CariSaveRequestModel website(String? website) => call(website: website);
 
   @override
   CariSaveRequestModel vergiDairesi(String? vergiDairesi) =>
-      this(vergiDairesi: vergiDairesi);
+      call(vergiDairesi: vergiDairesi);
 
   @override
-  CariSaveRequestModel vergiNo(String? vergiNo) => this(vergiNo: vergiNo);
+  CariSaveRequestModel vergiNo(String? vergiNo) => call(vergiNo: vergiNo);
 
   @override
   CariSaveRequestModel plasiyerKodu(String? plasiyerKodu) =>
-      this(plasiyerKodu: plasiyerKodu);
+      call(plasiyerKodu: plasiyerKodu);
 
   @override
-  CariSaveRequestModel dovizli(String? dovizli) => this(dovizli: dovizli);
+  CariSaveRequestModel dovizli(String? dovizli) => call(dovizli: dovizli);
 
   @override
-  CariSaveRequestModel dovizKodu(int? dovizKodu) => this(dovizKodu: dovizKodu);
+  CariSaveRequestModel dovizKodu(int? dovizKodu) => call(dovizKodu: dovizKodu);
 
   @override
-  CariSaveRequestModel grupKodu(String? grupKodu) => this(grupKodu: grupKodu);
+  CariSaveRequestModel grupKodu(String? grupKodu) => call(grupKodu: grupKodu);
 
   @override
-  CariSaveRequestModel kod1(String? kod1) => this(kod1: kod1);
+  CariSaveRequestModel kod1(String? kod1) => call(kod1: kod1);
 
   @override
-  CariSaveRequestModel kod2(String? kod2) => this(kod2: kod2);
+  CariSaveRequestModel kod2(String? kod2) => call(kod2: kod2);
 
   @override
-  CariSaveRequestModel kod3(String? kod3) => this(kod3: kod3);
+  CariSaveRequestModel kod3(String? kod3) => call(kod3: kod3);
 
   @override
-  CariSaveRequestModel kod4(String? kod4) => this(kod4: kod4);
+  CariSaveRequestModel kod4(String? kod4) => call(kod4: kod4);
 
   @override
-  CariSaveRequestModel kod5(String? kod5) => this(kod5: kod5);
+  CariSaveRequestModel kod5(String? kod5) => call(kod5: kod5);
 
   @override
   CariSaveRequestModel kod1Tanimi(String? kod1Tanimi) =>
-      this(kod1Tanimi: kod1Tanimi);
+      call(kod1Tanimi: kod1Tanimi);
 
   @override
   CariSaveRequestModel kod2Tanimi(String? kod2Tanimi) =>
-      this(kod2Tanimi: kod2Tanimi);
+      call(kod2Tanimi: kod2Tanimi);
 
   @override
   CariSaveRequestModel kod3Tanimi(String? kod3Tanimi) =>
-      this(kod3Tanimi: kod3Tanimi);
+      call(kod3Tanimi: kod3Tanimi);
 
   @override
   CariSaveRequestModel kod4Tanimi(String? kod4Tanimi) =>
-      this(kod4Tanimi: kod4Tanimi);
+      call(kod4Tanimi: kod4Tanimi);
 
   @override
   CariSaveRequestModel kod5Tanimi(String? kod5Tanimi) =>
-      this(kod5Tanimi: kod5Tanimi);
+      call(kod5Tanimi: kod5Tanimi);
 
   @override
-  CariSaveRequestModel bilgi(String? bilgi) => this(bilgi: bilgi);
+  CariSaveRequestModel bilgi(String? bilgi) => call(bilgi: bilgi);
 
   @override
-  CariSaveRequestModel kilit(String? kilit) => this(kilit: kilit);
+  CariSaveRequestModel kilit(String? kilit) => call(kilit: kilit);
 
   @override
   CariSaveRequestModel bagliCari(String? bagliCari) =>
-      this(bagliCari: bagliCari);
+      call(bagliCari: bagliCari);
 
   @override
   CariSaveRequestModel kosulKodu(String? kosulKodu) =>
-      this(kosulKodu: kosulKodu);
+      call(kosulKodu: kosulKodu);
 
   @override
   CariSaveRequestModel muhasebeKodu(String? muhasebeKodu) =>
-      this(muhasebeKodu: muhasebeKodu);
+      call(muhasebeKodu: muhasebeKodu);
 
   @override
   CariSaveRequestModel kurfarkiborcKodu(String? kurfarkiborcKodu) =>
-      this(kurfarkiborcKodu: kurfarkiborcKodu);
+      call(kurfarkiborcKodu: kurfarkiborcKodu);
 
   @override
   CariSaveRequestModel kurfarkialacakKodu(String? kurfarkialacakKodu) =>
-      this(kurfarkialacakKodu: kurfarkialacakKodu);
+      call(kurfarkialacakKodu: kurfarkialacakKodu);
 
   @override
-  CariSaveRequestModel vadeGunu(String? vadeGunu) => this(vadeGunu: vadeGunu);
+  CariSaveRequestModel vadeGunu(String? vadeGunu) => call(vadeGunu: vadeGunu);
 
   @override
   CariSaveRequestModel odemeTipi(String? odemeTipi) =>
-      this(odemeTipi: odemeTipi);
+      call(odemeTipi: odemeTipi);
 
   @override
   CariSaveRequestModel muhtelifCari(bool? muhtelifCari) =>
-      this(muhtelifCari: muhtelifCari);
+      call(muhtelifCari: muhtelifCari);
 
   @override
   CariSaveRequestModel muhtelifBelgeTipi(String? muhtelifBelgeTipi) =>
-      this(muhtelifBelgeTipi: muhtelifBelgeTipi);
+      call(muhtelifBelgeTipi: muhtelifBelgeTipi);
 
   @override
   CariSaveRequestModel muhtelifBelgeNo(String? muhtelifBelgeNo) =>
-      this(muhtelifBelgeNo: muhtelifBelgeNo);
+      call(muhtelifBelgeNo: muhtelifBelgeNo);
 
   @override
   CariSaveRequestModel efaturaSenaryo(String? efaturaSenaryo) =>
-      this(efaturaSenaryo: efaturaSenaryo);
+      call(efaturaSenaryo: efaturaSenaryo);
 
   @override
-  CariSaveRequestModel kull1s(String? kull1s) => this(kull1s: kull1s);
+  CariSaveRequestModel kull1s(String? kull1s) => call(kull1s: kull1s);
 
   @override
-  CariSaveRequestModel kull2s(String? kull2s) => this(kull2s: kull2s);
+  CariSaveRequestModel kull2s(String? kull2s) => call(kull2s: kull2s);
 
   @override
-  CariSaveRequestModel kull3s(String? kull3s) => this(kull3s: kull3s);
+  CariSaveRequestModel kull3s(String? kull3s) => call(kull3s: kull3s);
 
   @override
-  CariSaveRequestModel kull4s(String? kull4s) => this(kull4s: kull4s);
+  CariSaveRequestModel kull4s(String? kull4s) => call(kull4s: kull4s);
 
   @override
-  CariSaveRequestModel kull5s(String? kull5s) => this(kull5s: kull5s);
+  CariSaveRequestModel kull5s(String? kull5s) => call(kull5s: kull5s);
 
   @override
-  CariSaveRequestModel kull6s(String? kull6s) => this(kull6s: kull6s);
+  CariSaveRequestModel kull6s(String? kull6s) => call(kull6s: kull6s);
 
   @override
-  CariSaveRequestModel kull7s(String? kull7s) => this(kull7s: kull7s);
+  CariSaveRequestModel kull7s(String? kull7s) => call(kull7s: kull7s);
 
   @override
-  CariSaveRequestModel kull8s(String? kull8s) => this(kull8s: kull8s);
+  CariSaveRequestModel kull8s(String? kull8s) => call(kull8s: kull8s);
 
   @override
-  CariSaveRequestModel kull1n(double? kull1n) => this(kull1n: kull1n);
+  CariSaveRequestModel kull1n(double? kull1n) => call(kull1n: kull1n);
 
   @override
-  CariSaveRequestModel kull2n(double? kull2n) => this(kull2n: kull2n);
+  CariSaveRequestModel kull2n(double? kull2n) => call(kull2n: kull2n);
 
   @override
-  CariSaveRequestModel kull3n(double? kull3n) => this(kull3n: kull3n);
+  CariSaveRequestModel kull3n(double? kull3n) => call(kull3n: kull3n);
 
   @override
-  CariSaveRequestModel kull4n(double? kull4n) => this(kull4n: kull4n);
+  CariSaveRequestModel kull4n(double? kull4n) => call(kull4n: kull4n);
 
   @override
-  CariSaveRequestModel kull5n(double? kull5n) => this(kull5n: kull5n);
+  CariSaveRequestModel kull5n(double? kull5n) => call(kull5n: kull5n);
 
   @override
-  CariSaveRequestModel kull6n(double? kull6n) => this(kull6n: kull6n);
+  CariSaveRequestModel kull6n(double? kull6n) => call(kull6n: kull6n);
 
   @override
-  CariSaveRequestModel kull7n(double? kull7n) => this(kull7n: kull7n);
+  CariSaveRequestModel kull7n(double? kull7n) => call(kull7n: kull7n);
 
   @override
-  CariSaveRequestModel kull8n(double? kull8n) => this(kull8n: kull8n);
+  CariSaveRequestModel kull8n(double? kull8n) => call(kull8n: kull8n);
 
   @override
   CariSaveRequestModel aciklama1(String? aciklama1) =>
-      this(aciklama1: aciklama1);
+      call(aciklama1: aciklama1);
 
   @override
   CariSaveRequestModel aciklama2(String? aciklama2) =>
-      this(aciklama2: aciklama2);
+      call(aciklama2: aciklama2);
 
   @override
   CariSaveRequestModel aciklama3(String? aciklama3) =>
-      this(aciklama3: aciklama3);
+      call(aciklama3: aciklama3);
 
   @override
   CariSaveRequestModel postakodu(String? postakodu) =>
-      this(postakodu: postakodu);
+      call(postakodu: postakodu);
 
   @override
-  CariSaveRequestModel muhAdi(String? muhAdi) => this(muhAdi: muhAdi);
+  CariSaveRequestModel muhAdi(String? muhAdi) => call(muhAdi: muhAdi);
 
   @override
   CariSaveRequestModel kurfarkialacakAdi(String? kurfarkialacakAdi) =>
-      this(kurfarkialacakAdi: kurfarkialacakAdi);
+      call(kurfarkialacakAdi: kurfarkialacakAdi);
 
   @override
   CariSaveRequestModel kurfarkiborcAdi(String? kurfarkiborcAdi) =>
-      this(kurfarkiborcAdi: kurfarkiborcAdi);
+      call(kurfarkiborcAdi: kurfarkiborcAdi);
 
   @override
   CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama) =>
-      this(bagliCariAciklama: bagliCariAciklama);
+      call(bagliCariAciklama: bagliCariAciklama);
 
   @override
   CariSaveRequestModel kosulKoduAciklama(String? kosulKoduAciklama) =>
-      this(kosulKoduAciklama: kosulKoduAciklama);
+      call(kosulKoduAciklama: kosulKoduAciklama);
 
   @override
   CariSaveRequestModel ulkeKoduAciklama(String? ulkeKoduAciklama) =>
-      this(ulkeKoduAciklama: ulkeKoduAciklama);
+      call(ulkeKoduAciklama: ulkeKoduAciklama);
 
   @override
   CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama) =>
-      this(dovizKoduAciklama: dovizKoduAciklama);
+      call(dovizKoduAciklama: dovizKoduAciklama);
 
   @override
-  CariSaveRequestModel efatAktif(bool? efatAktif) => this(efatAktif: efatAktif);
+  CariSaveRequestModel efatAktif(bool? efatAktif) => call(efatAktif: efatAktif);
 
   @override
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariSaveRequestModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `CariSaveRequestModel(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// CariSaveRequestModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   CariSaveRequestModel call({
     Object? requestVersion = const $CopyWithPlaceholder(),
     Object? islemKodu = const $CopyWithPlaceholder(),
@@ -894,7 +897,8 @@ class _$CariSaveRequestModelCWProxyImpl
 }
 
 extension $CariSaveRequestModelCopyWith on CariSaveRequestModel {
-  /// Returns a callable class that can be used as follows: `instanceOfCariSaveRequestModel.copyWith(...)` or like so:`instanceOfCariSaveRequestModel.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfCariSaveRequestModel.copyWith(...)` or `instanceOfCariSaveRequestModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$CariSaveRequestModelCWProxy get copyWith =>
       _$CariSaveRequestModelCWProxyImpl(this);
@@ -983,77 +987,75 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
 Map<String, dynamic> _$CariSaveRequestModelToJson(
   CariSaveRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
-  if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-  if (instance.yeniKayit case final value?) '_YeniKayit': value,
-  if (instance.sahisFirmasi case final value?) 'SahisFirmasi': value,
-  if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-  if (instance.kodu case final value?) 'KODU': value,
-  if (instance.tipi case final value?) 'TIPI': value,
-  if (instance.adi case final value?) 'ADI': value,
-  if (instance.ulkeKodu case final value?) 'ULKE_KODU': value,
-  if (instance.sehir case final value?) 'SEHIR': value,
-  if (instance.ilce case final value?) 'ILCE': value,
-  if (instance.adres case final value?) 'ADRES': value,
-  if (instance.telefon case final value?) 'TELEFON': value,
-  if (instance.eposta case final value?) 'EPOSTA': value,
-  if (instance.enlem case final value?) 'ENLEM': value,
-  if (instance.boylam case final value?) 'BOYLAM': value,
-  if (instance.postaKodu case final value?) 'POSTA_KODU': value,
-  if (instance.website case final value?) 'WEBSITE': value,
-  if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
-  if (instance.vergiNo case final value?) 'VERGI_NO': value,
-  if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
-  if (instance.dovizli case final value?) 'DOVIZLI': value,
-  if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
-  if (instance.grupKodu case final value?) 'GRUP_KODU': value,
-  if (instance.kod1 case final value?) 'KOD1': value,
-  if (instance.kod2 case final value?) 'KOD2': value,
-  if (instance.kod3 case final value?) 'KOD3': value,
-  if (instance.kod4 case final value?) 'KOD4': value,
-  if (instance.kod5 case final value?) 'KOD5': value,
-  if (instance.kod1Tanimi case final value?) 'KOD1_TANIMI': value,
-  if (instance.kod2Tanimi case final value?) 'KOD2_TANIMI': value,
-  if (instance.kod3Tanimi case final value?) 'KOD3_TANIMI': value,
-  if (instance.kod4Tanimi case final value?) 'KOD4_TANIMI': value,
-  if (instance.kod5Tanimi case final value?) 'KOD5_TANIMI': value,
-  if (instance.bilgi case final value?) 'BILGI': value,
-  if (instance.kilit case final value?) 'KILIT': value,
-  if (instance.bagliCari case final value?) 'BAGLI_CARI': value,
-  if (instance.kosulKodu case final value?) 'KOSUL_KODU': value,
-  if (instance.muhasebeKodu case final value?) 'MUHASEBE_KODU': value,
-  if (instance.kurfarkiborcKodu case final value?) 'KURFARKIBORC_KODU': value,
-  if (instance.kurfarkialacakKodu case final value?)
-    'KURFARKIALACAK_KODU': value,
-  if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
-  if (instance.odemeTipi case final value?) 'ODEME_TIPI': value,
-  if (instance.muhtelifCari case final value?) 'MUHTELIF_CARI': value,
-  if (instance.muhtelifBelgeTipi case final value?)
-    'MUHTELIF_BELGE_TIPI': value,
-  if (instance.muhtelifBelgeNo case final value?) 'MUHTELIF_BELGE_NO': value,
-  if (instance.efaturaSenaryo case final value?) 'EFATURA_SENARYO': value,
-  if (instance.kull1s case final value?) 'KULL1S': value,
-  if (instance.kull2s case final value?) 'KULL2S': value,
-  if (instance.kull3s case final value?) 'KULL3S': value,
-  if (instance.kull4s case final value?) 'KULL4S': value,
-  if (instance.kull5s case final value?) 'KULL5S': value,
-  if (instance.kull6s case final value?) 'KULL6S': value,
-  if (instance.kull7s case final value?) 'KULL7S': value,
-  if (instance.kull8s case final value?) 'KULL8S': value,
-  if (instance.kull1n case final value?) 'KULL1N': value,
-  if (instance.kull2n case final value?) 'KULL2N': value,
-  if (instance.kull3n case final value?) 'KULL3N': value,
-  if (instance.kull4n case final value?) 'KULL4N': value,
-  if (instance.kull5n case final value?) 'KULL5N': value,
-  if (instance.kull6n case final value?) 'KULL6N': value,
-  if (instance.kull7n case final value?) 'KULL7N': value,
-  if (instance.kull8n case final value?) 'KULL8N': value,
-  if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
-  if (instance.aciklama2 case final value?) 'ACIKLAMA2': value,
-  if (instance.aciklama3 case final value?) 'ACIKLAMA3': value,
-  if (instance.postakodu case final value?) 'POSTAKODU': value,
-  if (instance.kurfarkiborcAdi case final value?) 'KURFARKIBORC_ADI': value,
-  if (instance.kurfarkialacakAdi case final value?) 'KURFARKIALACAK_ADI': value,
-  if (instance.muhAdi case final value?) 'MUH_ADI': value,
-  if (instance.efatAktif case final value?) 'EFAT_AKTIF': value,
+  'REQUEST_VERSION': ?instance.requestVersion,
+  'ISLEM_KODU': ?instance.islemKodu,
+  '_YeniKayit': ?instance.yeniKayit,
+  'SahisFirmasi': ?instance.sahisFirmasi,
+  'SUBE_KODU': ?instance.subeKodu,
+  'KODU': ?instance.kodu,
+  'TIPI': ?instance.tipi,
+  'ADI': ?instance.adi,
+  'ULKE_KODU': ?instance.ulkeKodu,
+  'SEHIR': ?instance.sehir,
+  'ILCE': ?instance.ilce,
+  'ADRES': ?instance.adres,
+  'TELEFON': ?instance.telefon,
+  'EPOSTA': ?instance.eposta,
+  'ENLEM': ?instance.enlem,
+  'BOYLAM': ?instance.boylam,
+  'POSTA_KODU': ?instance.postaKodu,
+  'WEBSITE': ?instance.website,
+  'VERGI_DAIRESI': ?instance.vergiDairesi,
+  'VERGI_NO': ?instance.vergiNo,
+  'PLASIYER_KODU': ?instance.plasiyerKodu,
+  'DOVIZLI': ?instance.dovizli,
+  'DOVIZ_KODU': ?instance.dovizKodu,
+  'GRUP_KODU': ?instance.grupKodu,
+  'KOD1': ?instance.kod1,
+  'KOD2': ?instance.kod2,
+  'KOD3': ?instance.kod3,
+  'KOD4': ?instance.kod4,
+  'KOD5': ?instance.kod5,
+  'KOD1_TANIMI': ?instance.kod1Tanimi,
+  'KOD2_TANIMI': ?instance.kod2Tanimi,
+  'KOD3_TANIMI': ?instance.kod3Tanimi,
+  'KOD4_TANIMI': ?instance.kod4Tanimi,
+  'KOD5_TANIMI': ?instance.kod5Tanimi,
+  'BILGI': ?instance.bilgi,
+  'KILIT': ?instance.kilit,
+  'BAGLI_CARI': ?instance.bagliCari,
+  'KOSUL_KODU': ?instance.kosulKodu,
+  'MUHASEBE_KODU': ?instance.muhasebeKodu,
+  'KURFARKIBORC_KODU': ?instance.kurfarkiborcKodu,
+  'KURFARKIALACAK_KODU': ?instance.kurfarkialacakKodu,
+  'VADE_GUNU': ?instance.vadeGunu,
+  'ODEME_TIPI': ?instance.odemeTipi,
+  'MUHTELIF_CARI': ?instance.muhtelifCari,
+  'MUHTELIF_BELGE_TIPI': ?instance.muhtelifBelgeTipi,
+  'MUHTELIF_BELGE_NO': ?instance.muhtelifBelgeNo,
+  'EFATURA_SENARYO': ?instance.efaturaSenaryo,
+  'KULL1S': ?instance.kull1s,
+  'KULL2S': ?instance.kull2s,
+  'KULL3S': ?instance.kull3s,
+  'KULL4S': ?instance.kull4s,
+  'KULL5S': ?instance.kull5s,
+  'KULL6S': ?instance.kull6s,
+  'KULL7S': ?instance.kull7s,
+  'KULL8S': ?instance.kull8s,
+  'KULL1N': ?instance.kull1n,
+  'KULL2N': ?instance.kull2n,
+  'KULL3N': ?instance.kull3n,
+  'KULL4N': ?instance.kull4n,
+  'KULL5N': ?instance.kull5n,
+  'KULL6N': ?instance.kull6n,
+  'KULL7N': ?instance.kull7n,
+  'KULL8N': ?instance.kull8n,
+  'ACIKLAMA1': ?instance.aciklama1,
+  'ACIKLAMA2': ?instance.aciklama2,
+  'ACIKLAMA3': ?instance.aciklama3,
+  'POSTAKODU': ?instance.postakodu,
+  'KURFARKIBORC_ADI': ?instance.kurfarkiborcAdi,
+  'KURFARKIALACAK_ADI': ?instance.kurfarkialacakAdi,
+  'MUH_ADI': ?instance.muhAdi,
+  'EFAT_AKTIF': ?instance.efatAktif,
 };

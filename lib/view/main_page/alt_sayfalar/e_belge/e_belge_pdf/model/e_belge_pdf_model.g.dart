@@ -16,8 +16,8 @@ _EBelgePdfModel _$EBelgePdfModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$EBelgePdfModelToJson(_EBelgePdfModel instance) =>
     <String, dynamic>{
-      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
-      if (instance.fileModel?.toJson() case final value?) 'FileModel': value,
+      'ISLEM_KODU': ?instance.islemKodu,
+      'FileModel': ?instance.fileModel?.toJson(),
     };
 
 _FileModel _$FileModelFromJson(Map<String, dynamic> json) => _FileModel(
@@ -31,9 +31,8 @@ _FileModel _$FileModelFromJson(Map<String, dynamic> json) => _FileModel(
 
 Map<String, dynamic> _$FileModelToJson(_FileModel instance) =>
     <String, dynamic>{
-      if (instance.byteData case final value?) 'BYTE_DATA': value,
-      if (instance.uzanti case final value?) 'UZANTI': value,
-      if (instance.dosyaTarihi?.toIso8601String() case final value?)
-        'DOSYA_TARIHI': value,
-      if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
+      'BYTE_DATA': ?instance.byteData,
+      'UZANTI': ?instance.uzanti,
+      'DOSYA_TARIHI': ?instance.dosyaTarihi?.toIso8601String(),
+      'DOSYA_ADI': ?instance.dosyaAdi,
     };

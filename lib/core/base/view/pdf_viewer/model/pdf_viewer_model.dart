@@ -163,6 +163,7 @@ sealed class DicParams with _$DicParams {
     String? tempBelgeId,
     String? irsDahil,
     @JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri,
+    String? plasiyerKirilimi,
   }) = _DicParams;
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 }

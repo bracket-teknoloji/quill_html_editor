@@ -15,7 +15,7 @@ BaseProjeModel _$BaseProjeModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BaseProjeModelToJson(BaseProjeModel instance) =>
     <String, dynamic>{
-      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
-      if (instance.projeAciklama case final value?) 'PROJE_ACIKLAMA': value,
-      if (instance.aktif case final value?) 'AKTIF': value,
+      'PROJE_KODU': ?instance.projeKodu,
+      'PROJE_ACIKLAMA': ?instance.projeAciklama,
+      'AKTIF': ?instance.aktif,
     };

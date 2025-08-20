@@ -64,7 +64,7 @@ final class AppThemeDark extends AppTheme {
     // .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
     // .copyWith(bodySmall: TextStyle(color: colorManager.onPrimaryContainer)),
     splashFactory: InkRipple.splashFactory,
-    bottomAppBarTheme: BottomAppBarTheme(
+    bottomAppBarTheme: BottomAppBarThemeData(
       // elevation: 0,
       surfaceTintColor: colorManager.shadow,
     ),

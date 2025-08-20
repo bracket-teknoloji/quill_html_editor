@@ -20,12 +20,12 @@ _HucreListesiModel _$HucreListesiModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$HucreListesiModelToJson(_HucreListesiModel instance) =>
     <String, dynamic>{
-      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
-      if (instance.seriList case final value?) 'SeriList': value,
-      if (instance.eksiyeDusebilir case final value?) 'EKSIYE_DUSEBILIR': value,
-      if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      'HUCRE_KODU': ?instance.hucreKodu,
+      'DEPO_KODU': ?instance.depoKodu,
+      'DEPO_TANIMI': ?instance.depoTanimi,
+      'SeriList': ?instance.seriList,
+      'EKSIYE_DUSEBILIR': ?instance.eksiyeDusebilir,
+      'NET_MIKTAR': ?instance.netMiktar,
+      'STOK_KODU': ?instance.stokKodu,
+      'STOK_ADI': ?instance.stokAdi,
     };

@@ -17,7 +17,7 @@ _SayimKalemRequestModel _$SayimKalemRequestModelFromJson(
 Map<String, dynamic> _$SayimKalemRequestModelToJson(
   _SayimKalemRequestModel instance,
 ) => <String, dynamic>{
-  if (instance.id case final value?) 'ID': value,
-  if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-  if (instance.belgeNo case final value?) 'BELGE_NO': value,
+  'ID': ?instance.id,
+  'DEPO_KODU': ?instance.depoKodu,
+  'BELGE_NO': ?instance.belgeNo,
 };

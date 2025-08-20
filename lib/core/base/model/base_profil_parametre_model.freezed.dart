@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -107,6 +106,136 @@ as bool,
 
 }
 
+
+/// Adds pattern-matching-related methods to [BaseProfilParametreModel].
+extension BaseProfilParametreModelPatterns on BaseProfilParametreModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BaseProfilParametreModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _BaseProfilParametreModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BaseProfilParametreModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _BaseProfilParametreModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BaseProfilParametreModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _BaseProfilParametreModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool siparisYeniKaydaHazirla,  bool faturaYeniKaydaHazirla,  bool talepTeklifYeniKaydaHazirla,  bool transferYeniKaydaHazirla,  bool siparisEkAlan,  bool siparisMiktar,  bool siparisVade,  bool kurlariSilTekrarGuncelle,  bool stokResimleriGoster,  bool stokYazdirDizaynVeYaziciHatirla,  bool stokSecildigindeYazdir,  bool finansOzelRaporGrafikGoster, @Deprecated("Bunun yerine temaModu kullanılacak.")  bool acikTemaMi,  ThemeMode temaModu,  bool rotaDisiGorunsunMu,  NetFectDizaynList? netFectDizaynList,  YaziciList? yaziciList,  EditTipiEnum olcumGirisiBelgeTipi,  bool kapaliBelgelerListelenmesinMi,  bool sayimStokSecildigindeHemenKaydet,  bool sayimOtomatikEtiketYazdir,  Map<String, dynamic> stokGorunecekEkstraAlanlar,  int stokListesiGridSayisi,  String urunGrubunaGoreSatisRaporTipi,  bool urunGrubunaGoreGruplansin,  String cariListesiSirala,  String stokListesiSirala,  bool irsFaturalasanIrsaliyelerGelsin,  bool eIrsaliyeSeciliGelsin,  DepoList? depoTalepDepoList,  String faturaKarlilikMaliyetTipi,  List<String> stokhareketleriGizlenecekAlanlar,  bool stokhareketleriDovizliGoster,  bool sayimNqrOkutuldugundaQRAc)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _BaseProfilParametreModel() when $default != null:
+return $default(_that.siparisYeniKaydaHazirla,_that.faturaYeniKaydaHazirla,_that.talepTeklifYeniKaydaHazirla,_that.transferYeniKaydaHazirla,_that.siparisEkAlan,_that.siparisMiktar,_that.siparisVade,_that.kurlariSilTekrarGuncelle,_that.stokResimleriGoster,_that.stokYazdirDizaynVeYaziciHatirla,_that.stokSecildigindeYazdir,_that.finansOzelRaporGrafikGoster,_that.acikTemaMi,_that.temaModu,_that.rotaDisiGorunsunMu,_that.netFectDizaynList,_that.yaziciList,_that.olcumGirisiBelgeTipi,_that.kapaliBelgelerListelenmesinMi,_that.sayimStokSecildigindeHemenKaydet,_that.sayimOtomatikEtiketYazdir,_that.stokGorunecekEkstraAlanlar,_that.stokListesiGridSayisi,_that.urunGrubunaGoreSatisRaporTipi,_that.urunGrubunaGoreGruplansin,_that.cariListesiSirala,_that.stokListesiSirala,_that.irsFaturalasanIrsaliyelerGelsin,_that.eIrsaliyeSeciliGelsin,_that.depoTalepDepoList,_that.faturaKarlilikMaliyetTipi,_that.stokhareketleriGizlenecekAlanlar,_that.stokhareketleriDovizliGoster,_that.sayimNqrOkutuldugundaQRAc);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool siparisYeniKaydaHazirla,  bool faturaYeniKaydaHazirla,  bool talepTeklifYeniKaydaHazirla,  bool transferYeniKaydaHazirla,  bool siparisEkAlan,  bool siparisMiktar,  bool siparisVade,  bool kurlariSilTekrarGuncelle,  bool stokResimleriGoster,  bool stokYazdirDizaynVeYaziciHatirla,  bool stokSecildigindeYazdir,  bool finansOzelRaporGrafikGoster, @Deprecated("Bunun yerine temaModu kullanılacak.")  bool acikTemaMi,  ThemeMode temaModu,  bool rotaDisiGorunsunMu,  NetFectDizaynList? netFectDizaynList,  YaziciList? yaziciList,  EditTipiEnum olcumGirisiBelgeTipi,  bool kapaliBelgelerListelenmesinMi,  bool sayimStokSecildigindeHemenKaydet,  bool sayimOtomatikEtiketYazdir,  Map<String, dynamic> stokGorunecekEkstraAlanlar,  int stokListesiGridSayisi,  String urunGrubunaGoreSatisRaporTipi,  bool urunGrubunaGoreGruplansin,  String cariListesiSirala,  String stokListesiSirala,  bool irsFaturalasanIrsaliyelerGelsin,  bool eIrsaliyeSeciliGelsin,  DepoList? depoTalepDepoList,  String faturaKarlilikMaliyetTipi,  List<String> stokhareketleriGizlenecekAlanlar,  bool stokhareketleriDovizliGoster,  bool sayimNqrOkutuldugundaQRAc)  $default,) {final _that = this;
+switch (_that) {
+case _BaseProfilParametreModel():
+return $default(_that.siparisYeniKaydaHazirla,_that.faturaYeniKaydaHazirla,_that.talepTeklifYeniKaydaHazirla,_that.transferYeniKaydaHazirla,_that.siparisEkAlan,_that.siparisMiktar,_that.siparisVade,_that.kurlariSilTekrarGuncelle,_that.stokResimleriGoster,_that.stokYazdirDizaynVeYaziciHatirla,_that.stokSecildigindeYazdir,_that.finansOzelRaporGrafikGoster,_that.acikTemaMi,_that.temaModu,_that.rotaDisiGorunsunMu,_that.netFectDizaynList,_that.yaziciList,_that.olcumGirisiBelgeTipi,_that.kapaliBelgelerListelenmesinMi,_that.sayimStokSecildigindeHemenKaydet,_that.sayimOtomatikEtiketYazdir,_that.stokGorunecekEkstraAlanlar,_that.stokListesiGridSayisi,_that.urunGrubunaGoreSatisRaporTipi,_that.urunGrubunaGoreGruplansin,_that.cariListesiSirala,_that.stokListesiSirala,_that.irsFaturalasanIrsaliyelerGelsin,_that.eIrsaliyeSeciliGelsin,_that.depoTalepDepoList,_that.faturaKarlilikMaliyetTipi,_that.stokhareketleriGizlenecekAlanlar,_that.stokhareketleriDovizliGoster,_that.sayimNqrOkutuldugundaQRAc);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool siparisYeniKaydaHazirla,  bool faturaYeniKaydaHazirla,  bool talepTeklifYeniKaydaHazirla,  bool transferYeniKaydaHazirla,  bool siparisEkAlan,  bool siparisMiktar,  bool siparisVade,  bool kurlariSilTekrarGuncelle,  bool stokResimleriGoster,  bool stokYazdirDizaynVeYaziciHatirla,  bool stokSecildigindeYazdir,  bool finansOzelRaporGrafikGoster, @Deprecated("Bunun yerine temaModu kullanılacak.")  bool acikTemaMi,  ThemeMode temaModu,  bool rotaDisiGorunsunMu,  NetFectDizaynList? netFectDizaynList,  YaziciList? yaziciList,  EditTipiEnum olcumGirisiBelgeTipi,  bool kapaliBelgelerListelenmesinMi,  bool sayimStokSecildigindeHemenKaydet,  bool sayimOtomatikEtiketYazdir,  Map<String, dynamic> stokGorunecekEkstraAlanlar,  int stokListesiGridSayisi,  String urunGrubunaGoreSatisRaporTipi,  bool urunGrubunaGoreGruplansin,  String cariListesiSirala,  String stokListesiSirala,  bool irsFaturalasanIrsaliyelerGelsin,  bool eIrsaliyeSeciliGelsin,  DepoList? depoTalepDepoList,  String faturaKarlilikMaliyetTipi,  List<String> stokhareketleriGizlenecekAlanlar,  bool stokhareketleriDovizliGoster,  bool sayimNqrOkutuldugundaQRAc)?  $default,) {final _that = this;
+switch (_that) {
+case _BaseProfilParametreModel() when $default != null:
+return $default(_that.siparisYeniKaydaHazirla,_that.faturaYeniKaydaHazirla,_that.talepTeklifYeniKaydaHazirla,_that.transferYeniKaydaHazirla,_that.siparisEkAlan,_that.siparisMiktar,_that.siparisVade,_that.kurlariSilTekrarGuncelle,_that.stokResimleriGoster,_that.stokYazdirDizaynVeYaziciHatirla,_that.stokSecildigindeYazdir,_that.finansOzelRaporGrafikGoster,_that.acikTemaMi,_that.temaModu,_that.rotaDisiGorunsunMu,_that.netFectDizaynList,_that.yaziciList,_that.olcumGirisiBelgeTipi,_that.kapaliBelgelerListelenmesinMi,_that.sayimStokSecildigindeHemenKaydet,_that.sayimOtomatikEtiketYazdir,_that.stokGorunecekEkstraAlanlar,_that.stokListesiGridSayisi,_that.urunGrubunaGoreSatisRaporTipi,_that.urunGrubunaGoreGruplansin,_that.cariListesiSirala,_that.stokListesiSirala,_that.irsFaturalasanIrsaliyelerGelsin,_that.eIrsaliyeSeciliGelsin,_that.depoTalepDepoList,_that.faturaKarlilikMaliyetTipi,_that.stokhareketleriGizlenecekAlanlar,_that.stokhareketleriDovizliGoster,_that.sayimNqrOkutuldugundaQRAc);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
