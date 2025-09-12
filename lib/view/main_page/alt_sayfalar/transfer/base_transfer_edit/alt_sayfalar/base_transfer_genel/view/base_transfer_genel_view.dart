@@ -300,37 +300,58 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                     ),
                   ),
                   onTap: () async {
-                    final cariModel = await Get.toNamed(
+                    CariListesiModel? cariModel;
+                    final result = await Get.toNamed(
                       "mainPage/cariRehberi",
                       arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
                     );
-                    if (cariModel == null) return;
-                    final result = await networkManager.getCariModel(
-                      CariRequestModel.fromCariListesiModel(cariModel)
-                        ..secildi = "E"
-                        ..kisitYok = true
-                        ..teslimCari = "E"
-                        ..eFaturaGoster = true,
-                    );
-                    if (result is CariListesiModel) {
-                      _cariController.text = result.cariAdi ?? "";
-                      viewModel.model.cariTitle = result.efaturaCarisi == "E"
+                    if (result == null) return;
+                    if (result is! CariListesiModel) return;
+                    cariModel = result;
+                    if (!(model.getEditTipiEnum?.depoTransferiMi ?? false) &&
+                        result.bagliMi &&
+                        yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)) {
+                      cariModel = await networkManager.getCariModel(
+                        CariRequestModel.fromCariListesiModel(result),
+                      );
+                      _teslimCariController.text = result.cariAdi ?? "";
+                      viewModel
+                        ..setTeslimCariAdi(result.cariAdi)
+                        ..setTeslimCariKodu(result.cariKodu);
+                      cariModel = await networkManager.getCariModel(CariRequestModel(kod: [result.bagliCari ?? ""]));
+                      if (cariModel == null) {
+                        dialogManager.showAlertDialog("Cari bulunamadı");
+                        return;
+                      }
+                      cariModel.tempCariModel = result;
+                    }
+                    _cariController.text = cariModel.cariAdi ?? "";
+                    // _plasiyerController.text = cariModel.plasiyerAlani ?? "";
+                    if (!cariModel.bagliMi) {
+                      viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
+                      viewModel.model.cariTitle = cariModel.efaturaCarisi == "E"
                           ? "E-Fatura"
-                          : result.efaturaCarisi == "H"
+                          : cariModel.efaturaCarisi == "H"
                           ? "E-Arşiv"
                           : null;
-                      //TODO DEPO KODUNU ZEKİ ABİYE SOR
-                      // if (yetkiController.transferDatCarininDepoGetir) {
-                      //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
-                      // }
-                      viewModel
-                        ..setCariAdi(result.cariAdi)
-                        ..setCariKodu(result.cariKodu);
-                      viewModel.model.vadeGunu = result.vadeGunu;
-                      viewModel.model.efaturaTipi = result.efaturaTipi;
-                      // _belgeNoController.clear();
-                      // await getBelgeNo();
+                      viewModel.setPlasiyer(
+                        PlasiyerList(
+                          plasiyerAciklama: cariModel.plasiyerAciklama,
+                          plasiyerKodu: cariModel.plasiyerKodu,
+                        ),
+                      );
+
+                      // plasiyerController.text = cariModel.plasiyerAlani ?? "";
+                      viewModel.model
+                        ..vadeGunu = cariModel.vadeGunu
+                        ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+                        ..efaturaTipi = cariModel.efaturaTipi;
                     }
+                    viewModel
+                      ..setCariAdi(cariModel.cariAdi)
+                      ..setCariKodu(cariModel.cariKodu);
+                    _belgeNoController.clear();
+                    await getBelgeNo();
                   },
                 ),
               ),
@@ -698,7 +719,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                     },
                   ),
                   //TODO Yetkiyi kontrol et
-                ).yetkiVarMi(yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                ).yetkiVarMi(yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum)),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Özel Kod 2",
@@ -719,7 +740,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum)),
               ],
             ),
             if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isemri") ?? false))

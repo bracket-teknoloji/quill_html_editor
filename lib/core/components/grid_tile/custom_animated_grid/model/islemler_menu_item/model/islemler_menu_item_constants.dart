@@ -10,6 +10,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_request_model.dart";
 import "package:picker/core/constants/enum/menu_list_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/add_company/model/account_model.dart";
@@ -584,21 +585,25 @@ final class IslemlerMenuItemConstants<T> {
     isEnabled: (model as BaseSiparisEditModel).getEditTipiEnum?.yazdirilsinMi,
     iconData: Icons.picture_as_pdf_outlined,
     onTap: () async {
+      NetFectDizaynList? dizayn;
       final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-      final result = await _bottomSheetDialogManager.showDizaynBottomSheetDialog(
+      dizayn = CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.firstWhereOrNull(
+        (element) => element.varsayilanMi == true && (element.ozelKod == siparisModel?.getEditTipiEnum?.getPrintValue),
+      );
+      dizayn ??= await _bottomSheetDialogManager.showDizaynBottomSheetDialog(
         context,
         null,
         editTipi: (model as BaseSiparisEditModel).getEditTipiEnum,
       );
-      if (result is NetFectDizaynList) {
+      if (dizayn is NetFectDizaynList) {
         // Get.back();
         Get.to(
           () => PDFViewerView(
-            title: result.dizaynAdi ?? "Serbest Raporlar",
+            title: dizayn!.dizaynAdi ?? "Serbest Raporlar",
             pdfData: PdfModel(
-              dizaynId: result.id,
-              raporOzelKod: result.ozelKod,
-              etiketSayisi: result.kopyaSayisi,
+              dizaynId: dizayn.id,
+              raporOzelKod: dizayn.ozelKod,
+              etiketSayisi: dizayn.kopyaSayisi,
               dicParams: DicParams(
                 belgeNo: siparisModel?.belgeNo ?? "",
                 cariKodu: siparisModel?.cariKodu,
@@ -1906,6 +1911,7 @@ final class IslemlerMenuItemConstants<T> {
           ..belgeNo = siparisModel.belgeNo
           ..belgeTuru = siparisModel.belgeTuru
           ..pickerBelgeTuru = siparisModel.belgeTuru
+          ..tipi = siparisModel.tipi
           ..cariKodu = siparisModel.cariKodu
           ..islemKodu = 1
           ..lokalDat = siparisModel.lokalDat ?? "H"

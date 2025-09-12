@@ -99,7 +99,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       }
       if (yetkiController.varsayilanPlasiyer != null && yetkiController.plasiyerUygulamasiAcikMi) {
         viewModel.setPlasiyerKodu(yetkiController.varsayilanPlasiyer);
-        _plasiyerController.text = yetkiController.varsayilanPlasiyer?.plasiyerAciklama ?? "";
+        _plasiyerController.text = yetkiController.varsayilanPlasiyer?.plasiyerAlani ?? "";
       }
       if (yetkiController.varsayilanNakitKasa case final kasa?) {
         _kasaController.text = kasa.kasaTanimi ?? "";
@@ -388,7 +388,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                           viewModel.model.plasiyerKodu,
                         );
                         if (result is PlasiyerList) {
-                          _plasiyerController.text = result.plasiyerAciklama ?? "";
+                          _plasiyerController.text = result.plasiyerAlani ?? "";
                           viewModel.setPlasiyerKodu(result);
                         }
                       },
@@ -520,7 +520,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       _cariHareketiAciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
       _kasaHareketiAciklamaController.text = "${result.cariAdi ?? ""} .KODU: ${result.cariKodu ?? ""}";
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
       viewModel
         ..setCariModel(result)
         ..setPlasiyerKodu(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu))

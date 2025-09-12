@@ -101,7 +101,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
         _aciklamaController.text = "EFT/HAVALE - ${widget.cariListesiModel?.cariAdi ?? ""}";
         viewModel.setAciklama(_aciklamaController.text);
         _cariController.text = widget.cariListesiModel?.cariAdi ?? "";
-        _plasiyerController.text = widget.cariListesiModel?.plasiyerAciklama ?? "";
+        _plasiyerController.text = widget.cariListesiModel?.plasiyerAlani ?? "";
       } else {
         await getCari();
       }
@@ -496,7 +496,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             viewModel.model.plasiyerKodu,
                           );
                           if (result != null) {
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            _plasiyerController.text = result.plasiyerAlani ?? "";
                             viewModel.setPlasiyerKodu(result.plasiyerKodu);
                           }
                         },
@@ -592,7 +592,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
       _cariController.text = result.cariAdi ?? "";
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
       _aciklamaController.text = "EFT/HAVALE - ${result.cariAdi ?? ""}";
       viewModel
         ..setCariModel(result)

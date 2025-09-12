@@ -257,7 +257,7 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                             .toList(),
                       );
                       if (result is PlasiyerList) {
-                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        plasiyerController.text = result.plasiyerAlani ?? "";
                         viewModel.model.plasiyerKodu = result.plasiyerKodu;
                       }
                     },

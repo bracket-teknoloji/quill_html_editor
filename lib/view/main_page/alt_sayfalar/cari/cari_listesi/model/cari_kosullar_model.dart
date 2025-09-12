@@ -6,11 +6,13 @@ part "cari_kosullar_model.g.dart";
 
 @JsonSerializable()
 final class CariKosullarModel with NetworkManagerMixin {
+  CariKosullarModel();
+  factory CariKosullarModel.fromJson(Map<String, dynamic> json) => _$CariKosullarModelFromJson(json);
   String? kosulSabitAdi;
   String? kosulKodu;
-  int? genisk1O;
-  int? genisk2O;
-  int? genisk3O;
+  int? genisk1o;
+  int? genisk2o;
+  int? genisk3o;
   String? genelKosulAdi;
   String? baslangictar;
   int? vadeGunu;
@@ -32,7 +34,8 @@ final class CariKosullarModel with NetworkManagerMixin {
   double? iskAraIsk1;
   double? iskAraIsk2;
   double? iskAraIsk3;
-
+  DateTime? fiyatTarihi;
+  String? odemeKodu;
   @override
   CariKosullarModel fromJson(Map<String, dynamic> json) => _$CariKosullarModelFromJson(json);
 

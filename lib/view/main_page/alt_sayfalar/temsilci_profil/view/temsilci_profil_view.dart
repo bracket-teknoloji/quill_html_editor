@@ -125,7 +125,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                               viewModel.plasiyer,
                             );
                             if (result != null) {
-                              plasiyerController.text = result.plasiyerAciklama ?? "";
+                              plasiyerController.text = result.plasiyerAlani ?? "";
                               viewModel.setPlasiyer(result.plasiyerKodu);
                             }
                           },

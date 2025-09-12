@@ -218,7 +218,7 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
     final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
     if (result is PlasiyerList) {
       viewModel.setPlasiyerKodu(result.plasiyerKodu);
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
     }
   }
 }

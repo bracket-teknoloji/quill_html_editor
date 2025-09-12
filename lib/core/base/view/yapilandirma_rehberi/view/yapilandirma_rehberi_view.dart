@@ -1,4 +1,3 @@
-import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
@@ -98,7 +97,7 @@ final class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiV
                                         final sonuc = viewModel.yapilandirmaList
                                             ?.where((element) => element.yapkod == item?.yapkod)
                                             .map((element) => element.ozellikSira ?? 0)
-                                            .sum;
+                                            .length;
                                         viewModel.setMaxPage(sonuc);
                                         if (!viewModel.isLastPage) {
                                           viewModel.setYapilandirmaRehberiModel(item);

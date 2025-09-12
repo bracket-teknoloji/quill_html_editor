@@ -54,7 +54,7 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
         viewModel.setCariKodu(widget.cariListesiModel);
         _cariController.text = widget.cariListesiModel!.cariAdi ?? "";
         viewModel.setPlasiyerKodu(widget.cariListesiModel!.plasiyerKodu);
-        _plasiyerController.text = widget.cariListesiModel!.plasiyerAciklama ?? "";
+        _plasiyerController.text = widget.cariListesiModel!.plasiyerAlani ?? "";
       } else {
         await getCari();
       }
@@ -289,7 +289,7 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
       viewModel.setCariKodu(result);
       _cariController.text = result.cariAdi ?? "";
       viewModel.setPlasiyerKodu(result.plasiyerKodu);
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
     }
   }
 
@@ -306,7 +306,7 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
     final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
     if (result is PlasiyerList) {
       viewModel.setPlasiyerKodu(result.plasiyerKodu);
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
     }
   }
 

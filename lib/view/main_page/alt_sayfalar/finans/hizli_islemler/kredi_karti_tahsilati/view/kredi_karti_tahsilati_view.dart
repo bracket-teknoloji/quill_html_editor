@@ -424,7 +424,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                         viewModel.model.plasiyerKodu,
                       );
                       if (result is PlasiyerList) {
-                        _plasiyerController.text = result.plasiyerAciklama ?? "";
+                        _plasiyerController.text = result.plasiyerAlani ?? "";
                         viewModel.setPlasiyerKodu(result);
                       }
                     },
@@ -511,7 +511,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       }
       _aciklamaController.text = viewModel.model.aciklama ?? "";
       _cariController.text = result.cariAdi ?? "";
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
       if (viewModel.model.tutar == null) {
         viewModel.setTutar(result.bakiye?.abs() ?? 0.0);
       }

@@ -443,6 +443,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel kontrolAciklama(String? kontrolAciklama);
 
+  BaseSiparisEditModel kosullar(CariKosullarModel? kosullar);
+
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `BaseSiparisEditModel(...).copyWith.fieldName(value)`.
   ///
@@ -669,6 +671,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? exportTipi,
     String? exportrefno,
     String? kontrolAciklama,
+    CariKosullarModel? kosullar,
   });
 }
 
@@ -1476,6 +1479,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       call(kontrolAciklama: kontrolAciklama);
 
   @override
+  BaseSiparisEditModel kosullar(CariKosullarModel? kosullar) =>
+      call(kosullar: kosullar);
+
+  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `BaseSiparisEditModel(...).copyWith.fieldName(value)`.
   ///
@@ -1702,6 +1709,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? exportTipi = const $CopyWithPlaceholder(),
     Object? exportrefno = const $CopyWithPlaceholder(),
     Object? kontrolAciklama = const $CopyWithPlaceholder(),
+    Object? kosullar = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2580,6 +2588,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.kontrolAciklama
           // ignore: cast_nullable_to_non_nullable
           : kontrolAciklama as String?,
+      kosullar: kosullar == const $CopyWithPlaceholder()
+          ? _value.kosullar
+          // ignore: cast_nullable_to_non_nullable
+          : kosullar as CariKosullarModel?,
     );
   }
 }
@@ -4804,13 +4816,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       exportTipi: (fields[196] as num?)?.toInt(),
       exportrefno: fields[197] as String?,
       kontrolAciklama: fields[198] as String?,
+      kosullar: fields[200] as CariKosullarModel?,
     )..tekliflesti = fields[199] as String?;
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(200)
+      ..writeByte(201)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -5210,7 +5223,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(198)
       ..write(obj.kontrolAciklama)
       ..writeByte(199)
-      ..write(obj.tekliflesti);
+      ..write(obj.tekliflesti)
+      ..writeByte(200)
+      ..write(obj.kosullar);
   }
 
   @override
@@ -6018,6 +6033,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
   exportTipi: (json['EXPORT_TIPI'] as num?)?.toInt(),
   exportrefno: json['EXPORTREFNO'] as String?,
   kontrolAciklama: json['KONTROL_ACIKLAMA'] as String?,
+  kosullar: json['KOSULLAR'] == null
+      ? null
+      : CariKosullarModel.fromJson(json['KOSULLAR'] as Map<String, dynamic>),
 )..tekliflesti = json['TEKLIFLESTI'] as String?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -6221,6 +6239,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   'EXPORTREFNO': ?instance.exportrefno,
   'KONTROL_ACIKLAMA': ?instance.kontrolAciklama,
   'TEKLIFLESTI': ?instance.tekliflesti,
+  'KOSULLAR': ?instance.kosullar?.toJson(),
 };
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(

@@ -171,7 +171,7 @@ mixin _$BaseTalepTeklifGenelViewModel
   }
 
   @override
-  void setKosulKodu(String? value) {
+  void setKosulKodu(CariKosullarModel? value) {
     final _$actionInfo = _$_BaseTalepTeklifGenelViewModelBaseActionController
         .startAction(name: '_BaseTalepTeklifGenelViewModelBase.setKosulKodu');
     try {

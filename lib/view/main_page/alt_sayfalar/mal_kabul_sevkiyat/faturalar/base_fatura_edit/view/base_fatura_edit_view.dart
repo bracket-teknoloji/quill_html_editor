@@ -279,7 +279,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
           ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
           ..plasiyerKodu = yetkiController.varsayilanPlasiyer?.plasiyerKodu
-          ..plasiyerAciklama = yetkiController.varsayilanPlasiyer?.plasiyerAciklama;
+          ..plasiyerAciklama = yetkiController.varsayilanPlasiyer?.plasiyerAlani;
         if (yetkiController.kontrolluBelgeAktarimAktif) {
           BaseSiparisEditModel.instance
             ..remoteTempBelge =
@@ -331,7 +331,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                   ..plasiyerKodu = cariModel.plasiyerKodu
                   ..plasiyerAciklama = parametreModel.plasiyerListTumu
                       ?.firstWhereOrNull((element) => element.plasiyerKodu == cariModel.plasiyerKodu)
-                      ?.plasiyerAciklama;
+                      ?.plasiyerAlani;
               }
             }
           }
@@ -343,7 +343,9 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           );
           if (result != null) {
             if (result case CariListesiModel cari?) {
-              if (cari.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
+              if ((widget.model.editTipiEnum?.satisMi ?? false) &&
+                  cari.bagliMi &&
+                  yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
                 final newCari = await networkManager.getCariModel(
                   CariRequestModel.fromCariListesiModel(cari.copyWith(cariKodu: cari.bagliCari)),
                 );
@@ -367,7 +369,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
               if (cari.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance
                   ..plasiyerKodu = cari.plasiyerKodu
-                  ..plasiyerAciklama = cari.plasiyerAciklama;
+                  ..plasiyerAciklama = cari.plasiyerAlani;
               }
             }
           }
@@ -966,7 +968,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                       : null;
                   viewModel.baseSiparisEditModel.efaturaTipi = cariModel?.efaturaTipi;
                   viewModel.baseSiparisEditModel.vadeGunu = cariModel?.vadeGunu;
-                  viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAciklama;
+                  viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAlani;
                   viewModel.baseSiparisEditModel.plasiyerKodu = cariModel?.plasiyerKodu;
                   viewModel.baseSiparisEditModel.cariAdi = cariModel?.cariAdi;
                   viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;

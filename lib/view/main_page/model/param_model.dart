@@ -938,6 +938,8 @@ final class PlasiyerList {
 
   String? plasiyerKodu;
   String? plasiyerAciklama;
+
+  String? get plasiyerAlani => plasiyerAciklama ?? plasiyerKodu;
   Map<String, dynamic> toJson() => _$PlasiyerListToJson(this);
 }
 
@@ -959,6 +961,20 @@ final class SatirAcikBaslikList {
   String? aciklama9;
   String? aciklama10;
   Map<String, dynamic> toJson() => _$SatirAcikBaslikListToJson(this);
+
+  String? operator [](int index) => switch (index) {
+    1 => aciklama1,
+    2 => aciklama2,
+    3 => aciklama3,
+    4 => aciklama4,
+    5 => aciklama5,
+    6 => aciklama6,
+    7 => aciklama7,
+    8 => aciklama8,
+    9 => aciklama9,
+    10 => aciklama10,
+    _ => null,
+  };
 }
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.pascal)

@@ -698,7 +698,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
@@ -744,7 +744,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
@@ -789,7 +789,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
@@ -889,7 +889,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_BITCODE = NO;
@@ -904,7 +904,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.20;
+				MARKETING_VERSION = 1.9.21;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -923,7 +923,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -942,7 +942,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -959,7 +959,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = GRRV3JTTZ8;
 				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1100,7 +1100,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_BITCODE = NO;
@@ -1115,7 +1115,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.20;
+				MARKETING_VERSION = 1.9.21;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1144,7 +1144,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 482;
+				CURRENT_PROJECT_VERSION = 494;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GRRV3JTTZ8;
 				ENABLE_BITCODE = NO;
@@ -1159,7 +1159,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.20;
+				MARKETING_VERSION = 1.9.21;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;

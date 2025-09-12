@@ -308,7 +308,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     cariModel.tempCariModel = result;
                   }
                   _cariController.text = cariModel.cariAdi ?? "";
-                  // _plasiyerController.text = result.plasiyerAciklama ?? "";
+                  // _plasiyerController.text = result.plasiyerAlani ?? "";
                   if (!result.bagliMi) {
                     viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
                     viewModel.model.cariTitle = cariModel.efaturaCarisi == "E"
@@ -320,12 +320,12 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu),
                     );
 
-                    _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
+                    _plasiyerController.text = cariModel.plasiyerAlani ?? "";
                     viewModel.model
                       ..vadeGunu = cariModel.vadeGunu
                       ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
                       ..efaturaTipi = cariModel.efaturaTipi;
-                  } else if (yetkiController.teslimCariBaglanmisCarilerSecilsinMi(model.getEditTipiEnum)) {
+                  } else if ((model.getEditTipiEnum?.satisMi ?? false) &&yetkiController.teslimCariBaglanmisCarilerSecilsinMi(model.getEditTipiEnum)) {
                     viewModel.model.efaturaSenaryo = cariModel.tempCariModel?.efaturaSenaryo;
                     viewModel.model.cariTitle = cariModel.tempCariModel?.efaturaCarisi == "E"
                         ? "E-Fatura"
@@ -338,7 +338,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         plasiyerKodu: cariModel.tempCariModel?.plasiyerKodu,
                       ),
                     );
-                    _plasiyerController.text = cariModel.tempCariModel?.plasiyerAciklama ?? "";
+                    _plasiyerController.text = cariModel.tempCariModel?.plasiyerAlani ?? "";
                     viewModel.model
                       ..vadeGunu = cariModel.tempCariModel?.vadeGunu
                       ..vadeTarihi = DateTime.now()
@@ -410,7 +410,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ..plasiyerAciklama = result.plasiyerAciklama
                               ..plasiyerKodu = result.plasiyerKodu;
                             _teslimCariController.text = result.cariAdi ?? "";
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            _plasiyerController.text = result.plasiyerAlani ?? "";
                           }
                         } else {
                           if (_cariController.text.isEmpty) {
@@ -530,7 +530,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         viewModel.model.plasiyerKodu,
                       );
                       if (result != null) {
-                        _plasiyerController.text = result.plasiyerAciklama ?? "";
+                        _plasiyerController.text = result.plasiyerAlani ?? "";
                         viewModel.setPlasiyer(result);
                       }
                     },
@@ -544,7 +544,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum) &&
                     widget.model.baseEditEnum != BaseEditEnum.taslak)
                   Expanded(
                     child: CustomTextField(
@@ -580,7 +580,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ),
                   ),
 
-                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum) &&
                     widget.model.baseEditEnum != BaseEditEnum.taslak)
                   Expanded(
                     child: CustomTextField(
@@ -602,7 +602,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         }
                       },
                     ),
-                  ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                  ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum)),
               ],
             ),
             if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false) &&
@@ -659,9 +659,11 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     context,
                     viewModel.model.kosulKodu,
                     null,
+
+                    model.getEditTipiEnum,
                   );
                   if (result != null) {
-                    viewModel.setKosulKodu(result.kosulKodu);
+                    viewModel.setKosulKodu(result);
                     _kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                   }
                 },

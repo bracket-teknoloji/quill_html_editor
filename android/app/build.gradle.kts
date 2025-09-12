@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace = "com.bracket23.picker"
     compileSdk = 36
-    ndkVersion = "27.0.12077973"
+    // ndkVersion = "27.0.12077973"
 
     signingConfigs {
         create("release") {
@@ -65,7 +65,7 @@ android {
         applicationId = "com.bracket23.picker"
         minSdk = 24
         targetSdk = flutter.targetSdkVersion
-        versionCode = 491
+        versionCode = 507
         versionName = flutterVersionName
     }
     lint {
@@ -78,13 +78,9 @@ android {
         }
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-            ndk {
-                //noinspection ChromeOsAbiSupport
-                abiFilters += setOf("arm64-v8a")
-            }
         }
     }
     // buildToolsVersion = "34.0.0"
@@ -100,4 +96,6 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.10.1")
     implementation("com.google.android.play:integrity:1.4.0")
     implementation(files("libs/Sewoo_Android_1113.jar"))
+    implementation("androidx.datastore:datastore-core:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }

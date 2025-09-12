@@ -219,6 +219,7 @@ final class NetworkManager {
       } else {
         _dio.options = _dioOptions;
       }
+      
       // response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
       response = await _dio.get(
         path,

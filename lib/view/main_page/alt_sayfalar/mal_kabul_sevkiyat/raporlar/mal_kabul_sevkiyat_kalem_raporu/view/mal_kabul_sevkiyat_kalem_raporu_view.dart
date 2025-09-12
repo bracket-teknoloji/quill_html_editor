@@ -138,7 +138,7 @@ final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevk
                       viewModel.pdfModel.dicParams?.plasiyerKodu,
                     );
                     if (result != null) {
-                      plasiyerController.text = result.plasiyerAciklama ?? "";
+                      plasiyerController.text = result.plasiyerAlani ?? "";
                       viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
                     }
                   }

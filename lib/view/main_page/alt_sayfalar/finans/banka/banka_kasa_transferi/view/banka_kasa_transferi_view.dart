@@ -311,7 +311,7 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                             viewModel.model.plasiyerKodu,
                           );
                           if (result != null) {
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            _plasiyerController.text = result.plasiyerAlani ?? "";
                             viewModel.setPlasiyerKodu(result.plasiyerKodu);
                           }
                         },

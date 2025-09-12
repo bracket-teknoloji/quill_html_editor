@@ -94,7 +94,7 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
             final String? kod = await CariNetworkManager.getSiradakiKod(kod: "");
             CariSaveRequestModel.instance.kodu = kod;
           }
-          final List<CariKosullarModel>? kosulList = await CariNetworkManager.getkosullar(null);
+          final List<CariKosullarModel>? kosulList = await CariNetworkManager.getkosullar(null, EditTipiEnum.cari);
           CariSaveRequestModel.instance.kosulKoduAciklama = kosulList
               ?.firstWhereOrNull((element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)
               ?.kosulSabitAdi;

@@ -160,8 +160,6 @@ final class CariListesiModel with NetworkManagerMixin {
     this.yurtIciDovizKodu,
   });
 
-  CariListesiModel._init();
-
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 
   factory CariListesiModel.fromCariHareketleriModel(CariHareketleriModel? model) => CariListesiModel(
@@ -194,6 +192,10 @@ final class CariListesiModel with NetworkManagerMixin {
     email: model?.ePosta,
     sahisFirmasiMi: model?.vergiNo?.length == 11,
   );
+
+  CariListesiModel._init();
+
+  String? get plasiyerAlani => plasiyerAciklama ?? plasiyerAdi ?? plasiyerKodu;
   //singleton
   static CariListesiModel? _instance;
   static CariListesiModel get instance {

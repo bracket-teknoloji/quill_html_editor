@@ -6,6 +6,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_diger/view_model/base_edit_cari_diger_view_model.dart";
@@ -595,6 +596,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     context,
                     viewModel.model?.kosulKodu,
                     null,
+                    EditTipiEnum.cari,
                   );
                   if (result is CariKosullarModel) {
                     kosulKoduController.text = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";

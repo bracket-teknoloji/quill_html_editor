@@ -216,7 +216,7 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
   Future<void> setPlasiyerKodu() async {
     final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
     if (result is PlasiyerList) {
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
       viewModel.setPlasiyerKodu(result.plasiyerKodu);
     }
   }

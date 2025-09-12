@@ -121,7 +121,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                             viewModel.pdfModel.dicParams?.plasiyerKodu,
                           );
                           if (result != null) {
-                            plasiyerController.text = result.plasiyerAciklama ?? "";
+                            plasiyerController.text = result.plasiyerAlani ?? "";
                             viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
                           }
                         }

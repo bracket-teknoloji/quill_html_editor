@@ -2,6 +2,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
 
 import "../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../model/param_model.dart";
@@ -56,8 +57,12 @@ abstract class _BaseSiparislerGenelViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setKosulKodu(String? value) {
-    model = model.copyWith(kosulKodu: value);
+  void setKosulKodu(CariKosullarModel? value) {
+    if (value == null) {
+      model = model..kosulKodu = null;
+      return;
+    }
+    model = model.fromKosulModel(value);
     BaseSiparisEditModel.setInstance(model);
   }
 

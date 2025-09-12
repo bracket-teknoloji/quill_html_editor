@@ -89,7 +89,7 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
-  void setKosulKodu(String? value) {
+  void setKosulKodu(CariKosullarModel? value) {
     final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
         .startAction(name: '_BaseSiparislerGenelViewModelBase.setKosulKodu');
     try {

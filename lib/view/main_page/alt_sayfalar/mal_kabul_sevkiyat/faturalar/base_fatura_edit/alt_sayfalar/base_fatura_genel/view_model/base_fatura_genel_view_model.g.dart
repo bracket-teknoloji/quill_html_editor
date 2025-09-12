@@ -259,7 +259,7 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   @override
-  void setKosulKodu(String? value) {
+  void setKosulKodu(CariKosullarModel? value) {
     final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
         .startAction(name: '_BaseFaturaGenelViewModelBase.setKosulKodu');
     try {

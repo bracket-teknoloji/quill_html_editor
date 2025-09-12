@@ -186,7 +186,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
                           viewModel.pdfModel.dicParams?.plasiyerKodu,
                         );
                         if (result != null) {
-                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          plasiyerController.text = result.plasiyerAlani ?? "";
                           viewModel.setPlasiyer(result.plasiyerKodu);
                         }
                       },

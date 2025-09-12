@@ -2201,6 +2201,32 @@ final class ProfilYetkiModel {
   List<int>? yazdirmaDizaynAmbarCikis;
   List<String>? yazdirmaAmbarGirisYazicilari;
   List<int>? yazdirmaDizaynDat;
+  @JsonKey(name: "malKabul_AlisIrs_BildirimKullanicilar")
+  List<String>? malKabulAlisIrsBildirimKullanicilar;
+  @JsonKey(name: "transfer_AG_Filtre")
+  String? transferAgFiltre;
+  @JsonKey(name: "transfer_AG_FiltreSQL")
+  String? transferAgFiltreSql;
+  @JsonKey(name: "sevkiyat_SatisFat_EMailGonder_Kullanicilar")
+  String? sevkiyatSatisFatEMailGonderKullanicilar;
+  @JsonKey(name: "sevkemri_MalToplama_BarkodKosullu")
+  bool? sevkemriMalToplamaBarkodKosullu;
+  @JsonKey(name: "siparis_MusSip_BildirimKullanicilar")
+  List<String>? siparisMusSipBildirimKullanicilar;
+  @JsonKey(name: "siparis_MusSip_EMailGonder_Kullanicilar")
+  String? siparisMusSipEMailGonderKullanicilar;
+  @JsonKey(name: "stok_Filtre")
+  String? stokFiltre;
+  @JsonKey(name: "stok_FiltreSQL")
+  String? stokFiltreSql;
+  @JsonKey(name: "cari_DovizliCarilerdeTLBakiyeGosterme")
+  bool? cariDovizliCarilerdeTlBakiyeGosterme;
+  @JsonKey(name: "taltek_STEK_SatirAciklamaAlanlari")
+  List<int>? taltekStekSatirAciklamaAlanlari;
+  @JsonKey(name: "taltek_STAL_SatirAciklamaAlanlari")
+  List<int>? taltekStalSatirAciklamaAlanlari;
+  @JsonKey(name: "taltek_ATAL_SatirAciklamaAlanlari")
+  List<int>? taltekAtalSatirAciklamaAlanlari;
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 

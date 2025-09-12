@@ -1019,14 +1019,22 @@ final class BottomSheetDialogManager {
     BuildContext context,
     String? groupValue,
     DateTime? date,
+    EditTipiEnum? editTipi,
   ) async {
-    final List<CariKosullarModel>? data = await CariNetworkManager.getkosullar(date);
+    final List<CariKosullarModel>? data = await CariNetworkManager.getkosullar(date, editTipi);
     return await showRadioBottomSheetDialog(
       context,
       title: "Koşullar Seçiniz",
       groupValue: groupValue,
       children: data
-          ?.map((e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e, groupValue: e.kosulKodu))
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.genelKosulAdi ?? e.kosulKodu ?? "",
+              value: e,
+              description: e.kosulKodu,
+              groupValue: e.kosulKodu,
+            ),
+          )
           .toList(),
     );
   }
@@ -1131,7 +1139,12 @@ final class BottomSheetDialogManager {
     final List<ListOzelKodTum> list =
         _paramModel?.listOzelKodTum
             ?.where(
-              (element) => element.belgeTipi == (editTipi?.satisMi == true ? "S" : "A") && element.fiyatSirasi != 0,
+              (element) =>
+                  element.belgeTipi ==
+                      (editTipi?.talepTeklifMi ?? false
+                          ? editTipi?.rawValue
+                          : (editTipi?.satisMi == true ? "S" : "A")) &&
+                  element.fiyatSirasi != 0,
             )
             .toList() ??
         <ListOzelKodTum>[];

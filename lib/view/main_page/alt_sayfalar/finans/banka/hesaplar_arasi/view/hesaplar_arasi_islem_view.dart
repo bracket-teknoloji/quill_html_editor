@@ -341,7 +341,7 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                           viewModel.model.plasiyerKodu,
                         );
                         if (result != null) {
-                          _plasiyerController.text = result.plasiyerAciklama ?? "";
+                          _plasiyerController.text = result.plasiyerAlani ?? "";
                           viewModel.setPlasiyerKodu(result.plasiyerKodu);
                         }
                       },

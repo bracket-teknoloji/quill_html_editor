@@ -108,6 +108,7 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
     };
   }
 
+
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
     return switch (this!) {
@@ -539,6 +540,30 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.belgesizIslem => false,
   };
 
+  String get dizaynOzelKod => switch (this) {
+    EditTipiEnum.musteri => "MusteriSiparisi",
+    EditTipiEnum.satici => "SaticiSiparisi",
+    EditTipiEnum.satisFatura => "SatisFaturasi",
+    EditTipiEnum.satisIrsaliye => "SatisIrsaliyesi",
+    EditTipiEnum.alisFatura => "AlisFaturasi",
+    EditTipiEnum.alisIrsaliye => "AlisIrsaliyesi",
+    EditTipiEnum.satisTeklifi => "SatisTeklifi",
+    EditTipiEnum.alisTalebi => "AlisTalebi",
+    EditTipiEnum.satisTalebi => "SatisTalebi",
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "DepoTransferi",
+    EditTipiEnum.ambarGirisi => "AmbarGirisi",
+    EditTipiEnum.ambarCikisi => "AmbarCikisi",
+    //TODO
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.cari ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => "",
+  };
+
   bool get aciklamaDuzenlensinMi => switch (this) {
     EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatAciklamaDuzenle,
     EditTipiEnum.ambarGirisi => yetkiController.transferAgAciklamaDuzenle,
@@ -748,7 +773,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
 
   bool get ekAlan2GorunsunMu {
     if (talepTeklifMi) {
-      return false;
+      return yetkiController.talepTeklifEkAlan2AktifMi(this);
     }
     if (satisMi) {
       return yetkiController.satisEkAlan2AktifMi;
@@ -1098,4 +1123,15 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
     return label ?? "Açıklama $value";
   }
+
+
+  // bool satirAciklamaGorunecekMi(int index) switch (this) {
+  //   if (talepTeklifMi) {
+  //     return yetkiController.satirAciklamaAlanlari(this, index);
+  //   }
+  //   if (satisMi) {
+  //     return yetkiController.satisSatirAciklamaGoster(index);
+  //   } else {
+  //     return yetkiController.alisSatirAciklamaGoster(index);
+  //   }
 }

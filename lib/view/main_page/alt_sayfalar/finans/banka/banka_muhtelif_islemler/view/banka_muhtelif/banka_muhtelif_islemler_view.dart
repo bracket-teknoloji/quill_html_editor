@@ -285,7 +285,7 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
                       );
                       if (result != null) {
                         viewModel.setPlasiyerKodu(result.plasiyerKodu);
-                        _plasiyerController.text = result.plasiyerAciklama ?? "";
+                        _plasiyerController.text = result.plasiyerAlani ?? "";
                       }
                     },
                   ),

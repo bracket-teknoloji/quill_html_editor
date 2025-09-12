@@ -1,5 +1,7 @@
 import "dart:developer";
 
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+
 import "../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../core/base/model/generic_response_model.dart";
@@ -35,11 +37,11 @@ final class CariNetworkManager {
     return response.dataList;
   }
 
-  static Future<List<CariKosullarModel>?> getkosullar(DateTime? date) async {
+  static Future<List<CariKosullarModel>?> getkosullar(DateTime? date, EditTipiEnum? editTipi) async {
     final Map<String, String> queryParams = <String, String>{
       "Tarih": date.toDateString,
       "KisitYok": "H",
-      "BelgeTuru": "CARI",
+      "BelgeTuru": editTipi?.rawValue ?? "CARI",
     };
     final result = await networkManager.dioGet<CariKosullarModel>(
       path: ApiUrls.getKosullar,
@@ -49,13 +51,6 @@ final class CariNetworkManager {
     return result.dataList;
   }
 
-  static Future<GenericResponseModel<CariKosullarModel>> getCariListesi() async {
-    final GenericResponseModel<CariKosullarModel> responseKosullar = await networkManager.dioGet<CariKosullarModel>(
-      path: ApiUrls.getKosullar,
-      bodyModel: CariKosullarModel(),
-    );
-    return responseKosullar;
-  }
 
   static Future<String?> getSiradakiKod({String? kod}) async {
     try {

@@ -129,7 +129,7 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
       viewModel.dekontIslemlerRequestModel.plasiyerKodu,
     );
     if (result != null) {
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
       viewModel.setPlasiyerKodu(result);
     }
   }

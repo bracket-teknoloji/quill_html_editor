@@ -396,7 +396,7 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
   Future<void> setPlasiyer() async {
     final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
     if (result != null) {
-      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAlani ?? "";
       viewModel.setPlasiyerKodu(result);
     }
   }

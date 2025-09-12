@@ -10,9 +10,9 @@ CariKosullarModel _$CariKosullarModelFromJson(Map<String, dynamic> json) =>
     CariKosullarModel()
       ..kosulSabitAdi = json['KOSUL_SABIT_ADI'] as String?
       ..kosulKodu = json['KOSUL_KODU'] as String?
-      ..genisk1O = (json['GENISK1_O'] as num?)?.toInt()
-      ..genisk2O = (json['GENISK2_O'] as num?)?.toInt()
-      ..genisk3O = (json['GENISK3_O'] as num?)?.toInt()
+      ..genisk1o = (json['GENISK1O'] as num?)?.toInt()
+      ..genisk2o = (json['GENISK2O'] as num?)?.toInt()
+      ..genisk3o = (json['GENISK3O'] as num?)?.toInt()
       ..genelKosulAdi = json['GENEL_KOSUL_ADI'] as String?
       ..baslangictar = json['BASLANGICTAR'] as String?
       ..vadeGunu = (json['VADE_GUNU'] as num?)?.toInt()
@@ -33,15 +33,19 @@ CariKosullarModel _$CariKosullarModelFromJson(Map<String, dynamic> json) =>
       ..iskAraHangiIsk = (json['ISK_ARA_HANGI_ISK'] as num?)?.toDouble()
       ..iskAraIsk1 = (json['ISK_ARA_ISK1'] as num?)?.toDouble()
       ..iskAraIsk2 = (json['ISK_ARA_ISK2'] as num?)?.toDouble()
-      ..iskAraIsk3 = (json['ISK_ARA_ISK3'] as num?)?.toDouble();
+      ..iskAraIsk3 = (json['ISK_ARA_ISK3'] as num?)?.toDouble()
+      ..fiyatTarihi = json['FIYAT_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['FIYAT_TARIHI'] as String)
+      ..odemeKodu = json['ODEME_KODU'] as String?;
 
 Map<String, dynamic> _$CariKosullarModelToJson(CariKosullarModel instance) =>
     <String, dynamic>{
       'KOSUL_SABIT_ADI': ?instance.kosulSabitAdi,
       'KOSUL_KODU': ?instance.kosulKodu,
-      'GENISK1_O': ?instance.genisk1O,
-      'GENISK2_O': ?instance.genisk2O,
-      'GENISK3_O': ?instance.genisk3O,
+      'GENISK1O': ?instance.genisk1o,
+      'GENISK2O': ?instance.genisk2o,
+      'GENISK3O': ?instance.genisk3o,
       'GENEL_KOSUL_ADI': ?instance.genelKosulAdi,
       'BASLANGICTAR': ?instance.baslangictar,
       'VADE_GUNU': ?instance.vadeGunu,
@@ -63,4 +67,6 @@ Map<String, dynamic> _$CariKosullarModelToJson(CariKosullarModel instance) =>
       'ISK_ARA_ISK1': ?instance.iskAraIsk1,
       'ISK_ARA_ISK2': ?instance.iskAraIsk2,
       'ISK_ARA_ISK3': ?instance.iskAraIsk3,
+      'FIYAT_TARIHI': ?instance.fiyatTarihi?.toIso8601String(),
+      'ODEME_KODU': ?instance.odemeKodu,
     };

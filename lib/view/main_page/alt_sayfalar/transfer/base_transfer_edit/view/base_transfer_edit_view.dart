@@ -586,7 +586,20 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: (instance..islemId = uuid.v4()).toJson(),
+      data: instance
+          .copyWith(
+            islemId: uuid.v4(),
+            kalemList: instance.kalemList
+                ?.map(
+                  (e) => e
+                    ..dovizTipi = [0, null].contains(e.dovizTipi) ? null : e.dovizTipi
+                    ..dovizKodu = [0, null].contains(e.dovizKodu) ? null : e.dovizKodu
+                    ..dovizFiyati = [0, null].contains(e.dovizKodu) ? null : e.dovizFiyati
+                    ..dovizliFiyat = [0, null].contains(e.dovizKodu) ? null : e.dovizliFiyat,
+                )
+                .toList(),
+          )
+          .toJson(),
       showLoading: true,
     );
     if (result.isSuccess) {
@@ -743,7 +756,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                       : null;
                   viewModel.baseSiparisEditModel.efaturaTipi = cariModel?.efaturaTipi;
                   viewModel.baseSiparisEditModel.vadeGunu = cariModel?.vadeGunu;
-                  viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAciklama;
+                  viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAlani;
                   viewModel.baseSiparisEditModel.plasiyerKodu = cariModel?.plasiyerKodu;
                   viewModel.baseSiparisEditModel.cariAdi = cariModel?.cariAdi;
                   viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;

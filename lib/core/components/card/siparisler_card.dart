@@ -338,7 +338,7 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
               Text("Teslim Cari: ${widget.model.teslimCariAdi}"),
             CustomLayoutBuilder.divideInHalf(
               children: [
-                Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+                Text("Tipi: ${widget.model.exportTipi == null ? "Yurtiçi" : "Yurtdışı"}"),
                 Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
                 Text("Cari Kodu: ${widget.model.cariKodu ?? ""}"),
                 if (widget.model.kosulKodu != null) Text("Koşul: ${widget.model.kosulKodu ?? ""}"),

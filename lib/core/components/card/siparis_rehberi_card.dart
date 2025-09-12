@@ -123,7 +123,7 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
           Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
           CustomLayoutBuilder.divideInHalf(
             children: [
-              Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+              Text("Tipi: ${widget.model.exportTipi == null ? "Yurtiçi" : "Yurtdışı"}"),
               Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
               Text("Cari Kodu: ${widget.model.cariKodu ?? ""}"),
               if (widget.model.kosulKodu != null) Text("Koşul: ${widget.model.kosulKodu ?? ""}"),

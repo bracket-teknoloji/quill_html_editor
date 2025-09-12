@@ -396,7 +396,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                         viewModel.model?.plasiyerKodu,
                       );
                       if (result != null) {
-                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        plasiyerController.text = result.plasiyerAlani ?? "";
                         viewModel.changePlasiyer(result.plasiyerKodu);
                       }
                     },

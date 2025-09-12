@@ -680,14 +680,16 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       if (cariModel == null) {
         return;
       }
-      final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, null);
-      if (depoModel == null) {
-        return;
+      DepoList? depo;
+      if (yetkiController.lokalDepoUygulamasiAcikMi) {
+        final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, null);
+        if (depoModel == null) return;
+        depo = depoModel;
       }
       final siparisModel = await networkManager.getFatura(
         context,
         (SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel))
-          ..depoKodu = depoModel.depoKodu
+          ..depoKodu = depo?.depoKodu
           ..belgeTipi = null
           ..kisitYok = null
           ..iadeMi = false
@@ -710,7 +712,7 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             cariEfaturami: "E",
             plasiyerAciklama: cariModel.plasiyerAciklama,
             plasiyerKodu: cariModel.plasiyerKodu,
-            depoTanimi: depoModel.depoTanimi,
+            depoTanimi: depo?.depoTanimi,
             dovizAdi: cariModel.dovizAdi,
             dovizTipi: cariModel.dovizKodu,
             efaturaInckeyno: widget.eBelgeListesiModel.inckeyno,

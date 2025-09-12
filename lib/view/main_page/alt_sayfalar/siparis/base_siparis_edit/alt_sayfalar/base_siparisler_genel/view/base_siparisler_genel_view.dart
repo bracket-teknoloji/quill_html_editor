@@ -7,6 +7,7 @@ import "package:picker/core/base/model/belge_tipi_model.dart";
 import "package:picker/core/base/model/ek_rehber_request_model.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 
@@ -182,7 +183,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     kosulController.text = cariModel.kosulKodu ?? "";
                   }
                   cariController.text = cariModel!.cariAdi ?? "";
-                  // _plasiyerController.text = result.plasiyerAciklama ?? "";
+                  // _plasiyerController.text = result.plasiyerAlani ?? "";
                   if (!result.bagliMi) {
                     viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
                     viewModel.model.cariTitle = cariModel.efaturaCarisi == "E"
@@ -194,12 +195,13 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu),
                     );
 
-                    plasiyerController.text = cariModel.plasiyerAciklama ?? "";
+                    plasiyerController.text = cariModel.plasiyerAlani ?? "";
                     viewModel.model
                       ..vadeGunu = cariModel.vadeGunu
                       ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
                       ..efaturaTipi = cariModel.efaturaTipi;
-                  } else if (yetkiController.teslimCariBaglanmisCarilerSecilsinMi(model.getEditTipiEnum)) {
+                  } else if ((model.getEditTipiEnum?.satisMi ?? false) &&
+                      yetkiController.teslimCariBaglanmisCarilerSecilsinMi(model.getEditTipiEnum)) {
                     viewModel.model.efaturaSenaryo = cariModel.tempCariModel?.efaturaSenaryo;
                     viewModel.model.cariTitle = cariModel.tempCariModel?.efaturaCarisi == "E"
                         ? "E-Fatura"
@@ -212,7 +214,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         plasiyerKodu: cariModel.tempCariModel?.plasiyerKodu,
                       ),
                     );
-                    plasiyerController.text = cariModel.tempCariModel?.plasiyerAciklama ?? "";
+                    plasiyerController.text = cariModel.tempCariModel?.plasiyerAlani ?? "";
                     viewModel.model
                       ..vadeGunu = cariModel.tempCariModel?.vadeGunu
                       ..vadeTarihi = DateTime.now()
@@ -222,7 +224,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   }
                   viewModel
                     ..setCariAdi(cariModel.cariAdi)
-                    ..setKosulKodu(cariModel.kosulKodu)
+                    ..setKosulKodu(CariKosullarModel()..kosulKodu = cariModel.kosulKodu)
                     ..setCariKodu(cariModel.cariKodu);
                   kosulController.text = cariModel.kosulKodu ?? "";
                   belgeNoController.clear();
@@ -282,7 +284,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                               ..plasiyerAciklama = result.plasiyerAciklama
                               ..plasiyerKodu = result.plasiyerKodu;
                             teslimCariController.text = result.cariAdi ?? "";
-                            plasiyerController.text = result.plasiyerAciklama ?? "";
+                            plasiyerController.text = result.plasiyerAlani ?? "";
                           }
                         } else {
                           if (cariController.text.isEmpty) {
@@ -357,8 +359,8 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           viewModel.setPlasiyer(result);
                           model
                             ..plasiyerKodu = result.plasiyerKodu
-                            ..plasiyerAciklama = result.plasiyerAciklama;
-                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                            ..plasiyerAciklama = result.plasiyerAlani;
+                          plasiyerController.text = result.plasiyerAlani ?? "";
                         }
                       },
                     ),
@@ -543,9 +545,10 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           context,
                           viewModel.model.kosulKodu,
                           null,
+                          model.getEditTipiEnum,
                         );
                         if (result != null) {
-                          viewModel.setKosulKodu(result.kosulKodu);
+                          viewModel.setKosulKodu(result);
                           kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                         }
                       },
@@ -556,7 +559,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false))
+                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum))
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,
@@ -590,7 +593,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       },
                     ),
                   ),
-                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false))
+                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum))
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,
@@ -978,6 +981,9 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     cariController.text = model.cariAdi ?? "";
     teslimCariController.text = model.teslimCariAdi ?? "";
     belgeTipiController.text = model.yurticiMi ? "Yurtiçi" : "Yurtdışı";
+    if (!model.yurticiMi) {
+      viewModel.setBelgeTipi(6);
+    }
     plasiyerController.text = model.plasiyerAciklama ?? model.plasiyerKodu ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;

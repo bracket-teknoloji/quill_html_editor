@@ -175,7 +175,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
           );
         }
         if (cariModel case final CariListesiModel value) {
-          if (value.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
+          if ((widget.model.editTipiEnum?.satisMi ?? false) &&value.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
             cariModel = await networkManager.getCariModel(
               CariRequestModel.fromCariListesiModel(value),
             );
@@ -652,7 +652,19 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: instance.toJson(),
+      data: instance
+          .copyWith(
+            kalemList: instance.kalemList
+                ?.map(
+                  (e) => e
+                    ..dovizTipi = [0, null].contains(e.dovizTipi) ? null : e.dovizTipi
+                    ..dovizKodu = [0, null].contains(e.dovizKodu) ? null : e.dovizKodu
+                    ..dovizFiyati = [0, null].contains(e.dovizKodu) ? null : e.dovizFiyati
+                    ..dovizliFiyat = [0, null].contains(e.dovizKodu) ? null : e.dovizliFiyat,
+                )
+                .toList(),
+          )
+          .toJson(),
       showLoading: true,
     );
     if (result.isSuccess) {

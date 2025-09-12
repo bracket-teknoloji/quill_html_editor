@@ -300,7 +300,7 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                 );
                 if (result is PlasiyerList) {
                   viewModel.setPlasiyerKodu(result);
-                  plasiyerController.text = result.plasiyerAciklama ?? "";
+                  plasiyerController.text = result.plasiyerAlani ?? "";
                 }
               },
             ),

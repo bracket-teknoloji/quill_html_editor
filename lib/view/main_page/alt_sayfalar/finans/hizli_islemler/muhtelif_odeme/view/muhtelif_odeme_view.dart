@@ -317,7 +317,7 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         viewModel.model.plasiyerKodu,
                       );
                       if (result is PlasiyerList) {
-                        _plasiyerController.text = result.plasiyerAciklama ?? "";
+                        _plasiyerController.text = result.plasiyerAlani ?? "";
                         viewModel.setPlasiyerKodu(result);
                       }
                     },

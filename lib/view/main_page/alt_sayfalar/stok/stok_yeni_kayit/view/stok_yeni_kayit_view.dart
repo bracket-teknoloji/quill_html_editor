@@ -263,7 +263,7 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         .toList(),
                   );
                   if (result != null) {
-                    plasiyerController.text = result.plasiyerAciklama ?? "";
+                    plasiyerController.text = result.plasiyerAlani ?? "";
                     viewModel.model.plasiyerKodu = result.plasiyerKodu;
                   }
                 },

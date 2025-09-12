@@ -128,7 +128,7 @@ final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView>
                               .toList(),
                         );
                         if (result != null) {
-                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          plasiyerController.text = result.plasiyerAlani ?? "";
                           viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
                         }
                       }

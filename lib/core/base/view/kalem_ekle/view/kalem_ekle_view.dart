@@ -540,8 +540,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
             Observer(
               builder: (_) => Row(
                 children: [
-                  if (((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)) ||
-                      (editTipi?.ambarFisiMi == true))
+                  if ((viewModel.model?.hizmetMi ?? false) || (editTipi?.ambarFisiMi == true))
                     Expanded(
                       child: CustomTextField(
                         labelText: "Muh. Kodu",
@@ -639,7 +638,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (yetkiController.siparisSatirdaTeslimTarihiSor(editTipi) && model.getEditTipiEnum?.siparisMi == true)
+                if (yetkiController.siparisSatirdaTeslimTarihiSor(editTipi))
                   Expanded(
                     child: CustomTextField(
                       labelText: "Teslim Tarihi",
@@ -687,6 +686,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           context,
                           viewModel.kalemModel.kosulKodu,
                           model.kayittarihi,
+                          model.getEditTipiEnum,
                         );
                         if (result != null) {
                           kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
@@ -907,7 +907,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           readOnly: true,
                           suffixMore: true,
                           valueWidget: Observer(
-                            builder: (_) => Text(viewModel.kalemModel.dovizTipi.toStringIfNotNull ?? ""),
+                            builder: (_) => Text(viewModel.kalemModel.dovizKodu.toStringIfNotNull ?? ""),
                           ),
                           onTap: () async {
                             final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
@@ -1420,12 +1420,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ],
               ),
             // TODO Açıklama parametrelerini düzenle
-            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 0) && !editTipi.talepTeklifMi && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 0) && !transferMi)
               const Text(
                 "Açıklamalar",
                 style: TextStyle(fontSize: UIHelper.highSize),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 1) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 1) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(1),
                 maxLength: 35,
@@ -1439,7 +1439,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama1Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama1 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 2) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 2) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(2),
                 maxLength: 35,
@@ -1453,7 +1453,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama2Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama2 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 3) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 3) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(3),
                 maxLength: 35,
@@ -1467,7 +1467,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama3Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama3 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 4) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 4) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(4),
                 maxLength: 35,
@@ -1481,7 +1481,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama4Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama4 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 5) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 5) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(5),
                 maxLength: 35,
@@ -1495,7 +1495,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama5Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama5 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 6) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 6) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(6),
                 maxLength: 35,
@@ -1509,7 +1509,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama6Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama6 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 7) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 7) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(7),
                 maxLength: 35,
@@ -1523,7 +1523,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama7Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama7 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 8) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 8) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(8),
                 maxLength: 35,
@@ -1537,7 +1537,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama8Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama8 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 9) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 9) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(9),
                 maxLength: 35,
@@ -1551,7 +1551,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 controller: aciklama9Controller,
                 onChanged: (value) => viewModel.kalemModel.aciklama9 = value,
               ),
-            if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(editTipi, 10) && !transferMi)
+            if (yetkiController.siparisSatirAciklamaAlanlari(editTipi, 10) && !transferMi)
               CustomTextField(
                 labelText: getAciklamaLabel(10),
                 maxLength: 35,
@@ -1630,6 +1630,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   String getAciklamaLabel(int index) {
     if (getEkRehberModel("SATIR_ACIK$index") != null) {
       return getEkRehberModel("SATIR_ACIK$index")?.baslik ?? "";
+    } else if (yetkiController.satirAciklamaAlanlari(index, editTipi) case final value?) {
+      return value;
     }
     return "${editTipi?.rawValue} $index";
   }
@@ -1897,6 +1899,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     yapKodController.text =
         viewModel.kalemModel.yapkod ?? viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? "";
     isEmriController.text = viewModel.kalemModel.isemriNo ?? "";
+    if (model.kosullar?.satisk1Tipi case final iskTipi?) viewModel.kalemModel.isk1Tipi = iskTipi;
+    if (model.kosullar?.satisk2Tipi case final iskTipi?) viewModel.kalemModel.isk2Tipi = iskTipi;
+    if (model.kosullar?.satisk3Tipi case final iskTipi?) viewModel.kalemModel.isk3Tipi = iskTipi;
+    if (model.kosullar?.satisk4Tipi case final iskTipi?) viewModel.kalemModel.isk4Tipi = iskTipi;
+    if (model.kosullar?.satisk5Tipi case final iskTipi?) viewModel.kalemModel.isk5Tipi = iskTipi;
+    if (model.kosullar?.satisk6Tipi case final iskTipi?) viewModel.kalemModel.isk6Tipi = iskTipi;
     isk1Controller?.text = viewModel.kalemModel.iskonto1.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk1TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk1Tipi.toIntIfDouble);
     isk2YuzdeController?.text = viewModel.kalemModel.iskonto2.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
@@ -1916,9 +1924,19 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     miktarController.text = viewModel.kalemModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     miktar2Controller.text = viewModel.kalemModel.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     muhKoduController.text = viewModel.kalemModel.muhasebeTanimi ?? viewModel.kalemModel.muhasebeKodu ?? "";
-    if (yetkiController.muhRefSorulsun(editTipi) && viewModel.kalemModel.muhRefKodu == null) {
-      viewModel.setMuhasebeReferansKodu(yetkiController.varsayilanMuhRefKodu?.hesapKodu);
-      muhRefKoduController.text = yetkiController.varsayilanMuhRefKodu?.hesapAdi ?? "";
+    if (yetkiController.muhRefSorulsun(editTipi)) {
+      if (editTipi?.talepTeklifMi ?? false) {
+        viewModel.setMuhasebeReferansKodu(
+          parametreModel.talTekParam
+              ?.firstWhereOrNull((element) => editTipi?.rawValue == element.belgeTipi)
+              ?.varsayilanMuhrefkod,
+        );
+        muhRefKoduController.text = viewModel.kalemModel.muhRefKodu ?? "";
+      }
+      if (viewModel.kalemModel.muhRefKodu == null) {
+        viewModel.setMuhasebeReferansKodu(yetkiController.varsayilanMuhRefKodu?.hesapKodu);
+        muhRefKoduController.text = yetkiController.varsayilanMuhRefKodu?.hesapAdi ?? "";
+      }
     }
     muhRefKoduController.text = viewModel.kalemModel.muhRefKodu ?? "";
     malFazMiktarController.text =

@@ -1951,7 +1951,39 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(
           .toList()
   ..yazdirmaDizaynDat = (json['YAZDIRMA_DIZAYN_DAT'] as List<dynamic>?)
       ?.map((e) => (e as num).toInt())
-      .toList();
+      .toList()
+  ..malKabulAlisIrsBildirimKullanicilar =
+      (json['malKabul_AlisIrs_BildirimKullanicilar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..transferAgFiltre = json['transfer_AG_Filtre'] as String?
+  ..transferAgFiltreSql = json['transfer_AG_FiltreSQL'] as String?
+  ..sevkiyatSatisFatEMailGonderKullanicilar =
+      json['sevkiyat_SatisFat_EMailGonder_Kullanicilar'] as String?
+  ..sevkemriMalToplamaBarkodKosullu =
+      json['sevkemri_MalToplama_BarkodKosullu'] as bool?
+  ..siparisMusSipBildirimKullanicilar =
+      (json['siparis_MusSip_BildirimKullanicilar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..siparisMusSipEMailGonderKullanicilar =
+      json['siparis_MusSip_EMailGonder_Kullanicilar'] as String?
+  ..stokFiltre = json['stok_Filtre'] as String?
+  ..stokFiltreSql = json['stok_FiltreSQL'] as String?
+  ..cariDovizliCarilerdeTlBakiyeGosterme =
+      json['cari_DovizliCarilerdeTLBakiyeGosterme'] as bool?
+  ..taltekStekSatirAciklamaAlanlari =
+      (json['taltek_STEK_SatirAciklamaAlanlari'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList()
+  ..taltekStalSatirAciklamaAlanlari =
+      (json['taltek_STAL_SatirAciklamaAlanlari'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList()
+  ..taltekAtalSatirAciklamaAlanlari =
+      (json['taltek_ATAL_SatirAciklamaAlanlari'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList();
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(
   ProfilYetkiModel instance,
@@ -3366,6 +3398,28 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(
   'YAZDIRMA_DIZAYN_AMBAR_CIKIS': ?instance.yazdirmaDizaynAmbarCikis,
   'YAZDIRMA_AMBAR_GIRIS_YAZICILARI': ?instance.yazdirmaAmbarGirisYazicilari,
   'YAZDIRMA_DIZAYN_DAT': ?instance.yazdirmaDizaynDat,
+  'malKabul_AlisIrs_BildirimKullanicilar':
+      ?instance.malKabulAlisIrsBildirimKullanicilar,
+  'transfer_AG_Filtre': ?instance.transferAgFiltre,
+  'transfer_AG_FiltreSQL': ?instance.transferAgFiltreSql,
+  'sevkiyat_SatisFat_EMailGonder_Kullanicilar':
+      ?instance.sevkiyatSatisFatEMailGonderKullanicilar,
+  'sevkemri_MalToplama_BarkodKosullu':
+      ?instance.sevkemriMalToplamaBarkodKosullu,
+  'siparis_MusSip_BildirimKullanicilar':
+      ?instance.siparisMusSipBildirimKullanicilar,
+  'siparis_MusSip_EMailGonder_Kullanicilar':
+      ?instance.siparisMusSipEMailGonderKullanicilar,
+  'stok_Filtre': ?instance.stokFiltre,
+  'stok_FiltreSQL': ?instance.stokFiltreSql,
+  'cari_DovizliCarilerdeTLBakiyeGosterme':
+      ?instance.cariDovizliCarilerdeTlBakiyeGosterme,
+  'taltek_STEK_SatirAciklamaAlanlari':
+      ?instance.taltekStekSatirAciklamaAlanlari,
+  'taltek_STAL_SatirAciklamaAlanlari':
+      ?instance.taltekStalSatirAciklamaAlanlari,
+  'taltek_ATAL_SatirAciklamaAlanlari':
+      ?instance.taltekAtalSatirAciklamaAlanlari,
 };
 
 const _$BarkodSayisiSaklanacakAlanEnumMap = {

@@ -322,7 +322,7 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       );
                       if (result != null) {
                         viewModel.setPlasiyerKodu(result);
-                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        plasiyerController.text = result.plasiyerAlani ?? "";
                       }
                     },
                   ),

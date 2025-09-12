@@ -14,3 +14,6 @@
 -keep class com.google.android.gms.safetynet.** { *; }
 -dontwarn com.google.android.gms.safetynet.**
 -keepattributes InnerClasses, EnclosingMethod
+-keep class androidx.datastore.** { *; }
+-keep class h0.b0.** { *; }
+-dontwarn androidx.datastore.**

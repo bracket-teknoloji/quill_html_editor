@@ -7,6 +7,8 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -268,6 +270,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     this.exportTipi,
     this.exportrefno,
     this.kontrolAciklama,
+    this.kosullar,
   });
 
   BaseSiparisEditModel._init();
@@ -335,6 +338,19 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   );
   //singleton
   static BaseSiparisEditModel? _instance;
+
+  BaseSiparisEditModel fromKosulModel(CariKosullarModel model) {
+    kosullar = model;
+    vadeGunu = model.vadeGunu;
+    vadeTarihi = model.vadeGunu != null
+        ? DateTime.now().add(Duration(days: model.vadeGunu!)).dateTimeWithoutTime
+        : null;
+    kosulKodu = model.kosulKodu;
+    genIsk1o = (model.genisk1o ?? 0) > 0 ? (model.genisk1o ?? 0).toDouble() : null;
+    genIsk2o = (model.genisk2o ?? 0) > 0 ? (model.genisk2o ?? 0).toDouble() : null;
+    genIsk3o = (model.genisk3o ?? 0) > 0 ? (model.genisk3o ?? 0).toDouble() : null;
+    return this;
+  }
 
   static final List<BaseSiparisEditModel> _instanceList = [];
   static BaseSiparisEditModel get instance {
@@ -859,6 +875,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   String? kontrolAciklama;
   @HiveField(199)
   String? tekliflesti;
+  @HiveField(200)
+  CariKosullarModel? kosullar;
 
   bool get isTamamlandi => (tamamlananMiktar ?? 0) == (miktar ?? 0);
 
@@ -1274,7 +1292,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
 
   int get getKalemSayisi => kalemList?.length ?? (kalemAdedi ?? 0);
 
-  bool get yurticiMi => tipi != 6;
+  bool get yurticiMi => ![6].any((element) => element == tipi) && exportTipi == null;
   bool get isEmpty => this == BaseSiparisEditModel();
 
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;

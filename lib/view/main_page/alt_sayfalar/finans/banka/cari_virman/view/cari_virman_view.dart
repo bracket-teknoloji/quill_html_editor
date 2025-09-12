@@ -232,7 +232,7 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
                           viewModel.requestModel.plasiyerKodu,
                         );
                         if (result is PlasiyerList) {
-                          _plasiyerController.text = result.plasiyerAciklama ?? "";
+                          _plasiyerController.text = result.plasiyerAlani ?? "";
                           viewModel.setPlasiyer(result.plasiyerKodu);
                         }
                       },
@@ -318,7 +318,7 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
       _tahsilatYapilanCariAciklamaController.text = "CARİ VİR. ${widget.model?.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setAciklama(_tahsilatYapilanCariAciklamaController.text);
     }
-    _plasiyerController.text = widget.model?.plasiyerAciklama ?? "";
+    _plasiyerController.text = widget.model?.plasiyerAlani ?? "";
     viewModel.setPlasiyer(widget.model?.plasiyerKodu);
   }
 

@@ -104,7 +104,6 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
           showLoading: true,
         );
         if (result.isSuccess) {
-          viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.dataList.first);
           BaseSiparisEditModel.instance.isNew = false;
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
@@ -129,14 +128,19 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
-        BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-        BaseSiparisEditModel.instance.teslimTarihi = DateTime.now().dateTimeWithoutTime;
-        BaseSiparisEditModel.instance.isNew = true;
-        BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
-        BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
-        BaseSiparisEditModel.instance.isNew = true;
+        BaseSiparisEditModel.instance
+          ..belgeTuru ??= widget.model.editTipiEnum?.rawValue
+          ..pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue
+          ..plasiyerKodu ??= yetkiController.varsayilanPlasiyer?.plasiyerKodu
+          ..plasiyerAciklama ??= yetkiController.varsayilanPlasiyer?.plasiyerAlani
+          ..projeKodu ??= yetkiController.varsayilanProje?.projeKodu
+          ..projeAciklama ??= yetkiController.varsayilanProje?.projeAciklama
+          ..tarih = DateTime.now().dateTimeWithoutTime
+          ..teslimTarihi = DateTime.now().dateTimeWithoutTime
+          ..isNew = true
+          ..cariAdi = widget.model.model?.cariAdi
+          ..cariKodu = widget.model.model?.cariKodu
+          ..isNew = true;
         CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {
           final result = await Get.toNamed(
@@ -146,14 +150,10 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
           if ((result as CariListesiModel?)?.muhtelifMi ?? false) {
             BaseSiparisEditModel.instance.muhtelifCariModel = result;
             cariModel = result;
-          } else if (result is CariListesiModel) {
-            cariModel = await networkManager.getCariModel(
-              CariRequestModel.fromCariListesiModel(result)
-                ..secildi = "E"
-                // ..teslimCari = "E"
-                ..kisitYok = true
-                ..eFaturaGoster = true,
-            );
+          }
+          if (result is CariListesiModel) {
+            BaseSiparisEditModel.instance.cariModel = result;
+            cariModel = result;
           } else {
             cariModel = null;
           }
@@ -167,47 +167,59 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
           );
         }
         if (cariModel is CariListesiModel) {
-          viewModel.setLoading(true);
-
-          BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
-              ? "E-Fatura"
-              : cariModel.efaturaCarisi == "H"
-              ? "E-Arşiv"
-              : null;
-          BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-          BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
-          // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
-          BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-          BaseSiparisEditModel.instance.resmiBelgeNo = null;
-          BaseSiparisEditModel.instance.efaturaMi = null;
-          BaseSiparisEditModel.instance.efatOzelkod = null;
-          BaseSiparisEditModel.instance.efaturaGibDurumKodu = null;
-          BaseSiparisEditModel.instance.earsivGibDurumKodu = null;
-          BaseSiparisEditModel.instance.eirsaliyeGibDurumKodu = null;
-          BaseSiparisEditModel.instance.earsivDurumAciklama = null;
-          BaseSiparisEditModel.instance.eirsaliyeDurumAciklama = null;
-          BaseSiparisEditModel.instance.efaturaDurumAciklama = null;
-          BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
-          BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now()
-              .add(Duration(days: cariModel.vadeGunu ?? 0))
-              .dateTimeWithoutTime;
-          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-          BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-          BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-          BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-          BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-          BaseSiparisEditModel.instance.tipi = 2;
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
+          BaseSiparisEditModel.instance
+            ..cariTitle = cariModel.efaturaCarisi == "E"
+                ? "E-Fatura"
+                : cariModel.efaturaCarisi == "H"
+                ? "E-Arşiv"
+                : null
+            ..efaturaTipi = cariModel.efaturaTipi
+            ..tag = "FaturaModel"
+            ..efaturaTipi = cariModel.efaturaTipi
+            ..resmiBelgeNo = null
+            ..efaturaMi = null
+            ..efatOzelkod = null
+            ..efaturaGibDurumKodu = null
+            ..earsivGibDurumKodu = null
+            ..eirsaliyeGibDurumKodu = null
+            ..earsivDurumAciklama = null
+            ..eirsaliyeDurumAciklama = null
+            ..efaturaDurumAciklama = null
+            ..vadeGunu ??= cariModel.vadeGunu
+            ..vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+            ..plasiyerAciklama ??= cariModel.plasiyerAlani
+            ..plasiyerKodu ??= cariModel.plasiyerKodu
+            ..cariAdi = cariModel.cariAdi
+            ..cariKodu = cariModel.cariKodu
+            ..kosulKodu = cariModel.kosulKodu
+            ..belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2
+            ..siparisTipi = model.editTipiEnum
+            ..belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
+
         if (widget.model.editTipiEnum?.satisMi == true) {
-          BaseSiparisEditModel.instance.kdvDahilMi = widget.model.editTipiEnum.satisTalebiMi
-              ? yetkiController.stalKdvDahilMi
-              : yetkiController.stekKdvDahilMi;
+          if (widget.model.editTipiEnum?.talepTeklifMi ?? false) {
+            final taltekParam = parametreModel.talTekParam?.firstWhereOrNull(
+              (element) => element.belgeTipi == widget.model.editTipiEnum?.rawValue,
+            );
+            if (taltekParam?.kdvHaric == "E") {
+              BaseSiparisEditModel.instance
+                ..kdvDahilMi = false
+                ..kdvDahilmi = false
+                ..kdvDahil = "H";
+            } else {
+              BaseSiparisEditModel.instance
+                ..kdvDahilMi = true
+                ..kdvDahilmi = true
+                ..kdvDahil = "E";
+            }
+          } else {
+            BaseSiparisEditModel.instance.kdvDahilMi = widget.model.editTipiEnum.satisTalebiMi
+                ? yetkiController.stalKdvDahilMi
+                : yetkiController.stekKdvDahilMi;
+          }
         }
       }
-
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
@@ -217,6 +229,7 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
 
   @override
   void dispose() {
+    BaseSiparisEditModel.resetInstance();
     tabController.dispose();
     super.dispose();
   }
@@ -593,7 +606,20 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: (instance..islemId = uuid.v4()).toJson(),
+      data: instance
+          .copyWith(
+            islemId: uuid.v4(),
+            kalemList: instance.kalemList
+                ?.map(
+                  (e) => e
+                    ..dovizTipi = [0, null].contains(e.dovizTipi) ? null : e.dovizTipi
+                    ..dovizKodu = [0, null].contains(e.dovizKodu) ? null : e.dovizKodu
+                    ..dovizFiyati = [0, null].contains(e.dovizKodu) ? null : e.dovizFiyati
+                    ..dovizliFiyat = [0, null].contains(e.dovizKodu) ? null : e.dovizliFiyat,
+                )
+                .toList(),
+          )
+          .toJson(),
       showLoading: true,
     );
     if (result.isSuccess) {

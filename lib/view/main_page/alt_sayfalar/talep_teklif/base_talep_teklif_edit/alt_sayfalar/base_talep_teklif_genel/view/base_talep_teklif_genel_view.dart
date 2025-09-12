@@ -104,7 +104,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
       text:
           parametreModel.listOzelKodTum
               ?.firstWhereOrNull(
-                (element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1,
+                (element) =>
+                    element.belgeTipi == model.getEditTipiEnum?.rawValue &&
+                    element.fiyatSirasi == 0 &&
+                    element.kod == model.ozelKod1,
               )
               ?.aciklama ??
           model.ozelKod1,
@@ -113,7 +116,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
       text:
           parametreModel.listOzelKodTum
               ?.firstWhereOrNull(
-                (element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2,
+                (element) =>
+                    element.belgeTipi == model.getEditTipiEnum?.rawValue &&
+                    element.fiyatSirasi == 0 &&
+                    element.kod == model.ozelKod2,
               )
               ?.aciklama ??
           model.ozelKod2,
@@ -247,7 +253,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 );
                 if (result is CariListesiModel) {
                   _cariController.text = result.cariAdi ?? "";
-                  _plasiyerController.text = result.plasiyerAciklama ?? "";
+                  _plasiyerController.text = result.plasiyerAlani ?? "";
                   viewModel.model.cariTitle = result.efaturaCarisi == "E"
                       ? "E-Fatura"
                       : result.efaturaCarisi == "H"
@@ -319,7 +325,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                               ..plasiyerAciklama = result.plasiyerAciklama
                               ..plasiyerKodu = result.plasiyerKodu;
                             _teslimCariController.text = result.cariAdi ?? "";
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            _plasiyerController.text = result.plasiyerAlani ?? "";
                           }
                         } else {
                           if (_cariController.text.isEmpty) {
@@ -385,7 +391,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                           viewModel.model.plasiyerKodu,
                         );
                         if (result != null) {
-                          _plasiyerController.text = result.plasiyerAciklama ?? "";
+                          _plasiyerController.text = result.plasiyerAlani ?? "";
                           viewModel.setPlasiyer(result);
                         }
                       },
@@ -573,9 +579,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                     context,
                     viewModel.model.kosulKodu,
                     null,
+                    model.getEditTipiEnum,
                   );
                   if (result != null) {
-                    viewModel.setKosulKodu(result.kosulKodu);
+                    viewModel.setKosulKodu(result);
                     _kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                   }
                 },
@@ -583,7 +590,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum) &&
                     widget.model.baseEditEnum != BaseEditEnum.taslak)
                   Expanded(
                     child: CustomTextField(
@@ -619,7 +626,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                     ),
                   ),
 
-                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                if (yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum) &&
                     widget.model.baseEditEnum != BaseEditEnum.taslak)
                   Expanded(
                     child: CustomTextField(
@@ -641,10 +648,11 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         }
                       },
                     ),
-                  ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                  ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum)),
               ],
             ),
-            if (!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false))
+            if (!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false) &&
+                taltekParam?.kdvDahilHaricSor == "E")
               CustomWidgetWithLabel(
                 text: "KDV Dahil",
                 isVertical: true,
@@ -675,11 +683,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(1),
                         onChanged: (value) => viewModel.setAciklama(1, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar1 ??
-                            "Açıklama 1",
+                        labelText: taltekParam?.aciklar1 ?? "Açıklama 1",
                         controller: _aciklama1Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(2) ?? false) &&
@@ -694,11 +698,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(2),
                         onChanged: (value) => viewModel.setAciklama(2, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar2 ??
-                            "Açıklama 2",
+                        labelText: taltekParam?.aciklar2 ?? "Açıklama 2",
                         controller: _aciklama2Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(3) ?? false) &&
@@ -713,11 +713,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(3),
                         onChanged: (value) => viewModel.setAciklama(3, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar3 ??
-                            "Açıklama 3",
+                        labelText: taltekParam?.aciklar3 ?? "Açıklama 3",
                         controller: _aciklama3Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(4) ?? false) &&
@@ -732,11 +728,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(4),
                         onChanged: (value) => viewModel.setAciklama(4, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar4 ??
-                            "Açıklama 4",
+                        labelText: taltekParam?.aciklar4 ?? "Açıklama 4",
                         controller: _aciklama4Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(5) ?? false) &&
@@ -751,11 +743,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(5),
                         onChanged: (value) => viewModel.setAciklama(5, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar5 ??
-                            "Açıklama 5",
+                        labelText: taltekParam?.aciklar5 ?? "Açıklama 5",
                         controller: _aciklama5Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(6) ?? false) &&
@@ -770,11 +758,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(6),
                         onChanged: (value) => viewModel.setAciklama(6, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar6 ??
-                            "Açıklama 6",
+                        labelText: taltekParam?.aciklar6 ?? "Açıklama 6",
                         controller: _aciklama6Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(7) ?? false) &&
@@ -789,11 +773,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(12),
                         onChanged: (value) => viewModel.setAciklama(7, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar7 ??
-                            "Açıklama 7",
+                        labelText: taltekParam?.aciklar7 ?? "Açıklama 7",
                         controller: _aciklama7Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(8) ?? false) &&
@@ -808,11 +788,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(8),
                         onChanged: (value) => viewModel.setAciklama(8, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar8 ??
-                            "Açıklama 8",
+                        labelText: taltekParam?.aciklar8 ?? "Açıklama 8",
                         controller: _aciklama8Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(9) ?? false) &&
@@ -827,11 +803,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(9),
                         onChanged: (value) => viewModel.setAciklama(9, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar9 ??
-                            "Açıklama 9",
+                        labelText: taltekParam?.aciklar9 ?? "Açıklama 9",
                         controller: _aciklama9Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(10) ?? false) &&
@@ -846,11 +818,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(10),
                         onChanged: (value) => viewModel.setAciklama(10, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar10 ??
-                            "Açıklama 10",
+                        labelText: taltekParam?.aciklar10 ?? "Açıklama 10",
                         controller: _aciklama10Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(11) ?? false) &&
@@ -865,11 +833,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(11),
                         onChanged: (value) => viewModel.setAciklama(11, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar11 ??
-                            "Açıklama 11",
+                        labelText: taltekParam?.aciklar11 ?? "Açıklama 11",
                         controller: _aciklama11Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(12) ?? false) &&
@@ -884,11 +848,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(12),
                         onChanged: (value) => viewModel.setAciklama(12, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar12 ??
-                            "Açıklama 12",
+                        labelText: taltekParam?.aciklar12 ?? "Açıklama 12",
                         controller: _aciklama12Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(13) ?? false) &&
@@ -903,11 +863,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(13),
                         onChanged: (value) => viewModel.setAciklama(13, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar13 ??
-                            "Açıklama 13",
+                        labelText: taltekParam?.aciklar13 ?? "Açıklama 13",
                         controller: _aciklama13Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(14) ?? false) &&
@@ -922,11 +878,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(14),
                         onChanged: (value) => viewModel.setAciklama(14, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar14 ??
-                            "Açıklama 14",
+                        labelText: taltekParam?.aciklar14 ?? "Açıklama 14",
                         controller: _aciklama14Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(15) ?? false) &&
@@ -941,11 +893,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(15),
                         onChanged: (value) => viewModel.setAciklama(15, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar15 ??
-                            "Açıklama 15",
+                        labelText: taltekParam?.aciklar15 ?? "Açıklama 15",
                         controller: _aciklama15Controller,
                       ),
                     if ((model.getEditTipiEnum?.aciklamalarGorunecekMi(16) ?? false) &&
@@ -960,11 +908,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         onTap: () async => await getGenelRehber(16),
                         onChanged: (value) => viewModel.setAciklama(16, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        labelText:
-                            parametreModel.talTekParam
-                                ?.firstWhereOrNull((element) => element.belgeTipi == model.getEditTipiEnum?.rawValue)
-                                ?.aciklar16 ??
-                            "Açıklama 16",
+                        labelText: taltekParam?.aciklar16 ?? "Açıklama 16",
                         controller: _aciklama16Controller,
                       ),
                   ],
