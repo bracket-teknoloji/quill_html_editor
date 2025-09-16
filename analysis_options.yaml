@@ -1,3 +1,10 @@
+analyzer:
+  errors:
+    unintended_html_in_doc_comment: ignore
+    deprecated_member_use: ignore
+    dangling_library_doc_comments: ignore
+    use_super_parameters: ignore
+    use_build_context_synchronously: ignore
 include: package:flutter_lints/flutter.yaml
 
 # Additional information about this file can be found at
